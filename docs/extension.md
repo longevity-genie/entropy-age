@@ -210,3 +210,74 @@ The CLI does the per-cohort part: `uv run entropy-age stochasticity betas.parque
 Expected signatures if the hypothesis holds: a negative `matched_diff` for essential genes in blood,
 gut and skin, about zero in neurons; a positive neuron-minus-blood `window_change` that is larger
 for essential than for other genes; and higher neutral-site dispersion slopes in renewing tissues.
+
+## Related work
+
+Checked on 2026-11-09 (PubMed, the authors' GitHub, and Meyer's thesis read in full). Each entry is
+described from its own abstract or text, not from a citing source.
+
+### Stochastic clocks beyond the 2024 paper, by the same group
+
+- **No stochastic clock has yet been validated on mammalian RNA.** David H. Meyer's stochastic RNA
+  clocks are built and tested on *C. elegans*; his mammalian stochastic clocks are DNA methylation.
+  The one application to mammalian RNA is in Ostermann et al., *JCI Insight* 2025
+  ([doi:10.1172/jci.insight.190445](https://doi.org/10.1172/jci.insight.190445)). An "ensemble of
+  100 independently trained stochastic clocks" scored human fibroblasts, iPSCs and directly induced
+  neurons from 13 donors. Induced neurons kept a higher stochastic age than iPSCs, in line with 16
+  RNAAgeCalc clocks. Its build details are in a supplement not read here, and the main text reports
+  no accuracy on human chronological age.
+- Gallrein, Meyer et al., *Nature Aging* 2026
+  ([doi:10.1038/s43587-026-01067-5](https://doi.org/10.1038/s43587-026-01067-5)) applies BiT age and
+  the stochastic clock to single neuron types of *C. elegans* (CeNGEN and Calico data). Neuron types of
+  chronologically young worms differ almost twofold in predicted age, and the older-predicted types
+  degenerate first. It is the cell-type version of our question in worms. Human and mouse enter only
+  through correlations of gene-expression trends (GTEx, Tabula Muris Senis), not as clocks.
+- Meyer D. H., *Development and Application of Aging Clocks*, PhD thesis, University of Cologne
+  (2024), [kups.ub.uni-koeln.de/73668](https://kups.ub.uni-koeln.de/73668/). Its chapters are the
+  published papers. Discussion §5.2.2 argues for our hypothesis in prose: "a specific subset of genes
+  accumulates stochastic variation at a faster rate than others" is called conceivable, and such
+  gene-set-specific noise may be hidden when noise is measured over the whole transcriptome. It notes that the stochastic clock's predictor genes in the neuron study overlap
+  H3K27me3-bound regions (ChIP-Atlas), calls this anecdotal, and asks for a systematic test.
+- Meyer, Maklakov & Schumacher, *Nature Aging* 2025
+  ([doi:10.1038/s43587-025-00975-2](https://doi.org/10.1038/s43587-025-00975-2)): a review arguing that
+  clocks reflect stochastic damage accumulation under insufficient maintenance and repair, not a
+  program.
+
+### Evidence that stochasticity differs between genes
+
+- Lee et al., *Science Advances* 2021
+  ([doi:10.1126/sciadv.abj9111](https://doi.org/10.1126/sciadv.abj9111)): genes lacking CpG islands,
+  normally heterochromatic when inactive, are globally activated in aged cells and tissues of mice and
+  humans, and this drives inflammatory secretion. Meyer reads it as CGI− genes becoming noisier with age
+  while CGI+ genes do not. Our gene-set test matches on CpG-island status for this reason.
+- Cheung et al., *Cell* 2018 ([doi:10.1016/j.cell.2018.03.079](https://doi.org/10.1016/j.cell.2018.03.079)):
+  mass cytometry of chromatin modifications in human immune cells. Older adults show higher
+  cell-to-cell variability and more between-person heterogeneity, driven mostly by non-heritable
+  influences.
+- Weidemann et al., *Science Advances* 2023
+  ([doi:10.1126/sciadv.adh5138](https://doi.org/10.1126/sciadv.adh5138)): several constitutively
+  expressed cell-division genes in fission yeast have mRNA noise below the Poisson limit, reached
+  through multi-step transcription and degradation and fast mRNA export. Expression noise can be
+  pushed down for genes that matter, which is a mechanism of protection other than selection.
+- Jenkinson et al., *Nature Genetics* 2017 ([doi:10.1038/ng.3811](https://doi.org/10.1038/ng.3811)):
+  methylation stochasticity quantified genome-wide as Shannon entropy from whole-genome bisulfite
+  data, with methylation maintenance treated as a communication channel. This is the
+  information-theoretic frame for site-specific maintenance that our per-site entropy rates build on.
+
+### Protection across species
+
+- McLain & Faulk, *Aging* 2018 ([doi:10.18632/aging.101413](https://doi.org/10.18632/aging.101413)):
+  about 1,000 conserved promoters across 131 mammals have CpG density correlated with maximum lifespan,
+  95 % positively. The authors suggest that these genes need more buffering against age-related
+  methylation dysregulation in long-lived species.
+- Mayne et al., *Scientific Reports* 2019
+  ([doi:10.1038/s41598-019-54447-w](https://doi.org/10.1038/s41598-019-54447-w)): CpG density in
+  42 promoters predicts maximum lifespan across 252 vertebrate genomes (R = 0.76).
+
+### How these bear on our results
+
+The blood gene-set result (essential and housekeeping CpGs drift more slowly than CpGs of the same
+island status and start level) is consistent with all three protective routes these papers suggest:
+buffering by CpG density, active chromatin, and selection among cells. Only the cell-type contrast
+in prediction 2 separates selection from the other two. CpG density and chromatin act in every cell;
+selection needs turnover.

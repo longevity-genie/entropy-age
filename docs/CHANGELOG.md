@@ -4,6 +4,11 @@ Newest first.
 
 ## Unreleased
 
+- `docs/extension.md` gains a related-work section, checked against PubMed and Meyer's 2024 thesis.
+  No stochastic clock has yet been validated on mammalian RNA (the only application is Ostermann et
+  al., JCI Insight 2025, on human induced neurons). The worm neuron-type paper is the closest
+  cell-type analogue, and the gene-level noise literature (CGI− genes, chromatin variability,
+  sub-Poissonian genes, CpG density and lifespan) is described from each paper's own abstract.
 - Prediction 1 of the selection hypothesis tested on real data (`docs/extension.md`): `entropy-age
   fetch annotation` (Illumina 27k manifest from GEO GPL8490; Hart CEGv2 and NEGv1 pinned at
   hart-lab/bagel 53388ad; Eisenberg–Levanon housekeeping genes) and `entropy-age figures genesets`.
