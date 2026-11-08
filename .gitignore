@@ -218,3 +218,9 @@ __marimo__/
 
 # Streamlit
 .streamlit/secrets.toml
+
+# entropy-age data layout: inputs come from `entropy-age fetch`, interim is derived from them,
+# output keeps small CSV summaries in git and ignores the parquet copies
+/data/input/
+/data/interim/
+/data/output/**/*.parquet

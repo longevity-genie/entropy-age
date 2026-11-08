@@ -1,0 +1,149 @@
+# Extension: is stochasticity gene- and cell-type-specific because of selection?
+
+## Hypothesis
+
+The paper treats stochastic variation as one knob per dataset (σ, or one $E_m$) or as a per-site
+rate inferred from one old sample. It then argues that clock CpGs drift fastest because they matter
+least for the cell. We want to turn that remark into a testable model:
+
+> **Stochasticity differs between genes and between cell types, because selection among cells can
+> protect fitness-relevant loci from entropy, and selection can only act where cells turn over.**
+
+Testable predictions:
+
+1. **Gene level.** In tissues with cell turnover, loci whose state matters for fitness
+   (essential and housekeeping genes, cell-identity genes) drift *less* than baseline-matched
+   loci. Their bulk level is held near the ground state at a mutation–selection balance.
+2. **Cell-type level.** The protection disappears in post-mitotic cells (neurons, cardiomyocytes,
+   most muscle). There, epimutations accumulate at the intrinsic maintenance rate wherever they fall.
+3. **Hitchhiking.** Where selection acts, neutral loci gain *between-individual* variance as
+   fitter clones expand (clonal drift; compare clonal haematopoiesis). Dispersion at neutral sites
+   rises faster in renewing tissues than in post-mitotic ones.
+4. **Clock pace.** A clock trained on unprotected (post-mitotic-like) dynamics reads protected
+   tissues as younger. The tissue's "pace of aging" partly reflects how much of its methylome is
+   under selection.
+5. **Replication errors cut the other way.** Each division is another chance for a maintenance
+   error (the mitotic-clock idea), so high turnover also *raises* drift at unprotected sites. Turnover
+   is not uniformly protective.
+
+## Model
+
+`entropy_age.simulate.selection` adds two things to the paper's single-cell Markov model:
+cell turnover and fitness-proportional replacement. The equations are in
+[model.md §4](model.md#4-extension-selection-among-cells). Knobs:
+
+| Knob | Meaning | Biological reading |
+|---|---|---|
+| `MaintenanceRates(em, ed)` per site | intrinsic stochasticity | DNMT1 fidelity, chromatin context, replication timing |
+| `SelectionModel.weights` per site | fitness relevance | essential / identity genes > 0, passengers = 0 |
+| `strength` | fitness cost per deviating site | how deleterious an epimutation is |
+| `turnover` | fraction of cells replaced per step | blood, gut, skin high; neurons ≈ 0 |
+| `division_error` | extra epimutation in daughters | replication-coupled maintenance errors |
+| `reference="founder"` or `"target"` | what counts as deviation | change from the lineage state, or from a fixed functional state |
+
+## Virtual experiment (known ground truth)
+
+`uv run entropy-age figures extension` takes 400 CpGs from the 16-year-old blood sample (bimodal
+levels <0.1 or >0.9) and marks 100 of them as constrained. All sites share $E_m = 99\,\%$, so every
+site has the same *intrinsic* stochasticity. The methylome is then aged in four cell types:
+PM (post-mitotic), RN (renewing, no selection), RS (renewing with selection), and RS+E (RS plus
+replication errors).
+
+![Selection extension](figures/extension_selection.png)
+
+| Observation (panel) | PM | RN | RS | RS+E |
+|---|---|---|---|---|
+| Fitted change over life, constrained / neutral (b) | 0.36 / 0.37 | 0.36 / 0.36 | **0.08 / 0.38** | **0.12 / 0.44** |
+| Cliff's δ constrained vs neutral, permutation p | −0.15, p = 0.09 | ≈ 0 | **−1.0, p ≤ 0.001** | **−1.0, p ≤ 0.001** |
+| Between-individual SD of neutral sites at step 80 (c) | 0.03 | 0.09 | **0.33** | **0.32** |
+| Slope of a post-mitotic-trained clock (d) | 0.88 | 0.95 | **0.70** | 0.79 |
+
+All five predictions appear in the simulation. Two lessons matter for real data:
+
+* **Protection does not look like a slower rate.** Constrained sites under selection reach their
+  mutation–selection plateau *quickly*, so their fitted relaxation rate λ is *higher* (median 0.072 vs
+  0.022 per step) while they move much less. Rank genes by the amount of change (`window_change`,
+  entropy slope, dispersion slope), and read λ only together with the fitted equilibrium.
+* **Neutral turnover alone already adds dispersion** (RN: 0.09 vs PM: 0.03); selection makes it far
+  larger. Dispersion slopes distinguish post-mitotic from renewing tissues even without knowing
+  which genes are constrained.
+
+The parameters (selection strength, turnover per step, 200 cells per sample) are illustrative, not
+calibrated. The figure shows that the effects exist and that the estimators recover them from
+cross-sectional bulk data, which is all real cohorts offer.
+
+## First look at real data: are clock CpGs the fast-drifting ones?
+
+`uv run entropy-age figures atlas` computes every metric for all 27,577 CpGs of the 394 GSE41037
+controls (16–88 y) and for the 37,554 CpGs of the 50 dolphins. It then compares clock CpGs with
+CpGs *that start at the same level* (deciles of the young-adult baseline).
+
+![Atlas](figures/atlas_real_data.png)
+
+Human blood, clock CpGs vs level-matched CpGs (2,000 stratified permutations):
+
+| Group | Metric | Matched difference | p |
+|---|---|---|---|
+| Horvath (353) | entropy slope | +1.6 × 10⁻⁴ bits / year | 0.004 |
+| PhenoAge (513) | entropy slope | +1.2 × 10⁻⁴ bits / year | 0.005 |
+| Horvath | dispersion slope | +8.1 × 10⁻⁵ | 0.005 |
+| PhenoAge | dispersion slope | +9.2 × 10⁻⁵ | < 0.001 |
+| Horvath | fitted λ | −0.020 / year (keeps changing, no early plateau) | 0.03 |
+
+Clock CpGs gain entropy and between-person dispersion faster than CpGs that start where they do.
+This agrees with the paper's reading that clocks pick the least-maintained sites. The effect is
+small per CpG (Cliff's δ ≈ 0.05): clock CpGs are typical drifting sites, not outliers. Their lower
+fitted λ means they change steadily across adult life instead of saturating early, which is
+what makes them useful clock features.
+
+Dolphins have no clock-CpG contrast. The human clock probes present on the mammalian array do not
+hybridise in dolphin DNA: they sit at about 0.5 with almost no variance, so any comparison would
+measure probe failure, not biology.
+
+**Caveat on matching.** The baseline used for matching should be measured independently of the
+drift being compared: a separate young or fetal reference, or a sorted cell type at its youngest.
+A baseline taken from the cohort already contains early drift. Fast-drifting CpGs then fall into
+other strata than slow ones, and matching removes part of the effect.
+`compare_groups` reports `n_matched` so this shows up, and a test in the suite documents it.
+
+## How to test the hypothesis on real data
+
+```python
+import polars as pl
+from entropy_age.data.matrix import FeatureMatrix
+from entropy_age.stochasticity import compare_groups, drift_metrics, fit_relaxation, paired_comparison
+
+betas = pl.read_parquet("my_betas.parquet")          # cpg column + one column per sample
+samples = pl.read_parquet("my_samples.parquet")      # sample, age, cell_type
+genes = pl.read_csv("essential_cpgs.csv")            # feature, group  (e.g. promoter CpGs of essential genes)
+
+per_type = {}
+for (cell_type,), sub in samples.group_by("cell_type"):
+    m = FeatureMatrix.from_frame(betas, feature_col="cpg", samples=sub["sample"].to_list(), max_missing=0.05)
+    ages = sub["age"].to_numpy()
+    per_type[cell_type] = fit_relaxation(m.values, ages, m.features).join(
+        drift_metrics(m.values, ages, m.features), on="feature")
+
+# prediction 1: constrained genes drift less than level-matched CpGs, within each cell type
+for cell_type, metrics in per_type.items():
+    print(cell_type, compare_groups(metrics, genes, metric="entropy_slope"))
+
+# prediction 2: the same CpGs drift more in post-mitotic than in renewing cells
+print(paired_comparison(per_type["neuron"], per_type["blood"], metric="window_change", names=("neuron", "blood")))
+```
+
+The CLI does the per-cohort part: `uv run entropy-age stochasticity betas.parquet samples.parquet --groups genes.csv`.
+
+### Data that would make this decisive
+
+| Need | Candidates |
+|---|---|
+| Same donors, several purified cell types, age range | sorted blood subsets (e.g. Reinius et al. 2012, GSE35069; Tserel et al. 2015); BLUEPRINT; neurons vs glia from FANS-sorted brain (e.g. Kozlenkov et al.) |
+| Post-mitotic vs renewing tissue from the same individuals | GTEx methylation (EPIC, 8+ tissues), the Mammalian Methylation Consortium multi-tissue data |
+| Single-cell resolution (lineage-level selection) | scBS-seq / scNMT-seq aging studies; clonal haematopoiesis cohorts with methylation |
+| Gene classes | DepMap common-essential genes, housekeeping genes (Eisenberg & Levanon 2013), PRC2 targets, cell-type identity TFs |
+| Transcriptome version | single-cell expression noise across ages (Tabula Muris Senis), with the bulk model and per-gene σ |
+
+Expected signatures if the hypothesis holds: a negative `matched_diff` for essential genes in blood,
+gut and skin, about zero in neurons; a positive neuron-minus-blood `window_change` that is larger
+for essential than for other genes; and higher neutral-site dispersion slopes in renewing tissues.

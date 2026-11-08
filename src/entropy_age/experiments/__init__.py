@@ -1,0 +1,25 @@
+"""Reproductions of the paper's figures and the extension experiments."""
+
+from collections.abc import Callable
+from pathlib import Path
+
+from entropy_age.experiments import (
+    atlas_real_data,
+    extension_selection,
+    fig1_bulk,
+    fig3_single_cell,
+    fig4_published_clocks,
+    fig5_real_data,
+)
+from entropy_age.experiments.common import Context, Scale, ScaleName
+
+FIGURES: dict[str, Callable[[Context], list[Path]]] = {
+    "fig1": fig1_bulk.run,
+    "fig3": fig3_single_cell.run,
+    "fig4": fig4_published_clocks.run,
+    "fig5": fig5_real_data.run,
+    "extension": extension_selection.run,
+    "atlas": atlas_real_data.run,
+}
+
+__all__ = ["FIGURES", "Context", "Scale", "ScaleName"]
