@@ -110,8 +110,8 @@ src/entropy_age/              the package (Python 3.13, uv_build)
   published.py                published linear clocks, coefficients from the upstream repository
   plots.py, paths.py          figure styling; the one filesystem layout (ProjectPaths)
   simulate/                   bulk noise, binomial single-cell methylation, schedules, selection
-  data/                       downloaders: upstream repo files, GEO series matrices, matrix frames
-  experiments/                one module per figure (fig1, fig3, fig4, fig5, extension, atlas)
+  data/                       downloaders: upstream repo files, GEO series matrices, 27k annotation + gene sets, matrix frames
+  experiments/                one module per figure (fig1, fig3, fig4, fig5, extension, atlas, genesets)
 tests/                        pytest, real code paths on small seeded data
 data/input/                   downloads exactly as fetched (gitignored; `entropy-age fetch` recreates)
 data/interim/                 parquet derived from the inputs (gitignored)
@@ -142,8 +142,9 @@ uv run ruff check                         # lint (line length 120, py313)
 uv run entropy-age info                   # where data lives and what is already prepared
 uv run entropy-age fetch upstream         # upstream clock coefficients and sample sheets -> data/input, data/interim
 uv run entropy-age fetch geo GSE41037     # a GEO series matrix -> parquet
+uv run entropy-age fetch annotation       # 27k probe manifest (GPL8490) + essential/non-essential/housekeeping gene sets
 uv run entropy-age figures [NAMES] --scale quick|paper --seed 42
-                                          # regenerate figures (fig1 fig3 fig4 fig5 extension atlas; default all)
+                                          # regenerate figures (fig1 fig3 fig4 fig5 extension atlas genesets; default all)
 uv run entropy-age stochasticity BETAS SAMPLES [--groups G]
                                           # per-feature drift/entropy metrics for any matrix
 ```
@@ -211,3 +212,7 @@ machine and this project that reading the code does not reveal.
 
 - "I mostly work alone on my repositories, so push to `main` directly and avoid pull requests."
   (2026-11-09, the maintainer's standing rule for every repository)
+- GSE41037's three processing datasets are confounded with age (dataset 1 mostly < 50 y, dataset 3
+  mostly > 50 y): any age slope across that cohort needs batch as a covariate (`human_batches`, `dummies`).
+- This laptop runs at 90+ °C before any job and shuts down at 100 °C: run figures with `nice -n 19` and
+  `OMP_NUM_THREADS=1 OPENBLAS_NUM_THREADS=1`, one at a time.

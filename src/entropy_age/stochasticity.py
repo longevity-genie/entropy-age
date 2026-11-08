@@ -44,11 +44,12 @@ def sample_entropy(x: np.ndarray) -> np.ndarray:
     return binary_entropy(x).mean(axis=1)
 
 
-def _slopes(t: np.ndarray, y: np.ndarray) -> tuple[np.ndarray, np.ndarray]:
-    """OLS slope and intercept of every column of ``y`` on ``t``."""
-    tc = t - t.mean()
-    slope = tc @ (y - y.mean(axis=0)) / (tc @ tc)
-    return slope, y.mean(axis=0) - slope * t.mean()
+def _age_fit(t: np.ndarray, y: np.ndarray, covariates: np.ndarray | None) -> tuple[np.ndarray, np.ndarray]:
+    """Age coefficient of every column of ``y`` (adjusted for ``covariates``) and the fitted values."""
+    columns = [np.ones_like(t), t] if covariates is None else [np.ones_like(t), t, covariates]
+    design = np.column_stack(columns)
+    coef, *_ = np.linalg.lstsq(design, y, rcond=None)
+    return coef[1], design @ coef
 
 
 def drift_metrics(
@@ -56,28 +57,44 @@ def drift_metrics(
     ages: Sequence[float] | np.ndarray,
     features: Sequence[str] | None = None,
     *,
+    covariates: np.ndarray | None = None,
     young_quantile: float = 0.2,
 ) -> pl.DataFrame:
-    """Per-feature drift statistics from an ``(n_samples, n_features)`` matrix of values in [0, 1]."""
+    """Per-feature drift statistics from an ``(n_samples, n_features)`` matrix of values in [0, 1].
+
+    ``covariates`` (``(n_samples, k)``, e.g. processing-batch dummies or cell fractions)
+    turn every age slope into a partial slope, so only age variation *within* the
+    covariates counts. Use it whenever batch and age are confounded: across a
+    cohort whose old donors were run on other plates than its young ones, an
+    unadjusted slope partly measures the batch. ``spearman`` is then a partial
+    rank correlation. ``log2_dispersion_ratio`` compares the oldest with the
+    youngest samples and is not adjusted.
+    """
     x = np.asarray(x, dtype=float)
     t = np.asarray(ages, dtype=float)
     if x.shape[0] != t.size:
         raise ValueError("one age per sample is required")
+    if covariates is not None:
+        covariates = np.asarray(covariates, dtype=float).reshape(t.size, -1)
     names = list(features) if features is not None else [f"f{j}" for j in range(x.shape[1])]
 
-    slope, intercept = _slopes(t, x)
+    slope, fitted = _age_fit(t, x, covariates)
     ranked_t = stats.rankdata(t)
     ranked_x = stats.rankdata(x, axis=0)
+    if covariates is not None:
+        base = np.column_stack([np.ones_like(t), covariates])
+        ranked_t = ranked_t - base @ np.linalg.lstsq(base, ranked_t, rcond=None)[0]
+        ranked_x = ranked_x - base @ np.linalg.lstsq(base, ranked_x, rcond=None)[0]
     rc = ranked_t - ranked_t.mean()
     rx = ranked_x - ranked_x.mean(axis=0)
     spearman = (rc @ rx) / np.sqrt((rc @ rc) * (rx**2).sum(axis=0) + _EPS)
 
-    entropy_slope, _ = _slopes(t, binary_entropy(x))
+    entropy_slope, _ = _age_fit(t, binary_entropy(x), covariates)
 
-    residual = x - (intercept + np.outer(t, slope))
+    residual = x - fitted
     level = np.clip(x.mean(axis=0), 0.01, 0.99)
     scaled_abs = np.abs(residual) / np.sqrt(level * (1 - level))
-    dispersion_slope, _ = _slopes(t, scaled_abs)
+    dispersion_slope, _ = _age_fit(t, scaled_abs, covariates)
 
     young = t <= np.quantile(t, young_quantile)
     old = t >= np.quantile(t, 1 - young_quantile)
@@ -90,6 +107,7 @@ def drift_metrics(
             "baseline": x[young].mean(axis=0),
             "late": x[old].mean(axis=0),
             "slope": slope,
+            "abs_slope": np.abs(slope),
             "spearman": spearman,
             "entropy_slope": entropy_slope,
             "dispersion_slope": dispersion_slope,
@@ -167,15 +185,18 @@ def baseline_strata(values: np.ndarray, n_bins: int = 10) -> np.ndarray:
     return np.clip(np.searchsorted(edges, values, side="right") - 1, 0, max(len(edges) - 2, 0))
 
 
-def _matched_difference(values: np.ndarray, labels: np.ndarray, strata: np.ndarray) -> float:
-    """In-group minus rest, averaged over strata weighted by in-group size (a CMH-style contrast)."""
-    total, weight = 0.0, 0
-    for s in np.unique(strata):
-        here = strata == s
-        inside, outside = values[here & labels], values[here & ~labels]
-        total += inside.size * (inside.mean() - outside.mean())
-        weight += inside.size
-    return total / weight
+def _matched_difference(values: np.ndarray, labels: np.ndarray, codes: np.ndarray, n_strata: int) -> float:
+    """In-group minus rest, averaged over strata weighted by in-group size (a CMH-style contrast).
+
+    ``codes`` are stratum indices ``0..n_strata-1``; every stratum must hold both groups.
+    """
+    weight = labels.astype(float)
+    n_in = np.bincount(codes, weights=weight, minlength=n_strata)
+    n_all = np.bincount(codes, minlength=n_strata).astype(float)
+    sum_in = np.bincount(codes, weights=values * weight, minlength=n_strata)
+    sum_all = np.bincount(codes, weights=values, minlength=n_strata)
+    difference = sum_in / n_in - (sum_all - sum_in) / (n_all - n_in)
+    return float((n_in * difference).sum() / n_in.sum())
 
 
 def _stratified_permutation(
@@ -186,15 +207,23 @@ def _stratified_permutation(
     Callers pass only strata that contain both groups; strata holding one group
     carry no within-level information and would make the test degenerate.
     """
-    observed = _matched_difference(values, labels, strata)
-    groups = [np.flatnonzero(strata == s) for s in np.unique(strata)]
-    permuted = labels.copy()
+    _, codes = np.unique(strata, return_inverse=True)
+    n_strata = int(codes.max()) + 1
+    observed = _matched_difference(values, labels, codes, n_strata)
     exceed = 0
     for _ in range(n_permutations):
-        for idx in groups:
-            permuted[idx] = rng.permutation(labels[idx])
-        exceed += abs(_matched_difference(values, permuted, strata)) >= abs(observed) - 1e-12
+        permuted = _permute_within_strata(labels, codes, rng)
+        exceed += abs(_matched_difference(values, permuted, codes, n_strata)) >= abs(observed) - 1e-12
     return observed, (exceed + 1) / (n_permutations + 1)
+
+
+def _permute_within_strata(labels: np.ndarray, codes: np.ndarray, rng: np.random.Generator) -> np.ndarray:
+    """Shuffle ``labels`` only among positions that share a stratum code."""
+    grouped = np.argsort(codes, kind="stable")  # positions, grouped by stratum
+    shuffled = np.lexsort((rng.random(codes.size), codes))  # also grouped by stratum, random within
+    permuted = np.empty_like(labels)
+    permuted[grouped] = labels[shuffled]
+    return permuted
 
 
 def cliffs_delta(a: np.ndarray, b: np.ndarray) -> float:
@@ -224,6 +253,9 @@ def compare_groups(
     Bins holding only one group are dropped and ``n_matched`` says how many
     group members remained.
 
+    A numeric float column is binned into quantiles; an integer, string or
+    boolean column is used as given (e.g. CpG-island status x baseline decile).
+
     Choose the stratifier with care: it should be measured independently of the
     drift being compared (for example a separate young or fetal reference). A
     baseline taken from the cohort itself already contains early drift, so
@@ -234,14 +266,21 @@ def compare_groups(
     base = metrics.drop_nulls(subset=[metric]).filter(pl.col(metric).is_finite())
     values = base[metric].to_numpy()
     feature_ids = base["feature"].to_numpy()
-    strata = baseline_strata(base[stratify_by].to_numpy(), n_bins) if stratify_by else np.zeros(values.size, dtype=int)
+    if stratify_by is None:
+        strata = np.zeros(values.size, dtype=int)
+    elif base.schema[stratify_by].is_float():
+        strata = baseline_strata(base[stratify_by].to_numpy(), n_bins)
+    else:
+        strata = np.unique(base[stratify_by].cast(pl.String).to_numpy(), return_inverse=True)[1]
     rows = []
     for group, members in membership.group_by("group", maintain_order=True):
         label = group[0] if isinstance(group, tuple) else group
         in_group = np.isin(feature_ids, members["feature"].to_numpy())
         if in_group.sum() < 2 or (~in_group).sum() < 2:
             continue
-        mixed = [s for s in np.unique(strata) if in_group[strata == s].any() and (~in_group[strata == s]).any()]
+        n_in = np.bincount(strata, weights=in_group.astype(float))
+        n_all = np.bincount(strata)
+        mixed = np.flatnonzero((n_in > 0) & (n_in < n_all))
         matched = np.isin(strata, mixed)
         if in_group[matched].sum() >= 2 and (~in_group[matched]).sum() >= 2:
             difference, p_value = _stratified_permutation(

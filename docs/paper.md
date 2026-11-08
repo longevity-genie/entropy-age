@@ -58,6 +58,15 @@ transcriptome helpers are ported (`transcriptome.py`) for anyone who processes c
 
 ### Where we differ, and why
 
+* **GSE41037 batches.** The 720 samples were processed in three datasets whose ages barely overlap
+  (dataset 1 mostly under 50, dataset 3 mostly over 50). The paper does not adjust for this. The
+  simulation-trained clock survives: inside each batch it still predicts age with r = 0.75, 0.86 and
+  0.51 (n = 192, 105, 95; each batch spans a narrower age range, which lowers r;
+  `data/output/fig5_real_data/human_clock_within_batch.csv`). Per-CpG age trends across the whole
+  cohort do not all survive (see the clock-CpG contrast in [extension.md](extension.md)), so every
+  per-CpG analysis here adjusts for batch. Mean methylome entropy barely tracks age in this 27k
+  blood data (pooled r = 0.05; within batches 0.17, 0.00, 0.01; Fig. 5d).
+
 * **Clock 4 on dolphins.** A universal $E_m = 99\,\%$ ($z = 0.5$ everywhere) moves the simulated
   dolphin methylome about 4.4× further over 66 steps than real dolphins change between 0.6 and 58 years
   (mean |Δβ| 0.25 vs 0.057). Every real sample therefore maps onto the first few simulated steps.

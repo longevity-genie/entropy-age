@@ -17,16 +17,17 @@ import polars as pl
 
 from entropy_age import plots
 from entropy_age.data.upstream import UpstreamLayout
-from entropy_age.experiments.common import Context, dolphin_blood, human_blood, write_table
+from entropy_age.experiments.common import Context, dolphin_blood, dummies, human_batches, human_blood, write_table
 from entropy_age.published import LinearClock
 from entropy_age.stochasticity import baseline_strata, compare_groups, drift_metrics, fit_relaxation
 
 METRICS = ("rate", "entropy_slope", "dispersion_slope")
 
 
-def _atlas(matrix, ages: np.ndarray, *, t0: float) -> pl.DataFrame:
+def _atlas(matrix, ages: np.ndarray, *, t0: float, covariates: np.ndarray | None) -> pl.DataFrame:
+    """Relaxation fits (no covariate support, so read them as unadjusted) and drift metrics (partial slopes)."""
     relax = fit_relaxation(matrix.values, ages, matrix.features, t0=t0)
-    drift = drift_metrics(matrix.values, ages, matrix.features)
+    drift = drift_metrics(matrix.values, ages, matrix.features, covariates=covariates)
     return relax.join(drift, on="feature")
 
 
@@ -51,10 +52,11 @@ def run(ctx: Context) -> list[Path]:
     cohorts = []
     human = human_blood(ctx.paths)
     if human is not None:
-        cohorts.append(("Human blood", human[0], human[1]["age"].to_numpy(), True))
+        batch = dummies(human_batches(ctx.paths, human[0].samples))  # GSE41037: batch and age are confounded
+        cohorts.append(("Human blood", human[0], human[1]["age"].to_numpy(), True, batch))
     dolphin = dolphin_blood(ctx.paths)
     if dolphin is not None:
-        cohorts.append(("Dolphin blood", dolphin[0], dolphin[1]["age"].to_numpy(), False))
+        cohorts.append(("Dolphin blood", dolphin[0], dolphin[1]["age"].to_numpy(), False, None))
     if not cohorts:
         print("atlas: no cohort prepared - skipped")
         return []
@@ -62,8 +64,8 @@ def run(ctx: Context) -> list[Path]:
     fig, axes = plots.panels(3 * len(cohorts), ncols=3, size=3.3)
     letters = iter("abcdef")
     contrast_rows = []
-    for c, (label, matrix, ages, compare_clocks) in enumerate(cohorts):
-        atlas = _atlas(matrix, ages, t0=0.0)
+    for c, (label, matrix, ages, compare_clocks, covariates) in enumerate(cohorts):
+        atlas = _atlas(matrix, ages, t0=0.0, covariates=covariates)
         write_table(atlas, out / f"{label.split()[0].lower()}_cpg_metrics")
 
         ax = axes[3 * c]
@@ -72,7 +74,7 @@ def run(ctx: Context) -> list[Path]:
         ax.set(
             xlabel="Baseline methylation (youngest 20 %)",
             ylabel="Entropy slope (bits / year)",
-            title=f"{label}: drift vs start level",
+            title=f"{label}: drift vs start" + (" (within batches)" if covariates is not None else ""),
         )
         fig.colorbar(hb, ax=ax, shrink=0.7, label="CpGs (log)")
         plots.label_panel(ax, next(letters))
@@ -88,7 +90,7 @@ def run(ctx: Context) -> list[Path]:
         ax.set(
             xlabel="log10 relaxation rate λ (per year)",
             ylabel="CpGs",
-            title=f"{label}: λ identifiable for {fitted.height:,} / {atlas.height:,}",
+            title=f"{label}: λ fits (unadjusted), {fitted.height:,} / {atlas.height:,}",
         )
         plots.label_panel(ax, next(letters))
 

@@ -4,6 +4,20 @@ Newest first.
 
 ## Unreleased
 
+- Prediction 1 of the selection hypothesis tested on real data (`docs/extension.md`): `entropy-age
+  fetch annotation` (Illumina 27k manifest from GEO GPL8490; Hart CEGv2 and NEGv1 pinned at
+  hart-lab/bagel 53388ad; Eisenberg–Levanon housekeeping genes) and `entropy-age figures genesets`.
+  In GSE41037 blood, essential and housekeeping CpGs gain entropy and between-person dispersion
+  more slowly than CpGs matched on CpG-island status and starting level, and non-essential CpGs
+  faster; this holds after batch adjustment, with cell fractions, and inside each processing batch.
+- `drift_metrics(covariates=...)` gives partial age slopes; `compare_groups` takes a categorical
+  stratum column and runs its stratified permutations vectorised.
+- Fixed: GSE41037's three processing datasets are confounded with age. The atlas now compares clock
+  CpGs using batch-adjusted slopes, and the earlier claim that clock CpGs gain entropy faster than
+  level-matched CpGs (Horvath p = 0.004) is withdrawn (batch-adjusted p = 0.60). Fig. 5d's title
+  said methylome entropy rises with age; the pooled r is 0.05 (within batches 0.17, 0.00, 0.01), and
+  the panel now says so per batch. Fig. 5 also writes the clock's accuracy within each batch
+  (r = 0.75, 0.86, 0.51). A substituted ground state is now announced on stderr.
 - Adopted the seats kit (agent-seat-blueprints v0.1.144): `CLAUDE.md` and `AGENTS.md`, the roadmap,
   changelog and decisions files, the `lead` seat's priming under `docs/seats/`, the seat table
   `.blueprints.toml`, and the kit's plugin pinned in `.claude/settings.json` (D1-D4). Not yet

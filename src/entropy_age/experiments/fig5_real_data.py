@@ -27,6 +27,7 @@ from entropy_age.experiments.common import (
     HUMAN_YOUNG,
     Context,
     dolphin_blood,
+    human_batches,
     human_blood,
     write_table,
 )
@@ -182,17 +183,52 @@ def _human(ctx: Context, axes, out: Path) -> list[dict]:
     )
     plots.label_panel(axes[2], "c")
 
+    # GSE41037 was processed in three datasets whose ages barely overlap, so any cohort-wide
+    # age trend is reported next to its value within each batch
     entropy = sample_entropy(matrix.values)
-    axes[3].scatter(ages, entropy, s=5, color=plots.POINT, alpha=0.5, linewidths=0)
-    r = np.corrcoef(ages, entropy)[0, 1]
+    batch = human_batches(ctx.paths, matrix.samples)
+    within_rows = []
+    for level, color in zip(np.unique(batch), plots.PALETTE, strict=False):
+        inside = batch == level
+        r_in = float(np.corrcoef(ages[inside], entropy[inside])[0, 1])
+        within_rows.append({"dataset": str(level), "n": int(inside.sum()), "pearson_r": r_in})
+        axes[3].scatter(
+            ages[inside],
+            entropy[inside],
+            s=6,
+            color=color,
+            alpha=0.6,
+            linewidths=0,
+            label=f"dataset {level}: r = {r_in:.2f}",
+        )
+    r_all = float(np.corrcoef(ages, entropy)[0, 1])
+    axes[3].legend(loc="lower right", fontsize=7, markerscale=2)
     axes[3].set(
         xlabel="Chronological age (years)",
         ylabel="Mean CpG entropy (bits)",
-        title=f"Methylome entropy rises with age (r = {r:.2f})",
+        title=f"Mean entropy vs age (pooled r = {r_all:.2f})",
     )
     plots.label_panel(axes[3], "d")
     write_table(pl.concat(prediction_rows), out / "human_predictions")
-    write_table(pl.DataFrame({"sample": samples["sample"], "age": ages, "entropy": entropy}), out / "human_entropy")
+    write_table(
+        pl.DataFrame({"sample": samples["sample"], "age": ages, "entropy": entropy, "dataset": batch.astype(str)}),
+        out / "human_entropy",
+    )
+    write_table(pl.DataFrame(within_rows), out / "human_entropy_within_batch")
+    within_clock = []
+    for variant_frame in prediction_rows:
+        frame = variant_frame.with_columns(dataset=pl.Series(batch.astype(str))).filter(
+            ~pl.col("sample").is_in([HUMAN_YOUNG, HUMAN_OLD])
+        )
+        for (variant, dataset), sub in frame.group_by("variant", "dataset", maintain_order=True):
+            within_clock.append(
+                {
+                    "variant": variant,
+                    "dataset": dataset,
+                    **evaluate(sub["age"].to_numpy(), sub["predicted"].to_numpy()).as_dict(),
+                }
+            )
+    write_table(pl.DataFrame(within_clock).sort("variant", "dataset"), out / "human_clock_within_batch")
     return rows
 
 
@@ -247,7 +283,7 @@ def _dolphin(ctx: Context, axes, out: Path) -> list[dict]:
             identity=False,
             xlabel="Relative age (age / 67 y)",
             ylabel="Predicted relative age",
-            title=f"Dolphin blood, {label}",
+            title=f"Dolphin, {label.split(':')[0]} ({'site-specific' if universal is None else 'universal 99 %'})",
         )
         plots.label_panel(axes[i], "ef"[i])
     write_table(pl.concat(frames), out / "dolphin_predictions")
@@ -255,9 +291,7 @@ def _dolphin(ctx: Context, axes, out: Path) -> list[dict]:
     entropy = sample_entropy(matrix.values)
     axes[2].scatter(ages, entropy, s=8, color=plots.POINT, alpha=0.7, linewidths=0)
     r = np.corrcoef(ages, entropy)[0, 1]
-    axes[2].set(
-        xlabel="Age (years)", ylabel="Mean CpG entropy (bits)", title=f"Dolphin methylome entropy (r = {r:.2f})"
-    )
+    axes[2].set(xlabel="Age (years)", ylabel="Mean CpG entropy (bits)", title=f"Dolphin mean entropy (r = {r:.2f})")
     plots.label_panel(axes[2], "g")
     return rows
 

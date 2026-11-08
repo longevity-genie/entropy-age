@@ -11,14 +11,18 @@ enough to build an accurate aging clock. A clock trained *only on simulated nois
 of real people (r = 0.87; this repo r = 0.88).
 
 We build on it to ask a follow-up question: **is that stochasticity the same for every gene and cell
-type, or does selection among cells protect some loci from entropy where cells turn over?**
+type, or does selection among cells protect some loci from entropy where cells turn over?** A first
+real-data test in 394 blood methylomes says the gene-level part holds: CpGs of essential and
+housekeeping genes gain entropy 0.2–0.4 SD more slowly than CpGs that start at the same level,
+and non-essential genes faster, robust to batch and cell composition
+([details](docs/extension.md#prediction-1-on-real-data-essential-genes-drift-less-in-blood)).
 
 | | |
 |---|---|
 | ![Fig. 1](docs/figures/fig1_bulk.png) | ![Fig. 5](docs/figures/fig5_real_data.png) |
 | Random, bounded noise is enough for a clock | A clock trained on simulated noise predicts real ages |
-| ![Extension](docs/figures/extension_selection.png) | ![Atlas](docs/figures/atlas_real_data.png) |
-| Selection protects constrained genes only where cells turn over | Per-CpG stochasticity in real cohorts |
+| ![Extension](docs/figures/extension_selection.png) | ![Gene sets](docs/figures/gene_sets.png) |
+| Selection protects constrained genes only where cells turn over | In blood, essential-gene CpGs drift less than matched CpGs |
 
 ## Documentation
 
@@ -32,7 +36,8 @@ type, or does selection among cells protect some loci from entropy where cells t
   experiment with known ground truth, a first real-data test, and a recipe for testing it on new data.
 * Figures: [Fig. 1 bulk](docs/figures/fig1_bulk.png) · [Fig. 3 single cell](docs/figures/fig3_single_cell.png) ·
   [Fig. 4 published clocks](docs/figures/fig4_published_clocks.png) · [Fig. 5 real data](docs/figures/fig5_real_data.png) ·
-  [Extension](docs/figures/extension_selection.png) · [Atlas](docs/figures/atlas_real_data.png)
+  [Extension](docs/figures/extension_selection.png) · [Atlas](docs/figures/atlas_real_data.png) ·
+  [Gene sets](docs/figures/gene_sets.png)
 
 ## Quick start
 
@@ -49,12 +54,18 @@ uv run entropy-age fetch geo GSE41037
 ```
 
 ```bash
+uv run entropy-age fetch annotation
+```
+
+```bash
 uv run entropy-age figures
 ```
 
 `fetch upstream` downloads the clock coefficients, sample sheets and the dolphin methylation example
 from the original repository at a pinned commit (`--from-dir path/to/StochasticAgingClock/Data`
-copies from a local clone). `fetch geo` downloads the GSE41037 series matrix (81 MB) from NCBI GEO.
+copies from a local clone). `fetch geo` downloads the GSE41037 series matrix (81 MB) from NCBI GEO. `fetch annotation`
+downloads the Illumina 27k probe manifest (6 MB) and the essential, non-essential and housekeeping
+gene lists used to test the extension on real data.
 `figures` regenerates every figure into `docs/figures/` and every table into `data/output/`.
 Add `--scale paper` for the publication's sweep sizes (slow), or name figures:
 `uv run entropy-age figures fig1 extension`.
@@ -127,7 +138,7 @@ uv run entropy-age stochasticity betas.parquet samples.parquet --groups gene_set
 | `clock.py` | elastic-net training, paper configurations, age transforms, metrics |
 | `published.py` | Horvath, PhenoAge, Lin, Vidal-Bralo, Weidner and BiT-age clocks |
 | `stochasticity.py` | per-feature drift, entropy and dispersion slopes, relaxation fits, matched group contrasts, cell-composition correction |
-| `data/` | GEO series-matrix and upstream downloaders and parsers, `FeatureMatrix` |
+| `data/` | GEO series-matrix, upstream and annotation (27k manifest, gene sets) downloaders and parsers, `FeatureMatrix` |
 | `experiments/` | one module per figure, run by `entropy-age figures` |
 
 Stack: Python 3.13, uv, polars, numpy, scipy, scikit-learn, matplotlib, typer, pathlib throughout;

@@ -117,3 +117,32 @@ def test_transcriptome_helpers():
     x = np.array([[0.0, 0.2], [0.5, 0.4], [0.9, 0.6], [0.7, 0.0]])
     assert binarize_by_median(x).tolist() == [[0, 0], [0, 0], [1, 1], [0, 0]]
     assert np.isfinite(correct_biological_age(np.array([100.0, 300.0]))).all()
+
+
+def test_batch_adjusted_slopes_remove_a_batch_age_confound():
+    """Old donors run on another batch: unadjusted slopes see the batch shift, partial slopes do not."""
+    rng = np.random.default_rng(9)
+    n = 400
+    batch = np.r_[np.zeros(200), np.ones(200)]
+    ages = np.where(batch == 0, rng.uniform(16, 55, n), rng.uniform(45, 88, n))
+    true_slope = np.r_[np.zeros(50), np.full(50, 0.002)]
+    shift = 0.05  # batch offset on every feature
+    x = 0.3 + np.outer(ages, true_slope) + shift * batch[:, None] + rng.normal(0, 0.01, (n, 100))
+    entropy_shift = binary_entropy(np.full(1, 0.3 + shift))[0] - binary_entropy(np.full(1, 0.3))[0]
+    naive = drift_metrics(x, ages)
+    adjusted = drift_metrics(x, ages, covariates=batch)
+    assert naive["slope"].to_numpy()[:50].mean() > 5e-4  # spurious drift from the batch
+    assert abs(adjusted["slope"].to_numpy()[:50].mean()) < 1e-4
+    assert np.allclose(adjusted["slope"].to_numpy()[50:].mean(), 0.002, rtol=0.05)
+    assert entropy_shift > 0 and abs(adjusted["entropy_slope"].to_numpy()[:50].mean()) < 1e-4
+    assert abs(adjusted["spearman"].to_numpy()[:50].mean()) < 0.05 < naive["spearman"].to_numpy()[:50].mean()
+
+    # partial rank correlation for a binary batch = correlation of within-batch-centred ranks
+    from scipy.stats import rankdata
+
+    def centred(v):
+        return v - np.where(batch == 1, v[batch == 1].mean(), v[batch == 0].mean())
+
+    rt = centred(rankdata(ages))
+    expected = [np.corrcoef(rt, centred(rankdata(x[:, j])))[0, 1] for j in (50, 75, 99)]
+    assert np.allclose(adjusted["spearman"].to_numpy()[[50, 75, 99]], expected)

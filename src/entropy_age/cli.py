@@ -49,10 +49,23 @@ def fetch_geo_cmd(
     typer.echo(f"downloaded {raw}\nsamples -> {samples}\nbetas   -> {betas}")
 
 
+@fetch_app.command("annotation")
+def fetch_annotation_cmd(overwrite: bool = False) -> None:
+    """Illumina 27k probe manifest (GEO GPL8490) and curated gene sets (essential, non-essential, housekeeping)."""
+    from entropy_age.data.annotation import fetch_annotation, prepare_annotation
+
+    paths = ProjectPaths.default().ensure()
+    files = fetch_annotation(paths, overwrite=overwrite)
+    layout = prepare_annotation(paths)
+    typer.echo(
+        f"{len(files)} input files in {layout.input}\nprobes    -> {layout.probes}\ngene sets -> {layout.gene_sets}"
+    )
+
+
 @app.command()
 def figures(
     names: Annotated[
-        list[str] | None, typer.Argument(help="fig1 fig3 fig4 fig5 extension atlas (default: all)")
+        list[str] | None, typer.Argument(help="fig1 fig3 fig4 fig5 extension atlas genesets (default: all)")
     ] = None,
     scale: Annotated[str, typer.Option(help="quick (laptop) or paper (publication sizes)")] = "quick",
     seed: int = 42,
@@ -116,6 +129,7 @@ def info() -> None:
         "dolphin methylation": layout.dolphin_betas,
         "GSE41037 sample sheet": layout.gse41037_samples,
         "GSE41037 beta values": paths.interim / "geo" / "gse41037_betas.parquet",
+        "27k probe annotation + gene sets": paths.interim / "annotation" / "gene_sets.parquet",
     }
     typer.echo(f"root    {paths.root}\ndata    {paths.data}\nfigures {paths.figures}")
     for label, path in checks.items():

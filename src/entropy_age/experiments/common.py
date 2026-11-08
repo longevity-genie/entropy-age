@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+import sys
 from dataclasses import dataclass, field
 from enum import StrEnum
 from pathlib import Path
@@ -98,6 +99,25 @@ def human_blood(paths: ProjectPaths, *, controls_only: bool = True) -> tuple[Fea
     return matrix, samples
 
 
+def human_batches(paths: ProjectPaths, sample_ids: list[str]) -> np.ndarray:
+    """GSE41037 processing dataset (1, 2, 3) per sample, from the GEO series matrix.
+
+    Batch and age are confounded in GSE41037 (dataset 1 is mostly under 50, dataset 3
+    mostly over 50), so age slopes across the cohort need these as covariates.
+    """
+    table = pl.read_parquet(paths.interim / "geo" / "gse41037_samples.parquet").select("sample", "dataset")
+    joined = pl.DataFrame({"sample": sample_ids}).join(table, on="sample", how="left", maintain_order="left")
+    if joined["dataset"].null_count():
+        raise ValueError("some samples have no processing dataset in the GEO sample sheet")
+    return joined["dataset"].to_numpy()
+
+
+def dummies(labels: np.ndarray) -> np.ndarray:
+    """One-hot columns for every level but the first (for use next to an intercept)."""
+    levels = np.unique(labels)
+    return np.column_stack([(labels == level).astype(float) for level in levels[1:]])
+
+
 def dolphin_blood(paths: ProjectPaths) -> tuple[FeatureMatrix, pl.DataFrame] | None:
     layout = UpstreamLayout(paths)
     if not (layout.dolphin_betas.exists() and layout.dolphin_samples.exists()):
@@ -140,10 +160,20 @@ def ground_state(paths: ProjectPaths, rng: np.random.Generator, n_random: int = 
         )
     dolphin = dolphin_blood(paths)
     if dolphin is not None:
+        print(
+            "ground state: GSE41037 is not prepared (`entropy-age fetch geo GSE41037`); "
+            "SUBSTITUTING the 0.57-year-old dolphin blood sample",
+            file=sys.stderr,
+        )
         matrix, _ = dolphin
         return GroundState(
             "dolphin blood, 0.57 y", matrix.sample(DOLPHIN_YOUNG), matrix.sample(DOLPHIN_OLD), matrix.features
         )
+    print(
+        "ground state: no methylation data prepared (`entropy-age fetch upstream`, `entropy-age fetch geo GSE41037`); "
+        "SUBSTITUTING a uniform random ground state",
+        file=sys.stderr,
+    )
     return GroundState("uniform random", rng.uniform(0, 1, n_random), None, [f"f{i}" for i in range(n_random)])
 
 

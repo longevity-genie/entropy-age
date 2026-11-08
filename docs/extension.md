@@ -76,25 +76,27 @@ cross-sectional bulk data, which is all real cohorts offer.
 
 `uv run entropy-age figures atlas` computes every metric for all 27,577 CpGs of the 394 GSE41037
 controls (16–88 y) and for the 37,554 CpGs of the 50 dolphins. It then compares clock CpGs with
-CpGs *that start at the same level* (deciles of the young-adult baseline).
+CpGs *that start at the same level* (deciles of the young-adult baseline). For the human cohort,
+slopes are estimated within processing batches (see the confound below). The λ histogram comes
+from `fit_relaxation`, which takes no covariates, so it is unadjusted.
 
 ![Atlas](figures/atlas_real_data.png)
 
-Human blood, clock CpGs vs level-matched CpGs (2,000 stratified permutations):
+Human blood, clock CpGs vs level-matched CpGs, batch-adjusted slopes (2,000 stratified permutations,
+p not corrected for the six tests):
 
 | Group | Metric | Matched difference | p |
 |---|---|---|---|
-| Horvath (353) | entropy slope | +1.6 × 10⁻⁴ bits / year | 0.004 |
-| PhenoAge (513) | entropy slope | +1.2 × 10⁻⁴ bits / year | 0.005 |
-| Horvath | dispersion slope | +8.1 × 10⁻⁵ | 0.005 |
-| PhenoAge | dispersion slope | +9.2 × 10⁻⁵ | < 0.001 |
-| Horvath | fitted λ | −0.020 / year (keeps changing, no early plateau) | 0.03 |
+| Horvath (353) | entropy slope | +1.6 × 10⁻⁵ bits / year | 0.60 |
+| PhenoAge (513) | entropy slope | +5.0 × 10⁻⁵ bits / year | 0.07 |
+| Horvath | dispersion slope | +1.3 × 10⁻⁵ | 0.58 |
+| PhenoAge | dispersion slope | +4.8 × 10⁻⁵ | 0.01 |
 
-Clock CpGs gain entropy and between-person dispersion faster than CpGs that start where they do.
-This agrees with the paper's reading that clocks pick the least-maintained sites. The effect is
-small per CpG (Cliff's δ ≈ 0.05): clock CpGs are typical drifting sites, not outliers. Their lower
-fitted λ means they change steadily across adult life instead of saturating early, which is
-what makes them useful clock features.
+**Not supported.** An earlier version of this page reported that clock CpGs gain entropy faster
+than level-matched CpGs (p = 0.004 for Horvath). That came from unadjusted slopes across a cohort
+whose processing batches are confounded with age. With batch as a covariate the difference
+disappears for Horvath's CpGs and is weak for PhenoAge's. On this data, clock CpGs are typical
+drifting CpGs, not the fastest ones.
 
 Dolphins have no clock-CpG contrast. The human clock probes present on the mammalian array do not
 hybridise in dolphin DNA: they sit at about 0.5 with almost no variance, so any comparison would
@@ -105,6 +107,67 @@ drift being compared: a separate young or fetal reference, or a sorted cell type
 A baseline taken from the cohort already contains early drift. Fast-drifting CpGs then fall into
 other strata than slow ones, and matching removes part of the effect.
 `compare_groups` reports `n_matched` so this shows up, and a test in the suite documents it.
+
+## Prediction 1 on real data: essential genes drift less in blood
+
+`uv run entropy-age fetch annotation` downloads the Illumina 27k probe manifest (GEO GPL8490,
+which gives the gene, Entrez ID, RefSeq accession and CpG-island flag per probe) and three
+curated gene sets:
+
+* Hart et al. core-essential genes (CEGv2) and non-essential genes (NEGv1) from CRISPR screens,
+  pinned at a commit of hart-lab/bagel and matched by Entrez ID;
+* Eisenberg & Levanon (2013) housekeeping genes, matched by RefSeq accession, then by symbol.
+
+`uv run entropy-age figures genesets` then compares each set with every other CpG in the same
+**stratum**: CpG-island status (fixed by sequence, so drift cannot move it) crossed with the decile
+of young-adult methylation. Without matching the sets are not comparable: 93 % of core-essential
+CpGs sit in islands near 0 % methylation, but only 33 % of non-essential CpGs do (panel a).
+
+![Gene sets](figures/gene_sets.png)
+
+| Set | CpGs (genes) on the array |
+|---|---|
+| core essential | 1,140 (603) |
+| housekeeping | 5,825 (3,087) |
+| non-essential | 1,063 (605) |
+
+**A confound we found and removed.** GSE41037 was run in three processing datasets whose ages
+barely overlap: dataset 1 is mostly under 50 and dataset 3 mostly over 50. A slope across the whole
+cohort partly measures that batch; the clock-CpG result above is one casualty. Every gene-set
+contrast was therefore repeated with batch as a covariate (`drift_metrics(..., covariates=...)` gives
+partial slopes), with batch plus the seven blood-cell fractions, and separately inside each batch.
+
+Set minus matched CpGs, in SD of the metric (CpG level; * = BH-adjusted p < 0.05 over all 72 tests,
+1,000 stratified permutations each, so the smallest p is 0.001):
+
+| Set · metric | unadjusted | batch-adjusted | batch + cells | inside batch 1 / 2 / 3 |
+|---|---|---|---|---|
+| core essential · entropy slope | −0.11 * | −0.25 * | −0.32 * | −0.23 / −0.31 / −0.16, all * |
+| housekeeping · entropy slope | −0.21 * | −0.30 * | −0.38 * | −0.30 / −0.34 / −0.20, all * |
+| non-essential · entropy slope | +0.17 * | +0.23 * | +0.27 * | +0.21 / +0.29 / +0.07, all * |
+| core essential · dispersion slope | −0.20 * | −0.11 * | −0.16 * | −0.12 / −0.10 / −0.06, all * |
+| housekeeping · dispersion slope | −0.23 * | −0.10 * | −0.17 * | −0.15 / −0.09 / −0.04, all * |
+| non-essential · dispersion slope | +0.26 * | +0.18 * | +0.23 * | +0.17 / +0.12 / +0.20, all * |
+| core essential · \|age slope\| | −0.04 * | −0.16 * | −0.14 * | |
+| housekeeping · \|age slope\| | −0.04 * | −0.18 * | −0.17 * | |
+| non-essential · \|age slope\| | +0.02 | +0.05 | +0.13 * | |
+
+Gene-level aggregation (median per gene, so genes with many probes do not dominate) gives the
+same signs and similar sizes (`data/output/gene_sets/contrasts.csv`).
+
+**Reading.** In whole blood, a renewing tissue, CpGs of essential and housekeeping genes gain
+entropy and between-person dispersion more slowly than CpGs that start at the same level in the
+same kind of sequence. CpGs of genes no cell line needs drift faster. This holds after removing the
+batch confound and cell composition, and it replicates inside each processing batch. The effects
+are modest (0.1–0.4 SD), as one would expect if most drift is neutral.
+
+**What this does not show yet.** It is the gene-level half of the hypothesis (prediction 1). The
+same pattern would arise without any selection if active, open promoters are simply better
+maintained: H3K4me3 and transcription keep DNMT3 away whatever the cell's fitness. The
+discriminating test is prediction 2. If selection does the protecting, the essential-gene advantage
+should shrink or vanish in post-mitotic cells such as neurons, where no cell can be replaced by a
+fitter neighbour. If chromatin does it, the advantage should stay the same size. That needs a
+cohort with a post-mitotic tissue next to a renewing one (see the data table below).
 
 ## How to test the hypothesis on real data
 

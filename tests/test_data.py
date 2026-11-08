@@ -61,3 +61,13 @@ def test_linear_clock(tmp_path: Path):
     assert clock.features == ["cg1", "cg2"]
     matrix = FeatureMatrix(np.array([[1.0, 0.0, 9.0]]), ["s"], ["cg2", "x", "cg1"])
     assert clock.predict_matrix(matrix)[0] == pytest.approx(1 + 3 * 9 + 2 * 1)
+
+
+def test_dummies_drop_the_first_level():
+    from entropy_age.experiments.common import dummies
+
+    labels = np.array(["2", "1", "3", "2"])
+    coded = dummies(labels)
+    assert coded.shape == (4, 2)
+    assert coded.tolist() == [[1, 0], [0, 0], [0, 1], [1, 0]]  # columns for levels "2" and "3"
+    assert np.linalg.matrix_rank(np.c_[np.ones(4), coded]) == 3
