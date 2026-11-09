@@ -4,6 +4,12 @@ Newest first.
 
 ## Unreleased
 
+- Mouse multi-tissue test (roadmap RM2/RM3): `entropy-age fetch mouse-annotation` (the mammalian
+  array's mm10 probe table, GEO GPL32543, and MGI mouse-human orthologs that carry the human gene sets
+  to mouse), `entropy-age fetch cohort huang` (GSE279437: 11 tissues of the same mice, young and aged,
+  exenatide and rapamycin), and `entropy-age figures mouse`. The figure compares the gene sets' aging
+  drift and spread across tissues ordered by cell turnover, with bootstrap contrasts between turnover
+  classes and between treatments.
 - Roadmap RM1–RM4: record the composition check, then a turnover gradient across tissues, long- vs
   short-lived rodent groups, and stochasticity in RNA, each with the public datasets that would test it.
 - Composition check for prediction 2: `entropy-age figures tissues_cells` reruns the blood-versus-brain

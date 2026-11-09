@@ -62,9 +62,22 @@ def fetch_annotation_cmd(overwrite: bool = False) -> None:
     )
 
 
+@fetch_app.command("mouse-annotation")
+def fetch_mouse_annotation_cmd(overwrite: bool = False) -> None:
+    """Mammalian-array probe annotation (GEO GPL32543, ~200 MB) and MGI mouse-human orthologs."""
+    from entropy_age.data.mouse import fetch_mouse_annotation, prepare_mouse_annotation
+
+    paths = ProjectPaths.default().ensure()
+    files = fetch_mouse_annotation(paths, overwrite=overwrite)
+    layout = prepare_mouse_annotation(paths)
+    typer.echo(
+        f"{len(files)} input files in {layout.input}\nprobes    -> {layout.probes}\ngene sets -> {layout.gene_sets}"
+    )
+
+
 @fetch_app.command("cohort")
 def fetch_cohort_cmd(
-    names: Annotated[list[str], typer.Argument(help="hannum jaffe lunnon")],
+    names: Annotated[list[str], typer.Argument(help="hannum jaffe lunnon huang")],
     overwrite: bool = False,
 ) -> None:
     """450k methylation cohorts for the cell-type test (GB-scale downloads; run on a cluster)."""

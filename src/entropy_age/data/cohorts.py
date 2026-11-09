@@ -7,6 +7,10 @@
   sample titles ``SampleN_<group>``. Ships per-sample neuron-fraction estimates.
 * ``lunnon`` - GSE59685, whole blood and four brain regions of the same ~117 donors (Lunnon et
   al. 2014), ages 40-105, most with Alzheimer's disease; betas in a supplementary CSV.
+* ``huang`` - GSE279437, male mice, 11 tissues of the same animals on the mammalian array
+  (HorvathMammalMethylChip320), young and aged, aged ones treated with exenatide (a GLP-1
+  receptor agonist), rapamycin or vehicle (Huang et al.). The betas and a sample sheet
+  (barcode, tissue, treatment, animal) are supplementary files; GEO gives no numeric ages.
 
 Every cohort is normalised to ``data/interim/cohorts/<name>_samples.parquet`` (``sample``,
 ``donor``, ``tissue``, ``age`` and the cohort's covariate fields) and ``<name>_betas.parquet``
@@ -33,12 +37,22 @@ class CohortSpec:
     gse: str
     supplementary: str | None  # beta file; None when the series matrix carries the values
     description: str
+    series_matrix: bool = True  # False when a supplementary sample sheet replaces it
+    metadata: str | None = None  # supplementary sample sheet
 
 
 COHORTS: dict[str, CohortSpec] = {
     "hannum": CohortSpec("hannum", "GSE40279", None, "whole blood, 656 people, 19-101 y"),
     "jaffe": CohortSpec("jaffe", "GSE74193", "GSE74193_GEO_procData.csv.gz", "prefrontal cortex across the lifespan"),
     "lunnon": CohortSpec("lunnon", "GSE59685", "GSE59685_betas.csv.gz", "blood and 4 brain regions, same donors"),
+    "huang": CohortSpec(
+        "huang",
+        "GSE279437",
+        "GSE279437_Methylation_betas.csv.gz",
+        "mouse, 11 tissues of the same animals, young/aged, exenatide/rapamycin",
+        series_matrix=False,
+        metadata="GSE279437_Methylation_metadata.csv.gz",
+    ),
 }
 
 
@@ -60,6 +74,10 @@ class CohortLayout:
         return self.input / self.spec.supplementary if self.spec.supplementary else None
 
     @property
+    def metadata(self) -> Path | None:
+        return self.input / self.spec.metadata if self.spec.metadata else None
+
+    @property
     def samples(self) -> Path:
         return self.paths.interim / "cohorts" / f"{self.spec.name}_samples.parquet"
 
@@ -77,10 +95,13 @@ def layout(name: str, paths: ProjectPaths) -> CohortLayout:
 def fetch_cohort(name: str, paths: ProjectPaths, *, overwrite: bool = False) -> list[Path]:
     lay = layout(name, paths)
     gse = lay.spec.gse
-    files = [download(series_matrix_url(gse), lay.matrix, overwrite=overwrite, timeout=3600)]
-    if lay.supplementary is not None:
-        url = _SUPPL.format(prefix=gse[:-3], gse=gse, name=lay.spec.supplementary)
-        files.append(download(url, lay.supplementary, overwrite=overwrite, timeout=7200))
+    files = []
+    if lay.spec.series_matrix:
+        files.append(download(series_matrix_url(gse), lay.matrix, overwrite=overwrite, timeout=3600))
+    for target in (lay.metadata, lay.supplementary):
+        if target is not None:
+            url = _SUPPL.format(prefix=gse[:-3], gse=gse, name=target.name)
+            files.append(download(url, target, overwrite=overwrite, timeout=7200))
     return files
 
 
@@ -155,6 +176,48 @@ def _lunnon(matrix: Path, supplementary: Path) -> tuple[pl.DataFrame, pl.DataFra
     )
 
 
+#: GSE279437 tissue codes -> names
+HUANG_TISSUES = {
+    "WBC": "white blood cells",
+    "Colon": "colon",
+    "Spleen": "spleen",
+    "Liver": "liver",
+    "Kidney": "kidney",
+    "Adipose": "adipose",
+    "SkeletalMuscle": "skeletal muscle",
+    "CardiacMuscle": "heart",
+    "FCTX": "frontal cortex",
+    "Hippo": "hippocampus",
+    "HTH": "hypothalamus",
+}
+
+
+def _huang(metadata: Path, supplementary: Path) -> tuple[pl.DataFrame, pl.DataFrame]:
+    sheet = pl.read_csv(metadata)
+    unknown = sorted(set(sheet["tissue"].to_list()) - set(HUANG_TISSUES))
+    if unknown:
+        raise ValueError(f"unknown tissue codes in {metadata.name}: {unknown}")
+    group = pl.col("treatment")
+    samples = sheet.select(
+        pl.col("sname").alias("sample"),
+        pl.col("animal").alias("donor"),
+        pl.col("tissue").replace_strict(HUANG_TISSUES).alias("tissue"),
+        pl.lit(None, dtype=pl.Float64).alias("age"),
+        group.alias("group"),
+        group.str.split("_").list.first().str.to_lowercase().alias("age_group"),
+        group.str.split("_").list.get(1).alias("treatment"),
+        group.str.ends_with("_KD").alias("knockdown"),
+        pl.col("sname").str.split("_").list.first().alias("chip"),
+    )
+    if not set(samples["age_group"].to_list()) <= {"young", "aged"}:
+        raise ValueError(f"unexpected groups in {metadata.name}: {sorted(set(samples['group'].to_list()))}")
+    betas = read_supplementary_betas(supplementary)
+    missing = sorted(set(samples["sample"].to_list()) - set(betas.columns[1:]))
+    if missing:
+        raise ValueError(f"{len(missing)} samples of the sheet have no beta column, e.g. {missing[:3]}")
+    return samples, betas.select("cpg", *samples["sample"].to_list())
+
+
 def prepare_cohort(name: str, paths: ProjectPaths) -> CohortLayout:
     lay = layout(name, paths)
     match name:
@@ -164,6 +227,8 @@ def prepare_cohort(name: str, paths: ProjectPaths) -> CohortLayout:
             samples, betas = _jaffe(lay.matrix, lay.supplementary)
         case "lunnon":
             samples, betas = _lunnon(lay.matrix, lay.supplementary)
+        case "huang":
+            samples, betas = _huang(lay.metadata, lay.supplementary)
     lay.samples.parent.mkdir(parents=True, exist_ok=True)
     samples.write_parquet(lay.samples)
     betas.with_columns(pl.exclude("cpg").cast(pl.Float32)).write_parquet(lay.betas)
