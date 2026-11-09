@@ -4,6 +4,11 @@ Newest first.
 
 ## Unreleased
 
+- Prediction 2 tested (`docs/extension.md`, `docs/figures/tissue_contrast.png`): the essential and
+  housekeeping protection is larger in blood than in brain, and the non-essential excess too. This
+  holds across Hannum blood versus Jaffe cortex (age slopes) and within the same Lunnon donors' blood
+  and four brain regions (dispersion), with 20 of 21 bootstrap intervals excluding zero. Blood's
+  unadjusted cell mix remains a possible partial explanation.
 - Fixed: the tissue experiment's bootstrap workers deadlocked when forked (polars' thread pool was
   running in the parent; 16 workers slept after 19 CPU-seconds each on 2026-11-09). They are now
   spawned and receive their data through an initializer; this replaces the "explicit fork" entry

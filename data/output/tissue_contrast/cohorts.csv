@@ -1,0 +1,8 @@
+part,tissue,samples,cpgs,age_min,age_max
+lifespan,blood (Hannum),656,108992,19.0,101.0
+lifespan,cortex (Jaffe),213,109137,20.786301,85.2
+same donors,whole blood,80,109137,70.0,99.0
+same donors,frontal cortex,74,109137,71.0,105.0
+same donors,superior temporal gyrus,75,109137,71.0,105.0
+same donors,entorhinal cortex,71,109137,71.0,105.0
+same donors,cerebellum,71,109137,71.0,105.0

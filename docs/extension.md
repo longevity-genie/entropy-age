@@ -167,7 +167,72 @@ maintained: H3K4me3 and transcription keep DNMT3 away whatever the cell's fitnes
 discriminating test is prediction 2. If selection does the protecting, the essential-gene advantage
 should shrink or vanish in post-mitotic cells such as neurons, where no cell can be replaced by a
 fitter neighbour. If chromatin does it, the advantage should stay the same size. That needs a
-cohort with a post-mitotic tissue next to a renewing one (see the data table below).
+cohort with a post-mitotic tissue next to a renewing one; the next section tests it.
+
+## Prediction 2 on real data: the protection is larger in blood than in brain
+
+The essential-gene advantage is larger in blood than in brain, in two independent designs. That is
+what selection among cells predicts. One alternative is not yet ruled out: blood's variable mix of
+cell types, set out below.
+
+**Data** (Illumina 450k, run on a cluster: `entropy-age fetch cohort hannum jaffe lunnon`, then
+`entropy-age figures tissues`):
+
+| Design | Tissue | People | Ages | Measure, adjusted for |
+|---|---|---|---|---|
+| Lifespan cohorts | blood, Hannum et al. 2013 (GSE40279) | 656 | 19–101 | age slopes; plate, site, sex, ancestry |
+| Lifespan cohorts | prefrontal cortex, Jaffe et al. 2016 (GSE74193), adult controls | 213 | 21–85 | age slopes; plate, sex, ancestry, neuron fraction |
+| Same donors | Lunnon et al. 2014 (GSE59685): blood and four brain regions | 71–80 per tissue | 70–105 | between-person dispersion; age, sex, Alzheimer's status |
+
+Each tissue uses about 109,000 autosomal promoter CpGs: every CpG in a promoter of a gene in the three
+sets (6,891 core-essential, 42,173 housekeeping, 4,945 non-essential), plus a fixed random background
+of 60,000 promoter CpGs for matching. As in prediction 1, each set is compared with CpGs of the same
+island status and starting-level decile, in SD of the metric. Blood minus brain gets a 95 % interval
+from 200 bootstraps: independent resamples in the two lifespan cohorts, the same resampled donors in
+all five Lunnon tissues.
+
+![Tissue contrast](figures/tissue_contrast.png)
+
+**Set minus matched CpGs, by tissue** (SD; all differ from zero at BH-adjusted p < 0.05 except
+where marked):
+
+| Set | Blood (Hannum), entropy slope | Cortex (Jaffe), entropy slope | Blood (Lunnon), dispersion | Four brain regions (Lunnon), dispersion |
+|---|---|---|---|---|
+| core essential | −0.23 | −0.12 | −0.08 | −0.04 to −0.06 |
+| housekeeping | −0.35 | −0.21 | −0.15 | −0.04 to −0.07 |
+| non-essential | +0.31 | +0.08 | +0.20 | +0.01 (ns, entorhinal) to +0.11 |
+
+**Blood minus brain** (SD, 95 % bootstrap interval). Negative for the protected sets means more
+protection in blood:
+
+| Set | Lifespan: entropy slope | Lifespan: dispersion slope | Same donors: dispersion, four regions |
+|---|---|---|---|
+| core essential | −0.10 (−0.16, −0.03) | −0.09 (−0.15, −0.02) | −0.02 to −0.04, every interval below 0 |
+| housekeeping | −0.14 (−0.21, −0.05) | −0.20 (−0.27, −0.11) | −0.07 to −0.10, every interval below 0 |
+| non-essential | +0.21 (+0.10, +0.30) | +0.21 (+0.14, +0.29) | +0.09 to +0.19, every interval above 0 |
+
+Of the 21 blood-minus-brain contrasts, 20 have intervals that exclude zero in the predicted
+direction. The exception is the non-essential |age slope|, whose interval crosses zero. The
+protection exists in brain too, at a third to two thirds of its size in blood. That also fits the
+model: neurons cannot be replaced, but glia turn over, and chromatin protection acts in every cell. Full tables:
+`data/output/tissue_contrast/`.
+
+**The alternative explanation that is still open: cell mixture.** Blood is a mix of cell types whose
+proportions differ a lot between people. Genes switched on in only some cell types, as many
+"non-essential" genes are, gain between-person spread and age trends from that mix. Essential genes
+are unmethylated in every cell type, so the mix hardly moves them. Neither blood cohort here is
+adjusted for cell fractions, while cortex is adjusted for neuron fraction. In GSE41037 blood,
+adding EpiDISH cell fractions as covariates did not shrink the essential-gene effect (prediction 1),
+so the mix does not create the effect within blood. But the size of the blood-minus-brain gap could
+still be partly composition. The check is to adjust
+both tissues for estimated cell fractions, or for the top principal components of the background
+CpGs, and see whether the gap survives.
+
+**Other limits.** The two lifespan cohorts are different people from different studies, though both
+on the 450k array. Lunnon's donors are old and mostly have Alzheimer's disease. Brain tissue mixes
+post-mitotic neurons with glia that do turn over, so the contrast is renewing against mostly
+post-mitotic tissue, not a clean neuron sample. Sorted neurons, or a tissue such as skeletal muscle
+in GTEx, would sharpen it.
 
 ## How to test the hypothesis on real data
 
@@ -278,6 +343,6 @@ described from its own abstract or text, not from a citing source.
 
 The blood gene-set result (essential and housekeeping CpGs drift more slowly than CpGs of the same
 island status and start level) is consistent with all three protective routes these papers suggest:
-buffering by CpG density, active chromatin, and selection among cells. Only the cell-type contrast
-in prediction 2 separates selection from the other two. CpG density and chromatin act in every cell;
-selection needs turnover.
+buffering by CpG density, active chromatin, and selection among cells. CpG density and chromatin act
+in every cell; selection needs turnover. Prediction 2 found the protection larger in blood than in
+brain, which only selection (or blood's variable cell mix, not yet ruled out) predicts.

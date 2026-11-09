@@ -1,0 +1,22 @@
+part,comparison,group,metric,difference,ci_low,ci_high,p_bootstrap
+lifespan,blood - cortex,core_essential,entropy_slope,-0.10058895722371014,-0.15798899399830954,-0.03146472736569625,0.005
+lifespan,blood - cortex,core_essential,dispersion_slope,-0.0918989775021955,-0.14800531906210074,-0.019852411279874898,0.01
+lifespan,blood - cortex,core_essential,abs_slope,-0.05989784660858082,-0.10367661192559952,-0.01924423497512581,0.01
+same donors,blood - frontal cortex,core_essential,dispersion,-0.03091105695560804,-0.049819549375022795,-0.015270707653239783,0.005
+same donors,blood - superior temporal gyrus,core_essential,dispersion,-0.035712614288809494,-0.05145294617301814,-0.02026677691825724,0.005
+same donors,blood - entorhinal cortex,core_essential,dispersion,-0.019778852037682676,-0.03810267801376671,-0.0030550210371447398,0.02
+same donors,blood - cerebellum,core_essential,dispersion,-0.026637354002797636,-0.04296834585946513,-0.01149975110878436,0.005
+lifespan,blood - cortex,housekeeping,entropy_slope,-0.13888815352460254,-0.21173174283601573,-0.05259258677419881,0.005
+lifespan,blood - cortex,housekeeping,dispersion_slope,-0.19782178785202037,-0.26723574910599884,-0.11244889222685805,0.005
+lifespan,blood - cortex,housekeeping,abs_slope,-0.10194814685091935,-0.1681242277793327,-0.04006007587545892,0.005
+same donors,blood - frontal cortex,housekeeping,dispersion,-0.0940136121536948,-0.11119484711058537,-0.0752996500052719,0.005
+same donors,blood - superior temporal gyrus,housekeeping,dispersion,-0.09794455785417462,-0.11379692078974775,-0.08168490166241217,0.005
+same donors,blood - entorhinal cortex,housekeeping,dispersion,-0.07353046894485225,-0.09446804691064338,-0.052046613899664286,0.005
+same donors,blood - cerebellum,housekeeping,dispersion,-0.08863907839326113,-0.10771362006275975,-0.07294628678034336,0.005
+lifespan,blood - cortex,non_essential,entropy_slope,0.20982327906629816,0.1006364069765532,0.29914166439636825,0.005
+lifespan,blood - cortex,non_essential,dispersion_slope,0.2141116719140894,0.14123700693965918,0.2853589479241769,0.005
+lifespan,blood - cortex,non_essential,abs_slope,0.11156934251896758,-0.0229671755408454,0.25931040907022507,0.12
+same donors,blood - frontal cortex,non_essential,dispersion,0.1531972170698762,0.12096220457284736,0.17661842969857197,0.005
+same donors,blood - superior temporal gyrus,non_essential,dispersion,0.12661996701178452,0.09999227040304882,0.15750030316118652,0.005
+same donors,blood - entorhinal cortex,non_essential,dispersion,0.19079833644409716,0.15971015930191354,0.21591477982561272,0.005
+same donors,blood - cerebellum,non_essential,dispersion,0.0895962278202862,0.06340177679302159,0.11206527550694663,0.005

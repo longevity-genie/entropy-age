@@ -15,7 +15,11 @@ type, or does selection among cells protect some loci from entropy where cells t
 real-data test in 394 blood methylomes says the gene-level part holds: CpGs of essential and
 housekeeping genes gain entropy 0.2–0.4 SD more slowly than CpGs that start at the same level,
 and non-essential genes faster, robust to batch and cell composition
-([details](docs/extension.md#prediction-1-on-real-data-essential-genes-drift-less-in-blood)).
+([details](docs/extension.md#prediction-1-on-real-data-essential-genes-drift-less-in-blood)). The
+cell-type part points the same way: on 450k data, that protection is larger in blood than in brain,
+both across lifespan cohorts and within the same donors' tissues, with blood's cell mix not yet
+ruled out as part of the reason
+([details](docs/extension.md#prediction-2-on-real-data-the-protection-is-larger-in-blood-than-in-brain)).
 
 | | |
 |---|---|
@@ -37,7 +41,7 @@ and non-essential genes faster, robust to batch and cell composition
 * Figures: [Fig. 1 bulk](docs/figures/fig1_bulk.png) · [Fig. 3 single cell](docs/figures/fig3_single_cell.png) ·
   [Fig. 4 published clocks](docs/figures/fig4_published_clocks.png) · [Fig. 5 real data](docs/figures/fig5_real_data.png) ·
   [Extension](docs/figures/extension_selection.png) · [Atlas](docs/figures/atlas_real_data.png) ·
-  [Gene sets](docs/figures/gene_sets.png)
+  [Gene sets](docs/figures/gene_sets.png) · [Blood vs brain](docs/figures/tissue_contrast.png)
 
 ## Quick start
 
@@ -55,6 +59,17 @@ uv run entropy-age fetch geo GSE41037
 
 ```bash
 uv run entropy-age fetch annotation
+```
+
+The blood-versus-brain test needs about 6 GB of 450k cohorts and tens of GB of memory, so run it on a
+cluster:
+
+```bash
+uv run entropy-age fetch cohort hannum jaffe lunnon
+```
+
+```bash
+ENTROPY_AGE_WORKERS=16 uv run entropy-age figures tissues --scale paper
 ```
 
 ```bash
