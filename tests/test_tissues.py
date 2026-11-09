@@ -7,6 +7,7 @@ import polars as pl
 from entropy_age.data.annotation import link_membership, read_manifest_450k
 from entropy_age.data.geo import read_supplementary_betas
 from entropy_age.experiments.common import dummies
+from entropy_age.experiments.tissue_contrast import Prepared, _boot_lunnon, _run_parallel
 from entropy_age.stochasticity import dispersion_levels
 
 MANIFEST_450K = """Illumina, Inc.
@@ -100,3 +101,22 @@ def test_supplementary_betas_preamble_and_id_rows(tmp_path: Path):
     assert frame.columns == ["cpg", "bc1", "bc2"]
     assert frame["cpg"].to_list() == ["cg1", "cg2"]
     assert np.allclose(frame["bc2"].to_numpy(), [0.2, 0.4])
+
+
+def test_parallel_bootstrap_equals_serial():
+    """Spawned workers get the state through the initializer and reproduce the serial results."""
+    rng = np.random.default_rng(5)
+    features = [f"cg{i}" for i in range(80)]
+    donors = np.array([f"d{i}" for i in range(12)])
+    tissues = {}
+    for tissue in ("whole blood", "frontal cortex", "superior temporal gyrus", "entorhinal cortex", "cerebellum"):
+        x = np.clip(rng.uniform(0.05, 0.95, 80) + rng.normal(0, 0.05, (12, 80)), 0, 1)
+        cov = np.column_stack([rng.uniform(70, 90, 12), (rng.random(12) < 0.5).astype(float)])
+        tissues[tissue] = Prepared(tissue, x, cov[:, 0], cov, features, donors)
+    probes = pl.DataFrame({"cpg": features, "cpg_island": [i % 2 == 0 for i in range(80)]})
+    membership = pl.DataFrame({"feature": features[:20], "group": "housekeeping", "gene": "g"})
+    state = {"lunnon": tissues, "probes": probes, "membership": membership}
+    serial = pl.DataFrame(_run_parallel(_boot_lunnon, [1, 2, 3], 1, state)).sort("boot", "tissue")
+    parallel = pl.DataFrame(_run_parallel(_boot_lunnon, [1, 2, 3], 2, state)).sort("boot", "tissue")
+    assert serial.height == 15
+    assert serial.equals(parallel)

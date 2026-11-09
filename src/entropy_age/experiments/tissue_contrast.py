@@ -17,7 +17,8 @@ In every tissue a gene set is compared with background promoter CpGs of the same
 and starting-level decile (``compare_groups``); the difference is expressed in standard
 deviations of the metric so tissues are comparable. Blood minus brain gets a bootstrap interval:
 independent resamples per cohort for the lifespan test, the same resampled donors in every tissue
-for the paired test. The prediction is a negative blood-minus-brain difference for core-essential
+for the paired test. Bootstrap workers are spawned processes (``_run_parallel``).
+The prediction is a negative blood-minus-brain difference for core-essential
 and housekeeping CpGs (more protection in blood).
 
 Run on a machine with tens of GB of memory: ``entropy-age fetch cohort hannum jaffe lunnon`` then
@@ -180,11 +181,26 @@ def _boot_lunnon(seed: int) -> list[dict]:
     return out
 
 
-def _run_parallel(fn, jobs, workers: int) -> list[dict]:
+def _init_worker(state: dict) -> None:
+    _STATE.clear()
+    _STATE.update(state)
+
+
+def _run_parallel(fn, jobs, workers: int, state: dict) -> list[dict]:
+    """Run ``fn`` over ``jobs`` with ``state`` installed as the module's ``_STATE``.
+
+    Workers are spawned, never forked: forking a process whose polars thread pool is running
+    deadlocks the children on locks held by threads that do not exist in them. That happened on
+    2026-11-09 (16 workers asleep after 19 CPU-seconds each). Each worker receives ``state``
+    once, through the initializer.
+    """
     if workers <= 1:
+        _init_worker(state)
         return [row for job in jobs for row in fn(job)]
-    # fork explicitly (Python 3.14 defaults to forkserver): workers read _STATE copy-on-write
-    with ProcessPoolExecutor(max_workers=workers, mp_context=multiprocessing.get_context("fork")) as pool:
+    context = multiprocessing.get_context("spawn")
+    with ProcessPoolExecutor(
+        max_workers=workers, mp_context=context, initializer=_init_worker, initargs=(state,)
+    ) as pool:
         return [row for rows in pool.map(fn, jobs, chunksize=4) for row in rows]
 
 
@@ -254,11 +270,18 @@ def run(ctx: Context) -> list[Path]:
     write_table(point, out / "point_estimates")
 
     # bootstraps
-    _STATE.update(lifespan=lifespan, lunnon=lunnon, probes=probes, membership=membership)
+    shared = {"probes": probes, "membership": membership}
     boot_life = pl.DataFrame(
-        _run_parallel(_boot_lifespan, [(k, 1000 + b) for k in lifespan for b in range(n_boot)], workers)
+        _run_parallel(
+            _boot_lifespan,
+            [(k, 1000 + b) for k in lifespan for b in range(n_boot)],
+            workers,
+            {**shared, "lifespan": lifespan},
+        )
     )
-    boot_same = pl.DataFrame(_run_parallel(_boot_lunnon, [2000 + b for b in range(n_boot)], workers))
+    boot_same = pl.DataFrame(
+        _run_parallel(_boot_lunnon, [2000 + b for b in range(n_boot)], workers, {**shared, "lunnon": lunnon})
+    )
     boot_life.write_parquet(out / "bootstrap_lifespan.parquet")
     boot_same.write_parquet(out / "bootstrap_same_donors.parquet")
 

@@ -4,6 +4,10 @@ Newest first.
 
 ## Unreleased
 
+- Fixed: the tissue experiment's bootstrap workers deadlocked when forked (polars' thread pool was
+  running in the parent; 16 workers slept after 19 CPU-seconds each on 2026-11-09). They are now
+  spawned and receive their data through an initializer; this replaces the "explicit fork" entry
+  below. A test checks that parallel and serial bootstraps give identical results.
 - `read_supplementary_betas` skips a preamble and ID rows after the header, which GSE59685's beta file
   needs (comment lines, a barcode header, then two rows of GEO accessions).
 - `compare_groups` finds group members with a hash lookup instead of `np.isin` on strings, which took
