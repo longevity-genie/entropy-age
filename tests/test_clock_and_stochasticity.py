@@ -146,3 +146,29 @@ def test_batch_adjusted_slopes_remove_a_batch_age_confound():
     rt = centred(rankdata(ages))
     expected = [np.corrcoef(rt, centred(rankdata(x[:, j])))[0, 1] for j in (50, 75, 99)]
     assert np.allclose(adjusted["spearman"].to_numpy()[[50, 75, 99]], expected)
+
+
+def test_composition_components_recover_a_shared_cell_mix_factor():
+    from entropy_age.stochasticity import composition_components
+
+    rng = np.random.default_rng(3)
+    n, p = 240, 3000
+    batch = rng.integers(0, 2, n).astype(float)
+    ages = rng.uniform(20, 90, n)
+    mix = rng.normal(size=n) + 0.02 * ages  # a cell-mix factor that partly tracks age
+    loaded = rng.random(p) < 0.3  # cell-type-specific CpGs follow the mix
+    x = 0.5 + 0.03 * rng.normal(size=(n, p)) + 0.05 * batch[:, None]
+    x[:, loaded] += 0.04 * mix[:, None] * rng.uniform(0.5, 1.5, loaded.sum())
+
+    scores, explained = composition_components(x, 3, covariates=batch[:, None])
+    assert scores.shape == (n, 3)
+    assert np.all(np.diff(explained) <= 0) and explained.sum() < 1
+    design = np.column_stack([np.ones(n), batch])
+    assert np.abs(design.T @ scores).max() < 1e-6 * np.abs(scores).sum()  # orthogonal to batch and intercept
+    mix_free = mix - design @ np.linalg.lstsq(design, mix, rcond=None)[0]
+    assert abs(np.corrcoef(scores[:, 0], mix_free)[0, 1]) > 0.95  # the first component is the cell mix
+
+    # with age among the covariates, the components carry no age trend
+    age_free, _ = composition_components(x, 3, covariates=np.column_stack([batch, ages]))
+    assert np.abs(np.corrcoef(np.column_stack([age_free, ages]).T)[-1, :-1]).max() < 1e-6
+    assert abs(np.corrcoef(scores[:, 0], ages)[0, 1]) > 0.2  # but by default they keep it

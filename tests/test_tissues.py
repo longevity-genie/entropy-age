@@ -6,8 +6,17 @@ import polars as pl
 
 from entropy_age.data.annotation import link_membership, read_manifest_450k
 from entropy_age.data.geo import read_supplementary_betas
-from entropy_age.experiments.common import dummies
-from entropy_age.experiments.tissue_contrast import Prepared, _boot_lunnon, _run_parallel
+from entropy_age.experiments.common import Context, Scale, dummies
+from entropy_age.experiments.tissue_contrast import (
+    ADJUSTMENTS,
+    Prepared,
+    _adjusted,
+    _analyse,
+    _boot_lunnon,
+    _figure_cells,
+    _run_parallel,
+)
+from entropy_age.paths import ProjectPaths
 from entropy_age.stochasticity import dispersion_levels
 
 MANIFEST_450K = """Illumina, Inc.
@@ -112,7 +121,7 @@ def test_parallel_bootstrap_equals_serial():
     for tissue in ("whole blood", "frontal cortex", "superior temporal gyrus", "entorhinal cortex", "cerebellum"):
         x = np.clip(rng.uniform(0.05, 0.95, 80) + rng.normal(0, 0.05, (12, 80)), 0, 1)
         cov = np.column_stack([rng.uniform(70, 90, 12), (rng.random(12) < 0.5).astype(float)])
-        tissues[tissue] = Prepared(tissue, x, cov[:, 0], cov, features, donors)
+        tissues[tissue] = Prepared(tissue, x, cov[:, 0], cov, features, donors, cov[:, 1:])
     probes = pl.DataFrame({"cpg": features, "cpg_island": [i % 2 == 0 for i in range(80)]})
     membership = pl.DataFrame({"feature": features[:20], "group": "housekeeping", "gene": "g"})
     state = {"lunnon": tissues, "probes": probes, "membership": membership}
@@ -120,3 +129,58 @@ def test_parallel_bootstrap_equals_serial():
     parallel = pl.DataFrame(_run_parallel(_boot_lunnon, [1, 2, 3], 2, state)).sort("boot", "tissue")
     assert serial.height == 15
     assert serial.equals(parallel)
+
+
+def _synthetic_tissues(rng: np.random.Generator, n: int, features: list[str]) -> dict[str, Prepared]:
+    donors = np.array([f"d{i}" for i in range(n)])
+    out = {}
+    for tissue in ("whole blood", "frontal cortex", "superior temporal gyrus", "entorhinal cortex", "cerebellum"):
+        mix = rng.normal(size=n)
+        x = rng.uniform(0.05, 0.95, len(features)) + rng.normal(0, 0.03, (n, len(features)))
+        x += 0.03 * mix[:, None] * (rng.random(len(features)) < 0.3)
+        sex = (rng.random(n) < 0.5).astype(float)[:, None]
+        ages = rng.uniform(70, 90, n)
+        out[tissue] = Prepared(tissue, np.clip(x, 0, 1), ages, np.column_stack([ages, sex]), features, donors, sex)
+    return out
+
+
+def test_composition_adjustment_uses_background_only_and_appends_components():
+    rng = np.random.default_rng(8)
+    features = [f"cg{i}" for i in range(300)]
+    p = _synthetic_tissues(rng, 40, features)["whole blood"]
+    members = set(features[:60])
+    adjusted, info = _adjusted(p, members, 4, False)
+    assert adjusted.covariates.shape == (40, p.covariates.shape[1] + 4)
+    assert np.array_equal(adjusted.covariates[:, :2], p.covariates)
+    assert info["background_cpgs"] == 240
+    # the components ignore the gene-set CpGs: scrambling them changes nothing
+    scrambled = Prepared(p.label, p.x.copy(), p.ages, p.covariates, p.features, p.donors, p.technical)
+    scrambled.x[:, :60] = rng.permutation(scrambled.x[:, :60])
+    again, _ = _adjusted(scrambled, members, 4, False)
+    assert np.allclose(np.abs(again.covariates), np.abs(adjusted.covariates))
+    age_free, info_free = _adjusted(p, members, 4, True)
+    assert info_free["max_abs_r_age"] < 1e-8 < info["max_abs_r_age"]
+
+
+def test_analyse_runs_with_every_adjustment(tmp_path: Path):
+    rng = np.random.default_rng(9)
+    features = [f"cg{i}" for i in range(200)]
+    probes = pl.DataFrame({"cpg": features, "cpg_island": [i % 2 == 0 for i in range(200)]})
+    membership = pl.DataFrame(
+        {"feature": features[:60], "group": ["core_essential", "housekeeping", "non_essential"] * 20, "gene": "g"}
+    )
+    same = _synthetic_tissues(rng, 30, features)
+    lifespan = {"blood": same["whole blood"], "cortex": same["frontal cortex"]}
+    gaps = []
+    for name, spec in ADJUSTMENTS.items():
+        life, lun = lifespan, same
+        if spec is not None:
+            members = set(membership["feature"].to_list())
+            life = {k: _adjusted(p, members, *spec)[0] for k, p in lifespan.items()}
+            lun = {k: _adjusted(p, members, *spec)[0] for k, p in same.items()}
+        point, boot_life, boot_same, contrasts = _analyse(life, lun, probes, membership, 3, 1)
+        assert contrasts.height == 3 * (3 + 4)  # 3 sets x (3 lifespan metrics + 4 brain regions)
+        assert set(boot_same["tissue"].unique()) == set(same)
+        gaps.append(contrasts.with_columns(adjustment=pl.lit(name)))
+    ctx = Context(ProjectPaths(tmp_path), Scale.of("quick"))
+    assert _figure_cells(ctx, pl.concat(gaps)).exists()

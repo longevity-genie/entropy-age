@@ -27,6 +27,7 @@ Run on a machine with tens of GB of memory: ``entropy-age fetch cohort hannum ja
 
 from __future__ import annotations
 
+import dataclasses
 import multiprocessing
 import os
 import sys
@@ -43,7 +44,13 @@ from entropy_age.data.annotation import AnnotationLayout, link_membership
 from entropy_age.data.cohorts import layout as cohort_layout
 from entropy_age.data.matrix import FeatureMatrix
 from entropy_age.experiments.common import Context, dummies, write_table
-from entropy_age.stochasticity import baseline_strata, compare_groups, dispersion_levels, drift_metrics
+from entropy_age.stochasticity import (
+    baseline_strata,
+    compare_groups,
+    composition_components,
+    dispersion_levels,
+    drift_metrics,
+)
 
 SETS = ("core_essential", "housekeeping", "non_essential")
 SET_LABELS = {"core_essential": "core essential", "housekeeping": "housekeeping", "non_essential": "non-essential"}
@@ -51,6 +58,13 @@ LIFESPAN_METRICS = ("entropy_slope", "dispersion_slope", "abs_slope")
 BACKGROUND = 60_000
 MAX_MISSING = 0.05
 LUNNON_BRAIN = ("frontal cortex", "superior temporal gyrus", "entorhinal cortex", "cerebellum")
+# composition check (`figures tissues_cells`): name -> (components, orthogonal to age), None = as in `tissues`
+ADJUSTMENTS: dict[str, tuple[int, bool] | None] = {
+    "none": None,
+    "pc5": (5, False),
+    "pc10": (10, False),
+    "pc5_age_free": (5, True),
+}
 
 
 @dataclass(frozen=True, slots=True)
@@ -63,6 +77,7 @@ class Prepared:
     covariates: np.ndarray | None
     features: list[str]
     donors: np.ndarray
+    technical: np.ndarray | None  # the covariates other than age (plate, sex, ...), for the composition check
 
 
 # ----------------------------------------------------------------------------- inputs
@@ -87,7 +102,7 @@ def _hannum(paths, features) -> Prepared:
     s = pl.read_parquet(cohort_layout("hannum", paths).samples).drop_nulls("age").sort("age", "sample")
     m = _matrix("hannum", paths, s["sample"].to_list(), features)
     cov = np.column_stack([dummies(s[c].to_numpy()) for c in ("plate", "source", "sex", "ethnicity")])
-    return Prepared("blood (Hannum)", m.values, s["age"].to_numpy(), cov, m.features, s["donor"].to_numpy())
+    return Prepared("blood (Hannum)", m.values, s["age"].to_numpy(), cov, m.features, s["donor"].to_numpy(), cov)
 
 
 def _jaffe(paths, features) -> Prepared:
@@ -103,7 +118,7 @@ def _jaffe(paths, features) -> Prepared:
     cov = np.column_stack(
         [*(dummies(s[c].to_numpy()) for c in ("plate", "sex", "race")), s["neuron_fraction"].to_numpy()]
     )
-    return Prepared("cortex (Jaffe)", m.values, s["age"].to_numpy(), cov, m.features, s["donor"].to_numpy())
+    return Prepared("cortex (Jaffe)", m.values, s["age"].to_numpy(), cov, m.features, s["donor"].to_numpy(), cov)
 
 
 def _lunnon(paths, features) -> dict[str, Prepared]:
@@ -114,9 +129,36 @@ def _lunnon(paths, features) -> dict[str, Prepared]:
     for tissue in ("whole blood", *LUNNON_BRAIN):
         t = s.filter(pl.col("tissue") == tissue).sort("donor")
         m = _matrix("lunnon", paths, t["sample"].to_list(), features)
-        cov = np.column_stack([t["age"].to_numpy(), *(dummies(t[c].to_numpy()) for c in ("sex", "ad_status"))])
-        out[tissue] = Prepared(tissue, m.values, t["age"].to_numpy(), cov, m.features, t["donor"].to_numpy())
+        technical = np.column_stack([dummies(t[c].to_numpy()) for c in ("sex", "ad_status")])
+        cov = np.column_stack([t["age"].to_numpy(), technical])
+        out[tissue] = Prepared(tissue, m.values, t["age"].to_numpy(), cov, m.features, t["donor"].to_numpy(), technical)
     return out
+
+
+def _adjusted(p: Prepared, members: set[str], k: int, age_free: bool) -> tuple[Prepared, dict]:
+    """``p`` with ``k`` composition components of its background CpGs added to the covariates.
+
+    The components come from the CpGs outside every gene set, after the technical covariates (and,
+    with ``age_free``, age) are regressed out, so they describe the shared movement of thousands of
+    unrelated CpGs: in blood mostly the cell mix, in brain mostly the neuron-glia balance.
+    """
+    background = np.array([f not in members for f in p.features])
+    base = p.technical
+    if age_free:
+        base = p.ages[:, None] if base is None else np.column_stack([p.ages, base])
+    scores, explained = composition_components(p.x[:, background], k, covariates=base)
+    covariates = scores if p.covariates is None else np.column_stack([p.covariates, scores])
+    r_age = [abs(float(np.corrcoef(scores[:, j], p.ages)[0, 1])) for j in range(k)]
+    info = {
+        "tissue": p.label,
+        "components": k,
+        "age_free": age_free,
+        "background_cpgs": int(background.sum()),
+        "variance_explained": float(explained.sum()),
+        "first_component": float(explained[0]),
+        "max_abs_r_age": max(r_age),
+    }
+    return dataclasses.replace(p, covariates=covariates), info
 
 
 # ----------------------------------------------------------------------------- metrics
@@ -211,25 +253,42 @@ def _interval(values: np.ndarray) -> tuple[float, float, float]:
 
 
 # ----------------------------------------------------------------------------- run
-def run(ctx: Context) -> list[Path]:
+def _inputs_missing(ctx: Context, figure: str) -> bool:
     needed = [cohort_layout(n, ctx.paths).betas for n in ("hannum", "jaffe", "lunnon")]
     needed.append(AnnotationLayout(ctx.paths).links_450k)
     missing = [str(p) for p in needed if not p.exists()]
     if missing:
         print(
-            f"tissues: inputs missing ({', '.join(missing)}); run `entropy-age fetch annotation` and "
+            f"{figure}: inputs missing ({', '.join(missing)}); run `entropy-age fetch annotation` and "
             "`entropy-age fetch cohort hannum jaffe lunnon` first. Nothing was run.",
             file=sys.stderr,
         )
+    return bool(missing)
+
+
+def _settings(ctx: Context) -> tuple[int, int]:
+    """Bootstrap workers (``ENTROPY_AGE_WORKERS``) and resamples (``ENTROPY_AGE_BOOT``, for smoke tests)."""
+    workers = int(os.environ.get("ENTROPY_AGE_WORKERS", "1"))
+    default = 200 if ctx.scale.name == "paper" else 100
+    n_boot = int(os.environ.get("ENTROPY_AGE_BOOT", default))
+    if n_boot != default:
+        print(f"tissues: ENTROPY_AGE_BOOT={n_boot} replaces the default {default} resamples", file=sys.stderr)
+    return workers, n_boot
+
+
+def _load(ctx: Context):
+    features, probes, membership = _features(ctx.paths, ctx.rng(120_000))
+    lifespan = {"blood": _hannum(ctx.paths, features), "cortex": _jaffe(ctx.paths, features)}
+    return lifespan, _lunnon(ctx.paths, features), probes, membership
+
+
+def run(ctx: Context) -> list[Path]:
+    if _inputs_missing(ctx, "tissues"):
         return []
     plots.apply_style()
     out = ctx.out_dir("tissue_contrast")
-    workers = int(os.environ.get("ENTROPY_AGE_WORKERS", "1"))
-    n_boot = 200 if ctx.scale.name == "paper" else 100
-    features, probes, membership = _features(ctx.paths, ctx.rng(120_000))
-
-    lifespan = {"blood": _hannum(ctx.paths, features), "cortex": _jaffe(ctx.paths, features)}
-    lunnon = _lunnon(ctx.paths, features)
+    workers, n_boot = _settings(ctx)
+    lifespan, lunnon, probes, membership = _load(ctx)
     summary = [
         {
             "part": "lifespan",
@@ -256,8 +315,16 @@ def run(ctx: Context) -> list[Path]:
         membership.group_by("group").agg(pl.len().alias("cpgs"), pl.col("gene").n_unique().alias("genes")),
         out / "set_sizes",
     )
+    point, boot_life, boot_same, contrasts = _analyse(lifespan, lunnon, probes, membership, n_boot, workers)
+    write_table(point, out / "point_estimates")
+    boot_life.write_parquet(out / "bootstrap_lifespan.parquet")
+    boot_same.write_parquet(out / "bootstrap_same_donors.parquet")
+    write_table(contrasts, out / "tissue_differences")
+    return [_figure(ctx, point, boot_life, boot_same, contrasts)]
 
-    # point estimates with stratified permutation p values
+
+def _analyse(lifespan: dict, lunnon: dict, probes, membership, n_boot: int, workers: int):
+    """Point estimates, bootstraps and blood-minus-brain differences for one set of covariates."""
     point = []
     for key, p in lifespan.items():
         t = _matched_sd(_with_strata(_lifespan_metrics(p), probes), membership, LIFESPAN_METRICS, 1000, 1)
@@ -267,7 +334,6 @@ def run(ctx: Context) -> list[Path]:
         point.append(t.with_columns(part=pl.lit("same donors"), tissue=pl.lit(tissue)))
     point = pl.concat(point, how="diagonal")
     point = point.with_columns(p_bh=pl.Series(false_discovery_control(point["p_permutation"].to_numpy(), method="bh")))
-    write_table(point, out / "point_estimates")
 
     # bootstraps
     shared = {"probes": probes, "membership": membership}
@@ -282,8 +348,6 @@ def run(ctx: Context) -> list[Path]:
     boot_same = pl.DataFrame(
         _run_parallel(_boot_lunnon, [2000 + b for b in range(n_boot)], workers, {**shared, "lunnon": lunnon})
     )
-    boot_life.write_parquet(out / "bootstrap_lifespan.parquet")
-    boot_same.write_parquet(out / "bootstrap_same_donors.parquet")
 
     rows = []
     for group in SETS:
@@ -323,9 +387,89 @@ def run(ctx: Context) -> list[Path]:
                     "p_bootstrap": p,
                 }
             )
-    contrasts = pl.DataFrame(rows)
-    write_table(contrasts, out / "tissue_differences")
-    return [_figure(ctx, point, boot_life, boot_same, contrasts)]
+    return point, boot_life, boot_same, pl.DataFrame(rows)
+
+
+def run_cells(ctx: Context) -> list[Path]:
+    """Does the blood-minus-brain gap survive adjusting both tissues for composition?
+
+    Neither blood cohort ships cell counts, and Lunnon's brain regions ship no neuron fraction, so
+    every tissue gets the same reference-free correction: the leading principal components of its
+    background CpGs as extra covariates (``ADJUSTMENTS``). Components that keep their age trend
+    also absorb composition change with age (the conservative variant); age-free ones absorb only
+    the person-to-person spread of the mix.
+    """
+    if _inputs_missing(ctx, "tissues_cells"):
+        return []
+    plots.apply_style()
+    out = ctx.out_dir("tissue_contrast_cells")
+    workers, n_boot = _settings(ctx)
+    lifespan, lunnon, probes, membership = _load(ctx)
+    members = set(membership["feature"].to_list())
+    gaps, points, components = [], [], []
+    for name, spec in ADJUSTMENTS.items():
+        if spec is None:
+            life, same = lifespan, lunnon
+        else:
+            k, age_free = spec
+            life, same = {}, {}
+            for target, source in ((life, lifespan), (same, lunnon)):
+                for key, p in source.items():
+                    target[key], info = _adjusted(p, members, k, age_free)
+                    components.append({"adjustment": name, **info})
+        print(f"tissues_cells: {name}", file=sys.stderr, flush=True)
+        point, _, _, contrasts = _analyse(life, same, probes, membership, n_boot, workers)
+        points.append(point.with_columns(adjustment=pl.lit(name)))
+        gaps.append(contrasts.with_columns(adjustment=pl.lit(name)))
+    gaps = pl.concat(gaps)
+    write_table(pl.concat(points, how="diagonal"), out / "point_estimates")
+    write_table(gaps, out / "tissue_differences")
+    if components:
+        write_table(pl.DataFrame(components), out / "components")
+    return [_figure_cells(ctx, gaps)]
+
+
+def _figure_cells(ctx: Context, gaps: pl.DataFrame) -> Path:
+    fig, axes = plots.panels(2, ncols=2, size=6.4)
+    names = list(ADJUSTMENTS)
+    offsets = np.linspace(-0.3, 0.3, len(names))
+    for ax, part, title in (
+        (axes[0], "lifespan", "Lifespan cohorts: blood minus cortex"),
+        (axes[1], "same donors", "Same donors: blood minus brain region"),
+    ):
+        frame = gaps.filter(pl.col("part") == part)
+        keys = frame.select("group", "metric", "comparison").unique(maintain_order=True).to_dicts()
+        for i, key in enumerate(keys):
+            for j, name in enumerate(names):
+                row = frame.filter(
+                    (pl.col("group") == key["group"])
+                    & (pl.col("metric") == key["metric"])
+                    & (pl.col("comparison") == key["comparison"])
+                    & (pl.col("adjustment") == name)
+                ).row(0, named=True)
+                yy = i + offsets[j]
+                color = plots.PALETTE[j % len(plots.PALETTE)]
+                ax.plot([row["ci_low"], row["ci_high"]], [yy, yy], color=color, lw=1.1)
+                ax.scatter([row["difference"]], [yy], color=color, s=12, label=name if i == 0 else None)
+        labels = [
+            f"{SET_LABELS[k['group']]} · "
+            + (k["metric"].replace("_", " ") if part == "lifespan" else k["comparison"].split(" - ")[1])
+            for k in keys
+        ]
+        ax.set_yticks(range(len(keys)), labels, fontsize=6.5)
+        ax.invert_yaxis()
+        ax.axvline(0, color=plots.MUTED, lw=0.8)
+        ax.set(xlabel="Blood minus brain (SD); < 0 = more protection in blood", title=title)
+        ax.title.set_fontsize(10)
+    handles, names_shown = axes[0].get_legend_handles_labels()
+    fig.legend(handles, names_shown, fontsize=8, title="adjustment", loc="lower center", ncols=len(names))
+    plots.label_panel(axes[0], "a")
+    plots.label_panel(axes[1], "b")
+    fig.suptitle(
+        "Does the blood-brain gap survive a composition adjustment?", x=0.02, ha="left", fontsize=12, fontweight="bold"
+    )
+    fig.tight_layout(rect=(0, 0.08, 1, 1))
+    return plots.save(fig, ctx.figure_path("tissue_contrast_cells"))
 
 
 def _figure(ctx: Context, point, boot_life, boot_same, contrasts) -> Path:

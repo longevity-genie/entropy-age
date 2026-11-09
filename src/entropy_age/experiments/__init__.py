@@ -24,6 +24,7 @@ FIGURES: dict[str, Callable[[Context], list[Path]]] = {
     "atlas": atlas_real_data.run,
     "genesets": gene_sets.run,
     "tissues": tissue_contrast.run,
+    "tissues_cells": tissue_contrast.run_cells,
 }
 
 __all__ = ["FIGURES", "Context", "Scale", "ScaleName"]

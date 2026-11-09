@@ -4,6 +4,11 @@ Newest first.
 
 ## Unreleased
 
+- Composition check for prediction 2: `entropy-age figures tissues_cells` reruns the blood-versus-brain
+  test with the leading principal components of each tissue's background CpGs as extra covariates
+  (5 or 10 components, keeping or removing their age trend; `composition_components` in
+  `stochasticity.py`), the same reference-free correction in every tissue. `ENTROPY_AGE_BOOT` overrides
+  the number of bootstrap resamples, for smoke tests.
 - Prediction 2 tested (`docs/extension.md`, `docs/figures/tissue_contrast.png`): the essential and
   housekeeping protection is larger in blood than in brain, and the non-essential excess too. This
   holds across Hannum blood versus Jaffe cortex (age slopes) and within the same Lunnon donors' blood

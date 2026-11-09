@@ -370,3 +370,33 @@ def regress_out(x: np.ndarray, covariates: np.ndarray) -> np.ndarray:
     design = np.column_stack([np.ones(x.shape[0]), np.asarray(covariates, dtype=float)])
     coef, *_ = np.linalg.lstsq(design, x, rcond=None)
     return x - design @ coef + x.mean(axis=0)
+
+
+def composition_components(
+    x: np.ndarray, k: int, *, covariates: np.ndarray | None = None
+) -> tuple[np.ndarray, np.ndarray]:
+    """Leading ``k`` principal components of ``x`` after regressing out ``covariates``.
+
+    A reference-free proxy for cell composition, used when no sorted-cell reference is at hand:
+    when samples differ in their mix of cell types, thousands of cell-type-specific CpGs move
+    together and that shared movement dominates the leading components, while independent
+    per-site drift does not. Pass background features (not the ones under test) as ``x``, and
+    pass ``ages`` among ``covariates`` to get components that carry no age trend.
+
+    Returns the ``(n_samples, k)`` component scores (orthogonal to ``covariates`` and to the
+    intercept) and the fraction of the standardised residual variance each component explains.
+    """
+    x = np.asarray(x, dtype=float)
+    n = x.shape[0]
+    if not 0 < k < n:
+        raise ValueError(f"k must be between 1 and {n - 1} for {n} samples, got {k}")
+    ones = np.ones((n, 1))
+    design = ones if covariates is None else np.column_stack([ones, np.asarray(covariates, dtype=float)])
+    coef, *_ = np.linalg.lstsq(design, x, rcond=None)
+    residual = x - design @ coef
+    sd = residual.std(axis=0)
+    z = residual[:, sd > _EPS] / sd[sd > _EPS]
+    values, vectors = np.linalg.eigh(z @ z.T)
+    order = np.argsort(values)[::-1][:k]
+    scores = vectors[:, order] * np.sqrt(np.clip(values[order], 0.0, None))
+    return scores, values[order] / values.sum()
