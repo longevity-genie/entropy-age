@@ -3,14 +3,6 @@
 Open work only, in order. Each item is a section `## RMn — name` with a line saying its state and its
 owner. A done item leaves this file; `docs/CHANGELOG.md` says what landed.
 
-## RM1 — Record the composition check of prediction 2
-
-State: the paper-scale run of `figures tissues_cells` is running on the cluster (2026-11-10). Owner:
-the session that wrote it. Its point estimates are known from the trial run: the same-donor (Lunnon)
-blood-minus-brain gap barely moves with 5 or 10 composition components. The lifespan (Hannum vs Jaffe)
-slope gap does not survive components that keep their age trend. Once the intervals arrive, write this
-into `docs/extension.md` and the README, and present the same-donor result as the main evidence.
-
 ## RM2 — A turnover gradient across many tissues (methylation)
 
 State: data found, nothing fetched. Two tissues give one contrast; a ranking by turnover is the stronger

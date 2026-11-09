@@ -172,8 +172,9 @@ cohort with a post-mitotic tissue next to a renewing one; the next section tests
 ## Prediction 2 on real data: the protection is larger in blood than in brain
 
 The essential-gene advantage is larger in blood than in brain, in two independent designs. That is
-what selection among cells predicts. One alternative is not yet ruled out: blood's variable mix of
-cell types, set out below.
+what selection among cells predicts. The same-donor contrast survives an adjustment of every tissue
+for its cell mix; the lifespan-slope contrast does so only partly (see
+[the composition check](#composition-check)).
 
 **Data** (Illumina 450k, run on a cluster: `entropy-age fetch cohort hannum jaffe lunnon`, then
 `entropy-age figures tissues`):
@@ -217,22 +218,56 @@ protection exists in brain too, at a third to two thirds of its size in blood. T
 model: neurons cannot be replaced, but glia turn over, and chromatin protection acts in every cell. Full tables:
 `data/output/tissue_contrast/`.
 
-**The alternative explanation that is still open: cell mixture.** Blood is a mix of cell types whose
-proportions differ a lot between people. Genes switched on in only some cell types, as many
-"non-essential" genes are, gain between-person spread and age trends from that mix. Essential genes
-are unmethylated in every cell type, so the mix hardly moves them. Neither blood cohort here is
-adjusted for cell fractions, while cortex is adjusted for neuron fraction. In GSE41037 blood,
-adding EpiDISH cell fractions as covariates did not shrink the essential-gene effect (prediction 1),
-so the mix does not create the effect within blood. But the size of the blood-minus-brain gap could
-still be partly composition. The check is to adjust
-both tissues for estimated cell fractions, or for the top principal components of the background
-CpGs, and see whether the gap survives.
+### Composition check
+
+**Why it was needed.** Blood is a mix of cell types whose proportions differ a lot between people.
+Genes switched on in only some cell types, as many non-essential genes are, gain between-person spread
+and age trends from that mix; essential genes are unmethylated in every cell type, so the mix hardly
+moves them. Neither blood cohort ships cell counts, and Lunnon's brain regions ship no neuron
+fraction, so every tissue gets the same reference-free correction: the leading principal components
+of its 60,000 background CpGs (`composition_components`), after the technical covariates are
+regressed out, added as covariates (`entropy-age figures tissues_cells`). Four variants: none, 5 or
+10 components that keep their age trend (they also absorb any change of the cell mix with age), and
+5 components made orthogonal to age (they absorb only the person-to-person spread of the mix). The
+components explain 24–33 % (5) or 30–43 % (10) of the background variance; the first alone 10–13 %.
+
+![Composition check](figures/tissue_contrast_cells.png)
+
+**Contrasts whose 95 % interval excludes zero in the predicted direction:**
+
+| Adjustment | Same donors (Lunnon), of 12 | Lifespan cohorts (Hannum vs Jaffe), of 9 |
+|---|---|---|
+| none | 12 | 8 |
+| 5 components, age-free | 12 | 9 |
+| 10 components | 12 | 5 |
+| 5 components | 12 | 1 (2 reversed) |
+
+**Same donors: the gap is not the cell mix.** Blood minus brain moves by at most a fifth. Housekeeping:
+−0.07 to −0.10 SD unadjusted, −0.06 to −0.08 with 10 components; core essential −0.02 to −0.04
+against −0.01 to −0.03; non-essential +0.09 to +0.19 against +0.10 to +0.12, every interval on the
+predicted side in every variant. One shift is informative: in the brain regions, the non-essential
+excess *grows* after adjustment (frontal cortex +0.05 to +0.12, entorhinal +0.01 to +0.11), so the
+neuron–glia mix was hiding part of brain's own effect.
+
+**Lifespan slopes: not separable from coordinated aging.** With age-free components the gap is
+unchanged (housekeeping entropy slope −0.14, interval −0.17 to −0.11). With components that keep
+their age trend it shrinks or flips: blood's housekeeping entropy protection falls from −0.35 to
+−0.08 SD, and cortex's to zero with 10 components. Those components are partly age itself (one of
+Jaffe's correlates r = 0.60 with age), so they remove the coordinated methylation change that thousands
+of CpGs share with age along with any age trend of the cell mix. From cross-sectional slopes the two
+cannot be told apart. The lifespan contrast is therefore supporting evidence only; the same-donor
+dispersion contrast carries the claim.
+
+**What it means.** Essential-gene protection against methylation drift is 1.5–3 times stronger in
+blood than in the brain of the same people (housekeeping 2–3 times, core essential about 1.5 times), and the difference is not blood's cell mix. Selection
+among cells, which needs turnover, predicts exactly this; chromatin protection alone does not. Tables:
+`data/output/tissue_contrast_cells/`.
 
 **Other limits.** The two lifespan cohorts are different people from different studies, though both
 on the 450k array. Lunnon's donors are old and mostly have Alzheimer's disease. Brain tissue mixes
 post-mitotic neurons with glia that do turn over, so the contrast is renewing against mostly
-post-mitotic tissue, not a clean neuron sample. Sorted neurons, or a tissue such as skeletal muscle
-in GTEx, would sharpen it.
+post-mitotic tissue, not a clean neuron sample. Sorted neurons, or a tissue such as skeletal muscle,
+would sharpen it (roadmap RM2).
 
 ## How to test the hypothesis on real data
 

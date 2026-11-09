@@ -17,8 +17,8 @@ housekeeping genes gain entropy 0.2–0.4 SD more slowly than CpGs that start at
 and non-essential genes faster, robust to batch and cell composition
 ([details](docs/extension.md#prediction-1-on-real-data-essential-genes-drift-less-in-blood)). The
 cell-type part points the same way: on 450k data, that protection is larger in blood than in brain,
-both across lifespan cohorts and within the same donors' tissues, with blood's cell mix not yet
-ruled out as part of the reason
+within the same donors' blood and four brain regions, and that gap survives adjusting every tissue for
+its cell mix
 ([details](docs/extension.md#prediction-2-on-real-data-the-protection-is-larger-in-blood-than-in-brain)).
 
 | | |
@@ -41,7 +41,8 @@ ruled out as part of the reason
 * Figures: [Fig. 1 bulk](docs/figures/fig1_bulk.png) · [Fig. 3 single cell](docs/figures/fig3_single_cell.png) ·
   [Fig. 4 published clocks](docs/figures/fig4_published_clocks.png) · [Fig. 5 real data](docs/figures/fig5_real_data.png) ·
   [Extension](docs/figures/extension_selection.png) · [Atlas](docs/figures/atlas_real_data.png) ·
-  [Gene sets](docs/figures/gene_sets.png) · [Blood vs brain](docs/figures/tissue_contrast.png)
+  [Gene sets](docs/figures/gene_sets.png) · [Blood vs brain](docs/figures/tissue_contrast.png) ·
+  [Composition check](docs/figures/tissue_contrast_cells.png)
 
 ## Quick start
 

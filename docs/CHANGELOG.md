@@ -4,6 +4,10 @@ Newest first.
 
 ## Unreleased
 
+- Composition check recorded (`docs/extension.md`, `docs/figures/tissue_contrast_cells.png`): the
+  same-donor blood-minus-brain gap keeps all 12 intervals on the predicted side under every adjustment;
+  the lifespan-slope gap holds with age-free components but not with components that keep their age
+  trend, so it is now presented as supporting evidence only. Roadmap RM1 closed.
 - Mouse multi-tissue test (roadmap RM2/RM3): `entropy-age fetch mouse-annotation` (the mammalian
   array's mm10 probe table, GEO GPL32543, and MGI mouse-human orthologs that carry the human gene sets
   to mouse), `entropy-age fetch cohort huang` (GSE279437: 11 tissues of the same mice, young and aged,
