@@ -303,7 +303,6 @@ def compare_groups(
     rng = np.random.default_rng(seed)
     base = metrics.drop_nulls(subset=[metric]).filter(pl.col(metric).is_finite())
     values = base[metric].to_numpy()
-    feature_ids = base["feature"].to_numpy()
     if stratify_by is None:
         strata = np.zeros(values.size, dtype=int)
     elif base.schema[stratify_by].is_float():
@@ -313,7 +312,8 @@ def compare_groups(
     rows = []
     for group, members in membership.group_by("group", maintain_order=True):
         label = group[0] if isinstance(group, tuple) else group
-        in_group = np.isin(feature_ids, members["feature"].to_numpy())
+        # a hash lookup: np.isin on string arrays took seconds per group at 10^5 features
+        in_group = base["feature"].is_in(members["feature"].unique().implode()).to_numpy()
         if in_group.sum() < 2 or (~in_group).sum() < 2:
             continue
         n_in = np.bincount(strata, weights=in_group.astype(float))

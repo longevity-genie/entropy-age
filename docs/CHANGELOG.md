@@ -4,6 +4,9 @@ Newest first.
 
 ## Unreleased
 
+- `compare_groups` finds group members with a hash lookup instead of `np.isin` on strings, which took
+  seconds per group at 10^5 features (a 17 s profile now takes 2 s). The tissue experiment adjusts Hannum
+  blood for recruitment site as well as plate, and starts its bootstrap workers with an explicit fork.
 - Prediction 2 pipeline (essential-gene protection in renewing versus post-mitotic tissue), results
   pending: `entropy-age fetch cohort hannum jaffe lunnon` (450k blood and brain cohorts, GB-scale, for a
   cluster), the 450k manifest in `fetch annotation` with promoter CpG-to-gene links, an age-free

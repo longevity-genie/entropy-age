@@ -7,8 +7,8 @@ promoter CpGs (TSS1500, TSS200, 5'UTR, first exon) on autosomes:
 
 * **Lifespan** - Hannum whole blood (GSE40279, 19-101 y) against Jaffe prefrontal cortex
   (GSE74193, adult controls 20-97 y, one array per donor). Drift metrics are partial age slopes
-  adjusted for processing plate, sex and ancestry, and in cortex also the estimated neuron
-  fraction. Different people, wide age ranges.
+  adjusted for processing plate, sex and ancestry, in blood also the recruitment site, and in
+  cortex also the estimated neuron fraction. Different people, wide age ranges.
 * **Same donors** - Lunnon (GSE59685): blood and four brain regions of the same donors, mostly
   70-100 y. With so narrow an age range, the measure is between-person dispersion at each CpG
   (adjusted for age, sex and disease status), which is the divergence accumulated by old age.
@@ -26,6 +26,7 @@ Run on a machine with tens of GB of memory: ``entropy-age fetch cohort hannum ja
 
 from __future__ import annotations
 
+import multiprocessing
 import os
 import sys
 from concurrent.futures import ProcessPoolExecutor
@@ -84,7 +85,7 @@ def _matrix(name: str, paths, samples: list[str], features: list[str]) -> Featur
 def _hannum(paths, features) -> Prepared:
     s = pl.read_parquet(cohort_layout("hannum", paths).samples).drop_nulls("age").sort("age", "sample")
     m = _matrix("hannum", paths, s["sample"].to_list(), features)
-    cov = np.column_stack([dummies(s[c].to_numpy()) for c in ("plate", "sex", "ethnicity")])
+    cov = np.column_stack([dummies(s[c].to_numpy()) for c in ("plate", "source", "sex", "ethnicity")])
     return Prepared("blood (Hannum)", m.values, s["age"].to_numpy(), cov, m.features, s["donor"].to_numpy())
 
 
@@ -182,7 +183,8 @@ def _boot_lunnon(seed: int) -> list[dict]:
 def _run_parallel(fn, jobs, workers: int) -> list[dict]:
     if workers <= 1:
         return [row for job in jobs for row in fn(job)]
-    with ProcessPoolExecutor(max_workers=workers) as pool:  # fork: workers share _STATE copy-on-write
+    # fork explicitly (Python 3.14 defaults to forkserver): workers read _STATE copy-on-write
+    with ProcessPoolExecutor(max_workers=workers, mp_context=multiprocessing.get_context("fork")) as pool:
         return [row for rows in pool.map(fn, jobs, chunksize=4) for row in rows]
 
 
