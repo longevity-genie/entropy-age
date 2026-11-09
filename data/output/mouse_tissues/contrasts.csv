@@ -1,0 +1,43 @@
+contrast,measure,metric,group,difference,ci_low,ci_high,p_bootstrap
+Aged_exenatide - Aged_ctrl (post-mitotic),dispersion,dispersion,core_essential,-0.013536952936788697,-0.05188855121564986,0.016429399979404832,0.4
+Aged_exenatide - Aged_ctrl (post-mitotic),dispersion,dispersion,housekeeping,-0.010731700293392502,-0.03851855965515828,0.020695682036806776,0.5
+Aged_exenatide - Aged_ctrl (post-mitotic),dispersion,dispersion,non_essential,-0.004940960756402685,-0.03998958447934604,0.03207890652163508,0.81
+Aged_exenatide - Aged_ctrl (renewing),dispersion,dispersion,core_essential,0.01628021361389561,-0.03201566660438685,0.07555440119605582,0.52
+Aged_exenatide - Aged_ctrl (renewing),dispersion,dispersion,housekeeping,0.04137966530980253,-0.02562127843894707,0.10215513863005465,0.21
+Aged_exenatide - Aged_ctrl (renewing),dispersion,dispersion,non_essential,-0.025214729411986297,-0.10524307615033875,0.04890056922712192,0.31
+Aged_exenatide - Aged_ctrl (slow),dispersion,dispersion,core_essential,-0.030055977016060928,-0.05111442943838601,0.001574593742373065,0.08
+Aged_exenatide - Aged_ctrl (slow),dispersion,dispersion,housekeeping,-0.02751143260110761,-0.0534322508776331,0.007189461826309198,0.09
+Aged_exenatide - Aged_ctrl (slow),dispersion,dispersion,non_essential,-0.006454848285969686,-0.10838644354561187,0.048843793520662156,0.77
+Aged_rapamycin - Aged_ctrl (post-mitotic),dispersion,dispersion,core_essential,0.03762891663167231,0.006865032608434668,0.06260703288478384,0.005
+Aged_rapamycin - Aged_ctrl (post-mitotic),dispersion,dispersion,housekeeping,0.05342276091788522,0.029540560355960983,0.07878450795016635,0.005
+Aged_rapamycin - Aged_ctrl (post-mitotic),dispersion,dispersion,non_essential,0.03125732974700568,-0.008688361168408524,0.07845636735660287,0.09
+Aged_rapamycin - Aged_ctrl (renewing),dispersion,dispersion,core_essential,0.05859498490795602,-0.0018187721826195132,0.1177538668493178,0.07
+Aged_rapamycin - Aged_ctrl (renewing),dispersion,dispersion,housekeeping,0.09948405395522444,0.032233644634100465,0.1587039724485975,0.01
+Aged_rapamycin - Aged_ctrl (renewing),dispersion,dispersion,non_essential,0.0439610659402659,-0.034507251230339916,0.10027786286920562,0.22
+Aged_rapamycin - Aged_ctrl (slow),dispersion,dispersion,core_essential,0.013054582576757822,-0.009435013046269746,0.04225971070133132,0.27
+Aged_rapamycin - Aged_ctrl (slow),dispersion,dispersion,housekeeping,0.015491493127614504,-0.007131358223300438,0.04988064644772761,0.22
+Aged_rapamycin - Aged_ctrl (slow),dispersion,dispersion,non_essential,-0.006121118987423662,-0.12065999359415733,0.12647197897484996,0.95
+renewing - post-mitotic,aged dispersion,dispersion,core_essential,-0.033034138058045094,-0.07159198071593781,0.007916676221953597,0.16
+renewing - post-mitotic,aged dispersion,dispersion,housekeeping,-0.03972367717908053,-0.0845709634221425,0.0033994473900136202,0.11
+renewing - post-mitotic,aged dispersion,dispersion,non_essential,0.023795695663642875,-0.004957539262730157,0.06023898274304705,0.08
+renewing - post-mitotic,aging,abs_slope,core_essential,-0.062029322232262186,-0.09527832978413757,-0.03443677908682683,0.005
+renewing - post-mitotic,aging,abs_slope,housekeeping,-0.08450936065233353,-0.12007843523931197,-0.05339439309322188,0.005
+renewing - post-mitotic,aging,abs_slope,non_essential,0.11283481361601584,0.04813566665359913,0.1833993837355289,0.005
+renewing - post-mitotic,aging,dispersion_slope,core_essential,-0.1089746505394841,-0.20901752246432462,-0.005139709905700093,0.04
+renewing - post-mitotic,aging,dispersion_slope,housekeeping,-0.13174328281106495,-0.23004277454363645,-0.02783984056200773,0.01
+renewing - post-mitotic,aging,dispersion_slope,non_essential,0.03120567971897737,-0.02832483803250381,0.14358238177806495,0.24
+renewing - post-mitotic,aging,entropy_slope,core_essential,-0.12362317068561612,-0.199798086578583,-0.05239892554460745,0.005
+renewing - post-mitotic,aging,entropy_slope,housekeeping,-0.1560432179001945,-0.23060394466698939,-0.08540188617247274,0.005
+renewing - post-mitotic,aging,entropy_slope,non_essential,0.06836954095757405,0.013406457783929874,0.12497292457505378,0.02
+slow - post-mitotic,aged dispersion,dispersion,core_essential,0.03417304033483926,0.005662190632851108,0.05709364984588534,0.04
+slow - post-mitotic,aged dispersion,dispersion,housekeeping,0.036462551675327644,0.009294362474300374,0.061840656714231466,0.01
+slow - post-mitotic,aged dispersion,dispersion,non_essential,-0.010428896155277315,-0.036086968902095916,0.05671661181495823,0.52
+slow - post-mitotic,aging,abs_slope,core_essential,-0.017550102388792073,-0.04377907860755904,0.008337439513589768,0.2
+slow - post-mitotic,aging,abs_slope,housekeeping,-0.019509521239940656,-0.04688030954836857,0.010507125419477913,0.24
+slow - post-mitotic,aging,abs_slope,non_essential,0.014915475288084717,-0.06479155016845757,0.07283894720981068,0.77
+slow - post-mitotic,aging,dispersion_slope,core_essential,-0.030550207809899907,-0.11150093749182963,0.07600783911283278,0.64
+slow - post-mitotic,aging,dispersion_slope,housekeeping,-0.045640667916264394,-0.11284619615442872,0.057008616961171675,0.4
+slow - post-mitotic,aging,dispersion_slope,non_essential,0.02104154512569085,-0.06075610335200819,0.1145322452712644,0.63
+slow - post-mitotic,aging,entropy_slope,core_essential,-0.13668300471144562,-0.20244006229166753,-0.05375527768841631,0.005
+slow - post-mitotic,aging,entropy_slope,housekeeping,-0.15764938834056585,-0.23243145754741504,-0.08329323333061553,0.005
+slow - post-mitotic,aging,entropy_slope,non_essential,0.030321344925558564,-0.016585720804273108,0.07491293583267776,0.18

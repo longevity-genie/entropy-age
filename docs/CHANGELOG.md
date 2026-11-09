@@ -4,6 +4,11 @@ Newest first.
 
 ## Unreleased
 
+- Mouse results recorded (`docs/extension.md`, `docs/figures/mouse_tissues.png`): in 11 tissues of
+  the same mice, essential and housekeeping CpGs gain entropy 0.12–0.16 SD less than matched CpGs in
+  renewing than in post-mitotic tissue (8 of 9 aging contrasts exclude zero), slow tissues are as
+  protected as renewing ones, and cortex and hippocampus show none. The rapamycin arm (5 mice per
+  tissue) is within small-sample noise against size-matched controls.
 - Composition check recorded (`docs/extension.md`, `docs/figures/tissue_contrast_cells.png`): the
   same-donor blood-minus-brain gap keeps all 12 intervals on the predicted side under every adjustment;
   the lifespan-slope gap holds with age-free components but not with components that keep their age

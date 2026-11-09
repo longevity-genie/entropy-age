@@ -269,6 +269,82 @@ post-mitotic neurons with glia that do turn over, so the contrast is renewing ag
 post-mitotic tissue, not a clean neuron sample. Sorted neurons, or a tissue such as skeletal muscle,
 would sharpen it (roadmap RM2).
 
+## Mouse tissues: the protection is missing where cells do not divide
+
+A second species, eleven tissues of the same animals and a second array. In Huang et al.'s mice
+(GSE279437, mammalian methylation array, inbred C57BL/6 males), CpGs of essential and housekeeping
+genes gain entropy with age far more slowly than matched CpGs in tissues whose cells divide. In
+cortex, hippocampus and muscle they do not.
+
+**Data and method** (`entropy-age fetch mouse-annotation`, `entropy-age fetch cohort huang`,
+`entropy-age figures mouse`). Young controls (7–21 per tissue) against aged controls (4–14); GEO gives
+the two age groups but no numeric ages. The human gene sets reach mouse through MGI orthologs (642
+core-essential, 3,220 housekeeping and 931 non-essential genes; 2,334, 11,994 and 3,305 promoter CpGs)
+and are compared, as before, with background promoter CpGs of the same island status and
+young-control level decile. Intervals come from 200 bootstraps that resample animals within their
+treatment group, the same animals in every tissue. Tissues are grouped by turnover: renewing (white
+blood cells, colon, spleen), slow (liver, kidney, adipose) and post-mitotic (skeletal muscle, heart,
+frontal cortex, hippocampus, hypothalamus).
+
+![Mouse tissues](figures/mouse_tissues.png)
+
+**Entropy gain with age, set minus matched CpGs** (SD):
+
+| Tissue | Core essential | Housekeeping | Non-essential |
+|---|---|---|---|
+| white blood cells | −0.14 | −0.12 | −0.00 |
+| colon | −0.26 | −0.31 | +0.23 |
+| spleen | −0.22 | −0.28 | +0.12 |
+| liver | −0.19 | −0.23 | +0.01 |
+| kidney | −0.27 | −0.28 | +0.02 |
+| adipose | −0.20 | −0.22 | +0.21 |
+| skeletal muscle | −0.06 | −0.06 | +0.12 |
+| heart | −0.12 | −0.12 | +0.02 |
+| frontal cortex | +0.10 | +0.10 | −0.03 |
+| hippocampus | −0.02 | −0.03 | −0.01 |
+| hypothalamus (4 aged controls) | −0.30 | −0.28 | +0.15 |
+
+**Renewing minus post-mitotic tissues** (SD, 95 % bootstrap interval):
+
+| Set | Entropy gain | Change in spread | Absolute change of the mean |
+|---|---|---|---|
+| core essential | −0.12 (−0.20, −0.05) | −0.11 (−0.21, −0.01) | −0.06 (−0.10, −0.03) |
+| housekeeping | −0.16 (−0.23, −0.09) | −0.13 (−0.23, −0.03) | −0.09 (−0.12, −0.05) |
+| non-essential | +0.07 (+0.01, +0.13) | +0.03 (−0.03, +0.14) | +0.11 (+0.05, +0.18) |
+
+Eight of the nine aging contrasts exclude zero in the predicted direction. What this adds to the
+human results:
+
+* **It replicates in another species and on another array**, with the same donors in every tissue
+  and no blood-specific cell mix: the renewing tissues here include colon and spleen.
+* **It is a step, not a slope.** The slow tissues are as protected as the renewing ones (entropy:
+  slow minus post-mitotic −0.14 for core essential and −0.16 for housekeeping, intervals excluding
+  zero). Hepatocytes, kidney tubule cells and adipocytes divide rarely but can, and their tissues
+  replace cells over months. The data fit "some turnover is enough" better than a graded dose of
+  turnover. Whether that is selection, or something else that sets post-mitotic tissue apart, needs a
+  test that varies turnover inside one tissue.
+* **The brain is where protection vanishes.** Cortex and hippocampus show none (+0.10 and −0.03);
+  muscle and heart keep a little (−0.06, −0.12). The hypothalamus is the exception, with strong
+  protection, but it has only 4 aged controls and the widest intervals.
+* **The spread among aged mice does not separate the tissue classes** (renewing minus post-mitotic
+  −0.03 and −0.04, intervals crossing zero). These mice are inbred, so the between-animal spread has
+  no genetic part, and with 40 aged animals per tissue spread across five treatment groups the
+  measure is weaker than the young-versus-aged contrast.
+
+**Interventions: not interpretable yet.** Exenatide (13 aged mice per tissue against 13 controls)
+changes no set's dispersion difference. Rapamycin's numbers appear to weaken the protection, which
+selection would predict, but only 5 mice per tissue carry them, and a dispersion from 5 animals is
+noisier than one from 13. A size check settles part of it (a one-off run, not yet part of `figures mouse`). Thirty random 5-mouse
+subsets of the aged controls already lose about a fifth to a quarter of the protection (renewing
+tissue, housekeeping: −0.15 with all controls, −0.11 with 5). Against those size-matched controls,
+rapamycin's renewing-tissue values (−0.07 for both protected sets) sit inside the range of the
+5-mouse subsets (−0.16 to −0.05). Only in post-mitotic tissue does rapamycin fall outside it
+(housekeeping −0.04 against −0.09 to −0.06), the opposite of what selection predicts. With five
+animals and only white blood cells and colon as renewing tissues, this does not test the prediction
+either way. The rapamycin arm needs a larger cohort (roadmap RM3).
+
+Tables: `data/output/mouse_tissues/`.
+
 ## How to test the hypothesis on real data
 
 ```python

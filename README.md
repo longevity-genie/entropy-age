@@ -19,7 +19,10 @@ and non-essential genes faster, robust to batch and cell composition
 cell-type part points the same way: on 450k data, that protection is larger in blood than in brain,
 within the same donors' blood and four brain regions, and that gap survives adjusting every tissue for
 its cell mix
-([details](docs/extension.md#prediction-2-on-real-data-the-protection-is-larger-in-blood-than-in-brain)).
+([details](docs/extension.md#prediction-2-on-real-data-the-protection-is-larger-in-blood-than-in-brain)). In
+eleven tissues of the same mice, the protection is strong wherever cells divide (blood, colon, spleen,
+liver, kidney, adipose) and missing in cortex and hippocampus
+([details](docs/extension.md#mouse-tissues-the-protection-is-missing-where-cells-do-not-divide)).
 
 | | |
 |---|---|
@@ -42,7 +45,7 @@ its cell mix
   [Fig. 4 published clocks](docs/figures/fig4_published_clocks.png) · [Fig. 5 real data](docs/figures/fig5_real_data.png) ·
   [Extension](docs/figures/extension_selection.png) · [Atlas](docs/figures/atlas_real_data.png) ·
   [Gene sets](docs/figures/gene_sets.png) · [Blood vs brain](docs/figures/tissue_contrast.png) ·
-  [Composition check](docs/figures/tissue_contrast_cells.png)
+  [Composition check](docs/figures/tissue_contrast_cells.png) · [Mouse tissues](docs/figures/mouse_tissues.png)
 
 ## Quick start
 
@@ -67,6 +70,14 @@ cluster:
 
 ```bash
 uv run entropy-age fetch cohort hannum jaffe lunnon
+```
+
+```bash
+uv run entropy-age fetch mouse-annotation
+```
+
+```bash
+uv run entropy-age fetch cohort huang
 ```
 
 ```bash

@@ -5,24 +5,20 @@ owner. A done item leaves this file; `docs/CHANGELOG.md` says what landed.
 
 ## RM2 — A turnover gradient across many tissues (methylation)
 
-State: data found, nothing fetched. Two tissues give one contrast; a ranking by turnover is the stronger
-test. Selection among cells predicts that protection grows with turnover: colon, blood and skin, then
-liver and kidney, then muscle, heart and neurons. Use published turnover rates as the axis.
+State: the mouse part is done (`figures mouse`, GSE279437; see `docs/extension.md`). There, protection
+is a step rather than a slope: as strong in slow tissues (liver, kidney, adipose) as in renewing ones,
+and missing in cortex and hippocampus. Next, the human tissues and a contrast of turnover inside one
+tissue:
 
-- **GSE279437** (mouse, 583 samples, mammalian array GPL32543, betas 1.2 GB). WBC, colon, spleen, liver,
-  kidney, skeletal muscle, heart, cortex, hippocampus, hypothalamus and adipose from the same mice (mouse
-  ID in the sample title). GEO gives only young/aged labels, not numeric ages, so the measure is
-  same-animal dispersion, as for Lunnon.
 - **GSE213478** (human GTEx EPIC, 987 samples, 424 donors, betas 5.6 GB). Colon, lung, blood, muscle,
   kidney and others with donor IDs. Ages are in decade bins only.
 - **GSE184211** (human, 11 tissues, mammalian array, exact ages 26–91, 190 MB). Not paired by donor, but
   it shares its CpGs with the mouse array, so the comparison across species is direct.
 - **Muscle:** GSE304045 (type I and type II fibres vs whole muscle, EPIC v2) and GSE50498 (450k, ages
-  18–89). Muscle fibres do not divide, but their satellite cells do.
-
-Needs:
-- a reader for the mammalian array and its gene annotation;
-- mouse orthologs of the essential, non-essential and housekeeping gene sets.
+  18–89). Muscle fibres do not divide, but their satellite cells do: the within-tissue contrast that can
+  separate turnover from tissue identity.
+- **Mouse replication:** Meer 2018 (GSE121141; liver and lung vs heart and cortex, 6–30 months, RRBS)
+  and Thompson 2018 (GSE120132; blood, liver vs muscle), which have numeric ages.
 
 ## RM3 — Long- vs short-lived rodent groups
 
@@ -32,8 +28,8 @@ between essential and other genes in renewing tissue should shrink, because less
 selection. Chromatin protection alone predicts no change in the gap. Size the effect with the virtual
 experiment (`simulate/selection.py`) before reading the data.
 
-- **GSE279437** (+ RNA GSE280382). Aged + rapamycin (35) and aged + exenatide (118) vs aged controls
-  (122), in all tissues of the same mice.
+- **GSE279437** (+ RNA GSE280382), tried: exenatide changes nothing; rapamycin has only 5 mice per
+  tissue, and against size-matched controls its renewing-tissue values are within noise. Too small.
 - **GSE80672** (Petkovich 2017, blood RRBS, 2.9 GB raw only). GHRKO, Snell dwarf and CR vs controls.
   Ages are in months, although the field says years.
 - **GSE89275** (liver RRBS). Ames dwarf, rapamycin and CR, plus WGBS GSE89273/89274.
