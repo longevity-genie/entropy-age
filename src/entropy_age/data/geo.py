@@ -126,15 +126,26 @@ def prepare_series(gse: str, paths: ProjectPaths) -> tuple[Path, Path]:
     return samples_path, betas_path
 
 
-def read_supplementary_betas(path: Path, *, suffix: str | None = None, id_column: int = 0) -> pl.DataFrame:
+def read_supplementary_betas(
+    path: Path,
+    *,
+    suffix: str | None = None,
+    id_column: int = 0,
+    preamble: int = 0,
+    after_header: int = 0,
+) -> pl.DataFrame:
     """A probe-by-sample beta table from a GEO supplementary CSV/TSV (gzip allowed).
 
     Returns a matrix frame: ``cpg`` plus one Float32 column per sample. With ``suffix`` only
     columns ending in it are kept and the suffix is stripped (GSE74193 interleaves
-    ``SampleN_Beta`` with ``SampleN_detectP``). The separator is sniffed from the header.
+    ``SampleN_Beta`` with ``SampleN_detectP``). ``preamble`` lines are skipped before the header
+    and ``after_header`` rows after it (GSE59685 has four comment lines, a barcode header and two
+    rows of GEO accessions). The separator is sniffed from the header.
     """
     opener = gzip.open if str(path).endswith(".gz") else open
     with opener(path, "rt") as handle:
+        for _ in range(preamble):
+            handle.readline()
         header = handle.readline()
     separator = "\t" if header.count("\t") > header.count(",") else ","
     names = [cell.strip().strip('"') for cell in header.rstrip("\n").split(separator)]
@@ -143,6 +154,8 @@ def read_supplementary_betas(path: Path, *, suffix: str | None = None, id_column
     frame = pl.read_csv(
         path,
         separator=separator,
+        skip_rows=preamble,
+        skip_rows_after_header=after_header,
         columns=[id_name, *keep],
         schema_overrides={n: pl.Float32 for n in keep} | {id_name: pl.String},
         null_values=["", "NA", "NaN", "null"],

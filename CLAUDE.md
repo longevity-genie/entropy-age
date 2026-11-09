@@ -217,3 +217,8 @@ machine and this project that reading the code does not reveal.
   mostly > 50 y): any age slope across that cohort needs batch as a covariate (`human_batches`, `dummies`).
 - This laptop runs at 90+ °C before any job and shuts down at 100 °C: run figures with `nice -n 19` and
   `OMP_NUM_THREADS=1 OPENBLAS_NUM_THREADS=1`, one at a time.
+- The cluster's web proxy refused NCBI downloads with HTTP 403 after about 4 GB in one burst (2026-11-09).
+  Relaying from a laptop (`curl URL | ssh host 'cat > file.part'`) works, but a dropped connection ends
+  the remote `cat` normally: run with `set -o pipefail`, resume with `curl -r <offset>-`, and only rename
+  `.part` after the byte count matches and `gzip -t` passes. A truncated 1.46 of 2.08 GB file was
+  promoted once because the rename trusted the remote exit code.

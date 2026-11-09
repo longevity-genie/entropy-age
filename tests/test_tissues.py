@@ -87,3 +87,16 @@ def test_dispersion_levels_adjust_and_scale():
 
 def test_dummies_single_level_is_empty():
     assert dummies(np.array(["a", "a"])).shape == (2, 0)
+
+
+def test_supplementary_betas_preamble_and_id_rows(tmp_path: Path):
+    path = tmp_path / "lunnon.csv.gz"
+    with gzip.open(path, "wt") as handle:
+        handle.write(
+            "# row1: Sample barcodes\n# row2: New GSMs\n# row3: Old GSMs\n\n"
+            ",bc1,bc2\n,GSM1,GSM2\n,GSMold1,GSMold2\ncg1,0.1,0.2\ncg2,0.3,0.4\n"
+        )
+    frame = read_supplementary_betas(path, preamble=4, after_header=2)
+    assert frame.columns == ["cpg", "bc1", "bc2"]
+    assert frame["cpg"].to_list() == ["cg1", "cg2"]
+    assert np.allclose(frame["bc2"].to_numpy(), [0.2, 0.4])

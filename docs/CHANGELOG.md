@@ -4,6 +4,8 @@ Newest first.
 
 ## Unreleased
 
+- `read_supplementary_betas` skips a preamble and ID rows after the header, which GSE59685's beta file
+  needs (comment lines, a barcode header, then two rows of GEO accessions).
 - `compare_groups` finds group members with a hash lookup instead of `np.isin` on strings, which took
   seconds per group at 10^5 features (a 17 s profile now takes 2 s). The tissue experiment adjusts Hannum
   blood for recruitment site as well as plate, and starts its bootstrap workers with an explicit fork.

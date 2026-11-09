@@ -142,7 +142,8 @@ def _lunnon(matrix: Path, supplementary: Path) -> tuple[pl.DataFrame, pl.DataFra
         pl.col("barcode"),
         pl.col("title"),
     )
-    betas = read_supplementary_betas(supplementary)
+    # 3 comment lines and a blank line, then a barcode header, then rows of new and old GSM accessions
+    betas = read_supplementary_betas(supplementary, preamble=4, after_header=2)
     columns = betas.columns[1:]
     for key in ("sample", "barcode", "title"):
         lookup = dict(zip(samples[key].to_list(), samples["sample"].to_list(), strict=True))
