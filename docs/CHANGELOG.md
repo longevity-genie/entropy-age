@@ -4,6 +4,8 @@ Newest first.
 
 ## Unreleased
 
+- Roadmap RM1–RM4: record the composition check, then a turnover gradient across tissues, long- vs
+  short-lived rodent groups, and stochasticity in RNA, each with the public datasets that would test it.
 - Composition check for prediction 2: `entropy-age figures tissues_cells` reruns the blood-versus-brain
   test with the leading principal components of each tissue's background CpGs as extra covariates
   (5 or 10 components, keeping or removing their age trend; `composition_components` in
