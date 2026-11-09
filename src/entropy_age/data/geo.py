@@ -42,12 +42,17 @@ def _split(line: str) -> list[str]:
     return [cell.strip().strip('"') for cell in line.rstrip("\n").split("\t")]
 
 
+def _clean_key(raw: str) -> str:
+    """``age (in years)`` -> ``age``: the text before any parenthesis, lower case, spaces as underscores."""
+    return raw.split("(")[0].strip().lower().replace(" ", "_") or raw.strip().lower().replace(" ", "_")
+
+
 def _characteristic_columns(rows: list[list[str]]) -> dict[str, list[str | None]]:
     """``!Sample_characteristics_ch1`` rows; ``key: value`` cells become a ``key`` column."""
     columns: dict[str, list[str | None]] = {}
     for i, row in enumerate(rows, start=1):
         matches = [_KEY_VALUE.match(cell) for cell in row]
-        keys = {m.group(1).strip().lower().replace(" ", "_") for m in matches if m}
+        keys = {_clean_key(m.group(1)) for m in matches if m}
         if len(keys) == 1 and all(m or not cell for m, cell in zip(matches, row, strict=True)):
             name = keys.pop()
             values = [m.group(2) if m else None for m in matches]
@@ -119,3 +124,28 @@ def prepare_series(gse: str, paths: ProjectPaths) -> tuple[Path, Path]:
     parsed.samples.write_parquet(samples_path)
     parsed.values.rename({"feature": "cpg"}).write_parquet(betas_path)
     return samples_path, betas_path
+
+
+def read_supplementary_betas(path: Path, *, suffix: str | None = None, id_column: int = 0) -> pl.DataFrame:
+    """A probe-by-sample beta table from a GEO supplementary CSV/TSV (gzip allowed).
+
+    Returns a matrix frame: ``cpg`` plus one Float32 column per sample. With ``suffix`` only
+    columns ending in it are kept and the suffix is stripped (GSE74193 interleaves
+    ``SampleN_Beta`` with ``SampleN_detectP``). The separator is sniffed from the header.
+    """
+    opener = gzip.open if str(path).endswith(".gz") else open
+    with opener(path, "rt") as handle:
+        header = handle.readline()
+    separator = "\t" if header.count("\t") > header.count(",") else ","
+    names = [cell.strip().strip('"') for cell in header.rstrip("\n").split(separator)]
+    id_name = names[id_column]
+    keep = [n for n in names if n != id_name and (suffix is None or n.endswith(suffix))]
+    frame = pl.read_csv(
+        path,
+        separator=separator,
+        columns=[id_name, *keep],
+        schema_overrides={n: pl.Float32 for n in keep} | {id_name: pl.String},
+        null_values=["", "NA", "NaN", "null"],
+    )
+    renamed = {id_name: "cpg"} | ({n: n.removesuffix(suffix) for n in keep} if suffix else {})
+    return frame.rename(renamed)

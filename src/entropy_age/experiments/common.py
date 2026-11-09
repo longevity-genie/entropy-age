@@ -115,6 +115,8 @@ def human_batches(paths: ProjectPaths, sample_ids: list[str]) -> np.ndarray:
 def dummies(labels: np.ndarray) -> np.ndarray:
     """One-hot columns for every level but the first (for use next to an intercept)."""
     levels = np.unique(labels)
+    if levels.size < 2:
+        return np.zeros((len(labels), 0))
     return np.column_stack([(labels == level).astype(float) for level in levels[1:]])
 
 

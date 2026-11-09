@@ -110,8 +110,8 @@ src/entropy_age/              the package (Python 3.13, uv_build)
   published.py                published linear clocks, coefficients from the upstream repository
   plots.py, paths.py          figure styling; the one filesystem layout (ProjectPaths)
   simulate/                   bulk noise, binomial single-cell methylation, schedules, selection
-  data/                       downloaders: upstream repo files, GEO series matrices, 27k annotation + gene sets, matrix frames
-  experiments/                one module per figure (fig1, fig3, fig4, fig5, extension, atlas, genesets)
+  data/                       downloaders: upstream repo files, GEO series matrices, 27k/450k annotation + gene sets, 450k cohorts, matrix frames
+  experiments/                one module per figure (fig1, fig3, fig4, fig5, extension, atlas, genesets, tissues)
 tests/                        pytest, real code paths on small seeded data
 data/input/                   downloads exactly as fetched (gitignored; `entropy-age fetch` recreates)
 data/interim/                 parquet derived from the inputs (gitignored)
@@ -142,9 +142,10 @@ uv run ruff check                         # lint (line length 120, py313)
 uv run entropy-age info                   # where data lives and what is already prepared
 uv run entropy-age fetch upstream         # upstream clock coefficients and sample sheets -> data/input, data/interim
 uv run entropy-age fetch geo GSE41037     # a GEO series matrix -> parquet
-uv run entropy-age fetch annotation       # 27k probe manifest (GPL8490) + essential/non-essential/housekeeping gene sets
+uv run entropy-age fetch annotation       # 27k and 450k probe manifests + essential/non-essential/housekeeping gene sets
+uv run entropy-age fetch cohort hannum jaffe lunnon   # 450k blood/brain cohorts, ~6 GB: run on a cluster
 uv run entropy-age figures [NAMES] --scale quick|paper --seed 42
-                                          # regenerate figures (fig1 fig3 fig4 fig5 extension atlas genesets; default all)
+                                          # regenerate figures (fig1 fig3 fig4 fig5 extension atlas genesets tissues; default all)
 uv run entropy-age stochasticity BETAS SAMPLES [--groups G]
                                           # per-feature drift/entropy metrics for any matrix
 ```

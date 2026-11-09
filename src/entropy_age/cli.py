@@ -62,10 +62,25 @@ def fetch_annotation_cmd(overwrite: bool = False) -> None:
     )
 
 
+@fetch_app.command("cohort")
+def fetch_cohort_cmd(
+    names: Annotated[list[str], typer.Argument(help="hannum jaffe lunnon")],
+    overwrite: bool = False,
+) -> None:
+    """450k methylation cohorts for the cell-type test (GB-scale downloads; run on a cluster)."""
+    from entropy_age.data.cohorts import fetch_cohort, prepare_cohort
+
+    paths = ProjectPaths.default().ensure()
+    for name in names:
+        files = fetch_cohort(name, paths, overwrite=overwrite)
+        lay = prepare_cohort(name, paths)
+        typer.echo(f"[{name}] {len(files)} input files; samples -> {lay.samples}; betas -> {lay.betas}")
+
+
 @app.command()
 def figures(
     names: Annotated[
-        list[str] | None, typer.Argument(help="fig1 fig3 fig4 fig5 extension atlas genesets (default: all)")
+        list[str] | None, typer.Argument(help="fig1 fig3 fig4 fig5 extension atlas genesets tissues (default: all)")
     ] = None,
     scale: Annotated[str, typer.Option(help="quick (laptop) or paper (publication sizes)")] = "quick",
     seed: int = 42,

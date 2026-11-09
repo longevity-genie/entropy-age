@@ -28,12 +28,17 @@ MANIFEST_URL = (
 HART_COMMIT = "53388adbb4fb0931e5c9dda135502be19e4555f0"
 HART_URL = f"https://raw.githubusercontent.com/hart-lab/bagel/{HART_COMMIT}/{{name}}"
 HOUSEKEEPING_URL = "https://www.tau.ac.il/~elieis/HKG/HK_genes.txt"
+MANIFEST_450K = "GPL13534_HumanMethylation450_15017482_v.1.1.csv.gz"
+MANIFEST_450K_URL = f"https://ftp.ncbi.nlm.nih.gov/geo/platforms/GPL13nnn/GPL13534/suppl/{MANIFEST_450K}"
+#: UCSC RefGene regions counted as a promoter (the 27k array's own design targets these)
+PROMOTER_REGIONS = ("TSS1500", "TSS200", "5'UTR", "1stExon")
 
 SOURCES: dict[str, str] = {
     "GPL8490_HumanMethylation27_270596_v.1.2.csv.gz": MANIFEST_URL,
     "CEGv2.txt": HART_URL.format(name="CEGv2.txt"),
     "NEGv1.txt": HART_URL.format(name="NEGv1.txt"),
     "HK_genes.txt": HOUSEKEEPING_URL,
+    MANIFEST_450K: MANIFEST_450K_URL,
 }
 
 #: gene-set name -> (file, description)
@@ -64,19 +69,32 @@ class AnnotationLayout:
     def gene_sets(self) -> Path:
         return self.interim / "gene_sets.parquet"
 
+    @property
+    def probes_450k(self) -> Path:
+        return self.interim / "hm450_probes.parquet"
+
+    @property
+    def links_450k(self) -> Path:
+        return self.interim / "hm450_gene_links.parquet"
+
 
 def fetch_annotation(paths: ProjectPaths, *, overwrite: bool = False) -> list[Path]:
     layout = AnnotationLayout(paths)
     return [download(url, layout.input / name, overwrite=overwrite) for name, url in SOURCES.items()]
 
 
-def read_manifest(path: Path) -> pl.DataFrame:
-    """The ``[Assay]`` block of an Illumina manifest as one row per probe."""
+def _assay_block(path: Path) -> pl.DataFrame:
+    """The ``[Assay]`` block of an Illumina manifest, every column as text."""
     with gzip.open(path, "rt", encoding="latin-1") if str(path).endswith(".gz") else open(path) as handle:
         lines = handle.read().splitlines()
     start = next(i for i, line in enumerate(lines) if line.startswith("[Assay]")) + 1
     end = next((i for i, line in enumerate(lines) if line.startswith("[Controls]")), len(lines))
-    table = pl.read_csv(io.StringIO("\n".join(lines[start:end])), infer_schema_length=0, truncate_ragged_lines=True)
+    return pl.read_csv(io.StringIO("\n".join(lines[start:end])), infer_schema_length=0, truncate_ragged_lines=True)
+
+
+def read_manifest(path: Path) -> pl.DataFrame:
+    """The 27k manifest as one row per probe."""
+    table = _assay_block(path)
     return table.select(
         pl.col("Name").alias("cpg"),
         pl.col("Chr").alias("chr"),
@@ -86,6 +104,56 @@ def read_manifest(path: Path) -> pl.DataFrame:
         pl.col("Distance_to_TSS").cast(pl.Int64, strict=False).alias("distance_to_tss"),
         (pl.col("CPG_ISLAND").str.to_uppercase() == "TRUE").alias("cpg_island"),
     )
+
+
+def read_manifest_450k(path: Path) -> tuple[pl.DataFrame, pl.DataFrame]:
+    """The 450k manifest as ``(probes, links)``.
+
+    ``probes`` has one row per CpG: chromosome, CpG-island relation and whether the CpG sits in a
+    promoter region of any gene. ``links`` has one row per CpG and gene: a 450k probe often lies in
+    several genes, and its gene, RefSeq accession and region lists are parallel ``;``-separated
+    fields. The manifest carries no Entrez IDs, so gene sets are matched by RefSeq, then symbol.
+    """
+    table = _assay_block(path).select(
+        pl.col("Name").alias("cpg"),
+        pl.col("CHR").alias("chr"),
+        pl.col("Relation_to_UCSC_CpG_Island").fill_null("OpenSea").alias("island_relation"),
+        pl.col("UCSC_RefGene_Name").fill_null("").str.split(";").alias("symbol"),
+        pl.col("UCSC_RefGene_Accession").fill_null("").str.split(";").alias("refseq"),
+        pl.col("UCSC_RefGene_Group").fill_null("").str.split(";").alias("region"),
+    )
+    links = (
+        table.filter(pl.col("symbol").list.len() == pl.col("region").list.len())
+        .select("cpg", "symbol", "refseq", "region")
+        .explode("symbol", "refseq", "region")
+        .filter(pl.col("symbol") != "")
+        .with_columns(promoter=pl.col("region").is_in(list(PROMOTER_REGIONS)))
+        .unique(maintain_order=True)
+    )
+    promoter_cpgs = links.filter(pl.col("promoter"))["cpg"].unique()
+    probes = table.select(
+        "cpg",
+        "chr",
+        "island_relation",
+        (pl.col("island_relation") == "Island").alias("cpg_island"),
+        pl.col("cpg").is_in(promoter_cpgs.implode()).alias("promoter"),
+    )
+    return probes, links
+
+
+def link_membership(links: pl.DataFrame, gene_sets: pl.DataFrame, *, promoter_only: bool = True) -> pl.DataFrame:
+    """``feature`` (CpG), ``group`` and ``gene`` from a CpG-to-gene link table: RefSeq first, then symbol."""
+    base = links.filter(pl.col("promoter")) if promoter_only else links
+    matched = []
+    for key in ("refseq", "symbol"):
+        genes = gene_sets.filter(pl.col(key).is_not_null()).select("gene_set", pl.col(key).alias("key"))
+        hits = base.select("cpg", "symbol", pl.col(key).alias("key")).join(genes, on="key")
+        matched.append(
+            hits.select(
+                pl.col("cpg").alias("feature"), pl.col("gene_set").alias("group"), pl.col("symbol").alias("gene")
+            )
+        )
+    return pl.concat(matched).unique(subset=["feature", "group"], keep="first", maintain_order=True)
 
 
 def read_gene_sets(input_dir: Path) -> pl.DataFrame:
@@ -114,6 +182,9 @@ def prepare_annotation(paths: ProjectPaths) -> AnnotationLayout:
     layout.interim.mkdir(parents=True, exist_ok=True)
     read_manifest(layout.input / "GPL8490_HumanMethylation27_270596_v.1.2.csv.gz").write_parquet(layout.probes)
     read_gene_sets(layout.input).write_parquet(layout.gene_sets)
+    probes, links = read_manifest_450k(layout.input / MANIFEST_450K)
+    probes.write_parquet(layout.probes_450k)
+    links.write_parquet(layout.links_450k)
     return layout
 
 

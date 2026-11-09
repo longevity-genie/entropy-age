@@ -52,6 +52,49 @@ def _age_fit(t: np.ndarray, y: np.ndarray, covariates: np.ndarray | None) -> tup
     return coef[1], design @ coef
 
 
+def _partial_spearman(t: np.ndarray, x: np.ndarray, covariates: np.ndarray | None) -> np.ndarray:
+    """Rank correlation of every column with ``t``, partialling out ``covariates`` when given."""
+    ranked_t = stats.rankdata(t)
+    ranked_x = stats.rankdata(x, axis=0)
+    if covariates is not None:
+        base = np.column_stack([np.ones_like(t), covariates])
+        ranked_t = ranked_t - base @ np.linalg.lstsq(base, ranked_t, rcond=None)[0]
+        ranked_x = ranked_x - base @ np.linalg.lstsq(base, ranked_x, rcond=None)[0]
+    rc = ranked_t - ranked_t.mean()
+    rx = ranked_x - ranked_x.mean(axis=0)
+    return (rc @ rx) / np.sqrt((rc @ rc) * (rx**2).sum(axis=0) + _EPS)
+
+
+def dispersion_levels(
+    x: np.ndarray, features: Sequence[str] | None = None, *, covariates: np.ndarray | None = None
+) -> pl.DataFrame:
+    """Between-individual spread of every feature, for a cohort of similar age.
+
+    No age slope is needed: in people of about the same age, how far individuals have diverged
+    at a site is the drift it has accumulated (plus genetics and measurement noise, which a
+    comparison of the same CpGs in the same donors' tissues holds fixed). ``dispersion`` is the
+    residual standard deviation after regressing out ``covariates``, divided by the binomial
+    ``sqrt(m (1 - m))`` so that bounded features starting at different levels are comparable.
+    """
+    x = np.asarray(x, dtype=float)
+    names = list(features) if features is not None else [f"f{j}" for j in range(x.shape[1])]
+    ones = np.ones((x.shape[0], 1))
+    design = ones if covariates is None else np.column_stack([ones, np.asarray(covariates, dtype=float)])
+    coef, *_ = np.linalg.lstsq(design, x, rcond=None)
+    residual = x - design @ coef
+    dof = max(x.shape[0] - design.shape[1], 1)
+    level = x.mean(axis=0)
+    scale = np.sqrt(np.clip(level, 0.01, 0.99) * (1 - np.clip(level, 0.01, 0.99)))
+    return pl.DataFrame(
+        {
+            "feature": names,
+            "baseline": level,
+            "residual_sd": np.sqrt((residual**2).sum(axis=0) / dof),
+            "dispersion": np.sqrt((residual**2).sum(axis=0) / dof) / scale,
+        }
+    )
+
+
 def drift_metrics(
     x: np.ndarray,
     ages: Sequence[float] | np.ndarray,
@@ -59,6 +102,7 @@ def drift_metrics(
     *,
     covariates: np.ndarray | None = None,
     young_quantile: float = 0.2,
+    spearman: bool = True,
 ) -> pl.DataFrame:
     """Per-feature drift statistics from an ``(n_samples, n_features)`` matrix of values in [0, 1].
 
@@ -79,15 +123,7 @@ def drift_metrics(
     names = list(features) if features is not None else [f"f{j}" for j in range(x.shape[1])]
 
     slope, fitted = _age_fit(t, x, covariates)
-    ranked_t = stats.rankdata(t)
-    ranked_x = stats.rankdata(x, axis=0)
-    if covariates is not None:
-        base = np.column_stack([np.ones_like(t), covariates])
-        ranked_t = ranked_t - base @ np.linalg.lstsq(base, ranked_t, rcond=None)[0]
-        ranked_x = ranked_x - base @ np.linalg.lstsq(base, ranked_x, rcond=None)[0]
-    rc = ranked_t - ranked_t.mean()
-    rx = ranked_x - ranked_x.mean(axis=0)
-    spearman = (rc @ rx) / np.sqrt((rc @ rc) * (rx**2).sum(axis=0) + _EPS)
+    rank_corr = _partial_spearman(t, x, covariates) if spearman else np.full(x.shape[1], np.nan)
 
     entropy_slope, _ = _age_fit(t, binary_entropy(x), covariates)
 
@@ -108,7 +144,7 @@ def drift_metrics(
             "late": x[old].mean(axis=0),
             "slope": slope,
             "abs_slope": np.abs(slope),
-            "spearman": spearman,
+            "spearman": rank_corr,
             "entropy_slope": entropy_slope,
             "dispersion_slope": dispersion_slope,
             "log2_dispersion_ratio": np.log2((var_old + _EPS) / (var_young + _EPS)),
@@ -210,6 +246,8 @@ def _stratified_permutation(
     _, codes = np.unique(strata, return_inverse=True)
     n_strata = int(codes.max()) + 1
     observed = _matched_difference(values, labels, codes, n_strata)
+    if n_permutations == 0:
+        return observed, float("nan")  # the matched difference alone (bootstrap resamples)
     exceed = 0
     for _ in range(n_permutations):
         permuted = _permute_within_strata(labels, codes, rng)

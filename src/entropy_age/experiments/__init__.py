@@ -11,6 +11,7 @@ from entropy_age.experiments import (
     fig4_published_clocks,
     fig5_real_data,
     gene_sets,
+    tissue_contrast,
 )
 from entropy_age.experiments.common import Context, Scale, ScaleName
 
@@ -22,6 +23,7 @@ FIGURES: dict[str, Callable[[Context], list[Path]]] = {
     "extension": extension_selection.run,
     "atlas": atlas_real_data.run,
     "genesets": gene_sets.run,
+    "tissues": tissue_contrast.run,
 }
 
 __all__ = ["FIGURES", "Context", "Scale", "ScaleName"]

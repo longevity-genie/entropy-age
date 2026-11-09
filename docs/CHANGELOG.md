@@ -4,6 +4,11 @@ Newest first.
 
 ## Unreleased
 
+- Prediction 2 pipeline (essential-gene protection in renewing versus post-mitotic tissue), results
+  pending: `entropy-age fetch cohort hannum jaffe lunnon` (450k blood and brain cohorts, GB-scale, for a
+  cluster), the 450k manifest in `fetch annotation` with promoter CpG-to-gene links, an age-free
+  `dispersion_levels` measure, and `entropy-age figures tissues` with bootstrap blood-minus-brain
+  intervals. GEO characteristic keys are now cut before any parenthesis (`age (in years)` -> `age`).
 - `docs/extension.md` gains a related-work section, checked against PubMed and Meyer's 2024 thesis.
   No stochastic clock has yet been validated on mammalian RNA (the only application is Ostermann et
   al., JCI Insight 2025, on human induced neurons). The worm neuron-type paper is the closest
