@@ -4,6 +4,7 @@ Newest first.
 
 ## Unreleased
 
+- R1 (GSE179847) submitted; its first attempt's failure and cause in `docs/RUN_LOG.md`.
 - RM5: GSE179847 (Sturm et al. 2022) as cohort `sturm` and figure `passage_sturm`, the culture test's second replication: six healthy lines, the lifespan parts' 21 % controls as baseline, treatments, 3 % oxygen and contact inhibition as arms. Its characteristics are read per sample (GEO shifts a key's row between samples), and the noise floor comes from the flasks split from one culture at a treatment's start (`culture`), since no arm repeats a day. Not yet run on the data.
 - `docs/RUNS.md` entries carry a plan-grammar state line, and `[slurm] plan` names the file, so the account's queue table counts this repository's planned runs.
 - `[slurm] job_prefix` is `entropy-` (was `entropy-age`): the repository's jobs are also named `entropy-rm*`, `entropy-mouse*` and `entropy-cells-*`, which the old prefix left out of the digest.

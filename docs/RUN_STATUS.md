@@ -3,5 +3,5 @@
 Owned by the runner seat (`docs/seats/RUNNER.md`): what runs now, what is next, what waits on whom. Times
 are the scheduler's clock.
 
-Nothing runs. Next: R1 (GSE179847), waiting on the lead's GSE179847 layout (`docs/RUNS.md`). The cluster's
-facts and the runner's share are written (2026-11-10).
+R1 (GSE179847, RM5): parse job 6427996, then figure job 6427997 after it; 8 of the 16 cores. Nothing else
+planned.

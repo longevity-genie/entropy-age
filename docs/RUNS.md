@@ -14,7 +14,7 @@ grammar (`unattended`, `urgent`, `building`, `after <R-id>` or `after job <slurm
 
 ## R1 — GSE179847, the cellular-lifespan replication of the culture test
 
-**State:** unattended · **Owner:** runner
+**State:** building · **Owner:** runner (jobs 6427996, 6427997)
 
 - Serves **RM5** (a second, larger replication of the division-coupling test of `figures passage`).
 - Command, from the clone after `git pull`: `uv run entropy-age fetch cohort sturm` (the two GEO files are already
