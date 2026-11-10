@@ -6,7 +6,9 @@ from entropy_age.experiments.passaged_cells import (
     across_lines,
     arm_slopes,
     arrest_contrast,
+    coupling_across_lines,
     deviations,
+    drift_coupling,
     matched_scores,
     noise_floor,
     score_samples,
@@ -47,7 +49,7 @@ def _culture(selection: bool, rng: np.random.Generator, noise: float = 0.02):
     def drifted(pd, extra=0.0):
         drift = 0.004 * pd * np.ones(n_cpg) + extra
         # chromatin: set CpGs always drift half as fast; selection: their drift is purged as PD accumulate
-        drift[:n_set] = drift[:n_set] * (np.exp(-pd / 15) if selection else 0.5)
+        drift[:n_set] = drift[:n_set] * (np.exp(-pd / 60) if selection else 0.5)
         return np.clip(start + drift * start * (1 - start) * 4 + rng.normal(0, noise, n_cpg), 0, 1)
 
     samples, columns = [], []
@@ -107,6 +109,13 @@ def test_noise_corrected_gap_grows_with_divisions_only_under_selection(selection
         assert abs(g["mean_slope_per_10_pd"]) < 0.03
         late = scores.filter((pl.col("subexperiment") == "Baseline profiling") & (pl.col("doublings") > 20))
         assert late["G_housekeeping"].mean() == pytest.approx(0.5**2 - 1, abs=0.1)  # half the drift, squared
+    coupling = coupling_across_lines(drift_coupling(scores)).row(0, named=True)
+    assert coupling["lines"] == 3
+    if selection:
+        assert coupling["ci_high"] < 0 and coupling["negative"] == 3
+    else:
+        assert coupling["mean_coupling"] == pytest.approx(0.5**2 - 1, abs=0.1)  # a fixed fraction of drift
+        assert coupling["ci_low"] < 0 < coupling["ci_high"] and abs(coupling["mean_change_per_10_pd"]) < 0.03
     arrest = arrest_contrast(scores).filter(pl.col("group") == "housekeeping").row(0, named=True)
     assert arrest["pd_gained_mmc"] == pytest.approx(0.0) and arrest["pd_gained_control"] > 5
     assert arrest["C_control"] > arrest["C_mmc"]

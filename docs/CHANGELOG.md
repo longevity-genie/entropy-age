@@ -25,7 +25,10 @@ Newest first.
   days. Selection predicts that fraction falls with doublings and not with time under arrest. A second
   score on squared deviations removes the array noise floor (per-CpG variance of replicate cultures
   measured on the same day), which otherwise pulls the fraction toward zero wherever deviations are
-  small and makes it fall with doublings even without selection.
+  small and makes it fall with doublings even without selection. Because that ratio explodes where the
+  corrected drift is near zero, the main statistic is a regression of the gap on the corrected matched
+  drift and its interaction with doublings (`drift_coupling`): constant coupling under chromatin
+  protection, a coupling that strengthens with doublings under selection.
 - Design note `docs/PER_PERSON_SCORE.md`: how one sample's protection gap could be measured (deviation
   from a young reference at set features minus matched background features of the same sample), what
   biases it and how it would be validated. Roadmap RM5 lists public methylation time courses of

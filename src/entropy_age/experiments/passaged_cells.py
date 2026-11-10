@@ -217,6 +217,70 @@ def across_lines(slopes: pl.DataFrame) -> pl.DataFrame:
     return pl.DataFrame(rows).sort("measure", "group") if rows else pl.DataFrame()
 
 
+def drift_coupling(scores: pl.DataFrame) -> pl.DataFrame:
+    """Per arm: ``Q ~ 1 + C + C * (PD gained / 10)``, the gap against the noise-free matched drift.
+
+    ``coupling`` is the gap per unit of matched drift at the reference (``-c`` under chromatin
+    protection), ``change_per_10_pd`` how that coupling moves with every 10 doublings: zero when the
+    protection is a fixed fraction of drift, negative when it grows with divisions, as selection
+    predicts. Fitting ``Q`` on ``C`` avoids dividing by drifts near zero, where ``G = Q / C`` explodes.
+    """
+    rows = []
+    for (subexperiment, donor, arm), sel in scores.group_by("subexperiment", "donor", "arm", maintain_order=True):
+        if sel.height < 5:
+            continue
+        t = sel["doublings_gained"].to_numpy() / 10.0
+        for group in _groups(scores):
+            c, q = sel[f"C_{group}"].to_numpy(), sel[f"Q_{group}"].to_numpy()
+            design = np.column_stack([np.ones_like(c), c, c * t])
+            coef, *_ = np.linalg.lstsq(design, q, rcond=None)
+            dof = sel.height - 3
+            residual = q - design @ coef
+            cov = np.linalg.pinv(design.T @ design) * float(residual @ residual) / max(dof, 1)
+            se = np.sqrt(np.clip(np.diag(cov), 0, None))
+            rows.append(
+                {
+                    "subexperiment": subexperiment,
+                    "donor": donor,
+                    "arm": arm,
+                    "group": group,
+                    "samples": sel.height,
+                    "pd_range": float(np.ptp(t) * 10),
+                    "coupling": float(coef[1]),
+                    "coupling_se": float(se[1]),
+                    "change_per_10_pd": float(coef[2]),
+                    "change_se": float(se[2]),
+                    "p_change": float(2 * stats.t.sf(abs(coef[2] / se[2]), dof)) if se[2] > 0 else float("nan"),
+                }
+            )
+    return pl.DataFrame(rows)
+
+
+def coupling_across_lines(coupling: pl.DataFrame) -> pl.DataFrame:
+    """The passaged lines as replicates: mean change of the coupling per 10 PD, t interval, signs."""
+    rows = []
+    base = coupling.filter(pl.col("subexperiment") == "Baseline profiling")
+    for group, sel in base.group_by("group", maintain_order=True):
+        v = sel["change_per_10_pd"].to_numpy()
+        if v.size < 3:
+            continue
+        mean, se = float(v.mean()), float(v.std(ddof=1) / np.sqrt(v.size))
+        half = float(stats.t.ppf(0.975, v.size - 1) * se)
+        rows.append(
+            {
+                "group": group[0] if isinstance(group, tuple) else group,
+                "lines": v.size,
+                "mean_coupling": float(sel["coupling"].mean()),
+                "mean_change_per_10_pd": mean,
+                "ci_low": mean - half,
+                "ci_high": mean + half,
+                "negative": int((v < 0).sum()),
+                "p_t": float(stats.ttest_1samp(v, 0.0).pvalue),
+            }
+        )
+    return pl.DataFrame(rows).sort("group") if rows else pl.DataFrame()
+
+
 def arrest_contrast(scores: pl.DataFrame) -> pl.DataFrame:
     """MMC-arrested minus dividing controls at the last day, per line: ``B`` and ``F`` of each set."""
     mmc = scores.filter(pl.col("subexperiment") == "Growth arrest: MMC")
@@ -267,6 +331,9 @@ def run(ctx: Context) -> list[Path]:
     write_table(slopes, out / "arm_slopes")
     lines = across_lines(slopes)
     write_table(lines, out / "across_lines")
+    coupling = drift_coupling(scores)
+    write_table(coupling, out / "drift_coupling")
+    write_table(coupling_across_lines(coupling), out / "coupling_across_lines")
     arrest = arrest_contrast(scores)
     write_table(arrest, out / "mmc_arrest")
     write_table(
