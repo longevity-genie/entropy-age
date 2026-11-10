@@ -528,6 +528,40 @@ uses the floor pooled over the others. Seven lines, one of each type except fibr
 Tables: `data/output/passaged_cells/` (`drift_coupling`, `coupling_across_lines`, `across_lines`,
 `mmc_arrest`; per-sample scores in `sample_scores`).
 
+### Replication: the Cellular Lifespan Study (GSE179847)
+
+Sturm et al. (2022, GSE179847) grew dermal fibroblasts of six healthy donors and three SURF1 patients
+for up to 265 days on EPIC, with glucocorticoid, mitochondrial and metabolic treatments, 3 % oxygen, and
+contact inhibition for 120-140 days (`entropy-age fetch cohort sturm`, `entropy-age figures passage_sturm`;
+paper scale, seed 42). The baseline is each healthy line's untreated 21 % oxygen course of the two
+lifespan parts of the study (five lines, 5-15 samples, 24-79 PD). No arm measures one day twice; the
+noise floor comes from the flasks split from one culture at a treatment's start, and the baseline
+courses, which have none, use the floor pooled over the experiments that do.
+
+![Passaged cells, GSE179847](figures/passaged_cells_sturm.png)
+
+| | Housekeeping | Core essential |
+|---|---|---|
+| change of the coupling per 10 PD, mean of 5 lines | −0.055, interval −0.21 to +0.10; negative in 3 of 5 | −0.067, −0.29 to +0.16; 4 of 5 |
+| mean coupling | −0.27 | −0.19 |
+| GSE197512, for comparison (7 lines) | −0.14, −0.33 to +0.06 | −0.07, −0.20 to +0.06 |
+
+* **The same answer.** The gap grows with drift in all five lines (`Q` per 10 PD −0.012, interval
+  −0.022 to −0.001), but its share of drift does not move with divisions: per line the change is
+  −0.03 (SE 0.01), +0.07 (0.02), −0.06 (0.03), +0.005 (0.02) and −0.27 (0.04), the last from the
+  shortest course (5 samples, 24 PD), whose coupling is not even negative. Without the floor, the
+  fraction `F` again falls with PD in every line (−0.044 per 10 PD), the noise artefact described above.
+* **Contact inhibition, the long arrest GSE197512 lacked, is not decisive either.** Over 120 days the
+  inhibited cultures gained 1-2 PD and drifted 1.4 to 14 times less per day than dividing controls of the
+  same lines (matched drift `C` 0.0004-0.0021 per 10 days against 0.003-0.014). The gap per unit of
+  their small drift (`Q`/`C`, per 10 days) is −0.86, −1.34 and −0.07 in the three lines at 21 % oxygen,
+  against −0.76, −0.66 and −0.47 in their controls: protection without divisions in two lines, none in
+  the third. Selection alone would give none in all three, chromatin protection the controls' share in
+  all three; drift this small sits near the floor, so neither is excluded.
+
+Tables: `data/output/passaged_cells_sturm/` (as for GSE197512; the contact-inhibition and 3 % oxygen arms
+under `Study part 3` in `arm_slopes` and `drift_coupling`).
+
 ## RNA: transcriptional drift by turnover class (GTEx, mouse, rat)
 
 The same question in transcripts. For each tissue, protein-coding genes with at least 1 CPM in 80 %

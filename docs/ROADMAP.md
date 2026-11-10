@@ -64,15 +64,13 @@ Left:
 
 **State:** unattended · **Owner:** lead
 
-Progress: GSE197512 done (`figures passage`, `docs/extension.md`): the protection is present in culture as
-a roughly constant fraction of drift and does not grow with doublings; the MMC arrest arms carry too
-little drift to measure a gap. Left:
+Progress: GSE197512 and its replication GSE179847 done (`figures passage`, `figures passage_sturm`,
+`docs/extension.md`): in both the protection is a roughly constant fraction of drift and does not grow
+with doublings; the MMC arms (25 days) and contact inhibition (120 days) carry too little drift to decide
+whether protection needs divisions. Left:
 
-- **GSE179847** (Sturm 2022, cellular lifespan, 479 EPIC samples, several donors over 150–250 days, with
-  mitochondrial, metabolic and drug arms; processed matrix 2.0 GB, already downloaded on the cluster):
-  a second, larger replication of the coupling test, with more lines and treatments that slow division.
-- A longer arrest (contact inhibition or quiescence for months, not 25 days) is what the MMC arms lack;
-  none was found on GEO yet.
+- An arrest with more drift than GSE179847's contact inhibition gives (quiescence over a year, or senescent
+  cells kept for months), so that a gap without divisions can be measured above the noise floor.
 - GSE268145 (BJ, 175 MB, downloaded), GSE202554 (astrocytes), GSE131280 (glucose): smaller replications.
 
 ## RM6 — A per-person protection score
