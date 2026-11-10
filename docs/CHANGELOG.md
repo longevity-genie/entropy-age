@@ -4,6 +4,7 @@ Newest first.
 
 ## Unreleased
 
+- RM6: the per-person protection score is built: `entropy_age.protection` (a young reference's level, strata and optional composition components projected into each sample; the matched set-minus-background gap `P`, relative gap `F`, entropy gap `E`; a per-sample error from resampling genes), with figure `per_person` for the design's validation steps 1-3 on Hannum, Jaffe and Lunnon. The culture test's `deviations` and `matched_scores` move there. Not yet run on the data.
 - RM5: GSE179847 replicates GSE197512: the protection is a constant fraction of drift, not growing with divisions (housekeeping change per 10 PD −0.055, interval −0.21 to +0.10, five lines; paper scale, seed 42). Contact inhibition cuts drift but leaves too little to decide whether protection needs divisions. `docs/extension.md`, figure `passaged_cells_sturm`; R1 leaves the run brief.
 - R1 (GSE179847) submitted; its first attempt's failure and cause in `docs/RUN_LOG.md`.
 - RM5: GSE179847 (Sturm et al. 2022) as cohort `sturm` and figure `passage_sturm`, the culture test's second replication: six healthy lines, the lifespan parts' 21 % controls as baseline, treatments, 3 % oxygen and contact inhibition as arms. Its characteristics are read per sample (GEO shifts a key's row between samples), and the noise floor comes from the flasks split from one culture at a treatment's start (`culture`), since no arm repeats a day. Not yet run on the data.

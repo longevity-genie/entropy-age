@@ -75,8 +75,7 @@ whether protection needs divisions. Left:
 
 ## RM6 — A per-person protection score
 
-**State:** unattended · **Owner:** lead
+**State:** building · **Owner:** lead
 
-Progress: designed (`docs/PER_PERSON_SCORE.md`), not built. Build it after RM5's first result: the
-score is the matched set-minus-background deviation from a young reference in one sample, and its
-validation steps 1–4 need only data already used here.
+Progress: designed (`docs/PER_PERSON_SCORE.md`) and built (`entropy_age.protection`, figure `per_person`,
+validation steps 1-3 on Hannum, Jaffe and Lunnon; step 4 is the culture test). Waiting on its run (R2).

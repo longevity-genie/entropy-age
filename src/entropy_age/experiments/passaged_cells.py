@@ -40,16 +40,11 @@ from entropy_age.data.annotation import AnnotationLayout
 from entropy_age.data.cohorts import layout as cohort_layout
 from entropy_age.experiments.common import Context, write_table
 from entropy_age.experiments.tissue_contrast import SET_LABELS, SETS, _features, _matrix
+from entropy_age.protection import deviations, matched_scores
 from entropy_age.stochasticity import baseline_strata
 
 ARM_COLUMNS = ("oxygen", "agent", "serum", "vector")
 COURSES = ("Baseline profiling", "Reduced oxygen", "TERT immortalization")
-
-
-def deviations(x: np.ndarray, reference: np.ndarray) -> np.ndarray:
-    """``|x - m| / sqrt(m (1 - m))`` per sample and CpG, ``m`` clipped to [0.01, 0.99]."""
-    m = np.clip(reference, 0.01, 0.99)
-    return np.abs(x - reference) / np.sqrt(m * (1 - m))
 
 
 def noise_floor(x: np.ndarray, groups: list[np.ndarray]) -> np.ndarray:
@@ -77,26 +72,6 @@ def _replicate_groups(unit: pl.DataFrame) -> tuple[list[np.ndarray], float | Non
         return [], None
     day = groups["days"].min()
     return [np.array(r) for r in groups.filter(pl.col("days") == day)["row"].to_list()], float(day)
-
-
-def matched_scores(d: np.ndarray, in_group: np.ndarray, strata: np.ndarray) -> tuple[np.ndarray, np.ndarray]:
-    """Per sample: the set-minus-matched gap ``P`` and the matched background deviation ``B``.
-
-    Strata holding only set CpGs or only other CpGs are dropped, as in ``compare_groups``.
-    """
-    codes = np.unique(strata, return_inverse=True)[1]
-    k = int(codes.max()) + 1
-    n_in = np.bincount(codes, weights=in_group.astype(float), minlength=k)
-    n_out = np.bincount(codes, weights=(~in_group).astype(float), minlength=k)
-    usable = (n_in > 0) & (n_out > 0)
-    if not usable.any():
-        raise ValueError("no stratum holds both set and other CpGs")
-    onehot = np.zeros((codes.size, k))
-    onehot[np.arange(codes.size), codes] = 1.0
-    mean_in = (d[:, in_group] @ onehot[in_group])[:, usable] / n_in[usable]
-    mean_out = (d[:, ~in_group] @ onehot[~in_group])[:, usable] / n_out[usable]
-    weights = n_in[usable] / n_in[usable].sum()
-    return (mean_in - mean_out) @ weights, mean_out @ weights
 
 
 def _arm(row: dict) -> str:

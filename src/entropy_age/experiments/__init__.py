@@ -14,6 +14,7 @@ from entropy_age.experiments import (
     human_tissues,
     mouse_tissues,
     passaged_cells,
+    per_person,
     rna_gtex,
     rna_rodents,
     tissue_contrast,
@@ -37,6 +38,7 @@ FIGURES: dict[str, Callable[[Context], list[Path]]] = {
     "rna_rodents": rna_rodents.run,
     "passage": passaged_cells.run,
     "passage_sturm": passaged_cells.run_sturm,
+    "per_person": per_person.run,
 }
 
 __all__ = ["FIGURES", "Context", "Scale", "ScaleName"]
