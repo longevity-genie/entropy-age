@@ -4,6 +4,7 @@ Newest first.
 
 ## Unreleased
 
+- The runner is seated: its share (CPU only, at most 16 cores, memory and time from measured runs) in `docs/seats/RUNNER.md`, the cluster's facts kept on the cluster machine; `docs/RUNS.md` gets R1, GSE179847 for RM5, waiting on the lead's layout.
 - The roadmap's items RM2–RM6 carry a `**State:** · **Owner:**` line the plan watcher reads (all unattended, owner the lead); the old prose state line is now `Progress:`.
 - Seats, second pass (D5, amends D3): a `runner` seat beside the lead (`docs/seats/RUNNER.md`), which keeps
   the cluster runs of `docs/RUNS.md` going and logs them in `docs/RUN_LOG.md` and `docs/RUN_STATUS.md`; the

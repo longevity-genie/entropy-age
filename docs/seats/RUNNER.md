@@ -47,11 +47,9 @@ whoever keeps the cluster account.
 
 ## This repository's facts for a run
 
-- **The cluster's facts and the share are not written yet** (2026-11-10). Before the first submission, the
-  partition and the account go into the cluster machine's `slurm.toml` (the account is the person's, kept only
-  there), and the runner's share of the account (cores, memory, time) into this priming, under its own
-  heading, as the maintainers decide it (the kit's rigger role: "written into that seat's table or priming").
-  Until then the runner asks on the desk and submits nothing.
+- **The cluster's facts are in the cluster machine's `slurm.toml`** (written 2026-11-10 on antonkulaga's
+  word; the partition, the nodes and the account are kept only there, never in this repository). The share
+  is below.
 - **Data stays out of git.** Fetched inputs land in the gitignored `data/input/` and `data/interim/` under
   `ENTROPY_AGE_DATA` (`src/entropy_age/paths.py`); only the small CSV summaries under `data/output/` and the
   figures in `docs/figures/` may be committed, and only by the lead's say for a result (CLAUDE.md §2, the 5 MB
@@ -66,6 +64,17 @@ whoever keeps the cluster account.
   comes from `--scale paper` (the lead's priming, "Quick is not paper").
 - **GSE41037's batches are confounded with age** (CLAUDE.md §8): a run that fits an age slope over that
   cohort carries batch as a covariate, or the log says it did not.
+
+## Share
+
+Set by antonkulaga, 2026-11-10, from the cluster account's own rules:
+
+- **CPU only**, on the cluster's CPU partition, its GPU nodes excluded; never a GPU node or a GPU partition.
+- **At most 16 cores in all** across the runner's running jobs, and the thread variables (`OMP_NUM_THREADS`,
+  `MKL_NUM_THREADS`, `OPENBLAS_NUM_THREADS`, `POLARS_MAX_THREADS`) set to the job's cores in every job.
+- **Memory** sized from a measured run of the same step (a smaller cohort or a first job), never guessed;
+  **time** the same, or left at the partition's limit, never invented.
+- The account's cores are shared with other users: a job pending on the group's CPU limit is waited out.
 
 ## Grant
 

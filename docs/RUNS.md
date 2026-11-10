@@ -10,4 +10,12 @@ Each entry is a section `## Rn — name` with:
 - the roadmap item it serves (`RMn`);
 - what the lead needs back (a table, a figure, a number), and anything the run must not do.
 
-No runs are planned yet.
+## R1 — GSE179847, the cellular-lifespan replication of the culture test
+
+- Serves **RM5** (a second, larger replication of the division-coupling test of `figures passage`).
+- Command: the lead's `figures passage` run over GSE179847 (Sturm 2022, 479 EPIC samples, processed matrix
+  2.0 GB, already fetched into `data/input/passage/`). **Waits on the lead**: the code reads only GSE197512
+  today; the lead adds the GSE179847 layout and names the exact command here before the runner submits.
+- Back to the lead: the per-arm slopes of `P`, `B` and `F` on PD and on days, with intervals, as for
+  GSE197512, the CSV summary under `data/output/` and the run's peak memory.
+- Must not: commit the matrix or any parquet; use more than the runner's share.
