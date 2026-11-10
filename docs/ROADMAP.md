@@ -57,22 +57,16 @@ Data:
 
 ## RM5 — Direct selection test: protection against division count in culture
 
-State: data found, downloads under way. If selection among dividing cells protects essential genes,
-the gap between essential and matched CpGs should grow with population doublings in dividing
-cultures, and not with time in arrested ones. Chromatin protection alone predicts a gap that does
-not depend on division. Candidates (human, EPIC unless noted):
+State: GSE197512 done (`figures passage`, `docs/extension.md`): the protection is present in culture as
+a roughly constant fraction of drift and does not grow with doublings; the MMC arrest arms carry too
+little drift to measure a gap. Left:
 
-| Series | Samples | Design | Download |
-|---|---|---|---|
-| **GSE197512** (Endicott 2022) | 372 | fetal and adult fibroblasts, endothelial and other primary cells passaged to senescence, triplicate cultures; arms with low oxygen, mitomycin C arrest, reduced serum, TERT. Population doublings and days in culture per sample | series matrix 2.1 GB (betas) |
-| **GSE179847** (Sturm 2022, cellular lifespan) | 479 | primary fibroblasts of several donors over ~150–250 days, with mitochondrial, metabolic and drug arms; matching RNA-seq GSE179848 | processed matrix 2.0 GB |
-| GSE268145 | 66 | BJ fibroblasts serially passaged | beta matrix 175 MB |
-| GSE202554 | 63 | astrocytes exhaustively passaged | series matrix 450 MB |
-| GSE131280 | 31 | fibroblasts across replicative lifespan, normal vs high glucose | series matrix 140 MB |
-
-GSE197512 is the decisive one: the same parent cultures divide or are arrested, so division and
-time separate. The measure for one sample is the per-person score of `docs/PER_PERSON_SCORE.md`,
-regressed on population doublings and on days in culture.
+- **GSE179847** (Sturm 2022, cellular lifespan, 479 EPIC samples, several donors over 150–250 days, with
+  mitochondrial, metabolic and drug arms; processed matrix 2.0 GB, already downloaded on the cluster):
+  a second, larger replication of the coupling test, with more lines and treatments that slow division.
+- A longer arrest (contact inhibition or quiescence for months, not 25 days) is what the MMC arms lack;
+  none was found on GEO yet.
+- GSE268145 (BJ, 175 MB, downloaded), GSE202554 (astrocytes), GSE131280 (glucose): smaller replications.
 
 ## RM6 — A per-person protection score
 

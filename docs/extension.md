@@ -453,6 +453,73 @@ in GTEx three tissues with very different turnover lose it as much as muscle doe
 GTEx's thirteen brain regions and the direct test in dividing versus arrested
 cultures are the ones that can separate turnover from tissue identity.
 
+## The direct test: does the protection grow with divisions?
+
+The tissue comparisons cannot separate turnover from tissue identity. Cells in culture can: the same
+parent culture can be made to divide or be stopped. Endicott et al. (2022, GSE197512) passaged seven
+primary human lines to replicative senescence on EPIC (fetal, neonatal and adult skin fibroblasts,
+neonatal keratinocytes, adult endothelial and smooth muscle cells; 14-39 samples each, 16-83
+population doublings, PD), and in three lines arrested growth with mitomycin C (MMC) next to
+dividing controls; one line also ran under 3 % oxygen, in reduced serum and with TERT for 136 PD
+(`entropy-age fetch cohort endicott`, `entropy-age figures passage`).
+
+**The two readings.** Chromatin protection makes every division add less error at essential
+promoters than at matched CpGs, in a fixed proportion: the gap grows with drift, but as a constant
+fraction of it. Selection purges cells that damaged an essential gene, and the purge accumulates
+with divisions: the fraction itself should grow with PD. Under arrest there is no selection at all.
+
+**Measure** (the per-sample score of `docs/PER_PERSON_SCORE.md`). In each experiment the reference
+is the mean of its earliest samples. Per later sample and promoter CpG, the squared deviation from
+the reference, minus the array noise floor (the per-CpG variance of replicate cultures measured on
+the same day), scaled by `m (1 - m)`; then, as in every test here, set CpGs minus matched CpGs of the
+same island status and reference decile. `C` is the matched drift, `Q` the set-minus-matched gap,
+`G = Q / C` the gap as a fraction of drift. The main statistic regresses `Q` on `C` and on
+`C x PD` per arm (`drift_coupling`): the first coefficient is the protection per unit of drift, the
+second how it changes per 10 PD (negative = protection grows with divisions).
+
+**Why the noise floor matters.** Without it (absolute deviations, the first version), the
+housekeeping fraction fell with PD in all seven lines (−0.057 per 10 PD, interval −0.078 to −0.035)
+and arrested cultures looked less protected than dividing ones in all three. That is what array
+noise alone produces: the noise is the same for set and matched CpGs, so while drift is small the
+fraction is pulled toward zero, and it approaches its true value as drift grows. The test suite
+reproduces this artefact without any selection.
+
+![Passaged cells](figures/passaged_cells.png)
+
+**Result, with the floor removed** (housekeeping; core essential in brackets):
+
+| | Coupling (protection per unit drift) | Change per 10 PD |
+|---|---|---|
+| mean of the 7 passaged lines | −0.14 [−0.25] | −0.14, interval −0.33 to +0.06 [−0.07, −0.20 to +0.06]; negative in 4 of 7 |
+| neonatal foreskin fibroblast 1 (83 PD) | −0.68 (SE 0.03) | +0.010 (SE 0.003) |
+| fetal skin fibroblast (45 PD) | −0.60 (0.06) | +0.022 (0.013) |
+| fetal skin fibroblast with TERT (136 PD) | −0.73 (0.02) | −0.008 (0.001) |
+| neonatal foreskin fibroblast 2, 3 % oxygen | −0.34 (0.17) | −0.031 (0.033) |
+
+* **The protection is real in culture.** Once drift is well above the floor, the housekeeping gap
+  settles at −0.5 to −0.7 of matched drift in every line (panel b): set CpGs drift about half as
+  much as matched CpGs, in squared units.
+* **It does not grow with divisions.** The fraction is flat from about 25 PD to the end in the long
+  courses; the two longest untransformed lines even weaken slightly with PD, and the 136-PD TERT
+  course strengthens by 0.008 per 10 PD, about 0.1 over its whole span. Across the seven lines the
+  change is as often positive as negative. A protection that is a fixed fraction of drift is what
+  chromatin protection predicts; selection predicts a growing fraction, and this test does not
+  show one.
+* **The arrest arms are uninformative.** MMC stopped most drift (panel d: matched drift 0.0001 to
+  0.0016 against 0.003 to 0.014 in dividing controls over the same 25 days), which confirms that
+  drift in culture comes with division, but leaves too little drift to measure a gap.
+
+**Limits.** Culture is not a tissue: cells are selected for growth on plastic, and Endicott's
+point is that methylation loss in culture is concentrated in late-replicating, CpG-poor domains,
+while promoter CpGs replicate early; matching on island status and level removes part of that
+difference, not replication timing itself. The noise floor comes from replicate cultures measured on
+the same day, which also carries what they diverged since splitting (in the smooth-muscle line,
+measured at day 20, the corrected drift dips below zero at first); one line without replicates
+uses the floor pooled over the others. Seven lines, one of each type except fibroblasts, are few.
+
+Tables: `data/output/passaged_cells/` (`drift_coupling`, `coupling_across_lines`, `across_lines`,
+`mmc_arrest`; per-sample scores in `sample_scores`).
+
 ## How to test the hypothesis on real data
 
 ```python

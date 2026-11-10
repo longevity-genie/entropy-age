@@ -340,17 +340,17 @@ def run(ctx: Context) -> list[Path]:
         membership.group_by("group").agg(pl.len().alias("cpgs"), pl.col("gene").n_unique().alias("genes")),
         out / "set_sizes",
     )
-    return [_figure(ctx, scores, slopes, arrest)]
+    return [_figure(ctx, scores, coupling, arrest)]
 
 
-def _figure(ctx: Context, scores: pl.DataFrame, slopes: pl.DataFrame, arrest: pl.DataFrame) -> Path:
-    fig, axes = plots.panels(4, ncols=2, size=5.2)
+def _figure(ctx: Context, scores: pl.DataFrame, coupling: pl.DataFrame, arrest: pl.DataFrame) -> Path:
+    fig, axes = plots.panels(4, ncols=2, size=5.6)
     base = scores.filter(pl.col("subexperiment") == "Baseline profiling")
     donors = base["donor"].unique(maintain_order=True).to_list()
     colors = {d: plots.PALETTE[i % len(plots.PALETTE)] for i, d in enumerate(donors)}
-    for ax, measure, title in (
-        (axes[0], "B_housekeeping", "Deviation from the earliest sample (matched CpGs)"),
-        (axes[1], "G_housekeeping", "Housekeeping gap as a fraction of it, noise floor removed"),
+    for ax, measure, title, ylabel in (
+        (axes[0], "C_housekeeping", "Drift from the earliest sample", "C, matched CpGs (squared, floor removed)"),
+        (axes[1], "G_housekeeping", "Housekeeping gap as a fraction of drift", "G = Q / C"),
     ):
         for donor in donors:
             sel = base.filter(pl.col("donor") == donor).sort("doublings_gained")
@@ -358,63 +358,62 @@ def _figure(ctx: Context, scores: pl.DataFrame, slopes: pl.DataFrame, arrest: pl
                 sel["doublings_gained"],
                 sel[measure],
                 "o-",
-                ms=3,
+                ms=2.5,
                 lw=0.8,
                 color=colors[donor],
                 label=donor.replace("_", " "),
             )
-        ax.set(xlabel="Population doublings since the reference", title=title)
-        if measure.startswith("G"):
-            ax.axhline(0, color=plots.MUTED, lw=0.8)
-    axes[0].set_ylabel("B (binomial-scaled |Δβ|)")
-    axes[1].set_ylabel("G = Q / C (squared, floor removed)")
+        ax.axhline(0, color=plots.MUTED, lw=0.8)
+        ax.set(xlabel="Population doublings since the reference", ylabel=ylabel, title=title)
+    axes[1].set_ylim(-1.5, 0.8)  # G = Q / C explodes where drift is still near zero, at the first doublings
     axes[0].legend(fontsize=6, loc="upper left")
     plots.label_panel(axes[0], "a")
     plots.label_panel(axes[1], "b")
 
     ax = axes[2]
-    sel = slopes.filter((pl.col("axis") == "doublings") & (pl.col("measure") == "G")).sort("subexperiment", "donor")
+    sel = coupling.filter((pl.col("pd_range") >= 10) & (pl.col("group") != "non_essential"))
     keys = sel.select("subexperiment", "donor", "arm").unique(maintain_order=True).rows()
-    for j, group in enumerate(SETS):
+    for j, group in enumerate(("core_essential", "housekeeping")):
         g = sel.filter(pl.col("group") == group)
         for i, key in enumerate(keys):
             r = g.filter((pl.col("subexperiment") == key[0]) & (pl.col("donor") == key[1]) & (pl.col("arm") == key[2]))
             if r.height == 0:
                 continue
-            y = i + (j - 1) * 0.25
-            v, se = r["slope_per_10"][0], r["se"][0]
+            y = i + (j - 0.5) * 0.3
+            v, se = r["change_per_10_pd"][0], r["change_se"][0]
             ax.plot([v - 1.96 * se, v + 1.96 * se], [y, y], color=plots.PALETTE[j], lw=0.9)
             ax.scatter([v], [y], color=plots.PALETTE[j], s=10, label=SET_LABELS[group] if i == 0 else None)
     ax.axvline(0, color=plots.MUTED, lw=0.8)
-    ax.set_yticks(
-        range(len(keys)),
-        [f"{k[1].replace('_', ' ')} · {k[0].split(':')[-1].strip()} · {k[2]}" for k in keys],
-        fontsize=5.5,
-    )
+    labels = [
+        f"{k[1].replace('_', ' ')} · {k[0].split(':')[-1].strip()}" + ("" if k[2] == "standard" else f" · {k[2]}")
+        for k in keys
+    ]
+    ax.set_yticks(range(len(keys)), labels, fontsize=5.5)
     ax.invert_yaxis()
-    ax.set(xlabel="Slope of G per 10 PD (< 0 = gap grows with divisions)", title="Every arm, on divisions")
-    ax.legend(fontsize=6, loc="lower right")
+    ax.set(xlabel="Change of the coupling per 10 PD (< 0 = protection grows)", title="Arms spanning 10 PD or more")
+    ax.legend(fontsize=6, loc="lower left")
     plots.label_panel(ax, "c")
 
     ax = axes[3]
     if arrest.height:
         hk = arrest.filter(pl.col("group") == "housekeeping")
         for i, r in enumerate(hk.iter_rows(named=True)):
-            ax.scatter([i - 0.12], [r["G_mmc"]], color=plots.ACCENT, s=22, label="MMC arrested" if i == 0 else None)
-            ax.scatter([i + 0.12], [r["G_control"]], color=plots.PALETTE[0], s=22, label="dividing" if i == 0 else None)
+            ax.bar([i - 0.18], [r["C_mmc"]], width=0.34, color=plots.ACCENT, label="MMC arrested" if i == 0 else None)
+            ax.bar(
+                [i + 0.18], [r["C_control"]], width=0.34, color=plots.PALETTE[0], label="dividing" if i == 0 else None
+            )
         ax.set_xticks(
             range(hk.height),
-            [d.replace("_", " ") for d in hk["donor"].to_list()],
-            rotation=20,
+            [d.replace("_", " ").replace(" cell", "") for d in hk["donor"].to_list()],
+            rotation=15,
             ha="right",
             fontsize=6.5,
         )
-        ax.axhline(0, color=plots.MUTED, lw=0.8)
         ax.legend(fontsize=7)
-    ax.set(ylabel="G, housekeeping, last day", title="Arrested against dividing, same line and day")
+    ax.set(ylabel="C, matched CpGs, day 25", title="Arrest stops most drift (too little to fit a gap)")
     plots.label_panel(ax, "d")
     fig.suptitle(
-        "Does the protection gap grow with divisions? Primary cells to senescence (GSE197512)",
+        "Does the protection grow with divisions? Primary cells to senescence (GSE197512)",
         x=0.02,
         ha="left",
         fontsize=12,

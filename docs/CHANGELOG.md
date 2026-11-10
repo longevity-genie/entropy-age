@@ -4,6 +4,13 @@ Newest first.
 
 ## Unreleased
 
+- Direct selection test recorded (`docs/extension.md`, "The direct test"; `docs/figures/passaged_cells.png`):
+  in seven primary lines passaged to senescence, housekeeping CpGs drift about half as much as matched
+  CpGs once drift clears the array noise floor, and that fraction does not grow with doublings (mean
+  change −0.14 per 10 PD, interval −0.33 to +0.06; the longest courses flat). The first, uncorrected
+  version's decline in 7/7 lines was the noise floor. Mitomycin C arrest stopped most drift, leaving too
+  little to measure. The figure now shows drift, the bounded fraction, the coupling change for arms
+  spanning 10 PD or more, and drift under arrest.
 - GTEx and fibre results recorded (`docs/extension.md`, "Human tissues: GTEx and muscle fibres";
   `docs/figures/gtex_tissues.png`, `docs/figures/muscle_fibres.png`): muscle is among the least protected
   GTEx tissues, but breast, ovary and testis are as weak, so the split does not follow turnover; the
