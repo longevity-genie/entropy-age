@@ -363,8 +363,8 @@ Tables: `data/output/mouse_tissues/`.
 ### GTEx: muscle is weakly protected, but so are breast, ovary and testis
 
 The test for the human side of the mouse result: in nine GTEx tissues of 424 post-mortem donors on
-the EPIC array (Oliva et al. 2023, GSE213478), is skeletal muscle, the one post-mitotic tissue, the
-one without protection? Methylation entropy and between-donor spread are fitted against the decade
+the EPIC array (Oliva et al. 2023, GSE213478), is skeletal muscle, the tissue with the fewest divisions, the
+one without protection? (Below: GTEx cannot say how many divisions its donors' muscle had.) Methylation entropy and between-donor spread are fitted against the decade
 bin midpoint (25 to 75), adjusted for sex, autolysis score and smoking. Muscle has 47 donors and no
 one under 30, and fewer donors pull every SD-scaled difference toward zero, so every tissue is
 resampled at 32 donors without replacement (200 resamples) and tissues are compared only on those
@@ -408,6 +408,13 @@ What this supports, and what it does not:
   muscle with intervals excluding zero (housekeeping −0.22 and −0.14). A tissue-level property other than
   turnover separates the two groups; which one (cell mix, hormonal cycling in breast and ovary, the
   germline's own methylation programme in testis) this design cannot say.
+* **Muscle is not a clean low-turnover control in GTEx.** Fibre nuclei never divide, but satellite
+  cells do whenever muscle is loaded, injured or wasting, so how many divisions (and how much room
+  for selection) a donor's muscle had depends on exercise, training history and illness. GTEx records
+  none of these; its only related field is the Hardy scale, which says how the donor died, not how
+  they lived. The muscle contrasts therefore compare protected tissues with a tissue of unknown
+  turnover, and cannot test selection. The breast, ovary and testis point does not rest on muscle
+  and stands.
 * **Between-donor spread loses the gap once composition is adjusted.** With five composition
   components of background CpGs, every spread contrast moves to within 0.03 SD of zero. In blood
   the housekeeping spread gap halves (−0.26 to −0.13). In GTEx, unlike Lunnon's same-donor tissues
@@ -428,7 +435,7 @@ training), before and after 12 weeks of interval training, on EPIC v2 (GSE304045
 `entropy-age figures fibres`). Fibre nuclei never divide; whole muscle also holds satellite cells,
 fibroblasts and endothelium, which do. With no ages, the measure is between-person spread at each
 CpG, adjusted for sex; all three preparations come from the same people, so sample size cannot bias
-the comparison. Selection predicts more protection (a negative difference) in whole muscle than in
+the comparison. Unlike GTEx this cohort does record exercise (the training itself), but not age. Selection predicts more protection (a negative difference) in whole muscle than in
 fibres.
 
 | Set | Whole muscle − type I, before | − type II, before | − type I, 12 weeks | − type II, 12 weeks |
@@ -449,7 +456,8 @@ Tables: `data/output/muscle_fibres/`.
 The neuron result from mouse is the one still standing: cortex and hippocampus without protection in
 mouse, and in humans (Lunnon, same donors) less protection in four brain regions than in blood.
 "Protection needs dividing cells" is not established in either species: mouse heart keeps it, and
-in GTEx three tissues with very different turnover lose it as much as muscle does. The RNA test in
+in GTEx three tissues with very different turnover lose it as much as muscle does. Human muscle
+cannot settle it either way until a cohort records both age and physical activity. The RNA test in
 GTEx's thirteen brain regions and the direct test in dividing versus arrested
 cultures are the ones that can separate turnover from tissue identity.
 

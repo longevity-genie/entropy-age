@@ -13,6 +13,9 @@ turnover. Left:
 - **GSE184211** (human, 11 tissues, mammalian array, exact ages 26–91, 190 MB). Not paired by donor, but
   it shares its CpGs with the mouse array, so the comparison across species is direct.
 - **GSE50498** (450k muscle, ages 18–89): a muscle cohort with exact ages and more donors than GTEx's 47.
+  Like GTEx it says nothing of exercise, and satellite-cell divisions follow loading, injury and
+  wasting, so muscle tests selection only in a cohort that records physical activity or training
+  history beside age (to find; the fibre cohort GSE304045 records training but not age).
 - **Mouse replication:** Meer 2018 (GSE121141; liver and lung vs heart and cortex, 6–30 months, RRBS)
   and Thompson 2018 (GSE120132; blood, liver vs muscle), which have numeric ages.
 - The fibre contrast (GSE304045) was uninformative: a dozen adults of similar age show too little

@@ -4,6 +4,10 @@ Newest first.
 
 ## Unreleased
 
+- GTEx muscle no longer read as a low-turnover control (`docs/extension.md`, GTEx section): satellite
+  cells divide with loading, injury and wasting, and GTEx records no exercise or training, so muscle's
+  turnover in its donors is unknown and its contrasts cannot test selection. `docs/ROADMAP.md` RM2 now
+  asks for a muscle cohort with recorded activity and age.
 - RNA results recorded (`docs/extension.md`, "RNA: transcriptional drift by turnover class";
   `docs/figures/rna_gtex.png`, `docs/figures/rna_rodents.png`): in mouse, housekeeping and core-essential
   genes gain spread with age more slowly than matched genes in every class but brain (renewing minus
