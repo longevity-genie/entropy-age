@@ -12,12 +12,4 @@ grammar (`unattended`, `urgent`, `building`, `after <R-id>` or `after job <slurm
 - the roadmap item it serves (`RMn`);
 - what the lead needs back (a table, a figure, a number), and anything the run must not do.
 
-## R2 — the per-person protection score on Hannum, Jaffe and Lunnon
-
-**State:** building · **Owner:** runner (job 6428234)
-
-- Serves **RM6** (validation steps 1-3 of `docs/PER_PERSON_SCORE.md`).
-- Command, from the clone at 2fe148a or later: `uv run entropy-age figures per_person --scale paper --seed 42`. Its
-  inputs (the three cohorts' betas, the 450k links) are already prepared.
-- Back to the lead: `data/output/per_person/` (`age_fits`, `same_donor_turnover`, the two score tables) and
-  `docs/figures/per_person.png`, with the job's time and peak memory.
+No runs are planned.
