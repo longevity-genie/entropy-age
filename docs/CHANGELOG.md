@@ -4,6 +4,11 @@ Newest first.
 
 ## Unreleased
 
+- Design note `docs/PER_PERSON_SCORE.md`: how one sample's protection gap could be measured (deviation
+  from a young reference at set features minus matched background features of the same sample), what
+  biases it and how it would be validated. Roadmap RM5 lists public methylation time courses of
+  dividing cells (GSE197512 with arrested arms, GSE179847, GSE268145, GSE202554, GSE131280), RM6 the
+  score.
 - RNA test (roadmap RM4): `entropy-age figures rna_gtex` measures, in GTEx v10 RNA-seq (50 tissues with
   100 or more donors), how fast between-donor spread of each expressed protein-coding gene grows with
   age, and compares core-essential, housekeeping and non-essential genes with genes of the same
