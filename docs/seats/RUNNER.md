@@ -48,9 +48,10 @@ whoever keeps the cluster account.
 ## This repository's facts for a run
 
 - **The cluster's facts and the share are not written yet** (2026-11-10). Before the first submission, the
-  partition, the core, memory and time share, and the account go into the cluster machine's
-  `slurm.toml` (the account is the person's, kept only there) and its share into `[slurm]` in
-  `.blueprints.toml`; until then the runner asks on the desk and submits nothing.
+  partition and the account go into the cluster machine's `slurm.toml` (the account is the person's, kept only
+  there), and the runner's share of the account (cores, memory, time) into this priming, under its own
+  heading, as the maintainers decide it (the kit's rigger role: "written into that seat's table or priming").
+  Until then the runner asks on the desk and submits nothing.
 - **Data stays out of git.** Fetched inputs land in the gitignored `data/input/` and `data/interim/` under
   `ENTROPY_AGE_DATA` (`src/entropy_age/paths.py`); only the small CSV summaries under `data/output/` and the
   figures in `docs/figures/` may be committed, and only by the lead's say for a result (CLAUDE.md §2, the 5 MB

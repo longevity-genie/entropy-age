@@ -36,10 +36,12 @@ pool = "~/.config/agent-seat-blueprints/zulip/pool"
 [seat.runner.watch.desk]
 cmd = "sh kit:bin/py.sh kit:classes/desk/watch-answers.py entropy-age runner"
 
-# The cluster's queue at every start: this repository's jobs by job_prefix (the kit's DESIGN §20). The
-# partition, the account and the runner's share are the cluster machine's (its slurm.toml), not this file's.
+# The cluster's queue at every start: this repository's jobs by job_prefix (the kit's DESIGN §20); off the
+# cluster it says the queue is unread. The partition and the account are the cluster machine's (its slurm.toml),
+# never this file's; the runner's share goes into its priming once the maintainers decide it (the kit's rigger role).
 [slurm]
 job_prefix = "entropy-age"
 
+# bash, not the kit's documented `sh`: the script needs bash 4.4 and refuses under a POSIX sh (2026-11-10).
 [digest.jobs]
-cmd = "sh kit:drivers/slurm/digest-jobs.sh"
+cmd = "bash kit:drivers/slurm/digest-jobs.sh"

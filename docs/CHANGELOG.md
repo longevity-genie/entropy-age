@@ -8,7 +8,9 @@ Newest first.
   the cluster runs of `docs/RUNS.md` going and logs them in `docs/RUN_LOG.md` and `docs/RUN_STATUS.md`; the
   seat table gains it, the cluster queue in every session's digest and `[slurm] job_prefix`. Both antonkulaga
   and winternewt are maintainers now; the organisation and desk stay D3's. The kit's pin moves from v0.1.144 to
-  v0.1.163 (`.claude/settings.json`).
+  v0.1.163 (`.claude/settings.json`). The lead's priming names both maintainers and hands runs too big for a
+  session to the runner through `docs/RUNS.md`; the runner's share goes into its priming, and the queue block
+  runs under bash (the kit documents `sh`, which the script refuses).
 - GTEx muscle no longer read as a low-turnover control (`docs/extension.md`, GTEx section): satellite
   cells divide with loading, injury and wasting, and GTEx records no exercise or training, so muscle's
   turnover in its donors is unknown and its contrasts cannot test selection. `docs/ROADMAP.md` RM2 now

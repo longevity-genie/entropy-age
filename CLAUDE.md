@@ -223,6 +223,9 @@ machine and this project that reading the code does not reveal.
 
 - "I mostly work alone on my repositories, so push to `main` directly and avoid pull requests."
   (2026-11-09, the maintainer's standing rule for every repository)
+- "Maintainers: we both, Author - Anton" (2026-11-10, winternewt): antonkulaga and winternewt both maintain
+  this repository, and either one's word decides (D5). D1 and the line above were written by one maintainer
+  working alone.
 - GSE41037's three processing datasets are confounded with age (dataset 1 mostly < 50 y, dataset 3
   mostly > 50 y): any age slope across that cohort needs batch as a covariate (`human_batches`, `dummies`).
 - This laptop runs at 90+ °C before any job and shuts down at 100 °C: run figures with `nice -n 19` and
