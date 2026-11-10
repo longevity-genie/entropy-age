@@ -52,6 +52,28 @@ def deviations(x: np.ndarray, reference: np.ndarray) -> np.ndarray:
     return np.abs(x - reference) / np.sqrt(m * (1 - m))
 
 
+def noise_floor(x: np.ndarray, groups: list[np.ndarray]) -> np.ndarray:
+    """Per-CpG variance of one array: the within-group variance of replicate samples, pooled over groups.
+
+    Replicates are parallel cultures measured on the same day; their spread is array noise plus what
+    the cultures diverged since they were split, the floor every deviation from a reference sits on.
+    """
+    usable = [g for g in groups if g.size >= 2]
+    if not usable:
+        raise ValueError("no group holds two replicates")
+    total = sum(x[g].var(axis=0, ddof=1) * (g.size - 1) for g in usable)
+    return total / sum(g.size - 1 for g in usable)
+
+
+def _replicate_groups(unit: pl.DataFrame) -> tuple[list[np.ndarray], float | None]:
+    """Rows of the replicate samples (same day, same arm) at the earliest day that has any."""
+    groups = unit.group_by("days", "arm").agg(pl.col("row")).filter(pl.col("row").list.len() >= 2)
+    if groups.height == 0:
+        return [], None
+    day = groups["days"].min()
+    return [np.array(r) for r in groups.filter(pl.col("days") == day)["row"].to_list()], float(day)
+
+
 def matched_scores(d: np.ndarray, in_group: np.ndarray, strata: np.ndarray) -> tuple[np.ndarray, np.ndarray]:
     """Per sample: the set-minus-matched gap ``P`` and the matched background deviation ``B``.
 
@@ -80,7 +102,15 @@ def _arm(row: dict) -> str:
 def score_samples(
     samples: pl.DataFrame, x: np.ndarray, features: list[str], probes: pl.DataFrame, membership: pl.DataFrame
 ) -> pl.DataFrame:
-    """One row per non-reference sample: experiment, arm, PD, days and ``P``, ``B``, ``F`` of every set."""
+    """One row per non-reference sample: experiment, arm, PD, days and the scores of every set.
+
+    ``P``, ``B`` and ``F`` use absolute deviations. ``Q``, ``C`` and ``G`` are the same contrasts on
+    squared deviations with the noise floor removed: ``(x - m)^2 - v (1 + 1/k)``, scaled by
+    ``m (1 - m)``, with ``v`` the per-CpG replicate variance (``noise_floor``) and ``k`` the reference
+    samples. Array noise is the same for set and matched CpGs, so in ``F`` it pulls the fraction toward
+    zero wherever deviations are small; ``G`` is free of that floor. An experiment without replicates
+    uses the floor pooled over the others (``noise_source``).
+    """
     island = dict(probes.select("cpg", "cpg_island").iter_rows())
     islands = np.array([bool(island.get(f, False)) for f in features])
     sets = {g: np.isin(features, membership.filter(pl.col("group") == g)["feature"].to_list()) for g in SETS}
@@ -88,8 +118,18 @@ def score_samples(
     samples = samples.with_row_index("row").with_columns(
         arm=pl.struct(*ARM_COLUMNS).map_elements(_arm, return_dtype=pl.String)
     )
+    units = list(samples.group_by("subexperiment", "donor", maintain_order=True))
+    floors: dict[tuple, tuple[np.ndarray, str]] = {}
+    for key, unit in units:
+        groups, day = _replicate_groups(unit)
+        if groups:
+            floors[key] = (noise_floor(x, groups), f"own replicates, day {day:g}")
+    if not floors:
+        raise ValueError("no experiment has replicate samples to estimate the noise floor from")
+    pooled = np.mean([v for v, _ in floors.values()], axis=0)
     rows = []
-    for (subexperiment, donor), unit in samples.group_by("subexperiment", "donor", maintain_order=True):
+    for key, unit in units:
+        subexperiment, donor = key
         first = unit["days"].min()
         ref = unit.filter(pl.col("days") == first)
         later = unit.filter(pl.col("days") > first)
@@ -98,7 +138,11 @@ def score_samples(
         reference = x[ref["row"].to_numpy()].mean(axis=0)
         strata = np.char.add(islands.astype(str), baseline_strata(reference, 10).astype(str))
         d = deviations(x[later["row"].to_numpy()], reference)
+        floor, source = floors.get(key, (pooled, "pooled over experiments"))
+        m = np.clip(reference, 0.01, 0.99)
+        sq = ((x[later["row"].to_numpy()] - reference) ** 2 - floor * (1 + 1 / ref.height)) / (m * (1 - m))
         out = later.select("sample", "arm", "doublings", "days").with_columns(
+            noise_source=pl.lit(source),
             subexperiment=pl.lit(subexperiment),
             donor=pl.lit(donor),
             doublings_gained=pl.col("doublings") - float(ref["doublings"].mean()),
@@ -107,7 +151,9 @@ def score_samples(
         scores = {}
         for group, in_group in sets.items():
             p, b = matched_scores(d, in_group, strata)
+            q, c = matched_scores(sq, in_group, strata)
             scores |= {f"P_{group}": p, f"B_{group}": b, f"F_{group}": p / b}
+            scores |= {f"Q_{group}": q, f"C_{group}": c, f"G_{group}": q / c}
         rows.append(out.with_columns(**{k: pl.Series(v) for k, v in scores.items()}))
     return pl.concat(rows) if rows else pl.DataFrame()
 
@@ -125,7 +171,7 @@ def arm_slopes(scores: pl.DataFrame) -> pl.DataFrame:
             if sel.height < 3 or np.ptp(t) == 0:
                 continue
             for group in _groups(scores):
-                for measure in ("P", "B", "F"):
+                for measure in ("P", "B", "F", "Q", "C", "G"):
                     fit = stats.linregress(t, sel[f"{measure}_{group}"].to_numpy())
                     rows.append(
                         {
@@ -187,7 +233,7 @@ def arrest_contrast(scores: pl.DataFrame) -> pl.DataFrame:
                 "pd_gained_mmc": float(arrested["doublings_gained"].mean()),
                 "pd_gained_control": float(control["doublings_gained"].mean()),
             }
-            for measure in ("B", "F"):
+            for measure in ("B", "F", "C", "G"):
                 a, c = arrested[f"{measure}_{group}"].to_numpy(), control[f"{measure}_{group}"].to_numpy()
                 row |= {
                     f"{measure}_mmc": float(a.mean()),
@@ -237,7 +283,7 @@ def _figure(ctx: Context, scores: pl.DataFrame, slopes: pl.DataFrame, arrest: pl
     colors = {d: plots.PALETTE[i % len(plots.PALETTE)] for i, d in enumerate(donors)}
     for ax, measure, title in (
         (axes[0], "B_housekeeping", "Deviation from the earliest sample (matched CpGs)"),
-        (axes[1], "F_housekeeping", "Housekeeping gap as a fraction of it"),
+        (axes[1], "G_housekeeping", "Housekeeping gap as a fraction of it, noise floor removed"),
     ):
         for donor in donors:
             sel = base.filter(pl.col("donor") == donor).sort("doublings_gained")
@@ -251,16 +297,16 @@ def _figure(ctx: Context, scores: pl.DataFrame, slopes: pl.DataFrame, arrest: pl
                 label=donor.replace("_", " "),
             )
         ax.set(xlabel="Population doublings since the reference", title=title)
-        if measure.startswith("F"):
+        if measure.startswith("G"):
             ax.axhline(0, color=plots.MUTED, lw=0.8)
     axes[0].set_ylabel("B (binomial-scaled |Δβ|)")
-    axes[1].set_ylabel("F = P / B")
+    axes[1].set_ylabel("G = Q / C (squared, floor removed)")
     axes[0].legend(fontsize=6, loc="upper left")
     plots.label_panel(axes[0], "a")
     plots.label_panel(axes[1], "b")
 
     ax = axes[2]
-    sel = slopes.filter((pl.col("axis") == "doublings") & (pl.col("measure") == "F")).sort("subexperiment", "donor")
+    sel = slopes.filter((pl.col("axis") == "doublings") & (pl.col("measure") == "G")).sort("subexperiment", "donor")
     keys = sel.select("subexperiment", "donor", "arm").unique(maintain_order=True).rows()
     for j, group in enumerate(SETS):
         g = sel.filter(pl.col("group") == group)
@@ -279,7 +325,7 @@ def _figure(ctx: Context, scores: pl.DataFrame, slopes: pl.DataFrame, arrest: pl
         fontsize=5.5,
     )
     ax.invert_yaxis()
-    ax.set(xlabel="Slope of F per 10 PD (< 0 = gap grows with divisions)", title="Every arm, on divisions")
+    ax.set(xlabel="Slope of G per 10 PD (< 0 = gap grows with divisions)", title="Every arm, on divisions")
     ax.legend(fontsize=6, loc="lower right")
     plots.label_panel(ax, "c")
 
@@ -287,8 +333,8 @@ def _figure(ctx: Context, scores: pl.DataFrame, slopes: pl.DataFrame, arrest: pl
     if arrest.height:
         hk = arrest.filter(pl.col("group") == "housekeeping")
         for i, r in enumerate(hk.iter_rows(named=True)):
-            ax.scatter([i - 0.12], [r["F_mmc"]], color=plots.ACCENT, s=22, label="MMC arrested" if i == 0 else None)
-            ax.scatter([i + 0.12], [r["F_control"]], color=plots.PALETTE[0], s=22, label="dividing" if i == 0 else None)
+            ax.scatter([i - 0.12], [r["G_mmc"]], color=plots.ACCENT, s=22, label="MMC arrested" if i == 0 else None)
+            ax.scatter([i + 0.12], [r["G_control"]], color=plots.PALETTE[0], s=22, label="dividing" if i == 0 else None)
         ax.set_xticks(
             range(hk.height),
             [d.replace("_", " ") for d in hk["donor"].to_list()],
@@ -298,7 +344,7 @@ def _figure(ctx: Context, scores: pl.DataFrame, slopes: pl.DataFrame, arrest: pl
         )
         ax.axhline(0, color=plots.MUTED, lw=0.8)
         ax.legend(fontsize=7)
-    ax.set(ylabel="F, housekeeping, last day", title="Arrested against dividing, same line and day")
+    ax.set(ylabel="G, housekeeping, last day", title="Arrested against dividing, same line and day")
     plots.label_panel(ax, "d")
     fig.suptitle(
         "Does the protection gap grow with divisions? Primary cells to senescence (GSE197512)",
