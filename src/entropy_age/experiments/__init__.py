@@ -36,6 +36,7 @@ FIGURES: dict[str, Callable[[Context], list[Path]]] = {
     "rna_gtex": rna_gtex.run,
     "rna_rodents": rna_rodents.run,
     "passage": passaged_cells.run,
+    "passage_sturm": passaged_cells.run_sturm,
 }
 
 __all__ = ["FIGURES", "Context", "Scale", "ScaleName"]

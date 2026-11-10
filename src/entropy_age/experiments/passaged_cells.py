@@ -66,8 +66,13 @@ def noise_floor(x: np.ndarray, groups: list[np.ndarray]) -> np.ndarray:
 
 
 def _replicate_groups(unit: pl.DataFrame) -> tuple[list[np.ndarray], float | None]:
-    """Rows of the replicate samples (same day, same arm) at the earliest day that has any."""
-    groups = unit.group_by("days", "arm").agg(pl.col("row")).filter(pl.col("row").list.len() >= 2)
+    """Rows of the replicate samples at the earliest day that has any.
+
+    Replicates are samples of one day and one arm, or, where the cohort names it (``culture``, GSE179847),
+    the flasks split from one culture and measured on the same day, whatever arm each then joined.
+    """
+    key = "culture" if "culture" in unit.columns else "arm"
+    groups = unit.group_by("days", key).agg(pl.col("row")).filter(pl.col("row").list.len() >= 2)
     if groups.height == 0:
         return [], None
     day = groups["days"].min()
@@ -308,22 +313,38 @@ def arrest_contrast(scores: pl.DataFrame) -> pl.DataFrame:
     return pl.DataFrame(rows)
 
 
+TITLES = {
+    "endicott": "Does the protection grow with divisions? Primary cells to senescence (GSE197512)",
+    "sturm": "Does the protection grow with divisions? Fibroblasts over 265 days (GSE179847)",
+}
+
+
 def run(ctx: Context) -> list[Path]:
-    lay = cohort_layout("endicott", ctx.paths)
+    """GSE197512 (Endicott et al.): seven primary lines to senescence, with MMC-arrested arms."""
+    return _run(ctx, "endicott", "passaged_cells")
+
+
+def run_sturm(ctx: Context) -> list[Path]:
+    """GSE179847 (Sturm et al. 2022): the replication over five healthy lines, with contact-inhibition arms."""
+    return _run(ctx, "sturm", "passaged_cells_sturm")
+
+
+def _run(ctx: Context, cohort: str, name: str) -> list[Path]:
+    lay = cohort_layout(cohort, ctx.paths)
     needed = [lay.betas, AnnotationLayout(ctx.paths).links_450k]
     missing = [str(p) for p in needed if not p.exists()]
     if missing:
         print(
-            f"passage: inputs missing ({', '.join(missing)}); run `entropy-age fetch annotation` and "
-            "`entropy-age fetch cohort endicott` first. Nothing was run.",
+            f"{name}: inputs missing ({', '.join(missing)}); run `entropy-age fetch annotation` and "
+            f"`entropy-age fetch cohort {cohort}` first. Nothing was run.",
             file=sys.stderr,
         )
         return []
     plots.apply_style()
-    out = ctx.out_dir("passaged_cells")
+    out = ctx.out_dir(name)
     features, probes, membership = _features(ctx.paths, ctx.rng(160_000))
     samples = pl.read_parquet(lay.samples).sort("subexperiment", "donor", "days", "sample")
-    m = _matrix("endicott", ctx.paths, samples["sample"].to_list(), features)
+    m = _matrix(cohort, ctx.paths, samples["sample"].to_list(), features)
     membership = membership.filter(pl.col("feature").is_in(m.features))
     scores = score_samples(samples, m.values, m.features, probes, membership)
     write_table(scores, out / "sample_scores")
@@ -340,10 +361,12 @@ def run(ctx: Context) -> list[Path]:
         membership.group_by("group").agg(pl.len().alias("cpgs"), pl.col("gene").n_unique().alias("genes")),
         out / "set_sizes",
     )
-    return [_figure(ctx, scores, coupling, arrest)]
+    return [_figure(ctx, scores, coupling, arrest, name, TITLES[cohort])]
 
 
-def _figure(ctx: Context, scores: pl.DataFrame, coupling: pl.DataFrame, arrest: pl.DataFrame) -> Path:
+def _figure(
+    ctx: Context, scores: pl.DataFrame, coupling: pl.DataFrame, arrest: pl.DataFrame, name: str, title: str
+) -> Path:
     fig, axes = plots.panels(4, ncols=2, size=5.6)
     base = scores.filter(pl.col("subexperiment") == "Baseline profiling")
     donors = base["donor"].unique(maintain_order=True).to_list()
@@ -410,14 +433,17 @@ def _figure(ctx: Context, scores: pl.DataFrame, coupling: pl.DataFrame, arrest: 
             fontsize=6.5,
         )
         ax.legend(fontsize=7)
-    ax.set(ylabel="C, matched CpGs, day 25", title="Arrest stops most drift (too little to fit a gap)")
+        ax.set(ylabel="C, matched CpGs, day 25", title="Arrest stops most drift (too little to fit a gap)")
+    else:
+        ax.text(0.5, 0.5, "no MMC arrest arm in this cohort", ha="center", va="center", transform=ax.transAxes)
+        ax.set_axis_off()
     plots.label_panel(ax, "d")
     fig.suptitle(
-        "Does the protection grow with divisions? Primary cells to senescence (GSE197512)",
+        title,
         x=0.02,
         ha="left",
         fontsize=12,
         fontweight="bold",
     )
     fig.tight_layout()
-    return plots.save(fig, ctx.figure_path("passaged_cells"))
+    return plots.save(fig, ctx.figure_path(name))

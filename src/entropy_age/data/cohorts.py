@@ -21,6 +21,10 @@
   training. The processed matrix names its columns ``<type>.<person>-<time><type>[-<rep>]``, which
   become the sample IDs here (GEO titles use another spelling). EPIC v2 probe IDs carry a suffix
   (``cg00002271_BC21``); replicate probes of one CpG are averaged. GEO gives no ages.
+* ``sturm`` - GSE179847, the Cellular Lifespan Study (Sturm et al. 2022): primary human dermal fibroblasts
+  of 6 healthy donors and 3 SURF1 patients passaged for up to 265 days on EPIC, with mitochondrial,
+  metabolic, glucocorticoid, contact-inhibition and 3 % oxygen arms. No sample is measured twice in one arm;
+  the flasks split from one culture at a treatment's start are, and serve as replicates (``culture``).
 * ``endicott`` - GSE197512, primary human cells (fetal, neonatal and adult fibroblasts, endothelial
   and smooth muscle cells, keratinocytes) passaged to replicative senescence on EPIC (Endicott et al.
   2022), with arms under mitomycin C growth arrest, serum withdrawal, 3 % oxygen and TERT
@@ -34,6 +38,7 @@ Every cohort is normalised to ``data/interim/cohorts/<name>_samples.parquet`` (`
 
 from __future__ import annotations
 
+import gzip
 from dataclasses import dataclass
 from pathlib import Path
 
@@ -85,6 +90,12 @@ COHORTS: dict[str, CohortSpec] = {
         "GSE197512",
         None,
         "human primary cells passaged to senescence, with growth-arrested arms, EPIC",
+    ),
+    "sturm": CohortSpec(
+        "sturm",
+        "GSE179847",
+        "GSE179847_Cell_lifespan_DNAm_processed_matrix.csv.gz",
+        "human dermal fibroblasts passaged for up to 265 days, with treatment and contact-inhibition arms, EPIC",
     ),
 }
 
@@ -360,6 +371,92 @@ def _endicott(matrix: Path) -> tuple[pl.DataFrame, pl.DataFrame]:
     return samples, parsed.values.rename({"feature": "cpg"})
 
 
+def _characteristics(matrix: Path) -> pl.DataFrame:
+    """Every ``key: value`` characteristic per sample, whatever row of the series matrix it sits in.
+
+    GSE179847 gives some samples an extra characteristic, so one key sits in different rows for
+    different samples and the row-wise reading of ``read_series_matrix`` names columns wrongly.
+    """
+    accessions: list[str] = []
+    rows: list[list[str]] = []
+    with gzip.open(matrix, "rt") as handle:
+        for line in handle:
+            cells = [c.strip().strip('"') for c in line.rstrip("\n").split("\t")[1:]]
+            if line.startswith("!Sample_geo_accession"):
+                accessions = cells
+            elif line.startswith("!Sample_characteristics_ch1"):
+                rows.append(cells)
+    records = []
+    for i, sample in enumerate(accessions):
+        record = {"sample": sample}
+        for row in rows:
+            key, sep, value = row[i].partition(": ")
+            if sep:
+                if key in record:
+                    raise ValueError(f"{matrix.name}: {sample} gives {key!r} twice")
+                record[key] = value
+        records.append(record)
+    return pl.DataFrame(records, infer_schema_length=None)
+
+
+_STURM_BASELINE_PARTS = ("1", "2")  # the lifespan parts; part 3 is the 3 % oxygen and contact study, part 4 metabolic
+
+
+def _sturm(matrix: Path, supplementary: Path) -> tuple[pl.DataFrame, pl.DataFrame]:
+    meta = _characteristics(matrix)
+    treatment = pl.col("treatments")
+    normal = pl.col("clinical_condition") == "Normal"
+    baseline = normal & (treatment == "Control") & (pl.col("percent_oxygen") == "21")
+    baseline = baseline & pl.col("study_part").is_in(_STURM_BASELINE_PARTS)
+    before = _float("days_after_treatment_udays") <= 0
+    samples = meta.select(
+        "sample",
+        pl.col("cell_line").alias("donor"),
+        pl.lit("dermal fibroblast").alias("tissue"),
+        pl.lit(None, dtype=pl.Float64).alias("age"),
+        pl.when(baseline)
+        .then(pl.lit("Baseline profiling"))
+        .when(normal)
+        .then(pl.lit("Study part ") + pl.col("study_part"))
+        .otherwise(pl.lit("SURF1 mutation"))
+        .alias("subexperiment"),
+        _float("donor_age").alias("donor_age"),
+        pl.col("Sex").alias("sex"),
+        pl.when(pl.col("percent_oxygen") == "21")
+        .then(pl.lit("Ambient"))
+        .otherwise(pl.col("percent_oxygen") + "%")
+        .alias("oxygen"),
+        pl.when(treatment == "Control").then(pl.lit("control")).otherwise(treatment).alias("agent"),
+        pl.lit("Full").alias("serum"),
+        pl.lit("NA").alias("vector"),
+        pl.col("passage").alias("subculture"),
+        _float("population_doublings_utotal_divisions").alias("doublings"),
+        _float("days_grown_udays").alias("days"),
+        _float("days_after_treatment_udays").alias("days_treated"),
+        pl.when(before)
+        .then(pl.concat_str("cell_line", "passage", "days_grown_udays", separator="|"))
+        .otherwise(pl.col("cell_line_group"))
+        .alias("culture"),
+        pl.col("sample_plate").alias("batch"),
+        pl.concat_str("slide", "array", separator="_").alias("barcode"),
+    )
+    bad = samples.filter(pl.col("doublings").is_null() | pl.col("days").is_null())
+    if bad.height:
+        raise ValueError(
+            f"{bad.height} samples without population doublings or days, e.g. {bad['sample'][:3].to_list()}"
+        )
+    betas = read_supplementary_betas(supplementary, suffix=" beta")
+    rename = dict(zip(samples["barcode"].to_list(), samples["sample"].to_list(), strict=True))
+    missing = [c for c in betas.columns[1:] if c not in rename]
+    absent = sorted(set(rename) - set(betas.columns[1:]))
+    if missing or absent:
+        raise ValueError(
+            f"{supplementary.name}: {len(missing)} columns name no sample (e.g. {missing[:3]}), "
+            f"{len(absent)} samples have no column (e.g. {absent[:3]})"
+        )
+    return samples.drop("barcode"), betas.rename(rename)
+
+
 def prepare_cohort(name: str, paths: ProjectPaths) -> CohortLayout:
     lay = layout(name, paths)
     match name:
@@ -377,6 +474,8 @@ def prepare_cohort(name: str, paths: ProjectPaths) -> CohortLayout:
             samples, betas = _fibres(lay.matrix, lay.supplementary)
         case "endicott":
             samples, betas = _endicott(lay.matrix)
+        case "sturm":
+            samples, betas = _sturm(lay.matrix, lay.supplementary)
     lay.samples.parent.mkdir(parents=True, exist_ok=True)
     samples.write_parquet(lay.samples)
     betas.with_columns(pl.exclude("cpg").cast(pl.Float32)).write_parquet(lay.betas)

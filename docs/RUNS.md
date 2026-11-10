@@ -14,12 +14,13 @@ grammar (`unattended`, `urgent`, `building`, `after <R-id>` or `after job <slurm
 
 ## R1 — GSE179847, the cellular-lifespan replication of the culture test
 
-**State:** building · **Owner:** lead (the GSE179847 layout), then runner
+**State:** unattended · **Owner:** runner
 
 - Serves **RM5** (a second, larger replication of the division-coupling test of `figures passage`).
-- Command: the lead's `figures passage` run over GSE179847 (Sturm 2022, 479 EPIC samples, processed matrix
-  2.0 GB, already fetched into `data/input/passage/`). **Waits on the lead**: the code reads only GSE197512
-  today; the lead adds the GSE179847 layout and names the exact command here before the runner submits.
+- Command, from the clone after `git pull`: `uv run entropy-age fetch cohort sturm` (the two GEO files are already
+  in `data/input/geo/GSE179847/`, so this only parses: the 2.0 GB matrix to `data/interim/cohorts/sturm_*.parquet`),
+  then `uv run entropy-age figures passage_sturm --scale paper --seed 42`. Measure the parse's peak memory first
+  (it holds 479 EPIC samples as floats, a few GB); the figure step is smaller.
 - Back to the lead: the per-arm slopes of `P`, `B` and `F` on PD and on days, with intervals, as for
   GSE197512, the CSV summary under `data/output/` and the run's peak memory.
 - Must not: commit the matrix or any parquet; use more than the runner's share.

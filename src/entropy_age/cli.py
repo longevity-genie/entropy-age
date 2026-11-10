@@ -96,7 +96,7 @@ def fetch_rodent_rna_cmd(overwrite: bool = False) -> None:
 
 @fetch_app.command("cohort")
 def fetch_cohort_cmd(
-    names: Annotated[list[str], typer.Argument(help="hannum jaffe lunnon huang gtex fibres endicott")],
+    names: Annotated[list[str], typer.Argument(help="hannum jaffe lunnon huang gtex fibres endicott sturm")],
     overwrite: bool = False,
 ) -> None:
     """450k methylation cohorts for the cell-type test (GB-scale downloads; run on a cluster)."""
