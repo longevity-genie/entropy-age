@@ -11,6 +11,16 @@
   (HorvathMammalMethylChip320), young and aged, aged ones treated with exenatide (a GLP-1
   receptor agonist), rapamycin or vehicle (Huang et al.). The betas and a sample sheet
   (barcode, tissue, treatment, animal) are supplementary files; GEO gives no numeric ages.
+* ``gtex`` - GSE213478, nine GTEx tissues (blood, colon, testis, lung, kidney, breast, prostate,
+  ovary, skeletal muscle) of 424 post-mortem donors on the EPIC array (Oliva et al. 2023). Many
+  donors gave several tissues. GEO gives ages as decade bins only (``20-29``); ``age`` is the bin
+  midpoint and ``age_bin`` keeps the label. The supplementary betas (noob + BMIQ) are named by
+  sample title.
+* ``fibres`` - GSE304045, vastus lateralis of about 12 adults on EPIC v2: pooled type I fibres,
+  pooled type II fibres and whole muscle of each person, before and after 12 weeks of interval
+  training. The processed matrix names its columns ``<type>.<person>-<time><type>[-<rep>]``, which
+  become the sample IDs here (GEO titles use another spelling). EPIC v2 probe IDs carry a suffix
+  (``cg00002271_BC21``); replicate probes of one CpG are averaged. GEO gives no ages.
 
 Every cohort is normalised to ``data/interim/cohorts/<name>_samples.parquet`` (``sample``,
 ``donor``, ``tissue``, ``age`` and the cohort's covariate fields) and ``<name>_betas.parquet``
@@ -52,6 +62,18 @@ COHORTS: dict[str, CohortSpec] = {
         "mouse, 11 tissues of the same animals, young/aged, exenatide/rapamycin",
         series_matrix=False,
         metadata="GSE279437_Methylation_metadata.csv.gz",
+    ),
+    "gtex": CohortSpec(
+        "gtex",
+        "GSE213478",
+        "GSE213478_methylation_DNAm_noob_final_BMIQ_all_tissues_987.txt.gz",
+        "human GTEx, 9 tissues of 424 donors, EPIC, decade age bins",
+    ),
+    "fibres": CohortSpec(
+        "fibres",
+        "GSE304045",
+        "GSE304045_dasen_normalised_filtered_matrix_processed.csv.gz",
+        "human muscle: type I, type II fibres and whole muscle of the same people, EPIC v2",
     ),
 }
 
@@ -218,6 +240,86 @@ def _huang(metadata: Path, supplementary: Path) -> tuple[pl.DataFrame, pl.DataFr
     return samples, betas.select("cpg", *samples["sample"].to_list())
 
 
+#: GSE213478 tissue labels -> names
+GTEX_TISSUES = {
+    "Whole Blood": "whole blood",
+    "Colon - Transverse": "colon",
+    "Testis": "testis",
+    "Lung": "lung",
+    "Kidney - Cortex": "kidney",
+    "Breast - Mammary Tissue": "breast",
+    "Prostate": "prostate",
+    "Ovary": "ovary",
+    "Muscle - Skeletal": "skeletal muscle",
+}
+
+
+def _gtex(matrix: Path, supplementary: Path) -> tuple[pl.DataFrame, pl.DataFrame]:
+    meta = read_series_matrix(matrix).samples
+    unknown = sorted(set(meta["tissue"].to_list()) - set(GTEX_TISSUES))
+    if unknown:
+        raise ValueError(f"unknown GTEx tissues in {matrix.name}: {unknown}")
+    bounds = pl.col("age").str.extract_all(r"\d+")
+    samples = meta.select(
+        "sample",
+        pl.col("collaborator_participant_id").alias("donor"),
+        pl.col("tissue").replace_strict(GTEX_TISSUES).alias("tissue"),
+        ((bounds.list.first().cast(pl.Float64) + bounds.list.last().cast(pl.Float64) + 1) / 2).alias("age"),
+        pl.col("age").alias("age_bin"),
+        pl.col("sex").replace_strict({"1": "male", "2": "female"}).alias("sex"),
+        pl.col("autolysis_score").alias("autolysis"),
+        pl.col("smoker_status").alias("smoker"),
+        pl.col("sample_plate").alias("plate"),
+        pl.col("title"),
+    )
+    if samples["age"].null_count():
+        raise ValueError(f"age bins without two numbers: {samples.filter(pl.col('age').is_null())['age_bin'].unique()}")
+    betas = read_supplementary_betas(supplementary)
+    rename = dict(zip(samples["title"].to_list(), samples["sample"].to_list(), strict=True))
+    missing = [c for c in betas.columns[1:] if c not in rename]
+    if missing:
+        raise ValueError(f"{len(missing)} beta columns are not GEO sample titles, e.g. {missing[:3]}")
+    return samples.drop("title"), betas.rename(rename)
+
+
+_FIBRE_COLUMN = r"^(?<type>T1|T2|WM)\.(?<person>[sf]\d+)-(?<time>pre|4w|12w)(?:T1|T2|WM)(?:-(?<rep>\d+))?$"
+_FIBRE_POOLED = r"^(?:T2X\.T2X|T[12]\.Pooled)-"  # pools of fibres from every person
+
+
+def _fibres(matrix: Path, supplementary: Path) -> tuple[pl.DataFrame, pl.DataFrame]:
+    sex = (
+        read_series_matrix(matrix)
+        .samples.select(pl.col("sample_id").alias("donor"), "sex")
+        .filter(pl.col("sex").is_in(["male", "female"]))
+        .unique()
+    )
+    if sex["donor"].is_duplicated().any():
+        raise ValueError(f"{matrix.name} gives two sexes for one person")
+    betas = read_supplementary_betas(supplementary)
+    columns = pl.DataFrame({"sample": betas.columns[1:]}).filter(~pl.col("sample").str.contains(_FIBRE_POOLED))
+    parts = columns.with_columns(parsed=pl.col("sample").str.extract_groups(_FIBRE_COLUMN)).unnest("parsed")
+    bad = parts.filter(pl.col("type").is_null())["sample"].to_list()
+    if bad:
+        raise ValueError(f"{len(bad)} columns of {supplementary.name} do not parse, e.g. {bad[:3]}")
+    samples = parts.select(
+        "sample",
+        pl.col("person").alias("donor"),
+        pl.lit("skeletal muscle").alias("tissue"),
+        pl.lit(None, dtype=pl.Float64).alias("age"),
+        pl.col("type").alias("fibre"),
+        pl.col("time").replace_strict({"pre": "pre", "4w": "4 weeks", "12w": "12 weeks"}).alias("timepoint"),
+        pl.col("rep").cast(pl.Int64).fill_null(1).alias("replicate"),
+    ).join(sex, on="donor", how="left")
+    probe = pl.col("cpg").str.replace(r"_[A-Z]{2}\d+$", "")
+    collapsed = (
+        betas.select(probe, *samples["sample"].to_list())
+        .group_by("cpg", maintain_order=True)
+        .agg(pl.exclude("cpg").mean())
+        .sort("cpg")
+    )
+    return samples, collapsed
+
+
 def prepare_cohort(name: str, paths: ProjectPaths) -> CohortLayout:
     lay = layout(name, paths)
     match name:
@@ -229,6 +331,10 @@ def prepare_cohort(name: str, paths: ProjectPaths) -> CohortLayout:
             samples, betas = _lunnon(lay.matrix, lay.supplementary)
         case "huang":
             samples, betas = _huang(lay.metadata, lay.supplementary)
+        case "gtex":
+            samples, betas = _gtex(lay.matrix, lay.supplementary)
+        case "fibres":
+            samples, betas = _fibres(lay.matrix, lay.supplementary)
     lay.samples.parent.mkdir(parents=True, exist_ok=True)
     samples.write_parquet(lay.samples)
     betas.with_columns(pl.exclude("cpg").cast(pl.Float32)).write_parquet(lay.betas)

@@ -4,6 +4,13 @@ Newest first.
 
 ## Unreleased
 
+- Human tissue test (roadmap RM2): `entropy-age fetch cohort gtex` (GSE213478, nine GTEx tissues of 424
+  donors on EPIC, decade age bins as midpoints) and `entropy-age figures gtex`, which asks whether
+  skeletal muscle, the one post-mitotic tissue, is where the protection is missing. Every tissue is
+  resampled at the same size (32 donors, without replacement), because fewer donors shrink SD-scaled
+  differences toward zero. `entropy-age fetch cohort fibres` (GSE304045, type I and type II fibres and
+  whole muscle of the same people, EPIC v2) and `entropy-age figures fibres` compare between-person
+  spread in fibres against whole muscle.
 - Mouse results recorded (`docs/extension.md`, `docs/figures/mouse_tissues.png`): in 11 tissues of
   the same mice, essential and housekeeping CpGs gain entropy 0.12–0.16 SD less than matched CpGs in
   renewing than in post-mitotic tissue (8 of 9 aging contrasts exclude zero), slow tissues are as

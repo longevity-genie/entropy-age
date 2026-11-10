@@ -81,6 +81,10 @@ uv run entropy-age fetch cohort huang
 ```
 
 ```bash
+uv run entropy-age fetch cohort gtex fibres
+```
+
+```bash
 ENTROPY_AGE_WORKERS=16 uv run entropy-age figures tissues --scale paper
 ```
 
