@@ -41,6 +41,7 @@ cmd = "sh kit:bin/py.sh kit:classes/desk/watch-answers.py entropy-age runner"
 # never this file's; the runner's share goes into its priming once the maintainers decide it (the kit's rigger role).
 [slurm]
 job_prefix = "entropy-"
+plan = "docs/RUNS.md"       # the runs planned, for the account's queue table
 
 # bash, not the kit's documented `sh`: the script needs bash 4.4 and refuses under a POSIX sh (2026-11-10).
 [digest.jobs]
