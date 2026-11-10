@@ -5,7 +5,9 @@ owner. A done item leaves this file; `docs/CHANGELOG.md` says what landed.
 
 ## RM2 — A turnover gradient across many tissues (methylation)
 
-State: mouse (GSE279437), human GTEx (GSE213478) and muscle fibres (GSE304045) done; see
+**State:** unattended · **Owner:** lead
+
+Progress: mouse (GSE279437), human GTEx (GSE213478) and muscle fibres (GSE304045) done; see
 `docs/extension.md`. In mouse the protection is missing in cortex and hippocampus but kept in heart;
 in GTEx muscle is weakly protected, as are breast, ovary and testis, so the split does not follow
 turnover. Left:
@@ -23,7 +25,9 @@ turnover. Left:
 
 ## RM3 — Long- vs short-lived rodent groups
 
-State: data found, nothing fetched. Interventions that extend lifespan by slowing proliferation (caloric
+**State:** unattended · **Owner:** lead
+
+Progress: data found, nothing fetched. Interventions that extend lifespan by slowing proliferation (caloric
 restriction, rapamycin) make a prediction specific to selection. Total drift should fall, but the gap
 between essential and other genes in renewing tissue should shrink, because less turnover means less
 selection. Chromatin protection alone predicts no change in the gap. Size the effect with the virtual
@@ -42,7 +46,9 @@ experiment (`simulate/selection.py`) before reading the data.
 
 ## RM4 — Stochasticity in RNA
 
-State: the turnover test is done in GTEx v10 (`figures rna_gtex`, 47 tissues) and in the mouse and rat
+**State:** unattended · **Owner:** lead
+
+Progress: the turnover test is done in GTEx v10 (`figures rna_gtex`, 47 tissues) and in the mouse and rat
 atlases (`figures rna_rodents`); see `docs/extension.md`. Mouse repeats the methylation result (brain
 without protection, heart with it), rat leans the same way, GTEx shows no turnover effect in spread.
 Left:
@@ -56,7 +62,9 @@ Left:
 
 ## RM5 — Direct selection test: protection against division count in culture
 
-State: GSE197512 done (`figures passage`, `docs/extension.md`): the protection is present in culture as
+**State:** unattended · **Owner:** lead
+
+Progress: GSE197512 done (`figures passage`, `docs/extension.md`): the protection is present in culture as
 a roughly constant fraction of drift and does not grow with doublings; the MMC arrest arms carry too
 little drift to measure a gap. Left:
 
@@ -69,6 +77,8 @@ little drift to measure a gap. Left:
 
 ## RM6 — A per-person protection score
 
-State: designed (`docs/PER_PERSON_SCORE.md`), not built. Build it after RM5's first result: the
+**State:** unattended · **Owner:** lead
+
+Progress: designed (`docs/PER_PERSON_SCORE.md`), not built. Build it after RM5's first result: the
 score is the matched set-minus-background deviation from a young reference in one sample, and its
 validation steps 1–4 need only data already used here.

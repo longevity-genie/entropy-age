@@ -4,6 +4,7 @@ Newest first.
 
 ## Unreleased
 
+- The roadmap's items RM2–RM6 carry a `**State:** · **Owner:**` line the plan watcher reads (all unattended, owner the lead); the old prose state line is now `Progress:`.
 - Seats, second pass (D5, amends D3): a `runner` seat beside the lead (`docs/seats/RUNNER.md`), which keeps
   the cluster runs of `docs/RUNS.md` going and logs them in `docs/RUN_LOG.md` and `docs/RUN_STATUS.md`; the
   seat table gains it, the cluster queue in every session's digest and `[slurm] job_prefix`. Both antonkulaga
