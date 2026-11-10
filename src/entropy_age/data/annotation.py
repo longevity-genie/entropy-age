@@ -272,3 +272,38 @@ def probe_membership(probes: pl.DataFrame, gene_sets: pl.DataFrame) -> pl.DataFr
             )
         )
     return pl.concat(matched).unique(subset=["feature", "group"], keep="first", maintain_order=True)
+
+
+def symbol_ensembl(symbols: list[str], hgnc: pl.DataFrame) -> pl.DataFrame:
+    """``symbol`` (as given, e.g. a mouse or rat symbol), ``ensembl`` (human) and ``matched_by``.
+
+    The upper-case symbol is looked up as an HGNC approved symbol, then as a previous symbol, then as
+    an alias; a previous symbol or alias counts only when it names one HGNC gene. Two given symbols that
+    reach the same human gene are both dropped, since neither can stand for it alone. Symbols that
+    match nothing are left out.
+    """
+    ids = hgnc.filter(pl.col("ensembl").is_not_null())
+
+    def unique_key(column: str) -> pl.DataFrame:
+        long = ids.select("ensembl", pl.col(column).alias("key")).explode("key").drop_nulls("key")
+        counts = long.group_by("key").agg(pl.len().alias("k"))
+        return long.join(counts.filter(pl.col("k") == 1), on="key").select("key", "ensembl")
+
+    lookups = [
+        ("symbol", ids.select(pl.col("symbol").alias("key"), "ensembl")),
+        ("previous", unique_key("previous")),
+        ("alias", unique_key("aliases")),
+    ]
+    rest = (
+        pl.DataFrame({"symbol": symbols})
+        .unique(maintain_order=True)
+        .with_columns(key=pl.col("symbol").str.to_uppercase())
+    )
+    found = []
+    for how, table in lookups:
+        hits = rest.join(table, on="key", how="inner").unique(subset="symbol", keep="first", maintain_order=True)
+        found.append(hits.select("symbol", "ensembl", pl.lit(how).alias("matched_by")))
+        rest = rest.filter(~pl.col("symbol").is_in(hits["symbol"].implode()))
+    out = pl.concat(found)
+    shared = out.group_by("ensembl").agg(pl.len().alias("k")).filter(pl.col("k") > 1)
+    return out.filter(~pl.col("ensembl").is_in(shared["ensembl"].implode()))

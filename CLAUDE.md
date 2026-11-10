@@ -111,7 +111,7 @@ src/entropy_age/              the package (Python 3.13, uv_build)
   plots.py, paths.py          figure styling; the one filesystem layout (ProjectPaths)
   simulate/                   bulk noise, binomial single-cell methylation, schedules, selection
   data/                       downloaders: upstream repo files, GEO series matrices, 27k/450k annotation + gene sets, 450k cohorts, matrix frames
-  experiments/                one module per figure (fig1, fig3, fig4, fig5, extension, atlas, genesets, tissues, tissues_cells, mouse, gtex, fibres, rna_gtex, passage)
+  experiments/                one module per figure (fig1, fig3, fig4, fig5, extension, atlas, genesets, tissues, tissues_cells, mouse, gtex, fibres, rna_gtex, rna_rodents, passage)
 tests/                        pytest, real code paths on small seeded data
 data/input/                   downloads exactly as fetched (gitignored; `entropy-age fetch` recreates)
 data/interim/                 parquet derived from the inputs (gitignored)
@@ -151,9 +151,10 @@ uv run entropy-age fetch cohort hannum jaffe lunnon   # 450k blood/brain cohorts
 uv run entropy-age fetch mouse-annotation  # mammalian-array probe table (~200 MB) + MGI orthologs
 uv run entropy-age fetch cohort huang      # GSE279437 mouse tissues, 1.2 GB
 uv run entropy-age fetch cohort gtex fibres  # GSE213478 GTEx EPIC (6 GB, needs ~60 GB memory) + GSE304045 muscle fibres (0.6 GB)
+uv run entropy-age fetch rodent-rna         # GSE314817 / GSE314970 mouse and rat RNA atlases, ~80 MB each
 uv run entropy-age fetch cohort endicott   # GSE197512 passaged primary cells, EPIC series matrix 2.1 GB (parse needs tens of GB)
 uv run entropy-age figures [NAMES] --scale quick|paper --seed 42
-                                          # regenerate figures (fig1 fig3 fig4 fig5 extension atlas genesets tissues tissues_cells mouse gtex fibres rna_gtex passage; default all)
+                                          # regenerate figures (fig1 fig3 fig4 fig5 extension atlas genesets tissues tissues_cells mouse gtex fibres rna_gtex rna_rodents passage; default all)
 uv run entropy-age stochasticity BETAS SAMPLES [--groups G]
                                           # per-feature drift/entropy metrics for any matrix
 ```

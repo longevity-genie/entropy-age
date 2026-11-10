@@ -4,6 +4,11 @@ Newest first.
 
 ## Unreleased
 
+- RNA test in rodents (roadmap RM4): `entropy-age fetch rodent-rna` (GSE314817 mouse, 24 tissues;
+  GSE314970 rat, 28 tissues; 6-27 months, raw counts) and `entropy-age figures rna_rodents`, the
+  `rna_gtex` measure with numeric ages, sex and library size as covariates, size-matched subsamples
+  per species. Rodent symbols reach the human gene sets through HGNC by upper-case symbol
+  (`annotation.symbol_ensembl`); two rodent symbols reaching one human gene are both dropped.
 - Direct selection test (roadmap RM5): `entropy-age fetch cohort endicott` (GSE197512, seven primary
   human cell lines passaged to senescence on EPIC, with mitomycin C arrest, serum, oxygen and TERT
   arms; population doublings and days per sample) and `entropy-age figures passage`. Per sample, the

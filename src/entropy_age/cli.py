@@ -75,6 +75,25 @@ def fetch_mouse_annotation_cmd(overwrite: bool = False) -> None:
     )
 
 
+@fetch_app.command("rodent-rna")
+def fetch_rodent_rna_cmd(overwrite: bool = False) -> None:
+    """Mouse and rat aging RNA atlases (GSE314817, GSE314970): series matrices and raw counts, ~80 MB each."""
+    from entropy_age.data.download import download
+    from entropy_age.data.geo import series_matrix_url
+    from entropy_age.experiments.rna_rodents import SPECIES
+
+    paths = ProjectPaths.default().ensure()
+    for gse, counts in SPECIES.values():
+        folder = paths.input / "geo" / gse
+        url = f"https://ftp.ncbi.nlm.nih.gov/geo/series/{gse[:-3]}nnn/{gse}/suppl/{counts}"
+        for target, source in (
+            (folder / f"{gse}_series_matrix.txt.gz", series_matrix_url(gse)),
+            (folder / counts, url),
+        ):
+            download(source, target, overwrite=overwrite, timeout=3600)
+            typer.echo(f"{gse}: {target}")
+
+
 @fetch_app.command("cohort")
 def fetch_cohort_cmd(
     names: Annotated[list[str], typer.Argument(help="hannum jaffe lunnon huang gtex fibres endicott")],
