@@ -37,7 +37,10 @@ Not its own: the licence, `NOTICE` and the upstream repository, which is read on
 
 ## How work reaches it
 
-- The maintainer, in the session or in the chat once the Zulip organisation exists.
+- A maintainer (antonkulaga or winternewt, D5), in the session or in the chat once the Zulip organisation
+  exists.
+- The runner (`docs/seats/RUNNER.md`), by a message: a run's end with its result, or a fault in the code a
+  run needs that it cannot fix within a run.
 - `docs/ROADMAP.md`, read against what exists; the watcher `plan` (`.blueprints.toml`) names an item
   with no state or owner, a date come, a blocked item with no desk question, a desk question answered.
 - The watcher `desk`: the maintainer's answer to a question this seat filed on the desk
@@ -59,6 +62,10 @@ The role's steps, with this repository's facts:
 - **Quick is not paper.** `--scale quick` is for development; a number compared with the paper's comes
   from `--scale paper`, and a table never mixes the two unlabelled. A result that depends on the seed
   is reported with its spread over seeds, not one seed's value.
+- **A run too big for a session goes to the runner.** A fetch of several GB or a `--scale paper` run is
+  written into `docs/RUNS.md` (its command, scale and seed, the RM item it serves, what comes back) and the
+  runner told; the lead reads the result from `docs/RUN_LOG.md` and decides what it means (D5, 2026-11-10:
+  the maintainers added the runner for the cluster's batch work; agreed: nothing checks it).
 - **Data stays out of git.** Inputs are fetched (`entropy-age fetch ...`) into the gitignored
   `data/input/` and `data/interim/`; only small CSV summaries under `data/output/` are tracked
   (CLAUDE.md §2: over about 5 MB goes through Git LFS, on the maintainer's word).
@@ -88,10 +95,11 @@ remote, a new dependency from outside the scientific Python stack (CLAUDE.md §4
 
 ## Not this seat
 
-There is no other seat yet. A liaison (following the upstream repository and GEO), a reviser (a
-manuscript from these results) and a presenter were offered at adoption and not chosen (D3); a need
-for one is said to the maintainer, never taken on here. The desk's secretary asks the maintainer;
-this seat files its questions there (`ask-desk`) when the maintainer is away.
+The runner (`docs/seats/RUNNER.md`, D5) keeps the cluster runs going and logs them; it owns
+`docs/RUN_STATUS.md` and `docs/RUN_LOG.md`, and decides nothing a result means. A liaison (following the
+upstream repository and GEO), a reviser (a manuscript from these results) and a presenter were offered and
+not chosen (D3, D5); a need for one is said to the maintainers, never taken on here. The desk's
+secretary asks the maintainers; this seat files its questions there (`ask-desk`) when they are away.
 
 ## Before a reset
 
