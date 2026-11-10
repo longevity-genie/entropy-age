@@ -4,6 +4,14 @@ Newest first.
 
 ## Unreleased
 
+- GTEx and fibre results recorded (`docs/extension.md`, "Human tissues: GTEx and muscle fibres";
+  `docs/figures/gtex_tissues.png`, `docs/figures/muscle_fibres.png`): muscle is among the least protected
+  GTEx tissues, but breast, ovary and testis are as weak, so the split does not follow turnover; the
+  between-donor spread gap vanishes with composition components; the fibre contrast is uninformative.
+  Corrections: the mouse section no longer says protection is missing wherever cells do not divide
+  (heart keeps it; only cortex and hippocampus lose it); age-free components cannot change an age slope
+  of entropy or of the mean, so the composition check's lifespan line is by construction, not a test.
+  The GTEx figure shows the composition check on spread (panel b) instead of on entropy.
 - RNA test in rodents (roadmap RM4): `entropy-age fetch rodent-rna` (GSE314817 mouse, 24 tissues;
   GSE314970 rat, 28 tissues; 6-27 months, raw counts) and `entropy-age figures rna_rodents`, the
   `rna_gtex` measure with numeric ages, sex and library size as covariates, size-matched subsamples

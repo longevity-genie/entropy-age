@@ -250,7 +250,9 @@ excess *grows* after adjustment (frontal cortex +0.05 to +0.12, entorhinal +0.01
 neuron–glia mix was hiding part of brain's own effect.
 
 **Lifespan slopes: not separable from coordinated aging.** With age-free components the gap is
-unchanged (housekeeping entropy slope −0.14, interval −0.17 to −0.11). With components that keep
+unchanged (housekeeping entropy slope −0.14, interval −0.17 to −0.11), but that is by construction,
+not a test: components orthogonal to age cannot change any age slope of entropy or of the mean
+(corrected 2026-11-10; see the GTEx section). With components that keep
 their age trend it shrinks or flips: blood's housekeeping entropy protection falls from −0.35 to
 −0.08 SD, and cortex's to zero with 10 components. Those components are partly age itself (one of
 Jaffe's correlates r = 0.60 with age), so they remove the coordinated methylation change that thousands
@@ -269,12 +271,13 @@ post-mitotic neurons with glia that do turn over, so the contrast is renewing ag
 post-mitotic tissue, not a clean neuron sample. Sorted neurons, or a tissue such as skeletal muscle,
 would sharpen it (roadmap RM2).
 
-## Mouse tissues: the protection is missing where cells do not divide
+## Mouse tissues: the protection is missing in cortex and hippocampus
 
 A second species, eleven tissues of the same animals and a second array. In Huang et al.'s mice
 (GSE279437, mammalian methylation array, inbred C57BL/6 males), CpGs of essential and housekeeping
 genes gain entropy with age far more slowly than matched CpGs in tissues whose cells divide. In
-cortex, hippocampus and muscle they do not.
+cortex and hippocampus they do not; heart keeps as much protection as white blood cells, and
+skeletal muscle about half of it (see the correction at the end of this section).
 
 **Data and method** (`entropy-age fetch mouse-annotation`, `entropy-age fetch cohort huang`,
 `entropy-age figures mouse`). Young controls (7–21 per tissue) against aged controls (4–14); GEO gives
@@ -343,7 +346,112 @@ rapamycin's renewing-tissue values (−0.07 for both protected sets) sit inside 
 animals and only white blood cells and colon as renewing tissues, this does not test the prediction
 either way. The rapamycin arm needs a larger cohort (roadmap RM3).
 
+**Correction (2026-11-10).** An earlier version of this section said the protection is "missing where
+cells do not divide". The per-tissue table does not carry that. Heart, whose cardiomyocytes barely
+divide, shows −0.12 SD for both protected sets, as much as white blood cells (−0.14, −0.12). Skeletal
+muscle shows −0.06, about half. Only cortex (+0.10) and hippocampus (−0.03) are without it, and the
+hypothalamus, also neural, is strongly protected with 4 aged controls. "Neurons lack the protection"
+is supported by two of three brain regions; "selection needs dividing cells" is not established,
+because the non-neural post-mitotic tissues keep part or all of it. The class contrast above pools
+heart and muscle with the brain regions, so its post-mitotic side is mostly carried by cortex and
+hippocampus.
+
 Tables: `data/output/mouse_tissues/`.
+
+## Human tissues: GTEx and muscle fibres
+
+### GTEx: muscle is weakly protected, but so are breast, ovary and testis
+
+The test for the human side of the mouse result: in nine GTEx tissues of 424 post-mortem donors on
+the EPIC array (Oliva et al. 2023, GSE213478), is skeletal muscle, the one post-mitotic tissue, the
+one without protection? Methylation entropy and between-donor spread are fitted against the decade
+bin midpoint (25 to 75), adjusted for sex, autolysis score and smoking. Muscle has 47 donors and no
+one under 30, and fewer donors pull every SD-scaled difference toward zero, so every tissue is
+resampled at 32 donors without replacement (200 resamples) and tissues are compared only on those
+size-matched resamples (`entropy-age figures gtex`).
+
+![GTEx tissues](figures/gtex_tissues.png)
+
+**Entropy gain with age, set minus matched CpGs** (SD, median of size-matched resamples):
+
+| Tissue | Class | Donors | Core essential | Housekeeping | Non-essential |
+|---|---|---|---|---|---|
+| whole blood | renewing | 54 | −0.20 | −0.27 | +0.27 |
+| colon | renewing | 224 | −0.13 | −0.20 | +0.30 |
+| testis | renewing | 50 | −0.02 | −0.03 | −0.13 |
+| lung | slow | 223 | −0.12 | −0.18 | +0.20 |
+| kidney | slow | 50 | −0.13 | −0.20 | +0.22 |
+| breast | slow | 52 | −0.03 | −0.06 | +0.07 |
+| prostate | slow | 123 | −0.13 | −0.19 | +0.16 |
+| ovary | slow | 164 | −0.03 | −0.05 | +0.15 |
+| skeletal muscle | post-mitotic | 47 | −0.03 | −0.06 | +0.09 |
+
+**Class contrasts** (SD, 95 % interval over the resamples; negative = more protection than muscle):
+
+| Set | Measure | Renewing − muscle | Slow − muscle |
+|---|---|---|---|
+| core essential | entropy | −0.08 (−0.14, −0.02) | −0.06 (−0.11, +0.00) |
+| housekeeping | entropy | −0.10 (−0.19, −0.02) | −0.08 (−0.15, −0.01) |
+| core essential | spread | −0.06 (−0.11, +0.01) | −0.04 (−0.08, +0.01) |
+| housekeeping | spread | −0.10 (−0.17, −0.01) | −0.06 (−0.11, +0.01) |
+| core essential | spread, + 5 age-free components | −0.01 (−0.05, +0.02) | −0.01 (−0.03, +0.02) |
+| housekeeping | spread, + 5 age-free components | −0.03 (−0.06, +0.01) | −0.02 (−0.04, +0.02) |
+
+What this supports, and what it does not:
+
+* **Muscle is among the least protected tissues** (−0.03 core essential, −0.06 housekeeping), and the
+  pooled renewing and slow tissues are more protected than muscle on entropy, three of four intervals
+  excluding zero. That is the direction of the mouse result.
+* **But muscle is not alone, and the split does not follow turnover.** Breast, ovary and testis are as
+  weakly protected as muscle; blood, colon, lung, kidney and prostate are strongly protected. Testis
+  is the fastest-renewing tissue in the set. Of the single tissues, only blood and kidney differ from
+  muscle with intervals excluding zero (housekeeping −0.22 and −0.14). A tissue-level property other than
+  turnover separates the two groups; which one (cell mix, hormonal cycling in breast and ovary, the
+  germline's own methylation programme in testis) this design cannot say.
+* **Between-donor spread loses the gap once composition is adjusted.** With five composition
+  components of background CpGs, every spread contrast moves to within 0.03 SD of zero. In blood
+  the housekeeping spread gap halves (−0.26 to −0.13). In GTEx, unlike Lunnon's same-donor tissues
+  (composition check above), the spread contrast between tissues is not robust to the cell mix.
+* **Entropy and mean-slope results cannot be checked with age-free components at all.** The
+  components are made orthogonal to age and the other covariates, so adding them leaves every age
+  slope of the mean or of entropy unchanged in the full data, by construction. The two versions
+  differ only through resampling noise. Only residual-based measures (between-donor spread) can move.
+  This also applies to the lifespan line of the composition check above, corrected there.
+
+Tables: `data/output/gtex_tissues/` (`tissues`, `point_estimates` on all donors, `contrasts` over
+size-matched resamples).
+
+### Muscle fibres: uninformative
+
+Pooled type I fibres, pooled type II fibres and whole muscle of the same 12 adults (11 after
+training), before and after 12 weeks of interval training, on EPIC v2 (GSE304045,
+`entropy-age figures fibres`). Fibre nuclei never divide; whole muscle also holds satellite cells,
+fibroblasts and endothelium, which do. With no ages, the measure is between-person spread at each
+CpG, adjusted for sex; all three preparations come from the same people, so sample size cannot bias
+the comparison. Selection predicts more protection (a negative difference) in whole muscle than in
+fibres.
+
+| Set | Whole muscle − type I, before | − type II, before | − type I, 12 weeks | − type II, 12 weeks |
+|---|---|---|---|---|
+| core essential | −0.015 (−0.025, −0.001) | −0.019 (−0.039, −0.003) | +0.007 (−0.011, +0.025) | +0.013 (−0.003, +0.029) |
+| housekeeping | +0.004 (−0.004, +0.012) | −0.006 (−0.015, +0.004) | +0.001 (−0.015, +0.016) | +0.007 (−0.010, +0.022) |
+| non-essential | −0.032 (−0.069, −0.002) | −0.004 (−0.043, +0.025) | −0.030 (−0.063, +0.006) | −0.015 (−0.055, +0.041) |
+
+Every difference is 0.03 SD or smaller and the sign does not hold from before to after training.
+The measure itself has no power here: even within pure fibres the housekeeping set is only −0.01 to
+−0.02 SD below matched CpGs. A dozen adults of unknown, similar age show too little between-person
+divergence for a set contrast. This result is uninformative, not negative.
+
+Tables: `data/output/muscle_fibres/`.
+
+### What the human tissues add
+
+The neuron result from mouse is the one still standing: cortex and hippocampus without protection in
+mouse, and in humans (Lunnon, same donors) less protection in four brain regions than in blood.
+"Protection needs dividing cells" is not established in either species: mouse heart keeps it, and
+in GTEx three tissues with very different turnover lose it as much as muscle does. The RNA test in
+GTEx's thirteen brain regions and the direct test in dividing versus arrested
+cultures are the ones that can separate turnover from tissue identity.
 
 ## How to test the hypothesis on real data
 

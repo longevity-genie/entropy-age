@@ -5,20 +5,18 @@ owner. A done item leaves this file; `docs/CHANGELOG.md` says what landed.
 
 ## RM2 — A turnover gradient across many tissues (methylation)
 
-State: the mouse part is done (`figures mouse`, GSE279437; see `docs/extension.md`). There, protection
-is a step rather than a slope: as strong in slow tissues (liver, kidney, adipose) as in renewing ones,
-and missing in cortex and hippocampus. Next, the human tissues and a contrast of turnover inside one
-tissue:
+State: mouse (GSE279437), human GTEx (GSE213478) and muscle fibres (GSE304045) done; see
+`docs/extension.md`. In mouse the protection is missing in cortex and hippocampus but kept in heart;
+in GTEx muscle is weakly protected, as are breast, ovary and testis, so the split does not follow
+turnover. Left:
 
-- **GSE213478** (human GTEx EPIC, 987 samples, 424 donors, betas 5.6 GB). Colon, lung, blood, muscle,
-  kidney and others with donor IDs. Ages are in decade bins only.
 - **GSE184211** (human, 11 tissues, mammalian array, exact ages 26–91, 190 MB). Not paired by donor, but
   it shares its CpGs with the mouse array, so the comparison across species is direct.
-- **Muscle:** GSE304045 (type I and type II fibres vs whole muscle, EPIC v2) and GSE50498 (450k, ages
-  18–89). Muscle fibres do not divide, but their satellite cells do: the within-tissue contrast that can
-  separate turnover from tissue identity.
+- **GSE50498** (450k muscle, ages 18–89): a muscle cohort with exact ages and more donors than GTEx's 47.
 - **Mouse replication:** Meer 2018 (GSE121141; liver and lung vs heart and cortex, 6–30 months, RRBS)
   and Thompson 2018 (GSE120132; blood, liver vs muscle), which have numeric ages.
+- The fibre contrast (GSE304045) was uninformative: a dozen adults of similar age show too little
+  between-person divergence. A within-tissue turnover contrast needs aged and young people.
 
 ## RM3 — Long- vs short-lived rodent groups
 

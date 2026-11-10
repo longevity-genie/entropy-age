@@ -377,13 +377,13 @@ def _figure_gtex(ctx: Context, boot: pl.DataFrame, summary: pl.DataFrame) -> Pat
     colors = {g: plots.PALETTE[i] for i, g in enumerate(SETS)}
     tissues = [t for t in TURNOVER if t in set(boot["tissue"].to_list())]
 
-    def by_tissue(ax, adjustment: str, title: str) -> None:
+    def by_tissue(ax, adjustment: str, metric: str, title: str) -> None:
         for j, group in enumerate(SETS):
             for i, tissue in enumerate(tissues):
                 v = boot.filter(
                     (pl.col("tissue") == tissue)
                     & (pl.col("adjustment") == adjustment)
-                    & (pl.col("metric") == "entropy_slope")
+                    & (pl.col("metric") == metric)
                     & (pl.col("group") == group)
                 )["matched_diff_sd"].to_numpy()
                 if v.size == 0:
@@ -398,23 +398,32 @@ def _figure_gtex(ctx: Context, boot: pl.DataFrame, summary: pl.DataFrame) -> Pat
         ax.set_xticks(range(len(tissues)), tissues, rotation=45, ha="right", fontsize=7)
         ax.set(ylabel="Set minus matched CpGs (SD)", title=title)
 
-    by_tissue(axes[0], "covariates", f"Entropy gain with age, {SUBSAMPLE} donors per tissue")
+    by_tissue(axes[0], "covariates", "entropy_slope", f"Entropy gain with age, {SUBSAMPLE} donors per tissue")
     plots.label_panel(axes[0], "a")
-    by_tissue(axes[1], "pc5_age_free", "Same, plus 5 age-free composition components")
+    # age-free components leave every age slope of the mean or of entropy unchanged (they are orthogonal
+    # to age), so the composition check is shown on between-donor spread, which they can change
+    by_tissue(axes[1], "pc5_age_free", "dispersion_slope", "Spread gain with age, plus 5 age-free components")
     plots.label_panel(axes[1], "b")
 
     entropy = summary.filter(pl.col("metric") == "entropy_slope")
-    classes = entropy.filter(pl.col("contrast").str.ends_with("post-mitotic")).with_columns(
+    shown = ((pl.col("metric") == "entropy_slope") & (pl.col("adjustment") == "covariates")) | (
+        pl.col("metric") == "dispersion_slope"
+    )
+    classes = summary.filter(shown & pl.col("contrast").str.ends_with("post-mitotic")).with_columns(
         label=pl.format(
             "{} · {} · {}",
             pl.col("group").replace_strict(SET_LABELS),
             pl.col("contrast").str.replace(" - post-mitotic", ""),
-            pl.col("adjustment").replace({"covariates": "cov", "pc5_age_free": "+PCs"}),
+            pl.format(
+                "{}{}",
+                pl.col("metric").replace({"entropy_slope": "entropy", "dispersion_slope": "spread"}),
+                pl.col("adjustment").replace({"covariates": "", "pc5_age_free": " +PCs"}),
+            ),
         )
     )
     _contrast_panel(
         axes[2],
-        classes.sort("group", "contrast", "adjustment"),
+        classes.sort("group", "contrast", "metric", "adjustment", descending=[False, False, True, False]),
         "Turnover class minus skeletal muscle",
         "Difference (SD); < 0 = more protection than in muscle",
     )

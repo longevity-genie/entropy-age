@@ -1,0 +1,10 @@
+tissue,turnover,donors,cpgs,age_min_bin_mid,age_max_bin_mid,age_mean
+whole blood,renewing,54,93175,25.0,75.0,50.370370370370374
+colon,renewing,224,93175,25.0,75.0,56.42857142857143
+testis,renewing,50,93175,25.0,75.0,54.0
+lung,slow,223,93175,25.0,75.0,55.134529147982065
+kidney,slow,50,93175,35.0,75.0,59.6
+breast,slow,52,93175,25.0,75.0,50.96153846153846
+prostate,slow,123,93175,25.0,75.0,54.67479674796748
+ovary,slow,164,93175,25.0,75.0,51.09756097560975
+skeletal muscle,post-mitotic,47,93175,35.0,75.0,57.5531914893617

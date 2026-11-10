@@ -45,7 +45,8 @@ liver, kidney, adipose) and missing in cortex and hippocampus
   [Fig. 4 published clocks](docs/figures/fig4_published_clocks.png) · [Fig. 5 real data](docs/figures/fig5_real_data.png) ·
   [Extension](docs/figures/extension_selection.png) · [Atlas](docs/figures/atlas_real_data.png) ·
   [Gene sets](docs/figures/gene_sets.png) · [Blood vs brain](docs/figures/tissue_contrast.png) ·
-  [Composition check](docs/figures/tissue_contrast_cells.png) · [Mouse tissues](docs/figures/mouse_tissues.png)
+  [Composition check](docs/figures/tissue_contrast_cells.png) · [Mouse tissues](docs/figures/mouse_tissues.png) ·
+  [GTEx tissues](docs/figures/gtex_tissues.png) · [Muscle fibres](docs/figures/muscle_fibres.png)
 
 ## Quick start
 
