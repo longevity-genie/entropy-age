@@ -77,7 +77,7 @@ def fetch_mouse_annotation_cmd(overwrite: bool = False) -> None:
 
 @fetch_app.command("cohort")
 def fetch_cohort_cmd(
-    names: Annotated[list[str], typer.Argument(help="hannum jaffe lunnon huang gtex fibres")],
+    names: Annotated[list[str], typer.Argument(help="hannum jaffe lunnon huang gtex fibres endicott")],
     overwrite: bool = False,
 ) -> None:
     """450k methylation cohorts for the cell-type test (GB-scale downloads; run on a cluster)."""

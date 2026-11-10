@@ -21,6 +21,11 @@
   training. The processed matrix names its columns ``<type>.<person>-<time><type>[-<rep>]``, which
   become the sample IDs here (GEO titles use another spelling). EPIC v2 probe IDs carry a suffix
   (``cg00002271_BC21``); replicate probes of one CpG are averaged. GEO gives no ages.
+* ``endicott`` - GSE197512, primary human cells (fetal, neonatal and adult fibroblasts, endothelial
+  and smooth muscle cells, keratinocytes) passaged to replicative senescence on EPIC (Endicott et al.
+  2022), with arms under mitomycin C growth arrest, serum withdrawal, 3 % oxygen and TERT
+  immortalisation. Every sample carries its population doublings and days in culture; ``donor`` is
+  the cell line, ``age`` is null (donor age stays in ``donor_age``). The series matrix carries the betas.
 
 Every cohort is normalised to ``data/interim/cohorts/<name>_samples.parquet`` (``sample``,
 ``donor``, ``tissue``, ``age`` and the cohort's covariate fields) and ``<name>_betas.parquet``
@@ -74,6 +79,12 @@ COHORTS: dict[str, CohortSpec] = {
         "GSE304045",
         "GSE304045_dasen_normalised_filtered_matrix_processed.csv.gz",
         "human muscle: type I, type II fibres and whole muscle of the same people, EPIC v2",
+    ),
+    "endicott": CohortSpec(
+        "endicott",
+        "GSE197512",
+        None,
+        "human primary cells passaged to senescence, with growth-arrested arms, EPIC",
     ),
 }
 
@@ -320,6 +331,35 @@ def _fibres(matrix: Path, supplementary: Path) -> tuple[pl.DataFrame, pl.DataFra
     return samples, collapsed
 
 
+def _endicott(matrix: Path) -> tuple[pl.DataFrame, pl.DataFrame]:
+    parsed = read_series_matrix(matrix)
+    meta = parsed.samples
+    samples = meta.select(
+        "sample",
+        pl.col("cell_line").alias("donor"),
+        pl.col("source_name_ch1").alias("tissue"),
+        pl.lit(None, dtype=pl.Float64).alias("age"),
+        "title",
+        "subexperiment",
+        "donor_age",
+        pl.col("donor_sex").alias("sex"),
+        pl.col("culture_oxygen").alias("oxygen"),
+        pl.col("culture_agent").alias("agent"),
+        pl.col("culture_pctfbs").alias("serum"),
+        pl.col("expression_vector").alias("vector"),
+        "subculture",
+        _float("population_doublings").alias("doublings"),
+        _float("days_in_culture").alias("days"),
+        pl.col("batch_date").alias("batch"),
+    )
+    bad = samples.filter(pl.col("doublings").is_null() | pl.col("days").is_null())
+    if bad.height:
+        raise ValueError(
+            f"{bad.height} samples without population doublings or days, e.g. {bad['sample'][:3].to_list()}"
+        )
+    return samples, parsed.values.rename({"feature": "cpg"})
+
+
 def prepare_cohort(name: str, paths: ProjectPaths) -> CohortLayout:
     lay = layout(name, paths)
     match name:
@@ -335,6 +375,8 @@ def prepare_cohort(name: str, paths: ProjectPaths) -> CohortLayout:
             samples, betas = _gtex(lay.matrix, lay.supplementary)
         case "fibres":
             samples, betas = _fibres(lay.matrix, lay.supplementary)
+        case "endicott":
+            samples, betas = _endicott(lay.matrix)
     lay.samples.parent.mkdir(parents=True, exist_ok=True)
     samples.write_parquet(lay.samples)
     betas.with_columns(pl.exclude("cpg").cast(pl.Float32)).write_parquet(lay.betas)
