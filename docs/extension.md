@@ -560,7 +560,7 @@ courses, which have none, use the floor pooled over the experiments that do.
   all three; drift this small sits near the floor, so neither is excluded.
 
 Tables: `data/output/passaged_cells_sturm/` (as for GSE197512; the contact-inhibition and 3 % oxygen arms
-under `Study part 3` in `arm_slopes` and `drift_coupling`).
+under `Study part 3` in `drift_coupling`; their slopes on days are in `arm_slopes.parquet`, not tracked).
 
 ## RNA: transcriptional drift by turnover class (GTEx, mouse, rat)
 
