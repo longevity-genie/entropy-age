@@ -52,3 +52,30 @@ clocks from one ground-state sample, interventions, reprogramming, diapause, Neu
 binding: a new flavour builds on a reproduction that has been checked against the original. Rejected:
 a pure reproduction with no extension, and starting from the extension before the reproduction
 stands. The lead's roadmap is drafted in these three steps (`docs/seats/LEAD.md`).
+
+## D5 — Seats, second pass: two maintainers, a runner, seats off this laptop (2026-11-10); amends D3
+
+The seats adoption was run again from the start at the seats kit v0.1.162, each of D3's answers stated
+before it was asked again, and the pin moved to v0.1.163 before it landed. What changed, and what stayed:
+
+- **Maintainers:** both antonkulaga, the author, and winternewt (who ran this pass), in the latter's words
+  "Maintainers: we both, Author - Anton". D1 and D3 said "the maintainer"; from here, either maintainer's word
+  decides. D1's premise, one maintainer working alone, is now open with them.
+- **The organisation and the desk stay D3's**, Anton's: `longevity-genie/desk` and Anton's Zulip organisation.
+  Rejected: winternewt's own desk and organisation, which the laptop this pass ran on already uses for 16
+  repositories, and no organisation for now.
+- **Seats:** `lead` as D3, plus `runner` (`docs/seats/RUNNER.md`): it keeps the batch runs of `docs/RUNS.md`
+  going on a cluster and logs each one in `docs/RUN_LOG.md`, its state in `docs/RUN_STATUS.md`. Grant: commit,
+  `git pull --ff-only`, push `main` as a fast-forward, its own jobs within its share; no tags.
+  Rejected, as offered: `lead` alone, and `lead` with a correspondence seat (the books on the upstream
+  repository and GEO).
+- **The lead's grant stays D3's:** commit, push `main` as a fast-forward, release tags.
+- **Where seats run:** not on the laptop this pass ran on, which only drafted. The seats run on another
+  machine (a cluster or a server), each set up there from its own clone. So this pass installed no leak gate,
+  set no site id and claimed no chat account on the laptop.
+- **Tracked, as D3:** the kit stays pinned in `.claude/settings.json` and `.blueprints.toml` committed,
+  although the repository has two committers now. Rejected: the overlay (the kit
+  on one maintainer's clone only); the tracked answer was recommended on the condition that Anton agrees.
+- **How this pass landed:** commits on `main`, pushed when a maintainer says. Rejected: the kit's branch and
+  pull request (D1 rejected it already), and pushing at once under D1 (winternewt's own rule holds pushes for
+  their word).

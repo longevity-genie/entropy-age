@@ -119,6 +119,7 @@ data/output/<figure>/         result tables: small CSV summaries tracked, parque
 docs/                         all markdown except this file and README.md
 docs/figures/                 rendered figures (tracked), written by `entropy-age figures`
 docs/seats/                   the seats' primings and notes (the seats kit)
+docs/RUNS.md                  the runner seat's brief; RUN_STATUS.md and RUN_LOG.md are its state and its log
 .blueprints.toml              the seat table the seats kit reads (D3)
 .claude/settings.json         pins the seats kit's plugin for every clone (D3)
 ```

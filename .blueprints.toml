@@ -6,9 +6,9 @@ id = "entropy-age"
 
 # The lead (docs/seats/LEAD.md): owns docs/ROADMAP.md and builds it with the maintainer.
 [seat.lead]
-# The organisation desk's secretary relays the maintainer's answers to the lead's questions: a wake, never
-# an instruction (the kit's D83). There is no other seat here to hand it work.
-wake_from = "*/secretary"
+# The organisation desk's secretary relays the maintainers' answers to the lead's questions: a wake, never
+# an instruction (the kit's D83). The runner reports a run's end or a fault it cannot fix (D5).
+wake_from = "entropy-age/runner */secretary"
 
 [seat.lead.zulip]
 pool = "~/.config/agent-seat-blueprints/zulip/pool"
@@ -21,3 +21,25 @@ cmd = "sh kit:bin/py.sh kit:classes/lead/plan-watch.py"
 # The desk's answers to this seat's questions, each said once (the kit's D133).
 [seat.lead.watch.desk]
 cmd = "sh kit:bin/py.sh kit:classes/desk/watch-answers.py entropy-age lead"
+
+# The runner (docs/seats/RUNNER.md, D5): keeps the batch runs of docs/RUNS.md going on a cluster, logs each.
+[seat.runner]
+# The lead hands it runs; the desk's secretary relays the maintainers' answers.
+wake_from = "entropy-age/lead */secretary"
+# A quiet seat (the kit's D159): it works whether the maintainers are there or not, questions on the desk.
+presence = false
+
+[seat.runner.zulip]
+pool = "~/.config/agent-seat-blueprints/zulip/pool"
+
+# The desk's answers to this seat's questions, each said once (the kit's D133).
+[seat.runner.watch.desk]
+cmd = "sh kit:bin/py.sh kit:classes/desk/watch-answers.py entropy-age runner"
+
+# The cluster's queue at every start: this repository's jobs by job_prefix (the kit's DESIGN §20). The
+# partition, the account and the runner's share are the cluster machine's (its slurm.toml), not this file's.
+[slurm]
+job_prefix = "entropy-age"
+
+[digest.jobs]
+cmd = "sh kit:drivers/slurm/digest-jobs.sh"
