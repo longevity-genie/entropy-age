@@ -520,6 +520,82 @@ uses the floor pooled over the others. Seven lines, one of each type except fibr
 Tables: `data/output/passaged_cells/` (`drift_coupling`, `coupling_across_lines`, `across_lines`,
 `mmc_arrest`; per-sample scores in `sample_scores`).
 
+## RNA: transcriptional drift by turnover class (GTEx, mouse, rat)
+
+The same question in transcripts. For each tissue, protein-coding genes with at least 1 CPM in 80 %
+of its samples, as log2(CPM + 1). The noise measure is between-individual spread: the age slope of
+each gene's absolute residual after its mean trend and the technical covariates are removed
+(`stochasticity.expression_drift`). RNA spread depends strongly on the mean, so every gene set is
+compared with genes of the same expression decile, in SDs of the metric, as CpGs are matched on
+level. A second version adds five age-free composition components of the genes outside every set.
+Those components cannot change an age slope of the mean, but they can change spread, so here the
+check is informative. Each tissue is resampled at the same size, without replacement. The human gene
+sets reach Ensembl IDs through HGNC (Entrez first, then current, previous and unique alias symbols;
+99–100 % of each set), and rodent genes reach them through their upper-case symbol (16,474 of 25,113
+mouse and 16,752 of 30,454 rat symbols map, ambiguous ones dropped).
+
+* **GTEx v10** (`entropy-age figures rna_gtex`): 47 tissues with 100 or more donors, 70 donors per
+  resample, decade-bin ages, covariates sex, Hardy death scale, RIN, ischemic time and library size.
+  Classes: renewing (10 tissues: blood, spleen, gut mucosa, skin, oesophagus mucosa, vagina, testis),
+  slow (21), heart & muscle (3), brain (13 regions). The GTEx counts are read from an external parsed
+  copy (`ENTROPY_AGE_GTEX_RNA`, `ENTROPY_AGE_GTEX_ATTRIBUTES`).
+* **Mouse and rat atlases** (GSE314817, GSE314970; `entropy-age fetch rodent-rna`,
+  `entropy-age figures rna_rodents`): inbred mice (24 tissues, 80–104 animals) and rats (23 tissues
+  used, 47–85 animals), males and females at six ages from 6 to 27 months, covariates sex and library
+  size, 56 mice and 32 rats per resample. Rat eye tissues of unclear turnover are left out; the rat
+  retina counts as neural.
+
+![RNA, GTEx](figures/rna_gtex.png)
+
+![RNA, mouse and rat](figures/rna_rodents.png)
+
+**Spread gain with age, housekeeping minus matched genes** (SD, mean over the class's tissues):
+
+| Class | GTEx | Mouse | Rat |
+|---|---|---|---|
+| renewing | −0.08 | −0.29 | −0.10 |
+| slow | −0.00 | −0.23 | −0.19 |
+| heart & muscle | −0.02 | −0.23 | −0.12 |
+| brain | +0.06 | +0.01 | −0.04 (retina −0.29) |
+
+**Each class minus brain, housekeeping** (SD, 95 % interval over size-matched resamples):
+
+| Contrast | GTEx | GTEx + PCs | Mouse | Mouse + PCs | Rat | Rat + PCs |
+|---|---|---|---|---|---|---|
+| renewing − brain | −0.12 (−0.26, +0.03) | +0.01 (−0.06, +0.09) | −0.28 (−0.42, −0.16) | −0.23 (−0.29, −0.16) | −0.07 (−0.19, +0.05) | −0.10 (−0.15, −0.04) |
+| slow − brain | −0.06 (−0.16, +0.08) | +0.02 (−0.04, +0.08) | −0.24 (−0.37, −0.12) | −0.15 (−0.22, −0.07) | −0.16 (−0.29, −0.03) | −0.07 (−0.15, +0.02) |
+| heart & muscle − brain | −0.09 (−0.29, +0.12) | −0.01 (−0.12, +0.08) | −0.25 (−0.40, −0.09) | −0.11 (−0.17, −0.04) | −0.09 (−0.24, +0.05) | −0.01 (−0.08, +0.06) |
+
+Core-essential genes follow housekeeping genes in mouse (renewing − brain −0.18, −0.34 to −0.06;
+with components −0.16, −0.22 to −0.10) and are within noise in rat and GTEx. Non-essential genes go
+the other way in both rodents (mouse renewing − brain +0.54, interval +0.18 to +0.89; rat +0.32,
++0.03 to +0.61), the hitchhiking pattern prediction 3 describes.
+
+What this supports, and what it does not:
+
+* **Mouse: the methylation result holds in RNA.** Housekeeping and core-essential genes gain
+  between-animal spread with age more slowly than matched genes in every class but brain, and the
+  brain is without the protection. Heart keeps it, as in methylation, and the gap to brain survives
+  the composition components for renewing and slow tissues. So in mouse "neurons lack the
+  protection" now rests on two kinds of data from two cohorts.
+* **Rat: same direction, weaker.** Slow tissues minus brain excludes zero, and renewing minus brain
+  does once composition is adjusted; the other contrasts do not. The retina, neural but strongly
+  protected (−0.29), pulls the brain class toward protection; without it the rat brain regions are
+  −0.10 to +0.17.
+* **GTEx: no turnover effect in spread.** Renewing tissues lean protected and brain leans the other
+  way, but every interval includes zero, and with composition components every contrast is within
+  0.03 SD of zero. Per-tissue intervals are about ±0.3 SD at 70 donors: post-mortem human RNA, with
+  genetic differences between donors and only decade bins of age, carries too little age-related
+  spread for a set contrast. The one GTEx contrast that excludes zero is in the mean, not the spread:
+  housekeeping genes change their level with age less outside brain than in it (renewing − brain
+  −0.09, −0.17 to −0.005; slow − brain −0.07, −0.14 to −0.01).
+* **Not a turnover gradient in any species.** Where the protection shows (mouse, rat), slow and
+  heart tissues have about as much as renewing ones. As in the mouse methylation data, the step is
+  between brain and everything else, not along cell turnover.
+
+Tables: `data/output/rna_gtex/`, `data/output/rna_rodents/` (`tissues`, `point_estimates`,
+`contrasts`, `tissue_intervals`; gene mapping in `set_mapping` and `genes`).
+
 ## How to test the hypothesis on real data
 
 ```python

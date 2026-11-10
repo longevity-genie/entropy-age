@@ -1,0 +1,565 @@
+tissue,turnover,adjustment,metric,group,median,ci_low,ci_high,resamples
+Adipose - Subcutaneous,slow,covariates,abs_slope,core_essential,-0.35625604783261683,-0.4852081512683662,-0.14367281607526836,200
+Adipose - Visceral (Omentum),slow,covariates,abs_slope,core_essential,-0.3347416176390627,-0.5028436583209325,-0.08611823506189739,200
+Adrenal Gland,slow,covariates,abs_slope,core_essential,-0.27257876557534977,-0.38487584012024556,-0.06718901033980065,200
+Artery - Aorta,slow,covariates,abs_slope,core_essential,-0.35328642131559646,-0.44136625427622167,-0.21630862673910242,200
+Artery - Coronary,slow,covariates,abs_slope,core_essential,-0.3227098351858871,-0.4418675375975223,-0.08931894108219278,200
+Artery - Tibial,slow,covariates,abs_slope,core_essential,-0.329830739095307,-0.42075646196079186,-0.13019923433541647,200
+Brain - Amygdala,brain,covariates,abs_slope,core_essential,-0.22552120483108223,-0.4821357663396546,0.09151536026613832,200
+Brain - Anterior cingulate cortex (BA24),brain,covariates,abs_slope,core_essential,-0.28965405611994643,-0.4923123502206874,0.09818528101825923,200
+Brain - Caudate (basal ganglia),brain,covariates,abs_slope,core_essential,-0.25954590082870543,-0.4840304187654777,0.10159483638520951,200
+Brain - Cerebellar Hemisphere,brain,covariates,abs_slope,core_essential,-0.20322943178258282,-0.34065431429023235,0.06649433586690791,200
+Brain - Cerebellum,brain,covariates,abs_slope,core_essential,-0.2988890447523335,-0.42148619623336697,-0.12699139512643876,200
+Brain - Cortex,brain,covariates,abs_slope,core_essential,-0.34354259998781306,-0.5083438998429601,-0.031514436524127436,200
+Brain - Frontal Cortex (BA9),brain,covariates,abs_slope,core_essential,-0.36891135493628374,-0.5558629114064414,-0.04862118297202173,200
+Brain - Hippocampus,brain,covariates,abs_slope,core_essential,-0.36211940258806563,-0.4959503667879637,-0.09934710694983834,200
+Brain - Hypothalamus,brain,covariates,abs_slope,core_essential,-0.296393247435367,-0.45707608771532277,-0.043334331676316014,200
+Brain - Nucleus accumbens (basal ganglia),brain,covariates,abs_slope,core_essential,-0.2261516094161682,-0.43083106089194767,0.15627823848132916,200
+Brain - Putamen (basal ganglia),brain,covariates,abs_slope,core_essential,-0.1766582065975327,-0.4048906124657172,0.19423563369312288,200
+Brain - Spinal cord (cervical c-1),brain,covariates,abs_slope,core_essential,-0.3129341792367146,-0.48856073195564886,-0.12133171993507738,200
+Brain - Substantia nigra,brain,covariates,abs_slope,core_essential,-0.3417948870718398,-0.5033068093485217,-0.10915070476667318,200
+Breast - Mammary Tissue,slow,covariates,abs_slope,core_essential,-0.33731768360994113,-0.45714332156745296,-0.15980240660530617,200
+Colon - Sigmoid,slow,covariates,abs_slope,core_essential,-0.2863862965917361,-0.4496903660958578,-0.11368300867730018,200
+Colon - Transverse,renewing,covariates,abs_slope,core_essential,-0.33602405405633584,-0.5018799062152797,-0.01164999349095566,200
+Esophagus - Gastroesophageal Junction,slow,covariates,abs_slope,core_essential,-0.3378609979104129,-0.46628288707244264,-0.06391579762324717,200
+Esophagus - Mucosa,renewing,covariates,abs_slope,core_essential,-0.2669286862753164,-0.4655897625214866,0.21366043601777496,200
+Esophagus - Muscularis,slow,covariates,abs_slope,core_essential,-0.2970169768702462,-0.4445373246404382,-0.00523025174163748,200
+Heart - Atrial Appendage,heart & muscle,covariates,abs_slope,core_essential,-0.335110623091716,-0.5057219797549518,-0.03374102047986961,200
+Heart - Left Ventricle,heart & muscle,covariates,abs_slope,core_essential,-0.2705173959212097,-0.46406315027734873,0.2303474314988186,200
+Kidney - Cortex,slow,covariates,abs_slope,core_essential,-0.30981868530286183,-0.4621184144584802,0.18050780421174725,200
+Liver,slow,covariates,abs_slope,core_essential,-0.3295601650235275,-0.4610800136210776,0.09198914314019639,200
+Lung,slow,covariates,abs_slope,core_essential,-0.18126854284700958,-0.3919960312234578,0.28453896159087033,200
+Minor Salivary Gland,slow,covariates,abs_slope,core_essential,-0.3393201687521571,-0.4889911153545076,-0.10949918652319973,200
+Muscle - Skeletal,heart & muscle,covariates,abs_slope,core_essential,-0.2741212692767816,-0.4263350319616627,0.06618648454778563,200
+Nerve - Tibial,slow,covariates,abs_slope,core_essential,-0.34718358250750847,-0.44099384847352374,-0.15499961973848758,200
+Ovary,slow,covariates,abs_slope,core_essential,-0.2622473383625672,-0.37643755345684504,-0.09718983726545745,200
+Pancreas,slow,covariates,abs_slope,core_essential,-0.3162422984191399,-0.5049094617577832,0.11702592076307926,200
+Pituitary,slow,covariates,abs_slope,core_essential,-0.32882807067905767,-0.4685623919957782,-0.13379089134539132,200
+Prostate,slow,covariates,abs_slope,core_essential,-0.42344960963067346,-0.5192205142973478,-0.27125983014661204,200
+Skin - Not Sun Exposed (Suprapubic),renewing,covariates,abs_slope,core_essential,-0.27505751797979777,-0.4404466778896266,-0.08774620064224492,200
+Skin - Sun Exposed (Lower leg),renewing,covariates,abs_slope,core_essential,-0.33905814192590955,-0.4791006568383824,-0.11934106247197931,200
+Small Intestine - Terminal Ileum,renewing,covariates,abs_slope,core_essential,-0.16829381666748447,-0.4561445148647121,0.16618334191295475,200
+Spleen,renewing,covariates,abs_slope,core_essential,-0.1653998203097704,-0.36960786857492123,0.16859051283637874,200
+Stomach,renewing,covariates,abs_slope,core_essential,-0.2535448689724676,-0.5165551636792111,0.21435767060187827,200
+Testis,renewing,covariates,abs_slope,core_essential,-0.3830950204708652,-0.49961895552005875,-0.230906224687221,200
+Thyroid,slow,covariates,abs_slope,core_essential,-0.2801036195212987,-0.41648586752243943,-0.10996530340611435,200
+Uterus,slow,covariates,abs_slope,core_essential,-0.25386147186472985,-0.3731175096631253,-0.07411595369492005,200
+Vagina,renewing,covariates,abs_slope,core_essential,-0.3405619241017152,-0.46971048343176053,-0.0937432697709033,200
+Whole Blood,renewing,covariates,abs_slope,core_essential,-0.21978651858725085,-0.42575490286735185,0.35317231390492815,200
+Adipose - Subcutaneous,slow,covariates,abs_slope,housekeeping,-0.48341018745536724,-0.6051401167610388,-0.33202513910446657,200
+Adipose - Visceral (Omentum),slow,covariates,abs_slope,housekeeping,-0.4301369514752438,-0.5676683270752818,-0.21245928279896134,200
+Adrenal Gland,slow,covariates,abs_slope,housekeeping,-0.40494509221903896,-0.46519912932562874,-0.22508264491343666,200
+Artery - Aorta,slow,covariates,abs_slope,housekeeping,-0.4608882841279333,-0.5152546381554951,-0.38332291351435877,200
+Artery - Coronary,slow,covariates,abs_slope,housekeeping,-0.4479352645271485,-0.5491903303717687,-0.27983061003193055,200
+Artery - Tibial,slow,covariates,abs_slope,housekeeping,-0.4630526105867765,-0.5424054087412981,-0.31404203570915973,200
+Brain - Amygdala,brain,covariates,abs_slope,housekeeping,-0.17406516515504666,-0.49774971500423365,0.18019084057627302,200
+Brain - Anterior cingulate cortex (BA24),brain,covariates,abs_slope,housekeeping,-0.33931992387882226,-0.5261346751904148,-0.07574534380548097,200
+Brain - Caudate (basal ganglia),brain,covariates,abs_slope,housekeeping,-0.38179779233806027,-0.5791308043808722,0.0007692508131241434,200
+Brain - Cerebellar Hemisphere,brain,covariates,abs_slope,housekeeping,-0.2957008256550392,-0.41319598399395707,-0.07220114736344259,200
+Brain - Cerebellum,brain,covariates,abs_slope,housekeeping,-0.34810887068050456,-0.4458292083385114,-0.14677087376335268,200
+Brain - Cortex,brain,covariates,abs_slope,housekeeping,-0.4193138964355786,-0.547202312853386,-0.21425928382473228,200
+Brain - Frontal Cortex (BA9),brain,covariates,abs_slope,housekeeping,-0.4468422927715173,-0.6211865872477971,-0.1515893878547755,200
+Brain - Hippocampus,brain,covariates,abs_slope,housekeeping,-0.4338072220177824,-0.5861713065329824,-0.15094718383798042,200
+Brain - Hypothalamus,brain,covariates,abs_slope,housekeeping,-0.38401092691569116,-0.5329738277451328,-0.17360784529476198,200
+Brain - Nucleus accumbens (basal ganglia),brain,covariates,abs_slope,housekeeping,-0.3598639827281564,-0.5235649619549086,-0.039563931737479165,200
+Brain - Putamen (basal ganglia),brain,covariates,abs_slope,housekeeping,-0.3498725872245573,-0.5577528828700512,0.022783631246808603,200
+Brain - Spinal cord (cervical c-1),brain,covariates,abs_slope,housekeeping,-0.4009341259859245,-0.5316372402119397,-0.19679872844585752,200
+Brain - Substantia nigra,brain,covariates,abs_slope,housekeeping,-0.45054158147947954,-0.5903844925241867,-0.1650405165800655,200
+Breast - Mammary Tissue,slow,covariates,abs_slope,housekeeping,-0.4710517683053277,-0.5616973021897441,-0.342109121431927,200
+Colon - Sigmoid,slow,covariates,abs_slope,housekeeping,-0.3939637886753013,-0.561885335481681,-0.2765564378618776,200
+Colon - Transverse,renewing,covariates,abs_slope,housekeeping,-0.5422602040496831,-0.6760116020613655,-0.32914910132986747,200
+Esophagus - Gastroesophageal Junction,slow,covariates,abs_slope,housekeeping,-0.45207078512667276,-0.567220960438108,-0.27615485077441543,200
+Esophagus - Mucosa,renewing,covariates,abs_slope,housekeeping,-0.40990690366385935,-0.5509070824402289,-0.18240551416516673,200
+Esophagus - Muscularis,slow,covariates,abs_slope,housekeeping,-0.4083675616598659,-0.5145638186804864,-0.27545891203965306,200
+Heart - Atrial Appendage,heart & muscle,covariates,abs_slope,housekeeping,-0.4228380223153144,-0.544547851744217,-0.1502822107248004,200
+Heart - Left Ventricle,heart & muscle,covariates,abs_slope,housekeeping,-0.33049613354906093,-0.5124297477718828,0.03472104214151905,200
+Kidney - Cortex,slow,covariates,abs_slope,housekeeping,-0.4214812718332702,-0.5534659861877325,-0.07678834365534015,200
+Liver,slow,covariates,abs_slope,housekeeping,-0.4484346619439068,-0.5581968048645556,-0.2469056683685402,200
+Lung,slow,covariates,abs_slope,housekeeping,-0.38008082398900706,-0.5201225375806906,-0.10735975086167367,200
+Minor Salivary Gland,slow,covariates,abs_slope,housekeeping,-0.5250949059659922,-0.5875225138372864,-0.3914111226082854,200
+Muscle - Skeletal,heart & muscle,covariates,abs_slope,housekeeping,-0.4275305930604869,-0.6018838264004859,-0.22146231397248214,200
+Nerve - Tibial,slow,covariates,abs_slope,housekeeping,-0.4640311772201172,-0.5539325629941404,-0.3714038016438627,200
+Ovary,slow,covariates,abs_slope,housekeeping,-0.38560266348335015,-0.46670639251250257,-0.30106267101091105,200
+Pancreas,slow,covariates,abs_slope,housekeeping,-0.3892680093071705,-0.4928868408281028,-0.15423989116717995,200
+Pituitary,slow,covariates,abs_slope,housekeeping,-0.44723622576884814,-0.5909379270225091,-0.29981012400384244,200
+Prostate,slow,covariates,abs_slope,housekeeping,-0.5230762153258615,-0.6289742072629693,-0.39936072100183084,200
+Skin - Not Sun Exposed (Suprapubic),renewing,covariates,abs_slope,housekeeping,-0.3661716308482482,-0.5198272833146402,-0.17757089167165216,200
+Skin - Sun Exposed (Lower leg),renewing,covariates,abs_slope,housekeeping,-0.44600503621257054,-0.5879537010950728,-0.27008176946731116,200
+Small Intestine - Terminal Ileum,renewing,covariates,abs_slope,housekeeping,-0.5449334248701643,-0.6783267533398843,-0.4096213423833553,200
+Spleen,renewing,covariates,abs_slope,housekeeping,-0.3948048780376949,-0.5000349132870057,-0.2780026308573576,200
+Stomach,renewing,covariates,abs_slope,housekeeping,-0.4808255021445361,-0.672516864626614,-0.22192991065809536,200
+Testis,renewing,covariates,abs_slope,housekeeping,-0.5025254323802272,-0.6435298484077121,-0.3046415194470974,200
+Thyroid,slow,covariates,abs_slope,housekeeping,-0.4083299284670365,-0.5192217394928411,-0.2646386974158158,200
+Uterus,slow,covariates,abs_slope,housekeeping,-0.44601556795209785,-0.4984776764531084,-0.3702070958728017,200
+Vagina,renewing,covariates,abs_slope,housekeeping,-0.4686451664238778,-0.5909880844930776,-0.3631700645009397,200
+Whole Blood,renewing,covariates,abs_slope,housekeeping,-0.33729186820027846,-0.48713849562420447,0.05359665635903234,200
+Adipose - Subcutaneous,slow,covariates,abs_slope,non_essential,0.007455967644604617,-0.6244406678355674,0.9518001094510327,200
+Adipose - Visceral (Omentum),slow,covariates,abs_slope,non_essential,0.13217173912732266,-0.7154336821791285,1.0903347354774735,200
+Adrenal Gland,slow,covariates,abs_slope,non_essential,1.7049078236293642,0.49269311667288224,3.096914139595083,200
+Artery - Aorta,slow,covariates,abs_slope,non_essential,1.0013874504415026,0.17354110012647697,1.7461587333458535,200
+Artery - Coronary,slow,covariates,abs_slope,non_essential,0.3806788194776105,-0.442921274331536,1.6046773364268214,200
+Artery - Tibial,slow,covariates,abs_slope,non_essential,-0.03690796114963782,-0.6516840879914163,0.8343796379583468,200
+Brain - Amygdala,brain,covariates,abs_slope,non_essential,0.5254344281944401,0.05834663707898483,0.985743822357947,200
+Brain - Anterior cingulate cortex (BA24),brain,covariates,abs_slope,non_essential,0.6611640159621652,0.015722647114175894,1.20591358090255,200
+Brain - Caudate (basal ganglia),brain,covariates,abs_slope,non_essential,0.6871080252473901,0.06799071710567726,1.4074476667166707,200
+Brain - Cerebellar Hemisphere,brain,covariates,abs_slope,non_essential,0.6451946042151893,0.21145156865802386,1.1998698694525316,200
+Brain - Cerebellum,brain,covariates,abs_slope,non_essential,0.7280174762669953,0.3366101588724348,1.1359962853649552,200
+Brain - Cortex,brain,covariates,abs_slope,non_essential,0.5390403214785853,0.06450999072360222,0.9647065106272082,200
+Brain - Frontal Cortex (BA9),brain,covariates,abs_slope,non_essential,0.7383752065935012,0.11597417043179752,1.1982734346167305,200
+Brain - Hippocampus,brain,covariates,abs_slope,non_essential,0.9007312356931003,0.14609226886132143,1.402161001621903,200
+Brain - Hypothalamus,brain,covariates,abs_slope,non_essential,0.7101611833335234,0.1498724769403597,1.386442218507664,200
+Brain - Nucleus accumbens (basal ganglia),brain,covariates,abs_slope,non_essential,0.7104394762040596,-0.02147563208305293,1.271921108410656,200
+Brain - Putamen (basal ganglia),brain,covariates,abs_slope,non_essential,0.6793515143044795,0.12045682600987262,1.180420141848081,200
+Brain - Spinal cord (cervical c-1),brain,covariates,abs_slope,non_essential,0.4888724484833467,-0.10773422054479014,1.134406558158726,200
+Brain - Substantia nigra,brain,covariates,abs_slope,non_essential,0.5978846162711612,0.10326688473810347,1.1572791404610716,200
+Breast - Mammary Tissue,slow,covariates,abs_slope,non_essential,0.2492369153468726,-0.6850604703319275,1.2025067875484974,200
+Colon - Sigmoid,slow,covariates,abs_slope,non_essential,0.014365596793752456,-0.6143710081072608,0.7763573018368047,200
+Colon - Transverse,renewing,covariates,abs_slope,non_essential,2.7092487923919215,0.31277207723160894,4.38290033738738,200
+Esophagus - Gastroesophageal Junction,slow,covariates,abs_slope,non_essential,-0.24195627278149356,-0.7834082925048254,0.5211972410517041,200
+Esophagus - Mucosa,renewing,covariates,abs_slope,non_essential,1.4357843804317596,0.47656926320038534,2.706935052836566,200
+Esophagus - Muscularis,slow,covariates,abs_slope,non_essential,-0.17484891688562504,-0.8205230446251869,0.6481016874185009,200
+Heart - Atrial Appendage,heart & muscle,covariates,abs_slope,non_essential,0.9070673401475,-0.3995150774244941,3.018156988529724,200
+Heart - Left Ventricle,heart & muscle,covariates,abs_slope,non_essential,0.7584164071655333,-0.4078353948773992,2.7263032966837013,200
+Kidney - Cortex,slow,covariates,abs_slope,non_essential,1.3705936043388764,0.5682899012979148,2.2088031504352763,200
+Liver,slow,covariates,abs_slope,non_essential,0.8948404822360989,0.170504058424287,1.8374136814352215,200
+Lung,slow,covariates,abs_slope,non_essential,0.33864538459179216,-0.4100411748132086,1.1342432990214146,200
+Minor Salivary Gland,slow,covariates,abs_slope,non_essential,1.3888746959155958,0.46386347082289947,2.536809994151355,200
+Muscle - Skeletal,heart & muscle,covariates,abs_slope,non_essential,-0.006057469182734438,-0.7401935826664703,0.9652386683799283,200
+Nerve - Tibial,slow,covariates,abs_slope,non_essential,0.7367647645944512,0.021904142065439874,1.3450841463961019,200
+Ovary,slow,covariates,abs_slope,non_essential,0.09891612642475091,-0.41351111978913174,0.7895478817325626,200
+Pancreas,slow,covariates,abs_slope,non_essential,1.3389222522532074,0.4911772165177845,2.2690965146159576,200
+Pituitary,slow,covariates,abs_slope,non_essential,0.8467070551438673,0.26104395063143687,1.4457682583283444,200
+Prostate,slow,covariates,abs_slope,non_essential,0.1675513685466495,-0.5019786189290364,0.8211071323833933,200
+Skin - Not Sun Exposed (Suprapubic),renewing,covariates,abs_slope,non_essential,0.9575830031200525,0.23350219080935644,2.076597700247014,200
+Skin - Sun Exposed (Lower leg),renewing,covariates,abs_slope,non_essential,0.852689171073584,0.174515420998079,2.266278474017756,200
+Small Intestine - Terminal Ileum,renewing,covariates,abs_slope,non_essential,1.8880901102601884,0.10465259973370071,4.196693971004181,200
+Spleen,renewing,covariates,abs_slope,non_essential,0.36009909728340495,-0.19964314129887964,1.2566992713255762,200
+Stomach,renewing,covariates,abs_slope,non_essential,1.8495283707205834,0.306035082663711,3.9018624064572713,200
+Testis,renewing,covariates,abs_slope,non_essential,0.8006687281723096,0.046011364087681826,1.3867165510623123,200
+Thyroid,slow,covariates,abs_slope,non_essential,0.22139863349732658,-0.30847568033756323,0.9812583177361629,200
+Uterus,slow,covariates,abs_slope,non_essential,0.7392065002311693,0.2844891087680532,1.2478637161491315,200
+Vagina,renewing,covariates,abs_slope,non_essential,1.9504043553305448,0.5657290169304122,2.93555411814382,200
+Whole Blood,renewing,covariates,abs_slope,non_essential,0.5188290529214232,-0.5909424623073662,2.054367181322995,200
+Adipose - Subcutaneous,slow,covariates,dispersion_slope,core_essential,-0.06597714123380718,-0.2680479129960343,0.22464119840669525,200
+Adipose - Visceral (Omentum),slow,covariates,dispersion_slope,core_essential,-0.08197099410617542,-0.4164058908280832,0.27504540434582164,200
+Adrenal Gland,slow,covariates,dispersion_slope,core_essential,0.01373417885321968,-0.2633278720446898,0.23375452891280138,200
+Artery - Aorta,slow,covariates,dispersion_slope,core_essential,0.01294889674858344,-0.22670221247468136,0.26131069998479295,200
+Artery - Coronary,slow,covariates,dispersion_slope,core_essential,0.007713776433426035,-0.34551414674138803,0.2830025701180596,200
+Artery - Tibial,slow,covariates,dispersion_slope,core_essential,0.11855477492285493,-0.10930168978851469,0.32846263340028076,200
+Brain - Amygdala,brain,covariates,dispersion_slope,core_essential,0.14331336691053143,-0.20656721896603591,0.4056065010103354,200
+Brain - Anterior cingulate cortex (BA24),brain,covariates,dispersion_slope,core_essential,0.042880013422080365,-0.25871313250854405,0.34637713307687507,200
+Brain - Caudate (basal ganglia),brain,covariates,dispersion_slope,core_essential,0.0332110114999613,-0.33213988528326804,0.29624511133388015,200
+Brain - Cerebellar Hemisphere,brain,covariates,dispersion_slope,core_essential,-0.013744266115164022,-0.27973677598989144,0.25715510585600426,200
+Brain - Cerebellum,brain,covariates,dispersion_slope,core_essential,0.15872228944069877,-0.08585054612270972,0.3733523844778272,200
+Brain - Cortex,brain,covariates,dispersion_slope,core_essential,0.1497236486062805,-0.1712351836208232,0.4165195390120863,200
+Brain - Frontal Cortex (BA9),brain,covariates,dispersion_slope,core_essential,0.06443149927653996,-0.3152887559788706,0.48987047437391246,200
+Brain - Hippocampus,brain,covariates,dispersion_slope,core_essential,-0.07994565673155099,-0.4677610552388068,0.3202618582726116,200
+Brain - Hypothalamus,brain,covariates,dispersion_slope,core_essential,0.06965636924853455,-0.2656946753394701,0.37906957444639655,200
+Brain - Nucleus accumbens (basal ganglia),brain,covariates,dispersion_slope,core_essential,0.06382422748426664,-0.3627960830361386,0.35604409358803096,200
+Brain - Putamen (basal ganglia),brain,covariates,dispersion_slope,core_essential,0.007469719667854825,-0.3722984168221009,0.47474080903123256,200
+Brain - Spinal cord (cervical c-1),brain,covariates,dispersion_slope,core_essential,0.07756598147910018,-0.1716353292779312,0.35398961622539077,200
+Brain - Substantia nigra,brain,covariates,dispersion_slope,core_essential,0.1743855976847582,-0.13028441648924338,0.4520271132667375,200
+Breast - Mammary Tissue,slow,covariates,dispersion_slope,core_essential,0.08629062047237557,-0.2152853411700986,0.39076811642784937,200
+Colon - Sigmoid,slow,covariates,dispersion_slope,core_essential,0.08105985883021857,-0.32250019462758717,0.4671691800383365,200
+Colon - Transverse,renewing,covariates,dispersion_slope,core_essential,-0.27385951086191396,-0.5569480994407536,0.2998013642972821,200
+Esophagus - Gastroesophageal Junction,slow,covariates,dispersion_slope,core_essential,0.02237407092152097,-0.20171364200119804,0.23860807064282571,200
+Esophagus - Mucosa,renewing,covariates,dispersion_slope,core_essential,0.017780656850781625,-0.4403542822262962,0.47210011168987115,200
+Esophagus - Muscularis,slow,covariates,dispersion_slope,core_essential,-0.028483868260470318,-0.2449244796112882,0.197415587293536,200
+Heart - Atrial Appendage,heart & muscle,covariates,dispersion_slope,core_essential,0.024141961850209635,-0.28916211541755504,0.2733877408121803,200
+Heart - Left Ventricle,heart & muscle,covariates,dispersion_slope,core_essential,0.05475381152172121,-0.32495646115892024,0.41545838160028925,200
+Kidney - Cortex,slow,covariates,dispersion_slope,core_essential,-0.15593272028909955,-0.36713493641701045,0.21287074462863576,200
+Liver,slow,covariates,dispersion_slope,core_essential,0.044630561834281414,-0.3730969042688312,0.3192551373896359,200
+Lung,slow,covariates,dispersion_slope,core_essential,-0.05413950673179498,-0.355639975002347,0.24727727406864355,200
+Minor Salivary Gland,slow,covariates,dispersion_slope,core_essential,-0.35352780798975264,-0.6072299583824889,-0.06880052196210167,200
+Muscle - Skeletal,heart & muscle,covariates,dispersion_slope,core_essential,-0.034512293474234755,-0.2957856398200572,0.22351357761345503,200
+Nerve - Tibial,slow,covariates,dispersion_slope,core_essential,0.03652027175934747,-0.22144687783911854,0.2718984319640683,200
+Ovary,slow,covariates,dispersion_slope,core_essential,-0.04370313602801687,-0.2331178755164496,0.09894183000018425,200
+Pancreas,slow,covariates,dispersion_slope,core_essential,0.023596849266010238,-0.2825062644755379,0.34562319646118805,200
+Pituitary,slow,covariates,dispersion_slope,core_essential,0.016656209750078053,-0.35081236137975197,0.40101914621174145,200
+Prostate,slow,covariates,dispersion_slope,core_essential,-0.044688995196039936,-0.3127431337107205,0.3105538124231129,200
+Skin - Not Sun Exposed (Suprapubic),renewing,covariates,dispersion_slope,core_essential,0.007398235638145515,-0.30513514360186816,0.27160229230053845,200
+Skin - Sun Exposed (Lower leg),renewing,covariates,dispersion_slope,core_essential,0.04347249234591792,-0.31428904015000847,0.37495226869962456,200
+Small Intestine - Terminal Ileum,renewing,covariates,dispersion_slope,core_essential,-0.04437262137465335,-0.3542451135146653,0.4342839264626303,200
+Spleen,renewing,covariates,dispersion_slope,core_essential,0.018820812039744443,-0.23944690349203576,0.193075897732489,200
+Stomach,renewing,covariates,dispersion_slope,core_essential,-0.1098519952744757,-0.5580396710555566,0.44305787743620545,200
+Testis,renewing,covariates,dispersion_slope,core_essential,-0.22316727226339728,-0.4343262641152765,0.40209101054567303,200
+Thyroid,slow,covariates,dispersion_slope,core_essential,0.007019865907251443,-0.19791417012881837,0.2869825441960783,200
+Uterus,slow,covariates,dispersion_slope,core_essential,0.17923016858460092,-0.03915957270824005,0.3368491843583808,200
+Vagina,renewing,covariates,dispersion_slope,core_essential,0.002182369184892549,-0.36008264644963417,0.4079566546378178,200
+Whole Blood,renewing,covariates,dispersion_slope,core_essential,0.0538706674400635,-0.37828540660628135,0.45993549823963553,200
+Adipose - Subcutaneous,slow,covariates,dispersion_slope,housekeeping,-0.03332086247357316,-0.24130841180383233,0.2657628145299266,200
+Adipose - Visceral (Omentum),slow,covariates,dispersion_slope,housekeeping,-0.09149787352152586,-0.3477858535621773,0.21210362675496525,200
+Adrenal Gland,slow,covariates,dispersion_slope,housekeeping,0.0013178823537682246,-0.26106155370221584,0.28145775755385966,200
+Artery - Aorta,slow,covariates,dispersion_slope,housekeeping,0.03180285541999511,-0.1932263887681974,0.22539548043149327,200
+Artery - Coronary,slow,covariates,dispersion_slope,housekeeping,0.09376627698877663,-0.20720158776242698,0.3778578787428116,200
+Artery - Tibial,slow,covariates,dispersion_slope,housekeeping,0.10366274066009554,-0.14330756451994833,0.34174132220796555,200
+Brain - Amygdala,brain,covariates,dispersion_slope,housekeeping,0.19072484935279455,-0.1604849243395883,0.43869742240315013,200
+Brain - Anterior cingulate cortex (BA24),brain,covariates,dispersion_slope,housekeeping,0.0003612885565336455,-0.32865241581080956,0.32810680234350553,200
+Brain - Caudate (basal ganglia),brain,covariates,dispersion_slope,housekeeping,0.07500501017325381,-0.29484378151167195,0.3553116433047096,200
+Brain - Cerebellar Hemisphere,brain,covariates,dispersion_slope,housekeeping,0.004928047473321421,-0.24609795211174507,0.3006855133063916,200
+Brain - Cerebellum,brain,covariates,dispersion_slope,housekeeping,0.1009985098283318,-0.12381042830700106,0.33824711588337164,200
+Brain - Cortex,brain,covariates,dispersion_slope,housekeeping,0.18808715207448554,-0.17034649708087676,0.47608381053508564,200
+Brain - Frontal Cortex (BA9),brain,covariates,dispersion_slope,housekeeping,0.02888514382486556,-0.3795502995752584,0.5515740191696463,200
+Brain - Hippocampus,brain,covariates,dispersion_slope,housekeeping,-0.1330040833223331,-0.49629717281711816,0.3458350746758044,200
+Brain - Hypothalamus,brain,covariates,dispersion_slope,housekeeping,0.04979392024525506,-0.3488721522712604,0.3755624988528237,200
+Brain - Nucleus accumbens (basal ganglia),brain,covariates,dispersion_slope,housekeeping,0.08354411647350046,-0.3383446377264135,0.3847088101688404,200
+Brain - Putamen (basal ganglia),brain,covariates,dispersion_slope,housekeeping,-0.04171885110233087,-0.4200875087243427,0.3517017534927353,200
+Brain - Spinal cord (cervical c-1),brain,covariates,dispersion_slope,housekeeping,0.05027647362927169,-0.27237532252473384,0.3407401267590353,200
+Brain - Substantia nigra,brain,covariates,dispersion_slope,housekeeping,0.1687878035262887,-0.2410703133356661,0.452366561032735,200
+Breast - Mammary Tissue,slow,covariates,dispersion_slope,housekeeping,0.0620845298510034,-0.22158713270810548,0.38823405588936677,200
+Colon - Sigmoid,slow,covariates,dispersion_slope,housekeeping,0.10286728179316273,-0.3438153994928278,0.48368780169156717,200
+Colon - Transverse,renewing,covariates,dispersion_slope,housekeeping,-0.346263492878086,-0.6148760640761772,0.354210551689348,200
+Esophagus - Gastroesophageal Junction,slow,covariates,dispersion_slope,housekeeping,0.03030146272436659,-0.250556228379084,0.231628585875391,200
+Esophagus - Mucosa,renewing,covariates,dispersion_slope,housekeeping,0.00110750360666443,-0.3282632696094947,0.32039698779977016,200
+Esophagus - Muscularis,slow,covariates,dispersion_slope,housekeeping,-0.045835944156844485,-0.326312284701775,0.19255912897762434,200
+Heart - Atrial Appendage,heart & muscle,covariates,dispersion_slope,housekeeping,0.00930438161800922,-0.2995725374810927,0.2953459667962767,200
+Heart - Left Ventricle,heart & muscle,covariates,dispersion_slope,housekeeping,0.025565347708555335,-0.33824806059933393,0.36443432616141685,200
+Kidney - Cortex,slow,covariates,dispersion_slope,housekeeping,-0.17061205164740678,-0.4135148244410782,0.18165948721958322,200
+Liver,slow,covariates,dispersion_slope,housekeeping,0.09065492621507991,-0.1734000346473736,0.3655990247301636,200
+Lung,slow,covariates,dispersion_slope,housekeeping,0.01444340606601058,-0.26500843928602924,0.30059991265187186,200
+Minor Salivary Gland,slow,covariates,dispersion_slope,housekeeping,-0.24816158720127734,-0.5290388293818472,0.024923647375903628,200
+Muscle - Skeletal,heart & muscle,covariates,dispersion_slope,housekeeping,-0.08140440433413303,-0.33563790648651554,0.2114464314444709,200
+Nerve - Tibial,slow,covariates,dispersion_slope,housekeeping,0.012119542833151883,-0.24894516033329372,0.3091128947328163,200
+Ovary,slow,covariates,dispersion_slope,housekeeping,-0.050679269583720106,-0.2339761912495891,0.12903444825235294,200
+Pancreas,slow,covariates,dispersion_slope,housekeeping,-0.037929699979689147,-0.3120093352870089,0.2860097108482904,200
+Pituitary,slow,covariates,dispersion_slope,housekeeping,-0.016582863661535358,-0.3906916129336249,0.4452424506539112,200
+Prostate,slow,covariates,dispersion_slope,housekeeping,-0.0950423615424125,-0.3816297508243413,0.35910335430144813,200
+Skin - Not Sun Exposed (Suprapubic),renewing,covariates,dispersion_slope,housekeeping,-0.016076041029802313,-0.37590049424892025,0.34949059013312184,200
+Skin - Sun Exposed (Lower leg),renewing,covariates,dispersion_slope,housekeeping,0.08419538889530603,-0.3771987458817135,0.4661175560832789,200
+Small Intestine - Terminal Ileum,renewing,covariates,dispersion_slope,housekeeping,-0.1196683863800119,-0.504025348806346,0.39506821297321093,200
+Spleen,renewing,covariates,dispersion_slope,housekeeping,-0.04741432603416458,-0.25263511832168595,0.15918122452279704,200
+Stomach,renewing,covariates,dispersion_slope,housekeeping,-0.08567402824490372,-0.5712381229021197,0.46098274025447106,200
+Testis,renewing,covariates,dispersion_slope,housekeeping,-0.309827265692858,-0.5544434675559065,0.4994435233556051,200
+Thyroid,slow,covariates,dispersion_slope,housekeeping,0.04766452379954686,-0.18672576255808032,0.35293928456824136,200
+Uterus,slow,covariates,dispersion_slope,housekeeping,0.11115916937273299,-0.060197263124738054,0.2709177739256791,200
+Vagina,renewing,covariates,dispersion_slope,housekeeping,-0.007934142311207707,-0.3951390367368126,0.451645100067794,200
+Whole Blood,renewing,covariates,dispersion_slope,housekeeping,0.012865284926975187,-0.25488487017864825,0.28564246597453763,200
+Adipose - Subcutaneous,slow,covariates,dispersion_slope,non_essential,0.1843353503865629,-0.6626199295574666,1.1444524800950993,200
+Adipose - Visceral (Omentum),slow,covariates,dispersion_slope,non_essential,0.16357826975115466,-1.0533929786951381,1.1862854745654305,200
+Adrenal Gland,slow,covariates,dispersion_slope,non_essential,-0.22981314054058363,-2.1399560293315054,1.3917359782070604,200
+Artery - Aorta,slow,covariates,dispersion_slope,non_essential,-0.1684941305729183,-1.1932898383424981,0.8063907651450418,200
+Artery - Coronary,slow,covariates,dispersion_slope,non_essential,-0.5435525185623582,-1.8949615133832756,0.7579101390848499,200
+Artery - Tibial,slow,covariates,dispersion_slope,non_essential,0.03438416519878248,-1.0144610875364632,1.117184046636253,200
+Brain - Amygdala,brain,covariates,dispersion_slope,non_essential,-0.22606531919935885,-0.9345092230980873,0.526069520036988,200
+Brain - Anterior cingulate cortex (BA24),brain,covariates,dispersion_slope,non_essential,0.26858907994482795,-0.5349836215051295,0.9565187026947878,200
+Brain - Caudate (basal ganglia),brain,covariates,dispersion_slope,non_essential,-0.3921237676056405,-1.2182164302276264,0.5808836235378751,200
+Brain - Cerebellar Hemisphere,brain,covariates,dispersion_slope,non_essential,-0.0482951182492479,-0.4756212346067293,0.34662685660553266,200
+Brain - Cerebellum,brain,covariates,dispersion_slope,non_essential,-0.0935181556103595,-0.5627494073630257,0.3453139658297612,200
+Brain - Cortex,brain,covariates,dispersion_slope,non_essential,-0.18969225132695644,-0.8160118800076981,0.6090629618435951,200
+Brain - Frontal Cortex (BA9),brain,covariates,dispersion_slope,non_essential,0.24181875791480836,-0.8954464823727832,0.9626376645688169,200
+Brain - Hippocampus,brain,covariates,dispersion_slope,non_essential,0.08872913694509968,-0.8717872183823492,0.9504741096082704,200
+Brain - Hypothalamus,brain,covariates,dispersion_slope,non_essential,-0.43999448867637614,-1.485513341627768,0.629851287052527,200
+Brain - Nucleus accumbens (basal ganglia),brain,covariates,dispersion_slope,non_essential,-0.14873270830343996,-1.0097215213547308,0.8364269944282029,200
+Brain - Putamen (basal ganglia),brain,covariates,dispersion_slope,non_essential,0.008232463393841719,-0.7481985669455623,0.7411954999032064,200
+Brain - Spinal cord (cervical c-1),brain,covariates,dispersion_slope,non_essential,-0.07759711943941244,-0.6490126091960917,0.5232645959093929,200
+Brain - Substantia nigra,brain,covariates,dispersion_slope,non_essential,-0.05507544624979037,-0.6971725252608525,0.629980263082467,200
+Breast - Mammary Tissue,slow,covariates,dispersion_slope,non_essential,-0.0800877943080864,-1.1744837918181688,1.1802307441125495,200
+Colon - Sigmoid,slow,covariates,dispersion_slope,non_essential,0.006093671673547641,-0.9622243752955609,0.8883883625474364,200
+Colon - Transverse,renewing,covariates,dispersion_slope,non_essential,2.2253189314895176,-2.3630571962649976,4.252262313305361,200
+Esophagus - Gastroesophageal Junction,slow,covariates,dispersion_slope,non_essential,0.07281026422330417,-0.8188560657869853,0.8397334147851208,200
+Esophagus - Mucosa,renewing,covariates,dispersion_slope,non_essential,-0.01960731256812493,-1.761917098706857,1.707488249167088,200
+Esophagus - Muscularis,slow,covariates,dispersion_slope,non_essential,0.21481065804892063,-0.6405075001542564,1.0132129076088063,200
+Heart - Atrial Appendage,heart & muscle,covariates,dispersion_slope,non_essential,0.1588638286189777,-3.2480942022853743,3.089214047020693,200
+Heart - Left Ventricle,heart & muscle,covariates,dispersion_slope,non_essential,-0.8351356913355307,-2.9183884552942003,1.7309938106280622,200
+Kidney - Cortex,slow,covariates,dispersion_slope,non_essential,0.1724594013957978,-1.3544192839099511,1.5795418077010124,200
+Liver,slow,covariates,dispersion_slope,non_essential,-0.17955451411510814,-1.6513023738545551,1.1645281108522363,200
+Lung,slow,covariates,dispersion_slope,non_essential,-0.0809688580010811,-0.8953309045107851,0.8879372033273634,200
+Minor Salivary Gland,slow,covariates,dispersion_slope,non_essential,1.167491809835464,-0.5275264394675319,2.5428344748021527,200
+Muscle - Skeletal,heart & muscle,covariates,dispersion_slope,non_essential,-0.3483532460601977,-1.3508874521276797,0.704148176328896,200
+Nerve - Tibial,slow,covariates,dispersion_slope,non_essential,0.15772607061069105,-0.7408950704666492,1.0614900421797737,200
+Ovary,slow,covariates,dispersion_slope,non_essential,0.029874989657587316,-0.7297939387451491,0.8995373471710341,200
+Pancreas,slow,covariates,dispersion_slope,non_essential,0.11566815940890968,-1.160365140157858,1.3228391605184737,200
+Pituitary,slow,covariates,dispersion_slope,non_essential,-0.022029402619273053,-1.0655060114166603,1.1617962681466818,200
+Prostate,slow,covariates,dispersion_slope,non_essential,0.3252865140459411,-0.4830803865378716,1.019498719979978,200
+Skin - Not Sun Exposed (Suprapubic),renewing,covariates,dispersion_slope,non_essential,-0.12672685679622075,-1.9207791435799613,1.2154602464563795,200
+Skin - Sun Exposed (Lower leg),renewing,covariates,dispersion_slope,non_essential,-0.26325622206107524,-2.5691984554227525,1.7767896336978024,200
+Small Intestine - Terminal Ileum,renewing,covariates,dispersion_slope,non_essential,0.3518524646483082,-3.501153551071093,3.6253660717424063,200
+Spleen,renewing,covariates,dispersion_slope,non_essential,-0.20269927393128973,-1.042607487697477,0.6886454989983015,200
+Stomach,renewing,covariates,dispersion_slope,non_essential,0.30841725730589953,-2.9214068940793276,2.6761175608822327,200
+Testis,renewing,covariates,dispersion_slope,non_essential,0.9947124211256487,-1.1502444758567438,1.5829242493200246,200
+Thyroid,slow,covariates,dispersion_slope,non_essential,-0.00048017663231433524,-0.8274696890864848,0.8557431416287282,200
+Uterus,slow,covariates,dispersion_slope,non_essential,0.5535633611598089,-0.13776282265411263,1.0772658726873356,200
+Vagina,renewing,covariates,dispersion_slope,non_essential,0.8864652086242331,-1.8914028133139889,3.251214679448192,200
+Whole Blood,renewing,covariates,dispersion_slope,non_essential,0.12135325788226528,-1.5885154352157946,1.9429585740206348,200
+Adipose - Subcutaneous,slow,pc5_age_free,abs_slope,core_essential,-0.36330100285238587,-0.434031634579415,-0.17063474099569753,200
+Adipose - Visceral (Omentum),slow,pc5_age_free,abs_slope,core_essential,-0.35567532413687164,-0.4714612053884194,-0.2248491091551074,200
+Adrenal Gland,slow,pc5_age_free,abs_slope,core_essential,-0.29383756050568566,-0.37214001441308525,-0.20517597677281904,200
+Artery - Aorta,slow,pc5_age_free,abs_slope,core_essential,-0.34811985506183707,-0.40867861526501514,-0.24716767800308387,200
+Artery - Coronary,slow,pc5_age_free,abs_slope,core_essential,-0.3047296363145119,-0.4109128551368575,-0.10791118884051562,200
+Artery - Tibial,slow,pc5_age_free,abs_slope,core_essential,-0.33824546028833946,-0.4015110080141197,-0.20201494089627745,200
+Brain - Amygdala,brain,pc5_age_free,abs_slope,core_essential,-0.20532483007009145,-0.3735370499842427,-0.04952947753345202,200
+Brain - Anterior cingulate cortex (BA24),brain,pc5_age_free,abs_slope,core_essential,-0.32591806742574836,-0.48176254833435944,-0.13234873836759528,200
+Brain - Caudate (basal ganglia),brain,pc5_age_free,abs_slope,core_essential,-0.2707325167826736,-0.3962266473664106,-0.03801244383943701,200
+Brain - Cerebellar Hemisphere,brain,pc5_age_free,abs_slope,core_essential,-0.19099818318296335,-0.26759037519213347,-0.07919503853942039,200
+Brain - Cerebellum,brain,pc5_age_free,abs_slope,core_essential,-0.3143125985953165,-0.3989008062790759,-0.16376230639387993,200
+Brain - Cortex,brain,pc5_age_free,abs_slope,core_essential,-0.38820679038067263,-0.4898175253421892,-0.24691205687855663,200
+Brain - Frontal Cortex (BA9),brain,pc5_age_free,abs_slope,core_essential,-0.402735968170956,-0.5481245296106166,-0.19982952878418764,200
+Brain - Hippocampus,brain,pc5_age_free,abs_slope,core_essential,-0.3776236281326625,-0.457125833270833,-0.2286746298218742,200
+Brain - Hypothalamus,brain,pc5_age_free,abs_slope,core_essential,-0.28564725495268906,-0.37561566932851914,-0.2026002546652499,200
+Brain - Nucleus accumbens (basal ganglia),brain,pc5_age_free,abs_slope,core_essential,-0.1771359270402486,-0.33052063330743897,0.08005710563559014,200
+Brain - Putamen (basal ganglia),brain,pc5_age_free,abs_slope,core_essential,-0.14078997815988695,-0.3544010143501982,0.11211827596902849,200
+Brain - Spinal cord (cervical c-1),brain,pc5_age_free,abs_slope,core_essential,-0.3059560395342043,-0.39565029572497845,-0.12311079365747321,200
+Brain - Substantia nigra,brain,pc5_age_free,abs_slope,core_essential,-0.34491806903311395,-0.4356993320634593,-0.17048426180458323,200
+Breast - Mammary Tissue,slow,pc5_age_free,abs_slope,core_essential,-0.32457148821770304,-0.41550043995238506,-0.17406897322190623,200
+Colon - Sigmoid,slow,pc5_age_free,abs_slope,core_essential,-0.23378900311325349,-0.32293437790074325,-0.005342850739974836,200
+Colon - Transverse,renewing,pc5_age_free,abs_slope,core_essential,-0.30026971326740726,-0.46030472888029755,-0.05010145957046813,200
+Esophagus - Gastroesophageal Junction,slow,pc5_age_free,abs_slope,core_essential,-0.3231149771404045,-0.42995925563086185,-0.07726463034489464,200
+Esophagus - Mucosa,renewing,pc5_age_free,abs_slope,core_essential,-0.2748263823700023,-0.37158657055715644,-0.06655225345886491,200
+Esophagus - Muscularis,slow,pc5_age_free,abs_slope,core_essential,-0.3039961814472848,-0.38926553619107035,-0.08834613726904043,200
+Heart - Atrial Appendage,heart & muscle,pc5_age_free,abs_slope,core_essential,-0.3648318201760048,-0.4535414363042458,-0.11458790929119385,200
+Heart - Left Ventricle,heart & muscle,pc5_age_free,abs_slope,core_essential,-0.2914047329488665,-0.4057960596588835,-0.030908999828034727,200
+Kidney - Cortex,slow,pc5_age_free,abs_slope,core_essential,-0.3452835889505266,-0.4178669442178884,-0.2077586919275761,200
+Liver,slow,pc5_age_free,abs_slope,core_essential,-0.3612505364874881,-0.4528496379445594,-0.1746669648029747,200
+Lung,slow,pc5_age_free,abs_slope,core_essential,-0.14783617656669013,-0.3597923943320794,0.07929132067871003,200
+Minor Salivary Gland,slow,pc5_age_free,abs_slope,core_essential,-0.32052123847486813,-0.4563289065113999,-0.1450417295023491,200
+Muscle - Skeletal,heart & muscle,pc5_age_free,abs_slope,core_essential,-0.30163012727106475,-0.39652877918600354,-0.14706276284435355,200
+Nerve - Tibial,slow,pc5_age_free,abs_slope,core_essential,-0.36276302320178483,-0.43308586538269184,-0.221139697813925,200
+Ovary,slow,pc5_age_free,abs_slope,core_essential,-0.2518532432081887,-0.35132929365001253,-0.11592951069885839,200
+Pancreas,slow,pc5_age_free,abs_slope,core_essential,-0.2938222440131242,-0.3786225949196203,-0.09787549528661797,200
+Pituitary,slow,pc5_age_free,abs_slope,core_essential,-0.28124852031494774,-0.37537489664099805,-0.12315510933683191,200
+Prostate,slow,pc5_age_free,abs_slope,core_essential,-0.44577418733581053,-0.4906117963057843,-0.37488362266442515,200
+Skin - Not Sun Exposed (Suprapubic),renewing,pc5_age_free,abs_slope,core_essential,-0.24967906934827466,-0.356721935363196,-0.08130882570758029,200
+Skin - Sun Exposed (Lower leg),renewing,pc5_age_free,abs_slope,core_essential,-0.31765233286353184,-0.4417513349229111,-0.14163725309087175,200
+Small Intestine - Terminal Ileum,renewing,pc5_age_free,abs_slope,core_essential,-0.0711991901019474,-0.24029899857036488,0.0805096381364557,200
+Spleen,renewing,pc5_age_free,abs_slope,core_essential,-0.11946599133133487,-0.3565027162652187,0.15567190698025418,200
+Stomach,renewing,pc5_age_free,abs_slope,core_essential,-0.09191998493422614,-0.29349910555270403,0.15915238316916736,200
+Testis,renewing,pc5_age_free,abs_slope,core_essential,-0.36183189166271873,-0.44297846319523354,-0.23090550229640397,200
+Thyroid,slow,pc5_age_free,abs_slope,core_essential,-0.26382321758257027,-0.34910091443204067,-0.10616204466853828,200
+Uterus,slow,pc5_age_free,abs_slope,core_essential,-0.2535091065321843,-0.34495082815358774,-0.1360296562543064,200
+Vagina,renewing,pc5_age_free,abs_slope,core_essential,-0.3058195344129928,-0.38423086144914137,-0.2166060426877339,200
+Whole Blood,renewing,pc5_age_free,abs_slope,core_essential,-0.22593332100839159,-0.35400099541485536,-0.0214849058349513,200
+Adipose - Subcutaneous,slow,pc5_age_free,abs_slope,housekeeping,-0.4870001339961969,-0.5397883176774668,-0.4041270490626104,200
+Adipose - Visceral (Omentum),slow,pc5_age_free,abs_slope,housekeeping,-0.42308629011695575,-0.4982453741811836,-0.2981678248621288,200
+Adrenal Gland,slow,pc5_age_free,abs_slope,housekeeping,-0.42158980439098254,-0.4681984750554602,-0.3481586857785559,200
+Artery - Aorta,slow,pc5_age_free,abs_slope,housekeeping,-0.45360443177624776,-0.48658979072499814,-0.41194668005954543,200
+Artery - Coronary,slow,pc5_age_free,abs_slope,housekeeping,-0.42348943077212675,-0.4787672086376752,-0.289054600803023,200
+Artery - Tibial,slow,pc5_age_free,abs_slope,housekeeping,-0.4695010625798096,-0.5271433563547193,-0.3881990155495569,200
+Brain - Amygdala,brain,pc5_age_free,abs_slope,housekeeping,-0.10175876552999108,-0.2994353923906412,0.04945718275451673,200
+Brain - Anterior cingulate cortex (BA24),brain,pc5_age_free,abs_slope,housekeeping,-0.3396566408603561,-0.4977923846602483,-0.17488918172569282,200
+Brain - Caudate (basal ganglia),brain,pc5_age_free,abs_slope,housekeeping,-0.3894202983040105,-0.5081485668793816,-0.21283352777811188,200
+Brain - Cerebellar Hemisphere,brain,pc5_age_free,abs_slope,housekeeping,-0.3069101373470763,-0.36355500838322596,-0.2500252127836612,200
+Brain - Cerebellum,brain,pc5_age_free,abs_slope,housekeeping,-0.3515263493225225,-0.4328118873824735,-0.23346934350251597,200
+Brain - Cortex,brain,pc5_age_free,abs_slope,housekeeping,-0.44669944505095505,-0.5368109852816242,-0.34730984504953605,200
+Brain - Frontal Cortex (BA9),brain,pc5_age_free,abs_slope,housekeeping,-0.44249502644342176,-0.5907288410332145,-0.2211849860565164,200
+Brain - Hippocampus,brain,pc5_age_free,abs_slope,housekeeping,-0.44190995232879915,-0.5330632959502362,-0.31390700159587465,200
+Brain - Hypothalamus,brain,pc5_age_free,abs_slope,housekeeping,-0.38775474091875395,-0.4654161357877553,-0.3156701844948625,200
+Brain - Nucleus accumbens (basal ganglia),brain,pc5_age_free,abs_slope,housekeeping,-0.3533812615486239,-0.4584767725237304,-0.21049484821874745,200
+Brain - Putamen (basal ganglia),brain,pc5_age_free,abs_slope,housekeeping,-0.3299054346952076,-0.5075777912044213,-0.121758033031735,200
+Brain - Spinal cord (cervical c-1),brain,pc5_age_free,abs_slope,housekeeping,-0.415477678748123,-0.4702702495143089,-0.26109018172431137,200
+Brain - Substantia nigra,brain,pc5_age_free,abs_slope,housekeeping,-0.4410403185821004,-0.5549373215779638,-0.2719774988607814,200
+Breast - Mammary Tissue,slow,pc5_age_free,abs_slope,housekeeping,-0.4538248204835219,-0.5156597059265167,-0.36359395879801515,200
+Colon - Sigmoid,slow,pc5_age_free,abs_slope,housekeeping,-0.3577269682543275,-0.42951940334685035,-0.23621403918602227,200
+Colon - Transverse,renewing,pc5_age_free,abs_slope,housekeeping,-0.5336885828261444,-0.6101802134944031,-0.4204931799562413,200
+Esophagus - Gastroesophageal Junction,slow,pc5_age_free,abs_slope,housekeeping,-0.4551016807594108,-0.5103797612255557,-0.30589152808603076,200
+Esophagus - Mucosa,renewing,pc5_age_free,abs_slope,housekeeping,-0.39237784009603555,-0.45759227905153804,-0.27792424016050904,200
+Esophagus - Muscularis,slow,pc5_age_free,abs_slope,housekeeping,-0.40121911543243927,-0.46858510355050187,-0.27526842544805524,200
+Heart - Atrial Appendage,heart & muscle,pc5_age_free,abs_slope,housekeeping,-0.442921745390652,-0.5075426391807619,-0.30447546840631945,200
+Heart - Left Ventricle,heart & muscle,pc5_age_free,abs_slope,housekeeping,-0.39372814959499697,-0.49897408361919193,-0.21493229941422365,200
+Kidney - Cortex,slow,pc5_age_free,abs_slope,housekeeping,-0.4401629774285719,-0.5050942003780597,-0.31238116001924315,200
+Liver,slow,pc5_age_free,abs_slope,housekeeping,-0.4834610299598995,-0.5498862828165083,-0.40877511271206896,200
+Lung,slow,pc5_age_free,abs_slope,housekeeping,-0.3757731372114208,-0.4654986011932803,-0.23585424808659272,200
+Minor Salivary Gland,slow,pc5_age_free,abs_slope,housekeeping,-0.5212089362497931,-0.6040922015797181,-0.3795289822617537,200
+Muscle - Skeletal,heart & muscle,pc5_age_free,abs_slope,housekeeping,-0.4838386920076304,-0.5544344871949185,-0.38633227533133624,200
+Nerve - Tibial,slow,pc5_age_free,abs_slope,housekeeping,-0.47644388349804456,-0.5289041230593837,-0.39951983246501577,200
+Ovary,slow,pc5_age_free,abs_slope,housekeeping,-0.38467304144607056,-0.44846904144403715,-0.283731419683401,200
+Pancreas,slow,pc5_age_free,abs_slope,housekeeping,-0.4146750286123887,-0.4634555099009067,-0.34325025268962345,200
+Pituitary,slow,pc5_age_free,abs_slope,housekeeping,-0.4083291144734329,-0.4752914484745857,-0.3012452977827265,200
+Prostate,slow,pc5_age_free,abs_slope,housekeeping,-0.5394626880707046,-0.5793173215826024,-0.48308299187819476,200
+Skin - Not Sun Exposed (Suprapubic),renewing,pc5_age_free,abs_slope,housekeeping,-0.3274019969964737,-0.4207926584989485,-0.18795215112100652,200
+Skin - Sun Exposed (Lower leg),renewing,pc5_age_free,abs_slope,housekeeping,-0.4258083049755943,-0.5082715417225162,-0.2908153558750352,200
+Small Intestine - Terminal Ileum,renewing,pc5_age_free,abs_slope,housekeeping,-0.504210509846604,-0.5937863232169321,-0.4123044747136658,200
+Spleen,renewing,pc5_age_free,abs_slope,housekeeping,-0.3815632145212491,-0.46297541210948867,-0.28145369982096985,200
+Stomach,renewing,pc5_age_free,abs_slope,housekeeping,-0.36925008431367223,-0.4741805005213239,-0.23905218831963587,200
+Testis,renewing,pc5_age_free,abs_slope,housekeeping,-0.4848179805438926,-0.5656099587696114,-0.3294109017024549,200
+Thyroid,slow,pc5_age_free,abs_slope,housekeeping,-0.39208103624618507,-0.44570054089182654,-0.27968711012940733,200
+Uterus,slow,pc5_age_free,abs_slope,housekeeping,-0.4491347618727253,-0.48675719440554893,-0.39101662142697885,200
+Vagina,renewing,pc5_age_free,abs_slope,housekeeping,-0.45373293767539624,-0.5069266196647889,-0.400134710594393,200
+Whole Blood,renewing,pc5_age_free,abs_slope,housekeeping,-0.3451399562430716,-0.4600013709241469,-0.1801401905025854,200
+Adipose - Subcutaneous,slow,pc5_age_free,abs_slope,non_essential,0.061522235453794746,-0.5501919190283516,0.8259917088083367,200
+Adipose - Visceral (Omentum),slow,pc5_age_free,abs_slope,non_essential,0.08455383514210818,-0.7286652219220998,0.9823052522748184,200
+Adrenal Gland,slow,pc5_age_free,abs_slope,non_essential,1.7669439362235497,0.6967421356705515,3.112050729628055,200
+Artery - Aorta,slow,pc5_age_free,abs_slope,non_essential,1.1117459997136536,0.22962929553142572,1.8350748053031745,200
+Artery - Coronary,slow,pc5_age_free,abs_slope,non_essential,0.3701004709518235,-0.4962623137454563,1.4847549424621025,200
+Artery - Tibial,slow,pc5_age_free,abs_slope,non_essential,-0.03382860949558611,-0.629054326607698,0.8364536693400767,200
+Brain - Amygdala,brain,pc5_age_free,abs_slope,non_essential,0.5738278880954534,0.21352335407626918,1.0295666597296929,200
+Brain - Anterior cingulate cortex (BA24),brain,pc5_age_free,abs_slope,non_essential,0.7047765792845879,0.33226350254702686,1.1223334970931385,200
+Brain - Caudate (basal ganglia),brain,pc5_age_free,abs_slope,non_essential,0.711110374812175,0.2629489485855283,1.1988979799507054,200
+Brain - Cerebellar Hemisphere,brain,pc5_age_free,abs_slope,non_essential,0.7770057486864019,0.3473263420821039,1.2948905572475407,200
+Brain - Cerebellum,brain,pc5_age_free,abs_slope,non_essential,0.8330936160631783,0.4120383330835044,1.239796945999463,200
+Brain - Cortex,brain,pc5_age_free,abs_slope,non_essential,0.6038197379819439,0.3134081601940683,0.9309663152412391,200
+Brain - Frontal Cortex (BA9),brain,pc5_age_free,abs_slope,non_essential,0.7582912709780549,0.39138057940069665,1.0551795543356053,200
+Brain - Hippocampus,brain,pc5_age_free,abs_slope,non_essential,0.9281966611925707,0.3612081621650602,1.4606301980068066,200
+Brain - Hypothalamus,brain,pc5_age_free,abs_slope,non_essential,0.6617518834431826,0.2646593039259208,1.342609735053829,200
+Brain - Nucleus accumbens (basal ganglia),brain,pc5_age_free,abs_slope,non_essential,0.6865353834085908,0.28334948467687404,1.098090340759903,200
+Brain - Putamen (basal ganglia),brain,pc5_age_free,abs_slope,non_essential,0.6812610486837084,0.23067429214725077,1.0848988203921095,200
+Brain - Spinal cord (cervical c-1),brain,pc5_age_free,abs_slope,non_essential,0.5700145391494638,0.02271478128074049,1.2894375979089072,200
+Brain - Substantia nigra,brain,pc5_age_free,abs_slope,non_essential,0.7360035151740918,0.24988437056692492,1.2855121622886991,200
+Breast - Mammary Tissue,slow,pc5_age_free,abs_slope,non_essential,0.09179597116997393,-0.6704424137303786,0.9749600237900369,200
+Colon - Sigmoid,slow,pc5_age_free,abs_slope,non_essential,-0.07193650869139642,-0.6434280327965729,0.7783343363898388,200
+Colon - Transverse,renewing,pc5_age_free,abs_slope,non_essential,2.8993100142928903,1.0082313991613718,4.470503807201922,200
+Esophagus - Gastroesophageal Junction,slow,pc5_age_free,abs_slope,non_essential,-0.22782116890122922,-0.8300981579946455,0.5624960924463721,200
+Esophagus - Mucosa,renewing,pc5_age_free,abs_slope,non_essential,1.430721187304086,0.6331499157766626,2.5491359625573415,200
+Esophagus - Muscularis,slow,pc5_age_free,abs_slope,non_essential,-0.24800530110501326,-0.8727949750675853,0.5366020889639818,200
+Heart - Atrial Appendage,heart & muscle,pc5_age_free,abs_slope,non_essential,0.7673513283977977,-0.2655656615150528,3.1080562443117024,200
+Heart - Left Ventricle,heart & muscle,pc5_age_free,abs_slope,non_essential,0.5952357127824465,-0.45555752274605893,2.1102163622852146,200
+Kidney - Cortex,slow,pc5_age_free,abs_slope,non_essential,1.2940093978755844,0.6053759468195786,2.0336547646141736,200
+Liver,slow,pc5_age_free,abs_slope,non_essential,0.6346707791877945,0.18861399439289064,1.541684492643214,200
+Lung,slow,pc5_age_free,abs_slope,non_essential,0.25227064374389224,-0.3801616611877343,0.9065097348845613,200
+Minor Salivary Gland,slow,pc5_age_free,abs_slope,non_essential,1.3965460667146674,0.6350966303419325,2.3581543691509115,200
+Muscle - Skeletal,heart & muscle,pc5_age_free,abs_slope,non_essential,0.03501076867531086,-0.7329855007502265,0.7277041461219816,200
+Nerve - Tibial,slow,pc5_age_free,abs_slope,non_essential,0.8044538673926211,0.09516687858911456,1.3331944970006906,200
+Ovary,slow,pc5_age_free,abs_slope,non_essential,0.12534266960235832,-0.4208228234267409,0.7898099986814221,200
+Pancreas,slow,pc5_age_free,abs_slope,non_essential,1.565888874734029,0.8854377812393343,2.418381806236187,200
+Pituitary,slow,pc5_age_free,abs_slope,non_essential,0.7991528783041877,0.31229442085994213,1.4349890638606413,200
+Prostate,slow,pc5_age_free,abs_slope,non_essential,0.16635695016435864,-0.32731337441159863,0.6497318756282363,200
+Skin - Not Sun Exposed (Suprapubic),renewing,pc5_age_free,abs_slope,non_essential,1.114512755235522,0.4858062481722034,2.0250441083376614,200
+Skin - Sun Exposed (Lower leg),renewing,pc5_age_free,abs_slope,non_essential,0.7906694568371717,0.23084232659484,1.9186918812415465,200
+Small Intestine - Terminal Ileum,renewing,pc5_age_free,abs_slope,non_essential,1.5719528135093053,0.08377149198865796,3.188157458176757,200
+Spleen,renewing,pc5_age_free,abs_slope,non_essential,0.4017357677979811,-0.25847853081943634,1.1667298597113267,200
+Stomach,renewing,pc5_age_free,abs_slope,non_essential,1.5270004108753077,0.22229063469262458,3.0332757060766538,200
+Testis,renewing,pc5_age_free,abs_slope,non_essential,0.6899895530698466,-0.00007077496331999765,1.216637195499769,200
+Thyroid,slow,pc5_age_free,abs_slope,non_essential,0.2511274534551994,-0.3318252472534646,1.1829038296517427,200
+Uterus,slow,pc5_age_free,abs_slope,non_essential,0.7621776739688619,0.29425673628765553,1.2245225150349173,200
+Vagina,renewing,pc5_age_free,abs_slope,non_essential,1.969233078028374,0.9919707643439368,3.0389372984441017,200
+Whole Blood,renewing,pc5_age_free,abs_slope,non_essential,0.44478610517769235,-0.5473256924138602,1.9390142744185055,200
+Adipose - Subcutaneous,slow,pc5_age_free,dispersion_slope,core_essential,-0.013285496304747454,-0.23038080511527734,0.18839524832077623,200
+Adipose - Visceral (Omentum),slow,pc5_age_free,dispersion_slope,core_essential,-0.03530691114528174,-0.26493235929595954,0.16531000478047858,200
+Adrenal Gland,slow,pc5_age_free,dispersion_slope,core_essential,0.04751770983189983,-0.0963157661066047,0.2292826364019353,200
+Artery - Aorta,slow,pc5_age_free,dispersion_slope,core_essential,0.007511624887681085,-0.146055276974929,0.1660225158124156,200
+Artery - Coronary,slow,pc5_age_free,dispersion_slope,core_essential,0.07155276334035841,-0.14408762681198287,0.2563709975070784,200
+Artery - Tibial,slow,pc5_age_free,dispersion_slope,core_essential,0.021445223816188207,-0.2106638836531839,0.22645039411595067,200
+Brain - Amygdala,brain,pc5_age_free,dispersion_slope,core_essential,0.02360935142123199,-0.12111785650538587,0.14514450744962856,200
+Brain - Anterior cingulate cortex (BA24),brain,pc5_age_free,dispersion_slope,core_essential,-0.048756190334614646,-0.22234318686967788,0.09774697613449872,200
+Brain - Caudate (basal ganglia),brain,pc5_age_free,dispersion_slope,core_essential,-0.0010620785396401838,-0.2166673588986495,0.23572650108859206,200
+Brain - Cerebellar Hemisphere,brain,pc5_age_free,dispersion_slope,core_essential,-0.01868344813106256,-0.1684407062852407,0.12268637468115613,200
+Brain - Cerebellum,brain,pc5_age_free,dispersion_slope,core_essential,0.010081262830250733,-0.13638235295403608,0.18701598162725316,200
+Brain - Cortex,brain,pc5_age_free,dispersion_slope,core_essential,0.03010703052659585,-0.1285765712961576,0.22619823901151156,200
+Brain - Frontal Cortex (BA9),brain,pc5_age_free,dispersion_slope,core_essential,0.019198228310958132,-0.1581201822022413,0.19862101538969054,200
+Brain - Hippocampus,brain,pc5_age_free,dispersion_slope,core_essential,-0.065931052763302,-0.2522790348614039,0.10699584171163752,200
+Brain - Hypothalamus,brain,pc5_age_free,dispersion_slope,core_essential,0.032652143803119565,-0.22150117095104271,0.2570035571013246,200
+Brain - Nucleus accumbens (basal ganglia),brain,pc5_age_free,dispersion_slope,core_essential,0.052197188018521176,-0.0964811203492042,0.21069673363489988,200
+Brain - Putamen (basal ganglia),brain,pc5_age_free,dispersion_slope,core_essential,-0.03391233294225228,-0.2612103130014882,0.15121540021723323,200
+Brain - Spinal cord (cervical c-1),brain,pc5_age_free,dispersion_slope,core_essential,-0.05001962851704361,-0.2117562599678247,0.121911898819671,200
+Brain - Substantia nigra,brain,pc5_age_free,dispersion_slope,core_essential,0.07982522156475892,-0.15948672772983677,0.24684817095238482,200
+Breast - Mammary Tissue,slow,pc5_age_free,dispersion_slope,core_essential,0.04977260803732056,-0.12144413849402205,0.25209932398282214,200
+Colon - Sigmoid,slow,pc5_age_free,dispersion_slope,core_essential,0.01777698791893944,-0.19802927918481739,0.27516408449518986,200
+Colon - Transverse,renewing,pc5_age_free,dispersion_slope,core_essential,-0.002886632299212308,-0.23669097192808025,0.25080421884457205,200
+Esophagus - Gastroesophageal Junction,slow,pc5_age_free,dispersion_slope,core_essential,0.06697645394593264,-0.1586796231504787,0.2836878481805211,200
+Esophagus - Mucosa,renewing,pc5_age_free,dispersion_slope,core_essential,0.012215632659173553,-0.1636543934746057,0.21221711422327874,200
+Esophagus - Muscularis,slow,pc5_age_free,dispersion_slope,core_essential,0.007600327024802974,-0.15668692102805787,0.2067166371304609,200
+Heart - Atrial Appendage,heart & muscle,pc5_age_free,dispersion_slope,core_essential,-0.014633532950151872,-0.15534105628167713,0.15317773141673136,200
+Heart - Left Ventricle,heart & muscle,pc5_age_free,dispersion_slope,core_essential,-0.004599685240679437,-0.1920262665330178,0.15398507453783356,200
+Kidney - Cortex,slow,pc5_age_free,dispersion_slope,core_essential,0.05953908855758875,-0.11041912382878688,0.23475244557339697,200
+Liver,slow,pc5_age_free,dispersion_slope,core_essential,0.09051520728450609,-0.08163060778423252,0.23832424027139923,200
+Lung,slow,pc5_age_free,dispersion_slope,core_essential,-0.06535015638137129,-0.2701740666279236,0.15256920974944366,200
+Minor Salivary Gland,slow,pc5_age_free,dispersion_slope,core_essential,0.021203565774041318,-0.14736815146497415,0.2061022555121636,200
+Muscle - Skeletal,heart & muscle,pc5_age_free,dispersion_slope,core_essential,-0.014513024568003999,-0.1771169297064485,0.14496869608044022,200
+Nerve - Tibial,slow,pc5_age_free,dispersion_slope,core_essential,-0.04655489828003218,-0.20861103230466754,0.11417008201257388,200
+Ovary,slow,pc5_age_free,dispersion_slope,core_essential,-0.020177620057382255,-0.18190239911286019,0.10604867897287262,200
+Pancreas,slow,pc5_age_free,dispersion_slope,core_essential,-0.040142755467145144,-0.20026510684047047,0.1081602921185501,200
+Pituitary,slow,pc5_age_free,dispersion_slope,core_essential,0.08356643105218717,-0.11646233261114822,0.2354609402582708,200
+Prostate,slow,pc5_age_free,dispersion_slope,core_essential,0.010519314158032875,-0.14733713827321207,0.2231410973291676,200
+Skin - Not Sun Exposed (Suprapubic),renewing,pc5_age_free,dispersion_slope,core_essential,-0.0215750099937963,-0.24153311360478497,0.17060296575348735,200
+Skin - Sun Exposed (Lower leg),renewing,pc5_age_free,dispersion_slope,core_essential,-0.030026042200709348,-0.26694016200628756,0.15035425352548254,200
+Small Intestine - Terminal Ileum,renewing,pc5_age_free,dispersion_slope,core_essential,0.05986533501492111,-0.10037603035031387,0.21786636963860165,200
+Spleen,renewing,pc5_age_free,dispersion_slope,core_essential,-0.038696423321306184,-0.22306700994250964,0.20102823237642836,200
+Stomach,renewing,pc5_age_free,dispersion_slope,core_essential,-0.0011665086271567104,-0.1919595692715825,0.16239159154304708,200
+Testis,renewing,pc5_age_free,dispersion_slope,core_essential,0.02794273970130809,-0.1762946022196151,0.20475039360438746,200
+Thyroid,slow,pc5_age_free,dispersion_slope,core_essential,-0.013780276705997376,-0.1840621048303191,0.1960223075346369,200
+Uterus,slow,pc5_age_free,dispersion_slope,core_essential,0.06323219049490514,-0.0683492424283859,0.18810802512391,200
+Vagina,renewing,pc5_age_free,dispersion_slope,core_essential,0.11997865980883382,-0.10456130932552432,0.31220244684558646,200
+Whole Blood,renewing,pc5_age_free,dispersion_slope,core_essential,-0.004942192055007561,-0.19945044804559958,0.16492630418222964,200
+Adipose - Subcutaneous,slow,pc5_age_free,dispersion_slope,housekeeping,0.023999275382719898,-0.13714631369527738,0.16870316092301313,200
+Adipose - Visceral (Omentum),slow,pc5_age_free,dispersion_slope,housekeeping,-0.016620861356699657,-0.19530853992753802,0.19249885747989762,200
+Adrenal Gland,slow,pc5_age_free,dispersion_slope,housekeeping,0.0477558327336899,-0.0811907839018906,0.1907885790925995,200
+Artery - Aorta,slow,pc5_age_free,dispersion_slope,housekeeping,0.011650783275560784,-0.16711150040904002,0.18073521801690126,200
+Artery - Coronary,slow,pc5_age_free,dispersion_slope,housekeeping,0.04372224304714846,-0.1415813931677059,0.21131190815537676,200
+Artery - Tibial,slow,pc5_age_free,dispersion_slope,housekeeping,0.008870072944196264,-0.16475351600070004,0.18057003847167516,200
+Brain - Amygdala,brain,pc5_age_free,dispersion_slope,housekeeping,0.020078942007950473,-0.11283198275394977,0.1625005009719999,200
+Brain - Anterior cingulate cortex (BA24),brain,pc5_age_free,dispersion_slope,housekeeping,-0.06272891685125127,-0.20257825853140868,0.11966849701069537,200
+Brain - Caudate (basal ganglia),brain,pc5_age_free,dispersion_slope,housekeeping,0.03729584235313592,-0.15677316464648133,0.2198577731511921,200
+Brain - Cerebellar Hemisphere,brain,pc5_age_free,dispersion_slope,housekeeping,-0.04561952751932162,-0.14950755476291205,0.08438375560450521,200
+Brain - Cerebellum,brain,pc5_age_free,dispersion_slope,housekeeping,0.006100439472180176,-0.14272968941231323,0.12892752092931833,200
+Brain - Cortex,brain,pc5_age_free,dispersion_slope,housekeeping,0.05073176423844973,-0.06738296995287571,0.20484714835097464,200
+Brain - Frontal Cortex (BA9),brain,pc5_age_free,dispersion_slope,housekeeping,0.014397845036918502,-0.15457670396351988,0.1765249709479466,200
+Brain - Hippocampus,brain,pc5_age_free,dispersion_slope,housekeeping,-0.06841789673687027,-0.24127430249108708,0.11944160990969112,200
+Brain - Hypothalamus,brain,pc5_age_free,dispersion_slope,housekeeping,0.018057159073421206,-0.23059130885870713,0.23755190091182452,200
+Brain - Nucleus accumbens (basal ganglia),brain,pc5_age_free,dispersion_slope,housekeeping,0.04733075137080818,-0.15407032623596706,0.23045387866193223,200
+Brain - Putamen (basal ganglia),brain,pc5_age_free,dispersion_slope,housekeeping,-0.020226427664287477,-0.27856160267378777,0.13916821141602698,200
+Brain - Spinal cord (cervical c-1),brain,pc5_age_free,dispersion_slope,housekeeping,-0.060385755173959416,-0.2376455263359715,0.09276572593821125,200
+Brain - Substantia nigra,brain,pc5_age_free,dispersion_slope,housekeeping,0.08178164893583213,-0.20338065695180713,0.27350275536667706,200
+Breast - Mammary Tissue,slow,pc5_age_free,dispersion_slope,housekeeping,0.08653266624210498,-0.12165853409026772,0.2746458491063308,200
+Colon - Sigmoid,slow,pc5_age_free,dispersion_slope,housekeeping,0.029953017598196366,-0.16180200725192143,0.20791265829295538,200
+Colon - Transverse,renewing,pc5_age_free,dispersion_slope,housekeeping,-0.03243552584822985,-0.24760080497314071,0.2076785478816482,200
+Esophagus - Gastroesophageal Junction,slow,pc5_age_free,dispersion_slope,housekeeping,0.03476938814821118,-0.1569626579478646,0.20903611046737441,200
+Esophagus - Mucosa,renewing,pc5_age_free,dispersion_slope,housekeeping,0.022830576919925006,-0.12176203044256836,0.21504644471791268,200
+Esophagus - Muscularis,slow,pc5_age_free,dispersion_slope,housekeeping,-0.019735112551884586,-0.18043610198166077,0.1721109168100254,200
+Heart - Atrial Appendage,heart & muscle,pc5_age_free,dispersion_slope,housekeeping,-0.01654427678020281,-0.15168384940266116,0.16130840663073454,200
+Heart - Left Ventricle,heart & muscle,pc5_age_free,dispersion_slope,housekeeping,0.020490599332497337,-0.1740396607196974,0.14255364377090918,200
+Kidney - Cortex,slow,pc5_age_free,dispersion_slope,housekeeping,0.056917925555934196,-0.05753415522128625,0.15693719820148086,200
+Liver,slow,pc5_age_free,dispersion_slope,housekeeping,0.04071934987605207,-0.0914377959866436,0.18088193934802863,200
+Lung,slow,pc5_age_free,dispersion_slope,housekeeping,-0.019536757456896973,-0.20623243871532404,0.2278180603477461,200
+Minor Salivary Gland,slow,pc5_age_free,dispersion_slope,housekeeping,-0.00783002134204157,-0.15162858673731466,0.17263841433841676,200
+Muscle - Skeletal,heart & muscle,pc5_age_free,dispersion_slope,housekeeping,-0.027494163165083952,-0.19133184773119366,0.1371356279221942,200
+Nerve - Tibial,slow,pc5_age_free,dispersion_slope,housekeeping,-0.02851977954104449,-0.21806534427234814,0.16265773826151886,200
+Ovary,slow,pc5_age_free,dispersion_slope,housekeeping,0.010939492201379325,-0.11938017556913226,0.11309688467771267,200
+Pancreas,slow,pc5_age_free,dispersion_slope,housekeeping,0.0059116322990107155,-0.11280156551360457,0.09302095642133335,200
+Pituitary,slow,pc5_age_free,dispersion_slope,housekeeping,0.06941838356808328,-0.11475828664498752,0.22555838854808785,200
+Prostate,slow,pc5_age_free,dispersion_slope,housekeeping,-0.040867072538554663,-0.20548985026812452,0.12266575528543647,200
+Skin - Not Sun Exposed (Suprapubic),renewing,pc5_age_free,dispersion_slope,housekeeping,-0.035210324044846156,-0.19521774969759942,0.14285722374146878,200
+Skin - Sun Exposed (Lower leg),renewing,pc5_age_free,dispersion_slope,housekeeping,-0.022317223250266548,-0.22805346925720038,0.2135723627040918,200
+Small Intestine - Terminal Ileum,renewing,pc5_age_free,dispersion_slope,housekeeping,0.029414976767390612,-0.21931860106946557,0.20476344041381955,200
+Spleen,renewing,pc5_age_free,dispersion_slope,housekeeping,-0.03726653940416121,-0.2158500385514931,0.11581204942002912,200
+Stomach,renewing,pc5_age_free,dispersion_slope,housekeeping,0.053121184603000374,-0.13073200844173663,0.23383054855211002,200
+Testis,renewing,pc5_age_free,dispersion_slope,housekeeping,0.036415874452802324,-0.19891727013708782,0.21464318524728174,200
+Thyroid,slow,pc5_age_free,dispersion_slope,housekeeping,-0.014199657945785486,-0.15841479346764314,0.1796094204577672,200
+Uterus,slow,pc5_age_free,dispersion_slope,housekeeping,0.065365948257337,-0.041823082666202986,0.19404402070123264,200
+Vagina,renewing,pc5_age_free,dispersion_slope,housekeeping,0.12171769490933285,-0.1213619741750958,0.3490166558412191,200
+Whole Blood,renewing,pc5_age_free,dispersion_slope,housekeeping,-0.012377576358329846,-0.16994328186667054,0.12847581347777653,200
+Adipose - Subcutaneous,slow,pc5_age_free,dispersion_slope,non_essential,0.17767439854866718,-0.8584183178530549,1.1105627548145394,200
+Adipose - Visceral (Omentum),slow,pc5_age_free,dispersion_slope,non_essential,-0.004882254840945662,-1.1242989075408683,1.085361574783926,200
+Adrenal Gland,slow,pc5_age_free,dispersion_slope,non_essential,-0.2541727871676454,-2.2612359646543454,1.4512003025847529,200
+Artery - Aorta,slow,pc5_age_free,dispersion_slope,non_essential,-0.10802014118289471,-1.3438916562796408,1.0057008142869344,200
+Artery - Coronary,slow,pc5_age_free,dispersion_slope,non_essential,-0.3699193823810082,-2.0940927150635487,0.9481319342449851,200
+Artery - Tibial,slow,pc5_age_free,dispersion_slope,non_essential,0.04220078521185218,-1.195858383895949,1.3004711704365959,200
+Brain - Amygdala,brain,pc5_age_free,dispersion_slope,non_essential,-0.2044322263373707,-0.7024285904933697,0.3115214390023296,200
+Brain - Anterior cingulate cortex (BA24),brain,pc5_age_free,dispersion_slope,non_essential,0.05592388876092775,-0.5084663041898614,0.7846152955239047,200
+Brain - Caudate (basal ganglia),brain,pc5_age_free,dispersion_slope,non_essential,-0.3646224314716706,-1.1766200515612972,0.3590517716034846,200
+Brain - Cerebellar Hemisphere,brain,pc5_age_free,dispersion_slope,non_essential,-0.0007170438025940755,-0.556629707709029,0.49448498308676025,200
+Brain - Cerebellum,brain,pc5_age_free,dispersion_slope,non_essential,0.03151477410018784,-0.40606582148976295,0.503965944451848,200
+Brain - Cortex,brain,pc5_age_free,dispersion_slope,non_essential,-0.24665958052520343,-0.6997560443999713,0.23500205619888773,200
+Brain - Frontal Cortex (BA9),brain,pc5_age_free,dispersion_slope,non_essential,-0.026361597288099434,-0.49730017818882444,0.3698771200123573,200
+Brain - Hippocampus,brain,pc5_age_free,dispersion_slope,non_essential,-0.011234900688422946,-0.8004203485627684,0.7781897917871172,200
+Brain - Hypothalamus,brain,pc5_age_free,dispersion_slope,non_essential,-0.14843587138956002,-0.8748296560614611,0.7479253533540235,200
+Brain - Nucleus accumbens (basal ganglia),brain,pc5_age_free,dispersion_slope,non_essential,-0.2142164801214885,-0.9279973269838877,0.2661859533338965,200
+Brain - Putamen (basal ganglia),brain,pc5_age_free,dispersion_slope,non_essential,0.10135962288125697,-0.48293268862654093,0.7054350054233142,200
+Brain - Spinal cord (cervical c-1),brain,pc5_age_free,dispersion_slope,non_essential,0.114632931822643,-0.4619272270260942,0.7424366516110188,200
+Brain - Substantia nigra,brain,pc5_age_free,dispersion_slope,non_essential,-0.09014471083670253,-0.8956669774468806,0.6668276968924584,200
+Breast - Mammary Tissue,slow,pc5_age_free,dispersion_slope,non_essential,-0.12242304039586295,-1.1332578724789253,0.9141346685901525,200
+Colon - Sigmoid,slow,pc5_age_free,dispersion_slope,non_essential,-0.07850152105175742,-0.90971571972202,0.7142554282135113,200
+Colon - Transverse,renewing,pc5_age_free,dispersion_slope,non_essential,0.16926769247194498,-2.2399848024340154,2.669722059872879,200
+Esophagus - Gastroesophageal Junction,slow,pc5_age_free,dispersion_slope,non_essential,-0.1529871265862135,-1.1604613266518033,0.7929902267416358,200
+Esophagus - Mucosa,renewing,pc5_age_free,dispersion_slope,non_essential,-0.17449798544367096,-1.5938345321668927,1.1383958502089195,200
+Esophagus - Muscularis,slow,pc5_age_free,dispersion_slope,non_essential,0.1886386220862621,-0.7434239619649252,0.9372229754146431,200
+Heart - Atrial Appendage,heart & muscle,pc5_age_free,dispersion_slope,non_essential,0.2933919527837612,-3.1407645579360195,3.724845022913482,200
+Heart - Left Ventricle,heart & muscle,pc5_age_free,dispersion_slope,non_essential,-0.19094009221356112,-1.3769926783024184,1.3582308573194206,200
+Kidney - Cortex,slow,pc5_age_free,dispersion_slope,non_essential,-0.11687338603628322,-1.267164970203959,0.9219801093187542,200
+Liver,slow,pc5_age_free,dispersion_slope,non_essential,-0.2106707887314162,-0.9785346139447938,0.48557100787569085,200
+Lung,slow,pc5_age_free,dispersion_slope,non_essential,-0.09520379285974814,-0.9062898012572572,0.7553633145404023,200
+Minor Salivary Gland,slow,pc5_age_free,dispersion_slope,non_essential,-0.02221657451110426,-1.5146814071536474,1.4500508839932265,200
+Muscle - Skeletal,heart & muscle,pc5_age_free,dispersion_slope,non_essential,-0.002325061940716661,-1.1082620505303662,0.9641863510476028,200
+Nerve - Tibial,slow,pc5_age_free,dispersion_slope,non_essential,0.268133965155681,-0.5260174616445635,1.1110541444626956,200
+Ovary,slow,pc5_age_free,dispersion_slope,non_essential,0.00550178613180522,-0.8664176195840133,0.9376850600956829,200
+Pancreas,slow,pc5_age_free,dispersion_slope,non_essential,-0.12535188447076034,-1.3918803864355087,0.9460496109418569,200
+Pituitary,slow,pc5_age_free,dispersion_slope,non_essential,-0.28764671108123163,-0.9420604489307807,0.5749991573264915,200
+Prostate,slow,pc5_age_free,dispersion_slope,non_essential,0.2442346403421199,-0.7383417898231516,1.1608112392965297,200
+Skin - Not Sun Exposed (Suprapubic),renewing,pc5_age_free,dispersion_slope,non_essential,-0.39343769004026347,-1.6978881852830212,1.0451753176118916,200
+Skin - Sun Exposed (Lower leg),renewing,pc5_age_free,dispersion_slope,non_essential,-0.2953810658911895,-1.6311392594716978,1.1882399207557204,200
+Small Intestine - Terminal Ileum,renewing,pc5_age_free,dispersion_slope,non_essential,-0.22588092459500372,-2.356719601136758,2.04818221117748,200
+Spleen,renewing,pc5_age_free,dispersion_slope,non_essential,0.12936491742114944,-0.6613825566939957,0.8777444131674974,200
+Stomach,renewing,pc5_age_free,dispersion_slope,non_essential,-0.656365200799804,-2.2538693729560166,1.9203089036113954,200
+Testis,renewing,pc5_age_free,dispersion_slope,non_essential,-0.029735175642520546,-0.6426287602870159,0.6170188227097898,200
+Thyroid,slow,pc5_age_free,dispersion_slope,non_essential,0.18276827504773377,-0.6297309281945228,1.205775058718359,200
+Uterus,slow,pc5_age_free,dispersion_slope,non_essential,-0.3510255123691707,-1.0091974524621454,0.335082865681963,200
+Vagina,renewing,pc5_age_free,dispersion_slope,non_essential,-1.296857588859432,-3.0989143768176692,0.7640770709288012,200
+Whole Blood,renewing,pc5_age_free,dispersion_slope,non_essential,-0.31579718425283626,-1.8438483697374226,1.435855422818736,200

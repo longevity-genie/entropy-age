@@ -39,20 +39,16 @@ experiment (`simulate/selection.py`) before reading the data.
 
 ## RM4 — Stochasticity in RNA
 
-State: data found. GTEx v10 is already parsed by the rna-age project on the cluster (19,461 samples,
-946 donors, 68 tissues, decade age bins). Read its outputs read-only. Anything that belongs to rna-age
-goes to its inbox, never into its repository.
+State: the turnover test is done in GTEx v10 (`figures rna_gtex`, 47 tissues) and in the mouse and rat
+atlases (`figures rna_rodents`); see `docs/extension.md`. Mouse repeats the methylation result (brain
+without protection, heart with it), rat leans the same way, GTEx shows no turnover effect in spread.
+Left:
 
-Measure each gene's between-donor dispersion and its change with age, compared against genes of the
-same expression level (RNA noise depends strongly on the mean). Then repeat the essential vs
-non-essential and turnover tests, with the same composition adjustment, and finally build a stochastic
-RNA clock.
-
-Data:
-- GTEx: the same donors' tissues, as in Lunnon, but at ages 20–79.
-- Mouse and rat atlases **GSE314817 / GSE314970**: 24 and 28 tissues, 6–27 months, raw counts about
-  78 MB each. Rat muscles are in GSE226118.
-- Tabula Muris Senis bulk **GSE132040**.
+- **A stochastic RNA clock**, trained on simulated transcriptional noise as the paper does for
+  methylation, tested on the rodent atlases (exact ages).
+- **GTEx with more power:** the same-donor design (every tissue of one donor against that donor's
+  blood), and subsamples larger than 70 donors in the tissues that allow them.
+- Tabula Muris Senis bulk **GSE132040**, a third rodent cohort.
 - Interventions: **GSE280382** (rapamycin and exenatide) and **GSE131754** (eight liver interventions).
 
 ## RM5 — Direct selection test: protection against division count in culture

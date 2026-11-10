@@ -4,6 +4,14 @@ Newest first.
 
 ## Unreleased
 
+- RNA results recorded (`docs/extension.md`, "RNA: transcriptional drift by turnover class";
+  `docs/figures/rna_gtex.png`, `docs/figures/rna_rodents.png`): in mouse, housekeeping and core-essential
+  genes gain spread with age more slowly than matched genes in every class but brain (renewing minus
+  brain −0.28 SD, robust to composition), as in methylation; rat leans the same way; GTEx shows no
+  turnover effect in spread. Both RNA figures share their panels now (`rna_gtex.tissue_panel`,
+  `contrast_panel`; class summaries `class_contrasts`, `tissue_intervals`), show core-essential and
+  housekeeping genes only (non-essential genes are often a handful per tissue; they stay in the tables),
+  and no longer overlap their labels.
 - Direct selection test recorded (`docs/extension.md`, "The direct test"; `docs/figures/passaged_cells.png`):
   in seven primary lines passaged to senescence, housekeeping CpGs drift about half as much as matched
   CpGs once drift clears the array noise floor, and that fraction does not grow with doublings (mean
@@ -41,7 +49,7 @@ Newest first.
   biases it and how it would be validated. Roadmap RM5 lists public methylation time courses of
   dividing cells (GSE197512 with arrested arms, GSE179847, GSE268145, GSE202554, GSE131280), RM6 the
   score.
-- RNA test (roadmap RM4): `entropy-age figures rna_gtex` measures, in GTEx v10 RNA-seq (50 tissues with
+- RNA test (roadmap RM4): `entropy-age figures rna_gtex` measures, in GTEx v10 RNA-seq (47 tissues with
   100 or more donors), how fast between-donor spread of each expressed protein-coding gene grows with
   age, and compares core-essential, housekeeping and non-essential genes with genes of the same
   expression decile, by turnover class (renewing, slow, heart & muscle, brain), in subsamples of 70

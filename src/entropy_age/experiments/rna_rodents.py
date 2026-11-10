@@ -48,14 +48,22 @@ from entropy_age.data.annotation import AnnotationLayout, gene_set_ensembl, symb
 from entropy_age.data.geo import read_series_matrix
 from entropy_age.experiments.common import Context, dummies, write_table
 from entropy_age.experiments.human_tissues import _subsample
-from entropy_age.experiments.rna_gtex import ADJUSTMENTS, METRICS, expressed, log_cpm, tissue_metrics
+from entropy_age.experiments.rna_gtex import (
+    ADJUSTMENTS,
+    METRICS,
+    class_contrasts,
+    contrast_panel,
+    expressed,
+    log_cpm,
+    tissue_intervals,
+    tissue_metrics,
+    tissue_panel,
+)
 from entropy_age.experiments.tissue_contrast import (
     _STATE,
-    SET_LABELS,
     SETS,
     Prepared,
     _adjusted,
-    _interval,
     _matched_sd,
     _run_parallel,
     _settings,
@@ -137,58 +145,6 @@ def _prepare(tissue: str, samples: pl.DataFrame, counts: np.ndarray, features: l
         tissue, values[:, keep].astype(np.float32), samples["age"].to_numpy(), technical, names, animals, technical
     )
     return p
-
-
-# ----------------------------------------------------------------------------- shared with rna_gtex
-def class_contrasts(boot: pl.DataFrame, point: pl.DataFrame, turnover: dict[str, str], contrasts) -> pl.DataFrame:
-    """Class contrasts over size-matched resamples (median, 95 % interval, full-data value for reference)."""
-    keys = ("adjustment", "metric", "group")
-    boot = boot.with_columns(turnover=pl.col("tissue").replace_strict(turnover))
-    point = point.with_columns(turnover=pl.col("tissue").replace_strict(turnover))
-    rows = []
-    for key, sel in boot.group_by(*keys):
-        wide = (
-            sel.group_by("boot", "turnover")
-            .agg(pl.col("matched_diff_sd").mean())
-            .pivot(on="turnover", index="boot", values="matched_diff_sd")
-            .sort("boot")
-        )
-        full = point.filter(*(pl.col(k) == v for k, v in zip(keys, key, strict=True)))
-        full_class = dict(full.group_by("turnover").agg(pl.col("matched_diff_sd").mean()).iter_rows())
-        for first, second in contrasts:
-            if first not in wide.columns or second not in wide.columns:
-                continue
-            diff = (wide[first] - wide[second]).drop_nulls().drop_nans().to_numpy()
-            if diff.size < 10:
-                continue
-            lo, hi, p = _interval(diff)
-            rows.append(
-                dict(zip(keys, key, strict=True))
-                | {
-                    "contrast": f"{first} - {second}",
-                    "difference": float(np.median(diff)),
-                    "ci_low": lo,
-                    "ci_high": hi,
-                    "p_bootstrap": p,
-                    "full_data": full_class[first] - full_class[second],
-                }
-            )
-    return pl.DataFrame(rows).sort("adjustment", "metric", "group", "contrast") if rows else pl.DataFrame()
-
-
-def tissue_intervals(boot: pl.DataFrame, turnover: dict[str, str]) -> pl.DataFrame:
-    keys = ("adjustment", "metric", "group")
-    return (
-        boot.with_columns(turnover=pl.col("tissue").replace_strict(turnover))
-        .group_by("tissue", "turnover", *keys)
-        .agg(
-            pl.col("matched_diff_sd").median().alias("median"),
-            pl.col("matched_diff_sd").quantile(0.025).alias("ci_low"),
-            pl.col("matched_diff_sd").quantile(0.975).alias("ci_high"),
-            pl.len().alias("resamples"),
-        )
-        .sort("adjustment", "metric", "group", "tissue")
-    )
 
 
 def _rows(species, tissue, adjustment, p, rows, membership, permutations, seed) -> pl.DataFrame:
@@ -335,76 +291,34 @@ def _figure(ctx: Context, intervals: pl.DataFrame, contrasts: pl.DataFrame) -> P
     import matplotlib.pyplot as plt
 
     species = intervals["species"].unique(maintain_order=True).to_list()
-    n = max(
-        sum(t in set(intervals.filter(pl.col("species") == s)["tissue"].to_list()) for t in TURNOVER) for s in species
-    )
-    fig = plt.figure(figsize=(15, 0.22 * n * len(species) + 3))
-    grid = fig.add_gridspec(len(species), 2, width_ratios=(1, 1.1), wspace=0.55, hspace=0.35)
-    colors = {g: plots.PALETTE[i] for i, g in enumerate(SETS)}
+    spread = intervals.filter(pl.col("metric") == "dispersion_slope")
+    n = max(spread.filter(pl.col("species") == s)["tissue"].n_unique() for s in species)
+    fig = plt.figure(figsize=(16, (0.24 * n + 1.5) * len(species) + 1))
+    grid = fig.add_gridspec(len(species), 3, width_ratios=(1, 0.8, 1), wspace=0.45, hspace=0.3)
     letters = iter("abcdef")
     for row, sp in enumerate(species):
-        sel = intervals.filter(
-            (pl.col("species") == sp)
-            & (pl.col("adjustment") == "covariates")
-            & (pl.col("metric") == "dispersion_slope")
+        sel = spread.filter(pl.col("species") == sp)
+        a, b, c = (fig.add_subplot(grid[row, i]) for i in range(3))
+        tissue_panel(
+            a, sel.filter(pl.col("adjustment") == "covariates"), TURNOVER, CLASSES, f"{sp}: spread gain with age", True
         )
-        tissues = [t for t in TURNOVER if t in set(sel["tissue"].to_list())]
-        ax = fig.add_subplot(grid[row, 0])
-        for j, group in enumerate(SETS):
-            lookup = {r["tissue"]: r for r in sel.filter(pl.col("group") == group).iter_rows(named=True)}
-            for i, tissue in enumerate(tissues):
-                if tissue in lookup:
-                    r, y = lookup[tissue], i + (j - 1) * 0.25
-                    ax.plot([r["ci_low"], r["ci_high"]], [y, y], color=colors[group], lw=0.9)
-                    ax.scatter(
-                        [r["median"]], [y], color=colors[group], s=9, label=SET_LABELS[group] if i == 0 else None
-                    )
-        start = 0
-        for cls in CLASSES:
-            k = sum(TURNOVER[t] == cls for t in tissues)
-            if start:
-                ax.axhline(start - 0.5, color=plots.MUTED, lw=0.6, ls=":")
-            ax.text(
-                1.0,
-                start + k / 2 - 0.5,
-                cls,
-                transform=ax.get_yaxis_transform(),
-                rotation=-90,
-                va="center",
-                ha="left",
-                fontsize=7,
-                color=plots.MUTED,
-            )
-            start += k
-        ax.axvline(0, color=plots.MUTED, lw=0.8)
-        ax.set_yticks(range(len(tissues)), tissues, fontsize=6.5)
-        ax.set_ylim(len(tissues) - 0.5, -0.5)
-        ax.set(xlabel="Set minus matched genes (SD)", title=f"{sp}: spread gain with age, per tissue")
+        tissue_panel(
+            b,
+            sel.filter(pl.col("adjustment") == "pc5_age_free"),
+            TURNOVER,
+            CLASSES,
+            f"{sp}: plus 5 age-free components",
+            False,
+        )
+        contrast_panel(
+            c,
+            contrasts.filter((pl.col("species") == sp) & (pl.col("metric") == "dispersion_slope")),
+            f"{sp}: class contrasts",
+        )
+        for ax in (a, b, c):
+            plots.label_panel(ax, next(letters))
         if row == 0:
-            ax.legend(fontsize=7, loc="lower left")
-        plots.label_panel(ax, next(letters))
-        ax = fig.add_subplot(grid[row, 1])
-        frame = (
-            contrasts.filter((pl.col("species") == sp) & (pl.col("metric") == "dispersion_slope"))
-            .with_columns(
-                label=pl.format(
-                    "{} · {} · {}",
-                    pl.col("group").replace_strict(SET_LABELS),
-                    pl.col("contrast"),
-                    pl.col("adjustment").replace({"covariates": "cov", "pc5_age_free": "+PCs"}),
-                )
-            )
-            .sort("group", "contrast", "adjustment")
-        )
-        for y, r in enumerate(frame.iter_rows(named=True)):
-            color = plots.ACCENT if r["ci_high"] < 0 or r["ci_low"] > 0 else plots.MUTED
-            ax.plot([r["ci_low"], r["ci_high"]], [y, y], color=color, lw=1.1)
-            ax.scatter([r["difference"]], [y], color=color, s=12)
-        ax.axvline(0, color=plots.MUTED, lw=0.8)
-        ax.set_yticks(range(frame.height), frame["label"].to_list(), fontsize=5.5)
-        ax.set_ylim(max(frame.height - 0.5, 0.5), -0.5)
-        ax.set(xlabel="Difference (SD); < 0 = more protection in the first", title=f"{sp}: class contrasts")
-        plots.label_panel(ax, next(letters))
+            a.legend(fontsize=7, loc="lower left")
     fig.suptitle(
         "Transcriptional drift by turnover class in mouse and rat (GSE314817, GSE314970)",
         x=0.02,
@@ -412,5 +326,5 @@ def _figure(ctx: Context, intervals: pl.DataFrame, contrasts: pl.DataFrame) -> P
         fontsize=12,
         fontweight="bold",
     )
-    fig.subplots_adjust(left=0.12, right=0.98, top=0.95, bottom=0.05)
+    fig.subplots_adjust(left=0.1, right=0.99, top=0.93, bottom=0.04)
     return plots.save(fig, ctx.figure_path("rna_rodents"))

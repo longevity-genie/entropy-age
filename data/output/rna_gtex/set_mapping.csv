@@ -1,0 +1,9 @@
+group,matched_by,genes
+core_essential,entrez,681
+core_essential,previous,1
+core_essential,symbol,2
+housekeeping,alias,5
+housekeeping,previous,310
+housekeeping,symbol,3473
+non_essential,entrez,919
+non_essential,previous,3

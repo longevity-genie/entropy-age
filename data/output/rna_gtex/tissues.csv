@@ -1,0 +1,68 @@
+tissue,turnover,donors,used,reason,age_min_bin_mid,age_max_bin_mid,age_mean,imputed_rin,imputed_ischemic_minutes,hardy_missing,genes,core_essential,housekeeping,non_essential
+Adipose - Subcutaneous,slow,714,true,,25.0,75.0,53.30532212885154,0,0,13,12734,661,3724,6
+Adipose - Visceral (Omentum),slow,587,true,,25.0,75.0,52.68313458262351,0,0,0,12770,659,3722,4
+Adrenal Gland,slow,295,true,,25.0,75.0,52.59322033898305,0,0,0,12622,658,3726,9
+Artery - Aorta,slow,472,true,,25.0,75.0,52.54237288135593,0,0,1,12456,657,3724,4
+Artery - Coronary,slow,268,true,,25.0,75.0,54.32835820895522,0,0,1,12633,659,3724,5
+Artery - Tibial,slow,691,true,,25.0,75.0,52.62662807525326,0,0,10,12141,656,3723,4
+Bladder,,77,false,fewer than 100 donors,,,,,,,,,,
+Brain - Amygdala,brain,181,true,,25.0,75.0,59.25414364640884,0,0,0,13139,654,3720,51
+Brain - Anterior cingulate cortex (BA24),brain,233,true,,25.0,75.0,58.648068669527895,0,0,0,13247,655,3720,53
+Brain - Caudate (basal ganglia),brain,300,true,,25.0,75.0,58.86666666666667,0,0,0,13227,655,3721,48
+Brain - Cerebellar Hemisphere,brain,277,true,,25.0,75.0,58.57400722021661,0,0,0,12942,657,3723,51
+Brain - Cerebellum,brain,266,true,,25.0,75.0,58.421052631578945,0,0,0,13201,658,3727,53
+Brain - Cortex,brain,270,true,,25.0,75.0,58.74074074074074,0,0,0,13453,658,3725,62
+Brain - Frontal Cortex (BA9),brain,269,true,,25.0,75.0,59.014869888475836,0,0,0,13317,658,3724,62
+Brain - Hippocampus,brain,255,true,,25.0,75.0,59.11764705882353,0,0,0,13115,652,3721,45
+Brain - Hypothalamus,brain,257,true,,25.0,75.0,59.04669260700389,0,0,0,13488,654,3720,58
+Brain - Nucleus accumbens (basal ganglia),brain,285,true,,25.0,75.0,58.824561403508774,0,0,0,13312,655,3720,53
+Brain - Putamen (basal ganglia),brain,254,true,,25.0,75.0,58.74015748031496,0,0,0,13007,651,3720,47
+Brain - Spinal cord (cervical c-1),brain,204,true,,25.0,75.0,59.509803921568626,0,0,0,12901,656,3719,22
+Brain - Substantia nigra,brain,183,true,,25.0,75.0,58.87978142076503,0,0,0,12996,655,3720,34
+Breast - Mammary Tissue,slow,514,true,,25.0,75.0,52.295719844357976,0,0,0,12766,661,3724,4
+Cells - Cultured fibroblasts,,652,false,cultured cells,,,,,,,,,,
+Cervix - Ectocervix,,24,false,fewer than 100 donors,,,,,,,,,,
+Cervix - Endocervix,,23,false,fewer than 100 donors,,,,,,,,,,
+Colon - Sigmoid,slow,419,true,,25.0,75.0,52.61336515513126,0,0,0,12812,656,3723,6
+Colon - Transverse,renewing,479,true,,25.0,75.0,50.01043841336117,0,0,1,12901,664,3725,9
+Colon - Transverse - Mixed Cell,,10,false,fewer than 100 donors,,,,,,,,,,
+Colon - Transverse - Mucosa,,8,false,fewer than 100 donors,,,,,,,,,,
+Colon - Transverse - Muscularis,,9,false,fewer than 100 donors,,,,,,,,,,
+Esophagus - Gastroesophageal Junction,slow,403,true,,25.0,75.0,51.60049627791563,0,0,0,12683,656,3724,5
+Esophagus - Mucosa,renewing,614,true,,25.0,75.0,51.644951140065146,0,0,2,12847,677,3724,25
+Esophagus - Muscularis,slow,561,true,,25.0,75.0,50.75757575757576,0,0,1,12679,657,3724,5
+Fallopian Tube,,29,false,fewer than 100 donors,,,,,,,,,,
+Heart - Atrial Appendage,heart & muscle,461,true,,25.0,75.0,56.670281995661604,0,0,0,12556,651,3721,7
+Heart - Left Ventricle,heart & muscle,452,true,,25.0,75.0,55.39823008849557,0,1,1,11810,648,3714,4
+Kidney - Cortex,slow,104,true,,25.0,75.0,57.5,0,0,0,13045,654,3726,22
+Kidney - Medulla,,11,false,fewer than 100 donors,,,,,,,,,,
+Liver,slow,262,true,,25.0,75.0,55.267175572519086,0,0,1,11805,649,3717,33
+Liver - Hepatocyte,,9,false,fewer than 100 donors,,,,,,,,,,
+Liver - Mixed Cell,,9,false,fewer than 100 donors,,,,,,,,,,
+Liver - Portal Tract,,2,false,fewer than 100 donors,,,,,,,,,,
+Lung,slow,604,true,,25.0,75.0,54.25496688741722,0,0,1,13297,663,3724,11
+Minor Salivary Gland,slow,181,true,,25.0,75.0,51.96132596685083,0,0,0,13223,663,3724,13
+Muscle - Skeletal,heart & muscle,818,true,,25.0,75.0,53.37408312958435,0,0,10,11249,647,3716,5
+Nerve - Tibial,slow,670,true,,25.0,75.0,53.23880597014925,0,0,10,13257,661,3726,11
+Ovary,slow,193,true,,25.0,75.0,50.181347150259064,0,0,2,12602,658,3728,6
+Pancreas,slow,362,true,,25.0,75.0,50.552486187845304,0,0,1,12427,650,3719,28
+Pancreas - Acini,,9,false,fewer than 100 donors,,,,,,,,,,
+Pancreas - Islets,,3,false,fewer than 100 donors,,,,,,,,,,
+Pancreas - Mixed Cell,,10,false,fewer than 100 donors,,,,,,,,,,
+Pituitary,slow,313,true,,25.0,75.0,58.99361022364217,0,1,0,13753,660,3729,39
+Prostate,slow,282,true,,25.0,75.0,51.45390070921986,0,0,0,13463,660,3727,8
+Skin - Not Sun Exposed (Suprapubic),renewing,651,true,,25.0,75.0,53.41781874039938,0,0,0,13191,672,3722,34
+Skin - Sun Exposed (Lower leg),renewing,754,true,,25.0,75.0,53.58090185676392,0,0,9,13293,672,3722,38
+Small Intestine - Terminal Ileum,renewing,207,true,,25.0,75.0,48.14009661835749,0,0,0,13368,674,3726,23
+Small Intestine - Terminal Ileum - Lymphoid Aggregate,,9,false,fewer than 100 donors,,,,,,,,,,
+Small Intestine - Terminal Ileum - Mixed Cell,,10,false,fewer than 100 donors,,,,,,,,,,
+Spleen,renewing,277,true,,25.0,75.0,50.12635379061372,0,0,1,13245,675,3725,7
+Stomach,renewing,407,true,,25.0,75.0,49.643734643734646,0,0,1,12698,658,3724,11
+Stomach - Mixed Cell,,29,false,fewer than 100 donors,,,,,,,,,,
+Stomach - Mucosa,,29,false,fewer than 100 donors,,,,,,,,,,
+Stomach - Muscularis,,26,false,fewer than 100 donors,,,,,,,,,,
+Testis,renewing,414,true,,25.0,75.0,52.53623188405797,0,0,0,15599,676,3735,270
+Thyroid,slow,684,true,,25.0,75.0,53.567251461988306,0,0,1,13305,657,3728,10
+Uterus,slow,153,true,,25.0,75.0,48.529411764705884,0,0,1,12764,660,3725,7
+Vagina,renewing,170,true,,25.0,75.0,51.294117647058826,0,0,2,13018,664,3726,9
+Whole Blood,renewing,803,true,,25.0,75.0,53.29389788293898,0,5,15,10187,649,3646,4

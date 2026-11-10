@@ -1,0 +1,53 @@
+tissue,turnover,animals,used,reason,age_min,age_max,genes,core_essential,housekeeping,non_essential,species
+cerebellum,brain,104,true,,6.0,27.0,11966,648,3492,86,mouse
+hypothalamus,brain,103,true,,6.0,27.0,12260,651,3492,113,mouse
+hippocampus,brain,103,true,,6.0,27.0,11904,647,3480,90,mouse
+cortex,brain,104,true,,6.0,27.0,11865,646,3484,88,mouse
+right atrium,heart & muscle,101,true,,6.0,27.0,11107,640,3460,21,mouse
+left ventricle,heart & muscle,104,true,,6.0,27.0,10474,627,3444,15,mouse
+right ventricle,heart & muscle,101,true,,6.0,27.0,10536,625,3437,14,mouse
+left atrium,heart & muscle,104,true,,6.0,27.0,11058,635,3466,19,mouse
+colon,renewing,103,true,,6.0,27.0,11956,663,3481,51,mouse
+duodenum,renewing,104,true,,6.0,27.0,11586,663,3472,54,mouse
+ileum,renewing,104,true,,6.0,27.0,11813,664,3475,52,mouse
+jejunum,renewing,104,true,,6.0,27.0,11659,664,3473,51,mouse
+thymus,renewing,104,true,,6.0,27.0,11552,665,3482,31,mouse
+lymph node,renewing,99,true,,6.0,27.0,11454,664,3486,21,mouse
+spleen,renewing,103,true,,6.0,27.0,11490,664,3483,26,mouse
+bone marrow,renewing,104,true,,6.0,27.0,10909,665,3470,23,mouse
+kidney,slow,103,true,,6.0,27.0,11355,646,3481,41,mouse
+adrenal gland,slow,103,true,,6.0,27.0,11579,650,3484,35,mouse
+pituitary gland,slow,100,true,,6.0,27.0,11773,646,3488,60,mouse
+thyroid gland,slow,101,true,,6.0,27.0,11492,651,3475,21,mouse
+liver,slow,101,true,,6.0,27.0,10045,634,3440,39,mouse
+skin,renewing,80,true,,6.0,27.0,11882,662,3471,49,mouse
+gWAT,slow,101,true,,6.0,27.0,11264,652,3486,16,mouse
+femur,slow,94,true,,6.0,27.0,11570,665,3472,24,mouse
+left atrium,heart & muscle,84,true,,6.0,27.0,11128,631,3452,26,rat
+left ventricle,heart & muscle,85,true,,6.0,27.0,10644,623,3421,15,rat
+right ventricle,heart & muscle,80,true,,6.0,27.0,10878,627,3431,22,rat
+right atrium,heart & muscle,82,true,,6.0,27.0,11210,630,3445,29,rat
+hypothalamus,brain,78,true,,6.0,27.0,12669,635,3460,121,rat
+cerebellum,brain,82,true,,6.0,27.0,11748,633,3452,79,rat
+cortex,brain,47,true,,6.0,27.0,12094,630,3451,94,rat
+hippocampus,brain,85,true,,6.0,27.0,11934,629,3451,90,rat
+ileum,renewing,71,true,,6.0,27.0,12056,656,3457,60,rat
+colon,renewing,77,true,,6.0,27.0,12127,653,3460,48,rat
+duodenum,renewing,66,true,,6.0,27.0,11975,656,3457,62,rat
+Peyer's patch,renewing,73,true,,6.0,27.0,12221,655,3459,64,rat
+bone marrow,renewing,84,true,,6.0,27.0,11282,654,3447,35,rat
+femur,slow,68,true,,6.0,27.0,11624,654,3448,35,rat
+jejunum,renewing,75,true,,6.0,27.0,12052,654,3456,60,rat
+spleen,renewing,85,true,,6.0,27.0,11667,652,3462,32,rat
+thymus,renewing,77,true,,6.0,27.0,11585,654,3454,31,rat
+lymph node,renewing,73,true,,6.0,27.0,11739,654,3463,26,rat
+cornea,,83,false,eye tissue of unclear turnover,,,,,,,rat
+RPE and choroid,,75,false,eye tissue of unclear turnover,,,,,,,rat
+lens,,83,false,eye tissue of unclear turnover,,,,,,,rat
+trabecular meshwork,,80,false,eye tissue of unclear turnover,,,,,,,rat
+retina,brain,85,true,,6.0,27.0,11781,636,3452,115,rat
+iris,,80,false,eye tissue of unclear turnover,,,,,,,rat
+gWAT,slow,83,true,,6.0,27.0,11316,636,3452,21,rat
+liver,slow,77,true,,6.0,27.0,10272,622,3419,38,rat
+spinal cord,brain,85,true,,6.0,27.0,12732,650,3465,95,rat
+kidney,slow,57,true,,6.0,27.0,11788,633,3457,59,rat

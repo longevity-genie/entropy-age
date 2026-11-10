@@ -1,4 +1,4 @@
-"""Prediction 2 in RNA: GTEx v10, 50 tissues, along a turnover gradient (roadmap RM4).
+"""Prediction 2 in RNA: GTEx v10, 47 tissues, along a turnover gradient (roadmap RM4).
 
 The methylation tests found the essential-gene protection in every mouse tissue whose cells divide,
 even slowly, and missing in cortex and hippocampus; heart and white blood cells were protected about
@@ -265,16 +265,12 @@ def _boot(seed: int) -> list[dict]:
     return out
 
 
-def summarise(boot: pl.DataFrame, point: pl.DataFrame) -> tuple[pl.DataFrame, pl.DataFrame]:
-    """Class contrasts over the size-matched resamples, and each tissue's resample interval.
-
-    A class value is the mean of its tissues' matched differences in one resample; ``difference`` is
-    the median over resamples (negative = more protection in the first class), ``full_data`` the same
-    contrast of the full-data estimates, for reference only.
-    """
+# ----------------------------------------------------------------------------- summaries (shared with rna_rodents)
+def class_contrasts(boot: pl.DataFrame, point: pl.DataFrame, turnover: dict[str, str], contrasts) -> pl.DataFrame:
+    """Class contrasts over size-matched resamples (median, 95 % interval, full-data value for reference)."""
     keys = ("adjustment", "metric", "group")
-    boot = boot.with_columns(turnover=pl.col("tissue").replace_strict(TURNOVER))
-    point = point.with_columns(turnover=pl.col("tissue").replace_strict(TURNOVER))
+    boot = boot.with_columns(turnover=pl.col("tissue").replace_strict(turnover))
+    point = point.with_columns(turnover=pl.col("tissue").replace_strict(turnover))
     rows = []
     for key, sel in boot.group_by(*keys):
         wide = (
@@ -285,7 +281,7 @@ def summarise(boot: pl.DataFrame, point: pl.DataFrame) -> tuple[pl.DataFrame, pl
         )
         full = point.filter(*(pl.col(k) == v for k, v in zip(keys, key, strict=True)))
         full_class = dict(full.group_by("turnover").agg(pl.col("matched_diff_sd").mean()).iter_rows())
-        for first, second in CONTRASTS:
+        for first, second in contrasts:
             if first not in wide.columns or second not in wide.columns:
                 continue
             diff = (wide[first] - wide[second]).drop_nulls().drop_nans().to_numpy()
@@ -303,9 +299,14 @@ def summarise(boot: pl.DataFrame, point: pl.DataFrame) -> tuple[pl.DataFrame, pl
                     "full_data": full_class[first] - full_class[second],
                 }
             )
-    contrasts = pl.DataFrame(rows).sort("adjustment", "metric", "group", "contrast") if rows else pl.DataFrame()
-    per_tissue = (
-        boot.group_by("tissue", "turnover", *keys)
+    return pl.DataFrame(rows).sort("adjustment", "metric", "group", "contrast") if rows else pl.DataFrame()
+
+
+def tissue_intervals(boot: pl.DataFrame, turnover: dict[str, str]) -> pl.DataFrame:
+    keys = ("adjustment", "metric", "group")
+    return (
+        boot.with_columns(turnover=pl.col("tissue").replace_strict(turnover))
+        .group_by("tissue", "turnover", *keys)
         .agg(
             pl.col("matched_diff_sd").median().alias("median"),
             pl.col("matched_diff_sd").quantile(0.025).alias("ci_low"),
@@ -314,7 +315,16 @@ def summarise(boot: pl.DataFrame, point: pl.DataFrame) -> tuple[pl.DataFrame, pl
         )
         .sort("adjustment", "metric", "group", "tissue")
     )
-    return contrasts, per_tissue
+
+
+def summarise(boot: pl.DataFrame, point: pl.DataFrame) -> tuple[pl.DataFrame, pl.DataFrame]:
+    """Class contrasts over the size-matched resamples, and each tissue's resample interval.
+
+    A class value is the mean of its tissues' matched differences in one resample; ``difference`` is
+    the median over resamples (negative = more protection in the first class), ``full_data`` the same
+    contrast of the full-data estimates, for reference only.
+    """
+    return class_contrasts(boot, point, TURNOVER, CONTRASTS), tissue_intervals(boot, TURNOVER)
 
 
 # ----------------------------------------------------------------------------- run
@@ -389,90 +399,109 @@ def run(ctx: Context) -> list[Path]:
 
 
 # ----------------------------------------------------------------------------- figure
+SHOWN = ("core_essential", "housekeeping")  # non-essential genes are often a handful per tissue: tables only
+_ADJ = {"covariates": "cov", "pc5_age_free": "+PCs"}
+_SET_SHORT = {"core_essential": "core", "housekeeping": "HK", "non_essential": "non-ess."}
+
+
 def _short(tissue: str) -> str:
     return tissue.replace("Brain - ", "").replace(" (basal ganglia)", "").replace("Esophagus", "Oesoph.")
+
+
+def tissue_panel(ax, sel: pl.DataFrame, turnover: dict[str, str], classes, title: str, labels: bool) -> None:
+    """Per-tissue resample intervals of the shown sets, tissues grouped by class from top to bottom."""
+    present = set(sel["tissue"].to_list())
+    tissues = [t for t in turnover if t in present]
+    for j, group in enumerate(SHOWN):
+        lookup = {r["tissue"]: r for r in sel.filter(pl.col("group") == group).iter_rows(named=True)}
+        for i, tissue in enumerate(tissues):
+            if tissue in lookup:
+                r, y = lookup[tissue], i + (j - 0.5) * 0.32
+                ax.plot([r["ci_low"], r["ci_high"]], [y, y], color=plots.PALETTE[j], lw=0.9)
+                ax.scatter([r["median"]], [y], color=plots.PALETTE[j], s=9, label=SET_LABELS[group] if i == 0 else None)
+    start = 0
+    for cls in classes:
+        n = sum(turnover[t] == cls for t in tissues)
+        if n == 0:
+            continue
+        if start:
+            ax.axhline(start - 0.5, color=plots.MUTED, lw=0.6, ls=":")
+        ax.text(
+            0.98,
+            start - 0.3,
+            cls,
+            transform=ax.get_yaxis_transform(),
+            ha="right",
+            va="top",
+            fontsize=7,
+            color=plots.MUTED,
+            style="italic",
+        )
+        start += n
+    ax.axvline(0, color=plots.MUTED, lw=0.8)
+    ax.set_yticks(range(len(tissues)), [_short(t) for t in tissues] if labels else [], fontsize=6.5)
+    ax.set_ylim(len(tissues) - 0.5, -0.5)
+    ax.set(xlabel="Set minus matched genes (SD)", title=title)
+
+
+def contrast_panel(ax, frame: pl.DataFrame, title: str) -> None:
+    """Class contrasts of the shown sets; accent where the interval excludes zero."""
+    frame = (
+        frame.filter(pl.col("group").is_in(SHOWN))
+        .with_columns(
+            label=pl.format(
+                "{} · {} · {}",
+                pl.col("group").replace_strict(_SET_SHORT),
+                pl.col("contrast").str.replace(" - ", " − "),
+                pl.col("adjustment").replace_strict(_ADJ),
+            )
+        )
+        .sort("group", "contrast", "adjustment")
+    )
+    for y, r in enumerate(frame.iter_rows(named=True)):
+        color = plots.ACCENT if r["ci_high"] < 0 or r["ci_low"] > 0 else plots.MUTED
+        ax.plot([r["ci_low"], r["ci_high"]], [y, y], color=color, lw=1.1)
+        ax.scatter([r["difference"]], [y], color=color, s=12)
+    ax.axvline(0, color=plots.MUTED, lw=0.8)
+    ax.set_yticks(range(frame.height), frame["label"].to_list(), fontsize=6)
+    ax.set_ylim(max(frame.height - 0.5, 0.5), -0.5)
+    ax.set(xlabel="Difference (SD); < 0 = more protection in the first", title=title)
 
 
 def _figure(ctx: Context, per_tissue: pl.DataFrame, contrasts: pl.DataFrame) -> Path:
     import matplotlib.pyplot as plt
 
-    tissues = [t for t in TURNOVER if t in set(per_tissue["tissue"].to_list())]
-    fig = plt.figure(figsize=(15, 0.2 * len(tissues) + 3))
-    grid = fig.add_gridspec(1, 3, width_ratios=(1, 1, 1.15), wspace=0.55)
-    colors = {g: plots.PALETTE[i] for i, g in enumerate(SETS)}
-
-    def by_tissue(ax, adjustment: str, title: str, labels: bool) -> None:
-        sel = per_tissue.filter((pl.col("adjustment") == adjustment) & (pl.col("metric") == "dispersion_slope"))
-        for j, group in enumerate(SETS):
-            g = sel.filter(pl.col("group") == group)
-            lookup = {r["tissue"]: r for r in g.iter_rows(named=True)}
-            for i, tissue in enumerate(tissues):
-                if tissue not in lookup:
-                    continue
-                r, y = lookup[tissue], i + (j - 1) * 0.25
-                ax.plot([r["ci_low"], r["ci_high"]], [y, y], color=colors[group], lw=0.9)
-                ax.scatter([r["median"]], [y], color=colors[group], s=9, label=SET_LABELS[group] if i == 0 else None)
-        start = 0
-        for cls in CLASSES:
-            n = sum(TURNOVER[t] == cls for t in tissues)
-            if start:
-                ax.axhline(start - 0.5, color=plots.MUTED, lw=0.6, ls=":")
-            ax.text(
-                1.0,
-                start + n / 2 - 0.5,
-                cls,
-                transform=ax.get_yaxis_transform(),
-                rotation=-90,
-                va="center",
-                ha="left",
-                fontsize=7,
-                color=plots.MUTED,
-            )
-            start += n
-        ax.axvline(0, color=plots.MUTED, lw=0.8)
-        ax.set_yticks(range(len(tissues)), [_short(t) for t in tissues] if labels else [], fontsize=6.5)
-        ax.set_ylim(len(tissues) - 0.5, -0.5)
-        ax.set(xlabel="Set minus matched genes (SD)", title=title)
-
-    a = fig.add_subplot(grid[0])
-    by_tissue(a, "covariates", f"Spread gain with age, {SUBSAMPLE} donors/tissue", True)
-    plots.label_panel(a, "a")
-    b = fig.add_subplot(grid[1])
-    by_tissue(b, "pc5_age_free", "Same, plus 5 age-free composition PCs", False)
-    plots.label_panel(b, "b")
-    c = fig.add_subplot(grid[2])
-    frame = (
-        contrasts.filter(pl.col("metric") == "dispersion_slope")
-        .with_columns(
-            label=pl.format(
-                "{} · {} · {}",
-                pl.col("group").replace_strict(SET_LABELS),
-                pl.col("contrast"),
-                pl.col("adjustment").replace({"covariates": "cov", "pc5_age_free": "+PCs"}),
-            )
-        )
-        .sort("group", "contrast", "adjustment")
+    spread = per_tissue.filter(pl.col("metric") == "dispersion_slope")
+    n = spread["tissue"].n_unique()
+    fig = plt.figure(figsize=(16, 0.2 * n + 3))
+    grid = fig.add_gridspec(1, 3, width_ratios=(1, 0.8, 1), wspace=0.5)
+    a, b, c = (fig.add_subplot(grid[i]) for i in range(3))
+    tissue_panel(
+        a,
+        spread.filter(pl.col("adjustment") == "covariates"),
+        TURNOVER,
+        CLASSES,
+        f"Spread gain with age, {SUBSAMPLE} donors/tissue",
+        True,
     )
-    y, ticks, labels = 0, [], []
-    for row in frame.iter_rows(named=True):
-        color = plots.ACCENT if row["ci_high"] < 0 or row["ci_low"] > 0 else plots.MUTED
-        c.plot([row["ci_low"], row["ci_high"]], [y, y], color=color, lw=1.1)
-        c.scatter([row["difference"]], [y], color=color, s=12)
-        ticks.append(y)
-        labels.append(row["label"])
-        y += 1
-    c.axvline(0, color=plots.MUTED, lw=0.8)
-    c.set_yticks(ticks, labels, fontsize=6)
-    c.set_ylim(max(y - 0.5, 0.5), -0.5)
-    c.set(xlabel="Difference (SD); < 0 = more protection in the first", title="Turnover class contrasts")
-    plots.label_panel(c, "c")
-    fig.legend(*a.get_legend_handles_labels(), loc="lower center", ncol=3, fontsize=8, frameon=False)
+    tissue_panel(
+        b,
+        spread.filter(pl.col("adjustment") == "pc5_age_free"),
+        TURNOVER,
+        CLASSES,
+        "Same, plus 5 age-free components",
+        False,
+    )
+    contrast_panel(c, contrasts.filter(pl.col("metric") == "dispersion_slope"), "Turnover class contrasts")
+    for ax, letter in zip((a, b, c), "abc", strict=True):
+        plots.label_panel(ax, letter)
+    a.legend(fontsize=7, loc="lower left")
     fig.suptitle(
-        f"Do essential genes resist transcriptional drift less in brain? GTEx v10 RNA, {len(tissues)} tissues",
+        f"Do essential genes resist transcriptional drift less in brain? GTEx v10 RNA, {n} tissues",
         x=0.02,
         ha="left",
         fontsize=12,
         fontweight="bold",
     )
-    fig.subplots_adjust(left=0.13, right=0.98, top=0.93, bottom=0.07)
+    fig.subplots_adjust(left=0.12, right=0.99, top=0.94, bottom=0.06)
     return plots.save(fig, ctx.figure_path("rna_gtex"))

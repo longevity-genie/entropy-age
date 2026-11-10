@@ -1,0 +1,565 @@
+tissue,turnover,adjustment,metric,group,median,ci_low,ci_high,resamples,species
+adrenal gland,slow,covariates,abs_slope,core_essential,-0.3497819882043119,-0.4109434688953017,-0.26406634717665933,200,mouse
+bone marrow,renewing,covariates,abs_slope,core_essential,-0.4099553741347127,-0.4722151221524996,-0.34355069723613263,200,mouse
+cerebellum,brain,covariates,abs_slope,core_essential,-0.16032473572191883,-0.21493591313192023,-0.0972607319860647,200,mouse
+colon,renewing,covariates,abs_slope,core_essential,-0.21287210475214355,-0.3425388135353058,-0.009334613321876779,200,mouse
+cortex,brain,covariates,abs_slope,core_essential,-0.24419178380024498,-0.33185511252556654,-0.19002813122330417,200,mouse
+duodenum,renewing,covariates,abs_slope,core_essential,-0.04747044429229612,-0.31178865313085347,0.11933062107541223,200,mouse
+femur,slow,covariates,abs_slope,core_essential,-0.2886513778154597,-0.4639604258008468,-0.15668144389701705,200,mouse
+gWAT,slow,covariates,abs_slope,core_essential,-0.41897358938784923,-0.4619950560322002,-0.35123135788936277,200,mouse
+hippocampus,brain,covariates,abs_slope,core_essential,-0.31339926995260636,-0.37571326445308495,-0.18571822215386602,200,mouse
+hypothalamus,brain,covariates,abs_slope,core_essential,-0.30650671116473516,-0.35900211968036866,-0.21777594828586977,200,mouse
+ileum,renewing,covariates,abs_slope,core_essential,-0.25470117259339187,-0.3999966774214284,0.13999378474578572,200,mouse
+jejunum,renewing,covariates,abs_slope,core_essential,-0.011162971601033222,-0.3400156246820357,0.3062165860595455,200,mouse
+kidney,slow,covariates,abs_slope,core_essential,-0.27229230942740984,-0.3394339703586098,-0.2080842873873756,200,mouse
+left atrium,heart & muscle,covariates,abs_slope,core_essential,-0.2949193378088818,-0.3518426713724262,-0.22843356841485665,200,mouse
+left ventricle,heart & muscle,covariates,abs_slope,core_essential,-0.26608694343844685,-0.3486943277157529,-0.16219293059176132,200,mouse
+liver,slow,covariates,abs_slope,core_essential,-0.31485380499544524,-0.37665817103427046,-0.26909846217430633,200,mouse
+lymph node,renewing,covariates,abs_slope,core_essential,-0.1295024362973181,-0.40748881705760864,0.10926542391871269,200,mouse
+pituitary gland,slow,covariates,abs_slope,core_essential,-0.20196832055674166,-0.27142214139716286,-0.1065680121158462,200,mouse
+right atrium,heart & muscle,covariates,abs_slope,core_essential,-0.3081183530311383,-0.3730851147009488,-0.2453845292612117,200,mouse
+right ventricle,heart & muscle,covariates,abs_slope,core_essential,-0.3068736228013532,-0.38453109702321764,-0.21056632300594247,200,mouse
+skin,renewing,covariates,abs_slope,core_essential,-0.2266400668780008,-0.42134676022050566,-0.06700916051878092,200,mouse
+spleen,renewing,covariates,abs_slope,core_essential,-0.3112027157928225,-0.3599308593085965,-0.23407813983036552,200,mouse
+thymus,renewing,covariates,abs_slope,core_essential,-0.3402424991652543,-0.3813699235785154,-0.29519889175925523,200,mouse
+thyroid gland,slow,covariates,abs_slope,core_essential,-0.343360286698727,-0.41301699670490716,-0.26570200822333356,200,mouse
+adrenal gland,slow,covariates,abs_slope,housekeeping,-0.44716602165519687,-0.5046223270191306,-0.38062612414683106,200,mouse
+bone marrow,renewing,covariates,abs_slope,housekeeping,-0.45230436407411345,-0.4939848771784839,-0.40743486075138075,200,mouse
+cerebellum,brain,covariates,abs_slope,housekeeping,-0.28796334850662414,-0.3515896176155979,-0.21688412886685246,200,mouse
+colon,renewing,covariates,abs_slope,housekeeping,-0.38757504574740653,-0.4623799515708512,-0.3066177819641103,200,mouse
+cortex,brain,covariates,abs_slope,housekeeping,-0.2519381565130294,-0.3722604098944655,-0.170816186062367,200,mouse
+duodenum,renewing,covariates,abs_slope,housekeeping,-0.4465431813111682,-0.5267978708271089,-0.36958193150825946,200,mouse
+femur,slow,covariates,abs_slope,housekeeping,-0.4871616815451395,-0.5514023455862029,-0.4480114140066779,200,mouse
+gWAT,slow,covariates,abs_slope,housekeeping,-0.5257013893363345,-0.5537284960372646,-0.49196019770196353,200,mouse
+hippocampus,brain,covariates,abs_slope,housekeeping,-0.34881188030046695,-0.4067643536200119,-0.25153901680234686,200,mouse
+hypothalamus,brain,covariates,abs_slope,housekeeping,-0.3699273917511475,-0.4096188690988471,-0.31108299116110355,200,mouse
+ileum,renewing,covariates,abs_slope,housekeeping,-0.3789864984213802,-0.4945890236671079,-0.23842780449098605,200,mouse
+jejunum,renewing,covariates,abs_slope,housekeeping,-0.30635214579265657,-0.44829382312814514,-0.20326256055574574,200,mouse
+kidney,slow,covariates,abs_slope,housekeeping,-0.4581334163479679,-0.49043198763228846,-0.42527376861098104,200,mouse
+left atrium,heart & muscle,covariates,abs_slope,housekeeping,-0.5022438992785517,-0.5316205280764676,-0.4715533039847564,200,mouse
+left ventricle,heart & muscle,covariates,abs_slope,housekeeping,-0.4487783469912202,-0.49760974122309276,-0.3873094457960447,200,mouse
+liver,slow,covariates,abs_slope,housekeeping,-0.5197098741469409,-0.5486861421785534,-0.4985105987244571,200,mouse
+lymph node,renewing,covariates,abs_slope,housekeeping,-0.4213566262804608,-0.5218490215547229,-0.27971095496504034,200,mouse
+pituitary gland,slow,covariates,abs_slope,housekeeping,-0.3836799741900152,-0.43106223420530493,-0.30585500669826027,200,mouse
+right atrium,heart & muscle,covariates,abs_slope,housekeeping,-0.5726299649209463,-0.620992645223305,-0.5157319406108806,200,mouse
+right ventricle,heart & muscle,covariates,abs_slope,housekeeping,-0.45930316134065613,-0.4994873605105146,-0.38988546245570416,200,mouse
+skin,renewing,covariates,abs_slope,housekeeping,-0.4981576805363991,-0.5557963353020091,-0.44092999216466144,200,mouse
+spleen,renewing,covariates,abs_slope,housekeeping,-0.47999021263950226,-0.5080671088438413,-0.4394148783119949,200,mouse
+thymus,renewing,covariates,abs_slope,housekeeping,-0.5255935000726863,-0.5588998960076682,-0.4831647972724925,200,mouse
+thyroid gland,slow,covariates,abs_slope,housekeeping,-0.5113436604039817,-0.5592375636562399,-0.4734217194750137,200,mouse
+adrenal gland,slow,covariates,abs_slope,non_essential,0.926569079358205,0.6843325122226458,1.2196818261681357,200,mouse
+bone marrow,renewing,covariates,abs_slope,non_essential,0.23227399410349683,0.1203744772830495,0.3691765927222407,200,mouse
+cerebellum,brain,covariates,abs_slope,non_essential,0.41839347220307244,0.042260130760111196,0.7481031569892073,200,mouse
+colon,renewing,covariates,abs_slope,non_essential,0.8971260445442095,0.6221234711663063,1.2844035203371822,200,mouse
+cortex,brain,covariates,abs_slope,non_essential,0.19793377547301833,0.07544514738674962,0.42446629153496834,200,mouse
+duodenum,renewing,covariates,abs_slope,non_essential,1.1129231049420734,0.6362414353449034,1.5446337871629368,200,mouse
+femur,slow,covariates,abs_slope,non_essential,0.649870939924132,0.45811257147754897,0.9555552333008861,200,mouse
+gWAT,slow,covariates,abs_slope,non_essential,0.06937903360847626,-0.06258657831388938,0.19204969571206396,200,mouse
+hippocampus,brain,covariates,abs_slope,non_essential,0.04215292475321605,-0.06016784262729055,0.1547313274237084,200,mouse
+hypothalamus,brain,covariates,abs_slope,non_essential,0.26594603619851875,0.09349095906923015,0.45016003346099226,200,mouse
+ileum,renewing,covariates,abs_slope,non_essential,1.2632674965208017,1.0457096988025338,1.5028432031164902,200,mouse
+jejunum,renewing,covariates,abs_slope,non_essential,1.236112674825731,0.8175667270882677,1.6845615595550234,200,mouse
+kidney,slow,covariates,abs_slope,non_essential,0.40098878228666746,0.27905617199723787,0.6111698994542345,200,mouse
+left atrium,heart & muscle,covariates,abs_slope,non_essential,0.5446652280218811,0.3667783135408868,0.7698373037540004,200,mouse
+left ventricle,heart & muscle,covariates,abs_slope,non_essential,0.09312761958645202,-0.10182020728849706,0.2818467949652995,200,mouse
+liver,slow,covariates,abs_slope,non_essential,0.883420409320913,0.6475476942535522,1.1811052244547637,200,mouse
+lymph node,renewing,covariates,abs_slope,non_essential,0.42729364350788446,0.18380331050797544,0.6386220247238577,200,mouse
+pituitary gland,slow,covariates,abs_slope,non_essential,0.88139574555224,0.6020794268773099,1.1496289626979999,200,mouse
+right atrium,heart & muscle,covariates,abs_slope,non_essential,0.3263332972688054,0.14903923258789017,0.547238775273891,200,mouse
+right ventricle,heart & muscle,covariates,abs_slope,non_essential,0.4074903544322115,0.15443082892223542,0.6378161777702112,200,mouse
+skin,renewing,covariates,abs_slope,non_essential,1.021327730138415,0.5721631952070189,1.5161147278027038,200,mouse
+spleen,renewing,covariates,abs_slope,non_essential,0.6829764701118178,0.51289660761464,0.8582704341678499,200,mouse
+thymus,renewing,covariates,abs_slope,non_essential,-0.044036268687099436,-0.2013659265809285,0.1204588467016283,200,mouse
+thyroid gland,slow,covariates,abs_slope,non_essential,1.1594994191201302,0.9090093196880584,1.4920604041196124,200,mouse
+adrenal gland,slow,covariates,dispersion_slope,core_essential,-0.14630151352348159,-0.3014556946518332,-0.0225635829242985,200,mouse
+bone marrow,renewing,covariates,dispersion_slope,core_essential,-0.45350107437506637,-0.5723305387411973,-0.3263548805020432,200,mouse
+cerebellum,brain,covariates,dispersion_slope,core_essential,0.06581539631272579,-0.1608993856924701,0.2525126618727417,200,mouse
+colon,renewing,covariates,dispersion_slope,core_essential,-0.2119825640317589,-0.42049718686668497,0.030568965173832494,200,mouse
+cortex,brain,covariates,dispersion_slope,core_essential,-0.04658434830547474,-0.1260584259887599,0.08581142922512662,200,mouse
+duodenum,renewing,covariates,dispersion_slope,core_essential,-0.06359326987404366,-0.407710176138399,0.32291249804140115,200,mouse
+femur,slow,covariates,dispersion_slope,core_essential,-0.049350684443986326,-0.21800274775730522,0.10775188796501203,200,mouse
+gWAT,slow,covariates,dispersion_slope,core_essential,0.014466601386495278,-0.34487380815151214,0.2180207786525769,200,mouse
+hippocampus,brain,covariates,dispersion_slope,core_essential,-0.14206617931991472,-0.35891147872463125,0.1546538283788829,200,mouse
+hypothalamus,brain,covariates,dispersion_slope,core_essential,0.06602833943619091,-0.17243178491367994,0.2851807922084165,200,mouse
+ileum,renewing,covariates,dispersion_slope,core_essential,-0.10559661262852502,-0.3197105451767039,0.09142643640928089,200,mouse
+jejunum,renewing,covariates,dispersion_slope,core_essential,-0.023994724220213218,-0.3838719673805215,0.358202341411972,200,mouse
+kidney,slow,covariates,dispersion_slope,core_essential,-0.35182073702260147,-0.4452423404218013,-0.2187507322266552,200,mouse
+left atrium,heart & muscle,covariates,dispersion_slope,core_essential,-0.06888436527755712,-0.18752639687262382,0.0707273584985267,200,mouse
+left ventricle,heart & muscle,covariates,dispersion_slope,core_essential,-0.3881201371067995,-0.5400405296986537,-0.17184705016794796,200,mouse
+liver,slow,covariates,dispersion_slope,core_essential,-0.3276713964856456,-0.4059144965411127,-0.2379640804476131,200,mouse
+lymph node,renewing,covariates,dispersion_slope,core_essential,-0.0972496015740138,-0.3692344480231726,0.2053219643615524,200,mouse
+pituitary gland,slow,covariates,dispersion_slope,core_essential,-0.2690734448104751,-0.4012394523878572,-0.10759799987738297,200,mouse
+right atrium,heart & muscle,covariates,dispersion_slope,core_essential,0.031064152979405093,-0.240224353811519,0.20902162445821865,200,mouse
+right ventricle,heart & muscle,covariates,dispersion_slope,core_essential,-0.2685915602879235,-0.4562459009393695,-0.04004822738729225,200,mouse
+skin,renewing,covariates,dispersion_slope,core_essential,-0.22554114361506583,-0.3665033750239808,-0.08187032379661391,200,mouse
+spleen,renewing,covariates,dispersion_slope,core_essential,-0.32155124002433527,-0.4660315532042521,-0.13576821414514423,200,mouse
+thymus,renewing,covariates,dispersion_slope,core_essential,-0.3958900399024944,-0.47254594480415407,-0.29631589607238157,200,mouse
+thyroid gland,slow,covariates,dispersion_slope,core_essential,-0.17739650879569102,-0.4141608838864498,0.025118620595015812,200,mouse
+adrenal gland,slow,covariates,dispersion_slope,housekeeping,-0.24886166175821453,-0.37789469712304946,-0.11290987860560267,200,mouse
+bone marrow,renewing,covariates,dispersion_slope,housekeeping,-0.4626706693215874,-0.5569084126731784,-0.35597631876694663,200,mouse
+cerebellum,brain,covariates,dispersion_slope,housekeeping,0.11787954485473334,-0.18335192361689812,0.29121491774901975,200,mouse
+colon,renewing,covariates,dispersion_slope,housekeeping,-0.24818782061878886,-0.4117340839762281,-0.006032001827796003,200,mouse
+cortex,brain,covariates,dispersion_slope,housekeeping,0.009195367033910135,-0.06568321992418967,0.10610732231070238,200,mouse
+duodenum,renewing,covariates,dispersion_slope,housekeeping,-0.19410544651068679,-0.43970141664633,0.11667949816387281,200,mouse
+femur,slow,covariates,dispersion_slope,housekeeping,0.08824491307014833,-0.2157951510708182,0.3249504984198284,200,mouse
+gWAT,slow,covariates,dispersion_slope,housekeeping,-0.18037632748963803,-0.4927257843330671,0.08639928854913728,200,mouse
+hippocampus,brain,covariates,dispersion_slope,housekeeping,-0.11280085178357896,-0.27930416963567395,0.11690577397831795,200,mouse
+hypothalamus,brain,covariates,dispersion_slope,housekeeping,0.010105683861297296,-0.1521500025649535,0.16290030075429326,200,mouse
+ileum,renewing,covariates,dispersion_slope,housekeeping,-0.1494800424264202,-0.3720159130101148,0.10823708212270498,200,mouse
+jejunum,renewing,covariates,dispersion_slope,housekeeping,-0.18552332950597555,-0.47215065772965065,0.16723872263992043,200,mouse
+kidney,slow,covariates,dispersion_slope,housekeeping,-0.4476268462678252,-0.5346932557428622,-0.3240078307394496,200,mouse
+left atrium,heart & muscle,covariates,dispersion_slope,housekeeping,-0.21051144824870036,-0.3907742781466605,-0.0029533290542871917,200,mouse
+left ventricle,heart & muscle,covariates,dispersion_slope,housekeeping,-0.4139682409583084,-0.5326149548651862,-0.27396388122446164,200,mouse
+liver,slow,covariates,dispersion_slope,housekeeping,-0.48699111616491164,-0.5648895370574397,-0.36914731842969783,200,mouse
+lymph node,renewing,covariates,dispersion_slope,housekeeping,-0.28711650166210484,-0.5228603114261268,-0.013504875995174215,200,mouse
+pituitary gland,slow,covariates,dispersion_slope,housekeeping,-0.24678151763592648,-0.4091718945860645,-0.10730688393593077,200,mouse
+right atrium,heart & muscle,covariates,dispersion_slope,housekeeping,-0.02907082138056709,-0.4377961351457132,0.1912056727808251,200,mouse
+right ventricle,heart & muscle,covariates,dispersion_slope,housekeeping,-0.26992635140724164,-0.458714135042976,-0.07224766176140701,200,mouse
+skin,renewing,covariates,dispersion_slope,housekeeping,0.05217832070277678,-0.08072080197331011,0.16975253663733306,200,mouse
+spleen,renewing,covariates,dispersion_slope,housekeeping,-0.5003624715254631,-0.660219479049309,-0.2708610889461254,200,mouse
+thymus,renewing,covariates,dispersion_slope,housekeeping,-0.6081854752749731,-0.6675216474306869,-0.4804010995295001,200,mouse
+thyroid gland,slow,covariates,dispersion_slope,housekeeping,-0.08384149905419182,-0.4089790195257965,0.18450201430314794,200,mouse
+adrenal gland,slow,covariates,dispersion_slope,non_essential,0.3089942878143056,-0.07164208033950158,0.7057662563738125,200,mouse
+bone marrow,renewing,covariates,dispersion_slope,non_essential,0.7059517071262991,0.414596851868497,1.0200978338723725,200,mouse
+cerebellum,brain,covariates,dispersion_slope,non_essential,-0.2520763178124269,-0.9670080021790016,0.8824799637488734,200,mouse
+colon,renewing,covariates,dispersion_slope,non_essential,0.8979472405249129,-0.14115222917026765,1.6476997439617744,200,mouse
+cortex,brain,covariates,dispersion_slope,non_essential,-0.009553587823076398,-0.24003683187840583,0.23495635341816454,200,mouse
+duodenum,renewing,covariates,dispersion_slope,non_essential,0.4485861238874006,-0.6742274162099475,1.4608212356156194,200,mouse
+femur,slow,covariates,dispersion_slope,non_essential,0.40993949520532935,-0.09760433853816869,0.9740864538384438,200,mouse
+gWAT,slow,covariates,dispersion_slope,non_essential,0.2023455736543624,-0.2525002030547102,0.5112610655160271,200,mouse
+hippocampus,brain,covariates,dispersion_slope,non_essential,0.014926991785909302,-0.30161369085722917,0.33950353188945837,200,mouse
+hypothalamus,brain,covariates,dispersion_slope,non_essential,-0.4153124624846839,-0.6562872704500623,-0.17220571797873846,200,mouse
+ileum,renewing,covariates,dispersion_slope,non_essential,0.26062226968624524,-0.42451535740586893,0.8236642065913886,200,mouse
+jejunum,renewing,covariates,dispersion_slope,non_essential,-0.6983367406194458,-1.3938231455606926,0.14373136153495825,200,mouse
+kidney,slow,covariates,dispersion_slope,non_essential,0.35826140042072785,0.09304107955259873,0.6357826078010961,200,mouse
+left atrium,heart & muscle,covariates,dispersion_slope,non_essential,0.053580330750707963,-0.31714190059677827,0.4970308791086827,200,mouse
+left ventricle,heart & muscle,covariates,dispersion_slope,non_essential,0.5164322600560576,0.029731582973006803,0.9870923472889943,200,mouse
+liver,slow,covariates,dispersion_slope,non_essential,0.22400033272056863,-0.09638904999271006,0.5612895180018854,200,mouse
+lymph node,renewing,covariates,dispersion_slope,non_essential,0.7075887557132,0.3574622946444723,0.9900943835733322,200,mouse
+pituitary gland,slow,covariates,dispersion_slope,non_essential,0.32140745384466574,-0.029607027844800484,0.7322090467677694,200,mouse
+right atrium,heart & muscle,covariates,dispersion_slope,non_essential,0.533693386361585,0.11727533915336412,0.9100409519102042,200,mouse
+right ventricle,heart & muscle,covariates,dispersion_slope,non_essential,0.37463656959400526,-0.11691184408027326,0.8792850823046081,200,mouse
+skin,renewing,covariates,dispersion_slope,non_essential,-0.09506292662701687,-0.513307520273841,0.46481411932186695,200,mouse
+spleen,renewing,covariates,dispersion_slope,non_essential,0.9100497233594655,0.5086585672961788,1.2144426792189158,200,mouse
+thymus,renewing,covariates,dispersion_slope,non_essential,0.48102778367907184,0.07099679016027037,0.7763573844544696,200,mouse
+thyroid gland,slow,covariates,dispersion_slope,non_essential,-0.022643900528658535,-0.607588019009658,0.6483376714635207,200,mouse
+adrenal gland,slow,pc5_age_free,abs_slope,core_essential,-0.3586846901826489,-0.40428569828024585,-0.2911747890509688,200,mouse
+bone marrow,renewing,pc5_age_free,abs_slope,core_essential,-0.4086330539272737,-0.44970962303675066,-0.35494878677565844,200,mouse
+cerebellum,brain,pc5_age_free,abs_slope,core_essential,-0.16372681312069207,-0.19236123975054528,-0.13273832265808536,200,mouse
+colon,renewing,pc5_age_free,abs_slope,core_essential,-0.194083719358169,-0.27864160244764136,-0.07753245661456232,200,mouse
+cortex,brain,pc5_age_free,abs_slope,core_essential,-0.24498176888830955,-0.26906026836432667,-0.21183726130947417,200,mouse
+duodenum,renewing,pc5_age_free,abs_slope,core_essential,-0.0513686027249279,-0.1836278997260504,0.04656144924363004,200,mouse
+femur,slow,pc5_age_free,abs_slope,core_essential,-0.28043562133785066,-0.3243428923783636,-0.21908537278251067,200,mouse
+gWAT,slow,pc5_age_free,abs_slope,core_essential,-0.4347935271850575,-0.48056784636479827,-0.3753990013642463,200,mouse
+hippocampus,brain,pc5_age_free,abs_slope,core_essential,-0.319268989036111,-0.33546166585264753,-0.29475365953332283,200,mouse
+hypothalamus,brain,pc5_age_free,abs_slope,core_essential,-0.3150017868838171,-0.334126647624283,-0.29422112745879403,200,mouse
+ileum,renewing,pc5_age_free,abs_slope,core_essential,-0.22620560044467114,-0.3040548462134689,-0.11769239689404622,200,mouse
+jejunum,renewing,pc5_age_free,abs_slope,core_essential,0.005220640695390993,-0.13240007879881877,0.16556209310227799,200,mouse
+kidney,slow,pc5_age_free,abs_slope,core_essential,-0.26878192475322704,-0.29589470567569587,-0.2406643567467386,200,mouse
+left atrium,heart & muscle,pc5_age_free,abs_slope,core_essential,-0.2880281229896407,-0.34467369554412625,-0.23557905273398427,200,mouse
+left ventricle,heart & muscle,pc5_age_free,abs_slope,core_essential,-0.2692989990390195,-0.31055063395005994,-0.2268816139724958,200,mouse
+liver,slow,pc5_age_free,abs_slope,core_essential,-0.3136029501269618,-0.3498345799933326,-0.28123617175720395,200,mouse
+lymph node,renewing,pc5_age_free,abs_slope,core_essential,-0.0712843426478196,-0.2033453557479698,0.0037975077714200683,200,mouse
+pituitary gland,slow,pc5_age_free,abs_slope,core_essential,-0.19885103693992767,-0.2465105703499772,-0.15096593684832327,200,mouse
+right atrium,heart & muscle,pc5_age_free,abs_slope,core_essential,-0.30888890058558305,-0.35213999904227755,-0.2595140320090251,200,mouse
+right ventricle,heart & muscle,pc5_age_free,abs_slope,core_essential,-0.316469782337789,-0.35103265764935243,-0.26982713045878226,200,mouse
+skin,renewing,pc5_age_free,abs_slope,core_essential,-0.22319666366497265,-0.3202367571604411,-0.14215712970501018,200,mouse
+spleen,renewing,pc5_age_free,abs_slope,core_essential,-0.2982829312015217,-0.3456425389093444,-0.23379288012824007,200,mouse
+thymus,renewing,pc5_age_free,abs_slope,core_essential,-0.3378381937802494,-0.3553253792647895,-0.3153554693258663,200,mouse
+thyroid gland,slow,pc5_age_free,abs_slope,core_essential,-0.3462969942966603,-0.3968689380188437,-0.2799586756977133,200,mouse
+adrenal gland,slow,pc5_age_free,abs_slope,housekeeping,-0.4532353527413717,-0.48352973850382347,-0.4059027248045207,200,mouse
+bone marrow,renewing,pc5_age_free,abs_slope,housekeeping,-0.4484832770518087,-0.4720544722224449,-0.4191270014139273,200,mouse
+cerebellum,brain,pc5_age_free,abs_slope,housekeeping,-0.2880814601537016,-0.3021736868358674,-0.2683838754455669,200,mouse
+colon,renewing,pc5_age_free,abs_slope,housekeeping,-0.3798882749145273,-0.41715568166946976,-0.3296855125664238,200,mouse
+cortex,brain,pc5_age_free,abs_slope,housekeeping,-0.25420074871184717,-0.2775472362015518,-0.22626496555387793,200,mouse
+duodenum,renewing,pc5_age_free,abs_slope,housekeeping,-0.46039532321575727,-0.5072202717219725,-0.4116536784820068,200,mouse
+femur,slow,pc5_age_free,abs_slope,housekeeping,-0.47870898892559166,-0.5032613905811388,-0.45316458845761354,200,mouse
+gWAT,slow,pc5_age_free,abs_slope,housekeeping,-0.5256435631937676,-0.5500112739248687,-0.48988199854077885,200,mouse
+hippocampus,brain,pc5_age_free,abs_slope,housekeeping,-0.34870635165561986,-0.36451236284559196,-0.3316290749096426,200,mouse
+hypothalamus,brain,pc5_age_free,abs_slope,housekeeping,-0.37771297749450417,-0.3880974125227005,-0.361600378574245,200,mouse
+ileum,renewing,pc5_age_free,abs_slope,housekeeping,-0.3562799386017975,-0.3874668204592251,-0.3255981825710606,200,mouse
+jejunum,renewing,pc5_age_free,abs_slope,housekeeping,-0.2957730731795216,-0.3501492457201601,-0.2339766874637483,200,mouse
+kidney,slow,pc5_age_free,abs_slope,housekeeping,-0.457290072229655,-0.4778561438097486,-0.44412282858994645,200,mouse
+left atrium,heart & muscle,pc5_age_free,abs_slope,housekeeping,-0.5022792041729884,-0.5288957898328083,-0.47558377797275103,200,mouse
+left ventricle,heart & muscle,pc5_age_free,abs_slope,housekeeping,-0.450160438386774,-0.47575080958916316,-0.4250054726159178,200,mouse
+liver,slow,pc5_age_free,abs_slope,housekeeping,-0.5191841912058388,-0.5423586825657863,-0.49883311416294523,200,mouse
+lymph node,renewing,pc5_age_free,abs_slope,housekeeping,-0.39561698655792643,-0.45921860828764055,-0.33181530423399075,200,mouse
+pituitary gland,slow,pc5_age_free,abs_slope,housekeeping,-0.3927803174698097,-0.42435340103837665,-0.3552613236192408,200,mouse
+right atrium,heart & muscle,pc5_age_free,abs_slope,housekeeping,-0.5744910354878794,-0.5944701091479305,-0.5496630648685108,200,mouse
+right ventricle,heart & muscle,pc5_age_free,abs_slope,housekeeping,-0.46406664894835586,-0.49209983021984843,-0.4271676462941806,200,mouse
+skin,renewing,pc5_age_free,abs_slope,housekeeping,-0.5036090079941489,-0.5238491520110264,-0.47286755582751144,200,mouse
+spleen,renewing,pc5_age_free,abs_slope,housekeeping,-0.47919065094685254,-0.5052256114499677,-0.448356329102245,200,mouse
+thymus,renewing,pc5_age_free,abs_slope,housekeeping,-0.5232222395387149,-0.5419718650563325,-0.5030735017453198,200,mouse
+thyroid gland,slow,pc5_age_free,abs_slope,housekeeping,-0.5119852755983233,-0.5433818234119233,-0.4815451293038837,200,mouse
+adrenal gland,slow,pc5_age_free,abs_slope,non_essential,0.9447304704894196,0.7203063103145697,1.119043532892566,200,mouse
+bone marrow,renewing,pc5_age_free,abs_slope,non_essential,0.22604773434865139,0.11763797038972924,0.3654301999927036,200,mouse
+cerebellum,brain,pc5_age_free,abs_slope,non_essential,0.4597111093044108,0.3538151361953464,0.5631456553779699,200,mouse
+colon,renewing,pc5_age_free,abs_slope,non_essential,0.8807645036093522,0.6611094492175743,1.136285166923086,200,mouse
+cortex,brain,pc5_age_free,abs_slope,non_essential,0.20405201373323678,0.1040052198734803,0.28633931890739933,200,mouse
+duodenum,renewing,pc5_age_free,abs_slope,non_essential,1.1320927216803993,0.8414155440560435,1.3611630746854495,200,mouse
+femur,slow,pc5_age_free,abs_slope,non_essential,0.6363954320358067,0.44625209130261034,0.8780026278932219,200,mouse
+gWAT,slow,pc5_age_free,abs_slope,non_essential,0.09738094481629198,-0.0349585057373762,0.3331109301867572,200,mouse
+hippocampus,brain,pc5_age_free,abs_slope,non_essential,0.027513816987676843,-0.04497438213824237,0.10977289068402334,200,mouse
+hypothalamus,brain,pc5_age_free,abs_slope,non_essential,0.27338527782519295,0.2061375939212839,0.34605295054821283,200,mouse
+ileum,renewing,pc5_age_free,abs_slope,non_essential,1.3162028784403947,1.1337566307151823,1.5446952161859264,200,mouse
+jejunum,renewing,pc5_age_free,abs_slope,non_essential,1.2758905861439493,0.989640076216947,1.5720616071629008,200,mouse
+kidney,slow,pc5_age_free,abs_slope,non_essential,0.4056423328043821,0.30204230541211297,0.5068287715603397,200,mouse
+left atrium,heart & muscle,pc5_age_free,abs_slope,non_essential,0.5397228152389411,0.407218184859083,0.7011832331525508,200,mouse
+left ventricle,heart & muscle,pc5_age_free,abs_slope,non_essential,0.0966929672541598,-0.08445897935240429,0.2860764083579838,200,mouse
+liver,slow,pc5_age_free,abs_slope,non_essential,0.8812161658938422,0.7410009412150728,1.0317691458712184,200,mouse
+lymph node,renewing,pc5_age_free,abs_slope,non_essential,0.4569478132530512,0.27583569430884364,0.7053351451964995,200,mouse
+pituitary gland,slow,pc5_age_free,abs_slope,non_essential,0.9257926712132992,0.7113960443802563,1.1360461026389252,200,mouse
+right atrium,heart & muscle,pc5_age_free,abs_slope,non_essential,0.3302089126649147,0.1454972415018017,0.49022697890667516,200,mouse
+right ventricle,heart & muscle,pc5_age_free,abs_slope,non_essential,0.4474462044236808,0.22493129628870873,0.6529389748671133,200,mouse
+skin,renewing,pc5_age_free,abs_slope,non_essential,1.0416530929771162,0.7925268919448731,1.2939427685361953,200,mouse
+spleen,renewing,pc5_age_free,abs_slope,non_essential,0.7083075307921998,0.5316485548251918,0.8738574593099279,200,mouse
+thymus,renewing,pc5_age_free,abs_slope,non_essential,-0.054383619425973584,-0.13025934486957336,0.06217734239163192,200,mouse
+thyroid gland,slow,pc5_age_free,abs_slope,non_essential,1.1834480783936332,0.9770067575501338,1.4779931402720552,200,mouse
+adrenal gland,slow,pc5_age_free,dispersion_slope,core_essential,-0.1461512232893071,-0.27622057155481117,-0.0035869493126241747,200,mouse
+bone marrow,renewing,pc5_age_free,dispersion_slope,core_essential,-0.26322755822627564,-0.3452532259123202,-0.1415092081762167,200,mouse
+cerebellum,brain,pc5_age_free,dispersion_slope,core_essential,-0.05436644810087232,-0.1293972864880369,0.05474233184881904,200,mouse
+colon,renewing,pc5_age_free,dispersion_slope,core_essential,-0.15321552450077713,-0.3142331243894636,0.009554558147404527,200,mouse
+cortex,brain,pc5_age_free,dispersion_slope,core_essential,-0.026402139037830993,-0.13867340124166033,0.08705182867932927,200,mouse
+duodenum,renewing,pc5_age_free,dispersion_slope,core_essential,-0.07563401173364541,-0.2082523590837032,0.0495121225135848,200,mouse
+femur,slow,pc5_age_free,dispersion_slope,core_essential,-0.1472541766490913,-0.25451435287026025,-0.0329585246279689,200,mouse
+gWAT,slow,pc5_age_free,dispersion_slope,core_essential,-0.05546624196742822,-0.18363509314642895,0.06192964831053091,200,mouse
+hippocampus,brain,pc5_age_free,dispersion_slope,core_essential,-0.015913589657115798,-0.13231238587526448,0.09415181724951888,200,mouse
+hypothalamus,brain,pc5_age_free,dispersion_slope,core_essential,0.03524753640481121,-0.058448569821601286,0.10770518063165234,200,mouse
+ileum,renewing,pc5_age_free,dispersion_slope,core_essential,-0.17684621724784655,-0.31449895002402883,-0.03713053057965528,200,mouse
+jejunum,renewing,pc5_age_free,dispersion_slope,core_essential,-0.08898758982424966,-0.24602076570370657,0.04038181159725587,200,mouse
+kidney,slow,pc5_age_free,dispersion_slope,core_essential,-0.18953664052501148,-0.2678569753010984,-0.08373242652953837,200,mouse
+left atrium,heart & muscle,pc5_age_free,dispersion_slope,core_essential,-0.08092045155678586,-0.18213328838625834,0.028640230895280477,200,mouse
+left ventricle,heart & muscle,pc5_age_free,dispersion_slope,core_essential,-0.0673593349633152,-0.17292176406815302,0.05463342277925165,200,mouse
+liver,slow,pc5_age_free,dispersion_slope,core_essential,-0.1916910540239365,-0.2900959492877902,-0.0779193392884472,200,mouse
+lymph node,renewing,pc5_age_free,dispersion_slope,core_essential,-0.09278090616071609,-0.3060028231423142,0.11495625110844636,200,mouse
+pituitary gland,slow,pc5_age_free,dispersion_slope,core_essential,-0.19665703074101035,-0.3393896606498071,-0.04815400338465184,200,mouse
+right atrium,heart & muscle,pc5_age_free,dispersion_slope,core_essential,-0.09288378287389021,-0.2065433123970026,0.025647314566158926,200,mouse
+right ventricle,heart & muscle,pc5_age_free,dispersion_slope,core_essential,-0.027218625027122703,-0.12832856160792538,0.06560467685918692,200,mouse
+skin,renewing,pc5_age_free,dispersion_slope,core_essential,-0.18404604313505127,-0.2866849853811118,-0.07491310211809223,200,mouse
+spleen,renewing,pc5_age_free,dispersion_slope,core_essential,-0.3164857876761215,-0.3975140007066649,-0.2048938814569756,200,mouse
+thymus,renewing,pc5_age_free,dispersion_slope,core_essential,-0.20035967222211726,-0.27973004113279215,-0.09173677278999612,200,mouse
+thyroid gland,slow,pc5_age_free,dispersion_slope,core_essential,-0.0432749613684963,-0.1755882343073066,0.07207563911295453,200,mouse
+adrenal gland,slow,pc5_age_free,dispersion_slope,housekeeping,-0.18681602733508815,-0.2982158277466987,-0.07091260613515836,200,mouse
+bone marrow,renewing,pc5_age_free,dispersion_slope,housekeeping,-0.3282269873549021,-0.3936294400481865,-0.246256477586163,200,mouse
+cerebellum,brain,pc5_age_free,dispersion_slope,housekeeping,-0.04061726931929699,-0.11660891564706417,0.05648572014510708,200,mouse
+colon,renewing,pc5_age_free,dispersion_slope,housekeeping,-0.2651078892612424,-0.3661449405337555,-0.15328178473161955,200,mouse
+cortex,brain,pc5_age_free,dispersion_slope,housekeeping,-0.04627542187492923,-0.14753691521092369,0.06012044371017791,200,mouse
+duodenum,renewing,pc5_age_free,dispersion_slope,housekeeping,-0.21276737243553775,-0.3174662196916982,-0.08546580963374484,200,mouse
+femur,slow,pc5_age_free,dispersion_slope,housekeeping,-0.15733002963936354,-0.2935955181342329,-0.04441237757626485,200,mouse
+gWAT,slow,pc5_age_free,dispersion_slope,housekeeping,-0.13733302009438061,-0.2893113001446027,0.034641381871835,200,mouse
+hippocampus,brain,pc5_age_free,dispersion_slope,housekeeping,0.024827227251153453,-0.10025554910739652,0.13613209434471787,200,mouse
+hypothalamus,brain,pc5_age_free,dispersion_slope,housekeeping,0.00040441322989323575,-0.0955214178701612,0.07977149053158239,200,mouse
+ileum,renewing,pc5_age_free,dispersion_slope,housekeeping,-0.2239355401498234,-0.3499033296471333,-0.052746370214148235,200,mouse
+jejunum,renewing,pc5_age_free,dispersion_slope,housekeeping,-0.2064003181285502,-0.3092879272148552,-0.06522310597739724,200,mouse
+kidney,slow,pc5_age_free,dispersion_slope,housekeeping,-0.2620504162596587,-0.32652125410596045,-0.1440346080837782,200,mouse
+left atrium,heart & muscle,pc5_age_free,dispersion_slope,housekeeping,-0.0981788674733326,-0.20668268107768806,0.016240904753273885,200,mouse
+left ventricle,heart & muscle,pc5_age_free,dispersion_slope,housekeeping,-0.13802880142095575,-0.2697670266903767,-0.013137654370494278,200,mouse
+liver,slow,pc5_age_free,dispersion_slope,housekeeping,-0.26856632781308437,-0.36818943740446886,-0.1613249482645664,200,mouse
+lymph node,renewing,pc5_age_free,dispersion_slope,housekeeping,-0.13772110304197466,-0.3944450697668571,0.11754227070151003,200,mouse
+pituitary gland,slow,pc5_age_free,dispersion_slope,housekeeping,-0.13282542666233826,-0.25890739104476446,0.018042032692715006,200,mouse
+right atrium,heart & muscle,pc5_age_free,dispersion_slope,housekeeping,-0.13749140240453384,-0.24415844410874557,-0.027165091600356347,200,mouse
+right ventricle,heart & muscle,pc5_age_free,dispersion_slope,housekeeping,-0.10699487061644375,-0.2231948293741691,0.03001301497848827,200,mouse
+skin,renewing,pc5_age_free,dispersion_slope,housekeeping,-0.1487855389825073,-0.27184521109041804,-0.013318337406427235,200,mouse
+spleen,renewing,pc5_age_free,dispersion_slope,housekeeping,-0.392404256853668,-0.47619703410380115,-0.28573443910412705,200,mouse
+thymus,renewing,pc5_age_free,dispersion_slope,housekeeping,-0.32881367076644574,-0.4178502515166315,-0.21607077511106298,200,mouse
+thyroid gland,slow,pc5_age_free,dispersion_slope,housekeeping,0.0180005949245367,-0.17582536698101087,0.1565134293792633,200,mouse
+adrenal gland,slow,pc5_age_free,dispersion_slope,non_essential,0.5122171732123706,0.10940038937649979,1.0548906311579247,200,mouse
+bone marrow,renewing,pc5_age_free,dispersion_slope,non_essential,0.8354672904062466,0.514948528980015,1.1318432842107162,200,mouse
+cerebellum,brain,pc5_age_free,dispersion_slope,non_essential,0.010049304831726447,-0.4084821334834627,0.48639667389237884,200,mouse
+colon,renewing,pc5_age_free,dispersion_slope,non_essential,0.8690082394575134,0.22719825178196576,1.5042167553758135,200,mouse
+cortex,brain,pc5_age_free,dispersion_slope,non_essential,-0.023007274690406955,-0.2648668128150684,0.2682876026073529,200,mouse
+duodenum,renewing,pc5_age_free,dispersion_slope,non_essential,1.0501402947217073,0.4093670253381596,1.6375153591034584,200,mouse
+femur,slow,pc5_age_free,dispersion_slope,non_essential,0.49388871117037914,-0.16000187151851833,1.103208836471253,200,mouse
+gWAT,slow,pc5_age_free,dispersion_slope,non_essential,0.27447402695780443,-0.21287941162454607,0.7291939868842817,200,mouse
+hippocampus,brain,pc5_age_free,dispersion_slope,non_essential,-0.043845501457582745,-0.4062343926289459,0.3929696577454671,200,mouse
+hypothalamus,brain,pc5_age_free,dispersion_slope,non_essential,0.039451390751808035,-0.19804749346392025,0.3190493466418929,200,mouse
+ileum,renewing,pc5_age_free,dispersion_slope,non_essential,0.3670639486584911,-0.5068705211875402,1.089761385696108,200,mouse
+jejunum,renewing,pc5_age_free,dispersion_slope,non_essential,-0.02460520034162493,-0.579691994246177,0.42932044994674734,200,mouse
+kidney,slow,pc5_age_free,dispersion_slope,non_essential,0.6349277779663989,0.2641243449304504,0.9405750177887472,200,mouse
+left atrium,heart & muscle,pc5_age_free,dispersion_slope,non_essential,0.40235234469231607,-0.013804449660407196,0.7652888699578495,200,mouse
+left ventricle,heart & muscle,pc5_age_free,dispersion_slope,non_essential,-0.02684718435286511,-0.7394762066110377,0.7287889553163971,200,mouse
+liver,slow,pc5_age_free,dispersion_slope,non_essential,0.8278092682912426,0.33792390343203965,1.218450315990266,200,mouse
+lymph node,renewing,pc5_age_free,dispersion_slope,non_essential,0.4329364053560104,-0.08613465299417246,0.8300121422014664,200,mouse
+pituitary gland,slow,pc5_age_free,dispersion_slope,non_essential,0.18290890827484146,-0.3096888272014683,0.5677956869220093,200,mouse
+right atrium,heart & muscle,pc5_age_free,dispersion_slope,non_essential,0.18958273256727265,-0.23284641214007723,0.6578914139307185,200,mouse
+right ventricle,heart & muscle,pc5_age_free,dispersion_slope,non_essential,0.3251723223142581,-0.3259782540248309,0.9280670740429114,200,mouse
+skin,renewing,pc5_age_free,dispersion_slope,non_essential,0.043955671927815146,-0.5069256696181763,0.6797845154547565,200,mouse
+spleen,renewing,pc5_age_free,dispersion_slope,non_essential,0.6570340718065905,0.24764268571122328,1.0328698735668391,200,mouse
+thymus,renewing,pc5_age_free,dispersion_slope,non_essential,0.7014000684255515,0.18300056486817484,1.0939145305786706,200,mouse
+thyroid gland,slow,pc5_age_free,dispersion_slope,non_essential,-0.17409550771636817,-0.9790800778528675,0.7240378848770378,200,mouse
+Peyer's patch,renewing,covariates,abs_slope,core_essential,-0.17943873989452977,-0.3084378412750097,0.0610084525004644,200,rat
+bone marrow,renewing,covariates,abs_slope,core_essential,-0.3280615344061909,-0.3931914708701649,-0.25070866192073626,200,rat
+cerebellum,brain,covariates,abs_slope,core_essential,-0.24848274210858323,-0.3042399842141144,-0.13761746287901114,200,rat
+colon,renewing,covariates,abs_slope,core_essential,-0.11785990623704824,-0.25185209854082513,0.008952152075826591,200,rat
+cortex,brain,covariates,abs_slope,core_essential,-0.2148401338662594,-0.3264829515047161,0.04627021644876539,200,rat
+duodenum,renewing,covariates,abs_slope,core_essential,-0.2464842413380873,-0.3716620913993901,-0.10828552628313284,200,rat
+femur,slow,covariates,abs_slope,core_essential,-0.25873310471002176,-0.32908630326507077,-0.18085061914598374,200,rat
+gWAT,slow,covariates,abs_slope,core_essential,-0.3437459388485114,-0.405356470113118,-0.24600249560869328,200,rat
+hippocampus,brain,covariates,abs_slope,core_essential,-0.2332127119033005,-0.3302562645566846,0.012155446004787298,200,rat
+hypothalamus,brain,covariates,abs_slope,core_essential,-0.2803757654372533,-0.37271861982209575,-0.15567984571073665,200,rat
+ileum,renewing,covariates,abs_slope,core_essential,-0.19724000361586813,-0.32460457649365265,-0.028316944377133786,200,rat
+jejunum,renewing,covariates,abs_slope,core_essential,-0.22332909902196443,-0.3063567733618478,-0.10564021375899957,200,rat
+kidney,slow,covariates,abs_slope,core_essential,-0.3668962276344464,-0.4013089704835447,-0.28942641730884305,200,rat
+left atrium,heart & muscle,covariates,abs_slope,core_essential,-0.22989998537108902,-0.28139859595089056,-0.14993470927495114,200,rat
+left ventricle,heart & muscle,covariates,abs_slope,core_essential,-0.2515621952631974,-0.33438591403514667,-0.14285508245041292,200,rat
+liver,slow,covariates,abs_slope,core_essential,-0.30565330581120626,-0.3372126945134761,-0.24429525668348218,200,rat
+lymph node,renewing,covariates,abs_slope,core_essential,-0.33504296618857043,-0.39021937010156504,-0.21997482185137582,200,rat
+retina,brain,covariates,abs_slope,core_essential,-0.27210511255987035,-0.30759801192758784,-0.21747899609433252,200,rat
+right atrium,heart & muscle,covariates,abs_slope,core_essential,-0.16553735940545386,-0.2901917100080039,-0.06736392236854356,200,rat
+right ventricle,heart & muscle,covariates,abs_slope,core_essential,-0.2820332690060088,-0.34408761853790615,-0.22700807440125356,200,rat
+spinal cord,brain,covariates,abs_slope,core_essential,-0.372911422960885,-0.4154197065930896,-0.33035376491254104,200,rat
+spleen,renewing,covariates,abs_slope,core_essential,-0.1492813568464374,-0.18316225381621837,-0.12092828769990079,200,rat
+thymus,renewing,covariates,abs_slope,core_essential,-0.22406751122272472,-0.4013456155207365,-0.1290873428000912,200,rat
+Peyer's patch,renewing,covariates,abs_slope,housekeeping,-0.29942660920281206,-0.4369235277251476,-0.0878276857050499,200,rat
+bone marrow,renewing,covariates,abs_slope,housekeeping,-0.4313517401041708,-0.4846008710796011,-0.37655736233291276,200,rat
+cerebellum,brain,covariates,abs_slope,housekeeping,-0.31486315832851575,-0.36130421333690416,-0.2048051750696786,200,rat
+colon,renewing,covariates,abs_slope,housekeeping,-0.386324660431834,-0.4398727292376837,-0.3310787176647211,200,rat
+cortex,brain,covariates,abs_slope,housekeeping,-0.22947772635547423,-0.32733214128369825,-0.06179132459776195,200,rat
+duodenum,renewing,covariates,abs_slope,housekeeping,-0.38619850223692836,-0.5016593001638672,-0.25749508492079975,200,rat
+femur,slow,covariates,abs_slope,housekeeping,-0.3929656855638797,-0.4572383445334318,-0.3182946425164322,200,rat
+gWAT,slow,covariates,abs_slope,housekeeping,-0.4474025373103019,-0.5107421570837581,-0.3918524626903673,200,rat
+hippocampus,brain,covariates,abs_slope,housekeeping,-0.2814062591293116,-0.36940379299348386,-0.08009931678196267,200,rat
+hypothalamus,brain,covariates,abs_slope,housekeeping,-0.37366246187462665,-0.45386472704739017,-0.2828463724537932,200,rat
+ileum,renewing,covariates,abs_slope,housekeeping,-0.4275190093214078,-0.4907676955364185,-0.331754882616303,200,rat
+jejunum,renewing,covariates,abs_slope,housekeeping,-0.313222805616101,-0.3975713528441514,-0.24782632248490444,200,rat
+kidney,slow,covariates,abs_slope,housekeeping,-0.4729047699069131,-0.5836662250570717,-0.30054901317148336,200,rat
+left atrium,heart & muscle,covariates,abs_slope,housekeeping,-0.36381778845337864,-0.42594216660356937,-0.23457492551068373,200,rat
+left ventricle,heart & muscle,covariates,abs_slope,housekeeping,-0.33372389669399394,-0.448471469386799,-0.18808690805521514,200,rat
+liver,slow,covariates,abs_slope,housekeeping,-0.3768886677070885,-0.4041521617156561,-0.3445891518002034,200,rat
+lymph node,renewing,covariates,abs_slope,housekeeping,-0.49447359162761906,-0.5515326830654002,-0.4401424936967677,200,rat
+retina,brain,covariates,abs_slope,housekeeping,-0.3236474804813473,-0.3591587529262639,-0.28717772562108496,200,rat
+right atrium,heart & muscle,covariates,abs_slope,housekeeping,-0.21526472160233767,-0.3549681753826734,-0.10985179180909024,200,rat
+right ventricle,heart & muscle,covariates,abs_slope,housekeeping,-0.3605588143936683,-0.429239441152443,-0.2928487819891411,200,rat
+spinal cord,brain,covariates,abs_slope,housekeeping,-0.5012686022527129,-0.5416238494069384,-0.4533014374523889,200,rat
+spleen,renewing,covariates,abs_slope,housekeeping,-0.3956910363430972,-0.44280048240112185,-0.36320178057228436,200,rat
+thymus,renewing,covariates,abs_slope,housekeeping,-0.5431788661858387,-0.5905561329233625,-0.4738343443576345,200,rat
+Peyer's patch,renewing,covariates,abs_slope,non_essential,0.7442722254188878,0.41735914012761743,1.0822235407506322,200,rat
+bone marrow,renewing,covariates,abs_slope,non_essential,0.24779552525942042,0.031443236304714434,0.4654491042532401,200,rat
+cerebellum,brain,covariates,abs_slope,non_essential,0.4067097395786459,0.1299972229635159,0.5805520604701848,200,rat
+colon,renewing,covariates,abs_slope,non_essential,0.4010573729075119,0.1443661135631722,0.7145879233029606,200,rat
+cortex,brain,covariates,abs_slope,non_essential,0.3331456256829978,0.15181653928422986,0.4670676939268126,200,rat
+duodenum,renewing,covariates,abs_slope,non_essential,1.4472160111092682,0.8726027148177203,2.0397256686613128,200,rat
+femur,slow,covariates,abs_slope,non_essential,0.2128218006873635,0.05996672685321454,0.3440363976082885,200,rat
+gWAT,slow,covariates,abs_slope,non_essential,0.577976034813655,0.2242722081939383,1.0780357692454081,200,rat
+hippocampus,brain,covariates,abs_slope,non_essential,0.32494494389828377,-0.0621639517318192,0.6298726195597221,200,rat
+hypothalamus,brain,covariates,abs_slope,non_essential,0.11867666121612207,-0.05920473310438658,0.4264344653655609,200,rat
+ileum,renewing,covariates,abs_slope,non_essential,0.8617907460499854,0.5398959296399417,1.161445668040353,200,rat
+jejunum,renewing,covariates,abs_slope,non_essential,0.7742251461131757,0.5621134740524795,1.0129695458822927,200,rat
+kidney,slow,covariates,abs_slope,non_essential,0.6858172152884914,0.33864036640071615,0.8698994977830472,200,rat
+left atrium,heart & muscle,covariates,abs_slope,non_essential,0.6506270841949401,0.397941579688676,0.8383078010919733,200,rat
+left ventricle,heart & muscle,covariates,abs_slope,non_essential,0.21464899936283705,0.03216756585615345,0.5810460901592235,200,rat
+liver,slow,covariates,abs_slope,non_essential,1.140533261486086,0.9124845855824911,1.3194069496765592,200,rat
+lymph node,renewing,covariates,abs_slope,non_essential,0.5874910395237394,0.3219613439422119,0.8594838391954708,200,rat
+retina,brain,covariates,abs_slope,non_essential,0.38013036845719017,0.30082269749828694,0.4596315773334806,200,rat
+right atrium,heart & muscle,covariates,abs_slope,non_essential,0.3907862589967923,0.12406298273001766,0.7565515232070752,200,rat
+right ventricle,heart & muscle,covariates,abs_slope,non_essential,1.130402943718817,0.9398792180938172,1.3192941902145365,200,rat
+spinal cord,brain,covariates,abs_slope,non_essential,0.16031219840626676,0.01216634116576688,0.2715648704406211,200,rat
+spleen,renewing,covariates,abs_slope,non_essential,0.17620200685998816,0.03797945008911064,0.3428295672935176,200,rat
+thymus,renewing,covariates,abs_slope,non_essential,0.2195325420068254,0.03189794539284606,0.42927220564385865,200,rat
+Peyer's patch,renewing,covariates,dispersion_slope,core_essential,-0.11863468164256982,-0.3730042492724374,0.11198966507996866,200,rat
+bone marrow,renewing,covariates,dispersion_slope,core_essential,-0.21967848515389826,-0.42165506185541923,-0.04244206393713463,200,rat
+cerebellum,brain,covariates,dispersion_slope,core_essential,-0.08776520792430194,-0.20783848585058012,0.07006953581089194,200,rat
+colon,renewing,covariates,dispersion_slope,core_essential,0.31552962303516435,0.06199912386221519,0.45857359025071226,200,rat
+cortex,brain,covariates,dispersion_slope,core_essential,0.08038890146129621,-0.08775642511715119,0.33722578519928376,200,rat
+duodenum,renewing,covariates,dispersion_slope,core_essential,-0.21571458798261803,-0.4104720237913595,0.07856186982950511,200,rat
+femur,slow,covariates,dispersion_slope,core_essential,-0.03274626621970585,-0.22377570052629936,0.12402177810218196,200,rat
+gWAT,slow,covariates,dispersion_slope,core_essential,0.03119669604318457,-0.10849915774738236,0.154601541038037,200,rat
+hippocampus,brain,covariates,dispersion_slope,core_essential,-0.09806146300504884,-0.2812624442339922,0.08598795030417901,200,rat
+hypothalamus,brain,covariates,dispersion_slope,core_essential,0.09165452970262222,-0.15060860213304403,0.37438936233192227,200,rat
+ileum,renewing,covariates,dispersion_slope,core_essential,-0.05252370704170756,-0.204462740281806,0.10924648723104545,200,rat
+jejunum,renewing,covariates,dispersion_slope,core_essential,0.006646267613175813,-0.15455000720723677,0.18978345443710437,200,rat
+kidney,slow,covariates,dispersion_slope,core_essential,-0.25506528298306913,-0.3720995476686368,-0.15301327988254596,200,rat
+left atrium,heart & muscle,covariates,dispersion_slope,core_essential,-0.0015024035349901835,-0.15677733172233682,0.16552375113431186,200,rat
+left ventricle,heart & muscle,covariates,dispersion_slope,core_essential,-0.032817902369027,-0.1735806910962211,0.06425770309878205,200,rat
+liver,slow,covariates,dispersion_slope,core_essential,-0.24433032423119255,-0.38190776913084723,-0.09397095104886817,200,rat
+lymph node,renewing,covariates,dispersion_slope,core_essential,-0.12605041820887247,-0.281023540152173,0.07226189895269786,200,rat
+retina,brain,covariates,dispersion_slope,core_essential,-0.3027177987293865,-0.4193691984352533,-0.14248069245314837,200,rat
+right atrium,heart & muscle,covariates,dispersion_slope,core_essential,-0.17309619382881736,-0.330567775712068,0.03680929815221736,200,rat
+right ventricle,heart & muscle,covariates,dispersion_slope,core_essential,-0.1409929493755679,-0.30058220442930905,0.05412811512305073,200,rat
+spinal cord,brain,covariates,dispersion_slope,core_essential,-0.061344961799335795,-0.3112077903043093,0.18738054731108764,200,rat
+spleen,renewing,covariates,dispersion_slope,core_essential,-0.08704903777805022,-0.22264138623392946,0.04036341834858418,200,rat
+thymus,renewing,covariates,dispersion_slope,core_essential,-0.029116842352929682,-0.2701149919037883,0.1851465676510288,200,rat
+Peyer's patch,renewing,covariates,dispersion_slope,housekeeping,-0.04082338124107021,-0.27134278856556937,0.1647010547530986,200,rat
+bone marrow,renewing,covariates,dispersion_slope,housekeeping,-0.28888546922298974,-0.421553418896048,-0.11757739636681735,200,rat
+cerebellum,brain,covariates,dispersion_slope,housekeeping,-0.035235595870670766,-0.1506533316823924,0.11165051679318506,200,rat
+colon,renewing,covariates,dispersion_slope,housekeeping,0.22129928170324317,0.027561703330204752,0.34919418384189566,200,rat
+cortex,brain,covariates,dispersion_slope,housekeeping,-0.01777026451167909,-0.16719018758850782,0.24556960327430385,200,rat
+duodenum,renewing,covariates,dispersion_slope,housekeeping,-0.17849370109999754,-0.33400120623143226,0.06490319084903579,200,rat
+femur,slow,covariates,dispersion_slope,housekeeping,-0.2782545306572006,-0.46802098749693277,-0.05289737202174265,200,rat
+gWAT,slow,covariates,dispersion_slope,housekeeping,0.15859152448433622,-0.12996199556957116,0.2853602456690704,200,rat
+hippocampus,brain,covariates,dispersion_slope,housekeeping,-0.09682354948759456,-0.28676112335020987,0.11871400553752014,200,rat
+hypothalamus,brain,covariates,dispersion_slope,housekeeping,0.17367888329122658,-0.10540887230414488,0.48859507278149045,200,rat
+ileum,renewing,covariates,dispersion_slope,housekeeping,-0.04283831005836132,-0.18641633601121893,0.10357774351556218,200,rat
+jejunum,renewing,covariates,dispersion_slope,housekeeping,0.003881128140502958,-0.16907803832499813,0.19381089706213603,200,rat
+kidney,slow,covariates,dispersion_slope,housekeeping,-0.3600304630843273,-0.4847406862819688,-0.19640834474652227,200,rat
+left atrium,heart & muscle,covariates,dispersion_slope,housekeeping,-0.014601565245309164,-0.18146751999639182,0.1637022696505835,200,rat
+left ventricle,heart & muscle,covariates,dispersion_slope,housekeeping,-0.06407650995993207,-0.2176958314060883,0.07055284629252312,200,rat
+liver,slow,covariates,dispersion_slope,housekeeping,-0.25930096703004124,-0.3448253855368857,-0.15306697923242013,200,rat
+lymph node,renewing,covariates,dispersion_slope,housekeeping,-0.14675362167236367,-0.29956589321715105,0.040841070587443885,200,rat
+retina,brain,covariates,dispersion_slope,housekeeping,-0.2921973632659278,-0.3999748886710492,-0.13868583713573945,200,rat
+right atrium,heart & muscle,covariates,dispersion_slope,housekeeping,-0.19549355679340724,-0.3573220598651323,0.03415061179927165,200,rat
+right ventricle,heart & muscle,covariates,dispersion_slope,housekeeping,-0.1857377540582811,-0.31588493371220233,-0.008321298911618686,200,rat
+spinal cord,brain,covariates,dispersion_slope,housekeeping,0.04289569514243699,-0.31495749498582387,0.3377939566562861,200,rat
+spleen,renewing,covariates,dispersion_slope,housekeeping,-0.27720957098256677,-0.448331126106857,-0.09139094313317385,200,rat
+thymus,renewing,covariates,dispersion_slope,housekeeping,-0.12188525075700435,-0.37999553252206,0.29795512390313345,200,rat
+Peyer's patch,renewing,covariates,dispersion_slope,non_essential,0.0850007011880089,-0.6168665455091356,0.8132504006993607,200,rat
+bone marrow,renewing,covariates,dispersion_slope,non_essential,0.15599957319435404,-0.30526987001652184,0.5777110762144618,200,rat
+cerebellum,brain,covariates,dispersion_slope,non_essential,0.258858450304423,-0.109583252317651,0.6286887960398845,200,rat
+colon,renewing,covariates,dispersion_slope,non_essential,-0.23296802364519387,-0.6542628189099381,0.2760133263446324,200,rat
+cortex,brain,covariates,dispersion_slope,non_essential,0.14764245805985082,-0.34627896250390183,0.37818682633144235,200,rat
+duodenum,renewing,covariates,dispersion_slope,non_essential,1.170188439048818,-0.13751658346644755,2.3181456432736076,200,rat
+femur,slow,covariates,dispersion_slope,non_essential,0.26072739552468455,-0.1476692907137282,0.530821777675347,200,rat
+gWAT,slow,covariates,dispersion_slope,non_essential,0.4088301100394971,-0.04710861025003565,0.9448426614635886,200,rat
+hippocampus,brain,covariates,dispersion_slope,non_essential,0.015435513896899431,-0.2986624131598736,0.38224656076555913,200,rat
+hypothalamus,brain,covariates,dispersion_slope,non_essential,-0.6359618740550068,-1.1257753743468397,-0.12138436490779513,200,rat
+ileum,renewing,covariates,dispersion_slope,non_essential,0.11645571342802197,-0.2562375553300914,0.5890670616465942,200,rat
+jejunum,renewing,covariates,dispersion_slope,non_essential,0.3877345236593194,-0.12249328494643563,0.8299359101462218,200,rat
+kidney,slow,covariates,dispersion_slope,non_essential,0.537737617847764,0.052535306043986,1.2146606952168455,200,rat
+left atrium,heart & muscle,covariates,dispersion_slope,non_essential,0.1382032505922784,-0.38952172773827837,0.5726928788354806,200,rat
+left ventricle,heart & muscle,covariates,dispersion_slope,non_essential,0.08076699965427428,-0.5813738450562281,0.5892716014016165,200,rat
+liver,slow,covariates,dispersion_slope,non_essential,0.9554055546831287,0.5782147677522345,1.3108243010181897,200,rat
+lymph node,renewing,covariates,dispersion_slope,non_essential,0.6843936883813313,0.2792742879928933,1.1612582294825795,200,rat
+retina,brain,covariates,dispersion_slope,non_essential,0.24557385254325195,0.09784606178991678,0.46308612677358263,200,rat
+right atrium,heart & muscle,covariates,dispersion_slope,non_essential,0.0028158954510391467,-0.7814313007113877,0.6660412600258924,200,rat
+right ventricle,heart & muscle,covariates,dispersion_slope,non_essential,0.4794730594081206,0.07745721203153352,0.910551970363421,200,rat
+spinal cord,brain,covariates,dispersion_slope,non_essential,0.29773606410798814,-0.19326955114194366,0.840604488443001,200,rat
+spleen,renewing,covariates,dispersion_slope,non_essential,0.46911062294710637,0.0853579067084182,0.9565265505705727,200,rat
+thymus,renewing,covariates,dispersion_slope,non_essential,0.3554677313930713,-0.5177873985919103,1.017106156736297,200,rat
+Peyer's patch,renewing,pc5_age_free,abs_slope,core_essential,-0.17877402132237502,-0.25871909996064846,-0.10485058321078175,200,rat
+bone marrow,renewing,pc5_age_free,abs_slope,core_essential,-0.3288600294470144,-0.38008154515204495,-0.2757358864630657,200,rat
+cerebellum,brain,pc5_age_free,abs_slope,core_essential,-0.2751746804606312,-0.3202610678780782,-0.2147538399250637,200,rat
+colon,renewing,pc5_age_free,abs_slope,core_essential,-0.10699713248878437,-0.20814867578176216,-0.020340148910781047,200,rat
+cortex,brain,pc5_age_free,abs_slope,core_essential,-0.2258368616369839,-0.2752467161633657,-0.16402204778074944,200,rat
+duodenum,renewing,pc5_age_free,abs_slope,core_essential,-0.2519030588264214,-0.30765859294755415,-0.16181546767709667,200,rat
+femur,slow,pc5_age_free,abs_slope,core_essential,-0.2623923581813359,-0.30954872284289775,-0.2042983589672937,200,rat
+gWAT,slow,pc5_age_free,abs_slope,core_essential,-0.3487345470907942,-0.3803936327476121,-0.3039924328401012,200,rat
+hippocampus,brain,pc5_age_free,abs_slope,core_essential,-0.23987279218359542,-0.3117745728530894,-0.17144961259273142,200,rat
+hypothalamus,brain,pc5_age_free,abs_slope,core_essential,-0.2696902597049007,-0.3523783103948213,-0.18662626579338235,200,rat
+ileum,renewing,pc5_age_free,abs_slope,core_essential,-0.1845821116910671,-0.2601288285038934,-0.08149978636209813,200,rat
+jejunum,renewing,pc5_age_free,abs_slope,core_essential,-0.21213379335284624,-0.272135285008978,-0.14147787695501496,200,rat
+kidney,slow,pc5_age_free,abs_slope,core_essential,-0.3380351958643444,-0.39745376221730805,-0.2425641838362099,200,rat
+left atrium,heart & muscle,pc5_age_free,abs_slope,core_essential,-0.22513530326160833,-0.2585617210362945,-0.1931675675060756,200,rat
+left ventricle,heart & muscle,pc5_age_free,abs_slope,core_essential,-0.2531664370605954,-0.29135961914823577,-0.21123049370447028,200,rat
+liver,slow,pc5_age_free,abs_slope,core_essential,-0.3099970825931112,-0.3471614262127696,-0.2586039810656165,200,rat
+lymph node,renewing,pc5_age_free,abs_slope,core_essential,-0.33528490166367114,-0.38249961155902734,-0.27415191884745216,200,rat
+retina,brain,pc5_age_free,abs_slope,core_essential,-0.2643668521707586,-0.2835448760478174,-0.23975701495858098,200,rat
+right atrium,heart & muscle,pc5_age_free,abs_slope,core_essential,-0.15826552328649873,-0.21163114347290143,-0.09112096587732271,200,rat
+right ventricle,heart & muscle,pc5_age_free,abs_slope,core_essential,-0.2851286341487359,-0.3231565168411038,-0.23956708095667256,200,rat
+spinal cord,brain,pc5_age_free,abs_slope,core_essential,-0.37562868828951523,-0.3954260031667238,-0.35526084243107015,200,rat
+spleen,renewing,pc5_age_free,abs_slope,core_essential,-0.15074240880054646,-0.18192862650865588,-0.11964280491328719,200,rat
+thymus,renewing,pc5_age_free,abs_slope,core_essential,-0.23162301798740914,-0.286928731852265,-0.17770387612230593,200,rat
+Peyer's patch,renewing,pc5_age_free,abs_slope,housekeeping,-0.30231540784522937,-0.36155394475107905,-0.2508470063670434,200,rat
+bone marrow,renewing,pc5_age_free,abs_slope,housekeeping,-0.4330514930650875,-0.4685551254376294,-0.3936890132679917,200,rat
+cerebellum,brain,pc5_age_free,abs_slope,housekeeping,-0.33730284730423515,-0.3753722026709668,-0.30100426637282685,200,rat
+colon,renewing,pc5_age_free,abs_slope,housekeeping,-0.38277151310671986,-0.41060612628356075,-0.34928403682120474,200,rat
+cortex,brain,pc5_age_free,abs_slope,housekeeping,-0.22939769772684088,-0.2664217175791706,-0.1845714986337481,200,rat
+duodenum,renewing,pc5_age_free,abs_slope,housekeeping,-0.37787761728174046,-0.4102458623340419,-0.3174997614671386,200,rat
+femur,slow,pc5_age_free,abs_slope,housekeeping,-0.38015720240720774,-0.4353489611403031,-0.330168585764331,200,rat
+gWAT,slow,pc5_age_free,abs_slope,housekeeping,-0.43084388638572224,-0.45796496923719937,-0.3909533559706807,200,rat
+hippocampus,brain,pc5_age_free,abs_slope,housekeeping,-0.3158712520732347,-0.36755643053231785,-0.24662958611419755,200,rat
+hypothalamus,brain,pc5_age_free,abs_slope,housekeeping,-0.34783139359254045,-0.42451827727998065,-0.28094109151350605,200,rat
+ileum,renewing,pc5_age_free,abs_slope,housekeeping,-0.43769876474137565,-0.47531432170662813,-0.3637305290274682,200,rat
+jejunum,renewing,pc5_age_free,abs_slope,housekeeping,-0.2965461789006919,-0.3357290309028442,-0.250697572248289,200,rat
+kidney,slow,pc5_age_free,abs_slope,housekeeping,-0.4592799143190317,-0.4936057479170315,-0.3905552086275956,200,rat
+left atrium,heart & muscle,pc5_age_free,abs_slope,housekeeping,-0.35526829008034294,-0.37421083241150344,-0.33547899757181565,200,rat
+left ventricle,heart & muscle,pc5_age_free,abs_slope,housekeeping,-0.3331150410143542,-0.35969459915698054,-0.3082860123701812,200,rat
+liver,slow,pc5_age_free,abs_slope,housekeeping,-0.3781299404863651,-0.4015081382906128,-0.355704187138506,200,rat
+lymph node,renewing,pc5_age_free,abs_slope,housekeeping,-0.4955406048816422,-0.5185210415919066,-0.47045092362826674,200,rat
+retina,brain,pc5_age_free,abs_slope,housekeeping,-0.31844955151728543,-0.3343375957324007,-0.302831334097375,200,rat
+right atrium,heart & muscle,pc5_age_free,abs_slope,housekeeping,-0.20621610324857081,-0.24968479878840907,-0.1653796900592144,200,rat
+right ventricle,heart & muscle,pc5_age_free,abs_slope,housekeeping,-0.3609669773061145,-0.3860804286049576,-0.3421672346036242,200,rat
+spinal cord,brain,pc5_age_free,abs_slope,housekeeping,-0.49548185155577473,-0.5085723902199338,-0.48343848364400455,200,rat
+spleen,renewing,pc5_age_free,abs_slope,housekeeping,-0.39496424951866005,-0.4230588387966478,-0.36618860512301454,200,rat
+thymus,renewing,pc5_age_free,abs_slope,housekeeping,-0.5448047066927715,-0.5754332839498157,-0.5062662069189743,200,rat
+Peyer's patch,renewing,pc5_age_free,abs_slope,non_essential,0.7788953149791904,0.5139347432649719,1.0466461578516093,200,rat
+bone marrow,renewing,pc5_age_free,abs_slope,non_essential,0.2665577870092944,0.029152628240976745,0.5147019604984455,200,rat
+cerebellum,brain,pc5_age_free,abs_slope,non_essential,0.418935863131931,0.2602796412457001,0.6265599165893467,200,rat
+colon,renewing,pc5_age_free,abs_slope,non_essential,0.40750709215602615,0.19024094085766974,0.6324015883741936,200,rat
+cortex,brain,pc5_age_free,abs_slope,non_essential,0.35394049029099056,0.24835611589125764,0.5346498599133055,200,rat
+duodenum,renewing,pc5_age_free,abs_slope,non_essential,1.4276780045387927,1.007707556641464,1.790981249860106,200,rat
+femur,slow,pc5_age_free,abs_slope,non_essential,0.1773373792346664,0.060373409188823654,0.28036384759022476,200,rat
+gWAT,slow,pc5_age_free,abs_slope,non_essential,0.6516770792080957,0.28787787118852415,1.0844060809363192,200,rat
+hippocampus,brain,pc5_age_free,abs_slope,non_essential,0.2941719312131973,0.13925212150165792,0.49740375795038866,200,rat
+hypothalamus,brain,pc5_age_free,abs_slope,non_essential,0.13087868523189342,-0.04850539796187378,0.3562845514976822,200,rat
+ileum,renewing,pc5_age_free,abs_slope,non_essential,0.8964255207791101,0.6785620666749308,1.100492009825617,200,rat
+jejunum,renewing,pc5_age_free,abs_slope,non_essential,0.7909204720547374,0.6262036901232576,0.9906814070916047,200,rat
+kidney,slow,pc5_age_free,abs_slope,non_essential,0.7960849944316504,0.6235220657670882,1.4528201175793931,200,rat
+left atrium,heart & muscle,pc5_age_free,abs_slope,non_essential,0.64822398801613,0.4839641036098364,0.8085120396714846,200,rat
+left ventricle,heart & muscle,pc5_age_free,abs_slope,non_essential,0.20119739357172722,0.08998986738482204,0.35828324523879873,200,rat
+liver,slow,pc5_age_free,abs_slope,non_essential,1.1324856184339624,0.9810918068054629,1.2871116869811652,200,rat
+lymph node,renewing,pc5_age_free,abs_slope,non_essential,0.6060472193889704,0.3896663111822525,0.8553514341002119,200,rat
+retina,brain,pc5_age_free,abs_slope,non_essential,0.38709553957652454,0.2929534641873612,0.4828716114265287,200,rat
+right atrium,heart & muscle,pc5_age_free,abs_slope,non_essential,0.3696759543193329,0.04783038025722379,0.6695117477827849,200,rat
+right ventricle,heart & muscle,pc5_age_free,abs_slope,non_essential,1.1501316859107131,0.9777908164308605,1.3336366564790252,200,rat
+spinal cord,brain,pc5_age_free,abs_slope,non_essential,0.1493193692670937,0.09804391835655168,0.20907541387087225,200,rat
+spleen,renewing,pc5_age_free,abs_slope,non_essential,0.16212473279993778,-0.02339712583935366,0.37601920195201544,200,rat
+thymus,renewing,pc5_age_free,abs_slope,non_essential,0.2169854183893335,0.04286478380031774,0.38124709678295876,200,rat
+Peyer's patch,renewing,pc5_age_free,dispersion_slope,core_essential,-0.07545073570761755,-0.18350551111763738,0.05421317962811349,200,rat
+bone marrow,renewing,pc5_age_free,dispersion_slope,core_essential,-0.0979317089543967,-0.20062794287024407,0.016506611474713377,200,rat
+cerebellum,brain,pc5_age_free,dispersion_slope,core_essential,-0.013406725900823709,-0.10561410355486935,0.09766745979693914,200,rat
+colon,renewing,pc5_age_free,dispersion_slope,core_essential,-0.018522108433451576,-0.17141369358744596,0.14401041332943565,200,rat
+cortex,brain,pc5_age_free,dispersion_slope,core_essential,0.02566261124016276,-0.06595857681255399,0.11677515437052839,200,rat
+duodenum,renewing,pc5_age_free,dispersion_slope,core_essential,-0.10353711090456458,-0.21312080414256954,0.01629870807536312,200,rat
+femur,slow,pc5_age_free,dispersion_slope,core_essential,-0.09402975142400469,-0.24709513716473772,0.06607854442311413,200,rat
+gWAT,slow,pc5_age_free,dispersion_slope,core_essential,-0.024083769668683756,-0.18600194756041757,0.14719183566644287,200,rat
+hippocampus,brain,pc5_age_free,dispersion_slope,core_essential,-0.04893687343978506,-0.17709779005468707,0.10613491307954698,200,rat
+hypothalamus,brain,pc5_age_free,dispersion_slope,core_essential,0.06977803333152771,-0.1549518007246868,0.20867253927891508,200,rat
+ileum,renewing,pc5_age_free,dispersion_slope,core_essential,0.009381639529638754,-0.09769725639561451,0.11797535511025596,200,rat
+jejunum,renewing,pc5_age_free,dispersion_slope,core_essential,-0.062285619240511236,-0.15196592604320458,0.02925239403260893,200,rat
+kidney,slow,pc5_age_free,dispersion_slope,core_essential,-0.017670067846420473,-0.12793862636500597,0.10638898075423621,200,rat
+left atrium,heart & muscle,pc5_age_free,dispersion_slope,core_essential,0.023304744066559586,-0.09348096072017362,0.12781728232689138,200,rat
+left ventricle,heart & muscle,pc5_age_free,dispersion_slope,core_essential,-0.0031369125209774816,-0.13563536059739384,0.11582886719364215,200,rat
+liver,slow,pc5_age_free,dispersion_slope,core_essential,-0.04934195516432316,-0.1512397432103872,0.07114938674811194,200,rat
+lymph node,renewing,pc5_age_free,dispersion_slope,core_essential,-0.024966962249098397,-0.1037766980130346,0.04162234774391568,200,rat
+retina,brain,pc5_age_free,dispersion_slope,core_essential,-0.03462175769551643,-0.12561283589514757,0.061127594798883925,200,rat
+right atrium,heart & muscle,pc5_age_free,dispersion_slope,core_essential,-0.010838859097453812,-0.12832061672881098,0.09768738863545427,200,rat
+right ventricle,heart & muscle,pc5_age_free,dispersion_slope,core_essential,0.014897002569039829,-0.08853958081125528,0.11734345339538045,200,rat
+spinal cord,brain,pc5_age_free,dispersion_slope,core_essential,-0.054218311865026,-0.14972442048547088,0.02862405632405527,200,rat
+spleen,renewing,pc5_age_free,dispersion_slope,core_essential,-0.040422671432239696,-0.13829785928009924,0.05098997212408289,200,rat
+thymus,renewing,pc5_age_free,dispersion_slope,core_essential,-0.0726632962242518,-0.19140105699465215,0.027558158939327095,200,rat
+Peyer's patch,renewing,pc5_age_free,dispersion_slope,housekeeping,-0.08458209111418036,-0.19125341923383696,0.028906933533893685,200,rat
+bone marrow,renewing,pc5_age_free,dispersion_slope,housekeeping,-0.09272767087131256,-0.17270572353940855,0.0009670723755776574,200,rat
+cerebellum,brain,pc5_age_free,dispersion_slope,housekeeping,0.01074084231244695,-0.059980402900496436,0.08631163405536499,200,rat
+colon,renewing,pc5_age_free,dispersion_slope,housekeeping,-0.1228635373658308,-0.2285830308887572,-0.014060690216272886,200,rat
+cortex,brain,pc5_age_free,dispersion_slope,housekeeping,0.02603290937172446,-0.05692611571548342,0.12123586594738632,200,rat
+duodenum,renewing,pc5_age_free,dispersion_slope,housekeeping,-0.11346266454154873,-0.21758437340696157,0.010940934962050097,200,rat
+femur,slow,pc5_age_free,dispersion_slope,housekeeping,-0.08344527681783062,-0.26994550058464184,0.08548922298928167,200,rat
+gWAT,slow,pc5_age_free,dispersion_slope,housekeeping,-0.04139628370466605,-0.19328493504774028,0.1232109128835729,200,rat
+hippocampus,brain,pc5_age_free,dispersion_slope,housekeeping,-0.04271795006523802,-0.1694551289471547,0.10739592012056733,200,rat
+hypothalamus,brain,pc5_age_free,dispersion_slope,housekeeping,0.09501518165906002,-0.16861579404780008,0.26544201241438753,200,rat
+ileum,renewing,pc5_age_free,dispersion_slope,housekeeping,-0.011261631103271788,-0.0946225863019402,0.09276373736647571,200,rat
+jejunum,renewing,pc5_age_free,dispersion_slope,housekeeping,-0.08941820269694722,-0.1741415891777457,-0.0037475266307495803,200,rat
+kidney,slow,pc5_age_free,dispersion_slope,housekeeping,-0.04948256025248978,-0.13661271860587557,0.06282679155705774,200,rat
+left atrium,heart & muscle,pc5_age_free,dispersion_slope,housekeeping,0.005124012953533118,-0.10224273697529929,0.09284435584828371,200,rat
+left ventricle,heart & muscle,pc5_age_free,dispersion_slope,housekeeping,-0.024872553506745047,-0.12738291830754436,0.08447162948071121,200,rat
+liver,slow,pc5_age_free,dispersion_slope,housekeeping,-0.07418908372284119,-0.17266298573859284,0.03822342081188559,200,rat
+lymph node,renewing,pc5_age_free,dispersion_slope,housekeeping,-0.07425974289340406,-0.1648392662951841,0.006887559256815467,200,rat
+retina,brain,pc5_age_free,dispersion_slope,housekeeping,-0.02154672684267572,-0.10260742584090156,0.057693094965252975,200,rat
+right atrium,heart & muscle,pc5_age_free,dispersion_slope,housekeeping,-0.01689948657861218,-0.12219979423617341,0.1010131947163369,200,rat
+right ventricle,heart & muscle,pc5_age_free,dispersion_slope,housekeeping,0.010095875596472032,-0.10270053169057891,0.11098327254055497,200,rat
+spinal cord,brain,pc5_age_free,dispersion_slope,housekeeping,-0.02791652688144014,-0.11175981620881886,0.06816128236889833,200,rat
+spleen,renewing,pc5_age_free,dispersion_slope,housekeeping,-0.039267467316203175,-0.12755690593477947,0.05073166055671047,200,rat
+thymus,renewing,pc5_age_free,dispersion_slope,housekeeping,-0.1717058517194129,-0.262699412596981,-0.05370937069445071,200,rat
+Peyer's patch,renewing,pc5_age_free,dispersion_slope,non_essential,0.1466163514006082,-0.6384886719742638,0.863630357922184,200,rat
+bone marrow,renewing,pc5_age_free,dispersion_slope,non_essential,0.07989707295863382,-0.5938683129647487,0.6928991759359814,200,rat
+cerebellum,brain,pc5_age_free,dispersion_slope,non_essential,0.07650681529970002,-0.34066972055874173,0.5143254749569472,200,rat
+colon,renewing,pc5_age_free,dispersion_slope,non_essential,0.29696349254460797,-0.20968802491292413,0.6848301343712095,200,rat
+cortex,brain,pc5_age_free,dispersion_slope,non_essential,-0.14241862603807326,-0.4490573048330215,0.21830886940717137,200,rat
+duodenum,renewing,pc5_age_free,dispersion_slope,non_essential,0.3061334230168346,-0.3242960778300158,1.0039718145517795,200,rat
+femur,slow,pc5_age_free,dispersion_slope,non_essential,-0.0406854264042537,-0.3845688794793355,0.2770462371745433,200,rat
+gWAT,slow,pc5_age_free,dispersion_slope,non_essential,0.2958200753147792,-0.6893591600158852,1.1096902479986765,200,rat
+hippocampus,brain,pc5_age_free,dispersion_slope,non_essential,-0.02336851503594016,-0.37490607187067704,0.3923844127331851,200,rat
+hypothalamus,brain,pc5_age_free,dispersion_slope,non_essential,-0.2407401529192313,-0.5469991385952571,0.16131794634107446,200,rat
+ileum,renewing,pc5_age_free,dispersion_slope,non_essential,0.09870818628524163,-0.3639856747850533,0.5854775154720588,200,rat
+jejunum,renewing,pc5_age_free,dispersion_slope,non_essential,0.5793886705592635,0.15080972390920278,1.0385069761740335,200,rat
+kidney,slow,pc5_age_free,dispersion_slope,non_essential,0.33059177348825086,-0.3263301340562798,0.9557887519374011,200,rat
+left atrium,heart & muscle,pc5_age_free,dispersion_slope,non_essential,0.061423301599968755,-0.48414327652627825,0.6434349740675065,200,rat
+left ventricle,heart & muscle,pc5_age_free,dispersion_slope,non_essential,-0.12248309105461688,-0.5531987756121395,0.423678977962807,200,rat
+liver,slow,pc5_age_free,dispersion_slope,non_essential,0.6110493875143126,0.11398566904104836,1.0623358427962755,200,rat
+lymph node,renewing,pc5_age_free,dispersion_slope,non_essential,0.50897700203018,-0.15648479182554856,1.080705623012903,200,rat
+retina,brain,pc5_age_free,dispersion_slope,non_essential,0.07857373518333823,-0.18483586117083742,0.28930809972820437,200,rat
+right atrium,heart & muscle,pc5_age_free,dispersion_slope,non_essential,0.016966057290493178,-0.6527599846764981,0.6288930819841955,200,rat
+right ventricle,heart & muscle,pc5_age_free,dispersion_slope,non_essential,0.18777716798332109,-0.222031527652884,0.679045891161663,200,rat
+spinal cord,brain,pc5_age_free,dispersion_slope,non_essential,0.1378056799048325,-0.13240500552838413,0.3904596275254619,200,rat
+spleen,renewing,pc5_age_free,dispersion_slope,non_essential,0.4598017330368741,-0.15206568638645673,1.0766202609317521,200,rat
+thymus,renewing,pc5_age_free,dispersion_slope,non_essential,0.14535725278461437,-0.3603339944239632,0.5589526747380373,200,rat
