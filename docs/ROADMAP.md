@@ -72,12 +72,3 @@ whether protection needs divisions. Left:
 - An arrest with more drift than GSE179847's contact inhibition gives (quiescence over a year, or senescent
   cells kept for months), so that a gap without divisions can be measured above the noise floor.
 - GSE268145 (BJ, 175 MB, downloaded), GSE202554 (astrocytes), GSE131280 (glucose): smaller replications.
-
-## RM6 — A per-person protection score
-
-**State:** done · **Owner:** lead
-
-Progress: built (`entropy_age.protection`, figure `per_person`) and checked on Hannum, Jaffe and Lunnon (R2): it
-reproduces the cohort result per person, resolves people well beyond its own sampling error, and blood's relative
-gap is below the same donor's brain in 86-91 % of donors (housekeeping). Not done, for want of data here:
-repeatability on replicate arrays, and outcomes.

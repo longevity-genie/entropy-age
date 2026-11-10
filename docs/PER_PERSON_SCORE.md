@@ -3,7 +3,8 @@
 State: built (`entropy_age.protection`) and checked on steps 1-3 below (`docs/extension.md`, "A per-person
 protection score"). Two choices differ from this note: the background is every other CpG, as in the cohort
 tests, not only CpGs outside every set; and in Lunnon, where no donor is young, the reference is the other
-donors of the same tissue. Validating it against outcomes is later work.
+donors of the same tissue. Left, for want of data here: repeatability on replicate arrays (step 2 proper), then
+outcomes (step 5).
 
 ## Why the current measure is not per person
 
