@@ -75,7 +75,9 @@ whether protection needs divisions. Left:
 
 ## RM6 — A per-person protection score
 
-**State:** building · **Owner:** lead
+**State:** done · **Owner:** lead
 
-Progress: designed (`docs/PER_PERSON_SCORE.md`) and built (`entropy_age.protection`, figure `per_person`,
-validation steps 1-3 on Hannum, Jaffe and Lunnon; step 4 is the culture test). Waiting on its run (R2).
+Progress: built (`entropy_age.protection`, figure `per_person`) and checked on Hannum, Jaffe and Lunnon (R2): it
+reproduces the cohort result per person, resolves people well beyond its own sampling error, and blood's relative
+gap is below the same donor's brain in 86-91 % of donors (housekeeping). Not done, for want of data here:
+repeatability on replicate arrays, and outcomes.

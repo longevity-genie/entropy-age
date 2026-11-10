@@ -4,6 +4,7 @@ Newest first.
 
 ## Unreleased
 
+- RM6 done: the per-person score reproduces the cohort result one sample at a time (housekeeping `P` −0.0018 per decade in blood, −0.00036 in cortex), with reliability 0.96-0.997 against its own error, and blood's relative gap below the same donor's brain in 86-91 % of Lunnon donors. It does not separate selection from chromatin. `docs/extension.md`; `docs/PER_PERSON_SCORE.md` notes the two choices that differ from the design.
 - R2 done (13 min, 5.9 GB peak): `data/output/per_person/` and `docs/figures/per_person.png`; R2 leaves the run brief.
 - R2 (the per-person score, RM6) on the run brief and submitted.
 - RM6: the per-person protection score is built: `entropy_age.protection` (a young reference's level, strata and optional composition components projected into each sample; the matched set-minus-background gap `P`, relative gap `F`, entropy gap `E`; a per-sample error from resampling genes), with figure `per_person` for the design's validation steps 1-3 on Hannum, Jaffe and Lunnon. The culture test's `deviations` and `matched_scores` move there. Not yet run on the data.

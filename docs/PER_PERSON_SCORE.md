@@ -1,6 +1,9 @@
 # Design note: a per-person protection score
 
-State: design only. No outcome data is needed to build it; validating it against outcomes is later work.
+State: built (`entropy_age.protection`) and checked on steps 1-3 below (`docs/extension.md`, "A per-person
+protection score"). Two choices differ from this note: the background is every other CpG, as in the cohort
+tests, not only CpGs outside every set; and in Lunnon, where no donor is young, the reference is the other
+donors of the same tissue. Validating it against outcomes is later work.
 
 ## Why the current measure is not per person
 

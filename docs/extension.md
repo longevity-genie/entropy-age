@@ -562,6 +562,57 @@ courses, which have none, use the floor pooled over the experiments that do.
 Tables: `data/output/passaged_cells_sturm/` (as for GSE197512; the contact-inhibition and 3 % oxygen arms
 under `Study part 3` in `drift_coupling`; their slopes on days are in `arm_slopes.parquet`, not tracked).
 
+## A per-person protection score (roadmap RM6)
+
+Every result above is a property of a cohort: an age slope needs many people. The score of
+`docs/PER_PERSON_SCORE.md`, built as `entropy_age.protection`, asks the same question of one sample. Each
+CpG's deviation from a reference state is `d = |x - m| / sqrt(m (1 - m))`. A set's score `P` is the mean
+`d` of its promoter CpGs minus that of other CpGs of the same island status and reference decile, in
+the same sample; `F = P / B` is the same gap relative to the matched background deviation `B`. Figure
+`per_person` (`--scale paper --seed 42`, run R2) checks three of the design's validation steps on the
+450k cohorts already used here.
+
+![Per-person score](figures/per_person.png)
+
+| check | blood | cortex |
+|---|---|---|
+| step 1: housekeeping `P` per decade (SE) | −0.0018 (0.0003) | −0.00036 (0.00013) |
+| step 1: core essential `P` per decade (SE) | −0.0011 (0.0002) | −0.00034 (0.00013) |
+| step 1: non-essential `P` per decade (SE) | +0.0013 (0.0003) | −0.00015 (0.00016), ns |
+| step 2: reliability of housekeeping `P` | 0.997 | 0.955 |
+| samples scored (reference, aged 20-35) | 632 (24) | 159 (54) |
+
+* **Step 1, the cohort result per person.** In both tissues the score falls with age for the essential
+  sets, about five times faster in blood than in cortex, and it rises for non-essential genes in
+  blood. These are the signs and the order of the cohort test (`figures tissues`), from one number per
+  sample. 97 % of the blood samples and 38 % of the cortex samples have a negative housekeeping `P`.
+  Five composition components, fitted on the young reference's background CpGs and removed from each
+  sample, change none of the signs (blood −0.0013, cortex −0.00036 per decade). The covariates are
+  plate, sex, ancestry and site (blood), and plate, sex, race and neuron fraction (cortex).
+* **Step 2, people differ more than the score's own error.** The error of one sample's `P`, from
+  resampling the set's genes, is small against the spread between people of the same age: the
+  reliability is 0.94-0.997 in blood and 0.58-0.96 in cortex, lower with five components, where less
+  spread is left. This is sampling error only. Technical replicates and repeated draws, the design's
+  real test, are not in these cohorts.
+* **Step 3, inside one person.** Lunnon's donors, 71-75 per brain region, are each scored against the
+  other donors of the same tissue, so `d` here measures distance from the old population's centre. For
+  housekeeping genes, blood's `F` is below the same donor's `F` in 86-91 % of donors in each of the four
+  regions (sign tests p < 10⁻⁹), and in 93-100 % with five components. Core-essential genes give
+  62-73 %, and non-essential genes go the other way (10-25 %). The blood-versus-brain difference of
+  the cohort test therefore holds within most people, not just on average.
+
+What this does and does not show. The score works as a per-person measure: it reproduces the cohort
+results and resolves individuals well beyond its sampling error. It does not separate selection from
+chromatin any better than the cohort tests. Blood's lower `F` within a person is what turnover-driven
+selection predicts, but blood and brain also differ in chromatin and in cell mix. The culture test,
+step 4 of the design, already scores each sample this way, and there the gap is a constant fraction
+of drift, not one that grows with divisions. Next are repeatability on replicate arrays and, only
+after it, outcomes (steps 2 and 5).
+
+Tables: `data/output/per_person/age_fits.csv` (every set, measure and variant),
+`same_donor_turnover.csv` and `same_donor_scores.csv`; the lifespan scores are in the untracked
+`lifespan_scores.parquet`.
+
 ## RNA: transcriptional drift by turnover class (GTEx, mouse, rat)
 
 The same question in transcripts. For each tissue, protein-coding genes with at least 1 CPM in 80 %
