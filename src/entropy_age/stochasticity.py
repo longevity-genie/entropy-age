@@ -9,6 +9,8 @@ from cross-sectional data (one sample per individual, ages known):
   rank correlation with age, slope of the binary (Shannon) entropy, and the
   age slope of between-individual dispersion (residual spread, scaled by the
   binomial ``sqrt(m (1 - m))`` so bounded features are comparable).
+* :func:`expression_drift` - the same idea for unbounded values such as log CPM: the age slope
+  of the mean and of the absolute residual (between-individual spread).
 * :func:`fit_relaxation` - fits the two-state Markov expectation
   ``m(t) = z + (m0 - z) exp(-lambda t)`` per feature by profiling ``lambda``
   on a grid (closed-form least squares for ``z, m0`` at each ``lambda``).
@@ -148,6 +150,45 @@ def drift_metrics(
             "entropy_slope": entropy_slope,
             "dispersion_slope": dispersion_slope,
             "log2_dispersion_ratio": np.log2((var_old + _EPS) / (var_young + _EPS)),
+        }
+    )
+
+
+def expression_drift(
+    x: np.ndarray,
+    ages: Sequence[float] | np.ndarray,
+    features: Sequence[str] | None = None,
+    *,
+    covariates: np.ndarray | None = None,
+) -> pl.DataFrame:
+    """Per-gene drift of an ``(n_samples, n_genes)`` matrix on a log scale (log2 CPM).
+
+    ``dispersion_slope`` is the age slope of the absolute residual of ``x ~ age + covariates``,
+    adjusted for the same covariates: how fast individuals spread apart at that gene. On a log scale
+    no binomial rescaling applies, but RNA spread still depends strongly on the mean, so compare
+    genes only within strata of ``baseline`` (the gene's mean over all samples, which age barely
+    moves). ``abs_slope`` is the absolute age slope of the mean and ``residual_sd`` the residual
+    spread over all ages.
+    """
+    x = np.asarray(x, dtype=float)
+    t = np.asarray(ages, dtype=float)
+    if x.shape[0] != t.size:
+        raise ValueError("one age per sample is required")
+    if covariates is not None:
+        covariates = np.asarray(covariates, dtype=float).reshape(t.size, -1)
+    names = list(features) if features is not None else [f"f{j}" for j in range(x.shape[1])]
+    slope, fitted = _age_fit(t, x, covariates)
+    residual = x - fitted
+    dispersion_slope, _ = _age_fit(t, np.abs(residual), covariates)
+    dof = max(t.size - 2 - (0 if covariates is None else covariates.shape[1]), 1)
+    return pl.DataFrame(
+        {
+            "feature": names,
+            "baseline": x.mean(axis=0),
+            "slope": slope,
+            "abs_slope": np.abs(slope),
+            "residual_sd": np.sqrt((residual**2).sum(axis=0) / dof),
+            "dispersion_slope": dispersion_slope,
         }
     )
 

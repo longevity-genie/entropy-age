@@ -111,7 +111,7 @@ src/entropy_age/              the package (Python 3.13, uv_build)
   plots.py, paths.py          figure styling; the one filesystem layout (ProjectPaths)
   simulate/                   bulk noise, binomial single-cell methylation, schedules, selection
   data/                       downloaders: upstream repo files, GEO series matrices, 27k/450k annotation + gene sets, 450k cohorts, matrix frames
-  experiments/                one module per figure (fig1, fig3, fig4, fig5, extension, atlas, genesets, tissues, tissues_cells, mouse, gtex, fibres)
+  experiments/                one module per figure (fig1, fig3, fig4, fig5, extension, atlas, genesets, tissues, tissues_cells, mouse, gtex, fibres, rna_gtex)
 tests/                        pytest, real code paths on small seeded data
 data/input/                   downloads exactly as fetched (gitignored; `entropy-age fetch` recreates)
 data/interim/                 parquet derived from the inputs (gitignored)
@@ -124,6 +124,10 @@ docs/seats/                   the seats' primings and notes (the seats kit)
 ```
 
 `ENTROPY_AGE_HOME` moves the root and `ENTROPY_AGE_DATA` the data folder (`paths.py`).
+`figures rna_gtex` reads GTEx v10 RNA-seq it does not download: `ENTROPY_AGE_GTEX_RNA` names a parsed
+folder (`samples.parquet`, `genes.parquet`, `counts/part-*.parquet` + `index.json`, the layout of the
+rna-age project) and `ENTROPY_AGE_GTEX_ATTRIBUTES` the folder with GTEx's SampleAttributesDS and
+SubjectPhenotypesDS tables (`data/gtex_rna.py`). Without them the figure refuses and runs nothing.
 
 Upstream: [Meyer-DH/StochasticAgingClock](https://github.com/Meyer-DH/StochasticAgingClock), read
 only, pinned by commit in `src/entropy_age/data/upstream.py`; its data files are downloaded at run
@@ -142,13 +146,13 @@ uv run ruff check                         # lint (line length 120, py313)
 uv run entropy-age info                   # where data lives and what is already prepared
 uv run entropy-age fetch upstream         # upstream clock coefficients and sample sheets -> data/input, data/interim
 uv run entropy-age fetch geo GSE41037     # a GEO series matrix -> parquet
-uv run entropy-age fetch annotation       # 27k and 450k probe manifests + essential/non-essential/housekeeping gene sets
+uv run entropy-age fetch annotation       # 27k and 450k probe manifests, HGNC genes + essential/non-essential/housekeeping gene sets
 uv run entropy-age fetch cohort hannum jaffe lunnon   # 450k blood/brain cohorts, ~6 GB: run on a cluster
 uv run entropy-age fetch mouse-annotation  # mammalian-array probe table (~200 MB) + MGI orthologs
 uv run entropy-age fetch cohort huang      # GSE279437 mouse tissues, 1.2 GB
 uv run entropy-age fetch cohort gtex fibres  # GSE213478 GTEx EPIC (6 GB, needs ~60 GB memory) + GSE304045 muscle fibres (0.6 GB)
 uv run entropy-age figures [NAMES] --scale quick|paper --seed 42
-                                          # regenerate figures (fig1 fig3 fig4 fig5 extension atlas genesets tissues tissues_cells mouse gtex fibres; default all)
+                                          # regenerate figures (fig1 fig3 fig4 fig5 extension atlas genesets tissues tissues_cells mouse gtex fibres rna_gtex; default all)
 uv run entropy-age stochasticity BETAS SAMPLES [--groups G]
                                           # per-feature drift/entropy metrics for any matrix
 ```

@@ -93,7 +93,7 @@ def fetch_cohort_cmd(
 @app.command()
 def figures(
     names: Annotated[
-        list[str] | None, typer.Argument(help="fig1 fig3 fig4 fig5 extension atlas genesets tissues (default: all)")
+        list[str] | None, typer.Argument(help="figure names, e.g. fig1 tissues gtex rna_gtex (default: all)")
     ] = None,
     scale: Annotated[str, typer.Option(help="quick (laptop) or paper (publication sizes)")] = "quick",
     seed: int = 42,

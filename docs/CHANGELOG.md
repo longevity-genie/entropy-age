@@ -4,6 +4,15 @@ Newest first.
 
 ## Unreleased
 
+- RNA test (roadmap RM4): `entropy-age figures rna_gtex` measures, in GTEx v10 RNA-seq (50 tissues with
+  100 or more donors), how fast between-donor spread of each expressed protein-coding gene grows with
+  age, and compares core-essential, housekeeping and non-essential genes with genes of the same
+  expression decile, by turnover class (renewing, slow, heart & muscle, brain), in subsamples of 70
+  donors per tissue. Counts are read from an external parsed copy named by `ENTROPY_AGE_GTEX_RNA`, and
+  RIN, ischemic time and Hardy scale from GTEx's annotation tables named by `ENTROPY_AGE_GTEX_ATTRIBUTES`;
+  either missing is a refusal. `entropy-age fetch annotation` now also fetches HGNC's complete set
+  (release 2026-10-06) and puts the gene sets on Ensembl IDs (Entrez first, then current, previous and
+  unique alias symbols: 99-100 % of each set matched). New metric `stochasticity.expression_drift`.
 - Human tissue test (roadmap RM2): `entropy-age fetch cohort gtex` (GSE213478, nine GTEx tissues of 424
   donors on EPIC, decade age bins as midpoints) and `entropy-age figures gtex`, which asks whether
   skeletal muscle, the one post-mitotic tissue, is where the protection is missing. Every tissue is

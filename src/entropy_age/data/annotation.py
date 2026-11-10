@@ -5,6 +5,9 @@
 * Hart et al. core-essential (CEGv2, 684 genes) and non-essential (NEGv1, 927
   genes) reference sets from CRISPR screens, pinned to a commit of hart-lab/bagel (MIT).
 * Eisenberg & Levanon (2013) human housekeeping genes (3,804 genes).
+* HGNC's complete gene set, a pinned monthly release: approved, previous and alias symbols with
+  Entrez and Ensembl IDs, used to put the gene sets on the Ensembl IDs of RNA-seq counts
+  (``gene_set_ensembl``) and to tell protein-coding genes from the rest.
 
 Hart sets are matched to probes by Entrez ID and the housekeeping set by RefSeq
 accession (falling back to the symbol), because the 2007 manifest uses old symbols.
@@ -32,6 +35,8 @@ MANIFEST_450K = "GPL13534_HumanMethylation450_15017482_v.1.1.csv.gz"
 MANIFEST_450K_URL = f"https://ftp.ncbi.nlm.nih.gov/geo/platforms/GPL13nnn/GPL13534/suppl/{MANIFEST_450K}"
 #: UCSC RefGene regions counted as a promoter (the 27k array's own design targets these)
 PROMOTER_REGIONS = ("TSS1500", "TSS200", "5'UTR", "1stExon")
+HGNC_FILE = "hgnc_complete_set_2026-10-06.txt"
+HGNC_URL = f"https://storage.googleapis.com/public-download-files/hgnc/archive/archive/monthly/tsv/{HGNC_FILE}"
 
 SOURCES: dict[str, str] = {
     "GPL8490_HumanMethylation27_270596_v.1.2.csv.gz": MANIFEST_URL,
@@ -39,6 +44,7 @@ SOURCES: dict[str, str] = {
     "NEGv1.txt": HART_URL.format(name="NEGv1.txt"),
     "HK_genes.txt": HOUSEKEEPING_URL,
     MANIFEST_450K: MANIFEST_450K_URL,
+    HGNC_FILE: HGNC_URL,
 }
 
 #: gene-set name -> (file, description)
@@ -76,6 +82,10 @@ class AnnotationLayout:
     @property
     def links_450k(self) -> Path:
         return self.interim / "hm450_gene_links.parquet"
+
+    @property
+    def hgnc(self) -> Path:
+        return self.interim / "hgnc_genes.parquet"
 
 
 def fetch_annotation(paths: ProjectPaths, *, overwrite: bool = False) -> list[Path]:
@@ -185,7 +195,64 @@ def prepare_annotation(paths: ProjectPaths) -> AnnotationLayout:
     probes, links = read_manifest_450k(layout.input / MANIFEST_450K)
     probes.write_parquet(layout.probes_450k)
     links.write_parquet(layout.links_450k)
+    read_hgnc(layout.input / HGNC_FILE).write_parquet(layout.hgnc)
     return layout
+
+
+def read_hgnc(path: Path) -> pl.DataFrame:
+    """``symbol, previous, aliases, entrez, ensembl, protein_coding`` per HGNC gene (lists split on ``|``)."""
+    raw = pl.read_csv(path, separator="\t", infer_schema_length=0)
+    return raw.select(
+        "symbol",
+        pl.col("prev_symbol").str.split("|").fill_null([]).alias("previous"),
+        pl.col("alias_symbol").str.split("|").fill_null([]).alias("aliases"),
+        pl.col("entrez_id").cast(pl.Int64, strict=False).alias("entrez"),
+        pl.col("ensembl_gene_id").alias("ensembl"),
+        (pl.col("locus_group") == "protein-coding gene").alias("protein_coding"),
+    )
+
+
+def gene_set_ensembl(gene_sets: pl.DataFrame, hgnc: pl.DataFrame) -> pl.DataFrame:
+    """``feature`` (Ensembl gene), ``group``, ``gene`` (approved symbol) and ``matched_by`` for every set gene.
+
+    A gene is matched by its Entrez ID first, then by its symbol as HGNC approves it today, then as a
+    previous symbol, then as an alias. A previous symbol or an alias counts only when it names exactly
+    one HGNC gene: the old lists use pre-2019 names (``AARS`` is now ``AARS1``), and an ambiguous
+    alias would put a gene into a set it was never in. Genes without an Ensembl ID are left out.
+    """
+    ids = hgnc.filter(pl.col("ensembl").is_not_null())
+    sets = gene_sets.with_row_index("row")
+
+    def unique_key(column: str) -> pl.DataFrame:
+        long = ids.select("symbol", "ensembl", pl.col(column).alias("key")).explode("key").drop_nulls("key")
+        counts = long.group_by("key").agg(pl.len().alias("k"))
+        return long.join(counts.filter(pl.col("k") == 1), on="key").select("key", "symbol", "ensembl")
+
+    lookups = [
+        ("entrez", "entrez", ids.select(pl.col("entrez").alias("key"), "symbol", "ensembl").drop_nulls("key")),
+        ("symbol", "symbol", ids.select(pl.col("symbol").alias("key"), "symbol", "ensembl")),
+        ("previous", "symbol", unique_key("previous")),
+        ("alias", "symbol", unique_key("aliases")),
+    ]
+    found, rest = [], sets
+    for how, column, table in lookups:
+        hits = (
+            rest.filter(pl.col(column).is_not_null())
+            .join(table, left_on=column, right_on="key", how="inner", suffix="_hgnc")
+            .unique(subset="row", keep="first", maintain_order=True)
+        )
+        found.append(
+            hits.select(
+                "row",
+                pl.col("ensembl").alias("feature"),
+                pl.col("gene_set").alias("group"),
+                pl.col("symbol_hgnc").alias("gene"),
+                pl.lit(how).alias("matched_by"),
+            )
+        )
+        rest = rest.filter(~pl.col("row").is_in(hits["row"].implode()))
+    out = pl.concat(found).sort("row").drop("row")
+    return out.unique(subset=["feature", "group"], keep="first", maintain_order=True)
 
 
 def probe_membership(probes: pl.DataFrame, gene_sets: pl.DataFrame) -> pl.DataFrame:
