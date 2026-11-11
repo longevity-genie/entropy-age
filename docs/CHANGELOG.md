@@ -4,6 +4,7 @@ Newest first.
 
 ## Unreleased
 
+- R13 (mouse interventions across tissues, RM12) submitted after R12.
 - RM12: figure `mmc_interventions`, the mouse intervention studies of the Mammalian Methylation Consortium (CR in liver, GHRKO in brain, kidney and liver, partial reprogramming, sleep disruption): each animal scored against its study's controls (leave one out for controls), the intervention's effect on drift and on the shield's share. Not yet run on the data.
 - The research programme is named apart from the paper's working title (plan, draft, artifact v13), at antonkulaga's request.
 - RM13 (answering the prior work) filed; RM4 gains a GTEx check on fast deaths only, at antonkulaga's note on health at death.

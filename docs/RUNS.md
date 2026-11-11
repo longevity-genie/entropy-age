@@ -29,3 +29,11 @@ grammar (`unattended`, `urgent`, `building`, `after <R-id>` or `after job <slurm
   then `uv run entropy-age figures species --scale paper --seed 42`.
 - Back to the lead: `data/output/species_shield/` and `docs/figures/species_shield.png`, time and peak memory.
 
+## R13 — mouse interventions across tissues (GSE223748)
+
+**State:** after R12 · **Owner:** runner (job 6429673, starts when R12 ends)
+
+- Serves **RM12** and **RM3**: `uv run entropy-age figures mmc_interventions --scale paper --seed 42`, from the clone at
+  b1c9ae0 or later, on the data R12 fetches.
+- Back to the lead: `data/output/mmc_interventions/` and `docs/figures/mmc_interventions.png`, time and peak memory.
+
