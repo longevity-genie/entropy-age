@@ -4,6 +4,7 @@ Newest first.
 
 ## Unreleased
 
+- `docs/extension.md` and the artifact (v16): why the CR result is surprising, its absolute values, and two cautions (another strain's young reference; no slowing of overall drift).
 - The draft's WP1 and the artifact (v15) take the natural experiments first: syndromes, knockouts, edited cells; no cell lines.
 - RM14 (natural experiments in chromatin) filed at antonkulaga's question on cell lines; the plan moves the causal test to public data first.
 - R13 (mouse interventions across tissues, RM12) submitted after R12.

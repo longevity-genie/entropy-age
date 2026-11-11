@@ -590,6 +590,13 @@ Figure `interventions` (runs R7 and R8):
   changes (−3 % and −7 %, not significant). In C57BL/6, CR mice were sequenced as a series of their
   own. Their effect (+0.027, p 0.002) flips to −0.016 with components, so batch or cell mix drives it,
   and it is not read.
+* **Why it is surprising, and two cautions.** A maintenance shield should survive or grow under CR, which slows
+  aging; a weaker one is what selection predicts. In absolute terms the look-alike drift `B` is unchanged in
+  B6D2F1 (0.143 against 0.147) while the gap `P` halves (−0.0036 against −0.0073). But the study has no young
+  B6D2F1 mice, so this strain is scored against young C57BL/6, which inflates `B` by the strains' genetic
+  differences (the gap cancels much of it); and published work finds CR slows drift overall (Maegawa 2017,
+  Petkovich 2017), which this comparison does not show. A weakening in the liver replication (R13), a tissue that
+  rarely renews, would point to CR's own methylation changes (Hahn 2017) rather than selection.
 * **The dwarf models show nothing,** at 5–6 months, when little drift has accumulated (`F` within
   ±0.005, p > 0.1).
 
