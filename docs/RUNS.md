@@ -12,4 +12,13 @@ grammar (`unattended`, `urgent`, `building`, `after <R-id>` or `after job <slurm
 - the roadmap item it serves (`RMn`);
 - what the lead needs back (a table, a figure, a number), and anything the run must not do.
 
-No runs are planned.
+## R3 — the chromatin-matched gap on Hannum, Jaffe and Lunnon
+
+**State:** building · **Owner:** runner (job 6428419)
+
+- Serves **RM7** (does chromatin state account for the protection?).
+- Commands, from the clone at 105cc56 or later: `uv run entropy-age fetch annotation` (re-prepares the 450k probe
+  table with positions; the inputs are present), then `uv run entropy-age figures chromatin --scale paper --seed 42`.
+  The chromHMM segmentations are already fetched.
+- Back to the lead: `data/output/chromatin_match/` (`matched_gaps`, `state_composition`) and
+  `docs/figures/chromatin_match.png`, with time and peak memory.
