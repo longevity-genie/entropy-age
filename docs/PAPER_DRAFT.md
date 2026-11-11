@@ -1,4 +1,4 @@
-# Paper draft: Chromatin, not selection, sets which genes resist epigenetic entropy
+# Paper draft: Epigenetic clocks tick where chromatin lets them
 
 Draft started 2026-11-11 at antonkulaga's request. Every claim carries its status:
 
