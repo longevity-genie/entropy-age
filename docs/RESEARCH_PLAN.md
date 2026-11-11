@@ -24,6 +24,14 @@ chromatin differs, not because their cells divide."** Novelty then rests on thre
 division test (done, two cohorts), a test that chromatin state accounts for the gap (RM7), and what this
 means for clocks (RM8). An intervention test (RM3) is the one result that could still revive selection.
 
+## Changes on results
+
+- 2026-11-11, after RM7's first run: chromatin of the tissue's own epigenome removes 67-91 % of blood's gap, and
+  after it blood is no more protected than brain. The chromatin claim holds in blood; arm A's next step is
+  brain at cell-type resolution. RM3 stays next: chromatin predicts interventions leave the gap unchanged once
+  chromatin is matched, and an intervention that changes chromatin (high-fat diet in liver) should move the gap
+  only through it.
+
 ## The arms, in order, each with its rule
 
 ### A. RM7: does chromatin state account for the protection? (new, first)

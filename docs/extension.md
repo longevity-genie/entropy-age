@@ -562,6 +562,55 @@ courses, which have none, use the floor pooled over the experiments that do.
 Tables: `data/output/passaged_cells_sturm/` (as for GSE197512; the contact-inhibition and 3 % oxygen arms
 under `Study part 3` in `drift_coupling`; their slopes on days are in `arm_slopes.parquet`, not tracked).
 
+## Chromatin accounts for blood's protection (roadmap RM7)
+
+The cohort tests match gene-set CpGs to background CpGs of the same island status and starting level. If
+essential genes drift less because their promoters sit in active chromatin, adding the chromatin state to
+the matching should remove the gap. Figure `chromatin` (run R3, `--scale paper --seed 42`) gives each
+450k promoter CpG the state of a Roadmap Epigenomics 15-state chromHMM segmentation (`entropy-age fetch
+chromatin`). The references are blood mononuclear cells (E062) for blood, with neutrophils (E030) as a
+second blood reference, and dorsolateral prefrontal cortex (E073) for brain. The gaps are those of
+`figures tissues`, in SDs of the metric. Their 95 % intervals come from resampling the set's genes (not
+people), with the same draws under every matching.
+
+![Chromatin-matched gap](figures/chromatin_match.png)
+
+Housekeeping set, set minus matched CpGs (SD):
+
+| tissue, metric | island × level | + own chromatin | + the other tissue's chromatin | share removed by own |
+|---|---|---|---|---|
+| blood (Hannum), dispersion slope | −0.289 | −0.034 (E062), −0.050 (E030) | −0.207 | 0.88 (0.86–0.91) |
+| blood (Hannum), entropy slope | −0.348 | −0.055 | −0.255 | 0.84 |
+| cortex (Jaffe), dispersion slope | −0.075 | −0.058 | −0.054 | 0.22 (0.19–0.25) |
+| Lunnon blood, dispersion | −0.146 | −0.048 | −0.104 | 0.67 (0.64–0.71) |
+| Lunnon brain regions, dispersion | −0.044 to −0.070 | −0.038 to −0.064 | −0.033 to −0.051 | 0.05–0.26 |
+
+Core-essential genes give the same picture: blood −0.173 becomes −0.016 (share removed 0.91), and
+Lunnon blood −0.081 becomes −0.015 (0.81).
+
+* **In blood, chromatin accounts for most of the protection.** Matching on the blood epigenome's own
+  states removes 67–91 % of the gap, in both blood cohorts and with either blood reference. Brain's
+  states remove only 28–36 % in blood. It is the tissue's own chromatin that matters, not promoter
+  activity in general. Panel a shows why: 80–85 % of essential and housekeeping CpGs sit in active TSS
+  states (TssA, TssAFlnk) in blood, against 38 % of background CpGs.
+* **After matching, blood is no more protected than brain.** Blood's remaining gap (−0.02 to −0.05)
+  is no larger than brain's (−0.04 to −0.06). The blood-over-brain excess, the result of prediction 2
+  that pointed to selection, is explained by blood's chromatin. It needs no turnover.
+* **In brain, chromatin removes little, but the brain map is coarse.** The cortex segmentation is of
+  bulk tissue and places 79–86 % of set CpGs and 47 % of background CpGs in one state (TssA), so it
+  matches less finely than the blood maps of purified cells. The small gap left in brain may be
+  chromatin that a bulk map cannot resolve (neurons against glia), or something else. A sorted-neuron
+  map would decide.
+
+Together with the culture test (the gap is a constant fraction of drift, not growing with divisions),
+this moves the explanation from selection to chromatin. Essential genes drift less where, and to the
+extent that, their promoters are held in active chromatin in that tissue. Tissues differ because their
+chromatin differs. Matching uses states from reference epigenomes of other people. Matching on a
+person's own chromatin would be tighter and would remove more, not less.
+
+Tables: `data/output/chromatin_match/matched_gaps.csv` (every set, metric, tissue and matching) and
+`state_composition.csv`.
+
 ## A per-person protection score (roadmap RM6)
 
 Every result above is a property of a cohort: an age slope needs many people. The score of

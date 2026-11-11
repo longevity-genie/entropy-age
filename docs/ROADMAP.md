@@ -4,14 +4,15 @@ Open work only, in order. Each item is a section `## RMn — name` with a line s
 owner. A done item leaves this file; `docs/CHANGELOG.md` says what landed.
 The order and the rule for each item are argued in `docs/RESEARCH_PLAN.md`.
 
-## RM7 — Does chromatin state account for the protection?
+## RM7 — Chromatin in brain at cell-type resolution
 
-**State:** building · **Owner:** lead
+**State:** unattended · **Owner:** lead
 
-Progress: built (`figures chromatin`), waiting on its run (R3); plan in `docs/RESEARCH_PLAN.md`, arm A. Match set CpGs to background on chromatin state (reference
-epigenomes of blood and brain: chromHMM states, H3K4me3 and H3K27ac peaks) as well as island and level, in
-Hannum, Jaffe and Lunnon. Go on if the gap shrinks by half or more; if it stays, RM3 moves up.
-
+Progress: the first part is done (`figures chromatin`, `docs/extension.md`, "Chromatin accounts for blood's
+protection"). Blood's own chromatin removes 67-91 % of the gap; a bulk cortex map removes 5-26 % in brain.
+Left: match brain CpGs on sorted-neuron and glia chromatin (NeuN+ / NeuN- ATAC or histone maps, e.g. PsychENCODE
+or Roadmap-era sorted data) to see whether the gap left in brain is chromatin a bulk map cannot resolve. Then
+RM3, whose intervention test becomes the check of the chromatin reading.
 ## RM3 — Long- vs short-lived rodent groups
 
 **State:** unattended · **Owner:** lead
