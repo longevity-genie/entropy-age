@@ -77,6 +77,7 @@ def read_samples(matrix: Path) -> pl.DataFrame:
         (pl.col("intervention") if "intervention" in chars.columns else pl.lit(None, dtype=pl.String)).alias(
             "intervention"
         ),
+        (pl.col("experiment") if "experiment" in chars.columns else pl.lit(None, dtype=pl.String)).alias("experiment"),
     )
     return meta.join(frame, on="sample").with_columns(barcode=pl.col("title").str.extract(r"(\d+_R\d+C\d+)\s*$"))
 

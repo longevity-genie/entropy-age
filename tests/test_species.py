@@ -27,6 +27,7 @@ def test_the_sample_sheet_reads_species_lifespan_and_barcode_whatever_row_a_key_
     assert s["max_lifespan"].to_list() == [4.0, 31.0]
     assert s["barcode"].to_list() == ["202897220093_R01C01", "203000000001_R02C01"]
     assert s["tissue"].to_list() == ["Blood", "Skin"]
+    assert "experiment" in s.columns
 
 
 def test_a_set_that_drifts_less_gives_a_negative_gap_with_an_interval():

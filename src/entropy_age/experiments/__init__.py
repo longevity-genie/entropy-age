@@ -9,6 +9,7 @@ from entropy_age.experiments import (
     chromatin_clocks,
     chromatin_match,
     clock_cpgs,
+    consortium_interventions,
     extension_selection,
     fig1_bulk,
     fig3_single_cell,
@@ -51,6 +52,7 @@ FIGURES: dict[str, Callable[[Context], list[Path]]] = {
     "bxd": bxd_liver.run,
     "rrbs_tissues": mouse_rrbs_tissues.run,
     "species": species_shield.run,
+    "mmc_interventions": consortium_interventions.run,
     "clocks": clock_cpgs.run,
     "per_person": per_person.run,
 }

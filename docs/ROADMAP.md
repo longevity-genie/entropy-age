@@ -17,12 +17,14 @@ fixed. Rule: go on with every species-tissue with at least 10 animals across age
 
 ## RM12 — Selection pressure under interventions
 
-**State:** urgent · **Owner:** lead
+**State:** building · **Owner:** lead
 
 Progress: asked by antonkulaga (2026-11-11): do interventions change the shield through selection, apart from
 chromatin? What we have: in B6D2F1 blood CR weakens the shield by a quarter (within one sequencing series, robust
 to composition), without slowing drift; the shield's share also grows with age in liver, which rarely renews. So
 neither proof nor disproof. Tests that would separate selection from chromatin, in order of cost:
+- Built: `figures mmc_interventions` (GSE223748's mouse studies: CR in liver, 59 against 36; GHRKO in brain,
+  kidney and liver; partial reprogramming; sleep disruption), waiting on R12's download.
 - **The same intervention in a renewing and a non-renewing tissue of the same animals.** Selection predicts CR
   or rapamycin changes the shield in blood or gut and not in brain or muscle; chromatin predicts the same change
   (or none) everywhere. Search for a multi-tissue CR or rapamycin series with at least 8 animals per arm.
