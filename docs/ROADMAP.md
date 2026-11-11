@@ -4,6 +4,26 @@ Open work only, in order. Each item is a section `## RMn — name` with a line s
 owner. A done item leaves this file; `docs/CHANGELOG.md` says what landed.
 The order and the rule for each item are argued in `docs/RESEARCH_PLAN.md`.
 
+## RM10 — Shielding in short- against long-lived species
+
+**State:** urgent · **Owner:** lead
+
+Progress: asked by antonkulaga (2026-11-11, #entropy-age): do long-lived species (human, naked mole rat, bats,
+whales) shield essential genes more than short-lived ones (mouse)? The mammalian methylation array measures the
+same CpGs in hundreds of species (Mammalian Methylation Consortium series on GEO); AnAge lifespans are in the
+repo (`taxonomy_anage_meta`). Plan: find the series with species, tissue and age labels; per species and tissue,
+the shield (aging gap against matched CpGs); regress it on maximum lifespan corrected for body mass, tissue held
+fixed. Rule: go on with every species-tissue with at least 10 animals across ages.
+
+## RM11 — Clocks of our own
+
+**State:** after RM10 · **Owner:** lead
+
+Progress: asked by antonkulaga (2026-11-11): can we build clocks from the entropy-age ideas, and do they capture
+more than conventional clocks? Candidates from the results: a stochastic clock from Polycomb CpGs with each
+tissue's offset calibrated, and the per-person shield score beside it. "More" needs a readout beyond age: which
+clock tracks interventions (CR mice, GSE80672) and, later, outcomes in a cohort with follow-up.
+
 ## RM3 — Interventions: replicate the CR result
 
 **State:** after RM2 · **Owner:** lead
