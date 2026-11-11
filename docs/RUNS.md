@@ -12,12 +12,10 @@ grammar (`unattended`, `urgent`, `building`, `after <R-id>` or `after job <slurm
 - the roadmap item it serves (`RMn`);
 - what the lead needs back (a table, a figure, a number), and anything the run must not do.
 
-## R10 — six mouse tissues with numeric ages (GSE120132)
+## R11 — the mouse figures with corrected intervals
 
-**State:** building · **Owner:** runner (job 6429231)
+**State:** building · **Owner:** runner (job 6429326)
 
-- Serves **RM2**.
-- Commands, from the clone at d3e052d or later: `uv run entropy-age fetch rrbs-tissues` (359 tables, about 6.4 GB,
-  through the proxy, parsed per tissue), then `uv run entropy-age figures rrbs_tissues --scale paper --seed 42`.
-- Back to the lead: `data/output/mouse_rrbs_tissues/` and `docs/figures/mouse_rrbs_tissues.png`, time and peak
-  memory of each step (64 GB is a first guess, from R7's 19.7 GB for 243 tables).
+- Serves **RM2** and **RM3**: reruns `figures interventions bxd rrbs_tissues --scale paper --seed 42` from the clone
+  at f52c6e5 or later, after R10's figure failed on the interval bias. The data are parsed.
+- Back to the lead: the three output folders and figures, time and peak memory.

@@ -4,6 +4,7 @@ Newest first.
 
 ## Unreleased
 
+- R10's figure failed (tables written); R11 reruns the three mouse figures with corrected intervals.
 - Fix: the aging-gap intervals of `interventions`, `bxd` and `rrbs_tissues` were biased toward zero. Each resample divided its gap by its own spread across CpGs, which resampling inflates. They are now taken on the unscaled gap and divided by the full sample's spread (`common.scaled_intervals`). The same bias makes `figures tissues`' resampled blood-minus-brain intervals conservative; it is filed as a follow-up. R10's figure failed on it (a point outside its interval); its tables stand.
 - R10 (six mouse tissues, RM2) on the run brief and submitted.
 - RM2: `entropy-age fetch rrbs-tissues` (mouse RRBS of six tissues, GSE120132, BS_Seeker2 CGfinal tables on mm10) and figure `rrbs_tissues`: per tissue, the aging gap with strain and sex as covariates and the shield's share per mouse against age, ordered by turnover (blood; lung, kidney, liver, adipose; muscle). Not yet run on the data.

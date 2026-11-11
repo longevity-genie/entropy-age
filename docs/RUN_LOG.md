@@ -3,6 +3,15 @@
 Owned by the runner seat (`docs/seats/RUNNER.md`): one entry per run, newest first, with its inputs, the
 commit it ran, its job ids, its scale and seed, and its result or its failure with the cause.
 
+## R10 — six mouse tissues with numeric ages (RM2), 2026-11-11
+
+- Commit d3e052d; `fetch rrbs-tissues` then `figures rrbs_tissues --scale paper --seed 42`; 8 cores, 64 GB asked.
+- Job 6429231 failed after 54 min, in the figure: matplotlib refused a negative error bar, because the aging-gap
+  bootstrap was biased toward zero and left point estimates outside their intervals (fixed in the code, see
+  the changelog). The fetch and parse completed (2.2 GB peak); the tables (`tissues`, `aging_gaps`,
+  `age_effects`) were written before the figure. 131,756-384,453 promoter CpGs per tissue, 54-72 mice each.
+- Rerun of the figure in R11.
+
 ## R9 — the shield in BXD mouse liver (RM3), 2026-11-11
 
 - Commit e8b851d; `figures bxd --scale paper --seed 42`; 8 cores, 24 GB asked; job comment set.
