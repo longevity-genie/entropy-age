@@ -32,7 +32,7 @@ from entropy_age import plots
 from entropy_age.data.cohorts import _characteristics
 from entropy_age.data.matrix import FeatureMatrix
 from entropy_age.data.mouse import MouseAnnotationLayout, mouse_membership
-from entropy_age.experiments.common import Context, dummies, write_table
+from entropy_age.experiments.common import Context, dummies, scaled_intervals, write_table
 from entropy_age.experiments.interventions import _sets
 from entropy_age.experiments.per_person import score_against
 from entropy_age.experiments.tissue_contrast import SET_LABELS, SETS
@@ -130,7 +130,8 @@ def run(ctx: Context) -> list[Path]:
             table = compare_groups(metrics, members, metric=metric, stratify_by="stratum", n_permutations=0)
             sd = float(metrics[metric].std())
             rows_out += [
-                {"metric": metric, "group": r["group"], "gap_sd": r["matched_diff"] / sd} for r in table.to_dicts()
+                {"metric": metric, "group": r["group"], "matched_diff": r["matched_diff"], "sd": sd}
+                for r in table.to_dicts()
             ]
         return rows_out
 
@@ -144,12 +145,7 @@ def run(ctx: Context) -> list[Path]:
             for r in gaps(np.sort(rng.choice(chow_rows, size=chow_rows.size, replace=True)))
         ]
     )
-    aging = point.join(
-        boot.group_by("metric", "group").agg(
-            pl.col("gap_sd").quantile(0.025).alias("ci_low"), pl.col("gap_sd").quantile(0.975).alias("ci_high")
-        ),
-        on=["metric", "group"],
-    ).with_columns(mice=pl.lit(int(chow.sum())))
+    aging = scaled_intervals(point, boot, ["metric", "group"]).with_columns(mice=pl.lit(int(chow.sum())))
     write_table(aging, out / "aging_gaps")
 
     # per-mouse scores
@@ -203,7 +199,14 @@ def _figure(ctx: Context, aging: pl.DataFrame, scores: pl.DataFrame, effects: pl
         g = np.array([sub[k]["gap_sd"] for k in groups])
         lo = np.array([sub[k]["ci_low"] for k in groups])
         hi = np.array([sub[k]["ci_high"] for k in groups])
-        ax.errorbar(xs, g, yerr=[g - lo, hi - g], fmt="os"[j], color=plots.PALETTE[j], label=metric.replace("_", " "))
+        ax.errorbar(
+            xs,
+            g,
+            yerr=[np.clip(g - lo, 0, None), np.clip(hi - g, 0, None)],
+            fmt="os"[j],
+            color=plots.PALETTE[j],
+            label=metric.replace("_", " "),
+        )
     ax.axhline(0, color=plots.MUTED, lw=0.8)
     ax.set_xticks(range(len(groups)), [SET_LABELS[k] for k in groups])
     ax.set(ylabel="Set minus matched probes (SD), 95 % CI", title="Aging, chow-fed BXD liver")

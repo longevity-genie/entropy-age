@@ -28,7 +28,7 @@ from entropy_age import plots
 from entropy_age.data.matrix import FeatureMatrix
 from entropy_age.data.rrbs import ThompsonLayout
 from entropy_age.experiments.bxd_liver import ols
-from entropy_age.experiments.common import Context, dummies, write_table
+from entropy_age.experiments.common import Context, dummies, scaled_intervals, write_table
 from entropy_age.experiments.interventions import _sets, membership
 from entropy_age.experiments.per_person import score_against
 from entropy_age.experiments.tissue_contrast import SET_LABELS, SETS
@@ -62,7 +62,10 @@ def tissue_gaps(x, ages, cov, features, strata, members) -> list[dict]:
     for metric in ("entropy_slope", "dispersion_slope"):
         table = compare_groups(metrics, members, metric=metric, stratify_by="stratum", n_permutations=0)
         sd = float(metrics[metric].std())
-        out += [{"metric": metric, "group": r["group"], "gap_sd": r["matched_diff"] / sd} for r in table.to_dicts()]
+        out += [
+            {"metric": metric, "group": r["group"], "matched_diff": r["matched_diff"], "sd": sd}
+            for r in table.to_dicts()
+        ]
     return out
 
 
@@ -102,17 +105,11 @@ def run(ctx: Context) -> list[Path]:
             rows = np.sort(rng.choice(x.shape[0], size=x.shape[0], replace=True))
             boot += [{"boot": b, **r} for r in tissue_gaps(x[rows], ages[rows], cov[rows], m.features, strata, members)]
         boot = pl.DataFrame(boot)
-        for r in point:
-            sel = boot.filter((pl.col("metric") == r["metric"]) & (pl.col("group") == r["group"]))["gap_sd"]
-            gap_rows.append(
-                {
-                    "tissue": tissue,
-                    "turnover": turnover,
-                    **r,
-                    "ci_low": float(sel.quantile(0.025)),
-                    "ci_high": float(sel.quantile(0.975)),
-                }
+        gap_rows.append(
+            scaled_intervals(pl.DataFrame(point), boot, ["metric", "group"]).with_columns(
+                tissue=pl.lit(tissue), turnover=pl.lit(turnover)
             )
+        )
 
         sets = _sets(m.features, members)
         member = np.any([s for s, _ in sets.values()], axis=0)
@@ -152,7 +149,7 @@ def run(ctx: Context) -> list[Path]:
                             "mice": int(y.size),
                         }
                     )
-    gaps, effects = pl.DataFrame(gap_rows), pl.DataFrame(effect_rows)
+    gaps, effects = pl.concat(gap_rows), pl.DataFrame(effect_rows)
     write_table(pl.DataFrame(sizes), out / "tissues")
     write_table(gaps, out / "aging_gaps")
     write_table(effects, out / "age_effects")
@@ -173,7 +170,15 @@ def _figure(ctx: Context, gaps: pl.DataFrame, effects: pl.DataFrame) -> Path:
             g = np.array([sub[t]["gap_sd"] if t in sub else np.nan for t in tissues])
             lo = np.array([sub[t]["ci_low"] if t in sub else np.nan for t in tissues])
             hi = np.array([sub[t]["ci_high"] if t in sub else np.nan for t in tissues])
-            ax.errorbar(xs, g, yerr=[g - lo, hi - g], fmt="o", ms=4, color=plots.PALETTE[j], label=SET_LABELS[group])
+            ax.errorbar(
+                xs,
+                g,
+                yerr=[np.clip(g - lo, 0, None), np.clip(hi - g, 0, None)],
+                fmt="o",
+                ms=4,
+                color=plots.PALETTE[j],
+                label=SET_LABELS[group],
+            )
         ax.axhline(0, color=plots.MUTED, lw=0.8)
         ax.set_xticks(range(len(tissues)), [f"{t}\n({TURNOVER[t]})" for t in tissues], fontsize=7)
         ax.set(ylabel="Set minus matched CpGs (SD), 95 % CI", title=metric.replace("_", " ").capitalize())

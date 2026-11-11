@@ -190,3 +190,27 @@ def write_table(frame: pl.DataFrame, path: Path) -> Path:
     if frame.height <= CSV_MAX_ROWS:
         frame.write_csv(path.with_suffix(".csv"))
     return path.with_suffix(".parquet")
+
+
+def scaled_intervals(point: pl.DataFrame, boot: pl.DataFrame, keys: list[str]) -> pl.DataFrame:
+    """``point`` with ``gap_sd`` and its 95 % bootstrap interval, all in SDs of the full sample's metric.
+
+    Each row of ``point`` and ``boot`` carries the unscaled ``matched_diff`` and the metric's spread ``sd``
+    over features. A resample of people adds sampling noise to every feature's metric, which inflates its
+    spread, so dividing each resample by its own spread shrinks every resampled gap toward zero and puts the
+    point estimate outside its own interval. The interval is therefore taken on ``matched_diff`` and divided
+    by the full sample's ``sd``.
+    """
+    q = boot.group_by(keys).agg(
+        pl.col("matched_diff").quantile(0.025).alias("diff_low"),
+        pl.col("matched_diff").quantile(0.975).alias("diff_high"),
+    )
+    return (
+        point.join(q, on=keys)
+        .with_columns(
+            gap_sd=pl.col("matched_diff") / pl.col("sd"),
+            ci_low=pl.col("diff_low") / pl.col("sd"),
+            ci_high=pl.col("diff_high") / pl.col("sd"),
+        )
+        .drop("diff_low", "diff_high")
+    )

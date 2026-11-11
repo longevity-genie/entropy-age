@@ -40,7 +40,7 @@ from entropy_age import plots
 from entropy_age.data.matrix import FeatureMatrix
 from entropy_age.data.mouse import MouseAnnotationLayout
 from entropy_age.data.rrbs import TRACKS, RrbsLayout, cpg_genes, promoters
-from entropy_age.experiments.common import Context, write_table
+from entropy_age.experiments.common import Context, scaled_intervals, write_table
 from entropy_age.experiments.per_person import score_against
 from entropy_age.experiments.tissue_contrast import SET_LABELS, SETS
 from entropy_age.protection import fit_reference, gene_counts
@@ -97,7 +97,10 @@ def aging_gaps(x: np.ndarray, ages: np.ndarray, features: list[str], island: np.
     for metric in ("entropy_slope", "dispersion_slope"):
         table = compare_groups(metrics, members, metric=metric, stratify_by="stratum", n_permutations=0)
         sd = float(metrics[metric].std())
-        out += [{"metric": metric, "group": r["group"], "gap_sd": r["matched_diff"] / sd} for r in table.to_dicts()]
+        out += [
+            {"metric": metric, "group": r["group"], "matched_diff": r["matched_diff"], "sd": sd}
+            for r in table.to_dicts()
+        ]
     return out
 
 
@@ -167,16 +170,7 @@ def run(ctx: Context) -> list[Path]:
         rows = np.sort(rng.choice(wt, size=wt.size, replace=True))
         boot += [{"boot": b, **r} for r in aging_gaps(x, ages, features, isl, members, rows)]
     boot = pl.DataFrame(boot)
-    aging = (
-        pl.DataFrame(point)
-        .join(
-            boot.group_by("metric", "group").agg(
-                pl.col("gap_sd").quantile(0.025).alias("ci_low"), pl.col("gap_sd").quantile(0.975).alias("ci_high")
-            ),
-            on=["metric", "group"],
-        )
-        .with_columns(mice=pl.lit(wt.size))
-    )
+    aging = scaled_intervals(pl.DataFrame(point), boot, ["metric", "group"]).with_columns(mice=pl.lit(wt.size))
     write_table(aging, out / "aging_gaps")
 
     # part 2: per-mouse scores
@@ -235,7 +229,10 @@ def _figure(ctx: Context, aging: pl.DataFrame, scores: pl.DataFrame, effects: pl
         ax.errorbar(
             xs,
             g,
-            yerr=[g - np.array([sub[k]["ci_low"] for k in groups]), np.array([sub[k]["ci_high"] for k in groups]) - g],
+            yerr=[
+                np.clip(g - np.array([sub[k]["ci_low"] for k in groups]), 0, None),
+                np.clip(np.array([sub[k]["ci_high"] for k in groups]) - g, 0, None),
+            ],
             fmt="os"[j],
             color=plots.PALETTE[j],
             label=metric.replace("_", " "),
