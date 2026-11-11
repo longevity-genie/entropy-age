@@ -16,7 +16,7 @@ protected CpGs; the ratio of their rates in blood, brain and the mouse tissues, 
 
 ## RM3 — Long- vs short-lived rodent groups
 
-**State:** unattended · **Owner:** lead
+**State:** after RM8 · **Owner:** lead
 
 Progress: data found, nothing fetched. Interventions that extend lifespan by slowing proliferation (caloric
 restriction, rapamycin) make a prediction specific to selection. Total drift should fall, but the gap
@@ -37,7 +37,7 @@ experiment (`simulate/selection.py`) before reading the data.
 
 ## RM2 — A turnover gradient across many tissues (methylation)
 
-**State:** unattended · **Owner:** lead
+**State:** after RM3 · **Owner:** lead
 
 Progress: mouse (GSE279437), human GTEx (GSE213478) and muscle fibres (GSE304045) done; see
 `docs/extension.md`. In mouse the protection is missing in cortex and hippocampus but kept in heart;
@@ -57,7 +57,7 @@ turnover. Left:
 
 ## RM4 — Stochasticity in RNA
 
-**State:** unattended · **Owner:** lead
+**State:** after RM2 · **Owner:** lead
 
 Progress: the turnover test is done in GTEx v10 (`figures rna_gtex`, 47 tissues) and in the mouse and rat
 atlases (`figures rna_rodents`); see `docs/extension.md`. Mouse repeats the methylation result (brain
@@ -73,7 +73,7 @@ Left:
 
 ## RM5 — Direct selection test: protection against division count in culture
 
-**State:** unattended · **Owner:** lead
+**State:** after RM4 · **Owner:** lead
 
 Progress: GSE197512 and its replication GSE179847 done (`figures passage`, `figures passage_sturm`,
 `docs/extension.md`): in both the protection is a roughly constant fraction of drift and does not grow
