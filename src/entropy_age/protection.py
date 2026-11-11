@@ -34,6 +34,12 @@ def deviations(x: np.ndarray, reference: np.ndarray) -> np.ndarray:
     return np.abs(x - reference) / np.sqrt(m * (1 - m))
 
 
+def signed_deviations(x: np.ndarray, reference: np.ndarray) -> np.ndarray:
+    """``(x - m) / sqrt(m (1 - m))``: :func:`deviations` with its sign, ``m`` clipped alike."""
+    m = np.clip(reference, LEVEL_CLIP, 1 - LEVEL_CLIP)
+    return (x - reference) / np.sqrt(m * (1 - m))
+
+
 def entropy_gain(x: np.ndarray, reference: np.ndarray) -> np.ndarray:
     """``H(x) - H(m)`` per sample and CpG, in bits."""
     return binary_entropy(x) - binary_entropy(reference)

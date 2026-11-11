@@ -163,7 +163,7 @@ def run(ctx: Context) -> list[Path]:
                 )
             )
             for group in sub_sets:
-                for measure in ("B", "F"):
+                for measure in ("B", "F", "S"):
                     y = scores[f"{measure}_{group}"]
                     coef, se, p = ols(y, design, 1)
                     rows.append(

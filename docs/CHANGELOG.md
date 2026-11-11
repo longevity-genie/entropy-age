@@ -4,6 +4,7 @@ Newest first.
 
 ## Unreleased
 
+- Per-sample scores gain `S`, the signed shift: above 0 when set CpGs gained methylation relative to look-alikes. `figures mmc_interventions` reports its effect beside `B` and `F`.
 - R15 done: against same-chip littermates the Tet3 heterozygous brains lose the shield more clearly (housekeeping F +0.17, +0.25); the GHRKO liver effect was batch. `docs/extension.md`.
 - `figures mmc_interventions` also scores each arm against only the controls on its own array chips, with the chip as a covariate (`controls` column): littermate controls where a study shares chips, which a batch cannot separate.
 - R12 and R13 done. Across 65 mammal species the shield is nearly universal and not stronger in long-lived species. CR does not weaken it in mouse liver. Tet3 heterozygous mice lose it in brain, a causal lead whose controls are pooled across studies. RM10 leaves the roadmap. `docs/extension.md`.

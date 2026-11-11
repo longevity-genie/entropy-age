@@ -47,3 +47,24 @@ def test_chip_design_has_one_column_per_extra_chip_and_none_for_one_chip():
     d = chip_design(np.array(["b", "a", "b", "c"]))
     assert d.tolist() == [[1, 0], [0, 0], [1, 0], [0, 1]]
     assert chip_design(np.array(["a", "a"])).shape == (2, 0)
+
+
+def test_signed_shift_says_which_way_set_cpgs_moved():
+    # set CpGs pushed up in treated animals: S rises; pushed down: S falls; P rises either way
+    rng = np.random.default_rng(2)
+    n, p = 24, 400
+    in_set = np.arange(p) < 100
+    treated = np.arange(n) >= 12
+    base = rng.uniform(0.2, 0.8, p) + rng.normal(0, 0.02, (n, p))
+    genes = [np.arange(j, j + 4) for j in range(0, 100, 4)]
+    sets = {"housekeeping": (in_set, genes)}
+    out = {}
+    for sign in (1, -1):
+        x = base.copy()
+        x[np.ix_(treated, in_set)] += sign * 0.05
+        out[sign] = arm_scores(np.clip(x, 0, 1), treated, np.zeros(p, dtype=bool), sets)
+    for sign in (1, -1):
+        s = out[sign]["S_housekeeping"]
+        assert sign * (s[treated].mean() - s[~treated].mean()) > 0.1
+        pp = out[sign]["P_housekeeping"]
+        assert pp[treated].mean() > pp[~treated].mean() + 0.05
