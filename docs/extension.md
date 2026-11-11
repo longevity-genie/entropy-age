@@ -562,6 +562,57 @@ courses, which have none, use the floor pooled over the experiments that do.
 Tables: `data/output/passaged_cells_sturm/` (as for GSE197512; the contact-inhibition and 3 % oxygen arms
 under `Study part 3` in `drift_coupling`; their slopes on days are in `arm_slopes.parquet`, not tracked).
 
+## Across mammals: the shield is universal, and not stronger in long-lived species (roadmap RM10)
+
+The Mammalian Methylation Consortium (GSE223748; `entropy-age fetch mammals`) measured the same conserved CpGs in
+15,043 samples of 349 species. Figure `species` (run R12) keeps the 139 species-tissue groups with at least 15
+animals spanning 15 % of the species' maximum lifespan: 65 species, 11,529 samples, from mouse to bowhead whale.
+
+![Species](figures/species_shield.png)
+
+* **The shield is nearly universal.** The housekeeping entropy gap is negative in 96 % of species-tissue groups,
+  with its interval below zero in 89 %, at −0.30 SD on average. Mouse, naked mole rat, bats, whales and humans
+  all show it.
+* **It is not stronger in long-lived species.** Against log maximum lifespan, with adult weight and tissue held
+  fixed, the housekeeping gap changes by +0.029 (entropy, p 0.14) and +0.036 (dispersion, p 0.11) per log-unit:
+  if anything a slightly *weaker* shield in longer-lived species, and not significantly. Core-essential genes give
+  the same. Naked mole rat (37 years) shields like mouse (4 years).
+* **This fits prior work.** Crofts et al. 2026 explain the lifespan scaling of methylation rates by stem-cell
+  dynamics rather than maintenance; a maintenance shield tuned to lifespan would have shown here, and does not.
+* **Cautions.** Species are not independent (no phylogenetic correction yet). The conserved array CpGs at essential
+  promoters sit near 0 %, which floors their drift. Human bone marrow and lymph node show the reverse (+0.18 and
+  +0.20), unexplained.
+
+Tables: `data/output/species_shield/` (`species_gaps`, `lifespan_fits`).
+
+## Interventions across mouse tissues (roadmap RM12)
+
+Figure `mmc_interventions` (run R13) scores every mouse of the consortium's intervention studies against its study's
+controls (controls leave one out), at least 5 animals per arm.
+
+![Interventions across tissues](figures/mmc_interventions.png)
+
+| study, tissue | treated / controls | shield share F, effect (p) | reading |
+|---|---|---|---|
+| CR, liver | 59 / 36 | −0.008 (0.77) | no change |
+| Tet3 heterozygous, cortex | 8 / 70 | +0.16 (2·10⁻⁷) | shield lost |
+| Tet3 heterozygous, striatum | 8 / 72 | +0.13 (6·10⁻⁹) | shield lost |
+| GHRKO dwarf, liver | 11 / 49 | −0.10 (0.01) | shield stronger |
+| GHRKO dwarf, kidney, cortex, hippocampus | 6-12 | n.s. | — |
+| high-fat diet, liver | 133 / 212 | −0.05 (0.01) | stronger, before composition |
+| partial reprogramming, sleep disruption | 5-8 | n.s. | too small |
+
+* **CR does not weaken the shield in liver** (59 against 36 mice). The weakening in mouse blood (one study) is not
+  replicated in a slowly renewing tissue. That is what selection would predict, but it is also what a batch effect
+  in the blood study would give; it stays open.
+* **Mice missing one copy of Tet3 lose the shield in brain.** Tet3 is a DNA demethylase active in neurons. If real,
+  this is a first causal sign: weaken the maintenance machinery and essential promoters drift like any other CpG,
+  in a tissue whose cells do not divide (so not selection). But the controls are the wild-type mice pooled across
+  the consortium's genetic-perturbation studies, not necessarily Tet3's littermates, and all eight Tet3 mice are
+  six months old. A study batch could produce the same. It needs the Tet3 study's own controls.
+
+Tables: `data/output/mmc_interventions/` (`effects`, `animal_scores`).
+
 ## Outside promoters: a directed, division-linked loss (roadmap RM15)
 
 SvenDP asked whether aging methylation is all stochastic, or whether specific intergenic regions lose methylation

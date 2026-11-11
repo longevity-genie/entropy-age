@@ -12,27 +12,18 @@ Progress: first part done (`figures intergenic`, R14, `docs/extension.md`): in b
 methylation 2.7 times as fast as other open-sea CpGs (directed, not noise); none in cortex; the PCA does not single
 it out. Left: the same test in the culture series (EPIC manifest needed for the tags; the loss should grow with
 doublings), and what cortex's two strongly age-tracking components are.
-## RM10 — Shielding in short- against long-lived species
-
-**State:** building · **Owner:** lead
-
-Progress: asked by antonkulaga (2026-11-11, #entropy-age): do long-lived species (human, naked mole rat, bats,
-whales) shield essential genes more than short-lived ones (mouse)? The mammalian methylation array measures the
-same CpGs in hundreds of species (Mammalian Methylation Consortium series on GEO); AnAge lifespans are in the
-repo (`taxonomy_anage_meta`). Plan: find the series with species, tissue and age labels; per species and tissue,
-the shield (aging gap against matched CpGs); regress it on maximum lifespan corrected for body mass, tissue held
-fixed. Rule: go on with every species-tissue with at least 10 animals across ages.
-
 ## RM12 — Selection pressure under interventions
 
-**State:** building · **Owner:** lead
+**State:** unattended · **Owner:** lead
 
 Progress: asked by antonkulaga (2026-11-11): do interventions change the shield through selection, apart from
 chromatin? What we have: in B6D2F1 blood CR weakens the shield by a quarter (within one sequencing series, robust
 to composition), without slowing drift; the shield's share also grows with age in liver, which rarely renews. So
 neither proof nor disproof. Tests that would separate selection from chromatin, in order of cost:
-- Built: `figures mmc_interventions` (GSE223748's mouse studies: CR in liver, 59 against 36; GHRKO in brain,
-  kidney and liver; partial reprogramming; sleep disruption), waiting on R12's download.
+- Done (R13, `docs/extension.md`): CR in liver does not weaken the shield; Tet3 heterozygous mice lose it in
+  cortex and striatum (controls pooled across studies, a batch could do it); GHRKO strengthens it in liver.
+- Next: the Tet3 study's own controls (sample titles or the consortium's folder field), then the shield with
+  chromatin held fixed under CR.
 - **The same intervention in a renewing and a non-renewing tissue of the same animals.** Selection predicts CR
   or rapamycin changes the shield in blood or gut and not in brain or muscle; chromatin predicts the same change
   (or none) everywhere. Search for a multi-tissue CR or rapamycin series with at least 8 animals per arm.

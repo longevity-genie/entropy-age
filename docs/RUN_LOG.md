@@ -3,6 +3,22 @@
 Owned by the runner seat (`docs/seats/RUNNER.md`): one entry per run, newest first, with its inputs, the
 commit it ran, its job ids, its scale and seed, and its result or its failure with the cause.
 
+## R12 — shielding across mammals (RM10), 2026-11-11
+
+- Commit fa6a796; `fetch mammals` (4.5 GB, 4.7 min) then `figures species --scale paper --seed 42`; 8 cores, 64 GB.
+- Job 6429555 completed in 59 min, 25.6 GB at peak (the next run fits in 32 GB). 139 species-tissue groups of 65
+  species, 11,529 samples.
+- Result, as measured: housekeeping gap per log maximum lifespan +0.029 (entropy, p 0.14), +0.036 (dispersion,
+  p 0.11), weight and tissue held fixed. The lead's reading is in `docs/extension.md`.
+
+## R13 — mouse interventions across tissues (RM12), 2026-11-11
+
+- Commit b1c9ae0; `figures mmc_interventions --scale paper --seed 42` on R12's download, started when R12 ended.
+- Job 6429673 completed in 74 s, 3.5 GB at peak. 13 study-tissue-arm comparisons with at least 5 animals per arm.
+- Result, as measured (housekeeping F): CR in liver −0.008 (p 0.77); Tet3 heterozygous cortex +0.16, striatum
+  +0.13 (p < 10⁻⁶; controls pooled across studies); GHRKO liver −0.10 (p 0.01). The lead's reading is in
+  `docs/extension.md`.
+
 ## R14 — directed demethylation outside promoters (RM15), 2026-11-11
 
 - Commit f84d2a7; `fetch annotation` (solo-WCGW tags, 10 s, 1.9 GB) then `figures intergenic --scale paper --seed 42`;

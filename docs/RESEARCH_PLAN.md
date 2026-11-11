@@ -71,6 +71,12 @@ means for clocks (RM8). An intervention test (RM3) is the one result that could 
   natural experiments (RM14): people with a broken chromatin writer (Sotos, Weaver, Tatton-Brown-Rahman, Kabuki),
   mouse knockouts, and edited cells followed over time. The grant's wet-lab WP1 is kept for what these cannot show.
 
+- 2026-11-11, after R12 and R13: the shield is nearly universal across 65 mammal species and not stronger in
+  long-lived ones (weaker if anything, n.s.), as Crofts 2026 would predict; CR does not weaken it in liver; Tet3
+  heterozygous mice lose it in brain, a first causal lead that needs the study's own controls. Selection loses
+  further ground; the maintenance machinery becomes the lead to follow (Tet3 controls, then the chromatin-writer
+  syndromes of RM14).
+
 ## The arms, in order, each with its rule
 
 ### A. RM7: does chromatin state account for the protection? (new, first)

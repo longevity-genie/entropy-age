@@ -12,20 +12,4 @@ grammar (`unattended`, `urgent`, `building`, `after <R-id>` or `after job <slurm
 - the roadmap item it serves (`RMn`);
 - what the lead needs back (a table, a figure, a number), and anything the run must not do.
 
-## R12 — shielding across 349 mammal species (GSE223748)
-
-**State:** building · **Owner:** runner (job 6429555)
-
-- Serves **RM10** (urgent, asked by antonkulaga).
-- Commands, from the clone at fa6a796 or later: `uv run entropy-age fetch mammals` (about 4.5 GB through the proxy),
-  then `uv run entropy-age figures species --scale paper --seed 42`.
-- Back to the lead: `data/output/species_shield/` and `docs/figures/species_shield.png`, time and peak memory.
-
-## R13 — mouse interventions across tissues (GSE223748)
-
-**State:** after R12 · **Owner:** runner (job 6429673, starts when R12 ends)
-
-- Serves **RM12** and **RM3**: `uv run entropy-age figures mmc_interventions --scale paper --seed 42`, from the clone at
-  b1c9ae0 or later, on the data R12 fetches.
-- Back to the lead: `data/output/mmc_interventions/` and `docs/figures/mmc_interventions.png`, time and peak memory.
-
+No runs are planned.
