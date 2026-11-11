@@ -29,8 +29,9 @@ We tested three explanations.
 - **Chromatin.** The tissue's own chromatin state accounts for most of it: 67-91 % in blood, up to half in brain
   with cell-type-resolved maps. After matching, the remainder is the same in blood and brain.
 
-In living mice the shield's share grows with age in blood and in slowly renewing liver alike, and caloric
-restriction weakens it in one within-batch comparison.
+In living mice the shield's share grows with age in blood and in slowly renewing liver alike. Caloric
+restriction weakens it in one blood series but not in liver. Mice missing one copy of the demethylase Tet3
+lose it in brain. Across 65 mammal species the shield is nearly universal, and not stronger in long-lived ones.
 
 Published clocks draw on CpGs whose chromatin differs between tissues, Polycomb targets above all.
 Clocks built from Polycomb CpGs alone misread other tissues by a constant, calibratable offset. A
@@ -103,6 +104,10 @@ lifespan scaling as stem-cell dynamics (Crofts 2026), and per-person drift burde
   composition. **[solid]** in two series.
 - CR weakens the shield by a quarter in B6D2F1, where treated and controls share a sequencing series.
   **[weak]**: 22 mice, one strain; the C57BL/6 comparison crosses series and is not read.
+- CR in liver (GSE223748, 59 against 36 mice) leaves it unchanged (F −0.008, p 0.77): the blood result is not
+  replicated in a slowly renewing tissue. **[weak]** either way.
+- Tet3 heterozygous cortex and striatum lose the shield (F +0.16, +0.13, p < 10⁻⁶, 8 mice each). **[weak]**:
+  controls pooled across studies, all treated mice six months old. **[missing]** the study's own controls.
 - **Missing:** a second CR or rapamycin series sequenced with its controls; sorted stem cells.
 - **Interpretation open:** growth in liver argues against stem-cell selection as its cause.
 - **Figures:** interventions, bxd_liver (being redrawn with corrected intervals).
@@ -124,11 +129,15 @@ lifespan scaling as stem-cell dynamics (Crofts 2026), and per-person drift burde
   cohort, or intervention response).
 - **Figures:** clock_cpgs, chromatin_clocks.
 
-### 2.8 Across species (in progress)
+### 2.8 Across species: universal, not tuned to lifespan
 
-- **Missing:** does the shield scale with maximum lifespan across 349 mammals (GSE223748, run R12)? Must be read
-  against Crofts 2026, which explains lifespan scaling of methylation rates by stem-cell dynamics, and against the
-  floor of near-0 % essential promoters on the conserved array.
+- **Evidence:** 139 species-tissue groups of 65 mammals (GSE223748): the housekeeping gap is negative in 96 %,
+  −0.30 SD on average. **[solid]**
+- Against log maximum lifespan (weight, tissue fixed) the gap moves +0.03 per log-unit (p 0.11-0.14): no
+  stronger shield in long-lived species, if anything weaker. Consistent with Crofts 2026. **[weak]**: no
+  phylogenetic correction; near-0 % essential promoters on the conserved array floor the drift.
+- **Anomaly:** human bone marrow and lymph node reverse (+0.18, +0.20).
+- **Figures:** species_shield.
 
 ## 3 Discussion
 
@@ -142,8 +151,9 @@ lifespan scaling as stem-cell dynamics (Crofts 2026), and per-person drift burde
 
 ## 4 What the paper still needs, in order
 
-1. **Cross-species result (RM10)**, running. It decides whether the paper has a comparative headline.
-2. **Replication of the CR effect** in a second within-batch series.
+1. **The Tet3 study's own controls**: if the loss holds against littermates, the paper has its first causal
+   result.
+2. **Replication of the CR effect** in a second within-batch blood series (liver did not replicate it).
 3. **Test-retest of the per-person score** on replicate arrays (public technical replicates exist on GEO).
 4. **A causal chromatin test**, from public natural experiments first (RM14: chromatin-writer syndromes in blood,
    mouse knockouts, edited cells over time); a wet-lab edit only for what those cannot show.
