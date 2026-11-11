@@ -4,6 +4,7 @@ Newest first.
 
 ## Unreleased
 
+- RM2: `entropy-age fetch rrbs-tissues` (mouse RRBS of six tissues, GSE120132, BS_Seeker2 CGfinal tables on mm10) and figure `rrbs_tissues`: per tissue, the aging gap with strain and sex as covariates and the shield's share per mouse against age, ordered by turnover (blood; lung, kidney, liver, adipose; muscle). Not yet run on the data.
 - R9 done (40 s, 1.0 GB): `data/output/bxd_liver/` and `docs/figures/bxd_liver.png`; R9 leaves the run brief.
 - RM3, BXD liver: the shield's share grows with age in a slowly renewing tissue too (housekeeping F −0.055 per 10 months with composition components, p 10⁻⁴), so that growth is no evidence of selection among stem cells; the high-fat diet's effect is the cell mix. The plan returns to chromatin with a growing share in vivo; the CR result in blood stays an open lead.
 - R9 (the shield in BXD mouse liver, RM3) on the run brief and submitted.

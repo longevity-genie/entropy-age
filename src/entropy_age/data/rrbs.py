@@ -241,3 +241,127 @@ def cpg_genes(cpgs: pl.DataFrame, prom: pl.DataFrame) -> pl.DataFrame:
         for a, b, e in zip(lo, hi, entrez, strict=True):
             rows.extend((n, int(e)) for n in names[a:b])
     return pl.DataFrame(rows, schema={"feature": pl.String, "entrez": pl.Int64}, orient="row").unique()
+
+
+# ----------------------------------------------------------------------------- Thompson et al. 2018 (GSE120132)
+THOMPSON_MATRIX = "GSE120132-GPL21103_series_matrix.txt.gz"
+
+
+@dataclass(frozen=True, slots=True)
+class ThompsonLayout:
+    """Mouse RRBS of six tissues (blood, liver, muscle, lung, adipose, kidney), two strains, 2-21 months."""
+
+    paths: ProjectPaths
+
+    @property
+    def input(self) -> Path:
+        return self.paths.input / "geo" / "GSE120132"
+
+    @property
+    def matrix(self) -> Path:
+        return self.input / THOMPSON_MATRIX
+
+    @property
+    def samples(self) -> Path:
+        return self.paths.interim / "cohorts" / "thompson_samples.parquet"
+
+    def betas(self, tissue: str) -> Path:
+        return self.paths.interim / "cohorts" / f"thompson_{tissue.lower()}_betas.parquet"
+
+    def cpgs(self, tissue: str) -> Path:
+        return self.paths.interim / "cohorts" / f"thompson_{tissue.lower()}_cpgs.parquet"
+
+
+def read_thompson_samples(path: Path) -> pl.DataFrame:
+    """Accession, title, tissue, strain, age in months (``age: 10mo``), sex and the table's URL."""
+    meta: dict[str, list[str]] = {}
+    keyed: dict[str, list[str]] = {}
+    with gzip.open(path, "rt") as handle:
+        for line in handle:
+            if line.startswith("!Sample_characteristics_ch1"):
+                cells = _split(line)[1:]
+                keyed[cells[0].split(":", 1)[0].strip()] = [c.split(":", 1)[1].strip() for c in cells]
+            elif line.startswith(("!Sample_geo_accession", "!Sample_title", "!Sample_supplementary_file_1")):
+                cells = _split(line)
+                meta[cells[0].removeprefix("!Sample_")] = cells[1:]
+    missing = [k for k in ("tissue", "strain", "age", "Sex") if k not in keyed]
+    if missing:
+        raise ValueError(f"{path.name}: no characteristics {missing}")
+    ages = [re.fullmatch(r"([\d.]+)\s*mo", a) for a in keyed["age"]]
+    if not all(ages):
+        raise ValueError(
+            f"{path.name}: ages not in months, e.g. {[a for a, m in zip(keyed['age'], ages, strict=True) if not m][:3]}"
+        )
+    return pl.DataFrame(
+        {
+            "sample": meta["geo_accession"],
+            "title": meta["title"],
+            "tissue": keyed["tissue"],
+            "strain": keyed["strain"],
+            "age_months": [float(m.group(1)) for m in ages],
+            "sex": keyed["Sex"],
+            "url": [u.replace("ftp://", "https://") for u in meta["supplementary_file_1"]],
+        }
+    )
+
+
+def read_cgfinal(path: Path) -> pl.DataFrame:
+    """``cpg`` (``chr:pos``), ``beta`` and ``coverage`` of a BS_Seeker2 CGfinal table, chromosomes only.
+
+    The table pools both strands of a CpG.
+    """
+    frame = pl.read_csv(
+        path,
+        separator=" ",
+        has_header=False,
+        new_columns=["chrom", "context", "pos", "methylated", "total", "frequency", "ci"],
+        schema_overrides={"chrom": pl.String, "pos": pl.Int64, "methylated": pl.Int64, "total": pl.Int64},
+    )
+    chroms = [f"chr{c}" for c in _CHROMOSOMES.values()]
+    return frame.filter(pl.col("chrom").is_in(chroms) & (pl.col("total") > 0)).select(
+        pl.format("{}:{}", pl.col("chrom").str.strip_prefix("chr"), pl.col("pos")).alias("cpg"),
+        (pl.col("methylated") / pl.col("total")).cast(pl.Float32).alias("beta"),
+        pl.col("total").cast(pl.Int32).alias("coverage"),
+    )
+
+
+def fetch_thompson(paths: ProjectPaths, *, overwrite: bool = False) -> list[Path]:
+    """The series matrix and every sample's CGfinal table (about 6.4 GB); the mm10 tracks as for GSE80672."""
+    lay = ThompsonLayout(paths)
+    url = f"https://ftp.ncbi.nlm.nih.gov/geo/series/GSE120nnn/GSE120132/matrix/{THOMPSON_MATRIX}"
+    files = [download(url, lay.matrix)]
+    files += [
+        download(UCSC.format(name=n), RrbsLayout(paths).track(n), overwrite=overwrite, timeout=600) for n in TRACKS
+    ]
+    for u in read_thompson_samples(lay.matrix)["url"]:
+        files.append(download(u, lay.input / u.rsplit("/", 1)[1], overwrite=overwrite, timeout=1800))
+    return files
+
+
+def prepare_thompson(paths: ProjectPaths) -> ThompsonLayout:
+    """Per tissue, the wide beta matrix of promoter CpGs covered in ``MIN_PRESENT`` of its samples."""
+    lay = ThompsonLayout(paths)
+    rr = RrbsLayout(paths)
+    samples = read_thompson_samples(lay.matrix)
+    prom = promoters(rr.track(TRACKS[0]), rr.track(TRACKS[1]))
+    isl = islands(rr.track(TRACKS[2]))
+    lay.samples.parent.mkdir(parents=True, exist_ok=True)
+    samples.drop("url").write_parquet(lay.samples)
+    for (tissue,), sel in samples.group_by("tissue", maintain_order=True):
+        long = []
+        for row in sel.iter_rows(named=True):
+            table = read_cgfinal(lay.input / row["url"].rsplit("/", 1)[1]).filter(pl.col("coverage") >= MIN_COVERAGE)
+            parts = table["cpg"].str.split(":")
+            keep = in_intervals(parts.list.get(0).to_numpy(), parts.list.get(1).cast(pl.Int64).to_numpy() - 1, prom)
+            long.append(table.filter(pl.Series(keep)).select("cpg", "beta").with_columns(sample=pl.lit(row["sample"])))
+        long = pl.concat(long)
+        kept = long.group_by("cpg").len().filter(pl.col("len") >= MIN_PRESENT * sel.height).select("cpg")
+        wide = long.join(kept, on="cpg", how="semi").pivot(on="sample", index="cpg", values="beta").sort("cpg")
+        chrom = wide["cpg"].str.split(":").list.get(0)
+        pos = wide["cpg"].str.split(":").list.get(1).cast(pl.Int64)
+        cpgs = pl.DataFrame({"cpg": wide["cpg"], "chr": chrom, "pos": pos}).with_columns(
+            cpg_island=pl.Series(in_intervals(chrom.to_numpy(), pos.to_numpy() - 1, isl))
+        )
+        wide.write_parquet(lay.betas(tissue))
+        cpgs.write_parquet(lay.cpgs(tissue))
+    return lay

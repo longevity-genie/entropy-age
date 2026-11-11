@@ -6,7 +6,7 @@ The order and the rule for each item are argued in `docs/RESEARCH_PLAN.md`.
 
 ## RM3 — Interventions: replicate the CR result
 
-**State:** unattended · **Owner:** lead
+**State:** after RM2 · **Owner:** lead
 
 Progress: GSE80672 done (`figures interventions`, `docs/extension.md`): in living mouse blood the shield's share
 grows with age, and CR weakens it by a quarter in the one within-batch comparison (B6D2F1, 12 against 10 mice,
@@ -20,7 +20,7 @@ robust to composition), without slowing drift. Left, to replicate it:
   arm, in blood or another tissue (to find).
 ## RM2 — A turnover gradient across many tissues (methylation)
 
-**State:** after RM3 · **Owner:** lead
+**State:** building · **Owner:** lead
 
 Progress: mouse (GSE279437), human GTEx (GSE213478) and muscle fibres (GSE304045) done; see
 `docs/extension.md`. In mouse the protection is missing in cortex and hippocampus but kept in heart;
@@ -33,8 +33,8 @@ turnover. Left:
   Like GTEx it says nothing of exercise, and satellite-cell divisions follow loading, injury and
   wasting, so muscle tests selection only in a cohort that records physical activity or training
   history beside age (to find; the fibre cohort GSE304045 records training but not age).
-- **Mouse replication:** Meer 2018 (GSE121141; liver and lung vs heart and cortex, 6–30 months, RRBS)
-  and Thompson 2018 (GSE120132; blood, liver vs muscle), which have numeric ages.
+- **Mouse replication:** Thompson 2018 (GSE120132; six tissues, two strains, 2-21 months, RRBS) built as
+  `figures rrbs_tissues`, waiting on its run (R10); Meer 2018 (GSE121141; liver, lung, heart, cortex, 6-30 months).
 - The fibre contrast (GSE304045) was uninformative: a dozen adults of similar age show too little
   between-person divergence. A within-tissue turnover contrast needs aged and young people.
 

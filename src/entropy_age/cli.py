@@ -93,6 +93,17 @@ def fetch_rrbs_cmd(overwrite: bool = False) -> None:
     typer.echo(f"{len(files)} files\nsamples -> {layout.samples}\nbetas   -> {layout.betas}")
 
 
+@fetch_app.command("rrbs-tissues")
+def fetch_rrbs_tissues_cmd(overwrite: bool = False) -> None:
+    """Mouse RRBS of six tissues (GSE120132, about 6.4 GB), parsed per tissue to promoter CpGs."""
+    from entropy_age.data.rrbs import fetch_thompson, prepare_thompson
+
+    paths = ProjectPaths.default().ensure()
+    files = fetch_thompson(paths, overwrite=overwrite)
+    layout = prepare_thompson(paths)
+    typer.echo(f"{len(files)} files\nsamples -> {layout.samples}")
+
+
 @fetch_app.command("mouse-annotation")
 def fetch_mouse_annotation_cmd(overwrite: bool = False) -> None:
     """Mammalian-array probe annotation (GEO GPL32543, ~200 MB) and MGI mouse-human orthologs."""
