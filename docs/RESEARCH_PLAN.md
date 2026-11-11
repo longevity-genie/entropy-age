@@ -73,6 +73,14 @@ tissue-specific stochasticity (done), not caused by division (done, two cohorts)
 chromatin or not (A), unchanged or changed by interventions (B), consequences for clocks (C). A first
 draft is written once A and one series of B have results.
 
+## The summary artifact
+
+At the end, and after each major result, the tabbed summary artifact (the claude.ai page kept since v6) is
+updated (antonkulaga, 2026-11-11): Meyer and Schumacher's work first, then the hypothesis built on it, the
+result of each step that tests it, the main novelty, practical applications, and how the results intersect
+with existing omics clocks (which CpGs or genes of the published clocks are protected or unprotected, and
+what that predicts for their tissue behaviour; RM8 measures it).
+
 ## Working rules for this plan
 
 - Heavy steps run as Slurm jobs through `docs/RUNS.md`; the lead builds, the runner runs.
