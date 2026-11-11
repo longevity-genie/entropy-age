@@ -20,3 +20,13 @@ grammar (`unattended`, `urgent`, `building`, `after <R-id>` or `after job <slurm
 - Command, from the clone at b0184a3 or later: `uv run entropy-age figures chromatin --scale paper --seed 42` (all
   inputs fetched; it rewrites R3's outputs with the new matchings added).
 - Back to the lead: `data/output/chromatin_match/` and `docs/figures/chromatin_match.png`, time and peak memory.
+
+## R5 — published clocks on the protection map
+
+**State:** building · **Owner:** runner (job 6428487)
+
+- Serves **RM8** (where published clocks' CpGs sit by chromatin, gene set and drift; their tissue offsets).
+- Command, from the clone at 4787a9b or later: `uv run entropy-age figures clocks --scale paper --seed 42` (the
+  clocks are fetched, `entropy-age fetch clocks`).
+- Back to the lead: `data/output/clock_cpgs/` and `docs/figures/clock_cpgs.png`, time and peak memory.
+
