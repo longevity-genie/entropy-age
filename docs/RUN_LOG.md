@@ -3,6 +3,15 @@
 Owned by the runner seat (`docs/seats/RUNNER.md`): one entry per run, newest first, with its inputs, the
 commit it ran, its job ids, its scale and seed, and its result or its failure with the cause.
 
+## R8 — interventions in mouse blood RRBS, composition check (RM3), 2026-11-11
+
+- Commit d5c7433; `figures interventions --scale paper --seed 42`; 8 cores, 24 GB asked; job comment set. Waited
+  on the account's CPU cap before it started.
+- Job 6429130 completed in 37.5 min, 10.6 GB at peak (a rerun fits in 16 GB).
+- Result, as measured (housekeeping, shield share F): CR in B6D2F1, one sample series, +0.025 (p 0.012) and +0.025
+  with five composition components (p 0.002); CR in C57BL/6, two series, +0.027 (p 0.002) and −0.016 with
+  components (p 0.06). The lead's reading is in `docs/extension.md`.
+
 ## R7 — interventions in mouse blood RRBS (RM3), 2026-11-11
 
 - Commit 30ed4b8; `fetch rrbs` (243 blood tables, about 3 GB, and the mm10 tracks) then

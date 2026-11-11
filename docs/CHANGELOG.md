@@ -4,6 +4,7 @@ Newest first.
 
 ## Unreleased
 
+- R8 done (37.5 min, 10.6 GB peak): `data/output/interventions/` and `docs/figures/interventions.png`; R8 leaves the run brief.
 - R7 done (53 min, 19.7 GB peak for the parse); R8 (the composition check) submitted.
 - RM3: `figures interventions` also scores every mouse with five composition components of the young reference removed, and marks whether treated and control mice share a sample series (the C57BL/6 CR mice do not).
 - R7 (interventions in mouse blood RRBS, RM3) on the run brief and submitted.
