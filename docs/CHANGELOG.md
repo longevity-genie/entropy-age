@@ -4,6 +4,7 @@ Newest first.
 
 ## Unreleased
 
+- R7 done (53 min, 19.7 GB peak for the parse); R8 (the composition check) submitted.
 - RM3: `figures interventions` also scores every mouse with five composition components of the young reference removed, and marks whether treated and control mice share a sample series (the C57BL/6 CR mice do not).
 - R7 (interventions in mouse blood RRBS, RM3) on the run brief and submitted.
 - RM3: `entropy-age fetch rrbs` (mouse blood RRBS of GSE80672, its per-sample tables on GRCm38, with UCSC mm10 NCBI RefSeq promoters, Entrez links and CpG islands) and figure `interventions`: the aging shield in standard C57BL/6 blood with exact ages, and per-mouse drift and shield share under caloric restriction (two strains), GHRKO and Snell dwarfism, each within its strain. Not yet run on the data.

@@ -12,13 +12,11 @@ grammar (`unattended`, `urgent`, `building`, `after <R-id>` or `after job <slurm
 - the roadmap item it serves (`RMn`);
 - what the lead needs back (a table, a figure, a number), and anything the run must not do.
 
-## R7 — interventions in mouse blood RRBS (GSE80672)
+## R8 — interventions in mouse blood RRBS, with a composition check
 
-**State:** building · **Owner:** runner (job 6429040)
+**State:** building · **Owner:** runner (job 6429130)
 
 - Serves **RM3**.
-- Commands, from the clone at 30ed4b8 or later: `uv run entropy-age fetch rrbs` (downloads 243 sample tables, about
-  3 GB, through the proxy, then parses them to promoter CpGs), then
-  `uv run entropy-age figures interventions --scale paper --seed 42`.
-- Back to the lead: `data/output/interventions/` and `docs/figures/interventions.png`, time and peak memory of each
-  step. 64 GB is a first guess for the parse (243 tables of about 0.8 million promoter CpG rows each).
+- Command, from the clone at d5c7433 or later: `uv run entropy-age figures interventions --scale paper --seed 42`
+  (R7 fetched and parsed the data).
+- Back to the lead: `data/output/interventions/` and `docs/figures/interventions.png`, time and peak memory.

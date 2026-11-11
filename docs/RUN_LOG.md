@@ -3,6 +3,16 @@
 Owned by the runner seat (`docs/seats/RUNNER.md`): one entry per run, newest first, with its inputs, the
 commit it ran, its job ids, its scale and seed, and its result or its failure with the cause.
 
+## R7 — interventions in mouse blood RRBS (RM3), 2026-11-11
+
+- Commit 30ed4b8; `fetch rrbs` (243 blood tables, about 3 GB, and the mm10 tracks) then
+  `figures interventions --scale paper --seed 42`; 8 cores, 64 GB asked; job comment set.
+- Job 6429040 completed in 53 min: the fetch and parse 15.9 min at 19.7 GB peak, the figure 37.4 min at 9.5 GB. A
+  rerun of the figure fits in 16 GB. 542,008 promoter CpGs covered at 10x or more in 90 % of the 243 samples.
+- Result, as measured (housekeeping): CR moves the shield share F from −0.060 to −0.032 in C57BL/6 (p 0.002) and by
+  +0.025 in B6D2F1 (p 0.012), with drift B changed by −7 % and −3 % (n.s.). Outputs superseded by R8, which adds a
+  composition check.
+
 ## R6 — clocks from protected and unprotected CpGs (RM8), 2026-11-11
 
 - Commit 7d40536; `figures chromatin_clocks --scale paper --seed 42`; 8 cores, 32 GB asked; job comment set. Waited
