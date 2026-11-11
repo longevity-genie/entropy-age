@@ -4,6 +4,7 @@ Newest first.
 
 ## Unreleased
 
+- R16 done: under Tet3 loss essential CpGs gain methylation (S +0.012, +0.014), consistent with TET's role; S rises in other arms too, so not specific yet.
 - Per-sample scores gain `S`, the signed shift: above 0 when set CpGs gained methylation relative to look-alikes. `figures mmc_interventions` reports its effect beside `B` and `F`.
 - R15 done: against same-chip littermates the Tet3 heterozygous brains lose the shield more clearly (housekeeping F +0.17, +0.25); the GHRKO liver effect was batch. `docs/extension.md`.
 - `figures mmc_interventions` also scores each arm against only the controls on its own array chips, with the chip as a covariate (`controls` column): littermate controls where a study shares chips, which a batch cannot separate.

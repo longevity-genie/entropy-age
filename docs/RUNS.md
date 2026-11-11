@@ -12,9 +12,4 @@ grammar (`unattended`, `urgent`, `building`, `after <R-id>` or `after job <slurm
 - the roadmap item it serves (`RMn`);
 - what the lead needs back (a table, a figure, a number), and anything the run must not do.
 
-## R16 — which way essential CpGs move under Tet3 loss (RM12)
-
-- What: `entropy-age figures mmc_interventions --scale paper --seed 42` after the signed shift `S` was added;
-  replaces R15's tables (the B and F rows are recomputed alike).
-- Resources: compute partition, 8 cores, 16 GB, a few minutes (R15: 73 s, 3.5 GB).
-- Read: `S` rows for Tet3KO.Het, same-chip controls: above 0 means essential CpGs gained methylation.
+No runs are planned.

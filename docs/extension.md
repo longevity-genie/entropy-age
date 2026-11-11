@@ -614,6 +614,13 @@ controls (controls leave one out), at least 5 animals per arm.
   halving a demethylase lets essential promoters drift like any other CpG. This is the first causal sign that the
   shield is maintained by the methylation machinery (H1). Open: whether essential CpGs gain methylation (TET
   keeps island promoters unmethylated) or merely scatter; one study, 16 mice.
+* **Which way they move (run R16).** The signed shift S (above 0: set CpGs gained methylation against their
+  look-alikes) rises for core-essential genes in Tet3 heterozygous brain: +0.012 (cortex, p 3·10⁻⁴), +0.014
+  (striatum, p 2·10⁻⁴). Essential promoters gain methylation, as TET's role predicts. But S rises as well in arms
+  with no change of the shield (GHRKO kidney +0.028, CR liver housekeeping +0.005), and non-essential CpGs fall
+  in the same arms: a compression of an array's beta values toward the middle lifts the lowest CpGs within a
+  level stratum and could do this. So the direction is consistent with TET biology and not yet specific to it;
+  the shield's loss (F) is.
 * **The GHRKO liver effect was batch.** Against same-chip controls it vanishes (+0.01, p 0.67); the pooled
   controls carried it. CR in liver against the same controls: housekeeping −0.02 (p 0.59), core-essential −0.07
   (p 0.005), a slightly *stronger* shield if anything.

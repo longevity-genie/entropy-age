@@ -24,7 +24,9 @@ neither proof nor disproof. Tests that would separate selection from chromatin, 
   cortex and striatum (controls pooled across studies, a batch could do it); GHRKO strengthens it in liver.
 - Done (R15): against same-chip littermates the Tet3 loss holds and grows (housekeeping F +0.17, +0.25); the GHRKO
   liver effect was batch.
-- Next: the direction at essential CpGs under Tet3 loss (gain of methylation or scatter), then RM14's syndromes.
+- Done (R16): under Tet3 loss essential CpGs gain methylation, but S rises in other arms too (array compression
+  could do it); not specific yet.
+- Next: RM14's syndromes in human blood (built: `figures syndromes`).
 - **The same intervention in a renewing and a non-renewing tissue of the same animals.** Selection predicts CR
   or rapamycin changes the shield in blood or gut and not in brain or muscle; chromatin predicts the same change
   (or none) everywhere. Search for a multi-tissue CR or rapamycin series with at least 8 animals per arm.

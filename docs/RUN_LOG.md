@@ -3,6 +3,14 @@
 Owned by the runner seat (`docs/seats/RUNNER.md`): one entry per run, newest first, with its inputs, the
 commit it ran, its job ids, its scale and seed, and its result or its failure with the cause.
 
+## R16 — which way essential CpGs move under interventions (RM12), 2026-11-11
+
+- Commit d2d7dcb; `figures mmc_interventions --scale paper --seed 42`; 8 cores, 16 GB.
+- Job 6430333 completed in 76 s, 3.5 GB at peak. B and F rows equal R15's.
+- Result, as measured (signed shift S, same-chip): Tet3 heterozygous core-essential +0.012 (cortex, p 3·10⁻⁴),
+  +0.014 (striatum, p 2·10⁻⁴); GHRKO kidney core-essential +0.028 (p 8·10⁻⁶); CR liver housekeeping +0.005
+  (p 0.001). The lead's reading is in `docs/extension.md`.
+
 ## R15 — interventions against same-chip controls (RM12), 2026-11-11
 
 - Commit 0cb79ae; `figures mmc_interventions --scale paper --seed 42`; 8 cores, 16 GB.
