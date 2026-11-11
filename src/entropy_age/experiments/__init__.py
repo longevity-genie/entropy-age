@@ -26,6 +26,7 @@ from entropy_age.experiments import (
     rna_gtex,
     rna_rodents,
     species_shield,
+    syndromes,
     tissue_contrast,
 )
 from entropy_age.experiments.common import Context, Scale, ScaleName
@@ -54,6 +55,7 @@ FIGURES: dict[str, Callable[[Context], list[Path]]] = {
     "rrbs_tissues": mouse_rrbs_tissues.run,
     "species": species_shield.run,
     "mmc_interventions": consortium_interventions.run,
+    "syndromes": syndromes.run,
     "intergenic": intergenic.run,
     "clocks": clock_cpgs.run,
     "per_person": per_person.run,

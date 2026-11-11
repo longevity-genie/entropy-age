@@ -118,6 +118,20 @@ def fetch_mammals_cmd(overwrite: bool = False) -> None:
     typer.echo(f"{matrix}\n{betas}")
 
 
+@fetch_app.command("syndromes")
+def fetch_syndromes_cmd(overwrite: bool = False) -> None:
+    """Blood 450k of chromatin-writer syndromes: GSE74432 (NSD1, EZH2) and GSE97362 (KMT2D, CHD7), ~0.7 GB."""
+    from entropy_age.data.download import download
+    from entropy_age.experiments.syndromes import SERIES, matrix_path
+
+    paths = ProjectPaths.default().ensure()
+    for gse in SERIES:
+        target = matrix_path(paths, gse)
+        url = f"https://ftp.ncbi.nlm.nih.gov/geo/series/{gse[:-3]}nnn/{gse}/matrix/{target.name}"
+        download(url, target, overwrite=overwrite, timeout=1800)
+        typer.echo(target)
+
+
 @fetch_app.command("mouse-annotation")
 def fetch_mouse_annotation_cmd(overwrite: bool = False) -> None:
     """Mammalian-array probe annotation (GEO GPL32543, ~200 MB) and MGI mouse-human orthologs."""

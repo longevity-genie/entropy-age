@@ -68,3 +68,20 @@ def test_signed_shift_says_which_way_set_cpgs_moved():
         assert sign * (s[treated].mean() - s[~treated].mean()) > 0.1
         pp = out[sign]["P_housekeeping"]
         assert pp[treated].mean() > pp[~treated].mean() + 0.05
+
+
+def test_composition_components_remove_a_shift_shared_by_every_cpg():
+    # treated animals differ only along one composition axis that moves all CpGs; removing it leaves no effect
+    rng = np.random.default_rng(3)
+    n, p = 40, 1200
+    in_set = np.arange(p) < 200
+    treated = np.arange(n) >= 20
+    loading = rng.normal(0, 1, p)
+    axis = rng.normal(0, 1, n) + 3.0 * treated
+    x = np.clip(rng.uniform(0.3, 0.7, p) + 0.02 * np.outer(axis, loading) + rng.normal(0, 0.005, (n, p)), 0, 1)
+    genes = [np.arange(j, j + 4) for j in range(0, 200, 4)]
+    sets = {"housekeeping": (in_set, genes)}
+    raw = arm_scores(x, treated, np.zeros(p, dtype=bool), sets)["B_housekeeping"]
+    adj = arm_scores(x, treated, np.zeros(p, dtype=bool), sets, components=1)["B_housekeeping"]
+    assert raw[treated].mean() > 2 * raw[~treated].mean()  # composition looks like drift
+    assert adj[treated].mean() < 1.3 * adj[~treated].mean()  # removed

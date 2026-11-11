@@ -58,18 +58,23 @@ def chip_design(chips: np.ndarray) -> np.ndarray:
     return np.column_stack([chips == c for c in levels[1:]]).astype(float)
 
 
-def arm_scores(x: np.ndarray, treated: np.ndarray, island: np.ndarray, sets: dict) -> dict[str, np.ndarray]:
-    """Scores of every animal: treated against all controls, each control against the other controls."""
+def arm_scores(
+    x: np.ndarray, treated: np.ndarray, island: np.ndarray, sets: dict, *, components: int = 0
+) -> dict[str, np.ndarray]:
+    """Scores of every animal: treated against all controls, each control against the other controls.
+
+    ``components`` leading composition components of the controls' background CpGs are removed first.
+    """
     member = np.any([s for s, _ in sets.values()], axis=0)
     out: dict[str, np.ndarray] = {}
     controls = np.flatnonzero(~treated)
     rows = {}
-    ref = fit_reference(x[controls], island, ~member)
+    ref = fit_reference(x[controls], island, ~member, components=components)
     for i, sc in zip(np.flatnonzero(treated), _rows(score_against(x[treated], ref, sets)), strict=True):
         rows[i] = sc
     for c in controls:
         others = controls[controls != c]
-        sc = score_against(x[c : c + 1], fit_reference(x[others], island, ~member), sets)
+        sc = score_against(x[c : c + 1], fit_reference(x[others], island, ~member, components=components), sets)
         rows[int(c)] = {k: float(v[0]) for k, v in sc.items()}
     for k in rows[controls[0]]:
         out[k] = np.array([rows[i][k] for i in range(x.shape[0])])
