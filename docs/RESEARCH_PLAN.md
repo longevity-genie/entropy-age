@@ -32,6 +32,11 @@ means for clocks (RM8). An intervention test (RM3) is the one result that could 
   chromatin is matched, and an intervention that changes chromatin (high-fat diet in liver) should move the gap
   only through it.
 
+- 2026-11-11, same day: RM8 moves ahead of RM3. The one series of RM3 with processed values at hand (GSE199979)
+  is liver only, a slowly renewing tissue, and a high-fat diet changes chromatin as well as proliferation, so it
+  would not separate the readings; the series that would (GSE80672, blood) needs an alignment job first.
+  RM8's comparison with published clocks needs only data already here, and antonkulaga asked for it.
+
 ## The arms, in order, each with its rule
 
 ### A. RM7: does chromatin state account for the protection? (new, first)

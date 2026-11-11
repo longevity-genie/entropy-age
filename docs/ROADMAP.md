@@ -13,6 +13,15 @@ protection"). Blood's own chromatin removes 67-91 % of the gap; a bulk cortex ma
 Left: match brain CpGs on sorted-neuron and glia chromatin (NeuN+ / NeuN- ATAC or histone maps, e.g. PsychENCODE
 or Roadmap-era sorted data) to see whether the gap left in brain is chromatin a bulk map cannot resolve. Then
 RM3, whose intervention test becomes the check of the chromatin reading.
+## RM8 — Clocks from protected and unprotected CpGs
+
+**State:** building · **Owner:** lead
+
+Progress: first part built (`figures clocks`: published clocks' CpGs on the protection map), waiting on its run
+(R5); then the clocks trained on protected and unprotected CpGs. Plan: `docs/RESEARCH_PLAN.md`, arm C. A stochastic clock from unprotected CpGs and one from
+protected CpGs; the ratio of their rates in blood, brain and the mouse tissues, with bootstrap intervals.
+
+
 ## RM3 — Long- vs short-lived rodent groups
 
 **State:** unattended · **Owner:** lead
@@ -33,13 +42,6 @@ experiment (`simulate/selection.py`) before reading the data.
 - **Not usable as found:** the Mammalian Methylation Consortium's mouse intervention samples (GSE223748
   and related series) carry no group labels on GEO; the labels would have to come from EnsembleAge
   Table S1. No public Diversity Outbred or ITP multi-tissue methylation was found.
-
-## RM8 — Clocks from protected and unprotected CpGs
-
-**State:** after RM3 · **Owner:** lead
-
-Progress: planned (`docs/RESEARCH_PLAN.md`, arm C). A stochastic clock from unprotected CpGs and one from
-protected CpGs; the ratio of their rates in blood, brain and the mouse tissues, with bootstrap intervals.
 
 ## RM2 — A turnover gradient across many tissues (methylation)
 

@@ -72,6 +72,16 @@ def fetch_chromatin_cmd(overwrite: bool = False) -> None:
     typer.echo("\n".join(str(f) for f in files) + f"\n-> {ChromatinLayout(paths).segmentation('E062').parent}")
 
 
+@fetch_app.command("clocks")
+def fetch_clocks_cmd(overwrite: bool = False) -> None:
+    """Published clocks' CpGs and weights (biolearn's data at a pinned commit, each file hash-checked)."""
+    from entropy_age.data.clocks import fetch_clocks
+
+    paths = ProjectPaths.default().ensure()
+    files = fetch_clocks(paths, overwrite=overwrite)
+    typer.echo(f"{len(files)} clocks in {files[0].parent}")
+
+
 @fetch_app.command("mouse-annotation")
 def fetch_mouse_annotation_cmd(overwrite: bool = False) -> None:
     """Mammalian-array probe annotation (GEO GPL32543, ~200 MB) and MGI mouse-human orthologs."""
