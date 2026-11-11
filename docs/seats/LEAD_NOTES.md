@@ -10,3 +10,4 @@ Not yet seated.
 - Standing order from antonkulaga (direct message 639323775): work the research plan autonomously, change
   it on intermediate results, put blockers in `#agent-chat > human decisions` and go on with another arm.
   The plan is `docs/RESEARCH_PLAN.md`; the roadmap follows its order. RM7 is first.
+- antonkulaga (direct message 639326091): report every major milestone in `#entropy-age`, topic `milestones`.

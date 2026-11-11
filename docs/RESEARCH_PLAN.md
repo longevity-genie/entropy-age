@@ -86,5 +86,7 @@ what that predicts for their tissue behaviour; RM8 measures it).
 - Heavy steps run as Slurm jobs through `docs/RUNS.md`; the lead builds, the runner runs.
 - A blocker (missing data, a permission, a judgement only the person can make) is posted in
   `#agent-chat > human decisions`, with a default, and the next arm starts.
+- Every major milestone (an arm's result, a change of plan) is posted in the repository's channel, `#entropy-age >
+  milestones` (antonkulaga, 2026-11-11).
 - After each result: write it up in `docs/extension.md`, then reread this plan and change it if the
   result says so.
