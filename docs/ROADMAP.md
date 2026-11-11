@@ -4,6 +4,18 @@ Open work only, in order. Each item is a section `## RMn — name` with a line s
 owner. A done item leaves this file; `docs/CHANGELOG.md` says what landed.
 The order and the rule for each item are argued in `docs/RESEARCH_PLAN.md`.
 
+## RM15 — Directed demethylation outside promoters (is it stochastic?)
+
+**State:** building · **Owner:** lead
+
+Progress: asked by SvenDP (member, 2026-11-11): beyond variability at single loci, do specific intergenic regions
+lose methylation together with age, below per-CpG significance but visible in a PCA? Known: directed loss in
+late-replicating, CpG-poor domains (solo-WCGW; Zhou 2018, Endicott 2022). Our shield tests cover promoters only, and
+our composition components are top PCs of background CpGs, which may hold such a programme. Test: PCA of intergenic
+open-sea CpGs in Hannum and GSE41037; does a component track age beyond cell counts, load on solo-WCGW CpGs, and
+grow with doublings in the culture series? If so, model it as a directed term, apart from noise.
+
+
 ## RM10 — Shielding in short- against long-lived species
 
 **State:** building · **Owner:** lead
@@ -66,17 +78,6 @@ happens when chromatin is changed? Three sources, in order:
 2. Mouse knockouts: Tet3 heterozygous brain (GSE223748, at hand after R12); Tet2 and Dnmt3a mutant blood.
 3. Edited cells over time: CRISPRoff (Nunez et al. 2021) tracked imposed promoter methylation for months.
 Rule: a cohort with at least 10 carriers and matched controls on one platform.
-
-## RM15 — Directed demethylation outside promoters (is it stochastic?)
-
-**State:** after RM14 · **Owner:** lead
-
-Progress: asked by SvenDP (member, 2026-11-11): beyond variability at single loci, do specific intergenic regions
-lose methylation together with age, below per-CpG significance but visible in a PCA? Known: directed loss in
-late-replicating, CpG-poor domains (solo-WCGW; Zhou 2018, Endicott 2022). Our shield tests cover promoters only, and
-our composition components are top PCs of background CpGs, which may hold such a programme. Test: PCA of intergenic
-open-sea CpGs in Hannum and GSE41037; does a component track age beyond cell counts, load on solo-WCGW CpGs, and
-grow with doublings in the culture series? If so, model it as a directed term, apart from noise.
 
 ## RM3 — Interventions: replicate the CR result
 

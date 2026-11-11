@@ -17,6 +17,7 @@ from entropy_age.experiments import (
     fig5_real_data,
     gene_sets,
     human_tissues,
+    intergenic,
     interventions,
     mouse_rrbs_tissues,
     mouse_tissues,
@@ -53,6 +54,7 @@ FIGURES: dict[str, Callable[[Context], list[Path]]] = {
     "rrbs_tissues": mouse_rrbs_tissues.run,
     "species": species_shield.run,
     "mmc_interventions": consortium_interventions.run,
+    "intergenic": intergenic.run,
     "clocks": clock_cpgs.run,
     "per_person": per_person.run,
 }

@@ -116,6 +116,22 @@ def read_manifest(path: Path) -> pl.DataFrame:
     )
 
 
+def solo_wcgw(sequence: str, flank: int = 35) -> bool:
+    """Whether the probed CpG is a solo-WCGW: A or T on both sides, and no other CpG within ``flank`` bp.
+
+    ``sequence`` is the manifest's ``Forward_Sequence``, the probed CpG written ``[CG]`` inside its genomic context.
+    Solo-WCGW CpGs in late-replicating, CpG-poor domains lose methylation with cell divisions (Zhou et al. 2018).
+    A sequence without the bracket, or too short a context, is not counted as one.
+    """
+    i = sequence.find("[CG]")
+    if i < flank + 1 or len(sequence) < i + 4 + flank + 1:
+        return False
+    left, right = sequence[:i].upper(), sequence[i + 4 :].upper()
+    if left[-1] not in "AT" or right[0] not in "AT":
+        return False
+    return "CG" not in left[-flank:] and "CG" not in right[:flank]
+
+
 def read_manifest_450k(path: Path) -> tuple[pl.DataFrame, pl.DataFrame]:
     """The 450k manifest as ``(probes, links)``.
 
@@ -129,6 +145,7 @@ def read_manifest_450k(path: Path) -> tuple[pl.DataFrame, pl.DataFrame]:
         pl.col("Name").alias("cpg"),
         pl.col("CHR").alias("chr"),
         pl.col("MAPINFO").cast(pl.Int64, strict=False).alias("pos"),
+        pl.col("Forward_Sequence").fill_null("").alias("sequence"),
         pl.col("Relation_to_UCSC_CpG_Island").fill_null("OpenSea").alias("island_relation"),
         pl.col("UCSC_RefGene_Name").fill_null("").str.split(";").alias("symbol"),
         pl.col("UCSC_RefGene_Accession").fill_null("").str.split(";").alias("refseq"),
@@ -149,6 +166,7 @@ def read_manifest_450k(path: Path) -> tuple[pl.DataFrame, pl.DataFrame]:
         "pos",
         "island_relation",
         (pl.col("island_relation") == "Island").alias("cpg_island"),
+        pl.col("sequence").map_elements(solo_wcgw, return_dtype=pl.Boolean).alias("solo_wcgw"),
         pl.col("cpg").is_in(promoter_cpgs.implode()).alias("promoter"),
     )
     return probes, links
