@@ -75,6 +75,16 @@ def read_people(matrix: Path) -> pl.DataFrame:
     )
 
 
+def with_known_age(people: pl.DataFrame) -> pl.DataFrame:
+    """Where a series gives ages, only the people with one, so age can be a covariate; else everyone."""
+    if people["age"].is_null().all():
+        return people
+    dropped = people.filter(pl.col("age").is_null())
+    if dropped.height:
+        print(f"syndromes: {dropped.height} without an age left out: {dropped['sample'].to_list()}", file=sys.stderr)
+    return people.filter(pl.col("age").is_not_null())
+
+
 def read_betas(matrix: Path, features: list[str], samples: list[str]) -> np.ndarray:
     """The series matrix's beta table, samples by ``features`` (NaN where a CpG is missing)."""
     index = {f: i for i, f in enumerate(features)}
@@ -139,7 +149,7 @@ def run(ctx: Context) -> list[Path]:
     island = _islands(features, probes)
     rows, scored = [], []
     for gse, arms in SERIES.items():
-        people = read_people(matrix_path(ctx.paths, gse)).filter(pl.col("tissue") == "whole blood")
+        people = with_known_age(read_people(matrix_path(ctx.paths, gse)).filter(pl.col("tissue") == "whole blood"))
         x_all = read_betas(matrix_path(ctx.paths, gse), features, people["sample"].to_list())
         ok = ~np.isnan(x_all).any(axis=0)
         x_all = x_all[:, ok]

@@ -3,6 +3,13 @@
 Owned by the runner seat (`docs/seats/RUNNER.md`): one entry per run, newest first, with its inputs, the
 commit it ran, its job ids, its scale and seed, and its result or its failure with the cause.
 
+## R17 — chromatin-writer syndromes in blood (RM14), 2026-11-11
+
+- Commit e4ec847; `fetch syndromes`, `figures syndromes --scale paper --seed 42`; 8 cores, 32 GB.
+- Job 6430339 waited on the CPU cap, then completed in 26 min, 1.3 GB at peak.
+- Superseded by R18: one GSE97362 sample has no age, and the age covariate was dropped for the whole series
+  instead of the sample. Tables not committed.
+
 ## R16 — which way essential CpGs move under interventions (RM12), 2026-11-11
 
 - Commit d2d7dcb; `figures mmc_interventions --scale paper --seed 42`; 8 cores, 16 GB.

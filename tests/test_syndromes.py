@@ -5,7 +5,7 @@ import gzip
 import numpy as np
 import pytest
 
-from entropy_age.experiments.syndromes import effects, read_betas, read_people
+from entropy_age.experiments.syndromes import effects, read_betas, read_people, with_known_age
 
 MATRIX = """!Series_title\t"x"
 !Sample_geo_accession\t"GSM1"\t"GSM2"\t"GSM3"
@@ -58,3 +58,10 @@ def test_effect_is_the_carrier_difference_net_of_covariates():
     assert by["F"]["effect"] == pytest.approx(0.2, abs=0.01)
     assert by["S"]["effect"] == pytest.approx(-0.2, abs=0.01)
     assert by["F"]["control_mean"] == pytest.approx(f[~carrier].mean())
+
+
+def test_people_without_an_age_are_left_out_only_where_the_series_gives_ages(matrix):
+    people = read_people(matrix)
+    assert with_known_age(people)["sample"].to_list() == ["GSM1", "GSM2"]
+    no_ages = people.with_columns(age=None)
+    assert with_known_age(no_ages).height == 3

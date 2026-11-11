@@ -12,10 +12,9 @@ grammar (`unattended`, `urgent`, `building`, `after <R-id>` or `after job <slurm
 - the roadmap item it serves (`RMn`);
 - what the lead needs back (a table, a figure, a number), and anything the run must not do.
 
-## R17 — chromatin-writer syndromes in blood (RM14)
+## R18 — chromatin-writer syndromes in blood, with age (RM14)
 
-- What: `entropy-age fetch syndromes` (two series matrices, 0.7 GB, already on disk), then
-  `entropy-age figures syndromes --scale paper --seed 42`.
-- Resources: compute partition, 8 cores, 32 GB; time unknown (5-component leave-one-out over up to 125 controls).
-- Read: `data/output/syndromes/effects.csv`, F and S by arm, raw and with components; GSE74432 has no age
-  covariate.
+- What: `entropy-age figures syndromes --scale paper --seed 42` after people without an age are left out of a
+  series that gives ages (GSE97362: one sample).
+- Resources: compute partition, 8 cores, 8 GB (R17: 1.3 GB, 26 min).
+- Read: `data/output/syndromes/effects.csv`; `age_covariate` true for GSE97362, false for GSE74432.
