@@ -4,6 +4,7 @@ Newest first.
 
 ## Unreleased
 
+- RM12 (selection pressure under interventions, urgent), at antonkulaga's request; the artifact's tabs say which paper is ours (v11).
 - `docs/PAPER_DRAFT.md`: a first paper draft at antonkulaga's request, every claim marked solid, weak or missing, with what the paper still needs and a DFG proposal outline; the summary artifact gains a Paper tab with a graphical abstract (v9), after a plain-language rewrite (v8) checked by a simulated outside reader.
 - R12 (shielding across mammals, RM10) on the run brief and submitted.
 - RM10: `entropy-age fetch mammals` (the Mammalian Methylation Consortium, GSE223748: 15,043 samples, 349 species, about 4.5 GB) and figure `species`: the aging gap per species and tissue (at least 15 animals spanning 15 % of the species' lifespan), related to maximum lifespan with adult weight and tissue held fixed. Not yet run on the data.

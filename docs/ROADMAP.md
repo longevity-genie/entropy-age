@@ -15,6 +15,24 @@ repo (`taxonomy_anage_meta`). Plan: find the series with species, tissue and age
 the shield (aging gap against matched CpGs); regress it on maximum lifespan corrected for body mass, tissue held
 fixed. Rule: go on with every species-tissue with at least 10 animals across ages.
 
+## RM12 — Selection pressure under interventions
+
+**State:** urgent · **Owner:** lead
+
+Progress: asked by antonkulaga (2026-11-11): do interventions change the shield through selection, apart from
+chromatin? What we have: in B6D2F1 blood CR weakens the shield by a quarter (within one sequencing series, robust
+to composition), without slowing drift; the shield's share also grows with age in liver, which rarely renews. So
+neither proof nor disproof. Tests that would separate selection from chromatin, in order of cost:
+- **The same intervention in a renewing and a non-renewing tissue of the same animals.** Selection predicts CR
+  or rapamycin changes the shield in blood or gut and not in brain or muscle; chromatin predicts the same change
+  (or none) everywhere. Search for a multi-tissue CR or rapamycin series with at least 8 animals per arm.
+- **Interventions that raise selection pressure.** Chemotherapy, irradiation or transplantation shrink the stem
+  cell pool and let clones expand. Selection predicts a stronger shield afterwards, chromatin no change. Search
+  for blood methylation before and after such bottlenecks (for example bone-marrow transplant donors and
+  recipients, or patients after chemotherapy).
+- **Chromatin held fixed.** Match on chromatin first (RM7's method), then test the intervention on the remainder.
+  If the CR effect survives the matching, it is not a chromatin change.
+
 ## RM11 — Clocks of our own
 
 **State:** after RM10 · **Owner:** lead
