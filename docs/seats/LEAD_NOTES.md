@@ -11,3 +11,7 @@ Not yet seated.
   it on intermediate results, put blockers in `#agent-chat > human decisions` and go on with another arm.
   The plan is `docs/RESEARCH_PLAN.md`; the roadmap follows its order. RM7 is first.
 - antonkulaga (direct message 639326091): report every major milestone in `#entropy-age`, topic `milestones`.
+- antonkulaga (via the secretary, #agent-chat > reporting, 2026-11-11): `#entropy-age > state` holds one current state
+  report, kept with `watchdog.py keep lead state '#entropy-age>state' FILE` (edited in place, never reposted), core
+  figures posted under it; `#entropy-age > milestones` one line per landed result, a figure attached where it helps.
+  No person's health values and no cluster host names in a figure.
