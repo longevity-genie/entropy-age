@@ -4,6 +4,7 @@ Newest first.
 
 ## Unreleased
 
+- `docs/RESEARCH_PLAN.md`: the plan to a paper, at antonkulaga's request. The candidate claim moves from selection to chromatin; two new items, RM7 (does chromatin state account for the gap?, first) and RM8 (clocks from protected and unprotected CpGs); the roadmap reordered RM7, RM3, RM8, RM2, RM4, RM5.
 - RM6 leaves the roadmap, as the plan grammar wants of finished items; what is left of it (replicate arrays, outcomes) is in `docs/PER_PERSON_SCORE.md`.
 - RM6 done: the per-person score reproduces the cohort result one sample at a time (housekeeping `P` −0.0018 per decade in blood, −0.00036 in cortex), with reliability 0.96-0.997 against its own error, and blood's relative gap below the same donor's brain in 86-91 % of Lunnon donors. It does not separate selection from chromatin. `docs/extension.md`; `docs/PER_PERSON_SCORE.md` notes the two choices that differ from the design.
 - R2 done (13 min, 5.9 GB peak): `data/output/per_person/` and `docs/figures/per_person.png`; R2 leaves the run brief.
