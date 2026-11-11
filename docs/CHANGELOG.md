@@ -4,6 +4,7 @@ Newest first.
 
 ## Unreleased
 
+- R12 (shielding across mammals, RM10) on the run brief and submitted.
 - RM10: `entropy-age fetch mammals` (the Mammalian Methylation Consortium, GSE223748: 15,043 samples, 349 species, about 4.5 GB) and figure `species`: the aging gap per species and tissue (at least 15 animals spanning 15 % of the species' lifespan), related to maximum lifespan with adult weight and tissue held fixed. Not yet run on the data.
 - RM10 (shielding against species lifespan, urgent) and RM11 (clocks of our own), at antonkulaga's request.
 - RM9 filed: the same interval bias in `figures tissues`, to fix and rerun.
