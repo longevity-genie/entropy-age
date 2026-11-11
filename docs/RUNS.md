@@ -22,14 +22,6 @@ grammar (`unattended`, `urgent`, `building`, `after <R-id>` or `after job <slurm
   then `uv run entropy-age figures intergenic --scale paper --seed 42`.
 - Back to the lead: `data/output/intergenic/` and `docs/figures/intergenic.png`, time and peak memory.
 
-## R11 — the mouse figures with corrected intervals
-
-**State:** building · **Owner:** runner (job 6429326)
-
-- Serves **RM2** and **RM3**: reruns `figures interventions bxd rrbs_tissues --scale paper --seed 42` from the clone
-  at f52c6e5 or later, after R10's figure failed on the interval bias. The data are parsed.
-- Back to the lead: the three output folders and figures, time and peak memory.
-
 ## R12 — shielding across 349 mammal species (GSE223748)
 
 **State:** building · **Owner:** runner (job 6429555)

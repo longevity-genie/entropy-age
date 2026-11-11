@@ -3,6 +3,12 @@
 Owned by the runner seat (`docs/seats/RUNNER.md`): one entry per run, newest first, with its inputs, the
 commit it ran, its job ids, its scale and seed, and its result or its failure with the cause.
 
+## R11 — the mouse figures with corrected intervals (RM2, RM3), 2026-11-11
+
+- Commit f52c6e5; `figures interventions bxd rrbs_tissues --scale paper --seed 42`; 8 cores, 24 GB asked.
+- Job 6429326 completed in 54.4 min, 10.6 GB at peak. Every aging-gap point estimate now lies inside its interval;
+  the intervals widened toward zero and none of the essential-gene intervals crossed it.
+
 ## R10 — six mouse tissues with numeric ages (RM2), 2026-11-11
 
 - Commit d3e052d; `fetch rrbs-tissues` then `figures rrbs_tissues --scale paper --seed 42`; 8 cores, 64 GB asked.

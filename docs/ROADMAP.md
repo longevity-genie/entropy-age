@@ -108,8 +108,8 @@ turnover. Left:
   Like GTEx it says nothing of exercise, and satellite-cell divisions follow loading, injury and
   wasting, so muscle tests selection only in a cohort that records physical activity or training
   history beside age (to find; the fibre cohort GSE304045 records training but not age).
-- **Mouse replication:** Thompson 2018 (GSE120132; six tissues, two strains, 2-21 months, RRBS) built as
-  `figures rrbs_tissues`, waiting on its run (R10); Meer 2018 (GSE121141; liver, lung, heart, cortex, 6-30 months).
+- **Mouse replication:** Thompson 2018 (GSE120132) done (`figures rrbs_tissues`): the shield in all six tissues,
+  ordered by neither size nor growth by turnover. Left: Meer 2018 (GSE121141; liver, lung, heart, cortex, 6-30 months).
 - The fibre contrast (GSE304045) was uninformative: a dozen adults of similar age show too little
   between-person divergence. A within-tissue turnover contrast needs aged and young people.
 

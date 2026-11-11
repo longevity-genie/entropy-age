@@ -620,6 +620,31 @@ of 22 mice, in one strain. It needs a replication before it carries a claim.
 
 Tables: `data/output/interventions/` (`aging_gaps`, `intervention_effects`, `mouse_scores`, `set_sizes`).
 
+### Six tissues of the same strains: the shield does not follow turnover
+
+Thompson et al. 2018 (GSE120132, `entropy-age fetch rrbs-tissues`) measured blood, lung, kidney, liver, adipose and
+muscle of C57BL/6J and BALB/cByJ mice of both sexes at about 2, 10 and 20 months by RRBS. Figure `rrbs_tissues`
+(runs R10, R11) tests each tissue's promoter CpGs, strain and sex as covariates.
+
+![Six mouse tissues](figures/mouse_rrbs_tissues.png)
+
+| tissue (turnover) | housekeeping, entropy slope (SD, 95 % CI) | shield share F, per 10 months |
+|---|---|---|
+| blood (renewing) | −0.16 (−0.21 to −0.13) | −0.06 |
+| lung (slow) | −0.27 (−0.33 to −0.21) | −0.12 |
+| kidney (slow) | −0.33 (−0.47 to −0.24) | −0.09 |
+| liver (slow) | −0.26 (−0.33 to −0.21) | −0.06 |
+| adipose (slow) | −0.20 (−0.26 to −0.17) | −0.03 |
+| muscle (post-mitotic) | −0.16 (−0.21 to −0.12) | −0.02 (not significant) |
+
+* **Every tissue shows the shield.** Non-essential genes drift more in every tissue.
+* **Its size does not follow turnover.** Blood, the fastest-renewing tissue, has one of the weakest shields, no
+  stronger than muscle's. Selection predicts the reverse order.
+* **Its growth with age does not follow turnover either.** It is fastest in lung and kidney, about the same in
+  blood and liver, and absent in muscle. Selection would put blood first.
+
+Tables: `data/output/mouse_rrbs_tissues/` (`tissues`, `aging_gaps`, `age_effects`).
+
 ### A slowly renewing tissue: BXD mouse liver
 
 If the shield's growth with age came from selection among dividing stem cells, a tissue whose cells rarely
