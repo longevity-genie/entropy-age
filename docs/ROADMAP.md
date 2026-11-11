@@ -39,7 +39,7 @@ neither proof nor disproof. Tests that would separate selection from chromatin, 
 
 ## RM11 — Clocks of our own
 
-**State:** after RM10 · **Owner:** lead
+**State:** waits until R17 is read (RM14 first) · **Owner:** lead
 
 Progress: asked by antonkulaga (2026-11-11): can we build clocks from the entropy-age ideas, and do they capture
 more than conventional clocks? Candidates from the results: a stochastic clock from Polycomb CpGs with each
