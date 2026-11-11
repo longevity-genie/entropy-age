@@ -145,8 +145,8 @@ lifespan scaling as stem-cell dynamics (Crofts 2026), and per-person drift burde
 1. **Cross-species result (RM10)**, running. It decides whether the paper has a comparative headline.
 2. **Replication of the CR effect** in a second within-batch series.
 3. **Test-retest of the per-person score** on replicate arrays (public technical replicates exist on GEO).
-4. **A causal chromatin experiment.** This needs a wet lab: epigenome editing at a promoter in long-term culture.
-   It is the core of a proposal (below), not of this paper.
+4. **A causal chromatin test**, from public natural experiments first (RM14: chromatin-writer syndromes in blood,
+   mouse knockouts, edited cells over time); a wet-lab edit only for what those cannot show.
 5. Corrected blood-against-brain intervals (RM9).
 
 ## 5 DFG proposal: what has potential
@@ -154,10 +154,11 @@ lifespan scaling as stem-cell dynamics (Crofts 2026), and per-person drift burde
 DFG Sachbeihilfe (individual research grant), 3 years. Working title: *Chromatin-determined epigenetic
 stochasticity: mechanism, evolution and use in aging clocks.*
 
-- **WP1, causality (wet lab, the core).** Target active or repressive chromatin to chosen promoters with
-  dCas9-p300 or dCas9-KRAB. Do it in fibroblasts passaged for months, or kept quiescent, and measure drift
-  against untargeted look-alikes. This is the one experiment that turns our association into mechanism.
-  Partner: a lab with long-term culture and epigenome editing.
+- **WP1, causality.** First from public data: blood of people with a constitutional variant in a chromatin
+  writer (Sotos NSD1, Weaver EZH2, Tatton-Brown-Rahman DNMT3A, Kabuki KMT2D), mouse knockouts (Tet2, Tet3,
+  Dnmt3a) and CRISPRoff-edited cells tracked for months (RM14). Then, for what those cannot show, editing at chosen
+  promoters (dCas9-p300 or -KRAB) in primary cells, never cell lines (abnormal methylation, no age), confirmed in
+  blood, where clocks are read.
 - **WP2, selection in vivo.** Sort haematopoietic stem cells and mature blood from young, old and CR mice, and
   ask whether the shield's growth with age and its response to CR are stem-cell-intrinsic. It builds on the
   GSE80672 lead.

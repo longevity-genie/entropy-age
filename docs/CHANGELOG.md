@@ -4,6 +4,7 @@ Newest first.
 
 ## Unreleased
 
+- The draft's WP1 and the artifact (v15) take the natural experiments first: syndromes, knockouts, edited cells; no cell lines.
 - RM14 (natural experiments in chromatin) filed at antonkulaga's question on cell lines; the plan moves the causal test to public data first.
 - R13 (mouse interventions across tissues, RM12) submitted after R12.
 - RM12: figure `mmc_interventions`, the mouse intervention studies of the Mammalian Methylation Consortium (CR in liver, GHRKO in brain, kidney and liver, partial reprogramming, sleep disruption): each animal scored against its study's controls (leave one out for controls), the intervention's effect on drift and on the shield's share. Not yet run on the data.
