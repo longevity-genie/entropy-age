@@ -4,6 +4,7 @@ Newest first.
 
 ## Unreleased
 
+- The research programme is named apart from the paper's working title (plan, draft, artifact v13), at antonkulaga's request.
 - RM13 (answering the prior work) filed; RM4 gains a GTEx check on fast deaths only, at antonkulaga's note on health at death.
 - `docs/NOVELTY_REVIEW.md`: the core idea is published qualitatively (Teschendorff, West & Beck 2013; West et al. 2013); our novelty is design, the chromatin split and the dynamics. Three prior results cut against us (Hollmann 2020, Crofts 2026, Seeboth 2020). The paper draft takes the position in.
 - RM12 (selection pressure under interventions, urgent), at antonkulaga's request; the artifact's tabs say which paper is ours (v11).

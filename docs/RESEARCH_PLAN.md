@@ -1,10 +1,16 @@
-# Research plan: from the current results to a paper
+# Research plan: what shields genes from aging noise, and can we strengthen the shield?
 
 Asked by antonkulaga on 2026-11-11 (direct message): a plan with enough novelty to publish, changed as
 intermediate results come in, worked autonomously; a blocker goes to `#agent-chat > human decisions` and
 the work moves to another arm. The roadmap (`docs/ROADMAP.md`) holds the items in this order; this file
 holds why, and the rule that keeps each arm going or stops it. It is rewritten when a result changes the
 plan, and the change is said in `docs/CHANGELOG.md`.
+
+## Direction (antonkulaga, 2026-11-11)
+
+Explore interventions and other protections with more novelty potential, look for actionables, and keep every
+free slot of the account's share busy. A paper title is a working title for the current data and does not
+steer the research.
 
 ## Where the results stand (2026-11-11)
 

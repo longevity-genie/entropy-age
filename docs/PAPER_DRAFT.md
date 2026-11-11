@@ -1,4 +1,9 @@
-# Paper draft: Epigenetic clocks tick where chromatin lets them
+# Paper draft
+
+**Research programme:** what shields genes from epigenetic aging noise, and can we strengthen the shield?
+**Working paper title, from the current data only:** Epigenetic clocks tick where chromatin lets them. It
+describes the results so far, not the direction of the research, and changes as the running tests come in
+(antonkulaga, 2026-11-11: the research must not be biased by a temporary paper name).
 
 Draft started 2026-11-11 at antonkulaga's request. Every claim carries its status:
 
