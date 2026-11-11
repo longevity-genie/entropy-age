@@ -23,6 +23,7 @@ from entropy_age.experiments import (
     per_person,
     rna_gtex,
     rna_rodents,
+    species_shield,
     tissue_contrast,
 )
 from entropy_age.experiments.common import Context, Scale, ScaleName
@@ -49,6 +50,7 @@ FIGURES: dict[str, Callable[[Context], list[Path]]] = {
     "interventions": interventions.run,
     "bxd": bxd_liver.run,
     "rrbs_tissues": mouse_rrbs_tissues.run,
+    "species": species_shield.run,
     "clocks": clock_cpgs.run,
     "per_person": per_person.run,
 }

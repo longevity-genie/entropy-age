@@ -104,6 +104,20 @@ def fetch_rrbs_tissues_cmd(overwrite: bool = False) -> None:
     typer.echo(f"{len(files)} files\nsamples -> {layout.samples}")
 
 
+@fetch_app.command("mammals")
+def fetch_mammals_cmd(overwrite: bool = False) -> None:
+    """The Mammalian Methylation Consortium (GSE223748): sample sheet and normalised betas (about 4.5 GB)."""
+    from entropy_age.data.download import download
+    from entropy_age.experiments.species_shield import BETAS, GSE, layout
+
+    paths = ProjectPaths.default().ensure()
+    matrix, betas = layout(paths)
+    base = f"https://ftp.ncbi.nlm.nih.gov/geo/series/GSE223nnn/{GSE}"
+    download(f"{base}/matrix/{matrix.name}", matrix, overwrite=overwrite, timeout=600)
+    download(f"{base}/suppl/{BETAS}", betas, overwrite=overwrite, timeout=14400)
+    typer.echo(f"{matrix}\n{betas}")
+
+
 @fetch_app.command("mouse-annotation")
 def fetch_mouse_annotation_cmd(overwrite: bool = False) -> None:
     """Mammalian-array probe annotation (GEO GPL32543, ~200 MB) and MGI mouse-human orthologs."""

@@ -6,7 +6,7 @@ The order and the rule for each item are argued in `docs/RESEARCH_PLAN.md`.
 
 ## RM10 — Shielding in short- against long-lived species
 
-**State:** urgent · **Owner:** lead
+**State:** building · **Owner:** lead
 
 Progress: asked by antonkulaga (2026-11-11, #entropy-age): do long-lived species (human, naked mole rat, bats,
 whales) shield essential genes more than short-lived ones (mouse)? The mammalian methylation array measures the
