@@ -8,8 +8,9 @@ The order and the rule for each item are argued in `docs/RESEARCH_PLAN.md`.
 
 **State:** building · **Owner:** lead
 
-Progress: first part built (`figures clocks`: published clocks' CpGs on the protection map), waiting on its run
-(R5); then the clocks trained on protected and unprotected CpGs. Plan: `docs/RESEARCH_PLAN.md`, arm C. A stochastic clock from unprotected CpGs and one from
+Progress: first part done (`figures clocks`, R5, `docs/extension.md`): clock CpGs are enriched in chromatin that
+differs between tissues and in Polycomb states; Horvath's and PhenoAge's in housekeeping promoters; tissue
+offsets do not follow the chromatin share. Second part (`figures chromatin_clocks`) waits on R6. Plan: `docs/RESEARCH_PLAN.md`, arm C. A stochastic clock from unprotected CpGs and one from
 protected CpGs; the ratio of their rates in blood, brain and the mouse tissues, with bootstrap intervals.
 
 

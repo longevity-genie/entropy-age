@@ -562,6 +562,58 @@ courses, which have none, use the floor pooled over the experiments that do.
 Tables: `data/output/passaged_cells_sturm/` (as for GSE197512; the contact-inhibition and 3 % oxygen arms
 under `Study part 3` in `drift_coupling`; their slopes on days are in `arm_slopes.parquet`, not tracked).
 
+## Published clocks on the protection map (roadmap RM8)
+
+Where do the CpGs of published clocks sit, by the measures above? Figure `clocks` (run R5) takes 16 clocks
+from biolearn at a pinned commit (`entropy-age fetch clocks`, each file hash-checked), all on the 450k
+array's autosomes:
+
+* chronological: Horvath 2013, Horvath skin & blood, Hannum, Lin, the cortical clock;
+* phenotypic and pace: PhenoAge, DunedinPACE, DNAm telomere length, Zhang's 10 mortality CpGs;
+* the mitotic clock epiTOC1;
+* the stochastic clocks StocH, StocP, StocZ, which reuse the Horvath, PhenoAge and Zhang CpGs;
+* the causal clocks CausAge, DamAge and AdaptAge.
+
+![Clock CpGs](figures/clock_cpgs.png)
+
+| clock | CpGs | active TSS, blood / cortex | Polycomb or bivalent, blood / cortex | TSS activity differs between tissues | in housekeeping promoters | dispersion slope vs matched, blood / cortex (SD) |
+|---|---|---|---|---|---|---|
+| background | 60,000 | 0.24 / 0.33 | 0.27 / 0.17 | 0.12 | 0.09 | — |
+| Horvath 2013 (= StocH) | 353 | 0.42 / 0.67 | 0.34 / 0.15 | 0.25 | 0.22 | −0.11 / +0.13 |
+| PhenoAge (= StocP) | 513 | 0.43 / 0.60 | 0.31 / 0.18 | 0.25 | 0.17 | +0.08 / +0.09 |
+| Hannum | 69 | 0.22 / 0.35 | 0.51 / 0.30 | 0.33 | 0.06 | +0.15 / +0.05 |
+| Lin | 99 | 0.25 / 0.54 | 0.42 / 0.27 | 0.30 | 0.14 | −0.27 / +0.15 |
+| DunedinPACE | 173 | 0.17 / 0.24 | 0.34 / 0.28 | 0.19 | 0.02 | +0.19 / −0.09 |
+| Cortical | 343 | 0.29 / 0.42 | 0.32 / 0.20 | 0.20 | 0.08 | +0.22 / +0.35 |
+| epiTOC1 | 385 | 0.00 / 0.28 | 1.00 / 0.72 | 0.28 | 0.00 | +1.63 / +0.06 |
+| CausAge, DamAge, AdaptAge | 581–1,089 | 0.18 / 0.33–0.36 | 0.35–0.37 / 0.20 | 0.19–0.22 | 0.05–0.06 | +0.13–0.17 / −0.02–0.05 |
+
+* **Clocks favour CpGs whose chromatin differs between tissues.** 15–33 % of a clock's CpGs are in an active
+  TSS state in one tissue and not the other, against 12 % of background CpGs; every clock exceeds it. Most
+  are also enriched in Polycomb or bivalent chromatin in blood (0.31–0.51 against 0.27). epiTOC1, built
+  from Polycomb-target CpGs, is all Polycomb in blood.
+* **The two pan-tissue clocks of Horvath and PhenoAge do the opposite on one measure.** 22 % and 17 % of their
+  CpGs sit in housekeeping promoters, against 9 % of background, and 60–67 % are active TSS in cortex.
+  A clock meant to read every tissue has drawn on the gene class whose chromatin is active everywhere.
+* **Clock CpGs are not, as a rule, the fastest-diverging CpGs.** Against matched CpGs, their between-person
+  dispersion slope is within ±0.3 SD for every clock but one. Clocks track the mean, not the spread.
+  epiTOC1 is the exception in blood (+1.63 SD; +0.99 once blood chromatin is matched), as a mitotic clock
+  should be: its Polycomb CpGs diverge as blood cells divide. It is near zero in non-dividing cortex
+  (+0.06).
+* **A clock's tissue offset does not follow its chromatin.** In Lunnon's same donors, each clock's weighted
+  sum in brain minus blood ranges from −9 to +6 SD of the blood values. It does not track the share of
+  CpGs that switch state (Spearman 0.11, p 0.68, 16 clocks). Horvath 2013 has the smallest offsets (−0.2
+  on average) and DunedinPACE the largest. The prediction failed at this resolution: offsets are dominated
+  by each clock's weights, which a share of CpGs does not capture.
+
+Clocks are thus drawn, as the paper argued, from CpGs that move with age. By this map those are largely
+CpGs whose chromatin is set differently by tissue, Polycomb targets above all. The protected kind, active
+promoters of housekeeping genes, enters the clocks built to work across tissues. Whether a clock built
+from protected CpGs only reads tissues alike is the next run (R6).
+
+Tables: `data/output/clock_cpgs/` (`coverage`, `composition`, `drift`, `tissue_offsets`,
+`offset_vs_chromatin`).
+
 ## Chromatin accounts for blood's protection (roadmap RM7)
 
 The cohort tests match gene-set CpGs to background CpGs of the same island status and starting level. If

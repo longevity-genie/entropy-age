@@ -4,6 +4,7 @@ Newest first.
 
 ## Unreleased
 
+- RM8, first part: published clocks draw on CpGs whose TSS activity differs between blood and cortex (15-33 % of a clock's CpGs against 12 % of background) and on Polycomb states. The pan-tissue Horvath and PhenoAge CpGs are enriched in housekeeping promoters (22 % and 17 % against 9 %). Clock CpGs are not the fastest-diverging, except epiTOC1 in blood. A clock's brain-minus-blood offset does not follow its chromatin share (Spearman 0.11). `docs/extension.md`.
 - R5 done (11.8 min, 3.2 GB peak): `data/output/clock_cpgs/` and `docs/figures/clock_cpgs.png`; R5 leaves the run brief.
 - R6 (clocks from protected and unprotected CpGs, RM8) on the run brief and submitted.
 - RM8, second part: figure `chromatin_clocks`, elastic-net age clocks trained on equal-sized pools of CpGs that are active TSS in both blood and cortex, Polycomb or bivalent in both, or random, in Hannum and in Jaffe, tested on the other cohort and on Lunnon's same donors (brain-minus-blood offset). Not yet run on the data.
