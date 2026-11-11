@@ -42,6 +42,16 @@ more than conventional clocks? Candidates from the results: a stochastic clock f
 tissue's offset calibrated, and the per-person shield score beside it. "More" needs a readout beyond age: which
 clock tracks interventions (CR mice, GSE80672) and, later, outcomes in a cohort with follow-up.
 
+## RM13 — Answer the prior work (novelty review)
+
+**State:** after RM12 · **Owner:** lead
+
+Progress: `docs/NOVELTY_REVIEW.md`. To make the paper new, in order: (1) does essentiality still predict protection
+after matching on chromatin, expression level and breadth (a DepMap gradient within broadly expressed genes)?
+(2) absolute drift slopes beside the CR share; (3) clonality in the culture series where reads allow (epiallele
+structure), against Hollmann 2020; (4) read the species result against Crofts 2026 (stem-cell dynamics) and the
+floor of near-0 % essential promoters; (5) the shield score against Seeboth 2020's confounders.
+
 ## RM3 — Interventions: replicate the CR result
 
 **State:** after RM2 · **Owner:** lead
@@ -84,6 +94,8 @@ Progress: the turnover test is done in GTEx v10 (`figures rna_gtex`, 47 tissues)
 atlases (`figures rna_rodents`); see `docs/extension.md`. Mouse repeats the methylation result (brain
 without protection, heart with it), rat leans the same way, GTEx shows no turnover effect in spread.
 Left:
+- **Health at death (antonkulaga, 2026-11-11):** some GTEx donors died fast, others after long illness. Hardy is a
+  covariate already; rerun GTEx RNA and methylation on fast deaths only (Hardy 1-2) and say what moves.
 
 - **A stochastic RNA clock**, trained on simulated transcriptional noise as the paper does for
   methylation, tested on the rodent atlases (exact ages).
