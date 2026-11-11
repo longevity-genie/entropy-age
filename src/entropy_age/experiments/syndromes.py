@@ -252,6 +252,7 @@ def _figure(ctx: Context, table: pl.DataFrame) -> Path:
     fig.suptitle(
         "Constitutional chromatin-writer variants in blood: circles raw, squares with 5 composition components",
         x=0.02,
+        y=1.06,
         ha="left",
         fontsize=11,
         fontweight="bold",
