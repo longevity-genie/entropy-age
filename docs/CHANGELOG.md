@@ -4,6 +4,7 @@ Newest first.
 
 ## Unreleased
 
+- RM7: brain matched at cell-type resolution. `fetch chromatin` also takes the sorted-nucleus ATAC-seq of GSE96614 (NeuN+ and NeuN- prefrontal cortex), and `figures chromatin` adds, in brain, matchings on neuron and glia accessibility, alone and with the bulk state. Not yet run on the data.
 - RM7: chromatin accounts for blood's protection. Matching on blood's own chromHMM states removes 67-91 % of the essential-gene gap (housekeeping dispersion slope −0.289 → −0.034 SD in Hannum), brain's states only about 30 %; after matching, blood is no more protected than brain. A bulk cortex map removes 5-26 % in brain. `docs/extension.md`; RM7 continues with cell-type-resolved brain chromatin; the plan records the change.
 - R3 done (20.5 min, 5.2 GB peak): `data/output/chromatin_match/` and `docs/figures/chromatin_match.png`; R3 leaves the run brief.
 - R3 (the chromatin-matched gap, RM7) on the run brief and submitted.

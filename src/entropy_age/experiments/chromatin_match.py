@@ -16,6 +16,8 @@ tissue the matched gap is computed with strata
 * island x level x the tissue's own chromatin state,
 * island x level x the other tissue's state (a control: a state that is not the tissue's own should remove
   less),
+* in brain also island x level x neuron and glia accessibility (quartiles of mean log2 CPM in NeuN+ and NeuN-
+  nuclei of prefrontal cortex, GSE96614, or no peak), alone and with the bulk state,
 
 in SDs of the metric. Its interval comes from resampling the set's genes (the same draws for every
 variant, so the share of the gap removed has a paired interval). The interval covers which genes are in
@@ -35,7 +37,15 @@ import polars as pl
 
 from entropy_age import plots
 from entropy_age.data.annotation import AnnotationLayout
-from entropy_age.data.chromatin import EPIGENOMES, STATES, ChromatinLayout, cpg_states, read_segmentation
+from entropy_age.data.chromatin import (
+    EPIGENOMES,
+    STATES,
+    ChromatinLayout,
+    cpg_peak_values,
+    cpg_states,
+    read_segmentation,
+    read_sorted_atac,
+)
 from entropy_age.experiments.common import Context, write_table
 from entropy_age.experiments.per_person import _sets
 from entropy_age.experiments.tissue_contrast import (
@@ -62,6 +72,8 @@ OWN_AND_OTHER = {
 }
 N_RESAMPLES = {"paper": 200, "quick": 40}
 NO_STATE = "none"
+#: the matchings' kinds, in the colour order of the figure
+KINDS = ("island x level", "+ own state", "+ other state", "+ sorted ATAC", "+ own state + sorted ATAC")
 
 
 def strata_variants(island: np.ndarray, baseline: np.ndarray, states: dict[str, np.ndarray], tissue: str) -> dict:
@@ -73,7 +85,21 @@ def strata_variants(island: np.ndarray, baseline: np.ndarray, states: dict[str, 
     variants[f"+ other state ({other})"] = np.char.add(np.char.add(base, "|"), states[other])
     if own == "E062":
         variants["+ own state (E030)"] = np.char.add(np.char.add(base, "|"), states["E030"])
+    if own == "E073" and "NeuN+" in states:
+        cells = np.char.add(np.char.add(states["NeuN+"], "|"), states["NeuN-"])
+        variants["+ sorted ATAC (NeuN+, NeuN-)"] = np.char.add(np.char.add(base, "|"), cells)
+        own_state = variants[f"+ own state ({own})"]
+        variants["+ own state + sorted ATAC"] = np.char.add(np.char.add(own_state, "|"), cells)
     return variants
+
+
+def accessibility_bins(values: np.ndarray) -> np.ndarray:
+    """``"0"`` for a CpG in no peak, else the quartile (``"1"``-``"4"``) of its accessibility among CpGs in a peak."""
+    out = np.full(values.size, "0", dtype="<U1")
+    open_ = np.isfinite(values)
+    if open_.any():
+        out[open_] = (baseline_strata(values[open_], 4) + 1).astype(str)
+    return out
 
 
 def matched_gaps(
@@ -127,13 +153,17 @@ def _states(features: list[str], probes: pl.DataFrame, paths) -> dict[str, np.nd
     for epigenome in EPIGENOMES:
         state = cpg_states(frame, read_segmentation(layout.segmentation(epigenome)))
         out[epigenome] = state.fill_null(NO_STATE).to_numpy().astype(str)
+    peaks = read_sorted_atac(layout.sorted_brain)
+    for column, key in (("neuron", "NeuN+"), ("glia", "NeuN-")):
+        out[key] = accessibility_bins(cpg_peak_values(frame, peaks, column))
     return out
 
 
 def run(ctx: Context) -> list[Path]:
     if _inputs_missing(ctx, "chromatin"):
         return []
-    missing = [str(ChromatinLayout(ctx.paths).segmentation(e)) for e in EPIGENOMES]
+    layout = ChromatinLayout(ctx.paths)
+    missing = [str(layout.segmentation(e)) for e in EPIGENOMES] + [str(layout.sorted_brain)]
     missing = [m for m in missing if not Path(m).exists()]
     if missing:
         print(
@@ -222,7 +252,7 @@ def _figure(ctx: Context, gaps: pl.DataFrame, composition: pl.DataFrame) -> Path
                         xerr=[[r["gap_sd"] - r["ci_low"]], [r["ci_high"] - r["gap_sd"]]],
                         fmt="o",
                         ms=3,
-                        color=plots.PALETTE[["island x level", "+ own state", "+ other state"].index(kind)],
+                        color=plots.PALETTE[KINDS.index(kind)],
                         label=kind if (tissue, group, j) == (tissues[0], "housekeeping", j) else None,
                     )
                 ticks.append(y + 0.25)
@@ -237,15 +267,17 @@ def _figure(ctx: Context, gaps: pl.DataFrame, composition: pl.DataFrame) -> Path
         plots.label_panel(ax, "bc"[i])
 
     ax = axes[3]
-    own = gaps.filter(
-        pl.col("matching").str.starts_with("+ own state (E0")
-        & ~pl.col("matching").str.contains("E030")
-        & (pl.col("metric") != "entropy_slope")
-    )
-    for j, group in enumerate(("housekeeping", "core_essential")):
-        sub = own.filter(pl.col("group") == group)
-        xs = np.arange(sub.height) + (j - 0.5) * 0.35
-        ax.bar(xs, sub["share_removed"], width=0.35, color=plots.PALETTE[j], label=SET_LABELS[group])
+    shown = {
+        "+ own state": lambda m: m.str.starts_with("+ own state (E0") & ~m.str.contains("E030"),
+        "+ sorted ATAC": lambda m: m.str.starts_with("+ sorted ATAC"),
+        "+ own state + sorted ATAC": lambda m: m == "+ own state + sorted ATAC",
+    }
+    house = gaps.filter((pl.col("group") == "housekeeping") & (pl.col("metric") != "entropy_slope"))
+    ticks = house["tissue"].unique(maintain_order=True).to_list()
+    for j, (kind, match) in enumerate(shown.items()):
+        sub = house.filter(match(pl.col("matching")))
+        xs = np.array([ticks.index(t) for t in sub["tissue"]]) + (j - 1) * 0.27
+        ax.bar(xs, sub["share_removed"], width=0.27, color=plots.PALETTE[KINDS.index(kind)], label=kind)
         ax.errorbar(
             xs,
             sub["share_removed"],
@@ -254,12 +286,11 @@ def _figure(ctx: Context, gaps: pl.DataFrame, composition: pl.DataFrame) -> Path
             ecolor="black",
             lw=0.8,
         )
-    ticks = own.filter(pl.col("group") == "housekeeping")["tissue"].to_list()
     ax.set_xticks(range(len(ticks)), [t.replace(" (", "\n(") for t in ticks], fontsize=6, rotation=30, ha="right")
     ax.axhline(0.5, color=plots.MUTED, lw=0.8, ls=":")
     ax.axhline(0, color=plots.MUTED, lw=0.8)
-    ax.set(ylabel="Share of the gap removed by own chromatin", title="How much of the gap is chromatin?")
-    ax.legend(fontsize=7)
+    ax.set(ylabel="Share of the housekeeping gap removed", title="How much of the gap is chromatin?")
+    ax.legend(fontsize=6)
     plots.label_panel(ax, "d")
 
     fig.suptitle(

@@ -6,7 +6,7 @@ The order and the rule for each item are argued in `docs/RESEARCH_PLAN.md`.
 
 ## RM7 — Chromatin in brain at cell-type resolution
 
-**State:** unattended · **Owner:** lead
+**State:** building · **Owner:** lead
 
 Progress: the first part is done (`figures chromatin`, `docs/extension.md`, "Chromatin accounts for blood's
 protection"). Blood's own chromatin removes 67-91 % of the gap; a bulk cortex map removes 5-26 % in brain.
