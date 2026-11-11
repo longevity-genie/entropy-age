@@ -1,0 +1,17 @@
+clock,kind,cpgs,on_450k_autosomes
+Horvath 2013,chronological,353,353
+Horvath skin & blood,chronological,391,390
+Hannum,chronological,69,69
+Lin,chronological,99,99
+Zhang 10,mortality,10,10
+PhenoAge,phenotypic,513,513
+DunedinPACE,pace,173,173
+Cortical,chronological,345,343
+DNAm telomere length,phenotypic,140,136
+epiTOC1,mitotic,385,385
+StocH,stochastic,353,353
+StocP,stochastic,513,513
+StocZ,stochastic,514,514
+CausAge,causal,581,581
+DamAge,causal,1089,1089
+AdaptAge,causal,998,998
