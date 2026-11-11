@@ -4,6 +4,7 @@ Newest first.
 
 ## Unreleased
 
+- RM13 (1), first answer: what is left of the shield beyond chromatin. Little for core-essential genes in blood, a small clear remainder for housekeeping genes, more in brain (`docs/extension.md`, the novelty review's addendum).
 - R11 done (54 min, 10.6 GB): the mouse figures with corrected intervals; no conclusion moved. RM2's six-tissue result written up in `docs/extension.md`: the shield in all six tissues, its size and its growth with age ordered by neither by turnover.
 - R14 (RM15) submitted first; the other queued jobs lowered in priority.
 - RM15, first in the queue (SvenDP's question, antonkulaga: above everything): the 450k probe table gains solo-WCGW tags from each probe's flanking sequence; figure `intergenic` tests directed, coordinated loss at open-sea CpGs outside promoters (per-sample means against age; leading components, their age correlation and solo-WCGW weight) in Hannum blood and Jaffe cortex. Not yet run on the data.

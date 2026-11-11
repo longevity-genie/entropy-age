@@ -48,3 +48,9 @@ Close runners-up: Tong 2024 (PMID 38724732), Moqri 2024 (PMID 39009581), Endicot
   may be an artefact of conditioning on chromatin.
 - Claim 6: Seeboth 2020's warning, which the score must answer.
 - Claim 4: Hahn 2017's targeted methylation under DR could move the share without any loss of protection.
+
+## Addendum, same day: what is left beyond chromatin
+
+From R4's tables: after own-chromatin matching, core-essential genes in blood keep −0.02 SD (interval touching 0),
+housekeeping genes −0.03 to −0.05 SD (clear), and in brain both −0.03 to −0.06 SD. So the deflationary reading
+(active chromatin relabelled) holds for core-essential genes in blood, not for housekeeping genes or for brain.

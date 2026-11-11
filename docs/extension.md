@@ -820,6 +820,21 @@ Lunnon blood −0.081 becomes −0.015 (0.81).
   the five-mark states of purified blood cells, so part of the remaining gap may yet be chromatin. Brain's
   cells do not divide, so whatever is left there cannot come from selection among dividing cells.
 
+**What is left beyond chromatin (the novelty review's first question).** After matching on each tissue's own
+chromatin, the remainder (SD, 95 % interval over genes) is:
+
+| tissue | core essential | housekeeping |
+|---|---|---|
+| blood (Hannum, E062 / E030) | −0.016 (−0.034 to +0.003) / −0.020 (−0.038 to −0.001) | −0.034 (−0.042 to −0.025) / −0.050 (−0.058 to −0.041) |
+| Lunnon blood | −0.015 (−0.030 to +0.001) | −0.048 (−0.056 to −0.041) |
+| brain, bulk state + sorted ATAC | −0.035 to −0.058 | −0.026 to −0.048 |
+
+In blood, essentiality in the CRISPR sense adds almost nothing once chromatin is matched; being expressed in every
+tissue (housekeeping) keeps a small, clear remainder. In brain both remain, which may be chromatin the maps still
+miss. A referee's "active chromatin relabelled" is thus mostly right for core-essential genes in blood, and not
+the whole story for housekeeping genes or for brain. Finer maps of the same individuals, or a DepMap gradient within
+broadly expressed genes, would separate the two further.
+
 Together with the culture test (the gap is a constant fraction of drift, not growing with divisions),
 this moves the explanation from selection to chromatin. Essential genes drift less where, and to the
 extent that, their promoters are held in active chromatin in that tissue. Tissues differ because their

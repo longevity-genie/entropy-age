@@ -61,7 +61,9 @@ clock tracks interventions (CR mice, GSE80672) and, later, outcomes in a cohort 
 **State:** after RM12 · **Owner:** lead
 
 Progress: `docs/NOVELTY_REVIEW.md`. To make the paper new, in order: (1) does essentiality still predict protection
-after matching on chromatin, expression level and breadth (a DepMap gradient within broadly expressed genes)?
+after matching on chromatin, expression level and breadth? First answer from R4's tables (`docs/extension.md`):
+in blood, core-essential genes keep almost nothing beyond chromatin, housekeeping genes a small clear remainder,
+brain both; left: a DepMap gradient within broadly expressed genes, and expression level as a matching variable.
 (2) absolute drift slopes beside the CR share; (3) clonality in the culture series where reads allow (epiallele
 structure), against Hollmann 2020; (4) read the species result against Crofts 2026 (stem-cell dynamics) and the
 floor of near-0 % essential promoters; (5) the shield score against Seeboth 2020's confounders.
