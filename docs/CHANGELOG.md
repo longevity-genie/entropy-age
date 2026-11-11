@@ -4,6 +4,7 @@ Newest first.
 
 ## Unreleased
 
+- R14 (RM15) submitted first; the other queued jobs lowered in priority.
 - RM15, first in the queue (SvenDP's question, antonkulaga: above everything): the 450k probe table gains solo-WCGW tags from each probe's flanking sequence; figure `intergenic` tests directed, coordinated loss at open-sea CpGs outside promoters (per-sample means against age; leading components, their age correlation and solo-WCGW weight) in Hannum blood and Jaffe cortex. Not yet run on the data.
 - RM15 (directed demethylation outside promoters) filed, from SvenDP's question.
 - The lead wakes on a person's post anywhere in #entropy-age (`wake_people`), at antonkulaga's request.
