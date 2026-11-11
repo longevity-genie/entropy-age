@@ -76,13 +76,22 @@ def read_people(matrix: Path) -> pl.DataFrame:
 
 
 def with_known_age(people: pl.DataFrame) -> pl.DataFrame:
-    """Where a series gives ages, only the people with one, so age can be a covariate; else everyone."""
+    """Where a series gives ages, only the people with one within the controls' age range, else everyone.
+
+    Age then enters as a covariate without extrapolating beyond the controls (infants' blood differs in kind).
+    """
     if people["age"].is_null().all():
         return people
     dropped = people.filter(pl.col("age").is_null())
     if dropped.height:
         print(f"syndromes: {dropped.height} without an age left out: {dropped['sample'].to_list()}", file=sys.stderr)
-    return people.filter(pl.col("age").is_not_null())
+    known = people.filter(pl.col("age").is_not_null())
+    ages = known.filter(pl.col("disease") == CONTROL)["age"]
+    lo, hi = ages.min(), ages.max()
+    outside = known.filter((pl.col("age") < lo) | (pl.col("age") > hi))
+    if outside.height:
+        print(f"syndromes: {outside.height} outside the controls' ages {lo:g}-{hi:g} left out", file=sys.stderr)
+    return known.filter(pl.col("age").is_between(lo, hi))
 
 
 def read_betas(matrix: Path, features: list[str], samples: list[str]) -> np.ndarray:

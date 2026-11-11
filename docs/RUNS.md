@@ -14,7 +14,8 @@ grammar (`unattended`, `urgent`, `building`, `after <R-id>` or `after job <slurm
 
 ## R18 — chromatin-writer syndromes in blood, with age (RM14)
 
-- What: `entropy-age figures syndromes --scale paper --seed 42` after people without an age are left out of a
-  series that gives ages (GSE97362: one sample).
+- What: `entropy-age figures syndromes --scale paper --seed 42` after a series that gives ages keeps only people
+  with one inside the controls' age range (GSE97362: controls 2-19 y; 1 without an age and 58 carriers, many
+  infants, left out).
 - Resources: compute partition, 8 cores, 8 GB (R17: 1.3 GB, 26 min).
 - Read: `data/output/syndromes/effects.csv`; `age_covariate` true for GSE97362, false for GSE74432.

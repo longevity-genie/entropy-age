@@ -4,7 +4,7 @@ Newest first.
 
 ## Unreleased
 
-- `figures syndromes` leaves out people without an age where the series gives ages, so age enters as a covariate (R17 had dropped it for all of GSE97362).
+- `figures syndromes` keeps, where a series gives ages, only people with one inside the controls' age range, so age enters as a covariate without extrapolating to infants (R17 had dropped age for all of GSE97362).
 - `fetch syndromes` and `figures syndromes` (RM14): blood of people with constitutional variants in chromatin writers (NSD1, EZH2: GSE74432; KMT2D, CHD7: GSE97362), each scored against the series' controls, raw and with 5 composition components. `arm_scores` takes `components`.
 - R16 done: under Tet3 loss essential CpGs gain methylation (S +0.012, +0.014), consistent with TET's role; S rises in other arms too, so not specific yet.
 - Per-sample scores gain `S`, the signed shift: above 0 when set CpGs gained methylation relative to look-alikes. `figures mmc_interventions` reports its effect beside `B` and `F`.

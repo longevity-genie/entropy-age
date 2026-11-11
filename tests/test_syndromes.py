@@ -3,6 +3,7 @@
 import gzip
 
 import numpy as np
+import polars as pl
 import pytest
 
 from entropy_age.experiments.syndromes import effects, read_betas, read_people, with_known_age
@@ -62,6 +63,13 @@ def test_effect_is_the_carrier_difference_net_of_covariates():
 
 def test_people_without_an_age_are_left_out_only_where_the_series_gives_ages(matrix):
     people = read_people(matrix)
-    assert with_known_age(people)["sample"].to_list() == ["GSM1", "GSM2"]
+    assert with_known_age(people)["sample"].to_list() == ["GSM1"]  # the carrier, 12, is older than the control
     no_ages = people.with_columns(age=None)
     assert with_known_age(no_ages).height == 3
+
+
+def test_carriers_outside_the_controls_ages_are_left_out(matrix):
+    people = read_people(matrix).with_columns(age=pl.Series([4.0, 5.0, 10.0]))
+    assert with_known_age(people)["sample"].to_list() == ["GSM1", "GSM2", "GSM3"]
+    people = people.with_columns(age=pl.Series([4.0, 0.1, 10.0]))
+    assert with_known_age(people)["sample"].to_list() == ["GSM1", "GSM3"]
