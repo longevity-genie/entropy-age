@@ -4,6 +4,7 @@ Newest first.
 
 ## Unreleased
 
+- RM3: figure `bxd`, the BXD mouse liver of GSE199979 (321 females, 45 strains, chow or high-fat diet): the aging gap with strain as covariates, and per-mouse drift and shield share against age and diet, strain held fixed. It tests whether the shield's growth with age needs a renewing tissue. The Cole et al. liver WGBS series (GSE89273, GSE89274) have about 4 mice per arm, below the plan's 8, and are not used. Not yet run on the data.
 - RM3, GSE80672: mouse blood repeats the human shield with exact ages; in living blood the shield's share grows with age (F −0.05 per 10 months); CR weakens it by a quarter in the within-batch B6D2F1 comparison (+0.025, p 0.002 with composition components), without slowing drift; the C57BL/6 CR comparison crosses sample series and is not read. The plan's claim becomes two-part; RM3 stays first, to replicate it.
 - R8 done (37.5 min, 10.6 GB peak): `data/output/interventions/` and `docs/figures/interventions.png`; R8 leaves the run brief.
 - R7 done (53 min, 19.7 GB peak for the parse); R8 (the composition check) submitted.
