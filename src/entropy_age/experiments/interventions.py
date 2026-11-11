@@ -18,7 +18,10 @@ CpG-island status and young-reference level decile:
    the matched background deviation ``B`` (how far a mouse has drifted) and the relative gap ``F``. Each
    intervention is a term in an OLS within its strain: ``B`` or ``F`` ~ intervention (+ age where the
    ages vary). Comparisons are only within a strain, since strain differences (and their SNPs in RRBS
-   reads) shift every CpG.
+   reads) shift every CpG. Every score is also computed with five composition components of the young
+   reference's background CpGs removed (CR shifts the blood cell mix), and each comparison says whether
+   treated and control mice share a sample series (``same_series``, from the titles' prefixes): the
+   C57BL/6 CR mice were sequenced as a series of their own, the B6D2F1 CR mice with their controls.
 
 Run as a job: ``entropy-age fetch rrbs`` (downloads and parses about 3 GB), then
 ``entropy-age figures interventions``.
@@ -45,6 +48,8 @@ from entropy_age.stochasticity import baseline_strata, compare_groups, drift_met
 
 REFERENCE_MONTHS = (3.0, 6.0)
 N_BOOT = {"paper": 200, "quick": 30}
+#: per-mouse scores without and with five composition components fitted on the young reference
+COMPONENTS = (0, 5)
 #: comparison -> (strain, treated rows, control rows, age adjusted)
 COMPARISONS = {
     "CR, C57BL/6": ("C57BL/6", {"diet": "Calorie Restricted"}, {"diet": "standard"}, True),
@@ -178,35 +183,42 @@ def run(ctx: Context) -> list[Path]:
     sets = _sets(features, members)
     member = np.any([s for s, _ in sets.values()], axis=0)
     ref = wt[(ages[wt] >= REFERENCE_MONTHS[0]) & (ages[wt] <= REFERENCE_MONTHS[1])]
-    reference = fit_reference(x[ref], isl, ~member)
     scored = np.setdiff1d(np.arange(x.shape[0]), ref)
-    scores = pl.DataFrame(
-        {"sample": samples["sample"].to_numpy()[scored], **score_against(x[scored], reference, sets)}
-    ).join(samples, on="sample")
-    write_table(scores, out / "mouse_scores")
-
-    rows = []
-    for name, (strain, treat, control, adjust) in COMPARISONS.items():
-        sel = scores.filter(_select(scores, strain, treat) | _select(scores, strain, control))
-        if name == "CR, C57BL/6":
-            sel = sel.filter(pl.col("age_months").is_between(*CR_WINDOW))
-        treated = sel.select(_select(sel, strain, treat).alias("t"))["t"].to_numpy()
-        if treated.sum() < 3 or (~treated).sum() < 3:
-            print(
-                f"interventions: {name}: {int(treated.sum())} treated, {int((~treated).sum())} controls; skipped",
-                file=sys.stderr,
-            )
-            continue
-        for group in sets:
-            for measure in ("B", "F", "P"):
-                rows.append(
-                    {
-                        "comparison": name,
-                        "group": group,
-                        "measure": measure,
-                        **effect(sel, f"{measure}_{group}", treated, adjust),
-                    }
+    samples = samples.with_columns(series=samples["title"].str.extract(r"^(\d*[A-Za-z]+)").str.to_uppercase())
+    all_scores, rows = [], []
+    for k in COMPONENTS:
+        reference = fit_reference(x[ref], isl, ~member, components=k)
+        scores = pl.DataFrame(
+            {"sample": samples["sample"].to_numpy()[scored], **score_against(x[scored], reference, sets)}
+        ).join(samples, on="sample")
+        all_scores.append(scores.with_columns(components=pl.lit(k)))
+        for name, (strain, treat, control, adjust) in COMPARISONS.items():
+            sel = scores.filter(_select(scores, strain, treat) | _select(scores, strain, control))
+            if name == "CR, C57BL/6":
+                sel = sel.filter(pl.col("age_months").is_between(*CR_WINDOW))
+            treated = sel.select(_select(sel, strain, treat).alias("t"))["t"].to_numpy()
+            if treated.sum() < 3 or (~treated).sum() < 3:
+                print(
+                    f"interventions: {name}: {int(treated.sum())} treated, {int((~treated).sum())} controls; skipped",
+                    file=sys.stderr,
                 )
+                continue
+            same = set(sel.filter(pl.Series(treated))["series"]) == set(sel.filter(pl.Series(~treated))["series"])
+            for group in sets:
+                for measure in ("B", "F", "P"):
+                    est = effect(sel, f"{measure}_{group}", treated, adjust)
+                    rows.append(
+                        {
+                            "comparison": name,
+                            "components": k,
+                            "same_series": same,
+                            "group": group,
+                            "measure": measure,
+                            **est,
+                        }
+                    )
+    scores = pl.concat(all_scores)
+    write_table(scores, out / "mouse_scores")
     effects = pl.DataFrame(rows)
     write_table(effects, out / "intervention_effects")
     return [_figure(ctx, aging, scores, effects)]
@@ -236,7 +248,7 @@ def _figure(ctx: Context, aging: pl.DataFrame, scores: pl.DataFrame, effects: pl
 
     for i, measure in enumerate(("B", "F")):
         ax = axes[1 + i]
-        b6 = scores.filter(pl.col("strain") == "C57BL/6")
+        b6 = scores.filter((pl.col("strain") == "C57BL/6") & (pl.col("components") == 0))
         for j, diet in enumerate(("standard", "Calorie Restricted")):
             sub = b6.filter(pl.col("diet") == diet)
             ax.scatter(
@@ -253,18 +265,21 @@ def _figure(ctx: Context, aging: pl.DataFrame, scores: pl.DataFrame, effects: pl
     ax = axes[3]
     sel = effects.filter((pl.col("group") == "housekeeping") & pl.col("measure").is_in(["B", "F"]))
     comps = sel["comparison"].unique(maintain_order=True).to_list()
-    for j, measure in enumerate(("B", "F")):
-        sub = {r["comparison"]: r for r in sel.filter(pl.col("measure") == measure).iter_rows(named=True)}
-        ys = np.arange(len(comps)) + (j - 0.5) * 0.3
+    for j, (measure, k) in enumerate((("B", 0), ("F", 0), ("F", 5))):
+        sub = {
+            r["comparison"]: r
+            for r in sel.filter((pl.col("measure") == measure) & (pl.col("components") == k)).iter_rows(named=True)
+        }
+        ys = np.arange(len(comps)) + (j - 1) * 0.25
         rel = np.array([sub[c]["effect"] / abs(sub[c]["control_mean"]) for c in comps])
         err = np.array([1.96 * sub[c]["se"] / abs(sub[c]["control_mean"]) for c in comps])
         ax.errorbar(
             rel,
             ys,
             xerr=err,
-            fmt="os"[j],
+            fmt="osD"[j],
             color=plots.PALETTE[j + 2],
-            label={"B": "drift B", "F": "shield share F"}[measure],
+            label={"B": "drift B", "F": "shield share F"}[measure] + (f", {k} components" if k else ""),
         )
     ax.axvline(0, color=plots.MUTED, lw=0.8)
     ax.set_yticks(range(len(comps)), comps, fontsize=7)

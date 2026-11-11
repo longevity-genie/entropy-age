@@ -4,6 +4,7 @@ Newest first.
 
 ## Unreleased
 
+- RM3: `figures interventions` also scores every mouse with five composition components of the young reference removed, and marks whether treated and control mice share a sample series (the C57BL/6 CR mice do not).
 - R7 (interventions in mouse blood RRBS, RM3) on the run brief and submitted.
 - RM3: `entropy-age fetch rrbs` (mouse blood RRBS of GSE80672, its per-sample tables on GRCm38, with UCSC mm10 NCBI RefSeq promoters, Entrez links and CpG islands) and figure `interventions`: the aging shield in standard C57BL/6 blood with exact ages, and per-mouse drift and shield share under caloric restriction (two strains), GHRKO and Snell dwarfism, each within its strain. Not yet run on the data.
 - RM8 done: no chromatin class gives a single-tissue clock that transfers (out-of-tissue r 0.06-0.70); which pool transfers best depends on the direction; Polycomb CpGs give the most reproducible brain-minus-blood offset (SD 4-6 years between draws against 20-42). RM8 leaves the roadmap; RM3 is next.
