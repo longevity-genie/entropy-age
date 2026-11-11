@@ -21,3 +21,11 @@ grammar (`unattended`, `urgent`, `building`, `after <R-id>` or `after job <slurm
   clocks are fetched, `entropy-age fetch clocks`).
 - Back to the lead: `data/output/clock_cpgs/` and `docs/figures/clock_cpgs.png`, time and peak memory.
 
+## R6 — clocks from protected and unprotected CpGs
+
+**State:** building · **Owner:** runner (job 6428565)
+
+- Serves **RM8**, second part.
+- Command, from the clone at 7d40536 or later: `uv run entropy-age figures chromatin_clocks --scale paper --seed 42`.
+- Back to the lead: `data/output/chromatin_clocks/` and `docs/figures/chromatin_clocks.png`, time and peak memory.
+
