@@ -12,11 +12,4 @@ grammar (`unattended`, `urgent`, `building`, `after <R-id>` or `after job <slurm
 - the roadmap item it serves (`RMn`);
 - what the lead needs back (a table, a figure, a number), and anything the run must not do.
 
-## R6 — clocks from protected and unprotected CpGs
-
-**State:** building · **Owner:** runner (job 6428565)
-
-- Serves **RM8**, second part.
-- Command, from the clone at 7d40536 or later: `uv run entropy-age figures chromatin_clocks --scale paper --seed 42`.
-- Back to the lead: `data/output/chromatin_clocks/` and `docs/figures/chromatin_clocks.png`, time and peak memory.
-
+No runs are planned.

@@ -1,0 +1,121 @@
+pool,draw,trained_on,region,donors,brain_minus_blood,se
+active in both,0,blood (Hannum),frontal cortex,74,7.634320933742972,0.9187156304674039
+active in both,0,blood (Hannum),superior temporal gyrus,75,5.678468338419756,0.9275400487805311
+active in both,0,blood (Hannum),entorhinal cortex,71,8.100080915281714,1.0886078076325891
+active in both,0,blood (Hannum),cerebellum,71,-6.743968227617506,0.8878418985451834
+active in both,0,cortex (Jaffe),frontal cortex,74,34.25758234654288,0.7492030333387066
+active in both,0,cortex (Jaffe),superior temporal gyrus,75,35.155923789753594,0.7137254852838817
+active in both,0,cortex (Jaffe),entorhinal cortex,71,30.746096890107356,0.7735496902921527
+active in both,0,cortex (Jaffe),cerebellum,71,23.520034527862137,0.8551729731379937
+active in both,1,blood (Hannum),frontal cortex,74,13.402391715168115,1.026935628334495
+active in both,1,blood (Hannum),superior temporal gyrus,75,9.46370213440586,0.9754308051609383
+active in both,1,blood (Hannum),entorhinal cortex,71,15.704208086386204,1.2405882722178034
+active in both,1,blood (Hannum),cerebellum,71,-23.330776696641628,1.1925609560056256
+active in both,1,cortex (Jaffe),frontal cortex,74,21.865124993177556,0.7470600233822633
+active in both,1,cortex (Jaffe),superior temporal gyrus,75,26.267928345666206,0.827300576881148
+active in both,1,cortex (Jaffe),entorhinal cortex,71,21.919656725115292,0.8163766008983795
+active in both,1,cortex (Jaffe),cerebellum,71,5.875852136999751,0.7641408845379778
+active in both,2,blood (Hannum),frontal cortex,74,13.963315982364843,0.8063728829539232
+active in both,2,blood (Hannum),superior temporal gyrus,75,15.215096062268707,0.8029469364903843
+active in both,2,blood (Hannum),entorhinal cortex,71,12.708486023754114,0.9562132589335208
+active in both,2,blood (Hannum),cerebellum,71,-2.8274426988773715,0.9760664917700945
+active in both,2,cortex (Jaffe),frontal cortex,74,53.17877974927967,0.6984569624522536
+active in both,2,cortex (Jaffe),superior temporal gyrus,75,54.9236044371039,0.699799414120111
+active in both,2,cortex (Jaffe),entorhinal cortex,71,53.556462276771825,0.8563643327647679
+active in both,2,cortex (Jaffe),cerebellum,71,31.708532034292187,0.616630412130319
+active in both,3,blood (Hannum),frontal cortex,74,-72.97437428602049,0.98774322388046
+active in both,3,blood (Hannum),superior temporal gyrus,75,-74.17904026152281,0.893103314480951
+active in both,3,blood (Hannum),entorhinal cortex,71,-69.04175888539925,1.046462215792689
+active in both,3,blood (Hannum),cerebellum,71,-105.02520238350532,1.0320901124257889
+active in both,3,cortex (Jaffe),frontal cortex,74,43.452494125544774,0.7361864081423302
+active in both,3,cortex (Jaffe),superior temporal gyrus,75,46.37329315783064,0.7566663845713288
+active in both,3,cortex (Jaffe),entorhinal cortex,71,43.70250764381106,0.8102291075051463
+active in both,3,cortex (Jaffe),cerebellum,71,16.93716304124232,0.7390563029646424
+active in both,4,blood (Hannum),frontal cortex,74,-5.549843877130422,0.698527649853174
+active in both,4,blood (Hannum),superior temporal gyrus,75,-2.9873369935085834,0.79676434860861
+active in both,4,blood (Hannum),entorhinal cortex,71,-2.5327280223046555,0.7985088820402637
+active in both,4,blood (Hannum),cerebellum,71,-15.508272825926356,0.9256322916896884
+active in both,4,cortex (Jaffe),frontal cortex,74,38.64197984273838,0.7425684627288703
+active in both,4,cortex (Jaffe),superior temporal gyrus,75,43.2897145128619,0.8488535042555082
+active in both,4,cortex (Jaffe),entorhinal cortex,71,36.96227491437231,0.9362504828560979
+active in both,4,cortex (Jaffe),cerebellum,71,23.37588482849003,0.6191454919803443
+Polycomb in both,0,blood (Hannum),frontal cortex,74,-24.54574370881439,1.0091168007549394
+Polycomb in both,0,blood (Hannum),superior temporal gyrus,75,-27.375812786256393,0.9505948679762931
+Polycomb in both,0,blood (Hannum),entorhinal cortex,71,-26.573500811255155,0.9911190399899777
+Polycomb in both,0,blood (Hannum),cerebellum,71,-35.925047908303135,1.1722064899815483
+Polycomb in both,0,cortex (Jaffe),frontal cortex,74,44.689054753498745,1.4975808002906874
+Polycomb in both,0,cortex (Jaffe),superior temporal gyrus,75,42.040915600093264,1.5063598573829942
+Polycomb in both,0,cortex (Jaffe),entorhinal cortex,71,43.9498134413691,1.632170420975846
+Polycomb in both,0,cortex (Jaffe),cerebellum,71,35.59348540680695,1.7928556689725526
+Polycomb in both,1,blood (Hannum),frontal cortex,74,-34.02602069229906,1.0171275924426082
+Polycomb in both,1,blood (Hannum),superior temporal gyrus,75,-38.96721600247452,1.0767100195269557
+Polycomb in both,1,blood (Hannum),entorhinal cortex,71,-31.32061429265652,1.1934230898840392
+Polycomb in both,1,blood (Hannum),cerebellum,71,-59.98423802690228,1.0384459678055884
+Polycomb in both,1,cortex (Jaffe),frontal cortex,74,45.15559252480319,1.3130544650741283
+Polycomb in both,1,cortex (Jaffe),superior temporal gyrus,75,43.168122990106745,1.3481454202267862
+Polycomb in both,1,cortex (Jaffe),entorhinal cortex,71,47.10364934172208,1.4846674658965169
+Polycomb in both,1,cortex (Jaffe),cerebellum,71,15.20047648452073,1.5386302430912786
+Polycomb in both,2,blood (Hannum),frontal cortex,74,-21.47525476814743,1.0292867966365187
+Polycomb in both,2,blood (Hannum),superior temporal gyrus,75,-23.4983697829784,1.061721975281804
+Polycomb in both,2,blood (Hannum),entorhinal cortex,71,-22.246473958578708,1.0251909119057034
+Polycomb in both,2,blood (Hannum),cerebellum,71,-46.234548437497686,1.1272830680525203
+Polycomb in both,2,cortex (Jaffe),frontal cortex,74,36.03503677663877,1.471500974355377
+Polycomb in both,2,cortex (Jaffe),superior temporal gyrus,75,34.49937720407339,1.497386272970522
+Polycomb in both,2,cortex (Jaffe),entorhinal cortex,71,39.28476700827779,1.6187829017866762
+Polycomb in both,2,cortex (Jaffe),cerebellum,71,0.34568303418704815,1.625937097416519
+Polycomb in both,3,blood (Hannum),frontal cortex,74,-27.330964971490573,0.8366423087591878
+Polycomb in both,3,blood (Hannum),superior temporal gyrus,75,-29.265415389256397,0.8110672760829366
+Polycomb in both,3,blood (Hannum),entorhinal cortex,71,-25.82113377448224,0.8997725544274304
+Polycomb in both,3,blood (Hannum),cerebellum,71,-35.10568026601228,0.8927318382013668
+Polycomb in both,3,cortex (Jaffe),frontal cortex,74,40.184599926319706,1.192487199847188
+Polycomb in both,3,cortex (Jaffe),superior temporal gyrus,75,38.91331264706157,1.2145418242093566
+Polycomb in both,3,cortex (Jaffe),entorhinal cortex,71,42.80755778211154,1.3354138672045333
+Polycomb in both,3,cortex (Jaffe),cerebellum,71,1.5338074361636738,1.2245057312405396
+Polycomb in both,4,blood (Hannum),frontal cortex,74,-19.19132293849895,1.186532423984662
+Polycomb in both,4,blood (Hannum),superior temporal gyrus,75,-22.645994188013685,1.0787929911104799
+Polycomb in both,4,blood (Hannum),entorhinal cortex,71,-19.70984062934589,1.11220360236887
+Polycomb in both,4,blood (Hannum),cerebellum,71,-51.53647497406084,1.2373150105733615
+Polycomb in both,4,cortex (Jaffe),frontal cortex,74,45.62894208035791,1.3279854527602593
+Polycomb in both,4,cortex (Jaffe),superior temporal gyrus,75,44.05197474162076,1.2661630376428807
+Polycomb in both,4,cortex (Jaffe),entorhinal cortex,71,47.63414061906387,1.3732770552560438
+Polycomb in both,4,cortex (Jaffe),cerebellum,71,3.1423968640245707,1.3755661102964123
+any,0,blood (Hannum),frontal cortex,74,-13.609791210517477,0.7444830941951439
+any,0,blood (Hannum),superior temporal gyrus,75,-16.178967840336572,0.7607181716861373
+any,0,blood (Hannum),entorhinal cortex,71,-12.282952669019364,0.8029143202079312
+any,0,blood (Hannum),cerebellum,71,-18.601038929481003,0.8670609152746934
+any,0,cortex (Jaffe),frontal cortex,74,55.51066732818877,0.9366176552310217
+any,0,cortex (Jaffe),superior temporal gyrus,75,55.4537847108796,0.8917413552266745
+any,0,cortex (Jaffe),entorhinal cortex,71,56.91006159767485,0.9805037169981596
+any,0,cortex (Jaffe),cerebellum,71,39.886026664832464,0.9876858526243344
+any,1,blood (Hannum),frontal cortex,74,35.99734571842749,0.7986016730961539
+any,1,blood (Hannum),superior temporal gyrus,75,29.427426234588317,0.8515712380384647
+any,1,blood (Hannum),entorhinal cortex,71,29.908175755303944,0.9622867818407435
+any,1,blood (Hannum),cerebellum,71,39.62270114873891,1.0296628711438867
+any,1,cortex (Jaffe),frontal cortex,74,29.48303868354114,0.9551546632913469
+any,1,cortex (Jaffe),superior temporal gyrus,75,31.069946058596575,0.9379468458293097
+any,1,cortex (Jaffe),entorhinal cortex,71,32.94753695821899,1.0705235848719574
+any,1,cortex (Jaffe),cerebellum,71,0.48992414800670236,1.0517354952438578
+any,2,blood (Hannum),frontal cortex,74,-24.316794302454856,0.9894571571575125
+any,2,blood (Hannum),superior temporal gyrus,75,-30.789129869567326,0.8474551428470574
+any,2,blood (Hannum),entorhinal cortex,71,-22.797108111707526,1.1036339367974444
+any,2,blood (Hannum),cerebellum,71,-41.57599451007794,1.0839414638223301
+any,2,cortex (Jaffe),frontal cortex,74,56.51146609973532,0.8020501031833147
+any,2,cortex (Jaffe),superior temporal gyrus,75,59.43453059430449,0.7619533510917539
+any,2,cortex (Jaffe),entorhinal cortex,71,57.827126205921175,0.958891321650631
+any,2,cortex (Jaffe),cerebellum,71,44.97889889937503,0.9460711163113659
+any,3,blood (Hannum),frontal cortex,74,-18.02655316455115,0.8398631185029458
+any,3,blood (Hannum),superior temporal gyrus,75,-20.954063433594158,0.779088992205725
+any,3,blood (Hannum),entorhinal cortex,71,-15.182901109067032,0.9021137475952774
+any,3,blood (Hannum),cerebellum,71,-41.279386006809865,0.9749754832632521
+any,3,cortex (Jaffe),frontal cortex,74,40.48067963672421,0.7804228237690982
+any,3,cortex (Jaffe),superior temporal gyrus,75,42.175684111451254,0.8028434959287563
+any,3,cortex (Jaffe),entorhinal cortex,71,39.76001637850059,0.8359681684168809
+any,3,cortex (Jaffe),cerebellum,71,40.34627305027686,0.8501865270046445
+any,4,blood (Hannum),frontal cortex,74,-2.106046582377264,0.784340587768913
+any,4,blood (Hannum),superior temporal gyrus,75,-4.223144117404351,0.7907536347151402
+any,4,blood (Hannum),entorhinal cortex,71,-1.480707369650324,0.9590859164624445
+any,4,blood (Hannum),cerebellum,71,-7.223085851796971,0.8857515522121359
+any,4,cortex (Jaffe),frontal cortex,74,51.393606238163486,1.0408967557838105
+any,4,cortex (Jaffe),superior temporal gyrus,75,56.09061231070659,0.9007304052136641
+any,4,cortex (Jaffe),entorhinal cortex,71,49.49620906712109,1.0575255516566944
+any,4,cortex (Jaffe),cerebellum,71,62.2592969348027,1.0151064520191233
