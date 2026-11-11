@@ -37,6 +37,12 @@ means for clocks (RM8). An intervention test (RM3) is the one result that could 
   would not separate the readings; the series that would (GSE80672, blood) needs an alignment job first.
   RM8's comparison with published clocks needs only data already here, and antonkulaga asked for it.
 
+- 2026-11-11, after R4: in brain, neuron and glia accessibility removes 30-37 % of the housekeeping gap (32-49 %
+  with the bulk state) against 5-26 % for the bulk map alone, and what stays is about blood's residual. RM7 is
+  done: chromatin accounts for most of blood's protection, for a growing share of brain's as the map gets
+  finer, and the residual is the same in a dividing and a non-dividing tissue. Left open, for want of data
+  here: five-mark histone states of sorted neurons.
+
 ## The arms, in order, each with its rule
 
 ### A. RM7: does chromatin state account for the protection? (new, first)

@@ -4,15 +4,6 @@ Open work only, in order. Each item is a section `## RMn — name` with a line s
 owner. A done item leaves this file; `docs/CHANGELOG.md` says what landed.
 The order and the rule for each item are argued in `docs/RESEARCH_PLAN.md`.
 
-## RM7 — Chromatin in brain at cell-type resolution
-
-**State:** building · **Owner:** lead
-
-Progress: the first part is done (`figures chromatin`, `docs/extension.md`, "Chromatin accounts for blood's
-protection"). Blood's own chromatin removes 67-91 % of the gap; a bulk cortex map removes 5-26 % in brain.
-Left: match brain CpGs on sorted-neuron and glia chromatin (NeuN+ / NeuN- ATAC or histone maps, e.g. PsychENCODE
-or Roadmap-era sorted data) to see whether the gap left in brain is chromatin a bulk map cannot resolve. Then
-RM3, whose intervention test becomes the check of the chromatin reading.
 ## RM8 — Clocks from protected and unprotected CpGs
 
 **State:** building · **Owner:** lead

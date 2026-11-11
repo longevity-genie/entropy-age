@@ -596,16 +596,31 @@ Lunnon blood −0.081 becomes −0.015 (0.81).
 * **After matching, blood is no more protected than brain.** Blood's remaining gap (−0.02 to −0.05)
   is no larger than brain's (−0.04 to −0.06). The blood-over-brain excess, the result of prediction 2
   that pointed to selection, is explained by blood's chromatin. It needs no turnover.
-* **In brain, chromatin removes little, but the brain map is coarse.** The cortex segmentation is of
-  bulk tissue and places 79–86 % of set CpGs and 47 % of background CpGs in one state (TssA), so it
-  matches less finely than the blood maps of purified cells. The small gap left in brain may be
-  chromatin that a bulk map cannot resolve (neurons against glia), or something else. A sorted-neuron
-  map would decide.
+* **In brain, finer chromatin removes more, but about half the gap stays.** The bulk cortex segmentation
+  puts 79–86 % of set CpGs and 47 % of background CpGs in one state (TssA). It removes only 5–26 % of the
+  gap. A second run (R4) adds neuron and glia accessibility, measured separately in sorted NeuN+ and NeuN−
+  nuclei of prefrontal cortex (Rizzardi et al. 2019, GSE96614). Each CpG is binned by quartile of
+  accessibility, or no peak, in each cell type:
+
+  | brain tissue (housekeeping) | island × level | + bulk state | + neuron and glia ATAC | + both | share removed by both |
+  |---|---|---|---|---|---|
+  | cortex (Jaffe), dispersion slope | −0.075 | −0.058 | −0.047 | −0.041 | 0.46 (0.40–0.53) |
+  | Lunnon frontal cortex | −0.050 | −0.048 | −0.035 | −0.034 | 0.32 |
+  | Lunnon superior temporal gyrus | −0.044 | −0.038 | −0.030 | −0.026 | 0.40 |
+  | Lunnon entorhinal cortex | −0.070 | −0.064 | −0.048 | −0.048 | 0.32 |
+  | Lunnon cerebellum | −0.052 | −0.039 | −0.035 | −0.026 | 0.49 |
+
+  Cell-type-resolved chromatin removes two to six times as much as the bulk map. Core-essential genes give
+  13–31 %. What stays in brain (−0.026 to −0.048 SD) is now about the size of what stays in blood after
+  blood's own chromatin (−0.034 to −0.050). Accessibility in two sorted cell types is still coarser than
+  the five-mark states of purified blood cells, so part of the remaining gap may yet be chromatin. Brain's
+  cells do not divide, so whatever is left there cannot come from selection among dividing cells.
 
 Together with the culture test (the gap is a constant fraction of drift, not growing with divisions),
 this moves the explanation from selection to chromatin. Essential genes drift less where, and to the
 extent that, their promoters are held in active chromatin in that tissue. Tissues differ because their
-chromatin differs. Matching uses states from reference epigenomes of other people. Matching on a
+chromatin differs. The residual left after matching is about the same in blood and brain. Matching uses
+states from reference epigenomes of other people. Matching on a
 person's own chromatin would be tighter and would remove more, not less.
 
 Tables: `data/output/chromatin_match/matched_gaps.csv` (every set, metric, tissue and matching) and

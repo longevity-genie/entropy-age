@@ -4,6 +4,7 @@ Newest first.
 
 ## Unreleased
 
+- RM7 done: in brain, neuron and glia accessibility (GSE96614) removes 30-37 % of the housekeeping gap, 32-49 % with the bulk state, against 5-26 % for the bulk map; the residual is then about blood's. RM7 leaves the roadmap; `docs/extension.md` and the plan record it.
 - R4 done (27.8 min, 5.2 GB peak): `data/output/chromatin_match/` and the figure rewritten with the sorted-ATAC matchings; R4 leaves the run brief.
 - R5 (published clocks on the protection map, RM8) on the run brief and submitted.
 - RM8, first part: `entropy-age fetch clocks` (16 published clocks from biolearn at a pinned commit, each file hash-checked: chronological, phenotypic, pace, mitotic, stochastic and causal) and figure `clocks`: each clock's CpGs on the protection map (chromatin state in blood and cortex, gene-set shares, drift against matched CpGs with and without chromatin, and the clock's brain-minus-blood offset in Lunnon's donors). Not yet run on the data.
