@@ -4,6 +4,7 @@ Newest first.
 
 ## Unreleased
 
+- `docs/NOVELTY_REVIEW.md`: the core idea is published qualitatively (Teschendorff, West & Beck 2013; West et al. 2013); our novelty is design, the chromatin split and the dynamics. Three prior results cut against us (Hollmann 2020, Crofts 2026, Seeboth 2020). The paper draft takes the position in.
 - RM12 (selection pressure under interventions, urgent), at antonkulaga's request; the artifact's tabs say which paper is ours (v11).
 - `docs/PAPER_DRAFT.md`: a first paper draft at antonkulaga's request, every claim marked solid, weak or missing, with what the paper still needs and a DFG proposal outline; the summary artifact gains a Paper tab with a graphical abstract (v9), after a plain-language rewrite (v8) checked by a simulated outside reader.
 - R12 (shielding across mammals, RM10) on the run brief and submitted.

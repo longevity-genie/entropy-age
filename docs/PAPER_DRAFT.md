@@ -34,9 +34,20 @@ per-person score of the shield separates individuals far beyond its own error.
 Chromatin, not cell competition, decides which genes resist epigenetic entropy; that choice shapes what
 clocks measure.
 
+## 0 Position after the novelty review (`docs/NOVELTY_REVIEW.md`)
+
+The qualitative claim (housekeeping and highly connected genes are protected from drift) is published:
+Teschendorff, West & Beck 2013 and West et al. 2013. The paper cannot claim the idea. It can claim the design
+(matched null, two readouts, many tissues, two species), the quantitative split into chromatin and the rest, and
+the dynamics: culture over doublings, the share growing with age in vivo, caloric restriction, species. Three
+points of prior work cut against us and must be answered in the text: clonal dominance in culture (Hollmann 2020),
+lifespan scaling as stem-cell dynamics (Crofts 2026), and per-person drift burden confounded and non-predictive
+(Seeboth 2020).
+
 ## 1 Introduction
 
-- Stochastic epigenetic drift as a sufficient cause of clocks (Meyer & Schumacher 2024; Tarkhov 2024 and others). **[solid, literature]**
+- Stochastic epigenetic drift as a sufficient cause of clocks (Meyer & Schumacher 2024; Tarkhov 2024; Tong 2024). **[solid, literature]**
+- Protection of housekeeping and highly connected genes from drift was proposed and shown qualitatively (Teschendorff, West & Beck 2013; West et al. 2013); age gain at Polycomb targets is established (Teschendorff 2010; Rakyan 2010; Slieker 2016). We test what sets it. **[solid, literature]**
 - Open question: is drift uniform across genes and tissues, and if not, what sets it? Two candidates: selection
   among cells (a cell that loses an essential gene's state is outcompeted) and chromatin (active, well-maintained
   promoters make fewer errors). **[solid, framing]**
@@ -57,7 +68,9 @@ clocks measure.
 ### 2.2 The shield is a constant share of drift as cells divide
 
 - **Evidence:** two culture studies (GSE197512, seven lines to 136 doublings; GSE179847, five lines to 79
-  doublings). The noise floor is removed. **[solid]** for the long courses.
+  doublings). The noise floor is removed. **[solid]** as a measurement; **[weak]** as evidence against selection:
+  long-term cultures become oligoclonal (Hollmann 2020), and steady selection per doubling would also give a
+  constant share. **[missing]** clonality data.
 - **Weak:** the short courses are too noisy; arrest (MMC, contact inhibition) leaves too little drift to test
   whether the shield needs divisions.
 - **Missing:** an arrest of months with measurable drift.
@@ -93,7 +106,8 @@ clocks measure.
 
 - **Evidence:** reproduces the cohort result per sample; reliability 0.96-0.997 against its own error; blood more
   shielded than the same donor's brain in 86-91 % of donors. **[solid]** as a measure.
-- **Missing:** test-retest on replicate arrays; association with outcomes (mortality, frailty) beyond age.
+- **Missing:** test-retest on replicate arrays; association with outcomes (mortality, frailty) beyond age; an
+  answer to Seeboth 2020 (per-person drift burden confounded by cell mix, smoking, BMI and batch).
 - **Figures:** per_person.
 
 ### 2.7 What clocks are made of
@@ -107,8 +121,9 @@ clocks measure.
 
 ### 2.8 Across species (in progress)
 
-- **Missing:** does the shield scale with maximum lifespan across 349 mammals (GSE223748, run R12)? A positive
-  answer would be the paper's strongest new result; a null would still bound the mechanism.
+- **Missing:** does the shield scale with maximum lifespan across 349 mammals (GSE223748, run R12)? Must be read
+  against Crofts 2026, which explains lifespan scaling of methylation rates by stem-cell dynamics, and against the
+  floor of near-0 % essential promoters on the conserved array.
 
 ## 3 Discussion
 
