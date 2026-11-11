@@ -2,7 +2,7 @@
 
 import numpy as np
 
-from entropy_age.experiments.consortium_interventions import arm_scores
+from entropy_age.experiments.consortium_interventions import arm_scores, chip_design, same_chip
 
 
 def test_controls_are_scored_leave_one_out_and_a_weaker_shield_shows_in_treated():
@@ -34,3 +34,16 @@ def test_with_no_treatment_controls_and_treated_drift_alike():
     genes = [np.arange(j, j + 4) for j in range(0, 400, 4)]
     b = arm_scores(x, treated, np.zeros(p, dtype=bool), {"housekeeping": (in_set, genes)})["B_housekeeping"]
     assert abs(b[~treated].mean() / b[treated].mean() - 1) < 0.03
+
+
+def test_same_chip_keeps_treated_and_only_controls_sharing_their_chips():
+    chips = np.array(["a", "a", "b", "b", "c", "c", "a"])
+    treated = np.array([True, False, True, False, False, False, False])
+    is_control = np.array([False, True, False, True, True, True, False])  # the last is another arm
+    assert same_chip(chips, treated, is_control).tolist() == [True, True, True, True, False, False, False]
+
+
+def test_chip_design_has_one_column_per_extra_chip_and_none_for_one_chip():
+    d = chip_design(np.array(["b", "a", "b", "c"]))
+    assert d.tolist() == [[1, 0], [0, 0], [1, 0], [0, 1]]
+    assert chip_design(np.array(["a", "a"])).shape == (2, 0)

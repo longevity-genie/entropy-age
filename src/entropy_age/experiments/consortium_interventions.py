@@ -13,6 +13,12 @@ leaves non-dividing tissue (brain) alone; chromatin predicts a change, if any, a
 are small (3-59 animals); each effect comes with its standard error and its animals, and groups under
 ``MIN_ARM`` per arm are left out.
 
+Controls come two ways (column ``controls``). ``pooled``: every control of the study and tissue, which in the
+"Genetic perturbation" study pools the wild types of several knockouts. ``same_chip``: only the controls
+hybridised on the same array chips as the treated animals (the chip is the first part of the barcode), with the
+chip as a covariate; on a chip shared by a knockout and its wild types these are its littermate controls, and a
+batch effect cannot separate them.
+
 Run as a job after ``entropy-age fetch mammals``: ``entropy-age figures mmc_interventions``.
 """
 
@@ -36,6 +42,20 @@ from entropy_age.protection import fit_reference
 
 CONTROLS = {"Control", "WT", "1.Control", "Normal"}
 MIN_ARM = 5
+
+
+def same_chip(chips: np.ndarray, treated: np.ndarray, is_control: np.ndarray) -> np.ndarray:
+    """Controls on a chip that also holds a treated animal, and the treated animals."""
+    shared = np.isin(chips, chips[treated])
+    return treated | (is_control & shared)
+
+
+def chip_design(chips: np.ndarray) -> np.ndarray:
+    """Dummy columns for every chip but the first (the intercept carries it); none for a single chip."""
+    levels = sorted(set(chips.tolist()))
+    if len(levels) == 1:
+        return np.empty((chips.size, 0))
+    return np.column_stack([chips == c for c in levels[1:]]).astype(float)
 
 
 def arm_scores(x: np.ndarray, treated: np.ndarray, island: np.ndarray, sets: dict) -> dict[str, np.ndarray]:
@@ -103,12 +123,19 @@ def run(ctx: Context) -> list[Path]:
             g: (s[ok], [np.searchsorted(np.flatnonzero(ok), gi[ok[gi]]) for gi in genes if ok[gi].any()])
             for g, (s, genes) in sets.items()
         }
-        for arm in sorted(set(sel["intervention"].to_list()) - CONTROLS):
-            keep = is_control | (sel["intervention"] == arm).to_numpy()
-            treated = (sel["intervention"] == arm).to_numpy()[keep]
-            if treated.sum() < MIN_ARM:
+        chips_all = sel["barcode"].str.extract(r"^(\d+)_").to_numpy()
+        for arm, controls in (
+            (a, c) for a in sorted(set(sel["intervention"].to_list()) - CONTROLS) for c in ("pooled", "same_chip")
+        ):
+            is_arm = (sel["intervention"] == arm).to_numpy()
+            keep = is_control | is_arm
+            if controls == "same_chip":
+                keep = same_chip(chips_all, is_arm, is_control)
+            treated = is_arm[keep]
+            if treated.sum() < MIN_ARM or (~treated).sum() < MIN_ARM:
                 print(
-                    f"mmc_interventions: {experiment}, {tissue}, {arm}: {int(treated.sum())} animals; left out",
+                    f"mmc_interventions: {experiment}, {tissue}, {arm}, {controls}: {int(treated.sum())} treated, "
+                    f"{int((~treated).sum())} controls; left out",
                     file=sys.stderr,
                 )
                 continue
@@ -119,6 +146,8 @@ def run(ctx: Context) -> list[Path]:
             if np.ptp(ages) > 0:
                 design.append(ages)
             design = np.column_stack(design)
+            if controls == "same_chip":
+                design = np.column_stack([design, chip_design(chips_all[keep])])
             scored.append(
                 pl.DataFrame(
                     {
@@ -126,6 +155,7 @@ def run(ctx: Context) -> list[Path]:
                         "experiment": experiment,
                         "tissue": tissue,
                         "arm": arm,
+                        "controls": controls,
                         "treated": treated,
                         "age": ages,
                         **scores,
@@ -141,6 +171,7 @@ def run(ctx: Context) -> list[Path]:
                             "experiment": experiment,
                             "tissue": tissue,
                             "arm": arm,
+                            "controls": controls,
                             "group": group,
                             "measure": measure,
                             "effect": coef,
@@ -151,7 +182,7 @@ def run(ctx: Context) -> list[Path]:
                             "control_n": int((~treated).sum()),
                         }
                     )
-            print(f"mmc_interventions: {experiment}, {tissue}, {arm}: done", file=sys.stderr, flush=True)
+            print(f"mmc_interventions: {experiment}, {tissue}, {arm}, {controls}: done", file=sys.stderr, flush=True)
     effects = pl.DataFrame(rows)
     write_table(effects, out / "effects")
     write_table(pl.concat(scored, how="diagonal"), out / "animal_scores")
@@ -162,7 +193,7 @@ def _figure(ctx: Context, effects: pl.DataFrame) -> Path:
     fig, axes = plots.panels(2, ncols=2, size=5.0)
     sel = effects.filter(pl.col("group") == "housekeeping")
     labels = [
-        f"{r['experiment']} · {r['arm']} · {r['tissue']}"
+        f"{r['experiment']} · {r['arm']} · {r['tissue']}" + (" · same chip" if r["controls"] == "same_chip" else "")
         for r in sel.filter(pl.col("measure") == "F").iter_rows(named=True)
     ]
     for i, measure in enumerate(("B", "F")):
