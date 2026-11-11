@@ -82,6 +82,17 @@ def fetch_clocks_cmd(overwrite: bool = False) -> None:
     typer.echo(f"{len(files)} clocks in {files[0].parent}")
 
 
+@fetch_app.command("rrbs")
+def fetch_rrbs_cmd(overwrite: bool = False) -> None:
+    """Mouse blood RRBS of GSE80672 (about 3 GB) and mm10 promoter and CpG-island tracks, parsed to promoter CpGs."""
+    from entropy_age.data.rrbs import fetch_rrbs, prepare_rrbs
+
+    paths = ProjectPaths.default().ensure()
+    files = fetch_rrbs(paths, overwrite=overwrite)
+    layout = prepare_rrbs(paths)
+    typer.echo(f"{len(files)} files\nsamples -> {layout.samples}\nbetas   -> {layout.betas}")
+
+
 @fetch_app.command("mouse-annotation")
 def fetch_mouse_annotation_cmd(overwrite: bool = False) -> None:
     """Mammalian-array probe annotation (GEO GPL32543, ~200 MB) and MGI mouse-human orthologs."""

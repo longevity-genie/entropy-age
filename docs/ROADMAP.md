@@ -6,7 +6,7 @@ The order and the rule for each item are argued in `docs/RESEARCH_PLAN.md`.
 
 ## RM3 — Long- vs short-lived rodent groups
 
-**State:** unattended · **Owner:** lead
+**State:** building · **Owner:** lead
 
 Progress: data found, nothing fetched. Interventions that extend lifespan by slowing proliferation (caloric
 restriction, rapamycin) make a prediction specific to selection. Total drift should fall, but the gap

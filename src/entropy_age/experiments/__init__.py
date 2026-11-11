@@ -15,6 +15,7 @@ from entropy_age.experiments import (
     fig5_real_data,
     gene_sets,
     human_tissues,
+    interventions,
     mouse_tissues,
     passaged_cells,
     per_person,
@@ -43,6 +44,7 @@ FIGURES: dict[str, Callable[[Context], list[Path]]] = {
     "passage_sturm": passaged_cells.run_sturm,
     "chromatin": chromatin_match.run,
     "chromatin_clocks": chromatin_clocks.run,
+    "interventions": interventions.run,
     "clocks": clock_cpgs.run,
     "per_person": per_person.run,
 }
