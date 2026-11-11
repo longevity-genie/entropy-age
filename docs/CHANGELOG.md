@@ -4,6 +4,8 @@ Newest first.
 
 ## Unreleased
 
+- RM8 done: no chromatin class gives a single-tissue clock that transfers (out-of-tissue r 0.06-0.70); which pool transfers best depends on the direction; Polycomb CpGs give the most reproducible brain-minus-blood offset (SD 4-6 years between draws against 20-42). RM8 leaves the roadmap; RM3 is next.
+- R6 done (39.4 min, 2.8 GB peak): `data/output/chromatin_clocks/` and `docs/figures/chromatin_clocks.png`; R6 leaves the run brief.
 - The kit pin moves to v0.1.178. RM3, RM2, RM4 and RM5 are chained after RM8 in the plan's order (each needs a raw-data processing step or a search first; `docs/RESEARCH_PLAN.md`).
 - RM8, first part: published clocks draw on CpGs whose TSS activity differs between blood and cortex (15-33 % of a clock's CpGs against 12 % of background) and on Polycomb states. The pan-tissue Horvath and PhenoAge CpGs are enriched in housekeeping promoters (22 % and 17 % against 9 %). Clock CpGs are not the fastest-diverging, except epiTOC1 in blood. A clock's brain-minus-blood offset does not follow its chromatin share (Spearman 0.11). `docs/extension.md`.
 - R5 done (11.8 min, 3.2 GB peak): `data/output/clock_cpgs/` and `docs/figures/clock_cpgs.png`; R5 leaves the run brief.

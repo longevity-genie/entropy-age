@@ -609,10 +609,51 @@ array's autosomes:
 Clocks are thus drawn, as the paper argued, from CpGs that move with age. By this map those are largely
 CpGs whose chromatin is set differently by tissue, Polycomb targets above all. The protected kind, active
 promoters of housekeeping genes, enters the clocks built to work across tissues. Whether a clock built
-from protected CpGs only reads tissues alike is the next run (R6).
+from one chromatin class reads tissues alike is the next subsection.
 
 Tables: `data/output/clock_cpgs/` (`coverage`, `composition`, `drift`, `tissue_offsets`,
 `offset_vs_chromatin`).
+
+### Clocks built from one kind of CpG
+
+If drift follows chromatin, a clock built from one chromatin class might read tissues more alike. Figure
+`chromatin_clocks` (run R6) trains elastic-net clocks on 4,000 CpGs drawn from one of three pools. Each pool
+is a class in both Roadmap references (blood E062 and cortex E073):
+
+* active TSS in both (33,786 candidates);
+* Polycomb or bivalent in both (19,330);
+* any CpG (149,740).
+
+Each clock is trained on Hannum blood or Jaffe cortex and applied to the other cohort and to Lunnon's
+same-donor tissues, five draws per pool. In-sample fits are near-perfect and are not read.
+
+![Chromatin clocks](figures/chromatin_clocks.png)
+
+| trained on → tested on | r with age (active / Polycomb / any) | median abs. error, years (active / Polycomb / any) |
+|---|---|---|
+| blood → cortex (Jaffe) | 0.67 / 0.70 / 0.65 | 33 / 10 / 31 |
+| blood → Lunnon blood | 0.45 / 0.43 / 0.50 | 15 / 8 / 8 |
+| cortex → blood (Hannum) | 0.47 / 0.39 / 0.47 | 35 / 86 / 77 |
+| cortex → Lunnon frontal cortex | 0.42 / 0.34 / 0.38 | 13 / 36 / 28 |
+
+* **No pool gives a clock that reads tissues alike.** Out of the training tissue, correlations fall to
+  0.06–0.70 and errors run to tens of years with every pool. A single-tissue clock does not transfer,
+  whatever its CpGs' chromatin.
+* **Which pool transfers best depends on the direction.** A blood-trained clock reads cortex best from
+  Polycomb CpGs (10 years against 31–33). A cortex-trained clock reads blood and Lunnon's brain regions best
+  from active CpGs (10–35 years against 25–86).
+* **Polycomb CpGs give the most reproducible tissue offset.** In Lunnon's donors, a blood-trained Polycomb
+  clock reads brain 25–28 years younger than the same donor's blood (cerebellum 46). The offset varies
+  little between draws of CpGs (SD 4–6 years). Active and random pools give smaller mean offsets that vary
+  five to eight times as much (SD 20–42). Polycomb CpGs age alike across tissues up to a constant shift.
+  That is what a shared, chromatin-set drift predicts, and a constant shift can be calibrated away.
+
+So chromatin class is a lever for clock design, not a fix. The Polycomb CpGs that published clocks already
+favour carry the most tissue-consistent ageing signal. Active, protected CpGs carry less of it, and what
+they carry is less reproducible. The rule for a pan-tissue clock, from these data: draw on Polycomb CpGs
+and calibrate each tissue's offset.
+
+Tables: `data/output/chromatin_clocks/` (`accuracy`, `lunnon_offsets`, `pools`).
 
 ## Chromatin accounts for blood's protection (roadmap RM7)
 

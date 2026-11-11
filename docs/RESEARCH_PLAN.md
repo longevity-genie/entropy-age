@@ -43,6 +43,12 @@ means for clocks (RM8). An intervention test (RM3) is the one result that could 
   finer, and the residual is the same in a dividing and a non-dividing tissue. Left open, for want of data
   here: five-mark histone states of sorted neurons.
 
+- 2026-11-11, after R5 and R6: RM8 done. Clocks draw on CpGs whose chromatin differs by tissue, Polycomb above
+  all; a clock's tissue offset does not follow that share (a failed prediction). No chromatin class gives a clock
+  that transfers between tissues, but Polycomb CpGs give the most reproducible offset (SD 4-6 years between
+  draws against 20-42). Next is RM3, which needs GSE80672's reads aligned (a job of its own) or a series with
+  processed values.
+
 ## The arms, in order, each with its rule
 
 ### A. RM7: does chromatin state account for the protection? (new, first)

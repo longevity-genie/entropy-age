@@ -4,19 +4,9 @@ Open work only, in order. Each item is a section `## RMn — name` with a line s
 owner. A done item leaves this file; `docs/CHANGELOG.md` says what landed.
 The order and the rule for each item are argued in `docs/RESEARCH_PLAN.md`.
 
-## RM8 — Clocks from protected and unprotected CpGs
-
-**State:** building · **Owner:** lead
-
-Progress: first part done (`figures clocks`, R5, `docs/extension.md`): clock CpGs are enriched in chromatin that
-differs between tissues and in Polycomb states; Horvath's and PhenoAge's in housekeeping promoters; tissue
-offsets do not follow the chromatin share. Second part (`figures chromatin_clocks`) waits on R6. Plan: `docs/RESEARCH_PLAN.md`, arm C. A stochastic clock from unprotected CpGs and one from
-protected CpGs; the ratio of their rates in blood, brain and the mouse tissues, with bootstrap intervals.
-
-
 ## RM3 — Long- vs short-lived rodent groups
 
-**State:** after RM8 · **Owner:** lead
+**State:** unattended · **Owner:** lead
 
 Progress: data found, nothing fetched. Interventions that extend lifespan by slowing proliferation (caloric
 restriction, rapamycin) make a prediction specific to selection. Total drift should fall, but the gap
