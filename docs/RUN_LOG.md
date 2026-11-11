@@ -3,6 +3,14 @@
 Owned by the runner seat (`docs/seats/RUNNER.md`): one entry per run, newest first, with its inputs, the
 commit it ran, its job ids, its scale and seed, and its result or its failure with the cause.
 
+## R15 — interventions against same-chip controls (RM12), 2026-11-11
+
+- Commit 0cb79ae; `figures mmc_interventions --scale paper --seed 42`; 8 cores, 16 GB.
+- Job 6430322 completed in 73 s, 3.5 GB at peak. Same-chip controls exist for 13 arms; partial reprogramming
+  has too few.
+- Result, as measured (housekeeping F, same-chip): Tet3 heterozygous cortex +0.17 (p 0.006), striatum +0.25
+  (p 9·10⁻⁶), 8 against 8; GHRKO liver +0.01 (p 0.67). The lead's reading is in `docs/extension.md`.
+
 ## R12 — shielding across mammals (RM10), 2026-11-11
 
 - Commit fa6a796; `fetch mammals` (4.5 GB, 4.7 min) then `figures species --scale paper --seed 42`; 8 cores, 64 GB.

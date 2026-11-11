@@ -605,11 +605,18 @@ controls (controls leave one out), at least 5 animals per arm.
 * **CR does not weaken the shield in liver** (59 against 36 mice). The weakening in mouse blood (one study) is not
   replicated in a slowly renewing tissue. That is what selection would predict, but it is also what a batch effect
   in the blood study would give; it stays open.
-* **Mice missing one copy of Tet3 lose the shield in brain.** Tet3 is a DNA demethylase active in neurons. If real,
-  this is a first causal sign: weaken the maintenance machinery and essential promoters drift like any other CpG,
-  in a tissue whose cells do not divide (so not selection). But the controls are the wild-type mice pooled across
-  the consortium's genetic-perturbation studies, not necessarily Tet3's littermates, and all eight Tet3 mice are
-  six months old. A study batch could produce the same. It needs the Tet3 study's own controls.
+* **Mice missing one copy of Tet3 lose the shield in brain, against their own littermates.** Tet3 is a DNA
+  demethylase active in neurons. The pooled controls were the wild types of several knockouts; but the Tet3 mice
+  share their array chips with eight wild types of the same age, their littermate controls. Against those, with
+  the chip as a covariate (run R15), the shield share rises by +0.17 (cortex, p 0.006) and +0.25 (striatum,
+  p 9·10⁻⁶) for housekeeping genes, +0.31 and +0.49 for core-essential genes (8 against 8 each). Drift at
+  look-alike CpGs rises only slightly (B +0.007, +0.003). Neurons do not divide, so selection cannot do this:
+  halving a demethylase lets essential promoters drift like any other CpG. This is the first causal sign that the
+  shield is maintained by the methylation machinery (H1). Open: whether essential CpGs gain methylation (TET
+  keeps island promoters unmethylated) or merely scatter; one study, 16 mice.
+* **The GHRKO liver effect was batch.** Against same-chip controls it vanishes (+0.01, p 0.67); the pooled
+  controls carried it. CR in liver against the same controls: housekeeping −0.02 (p 0.59), core-essential −0.07
+  (p 0.005), a slightly *stronger* shield if anything.
 
 Tables: `data/output/mmc_interventions/` (`effects`, `animal_scores`).
 

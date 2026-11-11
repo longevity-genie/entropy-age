@@ -12,9 +12,4 @@ grammar (`unattended`, `urgent`, `building`, `after <R-id>` or `after job <slurm
 - the roadmap item it serves (`RMn`);
 - what the lead needs back (a table, a figure, a number), and anything the run must not do.
 
-## R15 — interventions against same-chip controls (RM12)
-
-- What: `entropy-age figures mmc_interventions --scale paper --seed 42`, on R12's download, after the same-chip
-  control mode; replaces R13's tables and figure (the pooled rows are recomputed alike).
-- Resources: compute partition, 8 cores, 16 GB (R13 peaked at 3.5 GB), a few minutes.
-- Read: the `same_chip` rows of `data/output/mmc_interventions/effects.csv`, Tet3 first.
+No runs are planned.

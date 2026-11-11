@@ -22,8 +22,9 @@ to composition), without slowing drift; the shield's share also grows with age i
 neither proof nor disproof. Tests that would separate selection from chromatin, in order of cost:
 - Done (R13, `docs/extension.md`): CR in liver does not weaken the shield; Tet3 heterozygous mice lose it in
   cortex and striatum (controls pooled across studies, a batch could do it); GHRKO strengthens it in liver.
-- Next: the Tet3 study's own controls (sample titles or the consortium's folder field), then the shield with
-  chromatin held fixed under CR.
+- Done (R15): against same-chip littermates the Tet3 loss holds and grows (housekeeping F +0.17, +0.25); the GHRKO
+  liver effect was batch.
+- Next: the direction at essential CpGs under Tet3 loss (gain of methylation or scatter), then RM14's syndromes.
 - **The same intervention in a renewing and a non-renewing tissue of the same animals.** Selection predicts CR
   or rapamycin changes the shield in blood or gut and not in brain or muscle; chromatin predicts the same change
   (or none) everywhere. Search for a multi-tissue CR or rapamycin series with at least 8 animals per arm.

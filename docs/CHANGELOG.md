@@ -4,6 +4,7 @@ Newest first.
 
 ## Unreleased
 
+- R15 done: against same-chip littermates the Tet3 heterozygous brains lose the shield more clearly (housekeeping F +0.17, +0.25); the GHRKO liver effect was batch. `docs/extension.md`.
 - `figures mmc_interventions` also scores each arm against only the controls on its own array chips, with the chip as a covariate (`controls` column): littermate controls where a study shares chips, which a batch cannot separate.
 - R12 and R13 done. Across 65 mammal species the shield is nearly universal and not stronger in long-lived species. CR does not weaken it in mouse liver. Tet3 heterozygous mice lose it in brain, a causal lead whose controls are pooled across studies. RM10 leaves the roadmap. `docs/extension.md`.
 - R14 done (41 s): RM15, SvenDP's question. Aging methylation is not all stochastic: in blood, solo-WCGW CpGs lose methylation 2.7 times as fast as other open-sea CpGs (−0.21 against −0.08 points per decade), a directed, division-linked loss absent in cortex; the PCA does not single it out. `docs/extension.md`.
