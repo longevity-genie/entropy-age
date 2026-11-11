@@ -4,27 +4,17 @@ Open work only, in order. Each item is a section `## RMn — name` with a line s
 owner. A done item leaves this file; `docs/CHANGELOG.md` says what landed.
 The order and the rule for each item are argued in `docs/RESEARCH_PLAN.md`.
 
-## RM3 — Long- vs short-lived rodent groups
+## RM3 — Interventions: replicate the CR result
 
-**State:** building · **Owner:** lead
+**State:** unattended · **Owner:** lead
 
-Progress: data found, nothing fetched. Interventions that extend lifespan by slowing proliferation (caloric
-restriction, rapamycin) make a prediction specific to selection. Total drift should fall, but the gap
-between essential and other genes in renewing tissue should shrink, because less turnover means less
-selection. Chromatin protection alone predicts no change in the gap. Size the effect with the virtual
-experiment (`simulate/selection.py`) before reading the data.
-
-- **GSE279437** (+ RNA GSE280382), tried: exenatide changes nothing; rapamycin has only 5 mice per
-  tissue, and against size-matched controls its renewing-tissue values are within noise. Too small.
-- **GSE80672** (Petkovich 2017, blood RRBS, 2.9 GB raw only). GHRKO, Snell dwarf and CR vs controls.
-  Ages are in months, although the field says years.
-- **GSE89275** (liver RRBS). Ames dwarf, rapamycin and CR, plus WGBS GSE89273/89274.
-- **GSE199979** (BXD liver, mammalian array, 45 strains, chow vs high-fat diet). Strain lifespans come
-  from GeneNetwork (Roy et al. 2021), not from GEO.
-- **Not usable as found:** the Mammalian Methylation Consortium's mouse intervention samples (GSE223748
-  and related series) carry no group labels on GEO; the labels would have to come from EnsembleAge
-  Table S1. No public Diversity Outbred or ITP multi-tissue methylation was found.
-
+Progress: GSE80672 done (`figures interventions`, `docs/extension.md`): in living mouse blood the shield's share
+grows with age, and CR weakens it by a quarter in the one within-batch comparison (B6D2F1, 12 against 10 mice,
+robust to composition), without slowing drift. Left, to replicate it:
+- **GSE89275** (liver RRBS: Ames dwarf, rapamycin, CR) and its WGBS companions GSE89273/89274; liver renews
+  slowly, so a CR effect there would argue against a stem-cell reading.
+- Another blood series with CR and controls sequenced together (to find).
+- **GSE199979** (BXD liver, chow against high-fat diet, 339 mice, at hand): the shield's share by diet and age.
 ## RM2 — A turnover gradient across many tissues (methylation)
 
 **State:** after RM3 · **Owner:** lead

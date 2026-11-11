@@ -562,6 +562,57 @@ courses, which have none, use the floor pooled over the experiments that do.
 Tables: `data/output/passaged_cells_sturm/` (as for GSE197512; the contact-inhibition and 3 % oxygen arms
 under `Study part 3` in `drift_coupling`; their slopes on days are in `arm_slopes.parquet`, not tracked).
 
+## Interventions in mouse blood: the shield grows with age and caloric restriction weakens it (roadmap RM3)
+
+Petkovich et al. 2017 (GSE80672) profiled mouse whole blood by RRBS. The set has 153 C57BL/6 mice on a
+standard diet aged 0.7–35 months, caloric restriction (CR) in C57BL/6 and in B6D2F1, and two long-lived
+dwarf models with littermate controls at 5–6 months (GHRKO, Snell). `entropy-age fetch rrbs` reads the
+per-sample tables (GRCm38). It keeps 542,008 promoter CpGs, each covered at least 10 times in 90 % of the
+243 samples. Promoters and CpG islands come from UCSC's mm10 tracks; gene sets are matched by Entrez ID.
+Figure `interventions` (runs R7 and R8):
+
+![Interventions](figures/interventions.png)
+
+* **Mouse blood repeats the human blood shield, with exact ages.** Against matched CpGs, the age slopes
+  of entropy and dispersion are lower for core-essential (−0.30, −0.37 SD) and housekeeping (−0.35,
+  −0.42) CpGs. They are higher for non-essential CpGs (+0.36, +0.33). Every bootstrap interval excludes
+  zero.
+* **In living blood, the shield's share grows with age.** Each mouse is scored against the young standard
+  mice (3–6 months): `B` is its drift, `F` the shield as a share of it. In standard C57BL/6 mice, `F`
+  falls by 0.052 per 10 months (p ≈ 10⁻¹³). With five composition components removed it falls by 0.041
+  (p ≈ 10⁻¹⁴). Past about 25 months some mice reach −0.2 to −0.6. In the two culture studies the share
+  stayed flat (RM5).
+* **Caloric restriction weakens the shield in the comparison that can be read.** In B6D2F1, CR mice
+  were sequenced in one sample series with their controls (12 against 10, 20–27 months, age held
+  fixed). The housekeeping `F` moves by +0.025 toward zero (p 0.012). With composition components
+  removed it moves by +0.025 against a control mean of −0.107, a quarter of the shield (p 0.002).
+  Core-essential genes move the same way (+0.017 to +0.018, p 0.08–0.09). Total drift `B` barely
+  changes (−3 % and −7 %, not significant). In C57BL/6, CR mice were sequenced as a series of their
+  own. Their effect (+0.027, p 0.002) flips to −0.016 with components, so batch or cell mix drives it,
+  and it is not read.
+* **The dwarf models show nothing,** at 5–6 months, when little drift has accumulated (`F` within
+  ±0.005, p > 0.1).
+
+Housekeeping, effect of the intervention (OLS within strain, age as a covariate where ages vary):
+
+| comparison | mice (treated / control) | same series | B (drift) | F (shield share) | F, 5 components |
+|---|---|---|---|---|---|
+| CR, B6D2F1 | 12 / 10 | yes | −0.004 (p 0.37) | +0.025 (p 0.012) | +0.025 (p 0.002) |
+| CR, C57BL/6 | 20 / 74 | no | −0.011 (p 0.13) | +0.027 (p 0.002) | −0.016 (p 0.06) |
+| GHRKO | 15 / 11 | yes | +0.006 (p 0.15) | −0.003 (p 0.42) | −0.004 (p 0.36) |
+| Snell dwarf | 10 / 12 | yes | +0.005 (p 0.20) | +0.000 (p 0.96) | −0.001 (p 0.86) |
+
+What this does to the reading so far. In culture the shield is a fixed share of drift, and chromatin
+accounts for most of it in human blood. In living mouse blood, the share grows with age, and caloric
+restriction, which slows haematopoietic proliferation, weakens it without slowing drift. Selection among
+blood stem cells predicts exactly that. Clonal expansions take over aged blood, a known form of selection
+among cells, and culture has no such long competition. So the two readings may both hold. Chromatin sets
+the shield. In a renewing tissue in a living animal, selection among stem cells adds a part that grows
+with age and responds to proliferation. The evidence for the second part is one within-batch comparison
+of 22 mice, in one strain. It needs a replication before it carries a claim.
+
+Tables: `data/output/interventions/` (`aging_gaps`, `intervention_effects`, `mouse_scores`, `set_sizes`).
+
 ## Published clocks on the protection map (roadmap RM8)
 
 Where do the CpGs of published clocks sit, by the measures above? Figure `clocks` (run R5) takes 16 clocks

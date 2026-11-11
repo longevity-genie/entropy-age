@@ -4,6 +4,7 @@ Newest first.
 
 ## Unreleased
 
+- RM3, GSE80672: mouse blood repeats the human shield with exact ages; in living blood the shield's share grows with age (F −0.05 per 10 months); CR weakens it by a quarter in the within-batch B6D2F1 comparison (+0.025, p 0.002 with composition components), without slowing drift; the C57BL/6 CR comparison crosses sample series and is not read. The plan's claim becomes two-part; RM3 stays first, to replicate it.
 - R8 done (37.5 min, 10.6 GB peak): `data/output/interventions/` and `docs/figures/interventions.png`; R8 leaves the run brief.
 - R7 done (53 min, 19.7 GB peak for the parse); R8 (the composition check) submitted.
 - RM3: `figures interventions` also scores every mouse with five composition components of the young reference removed, and marks whether treated and control mice share a sample series (the C57BL/6 CR mice do not).

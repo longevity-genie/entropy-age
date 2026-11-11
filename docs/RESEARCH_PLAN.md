@@ -49,6 +49,12 @@ means for clocks (RM8). An intervention test (RM3) is the one result that could 
   draws against 20-42). Next is RM3, which needs GSE80672's reads aligned (a job of its own) or a series with
   processed values.
 
+- 2026-11-11, after R7 and R8 (RM3, GSE80672): in living mouse blood the shield's share grows with age, and CR
+  weakens it by a quarter in the one within-batch comparison, robust to composition, without slowing drift: the
+  selection signature, in a renewing tissue in vivo. The candidate claim becomes two-part: chromatin sets the
+  shield (culture, RM7); in renewing tissue in vivo, selection among stem cells adds a part that grows with age
+  and follows proliferation. That second part rests on 22 mice of one strain, so RM3 stays first: replicate it.
+
 ## The arms, in order, each with its rule
 
 ### A. RM7: does chromatin state account for the protection? (new, first)
