@@ -6,7 +6,8 @@ import polars as pl
 
 from entropy_age.data.cohorts import _huang
 from entropy_age.data.mouse import mouse_gene_sets, mouse_membership, read_orthologs, read_platform_table
-from entropy_age.experiments.mouse_tissues import TURNOVER, MouseTissue, _boot, summarise, tissue_measures
+from entropy_age.experiments.common import rescale
+from entropy_age.experiments.mouse_tissues import TURNOVER, MouseTissue, _boot, _rows, summarise, tissue_measures
 from entropy_age.experiments.tissue_contrast import _matched_sd, _run_parallel
 
 PLATFORM = (
@@ -136,6 +137,15 @@ def test_turnover_gradient_is_recovered_and_bootstrap_is_reproducible():
     parallel = pl.DataFrame(_run_parallel(_boot, list(range(12)), 2, state))
     keys = ["boot", "tissue", "measure", "metric", "group"]
     assert serial.sort(keys).equals(parallel.sort(keys))
+    point = pl.concat(
+        [
+            _rows(t, m, metrics, names, membership, 0, 0)
+            for t in tissues.values()
+            for m, (metrics, names) in tissue_measures(t, np.arange(t.x.shape[0]), probes).items()
+        ],
+        how="diagonal",
+    )
+    serial = rescale(serial, point, ["tissue", "measure", "metric"])
     spread = serial.group_by(keys[1:]).agg(pl.col("matched_diff_sd").std())["matched_diff_sd"]
     assert spread.min() > 0  # every resample draws other animals
 

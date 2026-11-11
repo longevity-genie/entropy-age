@@ -144,7 +144,7 @@ whether protection needs divisions. Left:
 
 ## RM9 — Unbiased intervals for the blood-against-brain bootstrap
 
-**State:** after RM2 · **Owner:** lead
+**State:** unattended (R19 queued) · **Owner:** lead
 
 Progress: `figures tissues` (and `tissues_cells`) scale each resample's gap by its own spread across CpGs, which
 resampling inflates, so its resampled gaps and blood-minus-brain intervals shrink toward zero (conservative, not

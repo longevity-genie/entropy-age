@@ -43,7 +43,7 @@ from entropy_age import plots
 from entropy_age.data.annotation import AnnotationLayout, link_membership
 from entropy_age.data.cohorts import layout as cohort_layout
 from entropy_age.data.matrix import FeatureMatrix
-from entropy_age.experiments.common import Context, dummies, write_table
+from entropy_age.experiments.common import Context, dummies, rescale, write_table
 from entropy_age.stochasticity import (
     baseline_strata,
     compare_groups,
@@ -190,7 +190,10 @@ def _matched_sd(metrics: pl.DataFrame, membership: pl.DataFrame, metric_names, p
             metrics, membership, metric=metric, stratify_by="stratum", n_permutations=permutations, seed=seed
         )
         spread = float(metrics[metric].std())
-        rows += [{"metric": metric, **r, "matched_diff_sd": r["matched_diff"] / spread} for r in table.to_dicts()]
+        rows += [
+            {"metric": metric, **r, "sd": spread, "matched_diff_sd": r["matched_diff"] / spread}
+            for r in table.to_dicts()
+        ]
     return pl.DataFrame(rows)
 
 
@@ -204,7 +207,7 @@ def _boot_lifespan(job: tuple[str, int]) -> list[dict]:
     rng = np.random.default_rng(seed)
     rows = np.sort(rng.integers(0, p.x.shape[0], p.x.shape[0]))
     table = _matched_sd(_with_strata(_lifespan_metrics(p, rows), probes), membership, LIFESPAN_METRICS, 0, seed)
-    return [{"cohort": key, "boot": seed, **r} for r in table.select("group", "metric", "matched_diff_sd").to_dicts()]
+    return [{"cohort": key, "boot": seed, **r} for r in table.select("group", "metric", "matched_diff").to_dicts()]
 
 
 def _boot_lunnon(seed: int) -> list[dict]:
@@ -218,7 +221,7 @@ def _boot_lunnon(seed: int) -> list[dict]:
         rows = np.array([index[d] for d in picked if d in index])
         table = _matched_sd(_with_strata(_dispersion_metrics(p, rows), probes), membership, ("dispersion",), 0, seed)
         out += [
-            {"tissue": tissue, "boot": seed, **r} for r in table.select("group", "metric", "matched_diff_sd").to_dicts()
+            {"tissue": tissue, "boot": seed, **r} for r in table.select("group", "metric", "matched_diff").to_dicts()
         ]
     return out
 
@@ -348,6 +351,11 @@ def _analyse(lifespan: dict, lunnon: dict, probes, membership, n_boot: int, work
     boot_same = pl.DataFrame(
         _run_parallel(_boot_lunnon, [2000 + b for b in range(n_boot)], workers, {**shared, "lunnon": lunnon})
     )
+    sds = point.select("part", pl.col("tissue"), "metric", "sd")
+    boot_life = rescale(
+        boot_life, sds.filter(pl.col("part") == "lifespan").rename({"tissue": "cohort"}), ["cohort", "metric"]
+    )
+    boot_same = rescale(boot_same, sds.filter(pl.col("part") == "same donors"), ["tissue", "metric"])
 
     rows = []
     for group in SETS:

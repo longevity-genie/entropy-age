@@ -35,7 +35,7 @@ from entropy_age import plots
 from entropy_age.data.cohorts import layout as cohort_layout
 from entropy_age.data.matrix import FeatureMatrix
 from entropy_age.data.mouse import MouseAnnotationLayout, mouse_membership
-from entropy_age.experiments.common import Context, dummies, write_table
+from entropy_age.experiments.common import Context, dummies, rescale, write_table
 from entropy_age.experiments.tissue_contrast import _STATE, SET_LABELS, SETS, _interval, _matched_sd, _run_parallel
 from entropy_age.stochasticity import baseline_strata, dispersion_levels, drift_metrics
 
@@ -156,7 +156,7 @@ def _boot(seed: int) -> list[dict]:
             table = _rows(t, measure, metrics, names, membership, 0, seed)
             out += [
                 {"boot": seed, **r}
-                for r in table.select("tissue", "measure", "metric", "group", "matched_diff_sd").to_dicts()
+                for r in table.select("tissue", "measure", "metric", "group", "matched_diff").to_dicts()
             ]
     return out
 
@@ -214,6 +214,7 @@ def run(ctx: Context) -> list[Path]:
     animals = {g: np.array(sorted(d)) for g, d in sorted(groups.items())}
     state = {"tissues": tissues, "probes": probes, "membership": membership, "animals": animals}
     boot = pl.DataFrame(_run_parallel(_boot, [5000 + b for b in range(n_boot)], workers, state))
+    boot = rescale(boot, point, ["tissue", "measure", "metric"])
     boot.write_parquet(out / "bootstrap.parquet")
 
     summary = summarise(point, boot)

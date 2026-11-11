@@ -19,3 +19,11 @@ grammar (`unattended`, `urgent`, `building`, `after <R-id>` or `after job <slurm
   infants, left out).
 - Resources: compute partition, 8 cores, 8 GB (R17: 1.3 GB, 26 min).
 - Read: `data/output/syndromes/effects.csv`; `age_covariate` true for GSE97362, false for GSE74432.
+
+## R19 — unbiased bootstrap intervals for tissues and mouse (RM9)
+
+- What: `entropy-age figures tissues tissues_cells mouse --scale paper --seed 42` after the resamples are
+  rescaled by the full sample's spread; replaces their tables and figures.
+- Resources: compute partition, 8 cores (`ENTROPY_AGE_WORKERS=8`), 96 GB; last runs took 19 min (tissues, 16
+  cores, 57 GB) and 42 min (mouse, 16 cores, 12 GB), so about 2 h here.
+- Read: intervals widen, point estimates unchanged; say in `docs/extension.md` whether any conclusion moved.

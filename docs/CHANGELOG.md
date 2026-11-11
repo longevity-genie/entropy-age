@@ -4,6 +4,7 @@ Newest first.
 
 ## Unreleased
 
+- RM9: `figures tissues`, `tissues_cells` and `mouse` scale every bootstrap resample by the full sample's spread (`common.rescale`), not its own, which had shrunk resampled gaps and blood-minus-brain intervals toward zero.
 - `figures syndromes` keeps, where a series gives ages, only people with one inside the controls' age range, so age enters as a covariate without extrapolating to infants (R17 had dropped age for all of GSE97362).
 - `fetch syndromes` and `figures syndromes` (RM14): blood of people with constitutional variants in chromatin writers (NSD1, EZH2: GSE74432; KMT2D, CHD7: GSE97362), each scored against the series' controls, raw and with 5 composition components. `arm_scores` takes `components`.
 - R16 done: under Tet3 loss essential CpGs gain methylation (S +0.012, +0.014), consistent with TET's role; S rises in other arms too, so not specific yet.

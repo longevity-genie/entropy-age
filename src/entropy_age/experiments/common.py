@@ -192,6 +192,22 @@ def write_table(frame: pl.DataFrame, path: Path) -> Path:
     return path.with_suffix(".parquet")
 
 
+def rescale(boot: pl.DataFrame, point: pl.DataFrame, keys: list[str]) -> pl.DataFrame:
+    """``boot`` with ``matched_diff_sd``: each resample's unscaled ``matched_diff`` over the full sample's ``sd``.
+
+    ``point`` carries ``sd`` per ``keys`` (the metric's spread over features in the full sample). Dividing a
+    resample by its own spread, which resampling inflates, shrinks every resampled gap toward zero (roadmap RM9);
+    one divisor for the point estimate and all its resamples keeps them on one scale.
+    """
+    sd = point.select(*keys, "sd").unique(subset=keys)
+    if sd.group_by(keys).len()["len"].max() != 1:
+        raise ValueError("rescale: more than one sd per key")
+    out = boot.join(sd, on=keys, how="left")
+    if out["sd"].null_count():
+        raise ValueError("rescale: a resample has no full-sample sd")
+    return out.with_columns(matched_diff_sd=pl.col("matched_diff") / pl.col("sd")).drop("sd")
+
+
 def scaled_intervals(point: pl.DataFrame, boot: pl.DataFrame, keys: list[str]) -> pl.DataFrame:
     """``point`` with ``gap_sd`` and its 95 % bootstrap interval, all in SDs of the full sample's metric.
 
