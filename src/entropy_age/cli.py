@@ -62,6 +62,16 @@ def fetch_annotation_cmd(overwrite: bool = False) -> None:
     )
 
 
+@fetch_app.command("chromatin")
+def fetch_chromatin_cmd(overwrite: bool = False) -> None:
+    """Roadmap Epigenomics chromHMM 15-state segmentations of blood and brain epigenomes (~10 MB each)."""
+    from entropy_age.data.chromatin import ChromatinLayout, fetch_chromatin
+
+    paths = ProjectPaths.default().ensure()
+    files = fetch_chromatin(paths, overwrite=overwrite)
+    typer.echo("\n".join(str(f) for f in files) + f"\n-> {ChromatinLayout(paths).segmentation('E062').parent}")
+
+
 @fetch_app.command("mouse-annotation")
 def fetch_mouse_annotation_cmd(overwrite: bool = False) -> None:
     """Mammalian-array probe annotation (GEO GPL32543, ~200 MB) and MGI mouse-human orthologs."""

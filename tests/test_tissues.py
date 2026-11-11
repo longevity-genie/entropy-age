@@ -22,11 +22,11 @@ from entropy_age.stochasticity import dispersion_levels
 MANIFEST_450K = """Illumina, Inc.
 [Heading],,
 [Assay],,
-IlmnID,Name,CHR,UCSC_RefGene_Name,UCSC_RefGene_Accession,UCSC_RefGene_Group,Relation_to_UCSC_CpG_Island
-cg01,cg01,1,AARS;AARS,NM_001605;NM_001605,TSS200;Body,Island
-cg02,cg02,2,ZZZ;NEWHK,NR_1;NM_555555,Body;TSS1500,N_Shore
-cg03,cg03,3,,,,
-cg04,cg04,X,AARS,NM_001605,3'UTR,Island
+IlmnID,Name,CHR,MAPINFO,UCSC_RefGene_Name,UCSC_RefGene_Accession,UCSC_RefGene_Group,Relation_to_UCSC_CpG_Island
+cg01,cg01,1,15865,AARS;AARS,NM_001605;NM_001605,TSS200;Body,Island
+cg02,cg02,2,534242,ZZZ;NEWHK,NR_1;NM_555555,Body;TSS1500,N_Shore
+cg03,cg03,3,,,,,
+cg04,cg04,X,710097,AARS,NM_001605,3'UTR,Island
 [Controls],,
 ctl,1
 """
@@ -39,6 +39,7 @@ def test_450k_manifest_links_and_promoters(tmp_path: Path):
     probes, links = read_manifest_450k(path)
     assert probes["cpg"].to_list() == ["cg01", "cg02", "cg03", "cg04"]
     assert probes["cpg_island"].to_list() == [True, False, False, True]
+    assert probes["pos"].to_list() == [15865, 534242, None, 710097]
     assert probes["island_relation"].to_list()[2] == "OpenSea"
     # promoter if ANY of the CpG's genes has it in TSS1500/TSS200/5'UTR/1stExon
     assert probes["promoter"].to_list() == [True, True, False, False]

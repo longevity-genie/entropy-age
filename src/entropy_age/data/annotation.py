@@ -119,7 +119,8 @@ def read_manifest(path: Path) -> pl.DataFrame:
 def read_manifest_450k(path: Path) -> tuple[pl.DataFrame, pl.DataFrame]:
     """The 450k manifest as ``(probes, links)``.
 
-    ``probes`` has one row per CpG: chromosome, CpG-island relation and whether the CpG sits in a
+    ``probes`` has one row per CpG: chromosome, position (GRCh37, the manifest's ``MAPINFO``), CpG-island
+    relation and whether the CpG sits in a
     promoter region of any gene. ``links`` has one row per CpG and gene: a 450k probe often lies in
     several genes, and its gene, RefSeq accession and region lists are parallel ``;``-separated
     fields. The manifest carries no Entrez IDs, so gene sets are matched by RefSeq, then symbol.
@@ -127,6 +128,7 @@ def read_manifest_450k(path: Path) -> tuple[pl.DataFrame, pl.DataFrame]:
     table = _assay_block(path).select(
         pl.col("Name").alias("cpg"),
         pl.col("CHR").alias("chr"),
+        pl.col("MAPINFO").cast(pl.Int64, strict=False).alias("pos"),
         pl.col("Relation_to_UCSC_CpG_Island").fill_null("OpenSea").alias("island_relation"),
         pl.col("UCSC_RefGene_Name").fill_null("").str.split(";").alias("symbol"),
         pl.col("UCSC_RefGene_Accession").fill_null("").str.split(";").alias("refseq"),
@@ -144,6 +146,7 @@ def read_manifest_450k(path: Path) -> tuple[pl.DataFrame, pl.DataFrame]:
     probes = table.select(
         "cpg",
         "chr",
+        "pos",
         "island_relation",
         (pl.col("island_relation") == "Island").alias("cpg_island"),
         pl.col("cpg").is_in(promoter_cpgs.implode()).alias("promoter"),

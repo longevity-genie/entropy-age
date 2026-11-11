@@ -6,9 +6,9 @@ The order and the rule for each item are argued in `docs/RESEARCH_PLAN.md`.
 
 ## RM7 — Does chromatin state account for the protection?
 
-**State:** unattended · **Owner:** lead
+**State:** building · **Owner:** lead
 
-Progress: planned (`docs/RESEARCH_PLAN.md`, arm A). Match set CpGs to background on chromatin state (reference
+Progress: built (`figures chromatin`), waiting on its run (R3); plan in `docs/RESEARCH_PLAN.md`, arm A. Match set CpGs to background on chromatin state (reference
 epigenomes of blood and brain: chromHMM states, H3K4me3 and H3K27ac peaks) as well as island and level, in
 Hannum, Jaffe and Lunnon. Go on if the gap shrinks by half or more; if it stays, RM3 moves up.
 
