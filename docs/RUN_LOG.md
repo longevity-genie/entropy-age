@@ -3,6 +3,14 @@
 Owned by the runner seat (`docs/seats/RUNNER.md`): one entry per run, newest first, with its inputs, the
 commit it ran, its job ids, its scale and seed, and its result or its failure with the cause.
 
+## R4 — the chromatin-matched gap with sorted brain chromatin (RM7), 2026-11-11
+
+- Commit b0184a3; `figures chromatin --scale paper --seed 42`; 8 cores, 24 GB asked; job comment set.
+- Job 6428474 completed in 27.8 min, 5.2 GB at peak (the next run fits in 10 GB). It rewrote R3's outputs with the
+  sorted-ATAC matchings added; R3's own numbers are unchanged in them.
+- Result, as measured (housekeeping, brain): sorted neuron and glia accessibility removes 30-37 % of the gap,
+  with the bulk state 32-49 %. The lead's reading is in `docs/extension.md`.
+
 ## R3 — the chromatin-matched gap (RM7), 2026-11-11
 
 - Commit 105cc56; `fetch annotation` (re-prepared the probe table with positions, 5 s, 1.8 GB), then

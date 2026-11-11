@@ -12,15 +12,6 @@ grammar (`unattended`, `urgent`, `building`, `after <R-id>` or `after job <slurm
 - the roadmap item it serves (`RMn`);
 - what the lead needs back (a table, a figure, a number), and anything the run must not do.
 
-## R4 — the chromatin-matched gap with sorted brain chromatin
-
-**State:** building · **Owner:** runner (job 6428474)
-
-- Serves **RM7** (is the gap left in brain chromatin a bulk map cannot resolve?).
-- Command, from the clone at b0184a3 or later: `uv run entropy-age figures chromatin --scale paper --seed 42` (all
-  inputs fetched; it rewrites R3's outputs with the new matchings added).
-- Back to the lead: `data/output/chromatin_match/` and `docs/figures/chromatin_match.png`, time and peak memory.
-
 ## R5 — published clocks on the protection map
 
 **State:** building · **Owner:** runner (job 6428487)
