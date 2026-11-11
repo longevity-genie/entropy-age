@@ -67,6 +67,10 @@ means for clocks (RM8). An intervention test (RM3) is the one result that could 
   chromatin, with a growing share in vivo, and the CR effect is an open lead to replicate. RM3's next step is a
   search for a second CR series; while that waits, RM2 (more tissues) goes ahead.
 
+- 2026-11-11, antonkulaga: cell lines tell little about clocks. The causal chromatin test moves first to public
+  natural experiments (RM14): people with a broken chromatin writer (Sotos, Weaver, Tatton-Brown-Rahman, Kabuki),
+  mouse knockouts, and edited cells followed over time. The grant's wet-lab WP1 is kept for what these cannot show.
+
 ## The arms, in order, each with its rule
 
 ### A. RM7: does chromatin state account for the protection? (new, first)

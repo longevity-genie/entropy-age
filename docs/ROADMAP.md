@@ -54,6 +54,19 @@ after matching on chromatin, expression level and breadth (a DepMap gradient wit
 structure), against Hollmann 2020; (4) read the species result against Crofts 2026 (stem-cell dynamics) and the
 floor of near-0 % essential promoters; (5) the shield score against Seeboth 2020's confounders.
 
+## RM14 — Natural experiments in chromatin: broken writers, knockouts, edits
+
+**State:** after RM12 · **Owner:** lead
+
+Progress: asked by antonkulaga (2026-11-11): cell lines tell little about clocks; can public data show what
+happens when chromatin is changed? Three sources, in order:
+1. Blood methylation of people with a constitutional variant in a chromatin writer: Sotos (NSD1), Weaver (EZH2),
+   Tatton-Brown-Rahman (DNMT3A), Kabuki (KMT2D). Martin-Herranz et al. 2019 found clocks accelerated in Sotos.
+   Test: is the essential-gene shield weaker than in matched controls? Search GEO for the cohorts.
+2. Mouse knockouts: Tet3 heterozygous brain (GSE223748, at hand after R12); Tet2 and Dnmt3a mutant blood.
+3. Edited cells over time: CRISPRoff (Nunez et al. 2021) tracked imposed promoter methylation for months.
+Rule: a cohort with at least 10 carriers and matched controls on one platform.
+
 ## RM3 — Interventions: replicate the CR result
 
 **State:** after RM2 · **Owner:** lead
