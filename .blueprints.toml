@@ -10,6 +10,7 @@ id = "entropy-age"
 # an instruction (the kit's D83). The runner reports a run's end or a fault it cannot fix (D5).
 wake_from = "entropy-age/runner */secretary"
 
+wake_people = "entropy-age"
 [seat.lead.zulip]
 pool = "~/.config/agent-seat-blueprints/zulip/pool"
 
