@@ -562,6 +562,43 @@ courses, which have none, use the floor pooled over the experiments that do.
 Tables: `data/output/passaged_cells_sturm/` (as for GSE197512; the contact-inhibition and 3 % oxygen arms
 under `Study part 3` in `drift_coupling`; their slopes on days are in `arm_slopes.parquet`, not tracked).
 
+## Outside promoters: a directed, division-linked loss (roadmap RM15)
+
+SvenDP asked whether aging methylation is all stochastic, or whether specific intergenic regions lose methylation
+together, too little per CpG for a test but visible in a PCA. The known candidate is solo-WCGW CpGs (A or T on both
+sides, no other CpG within 35 bp), which lose methylation in late-replicating, CpG-poor domains as cells divide
+(Zhou et al. 2018). Figure `intergenic` (run R14) tags every 450k CpG from its flanking sequence in the manifest and
+tests the open-sea CpGs outside promoters: 131,000 in Hannum blood and Jaffe cortex, about 13,100 of them solo-WCGW.
+
+![Intergenic loss](figures/intergenic.png)
+
+| | solo-WCGW, per decade | other open sea, per decade | difference, per decade |
+|---|---|---|---|
+| blood (Hannum, n = 656) | −0.21 pp (p 4·10⁻⁵) | −0.08 pp (p 0.003) | −0.13 pp (p 2·10⁻⁴) |
+| cortex (Jaffe) | +0.02 pp (p 0.42) | −0.01 pp (p 0.05) | +0.03 pp (p 0.08) |
+
+(pp: percentage points of mean methylation, technical covariates removed.)
+
+* **Yes, a directed loss, in blood.** Solo-WCGW CpGs lose methylation steadily with age, 2.7 times as fast as the
+  other open-sea CpGs. Each CpG moves little (about 1.3 points over 60 years), so a per-CpG test misses most of
+  them, but the class moves together. That is not noise: noise would spread people apart without moving the mean.
+* **It needs dividing cells.** Cortex, whose neurons do not divide, shows none. This is the mitotic-clock signal of
+  Zhou et al. and Endicott et al., not stochastic drift.
+* **The PCA does not single it out.** Blood's first component weighs solo-WCGW CpGs 1.5 times as much as other CpGs
+  but does not track age (r = −0.03). The components that track age in blood (r 0.15-0.26) do not weigh them
+  more. The loss is real but small, so in a PCA it hides behind larger axes.
+* **Cortex has its own coordinated age axes.** Two components track age strongly (|r| 0.54 and 0.58) without
+  weighing solo-WCGW CpGs: a coordinated programme in brain, not the mitotic one, still to be identified.
+* **For the other results.** Blood's first component, which our cell-mix corrections remove, carries the solo-WCGW
+  axis, but it does not track age, so the age-slope results are unlikely to have lost much by removing it.
+
+So aging methylation is not all stochastic. Next to the drift the paper models (spread that grows, mean that
+barely moves), dividing tissue shows a directed loss at solo-WCGW CpGs. Clocks and models should treat the two
+apart. Next: the same test in the culture series (EPIC, where the loss should grow with doublings) and in the
+cortex axes.
+
+Tables: `data/output/intergenic/` (`directed_loss`, `components`).
+
 ## Interventions in mouse blood: the shield grows with age and caloric restriction weakens it (roadmap RM3)
 
 Petkovich et al. 2017 (GSE80672) profiled mouse whole blood by RRBS. The set has 153 C57BL/6 mice on a

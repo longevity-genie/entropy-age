@@ -4,6 +4,7 @@ Newest first.
 
 ## Unreleased
 
+- R14 done (41 s): RM15, SvenDP's question. Aging methylation is not all stochastic: in blood, solo-WCGW CpGs lose methylation 2.7 times as fast as other open-sea CpGs (−0.21 against −0.08 points per decade), a directed, division-linked loss absent in cortex; the PCA does not single it out. `docs/extension.md`.
 - RM13 (1), first answer: what is left of the shield beyond chromatin. Little for core-essential genes in blood, a small clear remainder for housekeeping genes, more in brain (`docs/extension.md`, the novelty review's addendum).
 - R11 done (54 min, 10.6 GB): the mouse figures with corrected intervals; no conclusion moved. RM2's six-tissue result written up in `docs/extension.md`: the shield in all six tissues, its size and its growth with age ordered by neither by turnover.
 - R14 (RM15) submitted first; the other queued jobs lowered in priority.

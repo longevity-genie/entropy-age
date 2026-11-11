@@ -12,16 +12,6 @@ grammar (`unattended`, `urgent`, `building`, `after <R-id>` or `after job <slurm
 - the roadmap item it serves (`RMn`);
 - what the lead needs back (a table, a figure, a number), and anything the run must not do.
 
-## R14 — directed demethylation outside promoters (first priority)
-
-**State:** building · **Owner:** runner (job 6430056)
-
-- Serves **RM15**, put above everything by antonkulaga (SvenDP's question). The other queued jobs were given a lower
-  priority (nice 500) so this one starts first; R11 had already started and runs on.
-- Commands, from the clone at f84d2a7 or later: `uv run entropy-age fetch annotation` (adds the solo-WCGW tags),
-  then `uv run entropy-age figures intergenic --scale paper --seed 42`.
-- Back to the lead: `data/output/intergenic/` and `docs/figures/intergenic.png`, time and peak memory.
-
 ## R12 — shielding across 349 mammal species (GSE223748)
 
 **State:** building · **Owner:** runner (job 6429555)

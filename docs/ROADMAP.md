@@ -4,18 +4,14 @@ Open work only, in order. Each item is a section `## RMn — name` with a line s
 owner. A done item leaves this file; `docs/CHANGELOG.md` says what landed.
 The order and the rule for each item are argued in `docs/RESEARCH_PLAN.md`.
 
-## RM15 — Directed demethylation outside promoters (is it stochastic?)
+## RM15 — Directed demethylation outside promoters: the culture and cortex follow-ups
 
-**State:** building · **Owner:** lead
+**State:** unattended · **Owner:** lead
 
-Progress: asked by SvenDP (member, 2026-11-11): beyond variability at single loci, do specific intergenic regions
-lose methylation together with age, below per-CpG significance but visible in a PCA? Known: directed loss in
-late-replicating, CpG-poor domains (solo-WCGW; Zhou 2018, Endicott 2022). Our shield tests cover promoters only, and
-our composition components are top PCs of background CpGs, which may hold such a programme. Test: PCA of intergenic
-open-sea CpGs in Hannum and GSE41037; does a component track age beyond cell counts, load on solo-WCGW CpGs, and
-grow with doublings in the culture series? If so, model it as a directed term, apart from noise.
-
-
+Progress: first part done (`figures intergenic`, R14, `docs/extension.md`): in blood, solo-WCGW CpGs lose
+methylation 2.7 times as fast as other open-sea CpGs (directed, not noise); none in cortex; the PCA does not single
+it out. Left: the same test in the culture series (EPIC manifest needed for the tags; the loss should grow with
+doublings), and what cortex's two strongly age-tracking components are.
 ## RM10 — Shielding in short- against long-lived species
 
 **State:** building · **Owner:** lead

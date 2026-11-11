@@ -3,6 +3,15 @@
 Owned by the runner seat (`docs/seats/RUNNER.md`): one entry per run, newest first, with its inputs, the
 commit it ran, its job ids, its scale and seed, and its result or its failure with the cause.
 
+## R14 — directed demethylation outside promoters (RM15), 2026-11-11
+
+- Commit f84d2a7; `fetch annotation` (solo-WCGW tags, 10 s, 1.9 GB) then `figures intergenic --scale paper --seed 42`;
+  8 cores, 32 GB asked; first in priority, by antonkulaga's word.
+- Job 6430056 completed in 41 s, 2.9 GB at peak. 130,991 open-sea CpGs outside promoters in Hannum (13,103
+  solo-WCGW), 131,254 in Jaffe.
+- Result, as measured: blood solo-WCGW −0.21 percentage points per decade (p 4·10⁻⁵) against −0.08 for other
+  open-sea CpGs; cortex none. The lead's reading is in `docs/extension.md`.
+
 ## R11 — the mouse figures with corrected intervals (RM2, RM3), 2026-11-11
 
 - Commit f52c6e5; `figures interventions bxd rrbs_tissues --scale paper --seed 42`; 8 cores, 24 GB asked.
