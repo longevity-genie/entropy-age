@@ -4,6 +4,7 @@ Newest first.
 
 ## Unreleased
 
+- RM8, second part: figure `chromatin_clocks`, elastic-net age clocks trained on equal-sized pools of CpGs that are active TSS in both blood and cortex, Polycomb or bivalent in both, or random, in Hannum and in Jaffe, tested on the other cohort and on Lunnon's same donors (brain-minus-blood offset). Not yet run on the data.
 - RM7 done: in brain, neuron and glia accessibility (GSE96614) removes 30-37 % of the housekeeping gap, 32-49 % with the bulk state, against 5-26 % for the bulk map; the residual is then about blood's. RM7 leaves the roadmap; `docs/extension.md` and the plan record it.
 - R4 done (27.8 min, 5.2 GB peak): `data/output/chromatin_match/` and the figure rewritten with the sorted-ATAC matchings; R4 leaves the run brief.
 - R5 (published clocks on the protection map, RM8) on the run brief and submitted.

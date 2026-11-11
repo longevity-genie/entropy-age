@@ -5,6 +5,7 @@ from pathlib import Path
 
 from entropy_age.experiments import (
     atlas_real_data,
+    chromatin_clocks,
     chromatin_match,
     clock_cpgs,
     extension_selection,
@@ -41,6 +42,7 @@ FIGURES: dict[str, Callable[[Context], list[Path]]] = {
     "passage": passaged_cells.run,
     "passage_sturm": passaged_cells.run_sturm,
     "chromatin": chromatin_match.run,
+    "chromatin_clocks": chromatin_clocks.run,
     "clocks": clock_cpgs.run,
     "per_person": per_person.run,
 }
