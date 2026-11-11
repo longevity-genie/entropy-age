@@ -3,6 +3,16 @@
 Owned by the runner seat (`docs/seats/RUNNER.md`): one entry per run, newest first, with its inputs, the
 commit it ran, its job ids, its scale and seed, and its result or its failure with the cause.
 
+## R3 — the chromatin-matched gap (RM7), 2026-11-11
+
+- Commit 105cc56; `fetch annotation` (re-prepared the probe table with positions, 5 s, 1.8 GB), then
+  `figures chromatin --scale paper --seed 42`; 8 cores, 24 GB asked; job comment set.
+- Job 6428419 completed in 20.5 min, 5.2 GB at peak: the next run fits in 10 GB. About 109,000 promoter CpGs per
+  tissue in Hannum, Jaffe and Lunnon's five tissues.
+- Result, as measured (housekeeping, dispersion slope in SDs): blood −0.289 matched on island and level, −0.034
+  matched on its own chromatin (E062) as well; cortex −0.075 and −0.058. The lead's reading is in
+  `docs/extension.md`. Tables in `data/output/chromatin_match/`, figure `docs/figures/chromatin_match.png`.
+
 ## R2 — the per-person score (RM6), 2026-11-11
 
 - Commit 2fe148a (module `entropy_age.protection`, figure `per_person`); `--scale paper --seed 42`; 8 cores, 48 GB

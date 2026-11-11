@@ -4,6 +4,7 @@ Newest first.
 
 ## Unreleased
 
+- R3 done (20.5 min, 5.2 GB peak): `data/output/chromatin_match/` and `docs/figures/chromatin_match.png`; R3 leaves the run brief.
 - R3 (the chromatin-matched gap, RM7) on the run brief and submitted.
 - RM7: `entropy-age fetch chromatin` (Roadmap chromHMM 15-state segmentations of blood mononuclear cells, neutrophils and prefrontal cortex) and figure `chromatin`, which matches gene-set CpGs to background on chromatin state as well as island and level, with a gene-resampling interval for the gap and for the share chromatin removes. The 450k probe table gains positions (`pos`, GRCh37): rerun `entropy-age fetch annotation`. Not yet run on the data.
 - `docs/RESEARCH_PLAN.md`: the plan to a paper, at antonkulaga's request. The candidate claim moves from selection to chromatin; two new items, RM7 (does chromatin state account for the gap?, first) and RM8 (clocks from protected and unprotected CpGs); the roadmap reordered RM7, RM3, RM8, RM2, RM4, RM5.
