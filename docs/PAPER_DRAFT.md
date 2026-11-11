@@ -110,6 +110,9 @@ lifespan scaling as stem-cell dynamics (Crofts 2026), and per-person drift burde
   +0.17, +0.25; core-essential +0.31, +0.49; 8 against 8). **[weak → solid within one study]**: one study, 16
   mice per tissue. **[missing]** the direction (gain of methylation?) and a second Tet or Dnmt model.
 - GHRKO liver's apparent strengthening was batch (gone against same-chip controls).
+- People with constitutional chromatin-writer variants (Sotos/NSD1, Weaver/EZH2, Kabuki/KMT2D, CHARGE/CHD7)
+  drift more in blood but keep the shield (F −0.04 to +0.003). **[weak]**: GSE74432 not age-adjusted; small
+  arms. Contrast with Tet3: the shield follows promoter demethylation, not the writers around it.
 - **Missing:** a second CR or rapamycin series sequenced with its controls; sorted stem cells.
 - **Interpretation open:** growth in liver argues against stem-cell selection as its cause.
 - **Figures:** interventions, bxd_liver (being redrawn with corrected intervals).

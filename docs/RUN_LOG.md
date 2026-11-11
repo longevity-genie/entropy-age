@@ -3,6 +3,16 @@
 Owned by the runner seat (`docs/seats/RUNNER.md`): one entry per run, newest first, with its inputs, the
 commit it ran, its job ids, its scale and seed, and its result or its failure with the cause.
 
+## R18 — chromatin-writer syndromes in blood, with age (RM14), 2026-11-11
+
+- Commit b7cf41c; `figures syndromes --scale paper --seed 42`; 4 cores (lowered while queued), 8 GB.
+- Job 6430424 waited on the CPU cap, then completed in 16 min, 1.3 GB at peak. GSE97362: 3 without an age and 33
+  outside the controls' 2-19 years left out; GSE74432 has no ages (no age covariate).
+- Result, as measured (housekeeping, raw / 5 components): drift B up in Sotos +0.018/+0.021, NSD1 variants
+  +0.013/+0.012, Weaver +0.011/+0.010, Kabuki +0.009/+0.011, CHARGE +0.007/+0.005; KMT2D and CHD7 variants ≈ 0.
+  Shield share F: Sotos −0.051/−0.043, NSD1 variants −0.067/−0.039, Weaver −0.063/−0.037; Kabuki, CHARGE, KMT2D,
+  CHD7 variants within ±0.016. The lead's reading is in `docs/extension.md`.
+
 ## R17 — chromatin-writer syndromes in blood (RM14), 2026-11-11
 
 - Commit e4ec847; `fetch syndromes`, `figures syndromes --scale paper --seed 42`; 8 cores, 32 GB.

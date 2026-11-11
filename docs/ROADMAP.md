@@ -60,7 +60,7 @@ floor of near-0 % essential promoters; (5) the shield score against Seeboth 2020
 
 ## RM14 — Natural experiments in chromatin: broken writers, knockouts, edits
 
-**State:** unattended (R17 running) · **Owner:** lead
+**State:** unattended · **Owner:** lead
 
 Progress: asked by antonkulaga (2026-11-11): cell lines tell little about clocks; can public data show what
 happens when chromatin is changed? Three sources, in order:
@@ -71,8 +71,9 @@ happens when chromatin is changed? Three sources, in order:
 3. Edited cells over time: CRISPRoff (Nunez et al. 2021) tracked imposed promoter methylation for months.
 Rule: a cohort with at least 10 carriers and matched controls on one platform.
 - Done: Tet3 heterozygous brain loses the shield against littermates (R15, R16; see RM12).
-- Running: R17, `figures syndromes` on GSE74432 (Sotos/NSD1 57, Weaver/EZH2 8) and GSE97362 (Kabuki/KMT2D 37,
-  CHARGE/CHD7 72), blood 450k.
+- Done (R18): Sotos, NSD1 variants, Weaver, Kabuki and CHARGE carriers drift more in blood but keep the shield
+  (F unchanged or more negative); KMT2D and CHD7 variants show nothing within the controls' ages.
+- Next: the DNMT3A loss-against-gain pair below; a TET2 or TET3 human cohort if one exists.
 - Found, below the rule: DNMT3A loss of function (TBRS) GSE128801, 5 carriers against 7 controls; DNMT3A gain
   of function (microcephalic dwarfism) GSE120428, 4 against 5 in blood. Together a loss-against-gain contrast of
   one writer; read only as a pair, after R17.

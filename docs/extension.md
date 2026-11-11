@@ -627,6 +627,45 @@ controls (controls leave one out), at least 5 animals per arm.
 
 Tables: `data/output/mmc_interventions/` (`effects`, `animal_scores`).
 
+## Natural experiments in people: chromatin-writer syndromes keep the shield (roadmap RM14)
+
+Tet3 heterozygous mice lose the shield in brain. Do people born with a variant in a chromatin writer lose it in
+blood? Figure `syndromes` (run R18) scores the blood of carriers against the controls of two Weksberg-lab 450k
+series: GSE74432 (Sotos syndrome and other NSD1 variants, the H3K36 methyltransferase; Weaver syndrome, EZH2,
+the Polycomb H3K27 methyltransferase) and GSE97362 (Kabuki syndrome and other KMT2D variants, the H3K4
+methyltransferase; CHARGE syndrome and other CHD7 variants, a remodeller). Composition is removed with 5
+components of the controls' background CpGs. GSE97362 keeps only people inside the controls' 2-19 years, with
+age as covariate; GSE74432 gives no ages, so its contrasts are not age-adjusted.
+
+![Syndromes](figures/syndromes.png)
+
+| carriers (controls) | drift B, housekeeping | shield share F, housekeeping | reading |
+|---|---|---|---|
+| Sotos 38 (53) | +0.021 (p 10⁻⁴²) | −0.043 (p 2·10⁻¹³) | more drift, shield holds |
+| NSD1 variant 16 (53) | +0.012 | −0.039 (p 3·10⁻⁵) | the same |
+| Weaver 8 (53) | +0.010 | −0.037 (p 0.003) | the same |
+| Kabuki 10 (124) | +0.011 (p 3·10⁻¹⁶) | +0.003 (n.s.) | more drift, shield unchanged |
+| CHARGE 17 (124) | +0.005 | −0.012 (p 0.005) | the same |
+| KMT2D, CHD7 variants 20, 27 (124) | ≈ 0 | ≈ 0 | nothing |
+
+(5 components; raw scores agree in sign.)
+
+* **Every syndrome adds drift, none removes the shield.** Carriers' CpGs move further from the controls, as
+  Martin-Herranz et al. 2019 found for clocks in Sotos, but at look-alike CpGs at least as much as at essential
+  promoters: the shield's share holds or grows.
+* **Unlike Tet3.** Halving Tet3 in neurons removed the protection at essential promoters themselves. NSD1 and
+  EZH2 mark intergenic and Polycomb chromatin; losing them disorders the CpGs around the promoters, which is where
+  the look-alikes sit. The shield sits in the machinery that keeps island promoters unmethylated (TET), not in
+  the writers of the surrounding chromatin. One mouse study and four syndromes; a hypothesis to test, not a
+  result.
+* **What R17 had wrong.** Without the age restriction, KMT2D and CHD7 variant carriers looked as if they drifted
+  more; many were infants, whose blood differs in kind. Inside the controls' ages the effect is gone.
+* **Cautions.** GSE74432 has no ages; carriers are children and the ages of its controls are unknown. A
+  syndrome's own methylation signature (Choufani 2015, Butcher 2017) adds to B by design; F is a ratio and
+  less affected, but not immune.
+
+Tables: `data/output/syndromes/` (`effects`, `person_scores`).
+
 ## Outside promoters: a directed, division-linked loss (roadmap RM15)
 
 SvenDP asked whether aging methylation is all stochastic, or whether specific intergenic regions lose methylation
