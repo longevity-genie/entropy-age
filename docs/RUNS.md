@@ -12,11 +12,4 @@ grammar (`unattended`, `urgent`, `building`, `after <R-id>` or `after job <slurm
 - the roadmap item it serves (`RMn`);
 - what the lead needs back (a table, a figure, a number), and anything the run must not do.
 
-## R9 — the shield with age and diet in BXD mouse liver
-
-**State:** building · **Owner:** runner (job 6429222)
-
-- Serves **RM3**.
-- Command, from the clone at e8b851d or later: `uv run entropy-age figures bxd --scale paper --seed 42` (its input, the
-  GSE199979 series matrix, is fetched).
-- Back to the lead: `data/output/bxd_liver/` and `docs/figures/bxd_liver.png`, time and peak memory.
+No runs are planned.

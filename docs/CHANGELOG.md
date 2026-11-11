@@ -4,6 +4,8 @@ Newest first.
 
 ## Unreleased
 
+- R9 done (40 s, 1.0 GB): `data/output/bxd_liver/` and `docs/figures/bxd_liver.png`; R9 leaves the run brief.
+- RM3, BXD liver: the shield's share grows with age in a slowly renewing tissue too (housekeeping F −0.055 per 10 months with composition components, p 10⁻⁴), so that growth is no evidence of selection among stem cells; the high-fat diet's effect is the cell mix. The plan returns to chromatin with a growing share in vivo; the CR result in blood stays an open lead.
 - R9 (the shield in BXD mouse liver, RM3) on the run brief and submitted.
 - RM3: figure `bxd`, the BXD mouse liver of GSE199979 (321 females, 45 strains, chow or high-fat diet): the aging gap with strain as covariates, and per-mouse drift and shield share against age and diet, strain held fixed. It tests whether the shield's growth with age needs a renewing tissue. The Cole et al. liver WGBS series (GSE89273, GSE89274) have about 4 mice per arm, below the plan's 8, and are not used. Not yet run on the data.
 - RM3, GSE80672: mouse blood repeats the human shield with exact ages; in living blood the shield's share grows with age (F −0.05 per 10 months); CR weakens it by a quarter in the within-batch B6D2F1 comparison (+0.025, p 0.002 with composition components), without slowing drift; the C57BL/6 CR comparison crosses sample series and is not read. The plan's claim becomes two-part; RM3 stays first, to replicate it.

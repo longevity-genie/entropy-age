@@ -55,6 +55,12 @@ means for clocks (RM8). An intervention test (RM3) is the one result that could 
   shield (culture, RM7); in renewing tissue in vivo, selection among stem cells adds a part that grows with age
   and follows proliferation. That second part rests on 22 mice of one strain, so RM3 stays first: replicate it.
 
+- 2026-11-11, after R9 (BXD liver): the shield's share grows with age in liver too, a tissue that rarely
+  renews, so that growth is no evidence of selection among stem cells; it looks like faster drift at unprotected
+  CpGs in ageing tissue. What is left for selection is the one CR comparison in blood. The claim goes back to
+  chromatin, with a growing share in vivo, and the CR effect is an open lead to replicate. RM3's next step is a
+  search for a second CR series; while that waits, RM2 (more tissues) goes ahead.
+
 ## The arms, in order, each with its rule
 
 ### A. RM7: does chromatin state account for the protection? (new, first)

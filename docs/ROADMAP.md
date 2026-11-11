@@ -6,7 +6,7 @@ The order and the rule for each item are argued in `docs/RESEARCH_PLAN.md`.
 
 ## RM3 — Interventions: replicate the CR result
 
-**State:** building · **Owner:** lead
+**State:** unattended · **Owner:** lead
 
 Progress: GSE80672 done (`figures interventions`, `docs/extension.md`): in living mouse blood the shield's share
 grows with age, and CR weakens it by a quarter in the one within-batch comparison (B6D2F1, 12 against 10 mice,
@@ -14,7 +14,10 @@ robust to composition), without slowing drift. Left, to replicate it:
 - **GSE89275** (liver RRBS: Ames dwarf, rapamycin, CR) and its WGBS companions GSE89273/89274: about 4 mice
   per arm, below the plan's 8; not used.
 - Another blood series with CR and controls sequenced together (to find).
-- **GSE199979** (BXD liver, chow against high-fat diet, 339 mice): built as `figures bxd`, waiting on its run (R9).
+- GSE199979 (BXD liver) done (`figures bxd`): the shield's share grows with age in liver too, so the growth needs
+  no renewing tissue; HFD's effect is the cell mix. It has no CR arm.
+- Left: a second CR (or rapamycin) series with treated and control animals sequenced together, at least 8 per
+  arm, in blood or another tissue (to find).
 ## RM2 — A turnover gradient across many tissues (methylation)
 
 **State:** after RM3 · **Owner:** lead

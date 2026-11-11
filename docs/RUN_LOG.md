@@ -3,6 +3,14 @@
 Owned by the runner seat (`docs/seats/RUNNER.md`): one entry per run, newest first, with its inputs, the
 commit it ran, its job ids, its scale and seed, and its result or its failure with the cause.
 
+## R9 — the shield in BXD mouse liver (RM3), 2026-11-11
+
+- Commit e8b851d; `figures bxd --scale paper --seed 42`; 8 cores, 24 GB asked; job comment set.
+- Job 6429222 completed in 40 s, 1.0 GB at peak (a rerun fits in 2 GB). 4,221 promoter probes, 321 females, 49 in
+  the young chow reference.
+- Result, as measured (housekeeping F): per 10 months −0.28 (p < 10⁻¹⁰), −0.055 with five composition components
+  (p 10⁻⁴); HFD −0.105 (p 3·10⁻⁵), −0.017 with components (p 0.26). The lead's reading is in `docs/extension.md`.
+
 ## R8 — interventions in mouse blood RRBS, composition check (RM3), 2026-11-11
 
 - Commit d5c7433; `figures interventions --scale paper --seed 42`; 8 cores, 24 GB asked; job comment set. Waited

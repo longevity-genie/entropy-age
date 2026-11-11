@@ -613,6 +613,34 @@ of 22 mice, in one strain. It needs a replication before it carries a claim.
 
 Tables: `data/output/interventions/` (`aging_gaps`, `intervention_effects`, `mouse_scores`, `set_sizes`).
 
+### A slowly renewing tissue: BXD mouse liver
+
+If the shield's growth with age came from selection among dividing stem cells, a tissue whose cells rarely
+divide should show little of it. Figure `bxd` (run R9) takes Roy et al.'s BXD livers (GSE199979, mammalian
+array): 321 females of 45 strains, 6–33 months, on chow or a high-fat diet (HFD). Strain is held fixed
+throughout; the reference is 49 chow females of at most 9 months.
+
+![BXD liver](figures/bxd_liver.png)
+
+* **Liver shows the shield, strongly.** Against matched promoter probes, the entropy slope is −0.49 SD
+  (core essential) and −0.52 (housekeeping); dispersion −0.46 and −0.45. Non-essential genes come out at
+  +0.23 for entropy, and dispersion is not distinguishable from zero.
+* **And its share grows with age there too.** Housekeeping `F` falls by 0.28 per 10 months (p < 10⁻¹⁰), and
+  by 0.055 with five composition components removed (p 10⁻⁴). Core-essential genes give the same (−0.26 and
+  −0.065). Liver drift is small (`B` 0.03–0.08 against 0.10–0.20 in blood), so `F` scatters widely per
+  mouse, but the age trend is clear.
+* **The high-fat diet's effect is the cell mix.** HFD strengthens the shield (`F` −0.105, p 3·10⁻⁵), but
+  with composition components removed it is −0.017 (p 0.26). A fatty, inflamed liver changes its cell
+  mix, and the components absorb it.
+
+So the growing share is not a feature of renewing tissue: liver, whose hepatocytes rarely divide, shows it
+as clearly as blood. That argues against selection among stem cells as its cause. More likely, in living
+tissue, drift at unprotected CpGs accelerates with age while protected promoters hold. Culture does not
+reproduce that, perhaps because it lacks the tissue's ageing environment. The CR result in blood stands as
+it was: a single within-batch comparison, which liver cannot test (no CR arm).
+
+Tables: `data/output/bxd_liver/` (`aging_gaps`, `effects`, `mouse_scores`).
+
 ## Published clocks on the protection map (roadmap RM8)
 
 Where do the CpGs of published clocks sit, by the measures above? Figure `clocks` (run R5) takes 16 clocks
