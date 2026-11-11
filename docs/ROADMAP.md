@@ -66,3 +66,12 @@ whether protection needs divisions. Left:
 - An arrest with more drift than GSE179847's contact inhibition gives (quiescence over a year, or senescent
   cells kept for months), so that a gap without divisions can be measured above the noise floor.
 - GSE268145 (BJ, 175 MB, downloaded), GSE202554 (astrocytes), GSE131280 (glucose): smaller replications.
+
+## RM9 — Unbiased intervals for the blood-against-brain bootstrap
+
+**State:** after RM2 · **Owner:** lead
+
+Progress: `figures tissues` (and `tissues_cells`) scale each resample's gap by its own spread across CpGs, which
+resampling inflates, so its resampled gaps and blood-minus-brain intervals shrink toward zero (conservative, not
+anti-conservative). Recompute them with `common.scaled_intervals`, rerun, and say in `docs/extension.md` what moved.
+
