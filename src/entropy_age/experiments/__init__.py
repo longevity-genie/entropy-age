@@ -41,6 +41,7 @@ from entropy_age.experiments import (
     syndromes,
     tet1_cortex,
     tissue_contrast,
+    tissue_pace,
 )
 from entropy_age.experiments.common import Context, Scale, ScaleName
 
@@ -74,6 +75,7 @@ FIGURES: dict[str, Callable[[Context], list[Path]]] = {
     "mmc_interventions": consortium_interventions.run,
     "syndromes": syndromes.run,
     "health": health_states.run,
+    "tissue_pace": tissue_pace.run,
     "chip": chip_methylation.run,
     "reprogramming": reprogramming.run,
     "tet1": tet1_cortex.run,

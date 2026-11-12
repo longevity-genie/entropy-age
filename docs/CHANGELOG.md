@@ -4,6 +4,7 @@ Newest first.
 
 ## Unreleased
 
+- 2026-11-12: `tissue_pace` (RM25, R40): tissue aging orders compared across mouse, rat and human, methylation and RNA.
 - 2026-11-12: `health_states` (RM24): shield, drift and shift against Alzheimer's, Braak stage, schizophrenia and smoking in cohorts on disk; run R39 planned.
 - R33 done (RM11): clocks from shielded, look-alike and random CpGs read age equally well; the shielded clock's acceleration overlaps less with the others.
 - `docs/planned_tests.csv`: the planned and running tests, each linked to the hypotheses and artefact explanations it would decide; drawn as a third layer of the artifact's graph.

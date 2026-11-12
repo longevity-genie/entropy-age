@@ -1,0 +1,229 @@
+tissue,kind,pace,source
+whole blood,dispersion_slope,0.00025677241472632864,human methylation
+whole blood,abs_slope,0.000116664922829532,human methylation
+colon,dispersion_slope,0.00010516630694056555,human methylation
+colon,abs_slope,0.00012073262732628462,human methylation
+testis,dispersion_slope,0.0004368986184413915,human methylation
+testis,abs_slope,0.00012377365084049923,human methylation
+lung,dispersion_slope,0.00007610212322984241,human methylation
+lung,abs_slope,0.00009260459270516554,human methylation
+kidney,dispersion_slope,0.00023863745846844651,human methylation
+kidney,abs_slope,0.0001826041315467706,human methylation
+breast,dispersion_slope,0.0000636291726105411,human methylation
+breast,abs_slope,0.00014527850765287453,human methylation
+prostate,dispersion_slope,0.00012808654047908097,human methylation
+prostate,abs_slope,0.00013009621467895515,human methylation
+ovary,dispersion_slope,0.00008146657993231503,human methylation
+ovary,abs_slope,0.00005811664750755832,human methylation
+skeletal muscle,dispersion_slope,-0.00006079738040687111,human methylation
+skeletal muscle,abs_slope,0.00009687834704653352,human methylation
+white blood cells,dispersion_slope,0.0026059706845377346,mouse methylation
+white blood cells,abs_slope,0.006230222460414745,mouse methylation
+colon,dispersion_slope,-0.009945316778049091,mouse methylation
+colon,abs_slope,0.010162750844444565,mouse methylation
+spleen,dispersion_slope,-0.0032775465370270293,mouse methylation
+spleen,abs_slope,0.01057416712865235,mouse methylation
+liver,dispersion_slope,-0.005481808991296504,mouse methylation
+liver,abs_slope,0.0073409210890531835,mouse methylation
+kidney,dispersion_slope,-0.0004610206992601492,mouse methylation
+kidney,abs_slope,0.0069764426776342085,mouse methylation
+adipose,dispersion_slope,-0.00497094866333378,mouse methylation
+adipose,abs_slope,0.010431088152385868,mouse methylation
+skeletal muscle,dispersion_slope,-0.009051145233941729,mouse methylation
+skeletal muscle,abs_slope,0.004102396550195989,mouse methylation
+heart,dispersion_slope,-0.0024715812059424576,mouse methylation
+heart,abs_slope,0.00379621538405235,mouse methylation
+frontal cortex,dispersion_slope,-0.008382295867581324,mouse methylation
+frontal cortex,abs_slope,0.0057508609233759,mouse methylation
+hippocampus,dispersion_slope,-0.005044572082975518,mouse methylation
+hippocampus,abs_slope,0.005504394407237556,mouse methylation
+hypothalamus,dispersion_slope,0.01613262220184684,mouse methylation
+hypothalamus,abs_slope,0.01395675539970372,mouse methylation
+Adipose - Subcutaneous,dispersion_slope,-0.00026579666949544433,human RNA
+Adipose - Subcutaneous,abs_slope,0.00225238974842127,human RNA
+Adipose - Visceral (Omentum),dispersion_slope,-0.0007451510202437036,human RNA
+Adipose - Visceral (Omentum),abs_slope,0.0027410700837908553,human RNA
+Adrenal Gland,dispersion_slope,-0.0004128908535737378,human RNA
+Adrenal Gland,abs_slope,0.0018401731541375153,human RNA
+Artery - Aorta,dispersion_slope,-0.00012626545695037947,human RNA
+Artery - Aorta,abs_slope,0.0028079136926054456,human RNA
+Artery - Coronary,dispersion_slope,-0.0009510673650464915,human RNA
+Artery - Coronary,abs_slope,0.0023771608539867287,human RNA
+Artery - Tibial,dispersion_slope,-0.0009629725741761015,human RNA
+Artery - Tibial,abs_slope,0.003452840002487587,human RNA
+Brain - Amygdala,dispersion_slope,0.0017946591779210669,human RNA
+Brain - Amygdala,abs_slope,0.005404338758884778,human RNA
+Brain - Anterior cingulate cortex (BA24),dispersion_slope,0.00034847678056928273,human RNA
+Brain - Anterior cingulate cortex (BA24),abs_slope,0.0032420557794178976,human RNA
+Brain - Caudate (basal ganglia),dispersion_slope,-0.0012590882841144418,human RNA
+Brain - Caudate (basal ganglia),abs_slope,0.002538863128943908,human RNA
+Brain - Cerebellar Hemisphere,dispersion_slope,-0.0012831728498133906,human RNA
+Brain - Cerebellar Hemisphere,abs_slope,0.0017878517453856712,human RNA
+Brain - Cerebellum,dispersion_slope,-0.00042052027365246605,human RNA
+Brain - Cerebellum,abs_slope,0.0023883274391416787,human RNA
+Brain - Cortex,dispersion_slope,-0.0004699775275656193,human RNA
+Brain - Cortex,abs_slope,0.002712369095826574,human RNA
+Brain - Frontal Cortex (BA9),dispersion_slope,0.0003492698488088743,human RNA
+Brain - Frontal Cortex (BA9),abs_slope,0.0034894521046613795,human RNA
+Brain - Hippocampus,dispersion_slope,0.00040207120722363814,human RNA
+Brain - Hippocampus,abs_slope,0.003810522369140163,human RNA
+Brain - Hypothalamus,dispersion_slope,-0.0007119051007954899,human RNA
+Brain - Hypothalamus,abs_slope,0.003268045993718464,human RNA
+Brain - Nucleus accumbens (basal ganglia),dispersion_slope,-0.0011757713165280069,human RNA
+Brain - Nucleus accumbens (basal ganglia),abs_slope,0.002826077520462552,human RNA
+Brain - Putamen (basal ganglia),dispersion_slope,-0.0006335472791179716,human RNA
+Brain - Putamen (basal ganglia),abs_slope,0.004417723137594814,human RNA
+Brain - Spinal cord (cervical c-1),dispersion_slope,0.00036292795353339664,human RNA
+Brain - Spinal cord (cervical c-1),abs_slope,0.002457674754958043,human RNA
+Brain - Substantia nigra,dispersion_slope,-0.0010892179391848661,human RNA
+Brain - Substantia nigra,abs_slope,0.0032158207467917884,human RNA
+Breast - Mammary Tissue,dispersion_slope,-0.00036088485526575374,human RNA
+Breast - Mammary Tissue,abs_slope,0.0020264136755864222,human RNA
+Colon - Sigmoid,dispersion_slope,-0.0006632311217871563,human RNA
+Colon - Sigmoid,abs_slope,0.001966969481812017,human RNA
+Colon - Transverse,dispersion_slope,0.000969259750301517,human RNA
+Colon - Transverse,abs_slope,0.0028437724609673516,human RNA
+Esophagus - Gastroesophageal Junction,dispersion_slope,-0.00016522801784058216,human RNA
+Esophagus - Gastroesophageal Junction,abs_slope,0.0019377762803420586,human RNA
+Esophagus - Mucosa,dispersion_slope,0.00008603862962010283,human RNA
+Esophagus - Mucosa,abs_slope,0.0014476525395126145,human RNA
+Esophagus - Muscularis,dispersion_slope,0.0000201193987918276,human RNA
+Esophagus - Muscularis,abs_slope,0.0014396859943897964,human RNA
+Heart - Atrial Appendage,dispersion_slope,-0.0005554830946728944,human RNA
+Heart - Atrial Appendage,abs_slope,0.0021683321514071935,human RNA
+Heart - Left Ventricle,dispersion_slope,-0.0006724668564952885,human RNA
+Heart - Left Ventricle,abs_slope,0.001821418251459063,human RNA
+Kidney - Cortex,dispersion_slope,-0.00031048694406223535,human RNA
+Kidney - Cortex,abs_slope,0.0034178869840976495,human RNA
+Liver,dispersion_slope,-0.0014706135035144473,human RNA
+Liver,abs_slope,0.003142497878892937,human RNA
+Lung,dispersion_slope,-0.0002741751255315047,human RNA
+Lung,abs_slope,0.001977137442934758,human RNA
+Minor Salivary Gland,dispersion_slope,-0.0007976109160072591,human RNA
+Minor Salivary Gland,abs_slope,0.0061298384403291545,human RNA
+Muscle - Skeletal,dispersion_slope,0.00005138965817606213,human RNA
+Muscle - Skeletal,abs_slope,0.003243350228895446,human RNA
+Nerve - Tibial,dispersion_slope,-0.00041837065484443936,human RNA
+Nerve - Tibial,abs_slope,0.002409843889448273,human RNA
+Ovary,dispersion_slope,0.0005704064548074888,human RNA
+Ovary,abs_slope,0.003523245211344095,human RNA
+Pancreas,dispersion_slope,-0.0008115135363134184,human RNA
+Pancreas,abs_slope,0.0018350916665694269,human RNA
+Pituitary,dispersion_slope,-0.00006997911494430726,human RNA
+Pituitary,abs_slope,0.001845807508266337,human RNA
+Prostate,dispersion_slope,0.00022867757549095678,human RNA
+Prostate,abs_slope,0.0038292348790825853,human RNA
+Skin - Not Sun Exposed (Suprapubic),dispersion_slope,-0.00011704419634178471,human RNA
+Skin - Not Sun Exposed (Suprapubic),abs_slope,0.0017394868133772568,human RNA
+Skin - Sun Exposed (Lower leg),dispersion_slope,-0.0004803124956872611,human RNA
+Skin - Sun Exposed (Lower leg),abs_slope,0.0021516579699690165,human RNA
+Small Intestine - Terminal Ileum,dispersion_slope,0.0009581036231954452,human RNA
+Small Intestine - Terminal Ileum,abs_slope,0.004398118013823603,human RNA
+Spleen,dispersion_slope,0.00002857937088741902,human RNA
+Spleen,abs_slope,0.0018826437456917634,human RNA
+Stomach,dispersion_slope,-0.00021242085950778764,human RNA
+Stomach,abs_slope,0.0015294944425808415,human RNA
+Testis,dispersion_slope,0.00031866924582123917,human RNA
+Testis,abs_slope,0.0018406698430970168,human RNA
+Thyroid,dispersion_slope,-0.0002276622427088191,human RNA
+Thyroid,abs_slope,0.001302540983044316,human RNA
+Uterus,dispersion_slope,-0.0008442355281347137,human RNA
+Uterus,abs_slope,0.004120910414111295,human RNA
+Vagina,dispersion_slope,0.0001692941709445315,human RNA
+Vagina,abs_slope,0.003131683120846085,human RNA
+Whole Blood,dispersion_slope,0.0003351589363421248,human RNA
+Whole Blood,abs_slope,0.002424883234464962,human RNA
+cerebellum,dispersion_slope,0.0003203152999115436,mouse RNA
+cerebellum,abs_slope,0.004691862311292638,mouse RNA
+hypothalamus,dispersion_slope,0.00006137979952596344,mouse RNA
+hypothalamus,abs_slope,0.00250515137810145,mouse RNA
+hippocampus,dispersion_slope,0.00009339893465649292,mouse RNA
+hippocampus,abs_slope,0.0025372736472288613,mouse RNA
+cortex,dispersion_slope,0.0025057662139544644,mouse RNA
+cortex,abs_slope,0.004802868188716104,mouse RNA
+right atrium,dispersion_slope,0.00047284697527173237,mouse RNA
+right atrium,abs_slope,0.008693528766367694,mouse RNA
+left ventricle,dispersion_slope,0.0005475201882003507,mouse RNA
+left ventricle,abs_slope,0.0053053996447875685,mouse RNA
+right ventricle,dispersion_slope,0.000714917620442523,mouse RNA
+right ventricle,abs_slope,0.005194244711973767,mouse RNA
+left atrium,dispersion_slope,0.00038466699814726404,mouse RNA
+left atrium,abs_slope,0.006260021412642012,mouse RNA
+colon,dispersion_slope,0.0012506088350733029,mouse RNA
+colon,abs_slope,0.0030217026549718613,mouse RNA
+duodenum,dispersion_slope,0.0019542198613378588,mouse RNA
+duodenum,abs_slope,0.008102519312477345,mouse RNA
+ileum,dispersion_slope,0.0009037315090782027,mouse RNA
+ileum,abs_slope,0.002430208567072335,mouse RNA
+jejunum,dispersion_slope,0.0013442518900520005,mouse RNA
+jejunum,abs_slope,0.0030764148779641918,mouse RNA
+thymus,dispersion_slope,0.004938613560139639,mouse RNA
+thymus,abs_slope,0.01429830356225193,mouse RNA
+lymph node,dispersion_slope,0.002069504639307028,mouse RNA
+lymph node,abs_slope,0.00834953566256264,mouse RNA
+spleen,dispersion_slope,0.002305295123246904,mouse RNA
+spleen,abs_slope,0.00628956360556969,mouse RNA
+bone marrow,dispersion_slope,0.002697527883166872,mouse RNA
+bone marrow,abs_slope,0.009260328197233866,mouse RNA
+kidney,dispersion_slope,0.0011706640514459032,mouse RNA
+kidney,abs_slope,0.005992634968590089,mouse RNA
+adrenal gland,dispersion_slope,0.0015138252443955445,mouse RNA
+adrenal gland,abs_slope,0.00694394079470978,mouse RNA
+pituitary gland,dispersion_slope,-0.0010319213296060567,mouse RNA
+pituitary gland,abs_slope,0.006092484981039907,mouse RNA
+thyroid gland,dispersion_slope,-0.0017948929866252923,mouse RNA
+thyroid gland,abs_slope,0.013052593233946362,mouse RNA
+liver,dispersion_slope,0.00353828660389968,mouse RNA
+liver,abs_slope,0.00984269813840133,mouse RNA
+skin,dispersion_slope,0.00028522640927662086,mouse RNA
+skin,abs_slope,0.007311163183250396,mouse RNA
+gWAT,dispersion_slope,0.0019372011361815905,mouse RNA
+gWAT,abs_slope,0.008110000955887854,mouse RNA
+femur,dispersion_slope,-0.0015843996243596573,mouse RNA
+femur,abs_slope,0.008124164788992182,mouse RNA
+left atrium,dispersion_slope,0.0014344242451502266,rat RNA
+left atrium,abs_slope,0.008443374141700577,rat RNA
+left ventricle,dispersion_slope,0.00220142644785135,rat RNA
+left ventricle,abs_slope,0.009235242658078555,rat RNA
+right ventricle,dispersion_slope,0.0017160217391035159,rat RNA
+right ventricle,abs_slope,0.005501367184828308,rat RNA
+right atrium,dispersion_slope,0.00025598040199067246,rat RNA
+right atrium,abs_slope,0.007847822558286323,rat RNA
+hypothalamus,dispersion_slope,-0.0003196876078401155,rat RNA
+hypothalamus,abs_slope,0.0031517832572988723,rat RNA
+cerebellum,dispersion_slope,0.002045858153271963,rat RNA
+cerebellum,abs_slope,0.003682282189681819,rat RNA
+cortex,dispersion_slope,-0.0015090567612059743,rat RNA
+cortex,abs_slope,0.0045864133917420035,rat RNA
+hippocampus,dispersion_slope,0.0008726078428831983,rat RNA
+hippocampus,abs_slope,0.002639611503541222,rat RNA
+ileum,dispersion_slope,0.00040752257484881835,rat RNA
+ileum,abs_slope,0.00440859596528342,rat RNA
+colon,dispersion_slope,-0.0005726600557711584,rat RNA
+colon,abs_slope,0.0032083638254639525,rat RNA
+duodenum,dispersion_slope,0.0008965148206257414,rat RNA
+duodenum,abs_slope,0.004483172144976461,rat RNA
+Peyer's patch,dispersion_slope,-0.0008090440350181947,rat RNA
+Peyer's patch,abs_slope,0.00434098390312229,rat RNA
+bone marrow,dispersion_slope,0.0012497177618709396,rat RNA
+bone marrow,abs_slope,0.004329586771972432,rat RNA
+femur,dispersion_slope,0.004852546672705019,rat RNA
+femur,abs_slope,0.012201241529513351,rat RNA
+jejunum,dispersion_slope,0.00026562426371556274,rat RNA
+jejunum,abs_slope,0.003879458789526712,rat RNA
+spleen,dispersion_slope,0.0016405419537678949,rat RNA
+spleen,abs_slope,0.007251490515699145,rat RNA
+thymus,dispersion_slope,0.00004863280294425959,rat RNA
+thymus,abs_slope,0.021774997617245443,rat RNA
+lymph node,dispersion_slope,0.00034563302220682067,rat RNA
+lymph node,abs_slope,0.0042692138197114905,rat RNA
+retina,dispersion_slope,0.0013183385381028594,rat RNA
+retina,abs_slope,0.0049117071009841745,rat RNA
+gWAT,dispersion_slope,-0.0005890327394877746,rat RNA
+gWAT,abs_slope,0.003830020701671449,rat RNA
+liver,dispersion_slope,0.0015208703384629418,rat RNA
+liver,abs_slope,0.006664980848068127,rat RNA
+spinal cord,dispersion_slope,-0.00010989589657970954,rat RNA
+spinal cord,abs_slope,0.010395457098925464,rat RNA
+kidney,dispersion_slope,3.9326091174428765e-6,rat RNA
+kidney,abs_slope,0.010268437927805364,rat RNA

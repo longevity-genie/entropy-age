@@ -1,0 +1,7 @@
+a,b,kind,tissues,rho,p
+mouse RNA,rat RNA,abs_slope,20,0.556390977443609,0.010841753245056892
+mouse RNA,rat RNA,dispersion_slope,20,-0.2721804511278195,0.24566887828037726
+human methylation,human RNA,abs_slope,9,0.03333333333333333,0.9321567355405039
+human methylation,human RNA,dispersion_slope,9,0.35,0.35581957250178897
+human methylation,mouse methylation,abs_slope,4,0.7999999999999999,0.2000000000000001
+human methylation,mouse methylation,dispersion_slope,4,0.7999999999999999,0.2000000000000001

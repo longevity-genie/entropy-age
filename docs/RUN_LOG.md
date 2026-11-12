@@ -3,6 +3,15 @@
 Owned by the runner seat (`docs/seats/RUNNER.md`): one entry per run, newest first, with its inputs, the
 commit it ran, its job ids, its scale and seed, and its result or its failure with the cause.
 
+## R40 — tissue aging pace across species and layers (RM25), 2026-11-12
+
+- Uncommitted code, then the commit below; `figures tissue_pace --scale paper --seed 42` on the login node
+  (reads result tables only, seconds).
+- Result, as measured (Spearman over shared tissues, median slope of features outside the gene sets): directed
+  change (|mean slope|) mouse against rat RNA rho 0.56 (20 tissues, p 0.011); noise (dispersion slope) -0.27
+  (p 0.25). Human methylation against human RNA, 9 tissues: 0.03 and 0.35 (both p > 0.3). Human against mouse
+  methylation: 4 tissues, 0.80 (p 0.20, too few). Tables in `data/output/tissue_pace/`.
+
 ## R33 — clocks of our own (RM11), 2026-11-12
 
 - Commit 2bc70dc; `figures own_clocks --scale paper --seed 42`; 8 cores, 64 GB; job 6433984, 3 h 12 min, 4.3 GB.

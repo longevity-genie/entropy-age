@@ -1318,6 +1318,24 @@ What this supports, and what it does not:
 Tables: `data/output/rna_gtex/`, `data/output/rna_rodents/` (`tissues`, `point_estimates`,
 `contrasts`, `tissue_intervals`; gene mapping in `set_mapping` and `genes`).
 
+## Which tissues age fastest? Orders across species and layers (roadmap RM25)
+
+Asked by antonkulaga (2026-11-12) for questions beyond the shield; idea 5 of `docs/BEYOND_SHIELD.md`. From the
+result tables of earlier runs, each tissue's pace is the median age slope of the features outside the gene sets,
+of two kinds: directed change (how far the mean moves) and noise (how much more people differ). Run R40.
+
+- **Directed change ranks tissues alike in mouse and rat** (RNA, 20 shared tissues, rho 0.56, p 0.011): femur,
+  kidney, liver and heart chambers move most; hippocampus, hypothalamus and gut least.
+- **Noise does not** (rho -0.27, p 0.25). Which tissue grows noisiest with age is not shared between two
+  rodents profiled in one atlas.
+- **Human methylation and human RNA give unrelated orders** over 9 GTEx tissues (directed 0.03, noise 0.35).
+  Human against mouse methylation has 4 shared tissues: too few to read.
+
+Reading: a shared directed programme, a private noise. Caveat that matters: a median |slope| over mostly
+unchanged features scales with each tissue's measurement noise and sample size, and one atlas profiled both
+rodents, so part of the shared order may be technical (tissue-specific RNA quality). A test with slopes divided by
+their standard errors (from raw data) would separate the two; not done.
+
 ## How to test the hypothesis on real data
 
 ```python
