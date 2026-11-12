@@ -12,4 +12,9 @@ grammar (`unattended`, `urgent`, `building`, `after <R-id>` or `after job <slurm
 - the roadmap item it serves (`RMn`);
 - what the lead needs back (a table, a figure, a number), and anything the run must not do.
 
-No runs are planned.
+## R23 — accessibility spread with age per cortical cell type (RM19)
+
+- What: `entropy-age figures atac_cortex --scale paper --seed 42` (reads the 14.5 GB h5ad once into a cached
+  pseudobulk in `data/interim/atac_cortex`).
+- Resources: compute partition, 8 cores, 48 GB; time unknown (about 67 GB read in 20,000-nucleus blocks).
+- Read: `data/output/atac_cortex/gaps`, per cell type and set, raw and with 5 components.

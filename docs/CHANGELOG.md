@@ -4,6 +4,7 @@ Newest first.
 
 ## Unreleased
 
+- `figures atac_cortex` (RM19): accessibility spread with age per cell type in the 362-donor prefrontal-cortex snATAC set (Catching 2026), from a streamed per-donor pseudobulk. Dependencies: h5py, openpyxl. Roadmap: RM21 done and removed; RM12, RM14, RM15 ordered after RM19.
 - `figures species_phylo` adds a drop-one-species jackknife: blood's lean toward a weaker shield in long-lived species rests largely on human.
 - R22 done (RM20): long-lived species drift far less at unprotected CpGs (rate ~ lifespan^−1.4), but the shield's relative size holds or grows; catch-up is not supported.
 - R20 done (RM18): probe design in the strata shrinks blood's gaps by about a sixth, the Zhou mask changes nothing, no gap changes sign.

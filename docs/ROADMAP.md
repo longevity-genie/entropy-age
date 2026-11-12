@@ -6,7 +6,7 @@ The order and the rule for each item are argued in `docs/RESEARCH_PLAN.md`.
 
 ## RM15 — Directed demethylation outside promoters: the culture and cortex follow-ups
 
-**State:** unattended · **Owner:** lead
+**State:** after RM19 · **Owner:** lead
 
 Progress: first part done (`figures intergenic`, R14, `docs/extension.md`): in blood, solo-WCGW CpGs lose
 methylation 2.7 times as fast as other open-sea CpGs (directed, not noise); none in cortex; the PCA does not single
@@ -14,7 +14,7 @@ it out. Left: the same test in the culture series (EPIC manifest needed for the 
 doublings), and what cortex's two strongly age-tracking components are.
 ## RM12 — Selection pressure under interventions
 
-**State:** unattended · **Owner:** lead
+**State:** after RM19 · **Owner:** lead
 
 Progress: asked by antonkulaga (2026-11-11): do interventions change the shield through selection, apart from
 chromatin? What we have: in B6D2F1 blood CR weakens the shield by a quarter (within one sequencing series, robust
@@ -130,19 +130,9 @@ p 0.10; skin n.s.): too small. Public array series to find: maturation-phase tra
 fibroblasts (Gill et al. 2022), in-vivo cyclic OSKM mice (Browder et al. 2022; Ocampo et al. 2016). Chromatin
 maintenance predicts the shield restored with the clock; selection predicts no change (no cells removed).
 
-## RM21 — Species with phylogeny and per tissue
-
-**State:** done · **Owner:** lead
-
-Progress: antonkulaga (2026-11-12) asked for the multispecies checks first. R12's lifespan fit treats species
-as independent. Refit with a phylogenetic GLS (covariance from NCBI Taxonomy lineages, Pagel's λ by maximum
-likelihood), on all groups and per tissue with enough species (skin 36, blood 27, liver 10).
-- Done (`figures species_phylo`, `docs/extension.md`): no lifespan effect survives relatedness or holds within a
-  tissue; blood leans toward a weaker shield in long-lived species (housekeeping entropy +0.085, p 0.054).
-
 ## RM14 — Natural experiments in chromatin: broken writers, knockouts, edits
 
-**State:** unattended · **Owner:** lead
+**State:** after RM12 · **Owner:** lead
 
 Progress: asked by antonkulaga (2026-11-11): cell lines tell little about clocks; can public data show what
 happens when chromatin is changed? Three sources, in order:
