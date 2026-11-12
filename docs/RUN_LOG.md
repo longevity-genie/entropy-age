@@ -52,6 +52,11 @@ commit it ran, its job ids, its scale and seed, and its result or its failure wi
 - R46b (commit 4e5c3b4; job 6441619) failed after 9 min: 72 chip dummies in a logistic fit went singular where a
   chip held only controls. Now the measure is centred within its chip instead, and the Newton step uses least
   squares (test added); resubmitted.
+- R46b rerun: commit 7656dd1; job 6442500, 10 min. Mean beta over all CpGs 0.533; 600 EpiDISH reference CpGs;
+  neutrophils 0.51. Breast cancer, diagnosed over 2 years after the draw, adjusted (mean beta, 11 cell fractions,
+  measure centred within chip): B housekeeping 1.44 (1.17-1.76, p 6e-4), B core essential 1.46 (p 3e-4); all cases
+  1.37-1.40 (p 0.001). DunedinPACE breast 1.21 -> 1.04, Horvath colorectal 1.27 -> 1.01, B colorectal 0.78 -> 1.00
+  once adjusted. Over all 168 effects, the 8 breast-B variants alone pass FDR 5 % (q 0.0004-0.027).
 
 ## R42 — survival in Vitality 90+ (RM28), 2026-11-12, partial
 

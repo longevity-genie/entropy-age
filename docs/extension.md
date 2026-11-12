@@ -1361,6 +1361,32 @@ rodent data are Shavlakadze et al. 2026 (Sci Adv), which with Tyshkovskiy 2026 (
 directed change; Ibañez-Solé 2022 (eLife) found no consistent rise of transcriptional noise with age, in line with
 the unshared noise order. Only the explicit rank comparison is ours.
 
+## Drift at unprotected promoters predicts breast cancer years ahead (roadmap RM28, EPIC-Italy)
+
+The first prospective test (runs R46, R46b). EPIC-Italy (GSE51032): blood of 845 people drawn at enrolment, 421 of
+them diagnosed with cancer up to 14 years later (235 breast, 166 colorectal). Per person, the shield's share F, the
+drift of look-alike promoter CpGs B (each against everyone else) and eight published clocks; logistic regression
+of later cancer on each, with age and sex, then also with mean methylation over all array CpGs, 11 blood-cell
+fractions and the array chip held.
+
+- **The shield's share does not predict cancer** (odds ratio per SD 0.95-1.11, all p > 0.3).
+- **Drift B predicts breast cancer, and more strongly the earlier the blood was drawn**: per SD 1.43 for all
+  cases, 1.62 for cases diagnosed over 2 years later, 1.66 over 5 years later (women only, p 3e-4 to 1e-5). A
+  tumour already present at the draw would give the opposite pattern.
+- **It survives the adjustments**: with mean methylation, cell mix and chip held, 1.44 (1.17-1.76, p 6e-4) for
+  cases diagnosed over 2 years later. Cases are balanced over the 72 chips. Of 168 effects, only these pass a 5 %
+  false discovery rate.
+- **The clocks' signals here do not survive**: DunedinPACE for breast (1.21 -> 1.04) and Horvath for colorectal
+  (1.27 -> 1.01) were cell mix, chip or global methylation. Colorectal cancer has no B signal once adjusted.
+
+Prior work on this cohort: clock acceleration and later breast cancer (Durso et al. 2017, doi
+10.18632/oncotarget.15573); genome-wide hypomethylation before breast cancer (van Veldhoven et al. 2015, doi
+10.1186/s13148-015-0104-2; not replicated in NOWAC). B is neither: it survives mean methylation and beats the clocks.
+
+Reading: how far a woman's promoter CpGs have drifted from the population, at the unprotected look-alikes, marks
+breast-cancer risk years ahead, while the shield itself does not. One cohort; it needs a second (NOWAC or the
+Breakthrough Generations Study, both controlled access; SJLIFE open, but with a different population).
+
 ## Rapamycin pulls back the noise, exenatide nothing (roadmap RM27, RM12)
 
 Idea 3 of `docs/BEYOND_SHIELD.md`. A 2024 preprint (Perevoshchikova et al., doi 10.1101/2024.02.25.581928) reports

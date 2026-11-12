@@ -20,8 +20,3 @@ grammar (`unattended`, `urgent`, `building`, `after <R-id>` or `after job <slurm
 - Read: `data/output/meth_expr_spread/coupling`: signed coupling (control), spread coupling against its null,
   spread-slope coupling across genes.
 
-## R46b — EPIC-Italy with mean methylation, cell mix and chip held (RM28)
-
-- What: `entropy-age figures cancer --scale paper --seed 42` after the adjustment commit.
-- Resources: compute partition, 4 cores, 64 GB; about 15 min (an extra pass over the 3 GB matrix for mean beta).
-- Read: `data/output/incident_cancer/effects`, rows with `adjusted` true: does B's breast-cancer effect survive?

@@ -142,3 +142,20 @@ a test with little power), **refuted**.
 - **Alternatives:** sample quality (promoter read share) dominates single-nucleus pseudobulk at these sizes.
 - **Separating test:** a cohort with per-sample quality metrics; sorted bulk ATAC.
 - **Status:** refuted as a clean readout for brain; weak in blood.
+
+## C12 — Drift at unprotected promoters in blood marks breast-cancer risk years ahead
+
+- **If true, we should see:** higher B in women later diagnosed with breast cancer, not weaker with more years
+  before diagnosis; robust to chip, cell mix and global methylation; replicated in a second cohort.
+- **We should not see:** the effect vanish with adjustment, shrink with lag (a tumour present at the draw), or
+  hinge on one batch.
+- **Observed:** EPIC-Italy (R46, R46b): odds ratio per SD 1.43 (all), 1.62 (over 2 years), 1.66 (over 5 years);
+  adjusted for mean beta, 11 cell fractions and chip 1.44 (p 6e-4); balanced over 72 chips; the shield share F
+  does not predict; clocks' signals do not survive adjustment.
+- **Alternatives:** (a) a cell type outside EpiDISH's 12 or a rare clone; (b) a cohort-specific artefact, since
+  van Veldhoven's global hypomethylation did not replicate in NOWAC; (c) reproductive or hormonal factors that
+  shift blood methylation and raise breast-cancer risk.
+- **Separating test:** a second prospective cohort (NOWAC, Breakthrough Generations, controlled access); sorted
+  cells; hormonal covariates.
+- **Status:** weak (one cohort), but survives every check at hand.
+

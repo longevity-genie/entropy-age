@@ -4,6 +4,7 @@ Newest first.
 
 ## Unreleased
 
+- 2026-11-12: R46b written up: drift B predicts breast cancer years ahead in EPIC-Italy, robust to chip, cell mix and mean methylation; claim C12, E29.
 - 2026-11-12: R47 written up (RM27 done): rapamycin pulls back the noisy part of aging in 7 of 8 tissues, exenatide nothing; not ordered by turnover. E28.
 - 2026-11-12: R46 logged (drift B predicts breast cancer years ahead in EPIC-Italy; shield F does not); `incident_cancer` gains mean beta, cell mix and chip adjustment; R46b planned.
 - 2026-11-12: R42 written up: in Vitality 90+ neither the shield nor the mortality clocks predict death (positive control fails; uninformative).

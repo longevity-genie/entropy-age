@@ -137,6 +137,10 @@ incident cancers, time to diagnosis), SATSA S-BSST1206 (596 people, up to 8 draw
 Order: Vitality 90+ (small, a true survival test), EPIC-Italy, SJLIFE, SATSA (within-person change). Controlled
 cohorts with mortality (Generation Scotland, Lothian, Framingham, Normative Aging Study) need antonkulaga's
 application; links in the survey.
+- Done (R42): Vitality 90+ uninformative (mortality clocks fail too). Done (R46, R46b): EPIC-Italy, drift B
+  predicts breast cancer years ahead, robust to chip, cell mix and mean beta; the shield share does not. Next:
+  a second breast-cancer cohort (NOWAC or Breakthrough Generations, controlled: antonkulaga's application), and
+  SJLIFE deaths.
 
 ## RM31 — One cell type at a time: in-silico demultiplexing
 
