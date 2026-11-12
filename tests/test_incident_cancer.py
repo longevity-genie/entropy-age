@@ -35,3 +35,26 @@ def test_outcomes_split_by_site_and_lag():
     assert rows[("breast", True)]["cases"] == int(((icd == "C50") & (ttd > 2)).sum())
     assert rows[("breast", False)]["odds_ratio"] > 2 and rows[("breast", False)]["p"] < 1e-6
     assert rows[("colorectal", False)]["p"] > 0.01
+
+
+def test_adjusting_for_a_covariate_that_carries_the_signal_removes_it():
+    rng = np.random.default_rng(19)
+    n = 600
+    confounder = rng.normal(size=n)
+    case = rng.uniform(size=n) < 1 / (1 + np.exp(-confounder))
+    icd = np.where(case, "C50", "")
+    people = pl.DataFrame(
+        {
+            "age": rng.uniform(40, 70, n),
+            "female": np.ones(n, dtype=bool),
+            "icd": [c or None for c in icd],
+            "years_to_diagnosis": np.where(case, 5.0, np.nan),
+        }
+    )
+    score = confounder + rng.normal(0, 0.3, n)  # tracks cancer only through the confounder
+    rows = {
+        (r["outcome"], r["lag_over_2y"], r["adjusted"]): r
+        for r in outcome_rows(people, {"m": score}, confounder[:, None])
+    }
+    assert rows[("breast", False, False)]["p"] < 1e-6
+    assert rows[("breast", False, True)]["p"] > 0.01

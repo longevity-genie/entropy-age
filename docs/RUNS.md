@@ -20,16 +20,15 @@ grammar (`unattended`, `urgent`, `building`, `after <R-id>` or `after job <slurm
 - Read: `data/output/meth_expr_spread/coupling`: signed coupling (control), spread coupling against its null,
   spread-slope coupling across genes.
 
-## R46 — does the shield predict cancer years ahead? EPIC-Italy (RM28)
-
-- What: GSE51032 series matrix fetched (3.1 GB, betas inside); `entropy-age figures cancer --scale paper --seed 42`.
-- Resources: compute partition, 4 cores, 64 GB; time unknown (845 leave-one-out references).
-- Read: `data/output/incident_cancer/effects`: odds ratio per SD for any cancer, breast, colorectal; all cases and
-  cases diagnosed over 2 years after the draw.
-
 ## R47 — do interventions reverse the directed or the noisy part of aging? (RM27, RM12)
 
 - What: `entropy-age figures intervention_split --scale paper --seed 42` (Huang cohort on disk).
 - Resources: compute partition, 4 cores, 32 GB; time unknown (11 tissues x 2 treatments x 20 halvings + nulls).
 - Read: `data/output/intervention_split/reversals`: directed and noise reversal against the permutation null,
   per tissue and treatment, renewing against non-renewing tissues.
+
+## R46b — EPIC-Italy with mean methylation, cell mix and chip held (RM28)
+
+- What: `entropy-age figures cancer --scale paper --seed 42` after the adjustment commit.
+- Resources: compute partition, 4 cores, 64 GB; about 15 min (an extra pass over the 3 GB matrix for mean beta).
+- Read: `data/output/incident_cancer/effects`, rows with `adjusted` true: does B's breast-cancer effect survive?

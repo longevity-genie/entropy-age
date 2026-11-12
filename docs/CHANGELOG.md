@@ -4,6 +4,7 @@ Newest first.
 
 ## Unreleased
 
+- 2026-11-12: R46 logged (drift B predicts breast cancer years ahead in EPIC-Italy; shield F does not); `incident_cancer` gains mean beta, cell mix and chip adjustment; R46b planned.
 - 2026-11-12: R42 written up: in Vitality 90+ neither the shield nor the mortality clocks predict death (positive control fails; uninformative).
 - 2026-11-12: `intervention_split` (RM27): directed against noisy aging reversed by exenatide and rapamycin in 11 mouse tissues; regression to the mean guarded by split halves (tested); run R47 planned.
 - 2026-11-12: R45 written up (RM29 done): methylation noise builds from early life, no onset at sexual maturity.

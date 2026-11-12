@@ -25,6 +25,21 @@ commit it ran, its job ids, its scale and seed, and its result or its failure wi
   |0.12| SD or less. Housekeeping F, 5 components: Jaffe cortex schizophrenia +0.57, GSE41037 blood +0.45.
   Tables in `data/output/health_states/`.
 
+## R46 — incident cancer in EPIC-Italy (RM28), 2026-11-12
+
+- Commit fe9e9a1; `figures cancer --scale paper --seed 42`; 4 cores, 64 GB; job 6440396, 6 min 32 s. 845 people,
+  421 later cancers (235 breast, 166 colorectal), 31,564 promoter CpGs without gaps.
+- Result, as measured (odds ratio per SD, age and sex held): drift B of look-alike CpGs predicts breast cancer, 1.43
+  (1.19-1.71, p 1e-4) for all cases and 1.59 (1.31-1.93, p 2e-6) for cases diagnosed over 2 years after the draw;
+  any cancer 1.17 (p 0.03); colorectal 0.75 (p 0.04). Shield share F and signed shift S: none (0.97-1.00). Clocks:
+  Horvath colorectal 1.23-1.27 (p 0.02-0.03), DunedinPACE 1.13-1.21 (p 0.04-0.08), PhenoAge 1.13 (p 0.08).
+- Checks on the login node from the run's per-person table (minutes): cases are balanced over the 72 chips (median
+  case share 0.5; chip mean B unrelated to case share, rho -0.13); B centred within chip still predicts breast
+  cancer, 1.36 (p 0.001); women only, B 1.43 / 1.62 / 1.66 for diagnoses over 0 / 2 / 5 years after the draw
+  (p 3e-4, 1e-5, 2e-5), PhenoAge 1.09-1.14 and DunedinPACE 1.13-1.25 beside it.
+- Open: van Veldhoven 2015 reported genome-wide hypomethylation before breast cancer in this cohort (not replicated
+  in NOWAC). B may carry it, or blood-cell mix. Rerun with mean beta, 11 cell fractions and chip held (R46b).
+
 ## R42 — survival in Vitality 90+ (RM28), 2026-11-12, partial
 
 - Commit cc4bc08; `figures survival --scale paper --seed 42`; 4 cores, 32 GB; job 6439004, 1 min 27 s. 115

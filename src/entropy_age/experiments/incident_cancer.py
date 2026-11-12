@@ -10,13 +10,17 @@ and sex (``logit``, Newton steps), reported as an odds ratio per SD:
 
 - all cancers; breast; colorectal;
 - cases diagnosed more than 2 years after the draw only, so an undiagnosed tumour present at the draw cannot drive
-  the result.
+  the result;
+- each also with every person's mean methylation over all array CpGs (``mean_betas``; genome-wide hypomethylation
+  before breast cancer was reported in this cohort, van Veldhoven 2015), 11 of 12 blood-cell fractions (EpiDISH
+  cent12CT, as in ``stochastic_component``) and the array chip held (``adjusted``).
 
 ``entropy-age figures cancer`` (as a Slurm job; the 3 GB series matrix holds the betas).
 """
 
 from __future__ import annotations
 
+import gzip
 import sys
 from pathlib import Path
 
@@ -27,10 +31,11 @@ from scipy import stats
 from entropy_age import plots
 from entropy_age.data.clocks import ClockLayout, read_clock
 from entropy_age.data.cohorts import _characteristics
-from entropy_age.experiments.common import Context, write_table
+from entropy_age.experiments.common import Context, dummies, write_table
 from entropy_age.experiments.health_states import loo_scores
 from entropy_age.experiments.per_person import _islands, _sets
 from entropy_age.experiments.shield_clocks import linear_score
+from entropy_age.experiments.stochastic_component import EPIDISH, deconvolve
 from entropy_age.experiments.syndromes import matrix_path, read_betas
 from entropy_age.experiments.tissue_contrast import _features
 
@@ -71,7 +76,51 @@ def read_people(matrix: Path) -> pl.DataFrame:
     )
 
 
-def outcome_rows(people: pl.DataFrame, measures: dict[str, np.ndarray]) -> list[dict]:
+def mean_betas(matrix: Path, samples: list[str]) -> np.ndarray:
+    """Each sample's mean beta over every CpG row of the series matrix's table (missing values skipped)."""
+    total, count, columns = None, None, None
+    with gzip.open(matrix, "rt") as handle:
+        inside = False
+        for line in handle:
+            if line.startswith("!series_matrix_table_begin"):
+                inside = True
+                continue
+            if line.startswith("!series_matrix_table_end"):
+                break
+            if not inside:
+                continue
+            cells = line.rstrip("\n").split("\t")
+            if columns is None:
+                header = [c.strip('"') for c in cells[1:]]
+                columns = np.array([header.index(x) for x in samples])
+                total, count = np.zeros(len(samples)), np.zeros(len(samples))
+                continue
+            if not cells[0].strip('"').startswith("cg"):
+                continue
+            row = np.array([float(c) if c not in ("", "null", "NA", '""') else np.nan for c in cells[1:]])[columns]
+            ok = ~np.isnan(row)
+            total[ok] += row[ok]
+            count[ok] += 1
+    return total / np.maximum(count, 1)
+
+
+def chips(matrix: Path) -> dict[str, str]:
+    """GEO accession -> array chip, from titles like ``6969568099_R02C02``."""
+    acc = titles = None
+    with gzip.open(matrix, "rt") as handle:
+        for line in handle:
+            cells = [c.strip().strip('"') for c in line.rstrip("\n").split("\t")[1:]]
+            if line.startswith("!Sample_title"):
+                titles = cells
+            elif line.startswith("!Sample_geo_accession"):
+                acc = cells
+            if acc and titles:
+                break
+    return {a: t.split("_")[0] for a, t in zip(acc, titles, strict=True)}
+
+
+def outcome_rows(people: pl.DataFrame, measures: dict[str, np.ndarray], extra: np.ndarray | None = None) -> list[dict]:
+    """Odds ratios per SD; with ``extra`` (people x covariates) each is also fitted with them held."""
     rows = []
     age = people["age"].to_numpy()
     female = people["female"].to_numpy().astype(float)
@@ -87,24 +136,31 @@ def outcome_rows(people: pl.DataFrame, measures: dict[str, np.ndarray]) -> list[
                 continue
             for name, v in measures.items():
                 z = (v - v.mean()) / v.std(ddof=1)
-                covs = [np.ones(keep.sum()), z[keep], age[keep]]
-                if np.unique(female[keep]).size > 1:
-                    covs.append(female[keep])
-                beta, se = logit(y, np.column_stack(covs))
-                rows.append(
-                    {
-                        "outcome": outcome,
-                        "lag_over_2y": lagged,
-                        "measure": name,
-                        "cases": int(y.sum()),
-                        "controls": int((1 - y).sum()),
-                        "odds_ratio": float(np.exp(beta[1])),
-                        "low": float(np.exp(beta[1] - 1.96 * se[1])),
-                        "high": float(np.exp(beta[1] + 1.96 * se[1])),
-                        "p": float(2 * stats.norm.sf(abs(beta[1] / se[1]))),
-                    }
-                )
+                for adjusted in (False, True) if extra is not None else (False,):
+                    covs = [np.ones(keep.sum()), z[keep], age[keep]]
+                    if np.unique(female[keep]).size > 1:
+                        covs.append(female[keep])
+                    if adjusted:
+                        e = extra[keep]
+                        covs.append(e[:, e.std(axis=0) > 0])
+                    rows.append(_odds_row(outcome, lagged, adjusted, name, y, np.column_stack(covs)))
     return rows
+
+
+def _odds_row(outcome, lagged, adjusted, name, y, design) -> dict:
+    beta, se = logit(y, design)
+    return {
+        "outcome": outcome,
+        "lag_over_2y": lagged,
+        "adjusted": adjusted,
+        "measure": name,
+        "cases": int(y.sum()),
+        "controls": int((1 - y).sum()),
+        "odds_ratio": float(np.exp(beta[1])),
+        "low": float(np.exp(beta[1] - 1.96 * se[1])),
+        "high": float(np.exp(beta[1] + 1.96 * se[1])),
+        "p": float(2 * stats.norm.sf(abs(beta[1] / se[1]))),
+    }
 
 
 def run(ctx: Context) -> list[Path]:
@@ -119,7 +175,12 @@ def run(ctx: Context) -> list[Path]:
     lay = ClockLayout(ctx.paths)
     clocks = {c: read_clock(lay.file(c)) for c in CLOCKS_USED if lay.file(c).exists()}
     clock_cpgs = sorted({c for w in clocks.values() for c in w["cpg"].to_list()})
-    wanted = sorted(set(features) | set(clock_cpgs))
+    import rdata
+
+    ref_cpgs = [
+        str(c) for c in next(iter(rdata.read_rda(str(ctx.paths.input / EPIDISH)).values())).coords["dim_0"].values
+    ]
+    wanted = sorted(set(features) | set(clock_cpgs) | set(ref_cpgs))
     x_all = read_betas(matrix, wanted, people["sample"].to_list())
     col = {f: j for j, f in enumerate(wanted)}
     x = x_all[:, [col[f] for f in features]]
@@ -140,10 +201,33 @@ def run(ctx: Context) -> list[Path]:
             design = np.column_stack([np.ones(age.size), age])
             coef, *_ = np.linalg.lstsq(design, score, rcond=None)
             measures[name] = score - design @ coef  # acceleration
-    table = pl.DataFrame(outcome_rows(people, measures))
+    extra = _adjustments(ctx, matrix, people, x_all, wanted)
+    table = pl.DataFrame(outcome_rows(people, measures, extra))
     write_table(table, out / "effects")
     write_table(people.with_columns(**{k: pl.Series(v) for k, v in measures.items()}), out / "per_person")
     return [_figure(ctx, table)]
+
+
+def _adjustments(ctx, matrix: Path, people: pl.DataFrame, x_all: np.ndarray, wanted: list[str]) -> np.ndarray:
+    """People x [mean beta, 11 cell fractions, chip dummies]."""
+    import rdata
+
+    samples = people["sample"].to_list()
+    mean = mean_betas(matrix, samples)
+    ref = next(iter(rdata.read_rda(str(ctx.paths.input / EPIDISH)).values()))
+    ref_cpgs = [str(c) for c in ref.coords["dim_0"].values]
+    col = {f: j for j, f in enumerate(wanted)}
+    keep = [i for i, c in enumerate(ref_cpgs) if c in col]
+    xr = x_all[:, [col[ref_cpgs[i]] for i in keep]]
+    xr = np.where(np.isnan(xr), np.nanmean(xr, axis=0), xr)
+    fractions = deconvolve(xr, ref.values[keep])
+    chip = chips(matrix)
+    print(
+        f"cancer: mean beta {mean.mean():.3f}; {len(keep)} reference CpGs; neutrophils {fractions[:, -2].mean():.2f}",
+        file=sys.stderr,
+        flush=True,
+    )
+    return np.column_stack([mean, fractions[:, :-1], dummies(np.array([chip[x] for x in samples]))])
 
 
 def _figure(ctx: Context, table: pl.DataFrame) -> Path:
@@ -155,7 +239,10 @@ def _figure(ctx: Context, table: pl.DataFrame) -> Path:
         for y, m in enumerate(measures):
             for j, lagged in enumerate((False, True)):
                 r = table.filter(
-                    (pl.col("outcome") == outcome) & (pl.col("measure") == m) & (pl.col("lag_over_2y") == lagged)
+                    (pl.col("outcome") == outcome)
+                    & (pl.col("measure") == m)
+                    & (pl.col("lag_over_2y") == lagged)
+                    & (pl.col("adjusted") == lagged)
                 )
                 if r.height:
                     ax.errorbar(
@@ -174,7 +261,7 @@ def _figure(ctx: Context, table: pl.DataFrame) -> Path:
         ax.set(xlabel="odds ratio per SD (95 % CI)", title=f"{outcome} ({n} cases)")
         plots.label_panel(ax, "abc"[i])
     fig.suptitle(
-        "EPIC-Italy: blood drawn before diagnosis; circles all cases, squares diagnosed over 2 years later",
+        "EPIC-Italy: circles all cases; squares diagnosed over 2 years later, mean beta, cell mix and chip held",
         x=0.02,
         y=1.04,
         ha="left",
