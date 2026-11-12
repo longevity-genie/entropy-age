@@ -1,6 +1,7 @@
 """RM12: scoring treated and control animals alike, against the controls."""
 
 import numpy as np
+import pytest
 
 from entropy_age.experiments.consortium_interventions import arm_scores, chip_design, same_chip
 
@@ -85,3 +86,13 @@ def test_composition_components_remove_a_shift_shared_by_every_cpg():
     adj = arm_scores(x, treated, np.zeros(p, dtype=bool), sets, components=1)["B_housekeeping"]
     assert raw[treated].mean() > 2 * raw[~treated].mean()  # composition looks like drift
     assert adj[treated].mean() < 1.3 * adj[~treated].mean()  # removed
+
+
+def test_compression_is_lower_for_an_array_squeezed_toward_the_middle():
+    from entropy_age.experiments.consortium_interventions import compression
+
+    base = np.array([[0.05, 0.95, 0.5, 0.2]])
+    squeezed = 0.5 + 0.6 * (base - 0.5)
+    c = compression(np.vstack([base, squeezed]))
+    assert c[1] < c[0]
+    assert c[1] == pytest.approx(0.6 * c[0])

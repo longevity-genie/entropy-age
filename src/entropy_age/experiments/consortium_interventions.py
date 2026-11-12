@@ -44,6 +44,16 @@ CONTROLS = {"Control", "WT", "1.Control", "Normal"}
 MIN_ARM = 5
 
 
+def compression(x: np.ndarray) -> np.ndarray:
+    """Each array's mean distance of its betas from 0.5: lower when the array squeezes values toward the middle.
+
+    A compressed array lifts the lowest CpGs of a level stratum and lowers the highest, which mimics a signed
+    shift ``S`` at unmethylated essential promoters (roadmap RM18); the effect on ``S`` is also reported with
+    this index held fixed.
+    """
+    return np.nanmean(np.abs(np.asarray(x, dtype=float) - 0.5), axis=1)
+
+
 def same_chip(chips: np.ndarray, treated: np.ndarray, is_control: np.ndarray) -> np.ndarray:
     """Controls on a chip that also holds a treated animal, and the treated animals."""
     shared = np.isin(chips, chips[treated])
@@ -167,10 +177,12 @@ def run(ctx: Context) -> list[Path]:
                     }
                 )
             )
+            spread = compression(x)
+            designs = {"B": design, "F": design, "S": design, "S, compression held": np.column_stack([design, spread])}
             for group in sub_sets:
-                for measure in ("B", "F", "S"):
-                    y = scores[f"{measure}_{group}"]
-                    coef, se, p = ols(y, design, 1)
+                for measure, d in designs.items():
+                    y = scores[f"{measure.split(',')[0]}_{group}"]
+                    coef, se, p = ols(y, d, 1)
                     rows.append(
                         {
                             "experiment": experiment,

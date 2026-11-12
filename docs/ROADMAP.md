@@ -68,7 +68,7 @@ floor of near-0 % essential promoters; (5) the shield score against Seeboth 2020
 
 ## RM18 — Normalization and probe robustness
 
-**State:** unattended · **Owner:** lead
+**State:** building · **Owner:** lead
 
 Progress: asked by antonkulaga (2026-11-12): are results comparable across arrays and array versions, and do we
 follow best practice? By design every comparison stays within one dataset and platform, on the deposited betas,
@@ -138,7 +138,7 @@ methylation haplotype load, discordant reads)? Read-level WGBS does the same on 
 
 ## RM16 — Selection by cellular fitness, in vivo
 
-**State:** unattended · **Owner:** lead
+**State:** after RM22 · **Owner:** lead
 
 Progress: asked by antonkulaga (2026-11-12, #entropy-age > general chat): what about selection by cellular
 fitness? The evidence so far is mostly against selection (culture, turnover, chromatin matching, Tet3, liver),
