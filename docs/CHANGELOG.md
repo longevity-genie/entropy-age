@@ -4,6 +4,7 @@ Newest first.
 
 ## Unreleased
 
+- 2026-11-12: R42 written up: in Vitality 90+ neither the shield nor the mortality clocks predict death (positive control fails; uninformative).
 - 2026-11-12: `intervention_split` (RM27): directed against noisy aging reversed by exenatide and rapamycin in 11 mouse tissues; regression to the mean guarded by split halves (tested); run R47 planned.
 - 2026-11-12: R45 written up (RM29 done): methylation noise builds from early life, no onset at sexual maturity.
 - 2026-11-12: `incident_cancer` (RM28): shield, drift and clocks in blood drawn before a cancer diagnosis, EPIC-Italy; run R46 planned.

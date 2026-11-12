@@ -1361,6 +1361,14 @@ rodent data are Shavlakadze et al. 2026 (Sci Adv), which with Tyshkovskiy 2026 (
 directed change; Ibañez-Solé 2022 (eLife) found no consistent rise of transcriptional noise with age, in line with
 the unshared noise order. Only the explicit rank comparison is ours.
 
+## Survival in people aged 90+: too small to tell (roadmap RM28, first cohort)
+
+Vitality 90+ (GSE68194): 115 nonagenarians, PBMC on the 450k array, 39 deaths in about 2.5 years (run R42). Neither
+the shield (hazard ratio per SD 1.08), drift (0.84) nor the signed shift (1.02-1.19) predicts death or cognition,
+with or without the share of senescent CD8 T cells. But neither do the clocks built to predict mortality (PhenoAge
+0.98, DunedinPACE 1.03): the positive control fails, so this cohort cannot separate a real effect from none at
+this size and age. It is uninformative, not a negative. EPIC-Italy (cancer, 845 people) is next (R46).
+
 ## Noise builds from early life; it does not switch on at maturity (roadmap RM29)
 
 Idea 6 of `docs/BEYOND_SHIELD.md`, open in the literature as a change-point question. If maintenance held until

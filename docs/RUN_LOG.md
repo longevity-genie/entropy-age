@@ -34,6 +34,9 @@ commit it ran, its job ids, its scale and seed, and its result or its failure wi
   1.02; all p > 0.26, unchanged with CD8+CD28-. MMSE: no measure p < 0.2.
 - Every clock was left out: a clock CpG absent from this series' table is all NaN, and the linear score turned NaN
   for everyone. `linear_score` now skips CpGs no sample has (test added); rerun for the clocks.
+- Rerun with clocks: commit 6cf2348; job 6440151, 1 min 48 s. Hazard ratio of death per SD (sex, batch held):
+  PhenoAge 0.98 (0.72-1.34), DunedinPACE 1.03 (0.75-1.43), Horvath 1.16, Hannum 0.86, Zhang 0.92, StocH 0.92,
+  StocP 0.72 (0.50-1.03, p 0.07); MMSE: none p < 0.18. Tables in `data/output/survival_shield/`.
 
 ## R44 — the shield, drift and clocks in sorted blood cells (RM31), 2026-11-12
 

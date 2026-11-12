@@ -12,12 +12,6 @@ grammar (`unattended`, `urgent`, `building`, `after <R-id>` or `after job <slurm
 - the roadmap item it serves (`RMn`);
 - what the lead needs back (a table, a figure, a number), and anything the run must not do.
 
-## R42 — does the shield predict death? Vitality 90+ (RM28)
-
-- What: GSE68194 series matrix fetched (386 MB); `entropy-age figures survival --scale paper --seed 42`.
-- Resources: compute partition, 4 cores, 32 GB; time unknown (115 leave-one-out references).
-- Read: `data/output/survival_shield/effects`: hazard ratio per SD of F, B, S and clocks; MMSE.
-
 ## R43 — does methylation noise reach expression? GTEx same donors (RM30)
 
 - What: `entropy-age figures meth_expr_spread --scale paper --seed 42` (GTEx methylation and RNA; donors with
