@@ -3,6 +3,17 @@
 Owned by the runner seat (`docs/seats/RUNNER.md`): one entry per run, newest first, with its inputs, the
 commit it ran, its job ids, its scale and seed, and its result or its failure with the cause.
 
+## R19 — unbiased bootstrap intervals, tissues and mouse (RM9), 2026-11-12
+
+- Commit 6995d10; `figures tissues tissues_cells mouse --scale paper --seed 42`; 8 cores, 96 GB.
+- Job 6430533 waited on the CPU cap, then completed in 2 h 52 min, 33 GB at peak. Compute nodes have no git,
+  so the log carries no commit line; the commit is in the job comment.
+- Result, as measured: intervals widen (median width x1.16 tissues, x1.18 tissues_cells, x1.24 mouse). Every
+  human interval that excluded zero still does (20 of 21, 73 of 84). Mouse: 11 of 42 contrasts exclude zero
+  (15 before); lost are core-essential and non-essential contrasts of renewing or slow against post-mitotic
+  tissue; housekeeping entropy, renewing − post-mitotic −0.16 (−0.27 to −0.05), slow − post-mitotic −0.18
+  (−0.28 to −0.07), holds. The lead's reading is in `docs/extension.md`.
+
 ## R18 — chromatin-writer syndromes in blood, with age (RM14), 2026-11-11
 
 - Commit b7cf41c; `figures syndromes --scale paper --seed 42`; 4 cores (lowered while queued), 8 GB.
