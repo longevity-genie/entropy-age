@@ -154,7 +154,11 @@ young ground state and retrain each clock's CpGs on it; the share of the clock's
    mix): estimate 12 blood-cell fractions by reference-based deconvolution (EpiDISH cent12CT or Salas 2022 IDOL),
    then recompute each clock's stochastic fraction and acceleration with and without them. Is PhenoAge's
    non-stochastic part composition?
-Methods of the paper being extracted first.
+Methods read (scratch notes; key points): rates per CpG are set by its observed old-minus-young effect and
+changes go in that direction (probit-scale half-normal steps, P = 1 - exp(-gamma |effect|)); ground state from the
+youngest MESA monocytes; elastic net alpha 0.5 on simulated data; fraction RR2 = R2(Stoc) / R2(original);
+intrinsic acceleration removes 11 of 12 EpiDISH fractions. Variants to compare: their model; direction only;
+pure noise; rates by gene class (shield) only.
 
 ## RM16 — Selection by cellular fitness, in vivo
 
