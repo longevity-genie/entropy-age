@@ -115,7 +115,7 @@ lifespan scaling as stem-cell dynamics (Crofts 2026), and per-person drift burde
   arms. Contrast with Tet3: the shield follows promoter demethylation, not the writers around it.
 - **Missing:** a second CR or rapamycin series sequenced with its controls; sorted stem cells.
 - **Interpretation open:** growth in liver argues against stem-cell selection as its cause.
-- **Figures:** interventions, bxd_liver (being redrawn with corrected intervals).
+- **Figures:** interventions, bxd_liver.
 
 ### 2.6 A per-person shield score
 
@@ -163,7 +163,7 @@ lifespan scaling as stem-cell dynamics (Crofts 2026), and per-person drift burde
 3. **Test-retest of the per-person score** on replicate arrays (public technical replicates exist on GEO).
 4. **A causal chromatin test**, from public natural experiments first (RM14: chromatin-writer syndromes in blood,
    mouse knockouts, edited cells over time); a wet-lab edit only for what those cannot show.
-5. Corrected blood-against-brain intervals (RM9).
+5. ~~Corrected blood-against-brain intervals (RM9).~~ Done (R19): no conclusion moved.
 
 ## 5 DFG proposal: what has potential
 

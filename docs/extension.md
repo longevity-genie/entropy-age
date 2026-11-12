@@ -291,6 +291,13 @@ frontal cortex, hippocampus, hypothalamus).
 
 ![Mouse tissues](figures/mouse_tissues.png)
 
+**Corrected intervals (roadmap RM9, run R19).** The bootstraps of `figures tissues`, `tissues_cells` and `mouse`
+had divided each resample by its own spread, which resampling inflates, and so drew intervals toward zero. With
+every resample divided by the full sample's spread (`common.rescale`), intervals widen by a sixth to a quarter.
+No human conclusion moves: every blood-against-brain interval that excluded zero still does. In mouse, the
+housekeeping contrasts that carry the conclusion hold (renewing − post-mitotic entropy −0.16, −0.27 to −0.05;
+slow − post-mitotic −0.18, −0.28 to −0.07); five weaker contrasts, mostly core-essential, now include zero.
+
 **Entropy gain with age, set minus matched CpGs** (SD):
 
 | Tissue | Core essential | Housekeeping | Non-essential |
