@@ -115,7 +115,7 @@ Tet3 loss weakening it in brain. Hypotheses, each with its test:
 
 ## RM22 — Stochasticity at the level of single molecules (long reads)
 
-**State:** after RM11 · **Owner:** lead
+**State:** unattended · **Owner:** lead
 
 Progress: asked by antonkulaga (2026-11-12): can nanopore data add insight on the stochasticity of clocks? Long
 reads give many CpGs on one molecule from one cell: within one sample, do essential promoters stay uniform
