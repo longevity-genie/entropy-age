@@ -12,14 +12,6 @@ grammar (`unattended`, `urgent`, `building`, `after <R-id>` or `after job <slurm
 - the roadmap item it serves (`RMn`);
 - what the lead needs back (a table, a figure, a number), and anything the run must not do.
 
-## R39 — does the shield track health? cross-sectional (RM24)
-
-- What: `entropy-age figures health --scale paper --seed 42` (cohorts on disk: Lunnon, Jaffe, GSE41037, GTEx).
-- Resources: compute partition, 4 cores, 64 GB; time unknown (leave-one-out references, about 2,500 fits per
-  composition setting).
-- Read: `data/output/health_states/effects`: F, B, S effects of Alzheimer's (and Braak stage), schizophrenia and
-  smoking and slow against sudden death (GTEx Hardy scale), raw and with 5 components.
-
 ## R42 — does the shield predict death? Vitality 90+ (RM28)
 
 - What: GSE68194 series matrix fetched (386 MB); `entropy-age figures survival --scale paper --seed 42`.

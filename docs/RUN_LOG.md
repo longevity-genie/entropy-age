@@ -3,6 +3,17 @@
 Owned by the runner seat (`docs/seats/RUNNER.md`): one entry per run, newest first, with its inputs, the
 commit it ran, its job ids, its scale and seed, and its result or its failure with the cause.
 
+## R39 — health states and the shield, cross-sectional (RM24), 2026-11-12
+
+- Commit 9996400; `figures health --scale paper --seed 42`; 4 cores, 64 GB; job 6436141, 1 h 42 min, 2.7 GB.
+  Breast left out of the Hardy contrast (too few).
+- Result, as measured: 522 effects (B, F, S x 3 sets x raw/5 components x 29 contrasts); 50 at p < 0.05, 19 at
+  FDR q < 0.05: schizophrenia in GSE41037 blood 8, in Jaffe cortex 3; smoking in GTEx 4 (lung S housekeeping
+  -0.67 SD raw, -0.50 adjusted; colon B -0.53 adjusted); slow against sudden death 4 (skeletal muscle F +1.3 to
+  +1.45 SD, 12 against 12 donors). Alzheimer's and Braak stage (Lunnon, 5 tissues): none; Braak effects per stage
+  |0.12| SD or less. Housekeeping F, 5 components: Jaffe cortex schizophrenia +0.57, GSE41037 blood +0.45.
+  Tables in `data/output/health_states/`.
+
 ## R42 — survival in Vitality 90+ (RM28), 2026-11-12, partial
 
 - Commit cc4bc08; `figures survival --scale paper --seed 42`; 4 cores, 32 GB; job 6439004, 1 min 27 s. 115

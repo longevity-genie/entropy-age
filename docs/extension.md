@@ -1361,6 +1361,33 @@ rodent data are Shavlakadze et al. 2026 (Sci Adv), which with Tyshkovskiy 2026 (
 directed change; Ibañez-Solé 2022 (eLife) found no consistent rise of transcriptional noise with age, in line with
 the unshared noise order. Only the explicit rank comparison is ours.
 
+## Does the shield track health? Four conditions at hand (roadmap RM24)
+
+Asked by antonkulaga (2026-11-12). Cross-sectional: cases against controls of the same age, each person scored
+against everyone else in the contrast, raw and with 5 composition components (run R39; 522 effects, 19 pass a
+false discovery rate of 5 %).
+
+- **Alzheimer's: nothing.** Neither Alzheimer's status nor Braak stage moves drift, the shield or the signed shift
+  in blood or any of four brain regions (Lunnon; per Braak stage at most 0.12 SD, none significant). No regional
+  gradient either, so the pathology's spread does not show in promoter drift (idea 4 of BEYOND_SHIELD.md
+  answered: no).
+- **Schizophrenia: a weaker shield in cortex.** In prefrontal cortex (Jaffe, 192 cases, 232 controls, neuron
+  fraction held) the shield's share of drift is weaker by 0.57 SD with composition removed (p 1e-7). In blood
+  (GSE41037, 27k array) the same direction appears only after composition is removed (F +0.45), and the signed shift
+  flips sign with the adjustment: medication changes blood's cell mix, and that is not separated here. Schizophrenia
+  is a published field for methylation variability (Kiltschewskij 2024); what is new is the shield score itself.
+- **Smoking: essential CpGs in smokers' lung lose methylation against their look-alikes** (S -0.67 SD raw, -0.50
+  adjusted, 89 current against 61 never smokers), the tissue the smoke reaches. Elsewhere small and mixed.
+- **Slow against sudden death (GTEx Hardy scale, open in the literature): a weaker shield in skeletal muscle**
+  after a long illness (F +1.3 to +1.45 SD, but 12 against 12 donors), the opposite in prostate (-0.48, n.s.),
+  nothing consistent across eight tissues.
+
+Reading: no single direction. The shield is not a general health gauge in these data: Alzheimer's leaves it, and
+the illnesses that move it do so in one tissue each, where the exposure acts (smoke in lung, wasting in muscle,
+the disease's own organ in schizophrenia). Cross-sectional, so a weaker shield may follow illness or its
+treatment rather than precede it. Together with R42 (no effect on death in people aged 90+) and R44 (plaque tracks
+DunedinPACE, not the shield), the shield so far describes how tissues age, not who stays healthy.
+
 ## One cell type at a time: sorted monocytes and T cells (roadmap RM31)
 
 Asked by antonkulaga (2026-11-12): does a changing cell mix hide or fake what is stochastic? MESA sorted CD14+

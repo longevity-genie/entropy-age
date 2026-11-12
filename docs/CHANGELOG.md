@@ -4,6 +4,7 @@ Newest first.
 
 ## Unreleased
 
+- 2026-11-12: R39 written up (RM24 done): Alzheimer's leaves the shield; schizophrenia cortex, smokers' lung and muscle after long illness move it. E27.
 - 2026-11-12: R44 written up: the shield holds in sorted monocytes and T cells; DunedinPACE tracks plaque and calcium, the shield does not. E26.
 - 2026-11-12: R41 written up (RM26 done): clock acceleration is shared across a donor's organs, clock-free drift is not.
 - 2026-11-12: R38 written up: stochastic clocks are directed clocks with random timing; composition is a minor part of PhenoAge (C9 refuted as main explanation). E24, E25.

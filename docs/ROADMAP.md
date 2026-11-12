@@ -160,17 +160,6 @@ youngest MESA monocytes; elastic net alpha 0.5 on simulated data; fraction RR2 =
 intrinsic acceleration removes 11 of 12 EpiDISH fractions. Variants to compare: their model; direction only;
 pure noise; rates by gene class (shield) only.
 
-## RM24 — Does the shield track health? Cross-sectional tests on data at hand
-
-**State:** building · **Owner:** lead
-
-Progress: asked by antonkulaga (2026-11-12): with the data already downloaded, can we estimate whether the shield
-predicts health? No cohort on disk follows people forward; cross-sectional health states can be tested:
-Alzheimer's pathology (Lunnon, AD against control and Braak stage, four brain regions and blood), schizophrenia
-(Jaffe cortex; GSE41037 blood), smoking (GTEx). Per cohort, cases against controls scored as the syndromes are
-(controls leave themselves out), age and technical covariates; shield share F, drift B, signed shift S.
-Cross-sectional: a weaker shield may be a consequence of disease or treatment, not a predictor.
-
 ## RM27 — Do interventions reverse disorder or shift a programme?
 
 **State:** unattended · **Owner:** lead
