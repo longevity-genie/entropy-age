@@ -4,8 +4,9 @@ Meyer and Schumacher built a clock from noise alone. If the shield is real, CpGs
 little of that noise, and a clock trained on them alone should read age worse than one trained on matched
 look-alike CpGs. Per cohort (Hannum blood, Jaffe cortex), three pools of equal size are drawn (``pools``):
 
-* ``shielded``: every CpG of the housekeeping and core-essential promoters;
-* ``look-alike``: as many background CpGs in each island x young-level stratum as the shielded pool has there;
+* ``shielded``: CpGs of the housekeeping and core-essential promoters;
+* ``look-alike``: background CpGs of the same island x young-level strata, as many per stratum (where background
+  CpGs are scarcer, both pools take that number);
 * ``random``: as many background CpGs drawn at random.
 
 Each pool trains an elastic-net clock (``clock.train_clock``, fast search) with 5-fold outer cross-validation;
@@ -37,18 +38,24 @@ SHIELDED = ("housekeeping", "core_essential")
 
 
 def pools(features: list[str], members: set[str], strata: np.ndarray, rng) -> dict[str, np.ndarray]:
-    """Column indices of the shielded pool, a stratum-matched look-alike pool and a random pool of equal size."""
+    """Column indices of a shielded pool, a stratum-matched look-alike pool and a random pool of equal size.
+
+    Per stratum both the shielded and the look-alike pools take as many CpGs as the scarcer of the two has there,
+    so the pools match stratum by stratum; the random pool has their total size.
+    """
     is_set = np.array([f in members for f in features])
     background = np.flatnonzero(~is_set)
-    shielded = np.flatnonzero(is_set)
-    look = []
-    for s in np.unique(strata[shielded]):
-        need = int((strata[shielded] == s).sum())
+    set_cols = np.flatnonzero(is_set)
+    shielded, look = [], []
+    for s in np.unique(strata[set_cols]):
+        mine = set_cols[strata[set_cols] == s]
         candidates = background[strata[background] == s]
-        if candidates.size < need:
-            raise ValueError(f"own_clocks: stratum {s} has {candidates.size} background CpGs, {need} needed")
-        look.append(rng.choice(candidates, size=need, replace=False))
-    look = np.sort(np.concatenate(look))
+        k = min(mine.size, candidates.size)
+        if k == 0:
+            continue
+        shielded.append(rng.choice(mine, size=k, replace=False))
+        look.append(rng.choice(candidates, size=k, replace=False))
+    shielded, look = np.sort(np.concatenate(shielded)), np.sort(np.concatenate(look))
     random = np.sort(rng.choice(background, size=shielded.size, replace=False))
     return {"shielded": shielded, "look-alike": look, "random": random}
 

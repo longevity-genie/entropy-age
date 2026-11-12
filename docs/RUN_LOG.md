@@ -3,6 +3,11 @@
 Owned by the runner seat (`docs/seats/RUNNER.md`): one entry per run, newest first, with its inputs, the
 commit it ran, its job ids, its scale and seed, and its result or its failure with the cause.
 
+## R30 — clocks of our own (RM11), 2026-11-12
+
+- Commit 275984f; job 6432498 failed after 8 s: one stratum (open sea, lowest decile) had 512 shielded CpGs and
+  373 background CpGs. Fixed: both pools take the scarcer count per stratum. Rerun as R31.
+
 ## R29 — shield against clock acceleration, coupling-free measures (RM11), 2026-11-12
 
 - Commit 03333c2; `figures shield_clocks --scale paper --seed 42`; 8 cores, 64 GB; under a minute.
