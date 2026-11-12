@@ -25,6 +25,16 @@ commit it ran, its job ids, its scale and seed, and its result or its failure wi
   |0.12| SD or less. Housekeeping F, 5 components: Jaffe cortex schizophrenia +0.57, GSE41037 blood +0.45.
   Tables in `data/output/health_states/`.
 
+## R47 — directed against noisy aging under exenatide and rapamycin (RM27), 2026-11-12
+
+- Commit 54e0d43; `figures intervention_split --scale paper --seed 42`; 4 cores, 32 GB; job 6441201, 36 s; the
+  figure redrawn with stacked panels (job 6442268). 11 tissues; rapamycin in 8 (5 mice each), exenatide in 11.
+- Result, as measured (reversal minus permutation null, one-sided p): exenatide, no tissue p < 0.05 for either
+  part. Rapamycin, noise part: colon +0.64 (p 0.04), adipose +1.30 (p 0.02), hippocampus +0.51 (p 0.015), blood
+  +0.55 (p 0.08), frontal cortex +0.54 (p 0.07), muscle +0.27 (p 0.07), heart -0.60 (p 0.94); 7 of 8 positive.
+  Directed part: adipose +0.71 (p 0.05), muscle +0.11 (p 0.03), others p > 0.17. Table
+  `data/output/intervention_split/reversals`.
+
 ## R46 — incident cancer in EPIC-Italy (RM28), 2026-11-12
 
 - Commit fe9e9a1; `figures cancer --scale paper --seed 42`; 4 cores, 64 GB; job 6440396, 6 min 32 s. 845 people,

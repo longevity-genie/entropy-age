@@ -1361,6 +1361,26 @@ rodent data are Shavlakadze et al. 2026 (Sci Adv), which with Tyshkovskiy 2026 (
 directed change; Ibañez-Solé 2022 (eLife) found no consistent rise of transcriptional noise with age, in line with
 the unshared noise order. Only the explicit rank comparison is ours.
 
+## Rapamycin pulls back the noise, exenatide nothing (roadmap RM27, RM12)
+
+Idea 3 of `docs/BEYOND_SHIELD.md`. A 2024 preprint (Perevoshchikova et al., doi 10.1101/2024.02.25.581928) reports
+that in mouse, caloric restriction and parabiosis move the directed ("dynamic") part of methylation aging and not
+the noisy ("entropic") part. Run R47 asks the same of exenatide (13 per tissue) and rapamycin (5 per tissue) in the
+11 tissues of Huang et al. Aging is split, per tissue, into directed CpGs (the mean moves) and noisy CpGs (the
+mice spread apart while the mean stays), chosen on half the aged controls and measured on the other half, against
+a permutation null (a test checks that an inert treatment gets no credit).
+
+- **Exenatide reverses neither part in any tissue.**
+- **Rapamycin pulls the noisy part back toward youth** in 7 of 8 tissues: significantly in colon, adipose and
+  hippocampus (p 0.015-0.04), trends in blood, frontal cortex and muscle (p 0.07-0.08); heart goes the other way.
+  The directed part moves only in adipose and muscle.
+- **Not ordered by turnover**: hippocampus and colon alike, so not selection among dividing cells (RM12).
+
+Reading: the opposite emphasis to the preprint's CR result. Rapamycin (an mTOR inhibitor that also slows the
+cell cycle and changes chromatin compaction) narrows how far old mice differ from each other, in dividing and
+non-dividing tissue alike. With 5 mice per tissue this is a lead, not a result; a rapamycin cohort with more
+animals per tissue would settle it.
+
 ## Survival in people aged 90+: too small to tell (roadmap RM28, first cohort)
 
 Vitality 90+ (GSE68194): 115 nonagenarians, PBMC on the 450k array, 39 deaths in about 2.5 years (run R42). Neither

@@ -20,13 +20,6 @@ grammar (`unattended`, `urgent`, `building`, `after <R-id>` or `after job <slurm
 - Read: `data/output/meth_expr_spread/coupling`: signed coupling (control), spread coupling against its null,
   spread-slope coupling across genes.
 
-## R47 — do interventions reverse the directed or the noisy part of aging? (RM27, RM12)
-
-- What: `entropy-age figures intervention_split --scale paper --seed 42` (Huang cohort on disk).
-- Resources: compute partition, 4 cores, 32 GB; time unknown (11 tissues x 2 treatments x 20 halvings + nulls).
-- Read: `data/output/intervention_split/reversals`: directed and noise reversal against the permutation null,
-  per tissue and treatment, renewing against non-renewing tissues.
-
 ## R46b — EPIC-Italy with mean methylation, cell mix and chip held (RM28)
 
 - What: `entropy-age figures cancer --scale paper --seed 42` after the adjustment commit.

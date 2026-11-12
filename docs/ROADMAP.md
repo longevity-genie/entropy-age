@@ -126,13 +126,6 @@ methylation haplotype load, discordant reads)? Read-level WGBS does the same on 
   21-75, ~13 GB, `wgbstools homog`/entropy, essential promoters against matched regions. No published
   single-molecule test of epiallele heterogeneity against age.
 
-## RM27 — Do interventions reverse disorder or shift a programme?
-
-**State:** building · **Owner:** lead
-
-Progress: idea 3 of docs/BEYOND_SHIELD.md. Split aging CpGs into directed (consistent mean change) and noisy
-(variance rise only); ask which part each intervention moves.
-
 ## RM28 — Does the shield (and drift) predict death and disease? Open follow-up cohorts
 
 **State:** unattended · **Owner:** lead

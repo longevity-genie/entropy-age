@@ -26,3 +26,4 @@ E24,Stochastic clocks need each CpG's direction; undirected noise keeps no accur
 E25,Cell mix explains 16 % of PhenoAge acceleration; gap to StocP unchanged,R38,0,0,0,0,0,0,0,-1,0
 E26,Shield present in sorted monocytes and T cells (half of whole blood),R44,1,-1,0,0,0,0,0,-2,0
 E27,Alzheimer's and Braak leave the shield; illness moves it in one tissue each,R39,0,0,0,0,0,0,0,0,1
+E28,Rapamycin narrows age noise in dividing and non-dividing tissue alike,R47,1,-1,0,0,0,0,0,0,1
