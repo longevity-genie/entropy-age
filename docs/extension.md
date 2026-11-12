@@ -669,6 +669,27 @@ controls (controls leave one out), at least 5 animals per arm.
 
 Tables: `data/output/mmc_interventions/` (`effects`, `animal_scores`).
 
+## Do people with faster clocks have a weaker shield? (roadmap RM11)
+
+Asked by antonkulaga: among people of the same age, does a fast clock go with a weaker shield? Figure
+`shield_clocks` (runs R28, R29) correlates, per person, the shield measures with the age acceleration of 16
+published clocks (Tong et al.'s stochastic clocks StocH, StocP, StocZ among them), age and technical covariates
+removed, in Hannum blood (632) and Jaffe cortex (159).
+
+![Shield and clocks](figures/shield_clocks.png)
+
+* **P itself is the wrong measure here.** P subtracts the look-alikes' drift B, and clocks are made of drifting
+  CpGs, so P correlates negatively with acceleration by construction (R28). The fair measure is P at equal B.
+* **Faster clocks go with more drift (B: StocZ +0.33, epiTOC1 +0.58, DunedinPACE +0.26), and, at equal drift,
+  with a *stronger* shield** (Horvath −0.29, Hannum −0.20, the stochastic clocks −0.17 to −0.19, epiTOC1 −0.79).
+  Clocks run fast in people whose drift falls on unprotected CpGs, where the clock CpGs sit.
+* **The outcome-linked clocks do not see the shield:** at equal drift, PhenoAge −0.07, DunedinPACE 0.00, Zhang's
+  mortality score −0.04. The shield is information conventional clocks leave out. Whether it predicts health
+  needs a cohort with outcomes.
+* Cortex is mostly null (159 donors), except epiTOC1 (−0.51).
+
+Tables: `data/output/shield_clocks/correlations` (measures P, F, B, set drift, P given B).
+
 ## Selection in vivo: clonal haematopoiesis leaves the shield alone (roadmap RM16)
 
 Clonal haematopoiesis (CH) is selection among blood stem cells in a living person. Figure `chip` (run R25) scores

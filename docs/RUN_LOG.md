@@ -3,6 +3,19 @@
 Owned by the runner seat (`docs/seats/RUNNER.md`): one entry per run, newest first, with its inputs, the
 commit it ran, its job ids, its scale and seed, and its result or its failure with the cause.
 
+## R29 — shield against clock acceleration, coupling-free measures (RM11), 2026-11-12
+
+- Commit 03333c2; `figures shield_clocks --scale paper --seed 42`; 8 cores, 64 GB; under a minute.
+- Result, as measured (blood, 5 components, housekeeping; partial r with acceleration, age and technical
+  covariates out): B +0.21 to +0.58 for StocH, StocZ, DunedinPACE, epiTOC1; P at equal B −0.15 to −0.29 for the
+  chronological and stochastic clocks, −0.79 epiTOC1, −0.63 cortical; P at equal B ≈ 0 for PhenoAge (−0.07),
+  DunedinPACE (0.00), Zhang mortality (−0.04). Cortex mostly n.s. (epiTOC1 −0.51).
+
+## R28 — shield against clock acceleration per person (RM11), 2026-11-12
+
+- Commit 3f3008b; job 6432348, 27 s, 6.6 GB. P and F correlated negatively with almost every clock's
+  acceleration: built in (P subtracts look-alike drift, clocks are made of drifting CpGs). Superseded by R29.
+
 ## R27 — hippocampus replication of the accessibility result (RM19), 2026-11-12
 
 - Commit 60e4191; `figures atac_hippocampus --scale paper --seed 42`; 8 cores, 32 GB.

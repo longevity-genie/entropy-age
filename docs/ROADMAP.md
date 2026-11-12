@@ -41,7 +41,7 @@ neither proof nor disproof. Tests that would separate selection from chromatin, 
 
 ## RM11 — Clocks of our own
 
-**State:** waits until 2026-11-13 · **Owner:** lead
+**State:** building · **Owner:** lead
 
 Progress: asked by antonkulaga (2026-11-11): can we build clocks from the entropy-age ideas, and do they capture
 more than conventional clocks? Candidates from the results: a stochastic clock from Polycomb CpGs with each
@@ -51,6 +51,8 @@ clock tracks interventions (CR mice, GSE80672) and, later, outcomes in a cohort 
   protected? Plan, first tomorrow (no downloads): (1) per-person P against age acceleration of Horvath, Hannum,
   PhenoAge, GrimAge in Hannum and Jaffe; (2) stochastic clocks from look-alike CpGs only and from shielded CpGs
   only; (3) stratify acceleration on P.
+- Done (R29): at equal drift, faster chronological and stochastic clocks go with a stronger shield; outcome
+  clocks (PhenoAge, DunedinPACE, mortality) are blind to it. Next: train our own clocks, (2).
 
 ## RM13 — Answer the prior work (novelty review)
 

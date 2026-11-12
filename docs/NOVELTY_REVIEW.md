@@ -54,3 +54,35 @@ Close runners-up: Tong 2024 (PMID 38724732), Moqri 2024 (PMID 39009581), Endicot
 From R4's tables: after own-chromatin matching, core-essential genes in blood keep −0.02 SD (interval touching 0),
 housekeeping genes −0.03 to −0.05 SD (clear), and in brain both −0.03 to −0.06 SD. So the deflationary reading
 (active chromatin relabelled) holds for core-essential genes in blood, not for housekeeping genes or for brain.
+
+
+## Addendum 2, 2026-11-12: where the paper stands
+
+Asked by antonkulaga: does the potential paper have a chance? Re-read against two days of results and a new
+search (PubMed, 2025-2026).
+
+**New prior work.** Krepelova et al. 2025 (Nature Aging 5:2432; doi 10.1038/s43587-025-01021-x): intestinal
+age drift is driven by impaired TET activity (iron metabolism, inflammation), cell-intrinsic and non-mitotic. It
+supports our Tet3 result and takes from it the general claim "TET loss drives drift"; what stays ours is that
+TET loss removes the protection of *essential promoters* specifically, against littermates. No new paper
+measures a matched essential-gene shield across tissues or species.
+
+**What is new and holds (ordered by strength).**
+1. A matched, quantitative shield in two species, many tissues, culture and 65 mammals (96 % of groups), robust
+   to probe design, masks and corrected intervals. The idea is old (Teschendorff 2013); the measurement is not.
+2. Chromatin explains most of it, tissue-specifically (67-91 % with blood's own map, about 30 % with another
+   tissue's).
+3. A battery of tests against selection, all negative: culture, turnover, liver, neurons, species, CR in liver,
+   clonal haematopoiesis.
+4. Tet3 loss removes the shield in neurons against littermates; chromatin-writer syndromes add noise but keep it.
+5. The per-person shield is information that outcome-oriented clocks lack (R29).
+
+**What is weak.** Tet3 is one study of 16 mice per tissue; chromatin matching may be partly circular; the
+per-person score has no outcome link; accessibility gave no clean result; the CR-in-blood weakening did not
+replicate.
+
+**Chance of publication.** As it stands: a solid paper for Aging Cell, GeroScience, Genome Biology or Epigenetics
+& Chromatin. For Nature Aging or Cell Reports it needs one of: (a) a second machinery model that removes the
+shield (Tet1 cortex, RM12, next); (b) the shield restored by reprogramming (RM17, next); (c) the per-person score
+predicting outcomes beyond clocks (a cohort with follow-up). Any one of these lifts it; (c) is the strongest and
+the hardest to get without controlled-access data.

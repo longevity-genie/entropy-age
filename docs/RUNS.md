@@ -12,8 +12,4 @@ grammar (`unattended`, `urgent`, `building`, `after <R-id>` or `after job <slurm
 - the roadmap item it serves (`RMn`);
 - what the lead needs back (a table, a figure, a number), and anything the run must not do.
 
-## R28 — shield against clock acceleration per person (RM11)
-
-- What: `entropy-age figures shield_clocks --scale paper --seed 42`.
-- Resources: compute partition, 8 cores, 64 GB; time unknown (per_person's loading plus 16 clocks).
-- Read: `data/output/shield_clocks/correlations`, partial r of P (and F) with each clock's acceleration.
+No runs are planned.
