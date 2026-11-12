@@ -58,3 +58,10 @@ grammar (`unattended`, `urgent`, `building`, `after <R-id>` or `after job <slurm
 - Resources: compute partition, 4 cores, 64 GB; time unknown (200 permutations per tissue).
 - Read: `data/output/meth_expr_spread/coupling`: signed coupling (control), spread coupling against its null,
   spread-slope coupling across genes.
+
+## R44 — the shield, drift and clocks in sorted blood cells (RM31)
+
+- What: MESA normalized tables fetched (GSE56046 4.4 GB, GSE56581 0.8 GB); `entropy-age figures sorted_cells
+  --scale paper --seed 42`.
+- Resources: compute partition, 4 cores, 64 GB; time unknown (about 1,200 leave-one-out references in monocytes).
+- Read: `data/output/sorted_cells/shield`, `clocks`, `health` (plaque, coronary calcium).
