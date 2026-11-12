@@ -1,0 +1,13 @@
+id,test,status,targets
+P1,Own clocks: shielded vs look-alike vs random CpGs (R33),running,H5;H1
+P2,Tet3 shift with array compression held fixed (R36),running,H4;A2
+P3,Dnmt3a gain of function over four ages (R37),running,H4;H1
+P4,Tong's stochastic clocks with information stripped (R38),running,H5;A3
+P5,Read-level WGBS of 23 blood donors (Loyfer 2023),next,A1;A2;H1
+P6,Finer level matching in the lowest decile,next,A1
+P7,Tet3 knockout on the same platform; sorted neurons,needs data,H4;A3;A4
+P8,Sorted stem cells young against old,needs data,H2
+P9,Cohort with clone sizes (controlled access),needs access,H2
+P10,Culture series with doublings for solo-WCGW loss,next,H3;A3
+P11,Cohort with health outcomes: does the shield predict them?,needs access,H5
+P12,Chromatin and methylation measured in the same people,needs data,H1

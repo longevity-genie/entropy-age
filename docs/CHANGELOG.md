@@ -4,6 +4,7 @@ Newest first.
 
 ## Unreleased
 
+- `docs/planned_tests.csv`: the planned and running tests, each linked to the hypotheses and artefact explanations it would decide; drawn as a third layer of the artifact's graph.
 - `docs/evidence_matrix.csv`: 20 results scored against 5 hypotheses and 4 artefact explanations; drives the artifact's matrix and its ELK-laid graph (asked by antonkulaga).
 - `docs/CLAIMS.md`: every claim with its predictions, refuters, alternative explanations, separating test and status (asked by antonkulaga).
 - `fetch epidish` and `figures stochastic_component` (RM23): Tong et al.'s stochastic-clock procedure repeated in Hannum blood with four rate models (their effect-based rates, direction only, pure noise, shield only), RR2 and intrinsic acceleration with 12-cell composition removed. Dependency: rdata.
