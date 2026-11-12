@@ -60,7 +60,7 @@ floor of near-0 % essential promoters; (5) the shield score against Seeboth 2020
 
 ## RM18 — Normalization and probe robustness
 
-**State:** building · **Owner:** lead
+**State:** unattended · **Owner:** lead
 
 Progress: asked by antonkulaga (2026-11-12): are results comparable across arrays and array versions, and do we
 follow best practice? By design every comparison stays within one dataset and platform, on the deposited betas,
@@ -70,6 +70,7 @@ matched on island status and starting level. Gaps:
 2. Cross-reactive and SNP-affected probes are not masked: apply Zhou et al. 2017's masks, rerun.
 3. One cohort reprocessed from raw IDATs (SeSAMe, or noob + BMIQ) against its deposited betas.
 4. Each sample's beta compression as a covariate for the signed shift S.
+- Done (R20): items 1-2. Design explains about a sixth of blood's gaps; the mask nothing; no sign changes.
 5. A short review of current practice, recorded in `docs/`.
 
 ## RM19 — Does chromatin accessibility become stochastic with age?

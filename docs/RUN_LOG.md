@@ -3,6 +3,14 @@
 Owned by the runner seat (`docs/seats/RUNNER.md`): one entry per run, newest first, with its inputs, the
 commit it ran, its job ids, its scale and seed, and its result or its failure with the cause.
 
+## R20 — headline gaps against probe design and unreliable probes (RM18), 2026-11-12
+
+- Commit 2f4654e (fixture fix c729b3c); `figures probe_robustness --scale paper --seed 42`; 8 cores, 64 GB.
+- Job 6430935 waited on the CPU cap, then completed in 41 min, 5.6 GB at peak.
+- Result, as measured: with probe type in the strata, blood lifespan gaps shrink by about 15 % (housekeeping
+  entropy −0.348 → −0.295); cortex and same-donor gaps move by under 0.01; the Zhou mask moves no gap by more
+  than 0.01; no gap changes sign. Set CpGs are type I in 42-45 %, all promoter CpGs in 35 %.
+
 ## R19 — unbiased bootstrap intervals, tissues and mouse (RM9), 2026-11-12
 
 - Commit 6995d10; `figures tissues tissues_cells mouse --scale paper --seed 42`; 8 cores, 96 GB.

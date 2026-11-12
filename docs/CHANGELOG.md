@@ -4,6 +4,7 @@ Newest first.
 
 ## Unreleased
 
+- R20 done (RM18): probe design in the strata shrinks blood's gaps by about a sixth, the Zhou mask changes nothing, no gap changes sign.
 - `figures species` records each group's unscaled gap and look-alike drift rate, and regresses the log rate and the relative gap on lifespan beside the gap (`outcome` column), for RM20's catch-up test.
 - `fetch atac` and `figures atac_variance` (RM19): between-person accessibility spread with age per ATAC peak, essential promoters against matched promoter peaks, on Morandini 2023 PBMC. First result: a shield of a fifth of methylation's size once cell mix is removed.
 - R19 done (RM9): unbiased bootstrap intervals for tissues, tissues_cells and mouse; intervals widen, no human conclusion moves, the mouse housekeeping contrasts hold. RM9 leaves the roadmap.

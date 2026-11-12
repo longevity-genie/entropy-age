@@ -652,6 +652,21 @@ controls (controls leave one out), at least 5 animals per arm.
 
 Tables: `data/output/mmc_interventions/` (`effects`, `animal_scores`).
 
+## Probe design and unreliable probes (roadmap RM18)
+
+The 450k array's two probe designs differ in dynamic range, and essential-promoter CpGs are type I more often
+(42-45 % against 35 % of promoter CpGs). Figure `probe_robustness` (run R20) recomputes the headline gaps with the
+design added to the matching strata, and with Zhou et al. 2017's general mask of unreliable probes applied.
+
+![Probe robustness](figures/probe_robustness.png)
+
+* Design explains about a sixth of blood's lifespan gaps (housekeeping entropy −0.35 → −0.30 SD, core-essential
+  −0.23 → −0.19); cortex and the same-donor tissues move by under 0.01 SD.
+* The mask moves no gap by more than 0.01 SD. No gap changes sign.
+* Open (RM18): one cohort from raw IDATs, and each array's beta compression as a covariate for the signed shift.
+
+Tables: `data/output/probe_robustness/` (`gaps`, `design_share`).
+
 ## Natural experiments in people: chromatin-writer syndromes keep the shield (roadmap RM14)
 
 Tet3 heterozygous mice lose the shield in brain. Do people born with a variant in a chromatin writer lose it in

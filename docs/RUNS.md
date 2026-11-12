@@ -12,14 +12,6 @@ grammar (`unattended`, `urgent`, `building`, `after <R-id>` or `after job <slurm
 - the roadmap item it serves (`RMn`);
 - what the lead needs back (a table, a figure, a number), and anything the run must not do.
 
-## R20 — headline gaps against probe design and unreliable probes (RM18)
-
-- What: `entropy-age figures probe_robustness --scale paper --seed 42` (annotation re-prepared with `probe_type`;
-  mask at `data/input/annotation/zhou/`).
-- Resources: compute partition, 8 cores, 64 GB; time unknown (no bootstrap, 1000 permutations x 4 variants).
-- Read: `data/output/probe_robustness/gaps`: does any housekeeping or core-essential gap change sign or lose most
-  of its size with probe type in the strata or masked probes out? `design_share`: are set CpGs type I more often?
-
 ## R22 — look-alike drift and relative gap against lifespan (RM20)
 
 - What: `entropy-age figures species --scale paper --seed 42` (adds `gap`, `background_rate` and the RM20
