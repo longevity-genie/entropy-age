@@ -130,8 +130,11 @@ Tet3 loss weakening it in brain. Hypotheses, each with its test:
 Progress: asked by antonkulaga (2026-11-12): can nanopore data add insight on the stochasticity of clocks? Long
 reads give many CpGs on one molecule from one cell: within one sample, do essential promoters stay uniform
 molecule to molecule while look-alike regions become mixtures of epialleles with age (epiallele entropy,
-methylation haplotype load, discordant reads)? Read-level WGBS does the same on shorter reads. Data survey
-running.
+methylation haplotype load, discordant reads)? Read-level WGBS does the same on shorter reads.
+- Survey done (`docs/LONGREAD_SURVEY.md`): no open long-read cohort with ages (CARD brain ONT, 351 donors,
+  controlled). First test: Loyfer 2023 WGBS read-level PAT files (GSE186458), 23 white-blood-cell donors aged
+  21-75, ~13 GB, `wgbstools homog`/entropy, essential promoters against matched regions. No published
+  single-molecule test of epiallele heterogeneity against age.
 
 ## RM16 — Selection by cellular fitness, in vivo
 
