@@ -50,3 +50,11 @@ grammar (`unattended`, `urgent`, `building`, `after <R-id>` or `after job <slurm
 - What: GSE68194 series matrix fetched (386 MB); `entropy-age figures survival --scale paper --seed 42`.
 - Resources: compute partition, 4 cores, 32 GB; time unknown (115 leave-one-out references).
 - Read: `data/output/survival_shield/effects`: hazard ratio per SD of F, B, S and clocks; MMSE.
+
+## R43 — does methylation noise reach expression? GTEx same donors (RM30)
+
+- What: `entropy-age figures meth_expr_spread --scale paper --seed 42` (GTEx methylation and RNA; donors with
+  both: lung 161, ovary 133, colon 98, prostate 62, blood 45).
+- Resources: compute partition, 4 cores, 64 GB; time unknown (200 permutations per tissue).
+- Read: `data/output/meth_expr_spread/coupling`: signed coupling (control), spread coupling against its null,
+  spread-slope coupling across genes.

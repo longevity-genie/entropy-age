@@ -4,6 +4,7 @@ Newest first.
 
 ## Unreleased
 
+- 2026-11-12: `meth_expr_spread` (RM30): methylation and expression spread coupled per donor and with age in GTEx; run R43 planned.
 - 2026-11-12: docs/LITERATURE_COVERAGE.md: each idea rated done, partly or open against verified papers; RM29, RM30 filed, RM26 scoped.
 - 2026-11-12: `survival_shield` (RM28): Cox model of death on shield, drift and clocks in Vitality 90+ (GSE68194); run R42 planned.
 - 2026-11-12: docs/LONGITUDINAL_SURVEY.md: open and controlled methylation cohorts with follow-up; RM28 filed.
