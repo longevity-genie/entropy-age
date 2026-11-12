@@ -3,6 +3,13 @@
 Owned by the runner seat (`docs/seats/RUNNER.md`): one entry per run, newest first, with its inputs, the
 commit it ran, its job ids, its scale and seed, and its result or its failure with the cause.
 
+## R25 — clonal haematopoiesis and the shield (RM16), 2026-11-12
+
+- Commit de1ddda; `figures chip --scale paper --seed 42`; 8 cores, 32 GB.
+- Job 6431885 completed in 1 min 46 s, 0.9 GB at peak. 64 patients, 101,667 CpGs; any CH 29, DNMT3A 21, TET2 12
+  against 35 without CH.
+- Result, as measured: no effect on B, F or S in any arm, raw or with 5 components (all |F| ≤ 0.022, p ≥ 0.15).
+
 ## R24 — cortical cell types with the promoter read fraction as a covariate (RM19), 2026-11-12
 
 - Commit acb8254; `figures atac_cortex --scale paper --seed 42` on R23's cached pseudobulk; 8 cores, 32 GB.

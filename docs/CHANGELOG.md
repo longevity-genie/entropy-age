@@ -4,6 +4,7 @@ Newest first.
 
 ## Unreleased
 
+- R25 done (RM16): clonal-haematopoiesis carriers keep the shield (null, diluted clones).
 - `fetch chip` and `figures chip` (RM16): blood of clonal-haematopoiesis carriers (any, DNMT3A, TET2) against non-carriers in GSE315366, scored like the syndromes.
 - R24 done (RM19): in cortical cell types essential promoters spread apart with age more than matched promoters, after quality and composition adjustment; no general accessibility shield.
 - `figures atac_cortex` adds the donor's promoter read fraction (a TSS-enrichment-like quality score) as an adjustment. R23 done (essential promoters spread more with age in cortical cell types, before that check); R24 planned.

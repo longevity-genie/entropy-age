@@ -669,6 +669,24 @@ controls (controls leave one out), at least 5 animals per arm.
 
 Tables: `data/output/mmc_interventions/` (`effects`, `animal_scores`).
 
+## Selection in vivo: clonal haematopoiesis leaves the shield alone (roadmap RM16)
+
+Clonal haematopoiesis (CH) is selection among blood stem cells in a living person. Figure `chip` (run R25) scores
+the blood of CH carriers against non-carriers in Basrai et al. 2026 (GSE315366; 64 patients in cardiogenic
+shock, EPIC; CH called as DNMT3A or TET2), as the syndromes are scored (controls leave themselves out, age and sex
+covariates, raw and with 5 composition components).
+
+![Clonal haematopoiesis](figures/chip_methylation.png)
+
+* **No arm moves the shield.** Any CH (29 against 35), DNMT3A (21) and TET2 (12): drift B, shield share F and
+  signed shift S all unchanged (|F| ≤ 0.022, p ≥ 0.15).
+* **Weak evidence.** No allele fractions are given; most CH clones hold 2-10 % of blood cells, so an effect inside a
+  clone is diluted ten- to fifty-fold in the sample. The patients are acutely ill. The test that would decide it
+  is within a person: mutant against wild-type cells (GSE158067, Nam 2022, two donors), or a cohort with allele
+  fractions (controlled access; `docs/CHIP_SURVEY.md`).
+
+Tables: `data/output/chip_methylation/effects`.
+
 ## Probe design and unreliable probes (roadmap RM18)
 
 The 450k array's two probe designs differ in dynamic range, and essential-promoter CpGs are type I more often
