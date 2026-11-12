@@ -30,7 +30,10 @@ neither proof nor disproof. Tests that would separate selection from chromatin, 
 - Second model found (`docs/REPROG_TET_SURVEY.md`): GSE271375, Tet1 knockout and catalytic-dead cortex, 8 per
   group, mouse array; then Dnmt3a gain of function (GSE324160). Next after the quota resets.
 - Done (R35): Tet1 knockout and catalytic-dead cortex keep or strengthen the shield while drifting more;
-  the opposite of Tet3. Next: Dnmt3a gain of function (GSE324160).
+  the opposite of Tet3.
+- Done (R36, R37): Tet3's gain is not array compression; Dnmt3a W326R methylates Polycomb-type look-alikes, not
+  essential promoters (chromatin aims the writer). Next: the multi-tissue test below, built as RM27 on the Huang
+  mice (exenatide and rapamycin, 11 tissues).
 - **The same intervention in a renewing and a non-renewing tissue of the same animals.** Selection predicts CR
   or rapamycin changes the shield in blood or gut and not in brain or muscle; chromatin predicts the same change
   (or none) everywhere. Search for a multi-tissue CR or rapamycin series with at least 8 animals per arm.
@@ -40,21 +43,6 @@ neither proof nor disproof. Tests that would separate selection from chromatin, 
   recipients, or patients after chemotherapy).
 - **Chromatin held fixed.** Match on chromatin first (RM7's method), then test the intervention on the remainder.
   If the CR effect survives the matching, it is not a chromatin change.
-
-## RM11 — Clocks of our own
-
-**State:** building · **Owner:** lead
-
-Progress: asked by antonkulaga (2026-11-11): can we build clocks from the entropy-age ideas, and do they capture
-more than conventional clocks? Candidates from the results: a stochastic clock from Polycomb CpGs with each
-tissue's offset calibrated, and the per-person shield score beside it. "More" needs a readout beyond age: which
-clock tracks interventions (CR mice, GSE80672) and, later, outcomes in a cohort with follow-up.
-- antonkulaga (2026-11-12): among people with the same shield, are those with a higher methylation age less
-  protected? Plan, first tomorrow (no downloads): (1) per-person P against age acceleration of Horvath, Hannum,
-  PhenoAge, GrimAge in Hannum and Jaffe; (2) stochastic clocks from look-alike CpGs only and from shielded CpGs
-  only; (3) stratify acceleration on P.
-- Done (R29): at equal drift, faster chronological and stochastic clocks go with a stronger shield; outcome
-  clocks (PhenoAge, DunedinPACE, mortality) are blind to it. Next: train our own clocks, (2).
 
 ## RM13 — Answer the prior work (novelty review)
 
@@ -138,31 +126,9 @@ methylation haplotype load, discordant reads)? Read-level WGBS does the same on 
   21-75, ~13 GB, `wgbstools homog`/entropy, essential promoters against matched regions. No published
   single-molecule test of epiallele heterogeneity against age.
 
-## RM23 — The stochastic component of clocks, with the shield (extending Tong et al. 2024)
-
-**State:** building · **Owner:** lead
-
-Progress: asked by antonkulaga (2026-11-12): extend Tong et al. 2024 (Nature Aging; stochastic clocks StocH, StocP,
-StocZ) and recompute the stochastic part of the same clocks. They simulate uniform stochastic DNAm change from a
-young ground state and retrain each clock's CpGs on it; the share of the clock's accuracy reproduced is the
-"stochastic component" (66-75 % Horvath, 90 % Zhang, 63 % PhenoAge). Our extension:
-1. Reproduce their fractions on Hannum blood with the pinned Stoc and original clocks.
-2. Shield-aware simulation: CpG-specific rates (shielded CpGs slower by the measured gap; or each CpG's observed
-   drift rate) instead of uniform; retrain; recompute the fractions. Does shaped noise explain more?
-3. Split each clock's prediction into shielded and unprotected CpGs: which carries age, which acceleration.
-4. Cell composition (antonkulaga, 2026-11-12: PhenoAge, the least stochastic clock, may mostly reflect blood-cell
-   mix): estimate 12 blood-cell fractions by reference-based deconvolution (EpiDISH cent12CT or Salas 2022 IDOL),
-   then recompute each clock's stochastic fraction and acceleration with and without them. Is PhenoAge's
-   non-stochastic part composition?
-Methods read (scratch notes; key points): rates per CpG are set by its observed old-minus-young effect and
-changes go in that direction (probit-scale half-normal steps, P = 1 - exp(-gamma |effect|)); ground state from the
-youngest MESA monocytes; elastic net alpha 0.5 on simulated data; fraction RR2 = R2(Stoc) / R2(original);
-intrinsic acceleration removes 11 of 12 EpiDISH fractions. Variants to compare: their model; direction only;
-pure noise; rates by gene class (shield) only.
-
 ## RM27 — Do interventions reverse disorder or shift a programme?
 
-**State:** unattended · **Owner:** lead
+**State:** building · **Owner:** lead
 
 Progress: idea 3 of docs/BEYOND_SHIELD.md. Split aging CpGs into directed (consistent mean change) and noisy
 (variance rise only); ask which part each intervention moves.
