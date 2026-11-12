@@ -123,6 +123,16 @@ Tet3 loss weakening it in brain. Hypotheses, each with its test:
 - The blood lean rests largely on human (jackknife: +0.085 → +0.047 without it, p 0.30); 12 and 7 species
   with paired tissues are too few for hypothesis 2. RM20 parks until the pattern is firmer (Anton told).
 
+## RM22 — Stochasticity at the level of single molecules (long reads)
+
+**State:** after RM11 · **Owner:** lead
+
+Progress: asked by antonkulaga (2026-11-12): can nanopore data add insight on the stochasticity of clocks? Long
+reads give many CpGs on one molecule from one cell: within one sample, do essential promoters stay uniform
+molecule to molecule while look-alike regions become mixtures of epialleles with age (epiallele entropy,
+methylation haplotype load, discordant reads)? Read-level WGBS does the same on shorter reads. Data survey
+running.
+
 ## RM16 — Selection by cellular fitness, in vivo
 
 **State:** unattended · **Owner:** lead
