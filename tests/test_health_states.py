@@ -41,3 +41,15 @@ def test_small_groups_are_left_out():
     many = Contrast("c", "t", "o", x, np.arange(20) < 10, x[:, :1], ["a", "b", "c"], True)
     stages = Contrast("c", "t", "o", x, np.arange(20) % 4 * 1.0, x[:, :1], ["a", "b", "c"], False)
     assert not _enough(few) and _enough(many) and _enough(stages)
+
+
+def test_hardy_scale_reads_donors_and_is_absent_without_the_setting(tmp_path, monkeypatch):
+    from entropy_age.experiments.health_states import SUBJECT_PHENOTYPES, hardy_scale
+
+    monkeypatch.delenv("ENTROPY_AGE_GTEX_ATTRIBUTES", raising=False)
+    assert hardy_scale() is None
+    (tmp_path / SUBJECT_PHENOTYPES).write_text("SUBJID\tSEX\tAGE\tDTHHRDY\nGTEX-1\t1\t60-69\t4\nGTEX-2\t2\t20-29\t\n")
+    monkeypatch.setenv("ENTROPY_AGE_GTEX_ATTRIBUTES", str(tmp_path))
+    h = hardy_scale()
+    assert h["donor"].to_list() == ["GTEX-1", "GTEX-2"]
+    assert h["hardy"].to_list() == [4.0, None]

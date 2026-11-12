@@ -9,7 +9,8 @@ ill people have a weaker shield (higher ``F``), more drift (``B``) or a shifted 
 - Jaffe (GSE74193): schizophrenia against controls in prefrontal cortex, adults (17 and over), one sample per
   donor; age, sex, race, neuron fraction and plate as covariates.
 - GSE41037 (blood, 27k array): schizophrenia against controls; age and sex.
-- GTEx (8 tissues): current against never smokers; age and sex.
+- GTEx (8 tissues): current against never smokers; and death after a long illness (Hardy 4) against sudden death
+  (Hardy 1-2), from the subject phenotypes the setting ``ENTROPY_AGE_GTEX_ATTRIBUTES`` names; age and sex.
 
 Every person is scored against all others in the same contrast (leave-one-out reference, as controls are in
 ``consortium_interventions.arm_scores``), so small control groups (Lunnon blood has 9) do not set the reference
@@ -22,6 +23,7 @@ its treatment, not a predictor.
 
 from __future__ import annotations
 
+import os
 import sys
 from dataclasses import dataclass
 from pathlib import Path
@@ -31,6 +33,7 @@ import polars as pl
 
 from entropy_age import plots
 from entropy_age.data.cohorts import layout as cohort_layout
+from entropy_age.data.gtex_rna import ATTRIBUTES_ENV, SUBJECT_PHENOTYPES
 from entropy_age.experiments.bxd_liver import ols
 from entropy_age.experiments.common import Context, dummies, write_table
 from entropy_age.experiments.per_person import _islands, _sets, score_against
@@ -179,6 +182,48 @@ def _gse41037(paths, features) -> list[Contrast]:
     ]
 
 
+def hardy_scale() -> pl.DataFrame | None:
+    """GTEx's Hardy death scale per donor (``donor``, ``hardy``), or None when the setting names no file."""
+    folder = os.environ.get(ATTRIBUTES_ENV)
+    path = Path(folder) / SUBJECT_PHENOTYPES if folder else None
+    if path is None or not path.exists():
+        print(f"health: no {SUBJECT_PHENOTYPES} under ${ATTRIBUTES_ENV}; Hardy contrast left out", file=sys.stderr)
+        return None
+    return pl.read_csv(path, separator="\t", infer_schema_length=0).select(
+        pl.col("SUBJID").alias("donor"), pl.col("DTHHRDY").cast(pl.Float64, strict=False).alias("hardy")
+    )
+
+
+def _gtex_hardy(paths, features) -> list[Contrast]:
+    """Slow death after chronic illness (Hardy 4) against sudden death (Hardy 1-2); ventilator cases (0) left out."""
+    hardy = hardy_scale()
+    if hardy is None:
+        return []
+    s = (
+        pl.read_parquet(cohort_layout("gtex", paths).samples)
+        .join(hardy, on="donor")
+        .filter(pl.col("hardy").is_in([1.0, 2.0, 4.0]))
+    )
+    out = []
+    for (tissue,), t in s.group_by("tissue", maintain_order=True):
+        t = t.sort("sample")
+        m = _matrix("gtex", paths, t["sample"].to_list(), features)
+        cov = _covariates(t, ["age"], ["sex"]) if t["sex"].n_unique() > 1 else _covariates(t, ["age"], [])
+        out.append(
+            Contrast(
+                "GTEx",
+                tissue,
+                "slow vs sudden death (Hardy)",
+                m.values,
+                (t["hardy"] == 4.0).to_numpy(),
+                cov,
+                m.features,
+                True,
+            )
+        )
+    return out
+
+
 def _gtex(paths, features) -> list[Contrast]:
     s = pl.read_parquet(cohort_layout("gtex", paths).samples).filter(pl.col("smoker").is_in(["Current", "Never"]))
     out = []
@@ -201,7 +246,7 @@ def _gtex(paths, features) -> list[Contrast]:
     return out
 
 
-LOADERS = (_lunnon, _jaffe, _gse41037, _gtex)
+LOADERS = (_lunnon, _jaffe, _gse41037, _gtex, _gtex_hardy)
 
 
 def _enough(c: Contrast) -> bool:

@@ -37,4 +37,4 @@ grammar (`unattended`, `urgent`, `building`, `after <R-id>` or `after job <slurm
 - Resources: compute partition, 4 cores, 64 GB; time unknown (leave-one-out references, about 2,500 fits per
   composition setting).
 - Read: `data/output/health_states/effects`: F, B, S effects of Alzheimer's (and Braak stage), schizophrenia and
-  smoking, raw and with 5 components.
+  smoking and slow against sudden death (GTEx Hardy scale), raw and with 5 components.
