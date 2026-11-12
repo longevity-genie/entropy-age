@@ -9,7 +9,9 @@ brain radiation, anthracyclines, alkylating agents). Each person's first draw is
 The breast-cancer result in EPIC-Italy (C12, drift B at unprotected promoters) is the reason to look here first:
 B, the shield's share F and the signed shift S per person, against one reference fitted on everyone (with
 thousands of people a person's own weight in it is negligible), and published clocks' accelerations, each per SD.
-Deaths more than 2 years after the draw are tested separately, as are deaths among survivors only.
+Deaths more than 2 years after the draw are tested separately. No control has died, so models use survivors only.
+Each is also fitted with mean methylation of the loaded CpGs and 11 blood-cell fractions held and the measure
+centred within its array chip (as in ``incident_cancer``).
 
 ``entropy-age figures sjlife`` (as a Slurm job; the 28 GB processed table).
 """
@@ -28,9 +30,10 @@ from entropy_age import plots
 from entropy_age.data.clocks import ClockLayout, read_clock
 from entropy_age.data.cohorts import _characteristics
 from entropy_age.experiments.common import Context, dummies, write_table
-from entropy_age.experiments.incident_cancer import logit
+from entropy_age.experiments.incident_cancer import _group_means, logit
 from entropy_age.experiments.per_person import _islands, _sets, score_against
 from entropy_age.experiments.shield_clocks import linear_score
+from entropy_age.experiments.stochastic_component import EPIDISH, deconvolve
 from entropy_age.experiments.syndromes import matrix_path
 from entropy_age.experiments.tissue_contrast import _features
 from entropy_age.protection import fit_reference
@@ -115,32 +118,41 @@ def reference_scores(x: np.ndarray, island: np.ndarray, sets: dict) -> dict[str,
     return score_against(x, fit_reference(x, island, ~member), sets)
 
 
-def death_rows(people: pl.DataFrame, measures: dict[str, np.ndarray]) -> list[dict]:
+def death_rows(people: pl.DataFrame, measures: dict[str, np.ndarray], extra: np.ndarray | None = None) -> list[dict]:
+    """Odds ratio of having died per SD, among survivors (no control has died); with ``extra`` (people x
+    covariates: mean beta, cell fractions) also adjusted, the measure then centred within its array chip."""
     age = people["age"].to_numpy()
     died = people["age_at_death"].is_not_null().to_numpy()
     years = (people["age_at_death"].fill_null(np.inf) - people["age"]).to_numpy()
     base = [age, people["female"].to_numpy().astype(float)]
     exposures = [people[e].to_numpy() for e in EXPOSURES if e in people.columns]
     survivor = people["survivor"].to_numpy()
+    chip = people["barcode"].str.split("_").list.first().to_numpy() if "barcode" in people.columns else None
     rows = []
-    for subset, keep_s in (("everyone", np.ones(age.size, dtype=bool)), ("survivors", survivor)):
-        for lagged in (False, True):
-            keep = keep_s & (~died | (years > LAG) if lagged else keep_s)
-            y = died[keep].astype(float)
-            if y.sum() < 20:
-                continue
-            for name, v in measures.items():
-                z = (v - v.mean()) / v.std(ddof=1)
-                cols = [np.ones(keep.sum()), z[keep], *(b[keep] for b in base), *(e[keep] for e in exposures)]
-                if subset == "everyone":
-                    cols.append(survivor[keep].astype(float))
-                diag = dummies(people["diagnosis"].to_numpy()[keep])
+    for lagged in (False, True):
+        keep = survivor & (~died | (years > LAG)) if lagged else survivor
+        y = died[keep].astype(float)
+        if y.sum() < 20:
+            continue
+        diag = dummies(people["diagnosis"].to_numpy()[keep])
+        for name, v in measures.items():
+            z = (v - v.mean()) / v.std(ddof=1)
+            for adjusted in (False, True) if extra is not None else (False,):
+                zz = z
+                if adjusted and chip is not None:
+                    zz = z - _group_means(z, chip)
+                    zz = zz / zz.std(ddof=1)
+                cols = [np.ones(keep.sum()), zz[keep], *(b[keep] for b in base), *(e[keep] for e in exposures)]
+                if adjusted:
+                    e = extra[keep]
+                    cols.append(e[:, e.std(axis=0) > 0])
                 design = np.column_stack([*cols, diag[:, diag.std(axis=0) > 0]])
                 beta, se = logit(y, design)
                 rows.append(
                     {
-                        "subset": subset,
+                        "subset": "survivors",
                         "lag_over_2y": lagged,
+                        "adjusted": adjusted,
                         "measure": name,
                         "deaths": int(y.sum()),
                         "alive": int((1 - y).sum()),
@@ -166,7 +178,11 @@ def run(ctx: Context) -> list[Path]:
     lay = ClockLayout(ctx.paths)
     clocks = {c: read_clock(lay.file(c)) for c in CLOCKS_USED if lay.file(c).exists()}
     clock_cpgs = sorted({c for w in clocks.values() for c in w["cpg"].to_list()})
-    wanted = sorted(set(features) | set(clock_cpgs))
+    import rdata
+
+    reference = next(iter(rdata.read_rda(str(ctx.paths.input / EPIDISH)).values()))
+    ref_cpgs = [str(c) for c in reference.coords["dim_0"].values]
+    wanted = sorted(set(features) | set(clock_cpgs) | set(ref_cpgs))
     header = stream_header(table)
     people = people.filter(pl.col("barcode").is_in(header))
     cpgs, x_all = stream_rows(table, set(wanted), people["barcode"].to_list())
@@ -190,7 +206,13 @@ def run(ctx: Context) -> list[Path]:
             design = np.column_stack([np.ones(age.size), age])
             coef, *_ = np.linalg.lstsq(design, score, rcond=None)
             measures[name] = score - design @ coef
-    result = pl.DataFrame(death_rows(people, measures))
+    keep_ref = [i for i, c in enumerate(ref_cpgs) if c in col]
+    xr = x_all[:, [col[ref_cpgs[i]] for i in keep_ref]]
+    xr = np.where(np.isnan(xr), np.nanmean(xr, axis=0), xr)
+    fractions = deconvolve(xr, reference.values[keep_ref])
+    extra = np.column_stack([np.nanmean(x_all, axis=1), fractions[:, :-1]])
+    print(f"sjlife: {len(keep_ref)} reference CpGs; neutrophils {fractions[:, -2].mean():.2f}", file=sys.stderr)
+    result = pl.DataFrame(death_rows(people, measures, extra))
     write_table(result, out / "effects")
     write_table(people.with_columns(**{k: pl.Series(v) for k, v in measures.items()}), out / "per_person")
     return [_figure(ctx, result)]
@@ -199,12 +221,12 @@ def run(ctx: Context) -> list[Path]:
 def _figure(ctx: Context, table: pl.DataFrame) -> Path:
     fig, axes = plots.panels(2, ncols=2, size=4.2)
     measures = table["measure"].unique(maintain_order=True).to_list()
-    for i, subset in enumerate(("everyone", "survivors")):
+    for i, adjusted in enumerate((False, True)):
         ax = axes[i]
         for y, m in enumerate(measures):
             for j, lagged in enumerate((False, True)):
                 r = table.filter(
-                    (pl.col("subset") == subset) & (pl.col("measure") == m) & (pl.col("lag_over_2y") == lagged)
+                    (pl.col("adjusted") == adjusted) & (pl.col("measure") == m) & (pl.col("lag_over_2y") == lagged)
                 )
                 if r.height:
                     ax.errorbar(
@@ -219,8 +241,9 @@ def _figure(ctx: Context, table: pl.DataFrame) -> Path:
         ax.set_xscale("log")
         ax.set_yticks(range(len(measures)), measures if i == 0 else [""] * len(measures), fontsize=7.5)
         ax.invert_yaxis()
-        n = table.filter(pl.col("subset") == subset)["deaths"].max()
-        ax.set(xlabel="odds ratio of death per SD (95 % CI)", title=f"{subset} ({n} deaths)")
+        n = table["deaths"].max()
+        title = "chip, cell mix, mean beta held" if adjusted else "age, sex, treatment, diagnosis held"
+        ax.set(xlabel="odds ratio of death per SD (95 % CI)", title=f"{title} ({n} deaths)")
         plots.label_panel(ax, "ab"[i])
     fig.suptitle(
         "SJLIFE: blood drawn before death; circles all deaths, squares over 2 years after the draw",

@@ -25,6 +25,16 @@ commit it ran, its job ids, its scale and seed, and its result or its failure wi
   |0.12| SD or less. Housekeeping F, 5 components: Jaffe cortex schizophrenia +0.57, GSE41037 blood +0.45.
   Tables in `data/output/health_states/`.
 
+## R48 — SJLIFE deaths (RM28), 2026-11-13, first pass
+
+- Commit 60b685b; `figures sjlife --scale paper --seed 42`; 4 cores, 96 GB; job 6444474, 9 min. 4,518 first draws,
+  277 deaths (222 over 2 years after the draw), 92,030 CpGs loaded from the 28 GB table.
+- Result, as measured (odds ratio of death per SD; age, sex, 4 exposures, diagnosis held; no control has died, so
+  "everyone" equals "survivors"): PhenoAge 1.62 (p 1e-10), DunedinPACE 1.78 (p 1e-17), Zhang 1.28 (p 8e-4) -- the
+  positive control holds. Drift B 1.06-1.09 (p 0.12-0.41). Shield share F 0.84-0.87 (p 7e-4 to 0.005) and signed
+  shift S 0.82-0.84 (p 0.002-0.011): a stronger shield goes with more deaths here, unexpected.
+- Rerun with mean methylation, 11 cell fractions and chip held (R48b; module changed in the commit below).
+
 ## R49 — the shield by blood lineage, in silico (RM31), 2026-11-13
 
 - Commit 1a753f2; `figures lineage_shield --scale paper --seed 42`; 4 cores, 32 GB; job 6444485, 3 min 21 s. Hannum

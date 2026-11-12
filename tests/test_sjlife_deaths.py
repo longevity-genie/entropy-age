@@ -30,13 +30,16 @@ def test_death_model_finds_a_marker_beyond_age_and_treatment():
             "age_at_death": np.where(died, age + rng.uniform(0.5, 10, n), np.nan),
         }
     ).with_columns(pl.col("age_at_death").fill_nan(None))
+    people = people.with_columns(barcode=pl.Series([f"{i % 40}_R01C01" for i in range(n)]))
+    measures = {"m": marker, "null": rng.normal(size=n)}
     rows = {
-        (r["subset"], r["lag_over_2y"], r["measure"]): r
-        for r in death_rows(people, {"m": marker, "null": rng.normal(size=n)})
+        (r["adjusted"], r["lag_over_2y"], r["measure"]): r
+        for r in death_rows(people, measures, rng.normal(size=(n, 2)))
     }
-    assert rows[("everyone", False, "m")]["odds_ratio"] > 1.5 and rows[("everyone", False, "m")]["p"] < 1e-6
-    assert rows[("everyone", False, "null")]["p"] > 0.001
-    assert rows[("everyone", True, "m")]["deaths"] < rows[("everyone", False, "m")]["deaths"]
+    assert rows[(False, False, "m")]["odds_ratio"] > 1.5 and rows[(False, False, "m")]["p"] < 1e-6
+    assert rows[(True, False, "m")]["odds_ratio"] > 1.5
+    assert rows[(False, False, "null")]["p"] > 0.001
+    assert rows[(False, True, "m")]["deaths"] < rows[(False, False, "m")]["deaths"]
 
 
 def test_streaming_reader_picks_rows_and_columns(tmp_path):
