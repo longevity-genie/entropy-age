@@ -790,6 +790,15 @@ TSS enrichment), both.
 
 Tables: `data/output/atac_cortex/gaps`.
 
+**Hippocampus does not settle it (runs R26, R27).** Figure `atac_hippocampus` repeats the test in 40 hippocampi
+(Zemke et al. 2024, GSE278576; ages 20-95), with genes as features because each donor has its own peaks. Five
+subclasses qualify (20-40 donors). The sign depends on the adjustment: oligodendrocytes' core-essential gap is
++0.24 raw, −0.23 with the promoter read fraction, −0.01 with both; OPCs' −0.18 raw, +0.14 with both. With both
+adjustments, astrocytes, OPCs and subiculum lean positive (housekeeping +0.05 to +0.15), microglia and
+oligodendrocytes sit at zero. With 20-40 donors, sample quality and cell state outweigh the age signal, and the
+modelling choice decides the sign. That also weakens the cortical reading, which rests on one modelling scheme
+in more donors: the brain reversal is not replicated, and accessibility is no clean readout of the shield.
+
 ## Outside promoters: a directed, division-linked loss (roadmap RM15)
 
 SvenDP asked whether aging methylation is all stochastic, or whether specific intergenic regions lose methylation

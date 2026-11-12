@@ -12,8 +12,4 @@ grammar (`unattended`, `urgent`, `building`, `after <R-id>` or `after job <slurm
 - the roadmap item it serves (`RMn`);
 - what the lead needs back (a table, a figure, a number), and anything the run must not do.
 
-## R27 — hippocampus replication of the accessibility result (RM19)
-
-- What: `entropy-age figures atac_hippocampus --scale paper --seed 42` (40 per-donor 10x matrices on disk).
-- Resources: compute partition, 8 cores, 32 GB; time unknown (40 files of 50-80 MB).
-- Read: `data/output/atac_hippocampus/gaps` per subclass and adjustment; is the gap positive as in cortex?
+No runs are planned.

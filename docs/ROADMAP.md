@@ -75,7 +75,7 @@ matched on island status and starting level. Gaps:
 
 ## RM19 — Does chromatin accessibility become stochastic with age?
 
-**State:** building · **Owner:** lead
+**State:** after RM18 · **Owner:** lead
 
 Progress: asked by antonkulaga (2026-11-12): can we collect enough comparable ATAC-seq data to test stochastic
 changes of chromatin opening? Test: per region, the age slope of between-individual (or between-cell)
@@ -91,8 +91,9 @@ public data (one tissue, one protocol, many individuals across ages, processed c
 - Done (R23, R24): in all seven cortical cell types essential promoters spread apart with age *more* than
   matched ones (core-essential +0.07 to +0.23 SD after quality and composition adjustment). No general
   accessibility shield. Next: hippocampus (Zemke 2024, GSE278576) to replicate in brain; a sorted blood set.
-- Building: hippocampus replication from per-donor 10x peak matrices (peaks differ per donor, so features are
-  genes: counts of peaks over a gene's promoter CpGs), downloading.
+- Done (R27): hippocampus does not replicate cleanly: signs flip with the adjustment in 20-40 donors.
+  Accessibility spread is too sensitive to sample quality to read the shield. RM19 parks; revisit with a
+  cohort that has per-sample TSS enrichment and fragment QC, or sorted bulk ATAC.
 
 ## RM20 — Why would long life or CR weaken the shield?
 

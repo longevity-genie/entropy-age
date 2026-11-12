@@ -4,6 +4,7 @@ Newest first.
 
 ## Unreleased
 
+- R27 done (RM19): hippocampus does not replicate the cortical accessibility reversal; signs flip with the adjustment. RM19 parks.
 - `figures atac_hippocampus` (RM19): the cortical accessibility test repeated in 40 hippocampi (GSE278576), with genes as features because peaks differ per donor.
 - R25 done (RM16): clonal-haematopoiesis carriers keep the shield (null, diluted clones).
 - `fetch chip` and `figures chip` (RM16): blood of clonal-haematopoiesis carriers (any, DNMT3A, TET2) against non-carriers in GSE315366, scored like the syndromes.

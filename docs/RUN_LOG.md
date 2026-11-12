@@ -3,6 +3,15 @@
 Owned by the runner seat (`docs/seats/RUNNER.md`): one entry per run, newest first, with its inputs, the
 commit it ran, its job ids, its scale and seed, and its result or its failure with the cause.
 
+## R27 — hippocampus replication of the accessibility result (RM19), 2026-11-12
+
+- Commit 60e4191; `figures atac_hippocampus --scale paper --seed 42`; 8 cores, 32 GB.
+- Job 6432066 completed in 6 min, 4.4 GB at peak. Subclasses with 50+ nuclei in 20+ donors: astrocytes 34,
+  microglia 40, OPC 38, oligodendrocytes 40, subiculum 20; 13,561 genes.
+- Result, as measured: signs depend on the adjustment (oligodendrocytes core-essential raw +0.24, promoter
+  fraction −0.23, both −0.01; OPC raw −0.18, both +0.14). With both adjustments: housekeeping +0.05 (astrocytes),
+  +0.15 (OPC), +0.10 (subiculum), p ≤ 0.007; microglia and oligodendrocytes ≈ 0.
+
 ## R26 — hippocampus replication of the accessibility result (RM19), 2026-11-12
 
 - Commit e084027; `figures atac_hippocampus --scale paper --seed 42`; 8 cores, 32 GB.
