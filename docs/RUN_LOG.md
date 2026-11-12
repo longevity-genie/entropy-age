@@ -25,6 +25,15 @@ commit it ran, its job ids, its scale and seed, and its result or its failure wi
   |0.12| SD or less. Housekeeping F, 5 components: Jaffe cortex schizophrenia +0.57, GSE41037 blood +0.45.
   Tables in `data/output/health_states/`.
 
+## R49 — the shield by blood lineage, in silico (RM31), 2026-11-13
+
+- Commit 1a753f2; `figures lineage_shield --scale paper --seed 42`; 4 cores, 32 GB; job 6444485, 3 min 21 s. Hannum
+  656 donors; lineage fractions from R38 (myeloid 0.66, T cells 0.20, B and NK 0.14 on average).
+- Result, as measured (set minus look-alikes on |age slope within the lineage|, SD; permutation p): T cells
+  housekeeping -0.103 (0.001), core essential -0.092 (0.001); B and NK -0.043 (0.001), -0.055 (0.001); myeloid
+  -0.020 (0.001), -0.018 (0.008). Non-essential also below its look-alikes here (-0.09 myeloid, -0.03 T, -0.04 B/NK).
+  Table `data/output/lineage_shield/gaps`.
+
 ## Index — hg38 CpG index for read-level WGBS (RM22), 2026-11-13
 
 - Commit 45814a7; job 6445117 (`entropy-cpgindex`), 46 s. 29,401,795 CpGs over chr1-22, X, Y, M from the GRCh38

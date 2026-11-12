@@ -142,13 +142,6 @@ application; links in the survey.
   a second breast-cancer cohort (NOWAC or Breakthrough Generations, controlled: antonkulaga's application), and
   SJLIFE deaths.
 
-## RM31 — One cell type at a time: in-silico demultiplexing
-
-**State:** unattended · **Owner:** lead
-
-Progress: part (1), sorted MESA cells, done in R44 (shield in one cell type at about half whole blood's size).
-Left: cell-type-specific age effects from EpiDISH fraction x age interactions in Hannum (CellDMC-style).
-
 ## RM16 — Selection by cellular fitness, in vivo
 
 **State:** after RM22 · **Owner:** lead

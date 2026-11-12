@@ -1478,6 +1478,13 @@ make drift, the shield or a clock's age signal.
   of more plaque with a stronger shield, and one of 12 tests). Whether DunedinPACE in MESA monocytes is published
   is not yet checked.
 
+**In silico, by lineage (run R49).** Splitting Hannum's mixed blood by lineage (each CpG's age slope within myeloid
+cells, T cells, and B and NK cells, from R38's cell fractions, CellDMC-style) gives the same order as the sorted
+cells: essential and housekeeping CpGs change less with age than their look-alikes most in T cells (-0.09 to -0.10
+SD), less in B and NK cells (-0.04 to -0.05), least in myeloid cells (-0.02), all p <= 0.008. This measures directed
+change within a lineage (|mean slope|), not spread; the non-essential set is also below its look-alikes here, unlike
+in whole blood, so part of whole blood's non-essential excess is lineage shifts.
+
 Reading: the shield is a cell-intrinsic property, partly amplified by composition in mixed tissue. Like the
 clocks that read directed change, the pace clock tracks disease; the shield, so far, does not.
 
