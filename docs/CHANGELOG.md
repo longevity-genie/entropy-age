@@ -4,6 +4,7 @@ Newest first.
 
 ## Unreleased
 
+- `figures shield_clocks` (RM11): per person, the shield score against each published clock's age acceleration (stochastic clocks included), in Hannum blood and Jaffe cortex. Asked by antonkulaga.
 - R27 done (RM19): hippocampus does not replicate the cortical accessibility reversal; signs flip with the adjustment. RM19 parks.
 - `figures atac_hippocampus` (RM19): the cortical accessibility test repeated in 40 hippocampi (GSE278576), with genes as features because peaks differ per donor.
 - R25 done (RM16): clonal-haematopoiesis carriers keep the shield (null, diluted clones).

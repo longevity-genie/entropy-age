@@ -30,6 +30,7 @@ from entropy_age.experiments import (
     probe_robustness,
     rna_gtex,
     rna_rodents,
+    shield_clocks,
     species_phylo,
     species_shield,
     syndromes,
@@ -70,6 +71,7 @@ FIGURES: dict[str, Callable[[Context], list[Path]]] = {
     "intergenic": intergenic.run,
     "clocks": clock_cpgs.run,
     "per_person": per_person.run,
+    "shield_clocks": shield_clocks.run,
     "probe_robustness": probe_robustness.run,
 }
 
