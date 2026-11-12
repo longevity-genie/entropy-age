@@ -1361,6 +1361,26 @@ rodent data are Shavlakadze et al. 2026 (Sci Adv), which with Tyshkovskiy 2026 (
 directed change; Ibañez-Solé 2022 (eLife) found no consistent rise of transcriptional noise with age, in line with
 the unshared noise order. Only the explicit rank comparison is ours.
 
+## One cell type at a time: sorted monocytes and T cells (roadmap RM31)
+
+Asked by antonkulaga (2026-11-12): does a changing cell mix hide or fake what is stochastic? MESA sorted CD14+
+monocytes of 1,202 people and CD4+ T cells of 214, aged 44-83 (run R44); in one cell type a changing mix cannot
+make drift, the shield or a clock's age signal.
+
+- **The shield is there in a single cell type**: housekeeping CpGs gain entropy and spread 0.14 SD less with age
+  than their look-alikes in monocytes, 0.22 SD less entropy in T cells (permutation p 0.001). That is about half
+  of whole blood's gap (-0.29): the cell mix adds to the shield in blood, but does not make it.
+- **Clocks read age in a pure cell type** (Zhang 2019 r 0.92, Horvath 0.78-0.82), and the leftover
+  contamination explains under 2 % of their acceleration in monocytes. Clocks do not need a changing mix either.
+- **Subclinical atherosclerosis tracks DunedinPACE, not the shield.** In monocytes, a 1-SD faster DunedinPACE goes
+  with 0.37 more carotid plaques and 0.37 higher log coronary calcium (p 1e-7); PhenoAge weakly (p 0.04). The
+  shield's measures are not associated (best: housekeeping F with plaque -0.14 per SD, p 0.054, in the direction
+  of more plaque with a stronger shield, and one of 12 tests). Whether DunedinPACE in MESA monocytes is published
+  is not yet checked.
+
+Reading: the shield is a cell-intrinsic property, partly amplified by composition in mixed tissue. Like the
+clocks that read directed change, the pace clock tracks disease; the shield, so far, does not.
+
 ## A person-wide pace in clocks, not in drift (roadmap RM26)
 
 Idea 1 of `docs/BEYOND_SHIELD.md`. Clock coupling across a donor's tissues is published (Horvath 2022, 11 tissues;

@@ -198,15 +198,12 @@ Progress: idea 6 of docs/BEYOND_SHIELD.md; open per docs/LITERATURE_COVERAGE.md 
 Bertucci-Richter 2023; no change-point test at maturity). Fit per species a drift curve with a breakpoint and
 compare it with age at sexual maturity.
 
-## RM31 — One cell type at a time: does composition hide drift or the clocks' stochastic share?
+## RM31 — One cell type at a time: in-silico demultiplexing
 
-**State:** unattended (next) · **Owner:** lead
+**State:** unattended · **Owner:** lead
 
-Progress: asked by antonkulaga (2026-11-12): clocks carry a cell-composition part that may hide stochastic
-results; demultiplex. (1) Sorted-cell cohorts: MESA CD14+ monocytes GSE56046 (about 1,200, ages 44-83) and CD4+ T
-cells GSE56581: shield, drift and the stochastic share of clocks (R38's method) in one cell type, against whole
-blood. (2) In-silico: cell-type-specific age effects from EpiDISH fraction x age interactions in Hannum
-(CellDMC-style). Literature check before claims. Read-level sorted WGBS stays RM22.
+Progress: part (1), sorted MESA cells, done in R44 (shield in one cell type at about half whole blood's size).
+Left: cell-type-specific age effects from EpiDISH fraction x age interactions in Hannum (CellDMC-style).
 
 ## RM16 — Selection by cellular fitness, in vivo
 

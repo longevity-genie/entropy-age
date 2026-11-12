@@ -12,7 +12,8 @@ a test with little power), **refuted**.
 - **If true, we should see:** a negative gap in every tissue and species; robust to how CpGs are matched
   (island status, starting level, probe design); present per person, not only on average.
 - **We should not see:** the gap vanish or flip once CpGs are matched more finely, or in an independent cohort.
-- **Observed:** negative in human blood, brain and GTEx tissues, 11 mouse tissues, culture, 96 % of 65 mammals;
+- **Observed:** negative in human blood, brain and GTEx tissues, 11 mouse tissues, culture, 96 % of 65 mammals,
+  and inside one sorted cell type (monocytes -0.14 SD, CD4+ T cells -0.22, R44; about half of whole blood's);
   probe design explains a sixth of blood's gap, masks nothing (R20); per-person reliability 0.997.
 - **Alternatives:** (a) a floor: CpGs near 0 % cannot drift down, and deciles leave a floor inside the lowest
   stratum; (b) array compression at the extremes; (c) island CpGs vary less for technical reasons.
@@ -121,7 +122,8 @@ a test with little power), **refuted**.
   agreement unchanged (0.44 -> 0.45).
 - **Alternatives:** composition and intrinsic aging change together (inflammaging), so removing one removes part
   of the other.
-- **Separating test:** sorted cells (R44, running).
+- **Separating test:** sorted cells (R44): in pure monocytes clocks read age (Zhang 0.92) and contamination explains
+  under 2 % of acceleration.
 - **Status:** refuted as the main explanation; composition is a minor part of PhenoAge.
 
 ## C10 — Partial reprogramming does not restore the shield

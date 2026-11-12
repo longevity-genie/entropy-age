@@ -3,6 +3,21 @@
 Owned by the runner seat (`docs/seats/RUNNER.md`): one entry per run, newest first, with its inputs, the
 commit it ran, its job ids, its scale and seed, and its result or its failure with the cause.
 
+## R44 — the shield, drift and clocks in sorted blood cells (RM31), 2026-11-12
+
+- Commit d891500; `figures sorted_cells --scale paper --seed 42`; 4 cores, 64 GB; job 6436739, 31 min.
+  MESA CD14+ monocytes 1,202 people (GSE56046), CD4+ T cells 214 (GSE56581), ages 44-83.
+- Result, as measured (set minus matched look-alikes, SD; permutation p 0.001 unless given): monocytes
+  housekeeping entropy -0.14, dispersion -0.14, |mean change| -0.07; core essential -0.08, -0.06, -0.06. T cells
+  housekeeping -0.22, -0.04, -0.09; core essential -0.09, -0.01 (p 0.39), -0.06.
+- Clocks, r with age in monocytes / T cells: Zhang 2019 0.92 / 0.92, Hannum 0.84 / 0.80, Horvath 0.78 / 0.82,
+  PhenoAge 0.77 / 0.71, StocZ 0.81 / 0.82, DunedinPACE 0.09 / 0.27; residual contamination scores explain 0.4-1.6 %
+  of acceleration in monocytes, 3.6-10 % in T cells.
+- Health, monocytes (per SD of the measure; age and race-sex-site held): DunedinPACE plaque +0.37 (p 4e-8), log
+  coronary calcium +0.37 (p 1e-7); PhenoAge +0.14 for both (p 0.04, 0.05); Zhang 2019 log CAC +0.16 (p 0.02);
+  Horvath, Hannum, Stoc clocks n.s.; shield F housekeeping plaque -0.14 (p 0.054), S -0.12 (p 0.09), the rest
+  p > 0.09. Tables in `data/output/sorted_cells/`.
+
 ## R41 — organs of one donor aging together (RM26), 2026-11-12, rerun
 
 - Commit 522d4e6; `figures organ_coupling --scale paper --seed 42`; 4 cores, 64 GB; job 6438960, 10 min 45 s.

@@ -24,3 +24,4 @@ E22,Tet3 gain at essential promoters survives compression held,R36,1,0,0,1,0,0,-
 E23,Dnmt3a W326R methylates Polycomb-type look-alikes not essential CpGs,R37,2,-1,0,0,0,0,0,0,1
 E24,Stochastic clocks need each CpG's direction; undirected noise keeps no accuracy,R38,1,0,0,0,-1,0,0,0,0
 E25,Cell mix explains 16 % of PhenoAge acceleration; gap to StocP unchanged,R38,0,0,0,0,0,0,0,-1,0
+E26,Shield present in sorted monocytes and T cells (half of whole blood),R44,1,-1,0,0,0,0,0,-2,0
