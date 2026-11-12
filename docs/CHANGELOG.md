@@ -4,6 +4,7 @@ Newest first.
 
 ## Unreleased
 
+- Roadmap: RM10b (species with phylogeny, per tissue), RM16 (selection by cellular fitness in vivo: clonal haematopoiesis), RM17 (partial reprogramming), at antonkulaga's request.
 - R18 done: carriers of Sotos, Weaver, Kabuki and CHARGE variants drift more in blood but keep the shield, unlike Tet3 heterozygous mice. `docs/extension.md`.
 - RM9: `figures tissues`, `tissues_cells` and `mouse` scale every bootstrap resample by the full sample's spread (`common.rescale`), not its own, which had shrunk resampled gaps and blood-minus-brain intervals toward zero.
 - `figures syndromes` keeps, where a series gives ages, only people with one inside the controls' age range, so age enters as a covariate without extrapolating to infants (R17 had dropped age for all of GSE97362).

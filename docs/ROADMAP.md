@@ -58,6 +58,35 @@ brain both; left: a DepMap gradient within broadly expressed genes, and expressi
 structure), against Hollmann 2020; (4) read the species result against Crofts 2026 (stem-cell dynamics) and the
 floor of near-0 % essential promoters; (5) the shield score against Seeboth 2020's confounders.
 
+## RM16 — Selection by cellular fitness, in vivo
+
+**State:** after RM10b · **Owner:** lead
+
+Progress: asked by antonkulaga (2026-11-12, #entropy-age > general chat): what about selection by cellular
+fitness? The evidence so far is mostly against selection (culture, turnover, chromatin matching, Tet3, liver),
+with two leads for it (CR in one blood study; human bone marrow and lymph node reversing the shield). Steps:
+1. Clonal haematopoiesis: blood methylation of CHIP carriers (DNMT3A, TET2 clones) against non-carriers, on GEO.
+2. The bone-marrow and lymph-node anomaly of R12: donors' ages and any clonality data.
+3. Sorted stem cells against mature blood, young against old, where public; else a DFG work package.
+4. A second within-batch CR blood series.
+
+## RM17 — Partial reprogramming: does a reset restore the shield?
+
+**State:** after RM16 · **Owner:** lead
+
+Progress: asked by antonkulaga (2026-11-12). The consortium's OSKM arms are 2-5 mice (3.4F+7mDox kidney F −0.17,
+p 0.10; skin n.s.): too small. Public array series to find: maturation-phase transient reprogramming of human
+fibroblasts (Gill et al. 2022), in-vivo cyclic OSKM mice (Browder et al. 2022; Ocampo et al. 2016). Chromatin
+maintenance predicts the shield restored with the clock; selection predicts no change (no cells removed).
+
+## RM10b — Species with phylogeny and per tissue
+
+**State:** building · **Owner:** lead
+
+Progress: antonkulaga (2026-11-12) asked for the multispecies checks first. R12's lifespan fit treats species
+as independent. Refit with a phylogenetic GLS (covariance from NCBI Taxonomy lineages, Pagel's λ by maximum
+likelihood), on all groups and per tissue with enough species (skin 36, blood 27, liver 10).
+
 ## RM14 — Natural experiments in chromatin: broken writers, knockouts, edits
 
 **State:** unattended · **Owner:** lead
