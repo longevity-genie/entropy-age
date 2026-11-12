@@ -224,6 +224,16 @@ Progress: idea 7 of docs/BEYOND_SHIELD.md; the dispersion coupling is open per d
 level coupling is published: Oliva 2023). Per gene, the age rise in between-donor spread of promoter methylation
 against that of expression, in lung, colon and ovary donors with both.
 
+## RM31 — One cell type at a time: does composition hide drift or the clocks' stochastic share?
+
+**State:** unattended (next) · **Owner:** lead
+
+Progress: asked by antonkulaga (2026-11-12): clocks carry a cell-composition part that may hide stochastic
+results; demultiplex. (1) Sorted-cell cohorts: MESA CD14+ monocytes GSE56046 (about 1,200, ages 44-83) and CD4+ T
+cells GSE56581: shield, drift and the stochastic share of clocks (R38's method) in one cell type, against whole
+blood. (2) In-silico: cell-type-specific age effects from EpiDISH fraction x age interactions in Hannum
+(CellDMC-style). Literature check before claims. Read-level sorted WGBS stays RM22.
+
 ## RM16 — Selection by cellular fitness, in vivo
 
 **State:** after RM22 · **Owner:** lead
