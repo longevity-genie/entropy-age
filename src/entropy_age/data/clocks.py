@@ -24,6 +24,7 @@ CLOCKS: dict[str, tuple[str, str, str]] = {
     "Horvath skin & blood": ("Horvath2.csv", "fea1667ce4481c4969f50318d72e4b8048b50993", "chronological"),
     "Hannum": ("Hannum.csv", "1a26380822523748d1092d8a9f1ccae4f4494e68", "chronological"),
     "Lin": ("Lin.csv", "f575affa18a0f54dca7bd2792f6387c9c124273b", "chronological"),
+    "Zhang 2019": ("Zhang2019.csv", "3f68b5fd8aead7a8308e6a235057e7b6ab77cfaa", "chronological"),
     "Zhang 10": ("Zhang_10.csv", "7ac2526d41e609500fcdb3b85eb4ed45bd8e01f2", "mortality"),
     "PhenoAge": ("PhenoAge.csv", "2362abc9c736996056a95ff5cb3f02f08276ec1f", "phenotypic"),
     "DunedinPACE": ("DunedinPACE.csv", "b65bd0933816d7f074b35907216c235630ce028b", "pace"),
