@@ -41,12 +41,16 @@ neither proof nor disproof. Tests that would separate selection from chromatin, 
 
 ## RM11 — Clocks of our own
 
-**State:** after RM14 · **Owner:** lead
+**State:** waits until 2026-11-13 · **Owner:** lead
 
 Progress: asked by antonkulaga (2026-11-11): can we build clocks from the entropy-age ideas, and do they capture
 more than conventional clocks? Candidates from the results: a stochastic clock from Polycomb CpGs with each
 tissue's offset calibrated, and the per-person shield score beside it. "More" needs a readout beyond age: which
 clock tracks interventions (CR mice, GSE80672) and, later, outcomes in a cohort with follow-up.
+- antonkulaga (2026-11-12): among people with the same shield, are those with a higher methylation age less
+  protected? Plan, first tomorrow (no downloads): (1) per-person P against age acceleration of Horvath, Hannum,
+  PhenoAge, GrimAge in Hannum and Jaffe; (2) stochastic clocks from look-alike CpGs only and from shielded CpGs
+  only; (3) stratify acceleration on P.
 
 ## RM13 — Answer the prior work (novelty review)
 
