@@ -118,6 +118,21 @@ def fetch_mammals_cmd(overwrite: bool = False) -> None:
     typer.echo(f"{matrix}\n{betas}")
 
 
+@fetch_app.command("atac")
+def fetch_atac_cmd(overwrite: bool = False) -> None:
+    """Morandini 2023 PBMC ATAC counts (GSE193140, 10 MB) and Zhou's hg38 450k manifest (23 MB)."""
+    from entropy_age.data.download import download
+    from entropy_age.experiments.atac_variance import COUNTS, GSE, HG38_MANIFEST_URL, layout
+
+    paths = ProjectPaths.default().ensure()
+    counts, matrix, manifest = layout(paths)
+    base = f"https://ftp.ncbi.nlm.nih.gov/geo/series/GSE193nnn/{GSE}"
+    download(f"{base}/suppl/{COUNTS}", counts, overwrite=overwrite, timeout=600)
+    download(f"{base}/matrix/{matrix.name}", matrix, overwrite=overwrite, timeout=600)
+    download(HG38_MANIFEST_URL, manifest, overwrite=overwrite, timeout=600)
+    typer.echo(f"{counts}\n{matrix}\n{manifest}")
+
+
 @fetch_app.command("taxonomy")
 def fetch_taxonomy_cmd() -> None:
     """NCBI Taxonomy lineages of the consortium's species in R12's table (a few hundred small requests)."""

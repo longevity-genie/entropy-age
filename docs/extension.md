@@ -691,6 +691,32 @@ age as covariate; GSE74432 gives no ages, so its contrasts are not age-adjusted.
 
 Tables: `data/output/syndromes/` (`effects`, `person_scores`).
 
+## Chromatin accessibility: a first sign of the shield in ATAC-seq (roadmap RM19)
+
+Does chromatin opening spread apart between people with age, and less at essential promoters? Figure
+`atac_variance` uses Morandini et al. 2023's bulk ATAC-seq of blood mononuclear cells (GSE193140; 157 donors aged
+20-74, one library each; 42,557 peaks, hg38). Per peak: log counts per million, residuals after age and sex (and
+5 leading components of all peaks, for cell mix), and the age slope of the absolute residual in units of the
+peak's spread. 12,811 peaks hold a 450k promoter CpG; a set's peaks are compared with the other promoter peaks of
+the same island status, mean-accessibility decile and width tertile, labels permuted within strata.
+
+![ATAC variance](figures/atac_variance.png)
+
+| set (peaks) | raw | 5 components |
+|---|---|---|
+| housekeeping (3,725) | −0.031 SD (p 0.14) | −0.048 SD (p 0.02) |
+| core-essential (633) | +0.017 (p 0.66) | −0.078 (p 0.05) |
+| non-essential (32) | +0.21 (p 0.26) | +0.02 (p 0.93) |
+
+* **Essential promoters spread apart more slowly with age than matched promoters, once cell mix is removed.** The
+  same direction as the methylation shield, about a fifth of its size, in another layer of chromatin.
+* **Weak and first.** One bulk dataset; the raw scores do not reach significance; the components may carry part
+  of age; non-essential promoters are barely open in blood (32 peaks). It needs per-cell-type data: the
+  362-donor prefrontal-cortex single-nucleus set (Catching 2026) and the 40-donor hippocampus set (Zemke 2024),
+  `docs/ATAC_SURVEY.md`.
+
+Tables: `data/output/atac_variance/gaps`.
+
 ## Outside promoters: a directed, division-linked loss (roadmap RM15)
 
 SvenDP asked whether aging methylation is all stochastic, or whether specific intergenic regions lose methylation

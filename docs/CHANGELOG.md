@@ -4,6 +4,7 @@ Newest first.
 
 ## Unreleased
 
+- `fetch atac` and `figures atac_variance` (RM19): between-person accessibility spread with age per ATAC peak, essential promoters against matched promoter peaks, on Morandini 2023 PBMC. First result: a shield of a fifth of methylation's size once cell mix is removed.
 - R19 done (RM9): unbiased bootstrap intervals for tissues, tissues_cells and mouse; intervals widen, no human conclusion moves, the mouse housekeeping contrasts hold. RM9 leaves the roadmap.
 - RM18: the 450k annotation carries the Infinium design type (`probe_type`); `fetch annotation` also fetches Zhou et al. 2017's probe mask; `figures probe_robustness` recomputes the headline gaps with probe type in the strata and masked probes left out.
 - `fetch taxonomy` and `figures species_phylo` (RM10b): the shield against lifespan with a phylogenetic GLS (NCBI Taxonomy covariance, Pagel's λ) and per tissue. No lifespan effect survives. Roadmap RM18 (normalization and probe robustness) at antonkulaga's request.

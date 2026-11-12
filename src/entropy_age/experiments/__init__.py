@@ -4,6 +4,7 @@ from collections.abc import Callable
 from pathlib import Path
 
 from entropy_age.experiments import (
+    atac_variance,
     atlas_real_data,
     bxd_liver,
     chromatin_clocks,
@@ -56,6 +57,7 @@ FIGURES: dict[str, Callable[[Context], list[Path]]] = {
     "bxd": bxd_liver.run,
     "rrbs_tissues": mouse_rrbs_tissues.run,
     "species": species_shield.run,
+    "atac_variance": atac_variance.run,
     "species_phylo": species_phylo.run,
     "mmc_interventions": consortium_interventions.run,
     "syndromes": syndromes.run,

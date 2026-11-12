@@ -84,6 +84,9 @@ public data (one tissue, one protocol, many individuals across ages, processed c
   against essential promoters. First test: Morandini 2023 PBMC bulk ATAC (GSE193140, 157 libraries, 20-74 y,
   10 MB counts). Then Catching 2026 prefrontal cortex snATAC (362 donors, 15-100 y, Zenodo 18394349, 14.5 GB)
   and Zemke 2024 hippocampus (GSE278576, 40 donors). Controlled-access cohorts (Márquez 2020, CIMA) later.
+- First test done (`figures atac_variance`, `docs/extension.md`): with cell mix removed, housekeeping and
+  core-essential promoter peaks spread apart more slowly with age (−0.05 SD, p 0.02; −0.08 SD, p 0.05); raw not
+  significant. Next: per cell type in the 362-donor cortex set (a 14.5 GB download; a Slurm job).
 
 ## RM20 — Why would long life or CR weaken the shield?
 
