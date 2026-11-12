@@ -3,6 +3,10 @@
 Owned by the runner seat (`docs/seats/RUNNER.md`): one entry per run, newest first, with its inputs, the
 commit it ran, its job ids, its scale and seed, and its result or its failure with the cause.
 
+## R34 — Tet1 knockout and catalytic-dead cortex (RM12), 2026-11-12
+
+- Commit 4cb8a47; failed after 8 s: the betas file writes missing values as `NA`. Read as missing now; rerun R35.
+
 ## R32 — partial reprogramming and the shield (RM17), 2026-11-12
 
 - Commit 803d1da; `figures reprogramming --scale paper --seed 42`; 8 cores, 16 GB; job 6433970, 8 s.

@@ -59,7 +59,9 @@ def run(ctx: Context) -> list[Path]:
     plots.apply_style()
     out = ctx.out_dir("tet1_cortex")
     probes = pl.read_parquet(lay.probes).filter(pl.col("promoter") & ~pl.col("chr").is_in(["X", "Y", "MT"]))
-    wide = wide_bisulfite(pl.read_csv(path)).filter(pl.col("cpg").is_in(probes["cpg"].implode()))
+    wide = wide_bisulfite(pl.read_csv(path, null_values=["NA"], schema_overrides={"Betas": pl.Float64})).filter(
+        pl.col("cpg").is_in(probes["cpg"].implode())
+    )
     animals = [c for c in wide.columns if c != "cpg"]
     features = wide["cpg"].to_list()
     x_all = wide.select(animals).to_numpy().T.astype(float)

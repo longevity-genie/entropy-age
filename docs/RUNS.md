@@ -19,7 +19,7 @@ grammar (`unattended`, `urgent`, `building`, `after <R-id>` or `after job <slurm
   elastic-net CV on a few thousand CpGs).
 - Read: `data/output/own_clocks/accuracy` (r, median absolute error per pool) and `acceleration_overlap`.
 
-## R34 — Tet1 knockout and catalytic-dead cortex (RM12)
+## R35 — Tet1 knockout and catalytic-dead cortex (RM12)
 
 - What: `entropy-age figures tet1 --scale paper --seed 42` (GSE271375 betas on disk).
 - Resources: compute partition, 8 cores, 32 GB; minutes.
