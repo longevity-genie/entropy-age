@@ -138,6 +138,20 @@ methylation haplotype load, discordant reads)? Read-level WGBS does the same on 
   21-75, ~13 GB, `wgbstools homog`/entropy, essential promoters against matched regions. No published
   single-molecule test of epiallele heterogeneity against age.
 
+## RM23 — The stochastic component of clocks, with the shield (extending Tong et al. 2024)
+
+**State:** building · **Owner:** lead
+
+Progress: asked by antonkulaga (2026-11-12): extend Tong et al. 2024 (Nature Aging; stochastic clocks StocH, StocP,
+StocZ) and recompute the stochastic part of the same clocks. They simulate uniform stochastic DNAm change from a
+young ground state and retrain each clock's CpGs on it; the share of the clock's accuracy reproduced is the
+"stochastic component" (66-75 % Horvath, 90 % Zhang, 63 % PhenoAge). Our extension:
+1. Reproduce their fractions on Hannum blood with the pinned Stoc and original clocks.
+2. Shield-aware simulation: CpG-specific rates (shielded CpGs slower by the measured gap; or each CpG's observed
+   drift rate) instead of uniform; retrain; recompute the fractions. Does shaped noise explain more?
+3. Split each clock's prediction into shielded and unprotected CpGs: which carries age, which acceleration.
+Methods of the paper being extracted first.
+
 ## RM16 — Selection by cellular fitness, in vivo
 
 **State:** after RM22 · **Owner:** lead
