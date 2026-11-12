@@ -185,7 +185,9 @@ rodents) and compare the orders.
 
 Progress: idea 1 of docs/BEYOND_SHIELD.md. Per donor, acceleration (clock residuals, drift B, entropy) in each
 tissue; correlations between tissues of the same donors (Lunnon blood and 4 brain regions, GTEx, Huang mice).
-Lunnon blood was drawn before death: each sample keeps its own age.
+Lunnon blood was drawn before death: each sample keeps its own age. Literature (docs/LITERATURE_COVERAGE.md): clock
+coupling across tissues is published (Horvath 2022 GeroScience; Richardson 2025 on this GTEx set), so the clock arm
+is a replication; the new part is drift and entropy coupling without clocks.
 
 ## RM27 — Do interventions reverse disorder or shift a programme?
 
@@ -205,6 +207,22 @@ incident cancers, time to diagnosis), SATSA S-BSST1206 (596 people, up to 8 draw
 Order: Vitality 90+ (small, a true survival test), EPIC-Italy, SJLIFE, SATSA (within-person change). Controlled
 cohorts with mortality (Generation Scotland, Lothian, Framingham, Normative Aging Study) need antonkulaga's
 application; links in the survey.
+
+## RM29 — When does drift begin? A change point at sexual maturity across species
+
+**State:** unattended, after RM28's first cohorts · **Owner:** lead
+
+Progress: idea 6 of docs/BEYOND_SHIELD.md; open per docs/LITERATURE_COVERAGE.md (drift rate scales with lifespan,
+Bertucci-Richter 2023; no change-point test at maturity). Fit per species a drift curve with a breakpoint and
+compare it with age at sexual maturity.
+
+## RM30 — Does methylation spread reach expression spread? Same GTEx donors
+
+**State:** unattended · **Owner:** lead
+
+Progress: idea 7 of docs/BEYOND_SHIELD.md; the dispersion coupling is open per docs/LITERATURE_COVERAGE.md (mean-
+level coupling is published: Oliva 2023). Per gene, the age rise in between-donor spread of promoter methylation
+against that of expression, in lung, colon and ovary donors with both.
 
 ## RM16 — Selection by cellular fitness, in vivo
 

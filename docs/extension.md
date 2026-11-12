@@ -1334,7 +1334,10 @@ of two kinds: directed change (how far the mean moves) and noise (how much more 
 Reading: a shared directed programme, a private noise. Caveat that matters: a median |slope| over mostly
 unchanged features scales with each tissue's measurement noise and sample size, and one atlas profiled both
 rodents, so part of the shared order may be technical (tissue-specific RNA quality). A test with slopes divided by
-their standard errors (from raw data) would separate the two; not done.
+their standard errors (from raw data) would separate the two; not done. Literature (docs/LITERATURE_COVERAGE.md): the
+rodent data are Shavlakadze et al. 2026 (Sci Adv), which with Tyshkovskiy 2026 (Nature) covers tissue differences in
+directed change; Ibañez-Solé 2022 (eLife) found no consistent rise of transcriptional noise with age, in line with
+the unshared noise order. Only the explicit rank comparison is ours.
 
 ## How to test the hypothesis on real data
 
