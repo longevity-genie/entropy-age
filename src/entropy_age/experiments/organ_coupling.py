@@ -94,8 +94,8 @@ def _cohort(
         t = t.sort("sample")
         if t.height < MIN_SHARED:
             continue
-        m_set = _matrix(name, ctx.paths, t["sample"].to_list(), features)
-        m_clock = _matrix(name, ctx.paths, t["sample"].to_list(), clock_cpgs)
+        m_set = _matrix(name.lower(), ctx.paths, t["sample"].to_list(), features)
+        m_clock = _matrix(name.lower(), ctx.paths, t["sample"].to_list(), clock_cpgs)
         island = _islands(m_set.features, probes)
         sets = _sets(m_set.features, membership)
         res = tissue_measures(

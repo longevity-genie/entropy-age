@@ -3,6 +3,12 @@
 Owned by the runner seat (`docs/seats/RUNNER.md`): one entry per run, newest first, with its inputs, the
 commit it ran, its job ids, its scale and seed, and its result or its failure with the cause.
 
+## R41 — organ coupling (RM26), 2026-11-12, failed once
+
+- Commit 9599c31; `figures organ_coupling --scale paper --seed 42`; 4 cores, 64 GB; job 6436308 failed after 31 s:
+  the cohort's display name ("Lunnon") was passed where the loader expects its key ("lunnon"). Fixed in the
+  commit below; resubmitted.
+
 ## R40 — tissue aging pace across species and layers (RM25), 2026-11-12
 
 - Uncommitted code, then the commit below; `figures tissue_pace --scale paper --seed 42` on the login node
