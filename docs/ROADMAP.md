@@ -194,6 +194,18 @@ Lunnon blood was drawn before death: each sample keeps its own age.
 Progress: idea 3 of docs/BEYOND_SHIELD.md. Split aging CpGs into directed (consistent mean change) and noisy
 (variance rise only); ask which part each intervention moves.
 
+## RM28 — Does the shield (and drift) predict death and disease? Open follow-up cohorts
+
+**State:** unattended · **Owner:** lead
+
+Progress: asked by antonkulaga (2026-11-12) for longitudinal cohorts with age and health; survey in
+docs/LONGITUDINAL_SURVEY.md. Open: SJLIFE GSE314261 (4,520 people, 294 deaths with age at death, 378 with 2-5
+draws), Vitality 90+ GSE68194 (115 nonagenarians, 39 deaths, follow-up in days), EPIC-Italy GSE51032 (845, 421
+incident cancers, time to diagnosis), SATSA S-BSST1206 (596 people, up to 8 draws over 20 years; no mortality).
+Order: Vitality 90+ (small, a true survival test), EPIC-Italy, SJLIFE, SATSA (within-person change). Controlled
+cohorts with mortality (Generation Scotland, Lothian, Framingham, Normative Aging Study) need antonkulaga's
+application; links in the survey.
+
 ## RM16 — Selection by cellular fitness, in vivo
 
 **State:** after RM22 · **Owner:** lead
