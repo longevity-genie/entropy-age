@@ -171,14 +171,6 @@ Alzheimer's pathology (Lunnon, AD against control and Braak stage, four brain re
 (controls leave themselves out), age and technical covariates; shield share F, drift B, signed shift S.
 Cross-sectional: a weaker shield may be a consequence of disease or treatment, not a predictor.
 
-## RM25 — Which tissues age fastest, and is the order shared across species and layers?
-
-**State:** done (R40) · **Owner:** lead
-
-Progress: from docs/BEYOND_SHIELD.md idea 5 (antonkulaga asked for questions beyond the shield, 2026-11-12). Rank
-tissues by drift and clock pace from result tables on disk (human GTEx, mouse array and RRBS, RNA in GTEx and
-rodents) and compare the orders.
-
 ## RM26 — Do all organs of one person age at the same rate?
 
 **State:** unattended (next) · **Owner:** lead
@@ -191,7 +183,7 @@ is a replication; the new part is drift and entropy coupling without clocks.
 
 ## RM27 — Do interventions reverse disorder or shift a programme?
 
-**State:** waits until RM26 · **Owner:** lead
+**State:** after RM26 · **Owner:** lead
 
 Progress: idea 3 of docs/BEYOND_SHIELD.md. Split aging CpGs into directed (consistent mean change) and noisy
 (variance rise only); ask which part each intervention moves.
