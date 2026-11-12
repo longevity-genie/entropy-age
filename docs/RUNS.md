@@ -12,9 +12,4 @@ grammar (`unattended`, `urgent`, `building`, `after <R-id>` or `after job <slurm
 - the roadmap item it serves (`RMn`);
 - what the lead needs back (a table, a figure, a number), and anything the run must not do.
 
-## R24 — cortical cell types with the promoter read fraction as a covariate (RM19)
-
-- What: `entropy-age figures atac_cortex --scale paper --seed 42` on R23's cached pseudobulk, now with four
-  adjustments (none, 5 components, promoter read fraction, both).
-- Resources: compute partition, 8 cores, 32 GB; minutes (the pseudobulk is cached).
-- Read: does the positive gap of R23 survive the promoter read fraction (a quality score like TSS enrichment)?
+No runs are planned.

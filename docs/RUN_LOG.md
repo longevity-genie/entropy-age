@@ -3,6 +3,14 @@
 Owned by the runner seat (`docs/seats/RUNNER.md`): one entry per run, newest first, with its inputs, the
 commit it ran, its job ids, its scale and seed, and its result or its failure with the cause.
 
+## R24 — cortical cell types with the promoter read fraction as a covariate (RM19), 2026-11-12
+
+- Commit acb8254; `figures atac_cortex --scale paper --seed 42` on R23's cached pseudobulk; 8 cores, 32 GB.
+- Job 6431737 completed in 9 min, 1.3 GB at peak.
+- Result, as measured (promoter fraction and 5 components): core-essential +0.07 to +0.23 SD in 6 of 7 cell types
+  (p ≤ 0.055; inhibitory neurons +0.11, p 0.009); housekeeping +0.04 to +0.16 in excitatory neurons, microglia,
+  OPCs and vascular cells (p ≤ 0.013), −0.02 to +0.03 in astrocytes, inhibitory neurons, oligodendrocytes (n.s.).
+
 ## R23 — accessibility spread per cortical cell type (RM19), 2026-11-12
 
 - Commit 8c0b788; `figures atac_cortex --scale paper --seed 42`; 8 cores, 48 GB.

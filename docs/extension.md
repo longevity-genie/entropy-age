@@ -749,6 +749,29 @@ the same island status, mean-accessibility decile and width tertile, labels perm
 
 Tables: `data/output/atac_variance/gaps`.
 
+**Inside cortical cell types the sign reverses (runs R23, R24).** Figure `atac_cortex` sums the single-nucleus
+ATAC counts of 357 prefrontal cortices (Catching et al. 2026; ages 15-100; Zenodo 18394349) per donor and cell
+type, and repeats the test per cell type, with sex, brain bank, post-mortem interval and log nucleus count as
+covariates, and four adjustments: none, 5 components, the donor's promoter read fraction (a quality score like
+TSS enrichment), both.
+
+![ATAC per cortical cell type](figures/atac_cortex.png)
+
+* **Essential promoters spread apart with age *more* than matched promoters.** With every adjustment,
+  core-essential promoters do so in 6 of 7 cell types (+0.07 to +0.23 SD, p ≤ 0.055), housekeeping promoters in
+  excitatory neurons, microglia, OPCs and vascular cells (+0.04 to +0.16 SD); astrocytes, inhibitory neurons and
+  oligodendrocytes show nothing for housekeeping.
+* **Sample quality explained part, not all.** Without adjustment the effect was larger in some cell types (e.g.
+  excitatory neurons, housekeeping +0.17 → +0.08); the promoter read fraction took part of it.
+* **So there is no general accessibility shield.** Blood (bulk, 157 people) leans toward one; brain cell types
+  show the reverse at the strongest, most essential promoters. Methylation in cortex keeps a weaker shield
+  (−0.05 to −0.21 SD), so the two layers part ways in brain. Possible reasons: transcriptional noise rising at
+  highly expressed genes in aging neurons and glia; post-mortem or nuclear-integrity effects that hit open
+  promoters hardest; or the snATAC pseudobulk's own noise, which matching on mean accessibility may not remove.
+  Open.
+
+Tables: `data/output/atac_cortex/gaps`.
+
 ## Outside promoters: a directed, division-linked loss (roadmap RM15)
 
 SvenDP asked whether aging methylation is all stochastic, or whether specific intergenic regions lose methylation

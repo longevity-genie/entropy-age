@@ -88,6 +88,9 @@ public data (one tissue, one protocol, many individuals across ages, processed c
 - First test done (`figures atac_variance`, `docs/extension.md`): with cell mix removed, housekeeping and
   core-essential promoter peaks spread apart more slowly with age (−0.05 SD, p 0.02; −0.08 SD, p 0.05); raw not
   significant. Next: per cell type in the 362-donor cortex set (a 14.5 GB download; a Slurm job).
+- Done (R23, R24): in all seven cortical cell types essential promoters spread apart with age *more* than
+  matched ones (core-essential +0.07 to +0.23 SD after quality and composition adjustment). No general
+  accessibility shield. Next: hippocampus (Zemke 2024, GSE278576) to replicate in brain; a sorted blood set.
 
 ## RM20 — Why would long life or CR weaken the shield?
 
