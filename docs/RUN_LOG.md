@@ -25,6 +25,13 @@ commit it ran, its job ids, its scale and seed, and its result or its failure wi
   |0.12| SD or less. Housekeeping F, 5 components: Jaffe cortex schizophrenia +0.57, GSE41037 blood +0.45.
   Tables in `data/output/health_states/`.
 
+## Index — hg38 CpG index for read-level WGBS (RM22), 2026-11-13
+
+- Commit 45814a7; job 6445117 (`entropy-cpgindex`), 46 s. 29,401,795 CpGs over chr1-22, X, Y, M from the GRCh38
+  primary assembly: exactly the length of Loyfer's `.beta` files. Chromosome starts agree with the first reads of
+  each chromosome in a PAT file (chr3 4,567,830; chr4 6,241,123; chr5 7,744,552). Written to
+  `data/interim/annotation/cpg_index_hg38.parquet` (not in git).
+
 ## R47 — directed against noisy aging under exenatide and rapamycin (RM27), 2026-11-12
 
 - Commit 54e0d43; `figures intervention_split --scale paper --seed 42`; 4 cores, 32 GB; job 6441201, 36 s; the
