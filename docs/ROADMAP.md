@@ -91,6 +91,8 @@ public data (one tissue, one protocol, many individuals across ages, processed c
 - Done (R23, R24): in all seven cortical cell types essential promoters spread apart with age *more* than
   matched ones (core-essential +0.07 to +0.23 SD after quality and composition adjustment). No general
   accessibility shield. Next: hippocampus (Zemke 2024, GSE278576) to replicate in brain; a sorted blood set.
+- Building: hippocampus replication from per-donor 10x peak matrices (peaks differ per donor, so features are
+  genes: counts of peaks over a gene's promoter CpGs), downloading.
 
 ## RM20 — Why would long life or CR weaken the shield?
 
@@ -127,8 +129,9 @@ with two leads for it (CR in one blood study; human bone marrow and lymph node r
   EPIC blood, cardiogenic-shock patients, no VAF); within-person mutant against wild-type cells in GSE158067 (Nam
   2022, scRRBS, 2 donors). Large cohorts with VAF are controlled access (TOPMed, Lothian, Danish twins).
   First test: GSE315366 with the `syndromes` scoring (carriers against non-carriers, age covariate).
-- Done (R25): CH carriers do not differ (any, DNMT3A, TET2; p ≥ 0.15); diluted clones, no VAF. Next: within
-  person, mutant against wild-type single cells (GSE158067).
+- Done (R25): CH carriers do not differ (any, DNMT3A, TET2; p ≥ 0.15); diluted clones, no VAF.
+- GSE158067 (2 donors) has no age range within a person, so it cannot test drift with age; it could only
+  compare cell-to-cell deviation of mutant and wild-type cells. Lower priority than RM19's replication.
 
 ## RM17 — Partial reprogramming: does a reset restore the shield?
 
