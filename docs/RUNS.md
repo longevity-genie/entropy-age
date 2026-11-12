@@ -32,3 +32,10 @@ grammar (`unattended`, `urgent`, `building`, `after <R-id>` or `after job <slurm
 - Resources: compute partition, 4 cores, 64 GB; time unknown (reads the 4.5 GB table once, then per group).
 - Read: `data/output/drift_onset/onsets` (per species and tissue: change point, slopes, delta BIC, onset),
   `across_species` (log onset on log maturity and on log lifespan).
+
+## R46 — does the shield predict cancer years ahead? EPIC-Italy (RM28)
+
+- What: GSE51032 series matrix fetched (3.1 GB, betas inside); `entropy-age figures cancer --scale paper --seed 42`.
+- Resources: compute partition, 4 cores, 64 GB; time unknown (845 leave-one-out references).
+- Read: `data/output/incident_cancer/effects`: odds ratio per SD for any cancer, breast, colorectal; all cases and
+  cases diagnosed over 2 years after the draw.
