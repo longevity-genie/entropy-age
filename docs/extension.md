@@ -610,6 +610,15 @@ skin (36 species), blood (27) and liver (10).
 
 Tables: `data/output/species_phylo/lifespan_fits`.
 
+**Do long-lived species drift less everywhere, catching up with the shield? (roadmap RM20, run R22.)** The
+look-alike CpGs' own drift rate falls steeply with lifespan: about as lifespan^−1.4 per year for entropy
+(−1.15 for dispersion; p < 10⁻⁶, weight and tissue fixed), so long-lived species drift less even per fraction of
+their lifespan, as Crofts et al. 2026 found for methylation rates. Catch-up predicts that the protected promoters,
+already near their floor, gain less, so the gap shrinks relative to the look-alikes' drift. It does not: the
+relative gap stays flat for dispersion (p 0.34-0.62) and, for entropy, grows (housekeeping −2.4 per log-unit,
+p 0.04): long-lived species protect essential promoters by at least the same share. The ratio is noisy where
+look-alike drift is near zero, and those groups are left out (14-46 %).
+
 ## Interventions across mouse tissues (roadmap RM12)
 
 Figure `mmc_interventions` (run R13) scores every mouse of the consortium's intervention studies against its study's

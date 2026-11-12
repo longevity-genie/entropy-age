@@ -3,6 +3,16 @@
 Owned by the runner seat (`docs/seats/RUNNER.md`): one entry per run, newest first, with its inputs, the
 commit it ran, its job ids, its scale and seed, and its result or its failure with the cause.
 
+## R22 — look-alike drift and relative gap against lifespan (RM20), 2026-11-12
+
+- Commit 58efc63; `figures species --scale paper --seed 42`; 8 cores, 40 GB.
+- Job 6430954 waited on the CPU cap, then completed in 61 min, 25.8 GB at peak. The `gap_sd` fits equal R12's.
+- Result, as measured (per log maximum lifespan, weight and tissue fixed): log look-alike drift rate −1.42
+  (entropy, housekeeping), −1.15 (dispersion), p < 10⁻⁶; relative gap (gap / look-alike rate) −2.42 (entropy,
+  housekeeping, p 0.04), −0.83 (core-essential, p 0.07), +0.46 and +0.49 (dispersion, p 0.62, 0.34). Groups with a
+  non-positive look-alike rate are left out of these two outcomes (122-125 of 139 for entropy, 75-82 for
+  dispersion).
+
 ## R20 — headline gaps against probe design and unreliable probes (RM18), 2026-11-12
 
 - Commit 2f4654e (fixture fix c729b3c); `figures probe_robustness --scale paper --seed 42`; 8 cores, 64 GB.
