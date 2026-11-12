@@ -29,3 +29,11 @@ def test_partial_r_finds_a_link_beyond_age_and_none_where_only_age_links():
     d = 0.03 * age + rng.normal(size=n)
     r0, p0, _ = partial_r(c, d, design)
     assert abs(r0) < 0.12
+
+
+def test_linear_score_skips_a_cpg_no_sample_has():
+    """A clock CpG absent from the array (all NaN) must not turn every score into NaN (R42)."""
+    x = np.array([[0.1, np.nan], [0.3, np.nan]])
+    w = pl.DataFrame({"cpg": ["a", "b"], "weight": [2.0, 5.0]})
+    score, used = linear_score(x, ["a", "b"], w)
+    assert used == 1 and np.allclose(score, [0.2, 0.6])

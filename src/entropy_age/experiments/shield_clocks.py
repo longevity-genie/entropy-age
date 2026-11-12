@@ -39,7 +39,8 @@ SAMPLE_ORDER = {"blood": "hannum", "cortex": "jaffe"}
 def linear_score(x: np.ndarray, features: list[str], weights: pl.DataFrame) -> tuple[np.ndarray, int]:
     """Samples' ``x @ w`` over the clock CpGs present (a missing value takes the CpG's mean); CpGs used."""
     index = {f: i for i, f in enumerate(features)}
-    used = [(index[c], w) for c, w in weights.iter_rows() if c in index]
+    measured = ~np.isnan(x).all(axis=0)  # a CpG absent from the array (all NaN) counts as not present
+    used = [(index[c], w) for c, w in weights.iter_rows() if c in index and measured[index[c]]]
     if not used:
         return np.full(x.shape[0], np.nan), 0
     cols, w = np.array([u[0] for u in used]), np.array([u[1] for u in used])

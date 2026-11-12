@@ -3,6 +3,16 @@
 Owned by the runner seat (`docs/seats/RUNNER.md`): one entry per run, newest first, with its inputs, the
 commit it ran, its job ids, its scale and seed, and its result or its failure with the cause.
 
+## R42 — survival in Vitality 90+ (RM28), 2026-11-12, partial
+
+- Commit cc4bc08; `figures survival --scale paper --seed 42`; 4 cores, 32 GB; job 6439004, 1 min 27 s. 115
+  nonagenarians, 39 deaths in about 2.5 years.
+- Result, as measured (hazard ratio per SD, sex and batch held; then with CD8+CD28- share): shield share F 1.08
+  (0.78-1.48) core essential, 1.08 housekeeping; drift B 0.84 (0.58-1.19), 0.84; signed shift S 1.19 (0.87-1.63),
+  1.02; all p > 0.26, unchanged with CD8+CD28-. MMSE: no measure p < 0.2.
+- Every clock was left out: a clock CpG absent from this series' table is all NaN, and the linear score turned NaN
+  for everyone. `linear_score` now skips CpGs no sample has (test added); rerun for the clocks.
+
 ## R44 — the shield, drift and clocks in sorted blood cells (RM31), 2026-11-12
 
 - Commit d891500; `figures sorted_cells --scale paper --seed 42`; 4 cores, 64 GB; job 6436739, 31 min.
