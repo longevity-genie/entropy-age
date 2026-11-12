@@ -65,3 +65,10 @@ grammar (`unattended`, `urgent`, `building`, `after <R-id>` or `after job <slurm
   --scale paper --seed 42`.
 - Resources: compute partition, 4 cores, 64 GB; time unknown (about 1,200 leave-one-out references in monocytes).
 - Read: `data/output/sorted_cells/shield`, `clocks`, `health` (plaque, coronary calcium).
+
+## R45 — when does drift begin? change point against sexual maturity (RM29)
+
+- What: `entropy-age figures drift_onset --scale paper --seed 42` (consortium beta table on disk).
+- Resources: compute partition, 4 cores, 64 GB; time unknown (reads the 4.5 GB table once, then per group).
+- Read: `data/output/drift_onset/onsets` (per species and tissue: change point, slopes, delta BIC, onset),
+  `across_species` (log onset on log maturity and on log lifespan).

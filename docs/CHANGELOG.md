@@ -4,6 +4,7 @@ Newest first.
 
 ## Unreleased
 
+- 2026-11-12: `drift_onset` (RM29): change point in methylation noise against age at sexual maturity across mammals; a null test guards against development read as an onset; run R45 planned.
 - 2026-11-12: `sorted_cells` (RM31): shield, drift, clocks and plaque/CAC in MESA sorted monocytes and CD4+ T cells; run R44 planned.
 - 2026-11-12: `meth_expr_spread` (RM30): methylation and expression spread coupled per donor and with age in GTEx; run R43 planned.
 - 2026-11-12: docs/LITERATURE_COVERAGE.md: each idea rated done, partly or open against verified papers; RM29, RM30 filed, RM26 scoped.
