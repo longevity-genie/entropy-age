@@ -106,8 +106,10 @@ a test with little power), **refuted**.
 - **Alternatives:** clock CpGs are themselves look-alike-type CpGs, so the link at equal drift is partly built
   in.
 - **Separating test:** clocks trained on shielded and look-alike CpGs only (R33): equal accuracy, so a clock
-  does not need unprotected CpGs; the shielded clock's acceleration overlaps less (r 0.63 against 0.80).
-- **Status:** holds; partly structural.
+  does not need unprotected CpGs; the shielded clock's acceleration overlaps less (r 0.63 against 0.80). Clocks
+  retrained on simulated change (R38): each CpG's direction keeps 70-80 % of their accuracy, undirected noise 0-10 %.
+- **Status:** revised. Clocks read directed change with random timing, not undirected noise; that is why they are
+  blind to the shield, which acts on undirected drift. The first half of the title is refuted, the second holds.
 
 ## C9 — PhenoAge's non-stochastic part is blood-cell composition
 
