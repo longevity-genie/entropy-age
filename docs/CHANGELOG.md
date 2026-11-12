@@ -4,6 +4,7 @@ Newest first.
 
 ## Unreleased
 
+- 2026-11-12: R45 written up (RM29 done): methylation noise builds from early life, no onset at sexual maturity.
 - 2026-11-12: `incident_cancer` (RM28): shield, drift and clocks in blood drawn before a cancer diagnosis, EPIC-Italy; run R46 planned.
 - 2026-11-12: R39 written up (RM24 done): Alzheimer's leaves the shield; schizophrenia cortex, smokers' lung and muscle after long illness move it. E27.
 - 2026-11-12: R44 written up: the shield holds in sorted monocytes and T cells; DunedinPACE tracks plaque and calcium, the shield does not. E26.

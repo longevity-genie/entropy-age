@@ -179,14 +179,6 @@ Order: Vitality 90+ (small, a true survival test), EPIC-Italy, SJLIFE, SATSA (wi
 cohorts with mortality (Generation Scotland, Lothian, Framingham, Normative Aging Study) need antonkulaga's
 application; links in the survey.
 
-## RM29 — When does drift begin? A change point at sexual maturity across species
-
-**State:** building · **Owner:** lead
-
-Progress: idea 6 of docs/BEYOND_SHIELD.md; open per docs/LITERATURE_COVERAGE.md (drift rate scales with lifespan,
-Bertucci-Richter 2023; no change-point test at maturity). Fit per species a drift curve with a breakpoint and
-compare it with age at sexual maturity.
-
 ## RM31 — One cell type at a time: in-silico demultiplexing
 
 **State:** unattended · **Owner:** lead

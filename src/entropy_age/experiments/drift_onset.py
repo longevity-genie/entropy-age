@@ -243,7 +243,7 @@ def _figure(ctx: Context, onsets: pl.DataFrame, curves: pl.DataFrame) -> Path:
         yscale="log",
         xlabel="age at sexual maturity (years)",
         ylabel="change point tau (years)",
-        title=f"Onset against maturity ({sup.height} groups with an onset)",
+        title=f"Onset vs maturity ({sup.height} groups)",
     )
     plots.label_panel(ax, "b")
     ax = axes[2]

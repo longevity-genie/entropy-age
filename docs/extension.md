@@ -1361,6 +1361,25 @@ rodent data are Shavlakadze et al. 2026 (Sci Adv), which with Tyshkovskiy 2026 (
 directed change; Ibañez-Solé 2022 (eLife) found no consistent rise of transcriptional noise with age, in line with
 the unshared noise order. Only the explicit rank comparison is ours.
 
+## Noise builds from early life; it does not switch on at maturity (roadmap RM29)
+
+Idea 6 of `docs/BEYOND_SHIELD.md`, open in the literature as a change-point question. If maintenance held until
+reproduction and lapsed after (the disposable-soma reading), methylation noise would stay flat until sexual
+maturity and rise after it. Run R45, 68 species and tissue groups of the Mammalian Methylation Consortium (8,671
+animals), development removed by a flexible trend in log age (a test checks that development alone gives no onset).
+
+- **Noise rises with age in 84 % of groups**, steadily: across the pooled groups it climbs from well before
+  maturity with no bend at it.
+- **A switch-on is rare and late.** Only 6 of 68 groups show noise flat and then rising, and in them the bend sits
+  at 2.4-18 times the age of maturity (late life: three mouse tissues, minipig and marmot blood, beluga skin). Too
+  few to relate to maturity across species.
+- **Housekeeping CpGs gain noise more slowly in the same animals** (median rank correlation with age 0.14 against
+  0.28): the shield is there from the start.
+
+Reading: no support for maintenance that lapses at reproduction. Noise accumulates through the whole life, with an
+occasional late acceleration. That fits a steady error rate kept low at essential promoters, not a programme that
+stops. The drift rate scaling with lifespan (Bertucci-Richter 2023) is then a rate, not an onset.
+
 ## Does the shield track health? Four conditions at hand (roadmap RM24)
 
 Asked by antonkulaga (2026-11-12). Cross-sectional: cases against controls of the same age, each person scored

@@ -3,6 +3,17 @@
 Owned by the runner seat (`docs/seats/RUNNER.md`): one entry per run, newest first, with its inputs, the
 commit it ran, its job ids, its scale and seed, and its result or its failure with the cause.
 
+## R45 — when does drift begin? change point against sexual maturity (RM29), 2026-11-12
+
+- Commit cc4bc08; `figures drift_onset --scale paper --seed 42`; 4 cores, 64 GB; job 6439005, 24 min. 68
+  species-tissue groups with animals before maturity and after twice maturity, 8,671 postnatal animals.
+- Result, as measured: noise per animal (development removed) rises with age in 84 % of groups for look-alike
+  CpGs (42 of 68 significantly, 6 significantly falling; median Spearman 0.28) and in 68 % for housekeeping CpGs
+  (median 0.14). A supported flat-then-rising onset in 6 groups (background) and 4 (housekeeping); the 6 sit at
+  2.4-18 times maturity (beluga skin, marmot blood, minipig blood, mouse liver, muscle, cortex). Too few for the
+  across-species regression (needs 8). Tables in `data/output/drift_onset/`. Panel titles a and b overlap in the
+  figure; shortened in the code for the next run.
+
 ## R39 — health states and the shield, cross-sectional (RM24), 2026-11-12
 
 - Commit 9996400; `figures health --scale paper --seed 42`; 4 cores, 64 GB; job 6436141, 1 h 42 min, 2.7 GB.
