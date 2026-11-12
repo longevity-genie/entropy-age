@@ -114,7 +114,7 @@ Tet3 loss weakening it in brain. Hypotheses, each with its test:
 
 ## RM16 — Selection by cellular fitness, in vivo
 
-**State:** after RM18 · **Owner:** lead
+**State:** building · **Owner:** lead
 
 Progress: asked by antonkulaga (2026-11-12, #entropy-age > general chat): what about selection by cellular
 fitness? The evidence so far is mostly against selection (culture, turnover, chromatin matching, Tet3, liver),
@@ -123,6 +123,10 @@ with two leads for it (CR in one blood study; human bone marrow and lymph node r
 2. The bone-marrow and lymph-node anomaly of R12: donors' ages and any clonality data.
 3. Sorted stem cells against mature blood, young against old, where public; else a DFG work package.
 4. A second within-batch CR blood series.
+- Survey done (`docs/CHIP_SURVEY.md`): open per-person CH status only in GSE315366 (Basrai 2026; 29 CH, 35 not,
+  EPIC blood, cardiogenic-shock patients, no VAF); within-person mutant against wild-type cells in GSE158067 (Nam
+  2022, scRRBS, 2 donors). Large cohorts with VAF are controlled access (TOPMed, Lothian, Danish twins).
+  First test: GSE315366 with the `syndromes` scoring (carriers against non-carriers, age covariate).
 
 ## RM17 — Partial reprogramming: does a reset restore the shield?
 
