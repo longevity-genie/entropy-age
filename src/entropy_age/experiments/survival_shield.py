@@ -112,6 +112,9 @@ def run(ctx: Context) -> list[Path]:
     cd8 = people["cd8_cd28neg"].to_numpy()
     rows = []
     for name, v in measures.items():
+        if not np.isfinite(v).all():
+            print(f"survival: {name}: {int((~np.isfinite(v)).sum())} without a value; left out", file=sys.stderr)
+            continue
         z = _z(v)
         for adjust in ("sex, batch", "+ CD8+CD28-"):
             cov = base if adjust == "sex, batch" else np.column_stack([base, np.nan_to_num(cd8, nan=np.nanmean(cd8))])

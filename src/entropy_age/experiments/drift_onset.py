@@ -138,6 +138,7 @@ def run(ctx: Context) -> list[Path]:
             pl.col("age").is_not_null()
             & pl.col("maturity").is_not_null()
             & pl.col("barcode").is_not_null()
+            & (pl.col("age") > 0)  # postnatal only: the consortium dates fetuses with negative ages
             & (pl.col("intervention").is_null() | pl.col("intervention").is_in(["WT", "Control", ""]))
         )
     )

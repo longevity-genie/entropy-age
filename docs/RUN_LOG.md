@@ -3,6 +3,14 @@
 Owned by the runner seat (`docs/seats/RUNNER.md`): one entry per run, newest first, with its inputs, the
 commit it ran, its job ids, its scale and seed, and its result or its failure with the cause.
 
+## R42 and R45 — failed once each, 2026-11-12
+
+- R42 (survival, Vitality 90+; commit c4691ff; job 6436543) failed after 1 min 30 s: a score with missing values
+  reached the MMSE regression ("SVD did not converge"). Such a measure is now left out with a line in the log.
+- R45 (drift onset; commit 8ae0bf6; job 6437491) failed after 1 min 45 s: the consortium dates 267 fetal samples
+  with negative ages, and the trend's log age became NaN. Only postnatal animals are used now.
+- Both fixed in the commit below and resubmitted.
+
 ## R43 — methylation spread against expression spread, GTEx same donors (RM30), 2026-11-12
 
 - Commit 3b73b5d; `figures meth_expr_spread --scale paper --seed 42`; 4 cores, 64 GB; job 6436659, 49 s, 1.3 GB.
