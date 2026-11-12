@@ -136,7 +136,7 @@ def read_manifest_450k(path: Path) -> tuple[pl.DataFrame, pl.DataFrame]:
     """The 450k manifest as ``(probes, links)``.
 
     ``probes`` has one row per CpG: chromosome, position (GRCh37, the manifest's ``MAPINFO``), CpG-island
-    relation and whether the CpG sits in a
+    relation, Infinium design type (``probe_type``, ``I`` or ``II``) and whether the CpG sits in a
     promoter region of any gene. ``links`` has one row per CpG and gene: a 450k probe often lies in
     several genes, and its gene, RefSeq accession and region lists are parallel ``;``-separated
     fields. The manifest carries no Entrez IDs, so gene sets are matched by RefSeq, then symbol.
@@ -147,6 +147,7 @@ def read_manifest_450k(path: Path) -> tuple[pl.DataFrame, pl.DataFrame]:
         pl.col("MAPINFO").cast(pl.Int64, strict=False).alias("pos"),
         pl.col("Forward_Sequence").fill_null("").alias("sequence"),
         pl.col("Relation_to_UCSC_CpG_Island").fill_null("OpenSea").alias("island_relation"),
+        pl.col("Infinium_Design_Type").alias("probe_type"),
         pl.col("UCSC_RefGene_Name").fill_null("").str.split(";").alias("symbol"),
         pl.col("UCSC_RefGene_Accession").fill_null("").str.split(";").alias("refseq"),
         pl.col("UCSC_RefGene_Group").fill_null("").str.split(";").alias("region"),
@@ -166,10 +167,29 @@ def read_manifest_450k(path: Path) -> tuple[pl.DataFrame, pl.DataFrame]:
         "pos",
         "island_relation",
         (pl.col("island_relation") == "Island").alias("cpg_island"),
+        "probe_type",
         pl.col("sequence").map_elements(solo_wcgw, return_dtype=pl.Boolean).alias("solo_wcgw"),
         pl.col("cpg").is_in(promoter_cpgs.implode()).alias("promoter"),
     )
     return probes, links
+
+
+#: Zhou, Laird and Shen 2017 (Nucleic Acids Res 45:e22): probes whose signal is unreliable (cross-hybridisation,
+#: SNPs at the CpG or the extension base, low mapping quality), from the zhou-lab InfiniumAnnotation repository.
+ZHOU_MASK_450K = "zhou/HM450.hg38.mask.tsv.gz"
+ZHOU_MASK_URL = "https://github.com/zhou-lab/InfiniumAnnotationV1/raw/main/Anno/HM450/HM450.hg38.mask.tsv.gz"
+SOURCES[ZHOU_MASK_450K] = ZHOU_MASK_URL
+
+
+def read_probe_mask(path: Path) -> pl.DataFrame:
+    """``cpg`` and ``masked`` (Zhou et al.'s recommended general mask, ``M_general``) for every listed probe.
+
+    Probes absent from the file carry no mask flag at all and are kept.
+    """
+    raw = pl.read_csv(path, separator="\t", infer_schema_length=0)
+    if "M_general" not in raw.columns:
+        raise ValueError(f"{path}: no M_general column")
+    return raw.select(pl.col("Probe_ID").alias("cpg"), (pl.col("M_general") == "TRUE").alias("masked"))
 
 
 def link_membership(links: pl.DataFrame, gene_sets: pl.DataFrame, *, promoter_only: bool = True) -> pl.DataFrame:

@@ -23,6 +23,7 @@ from entropy_age.experiments import (
     mouse_tissues,
     passaged_cells,
     per_person,
+    probe_robustness,
     rna_gtex,
     rna_rodents,
     species_phylo,
@@ -61,6 +62,7 @@ FIGURES: dict[str, Callable[[Context], list[Path]]] = {
     "intergenic": intergenic.run,
     "clocks": clock_cpgs.run,
     "per_person": per_person.run,
+    "probe_robustness": probe_robustness.run,
 }
 
 __all__ = ["FIGURES", "Context", "Scale", "ScaleName"]

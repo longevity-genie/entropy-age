@@ -19,3 +19,11 @@ grammar (`unattended`, `urgent`, `building`, `after <R-id>` or `after job <slurm
 - Resources: compute partition, 8 cores (`ENTROPY_AGE_WORKERS=8`), 96 GB; last runs took 19 min (tissues, 16
   cores, 57 GB) and 42 min (mouse, 16 cores, 12 GB), so about 2 h here.
 - Read: intervals widen, point estimates unchanged; say in `docs/extension.md` whether any conclusion moved.
+
+## R20 — headline gaps against probe design and unreliable probes (RM18)
+
+- What: `entropy-age figures probe_robustness --scale paper --seed 42` (annotation re-prepared with `probe_type`;
+  mask at `data/input/annotation/zhou/`).
+- Resources: compute partition, 8 cores, 64 GB; time unknown (no bootstrap, 1000 permutations x 4 variants).
+- Read: `data/output/probe_robustness/gaps`: does any housekeeping or core-essential gap change sign or lose most
+  of its size with probe type in the strata or masked probes out? `design_share`: are set CpGs type I more often?
