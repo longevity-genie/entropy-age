@@ -1,0 +1,21 @@
+id,evidence,run,H1 chromatin,H2 selection,H3 mitotic errors,H4 Tet3 guard,H5 clocks read noise,A1 floor effect,A2 array artefact,A3 cell composition,A4 batch or single study
+E1,Shield in many tissues of two species,R6-R11,1,1,0,0,0,1,1,0,-1
+E2,Shield in 96 % of 65 mammals,R12,1,1,0,0,0,1,0,0,-1
+E3,Gap survives probe design and masks,R20,0,0,0,0,0,0,-2,0,0
+E4,Own chromatin removes 67-91 %; another tissue's 30 %,RM7,2,0,0,0,0,-1,0,0,-1
+E5,Constant share over 136 doublings,RM5,2,-2,0,0,0,0,0,0,-1
+E6,Not ordered by turnover,R10 GTEx,1,-2,-1,0,0,0,0,0,0
+E7,Blood equals brain after chromatin matching,RM7,2,-2,0,0,0,0,0,0,0
+E8,Shield share grows with age in liver,RM3,0,-1,-1,0,0,0,0,0,0
+E9,CR weakens the shield in one blood study,RM3,-1,1,0,0,0,0,0,0,1
+E10,CR in liver leaves it,R13,0,0,0,0,0,0,0,0,1
+E11,Tet3 het brain loses it against littermates,R15 R16,1,-2,0,2,0,0,1,1,1
+E12,Tet1 loss keeps it,R35,0,0,0,1,0,0,0,0,1
+E13,Writer syndromes add noise and keep it,R18,1,0,0,1,0,0,0,0,1
+E14,Clonal haematopoiesis leaves it,R25,0,-1,0,0,0,0,0,0,0
+E15,Not stronger in long-lived species,R12 R21 R22,1,-1,0,0,0,1,0,0,0
+E16,Solo-WCGW loss in blood not cortex,R14,0,0,2,0,0,0,0,1,0
+E17,At equal drift fast clocks have a stronger shield,R29,0,0,0,0,2,0,0,0,0
+E18,Brain accessibility reverses and does not replicate,R24 R27,-1,0,0,0,0,0,2,0,1
+E19,Reprogramming does not restore it,R32,0,0,0,0,0,0,0,0,0
+E20,PhenoAge COVID acceleration is composition,Tong 2024,0,0,0,0,1,0,0,2,0

@@ -2,7 +2,8 @@
 
 Asked by antonkulaga (2026-11-12): every evidence claim should say what must be seen if it is true, what must
 not be seen, and what else could explain it. One section per claim; the argumentation graph in the results
-artifact is drawn from these. Numbers are those of `docs/extension.md`. Status: **holds** (predictions met,
+artifact is drawn from these. Numbers are those of `docs/extension.md`. The matrix `docs/evidence_matrix.csv` scores every result against every hypothesis and four artefact
+explanations (−2 contradicts … +2 strongly predicts); its row spread is the result's diagnosticity. Status: **holds** (predictions met,
 refuter absent, main alternatives tested), **open** (an alternative not yet excluded), **weak** (one study or
 a test with little power), **refuted**.
 
