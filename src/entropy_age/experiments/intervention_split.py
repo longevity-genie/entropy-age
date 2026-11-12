@@ -125,7 +125,7 @@ def run(ctx: Context) -> list[Path]:
 
 
 def _figure(ctx: Context, table: pl.DataFrame) -> Path:
-    fig, axes = plots.panels(2, ncols=2, size=4.4)
+    fig, axes = plots.panels(2, ncols=1, size=4.4)
     for i, treatment in enumerate(TREATMENTS):
         ax = axes[i]
         t = table.filter(pl.col("treatment") == treatment).sort("turnover", "tissue")
