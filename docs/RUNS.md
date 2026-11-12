@@ -20,3 +20,10 @@ grammar (`unattended`, `urgent`, `building`, `after <R-id>` or `after job <slurm
 - Read: `data/output/meth_expr_spread/coupling`: signed coupling (control), spread coupling against its null,
   spread-slope coupling across genes.
 
+
+## R48 — do drift and the shield mark later death? SJLIFE (RM28)
+
+- What: GSE314261 processed table (28 GB) fetched; `entropy-age figures sjlife --scale paper --seed 42`.
+- Resources: compute partition, 4 cores, 96 GB; time unknown (streams the gzip once, about 70 GB of text).
+- Read: `data/output/sjlife_deaths/effects`: odds ratio of death per SD of B, F, S and clocks; everyone and
+  survivors; deaths over 2 years after the draw.
