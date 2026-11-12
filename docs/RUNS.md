@@ -32,3 +32,10 @@ grammar (`unattended`, `urgent`, `building`, `after <R-id>` or `after job <slurm
 - Resources: compute partition, 4 cores, 64 GB; time unknown (845 leave-one-out references).
 - Read: `data/output/incident_cancer/effects`: odds ratio per SD for any cancer, breast, colorectal; all cases and
   cases diagnosed over 2 years after the draw.
+
+## R47 — do interventions reverse the directed or the noisy part of aging? (RM27, RM12)
+
+- What: `entropy-age figures intervention_split --scale paper --seed 42` (Huang cohort on disk).
+- Resources: compute partition, 4 cores, 32 GB; time unknown (11 tissues x 2 treatments x 20 halvings + nulls).
+- Read: `data/output/intervention_split/reversals`: directed and noise reversal against the permutation null,
+  per tissue and treatment, renewing against non-renewing tissues.
