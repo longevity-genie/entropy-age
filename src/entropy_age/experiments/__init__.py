@@ -25,6 +25,7 @@ from entropy_age.experiments import (
     interventions,
     mouse_rrbs_tissues,
     mouse_tissues,
+    own_clocks,
     passaged_cells,
     per_person,
     probe_robustness,
@@ -72,6 +73,7 @@ FIGURES: dict[str, Callable[[Context], list[Path]]] = {
     "clocks": clock_cpgs.run,
     "per_person": per_person.run,
     "shield_clocks": shield_clocks.run,
+    "own_clocks": own_clocks.run,
     "probe_robustness": probe_robustness.run,
 }
 
