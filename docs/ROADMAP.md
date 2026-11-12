@@ -90,7 +90,7 @@ public data (one tissue, one protocol, many individuals across ages, processed c
 
 ## RM20 — Why would long life or CR weaken the shield?
 
-**State:** after RM19 · **Owner:** lead
+**State:** unattended (R22 queued) · **Owner:** lead
 
 Progress: asked by antonkulaga (2026-11-12). The pattern: no lifespan effect overall (p 0.40), a lean toward a
 weaker shield in blood of long-lived species (p 0.054), CR weakening it in one blood study and not in liver,

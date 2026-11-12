@@ -83,7 +83,12 @@ def read_samples(matrix: Path) -> pl.DataFrame:
 
 
 def group_gap(x: np.ndarray, ages: np.ndarray, features: list[str], island: np.ndarray, sets: dict, n: int, rng):
-    """Per set and metric: gap in SD and its gene-resampling interval, strata from the youngest quarter."""
+    """Per set and metric: gap in SD and its gene-resampling interval, strata from the youngest quarter.
+
+    ``gap`` is the unscaled set-minus-matched difference of the metric's age slope (per year), and
+    ``background_rate`` the matched look-alikes' own slope: how fast unprotected CpGs drift in this species
+    (roadmap RM20: does a long life lower it toward the protected CpGs' floor?).
+    """
     metrics = drift_metrics(x, ages, features, spearman=False)
     young = ages <= np.quantile(ages, 0.25)
     strata = np.char.add(island.astype(str), baseline_strata(x[young].mean(axis=0), 10).astype(str))
@@ -92,18 +97,63 @@ def group_gap(x: np.ndarray, ages: np.ndarray, features: list[str], island: np.n
         v = metrics[metric].to_numpy()
         sd = float(v.std())
         for group, (in_set, genes) in sets.items():
-            gap = float(matched_scores(v[None, :], in_set, strata)[0][0])
+            gap, background = (float(z[0]) for z in matched_scores(v[None, :], in_set, strata))
             draws = resampled_gaps(v[None, :], genes, strata, n, rng)[:, 0]
             out.append(
                 {
                     "metric": metric,
                     "group": group,
+                    "gap": gap,
+                    "background_rate": background,
                     "gap_sd": gap / sd,
                     "ci_low": float(np.quantile(draws, 0.025)) / sd,
                     "ci_high": float(np.quantile(draws, 0.975)) / sd,
                 }
             )
     return out
+
+
+def outcomes(sel: pl.DataFrame) -> dict[str, np.ndarray]:
+    """What is regressed on lifespan: the gap in SD, the look-alikes' drift rate (log), and the gap relative to it.
+
+    Catch-up (roadmap RM20) predicts a lower look-alike rate and a shrinking relative gap in long-lived species; a
+    shield that removes a fixed share of drift predicts a lower rate and a constant relative gap.
+    """
+    rate = sel["background_rate"].to_numpy()
+    with np.errstate(divide="ignore", invalid="ignore"):
+        return {
+            "gap_sd": sel["gap_sd"].to_numpy(),
+            "log background rate": np.where(rate > 0, np.log(rate), np.nan),
+            "relative gap": np.where(rate > 0, sel["gap"].to_numpy() / rate, np.nan),
+        }
+
+
+def _lifespan_fit(sel: pl.DataFrame, y: np.ndarray, metric: str, group: str, outcome: str) -> list[dict]:
+    design = np.column_stack(
+        [
+            np.ones(y.size),
+            np.log(sel["max_lifespan"].to_numpy()),
+            np.log(sel["adult_weight"].to_numpy()),
+            dummies(sel["tissue"].to_numpy()),
+        ]
+    )
+    rows = []
+    for term, col in (("log max lifespan", 1), ("log adult weight", 2)):
+        coef, se, p = ols(y, design, col)
+        rows.append(
+            {
+                "metric": metric,
+                "group": group,
+                "outcome": outcome,
+                "term": term,
+                "coef": coef,
+                "se": se,
+                "p": p,
+                "groups": sel.height,
+                "species": sel["species"].n_unique(),
+            }
+        )
+    return rows
 
 
 def run(ctx: Context) -> list[Path]:
@@ -200,29 +250,11 @@ def run(ctx: Context) -> list[Path]:
             sel = sel.filter(pl.col("adult_weight") > 0)
             if sel.height < 10:
                 continue
-            y = sel["gap_sd"].to_numpy()
-            design = np.column_stack(
-                [
-                    np.ones(y.size),
-                    np.log(sel["max_lifespan"].to_numpy()),
-                    np.log(sel["adult_weight"].to_numpy()),
-                    dummies(sel["tissue"].to_numpy()),
-                ]
-            )
-            for term, col in (("log max lifespan", 1), ("log adult weight", 2)):
-                coef, se, p = ols(y, design, col)
-                fits.append(
-                    {
-                        "metric": metric,
-                        "group": group,
-                        "term": term,
-                        "coef": coef,
-                        "se": se,
-                        "p": p,
-                        "groups": sel.height,
-                        "species": sel["species"].n_unique(),
-                    }
-                )
+            for outcome, y_all in outcomes(sel).items():
+                ok = np.isfinite(y_all)
+                if ok.sum() < 10:
+                    continue
+                fits += _lifespan_fit(sel.filter(pl.Series(ok)), y_all[ok], metric, group, outcome)
     fits = pl.DataFrame(fits)
     write_table(fits, out / "lifespan_fits")
     return [_figure(ctx, gaps, fits)]
@@ -260,7 +292,7 @@ def _figure(ctx: Context, gaps: pl.DataFrame, fits: pl.DataFrame) -> Path:
         ax.legend(fontsize=5, loc="best")
         plots.label_panel(ax, "ab"[i])
     ax = axes[2]
-    sel = fits.filter(pl.col("term") == "log max lifespan")
+    sel = fits.filter((pl.col("term") == "log max lifespan") & (pl.col("outcome") == "gap_sd"))
     labels = []
     for k, r in enumerate(sel.iter_rows(named=True)):
         ax.errorbar(r["coef"], k, xerr=1.96 * r["se"], fmt="o", color=plots.PALETTE[SETS.index(r["group"])])

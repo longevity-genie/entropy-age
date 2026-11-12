@@ -3,6 +3,7 @@
 import gzip
 
 import numpy as np
+import pytest
 
 from entropy_age.experiments.species_shield import group_gap, read_samples
 
@@ -50,3 +51,40 @@ def test_a_set_that_drifts_less_gives_a_negative_gap_with_an_interval():
     d = {r["metric"]: r for r in rows}
     assert d["dispersion_slope"]["gap_sd"] < -0.5
     assert d["dispersion_slope"]["ci_low"] < d["dispersion_slope"]["gap_sd"] < d["dispersion_slope"]["ci_high"]
+
+
+def test_background_rate_is_the_lookalikes_drift_and_gap_is_unscaled():
+    # set CpGs drift at 0.3 of the background; the background's dispersion slope sets background_rate
+    rng = np.random.default_rng(2)
+    n, p = 60, 800
+    ages = rng.uniform(0, 10, n)
+    in_set = np.arange(p) < 200
+    genes = [np.arange(j, j + 4) for j in range(0, 200, 4)]
+    out = {}
+    for scale in (1.0, 2.0):
+        rate = np.where(in_set, 0.3, 1.0) * 0.01 * scale
+        x = np.clip(0.1 + np.abs(rng.normal(0, 1, (n, p))) * rate * ages[:, None], 0, 1)
+        rows = group_gap(
+            x,
+            ages,
+            [f"c{j}" for j in range(p)],
+            np.zeros(p, dtype=bool),
+            {"housekeeping": (in_set, genes)},
+            10,
+            np.random.default_rng(3),
+        )
+        out[scale] = {r["metric"]: r for r in rows}["dispersion_slope"]
+    assert out[1.0]["background_rate"] > 0
+    assert out[2.0]["background_rate"] / out[1.0]["background_rate"] == pytest.approx(2.0, rel=0.25)
+    assert out[1.0]["gap"] < 0 and out[1.0]["gap"] / out[1.0]["background_rate"] == pytest.approx(-0.7, abs=0.2)
+
+
+def test_outcomes_give_log_rate_and_relative_gap_and_drop_nonpositive_rates():
+    import polars as pl
+
+    from entropy_age.experiments.species_shield import outcomes
+
+    sel = pl.DataFrame({"gap_sd": [-0.3, -0.2], "gap": [-0.02, -0.01], "background_rate": [0.1, -0.05]})
+    out = outcomes(sel)
+    assert out["log background rate"][0] == pytest.approx(np.log(0.1)) and np.isnan(out["log background rate"][1])
+    assert out["relative gap"][0] == pytest.approx(-0.2) and np.isnan(out["relative gap"][1])

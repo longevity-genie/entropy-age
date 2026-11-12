@@ -19,3 +19,12 @@ grammar (`unattended`, `urgent`, `building`, `after <R-id>` or `after job <slurm
 - Resources: compute partition, 8 cores, 64 GB; time unknown (no bootstrap, 1000 permutations x 4 variants).
 - Read: `data/output/probe_robustness/gaps`: does any housekeeping or core-essential gap change sign or lose most
   of its size with probe type in the strata or masked probes out? `design_share`: are set CpGs type I more often?
+
+## R22 — look-alike drift and relative gap against lifespan (RM20)
+
+- What: `entropy-age figures species --scale paper --seed 42` (adds `gap`, `background_rate` and the RM20
+  outcomes), then `entropy-age figures species_phylo` on the new table (login node, a minute).
+- Resources: compute partition, 8 cores, 40 GB (R12: 59 min, 25.6 GB).
+- Read: `lifespan_fits` with outcome `log background rate` (catch-up and fixed share both predict < 0) and
+  `relative gap` (catch-up predicts > 0, i.e. toward zero; fixed share predicts 0). The `gap_sd` rows must equal
+  R12's.
