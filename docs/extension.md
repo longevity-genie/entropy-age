@@ -690,6 +690,20 @@ removed, in Hannum blood (632) and Jaffe cortex (159).
 
 Tables: `data/output/shield_clocks/correlations` (measures P, F, B, set drift, P given B).
 
+**Clocks of our own (run R33).** Figure `own_clocks` trains elastic-net clocks, out of fold, on three pools of
+equal size: shielded CpGs (essential and housekeeping promoters), look-alikes matched stratum by stratum, and
+random background CpGs (about 38,000 each).
+
+![Own clocks](figures/own_clocks.png)
+
+* **A clock does not need unprotected CpGs.** All three pools read age equally well (blood r 0.882-0.885; cortex
+  0.929-0.943). The shield lowers the *average* drift of essential promoters, but among tens of thousands of them
+  enough CpGs still change with age for a penalised regression to find. Accuracy cannot tell the pools apart.
+* **What the clocks read differs.** The shielded clock's age acceleration overlaps less with the other two (blood
+  r 0.63 against 0.80 between look-alike and random; cortex 0.53-0.57 against 0.62): the people whose essential
+  promoters run ahead are partly different people. Whether that acceleration carries different health
+  information needs an outcome cohort.
+
 ## A second machinery model: Tet1 loss does not remove the shield (roadmap RM12)
 
 Figure `tet1` (run R35) scores adult cortex of Tet1 knockout and Tet1 catalytic-dead (HxD) mice against wild

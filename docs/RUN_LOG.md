@@ -3,6 +3,13 @@
 Owned by the runner seat (`docs/seats/RUNNER.md`): one entry per run, newest first, with its inputs, the
 commit it ran, its job ids, its scale and seed, and its result or its failure with the cause.
 
+## R33 — clocks of our own (RM11), 2026-11-12
+
+- Commit 2bc70dc; `figures own_clocks --scale paper --seed 42`; 8 cores, 64 GB; job 6433984, 3 h 12 min, 4.3 GB.
+- Result, as measured (out-of-fold, 2 draws; pools of 38,548 blood and 38,356 cortex CpGs): Pearson r with age
+  blood 0.884 shielded, 0.882 look-alike, 0.885 random; cortex 0.929, 0.943, 0.938. Acceleration overlap: blood
+  look-alike with random 0.80, shielded with either 0.63; cortex 0.62 and 0.53-0.57.
+
 ## R35 — Tet1 knockout and catalytic-dead cortex (RM12), 2026-11-12
 
 - Commit 3d9c573; `figures tet1 --scale paper --seed 42`; 8 cores, 32 GB; job 6434508. 24 animals, 65,779

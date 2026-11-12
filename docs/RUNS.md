@@ -12,13 +12,6 @@ grammar (`unattended`, `urgent`, `building`, `after <R-id>` or `after job <slurm
 - the roadmap item it serves (`RMn`);
 - what the lead needs back (a table, a figure, a number), and anything the run must not do.
 
-## R33 — clocks of our own from shielded, look-alike and random CpGs (RM11)
-
-- What: `entropy-age figures own_clocks --scale paper --seed 42`.
-- Resources: compute partition, 8 cores, 64 GB; time unknown (2 cohorts x 3 draws x 3 pools x 5 folds of
-  elastic-net CV on a few thousand CpGs).
-- Read: `data/output/own_clocks/accuracy` (r, median absolute error per pool) and `acceleration_overlap`.
-
 ## R36 — Tet3 signed shift with array compression held fixed (RM18)
 
 - What: `entropy-age figures mmc_interventions --scale paper --seed 42` (GSE223748 on disk).

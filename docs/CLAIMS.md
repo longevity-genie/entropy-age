@@ -104,7 +104,8 @@ a test with little power), **refuted**.
   DunedinPACE, mortality r ≤ 0.07.
 - **Alternatives:** clock CpGs are themselves look-alike-type CpGs, so the link at equal drift is partly built
   in.
-- **Separating test:** clocks trained on shielded and look-alike CpGs only (R33, running).
+- **Separating test:** clocks trained on shielded and look-alike CpGs only (R33): equal accuracy, so a clock
+  does not need unprotected CpGs; the shielded clock's acceleration overlaps less (r 0.63 against 0.80).
 - **Status:** holds; partly structural.
 
 ## C9 — PhenoAge's non-stochastic part is blood-cell composition
