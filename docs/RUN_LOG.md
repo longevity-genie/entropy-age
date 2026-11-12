@@ -3,6 +3,11 @@
 Owned by the runner seat (`docs/seats/RUNNER.md`): one entry per run, newest first, with its inputs, the
 commit it ran, its job ids, its scale and seed, and its result or its failure with the cause.
 
+## R31 — clocks of our own (RM11), 2026-11-12
+
+- Commit 1637fe8; job 6432527 cancelled after 2 h 32 min: one cohort-draw took 2.5 h on one core (the
+  elastic-net search ran single-threaded), six would have taken 15 h. Now 2 draws, search on every core. R33.
+
 ## R30 — clocks of our own (RM11), 2026-11-12
 
 - Commit 275984f; job 6432498 failed after 8 s: one stratum (open sea, lowest decile) had 512 shielded CpGs and

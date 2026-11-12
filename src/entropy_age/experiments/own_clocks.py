@@ -18,6 +18,7 @@ between pools' acceleration (does a shielded-CpG clock run fast in the same peop
 
 from __future__ import annotations
 
+import os
 import sys
 from pathlib import Path
 
@@ -31,9 +32,11 @@ from entropy_age.experiments.common import Context, write_table
 from entropy_age.experiments.tissue_contrast import _features, _hannum, _inputs_missing, _jaffe
 from entropy_age.stochasticity import baseline_strata
 
-DRAWS = 3
+DRAWS = 2
 FOLDS = 5
 YOUNG = (20.0, 35.0)
+#: the fast search, with its cross-validation spread over every core the job has
+CONFIG = ClockConfig(l1_ratio=(0.1, 0.5, 0.9), n_alphas=30, cv=3, n_jobs=len(os.sched_getaffinity(0)))
 SHIELDED = ("housekeeping", "core_essential")
 
 
@@ -63,7 +66,7 @@ def pools(features: list[str], members: set[str], strata: np.ndarray, rng) -> di
 def out_of_fold(x: np.ndarray, ages: np.ndarray, seed: int) -> np.ndarray:
     pred = np.empty(ages.size)
     for train, test in KFold(FOLDS, shuffle=True, random_state=seed).split(x):
-        pred[test] = train_clock(x[train], ages[train], config=ClockConfig.fast()).predict(x[test])
+        pred[test] = train_clock(x[train], ages[train], config=CONFIG).predict(x[test])
     return pred
 
 
@@ -137,7 +140,7 @@ def _figure(ctx: Context, metrics: pl.DataFrame) -> Path:
             ax.legend(fontsize=7, frameon=False)
         plots.label_panel(ax, "ab"[i])
     fig.suptitle(
-        "Clocks from shielded, look-alike and random CpGs of equal number (out-of-fold, 3 draws)",
+        "Clocks from shielded, look-alike and random CpGs of equal number (out-of-fold, 2 draws)",
         x=0.02,
         y=1.04,
         ha="left",
