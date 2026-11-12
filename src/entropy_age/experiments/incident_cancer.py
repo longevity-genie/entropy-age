@@ -13,7 +13,7 @@ and sex (``logit``, Newton steps), reported as an odds ratio per SD:
   the result;
 - each also with every person's mean methylation over all array CpGs (``mean_betas``; genome-wide hypomethylation
   before breast cancer was reported in this cohort, van Veldhoven 2015), 11 of 12 blood-cell fractions (EpiDISH
-  cent12CT, as in ``stochastic_component``) and the array chip held (``adjusted``).
+  cent12CT, as in ``stochastic_component``) held, and the measure centred within its array chip (``adjusted``).
 
 ``entropy-age figures cancer`` (as a Slurm job; the 3 GB series matrix holds the betas).
 """
@@ -31,7 +31,7 @@ from scipy import stats
 from entropy_age import plots
 from entropy_age.data.clocks import ClockLayout, read_clock
 from entropy_age.data.cohorts import _characteristics
-from entropy_age.experiments.common import Context, dummies, write_table
+from entropy_age.experiments.common import Context, write_table
 from entropy_age.experiments.health_states import loo_scores
 from entropy_age.experiments.per_person import _islands, _sets
 from entropy_age.experiments.shield_clocks import linear_score
@@ -53,13 +53,13 @@ def logit(y: np.ndarray, x: np.ndarray, *, steps: int = 50) -> tuple[np.ndarray,
         p = 1.0 / (1.0 + np.exp(-(x @ beta)))
         w = p * (1 - p)
         info = x.T @ (x * w[:, None])
-        step = np.linalg.solve(info, x.T @ (y - p))
+        step = np.linalg.lstsq(info, x.T @ (y - p), rcond=None)[0]
         beta += step
         if np.abs(step).max() < 1e-10:
             break
     p = 1.0 / (1.0 + np.exp(-(x @ beta)))
     info = x.T @ (x * (p * (1 - p))[:, None])
-    return beta, np.sqrt(np.diag(np.linalg.inv(info)))
+    return beta, np.sqrt(np.diag(np.linalg.pinv(info)))
 
 
 def read_people(matrix: Path) -> pl.DataFrame:
@@ -119,8 +119,14 @@ def chips(matrix: Path) -> dict[str, str]:
     return {a: t.split("_")[0] for a, t in zip(acc, titles, strict=True)}
 
 
-def outcome_rows(people: pl.DataFrame, measures: dict[str, np.ndarray], extra: np.ndarray | None = None) -> list[dict]:
-    """Odds ratios per SD; with ``extra`` (people x covariates) each is also fitted with them held."""
+def outcome_rows(
+    people: pl.DataFrame,
+    measures: dict[str, np.ndarray],
+    extra: np.ndarray | None = None,
+    chip: np.ndarray | None = None,
+) -> list[dict]:
+    """Odds ratios per SD; with ``extra`` (people x covariates) each is also fitted with them held and, given
+    ``chip``, with the measure centred within its chip (a fixed effect without 72 dummies in a logistic fit)."""
     rows = []
     age = people["age"].to_numpy()
     female = people["female"].to_numpy().astype(float)
@@ -137,7 +143,11 @@ def outcome_rows(people: pl.DataFrame, measures: dict[str, np.ndarray], extra: n
             for name, v in measures.items():
                 z = (v - v.mean()) / v.std(ddof=1)
                 for adjusted in (False, True) if extra is not None else (False,):
-                    covs = [np.ones(keep.sum()), z[keep], age[keep]]
+                    zz = z
+                    if adjusted and chip is not None:
+                        zz = z - _group_means(z, chip)
+                        zz = zz / zz.std(ddof=1)
+                    covs = [np.ones(keep.sum()), zz[keep], age[keep]]
                     if np.unique(female[keep]).size > 1:
                         covs.append(female[keep])
                     if adjusted:
@@ -145,6 +155,13 @@ def outcome_rows(people: pl.DataFrame, measures: dict[str, np.ndarray], extra: n
                         covs.append(e[:, e.std(axis=0) > 0])
                     rows.append(_odds_row(outcome, lagged, adjusted, name, y, np.column_stack(covs)))
     return rows
+
+
+def _group_means(v: np.ndarray, groups: np.ndarray) -> np.ndarray:
+    out = np.empty_like(v)
+    for g in np.unique(groups):
+        out[groups == g] = v[groups == g].mean()
+    return out
 
 
 def _odds_row(outcome, lagged, adjusted, name, y, design) -> dict:
@@ -202,14 +219,16 @@ def run(ctx: Context) -> list[Path]:
             coef, *_ = np.linalg.lstsq(design, score, rcond=None)
             measures[name] = score - design @ coef  # acceleration
     extra = _adjustments(ctx, matrix, people, x_all, wanted)
-    table = pl.DataFrame(outcome_rows(people, measures, extra))
+    chip_of = chips(matrix)
+    chip = np.array([chip_of[x] for x in people["sample"].to_list()])
+    table = pl.DataFrame(outcome_rows(people, measures, extra, chip))
     write_table(table, out / "effects")
     write_table(people.with_columns(**{k: pl.Series(v) for k, v in measures.items()}), out / "per_person")
     return [_figure(ctx, table)]
 
 
 def _adjustments(ctx, matrix: Path, people: pl.DataFrame, x_all: np.ndarray, wanted: list[str]) -> np.ndarray:
-    """People x [mean beta, 11 cell fractions, chip dummies]."""
+    """People x [mean beta, 11 cell fractions]."""
     import rdata
 
     samples = people["sample"].to_list()
@@ -221,13 +240,12 @@ def _adjustments(ctx, matrix: Path, people: pl.DataFrame, x_all: np.ndarray, wan
     xr = x_all[:, [col[ref_cpgs[i]] for i in keep]]
     xr = np.where(np.isnan(xr), np.nanmean(xr, axis=0), xr)
     fractions = deconvolve(xr, ref.values[keep])
-    chip = chips(matrix)
     print(
         f"cancer: mean beta {mean.mean():.3f}; {len(keep)} reference CpGs; neutrophils {fractions[:, -2].mean():.2f}",
         file=sys.stderr,
         flush=True,
     )
-    return np.column_stack([mean, fractions[:, :-1], dummies(np.array([chip[x] for x in samples]))])
+    return np.column_stack([mean, fractions[:, :-1]])
 
 
 def _figure(ctx: Context, table: pl.DataFrame) -> Path:

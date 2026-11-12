@@ -58,3 +58,21 @@ def test_adjusting_for_a_covariate_that_carries_the_signal_removes_it():
     }
     assert rows[("breast", False, False)]["p"] < 1e-6
     assert rows[("breast", False, True)]["p"] > 0.01
+
+
+def test_a_chip_with_only_controls_does_not_break_the_adjusted_fit():
+    rng = np.random.default_rng(20)
+    n = 300
+    chip = np.repeat(np.arange(30), 10).astype(str)
+    case = (rng.uniform(size=n) < 0.5) & (chip != "0")  # chip 0 holds controls only
+    icd = np.where(case, "C50", "")
+    people = pl.DataFrame(
+        {
+            "age": rng.uniform(40, 70, n),
+            "female": np.ones(n, dtype=bool),
+            "icd": [c or None for c in icd],
+            "years_to_diagnosis": np.where(case, 5.0, np.nan),
+        }
+    )
+    rows = outcome_rows(people, {"m": rng.normal(size=n)}, rng.normal(size=(n, 3)), chip)
+    assert all(np.isfinite(r["odds_ratio"]) for r in rows)

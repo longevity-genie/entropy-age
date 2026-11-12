@@ -49,6 +49,9 @@ commit it ran, its job ids, its scale and seed, and its result or its failure wi
   (p 3e-4, 1e-5, 2e-5), PhenoAge 1.09-1.14 and DunedinPACE 1.13-1.25 beside it.
 - Open: van Veldhoven 2015 reported genome-wide hypomethylation before breast cancer in this cohort (not replicated
   in NOWAC). B may carry it, or blood-cell mix. Rerun with mean beta, 11 cell fractions and chip held (R46b).
+- R46b (commit 4e5c3b4; job 6441619) failed after 9 min: 72 chip dummies in a logistic fit went singular where a
+  chip held only controls. Now the measure is centred within its chip instead, and the Newton step uses least
+  squares (test added); resubmitted.
 
 ## R42 — survival in Vitality 90+ (RM28), 2026-11-12, partial
 
