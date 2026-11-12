@@ -60,7 +60,7 @@ floor of near-0 % essential promoters; (5) the shield score against Seeboth 2020
 
 ## RM18 — Normalization and probe robustness
 
-**State:** after RM10b · **Owner:** lead
+**State:** building · **Owner:** lead
 
 Progress: asked by antonkulaga (2026-11-12): are results comparable across arrays and array versions, and do we
 follow best practice? By design every comparison stays within one dataset and platform, on the deposited betas,
@@ -71,6 +71,15 @@ matched on island status and starting level. Gaps:
 3. One cohort reprocessed from raw IDATs (SeSAMe, or noob + BMIQ) against its deposited betas.
 4. Each sample's beta compression as a covariate for the signed shift S.
 5. A short review of current practice, recorded in `docs/`.
+
+## RM19 — Does chromatin accessibility become stochastic with age?
+
+**State:** unattended (data survey running) · **Owner:** lead
+
+Progress: asked by antonkulaga (2026-11-12): can we collect enough comparable ATAC-seq data to test stochastic
+changes of chromatin opening? Test: per region, the age slope of between-individual (or between-cell)
+accessibility variability, essential promoters against matched regions, as for methylation. First a survey of
+public data (one tissue, one protocol, many individuals across ages, processed counts).
 
 ## RM16 — Selection by cellular fitness, in vivo
 
