@@ -592,7 +592,7 @@ animals spanning 15 % of the species' maximum lifespan: 65 species, 11,529 sampl
 
 Tables: `data/output/species_shield/` (`species_gaps`, `lifespan_fits`).
 
-**With relatedness held fixed, and within tissues (roadmap RM10b).** Figure `species_phylo` refits the lifespan
+**With relatedness held fixed, and within tissues (roadmap RM21).** Figure `species_phylo` refits the lifespan
 regression by generalised least squares, with a covariance from the species' NCBI Taxonomy lineages (shared
 depth; `entropy-age fetch taxonomy`) and Pagel's λ chosen by maximum likelihood, on all 139 groups and within
 skin (36 species), blood (27) and liver (10).

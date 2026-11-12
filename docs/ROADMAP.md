@@ -122,7 +122,7 @@ p 0.10; skin n.s.): too small. Public array series to find: maturation-phase tra
 fibroblasts (Gill et al. 2022), in-vivo cyclic OSKM mice (Browder et al. 2022; Ocampo et al. 2016). Chromatin
 maintenance predicts the shield restored with the clock; selection predicts no change (no cells removed).
 
-## RM10b — Species with phylogeny and per tissue
+## RM21 — Species with phylogeny and per tissue
 
 **State:** done · **Owner:** lead
 
