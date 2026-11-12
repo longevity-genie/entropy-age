@@ -24,3 +24,9 @@ grammar (`unattended`, `urgent`, `building`, `after <R-id>` or `after job <slurm
 - What: `entropy-age figures mmc_interventions --scale paper --seed 42` (GSE223748 on disk).
 - Resources: compute partition, 8 cores, 16 GB; about 75 s (R16).
 - Read: `S, compression held` rows for Tet3KO.Het same-chip: does essential CpGs' gain survive?
+
+## R37 — Dnmt3a gain of function and the shield (RM12)
+
+- What: `entropy-age figures dnmt3a --scale paper --seed 42` (GSE324160 on disk).
+- Resources: compute partition, 8 cores, 32 GB; minutes.
+- Read: `data/output/dnmt3a_gain/effects`: F, B, S of mutants against wild types per tissue.

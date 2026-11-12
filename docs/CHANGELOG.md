@@ -4,6 +4,7 @@ Newest first.
 
 ## Unreleased
 
+- `fetch dnmt3a` and `figures dnmt3a` (RM12): Dnmt3a W326R/+ gain of function against littermates in three tissues over four ages, age-centred on the wild types (GSE324160).
 - R35 done (RM12): Tet1 loss in cortex adds drift but strengthens the shield, unlike Tet3.
 - `figures mmc_interventions` also reports the signed shift with each array's compression (mean distance of betas from 0.5) held fixed (RM18). Roadmap: RM18 building, RM16 after RM22.
 - `fetch tet1` and `figures tet1` (RM12): Tet1 knockout and catalytic-dead cortex against wild type (GSE271375, 8 each, bisulfite arrays).

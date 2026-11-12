@@ -174,6 +174,20 @@ def fetch_tet1_cmd(overwrite: bool = False) -> None:
     typer.echo(target)
 
 
+@fetch_app.command("dnmt3a")
+def fetch_dnmt3a_cmd(overwrite: bool = False) -> None:
+    """Sarni 2026 Dnmt3a W326R/+ gain of function, 3 tissues x 4 ages, mouse array (GSE324160, ~150 MB)."""
+    from entropy_age.data.download import download
+    from entropy_age.experiments.dnmt3a_gain import BETAS, GSE, layout
+
+    paths = ProjectPaths.default().ensure()
+    matrix, betas = layout(paths)
+    base = f"https://ftp.ncbi.nlm.nih.gov/geo/series/GSE324nnn/{GSE}"
+    download(f"{base}/matrix/{matrix.name}", matrix, overwrite=overwrite, timeout=600)
+    download(f"{base}/suppl/{BETAS}", betas, overwrite=overwrite, timeout=3600)
+    typer.echo(f"{matrix}\n{betas}")
+
+
 @fetch_app.command("taxonomy")
 def fetch_taxonomy_cmd() -> None:
     """NCBI Taxonomy lineages of the consortium's species in R12's table (a few hundred small requests)."""
