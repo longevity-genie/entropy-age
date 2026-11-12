@@ -3,7 +3,7 @@
 import numpy as np
 from scipy import sparse
 
-from entropy_age.experiments.atac_cortex import donor_id, group_sums, parse_peaks
+from entropy_age.experiments.atac_cortex import donor_id, group_sums, parse_peaks, promoter_fraction
 
 
 def test_parse_peaks():
@@ -30,3 +30,8 @@ def test_group_sums_match_dense_sums_over_kept_columns_and_totals_over_all():
     for g in range(4):
         assert np.allclose(sums[g], dense[groups == g][:, keep].sum(axis=0))
         assert np.isclose(totals[g], dense[groups == g].sum())
+
+
+def test_promoter_fraction_is_each_groups_share_of_reads_in_kept_peaks():
+    counts = np.array([[10.0, 30.0], [5.0, 5.0]])
+    assert promoter_fraction(counts, np.array([80.0, 100.0])).tolist() == [0.5, 0.1]

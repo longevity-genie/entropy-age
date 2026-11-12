@@ -3,6 +3,15 @@
 Owned by the runner seat (`docs/seats/RUNNER.md`): one entry per run, newest first, with its inputs, the
 commit it ran, its job ids, its scale and seed, and its result or its failure with the cause.
 
+## R23 — accessibility spread per cortical cell type (RM19), 2026-11-12
+
+- Commit 8c0b788; `figures atac_cortex --scale paper --seed 42`; 8 cores, 48 GB.
+- Job 6431650 completed in 11 min, 7.6 GB at peak; pseudobulk cached. 121-348 donors per cell type, 4,173
+  housekeeping and 656 core-essential promoter peaks.
+- Result, as measured: essential promoters spread apart with age more than matched promoters in every cell type
+  (raw housekeeping +0.004 to +0.17 SD, core-essential +0.02 to +0.16; with 5 components core-essential +0.08 to
+  +0.23, all p < 0.03). Superseded for reading by R24, which adds the promoter read fraction as a covariate.
+
 ## R22 — look-alike drift and relative gap against lifespan (RM20), 2026-11-12
 
 - Commit 58efc63; `figures species --scale paper --seed 42`; 8 cores, 40 GB.

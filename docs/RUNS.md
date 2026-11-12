@@ -12,9 +12,9 @@ grammar (`unattended`, `urgent`, `building`, `after <R-id>` or `after job <slurm
 - the roadmap item it serves (`RMn`);
 - what the lead needs back (a table, a figure, a number), and anything the run must not do.
 
-## R23 — accessibility spread with age per cortical cell type (RM19)
+## R24 — cortical cell types with the promoter read fraction as a covariate (RM19)
 
-- What: `entropy-age figures atac_cortex --scale paper --seed 42` (reads the 14.5 GB h5ad once into a cached
-  pseudobulk in `data/interim/atac_cortex`).
-- Resources: compute partition, 8 cores, 48 GB; time unknown (about 67 GB read in 20,000-nucleus blocks).
-- Read: `data/output/atac_cortex/gaps`, per cell type and set, raw and with 5 components.
+- What: `entropy-age figures atac_cortex --scale paper --seed 42` on R23's cached pseudobulk, now with four
+  adjustments (none, 5 components, promoter read fraction, both).
+- Resources: compute partition, 8 cores, 32 GB; minutes (the pseudobulk is cached).
+- Read: does the positive gap of R23 survive the promoter read fraction (a quality score like TSS enrichment)?

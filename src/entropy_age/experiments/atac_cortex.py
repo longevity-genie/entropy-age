@@ -9,8 +9,9 @@ of donors aged 15-100 from four brain banks: 1.5 million nuclei, 521,217 peaks (
    the peaks that hold a 450k promoter CpG, streamed from the 14.5 GB h5ad in row blocks, with each group's total
    counts and nucleus count.
 2. Per cell type, donors with at least ``MIN_NUCLEI`` nuclei: log counts per million, residuals after age, sex,
-   brain bank, post-mortem interval and log nucleus count (and ``COMPONENTS`` leading components), and the age
-   slope of the absolute residual in units of the peak's spread (``atac_variance.spread_slopes``). A set's peaks
+   brain bank, post-mortem interval and log nucleus count (and, per ``ADJUSTMENTS``, leading components and the
+   promoter read fraction), and the age slope of the absolute residual in units of the peak's spread
+   (``atac_variance.spread_slopes``). A set's peaks
    are compared with the other promoter peaks of the same island status, mean decile and width tertile.
 
 Run as a job: ``entropy-age figures atac_cortex`` (the pseudobulk reads about 67 GB once).
@@ -35,7 +36,10 @@ RECORD = "18394349"
 H5AD = "final_atac_data.h5ad"
 DEMOGRAPHICS = "TableS1_CohortDemographics.xlsx"
 MIN_NUCLEI = 50
-COMPONENTS = (0, 5)
+#: name -> (leading components removed, promoter read fraction as a covariate). The promoter fraction is a
+#: donor's share of reads in promoter peaks, a quality score like TSS enrichment: if it varies with age it widens
+#: the spread exactly at the strongest promoters, which essential genes own.
+ADJUSTMENTS = {"none": (0, False), "5 components": (5, False), "promoter fraction": (0, True), "both": (5, True)}
 PERMUTATIONS = 2000
 BLOCK = 20_000
 
@@ -139,6 +143,11 @@ def pseudobulk(h5ad: Path, keep: np.ndarray, out: Path) -> Path:
     return out
 
 
+def promoter_fraction(counts: np.ndarray, total: np.ndarray) -> np.ndarray:
+    """Each group's share of all its reads that fall in the kept promoter peaks."""
+    return counts.sum(axis=1) / total
+
+
 def run(ctx: Context) -> list[Path]:
     h5ad, demographics = inputs(ctx.paths)
     ann = AnnotationLayout(ctx.paths)
@@ -210,11 +219,12 @@ def run(ctx: Context) -> list[Path]:
                 for p, m, w in zip(keep, baseline_strata(mean, 10), baseline_strata(width, 3), strict=True)
             ]
         )
-        for k in COMPONENTS:
-            cov = base_cov
+        quality = promoter_fraction(x, sel["total"].to_numpy())
+        for adjustment, (k, by_quality) in ADJUSTMENTS.items():
+            cov = np.column_stack([base_cov, quality]) if by_quality else base_cov
             if k:
                 u, s, _ = np.linalg.svd(y - mean, full_matrices=False)
-                cov = np.column_stack([base_cov, u[:, :k] * s[:k]])
+                cov = np.column_stack([cov, u[:, :k] * s[:k]])
             slopes = spread_slopes(y, age, cov)
             metrics = pl.DataFrame({"feature": [str(p) for p in keep], "spread_slope": slopes, "stratum": stratum})
             res = compare_groups(
@@ -229,6 +239,7 @@ def run(ctx: Context) -> list[Path]:
             rows.append(
                 res.with_columns(
                     cell_type=pl.lit(cell_type),
+                    adjustment=pl.lit(adjustment),
                     components=pl.lit(k),
                     gap_sd=pl.col("matched_diff") / sd,
                     donors=pl.lit(sel.height),
@@ -243,10 +254,10 @@ def run(ctx: Context) -> list[Path]:
 
 
 def _figure(ctx: Context, result: pl.DataFrame) -> Path:
-    fig, axes = plots.panels(2, ncols=2, size=4.6)
-    for i, k in enumerate(COMPONENTS):
+    fig, axes = plots.panels(len(ADJUSTMENTS), ncols=2, size=4.6)
+    for i, adjustment in enumerate(ADJUSTMENTS):
         ax = axes[i]
-        sub = result.filter(pl.col("components") == k)
+        sub = result.filter(pl.col("adjustment") == adjustment)
         cells = sorted(sub["cell_type"].unique().to_list())
         for g, group in enumerate(SETS):
             r = sub.filter(pl.col("group") == group).sort("cell_type")
@@ -262,7 +273,7 @@ def _figure(ctx: Context, result: pl.DataFrame) -> Path:
         ax.legend(fontsize=7, frameon=False)
         ax.set(
             xlabel="Set minus matched promoter peaks (SD); < 0: spreads less with age",
-            title=f"Prefrontal cortex, per cell type, {k} components",
+            title=f"Prefrontal cortex, per cell type: {adjustment}",
         )
-        plots.label_panel(ax, "ab"[i])
+        plots.label_panel(ax, "abcd"[i])
     return plots.save(fig, ctx.figure_path("atac_cortex"))
