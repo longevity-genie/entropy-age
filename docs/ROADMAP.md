@@ -150,6 +150,10 @@ young ground state and retrain each clock's CpGs on it; the share of the clock's
 2. Shield-aware simulation: CpG-specific rates (shielded CpGs slower by the measured gap; or each CpG's observed
    drift rate) instead of uniform; retrain; recompute the fractions. Does shaped noise explain more?
 3. Split each clock's prediction into shielded and unprotected CpGs: which carries age, which acceleration.
+4. Cell composition (antonkulaga, 2026-11-12: PhenoAge, the least stochastic clock, may mostly reflect blood-cell
+   mix): estimate 12 blood-cell fractions by reference-based deconvolution (EpiDISH cent12CT or Salas 2022 IDOL),
+   then recompute each clock's stochastic fraction and acceleration with and without them. Is PhenoAge's
+   non-stochastic part composition?
 Methods of the paper being extracted first.
 
 ## RM16 — Selection by cellular fitness, in vivo
