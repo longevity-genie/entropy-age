@@ -36,6 +36,7 @@ from entropy_age.experiments import (
     shield_clocks,
     species_phylo,
     species_shield,
+    stochastic_component,
     syndromes,
     tet1_cortex,
     tissue_contrast,
@@ -80,6 +81,7 @@ FIGURES: dict[str, Callable[[Context], list[Path]]] = {
     "per_person": per_person.run,
     "shield_clocks": shield_clocks.run,
     "own_clocks": own_clocks.run,
+    "stochastic_component": stochastic_component.run,
     "probe_robustness": probe_robustness.run,
 }
 

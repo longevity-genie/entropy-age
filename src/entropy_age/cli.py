@@ -188,6 +188,18 @@ def fetch_dnmt3a_cmd(overwrite: bool = False) -> None:
     typer.echo(f"{matrix}\n{betas}")
 
 
+@fetch_app.command("epidish")
+def fetch_epidish_cmd(overwrite: bool = False) -> None:
+    """EpiDISH's 12-cell-type blood reference for the 450k array (cent12CT450k, 50 kB)."""
+    from entropy_age.data.download import download
+    from entropy_age.experiments.stochastic_component import EPIDISH, EPIDISH_URL
+
+    paths = ProjectPaths.default().ensure()
+    target = paths.input / EPIDISH
+    download(EPIDISH_URL, target, overwrite=overwrite, timeout=600)
+    typer.echo(target)
+
+
 @fetch_app.command("taxonomy")
 def fetch_taxonomy_cmd() -> None:
     """NCBI Taxonomy lineages of the consortium's species in R12's table (a few hundred small requests)."""
