@@ -12,4 +12,8 @@ grammar (`unattended`, `urgent`, `building`, `after <R-id>` or `after job <slurm
 - the roadmap item it serves (`RMn`);
 - what the lead needs back (a table, a figure, a number), and anything the run must not do.
 
-No runs are planned.
+## R25 — clonal haematopoiesis and the shield (RM16)
+
+- What: `entropy-age figures chip --scale paper --seed 42` (GSE315366 already on disk).
+- Resources: compute partition, 8 cores, 32 GB; time unknown (5-component leave-one-out over ~35 controls).
+- Read: `data/output/chip_methylation/effects`: F, B, S by arm, raw and with 5 components.

@@ -133,6 +133,20 @@ def fetch_atac_cmd(overwrite: bool = False) -> None:
     typer.echo(f"{counts}\n{matrix}\n{manifest}")
 
 
+@fetch_app.command("chip")
+def fetch_chip_cmd(overwrite: bool = False) -> None:
+    """Basrai 2026 cardiogenic-shock blood EPIC with clonal haematopoiesis per person (GSE315366, ~0.5 GB)."""
+    from entropy_age.data.download import download
+    from entropy_age.experiments.chip_methylation import BETAS, GSE, layout
+
+    paths = ProjectPaths.default().ensure()
+    matrix, betas = layout(paths)
+    base = f"https://ftp.ncbi.nlm.nih.gov/geo/series/GSE315nnn/{GSE}"
+    download(f"{base}/matrix/{matrix.name}", matrix, overwrite=overwrite, timeout=600)
+    download(f"{base}/suppl/{BETAS}", betas, overwrite=overwrite, timeout=3600)
+    typer.echo(f"{matrix}\n{betas}")
+
+
 @fetch_app.command("taxonomy")
 def fetch_taxonomy_cmd() -> None:
     """NCBI Taxonomy lineages of the consortium's species in R12's table (a few hundred small requests)."""
