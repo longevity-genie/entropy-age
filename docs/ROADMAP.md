@@ -74,12 +74,16 @@ matched on island status and starting level. Gaps:
 
 ## RM19 — Does chromatin accessibility become stochastic with age?
 
-**State:** unattended (data survey running) · **Owner:** lead
+**State:** building · **Owner:** lead
 
 Progress: asked by antonkulaga (2026-11-12): can we collect enough comparable ATAC-seq data to test stochastic
 changes of chromatin opening? Test: per region, the age slope of between-individual (or between-cell)
 accessibility variability, essential promoters against matched regions, as for methylation. First a survey of
 public data (one tissue, one protocol, many individuals across ages, processed counts).
+- Survey done (`docs/ATAC_SURVEY.md`): no published test of per-region accessibility variance against age, none
+  against essential promoters. First test: Morandini 2023 PBMC bulk ATAC (GSE193140, 157 libraries, 20-74 y,
+  10 MB counts). Then Catching 2026 prefrontal cortex snATAC (362 donors, 15-100 y, Zenodo 18394349, 14.5 GB)
+  and Zemke 2024 hippocampus (GSE278576, 40 donors). Controlled-access cohorts (Márquez 2020, CIMA) later.
 
 ## RM16 — Selection by cellular fitness, in vivo
 
