@@ -161,6 +161,19 @@ def fetch_reprogramming_cmd(overwrite: bool = False) -> None:
     typer.echo(f"{matrix}\n{betas}")
 
 
+@fetch_app.command("tet1")
+def fetch_tet1_cmd(overwrite: bool = False) -> None:
+    """Foong 2024 Tet1 knockout and catalytic-dead cortex on the mouse array (GSE271375, ~150 MB)."""
+    from entropy_age.data.download import download
+    from entropy_age.experiments.tet1_cortex import GSE, layout
+
+    paths = ProjectPaths.default().ensure()
+    target = layout(paths)
+    url = f"https://ftp.ncbi.nlm.nih.gov/geo/series/GSE271nnn/{GSE}/suppl/{GSE}_{target.name}"
+    download(url, target, overwrite=overwrite, timeout=3600)
+    typer.echo(target)
+
+
 @fetch_app.command("taxonomy")
 def fetch_taxonomy_cmd() -> None:
     """NCBI Taxonomy lineages of the consortium's species in R12's table (a few hundred small requests)."""

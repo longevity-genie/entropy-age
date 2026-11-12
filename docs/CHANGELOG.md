@@ -4,6 +4,7 @@ Newest first.
 
 ## Unreleased
 
+- `fetch tet1` and `figures tet1` (RM12): Tet1 knockout and catalytic-dead cortex against wild type (GSE271375, 8 each, bisulfite arrays).
 - R32 done (RM17): cyclic partial reprogramming does not restore the shield consistently; promoter CpGs barely move toward youth.
 - `fetch reprogramming` and `figures reprogramming` (RM17): cyclic OSKM in vivo (GSE190665, six mouse tissues), treated and young mice against untreated old mice.
 - `figures own_clocks` (RM11): elastic-net clocks from shielded, stratum-matched look-alike and random CpGs of equal number, out-of-fold, in Hannum blood and Jaffe cortex.

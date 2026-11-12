@@ -18,3 +18,9 @@ grammar (`unattended`, `urgent`, `building`, `after <R-id>` or `after job <slurm
 - Resources: compute partition, 8 cores, 64 GB; time unknown (2 cohorts x 3 draws x 3 pools x 5 folds of
   elastic-net CV on a few thousand CpGs).
 - Read: `data/output/own_clocks/accuracy` (r, median absolute error per pool) and `acceleration_overlap`.
+
+## R34 — Tet1 knockout and catalytic-dead cortex (RM12)
+
+- What: `entropy-age figures tet1 --scale paper --seed 42` (GSE271375 betas on disk).
+- Resources: compute partition, 8 cores, 32 GB; minutes.
+- Read: `data/output/tet1_cortex/effects`: F of KO and Hxd against WT; Tet3 heterozygotes lost the shield.
