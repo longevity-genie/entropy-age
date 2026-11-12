@@ -58,9 +58,23 @@ brain both; left: a DepMap gradient within broadly expressed genes, and expressi
 structure), against Hollmann 2020; (4) read the species result against Crofts 2026 (stem-cell dynamics) and the
 floor of near-0 % essential promoters; (5) the shield score against Seeboth 2020's confounders.
 
-## RM16 — Selection by cellular fitness, in vivo
+## RM18 — Normalization and probe robustness
 
 **State:** after RM10b · **Owner:** lead
+
+Progress: asked by antonkulaga (2026-11-12): are results comparable across arrays and array versions, and do we
+follow best practice? By design every comparison stays within one dataset and platform, on the deposited betas,
+matched on island status and starting level. Gaps:
+1. Infinium probe type (I/II) is not in the strata; island CpGs at essential promoters are more often type I.
+   Add it, rerun the headline gaps (Hannum, Jaffe, Lunnon).
+2. Cross-reactive and SNP-affected probes are not masked: apply Zhou et al. 2017's masks, rerun.
+3. One cohort reprocessed from raw IDATs (SeSAMe, or noob + BMIQ) against its deposited betas.
+4. Each sample's beta compression as a covariate for the signed shift S.
+5. A short review of current practice, recorded in `docs/`.
+
+## RM16 — Selection by cellular fitness, in vivo
+
+**State:** after RM18 · **Owner:** lead
 
 Progress: asked by antonkulaga (2026-11-12, #entropy-age > general chat): what about selection by cellular
 fitness? The evidence so far is mostly against selection (culture, turnover, chromatin matching, Tet3, liver),
@@ -81,11 +95,13 @@ maintenance predicts the shield restored with the clock; selection predicts no c
 
 ## RM10b — Species with phylogeny and per tissue
 
-**State:** building · **Owner:** lead
+**State:** done · **Owner:** lead
 
 Progress: antonkulaga (2026-11-12) asked for the multispecies checks first. R12's lifespan fit treats species
 as independent. Refit with a phylogenetic GLS (covariance from NCBI Taxonomy lineages, Pagel's λ by maximum
 likelihood), on all groups and per tissue with enough species (skin 36, blood 27, liver 10).
+- Done (`figures species_phylo`, `docs/extension.md`): no lifespan effect survives relatedness or holds within a
+  tissue; blood leans toward a weaker shield in long-lived species (housekeeping entropy +0.085, p 0.054).
 
 ## RM14 — Natural experiments in chromatin: broken writers, knockouts, edits
 

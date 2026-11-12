@@ -585,6 +585,24 @@ animals spanning 15 % of the species' maximum lifespan: 65 species, 11,529 sampl
 
 Tables: `data/output/species_shield/` (`species_gaps`, `lifespan_fits`).
 
+**With relatedness held fixed, and within tissues (roadmap RM10b).** Figure `species_phylo` refits the lifespan
+regression by generalised least squares, with a covariance from the species' NCBI Taxonomy lineages (shared
+depth; `entropy-age fetch taxonomy`) and Pagel's λ chosen by maximum likelihood, on all 139 groups and within
+skin (36 species), blood (27) and liver (10).
+
+![Species with phylogeny](figures/species_phylo.png)
+
+* Relatedness explains part of the gaps across tissues (λ 0.60-0.92 for entropy), and the lifespan coefficient
+  stays near zero: housekeeping entropy +0.025 per log-unit (p 0.40; it was +0.029, p 0.14, with species
+  independent).
+* Within skin and liver nothing tracks lifespan. Within blood, long-lived species lean toward a *weaker* shield
+  (housekeeping entropy +0.085, p 0.054; core-essential +0.090, p 0.08).
+* The taxonomy gives every branch length one, so it captures a strong clade effect only in part; a dated
+  phylogeny (TimeTree) would be the stricter test. No conclusion rests on that difference here: with or without
+  it, long life is not bought with a stronger shield.
+
+Tables: `data/output/species_phylo/lifespan_fits`.
+
 ## Interventions across mouse tissues (roadmap RM12)
 
 Figure `mmc_interventions` (run R13) scores every mouse of the consortium's intervention studies against its study's

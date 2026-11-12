@@ -4,6 +4,7 @@ Newest first.
 
 ## Unreleased
 
+- `fetch taxonomy` and `figures species_phylo` (RM10b): the shield against lifespan with a phylogenetic GLS (NCBI Taxonomy covariance, Pagel's λ) and per tissue. No lifespan effect survives. Roadmap RM18 (normalization and probe robustness) at antonkulaga's request.
 - Roadmap: RM10b (species with phylogeny, per tissue), RM16 (selection by cellular fitness in vivo: clonal haematopoiesis), RM17 (partial reprogramming), at antonkulaga's request.
 - R18 done: carriers of Sotos, Weaver, Kabuki and CHARGE variants drift more in blood but keep the shield, unlike Tet3 heterozygous mice. `docs/extension.md`.
 - RM9: `figures tissues`, `tissues_cells` and `mouse` scale every bootstrap resample by the full sample's spread (`common.rescale`), not its own, which had shrunk resampled gaps and blood-minus-brain intervals toward zero.

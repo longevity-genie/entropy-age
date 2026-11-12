@@ -118,6 +118,21 @@ def fetch_mammals_cmd(overwrite: bool = False) -> None:
     typer.echo(f"{matrix}\n{betas}")
 
 
+@fetch_app.command("taxonomy")
+def fetch_taxonomy_cmd() -> None:
+    """NCBI Taxonomy lineages of the consortium's species in R12's table (a few hundred small requests)."""
+    from entropy_age.data.taxonomy import fetch_lineages
+    from entropy_age.experiments.species_phylo import lineages_path, organisms
+    from entropy_age.experiments.species_shield import layout
+
+    paths = ProjectPaths.default().ensure()
+    matrix, _ = layout(paths)
+    species = pl.read_csv(paths.output / "species_shield" / "species_gaps.csv")["species"].unique()
+    names = organisms(matrix).filter(pl.col("species").is_in(species.implode()))["organism"].to_list()
+    table = fetch_lineages(names, lineages_path(paths))
+    typer.echo(f"{table.height} lineages -> {lineages_path(paths)}")
+
+
 @fetch_app.command("syndromes")
 def fetch_syndromes_cmd(overwrite: bool = False) -> None:
     """Blood 450k of chromatin-writer syndromes: GSE74432 (NSD1, EZH2) and GSE97362 (KMT2D, CHD7), ~0.7 GB."""

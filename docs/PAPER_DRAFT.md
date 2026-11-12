@@ -139,8 +139,9 @@ lifespan scaling as stem-cell dynamics (Crofts 2026), and per-person drift burde
 - **Evidence:** 139 species-tissue groups of 65 mammals (GSE223748): the housekeeping gap is negative in 96 %,
   −0.30 SD on average. **[solid]**
 - Against log maximum lifespan (weight, tissue fixed) the gap moves +0.03 per log-unit (p 0.11-0.14): no
-  stronger shield in long-lived species, if anything weaker. Consistent with Crofts 2026. **[weak]**: no
-  phylogenetic correction; near-0 % essential promoters on the conserved array floor the drift.
+  stronger shield in long-lived species, if anything weaker. Consistent with Crofts 2026. Holds with a
+  phylogenetic GLS (taxonomy covariance, Pagel's λ; +0.025, p 0.40) and within skin, blood and liver.
+  **[solid]** as a negative result; near-0 % essential promoters on the conserved array floor the drift.
 - **Anomaly:** human bone marrow and lymph node reverse (+0.18, +0.20).
 - **Figures:** species_shield.
 
