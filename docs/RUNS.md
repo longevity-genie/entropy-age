@@ -30,3 +30,11 @@ grammar (`unattended`, `urgent`, `building`, `after <R-id>` or `after job <slurm
 - Resources: compute partition, 8 cores, 32 GB; time unknown (3 clocks x 4 modes x a 63-point calibration grid).
 - Read: `data/output/stochastic_component/fractions`: RR2 and the correlation with the original clock's intrinsic
   acceleration per clock and model; the published Stoc clocks as the reference row.
+
+## R39 — does the shield track health? cross-sectional (RM24)
+
+- What: `entropy-age figures health --scale paper --seed 42` (cohorts on disk: Lunnon, Jaffe, GSE41037, GTEx).
+- Resources: compute partition, 4 cores, 64 GB; time unknown (leave-one-out references, about 2,500 fits per
+  composition setting).
+- Read: `data/output/health_states/effects`: F, B, S effects of Alzheimer's (and Braak stage), schizophrenia and
+  smoking, raw and with 5 components.
