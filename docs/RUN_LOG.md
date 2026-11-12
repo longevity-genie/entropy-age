@@ -3,6 +3,17 @@
 Owned by the runner seat (`docs/seats/RUNNER.md`): one entry per run, newest first, with its inputs, the
 commit it ran, its job ids, its scale and seed, and its result or its failure with the cause.
 
+## R43 — methylation spread against expression spread, GTEx same donors (RM30), 2026-11-12
+
+- Commit 3b73b5d; `figures meth_expr_spread --scale paper --seed 42`; 4 cores, 64 GB; job 6436659, 49 s, 1.3 GB.
+- Donors with both layers: lung 161, ovary 133, colon 98, prostate 62, blood 45 (testis, kidney, breast, muscle
+  under 40, left out); 8,500-11,200 genes each.
+- Result, as measured: signed coupling (control, expected < 0): lung -0.032, prostate -0.035, colon -0.027, ovary
+  -0.011 (54-61 % of genes negative), blood +0.058. Spread coupling per donor, mean |r| minus permutation null:
+  lung +0.017 (p 0.025), prostate +0.022 (p 0.06), ovary +0.015 (p 0.06), colon +0.002 (p 0.45), blood +0.026
+  (p 0.15). Spread-slope coupling across genes (Spearman, level held): prostate +0.052 (p 4e-8), colon +0.028
+  (p 0.004), ovary +0.020 (p 0.046), lung -0.019 (p 0.04), blood -0.014. Tables in `data/output/meth_expr_spread/`.
+
 ## R41 — organ coupling (RM26), 2026-11-12, failed once
 
 - Commit 9599c31; `figures organ_coupling --scale paper --seed 42`; 4 cores, 64 GB; job 6436308 failed after 31 s:

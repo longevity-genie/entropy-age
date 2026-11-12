@@ -208,14 +208,6 @@ Progress: idea 6 of docs/BEYOND_SHIELD.md; open per docs/LITERATURE_COVERAGE.md 
 Bertucci-Richter 2023; no change-point test at maturity). Fit per species a drift curve with a breakpoint and
 compare it with age at sexual maturity.
 
-## RM30 — Does methylation spread reach expression spread? Same GTEx donors
-
-**State:** unattended · **Owner:** lead
-
-Progress: idea 7 of docs/BEYOND_SHIELD.md; the dispersion coupling is open per docs/LITERATURE_COVERAGE.md (mean-
-level coupling is published: Oliva 2023). Per gene, the age rise in between-donor spread of promoter methylation
-against that of expression, in lung, colon and ovary donors with both.
-
 ## RM31 — One cell type at a time: does composition hide drift or the clocks' stochastic share?
 
 **State:** unattended (next) · **Owner:** lead

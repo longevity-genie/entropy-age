@@ -1339,6 +1339,27 @@ rodent data are Shavlakadze et al. 2026 (Sci Adv), which with Tyshkovskiy 2026 (
 directed change; Ibañez-Solé 2022 (eLife) found no consistent rise of transcriptional noise with age, in line with
 the unshared noise order. Only the explicit rank comparison is ours.
 
+## Does methylation noise reach expression? Same GTEx donors (roadmap RM30)
+
+Idea 7 of `docs/BEYOND_SHIELD.md`; mean-level methylation-expression coupling in GTEx is published (Oliva 2023), the
+spread-to-spread question was open (`docs/LITERATURE_COVERAGE.md`). Run R43, five tissues with 45-161 donors who
+gave both layers, about 10,000 genes each.
+
+- **The control works, weakly.** Promoter methylation and expression residuals correlate negatively, as
+  silencing predicts, in lung, prostate, colon and ovary (mean r -0.01 to -0.035; 54-61 % of genes negative).
+  Blood (45 donors) fails it (+0.058): its layers are not usable at this size.
+- **A donor unusual in methylation at a promoter is barely more unusual in that gene's expression.** Mean
+  |r| exceeds the donor-permutation null by 0.015-0.022 in lung (p 0.025), prostate and ovary (p 0.06 each), not
+  in colon. Real, but tiny: the spread of one layer explains well under 1 % of the other's.
+- **Genes whose methylation spreads faster with age do not consistently spread faster in expression.** Across
+  genes the two age slopes correlate +0.05 (prostate), +0.03 (colon), +0.02 (ovary) and -0.02 (lung).
+
+Reading: methylation noise at promoters mostly stays in methylation. Age-related epigenetic drift, at the
+resolution of a bulk array, is largely silent for transcription, which fits a shield that matters for the clock
+more than for the cell. Caveats: bulk tissue (cell mix differs per donor in both layers alike, which would
+inflate, not hide, coupling), one array CpG set per promoter, and expression noise dominated by technical and
+post-transcriptional sources. A single-cell multi-omic test would be sharper.
+
 ## How to test the hypothesis on real data
 
 ```python
