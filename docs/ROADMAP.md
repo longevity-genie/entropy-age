@@ -157,7 +157,7 @@ with two leads for it (CR in one blood study; human bone marrow and lymph node r
 
 ## RM17 — Partial reprogramming: does a reset restore the shield?
 
-**State:** waits until 2026-11-13 · **Owner:** lead
+**State:** after RM12 · **Owner:** lead
 
 Progress: asked by antonkulaga (2026-11-12). The consortium's OSKM arms are 2-5 mice (3.4F+7mDox kidney F −0.17,
 p 0.10; skin n.s.): too small. Public array series to find: maturation-phase transient reprogramming of human
@@ -165,6 +165,8 @@ fibroblasts (Gill et al. 2022), in-vivo cyclic OSKM mice (Browder et al. 2022; O
 maintenance predicts the shield restored with the clock; selection predicts no change (no cells removed).
 - Survey done (`docs/REPROG_TET_SURVEY.md`). First: GSE190665 (Browder 2022, cyclic OSKM in vivo, 6 mouse
   tissues, Mammal40 array as in the consortium, 2-7 mice per group, 49 MB); then GSE156557 (RRBS, 5 per group).
+- Done (R32): no consistent change (muscle stronger, spleen weaker, four tissues unchanged); the regimen barely
+  moves promoter CpGs toward youth. Next if wanted: GSE156557 (one OSKM cycle, RRBS).
 
 ## RM14 — Natural experiments in chromatin: broken writers, knockouts, edits
 

@@ -690,6 +690,24 @@ removed, in Hannum blood (632) and Jaffe cortex (159).
 
 Tables: `data/output/shield_clocks/correlations` (measures P, F, B, set drift, P given B).
 
+## Partial reprogramming does not restore the shield (roadmap RM17)
+
+Figure `reprogramming` (run R32) scores the mice of Browder et al. 2022 (GSE190665; cyclic OSKM in vivo for 1, 7
+or 10 months, six tissues, mammalian array) against untreated old mice of the same tissue; young mice against the
+same old mice are the positive control.
+
+![Reprogramming](figures/reprogramming.png)
+
+* **No consistent change of the shield.** Muscle's shield is stronger in treated mice (housekeeping F −0.12,
+  p 0.02), spleen's weaker (core-essential +0.21, p 0.001; 8 against 8), the other four tissues unchanged.
+* **The reset barely moves these CpGs toward youth.** Treated mice sit no further from the old controls than the
+  controls themselves (B, p ≥ 0.14 everywhere), while young mice do (skin p 0.001). At promoter CpGs the cyclic
+  regimen leaves methylation essentially old, so the test has little to restore; Browder et al. reported modest
+  clock rejuvenation in some tissues only.
+* Small groups (4-14 mice); the three durations are pooled.
+
+Tables: `data/output/reprogramming/effects`.
+
 ## Selection in vivo: clonal haematopoiesis leaves the shield alone (roadmap RM16)
 
 Clonal haematopoiesis (CH) is selection among blood stem cells in a living person. Figure `chip` (run R25) scores

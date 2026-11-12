@@ -3,6 +3,14 @@
 Owned by the runner seat (`docs/seats/RUNNER.md`): one entry per run, newest first, with its inputs, the
 commit it ran, its job ids, its scale and seed, and its result or its failure with the cause.
 
+## R32 — partial reprogramming and the shield (RM17), 2026-11-12
+
+- Commit 803d1da; `figures reprogramming --scale paper --seed 42`; 8 cores, 16 GB; job 6433970, 8 s.
+- Result, as measured (treated against untreated old mice, 8-11 against 8-14 per tissue): F housekeeping −0.115
+  (muscle, p 0.02), +0.104 (spleen, p 0.046), core-essential +0.211 (spleen, p 0.001), other tissues n.s.; B
+  unchanged in every tissue (p ≥ 0.14). Young against old (4 each): B higher in skin (p 0.001) and liver
+  core-essential (p 0.011), S higher in all six tissues.
+
 ## R31 — clocks of our own (RM11), 2026-11-12
 
 - Commit 1637fe8; job 6432527 cancelled after 2 h 32 min: one cohort-draw took 2.5 h on one core (the
