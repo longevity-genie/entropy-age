@@ -719,8 +719,8 @@ look-alikes (S -0.06 to -0.09), non-essential CpGs rise (S +0.07 to +0.09), drif
 +0.10), and the shield share F moves by -0.6 (essential) and +0.6 (non-essential).
 
 Reading: this is not a stronger shield against noise. W326R sits in the PWWP domain, which normally reads
-H3K36me2/3 in gene bodies; the mutant is reported to go to Polycomb (H3K27me3) islands instead (to verify: Heyn
-2019, Sendžikaitė 2019). The look-alikes of essential CpGs are unmethylated islands, many of them Polycomb
+H3K36me2/3 in gene bodies; PWWP mutants lose that binding and methylate Polycomb-marked DNA methylation valleys instead, also in
+Dnmt3a dwarf mice (Heyn et al. 2019, Nat Genet, doi 10.1038/s41588-018-0274-x, PMID 30478443). The look-alikes of essential CpGs are unmethylated islands, many of them Polycomb
 targets, and non-essential (developmental) genes are Polycomb targets themselves; both gain methylation, so active
 essential promoters look protected by comparison. A writer is aimed by chromatin, and the essential promoters'
 chromatin keeps it out. That supports H1 (chromatin decides where methylation changes), and it is a warning for
