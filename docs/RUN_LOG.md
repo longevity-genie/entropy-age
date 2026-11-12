@@ -3,6 +3,13 @@
 Owned by the runner seat (`docs/seats/RUNNER.md`): one entry per run, newest first, with its inputs, the
 commit it ran, its job ids, its scale and seed, and its result or its failure with the cause.
 
+## R26 — hippocampus replication of the accessibility result (RM19), 2026-11-12
+
+- Commit e084027; `figures atac_hippocampus --scale paper --seed 42`; 8 cores, 32 GB.
+- Job 6432044 failed after 3 min: no barcode matched. The metadata's cell ids carry a library tag for some donors
+  (`hc77_deep_...`) that the 10x barcodes lack. Fixed (match on the barcode alone; one tag per donor, no
+  repeats); rerun as R27.
+
 ## R25 — clonal haematopoiesis and the shield (RM16), 2026-11-12
 
 - Commit de1ddda; `figures chip --scale paper --seed 42`; 8 cores, 32 GB.

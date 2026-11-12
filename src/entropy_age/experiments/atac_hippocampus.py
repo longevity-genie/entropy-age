@@ -55,6 +55,11 @@ def subclass_peak_sums(indptr, indices, data, columns_by_group: dict[str, np.nda
     return out
 
 
+def barcode_of(cell: str) -> str:
+    """The 10x barcode of a metadata cell id: ``hc77_deep_AAAC...-1`` and ``hc77_AAAC...-1`` give ``AAAC...-1``."""
+    return cell.rsplit("_", 1)[-1]
+
+
 def gene_counts(peak_sums: np.ndarray, peak_gene: pl.DataFrame, genes: list[str]) -> np.ndarray:
     """Counts per gene: the sum over the distinct peaks that hold any of the gene's promoter CpGs."""
     pairs = peak_gene.unique(["peak", "gene"])
@@ -123,10 +128,9 @@ def run(ctx: Context) -> list[Path]:
             kind = m["features"]["feature_type"][:]
             peak_rows = np.flatnonzero(kind == b"Peaks")
             peaks = parse_peaks([x.decode() for x in m["features"]["id"][:][peak_rows]])
-            barcodes = [f"{donor}_{b.decode()}" for b in m["barcodes"][:]]
-            col = {b: i for i, b in enumerate(barcodes)}
+            col = {b.decode(): i for i, b in enumerate(m["barcodes"][:])}
             by_group = {
-                s: np.array([col[c] for c in g["cell"] if c in col], dtype=int)
+                s: np.array([col[barcode_of(c)] for c in g["cell"] if barcode_of(c) in col], dtype=int)
                 for (s,), g in cells.group_by("subclass")
             }
             sums = subclass_peak_sums(m["indptr"][:], m["indices"][:], m["data"][:], by_group, kind.size)
@@ -195,6 +199,10 @@ def run(ctx: Context) -> list[Path]:
                 )
             )
         print(f"atac_hippocampus: {subclass}: {len(sel)} donors done", file=sys.stderr, flush=True)
+    if not results:
+        raise ValueError(
+            f"atac_hippocampus: no subclass has {MIN_NUCLEI}+ nuclei in {MIN_DONORS}+ donors; check barcode matching"
+        )
     table = pl.concat(results, how="diagonal")
     write_table(table, out / "gaps")
     return [_figure(ctx, table)]
