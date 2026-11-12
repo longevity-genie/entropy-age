@@ -1361,6 +1361,25 @@ rodent data are Shavlakadze et al. 2026 (Sci Adv), which with Tyshkovskiy 2026 (
 directed change; Ibañez-Solé 2022 (eLife) found no consistent rise of transcriptional noise with age, in line with
 the unshared noise order. Only the explicit rank comparison is ours.
 
+## A person-wide pace in clocks, not in drift (roadmap RM26)
+
+Idea 1 of `docs/BEYOND_SHIELD.md`. Clock coupling across a donor's tissues is published (Horvath 2022, 11 tissues;
+Richardson 2025 on this GTEx set), so the clock half is a replication; the clock-free half is new. Run R41: for
+each pair of tissues from the same donors (Lunnon blood and four brain regions; GTEx nine tissues), the
+correlation of their age accelerations, each residualised on age, sex and (Lunnon) Alzheimer's status.
+
+- **Clock acceleration is shared** across a donor's organs, modestly: median r over tissue pairs 0.13-0.31 in
+  GTEx (Zhang 2019 positive in all 22 pairs), 0.07-0.33 in Lunnon. It is strongest between neighbouring cortical
+  regions and weak between blood and brain, so a blood clock speaks only a little for the brain.
+- **Clock-free drift is not shared.** The drift of look-alike promoter CpGs (B) and the shield's share (F)
+  correlate across a donor's tissues at -0.03 and +0.04 in GTEx (no pair significant), 0.07 and 0.02 in Lunnon.
+  A batch shared by a donor's samples would couple B as readily as the clocks; it does not, so the clocks'
+  coupling is not batch.
+
+Reading: what is person-wide is directed change, the part clocks read (R38). Undirected drift, the part the shield
+acts on, is private to each tissue, as the tissue-pace noise order was private to each species (R40). Two kinds
+of aging, one systemic and directed, one local and stochastic.
+
 ## Stochastic clocks are directed clocks with random timing (roadmap RM23)
 
 Tong et al. 2024 (Nature Aging) report that a clock retrained on simulated stochastic change keeps 66-89 % of its

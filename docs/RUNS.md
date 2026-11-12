@@ -20,12 +20,6 @@ grammar (`unattended`, `urgent`, `building`, `after <R-id>` or `after job <slurm
 - Read: `data/output/health_states/effects`: F, B, S effects of Alzheimer's (and Braak stage), schizophrenia and
   smoking and slow against sudden death (GTEx Hardy scale), raw and with 5 components.
 
-## R41 — do organs of one person age together? (RM26)
-
-- What: `entropy-age figures organ_coupling --scale paper --seed 42` (Lunnon, GTEx on disk; clocks fetched).
-- Resources: compute partition, 4 cores, 64 GB; time unknown (leave-one-out drift per tissue).
-- Read: `data/output/organ_coupling/couplings`: r between tissues of the same donors per measure.
-
 ## R42 — does the shield predict death? Vitality 90+ (RM28)
 
 - What: GSE68194 series matrix fetched (386 MB); `entropy-age figures survival --scale paper --seed 42`.

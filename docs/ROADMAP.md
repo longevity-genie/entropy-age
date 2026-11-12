@@ -171,19 +171,9 @@ Alzheimer's pathology (Lunnon, AD against control and Braak stage, four brain re
 (controls leave themselves out), age and technical covariates; shield share F, drift B, signed shift S.
 Cross-sectional: a weaker shield may be a consequence of disease or treatment, not a predictor.
 
-## RM26 — Do all organs of one person age at the same rate?
-
-**State:** unattended (next) · **Owner:** lead
-
-Progress: idea 1 of docs/BEYOND_SHIELD.md. Per donor, acceleration (clock residuals, drift B, entropy) in each
-tissue; correlations between tissues of the same donors (Lunnon blood and 4 brain regions, GTEx, Huang mice).
-Lunnon blood was drawn before death: each sample keeps its own age. Literature (docs/LITERATURE_COVERAGE.md): clock
-coupling across tissues is published (Horvath 2022 GeroScience; Richardson 2025 on this GTEx set), so the clock arm
-is a replication; the new part is drift and entropy coupling without clocks.
-
 ## RM27 — Do interventions reverse disorder or shift a programme?
 
-**State:** after RM26 · **Owner:** lead
+**State:** unattended · **Owner:** lead
 
 Progress: idea 3 of docs/BEYOND_SHIELD.md. Split aging CpGs into directed (consistent mean change) and noisy
 (variance rise only); ask which part each intervention moves.

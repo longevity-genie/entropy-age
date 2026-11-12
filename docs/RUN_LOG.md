@@ -3,6 +3,18 @@
 Owned by the runner seat (`docs/seats/RUNNER.md`): one entry per run, newest first, with its inputs, the
 commit it ran, its job ids, its scale and seed, and its result or its failure with the cause.
 
+## R41 — organs of one donor aging together (RM26), 2026-11-12, rerun
+
+- Commit 522d4e6; `figures organ_coupling --scale paper --seed 42`; 4 cores, 64 GB; job 6438960, 10 min 45 s.
+  Lunnon 5 tissues (49-84 shared donors per pair), GTEx 9 tissues (22 pairs with at least 20 shared donors,
+  median 33).
+- Result, as measured (Pearson r of residual acceleration between two tissues of the same donors; median over
+  pairs, GTEx / Lunnon): Zhang 2019 0.31 / 0.17 (GTEx all 22 pairs positive), Horvath 0.29 / 0.22, Cortical
+  0.17 / 0.33, DunedinPACE 0.16 / 0.14, Hannum 0.15 / 0.17, PhenoAge 0.13 / 0.07; clock-free drift B -0.03 / 0.07
+  and shield share F 0.04 / 0.02, no GTEx pair significant. Lunnon cortical regions couple strongly with each
+  other (Cortical clock 0.75-0.76); blood with brain weakly (-0.15 to 0.34, intervals include 0 for most).
+  Tables in `data/output/organ_coupling/`.
+
 ## R38 — the stochastic component of clocks, information stripped (RM23), 2026-11-12
 
 - Commit 9099a66; `figures stochastic_component --scale paper --seed 42`; 4 cores (resubmitted from 8; job
