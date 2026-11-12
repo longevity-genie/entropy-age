@@ -27,3 +27,9 @@ grammar (`unattended`, `urgent`, `building`, `after <R-id>` or `after job <slurm
 - Resources: compute partition, 4 cores, 96 GB; time unknown (streams the gzip once, about 70 GB of text).
 - Read: `data/output/sjlife_deaths/effects`: odds ratio of death per SD of B, F, S and clocks; everyone and
   survivors; deaths over 2 years after the draw.
+
+## R49 — the shield by blood lineage, in silico (RM31)
+
+- What: `entropy-age figures lineage_shield --scale paper --seed 42` (Hannum betas and R38's cell fractions).
+- Resources: compute partition, 4 cores, 32 GB; minutes.
+- Read: `data/output/lineage_shield/gaps`: set minus look-alikes on |age slope within lineage|, per lineage.
