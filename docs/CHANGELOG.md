@@ -4,6 +4,7 @@ Newest first.
 
 ## Unreleased
 
+- 2026-11-13: `read_level` (RM22): epiallele entropy and discordant reads at 450k promoter windows from Loyfer WBC WGBS (23 donors); run R50 planned.
 - 2026-11-13: `lineage_shield` (RM31): lineage-specific age slopes from mixed blood (CellDMC-style), shield per lineage; run R49 planned.
 - 2026-11-13: `sjlife_deaths` (RM28): death among 4,520 SJLIFE survivors and controls against drift, shield and clocks; streaming reader for the 28 GB table; run R48 planned.
 - 2026-11-12: R46b written up: drift B predicts breast cancer years ahead in EPIC-Italy, robust to chip, cell mix and mean methylation; claim C12, E29.
