@@ -4,6 +4,7 @@ Newest first.
 
 ## Unreleased
 
+- `fetch reprogramming` and `figures reprogramming` (RM17): cyclic OSKM in vivo (GSE190665, six mouse tissues), treated and young mice against untreated old mice.
 - `figures own_clocks` (RM11): elastic-net clocks from shielded, stratum-matched look-alike and random CpGs of equal number, out-of-fold, in Hannum blood and Jaffe cortex.
 - R29 done (RM11): faster clocks do not mean a weaker shield; at equal drift they go with a stronger one, and outcome clocks are blind to it.
 - `figures shield_clocks` (RM11): per person, the shield score against each published clock's age acceleration (stochastic clocks included), in Hannum blood and Jaffe cortex. Asked by antonkulaga.

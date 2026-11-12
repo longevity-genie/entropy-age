@@ -18,3 +18,9 @@ grammar (`unattended`, `urgent`, `building`, `after <R-id>` or `after job <slurm
 - Resources: compute partition, 8 cores, 64 GB; time unknown (2 cohorts x 3 draws x 3 pools x 5 folds of
   elastic-net CV on a few thousand CpGs).
 - Read: `data/output/own_clocks/accuracy` (r, median absolute error per pool) and `acceleration_overlap`.
+
+## R32 — partial reprogramming and the shield (RM17)
+
+- What: `entropy-age figures reprogramming --scale paper --seed 42` (GSE190665 on disk).
+- Resources: compute partition, 8 cores, 16 GB; minutes.
+- Read: `data/output/reprogramming/effects`: F and B of treated (and young) against untreated old mice, per tissue.

@@ -147,6 +147,20 @@ def fetch_chip_cmd(overwrite: bool = False) -> None:
     typer.echo(f"{matrix}\n{betas}")
 
 
+@fetch_app.command("reprogramming")
+def fetch_reprogramming_cmd(overwrite: bool = False) -> None:
+    """Browder 2022 cyclic OSKM in vivo, six mouse tissues on the mammalian array (GSE190665, ~50 MB)."""
+    from entropy_age.data.download import download
+    from entropy_age.experiments.reprogramming import BETAS, GSE, layout
+
+    paths = ProjectPaths.default().ensure()
+    matrix, betas = layout(paths)
+    base = f"https://ftp.ncbi.nlm.nih.gov/geo/series/GSE190nnn/{GSE}"
+    download(f"{base}/matrix/{matrix.name}", matrix, overwrite=overwrite, timeout=600)
+    download(f"{base}/suppl/{BETAS}", betas, overwrite=overwrite, timeout=1800)
+    typer.echo(f"{matrix}\n{betas}")
+
+
 @fetch_app.command("taxonomy")
 def fetch_taxonomy_cmd() -> None:
     """NCBI Taxonomy lineages of the consortium's species in R12's table (a few hundred small requests)."""
