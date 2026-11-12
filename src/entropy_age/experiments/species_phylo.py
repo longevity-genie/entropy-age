@@ -93,6 +93,25 @@ def term_rows(y, x, c, lam: float, label: dict) -> list[dict]:
     return rows
 
 
+def jackknife(y: np.ndarray, x: np.ndarray, species: list[str], col: int = 1) -> dict:
+    """The coefficient with each species left out in turn: the species whose removal moves it most, and to what."""
+    names = sorted(set(species))
+    if len(names) < 3:
+        raise ValueError("species_phylo: a jackknife needs at least three species")
+    full = float(np.linalg.lstsq(x, y, rcond=None)[0][col])
+    moved = {}
+    for name in names:
+        keep = np.array([s != name for s in species])
+        moved[name] = float(np.linalg.lstsq(x[keep], y[keep], rcond=None)[0][col])
+    worst = max(moved, key=lambda n: abs(moved[n] - full))
+    return {
+        "influential_species": worst,
+        "coef_without": moved[worst],
+        "coef_min": min(moved.values()),
+        "coef_max": max(moved.values()),
+    }
+
+
 def run(ctx: Context) -> list[Path]:
     matrix, _ = layout(ctx.paths)
     gaps_path = ctx.paths.output / "species_shield" / "species_gaps.csv"
@@ -141,7 +160,8 @@ def run(ctx: Context) -> list[Path]:
                     "groups": s.height,
                     "species": s["species"].n_unique(),
                 }
-                rows += term_rows(y, x, c, 0.0, label | {"model": "independent", "lambda": 0.0})
+                jack = jackknife(y, x, s["species"].to_list())
+                rows += term_rows(y, x, c, 0.0, label | {"model": "independent", "lambda": 0.0} | jack)
                 rows += term_rows(y, x, c, lam, label | {"model": "phylogenetic", "lambda": lam})
     fits = pl.DataFrame(rows)
     write_table(fits, out / "lifespan_fits")

@@ -4,6 +4,7 @@ Newest first.
 
 ## Unreleased
 
+- `figures species_phylo` adds a drop-one-species jackknife: blood's lean toward a weaker shield in long-lived species rests largely on human.
 - R22 done (RM20): long-lived species drift far less at unprotected CpGs (rate ~ lifespan^−1.4), but the shield's relative size holds or grows; catch-up is not supported.
 - R20 done (RM18): probe design in the strata shrinks blood's gaps by about a sixth, the Zhou mask changes nothing, no gap changes sign.
 - `figures species` records each group's unscaled gap and look-alike drift rate, and regresses the log rate and the relative gap on lifespan beside the gap (`outcome` column), for RM20's catch-up test.

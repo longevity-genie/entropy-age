@@ -4,7 +4,7 @@ import numpy as np
 import pytest
 
 from entropy_age.data.taxonomy import binomial, lineage_covariance, shared_depth
-from entropy_age.experiments.species_phylo import fit_lambda, gls
+from entropy_age.experiments.species_phylo import fit_lambda, gls, jackknife
 
 
 def test_binomial_drops_subspecies():
@@ -73,3 +73,15 @@ def test_a_species_in_several_tissues_does_not_make_the_fit_singular():
     lam = fit_lambda(y, x, c)
     assert 0.0 <= lam < 1.0
     assert np.isfinite(gls(y, x, c, lam)[0]).all()
+
+
+def test_jackknife_names_the_species_that_carries_a_slope():
+    rng = np.random.default_rng(4)
+    species = [f"s{i}" for i in range(20)]
+    x = np.column_stack([np.ones(20), np.linspace(0, 1, 20)])
+    y = rng.normal(0, 0.01, 20)
+    y[-1] += 1.0  # one species alone makes the slope
+    j = jackknife(y, x, species)
+    assert j["influential_species"] == "s19"
+    assert abs(j["coef_without"]) < 0.05
+    assert j["coef_min"] <= j["coef_without"] <= j["coef_max"]

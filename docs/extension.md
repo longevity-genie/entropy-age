@@ -619,6 +619,14 @@ relative gap stays flat for dispersion (p 0.34-0.62) and, for entropy, grows (ho
 p 0.04): long-lived species protect essential promoters by at least the same share. The ratio is noisy where
 look-alike drift is near zero, and those groups are left out (14-46 %).
 
+**The blood lean rests largely on one species.** A drop-one-species jackknife (`species_phylo`, columns
+`influential_species`, `coef_without`) shows human is the most influential species for blood's housekeeping
+entropy slope: without it, +0.085 (p 0.054) falls to +0.047 (p 0.30). The consortium's human blood shows a weak
+shield (−0.08 SD), unlike our human blood cohorts (Hannum −0.29); why is open (sample ages, array, cell mix).
+Within species that have both tissues (12 with blood and skin, 7 with blood and liver), there are too few to test
+the purging hypothesis (RM20, 2) on its own. So the evidence for a weaker shield in long-lived species is weak to
+begin with; RM20's hypotheses explain a pattern that is not firmly there.
+
 ## Interventions across mouse tissues (roadmap RM12)
 
 Figure `mmc_interventions` (run R13) scores every mouse of the consortium's intervention studies against its study's

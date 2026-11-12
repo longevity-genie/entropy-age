@@ -91,7 +91,7 @@ public data (one tissue, one protocol, many individuals across ages, processed c
 
 ## RM20 — Why would long life or CR weaken the shield?
 
-**State:** unattended · **Owner:** lead
+**State:** after RM16 · **Owner:** lead
 
 Progress: asked by antonkulaga (2026-11-12). The pattern: no lifespan effect overall (p 0.40), a lean toward a
 weaker shield in blood of long-lived species (p 0.054), CR weakening it in one blood study and not in liver,
@@ -105,7 +105,9 @@ Tet3 loss weakening it in brain. Hypotheses, each with its test:
    multi-species RNA, e.g. Fushan 2015, Ma 2016).
 4. Tet3 removes the protection directly, in non-dividing cells: a separate mechanism (done, R15-R16).
 - Done (R22): hypothesis 1 not supported: look-alike drift falls as lifespan^−1.4, but the relative gap holds or
-  grows. Next: hypothesis 2 (blood against skin and liver within species), then 3.
+  grows.
+- The blood lean rests largely on human (jackknife: +0.085 → +0.047 without it, p 0.30); 12 and 7 species
+  with paired tissues are too few for hypothesis 2. RM20 parks until the pattern is firmer (Anton told).
 
 ## RM16 — Selection by cellular fitness, in vivo
 
