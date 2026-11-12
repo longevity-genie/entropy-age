@@ -14,7 +14,7 @@ it out. Left: the same test in the culture series (EPIC manifest needed for the 
 doublings), and what cortex's two strongly age-tracking components are.
 ## RM12 — Selection pressure under interventions
 
-**State:** after RM19 · **Owner:** lead
+**State:** waits until 2026-11-13 · **Owner:** lead
 
 Progress: asked by antonkulaga (2026-11-11): do interventions change the shield through selection, apart from
 chromatin? What we have: in B6D2F1 blood CR weakens the shield by a quarter (within one sequencing series, robust
@@ -27,6 +27,8 @@ neither proof nor disproof. Tests that would separate selection from chromatin, 
 - Done (R16): under Tet3 loss essential CpGs gain methylation, but S rises in other arms too (array compression
   could do it); not specific yet.
 - Next: RM14's syndromes in human blood (built: `figures syndromes`).
+- Second model found (`docs/REPROG_TET_SURVEY.md`): GSE271375, Tet1 knockout and catalytic-dead cortex, 8 per
+  group, mouse array; then Dnmt3a gain of function (GSE324160). Next after the quota resets.
 - **The same intervention in a renewing and a non-renewing tissue of the same animals.** Selection predicts CR
   or rapamycin changes the shield in blood or gut and not in brain or muscle; chromatin predicts the same change
   (or none) everywhere. Search for a multi-tissue CR or rapamycin series with at least 8 animals per arm.
@@ -136,12 +138,14 @@ with two leads for it (CR in one blood study; human bone marrow and lymph node r
 
 ## RM17 — Partial reprogramming: does a reset restore the shield?
 
-**State:** after RM16 · **Owner:** lead
+**State:** waits until 2026-11-13 · **Owner:** lead
 
 Progress: asked by antonkulaga (2026-11-12). The consortium's OSKM arms are 2-5 mice (3.4F+7mDox kidney F −0.17,
 p 0.10; skin n.s.): too small. Public array series to find: maturation-phase transient reprogramming of human
 fibroblasts (Gill et al. 2022), in-vivo cyclic OSKM mice (Browder et al. 2022; Ocampo et al. 2016). Chromatin
 maintenance predicts the shield restored with the clock; selection predicts no change (no cells removed).
+- Survey done (`docs/REPROG_TET_SURVEY.md`). First: GSE190665 (Browder 2022, cyclic OSKM in vivo, 6 mouse
+  tissues, Mammal40 array as in the consortium, 2-7 mice per group, 49 MB); then GSE156557 (RRBS, 5 per group).
 
 ## RM14 — Natural experiments in chromatin: broken writers, knockouts, edits
 
