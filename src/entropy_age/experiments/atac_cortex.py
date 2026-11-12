@@ -267,13 +267,24 @@ def _figure(ctx: Context, result: pl.DataFrame) -> Path:
                 if p < 0.05:
                     ax.annotate("*", (x, yv), xytext=(4, -3), textcoords="offset points", fontsize=9)
         donors = dict(zip(sub["cell_type"], sub["donors"], strict=False))
-        ax.set_yticks([j + 0.2 for j in range(len(cells))], [f"{c} ({donors[c]})" for c in cells])
+        labels = [f"{c} ({donors[c]})" for c in cells] if i % 2 == 0 else [""] * len(cells)
+        ax.set_yticks([j + 0.2 for j in range(len(cells))], labels)
         ax.axvline(0, color=plots.MUTED, lw=0.8)
         ax.invert_yaxis()
-        ax.legend(fontsize=7, frameon=False)
+        if i == 0:
+            ax.legend(fontsize=7, frameon=False, loc="lower left")
         ax.set(
-            xlabel="Set minus matched promoter peaks (SD); < 0: spreads less with age",
-            title=f"Prefrontal cortex, per cell type: {adjustment}",
+            xlabel="Set minus matched peaks (SD)",
+            title=f"Adjusted for: {adjustment}",
         )
         plots.label_panel(ax, "abcd"[i])
+    fig.suptitle(
+        "Accessibility spread with age, prefrontal cortex cell types "
+        "(> 0: essential promoters spread more; * p < 0.05)",
+        x=0.02,
+        y=1.03,
+        ha="left",
+        fontsize=11,
+        fontweight="bold",
+    )
     return plots.save(fig, ctx.figure_path("atac_cortex"))
