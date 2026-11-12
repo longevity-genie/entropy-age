@@ -85,6 +85,22 @@ public data (one tissue, one protocol, many individuals across ages, processed c
   10 MB counts). Then Catching 2026 prefrontal cortex snATAC (362 donors, 15-100 y, Zenodo 18394349, 14.5 GB)
   and Zemke 2024 hippocampus (GSE278576, 40 donors). Controlled-access cohorts (Márquez 2020, CIMA) later.
 
+## RM20 — Why would long life or CR weaken the shield?
+
+**State:** after RM19 · **Owner:** lead
+
+Progress: asked by antonkulaga (2026-11-12). The pattern: no lifespan effect overall (p 0.40), a lean toward a
+weaker shield in blood of long-lived species (p 0.054), CR weakening it in one blood study and not in liver,
+Tet3 loss weakening it in brain. Hypotheses, each with its test:
+1. Catch-up: better fidelity everywhere lowers drift at unprotected CpGs toward the protected floor. Test: species
+   look-alike drift B per year and per lifespan fraction against lifespan; CR blood already shows B unchanged.
+2. Purging: part of the blood shield is selection in fast-renewing marrow; long life and CR damp proliferation.
+   Test: blood against skin and liver within species; rapamycin and GHRKO blood; RM16 clonal haematopoiesis.
+3. Investment: long-lived species favour genome-wide fidelity (DNMT1, UHRF1, repair) over targeted promoter
+   protection (TET, CFP1, H3K4me3). Test: cross-species expression of that machinery against lifespan (public
+   multi-species RNA, e.g. Fushan 2015, Ma 2016).
+4. Tet3 removes the protection directly, in non-dividing cells: a separate mechanism (done, R15-R16).
+
 ## RM16 — Selection by cellular fitness, in vivo
 
 **State:** after RM18 · **Owner:** lead
