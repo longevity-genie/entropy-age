@@ -4,6 +4,7 @@ Newest first.
 
 ## Unreleased
 
+- 2026-11-12: R38 written up: stochastic clocks are directed clocks with random timing; composition is a minor part of PhenoAge (C9 refuted as main explanation). E24, E25.
 - 2026-11-12: R36 and R37 written up: Tet3's gain is not compression; Dnmt3a W326R methylates Polycomb-type look-alikes. Evidence E22, E23.
 - 2026-11-12: R43 written up (RM30 done): methylation spread barely reaches expression spread in GTEx donors.
 - 2026-11-12: `drift_onset` (RM29): change point in methylation noise against age at sexual maturity across mammals; a null test guards against development read as an onset; run R45 planned.

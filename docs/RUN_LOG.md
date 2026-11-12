@@ -3,6 +3,21 @@
 Owned by the runner seat (`docs/seats/RUNNER.md`): one entry per run, newest first, with its inputs, the
 commit it ran, its job ids, its scale and seed, and its result or its failure with the cause.
 
+## R38 — the stochastic component of clocks, information stripped (RM23), 2026-11-12
+
+- Commit 9099a66; `figures stochastic_component --scale paper --seed 42`; 4 cores (resubmitted from 8; job
+  6435307 never started), 32 GB; job 6438042, 3 min 41 s. Hannum blood, 631 test donors; sklearn reported
+  non-convergence for some noise and shield fits (those clocks read no age anyway).
+- Result, as measured, RR2 = R²(stochastic) / R²(original) for Horvath / PhenoAge / Zhang 2019: published Stoc
+  clocks 0.67 / 0.65 / 0.89; Tong's model 0.64 / 0.85 / 0.86; direction only 0.71 / 0.70 / 0.80; undirected
+  noise 0.02 / 0.10 / 0.00; shield only 0.07 / 0.03 / 0.00. Correlation of the stochastic clock's acceleration with
+  the original's, before and after 11 of 12 cell fractions are removed (EAA -> IAA), PhenoAge: published StocP
+  0.44 -> 0.45, Tong model 0.51 -> 0.49.
+- Added on the login node from the run's cell fractions and Hannum betas (minutes, 2 threads): the share of each
+  clock's acceleration (residual on age) that the 11 fractions explain: PhenoAge 0.155, Horvath 0.049, Zhang 2019
+  0.043, Hannum 0.138, DunedinPACE 0.170; StocH 0.158, StocP 0.049, StocZ 0.072. Not yet in the module.
+- Tables in `data/output/stochastic_component/`. The figure's title runs past the right edge; to shorten.
+
 ## R37 — Dnmt3a gain of function (RM12), 2026-11-12
 
 - Commit 75469a1; `figures dnmt3a --scale paper --seed 42`; 4 cores (resubmitted from 8; job 6435278 never

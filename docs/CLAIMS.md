@@ -114,11 +114,13 @@ a test with little power), **refuted**.
 - **If true, we should see:** PhenoAge's acceleration and its gap to its stochastic twin shrink when 12 blood-cell
   fractions are removed.
 - **We should not see:** an unchanged non-stochastic part after composition is removed.
-- **Observed:** in Tong 2024, PhenoAge's COVID-19 acceleration vanishes with composition; our test running (R38).
+- **Observed:** in Tong 2024, PhenoAge's COVID-19 acceleration vanishes with composition. In Hannum (R38), 11 cell
+  fractions explain 15.5 % of PhenoAge's acceleration (4.9 % of StocP's); removing them leaves the two accelerations'
+  agreement unchanged (0.44 -> 0.45).
 - **Alternatives:** composition and intrinsic aging change together (inflammaging), so removing one removes part
   of the other.
-- **Separating test:** R38; sorted cells.
-- **Status:** open.
+- **Separating test:** sorted cells (R44, running).
+- **Status:** refuted as the main explanation; composition is a minor part of PhenoAge.
 
 ## C10 — Partial reprogramming does not restore the shield
 

@@ -1361,6 +1361,37 @@ rodent data are Shavlakadze et al. 2026 (Sci Adv), which with Tyshkovskiy 2026 (
 directed change; Ibañez-Solé 2022 (eLife) found no consistent rise of transcriptional noise with age, in line with
 the unshared noise order. Only the explicit rank comparison is ours.
 
+## Stochastic clocks are directed clocks with random timing (roadmap RM23)
+
+Tong et al. 2024 (Nature Aging) report that a clock retrained on simulated stochastic change keeps 66-89 % of its
+accuracy, and read that share as the clock's stochastic component. Their simulation is stochastic only in timing:
+each CpG moves at a rate set by its real age effect, always in the direction of that effect. Run R38 repeats it in
+Hannum blood for Horvath, PhenoAge and Zhang 2019 and strips information one piece at a time.
+
+| model | Horvath | PhenoAge | Zhang 2019 |
+|---|---|---|---|
+| published Stoc clocks | 0.67 | 0.65 | 0.89 |
+| Tong's model (own rate, own direction) | 0.64 | 0.85 | 0.86 |
+| one common rate, own direction | 0.71 | 0.70 | 0.80 |
+| one common rate, random direction (noise) | 0.02 | 0.10 | 0.00 |
+| noise, damped at shielded promoters | 0.07 | 0.03 | 0.00 |
+
+(share of the original clock's R² with age kept by the stochastic clock, RR2)
+
+- **We reproduce their numbers** (Horvath 0.64 against their 0.67).
+- **Direction carries it all.** Knowing only which way each CpG moves with age, at a common rate, keeps 70-80 % of
+  the clocks' accuracy. Undirected noise (Meyer and Schumacher's model, ours in the shield work) keeps 0-10 %, and
+  so does noise with the shield on top. A clock is a directed clock with random timing; undirected drift is
+  invisible to it, as it is to our own clocks (R33) and to the outcome clocks (R29).
+- **PhenoAge's non-stochastic part is not mainly composition (C9).** Eleven blood-cell fractions explain 15.5 % of
+  PhenoAge's acceleration (Horvath 4.9 %, Hannum 13.8 %, DunedinPACE 17 %), against 4.9 % for its stochastic twin
+  StocP; removing them leaves the agreement of the two accelerations where it was (0.44 -> 0.45). Composition is a
+  larger part of PhenoAge than of the clocks built for age, but a minor one.
+
+Reading for the programme: the noise the shield guards against is not what clocks count. Clocks count directed
+change, and the shield acts on undirected drift. The two are separable, which is why the shield can be strong
+where clocks tick fast (R29).
+
 ## Does methylation noise reach expression? Same GTEx donors (roadmap RM30)
 
 Idea 7 of `docs/BEYOND_SHIELD.md`; mean-level methylation-expression coupling in GTEx is published (Oliva 2023), the

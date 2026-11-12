@@ -12,13 +12,6 @@ grammar (`unattended`, `urgent`, `building`, `after <R-id>` or `after job <slurm
 - the roadmap item it serves (`RMn`);
 - what the lead needs back (a table, a figure, a number), and anything the run must not do.
 
-## R38 — the stochastic component of clocks, with information stripped (RM23)
-
-- What: `entropy-age fetch epidish` (done), `entropy-age figures stochastic_component --scale paper --seed 42`.
-- Resources: compute partition, 8 cores, 32 GB; time unknown (3 clocks x 4 modes x a 63-point calibration grid).
-- Read: `data/output/stochastic_component/fractions`: RR2 and the correlation with the original clock's intrinsic
-  acceleration per clock and model; the published Stoc clocks as the reference row.
-
 ## R39 — does the shield track health? cross-sectional (RM24)
 
 - What: `entropy-age figures health --scale paper --seed 42` (cohorts on disk: Lunnon, Jaffe, GSE41037, GTEx).
