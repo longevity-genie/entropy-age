@@ -7,8 +7,11 @@ person's age from methylation; their age acceleration is the clock's reading bey
 Per cohort (Hannum blood, Jaffe cortex) and person, this computes ``P`` as ``per_person`` does, and each published
 clock's linear predictor (``data.clocks``; the intercept and any output transform are monotone and drop out of a
 residual). Acceleration is the predictor's residual after age and the cohort's technical covariates; ``P`` is
-residualised alike. Their partial correlation answers the question: a positive one means people with faster
-clocks have a weaker shield. Clocks include Tong et al.'s stochastic clocks (StocH, StocP, StocZ), built from
+residualised alike. ``P`` subtracts the look-alikes' drift ``B``, and clocks are built mostly from drifting CpGs,
+so ``P`` (and ``F = P/B``) correlate negatively with acceleration by construction. The measures that answer the
+question are ``set drift`` (``P + B``, the essential CpGs' own drift), ``B`` alone, and ``P given B`` (the shield
+at equal overall drift): a positive ``P given B`` means people with faster clocks have a weaker shield than their
+drift predicts. Clocks include Tong et al.'s stochastic clocks (StocH, StocP, StocZ), built from
 age-associated noise.
 
 ``entropy-age figures shield_clocks`` (after ``fetch clocks`` and the cohorts of ``figures per_person``).
@@ -105,8 +108,16 @@ def run(ctx: Context) -> list[Path]:
                 if used < 10:
                     continue
                 for group in SETS:
-                    for measure in ("P", "F"):
-                        r, pval, n = partial_r(scores[f"{measure}_{group}"].to_numpy(), score, design)
+                    pp, bb = scores[f"P_{group}"].to_numpy(), scores[f"B_{group}"].to_numpy()
+                    tests = {
+                        "P": (pp, design),
+                        "F": (scores[f"F_{group}"].to_numpy(), design),
+                        "B": (bb, design),
+                        "set drift": (pp + bb, design),
+                        "P given B": (pp, np.column_stack([design, bb])),
+                    }
+                    for measure, (value, d) in tests.items():
+                        r, pval, n = partial_r(value, score, d)
                         rows.append(
                             {
                                 "cohort": cohort,
@@ -129,7 +140,7 @@ def run(ctx: Context) -> list[Path]:
 
 
 def _figure(ctx: Context, table: pl.DataFrame) -> Path:
-    sel = table.filter((pl.col("measure") == "P") & (pl.col("group") == "housekeeping"))
+    sel = table.filter((pl.col("measure") == "P given B") & (pl.col("group") == "housekeeping"))
     fig, axes = plots.panels(2, ncols=2, size=4.6)
     for i, cohort in enumerate(("blood", "cortex")):
         ax = axes[i]
@@ -147,7 +158,7 @@ def _figure(ctx: Context, table: pl.DataFrame) -> Path:
         ax.invert_yaxis()
         ax.legend(fontsize=7, frameon=False)
         ax.set(
-            xlabel="Partial r: shield score P with clock acceleration",
+            xlabel="Partial r: shield P at equal drift B, with clock acceleration",
             title={"blood": "Hannum blood", "cortex": "Jaffe cortex"}[cohort],
         )
         plots.label_panel(ax, "ab"[i])
