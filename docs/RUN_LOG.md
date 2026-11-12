@@ -3,6 +3,25 @@
 Owned by the runner seat (`docs/seats/RUNNER.md`): one entry per run, newest first, with its inputs, the
 commit it ran, its job ids, its scale and seed, and its result or its failure with the cause.
 
+## R37 — Dnmt3a gain of function (RM12), 2026-11-12
+
+- Commit 75469a1; `figures dnmt3a --scale paper --seed 42`; 4 cores (resubmitted from 8; job 6435278 never
+  started), 32 GB; job 6438041, 19 s.
+- Result, as measured (12 W326R/+ against 12 wild types per tissue, age group held, CpGs centred on wild types of
+  each age): shield share F -0.53 to -0.61 for core essential and housekeeping sets in bone marrow, intestine and
+  liver (all p < 1e-16), +0.56 to +0.67 for non-essential; drift B +0.06 to +0.10 everywhere; signed shift S
+  -0.06 to -0.09 for essential and housekeeping, +0.07 to +0.09 for non-essential. Tables in
+  `data/output/dnmt3a_gain/`.
+
+## R36 — Tet3 signed shift with array compression held (RM18), 2026-11-12
+
+- Commit 5b769d5; `figures mmc_interventions --scale paper --seed 42`; 4 cores (resubmitted from 8; job 6435202
+  never started), 16 GB; job 6438040, 1 min 26 s.
+- Result, as measured (core essential, S raw -> S with compression mean |beta - 0.5| as a covariate): Tet3 cortex
+  against same-chip littermates +0.0120 -> +0.0101 (p 0.003), striatum +0.0142 -> +0.0128 (p 0.001); pooled
+  controls cortex +0.0116 -> +0.0107. Other arms shift S too, in both directions: GHRKO kidney +0.023, GHRKO
+  cortex -0.010, high-fat liver -0.005. Table `data/output/mmc_interventions/effects`.
+
 ## R42 and R45 — failed once each, 2026-11-12
 
 - R42 (survival, Vitality 90+; commit c4691ff; job 6436543) failed after 1 min 30 s: a score with missing values

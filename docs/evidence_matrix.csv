@@ -20,3 +20,5 @@ E18,Brain accessibility reverses and does not replicate,R24 R27,-1,0,0,0,0,0,2,0
 E19,Reprogramming does not restore it,R32,0,0,0,0,0,0,0,0,0
 E20,PhenoAge COVID acceleration is composition,Tong 2024,0,0,0,0,1,0,0,2,0
 E21,Clocks from shielded CpGs are as accurate as from look-alikes,R33,0,0,0,0,-1,0,0,0,0
+E22,Tet3 gain at essential promoters survives compression held,R36,1,0,0,1,0,0,-2,0,0
+E23,Dnmt3a W326R methylates Polycomb-type look-alikes not essential CpGs,R37,2,-1,0,0,0,0,0,0,1

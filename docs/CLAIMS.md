@@ -58,9 +58,10 @@ a test with little power), **refuted**.
   methylation (S +0.012, +0.014); Tet1 loss strengthens the shield instead (R35).
 - **Alternatives:** (a) array compression lifting the lowest CpGs (S also rose in other arms); (b) a shift of
   neuron and glia proportions in Tet3 mice; (c) one study, 8 mice per tissue; different arrays for Tet1 and Tet3.
-- **Separating test:** S with compression held fixed (R36, running); composition components; a Tet3 knockout on
-  the same platform; sorted neurons.
-- **Status:** weak (one study); (a) being tested.
+- **Separating test:** S with compression held fixed (R36): the gain stays (+0.010 cortex, +0.013 striatum), so
+  (a) is excluded; composition components; a Tet3 knockout on the same platform; sorted neurons.
+- **Status:** weak (one study); (a) excluded. Dnmt3a W326R (R37) retargets methylation to Polycomb-type look-alikes:
+  writers are aimed by chromatin (C2).
 
 ## C5 — Broken chromatin writers add noise but keep the shield
 

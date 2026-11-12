@@ -1,6 +1,4 @@
 id,test,status,targets
-P2,Tet3 shift with array compression held fixed (R36),queued,H4;A2
-P3,Dnmt3a gain of function over four ages (R37),queued,H4;H1
 P4,Tong's stochastic clocks with information stripped (R38),queued,H5;A3
 P5,Read-level WGBS of 23 blood donors (Loyfer 2023),next,A1;A2;H1
 P6,Finer level matching in the lowest decile,next,A1

@@ -704,6 +704,28 @@ random background CpGs (about 38,000 each).
   promoters run ahead are partly different people. Whether that acceleration carries different health
   information needs an outcome cohort.
 
+## Tet3's gain is not array compression; Dnmt3a W326R methylates the look-alikes (roadmap RM12, RM18)
+
+**Tet3 (run R36).** Tet3 heterozygous brain gained methylation at essential promoters (S +0.012 cortex, +0.014
+striatum, against same-chip littermates). One alternative was array compression: a chip that squeezes betas toward
+the middle lifts CpGs near 0 % in every arm. With each animal's compression (mean |beta - 0.5|) held fixed, the gain
+stays: +0.010 cortex (p 0.003), +0.013 striatum (p 0.001). Other arms shift S too, in both directions (GHRKO kidney
++0.023, GHRKO cortex -0.010), so a signed shift is not unique to Tet3, but Tet3's is not a compression artefact.
+
+**Dnmt3a gain of function (run R37).** The opposite direction to TET loss: mice carrying Dnmt3a W326R/+, against
+littermates at four ages, in bone marrow, intestine and liver (GSE324160, Sarni et al. 2026). The effects are the
+largest in this project and identical in all three tissues: essential and housekeeping CpGs fall relative to their
+look-alikes (S -0.06 to -0.09), non-essential CpGs rise (S +0.07 to +0.09), drift B rises everywhere (+0.06 to
++0.10), and the shield share F moves by -0.6 (essential) and +0.6 (non-essential).
+
+Reading: this is not a stronger shield against noise. W326R sits in the PWWP domain, which normally reads
+H3K36me2/3 in gene bodies; the mutant is reported to go to Polycomb (H3K27me3) islands instead (to verify: Heyn
+2019, Sendžikaitė 2019). The look-alikes of essential CpGs are unmethylated islands, many of them Polycomb
+targets, and non-essential (developmental) genes are Polycomb targets themselves; both gain methylation, so active
+essential promoters look protected by comparison. A writer is aimed by chromatin, and the essential promoters'
+chromatin keeps it out. That supports H1 (chromatin decides where methylation changes), and it is a warning for
+the matched gap: a perturbation that hits the look-alikes moves F as much as one that hits the set.
+
 ## A second machinery model: Tet1 loss does not remove the shield (roadmap RM12)
 
 Figure `tet1` (run R35) scores adult cortex of Tet1 knockout and Tet1 catalytic-dead (HxD) mice against wild
