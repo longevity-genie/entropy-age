@@ -22,11 +22,11 @@ from entropy_age.stochasticity import dispersion_levels
 MANIFEST_450K = """Illumina, Inc.
 [Heading],,
 [Assay],,
-IlmnID,Name,CHR,MAPINFO,Forward_Sequence,UCSC_RefGene_Name,UCSC_RefGene_Accession,UCSC_RefGene_Group,Relation_to_UCSC_CpG_Island
-cg01,cg01,1,15865,AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA[CG]AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,AARS;AARS,NM_001605;NM_001605,TSS200;Body,Island
-cg02,cg02,2,534242,AAAAAAAAAAAAAAAAAAAAAAAAAAAAAACGAAAAA[CG]AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,ZZZ;NEWHK,NR_1;NM_555555,Body;TSS1500,N_Shore
-cg03,cg03,3,,,,,,
-cg04,cg04,X,710097,AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAG[CG]AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,AARS,NM_001605,3'UTR,Island
+IlmnID,Name,Infinium_Design_Type,CHR,MAPINFO,Forward_Sequence,UCSC_RefGene_Name,UCSC_RefGene_Accession,UCSC_RefGene_Group,Relation_to_UCSC_CpG_Island
+cg01,cg01,I,1,15865,AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA[CG]AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,AARS;AARS,NM_001605;NM_001605,TSS200;Body,Island
+cg02,cg02,II,2,534242,AAAAAAAAAAAAAAAAAAAAAAAAAAAAAACGAAAAA[CG]AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,ZZZ;NEWHK,NR_1;NM_555555,Body;TSS1500,N_Shore
+cg03,cg03,II,3,,,,,,
+cg04,cg04,I,X,710097,AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAG[CG]AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,AARS,NM_001605,3'UTR,Island
 [Controls],,
 ctl,1
 """
@@ -43,6 +43,7 @@ def test_450k_manifest_links_and_promoters(tmp_path: Path):
     # solo-WCGW: A/T on both sides and no other CpG within 35 bp (cg02 has one 5 bp away, cg04 a G before the C)
     assert probes["solo_wcgw"].to_list() == [True, False, False, False]
     assert probes["island_relation"].to_list()[2] == "OpenSea"
+    assert probes["probe_type"].to_list() == ["I", "II", "II", "I"]
     # promoter if ANY of the CpG's genes has it in TSS1500/TSS200/5'UTR/1stExon
     assert probes["promoter"].to_list() == [True, True, False, False]
     pairs = set(zip(links["cpg"].to_list(), links["symbol"].to_list(), links["region"].to_list(), strict=True))
