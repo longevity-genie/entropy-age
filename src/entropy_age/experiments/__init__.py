@@ -5,6 +5,7 @@ from pathlib import Path
 
 from entropy_age.experiments import (
     atac_cortex,
+    atac_hippocampus,
     atac_variance,
     atlas_real_data,
     bxd_liver,
@@ -61,6 +62,7 @@ FIGURES: dict[str, Callable[[Context], list[Path]]] = {
     "species": species_shield.run,
     "atac_variance": atac_variance.run,
     "atac_cortex": atac_cortex.run,
+    "atac_hippocampus": atac_hippocampus.run,
     "species_phylo": species_phylo.run,
     "mmc_interventions": consortium_interventions.run,
     "syndromes": syndromes.run,
