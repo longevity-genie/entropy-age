@@ -14,7 +14,7 @@ it out. Left: the same test in the culture series (EPIC manifest needed for the 
 doublings), and what cortex's two strongly age-tracking components are.
 ## RM12 — Selection pressure under interventions
 
-**State:** waits until 2026-11-13 · **Owner:** lead
+**State:** unattended · **Owner:** lead
 
 Progress: asked by antonkulaga (2026-11-11): do interventions change the shield through selection, apart from
 chromatin? What we have: in B6D2F1 blood CR weakens the shield by a quarter (within one sequencing series, robust
@@ -29,6 +29,8 @@ neither proof nor disproof. Tests that would separate selection from chromatin, 
 - Next: RM14's syndromes in human blood (built: `figures syndromes`).
 - Second model found (`docs/REPROG_TET_SURVEY.md`): GSE271375, Tet1 knockout and catalytic-dead cortex, 8 per
   group, mouse array; then Dnmt3a gain of function (GSE324160). Next after the quota resets.
+- Done (R35): Tet1 knockout and catalytic-dead cortex keep or strengthen the shield while drifting more;
+  the opposite of Tet3. Next: Dnmt3a gain of function (GSE324160).
 - **The same intervention in a renewing and a non-renewing tissue of the same animals.** Selection predicts CR
   or rapamycin changes the shield in blood or gut and not in brain or muscle; chromatin predicts the same change
   (or none) everywhere. Search for a multi-tissue CR or rapamycin series with at least 8 animals per arm.

@@ -3,6 +3,14 @@
 Owned by the runner seat (`docs/seats/RUNNER.md`): one entry per run, newest first, with its inputs, the
 commit it ran, its job ids, its scale and seed, and its result or its failure with the cause.
 
+## R35 — Tet1 knockout and catalytic-dead cortex (RM12), 2026-11-12
+
+- Commit 3d9c573; `figures tet1 --scale paper --seed 42`; 8 cores, 32 GB; job 6434508. 24 animals, 65,779
+  promoter CpGs.
+- Result, as measured (against 8 wild types; raw / 3 components): KO housekeeping B +0.033/+0.040, F
+  −0.130/−0.105, S −0.018/−0.018; core-essential F −0.170/−0.135; Hxd housekeeping F −0.130/−0.125, B +0.029/+0.031;
+  all p ≤ 0.014.
+
 ## R34 — Tet1 knockout and catalytic-dead cortex (RM12), 2026-11-12
 
 - Commit 4cb8a47; failed after 8 s: the betas file writes missing values as `NA`. Read as missing now; rerun R35.

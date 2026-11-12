@@ -690,6 +690,25 @@ removed, in Hannum blood (632) and Jaffe cortex (159).
 
 Tables: `data/output/shield_clocks/correlations` (measures P, F, B, set drift, P given B).
 
+## A second machinery model: Tet1 loss does not remove the shield (roadmap RM12)
+
+Figure `tet1` (run R35) scores adult cortex of Tet1 knockout and Tet1 catalytic-dead (HxD) mice against wild
+types (Foong et al. 2024, GSE271375; 8 each; mouse array, bisulfite), as the Tet3 mice were scored.
+
+![Tet1](figures/tet1_cortex.png)
+
+* **The opposite of Tet3.** Both mutants drift more overall (B +0.03 to +0.04), but essential promoters keep or
+  gain their protection (F −0.11 to −0.17, p < 0.001) and sit lower than their look-alikes (S −0.02): the extra
+  methylation lands on unprotected CpGs. The catalytic-dead mutant matches the knockout, so this is Tet1's
+  enzyme activity.
+* **So the shield is not "TET activity" in general.** Halving Tet3 (the TET most active in neurons, which keeps
+  their promoters unmethylated) removed it; losing Tet1 adds noise elsewhere. The machinery that guards essential
+  promoters is specific, or redundant except for Tet3 in neurons.
+* Cautions: one study each; Tet3 was heterozygous on the mammalian array, Tet1 homozygous on the mouse array;
+  ages of the Tet1 mice are not in GEO.
+
+Tables: `data/output/tet1_cortex/effects`.
+
 ## Partial reprogramming does not restore the shield (roadmap RM17)
 
 Figure `reprogramming` (run R32) scores the mice of Browder et al. 2022 (GSE190665; cyclic OSKM in vivo for 1, 7

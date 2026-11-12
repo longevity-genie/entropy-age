@@ -19,12 +19,6 @@ grammar (`unattended`, `urgent`, `building`, `after <R-id>` or `after job <slurm
   elastic-net CV on a few thousand CpGs).
 - Read: `data/output/own_clocks/accuracy` (r, median absolute error per pool) and `acceleration_overlap`.
 
-## R35 — Tet1 knockout and catalytic-dead cortex (RM12)
-
-- What: `entropy-age figures tet1 --scale paper --seed 42` (GSE271375 betas on disk).
-- Resources: compute partition, 8 cores, 32 GB; minutes.
-- Read: `data/output/tet1_cortex/effects`: F of KO and Hxd against WT; Tet3 heterozygotes lost the shield.
-
 ## R36 — Tet3 signed shift with array compression held fixed (RM18)
 
 - What: `entropy-age figures mmc_interventions --scale paper --seed 42` (GSE223748 on disk).
