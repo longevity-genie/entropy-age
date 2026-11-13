@@ -141,16 +141,14 @@ def _count_one(job: tuple[str, np.ndarray, str]) -> str:
     return cache
 
 
-def run(ctx: Context) -> list[Path]:
-    folder = ctx.paths.input / "geo" / GSE
-    if not (ctx.paths.interim / INDEX).exists() or not folder.exists():
-        print("read_level: CpG index or GSE186458 files missing. Nothing run.", file=sys.stderr)
-        return []
-    plots.apply_style()
-    out = ctx.out_dir("read_level")
-    donors = read_donors(folder).sort("age")
-    features, probes, membership = _features(ctx.paths, ctx.rng(140_000))
-    windows = probe_windows(ctx.paths, features)
+SOURCES = {"white blood cells": "", "cfDNA": "cfdna"}
+
+
+def _source_table(ctx, folder: Path, windows: pl.DataFrame, probes, membership, out: Path, tag: str):
+    """Window metrics and set-against-look-alike gaps for the donors under ``folder``; None without donors."""
+    donors = read_donors(folder).sort("age") if folder.exists() else pl.DataFrame()
+    if donors.height < MIN_DONORS:
+        return None
     starts = windows["start"].to_numpy()
     cache_dir = ctx.paths.interim / "read_level"
     cache_dir.mkdir(parents=True, exist_ok=True)
@@ -159,7 +157,7 @@ def run(ctx: Context) -> list[Path]:
         for s, p in donors.select("sample", "pat").iter_rows()
     ]
     workers = int(os.environ.get("SLURM_CPUS_PER_TASK", "2"))
-    print(f"read_level: {donors.height} donors, {starts.size} windows, {workers} workers", file=sys.stderr, flush=True)
+    print(f"read_level: {tag}: {donors.height} donors, {starts.size} windows", file=sys.stderr, flush=True)
     with ProcessPoolExecutor(workers) as pool:
         caches = list(pool.map(_count_one, jobs))
     per = [window_metrics(np.load(c)) for c in caches]
@@ -180,7 +178,8 @@ def run(ctx: Context) -> list[Path]:
         .drop_nulls()
         .filter(pl.all_horizontal(pl.col(METRICS).is_not_nan()))
     )
-    write_table(metrics, out / "windows")
+    suffix = "" if not SOURCES[tag] else f"_{SOURCES[tag]}"
+    write_table(metrics, out / f"windows{suffix}")
     table = _matched_sd(
         _with_strata(metrics, probes),
         membership.filter(pl.col("feature").is_in(metrics["feature"])),
@@ -188,30 +187,61 @@ def run(ctx: Context) -> list[Path]:
         1000,
         ctx.seed,
     )
-    write_table(table.with_columns(donors=pl.lit(donors.height)), out / "gaps")
-    print(f"read_level: {metrics.height} windows with coverage", file=sys.stderr, flush=True)
+    print(f"read_level: {tag}: {metrics.height} windows with coverage", file=sys.stderr, flush=True)
+    return table.with_columns(source=pl.lit(tag), donors=pl.lit(donors.height))
+
+
+def run(ctx: Context) -> list[Path]:
+    folder = ctx.paths.input / "geo" / GSE
+    if not (ctx.paths.interim / INDEX).exists() or not folder.exists():
+        print("read_level: CpG index or GSE186458 files missing. Nothing run.", file=sys.stderr)
+        return []
+    plots.apply_style()
+    out = ctx.out_dir("read_level")
+    features, probes, membership = _features(ctx.paths, ctx.rng(140_000))
+    windows = probe_windows(ctx.paths, features)
+    tables = [
+        t
+        for tag, sub in SOURCES.items()
+        if (t := _source_table(ctx, folder / sub if sub else folder, windows, probes, membership, out, tag)) is not None
+    ]
+    table = pl.concat(tables)
+    write_table(table, out / "gaps")
     return [_figure(ctx, table)]
 
 
 def _figure(ctx: Context, table: pl.DataFrame) -> Path:
-    fig, axes = plots.panels(1, ncols=1, size=4.6)
-    ax = axes[0]
+    sources = table["source"].unique(maintain_order=True).to_list()
+    fig, axes = plots.panels(len(sources), ncols=len(sources), size=4.6)
     groups = [g for g in ("core_essential", "housekeeping", "non_essential") if g in table["group"].unique()]
-    for i, group in enumerate(groups):
-        t = table.filter(pl.col("group") == group)
-        ax.barh(
-            np.arange(t.height) + 0.27 * i,
-            t["matched_diff_sd"],
-            height=0.25,
-            color=plots.PALETTE[i],
-            label=group.replace("_", " "),
+    for k, source in enumerate(sources):
+        ax = axes[k]
+        sub = table.filter(pl.col("source") == source)
+        for i, group in enumerate(groups):
+            t = sub.filter(pl.col("group") == group)
+            ax.barh(
+                np.arange(t.height) + 0.27 * i,
+                t["matched_diff_sd"],
+                height=0.25,
+                color=plots.PALETTE[i],
+                label=group.replace("_", " "),
+            )
+        names = sub.filter(pl.col("group") == groups[0])["metric"].to_list()
+        ax.set_yticks(
+            np.arange(len(names)) + 0.27, [m.replace("_", " ") for m in names] if k == 0 else [""] * len(names)
         )
-    ax.set_yticks(
-        np.arange(len(METRICS)) + 0.27,
-        [m.replace("_", " ") for m in table.filter(pl.col("group") == groups[0])["metric"].to_list()],
+        ax.axvline(0, color=plots.MUTED, lw=0.8)
+        ax.invert_yaxis()
+        if k == 0:
+            ax.legend(fontsize=7)
+        ax.set(xlabel="set minus look-alikes (SD)", title=f"{source} ({sub['donors'][0]} donors)")
+        plots.label_panel(ax, "ab"[k])
+    fig.suptitle(
+        "Molecule-level disorder at essential promoters, read-level WGBS (Loyfer 2023)",
+        x=0.02,
+        y=1.04,
+        ha="left",
+        fontsize=11,
+        fontweight="bold",
     )
-    ax.axvline(0, color=plots.MUTED, lw=0.8)
-    ax.invert_yaxis()
-    ax.legend(fontsize=7)
-    ax.set(xlabel="set minus look-alikes (SD)", title="Molecule-level disorder, white blood cells (Loyfer 2023)")
     return plots.save(fig, ctx.figure_path("read_level"))
