@@ -123,7 +123,7 @@ maintenance predicts the shield restored with the clock; selection predicts no c
 
 ## RM14 — Natural experiments in chromatin: broken writers, knockouts, edits
 
-**State:** unattended · **Owner:** lead
+**State:** waits until a qualifying cohort is found · **Owner:** lead
 
 Progress: asked by antonkulaga (2026-11-11): cell lines tell little about clocks; can public data show what
 happens when chromatin is changed? Three sources, in order:
@@ -137,9 +137,10 @@ Rule: a cohort with at least 10 carriers and matched controls on one platform.
 - Done (R18): Sotos, NSD1 variants, Weaver, Kabuki and CHARGE carriers drift more in blood but keep the shield
   (F unchanged or more negative); KMT2D and CHD7 variants show nothing within the controls' ages.
 - Next: the DNMT3A loss-against-gain pair below; a TET2 or TET3 human cohort if one exists.
-- Found, below the rule: DNMT3A loss of function (TBRS) GSE128801, 5 carriers against 7 controls; DNMT3A gain
-  of function (microcephalic dwarfism) GSE120428, 4 against 5 in blood. Together a loss-against-gain contrast of
-  one writer; read only as a pair, after R17.
+- Checked and not run (2026-11-13): the DNMT3A pair is smaller than listed. GSE120428's blood holds 2 TBRS
+  carriers, 1 person with the gain-of-function dwarfism and 2 controls (its fibroblasts are replicates of one
+  patient); GSE128801 is one family, 5 TBRS carriers against 7 relatives. A gain arm of one cannot be read.
+- Waits until a TET2, TET3 or DNMT3A cohort meeting the rule (10+ carriers, matched controls) is found.
 
 ## RM3 — Interventions: replicate the CR result
 
