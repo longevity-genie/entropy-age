@@ -65,6 +65,9 @@ floor of near-0 % essential promoters; (5) the shield score against Seeboth 2020
 - (1) done (R58): within genes expressed in 50+ GTEx tissues, DepMap essentiality still predicts less drift with
   chromatin state, expression and breadth held (blood entropy 0.022 SD per unit, cortex 0.018-0.027), a tenth or
   less of the raw contrast, in cortex too. Next: (2) absolute drift slopes beside the CR share.
+- (2) answered: the CR tables give drift B beside F; CR does not slow absolute drift in the within-batch series
+  (B6D2F1 B −0.004, p 0.37; −0.008 with 5 components, p 0.12; R55), so its effect is on the share, not the rate.
+- (4) running (R59, `figures species_floor`): species gaps and the lifespan fit on CpGs at 10-90 % only.
 
 ## RM18 — Normalization and probe robustness
 
