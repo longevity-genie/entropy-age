@@ -4,6 +4,7 @@ Newest first.
 
 ## Unreleased
 
+- 2026-11-13: RM20 noted: hypothesis 2 tested three ways without support (R55-R57); RM13 (3) waits for read-level culture data.
 - 2026-11-13: RM14's DNMT3A loss-against-gain pair checked and not run (gain arm of one in blood); RM14 waits for a cohort meeting its rule.
 - 2026-11-13: R60 written up: the contrast scores halve the batch excess of drift B; smoking moves only S; chemotherapy moves F against B.
 - 2026-11-13: `score_confounders` (RM13 (5), Seeboth 2020): smoking, array, slide, diagnosis and chemotherapy against the per-person B, F and S in SATSA and SJLIFE; R60 submitted.

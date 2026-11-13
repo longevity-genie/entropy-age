@@ -29,6 +29,7 @@ floor of near-0 % essential promoters; (5) the shield score against Seeboth 2020
 - (2) answered: the CR tables give drift B beside F; CR does not slow absolute drift in the within-batch series
   (B6D2F1 B −0.004, p 0.37; −0.008 with 5 components, p 0.12; R55), so its effect is on the share, not the rate.
 - (4) running (R59, `figures species_floor`): species gaps and the lifespan fit on CpGs at 10-90 % only.
+- (3) no read-level culture series at hand (the passage series are arrays); waits for one.
 - (5) done (R60): slide batch explains 36 % of B against 13 % by chance, 20-23 % of F and S; smoking moves only S;
   chemotherapy moves F against B (alkylating F −0.16, anthracyclines +0.21). Batch must be held in every use.
 
@@ -88,6 +89,9 @@ Tet3 loss weakening it in brain. Hypotheses, each with its test:
   grows.
 - The blood lean rests largely on human (jackknife: +0.085 → +0.047 without it, p 0.30); 12 and 7 species
   with paired tissues are too few for hypothesis 2. RM20 parks until the pattern is firmer (Anton told).
+- Since (2026-11-13): hypothesis 2 tested three ways without support: the CR effect goes mostly with chromatin
+  openness (R55), a second CR blood series does not repeat it (R56), a transplant bottleneck changes nothing
+  specific to essential genes (R57). The pattern got weaker, not firmer; hypothesis 3 is the one left untested.
 
 ## RM28 — Does the shield (and drift) predict death and disease? Open follow-up cohorts
 
