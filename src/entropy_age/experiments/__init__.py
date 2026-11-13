@@ -116,6 +116,7 @@ FIGURES: dict[str, Callable[[Context], list[Path]]] = {
     "meer_tissues": meer_tissues.run,
     "clock_weights": clock_weights.run,
     "gill_reprogramming": gill_reprogramming.run,
+    "satsa_idats": within_person.run_idats,
     "tissue_pace": tissue_pace.run,
     "organ_coupling": organ_coupling.run,
     "survival": survival_shield.run,

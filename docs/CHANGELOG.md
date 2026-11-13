@@ -4,6 +4,7 @@ Newest first.
 
 ## Unreleased
 
+- `figures satsa_idats` (RM28): the within-person analysis on SATSA's 450k waves reprocessed from their IDATs (E-MTAB-7309); `within_person` split into loaders and a shared `analyse`.
 - `figures gill_reprogramming` (RM17): Gill 2022 transient reprogramming of human fibroblasts from IDATs; reprogrammed against failed and controls within donor.
 - `docs/PREPROCESSING_PRACTICE.md`: array preprocessing practice against this project's design (RM18 item 5); RM18 done and off the roadmap, RM17, RM19 and RM28 unattended.
 - R61 written up: Jaffe cortex reprocessed from its IDATs keeps every essential-set gap below zero (RM18 item 3); `reprocessed_jaffe` figure legend below the axis.

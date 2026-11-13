@@ -49,3 +49,19 @@ def test_person_slopes_report_within_and_between():
     people = pl.DataFrame({"person": person, "age": age, "epic": np.tile([False, True], 100)})
     rows = person_slopes(people, {"m": 0.05 * age + rng.normal(scale=0.2, size=age.size)}, rng)
     assert rows[0]["within_per_decade"] > 0 and rows[0]["low"] > 0 and rows[0]["people"] == 100
+
+
+def test_read_sdrf_keeps_green_channel(tmp_path):
+    from entropy_age.experiments.within_person import read_sdrf
+
+    head = "Source Name\tCharacteristics[individual]\tCharacteristics[age]\tCharacteristics[sex]\tLabel\tAssay Name\n"
+    rows = [
+        "S1\tIND_1\t60.5\tfemale\tCy3\t97_R01C01_Grn\n",
+        "S1\tIND_1\t60.5\tfemale\tCy5\t97_R01C01_Red\n",
+        "S2\tIND_1\t70.1\tfemale\tCy3\t98_R02C01_Grn\n",
+    ]
+    path = tmp_path / "s.sdrf.txt"
+    path.write_text(head + "".join(rows))
+    s = read_sdrf(path)
+    assert s["sample"].to_list() == ["97_R01C01", "98_R02C01"] and s["person"].to_list() == ["IND_1", "IND_1"]
+    assert not s["epic"].any() and s["female"].all()

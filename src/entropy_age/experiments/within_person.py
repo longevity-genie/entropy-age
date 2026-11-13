@@ -166,16 +166,58 @@ def run(ctx: Context) -> list[Path]:
         print(f"within_person: {STUDY} tables missing. Nothing run.", file=sys.stderr)
         return []
     plots.apply_style()
-    out = ctx.out_dir("within_person")
     people = read_people(folder / "SATSA_pheno.txt")
     features, probes, membership = _features(ctx.paths, ctx.rng(140_000))
     cpgs, x = read_rows(tables, set(features), people["sample"].to_list())
+    return analyse(ctx, people, cpgs, x, probes, membership, "within_person", "SATSA")
+
+
+def read_sdrf(sdrf: Path) -> pl.DataFrame:
+    """One row per array of ArrayExpress E-MTAB-7309: ``sample`` (sentrix_position), ``person``, ``age``, ``female``,
+    ``epic`` (all 450k)."""
+    t = pl.read_csv(sdrf, separator="\t", infer_schema_length=0)
+    t = t.filter(pl.col("Label") == "Cy3")
+    return (
+        t.select(
+            pl.col("Assay Name").str.replace(r"_Grn$", "").alias("sample"),
+            pl.col("Characteristics[individual]").alias("person"),
+            pl.col("Characteristics[age]").cast(pl.Float64).alias("age"),
+            (pl.col("Characteristics[sex]") == "female").alias("female"),
+        )
+        .with_columns(epic=pl.lit(False))
+        .unique(subset="sample", keep="first")
+        .sort("person", "age")
+    )
+
+
+IDAT_BETAS = "cohorts/satsa_betas_sesame.parquet"
+SDRF = "arrayexpress/E-MTAB-7309/E-MTAB-7309.sdrf.txt"
+
+
+def run_idats(ctx: Context) -> list[Path]:
+    """The same analysis on SATSA's 450k waves reprocessed from their IDATs (E-MTAB-7309; run R66a)."""
+    path, sdrf = ctx.paths.interim / IDAT_BETAS, ctx.paths.input / SDRF
+    if not path.exists() or not sdrf.exists():
+        print(f"satsa_idats: {path} or {sdrf} missing (run R66a). Nothing run.", file=sys.stderr)
+        return []
+    plots.apply_style()
+    have = set(pl.read_parquet_schema(path))
+    people = read_sdrf(sdrf).filter(pl.col("sample").is_in(list(have)))
+    features, probes, membership = _features(ctx.paths, ctx.rng(140_000))
+    frame = (
+        pl.scan_parquet(path).select("cpg", *people["sample"].to_list()).filter(pl.col("cpg").is_in(features)).collect()
+    )
+    x = frame.drop("cpg").to_numpy().T.astype(float)
+    return analyse(ctx, people, frame["cpg"].to_list(), x, probes, membership, "satsa_idats", "SATSA from IDATs")
+
+
+def analyse(ctx, people, cpgs, x, probes, membership, name: str, label: str) -> list[Path]:
+    """Pair metrics, gaps, the cross-sectional control and per-person slopes; tables under ``name``."""
+    out = ctx.out_dir(name)
     ok = ~np.isnan(x).any(axis=0)
     cpgs = [c for c, k in zip(cpgs, ok, strict=True) if k]
     x = x[:, ok]
-    print(
-        f"within_person: {people.height} draws, {people['person'].n_unique()} people, {len(cpgs)} CpGs", file=sys.stderr
-    )
+    print(f"{name}: {people.height} draws, {people['person'].n_unique()} people, {len(cpgs)} CpGs", file=sys.stderr)
     age, epic, person = people["age"].to_numpy(), people["epic"].to_numpy(), people["person"].to_numpy()
     first, second = consecutive_pairs(person, age)
     m = pair_metrics(x, age, epic, first, second)
@@ -202,7 +244,7 @@ def run(ctx: Context) -> list[Path]:
     cross = _matched_sd(_with_strata(cross, probes), membership, LIFESPAN_METRICS, 1000, ctx.seed)
     write_table(cross, out / "cross_sectional")
     print(
-        f"within_person: {first.size} pairs; divergence > 0 for {np.mean(m['divergence'] > 0):.2f} of CpGs",
+        f"{name}: {first.size} pairs; divergence > 0 for {np.mean(m['divergence'] > 0):.2f} of CpGs",
         file=sys.stderr,
     )
     scores = reference_scores(x, _islands(cpgs, probes), _sets(cpgs, membership))
@@ -210,10 +252,10 @@ def run(ctx: Context) -> list[Path]:
     slopes = pl.DataFrame(person_slopes(people, measures, ctx.rng(7)))
     write_table(slopes, out / "person_slopes")
     write_table(people.with_columns(**{k: pl.Series(v) for k, v in measures.items()}), out / "per_draw")
-    return [_figure(ctx, table, slopes)]
+    return [_figure(ctx, table, slopes, name, label)]
 
 
-def _figure(ctx: Context, table: pl.DataFrame, slopes: pl.DataFrame) -> Path:
+def _figure(ctx: Context, table: pl.DataFrame, slopes: pl.DataFrame, name: str, label: str) -> Path:
     fig, axes = plots.panels(2, ncols=2, size=4.8)
     fig.subplots_adjust(wspace=0.75)
     ax = axes[0]
@@ -253,6 +295,6 @@ def _figure(ctx: Context, table: pl.DataFrame, slopes: pl.DataFrame) -> Path:
     ax.set(xlabel="SD per decade of age", title="Scores over a person's own aging")
     plots.label_panel(ax, "b")
     fig.suptitle(
-        "The shield within a person over time, SATSA", x=0.02, y=1.04, ha="left", fontsize=11, fontweight="bold"
+        f"The shield within a person over time, {label}", x=0.02, y=1.04, ha="left", fontsize=11, fontweight="bold"
     )
-    return plots.save(fig, ctx.figure_path("within_person"))
+    return plots.save(fig, ctx.figure_path(name))
