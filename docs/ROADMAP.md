@@ -99,7 +99,7 @@ Tet3 loss weakening it in brain. Hypotheses, each with its test:
 
 ## RM28 — Does the shield (and drift) predict death and disease? Open follow-up cohorts
 
-**State:** unattended · **Owner:** lead
+**State:** after RM18 (the SATSA raw-IDAT rerun uses the IDAT pipeline R61 validates) · **Owner:** lead
 
 Progress: asked by antonkulaga (2026-11-12) for longitudinal cohorts with age and health; survey in
 docs/LONGITUDINAL_SURVEY.md. Open: SJLIFE GSE314261 (4,520 people, 294 deaths with age at death, 378 with 2-5
