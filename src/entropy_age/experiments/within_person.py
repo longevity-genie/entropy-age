@@ -14,6 +14,9 @@ changed), the slope ``q`` the **divergence per year**, the stochastic drift itse
 differences between birth cohorts. Per CpG: ``|b|`` (directed), ``q`` (divergence), the floor. Essential and
 housekeeping CpGs are compared with look-alikes matched on island status and level decile (``tissue_contrast``).
 
+A positive control runs the usual cross-sectional comparison (``tissue_contrast``'s lifespan metrics) on each
+person's first draw: if the shield is absent there too, the preprocessing removed it, not the time axis.
+
 **Person level.** B, F and S per draw against one reference fitted on all draws; the within-person slope of each
 on age (person means removed, chip held), with a person-level bootstrap. Does a person's own shield share change
 as they age?
@@ -33,7 +36,8 @@ from entropy_age import plots
 from entropy_age.experiments.common import Context, write_table
 from entropy_age.experiments.per_person import _islands, _sets
 from entropy_age.experiments.sjlife_deaths import reference_scores
-from entropy_age.experiments.tissue_contrast import _features, _matched_sd, _with_strata
+from entropy_age.experiments.tissue_contrast import LIFESPAN_METRICS, _features, _matched_sd, _with_strata
+from entropy_age.stochasticity import drift_metrics
 
 STUDY = "S-BSST1206"
 TABLES = tuple(f"SATSA_DNA_meth_{i}.txt" for i in range(1, 6))
@@ -191,6 +195,12 @@ def run(ctx: Context) -> list[Path]:
         pairs=pl.lit(int(first.size)), median_years=pl.lit(float(np.median(age[second] - age[first])))
     )
     write_table(table, out / "gaps")
+    # positive control: the usual cross-sectional comparison on each person's first draw, same preprocessed data
+    chip0 = epic[youngest].astype(float)
+    cov0 = chip0[:, None] if chip0.std() > 0 else None
+    cross = drift_metrics(x[youngest], age[youngest], cpgs, covariates=cov0, spearman=False)
+    cross = _matched_sd(_with_strata(cross, probes), membership, LIFESPAN_METRICS, 1000, ctx.seed)
+    write_table(cross, out / "cross_sectional")
     print(
         f"within_person: {first.size} pairs; divergence > 0 for {np.mean(m['divergence'] > 0):.2f} of CpGs",
         file=sys.stderr,
