@@ -4,6 +4,7 @@ Newest first.
 
 ## Unreleased
 
+- 2026-11-13: R67 written up (RM32): essential promoters rest at a lower methylation level, held by faster removal, not slower gain.
 - 2026-11-13: R65 written up (RM17 done): transient reprogramming of human fibroblasts moves the methylome a lot and keeps the shield share.
 - `figures equilibrium_drift` (RM32): methylation gain and loss rates per gene set (two-state Markov model, pooled over CpGs, donor bootstrap) and per-CpG relaxation toward a bounded equilibrium; run R67 planned.
 - 2026-11-13: RM32 planned (Anton): shield measured as drift toward each CpG's own equilibrium, repair being asymmetric.

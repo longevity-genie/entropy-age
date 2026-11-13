@@ -27,6 +27,7 @@ from __future__ import annotations
 import sys
 from pathlib import Path
 
+import matplotlib.pyplot as plt
 import numpy as np
 import polars as pl
 
@@ -242,6 +243,7 @@ def _figure(ctx: Context, table: pl.DataFrame) -> Path:
                     label="CpG island" if isl else "outside islands",
                 )
             ax.axvline(0, color=plots.MUTED, lw=0.8)
+            ax.xaxis.set_major_locator(plt.MaxNLocator(3))
             ax.set_yticks(
                 range(len(groups)),
                 [g.replace("_", " ") for g in groups] if k % 4 == 0 else [""] * len(groups),

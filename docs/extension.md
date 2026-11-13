@@ -1896,6 +1896,49 @@ more than for the cell. Caveats: bulk tissue (cell mix differs per donor in both
 inflate, not hide, coupling), one array CpG set per promoter, and expression noise dominated by technical and
 post-transcriptional sources. A single-cell multi-omic test would be sharper.
 
+## Gain or loss: the shield is a lower resting level held by faster removal (roadmap RM32)
+
+Asked by antonkulaga (2026-11-13): methylation repair is not symmetric, so the entropy slope, which assumes every
+site drifts toward 0.5, may misread the shield. In the two-state Markov model (`docs/model.md` §2) a site gains
+methylation at rate `k_gain` and loses it at rate `k_loss`; it relaxes toward its own resting level
+`z = k_gain / (k_gain + k_loss)`. Figure `equilibrium_drift` (R67) reads both rates two ways, in Hannum blood (656
+donors) and Jaffe's adult cortex (213), technical covariates removed:
+
+* **Pooled per gene set:** a set's age slopes (donors outside the youngest fifth) regressed on its young levels
+  (the youngest fifth): the intercept is `k_gain`, the steepness `k_gain + k_loss`. Against look-alikes of the same
+  island status; 95 % intervals from 200 donor resamples.
+* **Per CpG:** `m(t) = z + (m0 - z) e^{-λt}` with `z` in [0, 1], where the curve fixes λ (76-84 % of CpGs); each
+  set against look-alikes of the same island status and young-level decile, in SD.
+
+![Gain and loss rates](figures/equilibrium_drift.png)
+
+| per decade, island promoters, set − look-alikes | blood gain | blood loss | cortex gain | cortex loss |
+|---|---|---|---|---|
+| core-essential | −0.0012 (−0.0017, −0.0008) | +0.0025 (+0.0012, +0.0037) | −0.0002 (−0.0004, 0.0000) | +0.0054 (+0.0035, +0.0072) |
+| housekeeping | −0.0012 (−0.0017, −0.0008) | +0.0018 (+0.0009, +0.0026) | −0.0002 (−0.0004, −0.0001) | +0.0042 (+0.0027, +0.0058) |
+| non-essential | +0.0039 (+0.0027, +0.0052) | −0.0005 (−0.0020, +0.0009) | +0.0014 (+0.0011, +0.0017) | +0.0005 (−0.0003, +0.0013) |
+
+* **Essential island promoters are not slower to change; they are pulled back harder.** Their gain rate is the
+  look-alikes' or lower (blood: none at all, against +0.0012 per decade for look-alikes), and their loss rate is
+  higher in both tissues: a methyl group that lands is removed faster. Non-essential island promoters show the
+  opposite, faster gain.
+* **So they rest lower and have less room to drift.** Per CpG, matched on island status and young level, the fitted
+  resting level is lower (blood −0.24 SD core-essential, −0.33 housekeeping; cortex −0.08, −0.15) and lies closer to
+  where the site starts (distance −0.28 and −0.42 SD in blood, −0.03 and −0.11 in cortex; p ≤ 0.02). Per-CpG loss
+  rates agree in blood (+0.07, +0.11 SD) and not in cortex (−0.02), where the pooled fit carries the signal.
+* **Reading.** The shield is a different resting level, not a slower approach to the same one: repair at essential
+  promoters is biased toward unmethylated. That is an enzymatic asymmetry (active removal by TET, or de novo
+  methylation kept off), which the entropy slope cannot see. Whether it is more than chromatin is not yet tested:
+  TET1 and the CXXC proteins that keep islands clean are themselves recruited by active chromatin.
+* **Limits.** The pooled fit is linear and assumes one pair of rates per set; it returns some negative rates (look-
+  alike islands' loss), so read the differences, not the absolute values. Cross-sectional ages identify the
+  resting level only where the curve bends; 16-24 % of CpGs are left out for that.
+
+Next (RM32): the loss-rate excess with chromatin state matched (ATAC, as R55 and R58), and in Tet-deficient cells,
+where active removal should shrink it.
+
+Tables: `data/output/equilibrium_drift/` (`pooled_rates`, `per_cpg_gaps`, `identified`).
+
 ## How to test the hypothesis on real data
 
 ```python

@@ -100,7 +100,7 @@ application; links in the survey.
 
 ## RM32 — Drift toward each site's own equilibrium, not toward 0.5
 
-**State:** building · **Owner:** lead
+**State:** unattended · **Owner:** lead
 
 Asked by antonkulaga (2026-11-13): methylation repair is not symmetric (maintenance by DNMT1, de novo by DNMT3A/B,
 active loss by TET), so should the Markov model's entropy be adjusted? The model already has per-site maintenance
@@ -110,6 +110,9 @@ toward 0.5 and misreads sites whose z is far from it, which essential promoters 
 cortex; compare essential promoters with look-alikes on the fraction of the way to z, on the divergence from z,
 and on z itself. Answers whether the shield is a slower approach to the same equilibrium or a different
 equilibrium (repair biased toward unmethylated).
+- Done (R67): a different resting level. Essential island promoters gain no faster than look-alikes and lose
+  faster (blood +0.0025, cortex +0.0054 per decade), so they rest lower with less room to drift. Next: the loss
+  excess with chromatin state matched (ATAC, as R55/R58), then in Tet-deficient cells.
 
 ## RM14 — Natural experiments in chromatin: broken writers, knockouts, edits
 

@@ -3,6 +3,18 @@
 Owned by the runner seat (`docs/seats/RUNNER.md`): one entry per run, newest first, with its inputs, the
 commit it ran, its job ids, its scale and seed, and its result or its failure with the cause.
 
+## R67 — gain and loss rates per gene set (RM32), 2026-11-13
+
+- Commit 9ffc595; `figures equilibrium_drift --scale paper --seed 42`; 4 cores, 32 GB; job 6479803, 16 min, 3.2 GB
+  peak. Hannum 656 donors, 108,992 CpGs; Jaffe adult controls 213, 109,137 CpGs; 200 donor resamples, 1,000
+  permutations. Figure redrawn locally from the saved table (x ticks thinned).
+- Result, as measured (island promoters, set − look-alikes, per decade, 95 % interval): blood gain core −0.0012
+  (−0.0017, −0.0008), housekeeping −0.0012; loss core +0.0025 (+0.0012, +0.0037), housekeeping +0.0018 (+0.0009,
+  +0.0026); cortex gain −0.0002, loss core +0.0054 (+0.0035, +0.0072), housekeeping +0.0042 (+0.0027, +0.0058).
+  Per CpG (matched SD): resting level blood −0.24 / −0.33, cortex −0.08 / −0.15; distance to it blood −0.28 /
+  −0.42, cortex −0.03 / −0.11; loss rate blood +0.07 / +0.11, cortex −0.02 / −0.02; p ≤ 0.02 except cortex core
+  loss (0.24). Fits identified: 76-84 % of CpGs. Tables `data/output/equilibrium_drift/`.
+
 ## R65 — Gill 2022 transient reprogramming from IDATs (RM17), 2026-11-13
 
 - R65a: `scripts/reprocess_idats.py` on GSE165179_RAW.tar, 96 EPIC arrays in batches of 50; 4 cores; job 6479358,
