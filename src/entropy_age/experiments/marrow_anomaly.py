@@ -231,16 +231,16 @@ def _figure(ctx: Context, table: pl.DataFrame, null: pl.DataFrame) -> Path:
     ax.set_yticks(y, [f"{t} ({n})" for t, n in zip(hk["tissue"], hk["donors"], strict=True)])
     ax.axvline(0, color=plots.MUTED, lw=0.8)
     ax.set(xlabel="housekeeping entropy gap (SD), donor interval", title="Human tissues, one donor series")
-    ax.legend(fontsize=7, loc="lower right")
+    ax.legend(fontsize=7, loc="upper center", bbox_to_anchor=(0.5, -0.13), ncol=3, frameon=False)
     plots.label_panel(ax, "a")
     ax = axes[1]
     sub = null.filter((pl.col("metric") == "entropy_slope") & (pl.col("group") == "housekeeping"))
     ax.hist(sub["gap_sd"], bins=40, color=plots.PALETTE[0], alpha=0.8)
-    for t in ODD:
+    for t, side in zip(ODD, ("right", "left"), strict=True):
         v = hk.filter(pl.col("tissue") == t)["gap_sd"]
         if v.len():
             ax.axvline(float(v[0]), color=plots.PALETTE[1], lw=1.5)
-            ax.text(float(v[0]), ax.get_ylim()[1] * 0.9, t, rotation=90, ha="right", va="top", fontsize=7)
+            ax.text(float(v[0]), ax.get_ylim()[1] * 0.97, f" {t} ", rotation=90, ha=side, va="top", fontsize=7)
     ax.set(xlabel="gap in 20-donor draws of other tissues (SD)", ylabel="draws", title="Small-sample null")
     plots.label_panel(ax, "b")
     fig.subplots_adjust(wspace=0.6)

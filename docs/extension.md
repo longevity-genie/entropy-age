@@ -588,7 +588,23 @@ animals spanning 15 % of the species' maximum lifespan: 65 species, 11,529 sampl
   dynamics rather than maintenance; a maintenance shield tuned to lifespan would have shown here, and does not.
 * **Cautions.** Species are not independent (no phylogenetic correction yet). The conserved array CpGs at essential
   promoters sit near 0 %, which floors their drift. Human bone marrow and lymph node show the reverse (+0.18 and
-  +0.20), unexplained.
+  +0.20), unexplained at first; R54 below explains it as small samples and a donor set.
+
+**The marrow and lymph-node reversal is not robust (roadmap RM16, step 2).** Both come from one organ-donor
+series with spleen, liver, heart and others, matched by age and sex. Figure `marrow_anomaly`:
+
+![Marrow anomaly](figures/marrow_anomaly.png)
+
+* **Within donor noise.** With donors resampled instead of genes, both intervals cross zero (marrow −0.27 to +0.29,
+  lymph node −0.08 to +0.24); 20-donor draws of the other tissues reach gaps this high in 5-7 % of draws, with
+  13 tissues looked at.
+* **The donors, not the tissue.** Refitted on marrow's donors, seven other tissues move by +0.16 SD on average
+  (from −0.15 to about 0; lung, kidney and liver turn positive). The array chip changes nothing.
+* **Marrow's age signal looks like fat.** Its per-CpG age slopes follow the adipose-minus-blood direction more
+  than any other tissue's (r 0.28): marrow turns fatty with age, a change of cell mix, not of selection.
+* So the anomaly gives no lead for selection in renewing tissue; the evidence on selection stays where RM16 lists it.
+
+Tables: `data/output/marrow_anomaly/` (`checks`, `null_share`, `null_draws`).
 
 Tables: `data/output/species_shield/` (`species_gaps`, `lifespan_fits`).
 

@@ -142,7 +142,8 @@ lifespan scaling as stem-cell dynamics (Crofts 2026), and per-person drift burde
   stronger shield in long-lived species, if anything weaker. Consistent with Crofts 2026. Holds with a
   phylogenetic GLS (taxonomy covariance, Pagel's λ; +0.025, p 0.40) and within skin, blood and liver.
   **[solid]** as a negative result; near-0 % essential promoters on the conserved array floor the drift.
-- **Anomaly:** human bone marrow and lymph node reverse (+0.18, +0.20).
+- **Anomaly, resolved:** human bone marrow and lymph node reverse (+0.18, +0.20), within donor noise (intervals
+  cross 0; 5-7 % of 20-donor draws), and the same donors lift other tissues by +0.16 (R54).
 - **Figures:** species_shield.
 
 ## 3 Discussion

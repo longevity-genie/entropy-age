@@ -3,6 +3,19 @@
 Owned by the runner seat (`docs/seats/RUNNER.md`): one entry per run, newest first, with its inputs, the
 commit it ran, its job ids, its scale and seed, and its result or its failure with the cause.
 
+## R54 — the human marrow and lymph-node anomaly (RM16 step 2), 2026-11-13
+
+- Commit 95c24e7 (after cb18908's run 6468984 failed in 3 min on a tissue of one age: zero spread, a division by
+  zero; tissues now need a 15-year span); `figures marrow_anomaly --scale paper --seed 42`; 4 cores, 32 GB; job
+  6468993, 3.5 min, 4.3 GB. GSE223748's human samples: 13 tissues of 20-282 donors, 4,485 promoter CpGs measured in
+  every marrow and lymph-node sample. 300 donor resamples per tissue; 400 draws of 20 donors (ages 38-74) from each
+  of 9 larger tissues.
+- Result, as measured (housekeeping entropy gap, SD): marrow +0.175 (donors resampled −0.27 to +0.29), lymph node
+  +0.198 (−0.08 to +0.24); chip held +0.20 and +0.20. 20-donor draws of other tissues reach marrow's gap in 6.8 %,
+  lymph node's in 5.1 %. Seven tissues refitted on marrow's donors (13-25 shared) move from −0.15 to +0.004 on
+  average (+0.16). Dispersion gaps of both lie inside the other tissues' range (+0.04, +0.06). Marrow's per-CpG age
+  slopes follow the adipose-minus-blood direction, the most positive correlation of all tissues (r 0.28; next 0.13).
+
 ## R53 — read-level shield in sorted atlas cell types (RM22), 2026-11-13
 
 - Commit ada6425; `figures read_level --scale paper --seed 42`; 4 cores, 48 GB; job 6460007 (6459198 at 8 cores
