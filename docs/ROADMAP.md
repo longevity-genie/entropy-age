@@ -150,6 +150,8 @@ with two leads for it (CR in one blood study; human bone marrow and lymph node r
 - Done (R25): CH carriers do not differ (any, DNMT3A, TET2; p ≥ 0.15); diluted clones, no VAF.
 - GSE158067 (2 donors) has no age range within a person, so it cannot test drift with age; it could only
   compare cell-to-cell deviation of mutant and wild-type cells. Lower priority than RM19's replication.
+- Step 2 running (R54, `figures marrow_anomaly`): marrow and lymph node share donors with spleen, liver and heart
+  (one organ-donor series, matched by age and sex); the checks tell a tissue effect from a donor-set or chip one.
 
 ## RM17 — Partial reprogramming: does a reset restore the shield?
 
