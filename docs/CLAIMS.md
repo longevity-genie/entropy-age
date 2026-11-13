@@ -142,7 +142,11 @@ a test with little power), **refuted**.
   young at promoter CpGs.
 - **Alternatives:** the regimen did not rejuvenate promoter methylation at all, so the test had little to see.
 - **Separating test:** a regimen that measurably rejuvenates methylation (one OSKM cycle, GSE156557).
-- **Status:** weak (uninformative test).
+- **Since:** one cycle in 1-year-old mice (R62) moved too little to test. Transient reprogramming of human
+  fibroblasts (R65, from IDATs) about doubles promoter drift, and essential promoters
+  keep the same shield share as before (F unchanged, p 0.25-0.35): the shield holds through a reset. No young donors,
+  so restoration toward youth stays untested.
+- **Status:** weak (restoration untested; the shield's persistence under reprogramming supported).
 
 ## C11 — Chromatin accessibility has the shield in blood but not in brain
 

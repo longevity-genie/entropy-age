@@ -3,6 +3,18 @@
 Owned by the runner seat (`docs/seats/RUNNER.md`): one entry per run, newest first, with its inputs, the
 commit it ran, its job ids, its scale and seed, and its result or its failure with the cause.
 
+## R65 — Gill 2022 transient reprogramming from IDATs (RM17), 2026-11-13
+
+- R65a: `scripts/reprocess_idats.py` on GSE165179_RAW.tar, 96 EPIC arrays in batches of 50; 4 cores; job 6479358,
+  2 h 05 min; 865,859 CpGs.
+- R65b: `figures gill_reprogramming --scale paper --seed 42` (commit bd5e0c9); 4 cores, 32 GB; job 6479825, 36 s.
+  86,366 promoter CpGs; 13 reprogrammed, 21 failed, 33 controls over three donors; 5,000 within-donor permutations.
+- Result, as measured (within-donor effect, permutation p): reprogrammed − failed, B housekeeping +0.045, core
+  +0.036, non-essential +0.125 (0.0002 each); P housekeeping −0.006, core −0.004 (0.0002); F housekeeping −0.016
+  (0.25), core −0.015 (0.35), non-essential −0.060 (0.014); E +0.005 / +0.003 (0.0002); Horvath skin & blood raw
+  sum −0.36 (0.085). Failed − control: B housekeeping +0.010 (0.005), F −0.018 (0.14), non-essential F −0.11
+  (0.0004). Tables `data/output/gill_reprogramming/`.
+
 ## R61 — Jaffe cortex reprocessed from IDATs (RM18 item 3), 2026-11-13
 
 - R61a: `scripts/reprocess_idats.py` (methylprep 1.7.1, sesame=True; Python 3.11, pandas<2, numpy<2) on

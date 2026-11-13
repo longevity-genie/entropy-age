@@ -1321,6 +1321,37 @@ old mouse against the young.
 
 Tables: `data/output/reprogramming_rrbs/` (`effects`, `animal_scores`).
 
+### Transient reprogramming of human fibroblasts: a large reset that spares essential promoters (roadmap RM17, R65)
+
+Gill et al. 2022 (GSE165179, EPIC) took dermal fibroblasts of three donors aged 38-53 through 10-17 days of OSKM
+and recovery. Some cells transiently reprogrammed; others went through the same treatment and failed to; untreated
+cells are the controls (96 arrays). We rebuilt the betas from the IDATs (R61's pipeline, 865,859 CpGs). Within each
+donor, every sample is scored against that donor's controls on 86,366 promoter CpGs. Reprogrammed cells (13) are
+compared with failed ones (21), which holds the treatment fixed; failed cells are compared with controls (33).
+Figure `gill_reprogramming`.
+
+![Gill 2022 transient reprogramming](figures/gill_reprogramming.png)
+
+* **Reprogramming moves the methylome a lot.** Against failed cells, drift `B` rises by 0.045 for housekeeping
+  look-alikes, 0.036 for core-essential and 0.125 for non-essential (p 0.0002 each, labels permuted within donors).
+  Housekeeping drift about doubles (controls 0.046, reprogrammed 0.090 on average).
+* **Essential promoters move less than their look-alikes, and the share stays as in aging.** The gap `P` is
+  negative for every set (housekeeping −0.006, core-essential −0.004, p 0.0002). The shield share `F` does not
+  change (housekeeping −0.016, p 0.25; core-essential −0.015, p 0.35): reprogrammed cells sit at −0.10 to −0.13,
+  where controls and failed cells sit. Non-essential genes are the exception: their share falls (−0.06, p 0.014).
+* **Entropy and direction barely move.** The essential sets' entropy gap rises by 0.003-0.005 and their signed shift
+  by 0.003 (p 0.0002-0.02): tiny next to the drift.
+* **The clock sees less rejuvenation here than the authors report.** Horvath's skin and blood clock (378 of its
+  CpGs) is lower in reprogrammed cells by 0.36 transformed units (about 8 years at adult ages, p 0.09), in two of
+  three donors; donor O3 shows none. The authors used their own normalisation and report about 30 years.
+* **Reading.** A large methylation change from reprogramming respects the shield as aging does: essential
+  promoters move a fixed share less than look-alikes, whatever moves the methylome. This fits chromatin
+  maintenance, which holds those promoters against any change; it argues against selection, which cannot act in
+  days. It cannot say whether reprogramming restores a young shield: the series has no young donors, and the
+  clock's rejuvenation is weak in these betas.
+
+Tables: `data/output/gill_reprogramming/` (`effects`, `sample_scores`).
+
 ### Four mouse tissues by RRBS: the shield is in cortex too, smaller (roadmap RM2, R63)
 
 Meer et al. 2018 (GSE121141) profiled cortex, heart, liver and lung of male mice at 6, 12, 20 and 30 months by

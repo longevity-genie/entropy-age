@@ -100,7 +100,7 @@ application; links in the survey.
 
 ## RM32 — Drift toward each site's own equilibrium, not toward 0.5
 
-**State:** after RM17 · **Owner:** lead
+**State:** building · **Owner:** lead
 
 Asked by antonkulaga (2026-11-13): methylation repair is not symmetric (maintenance by DNMT1, de novo by DNMT3A/B,
 active loss by TET), so should the Markov model's entropy be adjusted? The model already has per-site maintenance
@@ -110,22 +110,6 @@ toward 0.5 and misreads sites whose z is far from it, which essential promoters 
 cortex; compare essential promoters with look-alikes on the fraction of the way to z, on the divergence from z,
 and on z itself. Answers whether the shield is a slower approach to the same equilibrium or a different
 equilibrium (repair biased toward unmethylated).
-
-## RM17 — Partial reprogramming: does a reset restore the shield?
-
-**State:** unattended · **Owner:** lead
-
-Progress: asked by antonkulaga (2026-11-12). The consortium's OSKM arms are 2-5 mice (3.4F+7mDox kidney F −0.17,
-p 0.10; skin n.s.): too small. Public array series to find: maturation-phase transient reprogramming of human
-fibroblasts (Gill et al. 2022), in-vivo cyclic OSKM mice (Browder et al. 2022; Ocampo et al. 2016). Chromatin
-maintenance predicts the shield restored with the clock; selection predicts no change (no cells removed).
-- Survey done (`docs/REPROG_TET_SURVEY.md`). First: GSE190665 (Browder 2022, cyclic OSKM in vivo, 6 mouse
-  tissues, Mammal40 array as in the consortium, 2-7 mice per group, 49 MB); then GSE156557 (RRBS, 5 per group).
-- Done (R32): no consistent change (muscle stronger, spleen weaker, four tissues unchanged); the regimen barely
-  moves promoter CpGs toward youth. Next if wanted: GSE156557 (one OSKM cycle, RRBS).
-- Done (R62): GSE156557, one OSKM cycle in 1-year-old mice: aging 13 → 52 weeks barely moves drift, so nothing
-  to reset; liver leans back toward young (n.s., 1,508 CpGs). Left: human fibroblasts (GSE165179, Gill 2022,
-  IDATs) once the IDAT pipeline is validated (R61).
 
 ## RM14 — Natural experiments in chromatin: broken writers, knockouts, edits
 
