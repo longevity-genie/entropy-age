@@ -3,6 +3,24 @@
 Owned by the runner seat (`docs/seats/RUNNER.md`): one entry per run, newest first, with its inputs, the
 commit it ran, its job ids, its scale and seed, and its result or its failure with the cause.
 
+## R52 — the shield within a person over time, SATSA (RM28), 2026-11-13
+
+- Commit 95240c5; `figures within_person --scale paper --seed 42`; 4 cores, 48 GB; job 6457453, 2 min 58 s. SATSA
+  (S-BSST1206; 6.7 GB, preprocessed by the depositors: noob, functional normalisation, cell counts and batch
+  regressed out): 1,469 draws of 596 people, 392 with 2+ draws; 65,386 promoter CpGs without gaps; 873 consecutive
+  pairs, median 4.9 years apart.
+- Result, as measured (set minus look-alikes, SD; p): divergence per year (change one person makes beyond the shared
+  trend, measurement floor removed) housekeeping -0.017 (0.001), core essential +0.013 (0.10), non-essential +0.11
+  (0.001); |directed change| about 0 for both sets; floor -0.03 (0.001), -0.01 (0.14). Divergence > 0 for 81 % of
+  CpGs. Within-person slope per decade (SD; person-level bootstrap 95 %): F housekeeping -0.14 (-0.23 to -0.05),
+  core essential -0.07 (-0.18 to 0.02); S -0.19 (-0.27 to -0.11), -0.16 (-0.24 to -0.07); B +0.03, +0.02 (both
+  span 0). Between people at first draws: F -0.13, -0.06; B +0.17, +0.15; S -0.06, -0.01.
+- R52b (positive control; commit 384ae50; job 6457917, 4 min 17 s, after a wait on the group CPU cap): the usual
+  cross-sectional comparison on first draws, same data. Dispersion slope housekeeping -0.12 (0.001), core essential
+  -0.04 (0.001); entropy slope +0.00 (0.92), +0.02 (0.19); |age slope| +0.00, +0.00. The preprocessed SATSA betas
+  carry a third of Hannum's dispersion gap and none of its entropy gap: SATSA is a weak test of the CpG-level
+  shield. Figure redrawn on the login node from the tables (layout only).
+
 ## R45 — when does drift begin? change point against sexual maturity (RM29), 2026-11-12
 
 - Commit cc4bc08; `figures drift_onset --scale paper --seed 42`; 4 cores, 64 GB; job 6439005, 24 min. 68

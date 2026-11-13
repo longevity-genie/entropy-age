@@ -1388,6 +1388,29 @@ share grows with age, so cell-to-cell and cell-type-to-cell-type disorder are no
 donors and the sorted atlas cell types are the next checks. No published single-molecule test of this was found
 (docs/LONGREAD_SURVEY.md).
 
+## The shield within one person over time (RM28, SATSA)
+
+Every other test compares people of different ages. SATSA (S-BSST1206) drew blood from the same 596 Swedes up to
+eight times over 20 years (48-99 years old; 873 pairs of consecutive draws, median 4.9 years apart). Run R52 split
+each person's change between two draws into the change everyone makes (directed) and the person's own departure
+from it; that departure's square grows with the years between draws (a random walk), and its intercept is the
+measurement floor. The slope, divergence per year, is stochastic drift free of array noise and of birth-cohort
+differences.
+
+- **CpG level:** housekeeping CpGs diverge slightly more slowly than look-alikes (-0.017 SD, p 0.001); core
+  essential CpGs do not (+0.013, p 0.10). The control (R52b) shows why this is weak: SATSA's betas were deposited
+  with cell counts and batch regressed out, and on them the usual cross-sectional comparison keeps only a third of
+  the dispersion gap seen elsewhere (-0.12 SD) and none of the entropy gap. Within-person divergence is smaller
+  than that between-person gap, but both are small here; SATSA cannot settle the CpG-level question.
+- **Person level:** a person's own shield share grows as they age: F falls by 0.14 SD per decade within a person
+  (housekeeping; 95 % -0.23 to -0.05), matching the -0.13 between people of different ages, while B (drift at
+  look-alikes) barely moves within a person over 5 years (+0.03, interval spans 0). The signed shift S falls too
+  (-0.19): essential CpGs lose methylation relative to look-alikes over a person's own aging.
+
+Reading: the rise of the shield's share with age, seen cross-sectionally in mouse liver (RM3), holds within one
+person, so it is not a survivor or cohort effect. Raw IDATs (E-MTAB-7309, 450k only) would allow a cleaner
+CpG-level test without the depositors' cell-count regression.
+
 ## Death in childhood-cancer survivors: drift and the shield add nothing beyond the pace clock (RM28, SJLIFE)
 
 SJLIFE (GSE314261): blood of 4,179 childhood-cancer survivors (and 340 controls, none of whom died) on the EPIC

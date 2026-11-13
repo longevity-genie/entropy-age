@@ -143,8 +143,9 @@ application; links in the survey.
   predicts breast cancer years ahead, robust to chip, cell mix and mean beta; the shield share does not. Next:
   a second breast-cancer cohort (NOWAC or Breakthrough Generations, controlled: antonkulaga's application).
 - Done (R48, R48b): SJLIFE deaths; drift and shield add nothing beyond DunedinPACE.
-- Built (`within_person`): SATSA, change between a person's consecutive draws split into directed change,
-  divergence per year and the measurement floor; within-person slopes of B, F and S. R52 after the 6.7 GB download.
+- Done (R52, R52b): SATSA. A person's own shield share grows with age (F -0.14 SD per decade, as between
+  people); CpG-level divergence gap small (-0.017), but the deposited betas keep little of the shield even
+  cross-sectionally. Open data left: none with outcomes; a raw-IDAT SATSA rerun (E-MTAB-7309) is optional.
 
 ## RM16 — Selection by cellular fitness, in vivo
 

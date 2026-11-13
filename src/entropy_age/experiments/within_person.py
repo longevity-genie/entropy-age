@@ -214,7 +214,8 @@ def run(ctx: Context) -> list[Path]:
 
 
 def _figure(ctx: Context, table: pl.DataFrame, slopes: pl.DataFrame) -> Path:
-    fig, axes = plots.panels(2, ncols=2, size=4.4)
+    fig, axes = plots.panels(2, ncols=2, size=4.8)
+    fig.subplots_adjust(wspace=0.75)
     ax = axes[0]
     groups = [g for g in ("core_essential", "housekeeping", "non_essential") if g in table["group"].unique()]
     for i, group in enumerate(groups):
@@ -230,7 +231,8 @@ def _figure(ctx: Context, table: pl.DataFrame, slopes: pl.DataFrame) -> Path:
     ax.set_yticks(np.arange(len(names)) + 0.27, [n.replace("_", " ") for n in names])
     ax.axvline(0, color=plots.MUTED, lw=0.8)
     ax.invert_yaxis()
-    ax.legend(fontsize=7)
+    ax.legend(fontsize=7, loc="upper right")
+    ax.locator_params(axis="x", nbins=4)
     ax.set(xlabel="set minus look-alikes (SD)", title="Change between a person's draws")
     plots.label_panel(ax, "a")
     ax = axes[1]
@@ -244,7 +246,7 @@ def _figure(ctx: Context, table: pl.DataFrame, slopes: pl.DataFrame) -> Path:
         label="within person",
     )
     ax.plot(slopes["between_per_decade"], y + 0.2, "s", color=plots.PALETTE[1], label="between people")
-    ax.set_yticks(y, slopes["measure"].to_list())
+    ax.set_yticks(y, [m.replace("_", " ") for m in slopes["measure"].to_list()])
     ax.axvline(0, color=plots.MUTED, lw=0.8)
     ax.invert_yaxis()
     ax.legend(fontsize=7)
