@@ -103,7 +103,8 @@ lifespan scaling as stem-cell dynamics (Crofts 2026), and per-person drift burde
 - **Evidence:** mouse blood (GSE80672) and BXD liver both show F becoming more negative with age, robust to
   composition. **[solid]** in two series.
 - CR weakens the shield by a quarter in B6D2F1, where treated and controls share a sequencing series.
-  **[weak]**: 22 mice, one strain; the C57BL/6 comparison crosses series and is not read.
+  **[weak]**: 22 mice, one strain; the C57BL/6 comparison crosses series and is not read. Matched on blood-cell
+  ATAC openness, two thirds of it goes with the shield (+0.025 → +0.008, p 0.07; R55).
 - CR in liver (GSE223748, 59 against 36 mice) leaves it unchanged (F −0.008, p 0.77): the blood result is not
   replicated in a slowly renewing tissue. **[weak]** either way.
 - Tet3 heterozygous cortex and striatum lose the shield against same-chip, same-age littermates (housekeeping F

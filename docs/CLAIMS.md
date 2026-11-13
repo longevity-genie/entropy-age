@@ -45,7 +45,8 @@ a test with little power), **refuted**.
 - **If selection, we should not see:** a shield in neurons; a constant share over doublings.
 - **Observed:** constant share in culture; not ordered by turnover; equal in blood and brain after chromatin;
   neurons lose it only when Tet3 is halved; clonal haematopoiesis leaves it; not tuned to lifespan. One result
-  favours selection: CR weakened it in one blood study, not replicated in liver.
+  favours selection: CR weakened it in one blood study, not replicated in liver; with chromatin openness
+  matched two thirds of that effect goes with the shield (R55).
 - **Alternatives (to the rejection):** long-term cultures turn oligoclonal (Hollmann 2020), and steady
   selection per doubling also gives a constant share; clonal haematopoiesis clones were diluted (no allele
   fractions).

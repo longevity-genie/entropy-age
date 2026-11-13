@@ -3,6 +3,19 @@
 Owned by the runner seat (`docs/seats/RUNNER.md`): one entry per run, newest first, with its inputs, the
 commit it ran, its job ids, its scale and seed, and its result or its failure with the cause.
 
+## R55 — CR's blood effect with chromatin openness matched (RM12), 2026-11-13
+
+- Commit 58ddfee; `figures cr_chromatin --scale paper --seed 42`; 4 cores, 48 GB; job 6469026, 2 min, 11.5 GB.
+  GSE80672's 542,008 promoter CpGs; openness = mean ImmGen ATAC signal (GSE100738: B, naive CD4 and CD8 T, NK,
+  Ly6C-high monocytes, granulocytes) within ±250 bp, in quartiles; strata island × young level decile × quartile.
+- Openness: 76 % of housekeeping CpGs sit in the two most open quartiles against 41 % of background; 80 % of
+  non-essential ones in the least open.
+- Result, as measured. Aging in standard C57BL/6 (set minus matched, SD): housekeeping entropy −0.35 → −0.14,
+  dispersion −0.42 → −0.20; core essential −0.30 → −0.14, −0.37 → −0.20; non-essential +0.36 → +0.02.
+  CR in B6D2F1 (12 against 10, one series; F with 5 components removed): housekeeping +0.025 (p 0.002) → +0.008
+  (p 0.066), relative to the controls' F −23 % → −18 %; core essential +0.017 (p 0.09) → +0.004 (p 0.62).
+  GHRKO and Snell unchanged (n.s. both ways).
+
 ## R54 — the human marrow and lymph-node anomaly (RM16 step 2), 2026-11-13
 
 - Commit 95c24e7 (after cb18908's run 6468984 failed in 3 min on a tissue of one age: zero spread, a division by

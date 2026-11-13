@@ -1004,6 +1004,25 @@ of 22 mice, in one strain. It needs a replication before it carries a claim.
 
 Tables: `data/output/interventions/` (`aging_gaps`, `intervention_effects`, `mouse_scores`, `set_sizes`).
 
+**With chromatin openness matched (roadmap RM12, R55).** Figure `cr_chromatin` adds to the matching how open each
+CpG is in mouse blood cells: the mean ImmGen ATAC signal (Yoshida et al. 2019, GSE100738) of B cells, naive CD4
+and CD8 T cells, NK cells, Ly6C-high monocytes and granulocytes within ±250 bp, in quartiles.
+
+![CR with chromatin matched](figures/cr_chromatin.png)
+
+* **Openness carries most of mouse blood's shield**, as RM7 found in human blood: the housekeeping entropy gap
+  falls from −0.35 to −0.14 SD, dispersion from −0.42 to −0.20; non-essential genes' excess drift vanishes
+  (+0.36 to +0.02).
+* **CR's effect shrinks with it.** In B6D2F1 the housekeeping `F` effect falls from +0.025 (p 0.002) to +0.008
+  (p 0.07), core essential from +0.017 to +0.004 (p 0.62). Relative to the shield that is left, CR still
+  weakens it by about a fifth (−18 % against −23 %), not significantly.
+* **Reading.** CR acts mostly on the part of the shield that openness explains, so a chromatin change is
+  enough to explain it; a residual selection part of the size seen before cannot be excluded with 22 mice.
+  The matching uses young-adult openness, not openness under CR; a CR-induced change of openness would be
+  absorbed only if it follows the young openness classes.
+
+Tables: `data/output/cr_chromatin/` (`intervention_effects`, `aging_gaps`, `openness_by_set`).
+
 ### Six tissues of the same strains: the shield does not follow turnover
 
 Thompson et al. 2018 (GSE120132, `entropy-age fetch rrbs-tissues`) measured blood, lung, kidney, liver, adipose and

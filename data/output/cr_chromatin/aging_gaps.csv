@@ -1,0 +1,13 @@
+matching,metric,group,gap_sd
+island x level,entropy_slope,housekeeping,-0.3504170725975626
+island x level,entropy_slope,non_essential,0.36175028263867315
+island x level,entropy_slope,core_essential,-0.30166975287904374
+island x level,dispersion_slope,housekeeping,-0.42195043013503036
+island x level,dispersion_slope,non_essential,0.32561580871783463
+island x level,dispersion_slope,core_essential,-0.3714873647510229
++ openness,entropy_slope,housekeeping,-0.13970403844602072
++ openness,entropy_slope,non_essential,0.019780602895158234
++ openness,entropy_slope,core_essential,-0.14137171202086266
++ openness,dispersion_slope,housekeeping,-0.19776510409235423
++ openness,dispersion_slope,non_essential,0.033237773009690934
++ openness,dispersion_slope,core_essential,-0.20441312169446196
