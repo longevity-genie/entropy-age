@@ -76,7 +76,7 @@ public data (one tissue, one protocol, many individuals across ages, processed c
 
 ## RM20 — Why would long life or CR weaken the shield?
 
-**State:** unattended · **Owner:** lead
+**State:** blocked: desk #28 (CALERIE), parked by antonkulaga until the pattern is firmer · **Owner:** lead
 
 Progress: asked by antonkulaga (2026-11-12). The pattern: no lifespan effect overall (p 0.40), a lean toward a
 weaker shield in blood of long-lived species (p 0.054), CR weakening it in one blood study and not in liver,
@@ -128,6 +128,8 @@ maintenance predicts the shield restored with the clock; selection predicts no c
   tissues, Mammal40 array as in the consortium, 2-7 mice per group, 49 MB); then GSE156557 (RRBS, 5 per group).
 - Done (R32): no consistent change (muscle stronger, spleen weaker, four tissues unchanged); the regimen barely
   moves promoter CpGs toward youth. Next if wanted: GSE156557 (one OSKM cycle, RRBS).
+- Running (R62, `figures reprogramming_rrbs`): GSE156557, one OSKM cycle in 1-year-old mice against old and
+  young controls, pancreas, liver, spleen, RRBS.
 
 ## RM14 — Natural experiments in chromatin: broken writers, knockouts, edits
 
