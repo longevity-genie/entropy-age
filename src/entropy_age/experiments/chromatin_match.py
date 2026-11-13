@@ -182,7 +182,7 @@ def run(ctx: Context) -> list[Path]:
     lunnon = _lunnon(ctx.paths, features)
     rows, composition = [], []
     for label, p, metric_fn, metric_names in [
-        *((k, v, _lifespan_metrics, ("entropy_slope", "dispersion_slope")) for k, v in tissues.items()),
+        *((k, v, _lifespan_metrics, ("entropy_slope", "dispersion_slope", "kl_slope")) for k, v in tissues.items()),
         *((k, v, _dispersion_metrics, ("dispersion",)) for k, v in lunnon.items()),
     ]:
         metrics = metric_fn(p)
@@ -272,7 +272,7 @@ def _figure(ctx: Context, gaps: pl.DataFrame, composition: pl.DataFrame) -> Path
         "+ sorted ATAC": lambda m: m.str.starts_with("+ sorted ATAC"),
         "+ own state + sorted ATAC": lambda m: m == "+ own state + sorted ATAC",
     }
-    house = gaps.filter((pl.col("group") == "housekeeping") & (pl.col("metric") != "entropy_slope"))
+    house = gaps.filter((pl.col("group") == "housekeeping") & (pl.col("metric") == "dispersion_slope"))
     ticks = house["tissue"].unique(maintain_order=True).to_list()
     for j, (kind, match) in enumerate(shown.items()):
         sub = house.filter(match(pl.col("matching")))

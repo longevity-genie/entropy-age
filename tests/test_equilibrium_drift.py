@@ -38,3 +38,15 @@ def test_adjust_removes_covariate_keeps_age():
         abs(y[batch == 1].mean() - y[batch == 0].mean() - 0.002 * (ages[batch == 1].mean() - ages[batch == 0].mean()))
         < 0.003
     )
+
+
+def test_relative_entropy_counts_up_and_down_alike():
+    from entropy_age.stochasticity import binary_entropy, relative_entropy
+
+    m = np.array([0.05, 0.05])
+    x = np.array([0.02, 0.08])  # a loss and a gain of the same size at a low level
+    kl = relative_entropy(x, m)
+    assert kl[0] > 0 and kl[1] > 0 and abs(kl[0] - kl[1]) < 0.5 * kl.max()
+    h = binary_entropy(x) - binary_entropy(m)
+    assert h[0] < 0 < h[1]  # binary entropy reads the loss as a gain in order
+    assert relative_entropy(m, m).max() < 1e-12

@@ -138,7 +138,7 @@ def run(ctx: Context) -> list[Path]:
     write_table(pl.DataFrame(shares), out / "share_off_floor")
     fits = []
     for variant in VARIANTS:
-        for metric in ("entropy_slope", "dispersion_slope"):
+        for metric in ("entropy_slope", "dispersion_slope", "kl_slope"):
             for group in SETS:
                 sel = gaps.filter(
                     (pl.col("variant") == variant)

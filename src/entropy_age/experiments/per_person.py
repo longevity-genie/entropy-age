@@ -59,6 +59,7 @@ from entropy_age.protection import (
     resampled_gaps,
     signed_deviations,
 )
+from entropy_age.stochasticity import relative_entropy
 
 REFERENCE_AGES = (20.0, 35.0)
 MIN_REFERENCE = 20
@@ -85,22 +86,32 @@ def _islands(features: list[str], probes: pl.DataFrame) -> np.ndarray:
 def score_against(
     x: np.ndarray, reference, sets: dict, *, n_resamples: int = 0, rng: np.random.Generator | None = None
 ) -> dict[str, np.ndarray]:
-    """Every set's ``P``, ``B``, ``F``, entropy gap ``E`` and signed shift ``S`` for the rows of ``x``, and ``P``'s SE.
+    """Each set's ``P``, ``B``, ``F``, entropy gap ``E``, relative-entropy gap ``K``, signed shift ``S`` and ``P``'s SE.
 
-    ``S`` is the matched gap of the signed deviation ``(x - m) / sqrt(m (1 - m))``: above 0 when set CpGs gained
-    methylation relative to their look-alikes, below 0 when they lost it. ``P`` says how far they moved, ``S``
-    which way.
+    ``K`` is the matched gap of the relative entropy from the reference level (bits; a move up or down alike, no
+    assumption that sites drift to 0.5, unlike ``E``). ``S`` is the matched gap of the signed deviation
+    ``(x - m) / sqrt(m (1 - m))``: above 0 when set CpGs gained methylation relative to their look-alikes, below 0
+    when they lost it. ``P`` says how far they moved, ``S`` which way.
     """
     adjusted = reference.adjust(x)
     d = deviations(adjusted, reference.level)
     signed = signed_deviations(adjusted, reference.level)
     h = entropy_gain(np.clip(adjusted, 0.0, 1.0), reference.level)
+    kl = relative_entropy(np.clip(adjusted, 0.0, 1.0), reference.level)
     scores = {}
     for group, (in_set, genes) in sets.items():
         p, b = matched_scores(d, in_set, reference.strata)
         e, _ = matched_scores(h, in_set, reference.strata)
+        k, _ = matched_scores(kl, in_set, reference.strata)
         shift, _ = matched_scores(signed, in_set, reference.strata)
-        scores |= {f"P_{group}": p, f"B_{group}": b, f"F_{group}": p / b, f"E_{group}": e, f"S_{group}": shift}
+        scores |= {
+            f"P_{group}": p,
+            f"B_{group}": b,
+            f"F_{group}": p / b,
+            f"E_{group}": e,
+            f"K_{group}": k,
+            f"S_{group}": shift,
+        }
         if n_resamples:
             draws = resampled_gaps(d, genes, reference.strata, n_resamples, rng)
             scores[f"se_{group}"] = draws.std(axis=0, ddof=1)

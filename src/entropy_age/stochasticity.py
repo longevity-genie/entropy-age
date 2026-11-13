@@ -41,6 +41,18 @@ def binary_entropy(p: np.ndarray) -> np.ndarray:
     return -(p * np.log2(p) + (1 - p) * np.log2(1 - p))
 
 
+def relative_entropy(x: np.ndarray, reference: np.ndarray) -> np.ndarray:
+    """``KL(Bernoulli(x) || Bernoulli(m))`` in bits: how far ``x`` has moved from the reference level ``m``.
+
+    Unlike binary entropy, which measures distance from 0.5 and so counts a move toward 0 or 1 as a gain in order,
+    it counts a move up or down alike and needs no assumption about where a site drifts to; a move away from an
+    extreme level weighs more, as binomial sampling says it should. The reference is clipped to [0.01, 0.99].
+    """
+    p = np.clip(np.asarray(x, dtype=float), _EPS, 1 - _EPS)
+    m = np.clip(np.asarray(reference, dtype=float), 0.01, 0.99)  # as the per-person deviations clip the level
+    return p * np.log2(p / m) + (1 - p) * np.log2((1 - p) / (1 - m))
+
+
 def sample_entropy(x: np.ndarray) -> np.ndarray:
     """Mean binary entropy across features for every sample (Hannum-style methylome entropy)."""
     return binary_entropy(x).mean(axis=1)
@@ -128,13 +140,14 @@ def drift_metrics(
     rank_corr = _partial_spearman(t, x, covariates) if spearman else np.full(x.shape[1], np.nan)
 
     entropy_slope, _ = _age_fit(t, binary_entropy(x), covariates)
+    young = t <= np.quantile(t, young_quantile)
+    kl_slope, _ = _age_fit(t, relative_entropy(x, x[young].mean(axis=0)), covariates)
 
     residual = x - fitted
     level = np.clip(x.mean(axis=0), 0.01, 0.99)
     scaled_abs = np.abs(residual) / np.sqrt(level * (1 - level))
     dispersion_slope, _ = _age_fit(t, scaled_abs, covariates)
 
-    young = t <= np.quantile(t, young_quantile)
     old = t >= np.quantile(t, 1 - young_quantile)
     var_young = residual[young].var(axis=0, ddof=1)
     var_old = residual[old].var(axis=0, ddof=1)
@@ -148,6 +161,7 @@ def drift_metrics(
             "abs_slope": np.abs(slope),
             "spearman": rank_corr,
             "entropy_slope": entropy_slope,
+            "kl_slope": kl_slope,
             "dispersion_slope": dispersion_slope,
             "log2_dispersion_ratio": np.log2((var_old + _EPS) / (var_young + _EPS)),
         }

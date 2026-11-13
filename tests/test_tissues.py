@@ -183,7 +183,7 @@ def test_analyse_runs_with_every_adjustment(tmp_path: Path):
             life = {k: _adjusted(p, members, *spec)[0] for k, p in lifespan.items()}
             lun = {k: _adjusted(p, members, *spec)[0] for k, p in same.items()}
         point, boot_life, boot_same, contrasts = _analyse(life, lun, probes, membership, 3, 1)
-        assert contrasts.height == 3 * (3 + 4)  # 3 sets x (3 lifespan metrics + 4 brain regions)
+        assert contrasts.height == 3 * (4 + 4)  # 3 sets x (4 lifespan metrics + 4 brain regions)
         assert set(boot_same["tissue"].unique()) == set(same)
         gaps.append(contrasts.with_columns(adjustment=pl.lit(name)))
     ctx = Context(ProjectPaths(tmp_path), Scale.of("quick"))

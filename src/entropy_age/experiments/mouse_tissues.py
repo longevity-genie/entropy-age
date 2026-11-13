@@ -54,7 +54,7 @@ TURNOVER: dict[str, str] = {
     "hypothalamus": "post-mitotic",
 }
 CLASSES = ("renewing", "slow", "post-mitotic")
-AGING_METRICS = ("entropy_slope", "dispersion_slope", "abs_slope")
+AGING_METRICS = ("entropy_slope", "dispersion_slope", "abs_slope", "kl_slope")
 INTERVENTION_GROUPS = ("Aged_ctrl", "Aged_exenatide", "Aged_rapamycin")
 MIN_GROUP = 4  # fewer animals than this give no per-group dispersion
 BACKGROUND = 60_000

@@ -93,7 +93,7 @@ def group_gap(x: np.ndarray, ages: np.ndarray, features: list[str], island: np.n
     young = ages <= np.quantile(ages, 0.25)
     strata = np.char.add(island.astype(str), baseline_strata(x[young].mean(axis=0), 10).astype(str))
     out = []
-    for metric in ("entropy_slope", "dispersion_slope"):
+    for metric in ("entropy_slope", "dispersion_slope", "kl_slope"):
         v = metrics[metric].to_numpy()
         sd = float(v.std())
         for group, (in_set, genes) in sets.items():
@@ -244,7 +244,7 @@ def run(ctx: Context) -> list[Path]:
     write_table(gaps, out / "species_gaps")
 
     fits = []
-    for metric in ("entropy_slope", "dispersion_slope"):
+    for metric in ("entropy_slope", "dispersion_slope", "kl_slope"):
         for group in SETS:
             sel = gaps.filter((pl.col("metric") == metric) & (pl.col("group") == group)).drop_nulls(["adult_weight"])
             sel = sel.filter(pl.col("adult_weight") > 0)

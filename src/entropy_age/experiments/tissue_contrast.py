@@ -54,7 +54,7 @@ from entropy_age.stochasticity import (
 
 SETS = ("core_essential", "housekeeping", "non_essential")
 SET_LABELS = {"core_essential": "core essential", "housekeeping": "housekeeping", "non_essential": "non-essential"}
-LIFESPAN_METRICS = ("entropy_slope", "dispersion_slope", "abs_slope")
+LIFESPAN_METRICS = ("entropy_slope", "dispersion_slope", "abs_slope", "kl_slope")
 BACKGROUND = 60_000
 MAX_MISSING = 0.05
 LUNNON_BRAIN = ("frontal cortex", "superior temporal gyrus", "entorhinal cortex", "cerebellum")

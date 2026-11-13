@@ -41,7 +41,7 @@ DEPMAP = "depmap/CRISPRGeneEffect_24Q4.csv"
 GTEX = "gtex/GTEx_Analysis_2017-06-05_v8_RNASeQCv1.1.9_gene_median_tpm.gct.gz"
 TISSUE_TPM = {"blood (Hannum)": "Whole Blood", "cortex (Jaffe)": "Brain - Frontal Cortex (BA9)"}
 BROAD = 50
-METRICS = ("entropy_slope", "dispersion_slope")
+METRICS = ("entropy_slope", "dispersion_slope", "kl_slope")
 STEPS = ("island x level", "+ chromatin state", "+ expression and breadth")
 N_BOOT = {"paper": 200, "quick": 30}
 
