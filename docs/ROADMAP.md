@@ -156,7 +156,10 @@ with two leads for it (CR in one blood study; human bone marrow and lymph node r
 - Step 2 done (R54): the marrow and lymph-node reversal is within donor noise (intervals cross 0; 5-7 % of
   20-donor draws reach it) and comes largely from the donor set (+0.16 SD in other tissues on the same donors);
   marrow's age signal follows the adipose direction. No lead for selection there.
-- Left: step 3 (no public sorted stem-cell age series found yet) and step 4 (a second within-batch CR blood series).
+- Step 4 done (R56): the one public within-batch CR blood series (GSE282661) has young mice and 12 weeks, no drift;
+  CR's own changes spare essential promoters (F −0.09, p 0.006), the opposite sign. Not a replication test; no
+  support. CALERIE (human, 128 CR / 69 controls, EPIC) is the replication, controlled access (NIA biobank).
+- Left: step 3, no public sorted stem-cell age series found.
 
 ## RM17 — Partial reprogramming: does a reset restore the shield?
 

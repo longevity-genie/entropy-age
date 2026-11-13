@@ -3,6 +3,16 @@
 Owned by the runner seat (`docs/seats/RUNNER.md`): one entry per run, newest first, with its inputs, the
 commit it ran, its job ids, its scale and seed, and its result or its failure with the cause.
 
+## R56 — a second CR blood series, GSE282661 (RM16 step 4), 2026-11-13
+
+- Commit 7204317 (the figure redrawn after, labels only); `figures cr_blood_replication --scale paper --seed 42`;
+  4 cores, 32 GB; job 6469050, 23 s. C57BL/6J whole blood, mammalian array, one run: 8 CR, 8 TLS+CR, 8 controls,
+  8 at the start; long-term TLS 7 against 6. 77,888 autosomal promoter probes. Each animal scored against the
+  controls (leave one out for controls); 0 and 3 composition components; 2,000 label permutations.
+- Result, as measured (3 components): CR against controls, F core essential −0.090 (p_perm 0.006), housekeeping
+  −0.027 (0.026); B +0.002 (n.s.). TLS+CR −0.043, −0.014 (n.s.). Controls after 12 weeks against the start:
+  B −0.003, F +0.02 (n.s.): no measurable drift in 12 weeks.
+
 ## R55 — CR's blood effect with chromatin openness matched (RM12), 2026-11-13
 
 - Commit 58ddfee; `figures cr_chromatin --scale paper --seed 42`; 4 cores, 48 GB; job 6469026, 2 min, 11.5 GB.

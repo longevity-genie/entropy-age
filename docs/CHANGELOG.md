@@ -4,6 +4,7 @@ Newest first.
 
 ## Unreleased
 
+- 2026-11-13: R56 written up: in a second CR blood series (young mice, 12 weeks, no drift) CR's changes spare essential promoters; no support for the B6D2F1 weakening.
 - 2026-11-13: R55 written up: chromatin openness removes about 60 % of mouse blood's shield and two thirds of CR's effect on it.
 - 2026-11-13: `cr_blood_replication` (RM16 step 4): a second CR blood series, GSE282661 (8 CR, 8 TLS+CR, 8 controls, one array run); R56 submitted.
 - 2026-11-13: `cr_chromatin` (RM12, chromatin held fixed): CR's blood effect refitted with CpGs also matched on openness in six mouse blood cell types (ImmGen ATAC, GSE100738); pyBigWig added; R55 submitted.

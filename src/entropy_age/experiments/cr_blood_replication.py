@@ -43,7 +43,7 @@ COMPARISONS = {
     "CR": ("CR", "Control"),
     "TLS+CR": ("TLS+CR", "Control"),
     "TLS, long-term": ("TLS (long-term)", "Control (long-term)"),
-    "12 weeks (controls vs time 0)": ("Control", "Time 0"),
+    "controls, 12 weeks vs start": ("Control", "Time 0"),
 }
 COMPONENTS = (0, 3)
 N_PERM = {"paper": 2000, "quick": 200}
@@ -155,6 +155,7 @@ def _figure(ctx: Context, effects: pl.DataFrame) -> Path:
         ax.axvline(0, color=plots.MUTED, lw=0.8)
         ax.invert_yaxis()
         ax.set(xlabel=f"treated minus control, {label}", title=f"{label}, mouse blood (GSE282661)")
+        ax.locator_params(axis="x", nbins=4)
         if measure == "B":
             ax.set_yticklabels([])
         plots.label_panel(ax, "ab"[measure == "B"])

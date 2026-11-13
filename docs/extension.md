@@ -1023,6 +1023,23 @@ and CD8 T cells, NK cells, Ly6C-high monocytes and granulocytes within ±250 bp,
 
 Tables: `data/output/cr_chromatin/` (`intervention_effects`, `aging_gaps`, `openness_by_set`).
 
+**A second CR blood series does not repeat it (roadmap RM16 step 4, R56).** The only public series found with CR
+and controls in blood in one batch is GSE282661 (Jayne et al. 2025): C57BL/6J mice of about 5-6 months, 8 on CR
+(pair feeding at a third of intake four days a week, 12 weeks, at 32 °C), 8 on CR with a torpor-like state, 8
+controls, 8 at the start, all on one array run. Figure `cr_blood_replication`:
+
+![Second CR blood series](figures/cr_blood_replication.png)
+
+* **No drift to shield.** Controls after 12 weeks do not differ from the start (B −0.003, n.s.): in young mice
+  over 12 weeks there is no aging drift, so `F` here measures how CR's own changes fall, not the aging shield.
+* **CR's changes spare essential promoters.** Against controls, essential CpGs move less than look-alikes (`F`
+  core essential −0.09, p 0.006; housekeeping −0.03, p 0.03), the opposite sign of the B6D2F1 result, with drift
+  `B` unchanged. Non-essential CpGs shift (signed `S` −0.004, p 0.015). CR with torpor goes the same way, n.s.
+* **Reading.** This is not a replication test of the aging result (no drift, young mice, 12 weeks), and it gives
+  no support for it: what CR does here is kept out of essential promoters, as Dnmt3a's gain was (R37).
+
+Tables: `data/output/cr_blood_replication/` (`effects`, `animal_scores`).
+
 ### Six tissues of the same strains: the shield does not follow turnover
 
 Thompson et al. 2018 (GSE120132, `entropy-age fetch rrbs-tissues`) measured blood, lung, kidney, liver, adipose and
