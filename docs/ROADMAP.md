@@ -53,7 +53,7 @@ neither proof nor disproof. Tests that would separate selection from chromatin, 
 
 ## RM13 — Answer the prior work (novelty review)
 
-**State:** after RM12 · **Owner:** lead
+**State:** building · **Owner:** lead
 
 Progress: `docs/NOVELTY_REVIEW.md`. To make the paper new, in order: (1) does essentiality still predict protection
 after matching on chromatin, expression level and breadth? First answer from R4's tables (`docs/extension.md`):
@@ -62,6 +62,8 @@ brain both; left: a DepMap gradient within broadly expressed genes, and expressi
 (2) absolute drift slopes beside the CR share; (3) clonality in the culture series where reads allow (epiallele
 structure), against Hollmann 2020; (4) read the species result against Crofts 2026 (stem-cell dynamics) and the
 floor of near-0 % essential promoters; (5) the shield score against Seeboth 2020's confounders.
+- (1) running (R58, `figures essentiality_gradient`): DepMap 24Q4 mean gene effect within genes expressed in 50+
+  GTEx tissues, chromatin state, tissue expression and breadth held.
 
 ## RM18 — Normalization and probe robustness
 
