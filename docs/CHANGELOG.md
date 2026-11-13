@@ -4,6 +4,7 @@ Newest first.
 
 ## Unreleased
 
+- 2026-11-13: `cr_chromatin` (RM12, chromatin held fixed): CR's blood effect refitted with CpGs also matched on openness in six mouse blood cell types (ImmGen ATAC, GSE100738); pyBigWig added; R55 submitted.
 - 2026-11-13: R54 written up: the human marrow and lymph-node reversal is donor noise and donor set, not a tissue effect; RM16 step 2 done.
 - 2026-11-13: `marrow_anomaly` (RM16 step 2): human bone marrow and lymph node's reversed shield checked by donor resampling, chip held, same donors across tissues, a 20-donor null; R54 submitted.
 - 2026-11-13: R53 written up: the molecule-level shield holds within 27 sorted cell types; RM22 done and taken out of the roadmap.

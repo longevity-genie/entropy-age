@@ -43,6 +43,7 @@ neither proof nor disproof. Tests that would separate selection from chromatin, 
   recipients, or patients after chemotherapy).
 - **Chromatin held fixed.** Match on chromatin first (RM7's method), then test the intervention on the remainder.
   If the CR effect survives the matching, it is not a chromatin change.
+  Running (R55, `figures cr_chromatin`): openness from ImmGen ATAC of six blood cell types (GSE100738).
 
 ## RM13 — Answer the prior work (novelty review)
 

@@ -125,6 +125,7 @@ dependencies = [
     { name = "numpy" },
     { name = "openpyxl" },
     { name = "polars" },
+    { name = "pybigwig" },
     { name = "rdata" },
     { name = "scikit-learn" },
     { name = "scipy" },
@@ -144,6 +145,7 @@ requires-dist = [
     { name = "numpy", specifier = ">=2.5.4" },
     { name = "openpyxl", specifier = ">=3.1.5" },
     { name = "polars", specifier = ">=2.1.0" },
+    { name = "pybigwig", specifier = ">=0.3.29" },
     { name = "rdata", specifier = ">=1.1.0" },
     { name = "scikit-learn", specifier = ">=1.9.1" },
     { name = "scipy", specifier = ">=1.18.1" },
@@ -684,6 +686,15 @@ wheels = [
     { url = "https://files.pythonhosted.org/packages/33/4d/d76cd42042605e079d6df91cc4fea09ed5f4cb836c72c952a17f585860a9/polars_runtime_32-2.1.0-cp311-abi3-musllinux_1_2_x86_64.whl", hash = "sha256:af58b5f6e5cc44b578f2a93d752f87c135c3a53205b4360301bc3a9b89dfbfd1", size = 53794253, upload-time = "2026-10-25T17:58:57.99Z" },
     { url = "https://files.pythonhosted.org/packages/4d/4e/2a419d0def2908255dd1b7318c48430319859dc92ca156e2f81ff7bcd78b/polars_runtime_32-2.1.0-cp311-abi3-win_amd64.whl", hash = "sha256:f2fe32f48af2395cd6ec52a433a03970a69aab1dbb66a613729fd549ce92c904", size = 53926265, upload-time = "2026-10-25T17:59:03.13Z" },
     { url = "https://files.pythonhosted.org/packages/c8/1b/15ffba3264baf21d2f04c51f54b01159cb6f4fad4e84de1404be552d601f/polars_runtime_32-2.1.0-cp311-abi3-win_arm64.whl", hash = "sha256:0af30dd53a7725f703d0d21dd421a39e0165378bfaa41431008f286608376d71", size = 48636436, upload-time = "2026-10-25T17:59:08.476Z" },
+]
+
+[[package]]
+name = "pybigwig"
+version = "0.3.29"
+source = { registry = "https://pypi.org/simple" }
+sdist = { url = "https://files.pythonhosted.org/packages/fc/a7/2c42ce725840402fccc8f744d9aa885872fb156122a18ef0b132b17daaab/pybigwig-0.3.29.tar.gz", hash = "sha256:031336c0e6e15dd9a506f8176d7086f5327dc30faef88d3e6aac45db8725283a", size = 76052, upload-time = "2026-10-30T09:25:57.621Z" }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/cc/f9/5adab8f9cc446efef1f8d4a3dc4a9f088ede4c8e338add9656e0673e29e3/pybigwig-0.3.29-cp313-cp313-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl", hash = "sha256:c3806d2dc07a595c1ab75b32021b91467987fb778f671d82ccb02a420646a2d2", size = 189219, upload-time = "2026-10-30T09:26:02.715Z" },
 ]
 
 [[package]]
