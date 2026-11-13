@@ -21,11 +21,3 @@ grammar (`unattended`, `urgent`, `building`, `after <R-id>` or `after job <slurm
   spread-slope coupling across genes.
 
 
-## R50 — molecule-level disorder at essential promoters, Loyfer WBC WGBS (RM22)
-
-- What: hg38 CpG index (job `entropy-cpgindex`), the 23 WBC PAT files (about 12 GB), then `entropy-age figures
-  read_level --scale paper --seed 42`.
-- Resources: compute partition, 8 cores (one PAT file per worker), 32 GB; time unknown (each PAT read once in
-  Python; counts cached per donor in `data/interim/read_level/`).
-- Read: `data/output/read_level/gaps`: set minus look-alikes on epiallele entropy and discordance (level and
-  age slope). Check first: window mean methylation against Hannum's array means for the same probes (index order).

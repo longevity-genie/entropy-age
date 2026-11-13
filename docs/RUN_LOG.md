@@ -25,6 +25,17 @@ commit it ran, its job ids, its scale and seed, and its result or its failure wi
   |0.12| SD or less. Housekeeping F, 5 components: Jaffe cortex schizophrenia +0.57, GSE41037 blood +0.45.
   Tables in `data/output/health_states/`.
 
+## R50 — molecule-level disorder at essential promoters, Loyfer WBC (RM22), 2026-11-13
+
+- Commit 7d95064; `figures read_level --scale paper --seed 42`; 8 cores, 32 GB; job 6445425, 11 min. 23 WBC donors
+  aged 21-75; 109,068 4-CpG windows at 450k promoter probes, 73,885 with 10+ reads in 18+ donors (median 41 reads).
+- Check: window mean methylation against Hannum's array mean for the same probes, r 0.963 (73,804 probes): the CpG
+  index and the window placement are right.
+- Result, as measured (set minus look-alikes matched on island and level, SD; permutation p): age slope of epiallele
+  entropy, housekeeping -0.075 (0.001), core essential -0.049 (0.001), non-essential +0.148 (0.001); of discordant
+  reads, -0.059 (0.001), -0.034 (0.002), +0.222 (0.001). Levels at matched methylation: entropy -0.007 / +0.013,
+  discordance +0.016 / +0.017. Tables in `data/output/read_level/`.
+
 ## R48 — SJLIFE deaths (RM28), 2026-11-13, first pass
 
 - Commit 60b685b; `figures sjlife --scale paper --seed 42`; 4 cores, 96 GB; job 6444474, 9 min. 4,518 first draws,

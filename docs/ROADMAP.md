@@ -125,6 +125,8 @@ methylation haplotype load, discordant reads)? Read-level WGBS does the same on 
   controlled). First test: Loyfer 2023 WGBS read-level PAT files (GSE186458), 23 white-blood-cell donors aged
   21-75, ~13 GB, `wgbstools homog`/entropy, essential promoters against matched regions. No published
   single-molecule test of epiallele heterogeneity against age.
+- Done (R50): the shield holds molecule by molecule in WBC (entropy and discordance rise slower at essential
+  promoters). Next: the same in the donors' cfDNA (replication) and in sorted atlas cell types.
 
 ## RM28 — Does the shield (and drift) predict death and disease? Open follow-up cohorts
 

@@ -14,11 +14,12 @@ a test with little power), **refuted**.
 - **We should not see:** the gap vanish or flip once CpGs are matched more finely, or in an independent cohort.
 - **Observed:** negative in human blood, brain and GTEx tissues, 11 mouse tissues, culture, 96 % of 65 mammals,
   and inside one sorted cell type (monocytes -0.14 SD, CD4+ T cells -0.22, R44; about half of whole blood's);
+  molecule by molecule in read-level WGBS (entropy -0.05 to -0.075 SD, R50);
   probe design explains a sixth of blood's gap, masks nothing (R20); per-person reliability 0.997.
 - **Alternatives:** (a) a floor: CpGs near 0 % cannot drift down, and deciles leave a floor inside the lowest
   stratum; (b) array compression at the extremes; (c) island CpGs vary less for technical reasons.
 - **Separating test:** finer level matching in the lowest decile; read-level WGBS free of array effects
-  (Loyfer 2023, RM22). (b) partly done (R20); (c) matched on island status.
+  (Loyfer 2023, R50: holds, so (b) is excluded as the whole story); (c) matched on island status.
 - **Status:** holds; (a) open.
 
 ## C2 — The shield is chromatin maintenance (H1)

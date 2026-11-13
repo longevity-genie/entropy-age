@@ -1,5 +1,5 @@
 id,test,status,targets
-P5,Read-level WGBS of 23 blood donors (Loyfer 2023),next,A1;A2;H1
+P5,Read-level replication in cfDNA of the same donors and sorted atlas cell types,next,A2;A3;H1
 P6,Finer level matching in the lowest decile,next,A1
 P7,Tet3 knockout on the same platform; sorted neurons,needs data,H4;A3;A4
 P8,Sorted stem cells young against old,needs data,H2

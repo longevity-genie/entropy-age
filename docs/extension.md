@@ -1361,6 +1361,27 @@ rodent data are Shavlakadze et al. 2026 (Sci Adv), which with Tyshkovskiy 2026 (
 directed change; Ibañez-Solé 2022 (eLife) found no consistent rise of transcriptional noise with age, in line with
 the unshared noise order. Only the explicit rank comparison is ours.
 
+## The shield holds molecule by molecule (roadmap RM22, read-level WGBS)
+
+Arrays average each CpG over many cells. Whole-genome bisulfite reads keep several neighbouring CpGs of one
+molecule from one cell, so they show whether a promoter stays uniform across a person's cells or turns into a
+mixture of epialleles. Loyfer et al. 2023 (GSE186458) sequenced white blood cells of 23 donors aged 21-75. For the
+4-CpG window at each 450k promoter probe (73,885 windows with enough reads; their methylation matches Hannum's
+array at r 0.96), run R50 measured per donor the entropy of the epialleles and the share of discordant reads, and
+how each rises with age.
+
+- **Essential and housekeeping promoters gain molecular disorder more slowly than look-alikes**: entropy -0.05 to
+  -0.075 SD, discordant reads -0.03 to -0.06 SD (permutation p <= 0.002).
+- **Non-essential promoters gain more** (+0.15 and +0.22 SD), as on the arrays.
+- **Not a difference in where they start**: at matched methylation, the level of disorder is nearly equal
+  (|0.02| SD or less); the gap is in how fast it grows.
+
+Reading: the shield is not an averaging artefact of arrays; the molecules at essential promoters stay alike from
+cell to cell as people age, more than those at matched sites. Caveat: white blood cells are a mixture whose myeloid
+share grows with age, so cell-to-cell and cell-type-to-cell-type disorder are not separated; the cfDNA of the same
+donors and the sorted atlas cell types are the next checks. No published single-molecule test of this was found
+(docs/LONGREAD_SURVEY.md).
+
 ## Death in childhood-cancer survivors: drift and the shield add nothing beyond the pace clock (RM28, SJLIFE)
 
 SJLIFE (GSE314261): blood of 4,179 childhood-cancer survivors (and 340 controls, none of whom died) on the EPIC
