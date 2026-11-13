@@ -34,27 +34,9 @@ floor of near-0 % essential promoters; (5) the shield score against Seeboth 2020
 - (5) done (R60): slide batch explains 36 % of B against 13 % by chance, 20-23 % of F and S; smoking moves only S;
   chemotherapy moves F against B (alkylating F −0.16, anthracyclines +0.21). Batch must be held in every use.
 
-## RM18 — Normalization and probe robustness
-
-**State:** building · **Owner:** lead
-
-Progress: asked by antonkulaga (2026-11-12): are results comparable across arrays and array versions, and do we
-follow best practice? By design every comparison stays within one dataset and platform, on the deposited betas,
-matched on island status and starting level. Gaps:
-1. Infinium probe type (I/II) is not in the strata; island CpGs at essential promoters are more often type I.
-   Add it, rerun the headline gaps (Hannum, Jaffe, Lunnon).
-2. Cross-reactive and SNP-affected probes are not masked: apply Zhou et al. 2017's masks, rerun.
-3. One cohort reprocessed from raw IDATs (SeSAMe, or noob + BMIQ) against its deposited betas.
-4. Each sample's beta compression as a covariate for the signed shift S.
-- Done (R20): items 1-2. Design explains about a sixth of blood's gaps; the mask nothing; no sign changes.
-- Done (R36): item 4, compression held for S (Tet3's gain survives it).
-- Done (R61): item 3, Jaffe cortex from its IDATs: every essential-set gap stays below zero; sizes move by up
-  to 0.06 SD.
-5. A short review of current practice, recorded in `docs/`.
-
 ## RM19 — Does chromatin accessibility become stochastic with age?
 
-**State:** after RM18 · **Owner:** lead
+**State:** unattended · **Owner:** lead
 
 Progress: asked by antonkulaga (2026-11-12): can we collect enough comparable ATAC-seq data to test stochastic
 changes of chromatin opening? Test: per region, the age slope of between-individual (or between-cell)
@@ -99,7 +81,7 @@ Tet3 loss weakening it in brain. Hypotheses, each with its test:
 
 ## RM28 — Does the shield (and drift) predict death and disease? Open follow-up cohorts
 
-**State:** after RM18 (the SATSA raw-IDAT rerun uses the IDAT pipeline R61 validates) · **Owner:** lead
+**State:** unattended (the SATSA raw-IDAT rerun, with the IDAT pipeline R61 validated) · **Owner:** lead
 
 Progress: asked by antonkulaga (2026-11-12) for longitudinal cohorts with age and health; survey in
 docs/LONGITUDINAL_SURVEY.md. Open: SJLIFE GSE314261 (4,520 people, 294 deaths with age at death, 378 with 2-5
@@ -118,7 +100,7 @@ application; links in the survey.
 
 ## RM17 — Partial reprogramming: does a reset restore the shield?
 
-**State:** after RM18 · **Owner:** lead
+**State:** unattended · **Owner:** lead
 
 Progress: asked by antonkulaga (2026-11-12). The consortium's OSKM arms are 2-5 mice (3.4F+7mDox kidney F −0.17,
 p 0.10; skin n.s.): too small. Public array series to find: maturation-phase transient reprogramming of human
