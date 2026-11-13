@@ -25,6 +25,14 @@ commit it ran, its job ids, its scale and seed, and its result or its failure wi
   |0.12| SD or less. Housekeeping F, 5 components: Jaffe cortex schizophrenia +0.57, GSE41037 blood +0.45.
   Tables in `data/output/health_states/`.
 
+## R51 — read-level replication in cfDNA of the same donors (RM22), 2026-11-13
+
+- Commit ba26233; `figures read_level --scale paper --seed 42`; 8 cores, 32 GB; job 6447493, 12 min. cfDNA of the
+  23 donors (GSM6810003-25); 51,902 windows with coverage (WBC counts reused from cache).
+- Result, as measured (set minus look-alikes, SD; p): entropy slope housekeeping -0.063 (0.001), core essential
+  -0.058 (0.002); discordance slope -0.054 (0.001), -0.033 (0.019). White blood cells: -0.075, -0.049, -0.059,
+  -0.034. Non-essential: cfDNA -0.02 (0.48) and +0.06 (0.06), against WBC +0.15 and +0.22.
+
 ## R50 — molecule-level disorder at essential promoters, Loyfer WBC (RM22), 2026-11-13
 
 - Commit 7d95064; `figures read_level --scale paper --seed 42`; 8 cores, 32 GB; job 6445425, 11 min. 23 WBC donors

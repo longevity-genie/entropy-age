@@ -1376,6 +1376,12 @@ how each rises with age.
 - **Not a difference in where they start**: at matched methylation, the level of disorder is nearly equal
   (|0.02| SD or less); the gap is in how fast it grows.
 
+**Replicated in cfDNA (run R51).** The donors' plasma DNA (51,902 windows) gives the same molecule-level shield:
+entropy slope -0.063 and -0.058 SD, discordance slope -0.054 and -0.033 SD for housekeeping and core-essential
+promoters (p <= 0.02). cfDNA of healthy people comes mostly from blood cells, so it is not an independent tissue,
+but it is an independent library and molecule source. The non-essential excess of white blood cells does not
+replicate (-0.02, +0.06, n.s.).
+
 Reading: the shield is not an averaging artefact of arrays; the molecules at essential promoters stay alike from
 cell to cell as people age, more than those at matched sites. Caveat: white blood cells are a mixture whose myeloid
 share grows with age, so cell-to-cell and cell-type-to-cell-type disorder are not separated; the cfDNA of the same

@@ -22,9 +22,3 @@ grammar (`unattended`, `urgent`, `building`, `after <R-id>` or `after job <slurm
 
 
 
-## R51 — read-level replication in the same donors' cfDNA (RM22)
-
-- What: GSE186458 cfDNA PAT files (GSM6810003-25, about 12 GB) into `.../GSE186458/cfdna`; `entropy-age figures
-  read_level --scale paper --seed 42` (white blood cells reuse their cached counts).
-- Resources: compute partition, 8 cores, 32 GB; about 15 min.
-- Read: `data/output/read_level/gaps` rows with source cfDNA: does the molecule-level shield replicate?

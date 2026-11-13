@@ -4,6 +4,7 @@ Newest first.
 
 ## Unreleased
 
+- 2026-11-13: R51 written up: the molecule-level shield replicates in cfDNA of the same donors.
 - 2026-11-13: `read_level` runs every source present (white blood cells, cfDNA of the same donors); R51 planned.
 - 2026-11-13: R50 written up: the shield holds molecule by molecule in read-level WGBS (Loyfer WBC); index validated r 0.96 against arrays. E30.
 - 2026-11-13: R48 written up: in SJLIFE deaths drift and shield add nothing beyond DunedinPACE; EPIC-Italy's B is independent of the clocks (breast-specific).
