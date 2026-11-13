@@ -41,6 +41,8 @@ neither proof nor disproof. Tests that would separate selection from chromatin, 
   cell pool and let clones expand. Selection predicts a stronger shield afterwards, chromatin no change. Search
   for blood methylation before and after such bottlenecks (for example bone-marrow transplant donors and
   recipients, or patients after chemotherapy).
+  Found: Holland 2024 HSCT donor-recipient pairs (Mendeley j5krtjfj6y, open, 334 samples, 92 transplants);
+  GSE140038 (72 breast-cancer women before and after chemotherapy or radiotherapy). R57 runs the first.
 - **Chromatin held fixed.** Match on chromatin first (RM7's method), then test the intervention on the remainder.
   If the CR effect survives the matching, it is not a chromatin change.
   Done (R55): openness (ImmGen ATAC, six blood cell types) removes about 60 % of mouse blood's shield and two
