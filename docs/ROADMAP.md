@@ -12,45 +12,6 @@ Progress: first part done (`figures intergenic`, R14, `docs/extension.md`): in b
 methylation 2.7 times as fast as other open-sea CpGs (directed, not noise); none in cortex; the PCA does not single
 it out. Left: the same test in the culture series (EPIC manifest needed for the tags; the loss should grow with
 doublings), and what cortex's two strongly age-tracking components are.
-## RM12 — Selection pressure under interventions
-
-**State:** done (R13-R16, R35-R37, R47, R55, R57; GSE140038 chemotherapy left as an option) · **Owner:** lead
-
-Progress: asked by antonkulaga (2026-11-11): do interventions change the shield through selection, apart from
-chromatin? What we have: in B6D2F1 blood CR weakens the shield by a quarter (within one sequencing series, robust
-to composition), without slowing drift; the shield's share also grows with age in liver, which rarely renews. So
-neither proof nor disproof. Tests that would separate selection from chromatin, in order of cost:
-- Done (R13, `docs/extension.md`): CR in liver does not weaken the shield; Tet3 heterozygous mice lose it in
-  cortex and striatum (controls pooled across studies, a batch could do it); GHRKO strengthens it in liver.
-- Done (R15): against same-chip littermates the Tet3 loss holds and grows (housekeeping F +0.17, +0.25); the GHRKO
-  liver effect was batch.
-- Done (R16): under Tet3 loss essential CpGs gain methylation, but S rises in other arms too (array compression
-  could do it); not specific yet.
-- Next: RM14's syndromes in human blood (built: `figures syndromes`).
-- Second model found (`docs/REPROG_TET_SURVEY.md`): GSE271375, Tet1 knockout and catalytic-dead cortex, 8 per
-  group, mouse array; then Dnmt3a gain of function (GSE324160). Next after the quota resets.
-- Done (R35): Tet1 knockout and catalytic-dead cortex keep or strengthen the shield while drifting more;
-  the opposite of Tet3.
-- Done (R36, R37): Tet3's gain is not array compression; Dnmt3a W326R methylates Polycomb-type look-alikes, not
-  essential promoters (chromatin aims the writer). Next: the multi-tissue test below, built as RM27 on the Huang
-  mice (exenatide and rapamycin, 11 tissues).
-- **The same intervention in a renewing and a non-renewing tissue of the same animals.** Selection predicts CR
-  or rapamycin changes the shield in blood or gut and not in brain or muscle; chromatin predicts the same change
-  (or none) everywhere. Search for a multi-tissue CR or rapamycin series with at least 8 animals per arm.
-- **Interventions that raise selection pressure.** Chemotherapy, irradiation or transplantation shrink the stem
-  cell pool and let clones expand. Selection predicts a stronger shield afterwards, chromatin no change. Search
-  for blood methylation before and after such bottlenecks (for example bone-marrow transplant donors and
-  recipients, or patients after chemotherapy).
-  Found: Holland 2024 HSCT donor-recipient pairs (Mendeley j5krtjfj6y, open, 334 samples, 92 transplants);
-  GSE140038 (72 breast-cancer women before and after chemotherapy or radiotherapy).
-  Done (R57): across a transplant every promoter set (non-essential too) diverges less than look-alikes, by the
-  same amount: not specific to essential genes; no support for selection.
-- **Chromatin held fixed.** Match on chromatin first (RM7's method), then test the intervention on the remainder.
-  If the CR effect survives the matching, it is not a chromatin change.
-  Done (R55): openness (ImmGen ATAC, six blood cell types) removes about 60 % of mouse blood's shield and two
-  thirds of CR's effect on it (+0.025, p 0.002 → +0.008, p 0.07); relative to what is left, CR still weakens it
-  by about a fifth, n.s. Mostly chromatin; a residual selection part is not excluded.
-
 ## RM13 — Answer the prior work (novelty review)
 
 **State:** building · **Owner:** lead
@@ -108,7 +69,7 @@ public data (one tissue, one protocol, many individuals across ages, processed c
 
 ## RM20 — Why would long life or CR weaken the shield?
 
-**State:** after RM16 · **Owner:** lead
+**State:** unattended · **Owner:** lead
 
 Progress: asked by antonkulaga (2026-11-12). The pattern: no lifespan effect overall (p 0.40), a lean toward a
 weaker shield in blood of long-lived species (p 0.054), CR weakening it in one blood study and not in liver,
@@ -116,7 +77,7 @@ Tet3 loss weakening it in brain. Hypotheses, each with its test:
 1. Catch-up: better fidelity everywhere lowers drift at unprotected CpGs toward the protected floor. Test: species
    look-alike drift B per year and per lifespan fraction against lifespan; CR blood already shows B unchanged.
 2. Purging: part of the blood shield is selection in fast-renewing marrow; long life and CR damp proliferation.
-   Test: blood against skin and liver within species; rapamycin and GHRKO blood; RM16 clonal haematopoiesis.
+   Test: blood against skin and liver within species; rapamycin and GHRKO blood; clonal haematopoiesis (R25), bottleneck (R57).
 3. Investment: long-lived species favour genome-wide fidelity (DNMT1, UHRF1, repair) over targeted promoter
    protection (TET, CFP1, H3K4me3). Test: cross-species expression of that machinery against lifespan (public
    multi-species RNA, e.g. Fushan 2015, Ma 2016).
@@ -145,35 +106,9 @@ application; links in the survey.
   people); CpG-level divergence gap small (-0.017), but the deposited betas keep little of the shield even
   cross-sectionally. Open data left: none with outcomes; a raw-IDAT SATSA rerun (E-MTAB-7309) is optional.
 
-## RM16 — Selection by cellular fitness, in vivo
-
-**State:** done (steps 1, 2, 4; step 3 waits for public data; CALERIE needs antonkulaga's application) · **Owner:** lead
-
-Progress: asked by antonkulaga (2026-11-12, #entropy-age > general chat): what about selection by cellular
-fitness? The evidence so far is mostly against selection (culture, turnover, chromatin matching, Tet3, liver),
-with two leads for it (CR in one blood study; human bone marrow and lymph node reversing the shield). Steps:
-1. Clonal haematopoiesis: blood methylation of CHIP carriers (DNMT3A, TET2 clones) against non-carriers, on GEO.
-2. The bone-marrow and lymph-node anomaly of R12: donors' ages and any clonality data.
-3. Sorted stem cells against mature blood, young against old, where public; else a DFG work package.
-4. A second within-batch CR blood series.
-- Survey done (`docs/CHIP_SURVEY.md`): open per-person CH status only in GSE315366 (Basrai 2026; 29 CH, 35 not,
-  EPIC blood, cardiogenic-shock patients, no VAF); within-person mutant against wild-type cells in GSE158067 (Nam
-  2022, scRRBS, 2 donors). Large cohorts with VAF are controlled access (TOPMed, Lothian, Danish twins).
-  First test: GSE315366 with the `syndromes` scoring (carriers against non-carriers, age covariate).
-- Done (R25): CH carriers do not differ (any, DNMT3A, TET2; p ≥ 0.15); diluted clones, no VAF.
-- GSE158067 (2 donors) has no age range within a person, so it cannot test drift with age; it could only
-  compare cell-to-cell deviation of mutant and wild-type cells. Lower priority than RM19's replication.
-- Step 2 done (R54): the marrow and lymph-node reversal is within donor noise (intervals cross 0; 5-7 % of
-  20-donor draws reach it) and comes largely from the donor set (+0.16 SD in other tissues on the same donors);
-  marrow's age signal follows the adipose direction. No lead for selection there.
-- Step 4 done (R56): the one public within-batch CR blood series (GSE282661) has young mice and 12 weeks, no drift;
-  CR's own changes spare essential promoters (F −0.09, p 0.006), the opposite sign. Not a replication test; no
-  support. CALERIE (human, 128 CR / 69 controls, EPIC) is the replication, controlled access (NIA biobank).
-- Left: step 3, no public sorted stem-cell age series found.
-
 ## RM17 — Partial reprogramming: does a reset restore the shield?
 
-**State:** after RM12 · **Owner:** lead
+**State:** unattended · **Owner:** lead
 
 Progress: asked by antonkulaga (2026-11-12). The consortium's OSKM arms are 2-5 mice (3.4F+7mDox kidney F −0.17,
 p 0.10; skin n.s.): too small. Public array series to find: maturation-phase transient reprogramming of human
@@ -186,7 +121,7 @@ maintenance predicts the shield restored with the clock; selection predicts no c
 
 ## RM14 — Natural experiments in chromatin: broken writers, knockouts, edits
 
-**State:** after RM12 · **Owner:** lead
+**State:** unattended · **Owner:** lead
 
 Progress: asked by antonkulaga (2026-11-11): cell lines tell little about clocks; can public data show what
 happens when chromatin is changed? Three sources, in order:
@@ -196,7 +131,7 @@ happens when chromatin is changed? Three sources, in order:
 2. Mouse knockouts: Tet3 heterozygous brain (GSE223748, at hand after R12); Tet2 and Dnmt3a mutant blood.
 3. Edited cells over time: CRISPRoff (Nunez et al. 2021) tracked imposed promoter methylation for months.
 Rule: a cohort with at least 10 carriers and matched controls on one platform.
-- Done: Tet3 heterozygous brain loses the shield against littermates (R15, R16; see RM12).
+- Done: Tet3 heterozygous brain loses the shield against littermates (R15, R16).
 - Done (R18): Sotos, NSD1 variants, Weaver, Kabuki and CHARGE carriers drift more in blood but keep the shield
   (F unchanged or more negative); KMT2D and CHD7 variants show nothing within the controls' ages.
 - Next: the DNMT3A loss-against-gain pair below; a TET2 or TET3 human cohort if one exists.
