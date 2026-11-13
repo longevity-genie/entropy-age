@@ -4,6 +4,7 @@ Newest first.
 
 ## Unreleased
 
+- `figures clock_weights` (R64): published clocks' weights on protected CpGs against their age and spread slopes, blood and cortex (asked by antonkulaga).
 - 2026-11-13: R63 written up: the shield in mouse cortex, heart, liver and lung by RRBS; smaller and static in the non-dividing tissues.
 - 2026-11-13: `meer_tissues` (RM2): heart, liver, lung and cortex at 6-30 months, RRBS (GSE121141); GSE184211 found to be inside GSE223748.
 - 2026-11-13: R62 written up: one OSKM cycle (RRBS) finds too little aging to reset; RM17 next on human fibroblasts after the IDAT pipeline (RM18).
