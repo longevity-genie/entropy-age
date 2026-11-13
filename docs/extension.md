@@ -1361,6 +1361,22 @@ rodent data are Shavlakadze et al. 2026 (Sci Adv), which with Tyshkovskiy 2026 (
 directed change; Ibañez-Solé 2022 (eLife) found no consistent rise of transcriptional noise with age, in line with
 the unshared noise order. Only the explicit rank comparison is ours.
 
+## Death in childhood-cancer survivors: drift and the shield add nothing beyond the pace clock (RM28, SJLIFE)
+
+SJLIFE (GSE314261): blood of 4,179 childhood-cancer survivors (and 340 controls, none of whom died) on the EPIC
+array, 277 later deaths (runs R48, R48b). Logistic model of having died, with age at the draw, sex, diagnosis and
+four treatment exposures held; then also mean methylation, 11 cell fractions and chip.
+
+- **The positive control holds**: DunedinPACE 1.70 per SD (p 2e-11), PhenoAge 1.45 (p 7e-5), adjusted.
+- **Alone, drift B (1.24) and the shield's share F (0.76) also associate with death, adjusted**, F in the
+  unexpected direction (a stronger shield, more deaths).
+- **But neither adds anything beyond DunedinPACE**: fitted together, B 1.01 and F 1.00, both p > 0.8. B tracks
+  DunedinPACE here (r 0.31), and F is partly B's mirror (r -0.45).
+
+Contrast with EPIC-Italy (C12): there B is unrelated to DunedinPACE (r 0.02) and keeps its breast-cancer odds ratio
+of 1.44 with both outcome clocks in the model. So B is not a general mortality marker; in women's blood it marks
+breast-cancer risk specifically, beyond what the clocks see. The shield itself has not predicted any outcome.
+
 ## Drift at unprotected promoters predicts breast cancer years ahead (roadmap RM28, EPIC-Italy)
 
 The first prospective test (runs R46, R46b). EPIC-Italy (GSE51032): blood of 845 people drawn at enrolment, 421 of

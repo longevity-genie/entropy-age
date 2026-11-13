@@ -139,8 +139,8 @@ cohorts with mortality (Generation Scotland, Lothian, Framingham, Normative Agin
 application; links in the survey.
 - Done (R42): Vitality 90+ uninformative (mortality clocks fail too). Done (R46, R46b): EPIC-Italy, drift B
   predicts breast cancer years ahead, robust to chip, cell mix and mean beta; the shield share does not. Next:
-  a second breast-cancer cohort (NOWAC or Breakthrough Generations, controlled: antonkulaga's application), and
-  SJLIFE deaths.
+  a second breast-cancer cohort (NOWAC or Breakthrough Generations, controlled: antonkulaga's application).
+- Done (R48, R48b): SJLIFE deaths; drift and shield add nothing beyond DunedinPACE. Left: SATSA repeated draws.
 
 ## RM16 — Selection by cellular fitness, in vivo
 

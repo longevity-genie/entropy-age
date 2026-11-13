@@ -4,6 +4,7 @@ Newest first.
 
 ## Unreleased
 
+- 2026-11-13: R48 written up: in SJLIFE deaths drift and shield add nothing beyond DunedinPACE; EPIC-Italy's B is independent of the clocks (breast-specific).
 - 2026-11-13: R49 written up (RM31 done): the shield within blood lineages, largest in T cells, smallest in myeloid cells.
 - 2026-11-13: `read_level` (RM22): epiallele entropy and discordant reads at 450k promoter windows from Loyfer WBC WGBS (23 donors); run R50 planned.
 - 2026-11-13: `lineage_shield` (RM31): lineage-specific age slopes from mixed blood (CellDMC-style), shield per lineage; run R49 planned.

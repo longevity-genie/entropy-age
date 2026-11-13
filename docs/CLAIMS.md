@@ -151,7 +151,8 @@ a test with little power), **refuted**.
   hinge on one batch.
 - **Observed:** EPIC-Italy (R46, R46b): odds ratio per SD 1.43 (all), 1.62 (over 2 years), 1.66 (over 5 years);
   adjusted for mean beta, 11 cell fractions and chip 1.44 (p 6e-4); balanced over 72 chips; the shield share F
-  does not predict; clocks' signals do not survive adjustment.
+  does not predict; clocks' signals do not survive adjustment; B keeps 1.44 with DunedinPACE and PhenoAge in the model
+  (r with DunedinPACE 0.02). In SJLIFE deaths (R48) B adds nothing beyond DunedinPACE: breast-specific, not mortality.
 - **Alternatives:** (a) a cell type outside EpiDISH's 12 or a rare clone; (b) a cohort-specific artefact, since
   van Veldhoven's global hypomethylation did not replicate in NOWAC; (c) reproductive or hormonal factors that
   shift blood methylation and raise breast-cancer risk.

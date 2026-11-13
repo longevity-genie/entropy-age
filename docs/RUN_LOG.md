@@ -34,6 +34,15 @@ commit it ran, its job ids, its scale and seed, and its result or its failure wi
   positive control holds. Drift B 1.06-1.09 (p 0.12-0.41). Shield share F 0.84-0.87 (p 7e-4 to 0.005) and signed
   shift S 0.82-0.84 (p 0.002-0.011): a stronger shield goes with more deaths here, unexpected.
 - Rerun with mean methylation, 11 cell fractions and chip held (R48b; module changed in the commit below).
+- R48b: commit ebafd8e; job 6445940, 9 min 48 s; survivors only (no control died); 573 EpiDISH reference CpGs
+  (PBMC: neutrophils 0.03). Adjusted (mean beta of loaded CpGs, 11 cell fractions, measure centred within chip):
+  DunedinPACE still 1.70 (p 2e-11), PhenoAge 1.45 (p 7e-5); drift B housekeeping 1.24 (p 8e-4); shield share F 0.76
+  (p 6e-5); signed shift S 0.71 (p 4e-5).
+- Joint models on the run's per-person table (login node, seconds; chip-centred, age, sex, exposures, diagnosis):
+  with DunedinPACE beside them, B 1.01 (p 0.83) and F 1.00 (p 0.95); all four together B 1.02, F 1.01,
+  DunedinPACE 1.63 (p 2e-9), PhenoAge 1.22 (p 0.02). Correlations among survivors: B with DunedinPACE 0.31, F with
+  B -0.45. Same check on EPIC-Italy (women, breast over 2 years, chip-centred): B 1.46 alone, 1.44 (p 9e-4) with
+  DunedinPACE (0.99) and PhenoAge (1.12) beside it; B with DunedinPACE r 0.02.
 
 ## R49 — the shield by blood lineage, in silico (RM31), 2026-11-13
 
