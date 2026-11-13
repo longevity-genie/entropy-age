@@ -62,8 +62,9 @@ brain both; left: a DepMap gradient within broadly expressed genes, and expressi
 (2) absolute drift slopes beside the CR share; (3) clonality in the culture series where reads allow (epiallele
 structure), against Hollmann 2020; (4) read the species result against Crofts 2026 (stem-cell dynamics) and the
 floor of near-0 % essential promoters; (5) the shield score against Seeboth 2020's confounders.
-- (1) running (R58, `figures essentiality_gradient`): DepMap 24Q4 mean gene effect within genes expressed in 50+
-  GTEx tissues, chromatin state, tissue expression and breadth held.
+- (1) done (R58): within genes expressed in 50+ GTEx tissues, DepMap essentiality still predicts less drift with
+  chromatin state, expression and breadth held (blood entropy 0.022 SD per unit, cortex 0.018-0.027), a tenth or
+  less of the raw contrast, in cortex too. Next: (2) absolute drift slopes beside the CR share.
 
 ## RM18 — Normalization and probe robustness
 

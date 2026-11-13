@@ -4,6 +4,7 @@ Newest first.
 
 ## Unreleased
 
+- 2026-11-13: R58 written up: a small essentiality gradient survives chromatin, expression and breadth, in blood and cortex.
 - 2026-11-13: `essentiality_gradient` (RM13 (1)): DepMap 24Q4 gene effect against promoter drift among broadly expressed genes, chromatin state, expression and breadth held (GTEx v8 medians); R58 submitted.
 - 2026-11-13: R57 written up: after a transplant bottleneck no essential-specific shield gain; RM12 done.
 - 2026-11-13: `hsct_bottleneck` (RM12, bottleneck): divergence of transplant recipients from their donors against recipients' own later draws, at essential promoters against look-alikes (Holland 2024, Mendeley j5krtjfj6y).

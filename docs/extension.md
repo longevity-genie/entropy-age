@@ -1205,6 +1205,29 @@ and calibrate each tissue's offset.
 
 Tables: `data/output/chromatin_clocks/` (`accuracy`, `lunnon_offsets`, `pools`).
 
+### Beyond chromatin and expression: a small essentiality gradient (roadmap RM13 (1), R58)
+
+Prior work already shows housekeeping and essential promoters drifting less. What it does not show is whether
+essentiality itself predicts protection once what travels with it is held. Figure `essentiality_gradient` takes
+only broadly expressed genes (1+ TPM in 50+ of GTEx's 54 tissues), so housekeeping-like expression is shared by
+all, and regresses each promoter CpG's drift on its gene's DepMap essentiality (mean CRISPR gene effect, 24Q4),
+first with island status and level held, then the tissue's own chromatin state, then its expression in the
+tissue and its breadth.
+
+![Essentiality gradient](figures/essentiality_gradient.png)
+
+* **Chromatin takes most of it in blood.** The entropy gradient falls by two thirds with the chromatin state held
+  (0.130 → 0.046 SD per unit), dispersion's to nothing.
+* **A small part is left, in both tissues.** With chromatin, expression and breadth held, blood entropy keeps
+  0.022 (0.011-0.033) and cortex 0.018 (entropy, p 0.06) and 0.027 (dispersion, p 0.01). The most essential
+  tenth of broad genes drifts about 0.04 SD less than expected, the least essential 0.03 SD more.
+* **Reading.** This answers the first novelty question: essentiality predicts protection beyond chromatin state,
+  expression level and breadth, but the remainder is small, a tenth or less of the raw contrast, and present in
+  non-dividing cortex too, so it does not need selection among dividing cells. Chromatin state from one reference
+  epigenome is coarse; finer chromatin (H3K4me3 breadth) may take more of it.
+
+Tables: `data/output/essentiality_gradient/` (`gradient`, `deciles`).
+
 ## Chromatin accounts for blood's protection (roadmap RM7)
 
 The cohort tests match gene-set CpGs to background CpGs of the same island status and starting level. If

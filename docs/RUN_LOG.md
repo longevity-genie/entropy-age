@@ -3,6 +3,18 @@
 Owned by the runner seat (`docs/seats/RUNNER.md`): one entry per run, newest first, with its inputs, the
 commit it ran, its job ids, its scale and seed, and its result or its failure with the cause.
 
+## R58 — essentiality gradient beyond chromatin and expression (RM13 (1)), 2026-11-13
+
+- Commit 864bda4 (decile panel redrawn by decile number after); `figures essentiality_gradient --scale paper
+  --seed 42`; 4 cores, 48 GB; job 6469111, 3.7 min, 4.6 GB. DepMap 24Q4 CRISPRGeneEffect (Figshare 51064667),
+  mean over lines; GTEx v8 gene median TPM; genes at 1+ TPM in 50+ of 54 tissues: 9,241 genes, about 100,500
+  single-gene promoter CpGs in Hannum blood and Jaffe cortex. 200 gene resamples.
+- Result, as measured (drift in SD per unit of gene effect; positive = more essential drifts less). Blood entropy
+  0.130 → 0.046 (+ own chromatin state) → 0.022 (+ blood expression, breadth; 95 % 0.011-0.033); blood dispersion
+  0.084 → 0.012 → −0.009 (n.s.). Cortex entropy 0.044 → 0.034 → 0.018 (p 0.06); cortex dispersion 0.044 →
+  0.039 → 0.027 (p 0.01). After all held, the most essential decile sits about 0.04 SD below 0, the least 0.03
+  above.
+
 ## R57 — divergence across a stem-cell transplant (RM12, bottleneck), 2026-11-13
 
 - Commit 51d3559; `figures hsct_bottleneck --scale paper --seed 42`; 4 cores, 48 GB; job 6469087, 47 s, 1.9 GB.

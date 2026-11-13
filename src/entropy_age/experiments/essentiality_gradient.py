@@ -206,10 +206,10 @@ def _figure(ctx: Context, table: pl.DataFrame, deciles: pl.DataFrame) -> Path:
     plots.label_panel(ax, "a")
     ax = axes[1]
     for i, ((tissue, metric), d) in enumerate(deciles.group_by("tissue", "metric", maintain_order=True)):
-        ax.plot(d["effect_mid"], d["residual"], "o-", ms=3, color=plots.PALETTE[i], label=f"{tissue} · {metric[:4]}")
+        ax.plot(d["decile"] + 1, d["residual"], "o-", ms=3, color=plots.PALETTE[i], label=f"{tissue} · {metric[:4]}")
     ax.axhline(0, color=plots.MUTED, lw=0.8)
     ax.set(
-        xlabel="DepMap gene effect (decile median; lower = more essential)",
+        xlabel="DepMap essentiality decile (1 = most essential)",
         ylabel="drift left after all held (SD)",
         title="Gradient by decile",
     )
