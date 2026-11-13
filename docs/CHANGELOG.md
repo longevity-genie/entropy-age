@@ -4,6 +4,7 @@ Newest first.
 
 ## Unreleased
 
+- 2026-11-14: RM33 (metric audit) and RM34 (bias checks after the omics re-analysis practice) planned (Anton).
 - Metric audit (Anton): `relative_entropy` (KL from the young state, no drift-to-0.5 assumption) as `kl_slope` in `drift_metrics` and in the lifespan, mouse, species, chromatin and essentiality comparisons; per-person scores gain `K`, the matched KL gap; runs R68 planned.
 - 2026-11-13: R67 written up (RM32): essential promoters rest at a lower methylation level, held by faster removal, not slower gain.
 - 2026-11-13: R65 written up (RM17 done): transient reprogramming of human fibroblasts moves the methylome a lot and keeps the shield share.

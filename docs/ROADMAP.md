@@ -98,6 +98,26 @@ application; links in the survey.
   people); CpG-level divergence gap small (-0.017), but the deposited betas keep little of the shield even
   cross-sectionally. Open data left: none with outcomes; a raw-IDAT SATSA rerun (E-MTAB-7309) is optional.
 
+## RM33 — Metric audit: correct what rests on binary entropy
+
+**State:** building · **Owner:** lead
+
+Asked by antonkulaga (2026-11-14): go through previous discoveries, evidence and hypotheses, correct the
+computations, update the artifact. Binary entropy measures distance from 0.5; R67 showed essential promoters lose
+methylation faster, which lowers entropy at low levels, so entropy gaps mix direction with stability. Relative entropy
+from the young state (`kl_slope`, per-person `K`) added (e3ad29c); R68a-d rerun every figure whose headline rests on
+entropy. Then `docs/METRIC_AUDIT.md` (each result kept, resized or overturned), CLAIMS, state, artifact.
+
+## RM34 — Bias checks from the omics re-analysis practice
+
+**State:** after RM33 · **Owner:** lead
+
+Asked by antonkulaga (2026-11-14), against `longevity-skills/omics-reanalysis/SKILL.md`, cheapest first: (1)
+placebo gene sets (random promoter sets with the same size, island and level mix must give 0); (2) Hannum's gaps
+with 12 Houseman/EpiDISH cell fractions as covariates; (3) one FDR over every p reported; (4) stochastic or
+specific: the CpGs whose spread rises most, enrichment by region class against a mean-matched background; (5) a
+provenance table per dataset.
+
 ## RM32 — Drift toward each site's own equilibrium, not toward 0.5
 
 **State:** unattended · **Owner:** lead
