@@ -98,6 +98,19 @@ application; links in the survey.
   people); CpG-level divergence gap small (-0.017), but the deposited betas keep little of the shield even
   cross-sectionally. Open data left: none with outcomes; a raw-IDAT SATSA rerun (E-MTAB-7309) is optional.
 
+## RM32 — Drift toward each site's own equilibrium, not toward 0.5
+
+**State:** after RM17 · **Owner:** lead
+
+Asked by antonkulaga (2026-11-13): methylation repair is not symmetric (maintenance by DNMT1, de novo by DNMT3A/B,
+active loss by TET), so should the Markov model's entropy be adjusted? The model already has per-site maintenance
+and de novo rates and so a per-site equilibrium z (`docs/model.md` §2); the binary-entropy slope assumes drift
+toward 0.5 and misreads sites whose z is far from it, which essential promoters are. Fit z and λ per CpG
+(`fit_relaxation`, z bounded by island status where the age range cannot pin it) in Hannum blood and Jaffe's adult
+cortex; compare essential promoters with look-alikes on the fraction of the way to z, on the divergence from z,
+and on z itself. Answers whether the shield is a slower approach to the same equilibrium or a different
+equilibrium (repair biased toward unmethylated).
+
 ## RM17 — Partial reprogramming: does a reset restore the shield?
 
 **State:** unattended · **Owner:** lead
