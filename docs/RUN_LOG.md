@@ -3,6 +3,16 @@
 Owned by the runner seat (`docs/seats/RUNNER.md`): one entry per run, newest first, with its inputs, the
 commit it ran, its job ids, its scale and seed, and its result or its failure with the cause.
 
+## R62 — one OSKM cycle, RRBS (RM17), 2026-11-13
+
+- Commit dc71c35; `figures reprogramming_rrbs --scale paper --seed 42`; 4 cores, 32 GB; job 6469554, 43 s.
+  GSE156557 (Chondronasiou 2022): female OSKM mice, young controls 13 weeks, old controls 52 weeks, old OSKM 54
+  weeks (one cycle, 2 weeks off), 5 per arm; promoter CpGs covered 10+ times in all 15 mice of a tissue: pancreas
+  60,109, spleen 22,903, liver 1,508. Old mice scored against the young; 5,000 label permutations.
+- Result, as measured (housekeeping; effect, p): age (old − young) B pancreas −0.001 (0.77), spleen −0.001 (0.96),
+  liver +0.021 (0.17); F −0.041 (0.06), −0.033 (0.31), −0.064 (0.20). OSKM (OSKM − old) B +0.004 (0.55), −0.013
+  (0.19), −0.023 (0.20); F −0.005 (0.81), +0.024 (0.45), +0.067 (0.07).
+
 ## R59 — the species shield off the 0 % floor (RM13 (4)), 2026-11-13
 
 - Commit 676bff5; `figures species_floor --scale paper --seed 42`; 4 cores, 48 GB; job 6469130, 55 min, 25.5 GB.

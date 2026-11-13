@@ -118,7 +118,7 @@ application; links in the survey.
 
 ## RM17 — Partial reprogramming: does a reset restore the shield?
 
-**State:** unattended · **Owner:** lead
+**State:** after RM18 · **Owner:** lead
 
 Progress: asked by antonkulaga (2026-11-12). The consortium's OSKM arms are 2-5 mice (3.4F+7mDox kidney F −0.17,
 p 0.10; skin n.s.): too small. Public array series to find: maturation-phase transient reprogramming of human
@@ -128,8 +128,9 @@ maintenance predicts the shield restored with the clock; selection predicts no c
   tissues, Mammal40 array as in the consortium, 2-7 mice per group, 49 MB); then GSE156557 (RRBS, 5 per group).
 - Done (R32): no consistent change (muscle stronger, spleen weaker, four tissues unchanged); the regimen barely
   moves promoter CpGs toward youth. Next if wanted: GSE156557 (one OSKM cycle, RRBS).
-- Running (R62, `figures reprogramming_rrbs`): GSE156557, one OSKM cycle in 1-year-old mice against old and
-  young controls, pancreas, liver, spleen, RRBS.
+- Done (R62): GSE156557, one OSKM cycle in 1-year-old mice: aging 13 → 52 weeks barely moves drift, so nothing
+  to reset; liver leans back toward young (n.s., 1,508 CpGs). Left: human fibroblasts (GSE165179, Gill 2022,
+  IDATs) once the IDAT pipeline is validated (R61).
 
 ## RM14 — Natural experiments in chromatin: broken writers, knockouts, edits
 

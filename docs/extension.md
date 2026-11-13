@@ -1269,6 +1269,25 @@ look-alikes alike (a quarter of the housekeeping CpGs, half of the non-essential
 
 Tables: `data/output/species_floor/` (`species_gaps`, `lifespan_fits`, `share_off_floor`).
 
+### One OSKM cycle, RRBS: too little aging to reset (roadmap RM17, R62)
+
+GSE156557 (Chondronasiou et al. 2022) gave 1-year-old OSKM mice one doxycycline cycle, against untreated mice of
+the same age and young controls, 5 per arm, in pancreas, spleen and liver. Figure `reprogramming_rrbs` scores each
+old mouse against the young.
+
+![One OSKM cycle](figures/reprogramming_rrbs.png)
+
+* **Aging from 13 to 52 weeks barely registers.** Drift `B` does not differ between old and young in pancreas or
+  spleen (±0.001); the shield share leans more negative with age (`F` −0.03 to −0.06, p 0.06-0.31), as in the
+  other mouse series.
+* **One cycle changes nothing measurable.** In liver it leans back toward the young state on both measures (B
+  −0.023, F +0.067, p 0.07-0.20), mirroring age, but on 1,508 covered CpGs and 5 mice per arm; pancreas and
+  spleen show nothing.
+* **Reading.** Like R32 (cyclic OSKM, array), no evidence either way: middle-aged mice and one cycle leave too
+  little aging to reset. A test needs old animals (2 years) and longer regimens.
+
+Tables: `data/output/reprogramming_rrbs/` (`effects`, `animal_scores`).
+
 ## Chromatin accounts for blood's protection (roadmap RM7)
 
 The cohort tests match gene-set CpGs to background CpGs of the same island status and starting level. If
