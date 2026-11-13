@@ -1228,6 +1228,30 @@ tissue and its breadth.
 
 Tables: `data/output/essentiality_gradient/` (`gradient`, `deciles`).
 
+### The per-person score against Seeboth 2020's confounders (roadmap RM13 (5), R60)
+
+Seeboth et al. 2020 found a person's burden of methylation outliers driven by smoking, batch and cell mix, not
+health. Figure `score_confounders` asks the same of our per-person drift `B` (a burden of that kind) and of the
+within-sample contrasts `F` and `S`, in SATSA (smoking, array type) and SJLIFE (array slide and row, diagnosis,
+alkylating agents and anthracyclines), age and sex held.
+
+![Score confounders](figures/score_confounders.png)
+
+* **Batch is the large one.** The array slide explains 36 % of `B` beyond age and sex in SJLIFE, against 13 % by
+  chance for 604 slides; `F` and `S` take 23 % and 20 %: the contrast removes about half of the batch excess, not
+  all. Position on the slide and the array type matter little (2 % or less).
+* **Smoking does not move `B` or `F`** (0.2 % or less); it moves the signed shift `S` (current smokers −0.4 SD).
+* **Chemotherapy moves drift and the share in opposite directions.** Within diagnosis, alkylating agents raise `B`
+  (+0.15 SD) and lower `F` (−0.16); anthracyclines lower `B` (−0.22) and raise `F` (+0.21). Each drug changes
+  drift at the look-alikes while essential promoters stay put, so `F` moves against `B`. Alkylating agents, the
+  stronger stem-cell bottleneck, give the stronger shield share, as selection would predict; but anthracyclines,
+  also myelotoxic, give the opposite, and a shield that holds whatever happens to the look-alikes (chromatin)
+  predicts the same pattern without selection.
+* **Reading.** The contrast scores are cleaner than an outlier burden, not clean: batch must be held in every use
+  (per slide, or with control-probe components), as the cohort tests do within series.
+
+Tables: `data/output/score_confounders/` (`partial_r2`, `terms`).
+
 ## Chromatin accounts for blood's protection (roadmap RM7)
 
 The cohort tests match gene-set CpGs to background CpGs of the same island status and starting level. If

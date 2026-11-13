@@ -3,6 +3,18 @@
 Owned by the runner seat (`docs/seats/RUNNER.md`): one entry per run, newest first, with its inputs, the
 commit it ran, its job ids, its scale and seed, and its result or its failure with the cause.
 
+## R60 — the per-person scores against Seeboth 2020's confounders (RM13 (5)), 2026-11-13
+
+- Commit 9a75a70's code (its docstring wrapped after; the figure redrawn with a chance marker); `figures
+  score_confounders --scale paper --seed 42`; 4 cores, 16 GB; job 6469169, 7.7 min. An earlier run on the login
+  node (diagnosis not held, survivor instead) is superseded. SATSA 1,410 draws with smoking known; SJLIFE 4,518
+  people on 604 slides. 500 resamples of people.
+- Result, as measured (housekeeping; partial R² beyond age and sex, chance in brackets): SJLIFE slide B 36 %, F
+  23 %, S 20 % (13 %); row on slide B 1.7 %, F 0.6 %; diagnosis B 7.7 %, F 1.6 %, S 2.8 %; SATSA smoking B 0.0 %,
+  F 0.2 %, S 2.1 %; array type F 1.5 %. Terms (SD): current smoker S −0.41 (−0.64 to −0.17), F +0.15 (n.s.);
+  EPIC array F +0.28; alkylating agents within diagnosis B +0.15, F −0.16 (−0.24 to −0.08), S −0.22;
+  anthracyclines B −0.22, F +0.21 (0.09 to 0.33). Core essential the same.
+
 ## R58 — essentiality gradient beyond chromatin and expression (RM13 (1)), 2026-11-13
 
 - Commit 864bda4 (decile panel redrawn by decile number after); `figures essentiality_gradient --scale paper

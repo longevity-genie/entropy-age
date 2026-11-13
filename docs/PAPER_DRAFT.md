@@ -122,8 +122,9 @@ lifespan scaling as stem-cell dynamics (Crofts 2026), and per-person drift burde
 
 - **Evidence:** reproduces the cohort result per sample; reliability 0.96-0.997 against its own error; blood more
   shielded than the same donor's brain in 86-91 % of donors. **[solid]** as a measure.
-- **Missing:** test-retest on replicate arrays; association with outcomes (mortality, frailty) beyond age; an
-  answer to Seeboth 2020 (per-person drift burden confounded by cell mix, smoking, BMI and batch).
+- **Missing:** test-retest on replicate arrays; association with outcomes (mortality, frailty) beyond age.
+- **Seeboth 2020 answered (R60):** smoking leaves B and F; slide batch explains 20-23 % of F and S (13 % by
+  chance) against 36 % of B: half the batch excess removed, not all; batch is held in every use.
 - **Figures:** per_person.
 
 ### 2.7 What clocks are made of

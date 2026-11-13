@@ -4,6 +4,7 @@ Newest first.
 
 ## Unreleased
 
+- 2026-11-13: R60 written up: the contrast scores halve the batch excess of drift B; smoking moves only S; chemotherapy moves F against B.
 - 2026-11-13: `score_confounders` (RM13 (5), Seeboth 2020): smoking, array, slide, diagnosis and chemotherapy against the per-person B, F and S in SATSA and SJLIFE; R60 submitted.
 - 2026-11-13: RM12 and RM16 taken out of the roadmap (done; their results in `docs/extension.md` and the run log); RM14, RM17, RM20 no longer wait on them.
 - 2026-11-13: `species_floor` (RM13 (4)): the species gaps and lifespan fit refitted on CpGs at 10-90 % only; R59 submitted. RM13 (2) answered from the CR tables (B beside F).

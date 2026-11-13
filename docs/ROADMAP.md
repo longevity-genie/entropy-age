@@ -29,6 +29,8 @@ floor of near-0 % essential promoters; (5) the shield score against Seeboth 2020
 - (2) answered: the CR tables give drift B beside F; CR does not slow absolute drift in the within-batch series
   (B6D2F1 B −0.004, p 0.37; −0.008 with 5 components, p 0.12; R55), so its effect is on the share, not the rate.
 - (4) running (R59, `figures species_floor`): species gaps and the lifespan fit on CpGs at 10-90 % only.
+- (5) done (R60): slide batch explains 36 % of B against 13 % by chance, 20-23 % of F and S; smoking moves only S;
+  chemotherapy moves F against B (alkylating F −0.16, anthracyclines +0.21). Batch must be held in every use.
 
 ## RM18 — Normalization and probe robustness
 

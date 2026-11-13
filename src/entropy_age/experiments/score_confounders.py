@@ -175,6 +175,8 @@ def _figure(ctx: Context, r2: pl.DataFrame, terms: pl.DataFrame) -> Path:
     for i, measure in enumerate(MEASURES):
         t = keys.join(sub.filter(pl.col("measure") == measure), on=["cohort", "block"], how="left")
         ax.barh(y + 0.27 * i, 100 * t["partial_r2"], height=0.25, color=plots.PALETTE[i], label=measure)
+    chance = keys.join(sub.filter(pl.col("measure") == "B"), on=["cohort", "block"], how="left")["chance_r2"]
+    ax.scatter(100 * chance, y + 0.27, marker="|", s=300, color="k", zorder=4, label="chance")
     ax.set_yticks(y + 0.27, [f"{c} · {b}" for c, b in keys.iter_rows()])
     ax.invert_yaxis()
     ax.set(xlabel="partial R² beyond age and sex (%)", title="What the score picks up (housekeeping)")
@@ -198,7 +200,7 @@ def _figure(ctx: Context, r2: pl.DataFrame, terms: pl.DataFrame) -> Path:
     ax.set_yticks(y, [f"{c} · {term}" for c, term in keys.iter_rows()])
     ax.axvline(0, color=plots.MUTED, lw=0.8)
     ax.invert_yaxis()
-    ax.set(xlabel="effect (SD), age and sex held", title="Smoking, array, survivorship, chemotherapy")
+    ax.set(xlabel="effect (SD); age, sex and the other blocks held", title="Smoking, array, chemotherapy")
     plots.label_panel(ax, "b")
     fig.subplots_adjust(wspace=0.9)
     return plots.save(fig, ctx.figure_path("score_confounders"))
