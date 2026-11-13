@@ -137,7 +137,7 @@ application; links in the survey.
 
 ## RM16 — Selection by cellular fitness, in vivo
 
-**State:** unattended · **Owner:** lead
+**State:** done (steps 1, 2, 4; step 3 waits for public data; CALERIE needs antonkulaga's application) · **Owner:** lead
 
 Progress: asked by antonkulaga (2026-11-12, #entropy-age > general chat): what about selection by cellular
 fitness? The evidence so far is mostly against selection (culture, turnover, chromatin matching, Tet3, liver),
