@@ -1,6 +1,6 @@
 # /// script
-# requires-python = ">=3.11"
-# dependencies = ["methylprep==1.7.1", "pandas", "pyarrow"]
+# requires-python = ">=3.11,<3.12"
+# dependencies = ["methylprep==1.7.1", "pandas<2", "numpy<2", "pyarrow<17"]
 # ///
 """Reprocess a GEO series from its raw IDATs into betas, SeSAMe-style (roadmap RM18 (3)).
 
