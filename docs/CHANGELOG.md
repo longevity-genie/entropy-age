@@ -4,6 +4,7 @@ Newest first.
 
 ## Unreleased
 
+- 2026-11-13: `meer_tissues` (RM2): heart, liver, lung and cortex at 6-30 months, RRBS (GSE121141); GSE184211 found to be inside GSE223748.
 - 2026-11-13: R62 written up: one OSKM cycle (RRBS) finds too little aging to reset; RM17 next on human fibroblasts after the IDAT pipeline (RM18).
 - 2026-11-13: `reprogramming_rrbs` (RM17): one OSKM cycle in GSE156557 (RRBS) against old and young controls; R62 submitted. RM20 blocked on desk #28 (CALERIE); RM14 waits until 2026-12-13.
 - 2026-11-13: `scripts/reprocess_idats.py` (methylprep, SeSAMe-like) and `reprocessed_jaffe` (RM18 (3)): Jaffe's gaps on deposited against IDAT-reprocessed betas; R61a submitted.

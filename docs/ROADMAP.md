@@ -176,14 +176,14 @@ Progress: mouse (GSE279437), human GTEx (GSE213478) and muscle fibres (GSE304045
 in GTEx muscle is weakly protected, as are breast, ovary and testis, so the split does not follow
 turnover. Left:
 
-- **GSE184211** (human, 11 tissues, mammalian array, exact ages 26–91, 190 MB). Not paired by donor, but
-  it shares its CpGs with the mouse array, so the comparison across species is direct.
+- **GSE184211**: done within GSE223748 (all 661 of its samples are the consortium's human set; R12, R54).
 - **GSE50498** (450k muscle, ages 18–89): a muscle cohort with exact ages and more donors than GTEx's 47.
   Like GTEx it says nothing of exercise, and satellite-cell divisions follow loading, injury and
   wasting, so muscle tests selection only in a cohort that records physical activity or training
   history beside age (to find; the fibre cohort GSE304045 records training but not age).
 - **Mouse replication:** Thompson 2018 (GSE120132) done (`figures rrbs_tissues`): the shield in all six tissues,
-  ordered by neither size nor growth by turnover. Left: Meer 2018 (GSE121141; liver, lung, heart, cortex, 6-30 months).
+  ordered by neither size nor growth by turnover. Meer 2018 (GSE121141; liver, lung, heart, cortex, 6-30 months):
+  running (R63, `figures meer_tissues`).
 - The fibre contrast (GSE304045) was uninformative: a dozen adults of similar age show too little
   between-person divergence. A within-tissue turnover contrast needs aged and young people.
 
