@@ -3,7 +3,18 @@
 Owned by the runner seat (`docs/seats/RUNNER.md`): one entry per run, newest first, with its inputs, the
 commit it ran, its job ids, its scale and seed, and its result or its failure with the cause.
 
-## R52 — the shield within a person over time, SATSA (RM28), 2026-11-13
+## R53 — read-level shield in sorted atlas cell types (RM22), 2026-11-13
+
+- Commit ada6425; `figures read_level --scale paper --seed 42`; 4 cores, 48 GB; job 6460007 (6459198 at 8 cores
+  cancelled after waiting on the group CPU cap), 51 min. 101 sorted samples of the atlas (GSE186458) in 27 cell-type
+  and tissue groups with at least 3 samples and a 15-year age spread (ages 19-83); 69,373 windows with 10+ reads in
+  76+ samples; age slope with each group a fixed effect (sex held). Some groups share donors (pancreas, blood T cells).
+- Result, as measured (set minus look-alikes, SD; p): entropy slope housekeeping -0.084 (0.001), core essential
+  -0.044 (0.001), non-essential +0.19 (0.001); discordance slope -0.060 (0.001), -0.029 (0.002), +0.23 (0.001).
+  Levels at matched methylation near 0 for the two sets. WBC and cfDNA rows reproduced from cache, unchanged.
+  Figure redrawn on the login node from the table (sorted panel labelled samples, not donors).
+
+ over time, SATSA (RM28), 2026-11-13
 
 - Commit 95240c5; `figures within_person --scale paper --seed 42`; 4 cores, 48 GB; job 6457453, 2 min 58 s. SATSA
   (S-BSST1206; 6.7 GB, preprocessed by the depositors: noob, functional normalisation, cell counts and batch

@@ -14,7 +14,7 @@ a test with little power), **refuted**.
 - **We should not see:** the gap vanish or flip once CpGs are matched more finely, or in an independent cohort.
 - **Observed:** negative in human blood, brain and GTEx tissues, 11 mouse tissues, culture, 96 % of 65 mammals,
   and inside one sorted cell type (monocytes -0.14 SD, CD4+ T cells -0.22, R44; about half of whole blood's);
-  molecule by molecule in read-level WGBS (entropy -0.05 to -0.075 SD, R50; cfDNA -0.03 to -0.06, R51); within one person over
+  molecule by molecule in read-level WGBS (entropy -0.05 to -0.075 SD, R50; cfDNA -0.03 to -0.06, R51; within 27 sorted cell types -0.04 to -0.08, R53); within one person over
   time weakly (SATSA housekeeping divergence -0.017 SD, R52, on betas with cell counts regressed out);
   probe design explains a sixth of blood's gap, masks nothing (R20); per-person reliability 0.997.
 - **Alternatives:** (a) a floor: CpGs near 0 % cannot drift down, and deciles leave a floor inside the lowest

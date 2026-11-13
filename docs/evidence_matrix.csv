@@ -28,5 +28,5 @@ E26,Shield present in sorted monocytes and T cells (half of whole blood),R44,1,-
 E27,Alzheimer's and Braak leave the shield; illness moves it in one tissue each,R39,0,0,0,0,0,0,0,0,1
 E28,Rapamycin narrows age noise in dividing and non-dividing tissue alike,R47,1,-1,0,0,0,0,0,0,1
 E29,Drift at look-alikes predicts breast cancer years ahead; shield share does not,R46,0,0,0,0,0,0,0,-1,1
-E30,Molecule-level disorder grows slower at essential promoters (read-level WGBS),R50,1,0,0,0,0,-1,-2,0,0
+E30,Molecule-level disorder grows slower at essential promoters (read-level WGBS; blood; cfDNA; 27 sorted cell types),R50 R51 R53,1,0,0,0,0,-1,-2,-1,-1
 E31,Shield share grows within a person as they age; CpG divergence gap small (SATSA),R52,1,0,0,0,0,0,0,0,-1

@@ -1382,10 +1382,17 @@ promoters (p <= 0.02). cfDNA of healthy people comes mostly from blood cells, so
 but it is an independent library and molecule source. The non-essential excess of white blood cells does not
 replicate (-0.02, +0.06, n.s.).
 
+**In sorted cell types (run R53).** The atlas's purified cell types remove the mixture caveat: 101 samples in 27
+cell-type and tissue groups (neurons, cardiomyocytes, hepatocytes, colon and lung epithelium, endothelium, pancreatic
+cells, T-cell subsets and more; ages 19-83), the age slope fitted within each group. Entropy rises more slowly at
+housekeeping (-0.084 SD) and core essential promoters (-0.044), discordant reads too (-0.060, -0.029; all p <= 0.002),
+and faster at non-essential genes (+0.19, +0.23), the same pattern as white blood cells. Caveat: a few donors give
+several cell types, so the effective number of donors is smaller than 101.
+
 Reading: the shield is not an averaging artefact of arrays; the molecules at essential promoters stay alike from
 cell to cell as people age, more than those at matched sites. Caveat: white blood cells are a mixture whose myeloid
-share grows with age, so cell-to-cell and cell-type-to-cell-type disorder are not separated; the cfDNA of the same
-donors and the sorted atlas cell types are the next checks. No published single-molecule test of this was found
+share grows with age, so cell-to-cell and cell-type-to-cell-type disorder are not separated there; the sorted cell
+types (R53) separate them, and the shield holds within one cell type. No published single-molecule test of this was found
 (docs/LONGREAD_SURVEY.md).
 
 ## The shield within one person over time (RM28, SATSA)

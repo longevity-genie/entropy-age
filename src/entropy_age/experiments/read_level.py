@@ -245,7 +245,10 @@ def _figure(ctx: Context, table: pl.DataFrame) -> Path:
         ax.invert_yaxis()
         if k == 0:
             ax.legend(fontsize=7)
-        ax.set(xlabel="set minus look-alikes (SD)", title=f"{source} ({sub['donors'][0]} donors)")
+        ax.set(
+            xlabel="set minus look-alikes (SD)",
+            title=f"{source} ({sub['donors'][0]} {'samples' if source == 'sorted cells' else 'donors'})",
+        )
         plots.label_panel(ax, "abc"[k])
     fig.suptitle(
         "Molecule-level disorder at essential promoters, read-level WGBS (Loyfer 2023)",

@@ -113,22 +113,6 @@ Tet3 loss weakening it in brain. Hypotheses, each with its test:
 - The blood lean rests largely on human (jackknife: +0.085 → +0.047 without it, p 0.30); 12 and 7 species
   with paired tissues are too few for hypothesis 2. RM20 parks until the pattern is firmer (Anton told).
 
-## RM22 — Stochasticity at the level of single molecules (long reads)
-
-**State:** building · **Owner:** lead
-
-Progress: asked by antonkulaga (2026-11-12): can nanopore data add insight on the stochasticity of clocks? Long
-reads give many CpGs on one molecule from one cell: within one sample, do essential promoters stay uniform
-molecule to molecule while look-alike regions become mixtures of epialleles with age (epiallele entropy,
-methylation haplotype load, discordant reads)? Read-level WGBS does the same on shorter reads.
-- Survey done (`docs/LONGREAD_SURVEY.md`): no open long-read cohort with ages (CARD brain ONT, 351 donors,
-  controlled). First test: Loyfer 2023 WGBS read-level PAT files (GSE186458), 23 white-blood-cell donors aged
-  21-75, ~13 GB, `wgbstools homog`/entropy, essential promoters against matched regions. No published
-  single-molecule test of epiallele heterogeneity against age.
-- Done (R50): the shield holds molecule by molecule in WBC (entropy and discordance rise slower at essential
-  promoters). Done (R51): replicated in the donors' cfDNA. Built: sorted atlas cell types (27 cell-type and
-  tissue groups with an age spread, 101 samples), age slope within each group; R53 after the download.
-
 ## RM28 — Does the shield (and drift) predict death and disease? Open follow-up cohorts
 
 **State:** unattended · **Owner:** lead
@@ -150,7 +134,7 @@ application; links in the survey.
 
 ## RM16 — Selection by cellular fitness, in vivo
 
-**State:** after RM22 · **Owner:** lead
+**State:** unattended · **Owner:** lead
 
 Progress: asked by antonkulaga (2026-11-12, #entropy-age > general chat): what about selection by cellular
 fitness? The evidence so far is mostly against selection (culture, turnover, chromatin matching, Tet3, liver),
