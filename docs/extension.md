@@ -1288,6 +1288,26 @@ old mouse against the young.
 
 Tables: `data/output/reprogramming_rrbs/` (`effects`, `animal_scores`).
 
+### Four mouse tissues by RRBS: the shield is in cortex too, smaller (roadmap RM2, R63)
+
+Meer et al. 2018 (GSE121141) profiled cortex, heart, liver and lung of male mice at 6, 12, 20 and 30 months by
+RRBS, about 20 per tissue. Figure `meer_tissues` measures each set's age slopes against look-alikes.
+
+![Meer tissues](figures/meer_tissues.png)
+
+* **The shield is present in all four tissues, cortex included** (housekeeping entropy −0.09, heart −0.10, liver
+  −0.36, lung −0.29 SD; every interval below zero). On the mammalian array (GSE279437) cortex had shown none;
+  RRBS, with half a million promoter CpGs per tissue instead of a few thousand, finds it.
+* **It is smaller in the two tissues whose cells do not divide** (cortex, heart) than in liver and lung, and its
+  share grows with age only in liver and lung (`F` −0.11 and −0.05 per 10 months). Non-essential genes drift more
+  in heart, liver and lung, not clearly in cortex.
+* **Reading.** A shield in post-mitotic cortex and heart cannot come from selection among dividing cells, so its
+  existence is chromatin's. Its size and growth rank with tissue renewal here (liver and lung above heart and
+  cortex), unlike Thompson's six tissues (R10); the renewing part could be selection, or the larger drift those
+  tissues accumulate for the shield to act on.
+
+Tables: `data/output/meer_tissues/` (`aging_gaps`, `share_trend`).
+
 ## Chromatin accounts for blood's protection (roadmap RM7)
 
 The cohort tests match gene-set CpGs to background CpGs of the same island status and starting level. If

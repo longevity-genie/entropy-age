@@ -3,6 +3,17 @@
 Owned by the runner seat (`docs/seats/RUNNER.md`): one entry per run, newest first, with its inputs, the
 commit it ran, its job ids, its scale and seed, and its result or its failure with the cause.
 
+## R63 — four mouse tissues 6-30 months, RRBS (RM2), 2026-11-13
+
+- Commit 7cad5d2; `figures meer_tissues --scale paper --seed 42`; 4 cores, 48 GB; job 6469574, 44 min, 3.6 GB.
+  GSE121141 (Meer 2018): male C57BL/6, 6/12/20/30 months, cortex 20, heart 21, liver 20, lung 20 mice; promoter
+  CpGs covered 10+ times in 90 % of a tissue's mice (530,000-603,000); 200 resamples of mice.
+- Result, as measured (housekeeping, SD, 95 % CI): entropy cortex −0.092 (−0.207 to −0.060), heart −0.100
+  (−0.222 to −0.053), liver −0.356 (−0.608 to −0.193), lung −0.290 (−0.472 to −0.184); dispersion −0.066, −0.117,
+  −0.324, −0.193; core essential entropy −0.137, −0.075, −0.288, −0.245. Non-essential entropy +0.093 (n.s.),
+  +0.229, +0.397, +0.326. Shield share F per 10 months (housekeeping): cortex −0.013 (p 0.16), heart −0.003
+  (0.68), liver −0.114 (0.014), lung −0.049 (0.010).
+
 ## R62 — one OSKM cycle, RRBS (RM17), 2026-11-13
 
 - Commit dc71c35; `figures reprogramming_rrbs --scale paper --seed 42`; 4 cores, 32 GB; job 6469554, 43 s.

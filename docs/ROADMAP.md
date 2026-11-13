@@ -182,8 +182,8 @@ turnover. Left:
   wasting, so muscle tests selection only in a cohort that records physical activity or training
   history beside age (to find; the fibre cohort GSE304045 records training but not age).
 - **Mouse replication:** Thompson 2018 (GSE120132) done (`figures rrbs_tissues`): the shield in all six tissues,
-  ordered by neither size nor growth by turnover. Meer 2018 (GSE121141; liver, lung, heart, cortex, 6-30 months):
-  running (R63, `figures meer_tissues`).
+  ordered by neither size nor growth by turnover. Done (R63, Meer 2018): the shield in all four tissues, cortex
+  too (−0.09 SD), smaller in cortex and heart than in liver and lung, and growing with age only in the latter.
 - The fibre contrast (GSE304045) was uninformative: a dozen adults of similar age show too little
   between-person divergence. A within-tissue turnover contrast needs aged and young people.
 
