@@ -21,6 +21,7 @@ from __future__ import annotations
 import sys
 from pathlib import Path
 
+import matplotlib.pyplot as plt
 import numpy as np
 import polars as pl
 from scipy import stats
@@ -153,16 +154,19 @@ def run(ctx: Context) -> list[Path]:
 def _figure(ctx: Context, table: pl.DataFrame) -> Path:
     fig, axes = plots.panels(2, ncols=2, size=4.6)
     ax = axes[0]
-    blood = table.filter(pl.col("tissue") == "blood (Hannum)")
-    ax.scatter(blood["share_cpgs"], blood["share_signal"], s=18, color=plots.PALETTE[0])
-    for clock, x, y in blood.select("clock", "share_cpgs", "share_signal").iter_rows():
-        ax.annotate(clock, (x, y), fontsize=6, xytext=(3, 2), textcoords="offset points")
-    lim = max(blood["share_cpgs"].max(), blood["share_signal"].max()) * 1.1
-    ax.plot([0, lim], [0, lim], color=plots.MUTED, lw=0.8)
-    ax.set(xlabel="share of the clock's CpGs that are protected", ylabel="share of its age signal", title="blood")
+    clocks = table["clock"].unique(maintain_order=True).to_list()
+    blood = pl.DataFrame({"clock": clocks}).join(
+        table.filter(pl.col("tissue") == "blood (Hannum)"), on="clock", how="left"
+    )
+    y = np.arange(len(clocks))
+    ax.barh(y - 0.2, blood["share_cpgs"], height=0.38, color=plots.MUTED, label="share of the clock's CpGs")
+    ax.barh(y + 0.2, blood["share_signal"], height=0.38, color=plots.PALETTE[0], label="share of its age signal")
+    ax.set_yticks(y, clocks, fontsize=7)
+    ax.invert_yaxis()
+    ax.set(xlabel="protected CpGs (share)", title="blood")
+    ax.legend(fontsize=7, loc="lower right")
     plots.label_panel(ax, "a")
     ax = axes[1]
-    clocks = table["clock"].unique(maintain_order=True).to_list()
     for i, tissue in enumerate(TISSUES):
         t = pl.DataFrame({"clock": clocks}).join(table.filter(pl.col("tissue") == tissue), on="clock", how="left")
         y = np.arange(len(clocks)) + 0.2 * (i - 0.5)
@@ -177,12 +181,15 @@ def _figure(ctx: Context, table: pl.DataFrame) -> Path:
             label=tissue,
         )
     ax.set_xscale("log")
+    ticks = [0.25, 0.5, 1, 2, 4]
+    ax.set_xticks(ticks, [f"{v:g}" for v in ticks])
+    ax.xaxis.set_minor_locator(plt.NullLocator())
     ax.axvline(1, color=plots.MUTED, lw=0.8)
-    ax.set_yticks(range(len(clocks)), clocks, fontsize=7)
+    ax.set_yticks(range(len(clocks)), [""] * len(clocks))
     ax.invert_yaxis()
     ax.set(xlabel="weight of protected CpGs, slope and level held (×)", title="extra weight")
     ax.legend(fontsize=7)
     plots.label_panel(ax, "b")
     fig.suptitle("Published clocks' weights on protected CpGs", x=0.02, y=1.03, ha="left", fontsize=11)
-    fig.subplots_adjust(wspace=0.6)
+    fig.subplots_adjust(wspace=0.08)
     return plots.save(fig, ctx.figure_path("clock_weights"))

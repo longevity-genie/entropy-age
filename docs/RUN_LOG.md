@@ -3,6 +3,16 @@
 Owned by the runner seat (`docs/seats/RUNNER.md`): one entry per run, newest first, with its inputs, the
 commit it ran, its job ids, its scale and seed, and its result or its failure with the cause.
 
+## R64 — published clocks' weights on protected CpGs (RM8), 2026-11-13
+
+- Asked by antonkulaga. Commit bc1345f; `figures clock_weights --scale paper --seed 42`; 4 cores, 32 GB; job
+  6472732, 21 s (figure redrawn in jobs 6472944, 6473274, 6474053). Hannum blood 656 donors, Jaffe adult cortex controls 213;
+  12 clocks with 5+ protected CpGs; 1,000 resamples of each clock's CpGs.
+- Result, as measured (blood; weight beyond slope and young level, 95 % CI): Horvath 22 % protected, 26 % of the
+  signal, slope 0.64x, spread 0.33x, weight 1.30x, beyond slope 1.07 (0.63-1.73); PhenoAge 17 %, 9 %, 0.55x,
+  0.29x, 1.10x, 0.88 (0.63-1.22); DamAge 1.66 (1.14-2.36, p 0.003); AdaptAge 0.51 (0.22-1.25); the other eight
+  0.91-1.58, every interval including 1. Cortex alike (DamAge 1.69, 1.19-2.41).
+
 ## R63 — four mouse tissues 6-30 months, RRBS (RM2), 2026-11-13
 
 - Commit 7cad5d2; `figures meer_tissues --scale paper --seed 42`; 4 cores, 48 GB; job 6469574, 44 min, 3.6 GB.

@@ -1308,6 +1308,32 @@ RRBS, about 20 per tissue. Figure `meer_tissues` measures each set's age slopes 
 
 Tables: `data/output/meer_tissues/` (`aging_gaps`, `share_trend`).
 
+### Do published clocks weight protected CpGs up? (roadmap RM8, R64)
+
+Asked by antonkulaga: an age model fits protected and unprotected CpGs alike, so has it simply scaled up the weights
+of protected CpGs, which still change with age, only more slowly? Figure `clock_weights` takes 12 published clocks'
+coefficients and, in Hannum blood (656 donors) and Jaffe's adult cortex (213), compares each clock's protected
+CpGs (promoters of core-essential or housekeeping genes) with its other CpGs.
+
+![Clock weights](figures/clock_weights.png)
+
+* **Protected CpGs are in the clocks** at 5-22 % (Horvath 22 %, PhenoAge 17 %), about their share of the array
+  or more. In blood they change more slowly with age (Horvath 0.64x, PhenoAge 0.55x the others' slope) and spread
+  more slowly between people (0.33x, 0.29x): the shield is visible inside the clocks' own CpGs.
+* **Some clocks partly make up the slower change:** Horvath's weights on them are 1.3x larger, so their share of
+  its age signal (26 %) matches their share of CpGs (22 %). PhenoAge's are not (17 % of CpGs, 9 % of the signal).
+* **No extra weight beyond slope.** With each CpG's slope and starting level held, the weight of protected CpGs is
+  that of any other in 11 of 12 clocks, in both tissues (intervals include 1: Horvath 1.07, PhenoAge 0.88-0.96,
+  stochastic clocks 0.88-1.60). DamAge alone gives them more (1.66 blood, 1.69 cortex, intervals 1.14-2.41); AdaptAge leans
+  less (0.46-0.51, intervals reach 1.25).
+* **Reading.** An elastic net weighs a protected CpG by the age slope it shows, as it would any slow CpG; it
+  neither seeks protected CpGs out nor avoids them. The clock reads each CpG's direction and rate (R38); the
+  protection slows the spread around that direction, which the clock does not use. DamAge, trained on CpGs whose
+  methylation is causal for adverse traits, is the one clock that leans on protected promoters.
+
+Tables: `data/output/clock_weights/` (`summary`, `per_cpg`). Medians of spread slopes in cortex are near zero and
+their ratios unstable (negative for three clocks); read the blood ratios only.
+
 ## Chromatin accounts for blood's protection (roadmap RM7)
 
 The cohort tests match gene-set CpGs to background CpGs of the same island status and starting level. If
