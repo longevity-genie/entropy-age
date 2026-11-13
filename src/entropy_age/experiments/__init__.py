@@ -52,6 +52,7 @@ from entropy_age.experiments import (
     tet1_cortex,
     tissue_contrast,
     tissue_pace,
+    within_person,
 )
 from entropy_age.experiments.common import Context, Scale, ScaleName
 
@@ -90,6 +91,7 @@ FIGURES: dict[str, Callable[[Context], list[Path]]] = {
     "intervention_split": intervention_split.run,
     "lineage_shield": lineage_shield.run,
     "read_level": read_level.run,
+    "within_person": within_person.run,
     "tissue_pace": tissue_pace.run,
     "organ_coupling": organ_coupling.run,
     "survival": survival_shield.run,

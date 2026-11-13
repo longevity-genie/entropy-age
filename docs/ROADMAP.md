@@ -142,7 +142,9 @@ application; links in the survey.
 - Done (R42): Vitality 90+ uninformative (mortality clocks fail too). Done (R46, R46b): EPIC-Italy, drift B
   predicts breast cancer years ahead, robust to chip, cell mix and mean beta; the shield share does not. Next:
   a second breast-cancer cohort (NOWAC or Breakthrough Generations, controlled: antonkulaga's application).
-- Done (R48, R48b): SJLIFE deaths; drift and shield add nothing beyond DunedinPACE. Left: SATSA repeated draws.
+- Done (R48, R48b): SJLIFE deaths; drift and shield add nothing beyond DunedinPACE.
+- Built (`within_person`): SATSA, change between a person's consecutive draws split into directed change,
+  divergence per year and the measurement floor; within-person slopes of B, F and S. R52 after the 6.7 GB download.
 
 ## RM16 — Selection by cellular fitness, in vivo
 
