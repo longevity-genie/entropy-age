@@ -39,6 +39,7 @@ from entropy_age.protection import matched_scores
 from entropy_age.stochasticity import baseline_strata, drift_metrics
 
 MIN_DONORS = 15
+MIN_SPAN = 15.0  # years of age a tissue's donors span
 N_BOOT = {"paper": 300, "quick": 40}
 N_DRAWS = {"paper": 400, "quick": 40}
 ODD = ("BoneMarrow", "LymphNode")
@@ -54,7 +55,9 @@ def gaps(x: np.ndarray, ages: np.ndarray, island: np.ndarray, sets: dict, cov: n
     for metric in METRICS:
         v = metrics[metric].to_numpy()
         for group, (in_set, _) in sets.items():
-            out[(metric, group)] = float(matched_scores(v[None, :], in_set, strata)[0][0]) / float(v.std())
+            sd = float(np.nanstd(v))
+            gap = float(matched_scores(v[None, :], in_set, strata)[0][0])
+            out[(metric, group)] = gap / sd if sd > 0 else np.nan
     return out
 
 
@@ -114,11 +117,19 @@ def run(ctx: Context) -> list[Path]:
     scale = str(ctx.scale.name)
     tissues = {}
     for (tissue,), sel in samples.group_by("tissue", maintain_order=True):
-        if sel.height < MIN_DONORS:
+        if sel.height < MIN_DONORS or float(sel["age"].max() - sel["age"].min()) < MIN_SPAN:
             continue
         x = frame.select(sel["barcode"].to_list()).to_numpy().T.astype(float)
         tissues[tissue] = (sel, x)
-    ok = np.all([~np.isnan(x).any(axis=0) for _, x in tissues.values()], axis=0)
+    # CpGs measured in every marrow and lymph-node sample; a tissue missing over a tenth of them is left out
+    ok = np.all([~np.isnan(tissues[t][1]).any(axis=0) for t in ODD if t in tissues], axis=0)
+    for t in [t for t in tissues if t not in ODD]:
+        full = ~np.isnan(tissues[t][1]).any(axis=0)
+        if (full & ok).sum() < 0.9 * ok.sum():
+            print(f"marrow_anomaly: {t}: {int((ok & ~full).sum())} CpGs missing; left out", file=sys.stderr)
+            del tissues[t]
+        else:
+            ok &= full
     cols = np.flatnonzero(ok)
     sets = {
         g: (s[cols], [np.searchsorted(cols, gi[np.isin(gi, cols)]) for gi in genes if np.isin(gi, cols).any()])
@@ -162,8 +173,8 @@ def run(ctx: Context) -> list[Path]:
                     "metric": key[0],
                     "group": key[1],
                     "gap_sd": value,
-                    "donor_low": float(np.quantile(draws, 0.025)),
-                    "donor_high": float(np.quantile(draws, 0.975)),
+                    "donor_low": float(np.nanquantile(draws, 0.025)),
+                    "donor_high": float(np.nanquantile(draws, 0.975)),
                     "chip_held": chip[key],
                     "shared_donors": int(shared.sum()),
                     "same_donor_gap": same.get(key, np.nan),
