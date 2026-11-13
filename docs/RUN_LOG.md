@@ -3,6 +3,16 @@
 Owned by the runner seat (`docs/seats/RUNNER.md`): one entry per run, newest first, with its inputs, the
 commit it ran, its job ids, its scale and seed, and its result or its failure with the cause.
 
+## R59 — the species shield off the 0 % floor (RM13 (4)), 2026-11-13
+
+- Commit 676bff5; `figures species_floor --scale paper --seed 42`; 4 cores, 48 GB; job 6469130, 55 min, 25.5 GB.
+  GSE223748, 139 species-tissue groups, 4,485 promoter CpGs; per group only CpGs whose young-quarter mean lies at
+  10-90 % (median share kept: housekeeping 24 %, core essential 29 %, non-essential 50 %).
+- Result, as measured (entropy gap, housekeeping): mean −0.295 SD → −0.236; negative in 96 % → 93 % of groups,
+  interval below 0 in 89 % → 66 %. Core essential −0.225 → −0.175; non-essential +0.368 → +0.212. Lifespan
+  coefficient (log maximum lifespan, weight and tissue held): housekeeping entropy +0.029 (p 0.14) → −0.014
+  (p 0.48); dispersion +0.036 (p 0.11) → −0.002 (p 0.92). Human marrow and lymph node stay positive (+0.28, +0.37).
+
 ## R60 — the per-person scores against Seeboth 2020's confounders (RM13 (5)), 2026-11-13
 
 - Commit 9a75a70's code (its docstring wrapped after; the figure redrawn with a chance marker); `figures

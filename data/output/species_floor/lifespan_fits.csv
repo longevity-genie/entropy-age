@@ -1,0 +1,25 @@
+variant,metric,group,outcome,term,coef,se,p,groups,species
+all CpGs,entropy_slope,core_essential,gap_sd,log max lifespan,0.01597852221627674,0.022066221996432753,0.4705743092291973,139,65
+all CpGs,entropy_slope,core_essential,gap_sd,log adult weight,0.008144584946208087,0.005689045404478569,0.15516543633654908,139,65
+all CpGs,entropy_slope,housekeeping,gap_sd,log max lifespan,0.028654071617870123,0.0194626622628938,0.14388639049628368,139,65
+all CpGs,entropy_slope,housekeeping,gap_sd,log adult weight,0.004194687359732463,0.0050178036513696895,0.40503985498513767,139,65
+all CpGs,entropy_slope,non_essential,gap_sd,log max lifespan,0.02283132788437351,0.02116040402216276,0.283029736674524,139,65
+all CpGs,entropy_slope,non_essential,gap_sd,log adult weight,0.0013235944831516057,0.005455510203724772,0.8087672743653274,139,65
+all CpGs,dispersion_slope,core_essential,gap_sd,log max lifespan,0.012502313778259992,0.03038665886062104,0.6815722341325362,139,65
+all CpGs,dispersion_slope,core_essential,gap_sd,log adult weight,0.002204190301632633,0.007834194814881344,0.7789814673399239,139,65
+all CpGs,dispersion_slope,housekeeping,gap_sd,log max lifespan,0.0360560971111105,0.02217599640410073,0.10691132066029607,139,65
+all CpGs,dispersion_slope,housekeeping,gap_sd,log adult weight,0.0031687149940383065,0.005717347104224625,0.5805791919956659,139,65
+all CpGs,dispersion_slope,non_essential,gap_sd,log max lifespan,0.04332670733560784,0.020298229096178615,0.03508448787412419,139,65
+all CpGs,dispersion_slope,non_essential,gap_sd,log adult weight,-0.005634740866464491,0.005233226919285791,0.28402525461470096,139,65
+off floor and ceiling,entropy_slope,core_essential,gap_sd,log max lifespan,-0.01630183188346933,0.033465820082326146,0.6271894941831392,137,65
+off floor and ceiling,entropy_slope,core_essential,gap_sd,log adult weight,0.015660638270278488,0.008612364847585775,0.07185530252766163,137,65
+off floor and ceiling,entropy_slope,housekeeping,gap_sd,log max lifespan,-0.013672222054493605,0.019366606499206837,0.4817417516929529,139,65
+off floor and ceiling,entropy_slope,housekeeping,gap_sd,log adult weight,0.004748863716776957,0.004993038850169678,0.3436986314235792,139,65
+off floor and ceiling,entropy_slope,non_essential,gap_sd,log max lifespan,-0.0031415603779221504,0.01729720264735851,0.8562226418401966,139,65
+off floor and ceiling,entropy_slope,non_essential,gap_sd,log adult weight,0.007247695251562795,0.0044595115216006466,0.10705730997070989,139,65
+off floor and ceiling,dispersion_slope,core_essential,gap_sd,log max lifespan,-0.018790199939332848,0.04740834040466448,0.6926526577828158,137,65
+off floor and ceiling,dispersion_slope,core_essential,gap_sd,log adult weight,0.0046674590946455576,0.01220044580945864,0.702815893204536,137,65
+off floor and ceiling,dispersion_slope,housekeeping,gap_sd,log max lifespan,-0.002354129298775256,0.02434648510155724,0.9231512522894881,139,65
+off floor and ceiling,dispersion_slope,housekeeping,gap_sd,log adult weight,0.003528009514174222,0.006276935816408063,0.5752512181559875,139,65
+off floor and ceiling,dispersion_slope,non_essential,gap_sd,log max lifespan,0.023526844390898985,0.02148677070112503,0.2759990722199094,139,65
+off floor and ceiling,dispersion_slope,non_essential,gap_sd,log adult weight,0.0014607804056272471,0.005539653055882489,0.79252189743082,139,65

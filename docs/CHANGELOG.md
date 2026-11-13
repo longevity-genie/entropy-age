@@ -4,6 +4,7 @@ Newest first.
 
 ## Unreleased
 
+- 2026-11-13: R59 written up: the species shield holds off the 0 % floor; the long-lived lean was the floor.
 - 2026-11-13: RM20 noted: hypothesis 2 tested three ways without support (R55-R57); RM13 (3) waits for read-level culture data.
 - 2026-11-13: RM14's DNMT3A loss-against-gain pair checked and not run (gain arm of one in blood); RM14 waits for a cohort meeting its rule.
 - 2026-11-13: R60 written up: the contrast scores halve the batch excess of drift B; smoking moves only S; chemotherapy moves F against B.

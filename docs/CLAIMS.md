@@ -21,7 +21,8 @@ a test with little power), **refuted**.
   stratum; (b) array compression at the extremes; (c) island CpGs vary less for technical reasons.
 - **Separating test:** finer level matching in the lowest decile; read-level WGBS free of array effects
   (Loyfer 2023, R50: holds, so (b) is excluded as the whole story); (c) matched on island status.
-- **Status:** holds; (a) open.
+- **Status:** holds; (a) answered for the species array: off the floor (CpGs at 10-90 %) the gap holds in 93 % of
+  139 groups (R59).
 
 ## C2 — The shield is chromatin maintenance (H1)
 
@@ -86,7 +87,8 @@ a test with little power), **refuted**.
   fixed; long-lived species drift slower at unprotected CpGs with the shield's share kept.
 - **We should not see:** a stronger shield in long-lived species.
 - **Observed:** 96 % of 139 groups; lifespan slope +0.025 (p 0.40) with phylogeny; look-alike drift falls as
-  lifespan^−1.4 with the relative shield kept or larger; the blood lean rests on human.
+  lifespan^−1.4 with the relative shield kept or larger; the blood lean rests on human; off the 0 % floor the
+  lifespan slope is −0.014 (p 0.48, R59).
 - **Alternatives:** conserved array CpGs at essential promoters sit near 0 % (floor); taxonomy covariance is
   coarse.
 - **Separating test:** a dated phylogeny; species with WGBS.

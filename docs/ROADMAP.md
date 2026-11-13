@@ -28,7 +28,8 @@ floor of near-0 % essential promoters; (5) the shield score against Seeboth 2020
   less of the raw contrast, in cortex too. Next: (2) absolute drift slopes beside the CR share.
 - (2) answered: the CR tables give drift B beside F; CR does not slow absolute drift in the within-batch series
   (B6D2F1 B −0.004, p 0.37; −0.008 with 5 components, p 0.12; R55), so its effect is on the share, not the rate.
-- (4) running (R59, `figures species_floor`): species gaps and the lifespan fit on CpGs at 10-90 % only.
+- (4) done (R59): off the 0 % floor (10-90 % CpGs) the species shield holds (−0.24 SD, negative in 93 % of
+  groups) and the lifespan lean vanishes (−0.014, p 0.48): the lean was the floor; fits Crofts 2026.
 - (3) no read-level culture series at hand (the passage series are arrays); waits for one.
 - (5) done (R60): slide batch explains 36 % of B against 13 % by chance, 20-23 % of F and S; smoking moves only S;
   chemotherapy moves F against B (alkylating F −0.16, anthracyclines +0.21). Batch must be held in every use.

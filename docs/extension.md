@@ -1252,6 +1252,23 @@ alkylating agents and anthracyclines), age and sex held.
 
 Tables: `data/output/score_confounders/` (`partial_r2`, `terms`).
 
+### The species shield is not a floor (roadmap RM13 (4), R59)
+
+On the conserved mammalian array most essential-promoter CpGs sit near 0 %, where drift down is impossible. Figure
+`species_floor` refits every species-tissue group with only CpGs whose young level lies between 10 and 90 %, set and
+look-alikes alike (a quarter of the housekeeping CpGs, half of the non-essential ones).
+
+![Species shield off the floor](figures/species_floor.png)
+
+* **The shield holds off the floor**: the housekeeping entropy gap averages −0.24 SD (−0.30 with all CpGs) and is
+  negative in 93 % of 139 groups; non-essential genes still drift more (+0.21). Fewer CpGs widen the intervals
+  (below 0 in 66 % of groups, 89 % before).
+* **The lean toward a weaker shield in long-lived species was the floor.** Off it, the lifespan coefficient is
+  −0.014 (p 0.48; +0.029 before) for entropy and −0.002 for dispersion: no relation at all. This fits Crofts
+  2026, where lifespan scales methylation rates through stem-cell dynamics, not through targeted maintenance.
+
+Tables: `data/output/species_floor/` (`species_gaps`, `lifespan_fits`, `share_off_floor`).
+
 ## Chromatin accounts for blood's protection (roadmap RM7)
 
 The cohort tests match gene-set CpGs to background CpGs of the same island status and starting level. If
