@@ -131,7 +131,7 @@ maintenance predicts the shield restored with the clock; selection predicts no c
 
 ## RM14 — Natural experiments in chromatin: broken writers, knockouts, edits
 
-**State:** waits until a qualifying cohort is found · **Owner:** lead
+**State:** waits until 2026-12-13 (search again for a cohort meeting the rule) · **Owner:** lead
 
 Progress: asked by antonkulaga (2026-11-11): cell lines tell little about clocks; can public data show what
 happens when chromatin is changed? Three sources, in order:
