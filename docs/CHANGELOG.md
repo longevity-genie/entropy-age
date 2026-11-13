@@ -4,6 +4,7 @@ Newest first.
 
 ## Unreleased
 
+- 2026-11-13: R57 written up: after a transplant bottleneck no essential-specific shield gain; RM12 done.
 - 2026-11-13: `hsct_bottleneck` (RM12, bottleneck): divergence of transplant recipients from their donors against recipients' own later draws, at essential promoters against look-alikes (Holland 2024, Mendeley j5krtjfj6y).
 - 2026-11-13: RM16 done (steps 1, 2, 4); step 3 waits for public data.
 - 2026-11-13: R56 written up: in a second CR blood series (young mice, 12 weeks, no drift) CR's changes spare essential promoters; no support for the B6D2F1 weakening.

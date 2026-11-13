@@ -14,7 +14,7 @@ it out. Left: the same test in the culture series (EPIC manifest needed for the 
 doublings), and what cortex's two strongly age-tracking components are.
 ## RM12 — Selection pressure under interventions
 
-**State:** unattended · **Owner:** lead
+**State:** done (R13-R16, R35-R37, R47, R55, R57; GSE140038 chemotherapy left as an option) · **Owner:** lead
 
 Progress: asked by antonkulaga (2026-11-11): do interventions change the shield through selection, apart from
 chromatin? What we have: in B6D2F1 blood CR weakens the shield by a quarter (within one sequencing series, robust
@@ -42,7 +42,9 @@ neither proof nor disproof. Tests that would separate selection from chromatin, 
   for blood methylation before and after such bottlenecks (for example bone-marrow transplant donors and
   recipients, or patients after chemotherapy).
   Found: Holland 2024 HSCT donor-recipient pairs (Mendeley j5krtjfj6y, open, 334 samples, 92 transplants);
-  GSE140038 (72 breast-cancer women before and after chemotherapy or radiotherapy). R57 runs the first.
+  GSE140038 (72 breast-cancer women before and after chemotherapy or radiotherapy).
+  Done (R57): across a transplant every promoter set (non-essential too) diverges less than look-alikes, by the
+  same amount: not specific to essential genes; no support for selection.
 - **Chromatin held fixed.** Match on chromatin first (RM7's method), then test the intervention on the remainder.
   If the CR effect survives the matching, it is not a chromatin change.
   Done (R55): openness (ImmGen ATAC, six blood cell types) removes about 60 % of mouse blood's shield and two

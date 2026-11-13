@@ -3,6 +3,16 @@
 Owned by the runner seat (`docs/seats/RUNNER.md`): one entry per run, newest first, with its inputs, the
 commit it ran, its job ids, its scale and seed, and its result or its failure with the cause.
 
+## R57 — divergence across a stem-cell transplant (RM12, bottleneck), 2026-11-13
+
+- Commit 51d3559; `figures hsct_bottleneck --scale paper --seed 42`; 4 cores, 48 GB; job 6469087, 47 s, 1.9 GB.
+  Holland et al. 2024 (Mendeley j5krtjfj6y): 334 blood samples, 92 transplants, six batches; 75,436 CpGs measured
+  in all (promoter set CpGs and look-alikes). Comparisons within batch: 103 donor → recipient (median 1.0 year
+  after transplant), 196 consecutive recipient draws (median 0.5 year), 4 donor duplicates.
+- Result, as measured (F = set minus matched squared difference over matched; donor → recipient against recipient
+  → recipient, log years and batch held, 1,000 transplant resamples): core essential −0.058 (−0.091 to −0.028),
+  housekeeping −0.039 (−0.064 to −0.017), non-essential −0.057 (−0.098 to −0.018). Divergence B +50-70 %.
+
 ## R56 — a second CR blood series, GSE282661 (RM16 step 4), 2026-11-13
 
 - Commit 7204317 (the figure redrawn after, labels only); `figures cr_blood_replication --scale paper --seed 42`;

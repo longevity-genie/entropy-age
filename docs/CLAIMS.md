@@ -47,7 +47,8 @@ a test with little power), **refuted**.
   neurons lose it only when Tet3 is halved; clonal haematopoiesis leaves it; not tuned to lifespan. One result
   favours selection: CR weakened it in one blood study, not replicated in liver; with chromatin openness
   matched two thirds of that effect goes with the shield (R55); a second, short CR series in young mice shows CR's
-  changes sparing essential promoters (R56).
+  changes sparing essential promoters (R56); a transplant bottleneck moves essential and non-essential promoters
+  alike (R57).
 - **Alternatives (to the rejection):** long-term cultures turn oligoclonal (Hollmann 2020), and steady
   selection per doubling also gives a constant share; clonal haematopoiesis clones were diluted (no allele
   fractions).

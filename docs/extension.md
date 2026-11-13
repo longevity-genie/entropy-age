@@ -1040,6 +1040,25 @@ controls, 8 at the start, all on one array run. Figure `cr_blood_replication`:
 
 Tables: `data/output/cr_blood_replication/` (`effects`, `animal_scores`).
 
+**After a stem-cell bottleneck the shield does not grow specifically (roadmap RM12, R57).** A transplant rebuilds a
+recipient's blood from few donor stem cells, under competition. Holland et al. 2024 (Mendeley j5krtjfj6y) measured
+donors at transplant and their recipients for up to 23 years after (450k/EPIC, 92 transplants). Within each batch,
+figure `hsct_bottleneck` compares how far a recipient's blood has moved from its donor's (103 comparisons) with how
+far it moves between its own later draws (196), at each set's promoters against look-alikes.
+
+![Transplant bottleneck](figures/hsct_bottleneck.png)
+
+* **Across the transplant, set promoters move less than look-alikes**: the share `F` is lower than between a
+  recipient's own draws by −0.058 (core essential), −0.039 (housekeeping), years and batch held.
+* **But non-essential promoters do the same (−0.057).** The change is not specific to essential genes: across the
+  transplant, divergence concentrates at the look-alikes (cell-mix and other non-promoter-set CpGs; divergence
+  itself rises by half), which lowers `F` for every promoter set alike.
+* **Reading.** Selection through a bottleneck would protect essential promoters beyond the others; it does not
+  here. No support for selection; the CpGs that respond to a rebuilt blood system are not those the shield
+  separates.
+
+Tables: `data/output/hsct_bottleneck/` (`effects`, `comparisons`).
+
 ### Six tissues of the same strains: the shield does not follow turnover
 
 Thompson et al. 2018 (GSE120132, `entropy-age fetch rrbs-tissues`) measured blood, lung, kidney, liver, adipose and
