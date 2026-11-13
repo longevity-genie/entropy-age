@@ -4,6 +4,7 @@ Newest first.
 
 ## Unreleased
 
+- `figures equilibrium_drift` (RM32): methylation gain and loss rates per gene set (two-state Markov model, pooled over CpGs, donor bootstrap) and per-CpG relaxation toward a bounded equilibrium; run R67 planned.
 - 2026-11-13: RM32 planned (Anton): shield measured as drift toward each CpG's own equilibrium, repair being asymmetric.
 - `figures satsa_idats` (RM28): the within-person analysis on SATSA's 450k waves reprocessed from their IDATs (E-MTAB-7309); `within_person` split into loaders and a shared `analyse`.
 - `figures gill_reprogramming` (RM17): Gill 2022 transient reprogramming of human fibroblasts from IDATs; reprogrammed against failed and controls within donor.
