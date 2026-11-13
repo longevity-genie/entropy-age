@@ -126,7 +126,8 @@ methylation haplotype load, discordant reads)? Read-level WGBS does the same on 
   21-75, ~13 GB, `wgbstools homog`/entropy, essential promoters against matched regions. No published
   single-molecule test of epiallele heterogeneity against age.
 - Done (R50): the shield holds molecule by molecule in WBC (entropy and discordance rise slower at essential
-  promoters). Done (R51): replicated in the donors' cfDNA. Next: sorted atlas cell types (few donors each).
+  promoters). Done (R51): replicated in the donors' cfDNA. Built: sorted atlas cell types (27 cell-type and
+  tissue groups with an age spread, 101 samples), age slope within each group; R53 after the download.
 
 ## RM28 — Does the shield (and drift) predict death and disease? Open follow-up cohorts
 

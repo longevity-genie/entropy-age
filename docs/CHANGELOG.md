@@ -4,6 +4,7 @@ Newest first.
 
 ## Unreleased
 
+- 2026-11-13: `read_level` adds the atlas's sorted cell types (27 groups, 101 samples), age slopes within cell type; R53 planned.
 - 2026-11-13: R52 written up: within one person the shield share grows with age (SATSA); CpG-level test weak on preprocessed betas.
 - 2026-11-13: `within_person` (RM28): SATSA repeated draws, divergence per year apart from the measurement floor; R52 planned.
 - 2026-11-13: R51 written up: the molecule-level shield replicates in cfDNA of the same donors.

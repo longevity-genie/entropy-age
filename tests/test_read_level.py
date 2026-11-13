@@ -37,3 +37,18 @@ def test_low_coverage_windows_are_missing():
     counts = np.zeros((1, 16), dtype=int)
     counts[0, 0] = 3
     assert np.isnan(window_metrics(counts)["entropy"][0])
+
+
+def test_age_slope_within_groups_ignores_differences_between_cell_types():
+    from entropy_age.experiments.read_level import age_slopes
+
+    rng = np.random.default_rng(4)
+    group = np.repeat(np.array(["a", "b", "c", "d"]), 10)
+    age = np.concatenate(
+        [rng.uniform(20, 40, 10), rng.uniform(40, 60, 10), rng.uniform(60, 80, 10), rng.uniform(20, 80, 10)]
+    )
+    offset = {"a": 0.0, "b": -0.5, "c": -1.0, "d": 0.2}  # older groups lower: a spurious slope across groups
+    values = (np.array([offset[g] for g in group]) + 0.01 * age + rng.normal(scale=0.01, size=40))[:, None]
+    female = np.zeros(40, bool)
+    assert abs(age_slopes(values, age, female, group)[0] - 0.01) < 0.002
+    assert age_slopes(values, age, female)[0] < 0

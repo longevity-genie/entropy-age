@@ -13,7 +13,9 @@ Per window, the age slope of entropy and PDR over the donors (sex held), and the
 against look-alikes of the same island status and mean-level decile (``tissue_contrast``'s matching), in SD. A
 shield at the molecule level means a smaller rise of discordance where the array saw a smaller rise of spread.
 Caveat: white blood cells are a mixture whose myeloid share grows with age; one donor's cells differing from each
-other and cell types differing are not told apart here.
+other and cell types differing are not told apart there. The atlas's sorted cell types (``atlas/``: 27 cell-type and
+tissue groups with an age spread, 101 samples) remove it: the age slope is then fitted with each group as a fixed
+effect, so only age differences within a cell type count.
 
 ``entropy-age figures read_level`` (as a Slurm job, after the CpG index and the 23 WBC files).
 """
@@ -49,14 +51,17 @@ def read_donors(folder: Path) -> pl.DataFrame:
     for soft in sorted(folder.glob("GSM*.soft")):
         text = soft.read_text()
         age = re.search(r"age: (\d+(?:\.\d+)?)", text)
-        sex = re.search(r"gender: (\w+)", text)
+        sex = re.search(r"(?:gender|sex): (\w+)", text)
+        cell = re.search(r"cell type: (.+)", text)
+        tissue = re.search(r"tissue: (.+)", text)
         pats = sorted(folder.glob(f"{soft.stem}_*.hg38.pat.gz"))
         if age and pats:
             rows.append(
                 {
                     "sample": soft.stem,
                     "age": float(age.group(1)),
-                    "female": bool(sex and sex.group(1).lower() == "female"),
+                    "female": bool(sex and sex.group(1).lower() in ("female", "f")),
+                    "group": f"{cell.group(1).strip()}|{tissue.group(1).strip()}" if cell and tissue else "",
                     "pat": str(pats[0]),
                 }
             )
@@ -101,16 +106,21 @@ def window_metrics(counts: np.ndarray, width: int = WIDTH) -> dict[str, np.ndarr
     return out
 
 
-def age_slopes(values: np.ndarray, age: np.ndarray, female: np.ndarray) -> np.ndarray:
-    """Per window (column), the OLS age slope with sex held, over donors with a value; NaN with too few donors."""
+def age_slopes(values: np.ndarray, age: np.ndarray, female: np.ndarray, group: np.ndarray | None = None) -> np.ndarray:
+    """Per window (column), the OLS age slope with sex (and ``group``, e.g. cell type and tissue, as fixed effects)
+    held, over donors with a value; NaN with fewer than ``MIN_DONORS`` or three quarters of the donors."""
     out = np.full(values.shape[1], np.nan)
+    need = max(MIN_DONORS, int(0.75 * values.shape[0]))
     for j in range(values.shape[1]):
         ok = ~np.isnan(values[:, j])
-        if ok.sum() < MIN_DONORS:
+        if ok.sum() < need:
             continue
         cols = [np.ones(ok.sum()), age[ok]]
         if np.unique(female[ok]).size > 1:
             cols.append(female[ok].astype(float))
+        if group is not None:
+            levels = np.unique(group[ok])
+            cols += [(group[ok] == g).astype(float) for g in levels[1:]]
         coef, *_ = np.linalg.lstsq(np.column_stack(cols), values[ok, j], rcond=None)
         out[j] = coef[1]
     return out
@@ -141,7 +151,7 @@ def _count_one(job: tuple[str, np.ndarray, str]) -> str:
     return cache
 
 
-SOURCES = {"white blood cells": "", "cfDNA": "cfdna"}
+SOURCES = {"white blood cells": "", "cfDNA": "cfdna", "sorted cells": "atlas"}
 
 
 def _source_table(ctx, folder: Path, windows: pl.DataFrame, probes, membership, out: Path, tag: str):
@@ -162,6 +172,7 @@ def _source_table(ctx, folder: Path, windows: pl.DataFrame, probes, membership, 
         caches = list(pool.map(_count_one, jobs))
     per = [window_metrics(np.load(c)) for c in caches]
     age, female = donors["age"].to_numpy(), donors["female"].to_numpy()
+    group = donors["group"].to_numpy() if donors["group"].n_unique() > 1 else None
     stack = {k: np.vstack([m[k] for m in per]) for k in ("mean", "entropy", "pdr", "reads")}
     metrics = (
         pl.DataFrame(
@@ -170,8 +181,8 @@ def _source_table(ctx, folder: Path, windows: pl.DataFrame, probes, membership, 
                 "baseline": np.nanmean(stack["mean"], axis=0),
                 "mean_entropy": np.nanmean(stack["entropy"], axis=0),
                 "mean_pdr": np.nanmean(stack["pdr"], axis=0),
-                "entropy_slope": age_slopes(stack["entropy"], age, female),
-                "pdr_slope": age_slopes(stack["pdr"], age, female),
+                "entropy_slope": age_slopes(stack["entropy"], age, female, group),
+                "pdr_slope": age_slopes(stack["pdr"], age, female, group),
                 "median_reads": np.median(stack["reads"], axis=0),
             }
         )
@@ -235,7 +246,7 @@ def _figure(ctx: Context, table: pl.DataFrame) -> Path:
         if k == 0:
             ax.legend(fontsize=7)
         ax.set(xlabel="set minus look-alikes (SD)", title=f"{source} ({sub['donors'][0]} donors)")
-        plots.label_panel(ax, "ab"[k])
+        plots.label_panel(ax, "abc"[k])
     fig.suptitle(
         "Molecule-level disorder at essential promoters, read-level WGBS (Loyfer 2023)",
         x=0.02,
