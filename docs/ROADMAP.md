@@ -48,8 +48,8 @@ matched on island status and starting level. Gaps:
 4. Each sample's beta compression as a covariate for the signed shift S.
 - Done (R20): items 1-2. Design explains about a sixth of blood's gaps; the mask nothing; no sign changes.
 - Done (R36): item 4, compression held for S (Tet3's gain survives it).
-- Item 3 running (R61): Jaffe cortex from its IDATs (`scripts/reprocess_idats.py`, methylprep, SeSAMe-like),
-  then `figures reprocessed_jaffe` compares the headline gaps on deposited and reprocessed betas.
+- Done (R61): item 3, Jaffe cortex from its IDATs: every essential-set gap stays below zero; sizes move by up
+  to 0.06 SD.
 5. A short review of current practice, recorded in `docs/`.
 
 ## RM19 — Does chromatin accessibility become stochastic with age?

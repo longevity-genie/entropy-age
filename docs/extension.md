@@ -808,9 +808,42 @@ design added to the matching strata, and with Zhou et al. 2017's general mask of
 * Design explains about a sixth of blood's lifespan gaps (housekeeping entropy −0.35 → −0.30 SD, core-essential
   −0.23 → −0.19); cortex and the same-donor tissues move by under 0.01 SD.
 * The mask moves no gap by more than 0.01 SD. No gap changes sign.
-* Open (RM18): one cohort from raw IDATs, and each array's beta compression as a covariate for the signed shift.
+* Open (RM18) then: one cohort from raw IDATs (below, R61), and each array's beta compression as a covariate for
+  the signed shift (R36).
 
 Tables: `data/output/probe_robustness/` (`gaps`, `design_share`).
+
+### One cohort from its raw IDATs: the gaps survive (roadmap RM18, R61)
+
+Every cohort test runs on the betas the authors deposited, each processed its own way. Jaffe's prefrontal cortex
+series (GSE74193, 675 arrays) was reprocessed from its IDAT files with methylprep 1.7.1 in SeSAMe-like mode (noob
+background, non-linear dye-bias correction, channel-switch inference, quality mask;
+`scripts/reprocess_idats.py`). Figure `reprocessed_jaffe` then measures the headline gaps on the same 213 adult
+controls, with the same covariates, on the 93,509 CpGs present in both versions.
+
+![Reprocessed Jaffe](figures/reprocessed_jaffe.png)
+
+| gap (SD) | deposited | reprocessed |
+|---|---|---|
+| entropy, housekeeping | −0.218 | −0.154 |
+| entropy, core-essential | −0.133 | −0.101 |
+| entropy, non-essential | +0.103 | +0.047 |
+| dispersion, housekeeping | −0.078 | −0.124 |
+| dispersion, core-essential | −0.071 | −0.100 |
+| dispersion, non-essential | +0.040 | +0.043 |
+
+* **Every essential-set gap stays below zero** (entropy, dispersion and mean change; permutation p 0.001 in
+  both versions). Entropy gaps shrink by a quarter to a third, dispersion gaps grow by about half: the size moves by
+  up to 0.06 SD either way. One secondary gap goes to zero: non-essential mean change, −0.08 → 0.00.
+* **Single CpGs move much more than the sets.** Per CpG, the deposited and reprocessed slopes correlate 0.75
+  (entropy), 0.56 (dispersion) and 0.82 (mean change); the overall entropy trend even changes sign (median slope
+  −0.0001 deposited, +0.00004 reprocessed). Matching each set to look-alikes cancels such shifts, which is why
+  the gaps hold while the CpGs move.
+* **Reading.** The shield is not an artefact of how the authors normalised their arrays. Its size in SD carries
+  about ±0.05 of preprocessing uncertainty, which is larger than some intervention effects reported here
+  (CR, R55-R56; Tet enzymes, R35).
+
+Tables: `data/output/reprocessed_jaffe/` (`gaps`, `per_cpg_agreement`).
 
 ## Natural experiments in people: chromatin-writer syndromes keep the shield (roadmap RM14)
 

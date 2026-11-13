@@ -21,6 +21,8 @@ a test with little power), **refuted**.
   stratum; (b) array compression at the extremes; (c) island CpGs vary less for technical reasons.
 - **Separating test:** finer level matching in the lowest decile; read-level WGBS free of array effects
   (Loyfer 2023, R50: holds, so (b) is excluded as the whole story); (c) matched on island status.
+- **Reprocessing (R61):** Jaffe cortex from its raw IDATs (SeSAMe-like) keeps every essential-set gap below zero;
+  sizes move by up to 0.06 SD.
 - **Status:** holds; (a) answered for the species array: off the floor (CpGs at 10-90 %) the gap holds in 93 % of
   139 groups (R59).
 

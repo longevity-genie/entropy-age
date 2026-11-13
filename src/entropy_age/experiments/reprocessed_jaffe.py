@@ -36,6 +36,7 @@ REPROCESSED = "cohorts/jaffe_betas_sesame.parquet"
 DEPOSITED = "cohorts/jaffe_betas.parquet"
 SAMPLES = "cohorts/jaffe_samples.parquet"
 SOURCES = ("deposited", "reprocessed from IDATs")
+LABELS = {"entropy_slope": "entropy", "dispersion_slope": "dispersion", "abs_slope": "|mean change|"}
 
 
 def adult_controls(samples: pl.DataFrame) -> pl.DataFrame:
@@ -104,9 +105,9 @@ def _figure(ctx: Context, table: pl.DataFrame) -> Path:
     for i, source in enumerate(SOURCES):
         t = keys.join(table.filter(pl.col("source") == source), on=["metric", "group"], how="left")
         ax.barh(y + 0.38 * i, t["matched_diff_sd"], height=0.36, color=plots.PALETTE[i], label=source)
-    ax.set_yticks(y + 0.19, [f"{m.replace('_slope', '')} · {g.replace('_', ' ')}" for m, g in keys.iter_rows()])
+    ax.set_yticks(y + 0.19, [f"{LABELS.get(m, m)} · {g.replace('_', ' ')}" for m, g in keys.iter_rows()])
     ax.axvline(0, color=plots.MUTED, lw=0.8)
     ax.invert_yaxis()
     ax.set(xlabel="age gap, set minus look-alikes (SD)", title="Jaffe cortex: deposited against IDAT-reprocessed")
-    ax.legend(fontsize=7, loc="lower right")
+    ax.legend(fontsize=7, loc="upper center", bbox_to_anchor=(0.5, -0.12), ncol=2, frameon=False)
     return plots.save(fig, ctx.figure_path("reprocessed_jaffe"))

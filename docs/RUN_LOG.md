@@ -3,6 +3,18 @@
 Owned by the runner seat (`docs/seats/RUNNER.md`): one entry per run, newest first, with its inputs, the
 commit it ran, its job ids, its scale and seed, and its result or its failure with the cause.
 
+## R61 — Jaffe cortex reprocessed from IDATs (RM18 item 3), 2026-11-13
+
+- R61a: `scripts/reprocess_idats.py` (methylprep 1.7.1, sesame=True; Python 3.11, pandas<2, numpy<2) on
+  GSE74193_RAW.tar, 675 arrays in batches of 100; 4 cores; job 6469509, 7 h 17 min, 50 GB peak; 485,512 CpGs.
+  A first run failed at once (pandas 2 removed `DataFrame.append`), fixed by the pins.
+- R61b: `figures reprocessed_jaffe --scale paper --seed 42`; 4 cores, 64 GB; job 6479292, 7 min (figure legend
+  redrawn in job 6479321). 213 adult controls, 93,509 CpGs in both versions.
+- Result, as measured (matched gap, SD, deposited -> reprocessed): entropy housekeeping −0.218 -> −0.154,
+  core-essential −0.133 -> −0.101, non-essential +0.103 -> +0.047; dispersion −0.078 -> −0.124, −0.071 -> −0.100,
+  +0.040 -> +0.043; mean change −0.057 -> −0.118, −0.053 -> −0.096, −0.076 -> +0.004. Per-CpG correlation of the
+  slopes: entropy 0.75, dispersion 0.56, mean change 0.82.
+
 ## R64 — published clocks' weights on protected CpGs (RM8), 2026-11-13
 
 - Asked by antonkulaga. Commit bc1345f; `figures clock_weights --scale paper --seed 42`; 4 cores, 32 GB; job
