@@ -94,7 +94,7 @@ def aging_gaps(x: np.ndarray, ages: np.ndarray, features: list[str], island: np.
     strata = np.char.add(island.astype(str), baseline_strata(level, 10).astype(str))
     metrics = metrics.with_columns(stratum=pl.Series(strata))
     out = []
-    for metric in ("entropy_slope", "dispersion_slope"):
+    for metric in ("entropy_slope", "dispersion_slope", "kl_slope"):
         table = compare_groups(metrics, members, metric=metric, stratify_by="stratum", n_permutations=0)
         sd = float(metrics[metric].std())
         out += [

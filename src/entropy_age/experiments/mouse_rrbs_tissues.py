@@ -54,12 +54,12 @@ def covariates(frame: pl.DataFrame) -> np.ndarray:
 
 
 def tissue_gaps(x, ages, cov, features, strata, members) -> list[dict]:
-    """Set minus matched CpGs (SD of the metric) for the entropy and dispersion slopes."""
+    """Set minus matched CpGs (SD of the metric) for the entropy, dispersion and relative-entropy slopes."""
     keep = cov.std(axis=0) > 0
     metrics = drift_metrics(x, ages, features, covariates=cov[:, keep] if keep.any() else None, spearman=False)
     metrics = metrics.with_columns(stratum=pl.Series(strata))
     out = []
-    for metric in ("entropy_slope", "dispersion_slope"):
+    for metric in ("entropy_slope", "dispersion_slope", "kl_slope"):
         table = compare_groups(metrics, members, metric=metric, stratify_by="stratum", n_permutations=0)
         sd = float(metrics[metric].std())
         out += [
