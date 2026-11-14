@@ -3,6 +3,13 @@
 Owned by the runner seat (`docs/seats/RUNNER.md`): one entry per run, newest first, with its inputs, the
 commit it ran, its job ids, its scale and seed, and its result or its failure with the cause.
 
+## R71 — one FDR over every reported p (RM34 item 3), 2026-11-14
+
+- `figures global_fdr` run on the login node (reads tables only, seconds), after R70. 7,626 tests in 53 output
+  folders; 3,932 at p < 0.05, 3,662 at global q < 0.05; largest surviving p 0.024. Lost in claim-bearing folders:
+  CR housekeeping F/P in the second blood series, CR C57BL/6 core F, several MMC knockout contrasts, any-cancer and
+  colorectal drift, GTEx smoking and death type, species all-CpG lifespan slopes. Tables `data/output/global_fdr/`.
+
 ## R69 — placebo gene sets (RM34 item 1), 2026-11-14
 
 - Commit 9321cb6; `figures placebo_sets --scale paper --seed 42`; 4 cores, 64 GB; job 6480607, 34 min. Hannum 656

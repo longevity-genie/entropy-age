@@ -1964,6 +1964,27 @@ in blood, 192,998 in cortex).
 
 Tables: `data/output/placebo_sets/` (`summary`, `set_genes`; draws in `placebo_draws.parquet`).
 
+### One false-discovery correction over everything (R71)
+
+Figure `global_fdr` pools every raw p-value in every table under `data/output/` (7,626 tests in 53 folders; adjusted
+columns skipped) and applies one Benjamini-Hochberg correction across all of them.
+
+![Global FDR](figures/global_fdr.png)
+
+* **Most results survive.** 3,932 tests were nominally significant; 3,662 survive the global correction. The
+  largest p that survives is 0.024: everything reported between 0.024 and 0.05 is lost.
+* **Lost among results a claim leans on:** CR's weakening of the housekeeping shield in the second blood series
+  (F p 0.026, P 0.029-0.033; the core-essential effects survive), CR in C57BL/6 core-essential F (p 0.044), some
+  Tet3- and GHRKO-knockout contrasts on the consortium array (p 0.027-0.036; the strongest Tet3 contrasts survive),
+  drift and "any cancer" or colorectal cancer (p 0.030-0.043), the smoking and death-type contrasts in GTEx, and the
+  all-CpG species lifespan slopes (p 0.035-0.038, already read as the floor).
+* **Kept:** every shield gap, the breast-cancer lead (p 6e-4 and below), R65's reprogramming drift, R67's rates and
+  R69-R70's checks.
+* **Caveat.** The tests overlap (one dataset under several metrics), so they are positively dependent, which BH
+  allows; some p-values are bootstrap or descriptive. The correction is a floor on caution, not a verdict per test.
+
+Tables: `data/output/global_fdr/` (`by_folder`; the full ledger in `ledger.parquet`).
+
 ### Cell composition in blood (R70)
 
 Figure `composition_gaps` estimates 12 blood-cell fractions per Hannum donor (Houseman projection on EpiDISH's
