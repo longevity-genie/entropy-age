@@ -129,5 +129,8 @@ def _figure(ctx: Context, table: pl.DataFrame) -> Path:
         ax.invert_yaxis()
         ax.set(xlabel="log2 observed / expected (level-matched)", title=f"{tissue}: top 5 % rising spread")
         plots.label_panel(ax, letter)
+    lim = float(np.nanmax(np.abs(np.log2(t["ratio"].to_numpy())))) * 1.05
+    for ax in axes[: len(tissues)]:
+        ax.set_xlim(-lim, lim)  # one scale, so the two tissues' spread can be compared by eye
     fig.suptitle("Where the spread that rises with age sits", x=0.02, y=1.02, ha="left", fontsize=11)
     return plots.save(fig, ctx.figure_path("drift_hotspots"))
