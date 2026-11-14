@@ -3,6 +3,18 @@
 Owned by the runner seat (`docs/seats/RUNNER.md`): one entry per run, newest first, with its inputs, the
 commit it ran, its job ids, its scale and seed, and its result or its failure with the cause.
 
+## R68 — metric audit: relative entropy beside binary entropy (RM33), 2026-11-14
+
+- Commit e3ad29c (`kl_slope`, `K`); `--scale paper --seed 42`. R68a `tissues`, `mouse` (8 cores, 96 GB; job
+  6479900, 2 h 25 min); R68b `chromatin`, `essentiality_gradient`, `sorted_cells`, `reprocessed_jaffe`,
+  `probe_robustness`, `gill_reprogramming` (4 cores; job 6479901, 2 h 08 min); R68c `species`, `species_floor`
+  (job 6479902, 2 h 14 min); R68d `gtex` (job 6479903, 2 h 54 min). Old measures reproduce.
+- Result, as measured (housekeeping gap, SD, entropy → relative entropy): blood −0.348 → −0.152, cortex −0.207 →
+  −0.058; chromatin share cortex 0.43-0.69 → 0.25-0.56, blood 0.77-0.84 → 0.83-0.91; R58 blood remainder +0.022 →
+  −0.007 (p 0.33), cortex +0.018 → +0.022; CD4+ T −0.219 → −0.015; mouse post-mitotic +0.03 to +0.09 (renewing
+  −0.05 to −0.19); species 96 % → 89 % negative, R22 relative-gap lifespan slope −2.42 (p 0.04) → +1.43 (p 0.23).
+  Verdicts in `docs/METRIC_AUDIT.md`.
+
 ## R67 — gain and loss rates per gene set (RM32), 2026-11-13
 
 - Commit 9ffc595; `figures equilibrium_drift --scale paper --seed 42`; 4 cores, 32 GB; job 6479803, 16 min, 3.2 GB

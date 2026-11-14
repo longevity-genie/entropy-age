@@ -100,17 +100,20 @@ application; links in the survey.
 
 ## RM33 — Metric audit: correct what rests on binary entropy
 
-**State:** building · **Owner:** lead
+**State:** after RM34 · **Owner:** lead
 
 Asked by antonkulaga (2026-11-14): go through previous discoveries, evidence and hypotheses, correct the
 computations, update the artifact. Binary entropy measures distance from 0.5; R67 showed essential promoters lose
 methylation faster, which lowers entropy at low levels, so entropy gaps mix direction with stability. Relative entropy
 from the young state (`kl_slope`, per-person `K`) added (e3ad29c); R68a-d rerun every figure whose headline rests on
 entropy. Then `docs/METRIC_AUDIT.md` (each result kept, resized or overturned), CLAIMS, state, artifact.
+- Done (R68): the shield keeps its sign everywhere at about half the size; three statements withdrawn (R58 blood,
+  R22, CD4+ T size); cortex chromatin share cut; mouse array now orders the shield by turnover. Left: Meer, RRBS,
+  BXD and intervention tables and the per-person `K` in effect tables, on relative entropy.
 
 ## RM34 — Bias checks from the omics re-analysis practice
 
-**State:** after RM33 · **Owner:** lead
+**State:** unattended · **Owner:** lead
 
 Asked by antonkulaga (2026-11-14), against `longevity-skills/omics-reanalysis/SKILL.md`, cheapest first: (1)
 placebo gene sets (random promoter sets with the same size, island and level mix must give 0); (2) Hannum's gaps

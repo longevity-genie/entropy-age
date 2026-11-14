@@ -23,7 +23,11 @@ a test with little power), **refuted**.
   (Loyfer 2023, R50: holds, so (b) is excluded as the whole story); (c) matched on island status.
 - **Reprocessing (R61):** Jaffe cortex from its raw IDATs (SeSAMe-like) keeps every essential-set gap below zero;
   sizes move by up to 0.06 SD.
-- **Status:** holds; (a) answered for the species array: off the floor (CpGs at 10-90 %) the gap holds in 93 % of
+- **Metric audit (R68, `docs/METRIC_AUDIT.md`):** binary entropy reads a loss at low levels as order, and
+  essential promoters lose faster (R67). On relative entropy from the young state the gap keeps its sign
+  everywhere but is 1.7-3.6× smaller (blood housekeeping −0.15 SD, not −0.35; cortex −0.06, not −0.21); CD4+ T
+  cells shrink to −0.015; non-essential genes drift more in blood only (cortex −0.00, p 0.94).
+- **Status:** holds, at about half the size first reported; (a) answered for the species array: off the floor (CpGs at 10-90 %) the gap holds in 93 % of
   139 groups (R59).
 
 ## C2 — The shield is chromatin maintenance (H1)
@@ -39,7 +43,12 @@ a test with little power), **refuted**.
   people.
 - **Separating test:** change chromatin and watch drift (natural experiments: writer syndromes kept it,
   Tet3 removed it); chromatin and methylation from the same people.
-- **Status:** holds as association; causality partly supported (C4), circularity open.
+- **Metric audit (R68):** blood's share holds (83-91 % on relative entropy); cortex's falls to a quarter with its own
+  chromatin state, a half with sorted ATAC (entropy said 43-69 %). Essentiality beyond chromatin survives in cortex
+  only (R58's blood remainder is entropy-only). On the mouse array the corrected measure orders the shield by
+  turnover: present in all five renewing tissues, reversed in four of five post-mitotic ones. That is the pattern
+  this claim said we should not see; R67's faster removal at essential promoters would need division to act.
+- **Status:** holds as association in blood; weaker in cortex; the turnover result now stands against it and is open.
 
 ## C3 — The shield is not selection among cells (H2 rejected)
 
@@ -90,7 +99,9 @@ a test with little power), **refuted**.
 - **We should not see:** a stronger shield in long-lived species.
 - **Observed:** 96 % of 139 groups; lifespan slope +0.025 (p 0.40) with phylogeny; look-alike drift falls as
   lifespan^−1.4 with the relative shield kept or larger; the blood lean rests on human; off the 0 % floor the
-  lifespan slope is −0.014 (p 0.48, R59).
+  lifespan slope is −0.014 (p 0.48, R59). Metric audit (R68): relative entropy keeps 89 % of groups negative
+  (−0.13 SD; 73 % off the floor) and no lifespan slope off the floor (+0.004, p 0.84); "the relative shield grows
+  with lifespan" (R22) was entropy-only (relative entropy +1.4, p 0.23) and is withdrawn.
 - **Alternatives:** conserved array CpGs at essential promoters sit near 0 % (floor); taxonomy covariance is
   coarse.
 - **Separating test:** a dated phylogeny; species with WGBS.

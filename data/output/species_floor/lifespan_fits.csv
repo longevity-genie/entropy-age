@@ -11,6 +11,12 @@ all CpGs,dispersion_slope,housekeeping,gap_sd,log max lifespan,0.036056097111110
 all CpGs,dispersion_slope,housekeeping,gap_sd,log adult weight,0.0031687149940383065,0.005717347104224625,0.5805791919956659,139,65
 all CpGs,dispersion_slope,non_essential,gap_sd,log max lifespan,0.04332670733560784,0.020298229096178615,0.03508448787412419,139,65
 all CpGs,dispersion_slope,non_essential,gap_sd,log adult weight,-0.005634740866464491,0.005233226919285791,0.28402525461470096,139,65
+all CpGs,kl_slope,core_essential,gap_sd,log max lifespan,0.020939492597591095,0.021558710294980195,0.33360057764974044,139,65
+all CpGs,kl_slope,core_essential,gap_sd,log adult weight,0.0005889904768748373,0.005558200300439711,0.9158062791827061,139,65
+all CpGs,kl_slope,housekeeping,gap_sd,log max lifespan,0.03229372435482504,0.01537579215162613,0.03805290888716589,139,65
+all CpGs,kl_slope,housekeeping,gap_sd,log adult weight,0.0006744514669263975,0.0039641393843752384,0.8652227448832139,139,65
+all CpGs,kl_slope,non_essential,gap_sd,log max lifespan,0.02049109096630582,0.0173473664854268,0.24013338433535822,139,65
+all CpGs,kl_slope,non_essential,gap_sd,log adult weight,-0.002543211937007348,0.004472444607857076,0.5707918840132695,139,65
 off floor and ceiling,entropy_slope,core_essential,gap_sd,log max lifespan,-0.01630183188346933,0.033465820082326146,0.6271894941831392,137,65
 off floor and ceiling,entropy_slope,core_essential,gap_sd,log adult weight,0.015660638270278488,0.008612364847585775,0.07185530252766163,137,65
 off floor and ceiling,entropy_slope,housekeeping,gap_sd,log max lifespan,-0.013672222054493605,0.019366606499206837,0.4817417516929529,139,65
@@ -23,3 +29,9 @@ off floor and ceiling,dispersion_slope,housekeeping,gap_sd,log max lifespan,-0.0
 off floor and ceiling,dispersion_slope,housekeeping,gap_sd,log adult weight,0.003528009514174222,0.006276935816408063,0.5752512181559875,139,65
 off floor and ceiling,dispersion_slope,non_essential,gap_sd,log max lifespan,0.023526844390898985,0.02148677070112503,0.2759990722199094,139,65
 off floor and ceiling,dispersion_slope,non_essential,gap_sd,log adult weight,0.0014607804056272471,0.005539653055882489,0.79252189743082,139,65
+off floor and ceiling,kl_slope,core_essential,gap_sd,log max lifespan,0.004793750579612839,0.03259866220766236,0.8833717028998813,137,65
+off floor and ceiling,kl_slope,core_essential,gap_sd,log adult weight,0.0023042255096630713,0.008389203425612862,0.7841128622485906,137,65
+off floor and ceiling,kl_slope,housekeeping,gap_sd,log max lifespan,0.0041233854959059615,0.020265909818544224,0.8391587280862994,139,65
+off floor and ceiling,kl_slope,housekeeping,gap_sd,log adult weight,-0.0013964822922155806,0.0052248944626499556,0.7897721147668866,139,65
+off floor and ceiling,kl_slope,non_essential,gap_sd,log max lifespan,0.02015459492275728,0.0194429065821285,0.3022574341928979,139,65
+off floor and ceiling,kl_slope,non_essential,gap_sd,log adult weight,0.0017317686948443173,0.00501271030259035,0.730415177462897,139,65
