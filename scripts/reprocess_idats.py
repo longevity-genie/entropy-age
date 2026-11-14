@@ -28,18 +28,25 @@ def main() -> None:
     parser.add_argument("idats", type=Path)
     parser.add_argument("out", type=Path)
     parser.add_argument("--batch", type=int, default=100)
+    parser.add_argument(
+        "--from-pickle", action="store_true", help="reuse beta_values.pkl a finished methylprep run left in IDATS"
+    )
     args = parser.parse_args()
     import methylprep
 
-    betas = methylprep.run_pipeline(
-        args.idats,
-        betas=True,
-        make_sample_sheet=True,
-        batch_size=args.batch,
-        sesame=True,
-        export=False,
-        low_memory=True,
-    )
+    pickled = args.idats / "beta_values.pkl"
+    if args.from_pickle and pickled.exists():  # a run that finished processing but died combining (R66a, OOM)
+        betas = pd.read_pickle(pickled)
+    else:
+        betas = methylprep.run_pipeline(
+            args.idats,
+            betas=True,
+            make_sample_sheet=True,
+            batch_size=args.batch,
+            sesame=True,
+            export=False,
+            low_memory=True,
+        )
     if isinstance(betas, list):
         betas = pd.concat(betas, axis=1)
     # GEO names IDATs GSMnnn_<sentrix id>_<position>_Grn.idat(.gz); methylprep names samples by the last two
