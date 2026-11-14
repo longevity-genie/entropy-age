@@ -1985,6 +1985,31 @@ columns skipped) and applies one Benjamini-Hochberg correction across all of the
 
 Tables: `data/output/global_fdr/` (`by_folder`; the full ledger in `ledger.parquet`).
 
+### Stochastic or specific: where the rising spread sits (R72)
+
+Figure `drift_hotspots` takes the 5 % of autosomal CpGs whose spread rises fastest with age (dispersion slope;
+473,034 in blood, 473,864 in cortex) and counts them per region class against the number expected if they were
+drawn at random within young-level deciles. The tissue's own 15-state chromatin segmentation (E062 blood, E073
+cortex), island relation, promoters, solo-WCGW and the gene sets are the classes.
+
+![Drift hotspots](figures/drift_hotspots.png)
+
+* **In blood the rising spread is a programme, not uniform.** Polycomb-repressed CpGs carry twice their share
+  (13_ReprPC 2.1×, z 73; bivalent promoters 2.0×, bivalent enhancers 1.5×, weak Polycomb 1.4×), and active
+  states a fifth to three fifths of theirs (genic enhancers 0.20×, transcribed 0.36×, flanking active TSS 0.40×).
+  Housekeeping promoters hold 0.42× and core-essential 0.46× of their share; non-essential 1.6×.
+* **In cortex it is close to broad.** Every class lies between 0.71× and 1.32×; the largest excesses are open sea
+  (1.18×), solo-WCGW (1.25×) and quiescent chromatin (1.16×), and essential promoters again the largest deficit
+  (core-essential 0.71×, housekeeping 0.78×).
+* **Relative entropy gives the same picture**, flatter (blood Polycomb 1.55×, housekeeping 0.66×; cortex 0.59×
+  to 1.27×).
+* **Reading.** "Stochastic drift" holds for cortex and not for blood. In blood the spread that rises with age is
+  concentrated at Polycomb targets, the known age-hypermethylated programme, and kept out of active chromatin; the
+  shield is the same contrast seen from the essential genes' side. Our claims that call the drift stochastic are
+  worded for cortex, and for blood as "noise outside a Polycomb programme".
+
+Tables: `data/output/drift_hotspots/enrichment`.
+
 ### Cell composition in blood (R70)
 
 Figure `composition_gaps` estimates 12 blood-cell fractions per Hannum donor (Houseman projection on EpiDISH's

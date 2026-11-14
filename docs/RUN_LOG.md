@@ -3,6 +3,15 @@
 Owned by the runner seat (`docs/seats/RUNNER.md`): one entry per run, newest first, with its inputs, the
 commit it ran, its job ids, its scale and seed, and its result or its failure with the cause.
 
+## R72 — drift hotspots by region class (RM34 item 4), 2026-11-14
+
+- Commit a3805b7; `figures drift_hotspots --scale paper --seed 42`; 4 cores, 96 GB (21 GB peak); job 6480722, 1 min
+  16 s. All autosomal CpGs: Hannum 473,034, Jaffe 473,864; top 5 % by dispersion slope and by relative entropy.
+- Result, as measured (observed / expected within young-level deciles, dispersion): blood 13_ReprPC 2.11 (z 72.8),
+  10_TssBiv 1.99, 12_EnhBiv 1.50, 6_EnhG 0.20, 4_Tx 0.36, housekeeping 0.42, core-essential 0.46, non-essential
+  1.62; cortex range 0.71 (core-essential) to 1.32 (ZNF/repeats), open sea 1.18, solo-WCGW 1.25. Table
+  `data/output/drift_hotspots/enrichment`.
+
 ## R71 — one FDR over every reported p (RM34 item 3), 2026-11-14
 
 - `figures global_fdr` run on the login node (reads tables only, seconds), after R70. 7,626 tests in 53 output

@@ -4,6 +4,7 @@ Newest first.
 
 ## Unreleased
 
+- 2026-11-14: R72 written up (RM34 item 4): blood's rising spread is a Polycomb programme; cortex's is broad.
 - `docs/PROVENANCE.md` (RM34 item 5): one row per dataset, deposited or rebuilt from IDATs, platform and the figures that read it.
 - `figures drift_hotspots` (RM34 item 4): the top 5 % CpGs by rising spread, enrichment by region class against a level-matched background; run R72 planned.
 - `figures global_fdr` (RM34 item 3, R71): one Benjamini-Hochberg correction over every p in every output table; results between p 0.024 and 0.05 are lost.
