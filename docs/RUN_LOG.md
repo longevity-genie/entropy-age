@@ -3,6 +3,14 @@
 Owned by the runner seat (`docs/seats/RUNNER.md`): one entry per run, newest first, with its inputs, the
 commit it ran, its job ids, its scale and seed, and its result or its failure with the cause.
 
+## R70 — Hannum shield with 12 cell fractions held (RM34 item 2), 2026-11-14
+
+- Commit 176a250; `figures composition_gaps --scale paper --seed 42`; 4 cores, 32 GB; job 6480608, 8 min. 656
+  donors, 108,992 CpGs; fractions by Houseman projection on EpiDISH cent12CT450k.
+- Result, as measured (housekeeping gap, SD, without → with fractions): relative entropy −0.152 → −0.152; |mean|
+  −0.159 → −0.177; entropy −0.348 → −0.359; dispersion −0.289 → −0.199; core-essential relative entropy −0.087 →
+  −0.091; all p 0.001. Tables `data/output/composition_gaps/`.
+
 ## R68 — metric audit: relative entropy beside binary entropy (RM33), 2026-11-14
 
 - Commit e3ad29c (`kl_slope`, `K`); `--scale paper --seed 42`. R68a `tissues`, `mouse` (8 cores, 96 GB; job

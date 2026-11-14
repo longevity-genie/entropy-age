@@ -1939,6 +1939,28 @@ where active removal should shrink it.
 
 Tables: `data/output/equilibrium_drift/` (`pooled_rates`, `per_cpg_gaps`, `identified`).
 
+## Bias checks after the omics re-analysis practice (roadmap RM34)
+
+Asked by antonkulaga (2026-11-14), against `longevity-skills/omics-reanalysis/SKILL.md`: the cheapest checks that
+could take out part of the evidence if they fail.
+
+### Cell composition in blood (R70)
+
+Figure `composition_gaps` estimates 12 blood-cell fractions per Hannum donor (Houseman projection on EpiDISH's
+cent12CT450k, as in R38) and adds 11 of them to the covariates of every age slope.
+
+![Cell fractions held](figures/composition_gaps.png)
+
+* **The shield does not come from the cell mix.** Housekeeping gaps with the fractions held: relative entropy
+  −0.152 → −0.152 SD, `|mean change|` −0.159 → −0.177, entropy −0.348 → −0.359; core-essential alike (−0.087 →
+  −0.091 on relative entropy); all p 0.001.
+* **Only the dispersion gap shrinks**, by a third (housekeeping −0.29 → −0.20, core-essential −0.17 → −0.12): part
+  of the spread difference was people differing in cell mix. Naive CD8+ T cells fall most with age (r −0.38),
+  monocytes rise (+0.27).
+* Non-essential genes still drift more with the fractions held (relative entropy +0.17).
+
+Tables: `data/output/composition_gaps/` (`gaps`, `fractions`, `fraction_age`).
+
 ## How to test the hypothesis on real data
 
 ```python
