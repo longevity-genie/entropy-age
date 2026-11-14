@@ -32,6 +32,7 @@ import numpy as np
 import polars as pl
 
 from entropy_age import plots
+from entropy_age.data.chromatin import ChromatinLayout, cpg_states, read_segmentation
 from entropy_age.experiments.common import Context, write_table
 from entropy_age.experiments.tissue_contrast import SETS, Prepared, _features, _hannum, _jaffe, _matched_sd
 from entropy_age.stochasticity import baseline_strata
@@ -41,6 +42,8 @@ LOOKALIKE = "look-alikes"
 N_BOOT = {"paper": 200, "quick": 20}
 PERMUTATIONS = {"paper": 1000, "quick": 100}
 RATES = np.geomspace(1e-4, 1.0, 64)  # per year
+OWN_STATE = {"blood (Hannum)": "E062", "cortex (Jaffe)": "E073"}
+ACTIVE = "1_TssA"
 PER_CPG = ("headroom", "progress", "k_gain", "k_loss", "equilibrium")
 
 
@@ -167,10 +170,10 @@ def _with_intervals(point: pl.DataFrame, boot: pl.DataFrame) -> pl.DataFrame:
     return out.drop([f"{k}_la" for k in ("k_gain", "k_loss", "z")]).join(ci, on=["group", "island"])
 
 
-def _per_cpg(p: Prepared, x: np.ndarray, probes: pl.DataFrame, membership: pl.DataFrame, perms: int, seed: int):
+def _per_cpg(p: Prepared, x: np.ndarray, probes: pl.DataFrame, membership: pl.DataFrame, perms: int, seed: int, state):
     fit = bounded_relaxation(x, p.ages)
     young, _ = _split(p.ages)
-    frame = pl.DataFrame({"feature": p.features, "baseline": x[young].mean(axis=0), **fit})
+    frame = pl.DataFrame({"feature": p.features, "baseline": x[young].mean(axis=0), "state": state, **fit})
     island = frame.join(probes.select(pl.col("cpg").alias("feature"), "cpg_island"), on="feature", how="left")
     frame = island.with_columns(
         stratum=pl.format(
@@ -185,8 +188,13 @@ def _per_cpg(p: Prepared, x: np.ndarray, probes: pl.DataFrame, membership: pl.Da
         .group_by("group")
         .agg(pl.col("identified").mean().alias("share_identified"), pl.len().alias("cpgs"))
     )
-    gaps = _matched_sd(frame.filter(pl.col("identified")), membership, PER_CPG, perms, seed)
-    return frame, gaps, share
+    ok = frame.filter(pl.col("identified"))
+    gaps = _matched_sd(ok, membership, PER_CPG, perms, seed).with_columns(matching=pl.lit("island x level"))
+    with_state = ok.with_columns(stratum=pl.format("{}|{}", pl.col("stratum"), pl.col("state")))
+    gaps_state = _matched_sd(with_state, membership, PER_CPG, perms, seed).with_columns(
+        matching=pl.lit("+ own chromatin state")
+    )
+    return frame, pl.concat([gaps, gaps_state]), share
 
 
 def run(ctx: Context) -> list[Path]:
@@ -202,10 +210,20 @@ def run(ctx: Context) -> list[Path]:
         isl = dict(zip(probes["cpg"].to_list(), probes["cpg_island"].to_list(), strict=True))
         island = np.array([bool(isl.get(f, False)) for f in p.features])
         labels = _labels(p.features, membership)
-        point = pl.DataFrame(_pooled_table(x, ages, island, labels))
-        boot = _boot_rows(x, ages, island, labels, N_BOOT[scale], rng)
-        pooled.append(_with_intervals(point, boot).with_columns(tissue=pl.lit(p.label), donors=pl.lit(ages.size)))
-        frame, g, share = _per_cpg(p, x, probes, membership, PERMUTATIONS[scale], ctx.seed)
+        state = _states(ctx, p.features, probes, OWN_STATE[p.label])
+        for matching, sel in (
+            ("island x level", np.ones(island.size, bool)),
+            (f"active TSS only ({ACTIVE})", state == ACTIVE),
+        ):
+            lab = {k: v[sel] for k, v in labels.items()}
+            point = pl.DataFrame(_pooled_table(x[:, sel], ages, island[sel], lab))
+            boot = _boot_rows(x[:, sel], ages, island[sel], lab, N_BOOT[scale], rng)
+            pooled.append(
+                _with_intervals(point, boot).with_columns(
+                    tissue=pl.lit(p.label), donors=pl.lit(ages.size), matching=pl.lit(matching)
+                )
+            )
+        frame, g, share = _per_cpg(p, x, probes, membership, PERMUTATIONS[scale], ctx.seed, state)
         gaps.append(g.with_columns(tissue=pl.lit(p.label)))
         shares.append(share.with_columns(tissue=pl.lit(p.label)))
         per_cpg.append(frame.drop("stratum").with_columns(tissue=pl.lit(p.label)))
@@ -215,7 +233,14 @@ def run(ctx: Context) -> list[Path]:
     write_table(pl.concat(gaps), out / "per_cpg_gaps")
     write_table(pl.concat(shares), out / "identified")
     pl.concat(per_cpg).write_parquet(out / "per_cpg.parquet")
-    return [_figure(ctx, pooled_t)]
+    return [_figure(ctx, pooled_t.filter(pl.col("matching") == "island x level"))]
+
+
+def _states(ctx: Context, features: list[str], probes: pl.DataFrame, epigenome: str) -> np.ndarray:
+    """Each CpG's 15-state chromatin segmentation in the tissue's own reference epigenome."""
+    frame = pl.DataFrame({"cpg": features}).join(probes.select("cpg", "chr", "pos"), on="cpg", how="left")
+    seg = read_segmentation(ChromatinLayout(ctx.paths).segmentation(epigenome))
+    return cpg_states(frame, seg).fill_null("none").to_numpy().astype(str)
 
 
 def _figure(ctx: Context, table: pl.DataFrame) -> Path:

@@ -4,6 +4,7 @@ Newest first.
 
 ## Unreleased
 
+- `equilibrium_drift` (RM32 next step): gain and loss rates within active-TSS chromatin only, and per-CpG gaps with the own chromatin state in the strata; run R74 planned.
 - Relative entropy (`kl_slope`) added to the mouse interventions, BXD, RRBS-tissue and Meer comparisons (RM33 leftovers, run R73); `drift_hotspots` figure on one x scale.
 - 2026-11-14: R72 written up (RM34 item 4): blood's rising spread is a Polycomb programme; cortex's is broad.
 - `docs/PROVENANCE.md` (RM34 item 5): one row per dataset, deposited or rebuilt from IDATs, platform and the figures that read it.
