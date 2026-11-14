@@ -108,8 +108,9 @@ methylation faster, which lowers entropy at low levels, so entropy gaps mix dire
 from the young state (`kl_slope`, per-person `K`) added (e3ad29c); R68a-d rerun every figure whose headline rests on
 entropy. Then `docs/METRIC_AUDIT.md` (each result kept, resized or overturned), CLAIMS, state, artifact.
 - Done (R68): the shield keeps its sign everywhere at about half the size; three statements withdrawn (R58 blood,
-  R22, CD4+ T size); cortex chromatin share cut; mouse array now orders the shield by turnover. Left: Meer, RRBS,
-  BXD and intervention tables and the per-person `K` in effect tables, on relative entropy.
+  R22, CD4+ T size); cortex chromatin share cut; mouse array now orders the shield by turnover.
+- Done (R73): the mouse RRBS, BXD, intervention and Meer gaps keep their sign, smaller. Left: per-person `K` in
+  effect tables, read-level entropy.
 
 ## RM34 — Bias checks from the omics re-analysis practice
 

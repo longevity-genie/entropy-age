@@ -3,6 +3,15 @@
 Owned by the runner seat (`docs/seats/RUNNER.md`): one entry per run, newest first, with its inputs, the
 commit it ran, its job ids, its scale and seed, and its result or its failure with the cause.
 
+## R73 — metric audit leftovers: mouse interventions, BXD, RRBS, Meer (RM33), 2026-11-14
+
+- Commit 40fd45d; `figures interventions bxd rrbs_tissues meer_tissues --scale paper --seed 42`; 4 cores, 64 GB;
+  job 6480746, 2 h 23 min. Old measures reproduce.
+- Result, as measured (housekeeping aging gap, SD, entropy → relative entropy): GSE80672 −0.350 → −0.304; BXD
+  −0.524 → −0.320; RRBS blood −0.160 → −0.077, lung −0.268 → −0.210, kidney −0.327 → −0.184, liver −0.257 → −0.131,
+  adipose −0.195 → −0.028, muscle −0.160 → −0.080; Meer cortex −0.092 → −0.064, heart −0.100 → −0.071, liver −0.356
+  → −0.220, lung −0.290 → −0.138.
+
 ## R74 — gain and loss rates with chromatin state held (RM32), 2026-11-14
 
 - Commit 599c2fa; `figures equilibrium_drift --scale paper --seed 42`; 4 cores, 32 GB; job 6480933, 27 min.

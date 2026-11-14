@@ -51,9 +51,15 @@ given.
   entropy) and points at division: where cells divide, the faster removal of R67 has work to do.
 * **Three statements are withdrawn**: essentiality beyond chromatin in blood (R58), the shield's share growing with
   lifespan (R22), and the large CD4+ T-cell shield (R44). The cortex chromatin share is cut to a quarter to a half.
-* **Not yet rerun:** the mouse intervention, BXD, RRBS and Meer tables (they agree in sign on entropy and dispersion
-  already), read-level epiallele entropy (R50-R53; its partner measure PDR agrees), and the per-person `K` in the
-  effect tables.
+* **Mouse RRBS and array aging gaps (R73), housekeeping, entropy → relative entropy:** GSE80672 blood −0.35 →
+  −0.30; BXD liver −0.52 → −0.32; six RRBS tissues −0.16 to −0.33 → −0.03 (adipose) to −0.21 (lung); Meer cortex
+  −0.09 → −0.06 (interval excludes 0), heart −0.10 → −0.07, liver −0.36 → −0.22, lung −0.29 → −0.14 (heart, liver
+  and lung intervals now include 0 with about 20 mice). All keep their sign; smaller, as in human data.
+* **Turnover, two platforms.** By RRBS the post-mitotic cortex and heart keep a small shield (−0.06, −0.07) a
+  third of liver's; on the mammalian array four post-mitotic tissues are reversed (+0.03 to +0.09). Both order the
+  shield by turnover; they disagree on whether post-mitotic tissue keeps a little of it or loses it.
+* **Not yet rerun:** read-level epiallele entropy (R50-R53; its partner measure PDR agrees) and the per-person `K`
+  in the effect tables.
 
 Tables: the `kl_slope` rows in `data/output/{tissue_contrast,reprocessed_jaffe,chromatin_match,essentiality_gradient,
 sorted_cells,gtex_tissues,mouse_tissues,species_shield,species_floor,probe_robustness}/`.
