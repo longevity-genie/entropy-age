@@ -121,6 +121,7 @@ with 12 Houseman/EpiDISH cell fractions as covariates; (3) one FDR over every p 
 specific: the CpGs whose spread rises most, enrichment by region class against a mean-matched background; (5) a
 provenance table per dataset.
 - (1) done (R69): placebo sets sit at or above 0; none reaches an essential gap.
+- (5) done: `docs/PROVENANCE.md`, one row per dataset (deposited or IDATs, platform, figures); checksums next.
 - (3) done (R71): one BH over 7,626 reported tests; p up to 0.024 survives. Lost: CR housekeeping share in the
   second blood series, a few knockout contrasts, any-cancer and colorectal drift, GTEx smoking and death type.
 - (2) done (R70): cell fractions leave the blood gaps unchanged; dispersion's shrinks by a third.
