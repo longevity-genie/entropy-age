@@ -4,6 +4,7 @@ Newest first.
 
 ## Unreleased
 
+- `figures placebo_sets` (RM34 item 1): random non-set genes through the same matching, 200 draws per set and tissue, on four drift metrics; run R69 planned.
 - 2026-11-14: R68 written up (`docs/METRIC_AUDIT.md`): on relative entropy the shield keeps its sign at about half the size; R58 blood, R22 and the CD4+ T size withdrawn; mouse shield ordered by turnover.
 - 2026-11-14: RM33 (metric audit) and RM34 (bias checks after the omics re-analysis practice) planned (Anton).
 - Metric audit (Anton): `relative_entropy` (KL from the young state, no drift-to-0.5 assumption) as `kl_slope` in `drift_metrics` and in the lifespan, mouse, species, chromatin and essentiality comparisons; per-person scores gain `K`, the matched KL gap; runs R68 planned.
