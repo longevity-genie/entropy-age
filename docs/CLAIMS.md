@@ -27,6 +27,8 @@ a test with little power), **refuted**.
   essential promoters lose faster (R67). On relative entropy from the young state the gap keeps its sign
   everywhere but is 1.7-3.6× smaller (blood housekeeping −0.15 SD, not −0.35; cortex −0.06, not −0.21); CD4+ T
   cells shrink to −0.015; non-essential genes drift more in blood only (cortex −0.00, p 0.94).
+- **SATSA from IDATs (R66):** within one person housekeeping CpGs change less in direction than look-alikes (−0.14
+  SD, p 0.001; −0.002 on the deposited, cell-regressed betas); the cross-sectional shield reappears (|mean| −0.11).
 - **Placebo sets (R69):** random non-set genes through the same matching sit at or just above 0 (+0.01 to +0.05
   SD); none of 200 draws reaches an essential set's gap, in blood or cortex, on any metric: the matching does not
   make the shield.

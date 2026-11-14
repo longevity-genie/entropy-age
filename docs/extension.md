@@ -2000,6 +2000,24 @@ columns skipped) and applies one Benjamini-Hochberg correction across all of the
 
 Tables: `data/output/global_fdr/` (`by_folder`; the full ledger in `ledger.parquet`).
 
+### SATSA rebuilt from its IDATs (roadmap RM28, R66)
+
+The within-person test (R52) ran on SATSA's deposited betas, which have cell counts regressed out. Rebuilt from
+the 1,072 raw arrays (R61's pipeline) on the same people, 628 within-person pairs (873 before; fewer draws matched
+their metadata):
+
+* **Within one person the shield is clearer.** Housekeeping CpGs change less over the years than look-alikes in
+  direction (−0.14 SD, p 0.001; deposited −0.002, p 0.67) and stay closer to the floor (−0.07; −0.03); their
+  divergence gap is the same small one (−0.014; −0.017).
+* **Across people it reappears.** On the deposited betas SATSA was the one cohort with almost no cross-sectional
+  shield (|mean change| +0.00); rebuilt, it has one like other blood cohorts (|mean| −0.11, dispersion −0.36,
+  relative entropy −0.23 SD).
+* **Reading.** The deposited processing (with its cell-count regression) had flattened SATSA's shield. Two
+  differences remain between the versions, the processing and the pairs kept, so the size is not settled, but the
+  direction now agrees with every other cohort.
+
+Tables: `data/output/satsa_idats/` (`gaps`, `cross_sectional`, `person_slopes`).
+
 ### Stochastic or specific: where the rising spread sits (R72)
 
 Figure `drift_hotspots` takes the 5 % of autosomal CpGs whose spread rises fastest with age (dispersion slope;

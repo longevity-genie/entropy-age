@@ -4,6 +4,7 @@ Newest first.
 
 ## Unreleased
 
+- 2026-11-14: R66 written up (RM28): SATSA rebuilt from IDATs shows the shield within people and across them; `reprocess_idats --from-pickle`.
 - 2026-11-14: R73 written up (RM33): mouse RRBS, BXD, intervention and Meer aging gaps keep their sign on relative entropy, smaller.
 - 2026-11-14: R74 written up (RM32): faster removal at essential promoters survives within active chromatin; their lower resting level is mostly chromatin.
 - `equilibrium_drift` (RM32 next step): gain and loss rates within active-TSS chromatin only, and per-CpG gaps with the own chromatin state in the strata; run R74 planned.

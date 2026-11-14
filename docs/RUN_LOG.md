@@ -12,6 +12,16 @@ commit it ran, its job ids, its scale and seed, and its result or its failure wi
   adipose −0.195 → −0.028, muscle −0.160 → −0.080; Meer cortex −0.092 → −0.064, heart −0.100 → −0.071, liver −0.356
   → −0.220, lung −0.290 → −0.138.
 
+## R66 — SATSA within-person, rebuilt from IDATs (RM28), 2026-11-14
+
+- R66a: `scripts/reprocess_idats.py` on E-MTAB-7309, 1,072 450k arrays in batches of 100; 4 cores, 64 GB; job
+  6479360, 12 h 22 min, killed out of memory while combining (methylprep's `beta_values.pkl` was complete). R66c
+  (`--from-pickle`, commit after 43e9f2c; 128 GB, job 6481946, 4 min): 485,512 CpGs, 1,072 samples; then `figures
+  satsa_idats --scale paper --seed 42`: 444 people, 58,340 CpGs, 628 pairs (873 with the deposited betas).
+- Result, as measured (housekeeping, set − look-alikes, SD; deposited R52 → IDATs): within-person divergence
+  −0.017 → −0.014 (p 0.016); directed change −0.002 (p 0.67) → −0.140 (p 0.001); floor −0.029 → −0.073;
+  cross-sectional dispersion −0.12 → −0.36, |mean| +0.00 → −0.11, relative entropy −0.23 (IDATs only).
+
 ## R74 — gain and loss rates with chromatin state held (RM32), 2026-11-14
 
 - Commit 599c2fa; `figures equilibrium_drift --scale paper --seed 42`; 4 cores, 32 GB; job 6480933, 27 min.

@@ -98,6 +98,8 @@ application; links in the survey.
   people); CpG-level divergence gap small (-0.017), but the deposited betas keep little of the shield even
   cross-sectionally. Open data left: none with outcomes; a raw-IDAT SATSA rerun (E-MTAB-7309) is optional.
 
+- Done (R66): SATSA rebuilt from 1,072 IDATs: within-person directed change −0.14 SD (deposited −0.002); the
+  cross-sectional shield reappears. Next: the mortality cohorts (waits on Anton).
 ## RM33 — Metric audit: correct what rests on binary entropy
 
 **State:** after RM34 · **Owner:** lead
