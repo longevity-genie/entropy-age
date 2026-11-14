@@ -57,6 +57,9 @@ a test with little power), **refuted**.
   only (R58's blood remainder is entropy-only). On the mouse array the corrected measure orders the shield by
   turnover: present in all five renewing tissues, reversed in four of five post-mitotic ones. That is the pattern
   this claim said we should not see; R67's faster removal at essential promoters would need division to act.
+- **Beyond the state map (R74):** within active-TSS chromatin, essential island promoters still lose methylation
+  faster than other active promoters (blood core +0.006, cortex +0.006-0.007 per decade); the state explains most
+  of their lower resting level.
 - **Status:** holds as association in blood; weaker in cortex; the turnover result now stands against it and is open.
 
 ## C3 — The shield is not selection among cells (H2 rejected)

@@ -1934,8 +1934,23 @@ donors) and Jaffe's adult cortex (213), technical covariates removed:
   alike islands' loss), so read the differences, not the absolute values. Cross-sectional ages identify the
   resting level only where the curve bends; 16-24 % of CpGs are left out for that.
 
-Next (RM32): the loss-rate excess with chromatin state matched (ATAC, as R55 and R58), and in Tet-deficient cells,
-where active removal should shrink it.
+Chromatin held (R74). Two ways: rates refitted on active-TSS CpGs only (state 1_TssA in the tissue's own reference
+epigenome, E062 blood, E073 cortex), set and look-alikes alike; and per-CpG gaps with the chromatin state added to
+the strata.
+
+* **The faster removal survives chromatin.** Within active TSS only, essential island promoters still lose
+  methylation faster than look-alikes in the same state: blood core-essential +0.0063 per decade (+0.0031,
+  +0.0097), housekeeping +0.0015 (+0.0001, +0.0034); cortex +0.0070 (+0.0041, +0.0097) and +0.0057 (+0.0034,
+  +0.0083), as large as or larger than before.
+* **The lower resting level is mostly chromatin.** Per CpG, adding the state to the strata shrinks the resting-level
+  gap by about four fifths in blood (housekeeping −0.335 → −0.060 SD, core −0.243 → −0.062) and by half in cortex
+  (−0.145 → −0.071); the per-CpG loss-rate excess in blood falls to +0.01-0.02.
+* **Reading.** Where essential promoters sit in the genome's active chromatin explains most of why they rest low;
+  within that chromatin, they are still cleaned faster than other active promoters. That remainder is the first
+  sign of something beyond the chromatin state a reference map records (the state maps come from other people and
+  have 15 classes, so finer chromatin may still explain it).
+
+Next (RM32): Tet-deficient cells, where active removal should shrink the remainder.
 
 Tables: `data/output/equilibrium_drift/` (`pooled_rates`, `per_cpg_gaps`, `identified`).
 

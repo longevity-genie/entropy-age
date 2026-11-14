@@ -3,6 +3,15 @@
 Owned by the runner seat (`docs/seats/RUNNER.md`): one entry per run, newest first, with its inputs, the
 commit it ran, its job ids, its scale and seed, and its result or its failure with the cause.
 
+## R74 — gain and loss rates with chromatin state held (RM32), 2026-11-14
+
+- Commit 599c2fa; `figures equilibrium_drift --scale paper --seed 42`; 4 cores, 32 GB; job 6480933, 27 min.
+- Result, as measured (island promoters, set − look-alikes, loss per decade, 95 %): active TSS only, blood core
+  +0.0063 (+0.0031, +0.0097), housekeeping +0.0015 (+0.0001, +0.0034); cortex core +0.0070 (+0.0041, +0.0097),
+  housekeeping +0.0057 (+0.0034, +0.0083). Per-CpG with own state in strata: resting level blood −0.335 → −0.060
+  (housekeeping), −0.243 → −0.062 (core); cortex −0.145 → −0.071, −0.077 → −0.030; per-CpG loss blood +0.114 →
+  +0.020. Tables `data/output/equilibrium_drift/`.
+
 ## R72 — drift hotspots by region class (RM34 item 4), 2026-11-14
 
 - Commit a3805b7; `figures drift_hotspots --scale paper --seed 42`; 4 cores, 96 GB (21 GB peak); job 6480722, 1 min

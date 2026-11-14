@@ -1,8 +1,8 @@
 group,share_identified,cpgs,tissue
 housekeeping,0.7618968504497662,42133,blood (Hannum)
+core_essential,0.7584253341080767,6884,blood (Hannum)
 look-alikes,0.8045437852635796,59906,blood (Hannum)
 non_essential,0.8401215805471125,4935,blood (Hannum)
-core_essential,0.7584253341080767,6884,blood (Hannum)
 look-alikes,0.8222666666666667,60000,cortex (Jaffe)
 housekeeping,0.819007421810163,42173,cortex (Jaffe)
 core_essential,0.8184588593818024,6891,cortex (Jaffe)

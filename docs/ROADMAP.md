@@ -141,8 +141,9 @@ cortex; compare essential promoters with look-alikes on the fraction of the way 
 and on z itself. Answers whether the shield is a slower approach to the same equilibrium or a different
 equilibrium (repair biased toward unmethylated).
 - Done (R67): a different resting level. Essential island promoters gain no faster than look-alikes and lose
-  faster (blood +0.0025, cortex +0.0054 per decade), so they rest lower with less room to drift. Next: the loss
-  excess with chromatin state matched (ATAC, as R55/R58), then in Tet-deficient cells.
+  faster (blood +0.0025, cortex +0.0054 per decade), so they rest lower with less room to drift.
+- Done (R74): within active-TSS chromatin the faster removal remains (blood core +0.006, cortex +0.006-0.007 per
+  decade); the lower resting level is mostly chromatin (four fifths in blood). Next: Tet-deficient cells.
 
 ## RM14 — Natural experiments in chromatin: broken writers, knockouts, edits
 
