@@ -27,6 +27,9 @@ a test with little power), **refuted**.
   essential promoters lose faster (R67). On relative entropy from the young state the gap keeps its sign
   everywhere but is 1.7-3.6× smaller (blood housekeeping −0.15 SD, not −0.35; cortex −0.06, not −0.21); CD4+ T
   cells shrink to −0.015; non-essential genes drift more in blood only (cortex −0.00, p 0.94).
+- **Placebo sets (R69):** random non-set genes through the same matching sit at or just above 0 (+0.01 to +0.05
+  SD); none of 200 draws reaches an essential set's gap, in blood or cortex, on any metric: the matching does not
+  make the shield.
 - **Cell composition (R70):** 12 reference-based blood-cell fractions held leave the blood gaps unchanged (relative
   entropy −0.152 → −0.152 SD); only the dispersion gap shrinks by a third.
 - **Status:** holds, at about half the size first reported; (a) answered for the species array: off the floor (CpGs at 10-90 %) the gap holds in 93 % of

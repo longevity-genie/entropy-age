@@ -1944,6 +1944,26 @@ Tables: `data/output/equilibrium_drift/` (`pooled_rates`, `per_cpg_gaps`, `ident
 Asked by antonkulaga (2026-11-14), against `longevity-skills/omics-reanalysis/SKILL.md`: the cheapest checks that
 could take out part of the evidence if they fail.
 
+### Placebo gene sets (R69)
+
+Figure `placebo_sets` draws random genes from those with a promoter CpG on the array but in none of the three sets,
+as many genes as each real set (609 core-essential, 3,647 housekeeping, 749 non-essential), takes all their promoter
+CpGs and runs them through the same matching, 200 draws per set and tissue, on every autosomal promoter CpG (192,719
+in blood, 192,998 in cortex).
+
+![Placebo gene sets](figures/placebo_sets.png)
+
+* **The matching does not make a shield.** Placebo sets come out at or slightly above 0 on every metric (means
+  +0.01 to +0.05 SD; the rest they are compared with holds the essential genes, which drift less). No placebo
+  draw out of 200 reaches any essential set's gap, in blood or cortex, on any of the four metrics.
+* **Measured from the placebo mean the shield is a little larger**: blood housekeeping relative entropy −0.143
+  against a placebo mean of +0.019 (95 % of placebos −0.001 to +0.036); cortex −0.053 against +0.013 (−0.001 to
+  +0.028).
+* Non-essential genes in blood sit above every placebo (relative entropy +0.12); in cortex they are inside the
+  placebo range on relative entropy and dispersion.
+
+Tables: `data/output/placebo_sets/` (`summary`, `set_genes`; draws in `placebo_draws.parquet`).
+
 ### Cell composition in blood (R70)
 
 Figure `composition_gaps` estimates 12 blood-cell fractions per Hannum donor (Houseman projection on EpiDISH's

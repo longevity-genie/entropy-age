@@ -4,6 +4,7 @@ Newest first.
 
 ## Unreleased
 
+- 2026-11-14: R69 written up (RM34 item 1): placebo gene sets give no shield; the matching does not make it.
 - 2026-11-14: R70 written up (RM34 item 2): the blood shield is not cell mix; 12 cell fractions held leave it unchanged.
 - `figures composition_gaps` (RM34 item 2): Hannum gaps with 12 Houseman/EpiDISH cell fractions as covariates; run R70 planned.
 - `figures placebo_sets` (RM34 item 1): random non-set genes through the same matching, 200 draws per set and tissue, on four drift metrics; run R69 planned.

@@ -3,6 +3,15 @@
 Owned by the runner seat (`docs/seats/RUNNER.md`): one entry per run, newest first, with its inputs, the
 commit it ran, its job ids, its scale and seed, and its result or its failure with the cause.
 
+## R69 — placebo gene sets (RM34 item 1), 2026-11-14
+
+- Commit 9321cb6; `figures placebo_sets --scale paper --seed 42`; 4 cores, 64 GB; job 6480607, 34 min. Hannum 656
+  donors, 192,719 promoter CpGs; Jaffe 213, 192,998; 200 placebo draws per set and tissue.
+- Result, as measured (real gap vs placebo mean [95 %], SD): blood housekeeping relative entropy −0.143 vs +0.019
+  [−0.001, +0.036], core −0.108 vs +0.014 [−0.026, +0.064]; cortex housekeeping −0.053 vs +0.013 [−0.001, +0.028],
+  core −0.074 vs +0.014 [−0.022, +0.050]; no placebo below any essential gap on any metric. Tables
+  `data/output/placebo_sets/`.
+
 ## R70 — Hannum shield with 12 cell fractions held (RM34 item 2), 2026-11-14
 
 - Commit 176a250; `figures composition_gaps --scale paper --seed 42`; 4 cores, 32 GB; job 6480608, 8 min. 656

@@ -120,6 +120,7 @@ placebo gene sets (random promoter sets with the same size, island and level mix
 with 12 Houseman/EpiDISH cell fractions as covariates; (3) one FDR over every p reported; (4) stochastic or
 specific: the CpGs whose spread rises most, enrichment by region class against a mean-matched background; (5) a
 provenance table per dataset.
+- (1) done (R69): placebo sets sit at or above 0; none reaches an essential gap.
 - (2) done (R70): cell fractions leave the blood gaps unchanged; dispersion's shrinks by a third.
 
 ## RM32 — Drift toward each site's own equilibrium, not toward 0.5
