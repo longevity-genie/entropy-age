@@ -34,7 +34,7 @@ is; "IDATs" means rebuilt by us from the raw array files. Accessions were read f
 | CR blood replication | GSE282661 | Mammal320 | deposited | cr_blood_replication |
 | Mouse RRBS six tissues | GSE120132 | RRBS | deposited | rrbs_tissues |
 | Meer 2018 four tissues | GSE121141 | RRBS | deposited | meer_tissues |
-| BXD liver | GSE199979 | RRBS | deposited | bxd |
+| BXD liver | GSE199979 | Mammal40 | deposited | bxd |
 | Browder 2022 cyclic OSKM | GSE190665 | Mammal40 | deposited | reprogramming |
 | Chondronasiou 2022 one OSKM cycle | GSE156557 | RRBS | deposited | reprogramming_rrbs |
 | Tet1 cortex | GSE271375 | MM285 | deposited | tet1 |

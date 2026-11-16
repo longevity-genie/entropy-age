@@ -4,6 +4,7 @@ Newest first.
 
 ## Unreleased
 
+- 2026-11-16: `manuscript/paper.md` and `supplement.md`, the first full draft on the corrected measure (RM36); PROVENANCE: BXD liver is on the mammalian array, not RRBS.
 - 2026-11-16: `allelic_controls` and `sex_drift` (RM35 items 1 and 2): imprinted and X-inactivated loci as a noise floor; drift and the shield by sex.
 - 2026-11-16: RM35, the ideas still open on data at hand (imprinted and X loci as noise controls, sex, cross-mammal hotspots).
 - 2026-11-16: RM4 and RM13 wait until mid-December (no RNA shield replicated; no read-level culture series yet).
