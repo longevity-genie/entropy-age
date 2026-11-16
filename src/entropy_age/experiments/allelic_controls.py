@@ -89,7 +89,7 @@ def _subset(p: Prepared, rows: np.ndarray, label: str) -> Prepared:
 def _one(p: Prepared, probes, base_membership, groups_fn, permutations, seed, rows=None) -> pl.DataFrame:
     q = p if rows is None else _subset(p, rows, p.label)
     m = strata(_lifespan_metrics(q), probes)
-    membership = pl.concat([base_membership, groups_fn(m)], how="vertical")
+    membership = pl.concat([base_membership.select("feature", "group"), groups_fn(m)], how="vertical")
     keep = set(membership["feature"].to_list()) | set(m.filter(~pl.col("feature").is_in(XLINKED))["feature"])
     m = m.filter(pl.col("feature").is_in(list(keep)))
     return gaps(m, membership, permutations, seed)
