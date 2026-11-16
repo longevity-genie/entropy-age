@@ -4,6 +4,17 @@ Open work only, in order. Each item is a section `## RMn — name` with a line s
 owner. A done item leaves this file; `docs/CHANGELOG.md` says what landed.
 The order and the rule for each item are argued in `docs/RESEARCH_PLAN.md`.
 
+## RM36 — Manuscript draft, improved and on Drive (Anton, 2026-11-16)
+
+**State:** urgent (Anton asked: "write a manuscript draft of it and push"; building since 14:40) · **Owner:** lead
+
+1. A full draft in `manuscript/paper.md` and `manuscript/supplement.md` from the corrected results (metric
+   audit, R65-R76), every number traceable to a run.
+2. Journal selection (preprint and journal ladders), then the manuscript-improve workflow with every change that
+   needs no decision of the authors applied.
+3. The release pushed to Anton's Drive folder for co-authors; the results artifact updated.
+4. Decisions only the authors can make (title, venue, author list) listed once at the end, each with a default.
+
 ## RM35 — The ideas still open on data at hand (Anton, 2026-11-16: "did we investigate all the possible ideas?")
 
 **State:** building (items 1 and 2, the default, since 14:20; smoke jobs R77s, R78s) · **Owner:** lead
