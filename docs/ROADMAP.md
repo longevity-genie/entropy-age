@@ -4,6 +4,21 @@ Open work only, in order. Each item is a section `## RMn — name` with a line s
 owner. A done item leaves this file; `docs/CHANGELOG.md` says what landed.
 The order and the rule for each item are argued in `docs/RESEARCH_PLAN.md`.
 
+## RM35 — The ideas still open on data at hand (Anton, 2026-11-16: "did we investigate all the possible ideas?")
+
+State: waits until 2026-11-16 13:45 CET or Anton's word (proposed in chat with that default). Owner: lead.
+
+1. **Built-in noise controls:** imprinted loci and X-inactivated CpGs in women sit at half methylation by
+   allele, held there by design. Their entropy over age measures noise with no drift toward a new level; the
+   shield's gap is compared with it. Hannum, Jaffe, Lunnon; no download.
+2. **Sex differences in drift** across tissues and species (BEYOND_SHIELD idea 10): the shield gap and drift by
+   sex in the human tissues, mouse and the mammal consortium.
+3. **CpGs disordered in every mammal** (idea 11): the R72 hotspot test across the consortium's 65 species, one
+   Slurm job.
+
+Needs new data, each a search first: 5hmC beside 5mC (Tet3 makes 5hmC), single-cell methylation with age,
+non-CpG methylation in neurons, sperm and germline reset; long reads are RM13 item 3.
+
 ## RM15 — Directed demethylation outside promoters: the culture and cortex follow-ups
 
 **State:** after RM19 · **Owner:** lead

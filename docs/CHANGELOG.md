@@ -4,6 +4,7 @@ Newest first.
 
 ## Unreleased
 
+- 2026-11-16: RM35, the ideas still open on data at hand (imprinted and X loci as noise controls, sex, cross-mammal hotspots).
 - 2026-11-16: RM4 and RM13 wait until mid-December (no RNA shield replicated; no read-level culture series yet).
 - 2026-11-16: RM34 done: `docs/INPUT_CHECKSUMS.tsv`, SHA-256 of every downloaded input (R76).
 - 2026-11-16: R75 written up (RM4): Tabula Muris Senis bulk shows no RNA shield and no turnover order.
