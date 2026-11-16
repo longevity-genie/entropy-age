@@ -12,6 +12,11 @@ commit it ran, its job ids, its scale and seed, and its result or its failure wi
   adipose −0.195 → −0.028, muscle −0.160 → −0.080; Meer cortex −0.092 → −0.064, heart −0.100 → −0.071, liver −0.356
   → −0.220, lung −0.290 → −0.138.
 
+## R76 — input checksums (RM34 item 5), 2026-11-16
+
+- `sha256sum` over 753 archive files under `data/input/` (192 GB); 1 core; job 6493412, 10 min. Table
+  `docs/INPUT_CHECKSUMS.tsv`.
+
 ## R75 — RNA turnover test in Tabula Muris Senis bulk (RM4), 2026-11-16
 
 - Commit aee749c; `figures rna_tms --scale paper --seed 42`; 8 cores, 64 GB; job 6493369, 11 min. GSE132040, 831

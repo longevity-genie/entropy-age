@@ -53,5 +53,6 @@ is; "IDATs" means rebuilt by us from the raw array files. Accessions were read f
   within-dataset contrasts we run, and is why sizes are not compared across studies without the ±0.05 SD of R61.
 * **No dataset mixes pipelines.** Jaffe and SATSA have both versions, each analysed on its own and compared
   side by side (R61; R52 against R66).
-* **Not yet recorded here:** checksums of the downloaded files. `entropy-age fetch` keeps the archive's files under
-  `data/input/`; adding their MD5 against the archive's is the next step of this table.
+* **Checksums:** `docs/INPUT_CHECKSUMS.tsv` holds the SHA-256 and size of every downloaded archive file under
+  `data/input/` (753 files, 2026-11-16, run R76), so a rerun can confirm it reads the same bytes. GEO publishes no
+  per-file checksums to compare against; ArrayExpress's are in its file listing.

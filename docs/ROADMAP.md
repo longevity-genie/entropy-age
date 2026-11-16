@@ -100,23 +100,6 @@ application; links in the survey.
 
 - Done (R66): SATSA rebuilt from 1,072 IDATs: within-person directed change −0.14 SD (deposited −0.002); the
   cross-sectional shield reappears. Next: the mortality cohorts (waits on Anton).
-## RM34 — Bias checks from the omics re-analysis practice
-
-**State:** unattended (left: download checksums in `docs/PROVENANCE.md`) · **Owner:** lead
-
-Asked by antonkulaga (2026-11-14), against `longevity-skills/omics-reanalysis/SKILL.md`, cheapest first: (1)
-placebo gene sets (random promoter sets with the same size, island and level mix must give 0); (2) Hannum's gaps
-with 12 Houseman/EpiDISH cell fractions as covariates; (3) one FDR over every p reported; (4) stochastic or
-specific: the CpGs whose spread rises most, enrichment by region class against a mean-matched background; (5) a
-provenance table per dataset.
-- (1) done (R69): placebo sets sit at or above 0; none reaches an essential gap.
-- (4) done (R72): in blood the fastest-spreading CpGs are a Polycomb programme (2×) kept out of active chromatin;
-  in cortex the spread is broad (0.7-1.3× across classes). "Stochastic" holds for cortex, not blood.
-- (5) done: `docs/PROVENANCE.md`, one row per dataset (deposited or IDATs, platform, figures); checksums next.
-- (3) done (R71): one BH over 7,626 reported tests; p up to 0.024 survives. Lost: CR housekeeping share in the
-  second blood series, a few knockout contrasts, any-cancer and colorectal drift, GTEx smoking and death type.
-- (2) done (R70): cell fractions leave the blood gaps unchanged; dispersion's shrinks by a third.
-
 ## RM14 — Natural experiments in chromatin: broken writers, knockouts, edits
 
 **State:** waits until 2026-12-13 (search again for a cohort meeting the rule) · **Owner:** lead
