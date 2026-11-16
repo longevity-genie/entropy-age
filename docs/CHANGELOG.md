@@ -4,6 +4,7 @@ Newest first.
 
 ## Unreleased
 
+- 2026-11-16: RM4 and RM13 wait until mid-December (no RNA shield replicated; no read-level culture series yet).
 - 2026-11-16: RM34 done: `docs/INPUT_CHECKSUMS.tsv`, SHA-256 of every downloaded input (R76).
 - 2026-11-16: R75 written up (RM4): Tabula Muris Senis bulk shows no RNA shield and no turnover order.
 - `figures rna_tms` (RM4): the RNA turnover test in Tabula Muris Senis bulk (GSE132040, 17 organs, 3-27 months); `analyse_species` takes a turnover map; run R75 planned.

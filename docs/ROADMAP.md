@@ -14,7 +14,7 @@ it out. Left: the same test in the culture series (EPIC manifest needed for the 
 doublings), and what cortex's two strongly age-tracking components are.
 ## RM13 — Answer the prior work (novelty review)
 
-**State:** building · **Owner:** lead
+**State:** waits until 2026-12-13 (left: item 3 needs a read-level culture series; search again) · **Owner:** lead
 
 Progress: `docs/NOVELTY_REVIEW.md`. To make the paper new, in order: (1) does essentiality still predict protection
 after matching on chromatin, expression level and breadth? First answer from R4's tables (`docs/extension.md`):
@@ -137,7 +137,8 @@ robust to composition), without slowing drift. Left, to replicate it:
   arm, in blood or another tissue (to find).
 ## RM4 — Stochasticity in RNA
 
-**State:** unattended · **Owner:** lead
+**State:** waits until 2026-12-14 (no RNA shield replicated: GTEx null, rat weak, Tabula Muris Senis null (R75);
+the intervention and RNA-clock items test a shield not yet shown, so they wait for a reason to expect one) · **Owner:** lead
 
 Progress: the turnover test is done in GTEx v10 (`figures rna_gtex`, 47 tissues) and in the mouse and rat
 atlases (`figures rna_rodents`); see `docs/extension.md`. Mouse repeats the methylation result (brain
