@@ -25,3 +25,16 @@ def test_sex_codes_read_every_spelling():
     from entropy_age.experiments.sex_drift import sex_codes
 
     assert sex_codes(["F", "FEMALE", "male", "Male", None, "unknown"]).tolist() == ["F", "F", "M", "M", "", ""]
+
+
+def test_hotspot_shuffle_keeps_counts_per_stratum():
+    from entropy_age.experiments.species_hotspots import hot_labels, shuffled
+
+    rng = np.random.default_rng(1)
+    v = rng.random(2000)
+    hot = hot_labels(v)
+    assert 95 <= hot.sum() <= 105
+    strata = rng.integers(0, 10, 2000)
+    sh = shuffled(hot, strata, rng)
+    for s in range(10):
+        assert sh[strata == s].sum() == hot[strata == s].sum()
