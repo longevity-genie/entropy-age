@@ -165,7 +165,7 @@ def run(ctx: Context) -> list[Path]:
         p = dataclasses.replace(p, x=p.x.astype(np.float32))
         idx = np.arange(p.x.shape[0]) if rows is None else rows
         t = _one(p, probes, sets, fn, 1000, 1, idx)
-        point.append(t.with_columns(tissue=pl.lit(label), n=pl.lit(idx.size)))
+        point.append(t.with_columns(tissue=pl.lit(label), samples=pl.lit(idx.size)))
         for b in range(n_boot):
             draw = rng.choice(idx, size=idx.size, replace=True)
             tb = _one(p, probes, sets, fn, 0, b, draw)
