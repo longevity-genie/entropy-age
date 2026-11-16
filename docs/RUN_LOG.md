@@ -3,6 +3,31 @@
 Owned by the runner seat (`docs/seats/RUNNER.md`): one entry per run, newest first, with its inputs, the
 commit it ran, its job ids, its scale and seed, and its result or its failure with the cause.
 
+## R77 — loci held at one half by allele as a noise floor (RM35 item 1), 2026-11-16
+
+- Commit dc4a72a; `figures allelic_controls --scale paper --seed 42`, ENTROPY_AGE_BOOT=50; 8 cores, 64 GB; job
+  6494447, 46 min (smoke 6494294 failed on a membership column mismatch, fixed e368864; 6494332 passed). Imprinted
+  genes: geneimprint "Imprinted", 131 human genes (read 2026-11-16), island or shore CpGs at young level 0.25-0.75.
+- Result, as measured (matched gap on relative entropy, SD, 95 % donor bootstrap; island relation x 20 level bins
+  against 60,000 random autosomal CpGs): imprinted half-methylated CpGs in Hannum blood −0.51 (−0.56, −0.31),
+  Lunnon blood men −0.20 (−0.26, −0.01), women −0.08 (−0.19, 0.11); cortex 0 (Jaffe −0.03, Lunnon −0.02/−0.02, all
+  intervals across 0). X-island CpGs at one half in women: Lunnon blood −0.29 (−0.35, −0.09); Jaffe cortex −0.03
+  (−0.16, 0.07), Lunnon frontal cortex +0.10 (−0.26, 0.22). Housekeeping in the same runs: Hannum −0.16, Jaffe −0.05.
+- Reading: loci a maintenance machinery holds at one half are protected from drift in blood, two to three times
+  the essential-promoter shield, and not in cortex. The blood-brain difference of the shield is a property of the
+  tissue's maintenance of held states, not of essential genes alone. Tables `data/output/allelic_controls/`.
+
+## R78 — drift and the shield by sex (RM35 item 2), 2026-11-16
+
+- Commit 2d9f86a; `figures sex_drift --scale paper --seed 42`, 100 resamples; 4 cores, 64 GB; job 6494333, 62 min.
+  Hannum, Jaffe, Lunnon's five tissues, GTEx colon and lung (other GTEx tissues have < 20 donors of a sex).
+- Result, as measured (women − men, 95 % donor bootstrap): the background drift rate (median slope of spread and of
+  relative entropy) does not differ in any of nine tissues (p_boot 0.14-1.0). The housekeeping shield on relative
+  entropy does not differ either (−0.09 to +0.07 SD, every interval across 0); on dispersion it is weaker in women in
+  Jaffe cortex (+0.08, 0.01-0.10) and GTEx colon (+0.14, 0.02-0.24), nowhere on relative entropy.
+- Reading: no sex difference in drift or the shield; sex need not be split in the shield's analyses. Tables
+  `data/output/sex_drift/`.
+
 ## R73 — metric audit leftovers: mouse interventions, BXD, RRBS, Meer (RM33), 2026-11-14
 
 - Commit 40fd45d; `figures interventions bxd rrbs_tissues meer_tissues --scale paper --seed 42`; 4 cores, 64 GB;

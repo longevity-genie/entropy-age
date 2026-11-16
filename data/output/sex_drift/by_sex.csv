@@ -1,0 +1,163 @@
+metric,group,value,tissue,sex
+dispersion_slope,housekeeping,-0.264790193439369,blood (Hannum),F
+dispersion_slope,non_essential,0.22133375295949573,blood (Hannum),F
+dispersion_slope,core_essential,-0.172483420991977,blood (Hannum),F
+kl_slope,housekeeping,-0.09275495051140589,blood (Hannum),F
+kl_slope,non_essential,0.08665432769195154,blood (Hannum),F
+kl_slope,core_essential,-0.05439615123234211,blood (Hannum),F
+dispersion_slope,background median,0.0002549411805431138,blood (Hannum),F
+kl_slope,background median,0.000039312926147384484,blood (Hannum),F
+abs_slope,background median,0.00009449840973936653,blood (Hannum),F
+dispersion_slope,housekeeping,-0.21693636067739888,blood (Hannum),M
+dispersion_slope,non_essential,0.22654961780879954,blood (Hannum),M
+dispersion_slope,core_essential,-0.12162717167227714,blood (Hannum),M
+kl_slope,housekeeping,-0.13199067782181603,blood (Hannum),M
+kl_slope,non_essential,0.12254911318662606,blood (Hannum),M
+kl_slope,core_essential,-0.07574161496599363,blood (Hannum),M
+dispersion_slope,background median,0.00015141336059457014,blood (Hannum),M
+kl_slope,background median,0.000023982345514625976,blood (Hannum),M
+abs_slope,background median,0.000083421538929361,blood (Hannum),M
+dispersion_slope,housekeeping,0.005248203539043156,cortex (Jaffe),F
+dispersion_slope,non_essential,0.0004926106539446561,cortex (Jaffe),F
+dispersion_slope,core_essential,-0.016024193065866457,cortex (Jaffe),F
+kl_slope,housekeeping,-0.017036619434781956,cortex (Jaffe),F
+kl_slope,non_essential,-0.003289646044877735,cortex (Jaffe),F
+kl_slope,core_essential,-0.03923298686048897,cortex (Jaffe),F
+dispersion_slope,background median,-0.000060784036881137554,cortex (Jaffe),F
+kl_slope,background median,-2.1503555587982393e-6,cortex (Jaffe),F
+abs_slope,background median,0.00016478329901168515,cortex (Jaffe),F
+dispersion_slope,housekeeping,-0.07347284377223068,cortex (Jaffe),M
+dispersion_slope,non_essential,0.02631184551273437,cortex (Jaffe),M
+dispersion_slope,core_essential,-0.07542813705146646,cortex (Jaffe),M
+kl_slope,housekeeping,-0.05047678553264746,cortex (Jaffe),M
+kl_slope,non_essential,-0.006175990227048843,cortex (Jaffe),M
+kl_slope,core_essential,-0.06269267328382258,cortex (Jaffe),M
+dispersion_slope,background median,-0.000013904111420148074,cortex (Jaffe),M
+kl_slope,background median,3.7176132716415273e-6,cortex (Jaffe),M
+abs_slope,background median,0.00013500261594110731,cortex (Jaffe),M
+dispersion_slope,housekeeping,-0.15892869813187566,whole blood (Lunnon),F
+dispersion_slope,non_essential,0.1440039782348442,whole blood (Lunnon),F
+dispersion_slope,core_essential,-0.1089274500630794,whole blood (Lunnon),F
+kl_slope,housekeeping,-0.11604215946897428,whole blood (Lunnon),F
+kl_slope,non_essential,0.12745128682441076,whole blood (Lunnon),F
+kl_slope,core_essential,-0.0745661546914663,whole blood (Lunnon),F
+dispersion_slope,background median,0.000432820419968898,whole blood (Lunnon),F
+kl_slope,background median,0.00004436020967357474,whole blood (Lunnon),F
+abs_slope,background median,0.0002911781439925859,whole blood (Lunnon),F
+dispersion_slope,housekeeping,-0.03556214624816567,whole blood (Lunnon),M
+dispersion_slope,non_essential,0.1312895911617181,whole blood (Lunnon),M
+dispersion_slope,core_essential,-0.03047674830599568,whole blood (Lunnon),M
+kl_slope,housekeeping,-0.02790707981908214,whole blood (Lunnon),M
+kl_slope,non_essential,0.0735333147703624,whole blood (Lunnon),M
+kl_slope,core_essential,-0.03230535690241305,whole blood (Lunnon),M
+dispersion_slope,background median,-0.00007496566074825763,whole blood (Lunnon),M
+kl_slope,background median,0.000015081894045600099,whole blood (Lunnon),M
+abs_slope,background median,0.00032041592849844946,whole blood (Lunnon),M
+dispersion_slope,housekeeping,0.037604515871169183,frontal cortex (Lunnon),F
+dispersion_slope,non_essential,0.023848198999866923,frontal cortex (Lunnon),F
+dispersion_slope,core_essential,0.03676338663724554,frontal cortex (Lunnon),F
+kl_slope,housekeeping,0.015495604542558257,frontal cortex (Lunnon),F
+kl_slope,non_essential,0.07308367078807941,frontal cortex (Lunnon),F
+kl_slope,core_essential,0.017937624330820825,frontal cortex (Lunnon),F
+dispersion_slope,background median,-0.00011522730910248588,frontal cortex (Lunnon),F
+kl_slope,background median,3.832699285174476e-6,frontal cortex (Lunnon),F
+abs_slope,background median,0.0003021279698738418,frontal cortex (Lunnon),F
+dispersion_slope,housekeeping,-0.012446590865815815,frontal cortex (Lunnon),M
+dispersion_slope,non_essential,0.016111448272035044,frontal cortex (Lunnon),M
+dispersion_slope,core_essential,-0.03384533158466813,frontal cortex (Lunnon),M
+kl_slope,housekeeping,-0.00676128650333248,frontal cortex (Lunnon),M
+kl_slope,non_essential,0.03742002456912304,frontal cortex (Lunnon),M
+kl_slope,core_essential,-0.023283773763785365,frontal cortex (Lunnon),M
+dispersion_slope,background median,-0.00006709141142090628,frontal cortex (Lunnon),M
+kl_slope,background median,7.239089225178545e-6,frontal cortex (Lunnon),M
+abs_slope,background median,0.00029979644673071493,frontal cortex (Lunnon),M
+dispersion_slope,housekeeping,-0.019656468073628815,superior temporal gyrus (Lunnon),F
+dispersion_slope,non_essential,0.0027762534582904453,superior temporal gyrus (Lunnon),F
+dispersion_slope,core_essential,-0.006911094039936931,superior temporal gyrus (Lunnon),F
+kl_slope,housekeeping,-0.012020816416160972,superior temporal gyrus (Lunnon),F
+kl_slope,non_essential,0.009550920303201225,superior temporal gyrus (Lunnon),F
+kl_slope,core_essential,-0.006761496668485203,superior temporal gyrus (Lunnon),F
+dispersion_slope,background median,-0.000014803565766165681,superior temporal gyrus (Lunnon),F
+kl_slope,background median,7.43802739509176e-6,superior temporal gyrus (Lunnon),F
+abs_slope,background median,0.00025022583887546976,superior temporal gyrus (Lunnon),F
+dispersion_slope,housekeeping,-0.010915807071193615,superior temporal gyrus (Lunnon),M
+dispersion_slope,non_essential,-0.00679518480566369,superior temporal gyrus (Lunnon),M
+dispersion_slope,core_essential,-0.019618771881031703,superior temporal gyrus (Lunnon),M
+kl_slope,housekeeping,-0.014617272086110633,superior temporal gyrus (Lunnon),M
+kl_slope,non_essential,0.03140781862767394,superior temporal gyrus (Lunnon),M
+kl_slope,core_essential,-0.0121681839705956,superior temporal gyrus (Lunnon),M
+dispersion_slope,background median,4.960420448966038e-6,superior temporal gyrus (Lunnon),M
+kl_slope,background median,0.000014407501609479772,superior temporal gyrus (Lunnon),M
+abs_slope,background median,0.00034680421786167443,superior temporal gyrus (Lunnon),M
+dispersion_slope,housekeeping,0.029845665691553988,entorhinal cortex (Lunnon),F
+dispersion_slope,non_essential,0.022828044705387684,entorhinal cortex (Lunnon),F
+dispersion_slope,core_essential,0.030859794735157972,entorhinal cortex (Lunnon),F
+kl_slope,housekeeping,0.00467709764522807,entorhinal cortex (Lunnon),F
+kl_slope,non_essential,0.009660897389570822,entorhinal cortex (Lunnon),F
+kl_slope,core_essential,0.008173008259156048,entorhinal cortex (Lunnon),F
+dispersion_slope,background median,0.00010773169318380589,entorhinal cortex (Lunnon),F
+kl_slope,background median,0.000016814971034070828,entorhinal cortex (Lunnon),F
+abs_slope,background median,0.00028437187191055423,entorhinal cortex (Lunnon),F
+dispersion_slope,housekeeping,-0.023968428701186855,entorhinal cortex (Lunnon),M
+dispersion_slope,non_essential,-0.012435992796059267,entorhinal cortex (Lunnon),M
+dispersion_slope,core_essential,-0.04375883982762773,entorhinal cortex (Lunnon),M
+kl_slope,housekeeping,-0.015106555486132572,entorhinal cortex (Lunnon),M
+kl_slope,non_essential,0.022210000674943105,entorhinal cortex (Lunnon),M
+kl_slope,core_essential,-0.03509782870198425,entorhinal cortex (Lunnon),M
+dispersion_slope,background median,-0.000020579146729897364,entorhinal cortex (Lunnon),M
+kl_slope,background median,0.00001632534603627949,entorhinal cortex (Lunnon),M
+abs_slope,background median,0.00035571759772046906,entorhinal cortex (Lunnon),M
+dispersion_slope,housekeeping,0.007897803660149855,cerebellum (Lunnon),F
+dispersion_slope,non_essential,-0.05267507387845661,cerebellum (Lunnon),F
+dispersion_slope,core_essential,0.015168052091584712,cerebellum (Lunnon),F
+kl_slope,housekeeping,-0.014867569240082071,cerebellum (Lunnon),F
+kl_slope,non_essential,0.0019888416823357897,cerebellum (Lunnon),F
+kl_slope,core_essential,-0.00956022568355803,cerebellum (Lunnon),F
+dispersion_slope,background median,-0.000029139688249245288,cerebellum (Lunnon),F
+kl_slope,background median,7.698915694466306e-6,cerebellum (Lunnon),F
+abs_slope,background median,0.0002386346944944292,cerebellum (Lunnon),F
+dispersion_slope,housekeeping,-0.01720508200264041,cerebellum (Lunnon),M
+dispersion_slope,non_essential,-0.06898009606025013,cerebellum (Lunnon),M
+dispersion_slope,core_essential,-0.015594123944197262,cerebellum (Lunnon),M
+kl_slope,housekeeping,-0.004384572796768354,cerebellum (Lunnon),M
+kl_slope,non_essential,-0.01654800231914875,cerebellum (Lunnon),M
+kl_slope,core_essential,-0.012539197049663017,cerebellum (Lunnon),M
+dispersion_slope,background median,-0.00010697069659317653,cerebellum (Lunnon),M
+kl_slope,background median,5.449534445217279e-6,cerebellum (Lunnon),M
+abs_slope,background median,0.0002840852270117693,cerebellum (Lunnon),M
+dispersion_slope,housekeeping,-0.10042252723720926,colon (GTEx),F
+dispersion_slope,non_essential,0.002057699486530671,colon (GTEx),F
+dispersion_slope,core_essential,-0.06635797389039096,colon (GTEx),F
+kl_slope,housekeeping,-0.10091843151211116,colon (GTEx),F
+kl_slope,non_essential,0.1695048281391607,colon (GTEx),F
+kl_slope,core_essential,-0.0659312566372709,colon (GTEx),F
+dispersion_slope,background median,0.0001495289211461171,colon (GTEx),F
+kl_slope,background median,0.000019972831297961536,colon (GTEx),F
+abs_slope,background median,0.0001457372609472479,colon (GTEx),F
+dispersion_slope,housekeeping,-0.23550110830051185,colon (GTEx),M
+dispersion_slope,non_essential,0.39186138609514704,colon (GTEx),M
+dispersion_slope,core_essential,-0.1523377418736697,colon (GTEx),M
+kl_slope,housekeeping,-0.1715354969224804,colon (GTEx),M
+kl_slope,non_essential,0.3175461984870449,colon (GTEx),M
+kl_slope,core_essential,-0.10342764750943419,colon (GTEx),M
+dispersion_slope,background median,0.00009534920855917847,colon (GTEx),M
+kl_slope,background median,0.000011888805981437209,colon (GTEx),M
+abs_slope,background median,0.00013330605181187855,colon (GTEx),M
+dispersion_slope,housekeeping,-0.10541343254471874,lung (GTEx),F
+dispersion_slope,non_essential,0.16389048460911176,lung (GTEx),F
+dispersion_slope,core_essential,-0.04986695088396258,lung (GTEx),F
+kl_slope,housekeeping,-0.04792255814580273,lung (GTEx),F
+kl_slope,non_essential,0.16745189147002448,lung (GTEx),F
+kl_slope,core_essential,-0.007690225031153392,lung (GTEx),F
+dispersion_slope,background median,0.00003765792681572857,lung (GTEx),F
+kl_slope,background median,4.1379466256580614e-6,lung (GTEx),F
+abs_slope,background median,0.00010863049196284121,lung (GTEx),F
+dispersion_slope,housekeeping,-0.12278673410751291,lung (GTEx),M
+dispersion_slope,non_essential,0.09533449526277556,lung (GTEx),M
+dispersion_slope,core_essential,-0.0825214318496768,lung (GTEx),M
+kl_slope,housekeeping,-0.07521769365922466,lung (GTEx),M
+kl_slope,non_essential,0.037032942606674196,lung (GTEx),M
+kl_slope,core_essential,-0.0516119907254618,lung (GTEx),M
+dispersion_slope,background median,0.0001249636309790286,lung (GTEx),M
+kl_slope,background median,0.000011434938364495489,lung (GTEx),M
+abs_slope,background median,0.00010115049113196767,lung (GTEx),M

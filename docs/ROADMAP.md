@@ -17,7 +17,7 @@ The order and the rule for each item are argued in `docs/RESEARCH_PLAN.md`.
 
 ## RM35 — The ideas still open on data at hand (Anton, 2026-11-16: "did we investigate all the possible ideas?")
 
-**State:** building (items 1 and 2, the default, since 14:20; smoke jobs R77s, R78s) · **Owner:** lead
+**State:** unattended (items 1 and 2 done: R77, R78; item 3 next, once RM36 is out) · **Owner:** lead
 
 1. **Built-in noise controls:** imprinted loci and X-inactivated CpGs in women sit at half methylation by
    allele, held there by design. Their entropy over age measures noise with no drift toward a new level; the

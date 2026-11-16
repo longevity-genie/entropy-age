@@ -1,0 +1,17 @@
+tissue,women,men
+blood (Hannum),338,318
+cortex (Jaffe),66,147
+whole blood (Lunnon),52,28
+frontal cortex (Lunnon),48,26
+superior temporal gyrus (Lunnon),49,26
+entorhinal cortex (Lunnon),48,23
+cerebellum (Lunnon),45,26
+whole blood (GTEx),9,45
+colon (GTEx),68,156
+testis (GTEx),0,50
+lung (GTEx),63,160
+kidney (GTEx),11,39
+breast (GTEx),38,14
+prostate (GTEx),0,123
+ovary (GTEx),164,0
+skeletal muscle (GTEx),19,28
