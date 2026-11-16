@@ -151,7 +151,10 @@ def _rows(species, tissue, adjustment, p, rows, membership, permutations, seed) 
     sets = membership.filter(pl.col("feature").is_in(p.features))
     table = _matched_sd(tissue_metrics(p, rows), sets, METRICS, permutations, seed)
     return table.with_columns(
-        species=pl.lit(species), tissue=pl.lit(tissue), turnover=pl.lit(TURNOVER[tissue]), adjustment=pl.lit(adjustment)
+        species=pl.lit(species),
+        tissue=pl.lit(tissue),
+        turnover=pl.lit(_STATE.get("turnover", TURNOVER)[tissue]),
+        adjustment=pl.lit(adjustment),
     )
 
 
@@ -159,7 +162,7 @@ def _boot(seed: int) -> list[dict]:
     tissues, membership, size, species = _STATE["tissues"], _STATE["membership"], _STATE["size"], _STATE["species"]
     rng = np.random.default_rng(seed)
     out = []
-    for tissue in TURNOVER:
+    for tissue in _STATE.get("turnover", TURNOVER):
         if (tissue, "covariates") not in tissues:
             continue
         rows = _subsample(rng, tissues[(tissue, "covariates")].x.shape[0], size)
@@ -183,8 +186,10 @@ def _species_inputs(ctx: Context) -> dict[str, tuple[Path, Path]]:
     return out
 
 
-def analyse_species(species, samples, genes, counts, hgnc, gene_sets, n_boot, workers):
+def analyse_species(species, samples, genes, counts, hgnc, gene_sets, n_boot, workers, turnover=None):
     """Every table of one species: tissues, gene mapping, point estimates, resamples, contrasts."""
+    turnover = TURNOVER if turnover is None else turnover
+    _STATE["turnover"] = turnover  # read by _rows and _boot, here and in the workers
     mapping = symbol_ensembl(genes, hgnc)
     protein = set(hgnc.filter(pl.col("protein_coding") & pl.col("ensembl").is_not_null())["ensembl"].to_list())
     ensembl = dict(mapping.select("symbol", "ensembl").iter_rows())
@@ -199,7 +204,7 @@ def analyse_species(species, samples, genes, counts, hgnc, gene_sets, n_boot, wo
     tissues, table = {}, []
     for tissue, sel in samples.with_row_index("row").group_by("tissue", maintain_order=True):
         name = tissue[0]
-        if name not in TURNOVER:
+        if name not in turnover:
             table.append(
                 {
                     "tissue": name,
@@ -216,7 +221,7 @@ def analyse_species(species, samples, genes, counts, hgnc, gene_sets, n_boot, wo
         table.append(
             {
                 "tissue": name,
-                "turnover": TURNOVER[name],
+                "turnover": turnover[name],
                 "animals": sel.height,
                 "used": True,
                 "reason": None,
@@ -238,10 +243,10 @@ def analyse_species(species, samples, genes, counts, hgnc, gene_sets, n_boot, wo
         how="diagonal",
     )
     point = point.with_columns(p_bh=pl.Series(false_discovery_control(point["p_permutation"].to_numpy(), method="bh")))
-    state = {"tissues": tissues, "membership": membership, "size": size, "species": species}
+    state = {"tissues": tissues, "membership": membership, "size": size, "species": species, "turnover": turnover}
     boot = pl.DataFrame(_run_parallel(_boot, [11000 + b for b in range(n_boot)], workers, state))
-    contrasts = class_contrasts(boot, point, TURNOVER, CONTRASTS).with_columns(species=pl.lit(species))
-    intervals = tissue_intervals(boot, TURNOVER).with_columns(species=pl.lit(species))
+    contrasts = class_contrasts(boot, point, turnover, CONTRASTS).with_columns(species=pl.lit(species))
+    intervals = tissue_intervals(boot, turnover).with_columns(species=pl.lit(species))
     genes_table = {
         "species": species,
         "symbols": len(genes),
