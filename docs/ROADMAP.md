@@ -6,7 +6,7 @@ The order and the rule for each item are argued in `docs/RESEARCH_PLAN.md`.
 
 ## RM35 — The ideas still open on data at hand (Anton, 2026-11-16: "did we investigate all the possible ideas?")
 
-State: waits until 2026-11-16 13:45 CET or Anton's word (proposed in chat with that default). Owner: lead.
+**State:** waits until 2026-11-16 (13:45 CET, or Anton's word sooner; items 1 and 2 are the default proposed in chat) · **Owner:** lead
 
 1. **Built-in noise controls:** imprinted loci and X-inactivated CpGs in women sit at half methylation by
    allele, held there by design. Their entropy over age measures noise with no drift toward a new level; the
