@@ -92,6 +92,9 @@ a test with little power), **refuted**.
   neuron and glia proportions in Tet3 mice; (c) one study, 8 mice per tissue; different arrays for Tet1 and Tet3.
 - **Separating test:** S with compression held fixed (R36): the gain stays (+0.010 cortex, +0.013 striatum), so
   (a) is excluded; composition components; a Tet3 knockout on the same platform; sorted neurons.
+- **Gain and loss (R67, R74):** essential island promoters lose methylation faster than other active promoters;
+  Tet3 loss makes them gain (S +0.012-0.014) and Tet1 loss makes them lose (S −0.02), so the faster removal fits
+  Tet3, not Tet1.
 - **Status:** weak (one study); (a) excluded. Dnmt3a W326R (R37) retargets methylation to Polycomb-type look-alikes:
   writers are aimed by chromatin (C2).
 

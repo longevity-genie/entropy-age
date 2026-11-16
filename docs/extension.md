@@ -1950,7 +1950,15 @@ the strata.
   sign of something beyond the chromatin state a reference map records (the state maps come from other people and
   have 15 classes, so finer chromatin may still explain it).
 
-Next (RM32): Tet-deficient cells, where active removal should shrink the remainder.
+**Tet-deficient brain, from runs already made (no new run).** If the faster removal is active demethylation, losing
+the enzyme should make essential promoters gain methylation and lose the shield. Tet3 heterozygous cortex and
+striatum do exactly that: essential promoters gain against their look-alikes (signed shift S +0.012 and +0.014,
+not array compression, R36) and the shield is lost (F +0.16, +0.13; R15, R16). Tet1 does the opposite: in Tet1
+knockout and catalytic-dead cortex essential promoters *lose* methylation against look-alikes (S −0.021 and −0.018,
+p < 10⁻⁷; R35) and the shield strengthens. So the remover at essential promoters in neurons is Tet3 (whose CXXC
+isoform binds unmethylated CpG islands), not Tet1, whose loss is presumably made up for. Both are single studies with
+8 mutant mice, and knockouts show a state, not a rate.
+
 
 Tables: `data/output/equilibrium_drift/` (`pooled_rates`, `per_cpg_gaps`, `identified`).
 

@@ -131,23 +131,6 @@ provenance table per dataset.
   second blood series, a few knockout contrasts, any-cancer and colorectal drift, GTEx smoking and death type.
 - (2) done (R70): cell fractions leave the blood gaps unchanged; dispersion's shrinks by a third.
 
-## RM32 — Drift toward each site's own equilibrium, not toward 0.5
-
-**State:** unattended · **Owner:** lead
-
-Asked by antonkulaga (2026-11-13): methylation repair is not symmetric (maintenance by DNMT1, de novo by DNMT3A/B,
-active loss by TET), so should the Markov model's entropy be adjusted? The model already has per-site maintenance
-and de novo rates and so a per-site equilibrium z (`docs/model.md` §2); the binary-entropy slope assumes drift
-toward 0.5 and misreads sites whose z is far from it, which essential promoters are. Fit z and λ per CpG
-(`fit_relaxation`, z bounded by island status where the age range cannot pin it) in Hannum blood and Jaffe's adult
-cortex; compare essential promoters with look-alikes on the fraction of the way to z, on the divergence from z,
-and on z itself. Answers whether the shield is a slower approach to the same equilibrium or a different
-equilibrium (repair biased toward unmethylated).
-- Done (R67): a different resting level. Essential island promoters gain no faster than look-alikes and lose
-  faster (blood +0.0025, cortex +0.0054 per decade), so they rest lower with less room to drift.
-- Done (R74): within active-TSS chromatin the faster removal remains (blood core +0.006, cortex +0.006-0.007 per
-  decade); the lower resting level is mostly chromatin (four fifths in blood). Next: Tet-deficient cells.
-
 ## RM14 — Natural experiments in chromatin: broken writers, knockouts, edits
 
 **State:** waits until 2026-12-13 (search again for a cohort meeting the rule) · **Owner:** lead

@@ -4,6 +4,7 @@ Newest first.
 
 ## Unreleased
 
+- 2026-11-16: RM32 done: the faster removal at essential promoters fits Tet3 (its loss makes them gain), not Tet1; read from R15, R16, R35, R36, no new run.
 - 2026-11-16: RM28 blocked on desk #40 (apply for a second breast-cancer cohort).
 - 2026-11-14: R66 written up (RM28): SATSA rebuilt from IDATs shows the shield within people and across them; `reprocess_idats --from-pickle`.
 - 2026-11-14: R73 written up (RM33): mouse RRBS, BXD, intervention and Meer aging gaps keep their sign on relative entropy, smaller.
