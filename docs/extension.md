@@ -2068,6 +2068,19 @@ cent12CT450k, as in R38) and adds 11 of them to the covariates of every age slop
 
 Tables: `data/output/composition_gaps/` (`gaps`, `fractions`, `fraction_age`).
 
+### A third rodent cohort: Tabula Muris Senis bulk (roadmap RM4, R75)
+
+Figure `rna_tms` runs the same RNA turnover test on Tabula Muris Senis bulk RNA-seq (GSE132040; 17 organs, 45-56
+mice each, 3-27 months, subsamples of 31 animals). Housekeeping genes against expression-matched genes, spread slope:
+
+* **No shield and no turnover order.** Per organ the gap's interval includes 0 in 15 of 17 (small intestine below,
+  −0.52 to −0.16; pancreas above). Class contrasts lean the other way from the larger mouse atlas (renewing − brain
+  +0.20 here, −0.33 there, p 0.005) and none passes except slow − brain (+0.27, p 0.02).
+* **Reading.** The RNA turnover pattern of the mouse atlas does not replicate in a cohort a third its size per organ.
+  With rat leaning weakly and GTEx showing none, an RNA shield ordered by turnover is not established.
+
+Tables: `data/output/rna_tms/` (`contrasts`, `tissue_intervals`, `point_estimates`).
+
 ## How to test the hypothesis on real data
 
 ```python

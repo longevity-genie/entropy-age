@@ -4,6 +4,7 @@ Newest first.
 
 ## Unreleased
 
+- 2026-11-16: R75 written up (RM4): Tabula Muris Senis bulk shows no RNA shield and no turnover order.
 - `figures rna_tms` (RM4): the RNA turnover test in Tabula Muris Senis bulk (GSE132040, 17 organs, 3-27 months); `analyse_species` takes a turnover map; run R75 planned.
 - 2026-11-16: RM2 done (on relative entropy the mouse array orders the shield by turnover, R68, R73; the muscle cohort with activity data was never found) and RM33 done (per-person `K` and read-level entropy left: P/B/F and PDR already carry those claims); RM3 blocked on desk #28, RM4 unattended, RM19 waits until 2026-12-14.
 - 2026-11-16: RM32 done: the faster removal at essential promoters fits Tet3 (its loss makes them gain), not Tet1; read from R15, R16, R35, R36, no new run.

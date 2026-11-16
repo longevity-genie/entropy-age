@@ -12,6 +12,14 @@ commit it ran, its job ids, its scale and seed, and its result or its failure wi
   adipose −0.195 → −0.028, muscle −0.160 → −0.080; Meer cortex −0.092 → −0.064, heart −0.100 → −0.071, liver −0.356
   → −0.220, lung −0.290 → −0.138.
 
+## R75 — RNA turnover test in Tabula Muris Senis bulk (RM4), 2026-11-16
+
+- Commit aee749c; `figures rna_tms --scale paper --seed 42`; 8 cores, 64 GB; job 6493369, 11 min. GSE132040, 831
+  samples of 17 organs aged 3-27 months; subsample 31 animals.
+- Result, as measured (housekeeping, spread slope, covariates): organ intervals include 0 in 15 of 17 (small
+  intestine −0.52 to −0.16, pancreas +0.08 to +0.46); class contrasts renewing − brain +0.20 (p 0.21), slow −
+  brain +0.27 (p 0.02), others p ≥ 0.25. Tables `data/output/rna_tms/`.
+
 ## R66 — SATSA within-person, rebuilt from IDATs (RM28), 2026-11-14
 
 - R66a: `scripts/reprocess_idats.py` on E-MTAB-7309, 1,072 450k arrays in batches of 100; 4 cores, 64 GB; job

@@ -167,7 +167,8 @@ Left:
   methylation, tested on the rodent atlases (exact ages).
 - **GTEx with more power:** the same-donor design (every tissue of one donor against that donor's
   blood), and subsamples larger than 70 donors in the tissues that allow them.
-- Tabula Muris Senis bulk **GSE132040**, a third rodent cohort.
+- Done (R75): Tabula Muris Senis bulk (GSE132040): no RNA shield and no turnover order; the mouse-atlas pattern
+  does not replicate.
 - Interventions: **GSE280382** (rapamycin and exenatide) and **GSE131754** (eight liver interventions).
 
 ## RM5 — Direct selection test: protection against division count in culture
