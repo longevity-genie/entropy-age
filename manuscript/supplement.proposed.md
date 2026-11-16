@@ -1,0 +1,259 @@
+# Supplementary information
+
+Companion to `paper.md`. Sizes are set minus matched CpGs (same CpG-island status and young-level decile), in SD of
+the drift measure, unless stated otherwise. Run identifiers (R-numbers) refer to the project's run log
+(`docs/RUN_LOG.md`); output paths are relative to the root of the repository at https://github.com/longevity-genie/entropy-age.
+
+## Supplementary Note 1. The metric audit: binary entropy against relative entropy
+
+Binary entropy H(m) measures how far a CpG is from 50 %. At a low-methylated site, a loss of methylation therefore
+counts as a gain in order. Essential promoters lose methylation faster than their look-alikes (main text, gain and loss
+rates), so every entropy gap mixed how far a site moved with which way it moved. The corrected measure is relative
+entropy from the young state, KL(x ‖ m_young) in bits; its age slope counts moves up and down alike. It was added beside
+the old measures, and every result whose headline rested on entropy was rerun with all four measures on the same seeds
+(the old numbers reproduce). Per-person scores (P, B, F, S), clocks, survival, accessibility, and results on |mean
+change| or dispersion already measure distance from a reference and were not affected.
+
+Table S2. Results that rested on binary entropy, old against corrected (housekeeping unless stated).
+
+| result | entropy (old) | relative entropy (corrected) | verdict |
+|---|---|---|---|
+| blood (Hannum), housekeeping / core-essential | −0.35 / −0.23 | −0.15 / −0.09 | kept, about 2.3× smaller |
+| cortex (Jaffe), housekeeping / core-essential | −0.21 / −0.13 | −0.06 / −0.07 | kept, 1.7-3.6× smaller |
+| non-essential genes drift more | blood +0.31, cortex +0.08 | blood +0.13, cortex −0.00 (p 0.94) | blood kept; cortex overturned |
+| Jaffe deposited → reprocessed | −0.22 → −0.15 | −0.07 → −0.09 | steadier across preprocessing |
+| chromatin share removed, blood | 77-84 % | 83-91 % | kept |
+| chromatin share removed, cortex | 43-69 % | 25 % own state, 56 % with sorted ATAC | resized |
+| essentiality beyond chromatin, blood | +0.022 (0.008-0.033) | −0.007 (−0.021, 0.008), p 0.33 | overturned |
+| essentiality beyond chromatin, cortex | +0.018, p 0.08 | +0.022 (0.009-0.040) | kept |
+| sorted CD4+ T cells | −0.22 | −0.015 (p 0.005) | resized; monocytes −0.10 |
+| GTEx whole blood / lung / muscle | −0.29 / −0.27 / −0.07 | −0.14 / −0.09 / −0.00 | kept, about halved |
+| mouse array, renewing tissues | −0.12 to −0.31 | −0.05 to −0.19 | kept |
+| mouse array, post-mitotic and adipose | −0.22 to +0.10 | +0.03 to +0.09, all p ≤ 0.002 | reframed (hypothalamus −0.08) |
+| species, share of 139 groups negative | 96 % (−0.30) | 89 % (−0.13) | kept, resized |
+| species off the floor (10-90 %) | 93 % (−0.24) | 73 % (−0.10) | kept, resized |
+| relative shield grows with lifespan | −2.42, p 0.04 | +1.43, p 0.23 | overturned |
+| no lifespan relation off the floor | −0.014, p 0.48 | +0.004, p 0.84 | kept |
+| mouse RRBS and array series (GSE80672, BXD, six RRBS tissues, Meer) | −0.09 to −0.52 | −0.03 to −0.32 | all keep sign |
+
+Source: `docs/METRIC_AUDIT.md`; runs R68, R73.
+
+## Supplementary Note 2. Statements withdrawn after the audit
+
+Three earlier statements are not made in the paper: (1) essentiality protects beyond chromatin in blood (R58; the
+remainder is entropy-only, and on relative entropy it is cortex's); (2) the shield's share of drift grows with species
+lifespan (R22; +1.43, p 0.23 on relative entropy); (3) a large shield in sorted CD4+ T cells (R44; −0.015 SD on
+relative entropy). Read-level epiallele entropy (R50-R53) is not yet recomputed; the paper quotes its partner measure,
+the share of discordant reads, instead.
+
+## Supplementary Note 3. Further results
+
+**Clocks.** Retraining clocks on simulated change (after Tong et al. 2024) in Hannum blood kept, as a share of the
+original R² with age: published stochastic clocks 0.67 / 0.65 / 0.89 (Horvath / PhenoAge / Zhang 2019); each CpG's own
+direction at a common rate 0.71 / 0.70 / 0.80; undirected noise 0.02 / 0.10 / 0.00; noise damped at shielded promoters
+0.07 / 0.03 / 0.00 (R38). Clocks trained on equal-size pools of shielded, look-alike and random CpGs read age alike (blood
+r 0.884 / 0.882 / 0.885; cortex 0.929 / 0.943 / 0.938), while the shielded clock's acceleration overlapped less with the
+others (blood r 0.63 against 0.80; R33). At equal look-alike drift, faster chronological and stochastic clocks went with a
+stronger shield (partial r −0.15 to −0.29), and the outcome clocks were unrelated to it (PhenoAge −0.07, DunedinPACE 0.00,
+Zhang mortality −0.04; R29). In 11 of 12 published clocks, protected CpGs carry the weight of any CpG with the same slope
+and starting level; DamAge (Ying et al. 2024) alone weights them up (1.66, 1.14-2.36; R64). Eleven blood-cell fractions explain 15.5 % of
+PhenoAge's acceleration and 4.9 % of StocP's (R38).
+
+**Chromatin writers and DNMT3A gain of function.** Blood of carriers against controls (5 composition components;
+R18): Sotos drift B +0.021 (p 10⁻⁴²), F −0.043; other NSD1 variants F −0.039; Weaver F −0.037; Kabuki B +0.011, F
++0.003 (n.s.); CHARGE F −0.012; KMT2D and CHD7 variant carriers ≈ 0. GSE74432 has no ages. Dnmt3a W326R/+ against
+littermates (R37): F −0.53 to −0.61 for essential and housekeeping sets in bone marrow, intestine and liver, +0.56 to
++0.67 for non-essential; S −0.06 to −0.09 and +0.07 to +0.09; B +0.06 to +0.10.
+
+**Tet3 and Tet1 detail.** Tet3 heterozygous against same-chip littermates (R15, R16, R36): housekeeping F +0.17
+(cortex, p 0.006), +0.25 (striatum, p 9·10⁻⁶); core-essential F +0.31, +0.49; core-essential S +0.012 (p 3·10⁻⁴),
++0.014 (p 2·10⁻⁴), with compression held +0.010 (p 0.003), +0.013 (p 0.001). Signed shifts also occur in arms without a
+shield change (GHRKO kidney +0.023), so S alone is not specific. Tet1 knockout / catalytic-dead (R35): housekeeping B
++0.033 / +0.029, F −0.130 / −0.125; core-essential F −0.170; S −0.018. The global correction (R71) dropped some weaker
+Tet3 and GHRKO contrasts (p 0.027-0.036); the strongest Tet3 contrasts survive.
+
+**Mouse interventions and selection tests.** CR in B6D2F1 blood (R8; 12 against 10 mice): housekeeping F +0.025 (p 0.002, 5 components),
+with blood-cell openness matched +0.008 (p 0.07; R55). CR in C57BL/6 crossed sequencing series and is not read. CR
+liver (59 against 36 mice): F −0.008 (p 0.77; R13). Second CR series, young mice, 12 weeks (R56): no aging drift in controls (B −0.003); CR
+changes spare essential promoters (core-essential F −0.090, p 0.006; housekeeping −0.027, p 0.026, lost under the
+global correction). GHRKO liver strengthening was batch (same-chip +0.01, p 0.67). Clonal haematopoiesis (R25): 64
+patients, |F| ≤ 0.022, p ≥ 0.15. Transplant (R57): F core-essential −0.058 (−0.091 to −0.028), housekeeping −0.039,
+non-essential −0.057. Per-mouse shield share grows with age: GSE80672 standard C57BL/6 F −0.052 per 10 months
+(−0.041 with components); BXD liver −0.28 (−0.055 with components) (R8, R9). Chemotherapy in SJLIFE moved B and F in
+opposite directions (alkylating agents B +0.15, F −0.16; anthracyclines B −0.22, F +0.21; R60).
+
+**Reprogramming.** Gill 2022 from IDATs (R65): reprogrammed − failed B housekeeping +0.045, core +0.036,
+non-essential +0.125 (p 0.0002 each); F −0.016 (p 0.25), −0.015 (p 0.35), non-essential −0.060 (p 0.014); Horvath
+skin & blood (Horvath et al. 2018) −0.36 transformed units (p 0.085). Cyclic OSKM in mouse tissues (Browder et al. 2022) changed the shield
+inconsistently, and one cycle in one-year-old mice (Chondronasiou et al. 2022) left too little aging to test.
+Browder cyclic OSKM (R32): muscle F −0.115 (p 0.02), spleen core-essential +0.211 (p 0.001), other tissues n.s. One
+OSKM cycle (R62): no measurable aging between 13 and 52 weeks.
+
+**Species.** Phylogenetic GLS (taxonomy covariance, Pagel's λ) on entropy: housekeeping +0.025 per log lifespan
+(p 0.40). Look-alike drift rate falls with lifespan (exponent −1.42 on entropy, −1.15 on dispersion; R22). Human
+marrow and lymph node reversals are within donor noise (R54). Drift onset (R45): noise
+also builds from early life rather than switching on at maturity: in 68 species-tissue groups, look-alike noise rose
+with age in 84 %, with a late change point in only 6 (at 2.4-18 times the age of maturity), and housekeeping CpGs
+gained noise more slowly in the same animals (median rank correlation with age 0.14 against 0.28).
+
+**Directed loss outside promoters.** Solo-WCGW open-sea CpGs lose methylation 2.7× faster than other open-sea CpGs in
+blood (−0.21 against −0.08 percentage points per decade, p 4·10⁻⁵), none in cortex (R14); not part of the shield claim.
+
+**Accessibility (R23, R24, R27, ATAC variance).** Blood bulk ATAC (157 donors): housekeeping −0.048 SD (p 0.02) with
+components, −0.031 raw (p 0.14). Cortical snATAC: core-essential +0.07 to +0.23 SD in 6 of 7 cell types. Hippocampus:
+signs depend on adjustment.
+
+**RNA.** Housekeeping minus matched expression spread gain (mean over class): renewing GTEx −0.08, mouse −0.29, rat
+−0.10; brain +0.06, +0.01, −0.04. Tabula Muris Senis (R75): 15 of 17 organ intervals include 0; renewing − brain +0.20
+(p 0.21). Methylation-expression spread coupling (R43): mean |r| above null by 0.015-0.022.
+
+**Probe design and preprocessing (R20, R61).** The two probe designs of the 450k array differ in range, and
+essential-promoter CpGs are type I more often (42-45 % against 35 %). Adding design to the matching strata reduced
+blood's gap by about a sixth, moved cortex's by under 0.01 SD and changed no sign. Masking unreliable probes (Zhou et
+al. 2017) moved no essential-set gap by more than 0.012 SD and the non-essential gaps by up to 0.03 (Supplementary Fig.
+S13). We rebuilt Jaffe's cortex series from its 675 raw arrays with a SeSAMe-like pipeline; the housekeeping
+relative-entropy gap moved from −0.07 (deposited) to −0.09 SD (reprocessed), although single CpGs' slopes agreed only
+at r 0.56-0.82 between the two versions (Supplementary Fig. S12). Matching each set to look-alikes cancels such shifts.
+In this one rebuild the housekeeping gap moved by 0.07 SD on binary entropy and 0.02 on relative entropy; judging from
+it, a gap's size carries roughly ±0.05 SD of preprocessing uncertainty.
+
+**Mouse array tissues (GSE279437; R68a).** Housekeeping gap on relative entropy: white blood cells −0.08 SD, colon
+−0.18, spleen −0.19, kidney −0.18 and liver −0.05; skeletal muscle +0.09, heart +0.08, frontal cortex +0.07,
+hippocampus +0.03 and adipose tissue +0.03; the hypothalamus, with four aged controls, −0.08.
+
+**Health states and outcomes.** Cross-sectional (R39): 19 of 522 effects pass FDR; schizophrenia cortex F +0.57 SD
+(5 components); smoking lung S −0.67 raw; Alzheimer's none. Vitality 90+ (R42): positive-control clocks fail, so
+uninformative. MESA monocytes (R44): plaque and calcium track DunedinPACE (+0.37 per SD), not the shield. Per-person
+scores against confounders (R60): slide explains 36 % of B, 23 % of F, 20 % of S (13 % by chance); smoking moves S only.
+
+**Within one person, deposited betas (R52).** Divergence per year housekeeping −0.017 (p 0.001), core-essential
++0.013 (p 0.10); within-person F slope −0.14 per decade (−0.23 to −0.05); B +0.03 (spans 0). Positive control on first
+draws kept a third of Hannum's dispersion gap (−0.12) and none of its entropy gap.
+
+## Supplementary figures
+
+| figure | file | content |
+|---|---|---|
+| S1 | `docs/figures/global_fdr.png` | one BH correction over 7,626 tests (R71) |
+| S2 | `docs/figures/drift_hotspots.png` | region classes of the fastest-rising spread (R72) |
+| S3 | `docs/figures/mmc_interventions.png` | consortium interventions incl. Tet3 (R13, R15, R16) |
+| S4 | `docs/figures/tet1_cortex.png` | Tet1 knockout and catalytic-dead cortex (R35) |
+| S5 | `docs/figures/composition_gaps.png` | 11 blood-cell fractions held (R70) |
+| S6 | `docs/figures/mouse_tissues.png` | 11 mouse tissues, turnover classes (R68a) |
+| S7 | `docs/figures/species_floor.png` | species shield off the 0 % floor (R59, R68c) |
+| S8 | `docs/figures/gtex_tissues.png` | GTEx nine tissues (R68d) |
+| S9 | `docs/figures/meer_tissues.png` | four mouse tissues by RRBS (R63, R73) |
+| S10 | `docs/figures/sorted_cells.png` | sorted monocytes and CD4+ T cells (R44, R68b) |
+| S11 | `docs/figures/read_level.png` | read-level WGBS, WBC, cfDNA, sorted cell types (R50-R53) |
+| S12 | `docs/figures/reprocessed_jaffe.png` | Jaffe deposited vs rebuilt from IDATs (R61) |
+| S13 | `docs/figures/probe_robustness.png` | probe design and probe mask (R20) |
+| S14 | `docs/figures/passaged_cells.png`, `passaged_cells_sturm.png` | culture over doublings (R1 and earlier) |
+| S15 | `docs/figures/essentiality_gradient.png` | essentiality beyond chromatin (R58, R68b) |
+| S16 | `docs/figures/gill_reprogramming.png` | transient reprogramming (R65) |
+| S17 | `docs/figures/hsct_bottleneck.png`, `chip_methylation.png`, `cr_chromatin.png` | selection tests (R57, R25, R55) |
+| S18 | `docs/figures/stochastic_component.png`, `own_clocks.png` | what clocks read (R38, R33) |
+| S19 | `docs/figures/rna_tms.png`, `rna_gtex.png`, `rna_rodents.png` | RNA tests (R75 and earlier) |
+| S20 | `docs/figures/sjlife_deaths.png` | SJLIFE deaths (R48) |
+| S21 | `docs/figures/syndromes.png`, `dnmt3a_gain.png` | chromatin writers, DNMT3A W326R (R18, R37) |
+
+## Supplementary Table S1. Datasets
+
+| dataset | accession | platform | values |
+|---|---|---|---|
+| Hannum blood, 656 people | GSE40279 | 450k | deposited |
+| Jaffe prefrontal cortex | GSE74193 | 450k | deposited; rebuilt from IDATs (R61) |
+| Lunnon blood and four brain regions | GSE59685 | 450k | deposited |
+| GSE41037 blood | GSE41037 | 27k | deposited |
+| GTEx nine tissues | GSE213478 | EPIC | deposited (noob + BMIQ) |
+| Muscle fibres | GSE304045 | EPIC v2 | deposited |
+| SATSA twins, longitudinal | E-MTAB-7309 / S-BSST1206 | 450k | deposited (R52); rebuilt from IDATs (R66) |
+| Gill 2022 transient reprogramming | GSE165179 | EPIC | rebuilt from IDATs (R65) |
+| Cellular Lifespan Study fibroblasts | GSE179847 | EPIC | deposited |
+| Endicott primary cells | GSE197512 | EPIC | deposited |
+| EPIC-Italy incident cancer | GSE51032 | 450k | deposited |
+| SJLIFE survivors | GSE314261 | EPIC | deposited |
+| MESA sorted monocytes, CD4+ T cells | GSE56046, GSE56581 | 450k | deposited |
+| Vitality 90+ survival | GSE68194 | 450k | deposited |
+| Chromatin-writer syndromes | GSE74432, GSE97362 | 450k | deposited |
+| Stem-cell transplant series | Mendeley Data, https://doi.org/10.17632/j5krtjfj6y.1 | 450k/EPIC | deposited |
+| Loyfer 2023 WGBS | GSE186458 | WGBS | authors' read files, our per-read summaries |
+| Mammalian Methylation Consortium (65 species; interventions incl. Tet3) | GSE223748 | Mammal40 | deposited |
+| Huang 11 mouse tissues | GSE279437 | Mammal320 | deposited |
+| Petkovich mouse blood | GSE80672 | RRBS | deposited |
+| CR blood replication | GSE282661 | Mammal320 | deposited |
+| Mouse RRBS six tissues | GSE120132 | RRBS | deposited |
+| Meer 2018 four tissues | GSE121141 | RRBS | deposited |
+| BXD liver | GSE199979 | mammalian methylation array (40k) | deposited |
+| Browder 2022 cyclic OSKM | GSE190665 | Mammal40 | deposited |
+| Chondronasiou 2022 one OSKM cycle | GSE156557 | RRBS | deposited |
+| Tet1 cortex | GSE271375 | MM285 | deposited |
+| Dnmt3a gain of function | GSE324160 | mouse array | deposited |
+| Clonal haematopoiesis | GSE315366 | EPIC | deposited |
+| ImmGen ATAC (mouse blood cells) | GSE100738 | ATAC-seq | deposited peaks |
+| Sorted neuron/glia chromatin | GSE96614 | ATAC-seq | deposited |
+| Reference epigenomes | Roadmap E062, E030, E073 | ChromHMM | deposited |
+| Blood ATAC (Morandini 2024) | GSE193140 | ATAC-seq | deposited |
+| Cortical snATAC (Catching 2026) | Zenodo, https://doi.org/10.5281/zenodo.18394349 | snATAC | deposited |
+| Hippocampal snATAC | GSE278576 | snATAC | deposited |
+| Rodent RNA atlases | GSE314817, GSE314970 | RNA-seq | deposited counts |
+| Tabula Muris Senis bulk | GSE132040 | RNA-seq | deposited |
+| GTEx RNA | GTEx v10 | RNA-seq | deposited |
+| DepMap CRISPR gene effect | DepMap 24Q4 Public, https://doi.org/10.25452/figshare.plus.27993248.v1 | CRISPR screens | deposited |
+| GTEx expression breadth | GTEx v8 gene median TPM | RNA-seq | deposited |
+
+Source: `docs/PROVENANCE.md`, `docs/extension.md`.
+
+**Annotation and quality rules.** On the 450k and EPIC arrays a promoter CpG is one the Illumina 450k manifest (GPL13534 v1.1; GRCh37 positions) assigns to TSS1500, TSS200, 5'UTR or first exon of a gene, on an autosome; CpG-island status is the manifest's UCSC island relation, and EPIC series use the 450k promoter CpGs they share. Mouse array series use the GPL32543 platform table, which maps every probe to mm10 with a promoter and a CpG-island flag; human gene sets reach mouse genes through MGI's mouse-human homology report (HOM_MouseHumanSequence.rpt). In RRBS series a promoter CpG lies from 1,500 bp upstream to 500 bp downstream of an NCBI RefSeq transcription start in UCSC's mm10 tables, with UCSC's CpG-island track. The SATSA rebuild ran methylprep 1.7.1 in SeSAMe-like mode (pOOBAH detection masking) on all 1,072 arrays and removed no sample; a CpG was dropped when it was masked or missing in any draw, leaving 58,340 CpGs, and each person's consecutive draws formed the 628 pairs of 444 people.
+
+## Supplementary Table S3. Traceability: claim → run → output table
+
+| claim in paper.md | claim id | run(s) | output table(s) |
+|---|---|---|---|
+| Blood/cortex gaps on relative entropy (−0.15, −0.09; −0.06, −0.07; non-essential +0.13, −0.00) | C1 | R68a | `data/output/tissue_contrast/point_estimates.csv` |
+| Blood minus cortex, relative entropy (−0.09; −0.02) | C1 | R68a | `data/output/tissue_contrast/tissue_differences.csv` |
+| Same-donor dispersion gaps; per-person 86-91 % | C1 | R3/tissues, R2 | `data/output/tissue_contrast/`, `data/output/per_person/same_donor_turnover.csv` |
+| Placebo sets | C1 | R69 | `data/output/placebo_sets/summary.csv` |
+| Cell fractions held | C1 | R70 | `data/output/composition_gaps/gaps.csv` |
+| Sorted monocytes −0.10, CD4+ −0.015 | C1 | R44, R68b | `data/output/sorted_cells/shield.csv` |
+| Probe design and mask | C1 | R20, R68b | `data/output/probe_robustness/gaps.csv` |
+| Jaffe from IDATs | C1 | R61, R68b | `data/output/reprocessed_jaffe/gaps.csv`, `per_cpg_agreement.csv` |
+| Read-level discordance | C1 | R50, R51, R53 | `data/output/read_level/` |
+| Global FDR, 7,626 tests | all | R71 | `data/output/global_fdr/by_folder.csv` |
+| GTEx tissues | C1 | R68d | `data/output/gtex_tissues/point_estimates.csv` |
+| Mouse array 11 tissues, renewing − post-mitotic −0.19 | C1, C2 | R68a | `data/output/mouse_tissues/point_estimates.csv`, `contrasts.csv` |
+| RRBS and BXD gaps | C1 | R73 | `data/output/meer_tissues/aging_gaps.csv`, `mouse_rrbs_tissues/aging_gaps.csv`, `interventions/aging_gaps.csv`, `bxd_liver/aging_gaps.csv` |
+| Culture, constant share | C3 | Endicott and Sturm runs (pre-R-numbering), R1 | `data/output/passaged_cells/coupling_across_lines`, `data/output/passaged_cells_sturm/` |
+| Species 89 % / 73 % off floor; lifespan +0.004 | C6 | R12, R59, R68c | `data/output/species_floor/species_gaps.parquet`, `data/output/species_floor/lifespan_fits.csv`, `share_off_floor.csv` |
+| Phylogenetic GLS | C6 | species_phylo | `data/output/species_phylo/lifespan_fits` |
+| Gain and loss rates; resting level | C2, C4 | R67 | `data/output/equilibrium_drift/pooled_rates.csv`, `per_cpg_gaps.csv`, `identified.csv` |
+| Faster loss within active TSS | C2 | R74 | `data/output/equilibrium_drift/pooled_rates.csv`, `per_cpg_gaps.csv` |
+| Tet3 F and S | C4 | R13, R15, R16, R36 | `data/output/mmc_interventions/effects.csv` |
+| Tet1 | C4 | R35 | `data/output/tet1_cortex/effects.csv` |
+| DNMT3A W326R | C4 | R37 | `data/output/dnmt3a_gain/` |
+| Chromatin-writer syndromes | C5 | R18 | `data/output/syndromes/effects` |
+| Chromatin share 83-91 % blood, 25 %/56 % cortex | C2 | R3, R4, R68b | `data/output/chromatin_match/matched_gaps.csv` |
+| Essentiality beyond chromatin | C2 | R58, R68b | `data/output/essentiality_gradient/gradient.csv` |
+| Drift hotspots, Polycomb 2.1× | C1 | R72 | `data/output/drift_hotspots/enrichment.csv` |
+| SATSA from IDATs | C1 | R66 | `data/output/satsa_idats/gaps.csv`, `cross_sectional.csv`, `person_slopes.csv` |
+| SATSA deposited, within-person F slope | C1 | R52 | `data/output/within_person/` |
+| CHIP null | C3 | R25 | `data/output/chip_methylation/effects` |
+| Transplant bottleneck | C3 | R57 | `data/output/hsct_bottleneck/effects` |
+| CR blood, openness-matched, liver, second series | C3 | R8, R55, R13, R56 | `data/output/interventions/intervention_effects`, `cr_chromatin/intervention_effects`, `mmc_interventions/effects.csv`, `cr_blood_replication/effects` |
+| Lifespan scaling of look-alike drift | C6 | R22 | `data/output/species_shield/lifespan_fits.csv` |
+| Drift onset | — | R45 | `data/output/drift_onset/` |
+| Transient reprogramming | C10 | R65 | `data/output/gill_reprogramming/effects.csv` |
+| Cyclic / one-cycle OSKM | C10 | R32, R62 | `data/output/reprogramming/effects`, `data/output/reprogramming_rrbs/effects` |
+| RNA (GTEx, rodents, TMS) | — | earlier rna runs, R75 | `data/output/rna_gtex/`, `rna_rodents/`, `rna_tms/contrasts` |
+| Methylation-expression spread | — | R43 | `data/output/meth_expr_spread/` |
+| Accessibility | C11 | R23, R24, R27, atac_variance | `data/output/atac_variance/gaps`, `atac_cortex/gaps`, `atac_hippocampus/` |
+| Clocks read direction | C8, C9 | R38, R33, R29, R64 | `data/output/stochastic_component/`, `own_clocks/`, `shield_clocks/correlations`, `clock_weights/summary` |
+| Breast-cancer lead (1.43; 1.62/1.66; adjusted 1.44) | C12 | R46, R46b | `data/output/incident_cancer/effects.csv`, `per_person.csv` |
+| B beside DunedinPACE/PhenoAge (1.44), SJLIFE (1.01) | C12 | R48, R48b | `data/output/sjlife_deaths/`, `data/output/incident_cancer/per_person.csv` (joint models fitted ad hoc from the per-person tables; not in a module) |
+
+## Open items for the authors
+
+- Reference metadata marked [verify] in `paper.md` (authors, journals or years not given in the project docs).
+- Read-level epiallele entropy and the per-person `K` measure are not yet recomputed on relative entropy.
+- Joint models with DunedinPACE/PhenoAge (EPIC-Italy, SJLIFE) and the clock-composition shares (R38 addendum) were run
+  ad hoc from per-person tables and are not yet in the pipeline.
+- The culture runs (GSE197512) predate the R-numbered run log; their run identifiers are not recorded there.

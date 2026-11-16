@@ -224,3 +224,11 @@ __marimo__/
 /data/input/
 /data/interim/
 /data/output/**/*.parquet
+
+# manuscript-skills runs, releases and their builds (large; Drive is the release channel)
+/manuscript/runs/
+/manuscript/v*/
+/manuscript/*.dashboard.html
+/manuscript/*.review.docx
+/manuscript/*.changes.xlsx
+/manuscript/.manuscript-skills.yaml

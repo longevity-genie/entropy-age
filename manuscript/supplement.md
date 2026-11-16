@@ -2,7 +2,7 @@
 
 Companion to `paper.md`. Sizes are set minus matched CpGs (same CpG-island status and young-level decile), in SD of
 the drift measure, unless stated otherwise. Run identifiers (R-numbers) refer to the project's run log
-(`docs/RUN_LOG.md`); output paths are relative to the repository root.
+(`docs/RUN_LOG.md`); output paths are relative to the root of the repository at https://github.com/longevity-genie/entropy-age.
 
 ## Supplementary Note 1. The metric audit: binary entropy against relative entropy
 
@@ -20,14 +20,14 @@ Table S2. Results that rested on binary entropy, old against corrected (housekee
 |---|---|---|---|
 | blood (Hannum), housekeeping / core-essential | −0.35 / −0.23 | −0.15 / −0.09 | kept, about 2.3× smaller |
 | cortex (Jaffe), housekeeping / core-essential | −0.21 / −0.13 | −0.06 / −0.07 | kept, 1.7-3.6× smaller |
-| non-essential genes drift more | blood +0.31, cortex +0.08 | blood +0.14, cortex −0.00 (p 0.94) | blood kept; cortex overturned |
+| non-essential genes drift more | blood +0.31, cortex +0.08 | blood +0.13, cortex −0.00 (p 0.94) | blood kept; cortex overturned |
 | Jaffe deposited → reprocessed | −0.22 → −0.15 | −0.07 → −0.09 | steadier across preprocessing |
 | chromatin share removed, blood | 77-84 % | 83-91 % | kept |
 | chromatin share removed, cortex | 43-69 % | 25 % own state, 56 % with sorted ATAC | resized |
 | essentiality beyond chromatin, blood | +0.022 (0.008-0.033) | −0.007 (−0.021, 0.008), p 0.33 | overturned |
 | essentiality beyond chromatin, cortex | +0.018, p 0.08 | +0.022 (0.009-0.040) | kept |
 | sorted CD4+ T cells | −0.22 | −0.015 (p 0.005) | resized; monocytes −0.10 |
-| GTEx whole blood / lung / muscle | −0.29 / −0.27 / −0.07 | −0.14 / −0.09 / −0.01 | kept, about halved |
+| GTEx whole blood / lung / muscle | −0.29 / −0.27 / −0.07 | −0.14 / −0.09 / −0.00 | kept, about halved |
 | mouse array, renewing tissues | −0.12 to −0.31 | −0.05 to −0.19 | kept |
 | mouse array, post-mitotic and adipose | −0.22 to +0.10 | +0.03 to +0.09, all p ≤ 0.002 | reframed (hypothalamus −0.08) |
 | species, share of 139 groups negative | 96 % (−0.30) | 89 % (−0.13) | kept, resized |
@@ -55,8 +55,8 @@ direction at a common rate 0.71 / 0.70 / 0.80; undirected noise 0.02 / 0.10 / 0.
 r 0.884 / 0.882 / 0.885; cortex 0.929 / 0.943 / 0.938), while the shielded clock's acceleration overlapped less with the
 others (blood r 0.63 against 0.80; R33). At equal look-alike drift, faster chronological and stochastic clocks went with a
 stronger shield (partial r −0.15 to −0.29), and the outcome clocks were unrelated to it (PhenoAge −0.07, DunedinPACE 0.00,
-Zhang mortality −0.04; R29). In 11 of 12 published clocks protected CpGs carry the weight of any CpG with the same slope
-and starting level; DamAge alone weights them up (1.66, 1.14-2.36; R64). Eleven blood-cell fractions explain 15.5 % of
+Zhang mortality −0.04; R29). In 11 of 12 published clocks, protected CpGs carry the weight of any CpG with the same slope
+and starting level; DamAge (Ying et al. 2024) alone weights them up (1.66, 1.14-2.36; R64). Eleven blood-cell fractions explain 15.5 % of
 PhenoAge's acceleration and 4.9 % of StocP's (R38).
 
 **Chromatin writers and DNMT3A gain of function.** Blood of carriers against controls (5 composition components;
@@ -72,9 +72,9 @@ shield change (GHRKO kidney +0.023), so S alone is not specific. Tet1 knockout /
 +0.033 / +0.029, F −0.130 / −0.125; core-essential F −0.170; S −0.018. The global correction (R71) dropped some weaker
 Tet3 and GHRKO contrasts (p 0.027-0.036); the strongest Tet3 contrasts survive.
 
-**Mouse interventions and selection tests.** CR in B6D2F1 blood (R8): housekeeping F +0.025 (p 0.002, 5 components),
+**Mouse interventions and selection tests.** CR in B6D2F1 blood (R8; 12 against 10 mice): housekeeping F +0.025 (p 0.002, 5 components),
 with blood-cell openness matched +0.008 (p 0.07; R55). CR in C57BL/6 crossed sequencing series and is not read. CR
-liver: F −0.008 (p 0.77; R13). Second CR series, young mice, 12 weeks (R56): no aging drift in controls (B −0.003); CR
+liver (59 against 36 mice): F −0.008 (p 0.77; R13). Second CR series, young mice, 12 weeks (R56): no aging drift in controls (B −0.003); CR
 changes spare essential promoters (core-essential F −0.090, p 0.006; housekeeping −0.027, p 0.026, lost under the
 global correction). GHRKO liver strengthening was batch (same-chip +0.01, p 0.67). Clonal haematopoiesis (R25): 64
 patients, |F| ≤ 0.022, p ≥ 0.15. Transplant (R57): F core-essential −0.058 (−0.091 to −0.028), housekeeping −0.039,
@@ -84,13 +84,17 @@ opposite directions (alkylating agents B +0.15, F −0.16; anthracyclines B −0
 
 **Reprogramming.** Gill 2022 from IDATs (R65): reprogrammed − failed B housekeeping +0.045, core +0.036,
 non-essential +0.125 (p 0.0002 each); F −0.016 (p 0.25), −0.015 (p 0.35), non-essential −0.060 (p 0.014); Horvath
-skin & blood −0.36 transformed units (p 0.085). Browder cyclic OSKM (R32): muscle F −0.115 (p 0.02), spleen
-core-essential +0.211 (p 0.001), other tissues n.s. One OSKM cycle (R62): no measurable aging between 13 and 52 weeks.
+skin & blood (Horvath et al. 2018) −0.36 transformed units (p 0.085). Cyclic OSKM in mouse tissues (Browder et al. 2022) changed the shield
+inconsistently, and one cycle in one-year-old mice (Chondronasiou et al. 2022) left too little aging to test.
+Browder cyclic OSKM (R32): muscle F −0.115 (p 0.02), spleen core-essential +0.211 (p 0.001), other tissues n.s. One
+OSKM cycle (R62): no measurable aging between 13 and 52 weeks.
 
 **Species.** Phylogenetic GLS (taxonomy covariance, Pagel's λ) on entropy: housekeeping +0.025 per log lifespan
 (p 0.40). Look-alike drift rate falls with lifespan (exponent −1.42 on entropy, −1.15 on dispersion; R22). Human
-marrow and lymph node reversals are within donor noise (R54). Drift onset (R45): noise rises in 84 % of 68 groups;
-change point in 6, at 2.4-18 times the age of maturity.
+marrow and lymph node reversals are within donor noise (R54). Drift onset (R45): noise
+also builds from early life rather than switching on at maturity: in 68 species-tissue groups, look-alike noise rose
+with age in 84 %, with a late change point in only 6 (at 2.4-18 times the age of maturity), and housekeeping CpGs
+gained noise more slowly in the same animals (median rank correlation with age 0.14 against 0.28).
 
 **Directed loss outside promoters.** Solo-WCGW open-sea CpGs lose methylation 2.7× faster than other open-sea CpGs in
 blood (−0.21 against −0.08 percentage points per decade, p 4·10⁻⁵), none in cortex (R14); not part of the shield claim.
@@ -102,6 +106,20 @@ signs depend on adjustment.
 **RNA.** Housekeeping minus matched expression spread gain (mean over class): renewing GTEx −0.08, mouse −0.29, rat
 −0.10; brain +0.06, +0.01, −0.04. Tabula Muris Senis (R75): 15 of 17 organ intervals include 0; renewing − brain +0.20
 (p 0.21). Methylation-expression spread coupling (R43): mean |r| above null by 0.015-0.022.
+
+**Probe design and preprocessing (R20, R61).** The two probe designs of the 450k array differ in range, and
+essential-promoter CpGs are type I more often (42-45 % against 35 %). Adding design to the matching strata reduced
+blood's gap by about a sixth, moved cortex's by under 0.01 SD and changed no sign. Masking unreliable probes (Zhou et
+al. 2017) moved no essential-set gap by more than 0.012 SD and the non-essential gaps by up to 0.03 (Supplementary Fig.
+S13). We rebuilt Jaffe's cortex series from its 675 raw arrays with a SeSAMe-like pipeline; the housekeeping
+relative-entropy gap moved from −0.07 (deposited) to −0.09 SD (reprocessed), although single CpGs' slopes agreed only
+at r 0.56-0.82 between the two versions (Supplementary Fig. S12). Matching each set to look-alikes cancels such shifts.
+In this one rebuild the housekeeping gap moved by 0.07 SD on binary entropy and 0.02 on relative entropy; judging from
+it, a gap's size carries roughly ±0.05 SD of preprocessing uncertainty.
+
+**Mouse array tissues (GSE279437; R68a).** Housekeeping gap on relative entropy: white blood cells −0.08 SD, colon
+−0.18, spleen −0.19, kidney −0.18 and liver −0.05; skeletal muscle +0.09, heart +0.08, frontal cortex +0.07,
+hippocampus +0.03 and adipose tissue +0.03; the hypothalamus, with four aged controls, −0.08.
 
 **Health states and outcomes.** Cross-sectional (R39): 19 of 522 effects pass FDR; schizophrenia cortex F +0.57 SD
 (5 components); smoking lung S −0.67 raw; Alzheimer's none. Vitality 90+ (R42): positive-control clocks fail, so
@@ -157,11 +175,11 @@ draws kept a third of Hannum's dispersion gap (−0.12) and none of its entropy 
 | MESA sorted monocytes, CD4+ T cells | GSE56046, GSE56581 | 450k | deposited |
 | Vitality 90+ survival | GSE68194 | 450k | deposited |
 | Chromatin-writer syndromes | GSE74432, GSE97362 | 450k | deposited |
-| Stem-cell transplant series | Mendeley Data j5krtjfj6y | 450k/EPIC | deposited |
+| Stem-cell transplant series | Mendeley Data, https://doi.org/10.17632/j5krtjfj6y.1 | 450k/EPIC | deposited |
 | Loyfer 2023 WGBS | GSE186458 | WGBS | authors' read files, our per-read summaries |
 | Mammalian Methylation Consortium (65 species; interventions incl. Tet3) | GSE223748 | Mammal40 | deposited |
-| Huang 11 mouse tissues | GSE279437 | Mammal40 | deposited |
-| Petkovich / Thompson mouse blood | GSE80672 | RRBS | deposited |
+| Huang 11 mouse tissues | GSE279437 | Mammal320 | deposited |
+| Petkovich mouse blood | GSE80672 | RRBS | deposited |
 | CR blood replication | GSE282661 | Mammal320 | deposited |
 | Mouse RRBS six tissues | GSE120132 | RRBS | deposited |
 | Meer 2018 four tissues | GSE121141 | RRBS | deposited |
@@ -174,12 +192,14 @@ draws kept a third of Hannum's dispersion gap (−0.12) and none of its entropy 
 | ImmGen ATAC (mouse blood cells) | GSE100738 | ATAC-seq | deposited peaks |
 | Sorted neuron/glia chromatin | GSE96614 | ATAC-seq | deposited |
 | Reference epigenomes | Roadmap E062, E030, E073 | ChromHMM | deposited |
-| Blood ATAC (Morandini 2023) | GSE193140 | ATAC-seq | deposited |
-| Cortical snATAC (Catching 2026) | Zenodo 18394349 | snATAC | deposited |
+| Blood ATAC (Morandini 2024) | GSE193140 | ATAC-seq | deposited |
+| Cortical snATAC (Catching 2026) | Zenodo, https://doi.org/10.5281/zenodo.18394349 | snATAC | deposited |
 | Hippocampal snATAC | GSE278576 | snATAC | deposited |
 | Rodent RNA atlases | GSE314817, GSE314970 | RNA-seq | deposited counts |
 | Tabula Muris Senis bulk | GSE132040 | RNA-seq | deposited |
 | GTEx RNA | GTEx v10 | RNA-seq | deposited |
+| DepMap CRISPR gene effect | DepMap 24Q4 Public, https://doi.org/10.25452/figshare.plus.27993248.v1 | CRISPR screens | deposited |
+| GTEx expression breadth | GTEx v8 gene median TPM | RNA-seq | deposited |
 
 Source: `docs/PROVENANCE.md`, `docs/extension.md`.
 
@@ -201,7 +221,7 @@ Source: `docs/PROVENANCE.md`, `docs/extension.md`.
 | Mouse array 11 tissues, renewing − post-mitotic −0.19 | C1, C2 | R68a | `data/output/mouse_tissues/point_estimates.csv`, `contrasts.csv` |
 | RRBS and BXD gaps | C1 | R73 | `data/output/meer_tissues/aging_gaps.csv`, `mouse_rrbs_tissues/aging_gaps.csv`, `interventions/aging_gaps.csv`, `bxd_liver/aging_gaps.csv` |
 | Culture, constant share | C3 | Endicott and Sturm runs (pre-R-numbering), R1 | `data/output/passaged_cells/coupling_across_lines`, `data/output/passaged_cells_sturm/` |
-| Species 89 % / 73 % off floor; lifespan +0.004 | C6 | R12, R59, R68c | `data/output/species_shield/species_gaps.csv`, `data/output/species_floor/lifespan_fits.csv`, `share_off_floor.csv` |
+| Species 89 % / 73 % off floor; lifespan +0.004 | C6 | R12, R59, R68c | `data/output/species_floor/species_gaps.parquet`, `data/output/species_floor/lifespan_fits.csv`, `share_off_floor.csv` |
 | Phylogenetic GLS | C6 | species_phylo | `data/output/species_phylo/lifespan_fits` |
 | Gain and loss rates; resting level | C2, C4 | R67 | `data/output/equilibrium_drift/pooled_rates.csv`, `per_cpg_gaps.csv`, `identified.csv` |
 | Faster loss within active TSS | C2 | R74 | `data/output/equilibrium_drift/pooled_rates.csv`, `per_cpg_gaps.csv` |

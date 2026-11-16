@@ -4,6 +4,7 @@ Newest first.
 
 ## Unreleased
 
+- 2026-11-16: manuscript round v0.1 (RM36): manuscript-improve run, 242 edits applied to `manuscript/paper.md` and `supplement.md`, corrected versions `*.proposed.md`; released to the authors on Drive.
 - 2026-11-16: R77 imprinted and X-inactive loci are protected from drift in blood (−0.51, −0.29 SD), not in cortex; R78 no sex difference in drift or the shield.
 - 2026-11-16: `manuscript/paper.md` and `supplement.md`, the first full draft on the corrected measure (RM36); PROVENANCE: BXD liver is on the mammalian array, not RRBS.
 - 2026-11-16: `allelic_controls` and `sex_drift` (RM35 items 1 and 2): imprinted and X-inactivated loci as a noise floor; drift and the shield by sex.
