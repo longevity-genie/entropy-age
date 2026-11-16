@@ -3,6 +3,23 @@
 Owned by the runner seat (`docs/seats/RUNNER.md`): one entry per run, newest first, with its inputs, the
 commit it ran, its job ids, its scale and seed, and its result or its failure with the cause.
 
+## R79 — hotspots of rising disorder across mammals (RM35 item 3), 2026-11-17
+
+- Commit eb834c1; `figures species_hotspots --scale paper --seed 42`; 4 cores, 96 GB; job 6495752, 1 h 36 min.
+  139 species-tissue groups of GSE223748 (the `species_shield` groups), 27,889 autosomal mapped CpGs; top 5 % per
+  group on relative-entropy slope and on dispersion slope; null: each group's labels shuffled within its young-level
+  deciles, 200 draws.
+- Result, as measured: hotspots are barely shared. CpGs hot in ≥ 10 groups: 6,926 against 6,585 expected (1.05×,
+  relative entropy), 6,388 against 5,190 (1.23×, dispersion); hot in half the groups: 3 CpGs (relative entropy), 0
+  (dispersion). Mean pairwise rank correlation of the slopes between groups 0.06 (relative entropy) and 0.03
+  (dispersion); higher in the same tissue across orders (0.12) than in the same order across tissues (0.07). The
+  CpGs hot in most groups are CpG islands of developmental Polycomb targets: Tlx3 (two CpGs, 66-72 groups), Hoxa11
+  (71), Lhfpl4 (74, 65), Celf6 (67), Runx1 (66), Prdm13 (65), all low-methylated when young.
+- Reading: across mammals the place of age drift is mostly specific to a species and tissue; tissue shares more
+  than phylogeny. The small shared tail is the Polycomb developmental islands that universal clocks are built on
+  (Lu 2023), the programme R72 found in human blood. No universal noise hotspot outside it. Tables
+  `data/output/species_hotspots/`.
+
 ## R77 — loci held at one half by allele as a noise floor (RM35 item 1), 2026-11-16
 
 - Commit dc4a72a; `figures allelic_controls --scale paper --seed 42`, ENTROPY_AGE_BOOT=50; 8 cores, 64 GB; job

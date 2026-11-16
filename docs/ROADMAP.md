@@ -12,21 +12,6 @@ Round v0.1 (RM36, done 2026-11-16) is on Drive. v0.2 narrows the claims the simu
 floor, faster loss resting on a pooled fit, placebo sets not matched on expression, the cancer cohort's design),
 adds R77 (held loci protected in blood) and R78 (no sex difference), and fills the authors' decisions as they come.
 
-## RM35 — The ideas still open on data at hand (Anton, 2026-11-16: "did we investigate all the possible ideas?")
-
-**State:** unattended (items 1 and 2 done: R77, R78; item 3 next, once RM36 is out) · **Owner:** lead
-
-1. **Built-in noise controls:** imprinted loci and X-inactivated CpGs in women sit at half methylation by
-   allele, held there by design. Their entropy over age measures noise with no drift toward a new level; the
-   shield's gap is compared with it. Hannum, Jaffe, Lunnon; no download.
-2. **Sex differences in drift** across tissues and species (BEYOND_SHIELD idea 10): the shield gap and drift by
-   sex in the human tissues, mouse and the mammal consortium.
-3. **CpGs disordered in every mammal** (idea 11): the R72 hotspot test across the consortium's 65 species, one
-   Slurm job.
-
-Needs new data, each a search first: 5hmC beside 5mC (Tet3 makes 5hmC), single-cell methylation with age,
-non-CpG methylation in neurons, sperm and germline reset; long reads are RM13 item 3.
-
 ## RM15 — Directed demethylation outside promoters: the culture and cortex follow-ups
 
 **State:** after RM19 · **Owner:** lead
