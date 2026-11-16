@@ -4,6 +4,7 @@ from collections.abc import Callable
 from pathlib import Path
 
 from entropy_age.experiments import (
+    allelic_controls,
     atac_cortex,
     atac_hippocampus,
     atac_variance,
@@ -58,6 +59,7 @@ from entropy_age.experiments import (
     rna_rodents,
     rna_tms,
     score_confounders,
+    sex_drift,
     shield_clocks,
     sjlife_deaths,
     sorted_cells,
@@ -124,6 +126,8 @@ FIGURES: dict[str, Callable[[Context], list[Path]]] = {
     "clock_weights": clock_weights.run,
     "composition_gaps": composition_gaps.run,
     "drift_hotspots": drift_hotspots.run,
+    "allelic_controls": allelic_controls.run,
+    "sex_drift": sex_drift.run,
     "equilibrium_drift": equilibrium_drift.run,
     "placebo_sets": placebo_sets.run,
     "gill_reprogramming": gill_reprogramming.run,
