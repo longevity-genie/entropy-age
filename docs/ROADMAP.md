@@ -36,7 +36,7 @@ floor of near-0 % essential promoters; (5) the shield score against Seeboth 2020
 
 ## RM19 — Does chromatin accessibility become stochastic with age?
 
-**State:** unattended · **Owner:** lead
+**State:** waits until 2026-12-14 (search again for a cohort with per-sample ATAC QC, or sorted bulk ATAC) · **Owner:** lead
 
 Progress: asked by antonkulaga (2026-11-12): can we collect enough comparable ATAC-seq data to test stochastic
 changes of chromatin opening? Test: per region, the age slope of between-individual (or between-cell)
@@ -100,20 +100,6 @@ application; links in the survey.
 
 - Done (R66): SATSA rebuilt from 1,072 IDATs: within-person directed change −0.14 SD (deposited −0.002); the
   cross-sectional shield reappears. Next: the mortality cohorts (waits on Anton).
-## RM33 — Metric audit: correct what rests on binary entropy
-
-**State:** after RM34 · **Owner:** lead
-
-Asked by antonkulaga (2026-11-14): go through previous discoveries, evidence and hypotheses, correct the
-computations, update the artifact. Binary entropy measures distance from 0.5; R67 showed essential promoters lose
-methylation faster, which lowers entropy at low levels, so entropy gaps mix direction with stability. Relative entropy
-from the young state (`kl_slope`, per-person `K`) added (e3ad29c); R68a-d rerun every figure whose headline rests on
-entropy. Then `docs/METRIC_AUDIT.md` (each result kept, resized or overturned), CLAIMS, state, artifact.
-- Done (R68): the shield keeps its sign everywhere at about half the size; three statements withdrawn (R58 blood,
-  R22, CD4+ T size); cortex chromatin share cut; mouse array now orders the shield by turnover.
-- Done (R73): the mouse RRBS, BXD, intervention and Meer gaps keep their sign, smaller. Left: per-person `K` in
-  effect tables, read-level entropy.
-
 ## RM34 — Bias checks from the omics re-analysis practice
 
 **State:** unattended (left: download checksums in `docs/PROVENANCE.md`) · **Owner:** lead
@@ -154,7 +140,7 @@ Rule: a cohort with at least 10 carriers and matched controls on one platform.
 
 ## RM3 — Interventions: replicate the CR result
 
-**State:** after RM2 · **Owner:** lead
+**State:** blocked: desk #28 · **Owner:** lead
 
 Progress: GSE80672 done (`figures interventions`, `docs/extension.md`): in living mouse blood the shield's share
 grows with age, and CR weakens it by a quarter in the one within-batch comparison (B6D2F1, 12 against 10 mice,
@@ -166,29 +152,9 @@ robust to composition), without slowing drift. Left, to replicate it:
   no renewing tissue; HFD's effect is the cell mix. It has no CR arm.
 - Left: a second CR (or rapamycin) series with treated and control animals sequenced together, at least 8 per
   arm, in blood or another tissue (to find).
-## RM2 — A turnover gradient across many tissues (methylation)
-
-**State:** building · **Owner:** lead
-
-Progress: mouse (GSE279437), human GTEx (GSE213478) and muscle fibres (GSE304045) done; see
-`docs/extension.md`. In mouse the protection is missing in cortex and hippocampus but kept in heart;
-in GTEx muscle is weakly protected, as are breast, ovary and testis, so the split does not follow
-turnover. Left:
-
-- **GSE184211**: done within GSE223748 (all 661 of its samples are the consortium's human set; R12, R54).
-- **GSE50498** (450k muscle, ages 18–89): a muscle cohort with exact ages and more donors than GTEx's 47.
-  Like GTEx it says nothing of exercise, and satellite-cell divisions follow loading, injury and
-  wasting, so muscle tests selection only in a cohort that records physical activity or training
-  history beside age (to find; the fibre cohort GSE304045 records training but not age).
-- **Mouse replication:** Thompson 2018 (GSE120132) done (`figures rrbs_tissues`): the shield in all six tissues,
-  ordered by neither size nor growth by turnover. Done (R63, Meer 2018): the shield in all four tissues, cortex
-  too (−0.09 SD), smaller in cortex and heart than in liver and lung, and growing with age only in the latter.
-- The fibre contrast (GSE304045) was uninformative: a dozen adults of similar age show too little
-  between-person divergence. A within-tissue turnover contrast needs aged and young people.
-
 ## RM4 — Stochasticity in RNA
 
-**State:** after RM2 · **Owner:** lead
+**State:** unattended · **Owner:** lead
 
 Progress: the turnover test is done in GTEx v10 (`figures rna_gtex`, 47 tissues) and in the mouse and rat
 atlases (`figures rna_rodents`); see `docs/extension.md`. Mouse repeats the methylation result (brain
