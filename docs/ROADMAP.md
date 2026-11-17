@@ -6,7 +6,7 @@ The order and the rule for each item are argued in `docs/RESEARCH_PLAN.md`.
 
 ## RM37 — Manuscript round v0.2: the authors' comments and the referees' concerns
 
-**State:** waits until 2026-11-18 (Anton's comments in the v0.1 Google Doc; the round reads them in) · **Owner:** lead
+**State:** waits until 2026-11-18 (Anton's comments in the v0.1 Google Doc; the round reads them in; his choices on desk #48, defaults stated there) · **Owner:** lead
 
 Round v0.1 (RM36, done 2026-11-16) is on Drive. v0.2 narrows the claims the simulated referees questioned (the 0 %
 floor, faster loss resting on a pooled fit, placebo sets not matched on expression, the cancer cohort's design),
