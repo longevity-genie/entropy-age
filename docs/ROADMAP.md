@@ -6,11 +6,22 @@ The order and the rule for each item are argued in `docs/RESEARCH_PLAN.md`.
 
 ## RM37 — Manuscript round v0.2: the authors' comments and the referees' concerns
 
-**State:** waits until 2026-11-18 (Anton's comments in the v0.1 Google Doc; the round reads them in; his choices on desk #48, defaults stated there) · **Owner:** lead
+**State:** waits until 2026-11-23 (on 2026-11-18 the v0.1 Doc had no comments and desk #48 no answer; a v0.2 release before he has read v0.1 would cross his reading) · **Owner:** lead
 
 Round v0.1 (RM36, done 2026-11-16) is on Drive. v0.2 narrows the claims the simulated referees questioned (the 0 %
 floor, faster loss resting on a pooled fit, placebo sets not matched on expression, the cancer cohort's design),
 adds R77 (held loci protected in blood) and R78 (no sex difference), and fills the authors' decisions as they come.
+
+## RM38 — The simulated referees' analyses, before submission
+
+**State:** unattended (the default of the v0.1 decision list: narrow the claim now, run the analysis before submission) · **Owner:** lead
+
+1. **The 0 % floor:** the shield's gap in blood and cortex with CpGs restricted to a young level of 10-90 %, as R59 did for the species array.
+2. **Faster loss beyond a pooled fit:** the per-CpG bounded relaxation of R67 reported per set with its interval, not only the pooled rates.
+3. **Placebo sets matched on expression:** random gene sets drawn within expression deciles (GTEx whole blood and brain), through the same matching.
+4. **The cancer lead's design:** incident breast cancer in EPIC-Italy as a matched case-control within the cohort (age, centre, follow-up), with the interval for women only.
+
+Each is reused from a past run where one fits (Anton's rule, 2026-11-14), and goes into round v0.2.
 
 ## RM15 — Directed demethylation outside promoters: the culture and cortex follow-ups
 
