@@ -4,6 +4,7 @@ Newest first.
 
 ## Unreleased
 
+- 2026-11-18: `floor_check` (RM38 item 1): the shield on CpGs at a young level of 10-90 % and 20-80 %.
 - 2026-11-17: R79 across 139 mammal groups age-drift hotspots are barely shared (r 0.06); the shared tail is Polycomb developmental islands. RM35 done.
 - 2026-11-16: `species_hotspots` (RM35 item 3): do the same CpGs become disordered across 65 mammals?
 - 2026-11-16: manuscript round v0.1 (RM36): manuscript-improve run, 242 edits applied to `manuscript/paper.md` and `supplement.md`, corrected versions `*.proposed.md`; released to the authors on Drive.
