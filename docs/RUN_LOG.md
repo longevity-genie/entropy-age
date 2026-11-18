@@ -3,6 +3,25 @@
 Owned by the runner seat (`docs/seats/RUNNER.md`): one entry per run, newest first, with its inputs, the
 commit it ran, its job ids, its scale and seed, and its result or its failure with the cause.
 
+## R83 — per-CpG gain and loss with donor intervals (RM38 item 2), 2026-11-18
+
+- Commit a276d20 (`figures per_cpg_interval --scale paper --seed 42`), ENTROPY_AGE_BOOT=100; 4 cores, 64 GB; job
+  6506416, 5 h 32 min, 2.9 GB peak (smoke 6506415 passed). Hannum 656 donors, Jaffe 213; R67's per-CpG bounded
+  relaxation fits; each resample's gap on the full sample's SD.
+- Result, as measured (set minus look-alikes, SD, 95 % donor interval). Loss rate `k_loss`, island x level: blood
+  housekeeping +0.114 (+0.051, +0.147), core-essential +0.073 (+0.020, +0.099), non-essential −0.079 (−0.090,
+  −0.036); cortex housekeeping −0.020 (−0.034, +0.038), core −0.017 (−0.049, +0.045). With the CpG's own chromatin
+  state also matched: blood housekeeping +0.020 (−0.003, +0.041), core +0.012 (−0.025, +0.037); cortex −0.026,
+  −0.020, intervals across 0. Gain rate `k_gain`: within ±0.02 everywhere, intervals across 0. Resting level
+  (equilibrium): lower at essential promoters in both tissues, island x level blood −0.34/−0.24, cortex −0.15/−0.08,
+  with chromatin state −0.06 to −0.07 and −0.03 to −0.07, all excluding 0.
+- Reading: per CpG, faster loss at essential promoters is a blood result, and it goes with the promoters' own
+  chromatin state; in cortex no faster loss is seen per CpG. What holds in both tissues, beyond chromatin state, is
+  a lower resting level. R67/R74's pooled rates (faster loss also in cortex, +0.006-0.007 per decade within active
+  TSS) rest on the pooled fit and do not survive per CpG. Some point estimates sit near an interval's edge (blood
+  equilibrium): the resampled fits identify a different set of CpGs each time, so these intervals are approximate.
+  Table `data/output/per_cpg_interval/per_cpg_gaps.csv`.
+
 ## Audit — selection hypothesis, outside review of 2026-11-18 (R91, R92 pending)
 
 - The review (another model, read-only, on 2261801) compared deposited GEO metadata with the saved tables. Its four
