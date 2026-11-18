@@ -22,7 +22,7 @@ import numpy as np
 import polars as pl
 from scipy import stats
 
-from entropy_age.experiments.common import Context, write_table
+from entropy_age.experiments.common import Context, source_suffix, write_table
 
 K = 3
 AGE_CALIPER = 3.0
@@ -152,7 +152,7 @@ def effects(women: pl.DataFrame, lag: float | None, n_boot: int, rng) -> list[di
 
 
 def run(ctx: Context) -> list[Path]:
-    src = ctx.paths.output / "incident_cancer" / "per_person.parquet"
+    src = ctx.paths.output / f"incident_cancer{source_suffix()}" / "per_person.parquet"
     if not src.exists() or "chip" not in pl.read_parquet_schema(src):
         print("cancer_matched: run `figures cancer` first (its per-person table with chip)", file=sys.stderr)
         return []
