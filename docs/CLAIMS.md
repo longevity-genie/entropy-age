@@ -21,8 +21,9 @@ a test with little power), **refuted**.
   stratum; (b) array compression at the extremes; (c) island CpGs vary less for technical reasons.
 - **Separating test:** finer level matching in the lowest decile; read-level WGBS free of array effects
   (Loyfer 2023, R50: holds, so (b) is excluded as the whole story); (c) matched on island status.
-- **Reprocessing (R61):** Jaffe cortex from its raw IDATs (SeSAMe-like) keeps every essential-set gap below zero;
-  sizes move by up to 0.06 SD.
+- **Reprocessing (R61, R93):** Jaffe cortex from its raw IDATs keeps every essential-set gap below zero; R SeSAMe and
+  methylprep agree within 0.004 SD, and both make the gap stronger than the deposited betas (housekeeping spread
+  −0.072 → −0.119 SD on 208 identical donors). The blood claims rest on Hannum, which has no raw IDATs: not rebuilt.
 - **Metric audit (R68, `docs/METRIC_AUDIT.md`):** binary entropy reads a loss at low levels as order, and
   essential promoters lose faster (R67). On relative entropy from the young state the gap keeps its sign
   everywhere but is 1.7-3.6× smaller (blood housekeeping −0.15 SD, not −0.35; cortex −0.06, not −0.21); CD4+ T

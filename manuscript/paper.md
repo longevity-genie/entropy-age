@@ -114,9 +114,13 @@ in cell mix (Supplementary Fig. S5). In sorted CD14+ monocytes of 1,202 people (
 size varies between cell types.
 
 Adding probe design to the matching changed no sign, masking unreliable probes moved no essential-set gap by more
-than 0.012 SD, and rebuilding Jaffe's cortex series from its raw arrays moved the housekeeping relative-entropy gap
-from −0.07 to −0.09 SD (Supplementary Note 3; Supplementary Figs. S12, S13). Judging from that one rebuild, a gap's
-size carries roughly ±0.05 SD of preprocessing uncertainty.
+than 0.012 SD, and rebuilding Jaffe's cortex series from its raw arrays did not weaken the gap. On the same 208 donors and the
+89,446 CpGs measured in every donor by every route, R SeSAMe and methylprep agreed within 0.004 SD, and both
+strengthened the gap over the deposited betas: housekeeping relative entropy −0.064 (95 % interval −0.091 to
+−0.034) deposited against −0.081 (−0.125 to −0.046) rebuilt, spread −0.072 against −0.119 (paired difference
+−0.047, −0.081 to −0.003; Supplementary Note 3; Supplementary Figs. S12, S13). Judging from this rebuild, a gap's
+size carries a few hundredths of an SD of preprocessing uncertainty, in the direction of a weaker gap in the
+deposited data.
 
 In whole-genome bisulfite reads (Loyfer et al. 2023), the share of discordant reads rose more slowly with age at
 housekeeping and core-essential promoters than at look-alikes, in white blood cells of 23 donors (−0.059, −0.034 SD)
@@ -434,9 +438,13 @@ GTEx v8 tissues (gene median TPM).
 
 ### Preprocessing
 
-Deposited betas (or counts) were read as served. Three array series were rebuilt from raw IDAT files with
-methylprep 1.7.1 in SeSAMe-like mode: noob background correction, non-linear dye-bias correction, channel-switch
-inference and pOOBAH detection masking (Triche et al. 2013; Zhou et al. 2017, 2018). No analysis pools datasets or
+Every array series with raw IDAT files on GEO is rebuilt with one pinned recipe, R SeSAMe 1.24.0 (R 4.4.3,
+sesameData 1.24.0): `prepSesame("QCDPB")`, that is the quality mask, channel-switch inference, non-linear dye-bias
+correction, pOOBAH detection masking and noob background correction (Triche et al. 2013; Zhou et al. 2017, 2018);
+samples detected below 90 % are excluded and listed. Three series were first rebuilt with methylprep 1.7.1 in
+SeSAMe-like mode; on Jaffe's cortex the two implementations agreed within 0.004 SD. Results from cohorts with no
+raw IDATs on GEO (Hannum, Lunnon, GTEx, the sorted-cell MESA series, GSE41037 and the mammalian consortium's
+superseries) rest on the authors' processing and are marked as not rebuilt wherever they are reported. No analysis pools datasets or
 platforms. Technical covariates were removed in every age slope (blood: plate, site, sex, ancestry; cortex: plate,
 sex, ancestry, neuron fraction; other cohorts as available). RRBS CpGs were kept when covered at least 10 times in 90 %
 of a tissue's samples.

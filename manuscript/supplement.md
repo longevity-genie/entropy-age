@@ -111,7 +111,10 @@ signs depend on adjustment.
 essential-promoter CpGs are type I more often (42-45 % against 35 %). Adding design to the matching strata reduced
 blood's gap by about a sixth, moved cortex's by under 0.01 SD and changed no sign. Masking unreliable probes (Zhou et
 al. 2017) moved no essential-set gap by more than 0.012 SD and the non-essential gaps by up to 0.03 (Supplementary Fig.
-S13). We rebuilt Jaffe's cortex series from its 675 raw arrays with a SeSAMe-like pipeline; the housekeeping
+S13). We rebuilt Jaffe's cortex series from its 675 raw arrays with a SeSAMe-like pipeline (R61), and the 213 adult controls
+again with R SeSAMe (R93): on 208 identical donors and 89,446 complete CpGs the two raw routes agree within 0.004 SD,
+and both strengthen the gap over the deposited betas (housekeeping relative entropy −0.064 → −0.081, spread −0.072
+→ −0.119 SD; paired difference on spread −0.047, −0.081 to −0.003). In the first rebuild the housekeeping
 relative-entropy gap moved from −0.07 (deposited) to −0.09 SD (reprocessed), although single CpGs' slopes agreed only
 at r 0.56-0.82 between the two versions (Supplementary Fig. S12). Matching each set to look-alikes cancels such shifts.
 In this one rebuild the housekeeping gap moved by 0.07 SD on binary entropy and 0.02 on relative entropy; judging from
@@ -160,12 +163,12 @@ draws kept a third of Hannum's dispersion gap (−0.12) and none of its entropy 
 
 | dataset | accession | platform | values |
 |---|---|---|---|
-| Hannum blood, 656 people | GSE40279 | 450k | deposited |
-| Jaffe prefrontal cortex | GSE74193 | 450k | deposited; rebuilt from IDATs (R61) |
-| Lunnon blood and four brain regions | GSE59685 | 450k | deposited |
-| GSE41037 blood | GSE41037 | 27k | deposited |
-| GTEx nine tissues | GSE213478 | EPIC | deposited (noob + BMIQ) |
-| Muscle fibres | GSE304045 | EPIC v2 | deposited |
+| Hannum blood, 656 people | GSE40279 | 450k | deposited; **no raw IDATs on GEO, not rebuilt** |
+| Jaffe prefrontal cortex | GSE74193 | 450k | deposited; rebuilt from IDATs (R61 methylprep, R93 R SeSAMe) |
+| Lunnon blood and four brain regions | GSE59685 | 450k | deposited; **no raw IDATs on GEO, not rebuilt** |
+| GSE41037 blood | GSE41037 | 27k | deposited; **no raw IDATs on GEO, not rebuilt** |
+| GTEx nine tissues | GSE213478 | EPIC | deposited (noob + BMIQ); **raw IDATs controlled access, not rebuilt** |
+| Muscle fibres | GSE304045 | EPIC v2 | deposited; rebuild from IDATs running (RM41) |
 | SATSA twins, longitudinal | E-MTAB-7309 / S-BSST1206 | 450k | deposited (R52); rebuilt from IDATs (R66) |
 | Gill 2022 transient reprogramming | GSE165179 | EPIC | rebuilt from IDATs (R65) |
 | Cellular Lifespan Study fibroblasts | GSE179847 | EPIC | deposited |
