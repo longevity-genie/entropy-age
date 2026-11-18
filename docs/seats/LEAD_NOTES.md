@@ -23,3 +23,5 @@ Not yet seated.
   in other arms). R17 (chromatin-writer syndromes in human blood, RM14) running. Next after it: a second Tet or
   Dnmt model on GEO, then RM13, RM15's follow-ups, RM11.
 - Asked of antonkulaga and still open: the paper's working title (`#entropy-age > decisions`).
+
+- 2026-11-18: acting duties from the watcher (L139): milestones (state post kept from docs/seats/LEAD_STATE.md, `watchdog.py keep lead state`) and upstream-index: entropy-age has no in-house key upstream (polars, numpy, scipy are ordinary dependencies), so no index watcher is declared.
