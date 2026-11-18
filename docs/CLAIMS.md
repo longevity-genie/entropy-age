@@ -77,7 +77,8 @@ a test with little power), **refuted**.
   bulk brain tissue loses it when Tet3 is halved; clonal haematopoiesis leaves it; not tuned to lifespan. One result
   favours selection: CR weakened it in one blood study, not replicated in liver; with chromatin openness
   matched two thirds of that effect goes with the shield (R55); a second, short CR series in young mice shows CR's
-  changes sparing essential promoters (R56; its permutation p is being recomputed within chips, and its 12-week
+  changes sparing essential promoters only as a point estimate (R56: F −0.09; R91's within-chip randomisation,
+  which refits the reference per assignment, gives p 0.16, not 0.006; and its 12-week
   aging contrast is confounded with chip); a transplant bottleneck moves essential and non-essential promoters
   alike (R57).
 - **Alternatives (to the rejection):** long-term cultures turn oligoclonal (Hollmann 2020), and steady

@@ -75,8 +75,9 @@ Tet3 and GHRKO contrasts (p 0.027-0.036); the strongest Tet3 contrasts survive.
 **Mouse interventions and selection tests.** CR in B6D2F1 blood (R8; 12 against 10 mice): housekeeping F +0.025 (p 0.002, 5 components),
 with blood-cell openness matched +0.008 (p 0.07; R55). CR in C57BL/6 crossed sequencing series and is not read. CR
 liver (59 against 36 mice): F −0.008 (p 0.77; R13). Second CR series, young mice, 12 weeks (R56): controls at 12 weeks against the start B −0.003, but all eight start controls sat on one chip and the end controls on two others, so this aging contrast is confounded with chip and unresolved; CR
-changes spare essential promoters (core-essential F −0.090, p 0.006; housekeeping −0.027, p 0.026, lost under the
-global correction). GHRKO liver strengthening was batch (same-chip +0.01, p 0.67). Clonal haematopoiesis (R25): 64
+against controls, core-essential F −0.090, housekeeping −0.027; under a within-chip randomisation that refits the
+controls' reference per assignment (720 assignments, R91) p 0.16 and 0.23 (the earlier label shuffle on fixed
+scores gave 0.006 and 0.026). GHRKO liver strengthening was batch (same-chip +0.01, p 0.67). Clonal haematopoiesis (R25): 64
 patients, |F| ≤ 0.022, p ≥ 0.15. Transplant (R57): F core-essential −0.058 (−0.091 to −0.028), housekeeping −0.039,
 non-essential −0.057. Per-mouse shield share grows with age: GSE80672 standard C57BL/6 F −0.052 per 10 months
 (−0.041 with components); BXD liver −0.28 (−0.055 with components) (R8, R9). Chemotherapy in SJLIFE moved B and F in

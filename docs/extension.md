@@ -1067,9 +1067,10 @@ controls, 8 at the start, all on one array run. Figure `cr_blood_replication`:
   n.s.), but all eight start controls sat on one physical chip and the end controls on two others (audit
   2026-11-18), so a time contrast within a chip cannot be made: chip and 12 weeks of age are confounded. `F` against
   CR here measures how CR's own changes fall; whether there was aging drift to shield is not known.
-* **CR's changes spare essential promoters.** Against controls, essential CpGs move less than look-alikes (`F`
-  core essential −0.09, p 0.006; housekeeping −0.03, p 0.03), the opposite sign of the B6D2F1 result, with drift
-  `B` unchanged. Non-essential CpGs shift (signed `S` −0.004, p 0.015). CR with torpor goes the same way, n.s.
+* **CR's changes may spare essential promoters; not significant.** Against controls, essential CpGs move less than
+  look-alikes (`F` core essential −0.09, housekeeping −0.03), the opposite sign of the B6D2F1 result, with drift `B`
+  unchanged; the within-chip randomisation that refits the reference per assignment (R91) gives p 0.16 and 0.23
+  (the fixed-score shuffle had given 0.006 and 0.03). Non-essential CpGs shift (signed `S` −0.004, p 0.015). CR with torpor goes the same way, n.s.
 * **Reading.** This is not a replication test of the aging result (drift unresolved, young mice, 12 weeks), and it gives
   no support for it: what CR does here is kept out of essential promoters, as Dnmt3a's gain was (R37).
 

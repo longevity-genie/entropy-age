@@ -50,6 +50,21 @@ commit it ran, its job ids, its scale and seed, and its result or its failure wi
   two NSD1 arms disagree. Where these variants act, they look like noise added at the CpGs aging makes noisy, not
   a faster directed clock.
 
+## R91 — the CR blood series with a within-chip, refitting randomisation (selection audit), 2026-11-18
+
+- Commit 7357864; `figures cr_blood_replication --scale paper --seed 42`; job 6511076 (itmz), 3 h 35 min (smoke
+  6510231). Treatment reassigned within each array chip, each chip's treated count kept; the controls' reference,
+  composition components and leave-one-out scores refitted per assignment; the observed assignment reproduces the
+  reported effect (asserted). CR against controls 720 assignments (exact), TLS+CR 1,000 of 4,620 drawn, long-term
+  TLS 84 (exact, one shared chip); controls at 12 weeks against Time 0 share no chip: no p.
+- Result, as measured (3 components; effect, old fixed-score p → corrected p). CR: core-essential F −0.090, 0.0065
+  → 0.161; housekeeping F −0.027, 0.026 → 0.235; B +0.002, 0.17-0.16; S +0.002-0.003, 0.30-0.33. TLS+CR: F −0.043
+  and −0.015, p 0.53 and 0.67. Long-term TLS: all p > 0.12. Chip-intercept effects (descriptive): CR core F −0.075,
+  housekeeping −0.028.
+- Reading: no effect in this series survives the corrected test. R56's "CR's changes spare essential promoters"
+  is withdrawn as a finding and kept only as a point estimate; the 12-week aging contrast stays unidentifiable.
+  Claims, manuscript, supplement and extension.md corrected.
+
 ## R95 — writer syndromes and their concordance on rebuilt betas (RM41), 2026-11-18
 
 - `ENTROPY_AGE_BETAS=sesame figures syndromes syndrome_concordance --scale paper --seed 42` (commit b36c116); job

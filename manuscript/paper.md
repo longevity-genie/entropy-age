@@ -300,9 +300,10 @@ without allele fractions are diluted in bulk blood. Across a stem-cell transplan
 essential and non-essential promoters moved alike (F −0.058, −0.039, −0.057 for core-essential, housekeeping and
 non-essential): a bottleneck did not protect essential promoters specifically (Supplementary Fig. S17). Caloric restriction, which slows
 haematopoietic proliferation, weakened the shield in one mouse blood series, by less once blood-cell chromatin
-openness was matched; the effect was absent in liver, and a second, short series in young mice went the other way
-(Supplementary Note 3; its p-values are being recomputed by within-chip randomisation, and its start and end
-controls sat on different chips, so its 12-week aging contrast cannot be told from chip). The turnover ordering in mouse (above) is the one observation in this family that a selection
+openness was matched; the effect was absent in liver, and a second, short series in young mice pointed the other way without reaching significance once
+the test reassigned treatment within array chips and refitted each animal's reference (core-essential shield share
+−0.09, p 0.16; Supplementary Note 3); its start and end controls sat on different chips, so its 12-week aging
+contrast cannot be told from chip. The turnover ordering in mouse (above) is the one observation in this family that a selection
 account would predict; a division-dependent removal process predicts it too.
 
 *Tuning to lifespan.* Long-lived species drift less at unprotected CpGs, as found for epigenetic disorder and methylation rates
