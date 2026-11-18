@@ -4,14 +4,17 @@
 #   prepSesame "QCDPB": Q qualityMask (design-flagged probes), C inferInfiniumIChannel (channel switches),
 #   D dyeBiasNL (non-linear dye bias), P pOOBAH (detection p from out-of-band signal; failing probes masked),
 #   B noob (background from out-of-band signal). Betas of masked probes are NA.
-# Per sample, before preprocessing: sesameQC_calcStats (detection, intensity, numProbes, dyeBias, bisConversion).
+# Per sample, before preprocessing: sesameQC_calcStats (detection, numProbes, intensity, channel, dyeBias) and the
+# bisulfite-conversion index GCT (bisConversionControl; near 1 when conversion is complete).
 # The chip (Sentrix barcode) and array position are read from GEO's file names (GSMnnn_<chip>_<RxxCxx>_Grn.idat).
 #
 # Usage (inside the sesame environment, as a Slurm job):
 #   Rscript scripts/sesame_preprocess.R IDAT_DIR OUT_PREFIX [PLATFORM|auto] [WORKERS] [CHUNK]
-# Writes OUT_PREFIX.betas.chunkNNN.parquet (columns: probe, then one per GSM), OUT_PREFIX.qc.csv and
+# Writes OUT_PREFIX.betas.chunkNNN.parquet (columns: probe, then one per GSM) with OUT_PREFIX.qc.chunkNNN.csv, then
+# OUT_PREFIX.qc.csv and
 # OUT_PREFIX.session.txt (package versions). Probe ids are the platform's (cg... for HM450/EPIC; EPICv2 and the
-# mouse arrays carry suffixes, which the Python side collapses or maps).
+# mouse arrays carry suffixes, which the Python side collapses or maps). A stopped run (a preempted job) resumes:
+# chunks already written are skipped.
 
 suppressPackageStartupMessages({
   library(sesame)
@@ -44,25 +47,31 @@ parse_name <- function(pfx) {
 
 one <- function(pfx) {
   sdf <- if (is.null(platform)) readIDATpair(pfx) else readIDATpair(pfx, platform = platform)
-  qc <- as.data.frame(sesameQC_calcStats(
-    sdf, c("detection", "intensity", "numProbes", "dyeBias", "bisConversion")
-  ))
+  qc <- as.data.frame(sesameQC_calcStats(sdf, c("detection", "numProbes", "intensity", "channel", "dyeBias")))
+  qc$GCT <- tryCatch(bisConversionControl(sdf), error = function(e) NA_real_)  # bisulfite conversion, ~1 is good
   prepped <- prepSesame(sdf, "QCDPB")
   list(beta = getBetas(prepped), qc = cbind(parse_name(pfx), qc, platform = sdfPlatform(sdf)))
 }
 
 param <- if (workers > 1) MulticoreParam(workers) else SerialParam()
 groups <- split(seq_along(pfxs), ceiling(seq_along(pfxs) / chunk))
-qcs <- list()
 for (i in seq_along(groups)) {
+  betas_file <- sprintf("%s.betas.chunk%03d.parquet", out, i)
+  qc_file <- sprintf("%s.qc.chunk%03d.csv", out, i)
+  if (file.exists(betas_file) && file.exists(qc_file)) {  # written by an earlier, stopped run: resume after it
+    message(sprintf("chunk %d of %d: already written", i, length(groups)))
+    next
+  }
   res <- bplapply(pfxs[groups[[i]]], one, BPPARAM = param)
   betas <- do.call(cbind, lapply(res, `[[`, "beta"))
   meta <- do.call(rbind, lapply(res, `[[`, "qc"))
   colnames(betas) <- meta$sample
   frame <- data.frame(probe = rownames(betas), betas, check.names = FALSE)
-  write_parquet(frame, sprintf("%s.betas.chunk%03d.parquet", out, i))
-  qcs[[i]] <- meta
+  write_parquet(frame, paste0(betas_file, ".part"))  # renamed only when whole, so a stop leaves no half file
+  file.rename(paste0(betas_file, ".part"), betas_file)
+  write.csv(meta, qc_file, row.names = FALSE)
   message(sprintf("chunk %d of %d: %d samples", i, length(groups), ncol(betas)))
 }
-write.csv(do.call(rbind, qcs), paste0(out, ".qc.csv"), row.names = FALSE)
+qc_files <- sprintf("%s.qc.chunk%03d.csv", out, seq_along(groups))
+write.csv(do.call(rbind, lapply(qc_files, read.csv)), paste0(out, ".qc.csv"), row.names = FALSE)
 writeLines(capture.output(sessionInfo()), paste0(out, ".session.txt"))
