@@ -18,6 +18,15 @@ status and young-control level decile (``compare_groups``), in SD of the metric:
 
 GEO gives young/aged labels but no numeric ages, so there are no age slopes. Animals are resampled
 within their treatment group for the bootstrap, the same animals in every tissue.
+
+**Chips (audit 2026-11-18).** Aged and young controls were often hybridised on different arrays: in spleen and
+adipose no chip holds both, in colon and kidney one does (``chip_overlap``: animals, shared chips and positions,
+and how much of the age indicator chip or position explains). ``aging`` is the original, unadjusted contrast.
+``aging, within chip`` keeps the controls on chips that hold both ages and adds chip intercepts; it exists only
+where at least 2 aged and 2 young controls share chips, so its class contrasts compare fewer tissues (spleen
+drops out of the renewing class). ``aging, same tissues`` is the unadjusted contrast on exactly those tissues, so
+the change from adjusting for chip and the change from dropping tissues can be told apart. A resample in which a
+tissue's shared chips lose an age group leaves that tissue out of that resample.
 """
 
 from __future__ import annotations
@@ -68,6 +77,8 @@ class MouseTissue:
     groups: np.ndarray  # treatment group per row, e.g. "Aged_rapamycin"
     donors: np.ndarray
     features: list[str]
+    chips: np.ndarray | None = None  # physical array per row (audit 2026-11-18)
+    positions: np.ndarray | None = None  # array position (RxxCxx) per row
 
 
 # ----------------------------------------------------------------------------- inputs
@@ -96,7 +107,16 @@ def _tissues(paths, features: list[str]) -> dict[str, MouseTissue]:
             samples=s["sample"].to_list(),
             max_missing=MAX_MISSING,
         )
-        out[tissue] = MouseTissue(tissue, m.values, s["group"].to_numpy(), s["donor"].to_numpy(), m.features)
+        names = s["sample"].str.split("_")
+        out[tissue] = MouseTissue(
+            tissue,
+            m.values,
+            s["group"].to_numpy(),
+            s["donor"].to_numpy(),
+            m.features,
+            names.list.get(0).to_numpy(),
+            names.list.get(1, null_on_oob=True).fill_null("").to_numpy(),
+        )
     return out
 
 
@@ -122,6 +142,10 @@ def tissue_measures(t: MouseTissue, rows: np.ndarray, probes: pl.DataFrame) -> d
         aged = (g[pair] == "Aged_ctrl").astype(float)
         drift = drift_metrics(x[pair], aged, t.features, spearman=False)
         out["aging"] = (_strata(drift, probes, ref), AGING_METRICS)
+        within = _within_chip(t, rows, pair, probes, ref)
+        if within is not None:
+            out["aging, within chip"] = within
+            out["aging, same tissues"] = out["aging"]  # unadjusted, on the tissues the within-chip one keeps
     old = np.array([s.startswith("Aged") for s in g])
     if old.sum() > 4:
         cov = dummies(g[old])
@@ -132,6 +156,59 @@ def tissue_measures(t: MouseTissue, rows: np.ndarray, probes: pl.DataFrame) -> d
         if sel.sum() >= MIN_GROUP:
             out[f"dispersion {group}"] = (_strata(dispersion_levels(x[sel], t.features), probes, ref), ("dispersion",))
     return out
+
+
+def shared_chips(chips: np.ndarray, aged: np.ndarray) -> np.ndarray:
+    """Chips holding both aged and young controls: the only ones where age is not confounded with chip."""
+    return np.array([c for c in np.unique(chips) if aged[chips == c].any() and (~aged[chips == c]).any()])
+
+
+def _within_chip(t: MouseTissue, rows: np.ndarray, pair: np.ndarray, probes, ref):
+    """The aging contrast within chips: controls on shared chips only, chip intercepts as covariates; None where
+    fewer than 2 aged and 2 young controls sit on shared chips (not identifiable)."""
+    if t.chips is None:
+        return None
+    chips = t.chips[rows][pair]
+    aged = t.groups[rows][pair] == "Aged_ctrl"
+    keep = np.isin(chips, shared_chips(chips, aged))
+    if aged[keep].sum() < 2 or (~aged[keep]).sum() < 2:
+        return None
+    cov = dummies(chips[keep])
+    drift = drift_metrics(
+        t.x[rows][pair][keep],
+        aged[keep].astype(float),
+        t.features,
+        covariates=cov if cov.shape[1] else None,
+        spearman=False,
+    )
+    return _strata(drift, probes, ref), AGING_METRICS
+
+
+def chip_overlap(t: MouseTissue) -> dict:
+    """Per tissue: aged and young controls (animals), chips and positions they share, and how much of the age
+    indicator's variance chip or position explains (1 = fully confounded)."""
+    sel = np.isin(t.groups, ["Aged_ctrl", "Young_ctrl"])
+    aged = t.groups[sel] == "Aged_ctrl"
+    row = {"tissue": t.name, "turnover": TURNOVER[t.name], "aged": int(aged.sum()), "young": int((~aged).sum())}
+    row["aged_animals"] = int(np.unique(t.donors[sel][aged]).size)
+    row["young_animals"] = int(np.unique(t.donors[sel][~aged]).size)
+    for name, v in (("chips", t.chips), ("positions", t.positions)):
+        if v is None:
+            continue
+        v = v[sel]
+        shared = shared_chips(v, aged)
+        y = aged.astype(float)
+        resid = y.copy()
+        for k in np.unique(v):
+            resid[v == k] -= y[v == k].mean()
+        row[name] = int(np.unique(v).size)
+        row[f"shared_{name}"] = int(shared.size)
+        row[f"r2_age_on_{name}"] = float(1 - (resid @ resid) / ((y - y.mean()) @ (y - y.mean())))
+        if name == "chips":
+            on = np.isin(v, shared)
+            row["aged_on_shared_chips"] = int((on & aged).sum())
+            row["young_on_shared_chips"] = int((on & ~aged).sum())
+    return row
 
 
 def _rows(t: MouseTissue, measure: str, metrics: pl.DataFrame, names, membership, permutations: int, seed: int):
@@ -198,6 +275,7 @@ def run(ctx: Context) -> list[Path]:
         membership.group_by("group").agg(pl.len().alias("cpgs"), pl.col("gene").n_unique().alias("genes")),
         out / "set_sizes",
     )
+    write_table(pl.DataFrame([chip_overlap(t) for t in tissues.values()]), out / "chip_overlap")
 
     point = []
     for t in tissues.values():
