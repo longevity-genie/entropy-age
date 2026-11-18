@@ -130,6 +130,13 @@ effects ... apply it to all samples and validate if things are done properly for
    GSE223748 first; GSE200527 MM285 blood, both B6 chips hold young and old; GSE198638 intestinal stem-cell WGBS,
    3 lanes hold both ages; GSE161141 rat blood RRBS, every lane holds both. Unknown or weak: GSE213628, GSE129712,
    GSE236617, GSE225166. Arrays enter through RM41's SeSAMe recipe; RRBS and WGBS need a sequencing pipeline.
+4. **Search widened (antonkulaga 2026-11-18: "start searching for the samples that actually will be good enough in
+   terms of criteria and will test selection and other things that we had to reject"; "do we have any scmethylation
+   data"):** candidates must have public raw IDATs (or per-CpG sequencing files), one array type per contrast, and
+   the contrast spread across chips or flowcells, tabulated before anything is fetched. Needs, in order: a second
+   brain cohort and sorted neurons; culture passages not confounded with batch; clonal expansions with methylation;
+   tissue turnover within animals; CR over time; a second prospective cancer cohort; single-cell methylation with
+   ages (none in the project yet: `fig3` is a simulation, R50-R53 are read-level, not cell-level).
 3. **CR blood over time:** no public series has CR and ad-lib blood at more than one age in shared batches
    (closest: GSE75495, CR at one old age, batch unknown; liver only: GSE92486, GSE89274). The CR 12-week aging
    contrast stays unresolved.
