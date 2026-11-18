@@ -4,6 +4,7 @@ Newest first.
 
 ## Unreleased
 
+- 2026-11-18: `mouse_coupling` (RM39 item 1): clock-free drift coupling across tissues of the same Huang control mice at a fixed age, with a within-group shuffle null.
 - 2026-11-18: `species_pace` (RM39 item 3): directed against noise pace of look-alike CpGs per species and tissue; within-species rank agreement and tissue-pair order across species.
 - 2026-11-18: `braak_gradient` (RM39 item 2): within-donor regional gradient of drift along the Braak order in Lunnon, against Braak stage.
 - 2026-11-18: `species_sex` (RM39 item 7): look-alike drift rate and the shield by sex in every species-tissue group of the mammal array with both sexes.
