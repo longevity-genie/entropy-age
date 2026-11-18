@@ -4,6 +4,7 @@ Newest first.
 
 ## Unreleased
 
+- 2026-11-18: R93, Jaffe paired pipeline pilot: R SeSAMe and methylprep agree within 0.004 SD; both strengthen the cortex gap against deposited betas (spread −0.07 → −0.12 SD).
 - 2026-11-18: R83, per-CpG intervals: faster methylation loss at essential promoters holds in blood only and goes with chromatin state; a lower resting level holds in blood and cortex.
 - 2026-11-18: outside selection audit: CR permutation refits within chips (720 exact assignments); mouse chip overlap and within-chip aging contrast; claims narrowed (culture share "no detectable change" with intervals, not "constant"; CR 12-week drift unresolved, chip-confounded; mouse turnover unadjusted for chip; Tet3 in bulk brain against same-chip wild types, not neurons or littermates). C3 renamed; evidence matrix E5, E6, E11 changed, E32 added.
 - 2026-11-18: `syndrome_concordance` (RM39 item 6): do chromatin-writer syndromes add variance at noisy-aging CpGs and shift directed-aging CpGs the way age does?

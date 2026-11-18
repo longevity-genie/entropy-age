@@ -3,6 +3,28 @@
 Owned by the runner seat (`docs/seats/RUNNER.md`): one entry per run, newest first, with its inputs, the
 commit it ran, its job ids, its scale and seed, and its result or its failure with the cause.
 
+## R93 — Jaffe cortex, paired pipeline pilot: deposited, methylprep and R SeSAMe on identical donors (RM41), 2026-11-18
+
+- Raw step: `scripts/sesame_preprocess.R` (R 4.4.3, sesame 1.24.0, sesameData 1.24.0, ExperimentHub 2.14.0,
+  preprocessCore 1.68.0 rebuilt with --disable-threading because the conda build's threads failed in dyeBiasNL;
+  `prepSesame("QCDPB")`, auto platform HM450) on the IDATs of the 213 adult controls of `figures tissues`; job
+  6511393 (test partition, 4 cores), 11 min. 5 donors fail detection < 90 % (0.82-0.88); bisulfite index GCT
+  1.04-1.14. Outputs `data/interim/sesame/GSE74193_adult/` (betas, QC, session).
+- Pilot: commit 80f95ad, `figures reprocessed_jaffe --scale paper --seed 42`; job 6511655, 34 min. 208 donors passing
+  in all three sources, 89,446 CpGs measured without a mask in every donor under every source (no fill); the same
+  100 donor resamples for each source; neuron fraction, plate, sex and race held as before.
+- Result, as measured (matched gap in SD with 95 % interval; deposited / methylprep / R SeSAMe): housekeeping relative
+  entropy −0.064 (−0.091, −0.034) / −0.086 (−0.136, −0.050) / −0.081 (−0.125, −0.046); core-essential −0.057 / −0.077 /
+  −0.074; housekeeping spread −0.072 (−0.111, −0.028) / −0.124 / −0.119 (−0.153, −0.063); core-essential spread
+  −0.053 / −0.100 / −0.099; non-essential +0.006 / +0.033 / +0.030 (relative entropy), intervals across 0. Paired
+  differences: R SeSAMe minus methylprep at most 0.004 SD in every set and metric (intervals within ±0.01);
+  R SeSAMe minus deposited, relative entropy −0.017 (−0.067, +0.012) housekeeping and core, spread −0.047
+  (−0.081, −0.003) and −0.046 (−0.087, −0.001).
+- Reading: the two raw routes agree, so methylprep's earlier rebuild (R61) stands as a SeSAMe-equivalent here.
+  Rebuilding from IDATs does not weaken cortex's protection; it strengthens it on spread (by about two thirds) and
+  leaves relative entropy within its interval. The deposited betas understate the cortex gap, not inflate it. The
+  clock-shield association is not rerun here: it waits for the clock-scorer audit (RM41 handoff parts 3-4).
+
 ## R83 — per-CpG gain and loss with donor intervals (RM38 item 2), 2026-11-18
 
 - Commit a276d20 (`figures per_cpg_interval --scale paper --seed 42`), ENTROPY_AGE_BOOT=100; 4 cores, 64 GB; job
