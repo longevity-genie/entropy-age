@@ -4,6 +4,7 @@ Newest first.
 
 ## Unreleased
 
+- 2026-11-18: docs/DATASET_SEARCH_2026-11-18.md: replacement and matched-modality datasets checked against GEO (RM40); first to fetch: GSE279509 (sorted neurons and glia, EPIC, 18-108 y), GSE252501 (DLPFC), GSE225166, GSE121437, GSE268145, GSE202554.
 - 2026-11-18: figures joint_cortex (RM44): the cortex gap with the floor band, expression decile, chromatin state and sorted accessibility held together, with the share of set CpGs that keep a control.
 - 2026-11-18: R98, CR blood on rebuilt arrays: core-essential F -0.078, p 0.36; the withdrawal stands.
 - 2026-11-18: docs/REASSESSMENT_2026-11-18.md: status of every result, the corrected interpretation and the research plan; RM44 (joint test in cortex); R103b QC written up.
