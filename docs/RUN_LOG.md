@@ -3,6 +3,25 @@
 Owned by the runner seat (`docs/seats/RUNNER.md`): one entry per run, newest first, with its inputs, the
 commit it ran, its job ids, its scale and seed, and its result or its failure with the cause.
 
+## R80 — the shield away from the 0 % floor (RM38 item 1), 2026-11-18
+
+- Commit 963a9ff (audit fixes in); `figures floor_check --scale paper --seed 42`, ENTROPY_AGE_BOOT=100; 4 cores,
+  64 GB; job 6503584, 38 min (first submission 6502924 cancelled before the audit fixes). Hannum blood and Jaffe
+  cortex, `tissue_contrast` features, covariates and matching (island x young-level decile), CpGs kept when their
+  young level is in the band; 95 % donor bootstrap on the full sample's SD.
+- Result, as measured (matched gap, SD; all levels → 10-90 % → 20-80 %):
+  blood housekeeping, dispersion −0.29 (−0.39, −0.18) → −0.19 (−0.25, −0.12) → −0.08 (−0.12, −0.02); relative
+  entropy −0.14 → −0.08 (−0.15, −0.03) → 0.00 (−0.05, 0.04). Blood core-essential, dispersion −0.17 → −0.07 (−0.15,
+  0.05) → +0.03; relative entropy −0.08 → −0.03 → +0.01. Blood non-essential stays positive: dispersion +0.27 →
+  +0.17 → +0.21. Cortex housekeeping, dispersion −0.07 → −0.09 (−0.17, 0.01) → −0.08 (−0.19, 0.03); core-essential
+  −0.08 → −0.10 (−0.19, −0.01) → −0.06 (−0.19, 0.08); relative entropy alike. CpGs left at 20-80 %: 10 % of
+  housekeeping, 8 % of core-essential (blood); 17 % and 13 % (cortex).
+- Reading: in blood most of the shield is the floor. Away from it the housekeeping gap on spread shrinks to a third
+  and the relative-entropy gap and the core-essential gap vanish; what survives in blood is the contrast with
+  non-essential promoters, which drift more at every level. In cortex the gap keeps its size off the floor but its
+  interval reaches 0 at 20-80 %. The species result (R59) held off the floor; human blood's does only in part.
+  The paper's blood shield must be stated with this bound. Table `data/output/floor_check/gaps_by_band.csv`.
+
 ## R81 — outside audit: old against fixed relative entropy on the headline gaps, 2026-11-18
 
 - An outside audit (2026-11-18, another model, read-only) found that `relative_entropy` clipped only the reference

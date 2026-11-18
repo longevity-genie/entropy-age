@@ -10,13 +10,13 @@ The order and the rule for each item are argued in `docs/RESEARCH_PLAN.md`.
 
 Round v0.1 (RM36, done 2026-11-16) is on Drive. v0.2 narrows the claims the simulated referees questioned (the 0 %
 floor, faster loss resting on a pooled fit, placebo sets not matched on expression, the cancer cohort's design),
-adds R77 (held loci protected in blood) and R78 (no sex difference), and fills the authors' decisions as they come.
+adds R77 (held loci protected in blood), R78 (no sex difference), R79 (no universal hotspots) and R80 (the blood shield is mostly the floor), and fills the authors' decisions as they come.
 
 ## RM38 — The simulated referees' analyses, before submission
 
 **State:** unattended (the default of the v0.1 decision list: narrow the claim now, run the analysis before submission) · **Owner:** lead
 
-1. **The 0 % floor:** the shield's gap in blood and cortex with CpGs restricted to a young level of 10-90 %, as R59 did for the species array.
+1. **The 0 % floor:** the shield's gap in blood and cortex with CpGs restricted to a young level of 10-90 %, as R59 did for the species array. Done (R80): in blood most of the shield is the floor (housekeeping spread −0.29 → −0.08 SD at 20-80 %, core-essential and relative entropy to 0); cortex keeps its size, interval to 0 at 20-80 %. v0.2 states the blood shield with this bound.
 2. **Faster loss beyond a pooled fit:** the per-CpG bounded relaxation of R67 reported per set with its interval, not only the pooled rates.
 3. **Placebo sets matched on expression:** random gene sets drawn within expression deciles (GTEx whole blood and brain), through the same matching.
 4. **The cancer lead's design:** incident breast cancer in EPIC-Italy as a matched case-control within the cohort (age, centre, follow-up), with the interval for women only.
