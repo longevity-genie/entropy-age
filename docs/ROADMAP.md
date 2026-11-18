@@ -44,6 +44,13 @@ effects ... apply it to all samples and validate if things are done properly for
 6. **QC and batch:** samples failing detection (< 90 % of probes) or bisulfite conversion dropped and listed; per
    series, principal components of betas and of control-probe intensities against chip, position, plate and the
    design (age, group): the variance each explains, and age-on-chip confounding as in the 2026-11-18 audit.
+10. **Progress (2026-11-18 17:00):** R SeSAMe rebuilds done for GSE74193 adult controls (pilot R93), GSE197512,
+    GSE179847, GSE282661, GSE324160, GSE271375, GSE315366, GSE279437, GSE190665, GSE199979, GSE304045, GSE51032,
+    GSE74432, GSE97362; full GSE74193 running. QC: Mammal40 detection read over the probes a series measures (all
+    mouse samples failed the whole-array cut); Tet1 keeps 19 of 24 standard arrays. `ENTROPY_AGE_BETAS=sesame` makes
+    every cohort table read its rebuild (no-IDAT cohorts stay deposited); the GEO-series readers (cancer,
+    syndromes, CR blood, clonal haematopoiesis, Tet1, Sarni) still need the same switch. Then each figure reruns
+    on rebuilt betas and the manuscript and claims follow (item 8).
 8. **Decided by antonkulaga (2026-11-18):** results from cohorts without raw IDATs (Hannum, Lunnon, MESA, GSE68194,
    GSE41037, GTEx, the mammal superseries) are kept, each carrying a warning that it rests on the authors'
    processing and was not rebuilt; every series with IDATs is rebuilt. After each rebuilt series lands, the
