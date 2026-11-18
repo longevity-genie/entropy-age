@@ -25,6 +25,7 @@ def available(paths: ProjectPaths, gse: str) -> bool:
     return (d / f"{gse}.qc.csv").exists() and any(d.glob(f"{gse}.betas.chunk*.parquet"))
 
 
+COLLAPSE_PLATFORMS = {"EPICv2"}  # replicate probes of one CpG, averaged to the cg id
 MULTI_SPECIES = ("Mammal40",)  # probes for many species: in one species a quarter never hybridise
 
 
@@ -74,7 +75,12 @@ def read_betas(paths: ProjectPaths, gse: str, *, passed_only: bool = True, colla
     if passed_only:
         keep = set(read_qc(paths, gse).filter(pl.col("passed"))["sample"].to_list())
         frame = frame.select("probe", *(c for c in frame.columns[1:] if c in keep))
-    return collapse_probes(frame) if collapse else frame
+    if not collapse:
+        return frame
+    qc = read_qc(paths, gse)
+    platforms = set(qc["platform"].unique().to_list()) if "platform" in qc.columns else set()
+    # only EPIC v2 repeats a CpG under suffixed ids; MM285's suffixes are its probe names, as the annotation has them
+    return collapse_probes(frame) if platforms & COLLAPSE_PLATFORMS else frame
 
 
 def cohort_betas(paths: ProjectPaths, gse: str, name: str, samples_path: Path) -> Path:
