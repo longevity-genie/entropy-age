@@ -3,6 +3,47 @@
 Owned by the runner seat (`docs/seats/RUNNER.md`): one entry per run, newest first, with its inputs, the
 commit it ran, its job ids, its scale and seed, and its result or its failure with the cause.
 
+## Audit — selection hypothesis, outside review of 2026-11-18 (R91, R92 pending)
+
+- The review (another model, read-only, on 2261801) compared deposited GEO metadata with the saved tables. Its four
+  scripts were rerun on this checkout (1d818af and later): every number reproduces to the last digits. Nothing in
+  the 21 commits since changed the culture, CR, transplant, Huang or Tet3 tables.
+- **CR blood, GSE282661 (R56).** All 45 labels agree. All 8 Time 0 animals sat on one chip, the 8 endpoint
+  controls on two others: the 12-week aging contrast is confounded with chip and is now reported as unresolved
+  (was "no drift to shield"). The permutation p shuffled labels on scores fitted against the observed controls;
+  `cr_blood_replication` now reassigns treatment within chips (each chip's treated count kept), refits the
+  reference, the components and the leave-one-out scores per assignment, and asserts that the observed
+  assignment reproduces the reported effect (7357864). CR against controls has 720 assignments, enumerated; a
+  comparison whose arms share no chip gets no p (`within_chip_overlap` 0). Smoke R91 (job 6510231, test partition);
+  the paper-scale rerun is pending, so R56's p values (core-essential F p 0.006, housekeeping 0.026) stand
+  uncorrected until it lands. Chip-adjusted housekeeping F (3 components), from the saved scores: −0.0282 against
+  −0.0274 unadjusted (descriptive). The same fixed-score shuffle in `reprogramming_rrbs` is valid for its OSKM
+  contrast and approximate for its age contrast; flagged in its docstring, not refitted.
+- **Mouse turnover, Huang GSE279437 (R68 mouse).** Aged and young controls share no chip in spleen and adipose, one
+  in colon and kidney (age explained by chip: R2 1.0, 1.0, 0.94, 0.87). The published class contrast (renewing −
+  post-mitotic, housekeeping relative entropy −0.190, −0.471 to −0.065) is unadjusted. `mouse_tissues` now writes
+  `chip_overlap` and adds `aging, within chip` (controls on shared chips, chip intercepts; identifiable only where
+  >= 2 aged and 2 young share chips: white blood cells among the renewing tissues; colon, kidney, spleen and
+  adipose drop out) and `aging, same tissues` (unadjusted, on those tissues), so chip adjustment and the change of
+  target can be told apart (3518b5f). The bootstrap already resampled animals once for all tissues. The mouse
+  outputs predate the relative-entropy fix (77aa712); R92 (job 6510291, requeue) reruns both. Claims corrected
+  meanwhile: "five renewing tissues" was three.
+- **Culture (Endicott, Sturm).** Inclusions match GEO exactly (174, 46). Housekeeping coupling change per 10
+  doublings −0.139 (−0.334 to +0.056, 7 lines), −0.142 with batch intercepts; Sturm −0.055 (−0.213 to +0.102, 5
+  lines); on the 4 lines a plate model can fit, −0.0025 (−0.089 to +0.084) unadjusted and +0.0026 (−0.065 to
+  +0.070) adjusted, so plate moves nothing and the shift from −0.055 is HC6's removal; all 5 Sturm lines used a
+  pooled noise floor. "Constant share" and "rejects selection" replaced by the slopes and intervals: zero is
+  inside, but so are selection-sized changes.
+- **Transplant (R57) and Tet3 (R15, R16).** Core-essential minus non-essential bottleneck effect −0.0013 (pair
+  bootstrap −0.035 to +0.033); on common pairs and overlapping times +0.013: little evidence of a
+  core-essential-specific effect, as stated. Tet3: 8 heterozygotes and 8 wild types per tissue, all 0.5 years,
+  genotypes balanced on every chip; bulk cortex and striatum; GEO records no litters. "Littermates" became
+  "same-chip, same-age wild types" and "in neurons" became "in bulk brain tissue".
+- Text changed: `docs/CLAIMS.md` (C2, C3 renamed "not supported as the main cause", C4), `docs/evidence_matrix.csv`
+  (E5 and E11 weakened, E6 scoped to GTEx, E32 added), `manuscript/paper.md`, `manuscript/supplement.md`,
+  `docs/extension.md`, `docs/PAPER_DRAFT.md`, `docs/NOVELTY_REVIEW.md`, `docs/ROADMAP.md`. The Drive round v0.1
+  Docs are not touched; these go into v0.2 (RM37).
+
 ## R89 — drift per division or per day, across every culture arm (RM39 item 5), 2026-11-18
 
 - Commit (this one); `figures culture_rates`, login node, seconds: the saved per-sample scores of the RM5 runs

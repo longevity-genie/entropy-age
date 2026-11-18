@@ -47,8 +47,8 @@ a test with little power), **refuted**.
   much less; a fixed share of drift as cells divide; no dependence on turnover; loss of a promoter-maintaining
   enzyme removes it.
 - **We should not see:** the shield grow with divisions or follow turnover; survive chromatin matching intact.
-- **Observed:** own chromatin removes 67-91 % in blood, another tissue's about 30 %; constant share over 136
-  doublings; not ordered by turnover; Tet3 loss removes it (C4).
+- **Observed:** own chromatin removes 67-91 % in blood, another tissue's about 30 %; no detectable change of the share with
+  doublings (−0.14 per 10, −0.33 to +0.06; second series −0.055, −0.21 to +0.10: wide, not equivalence); not ordered by turnover; Tet3 loss removes it (C4).
 - **Alternatives:** circularity: active chromatin and an unmethylated promoter may both be outcomes of the same
   protection, so matching on one removes the other without showing cause; reference epigenomes come from other
   people.
@@ -57,36 +57,39 @@ a test with little power), **refuted**.
 - **Metric audit (R68):** blood's share holds (83-91 % on relative entropy); cortex's falls to a quarter with its own
   chromatin state, a half with sorted ATAC (entropy said 43-69 %). Essentiality beyond chromatin survives in cortex
   only (R58's blood remainder is entropy-only). On the mouse array the corrected measure orders the shield by
-  turnover: present in all five renewing tissues, reversed in four of five post-mitotic ones. That is the pattern
+  turnover: present in all three renewing tissues, reversed in four of five post-mitotic ones (not adjusted for chip:
+  aged and young share no chip in spleen and adipose, one in colon and kidney; chip-aware rerun R92 pending). That is the pattern
   this claim said we should not see; R67's faster removal at essential promoters would need division to act.
 - **Beyond the state map (R74):** within active-TSS chromatin, essential island promoters still lose methylation
   faster than other active promoters (blood core +0.006, cortex +0.006-0.007 per decade); the state explains most
   of their lower resting level.
 - **Status:** holds as association in blood; weaker in cortex; the turnover result now stands against it and is open.
 
-## C3 — The shield is not selection among cells (H2 rejected)
+## C3 — Selection among cells is not supported as the main cause (H2 not rejected outright)
 
 - **If selection, we should see:** the shield grow with divisions; stronger in renewing tissues; absent in
   non-dividing neurons; weaker when proliferation slows (CR); changed in clonal expansions.
 - **If selection, we should not see:** a shield in neurons; a constant share over doublings.
-- **Observed:** constant share in culture; not ordered by turnover; equal in blood and brain after chromatin;
-  neurons lose it only when Tet3 is halved; clonal haematopoiesis leaves it; not tuned to lifespan. One result
+- **Observed:** no detectable change of the share in culture (intervals wide enough to allow selection-sized growth); not ordered by turnover; equal in blood and brain after chromatin;
+  bulk brain tissue loses it when Tet3 is halved; clonal haematopoiesis leaves it; not tuned to lifespan. One result
   favours selection: CR weakened it in one blood study, not replicated in liver; with chromatin openness
   matched two thirds of that effect goes with the shield (R55); a second, short CR series in young mice shows CR's
-  changes sparing essential promoters (R56); a transplant bottleneck moves essential and non-essential promoters
+  changes sparing essential promoters (R56; its permutation p is being recomputed within chips, and its 12-week
+  aging contrast is confounded with chip); a transplant bottleneck moves essential and non-essential promoters
   alike (R57).
 - **Alternatives (to the rejection):** long-term cultures turn oligoclonal (Hollmann 2020), and steady
   selection per doubling also gives a constant share; clonal haematopoiesis clones were diluted (no allele
   fractions).
 - **Separating test:** sorted stem cells young against old; a cohort with clone sizes (controlled access).
-- **Status:** holds against selection as the main cause; a minor part in renewing blood not excluded.
+- **Status:** no evidence for selection as the main cause; a contribution is not excluded (culture intervals allow
+  it; the mouse turnover ordering is open and partly chip-confounded). Audit 2026-11-18.
 
-## C4 — Tet3 guards essential promoters in neurons (H4)
+## C4 — Tet3 guards essential promoters in brain tissue (H4)
 
 - **If true, we should see:** in Tet3-deficient brain, essential CpGs gain methylation and lose the shield
   against littermates, in neurons that do not divide; specific to Tet3, not every TET.
 - **We should not see:** the effect explained by batch or age; an equal change at all CpGs (a global shift).
-- **Observed:** against same-chip, same-age littermates F +0.17 (cortex), +0.25 (striatum); essential CpGs gain
+- **Observed:** against same-chip, same-age wild types (litters not recorded) F +0.17 (cortex), +0.25 (striatum); essential CpGs gain
   methylation (S +0.012, +0.014); Tet1 loss strengthens the shield instead (R35).
 - **Alternatives:** (a) array compression lifting the lowest CpGs (S also rose in other arms); (b) a shift of
   neuron and glia proportions in Tet3 mice; (c) one study, 8 mice per tissue; different arrays for Tet1 and Tet3.

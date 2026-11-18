@@ -24,8 +24,8 @@ not produced by the matching (200 placebo gene sets), blood-cell composition, pr
 IDATs, and survives one false-discovery correction over 7,626 tests. Kinetically, essential island promoters gain
 methylation no faster than look-alikes but, in pooled fits, lose it faster, and so rest lower; the faster loss persists within active-TSS chromatin.
 In mouse brain, heterozygous Tet3 loss made essential promoters gain methylation against look-alikes and weakened the shield; Tet1 knockout did not. Reference chromatin
-states account for 83-91 % of the gap in blood and a quarter to a half in cortex. Within one person over time, housekeeping CpGs change less in direction than look-alikes. The shield does
-not look like selection among cells in culture or blood, is not tuned to species lifespan, persists through transient reprogramming and
+states account for 83-91 % of the gap in blood and a quarter to a half in cortex. Within one person over time, housekeeping CpGs change less in direction than look-alikes. The shield showed
+no detectable sign of selection among cells in culture or blood, though the estimates are imprecise, is not tuned to species lifespan, persists through transient reprogramming and
 has no clear RNA counterpart. In one prospective cohort, drift at unprotected look-alike promoters was associated with
 breast cancer diagnosed years later (odds ratio 1.44 per SD with cell mix, chip and mean methylation held; lifestyle and reproductive factors were not held). This lead needs replication.
 
@@ -144,7 +144,7 @@ follow turnover in humans: testis renews fastest.
 On the mammalian array, the corrected measure separated 11 tissues of the same male C57BL/6 mice sharply (GSE279437;
 Huang et al. 2025). The mice were the untreated young and aged controls of an exenatide and rapamycin study, compared as aged minus young because GEO gives no numeric ages. The housekeeping gap was negative in the three renewing tissues and in kidney and liver (−0.05 to −0.19 SD) and
 positive in four of five post-mitotic tissues and in adipose tissue (+0.03 to +0.09); the hypothalamus, with four
-aged controls, was the exception (−0.08; values per tissue in Supplementary Note 3). Renewing tissues (blood cells, colon, spleen) minus post-mitotic tissues was −0.19 SD (−0.47 to −0.06; Supplementary Fig. S6). For the slowly renewing liver, kidney and adipose tissue, the difference from post-mitotic tissues was −0.10 (−0.20 to −0.02). In post-mitotic tissues, essential
+aged controls, was the exception (−0.08; values per tissue in Supplementary Note 3). Renewing tissues (blood cells, colon, spleen) minus post-mitotic tissues was −0.19 SD (−0.47 to −0.06; Supplementary Fig. S6). This contrast is not adjusted for array chip: aged and young controls shared no chip in spleen and adipose and one in colon and kidney, so in those tissues age cannot be separated from chip (Supplementary Note 3); a chip-aware analysis is pending. For the slowly renewing liver, kidney and adipose tissue, the difference from post-mitotic tissues was −0.10 (−0.20 to −0.02). In post-mitotic tissues, essential
 promoters still shifted their mean less (|mean change| −0.05 to −0.09 SD) but scattered more between animals. By
 reduced-representation bisulfite sequencing (RRBS), which covers far more promoter CpGs, cortex kept a small shield (−0.06 SD, interval excluding zero) and heart
 −0.07, against −0.22 in liver and −0.14 in lung (Meer et al. 2018; about 20 mice; the heart, liver and lung intervals
@@ -154,9 +154,9 @@ the shield or none.
 
 Culture follows the shield through cell divisions, along which selection among cells should accumulate
 (Introduction). In seven primary human cell lines passaged to senescence (Endicott et al. 2022), with the
-replicate-culture noise floor removed, set CpGs drifted about half as much as matched CpGs once drift was well above the floor. This
-share did not change detectably with population doublings (−0.14 per 10 doublings, −0.33 to +0.06; one line reached 136 doublings),
-and a second study (Sturm et al. 2023) agreed (−0.055, −0.21 to +0.10; Supplementary Fig. S14).
+replicate-culture noise floor removed, set CpGs drifted about half as much as matched CpGs once drift was well above the floor. The change of this
+share with population doublings was −0.14 per 10 doublings (95 % interval −0.33 to +0.06, seven lines; negative means stronger protection; one line reached 136 doublings),
+and −0.055 (−0.21 to +0.10, five lines) in a second study (Sturm et al. 2023; Supplementary Fig. S14). Neither differs detectably from zero, but the intervals also admit changes of the size selection could produce, so they do not show the share to be constant. With batch intercepts the first estimate is −0.14 (−0.34 to +0.05); in the second, plate adjustment is possible in four lines, which give −0.003 unadjusted and +0.003 adjusted (intervals about ±0.08), and all five of its baseline lines used a pooled noise floor.
 
 Across mammals (Mammalian Methylation Consortium, GSE223748; Lu et al. 2023; Haghani et al. 2023), 139
 species-tissue groups of 65 species had at least 15 animals spanning 15 % of the species' maximum lifespan. The
@@ -206,21 +206,21 @@ donor resamples.
 
 **Heterozygous loss of Tet3 weakens the shield in cortex and striatum, while Tet1 knockout strengthens it.** If faster
 removal maintains the shield, losing the remover should make essential promoters gain methylation and lose their
-advantage. We scored the consortium's Tet3 heterozygous mice against eight same-age wild-type littermates that
-shared their array chips (8 against 8 per tissue). For housekeeping genes, the per-animal shield share F (set deviation as a share of look-alike deviation from the
+advantage. We scored the consortium's Tet3 heterozygous mice against eight same-age wild types that
+shared their array chips (GEO does not record litters) (8 against 8 per tissue). For housekeeping genes, the per-animal shield share F (set deviation as a share of look-alike deviation from the
 controls; Methods) rose toward zero by +0.17 in cortex (p 0.006) and +0.25 in striatum (p 9·10⁻⁶). Essential promoters gained methylation against their look-alikes (signed shift S
 +0.012 and +0.014), also with each animal's array compression held fixed (Supplementary Note 3). Drift at look-alike
-CpGs (B, their deviation from the controls) also rose against the same-chip littermates (housekeeping look-alikes, B +0.009 in cortex, p 0.0008, and +0.005 in striatum, p 2·10⁻⁵, on control means of 0.021 and 0.022). Part of the rise in F therefore comes from its denominator; the signed shift S does not depend on it. Neurons do not divide, so selection among neurons cannot explain
-the weaker shield; the samples are bulk tissue, however, and a change in the neuron-glia mix was not held.
+CpGs (B, their deviation from the controls) also rose against the same-chip wild types (housekeeping look-alikes, B +0.009 in cortex, p 0.0008, and +0.005 in striatum, p 2·10⁻⁵, on control means of 0.021 and 0.022). Part of the rise in F therefore comes from its denominator; the signed shift S does not depend on it. The samples are bulk cortex and striatum, so the
+change cannot be assigned to neurons: glia, some of which divide, and a shift in the neuron-glia mix were not held.
 
 Tet1 knockout and Tet1 catalytic-dead cortex (Foong et al. 2024; eight per genotype) did the opposite. Both drifted
 more overall (look-alike drift +0.03 to +0.04), but essential promoters kept or strengthened their shield (F −0.11 to
 −0.17, p ≤ 0.014) and lost methylation against look-alikes (S −0.021 and −0.018, p < 10⁻⁷). The remover at essential
-promoters in neurons is therefore consistent with Tet3, whose full-length CXXC isoform binds unmethylated CpGs and sits at transcription start sites in neuronal cells (Jin
+promoters in brain tissue is therefore consistent with Tet3, whose full-length CXXC isoform binds unmethylated CpGs and sits at transcription start sites in neuronal cells (Jin
 et al. 2016), and not with Tet1. These are single studies on different arrays (Tet3 heterozygous on the mammalian array, Tet1 homozygous on
 the mouse array), each with eight mutants per tissue, and knockouts show a state, not a rate. The result agrees with
 Krepelova et al. (2025), who found impaired TET activity driving drift in the mouse intestine; our data add
-that the effect falls on essential promoters specifically, against littermates (Supplementary Figs. S3, S4).
+that the effect falls on essential promoters specifically, against same-chip wild types (Supplementary Figs. S3, S4).
 
 Because F is a ratio, a perturbation of the look-alikes moves it as much as one of the set, and two other
 perturbations act on the look-alikes instead. A DNMT3A gain-of-function mutation (W326R; Sarni et al.
@@ -283,7 +283,8 @@ settled; its direction agrees with every cross-sectional cohort.
 **The shield behaves like a property of each cell's chromatin and methylation turnover, not of competition among
 cells, lifespan, reprogramming state or transcription.**
 
-*Selection among cells.* In culture the shield is a constant share of drift over up to 136 doublings (above).
+*Selection among cells.* In culture the shield's share of drift changed by −0.14 (−0.33 to +0.06) and −0.055 (−0.21 to +0.10)
+per 10 doublings (above): no detectable growth, but intervals that do not exclude growth of the size selection might give.
 Selection would make the share grow, although steady selection per doubling could also keep it constant in long-term cultures that lose clonal diversity,
 as mesenchymal stromal cells and iPSCs do (Hollmann et al. 2020). Clonal haematopoiesis, a form of selection in living
 blood, did not move the shield (64 patients of Basrai et al. 2026, any clone, DNMT3A or TET2; |F| ≤ 0.022, p ≥ 0.15), although clones
@@ -292,7 +293,8 @@ essential and non-essential promoters moved alike (F −0.058, −0.039, −0.05
 non-essential): a bottleneck did not protect essential promoters specifically (Supplementary Fig. S17). Caloric restriction, which slows
 haematopoietic proliferation, weakened the shield in one mouse blood series, by less once blood-cell chromatin
 openness was matched; the effect was absent in liver, and a second, short series in young mice went the other way
-(Supplementary Note 3). The turnover ordering in mouse (above) is the one observation in this family that a selection
+(Supplementary Note 3; its p-values are being recomputed by within-chip randomisation, and its start and end
+controls sat on different chips, so its 12-week aging contrast cannot be told from chip). The turnover ordering in mouse (above) is the one observation in this family that a selection
 account would predict; a division-dependent removal process predicts it too.
 
 *Tuning to lifespan.* Long-lived species drift less at unprotected CpGs, as found for epigenetic disorder and methylation rates
@@ -360,9 +362,9 @@ null. Second, the kinetic reading: essential island promoters gain methylation n
 faster, which keeps them at a lower resting level. This faster
 loss persists among promoters that share the active-TSS state, which is the first sign of something beyond the
 chromatin label a reference map records. Third, a genetic test: halving Tet3 in mouse brain makes essential
-promoters gain methylation and weaken the shield against littermates, while losing Tet1 does not. Krepelova et al.
+promoters gain methylation and weaken the shield against same-chip wild types, while losing Tet1 does not. Krepelova et al.
 (2025) showed that impaired TET activity drives intestinal drift; our data are consistent with it and specify that
-the effect falls on essential promoters in brain, where neurons do not divide.
+the effect falls on essential promoters in bulk brain tissue.
 
 Chromatin accounts for most of the shield in blood and for a quarter to a half in cortex. The binary-entropy
 measure had overstated the cortex share and suggested an essentiality effect beyond chromatin in blood; on the
@@ -371,7 +373,7 @@ mirror image: in blood the CpGs whose spread rises fastest are Polycomb targets,
 programme (Teschendorff et al. 2010; Rakyan et al. 2010; Slieker et al. 2016). Calling blood drift "stochastic" is
 therefore accurate only for the part outside that programme; in cortex rising spread is close to uniform.
 
-Selection among cells is unlikely to be the main source: the share shows no detectable change through many divisions in culture,
+We found no evidence that selection among cells is the main source, though these data do not exclude a contribution: the share shows no detectable change through many divisions in culture, with wide intervals,
 survives reprogramming that acts in days, does not change specifically across a transplant bottleneck or with clonal
 haematopoiesis, and is weakened in brain when Tet3 is halved. Nor is the shield tuned to species lifespan
 once the 0 % floor is accounted for, in line with Crofts et al. (2026).
@@ -382,15 +384,15 @@ mix, chip, global methylation and two outcome clocks. One cohort and possible ho
 for a second prospective cohort.
 
 **Where prior work and our own data cut against us.** (i) On the mouse array,
-the corrected measure orders the shield by turnover: present in all three renewing tissues and in slowly renewing liver and kidney, reversed in four of five
+the corrected measure, not adjusted for array chip, orders the shield by turnover: present in all three renewing tissues and in slowly renewing liver and kidney, reversed in four of five
 post-mitotic ones and in adipose tissue. Our chromatin-maintenance reading predicted no dependence on turnover. RRBS in the same species
 keeps a small shield in cortex and heart, and human GTEx tissues do not follow turnover, but the mouse array result
-stands. One reconciliation is that faster removal at essential promoters is partly passive, requiring replication to
+stands, with the caveat that age and chip are confounded in spleen, adipose, colon and kidney (a chip-aware analysis is pending). One reconciliation is that faster removal at essential promoters is partly passive, requiring replication to
 dilute methylation, which would make the shield larger where cells divide without any selection; we have not tested
 this. Vaidya et al. (2023) tie methylation entropy to stem-cell division across mouse tissues, which points the same
 way. (ii) Matching on chromatin may be circular: an active, unmethylated promoter and its chromatin state may both be
 outcomes of the same protection, and the reference epigenomes come from other individuals. (iii) Long-term cultures
-can lose clonal diversity, as mesenchymal stromal cells and iPSCs do (Hollmann et al. 2020), and steady selection per doubling would also give a constant share. (iv)
+can lose clonal diversity, as mesenchymal stromal cells and iPSCs do (Hollmann et al. 2020), and steady selection per doubling would also leave the share unchanged. (iv)
 The Tet3 result is one study of 16 mice per tissue on one array; the Tet1 comparison uses another array and
 homozygous mutants; and some weaker Tet3 contrasts did not survive the project-wide correction. (v) Seeboth et al.
 (2020) found cell mix, body mass index, smoking and batch to confound per-person methylation outlier burdens; our within-sample

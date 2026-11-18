@@ -65,7 +65,7 @@ R18): Sotos drift B +0.021 (p 10⁻⁴²), F −0.043; other NSD1 variants F −
 littermates (R37): F −0.53 to −0.61 for essential and housekeeping sets in bone marrow, intestine and liver, +0.56 to
 +0.67 for non-essential; S −0.06 to −0.09 and +0.07 to +0.09; B +0.06 to +0.10.
 
-**Tet3 and Tet1 detail.** Tet3 heterozygous against same-chip littermates (R15, R16, R36): housekeeping F +0.17
+**Tet3 and Tet1 detail.** Tet3 heterozygous against same-chip, same-age wild types (litters not recorded in GEO; R15, R16, R36): housekeeping F +0.17
 (cortex, p 0.006), +0.25 (striatum, p 9·10⁻⁶); core-essential F +0.31, +0.49; core-essential S +0.012 (p 3·10⁻⁴),
 +0.014 (p 2·10⁻⁴), with compression held +0.010 (p 0.003), +0.013 (p 0.001). Signed shifts also occur in arms without a
 shield change (GHRKO kidney +0.023), so S alone is not specific. Tet1 knockout / catalytic-dead (R35): housekeeping B
@@ -74,7 +74,7 @@ Tet3 and GHRKO contrasts (p 0.027-0.036); the strongest Tet3 contrasts survive.
 
 **Mouse interventions and selection tests.** CR in B6D2F1 blood (R8; 12 against 10 mice): housekeeping F +0.025 (p 0.002, 5 components),
 with blood-cell openness matched +0.008 (p 0.07; R55). CR in C57BL/6 crossed sequencing series and is not read. CR
-liver (59 against 36 mice): F −0.008 (p 0.77; R13). Second CR series, young mice, 12 weeks (R56): no aging drift in controls (B −0.003); CR
+liver (59 against 36 mice): F −0.008 (p 0.77; R13). Second CR series, young mice, 12 weeks (R56): controls at 12 weeks against the start B −0.003, but all eight start controls sat on one chip and the end controls on two others, so this aging contrast is confounded with chip and unresolved; CR
 changes spare essential promoters (core-essential F −0.090, p 0.006; housekeeping −0.027, p 0.026, lost under the
 global correction). GHRKO liver strengthening was batch (same-chip +0.01, p 0.67). Clonal haematopoiesis (R25): 64
 patients, |F| ≤ 0.022, p ≥ 0.15. Transplant (R57): F core-essential −0.058 (−0.091 to −0.028), housekeeping −0.039,
@@ -220,7 +220,7 @@ Source: `docs/PROVENANCE.md`, `docs/extension.md`.
 | GTEx tissues | C1 | R68d | `data/output/gtex_tissues/point_estimates.csv` |
 | Mouse array 11 tissues, renewing − post-mitotic −0.19 | C1, C2 | R68a | `data/output/mouse_tissues/point_estimates.csv`, `contrasts.csv` |
 | RRBS and BXD gaps | C1 | R73 | `data/output/meer_tissues/aging_gaps.csv`, `mouse_rrbs_tissues/aging_gaps.csv`, `interventions/aging_gaps.csv`, `bxd_liver/aging_gaps.csv` |
-| Culture, constant share | C3 | Endicott and Sturm runs (pre-R-numbering), R1 | `data/output/passaged_cells/coupling_across_lines`, `data/output/passaged_cells_sturm/` |
+| Culture, share against doublings | C3 | Endicott and Sturm runs (pre-R-numbering), R1 | `data/output/passaged_cells/coupling_across_lines`, `data/output/passaged_cells_sturm/` |
 | Species 89 % / 73 % off floor; lifespan +0.004 | C6 | R12, R59, R68c | `data/output/species_floor/species_gaps.parquet`, `data/output/species_floor/lifespan_fits.csv`, `share_off_floor.csv` |
 | Phylogenetic GLS | C6 | species_phylo | `data/output/species_phylo/lifespan_fits` |
 | Gain and loss rates; resting level | C2, C4 | R67 | `data/output/equilibrium_drift/pooled_rates.csv`, `per_cpg_gaps.csv`, `identified.csv` |

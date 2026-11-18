@@ -3,13 +3,13 @@ E1,Shield in many tissues of two species,R6-R11,1,1,0,0,0,1,1,0,-1
 E2,Shield in 96 % of 65 mammals,R12,1,1,0,0,0,1,0,0,-1
 E3,Gap survives probe design and masks,R20,0,0,0,0,0,0,-2,0,0
 E4,Own chromatin removes 67-91 %; another tissue's 30 %,RM7,2,0,0,0,0,-1,0,0,-1
-E5,Constant share over 136 doublings,RM5,2,-2,0,0,0,0,0,0,-1
-E6,Not ordered by turnover,R10 GTEx,1,-2,-1,0,0,0,0,0,0
+E5,No detectable change of share over doublings (wide intervals),RM5,1,-1,0,0,0,0,0,0,-1
+E6,GTEx tissues not ordered by turnover,R10 GTEx,1,-2,-1,0,0,0,0,0,0
 E7,Blood equals brain after chromatin matching,RM7,2,-2,0,0,0,0,0,0,0
 E8,Shield share grows with age in liver,RM3,0,-1,-1,0,0,0,0,0,0
 E9,CR weakens the shield in one blood study,RM3,-1,1,0,0,0,0,0,0,1
 E10,CR in liver leaves it,R13,0,0,0,0,0,0,0,0,1
-E11,Tet3 het brain loses it against littermates,R15 R16,1,-2,0,2,0,0,1,1,1
+E11,Tet3 het bulk brain loses it against same-chip wild types,R15 R16,1,-1,0,2,0,0,1,1,1
 E12,Tet1 loss keeps it,R35,0,0,0,1,0,0,0,0,1
 E13,Writer syndromes add noise and keep it,R18,1,0,0,1,0,0,0,0,1
 E14,Clonal haematopoiesis leaves it,R25,0,-1,0,0,0,0,0,0,0
@@ -30,3 +30,4 @@ E28,Rapamycin narrows age noise in dividing and non-dividing tissue alike,R47,1,
 E29,Drift at look-alikes predicts breast cancer years ahead; shield share does not,R46,0,0,0,0,0,0,0,-1,1
 E30,Molecule-level disorder grows slower at essential promoters (read-level WGBS; blood; cfDNA; 27 sorted cell types),R50 R51 R53,1,0,0,0,0,-1,-2,-1,-1
 E31,Shield share grows within a person as they age; CpG divergence gap small (SATSA),R52,1,0,0,0,0,0,0,0,-1
+E32,Mouse array orders the shield by turnover (unadjusted; age and chip confounded in 4 tissues),R68 R92,-1,1,0,0,0,0,0,0,1

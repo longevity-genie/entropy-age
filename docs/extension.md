@@ -663,13 +663,13 @@ controls (controls leave one out), at least 5 animals per arm.
 * **CR does not weaken the shield in liver** (59 against 36 mice). The weakening in mouse blood (one study) is not
   replicated in a slowly renewing tissue. That is what selection would predict, but it is also what a batch effect
   in the blood study would give; it stays open.
-* **Mice missing one copy of Tet3 lose the shield in brain, against their own littermates.** Tet3 is a DNA
+* **Mice missing one copy of Tet3 lose the shield in brain, against same-chip, same-age wild types.** Tet3 is a DNA
   demethylase active in neurons. The pooled controls were the wild types of several knockouts; but the Tet3 mice
-  share their array chips with eight wild types of the same age, their littermate controls. Against those, with
+  share their array chips with eight wild types of the same age (GEO does not record litters). Against those, with
   the chip as a covariate (run R15), the shield share rises by +0.17 (cortex, p 0.006) and +0.25 (striatum,
   p 9·10⁻⁶) for housekeeping genes, +0.31 and +0.49 for core-essential genes (8 against 8 each). Drift at
-  look-alike CpGs rises only slightly (B +0.007, +0.003). Neurons do not divide, so selection cannot do this:
-  halving a demethylase lets essential promoters drift like any other CpG. This is the first causal sign that the
+  look-alike CpGs rises only slightly (B +0.007, +0.003). The samples are bulk cortex and striatum, so this
+  cannot be assigned to neurons; in the tissue, halving a demethylase lets essential promoters drift like any other CpG. This is the first causal sign that the
   shield is maintained by the methylation machinery (H1). Open: whether essential CpGs gain methylation (TET
   keeps island promoters unmethylated) or merely scatter; one study, 16 mice.
 * **Which way they move (run R16).** The signed shift S (above 0: set CpGs gained methylation against their
@@ -1063,12 +1063,14 @@ controls, 8 at the start, all on one array run. Figure `cr_blood_replication`:
 
 ![Second CR blood series](figures/cr_blood_replication.png)
 
-* **No drift to shield.** Controls after 12 weeks do not differ from the start (B −0.003, n.s.): in young mice
-  over 12 weeks there is no aging drift, so `F` here measures how CR's own changes fall, not the aging shield.
+* **Aging drift over the 12 weeks is unresolved.** Controls after 12 weeks do not differ from the start (B −0.003,
+  n.s.), but all eight start controls sat on one physical chip and the end controls on two others (audit
+  2026-11-18), so a time contrast within a chip cannot be made: chip and 12 weeks of age are confounded. `F` against
+  CR here measures how CR's own changes fall; whether there was aging drift to shield is not known.
 * **CR's changes spare essential promoters.** Against controls, essential CpGs move less than look-alikes (`F`
   core essential −0.09, p 0.006; housekeeping −0.03, p 0.03), the opposite sign of the B6D2F1 result, with drift
   `B` unchanged. Non-essential CpGs shift (signed `S` −0.004, p 0.015). CR with torpor goes the same way, n.s.
-* **Reading.** This is not a replication test of the aging result (no drift, young mice, 12 weeks), and it gives
+* **Reading.** This is not a replication test of the aging result (drift unresolved, young mice, 12 weeks), and it gives
   no support for it: what CR does here is kept out of essential promoters, as Dnmt3a's gain was (R37).
 
 Tables: `data/output/cr_blood_replication/` (`effects`, `animal_scores`).

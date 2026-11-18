@@ -23,15 +23,15 @@ less with age than CpGs of the same island status and starting level. Non-essent
 
 We tested three explanations.
 
-- **Selection among dividing cells.** In culture, the shield is a constant share of drift through up to 136
-  population doublings; it does not grow, as selection requires.
+- **Selection among dividing cells.** In culture, the shield's share of drift shows no detectable change through up to
+  136 population doublings (−0.14 per 10, −0.33 to +0.06); the interval does not exclude the growth selection predicts.
 - **Turnover.** The shield does not follow how often a tissue's cells divide.
 - **Chromatin.** The tissue's own chromatin state accounts for most of it: 67-91 % in blood, up to half in brain
   with cell-type-resolved maps. After matching, the remainder is the same in blood and brain.
 
 In living mice the shield's share grows with age in blood and in slowly renewing liver alike. Caloric
 restriction weakens it in one blood series but not in liver. Mice missing one copy of the demethylase Tet3
-lose it in brain, against their own littermates. Across 65 mammal species the shield is nearly universal, and not stronger in long-lived ones.
+lose it in brain, against same-chip, same-age wild types. Across 65 mammal species the shield is nearly universal, and not stronger in long-lived ones.
 
 Published clocks draw on CpGs whose chromatin differs between tissues, Polycomb targets above all.
 Clocks built from Polycomb CpGs alone misread other tissues by a constant, calibratable offset. A
@@ -71,7 +71,7 @@ lifespan scaling as stem-cell dynamics (Crofts 2026), and per-person drift burde
 - **Weak:** GTEx with decade-bin ages; four of nine tissues show little.
 - **Figures:** gene_sets, gtex_tissues, mouse_tissues, mouse_rrbs_tissues.
 
-### 2.2 The shield is a constant share of drift as cells divide
+### 2.2 The shield's share of drift shows no detectable change as cells divide
 
 - **Evidence:** two culture studies (GSE197512, seven lines to 136 doublings; GSE179847, five lines to 79
   doublings). The noise floor is removed. **[solid]** as a measurement; **[weak]** as evidence against selection:
@@ -107,7 +107,7 @@ lifespan scaling as stem-cell dynamics (Crofts 2026), and per-person drift burde
   ATAC openness, two thirds of it goes with the shield (+0.025 → +0.008, p 0.07; R55).
 - CR in liver (GSE223748, 59 against 36 mice) leaves it unchanged (F −0.008, p 0.77): the blood result is not
   replicated in a slowly renewing tissue. **[weak]** either way.
-- Tet3 heterozygous cortex and striatum lose the shield against same-chip, same-age littermates (housekeeping F
+- Tet3 heterozygous cortex and striatum lose the shield against same-chip, same-age wild types (housekeeping F
   +0.17, +0.25; core-essential +0.31, +0.49; 8 against 8). **[weak → solid within one study]**: one study, 16
   mice per tissue. **[missing]** the direction (gain of methylation?) and a second Tet or Dnmt model.
 - GHRKO liver's apparent strengthening was batch (gone against same-chip controls).
@@ -161,7 +161,7 @@ lifespan scaling as stem-cell dynamics (Crofts 2026), and per-person drift burde
 ## 4 What the paper still needs, in order
 
 1. **Tet3, second step**: the direction of change at essential CpGs, and a second Tet or Dnmt model (the loss holds
-   against littermates, R15).
+   against same-chip wild types, R15).
 2. **Replication of the CR effect** in a second within-batch blood series (liver did not replicate it).
 3. **Test-retest of the per-person score** on replicate arrays (public technical replicates exist on GEO).
 4. **A causal chromatin test**, from public natural experiments first (RM14: chromatin-writer syndromes in blood,

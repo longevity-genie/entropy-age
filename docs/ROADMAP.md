@@ -146,7 +146,7 @@ happens when chromatin is changed? Three sources, in order:
 2. Mouse knockouts: Tet3 heterozygous brain (GSE223748, at hand after R12); Tet2 and Dnmt3a mutant blood.
 3. Edited cells over time: CRISPRoff (Nunez et al. 2021) tracked imposed promoter methylation for months.
 Rule: a cohort with at least 10 carriers and matched controls on one platform.
-- Done: Tet3 heterozygous brain loses the shield against littermates (R15, R16).
+- Done: Tet3 heterozygous brain loses the shield against same-chip wild types (R15, R16).
 - Done (R18): Sotos, NSD1 variants, Weaver, Kabuki and CHARGE carriers drift more in blood but keep the shield
   (F unchanged or more negative); KMT2D and CHD7 variants show nothing within the controls' ages.
 - Next: the DNMT3A loss-against-gain pair below; a TET2 or TET3 human cohort if one exists.

@@ -74,7 +74,7 @@ measures a matched essential-gene shield across tissues or species.
    tissue's).
 3. A battery of tests against selection, all negative: culture, turnover, liver, neurons, species, CR in liver,
    clonal haematopoiesis.
-4. Tet3 loss removes the shield in neurons against littermates; chromatin-writer syndromes add noise but keep it.
+4. Tet3 loss removes the shield in bulk brain tissue against same-chip wild types; chromatin-writer syndromes add noise but keep it.
 5. The per-person shield is information that outcome-oriented clocks lack (R29).
 
 **What is weak.** Tet3 is one study of 16 mice per tissue; chromatin matching may be partly circular; the
