@@ -8,6 +8,13 @@ measured on both: the age slopes of entropy and dispersion, each gene set agains
 status and level decile, in SD, on the CpGs present in both. A gap that is a preprocessing artefact changes when the
 preprocessing does; one in the biology does not.
 
+**Paired pilot (roadmap RM41; array-compatibility handoff 2026-11-18).** When R SeSAMe betas exist
+(``scripts/sesame_preprocess.R`` on the same donors' IDATs, ``data/interim/sesame/GSE74193_adult``), a third
+source is added and all three are compared on identical donors and on the CpGs measured without masking in every
+donor under every source (nothing filled). A donor bootstrap (``N_BOOT`` draws, the same draws for every source,
+each resample on the full sample's SD) gives each gap an interval and each pairwise difference between sources
+its own paired interval. The methylprep rebuild stays labelled methylprep.
+
 ``entropy-age figures reprocessed_jaffe`` as a Slurm job, after R61a wrote the reprocessed betas.
 """
 
@@ -20,8 +27,9 @@ import numpy as np
 import polars as pl
 
 from entropy_age import plots
+from entropy_age.data import reprocessed
 from entropy_age.data.matrix import FeatureMatrix
-from entropy_age.experiments.common import Context, dummies, write_table
+from entropy_age.experiments.common import Context, dummies, rescale, write_table
 from entropy_age.experiments.tissue_contrast import (
     LIFESPAN_METRICS,
     MAX_MISSING,
@@ -35,7 +43,9 @@ from entropy_age.experiments.tissue_contrast import (
 REPROCESSED = "cohorts/jaffe_betas_sesame.parquet"
 DEPOSITED = "cohorts/jaffe_betas.parquet"
 SAMPLES = "cohorts/jaffe_samples.parquet"
-SOURCES = ("deposited", "reprocessed from IDATs")
+SOURCES = ("deposited", "reprocessed from IDATs")  # the second is methylprep 1.7.1 (R61)
+SESAME = ("GSE74193_adult", "R SeSAMe from IDATs")
+N_BOOT = 100
 LABELS = {"entropy_slope": "entropy", "dispersion_slope": "dispersion", "abs_slope": "|mean change|"}
 
 
@@ -94,7 +104,78 @@ def run(ctx: Context) -> list[Path]:
     table = pl.concat(rows)
     write_table(table, out / "gaps")
     write_table(pl.DataFrame(agree), out / "per_cpg_agreement")
+    if reprocessed.available(ctx.paths, SESAME[0]):
+        _paired(ctx, out, s, features, probes, membership)
     return [_figure(ctx, table)]
+
+
+def _paired(ctx: Context, out: Path, s: pl.DataFrame, features, probes, membership) -> None:
+    """Three sources on identical donors and one complete CpG universe; a paired donor bootstrap."""
+    ses = reprocessed.read_betas(ctx.paths, SESAME[0]).rename({"probe": "cpg"})
+    s = s.filter(pl.col("sample").is_in(ses.columns))
+    donors = s["sample"].to_list()
+    frames = {
+        SOURCES[0]: pl.scan_parquet(ctx.paths.interim / DEPOSITED).select("cpg", *donors).collect(),
+        SOURCES[1]: pl.scan_parquet(ctx.paths.interim / REPROCESSED).select("cpg", *donors).collect(),
+        SESAME[1]: ses.select("cpg", *donors),
+    }
+    universe = set(features)
+    for f in frames.values():
+        universe &= set(f.drop_nulls()["cpg"].to_list())
+    common = sorted(universe)
+    print(f"reprocessed_jaffe: paired pilot, {len(donors)} donors, {len(common)} CpGs in all three", file=sys.stderr)
+    cov = np.column_stack(
+        [*(dummies(s[c].to_numpy()) for c in ("plate", "sex", "race")), s["neuron_fraction"].to_numpy()]
+    )
+    preps = {}
+    for source, f in frames.items():
+        x = f.filter(pl.col("cpg").is_in(common)).sort("cpg").select(donors).to_numpy().T.astype(float)
+        preps[source] = Prepared("cortex (Jaffe)", x, s["age"].to_numpy(), cov, common, s["donor"].to_numpy(), cov)
+    keys = ["source", "metric", "group"]
+    point = []
+    for source, p in preps.items():
+        t = _matched_sd(_with_strata(_lifespan_metrics(p), probes), membership, LIFESPAN_METRICS, 1000, ctx.seed)
+        point.append(t.with_columns(source=pl.lit(source)))
+    point = pl.concat(point)
+    rng = ctx.rng(410_001)
+    boot = []
+    idx = np.arange(len(donors))
+    for b in range(N_BOOT):
+        draw = np.sort(rng.choice(idx, size=idx.size, replace=True))  # one draw for every source
+        for source, p in preps.items():
+            q = Prepared(
+                p.label, p.x[draw], p.ages[draw], p.covariates[draw], p.features, p.donors[draw], p.technical[draw]
+            )
+            t = _matched_sd(_with_strata(_lifespan_metrics(q), probes), membership, LIFESPAN_METRICS, 0, b)
+            boot.append(t.select("metric", "group", "matched_diff").with_columns(source=pl.lit(source), b=pl.lit(b)))
+    boot = rescale(pl.concat(boot), point, keys)
+    ci = boot.group_by(keys).agg(
+        lo=pl.col("matched_diff_sd").quantile(0.025), hi=pl.col("matched_diff_sd").quantile(0.975)
+    )
+    write_table(
+        point.join(ci, on=keys).with_columns(donors=pl.lit(len(donors)), cpgs=pl.lit(len(common))), out / "paired_gaps"
+    )
+    wide = boot.pivot(on="source", index=["b", "metric", "group"], values="matched_diff_sd")
+    rows = []
+    sources = [*SOURCES, SESAME[1]]
+    for i, a in enumerate(sources):
+        for b_ in sources[i + 1 :]:
+            for (metric, group), g in wide.group_by("metric", "group", maintain_order=True):
+                d = (g[b_] - g[a]).to_numpy()
+                pa = point.filter((pl.col("source") == a) & (pl.col("metric") == metric) & (pl.col("group") == group))
+                pb = point.filter((pl.col("source") == b_) & (pl.col("metric") == metric) & (pl.col("group") == group))
+                rows.append(
+                    {
+                        "from": a,
+                        "to": b_,
+                        "metric": metric,
+                        "group": group,
+                        "difference": float(pb["matched_diff_sd"][0] - pa["matched_diff_sd"][0]),
+                        "lo": float(np.quantile(d, 0.025)),
+                        "hi": float(np.quantile(d, 0.975)),
+                    }
+                )
+    write_table(pl.DataFrame(rows), out / "paired_differences")
 
 
 def _figure(ctx: Context, table: pl.DataFrame) -> Path:

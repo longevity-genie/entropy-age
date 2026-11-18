@@ -36,10 +36,12 @@ import polars as pl
 from scipy import stats
 
 from entropy_age import plots
+from entropy_age.data import reprocessed
 from entropy_age.data.annotation import AnnotationLayout
 from entropy_age.data.cohorts import layout as cohort_layout
+from entropy_age.data.matrix import FeatureMatrix
 from entropy_age.experiments.common import Context, write_table
-from entropy_age.experiments.tissue_contrast import SET_LABELS, SETS, _features, _matrix
+from entropy_age.experiments.tissue_contrast import MAX_MISSING, SET_LABELS, SETS, _features, _matrix
 from entropy_age.protection import deviations, matched_scores
 from entropy_age.stochasticity import baseline_strata
 
@@ -294,6 +296,9 @@ TITLES = {
 }
 
 
+GSE = {"endicott": "GSE197512", "sturm": "GSE179847"}
+
+
 def run(ctx: Context) -> list[Path]:
     """GSE197512 (Endicott et al.): seven primary lines to senescence, with MMC-arrested arms."""
     return _run(ctx, "endicott", "passaged_cells")
@@ -304,7 +309,41 @@ def run_sturm(ctx: Context) -> list[Path]:
     return _run(ctx, "sturm", "passaged_cells_sturm")
 
 
-def _run(ctx: Context, cohort: str, name: str) -> list[Path]:
+def run_pipelines(ctx: Context) -> list[Path]:
+    """Paired pipeline comparison (roadmap RM41; array-compatibility handoff 2026-11-18): each culture study scored
+    from the authors' deposited betas and from betas rebuilt from its IDATs by R SeSAMe, both on exactly the samples
+    that passed SeSAMe QC, so a change is the processing's and not the cohort's."""
+    out = []
+    for cohort, name in (("endicott", "passaged_cells"), ("sturm", "passaged_cells_sturm")):
+        if not reprocessed.available(ctx.paths, GSE[cohort]):
+            print(f"{name}: no SeSAMe betas for {GSE[cohort]}; skipped", file=sys.stderr)
+            continue
+        common = _common_complete(ctx, cohort)
+        print(f"{name}: {len(common)} CpGs complete in both sources", file=sys.stderr, flush=True)
+        out += _run(ctx, cohort, f"{name}_deposited_subset", source="deposited", subset=True, universe=common)
+        out += _run(ctx, cohort, f"{name}_sesame", source="sesame", subset=True, universe=common)
+    return out
+
+
+def _common_complete(ctx: Context, cohort: str) -> list[str]:
+    """CpGs measured, unmasked, in every SeSAMe-passing sample under both sources: the paired universe (no fill)."""
+    lay = cohort_layout(cohort, ctx.paths)
+    passed = reprocessed.read_qc(ctx.paths, GSE[cohort]).filter(pl.col("passed"))["sample"].to_list()
+    samples = [x for x in pl.read_parquet(lay.samples)["sample"].to_list() if x in set(passed)]
+    ses = reprocessed.read_betas(ctx.paths, GSE[cohort]).select("probe", *samples).drop_nulls()
+    dep = pl.scan_parquet(lay.betas).select("cpg", *samples).drop_nulls().select("cpg").collect()
+    return sorted(set(ses["probe"].to_list()) & set(dep["cpg"].to_list()))
+
+
+def _sesame_matrix(cohort: str, paths, samples: list[str], features: list[str], max_missing: float = MAX_MISSING):
+    frame = reprocessed.read_betas(paths, GSE[cohort]).rename({"probe": "cpg"})
+    frame = frame.filter(pl.col("cpg").is_in(features)).select("cpg", *samples)
+    return FeatureMatrix.from_frame(frame, feature_col="cpg", samples=samples, max_missing=max_missing)
+
+
+def _run(
+    ctx: Context, cohort: str, name: str, source: str = "deposited", subset: bool = False, universe=None
+) -> list[Path]:
     lay = cohort_layout(cohort, ctx.paths)
     needed = [lay.betas, AnnotationLayout(ctx.paths).links_450k]
     missing = [str(p) for p in needed if not p.exists()]
@@ -319,7 +358,22 @@ def _run(ctx: Context, cohort: str, name: str) -> list[Path]:
     out = ctx.out_dir(name)
     features, probes, membership = _features(ctx.paths, ctx.rng(160_000))
     samples = pl.read_parquet(lay.samples).sort("subexperiment", "donor", "days", "sample")
-    m = _matrix(cohort, ctx.paths, samples["sample"].to_list(), features)
+    if subset:  # only the samples SeSAMe passed, for both sources
+        passed = reprocessed.read_qc(ctx.paths, GSE[cohort]).filter(pl.col("passed"))["sample"].to_list()
+        dropped = samples.filter(~pl.col("sample").is_in(passed))
+        print(f"{name}: {dropped.height} of {samples.height} samples not in the SeSAMe set", file=sys.stderr)
+        write_table(dropped, out / "samples_dropped")
+        samples = samples.filter(pl.col("sample").is_in(passed))
+    if universe is not None:  # the paired comparison: one CpG universe, complete in both sources, nothing filled
+        features = [f for f in features if f in set(universe)]
+    if source == "sesame":
+        m = _sesame_matrix(cohort, ctx.paths, samples["sample"].to_list(), features, 0.0 if universe else MAX_MISSING)
+    elif universe is not None:
+        lay_frame = pl.scan_parquet(lay.betas).select("cpg", *samples["sample"].to_list())
+        frame = lay_frame.filter(pl.col("cpg").is_in(features)).collect()
+        m = FeatureMatrix.from_frame(frame, feature_col="cpg", samples=samples["sample"].to_list(), max_missing=0.0)
+    else:
+        m = _matrix(cohort, ctx.paths, samples["sample"].to_list(), features)
     membership = membership.filter(pl.col("feature").is_in(m.features))
     scores = score_samples(samples, m.values, m.features, probes, membership)
     write_table(scores, out / "sample_scores")
