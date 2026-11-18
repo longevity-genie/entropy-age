@@ -96,6 +96,7 @@ def _tissues(paths, features: list[str]) -> dict[str, MouseTissue]:
     lay = cohort_layout("huang", paths)
     samples = pl.read_parquet(lay.samples)
     frame = pl.scan_parquet(lay.betas).filter(pl.col("cpg").is_in(features)).collect()
+    samples = samples.filter(pl.col("sample").is_in(frame.columns))  # rebuilt betas lack arrays that failed QC
     out = {}
     for tissue in TURNOVER:
         s = samples.filter(pl.col("tissue") == tissue).sort("group", "donor")
