@@ -1,6 +1,6 @@
 # One preprocessing for every Infinium series, from raw IDATs (roadmap RM41; asked by antonkulaga 2026-11-18).
 #
-# SeSAMe (Zhou et al. 2018, doi:10.1093/nar/gky691), the same recipe for every series and platform:
+# SeSAMe (Zhou et al. 2018, doi:10.1093/nar/gky691), SeSAMe's recipe for each platform (prep_code below); human:
 #   prepSesame "QCDPB": Q qualityMask (design-flagged probes), C inferInfiniumIChannel (channel switches),
 #   D dyeBiasNL (non-linear dye bias), P pOOBAH (detection p from out-of-band signal; failing probes masked),
 #   B noob (background from out-of-band signal). Betas of masked probes are NA.
@@ -45,12 +45,28 @@ parse_name <- function(pfx) {
   )
 }
 
+# SeSAMe's own recommendation per platform (sesame vignette, "prepSesame" table; methods review 2026-11-18, RM43):
+# human arrays QCDPB; MM285 (mouse) TQCDPB, T masking probes hit by the inferred strain's variants; Mammal40 in a
+# non-human organism SHCDPB, S the species mask and H keeping cg/ch probes only. SESAME_PREP overrides for every array.
+prep_code <- function(pf) {
+  forced <- Sys.getenv("SESAME_PREP", "")
+  if (nzchar(forced)) return(forced)
+  if (pf == "MM285") return("TQCDPB")
+  if (pf == "Mammal40") return("SHCDPB")
+  "QCDPB"
+}
+
 one <- function(pfx) {
   sdf <- if (is.null(platform)) readIDATpair(pfx) else readIDATpair(pfx, platform = platform)
   qc <- as.data.frame(sesameQC_calcStats(sdf, c("detection", "numProbes", "intensity", "channel", "dyeBias")))
   qc$GCT <- tryCatch(bisConversionControl(sdf), error = function(e) NA_real_)  # bisulfite conversion, ~1 is good
-  prepped <- prepSesame(sdf, "QCDPB")
-  list(beta = getBetas(prepped), qc = cbind(parse_name(pfx), qc, platform = sdfPlatform(sdf)))
+  code <- prep_code(sdfPlatform(sdf))
+  if (grepl("S", code)) {  # detection over the probes the species mask keeps, not the whole multi-species array
+    kept <- prepSesame(sdf, "SH")
+    qc$frac_dt_species <- sum(!prepSesame(kept, "P")$mask) / max(1, sum(!kept$mask))
+  }
+  prepped <- prepSesame(sdf, code)
+  list(beta = getBetas(prepped), qc = cbind(parse_name(pfx), qc, platform = sdfPlatform(sdf), prep = code))
 }
 
 param <- if (workers > 1) MulticoreParam(workers) else SerialParam()
