@@ -19,7 +19,7 @@ adds R77 (held loci protected in blood), R78 (no sex difference), R79 (no univer
 1. **The 0 % floor:** the shield's gap in blood and cortex with CpGs restricted to a young level of 10-90 %, as R59 did for the species array. Done (R80): in blood most of the shield is the floor (housekeeping spread −0.29 → −0.08 SD at 20-80 %, core-essential and relative entropy to 0); cortex keeps its size, interval to 0 at 20-80 %. v0.2 states the blood shield with this bound.
 2. **Faster loss beyond a pooled fit:** the per-CpG bounded relaxation of R67 reported per set with its interval, not only the pooled rates. Done (R83): faster loss per CpG holds in blood only (housekeeping +0.11 SD, +0.05 to +0.15) and goes with own chromatin state; not seen in cortex. A lower resting level holds in both tissues. v0.2 narrows the Tet3-removal story to blood plus the resting level.
 3. **Placebo sets matched on expression:** random gene sets drawn within expression deciles (GTEx whole blood and brain), through the same matching. Done (R82): in blood expression alone gives about 4/5 of the housekeeping gap and all of the core-essential gap; in cortex the gap is 4-7x the expression-matched placebo. v0.2 leads with cortex.
-4. **The cancer lead's design:** incident breast cancer in EPIC-Italy as a matched case-control within the cohort (age, centre, follow-up), with the interval for women only.
+4. **The cancer lead's design:** incident breast cancer in EPIC-Italy as a matched case-control within the cohort (age, centre, follow-up), with the interval for women only. Done (R84b): OR 1.71 (1.35-2.48) for cases over 2 years, 1.76 adjusted; shield share none.
 
 Each is reused from a past run where one fits (Anton's rule, 2026-11-14), and goes into round v0.2.
 
@@ -71,13 +71,13 @@ effects ... apply it to all samples and validate if things are done properly for
 
 Jobs may go to account `cluster`, partition `requeue` (preemptible; he allowed it the same day), each restartable.
 
-1. **Organs aging together at one age, in mice:** clock and drift residuals correlated across tissues of the same animals (Huang, Thompson).
-2. **A regional gradient within AD donors:** drift by region in the same Lunnon donors, entorhinal cortex first, against Braak.
+1. **Organs aging together at one age, in mice:** clock and drift residuals correlated across tissues of the same animals (Huang, Thompson). Done (R88): look-alike drift correlates across tissues of one mouse, r 0.15-0.19 (null 0); chip not yet held.
+2. **A regional gradient within AD donors:** drift by region in the same Lunnon donors, entorhinal cortex first, against Braak. Done (R86): no gradient, no Braak dependence (109 donors).
 3. **Directed pace against noise pace across species:** do tissues rank alike on both, species by species?
 4. **Onset of drift against age at maturity:** does where drift starts to rise scale with maturity across mammals (R45's fits)? Answered by past runs, no new run (2026-11-18): R45 found no onset to scale (noise rises from early life; 6 bends, all late, too few for a fit), and R22 measured the per-year rate on raw drift, falling as lifespan^-1.4 with weight and tissue held. R45's noise is z-scored within each group, so its per-year slopes shrink with each group's age span whatever the biology and cannot test scaling (checked, not used).
 5. **Per day or per division:** drift per day against drift per doubling across every culture series and agent. Done (R89, from the RM5 runs' saved scores): drift at unmethylated strata rises +0.015 per 10 doublings in both series and +0.001 to +0.005 per 10 days; divisions give about 4x what time gives in Sturm, about as much in Endicott.
-6. **Progeroid and machinery mutants:** is their extra noise at the CpGs that gain noise in normal aging?
-7. **Sex in mice and mammals:** R78's sex contrast on mouse tissues and the species array.
+6. **Progeroid and machinery mutants:** is their extra noise at the CpGs that gain noise in normal aging? Done (R90): extra variance at noisy-aging CpGs in NSD1 variants, Weaver and CHARGE (CHARGE survives Bonferroni), not at directed ones.
+7. **Sex in mice and mammals:** R78's sex contrast on mouse tissues and the species array. Done (R85): no sex difference in drift or the shield across 73 groups of 38 species.
 8. **Every species of the array:** per-CpG variance gain over all species with enough animals, not only R79's 139 groups. Answered by R79, no new run (2026-11-18): the public GSE223748 has 187 species with ages (the ~349 of Haghani 2023 include unreleased or age-less ones); 450 species-tissue groups, median 4 animals; 139 groups (65 species) have >= 15 animals over >= 15 % of the lifespan, all of them in R79; pooling tissues adds 2 species. A per-CpG slope cannot be fitted on the rest.
 
 ## RM15 — Directed demethylation outside promoters: the culture and cortex follow-ups

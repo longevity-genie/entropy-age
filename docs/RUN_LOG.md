@@ -3,6 +3,40 @@
 Owned by the runner seat (`docs/seats/RUNNER.md`): one entry per run, newest first, with its inputs, the
 commit it ran, its job ids, its scale and seed, and its result or its failure with the cause.
 
+## R84b, R85, R86, R88, R90 — the matched cancer design and four of the eight open ideas (RM38 item 4, RM39), 2026-11-18
+
+- Jobs on the test partition (account cluster) and itmz, twins cancelling each other: R84b 6511660 (12 min, commit
+  17f2439), R85 6511066 (28 min, b16f126), R86 6511661 (16 min, 4b2e7a4), R88 6511662 (10 min, 69d6d25), R90
+  6511663 (11 min, 1d818af); all `--scale paper --seed 42`.
+- **R84b, breast cancer as a matched case-control (EPIC-Italy, women):** 233 cases matched to 340 cancer-free
+  controls (age within 3 years, same chip first; controls dealt in rounds), conditional logistic regression, 1,000
+  set resamples. Drift at housekeeping look-alikes B: all cases OR 1.46 (1.19-1.90), with mean beta and 11 cell
+  fractions 1.48 (1.16-2.14); diagnosed over 2 years after the draw (167 sets) 1.71 (1.35-2.48), adjusted 1.76
+  (1.37-2.94); core-essential look-alikes 1.80 and 1.82. Shield share F 1.02-1.07, intervals across 1. Clocks:
+  DunedinPACE 1.02-1.26, PhenoAge 1.11-1.27 (adjusted, over 2 years, 1.27, 1.03-1.69). The cohort-wide result (R46)
+  holds in the design the cohort was sampled for; one cohort.
+- **R85, sex across mammals (RM39 item 7):** 73 species-tissue groups of 38 species with both sexes. Female/male
+  ratio of the look-alike drift rate, median log ratio +0.03 to +0.06 (relative entropy), share higher in females
+  0.52-0.54, Wilcoxon p 0.77-0.90; shield gap female minus male −0.01 to −0.02, p 0.29-0.38 (core dispersion −0.035,
+  p 0.07). No sex difference found across mammals, as in human tissues (R78).
+- **R86, Braak order within Alzheimer's brains (RM39 item 2):** 109 Lunnon donors with three or four regions. The
+  within-donor gradient of drift along entorhinal > temporal > frontal > cerebellum: mean −0.004 to −0.007 (SE 0.04),
+  slope on Braak stage −0.008 to −0.017 per stage (p 0.43-0.68); with 5 components removed the same. Disorder does
+  not follow the pathology's regional order.
+- **R88, organs of one mouse at one age (RM39 item 1):** Huang controls, young and aged groups apart, 11 tissues, 51
+  tissue pairs with >= 10 shared mice. Look-alike drift B is correlated across tissues of the same mouse, mean r
+  0.15-0.19 by set (null mean 0.00, 95th centile 0.06, p 0.001); the shield share F, core-essential 0.19 (p
+  0.001), housekeeping 0.12; signed shift S, little. Each mouse has a body-wide drift level at a fixed age, the
+  clock-free counterpart of R41's human result. Chip is not held (R92 pending), and tissues of one mouse often share
+  a chip, so part of this may be array batch.
+- **R90, writer syndromes at noisy against directed aging CpGs (RM39 item 6):** noisy-aging and directed-aging CpGs
+  from Hannum blood (top 5 %). Carriers gain extra variance at noisy-aging CpGs, beyond level- and island-matched
+  CpGs, in NSD1 variants (+0.38 log variance ratio, permutation p 0.012), Weaver (EZH2, +0.58, p 0.016) and CHARGE
+  (CHD7, +0.25, p 0.002); not in Sotos (+0.05, p 0.48), Kabuki or KMT2D variants (about 0). Directed-aging CpGs:
+  no arm shifts them the way age does (p 0.40-0.89). Seven arms; CHARGE alone survives a Bonferroni cut, and the
+  two NSD1 arms disagree. Where these variants act, they look like noise added at the CpGs aging makes noisy, not
+  a faster directed clock.
+
 ## R93 — Jaffe cortex, paired pipeline pilot: deposited, methylprep and R SeSAMe on identical donors (RM41), 2026-11-18
 
 - Raw step: `scripts/sesame_preprocess.R` (R 4.4.3, sesame 1.24.0, sesameData 1.24.0, ExperimentHub 2.14.0,
