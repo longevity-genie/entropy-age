@@ -12,8 +12,9 @@ a test with little power), **refuted**.
 - **If true, we should see:** a negative gap in every tissue and species; robust to how CpGs are matched
   (island status, starting level, probe design); present per person, not only on average.
 - **We should not see:** the gap vanish or flip once CpGs are matched more finely, or in an independent cohort.
-- **Observed:** negative in human blood, brain and GTEx tissues, 11 mouse tissues, culture, 96 % of 65 mammals,
-  and inside one sorted cell type (monocytes -0.14 SD, CD4+ T cells -0.22, R44; about half of whole blood's);
+- **Observed:** negative in human blood, brain and GTEx tissues, most of 11 mouse tissues (not ordered by turnover once
+  chip is held, R92), 89 % of 139 species-tissue groups of 65 mammals (R68c), and inside sorted monocytes (R44, R68b;
+  the CD4+ T-cell size was withdrawn in R68); culture's shield vanished on rebuilt arrays (R94);
   molecule by molecule in read-level WGBS (entropy -0.05 to -0.075 SD, R50; cfDNA -0.03 to -0.06, R51; within 27 sorted cell types -0.04 to -0.08, R53); within one person over
   time weakly (SATSA housekeeping divergence -0.017 SD, R52, on betas with cell counts regressed out);
   probe design explains a sixth of blood's gap, masks nothing (R20); per-person reliability 0.997.
@@ -48,7 +49,9 @@ a test with little power), **refuted**.
   much less; a fixed share of drift as cells divide; no dependence on turnover; loss of a promoter-maintaining
   enzyme removes it.
 - **We should not see:** the shield grow with divisions or follow turnover; survive chromatin matching intact.
-- **Observed:** own chromatin removes 67-91 % in blood, another tissue's about 30 %; no detectable change of the share with
+- **Observed:** a related reference chromatin state (E062 mononuclear cells, E030 neutrophils; whole blood has no own
+  map) removes 83-91 % in blood (67 % on Lunnon dispersion), cortex's about 30 %; in cortex blood's state removes as
+  much as cortex's own (29 % against 25 %), so the reference acts there as a generic activity label (review 2026-11-18); no detectable change of the share with
   doublings (−0.14 per 10, −0.33 to +0.06; second series −0.055, −0.21 to +0.10: wide, not equivalence); not ordered by turnover; Tet3 loss removes it (C4).
 - **Alternatives:** circularity: active chromatin and an unmethylated promoter may both be outcomes of the same
   protection, so matching on one removes the other without showing cause; reference epigenomes come from other
@@ -212,5 +215,5 @@ a test with little power), **refuted**.
   shift blood methylation and raise breast-cancer risk.
 - **Separating test:** a second prospective cohort (NOWAC, Breakthrough Generations, controlled access); sorted
   cells; hormonal covariates.
-- **Status:** weak (one cohort), but survives every check at hand.
+- **Status:** weak (one cohort); the adjusted association did not survive the rebuild from raw IDATs (R96: 1.76 → 1.11).
 

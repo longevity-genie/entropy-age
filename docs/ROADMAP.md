@@ -31,6 +31,30 @@ manuscript and comparisons") · **Owner:** lead
 3. Comparisons that join another tissue's chromatin reference, or two platforms, are redone on matched sources
    where data exist, or reported as such.
 
+## RM43 — The independent methods review of 2026-11-18: reruns on comparable data
+
+**State:** urgent (antonkulaga 2026-11-18 asked for "a separate reviewer agent to check if we compare comparable stuff
+and if our selection for chromatin tracks, cell/tissue type definitions, array processing methods are proper"; its
+findings are defects against what the paper says, so decided) · **Owner:** lead
+
+Text was corrected at once (abstract, headings, Lunnon and blood-minus-cortex caveats, Tet1/Tet3 heading, provenance
+labels; claims C1, C2, C12). Reruns, in order:
+1. **Processing guard (M1):** a sesame-mode run that mixes rebuilt and deposited cohorts in one contrast writes the
+   processing of each side into its tables and refuses a cross-cohort difference unless both match.
+2. **Blood minus cortex (H2):** both cohorts on the shared age range (21-85), EpiDISH fractions held in Hannum as
+   neuron fraction is in Jaffe; reported side by side.
+3. **Chromatin references (M2, M3):** Lunnon entorhinal cortex with E071, superior temporal gyrus with E072, cerebellum
+   out of chromatin matching, BA9 accessibility for frontal cortex only; blood rerun with E030 alone and with CpGs
+   whose state agrees between E062 and E030 (R74, R72, R58 too).
+4. **Array recipe (M6, M7):** mouse series with SeSAMe's mouse steps (MM285: T strain mask; Mammal40 in mouse: S and H
+   masks); sample QC with expected probes from the species mask, not the data, plus a bisulfite-conversion (GCT) and
+   intensity cut; rerun BXD, Browder, Tet1, Dnmt3a, CR, Huang; check CH and the syndromes against their high GCT.
+5. **Species shield (M5):** group gaps with chip intercepts; human groups with the human annotation.
+6. **SATSA (M8):** the deposited within-person analysis on 450k-only pairs beside the pooled one.
+7. **Lunnon (H1):** renormalise all tissues jointly from GEO's raw intensities; slide stays confounded with tissue, so
+   the same-donor contrast is reported as batch-confounded whatever the result.
+8. **Tet3 against Tet1 (M9):** rescore both on the mouse CpGs the two arrays share.
+
 ## RM41 — One preprocessing from raw IDATs for every array series, with QC and batch checks
 
 **State:** unattended (asked by antonkulaga 2026-11-18: "use raw idat, preprocess data same way, check for batch

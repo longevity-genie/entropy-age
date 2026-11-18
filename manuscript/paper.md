@@ -19,9 +19,11 @@ housekeeping and highly connected genes are spared from it. We quantified this p
 shield, by comparing CpGs in promoters of essential and housekeeping genes with CpGs of the same CpG-island status
 and starting methylation level (look-alikes). Using relative entropy from the young state as the drift measure, essential
 promoters drift less than matched CpGs in human blood (−0.15 SD for housekeeping genes), cortex (−0.06 SD),
-most GTEx tissues, renewing (but not most post-mitotic) mouse tissues, cultured cells and 89 % of 139 species-tissue groups of 65 mammals. The gap is
-not produced by the matching (200 placebo gene sets), blood-cell composition, probe design or preprocessing from raw
-IDATs, and survives one false-discovery correction over 7,626 tests. Kinetically, essential island promoters gain
+most GTEx tissues, mouse tissues and 89 % of 139 species-tissue groups of 65 mammals. The gap is not produced by the
+matching (200 placebo gene sets), blood-cell composition or probe design, survives one false-discovery correction over
+7,626 tests, and in cortex grows when the arrays are rebuilt from raw IDATs; the blood cohorts have no public raw files.
+Two results depend on processing: a shield in cultured cells vanished on rebuilt arrays, and a breast-cancer association
+weakened (below). In mouse, an ordering of the shield by cell turnover could not be separated from array chip. Kinetically, essential island promoters gain
 methylation no faster than look-alikes but, in pooled fits, lose it faster, and so rest lower; the faster loss persists within active-TSS chromatin.
 In mouse brain, heterozygous Tet3 loss made essential promoters gain methylation against look-alikes and weakened the shield; Tet1 knockout did not. Reference chromatin
 states account for 83-91 % of the gap in blood and a quarter to a half in cortex. Within one person over time, housekeeping CpGs change less in direction than look-alikes. The shield showed
@@ -79,14 +81,19 @@ CpGs and core-essential CpGs 0.09 SD less; non-essential CpGs drifted 0.13 SD mo
 Fig. 1a). In prefrontal cortex of 213 adult controls (Jaffe et al. 2016), the housekeeping and core-essential gaps
 were −0.06 and −0.07 SD, and non-essential CpGs did not differ from their look-alikes (−0.00, p 0.94). The
 housekeeping gap was larger in blood than in cortex by 0.09 SD (95 % interval −0.19 to −0.02); for core-essential
-genes the difference was not resolved (−0.02, −0.09 to +0.04; Fig. 1b). Other drift measures gave the same signs: the absolute
+genes the difference was not resolved (−0.02, −0.09 to +0.04; Fig. 1b). These are two studies, processed by different
+pipelines, over different age ranges (19-101 and 21-85 years), with neuron fraction held in cortex but no cell fractions
+in blood; the difference is therefore descriptive, and its size is within what processing alone moved the cortex gap
+(0.02 SD, below). Other drift measures gave the same signs: the absolute
 age slope of the mean (blood housekeeping −0.16 SD, cortex −0.05) and between-person dispersion (−0.29, −0.07).
 
 In blood and four brain regions from the same donors (Lunnon et al. 2014; 71-80 donors per tissue), between-person
 dispersion was lower at housekeeping promoters than at matched CpGs in every tissue (blood −0.15 SD, brain regions
 −0.04 to −0.07), and blood exceeded each brain region by 0.07-0.10 SD, every interval excluding zero (Fig. 1c, d).
 A per-person version of the comparison (Methods) found the same donor's blood more shielded than each brain region
-in 86-91 % of donors.
+in 86-91 % of donors. In this series tissue cannot be separated from array batch: the blood arrays sit on slides
+that hold only blood, the authors normalised each tissue separately, and blood was drawn in life (70-99 years) while
+brain was taken at death (71-105); the same-donor contrast rests on the authors' processing.
 
 ![Figure 1](../docs/figures/tissue_contrast.png)
 
@@ -139,8 +146,8 @@ island × young-level matching in (a) Hannum blood and (b) Jaffe cortex. Grey: m
 
 ### The shield across tissues, platforms and species
 
-**The shield is present in most tissues and species tested, and on the corrected measure it is ordered by cell
-turnover in mouse.** In nine GTEx tissues on the EPIC array (Oliva et al. 2023; 47-224 donors per tissue, ages in decade bins), the housekeeping gap was −0.14 SD
+**The shield is present in most tissues and species tested; an apparent ordering by cell turnover in mouse cannot be
+separated from array chip.** In nine GTEx tissues on the EPIC array (Oliva et al. 2023; 47-224 donors per tissue, ages in decade bins), the housekeeping gap was −0.14 SD
 in whole blood, −0.19 in colon, −0.09 in lung and kidney, about 0 in skeletal muscle (−0.005) and testis (−0.002; Supplementary Fig. S8). On
 binary entropy, breast and ovary were as weakly protected as muscle. Which tissues lack the gap does not
 follow turnover in humans: testis renews fastest.
@@ -210,9 +217,10 @@ it by about four fifths in blood (housekeeping −0.335 → −0.060 SD; core-es
 (blue) and non-island (orange) promoter CpGs of each set and of look-alikes. Rates are fitted estimates and can fall below zero; the text compares each set with its look-alikes. Per decade; 95 % intervals from 200
 donor resamples.
 
-### Losing Tet3, not Tet1, weakens the shield in mouse brain
+### Tet3 loss weakens the shield in mouse brain; Tet1 loss, in another study, does not
 
-**Heterozygous loss of Tet3 weakens the shield in cortex and striatum, while Tet1 knockout strengthens it.** If faster
+**Heterozygous loss of Tet3 weakens the shield in cortex and striatum; in a separate study on another array, Tet1
+knockout strengthens it.** If faster
 removal maintains the shield, losing the remover should make essential promoters gain methylation and lose their
 advantage. We scored the consortium's Tet3 heterozygous mice against eight same-age wild types that
 shared their array chips (GEO does not record litters) (8 against 8 per tissue). For housekeeping genes, the per-animal shield share F (set deviation as a share of look-alike deviation from the
@@ -240,11 +248,14 @@ perturbations act on the look-alikes instead. A DNMT3A gain-of-function mutation
 
 ### Chromatin accounts for most of the shield in blood and less in cortex
 
-**Matching on the tissue's own reference chromatin state removes 83-91 % of the blood gap and a quarter to a half of
-the cortex gap.** We added each promoter CpG's 15-state chromHMM state (Roadmap Epigenomics Consortium 2015) to the matching. In blood,
+**Matching on a reference chromatin state removes 83-91 % of the blood gap and a quarter to a half of the cortex gap;
+in cortex the reference acts as a generic label of promoter activity.** We added each promoter CpG's 15-state chromHMM state (Roadmap Epigenomics Consortium 2015) to the matching. In blood,
 80-85 % of essential and housekeeping CpGs sit in active TSS states against 38 % of background CpGs. On relative
 entropy, blood's own state (E062 mononuclear cells, or E030 neutrophils) removed 83-91 % of the housekeeping gap;
-cortex's state removed only 28 % of blood's gap (Fig. 5). The reverse did not hold: blood's state removed as much of the cortex gap as cortex's own (29 % against 25 %). In each of Lunnon's four brain regions it also removed more of the dispersion gap than the brain state did. In cortex, the bulk state removed 25 % and sorted neuron
+cortex's state removed only 28 % of blood's gap (Fig. 5). The reverse did not hold: blood's state removed as much of the cortex gap as cortex's own (29 % against 25 %). In each of Lunnon's four brain regions it also removed more of the dispersion gap than the brain state did; those
+regions were all given the prefrontal-cortex reference (E073 and BA9 accessibility), which is the same region only for
+frontal cortex and another region for cerebellum. Blood's reference is mononuclear cells (E062), which lack the
+neutrophils that make up most of whole blood; E030 (neutrophils) is the second blood reference. In cortex, the bulk state removed 25 % and sorted neuron
 and glia accessibility (Rizzardi et al. 2019) together with the state 56 %. On dispersion, the shares were 83-88 %
 in blood and 22-46 % in cortex.
 
@@ -280,7 +291,7 @@ measurement floor (−0.073) and diverged slightly more slowly (−0.014, p 0.01
 series showed a cross-sectional shield like other blood cohorts (relative entropy −0.23 SD, dispersion −0.36,
 |mean| −0.11). On the deposited betas, the per-person shield share F fell by 0.14 per decade within a person
 (−0.23 to −0.05), matching the between-person slope (−0.13). On the rebuilt betas it fell by 0.08 (−0.18 to +0.02), against
-−0.26 between people. On the deposited series, a cohort or survivor effect is therefore unlikely to explain the growth of the share with age, although the
+−0.26 between people. On the deposited series, which pools the 450k and EPIC waves with a chip-change term, a cohort or survivor effect is therefore unlikely to explain the growth of the share with age, although the
 rebuilt series does not resolve the within-person decline. Processing and the pairs retained both differ between versions, so the size within a person is not
 settled; its direction agrees with every cross-sectional cohort.
 
@@ -305,8 +316,8 @@ haematopoietic proliferation, weakened the shield in one mouse blood series, by 
 openness was matched; the effect was absent in liver, and a second, short series in young mice pointed the other way without reaching significance once
 the test reassigned treatment within array chips and refitted each animal's reference (core-essential shield share
 −0.09, p 0.16; Supplementary Note 3); its start and end controls sat on different chips, so its 12-week aging
-contrast cannot be told from chip. The turnover ordering in mouse (above) is the one observation in this family that a selection
-account would predict; a division-dependent removal process predicts it too.
+contrast cannot be told from chip. The turnover ordering in mouse (above), which a selection account would predict, did not survive holding array chip,
+so this family holds no observation that favours selection.
 
 *Tuning to lifespan.* Long-lived species drift less at unprotected CpGs, as found for epigenetic disorder and methylation rates
 (Bertucci-Richter et al. 2023; Crofts et al. 2024): the look-alikes' dispersion rate fell as
@@ -412,8 +423,10 @@ The Tet3 result is one study of 16 mice per tissue on one array; the Tet1 compar
 homozygous mutants; and some weaker Tet3 contrasts did not survive the project-wide correction. (v) Seeboth et al.
 (2020) found cell mix, body mass index, smoking and batch to confound per-person methylation outlier burdens; our within-sample
 contrast removes about half of the slide-batch excess, not all, so batch must be held in every per-person use. (vi) Effects in the shield share of 0.02-0.1 are near the ±0.05 SD preprocessing
-uncertainty of a gap, which is why we rebuilt three datasets from raw IDATs. Most deposited datasets were used as the
-authors processed them, and comparisons are always within one dataset and platform. (vii) Read-level epiallele
+uncertainty of a gap, which is why every array series with public raw IDATs was rebuilt; cohorts without them (Hannum,
+Lunnon, GTEx, MESA, the mammalian consortium) keep the authors' processing. Effects are estimated within one dataset,
+with the exceptions listed in Methods and Supplementary Table S4; the mouse array series were rebuilt with SeSAMe's
+human-array recipe, not its mouse-specific masks. (vii) Read-level epiallele
 entropy has not yet been recomputed under the corrected measure. (viii) Three of our
 earlier statements did not survive the metric audit and are not made here: an essentiality effect beyond chromatin in
 blood, a shield share growing with species lifespan, and a large shield in CD4+ T cells.
@@ -449,7 +462,7 @@ GTEx v8 tissues (gene median TPM).
 
 ### Preprocessing
 
-Every array series with raw IDAT files on GEO is rebuilt with one pinned recipe, R SeSAMe 1.24.0 (R 4.4.3,
+Every array series with raw IDAT files on GEO is rebuilt with one pinned recipe (SATSA and Gill earlier with methylprep 1.7.1), R SeSAMe 1.24.0 (R 4.4.3,
 sesameData 1.24.0): `prepSesame("QCDPB")`, that is the quality mask, channel-switch inference, non-linear dye-bias
 correction, pOOBAH detection masking and noob background correction (Triche et al. 2013; Zhou et al. 2017, 2018);
 samples detected below 90 % are excluded and listed. Three series were first rebuilt with methylprep 1.7.1 in
