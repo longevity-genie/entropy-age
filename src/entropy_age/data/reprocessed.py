@@ -25,11 +25,35 @@ def available(paths: ProjectPaths, gse: str) -> bool:
     return (d / f"{gse}.qc.csv").exists() and any(d.glob(f"{gse}.betas.chunk*.parquet"))
 
 
+MULTI_SPECIES = ("Mammal40",)  # probes for many species: in one species a quarter never hybridise
+
+
+def species_detection(paths: ProjectPaths, gse: str) -> pl.DataFrame:
+    """``sample`` and ``frac_dt_species``: each sample's detection over the probes this series measures (unmasked in
+    at least ``MIN_DETECTED`` of its samples), for multi-species arrays where the whole-array rate reads the
+    probes made for other species as failures (all of a mouse series fell below 90 %, 2026-11-18)."""
+    import numpy as np
+
+    frames = [pl.read_parquet(c) for c in sorted(series_dir(paths, gse).glob(f"{gse}.betas.chunk*.parquet"))]
+    rows = []
+    x = np.hstack([f.drop("probe").to_numpy() for f in frames])
+    names = [c for f in frames for c in f.columns[1:]]
+    measured = (~np.isnan(x)).mean(axis=1) >= MIN_DETECTED
+    rate = (~np.isnan(x[measured])).mean(axis=0)
+    rows = {"sample": names, "frac_dt_species": rate.tolist()}
+    return pl.DataFrame(rows)
+
+
 def read_qc(paths: ProjectPaths, gse: str) -> pl.DataFrame:
-    """Per-sample QC with ``passed`` (detection at or above ``MIN_DETECTED``)."""
+    """Per-sample QC with ``passed``: detection at or above ``MIN_DETECTED`` over the whole array, or, on a
+    multi-species array (``MULTI_SPECIES``), over the probes the series measures."""
     qc = pl.read_csv(series_dir(paths, gse) / f"{gse}.qc.csv", infer_schema_length=None)
-    detected = "frac_dt" if "frac_dt" in qc.columns else None
-    passed = pl.col(detected) >= MIN_DETECTED if detected else pl.lit(True)
+    if "platform" in qc.columns and set(qc["platform"].unique().to_list()) <= set(MULTI_SPECIES):
+        qc = qc.join(species_detection(paths, gse), on="sample", how="left")
+        passed = pl.col("frac_dt_species") >= MIN_DETECTED
+    else:
+        detected = "frac_dt" if "frac_dt" in qc.columns else None
+        passed = pl.col(detected) >= MIN_DETECTED if detected else pl.lit(True)
     return qc.with_columns(passed=passed, chip=pl.col("chip").cast(pl.String))
 
 
