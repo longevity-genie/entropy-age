@@ -3,6 +3,19 @@
 Owned by the runner seat (`docs/seats/RUNNER.md`): one entry per run, newest first, with its inputs, the
 commit it ran, its job ids, its scale and seed, and its result or its failure with the cause.
 
+## R104 — chromatin matching with region-matched brain maps (RM43 item 3), 2026-11-18
+
+- `figures chromatin --scale paper --seed 42`, commit 1316d9d, job 6517856 (test partition), 21 min. Lunnon superior
+  temporal gyrus now matched with Roadmap E072 (inferior temporal lobe), entorhinal cortex with E071 (hippocampus
+  middle), frontal cortex with E073; cerebellum left out (no Roadmap map); BA9 sorted ATAC used for frontal cortex
+  and Jaffe only. Deposited betas, as before.
+- Housekeeping dispersion gap removed by the region's own state: frontal cortex 5 % (E073), superior temporal gyrus
+  8 % (E072; was 14 % with E073), entorhinal cortex 10 % (E071; was 8 %); by blood's E062 25-27 %. Blood (E062 91 %,
+  E030 83 % on relative entropy) and Jaffe (E073 25 %, sorted ATAC 45 %, both 56 %) unchanged.
+- Reading: a region-matched brain map explains no more of a brain region's gap than the prefrontal map did; blood's
+  map still removes more there. In brain the reference state acts as a generic label of promoter activity (C2).
+  Paper Results updated.
+
 ## R101 — muscle fibres on R SeSAMe betas (RM41), 2026-11-18
 
 - `ENTROPY_AGE_BETAS=sesame figures fibres --scale paper --seed 42`, commit f37945f (after the replicate-name fix),

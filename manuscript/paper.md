@@ -252,9 +252,9 @@ perturbations act on the look-alikes instead. A DNMT3A gain-of-function mutation
 in cortex the reference acts as a generic label of promoter activity.** We added each promoter CpG's 15-state chromHMM state (Roadmap Epigenomics Consortium 2015) to the matching. In blood,
 80-85 % of essential and housekeeping CpGs sit in active TSS states against 38 % of background CpGs. On relative
 entropy, blood's own state (E062 mononuclear cells, or E030 neutrophils) removed 83-91 % of the housekeeping gap;
-cortex's state removed only 28 % of blood's gap (Fig. 5). The reverse did not hold: blood's state removed as much of the cortex gap as cortex's own (29 % against 25 %). In each of Lunnon's four brain regions it also removed more of the dispersion gap than the brain state did; those
-regions were all given the prefrontal-cortex reference (E073 and BA9 accessibility), which is the same region only for
-frontal cortex and another region for cerebellum. Blood's reference is mononuclear cells (E062), which lack the
+cortex's state removed only 28 % of blood's gap (Fig. 5). The reverse did not hold: blood's state removed as much of the cortex gap as cortex's own (29 % against 25 %). In Lunnon's brain regions, each matched with its nearest Roadmap brain map (frontal cortex E073, superior temporal
+gyrus E072, entorhinal cortex E071; the cerebellum, which has no map, left out), the region's own state removed 5-10 %
+of the dispersion gap and blood's state 25-27 %. Blood's reference is mononuclear cells (E062), which lack the
 neutrophils that make up most of whole blood; E030 (neutrophils) is the second blood reference. In cortex, the bulk state removed 25 % and sorted neuron
 and glia accessibility (Rizzardi et al. 2019) together with the state 56 %. On dispersion, the shares were 83-88 %
 in blood and 22-46 % in cortex.

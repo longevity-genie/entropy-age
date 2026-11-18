@@ -255,195 +255,131 @@ frontal cortex,E073,background,13_ReprPC,0.03896666666666666
 frontal cortex,E073,background,14_ReprPCWk,0.06428333333333333
 frontal cortex,E073,background,15_Quies,0.14345
 frontal cortex,E073,background,none,0.0
-superior temporal gyrus,E073,core_essential,1_TssA,0.8576404005224205
-superior temporal gyrus,E073,core_essential,2_TssAFlnk,0.06559280220577565
-superior temporal gyrus,E073,core_essential,3_TxFlnk,0.0008707009142359599
-superior temporal gyrus,E073,core_essential,4_Tx,0.003773037295022493
-superior temporal gyrus,E073,core_essential,5_TxWk,0.02728196197939341
-superior temporal gyrus,E073,core_essential,6_EnhG,0.002902336380786533
-superior temporal gyrus,E073,core_essential,7_Enh,0.014511681903932665
-superior temporal gyrus,E073,core_essential,8_ZNF/Rpts,0.0
-superior temporal gyrus,E073,core_essential,9_Het,0.0
-superior temporal gyrus,E073,core_essential,10_TssBiv,0.0015962850094325932
-superior temporal gyrus,E073,core_essential,11_BivFlnk,0.0007255840951966333
-superior temporal gyrus,E073,core_essential,12_EnhBiv,0.00043535045711797995
-superior temporal gyrus,E073,core_essential,13_ReprPC,0.0007255840951966333
-superior temporal gyrus,E073,core_essential,14_ReprPCWk,0.0018865186475112464
-superior temporal gyrus,E073,core_essential,15_Quies,0.02205775649397765
-superior temporal gyrus,E073,core_essential,none,0.0
-superior temporal gyrus,E073,housekeeping,1_TssA,0.7926161288027885
-superior temporal gyrus,E073,housekeeping,2_TssAFlnk,0.08605031655324497
-superior temporal gyrus,E073,housekeeping,3_TxFlnk,0.0027031513053375382
-superior temporal gyrus,E073,housekeeping,4_Tx,0.005572285585564224
-superior temporal gyrus,E073,housekeeping,5_TxWk,0.04794536788940792
-superior temporal gyrus,E073,housekeeping,6_EnhG,0.0031536765228937945
-superior temporal gyrus,E073,housekeeping,7_Enh,0.028549071680933298
-superior temporal gyrus,E073,housekeeping,8_ZNF/Rpts,0.0006402200460009959
-superior temporal gyrus,E073,housekeeping,9_Het,0.00004742370711118488
-superior temporal gyrus,E073,housekeeping,10_TssBiv,0.0009010504351125128
-superior temporal gyrus,E073,housekeeping,11_BivFlnk,0.00018969482844473953
-superior temporal gyrus,E073,housekeeping,12_EnhBiv,0.00028454224266710927
-superior temporal gyrus,E073,housekeeping,13_ReprPC,0.00040310151044507147
-superior temporal gyrus,E073,housekeeping,14_ReprPCWk,0.0026557275982263535
-superior temporal gyrus,E073,housekeeping,15_Quies,0.02828824129182178
-superior temporal gyrus,E073,housekeeping,none,0.0
-superior temporal gyrus,E073,non_essential,1_TssA,0.05439838220424671
-superior temporal gyrus,E073,non_essential,2_TssAFlnk,0.0052578361981799795
-superior temporal gyrus,E073,non_essential,3_TxFlnk,0.0
-superior temporal gyrus,E073,non_essential,4_Tx,0.0014155712841253793
-superior temporal gyrus,E073,non_essential,5_TxWk,0.02184024266936299
-superior temporal gyrus,E073,non_essential,6_EnhG,0.0006066734074823053
-superior temporal gyrus,E073,non_essential,7_Enh,0.012740141557128413
-superior temporal gyrus,E073,non_essential,8_ZNF/Rpts,0.00020222446916076846
-superior temporal gyrus,E073,non_essential,9_Het,0.01557128412537917
-superior temporal gyrus,E073,non_essential,10_TssBiv,0.05722952477249747
-superior temporal gyrus,E073,non_essential,11_BivFlnk,0.024671385237613752
-superior temporal gyrus,E073,non_essential,12_EnhBiv,0.01820020222446916
-superior temporal gyrus,E073,non_essential,13_ReprPC,0.13488372093023257
-superior temporal gyrus,E073,non_essential,14_ReprPCWk,0.20424671385237614
-superior temporal gyrus,E073,non_essential,15_Quies,0.4487360970677452
-superior temporal gyrus,E073,non_essential,none,0.0
-superior temporal gyrus,E073,background,1_TssA,0.46925
-superior temporal gyrus,E073,background,2_TssAFlnk,0.06725
-superior temporal gyrus,E073,background,3_TxFlnk,0.0013666666666666666
-superior temporal gyrus,E073,background,4_Tx,0.010283333333333334
-superior temporal gyrus,E073,background,5_TxWk,0.07456666666666667
-superior temporal gyrus,E073,background,6_EnhG,0.00375
-superior temporal gyrus,E073,background,7_Enh,0.04596666666666667
-superior temporal gyrus,E073,background,8_ZNF/Rpts,0.0035666666666666668
-superior temporal gyrus,E073,background,9_Het,0.004183333333333333
-superior temporal gyrus,E073,background,10_TssBiv,0.049683333333333336
-superior temporal gyrus,E073,background,11_BivFlnk,0.0144
-superior temporal gyrus,E073,background,12_EnhBiv,0.009033333333333334
-superior temporal gyrus,E073,background,13_ReprPC,0.03896666666666666
-superior temporal gyrus,E073,background,14_ReprPCWk,0.06428333333333333
-superior temporal gyrus,E073,background,15_Quies,0.14345
-superior temporal gyrus,E073,background,none,0.0
-entorhinal cortex,E073,core_essential,1_TssA,0.8576404005224205
-entorhinal cortex,E073,core_essential,2_TssAFlnk,0.06559280220577565
-entorhinal cortex,E073,core_essential,3_TxFlnk,0.0008707009142359599
-entorhinal cortex,E073,core_essential,4_Tx,0.003773037295022493
-entorhinal cortex,E073,core_essential,5_TxWk,0.02728196197939341
-entorhinal cortex,E073,core_essential,6_EnhG,0.002902336380786533
-entorhinal cortex,E073,core_essential,7_Enh,0.014511681903932665
-entorhinal cortex,E073,core_essential,8_ZNF/Rpts,0.0
-entorhinal cortex,E073,core_essential,9_Het,0.0
-entorhinal cortex,E073,core_essential,10_TssBiv,0.0015962850094325932
-entorhinal cortex,E073,core_essential,11_BivFlnk,0.0007255840951966333
-entorhinal cortex,E073,core_essential,12_EnhBiv,0.00043535045711797995
-entorhinal cortex,E073,core_essential,13_ReprPC,0.0007255840951966333
-entorhinal cortex,E073,core_essential,14_ReprPCWk,0.0018865186475112464
-entorhinal cortex,E073,core_essential,15_Quies,0.02205775649397765
-entorhinal cortex,E073,core_essential,none,0.0
-entorhinal cortex,E073,housekeeping,1_TssA,0.7926161288027885
-entorhinal cortex,E073,housekeeping,2_TssAFlnk,0.08605031655324497
-entorhinal cortex,E073,housekeeping,3_TxFlnk,0.0027031513053375382
-entorhinal cortex,E073,housekeeping,4_Tx,0.005572285585564224
-entorhinal cortex,E073,housekeeping,5_TxWk,0.04794536788940792
-entorhinal cortex,E073,housekeeping,6_EnhG,0.0031536765228937945
-entorhinal cortex,E073,housekeeping,7_Enh,0.028549071680933298
-entorhinal cortex,E073,housekeeping,8_ZNF/Rpts,0.0006402200460009959
-entorhinal cortex,E073,housekeeping,9_Het,0.00004742370711118488
-entorhinal cortex,E073,housekeeping,10_TssBiv,0.0009010504351125128
-entorhinal cortex,E073,housekeeping,11_BivFlnk,0.00018969482844473953
-entorhinal cortex,E073,housekeeping,12_EnhBiv,0.00028454224266710927
-entorhinal cortex,E073,housekeeping,13_ReprPC,0.00040310151044507147
-entorhinal cortex,E073,housekeeping,14_ReprPCWk,0.0026557275982263535
-entorhinal cortex,E073,housekeeping,15_Quies,0.02828824129182178
-entorhinal cortex,E073,housekeeping,none,0.0
-entorhinal cortex,E073,non_essential,1_TssA,0.05439838220424671
-entorhinal cortex,E073,non_essential,2_TssAFlnk,0.0052578361981799795
-entorhinal cortex,E073,non_essential,3_TxFlnk,0.0
-entorhinal cortex,E073,non_essential,4_Tx,0.0014155712841253793
-entorhinal cortex,E073,non_essential,5_TxWk,0.02184024266936299
-entorhinal cortex,E073,non_essential,6_EnhG,0.0006066734074823053
-entorhinal cortex,E073,non_essential,7_Enh,0.012740141557128413
-entorhinal cortex,E073,non_essential,8_ZNF/Rpts,0.00020222446916076846
-entorhinal cortex,E073,non_essential,9_Het,0.01557128412537917
-entorhinal cortex,E073,non_essential,10_TssBiv,0.05722952477249747
-entorhinal cortex,E073,non_essential,11_BivFlnk,0.024671385237613752
-entorhinal cortex,E073,non_essential,12_EnhBiv,0.01820020222446916
-entorhinal cortex,E073,non_essential,13_ReprPC,0.13488372093023257
-entorhinal cortex,E073,non_essential,14_ReprPCWk,0.20424671385237614
-entorhinal cortex,E073,non_essential,15_Quies,0.4487360970677452
-entorhinal cortex,E073,non_essential,none,0.0
-entorhinal cortex,E073,background,1_TssA,0.46925
-entorhinal cortex,E073,background,2_TssAFlnk,0.06725
-entorhinal cortex,E073,background,3_TxFlnk,0.0013666666666666666
-entorhinal cortex,E073,background,4_Tx,0.010283333333333334
-entorhinal cortex,E073,background,5_TxWk,0.07456666666666667
-entorhinal cortex,E073,background,6_EnhG,0.00375
-entorhinal cortex,E073,background,7_Enh,0.04596666666666667
-entorhinal cortex,E073,background,8_ZNF/Rpts,0.0035666666666666668
-entorhinal cortex,E073,background,9_Het,0.004183333333333333
-entorhinal cortex,E073,background,10_TssBiv,0.049683333333333336
-entorhinal cortex,E073,background,11_BivFlnk,0.0144
-entorhinal cortex,E073,background,12_EnhBiv,0.009033333333333334
-entorhinal cortex,E073,background,13_ReprPC,0.03896666666666666
-entorhinal cortex,E073,background,14_ReprPCWk,0.06428333333333333
-entorhinal cortex,E073,background,15_Quies,0.14345
-entorhinal cortex,E073,background,none,0.0
-cerebellum,E073,core_essential,1_TssA,0.8576404005224205
-cerebellum,E073,core_essential,2_TssAFlnk,0.06559280220577565
-cerebellum,E073,core_essential,3_TxFlnk,0.0008707009142359599
-cerebellum,E073,core_essential,4_Tx,0.003773037295022493
-cerebellum,E073,core_essential,5_TxWk,0.02728196197939341
-cerebellum,E073,core_essential,6_EnhG,0.002902336380786533
-cerebellum,E073,core_essential,7_Enh,0.014511681903932665
-cerebellum,E073,core_essential,8_ZNF/Rpts,0.0
-cerebellum,E073,core_essential,9_Het,0.0
-cerebellum,E073,core_essential,10_TssBiv,0.0015962850094325932
-cerebellum,E073,core_essential,11_BivFlnk,0.0007255840951966333
-cerebellum,E073,core_essential,12_EnhBiv,0.00043535045711797995
-cerebellum,E073,core_essential,13_ReprPC,0.0007255840951966333
-cerebellum,E073,core_essential,14_ReprPCWk,0.0018865186475112464
-cerebellum,E073,core_essential,15_Quies,0.02205775649397765
-cerebellum,E073,core_essential,none,0.0
-cerebellum,E073,housekeeping,1_TssA,0.7926161288027885
-cerebellum,E073,housekeeping,2_TssAFlnk,0.08605031655324497
-cerebellum,E073,housekeeping,3_TxFlnk,0.0027031513053375382
-cerebellum,E073,housekeeping,4_Tx,0.005572285585564224
-cerebellum,E073,housekeeping,5_TxWk,0.04794536788940792
-cerebellum,E073,housekeeping,6_EnhG,0.0031536765228937945
-cerebellum,E073,housekeeping,7_Enh,0.028549071680933298
-cerebellum,E073,housekeeping,8_ZNF/Rpts,0.0006402200460009959
-cerebellum,E073,housekeeping,9_Het,0.00004742370711118488
-cerebellum,E073,housekeeping,10_TssBiv,0.0009010504351125128
-cerebellum,E073,housekeeping,11_BivFlnk,0.00018969482844473953
-cerebellum,E073,housekeeping,12_EnhBiv,0.00028454224266710927
-cerebellum,E073,housekeeping,13_ReprPC,0.00040310151044507147
-cerebellum,E073,housekeeping,14_ReprPCWk,0.0026557275982263535
-cerebellum,E073,housekeeping,15_Quies,0.02828824129182178
-cerebellum,E073,housekeeping,none,0.0
-cerebellum,E073,non_essential,1_TssA,0.05439838220424671
-cerebellum,E073,non_essential,2_TssAFlnk,0.0052578361981799795
-cerebellum,E073,non_essential,3_TxFlnk,0.0
-cerebellum,E073,non_essential,4_Tx,0.0014155712841253793
-cerebellum,E073,non_essential,5_TxWk,0.02184024266936299
-cerebellum,E073,non_essential,6_EnhG,0.0006066734074823053
-cerebellum,E073,non_essential,7_Enh,0.012740141557128413
-cerebellum,E073,non_essential,8_ZNF/Rpts,0.00020222446916076846
-cerebellum,E073,non_essential,9_Het,0.01557128412537917
-cerebellum,E073,non_essential,10_TssBiv,0.05722952477249747
-cerebellum,E073,non_essential,11_BivFlnk,0.024671385237613752
-cerebellum,E073,non_essential,12_EnhBiv,0.01820020222446916
-cerebellum,E073,non_essential,13_ReprPC,0.13488372093023257
-cerebellum,E073,non_essential,14_ReprPCWk,0.20424671385237614
-cerebellum,E073,non_essential,15_Quies,0.4487360970677452
-cerebellum,E073,non_essential,none,0.0
-cerebellum,E073,background,1_TssA,0.46925
-cerebellum,E073,background,2_TssAFlnk,0.06725
-cerebellum,E073,background,3_TxFlnk,0.0013666666666666666
-cerebellum,E073,background,4_Tx,0.010283333333333334
-cerebellum,E073,background,5_TxWk,0.07456666666666667
-cerebellum,E073,background,6_EnhG,0.00375
-cerebellum,E073,background,7_Enh,0.04596666666666667
-cerebellum,E073,background,8_ZNF/Rpts,0.0035666666666666668
-cerebellum,E073,background,9_Het,0.004183333333333333
-cerebellum,E073,background,10_TssBiv,0.049683333333333336
-cerebellum,E073,background,11_BivFlnk,0.0144
-cerebellum,E073,background,12_EnhBiv,0.009033333333333334
-cerebellum,E073,background,13_ReprPC,0.03896666666666666
-cerebellum,E073,background,14_ReprPCWk,0.06428333333333333
-cerebellum,E073,background,15_Quies,0.14345
-cerebellum,E073,background,none,0.0
+superior temporal gyrus,E072,core_essential,1_TssA,0.8373240458569148
+superior temporal gyrus,E072,core_essential,2_TssAFlnk,0.08619939050936004
+superior temporal gyrus,E072,core_essential,3_TxFlnk,0.0014511681903932665
+superior temporal gyrus,E072,core_essential,4_Tx,0.004208387752140473
+superior temporal gyrus,E072,core_essential,5_TxWk,0.025250326512842838
+superior temporal gyrus,E072,core_essential,6_EnhG,0.003773037295022493
+superior temporal gyrus,E072,core_essential,7_Enh,0.016688434189522566
+superior temporal gyrus,E072,core_essential,8_ZNF/Rpts,0.0
+superior temporal gyrus,E072,core_essential,9_Het,0.0
+superior temporal gyrus,E072,core_essential,10_TssBiv,0.0027572195617472065
+superior temporal gyrus,E072,core_essential,11_BivFlnk,0.0010158177332752866
+superior temporal gyrus,E072,core_essential,12_EnhBiv,0.00014511681903932666
+superior temporal gyrus,E072,core_essential,13_ReprPC,0.0005804672761573066
+superior temporal gyrus,E072,core_essential,14_ReprPCWk,0.0018865186475112464
+superior temporal gyrus,E072,core_essential,15_Quies,0.01872006965607314
+superior temporal gyrus,E072,core_essential,none,0.0
+superior temporal gyrus,E072,housekeeping,1_TssA,0.7718919687952007
+superior temporal gyrus,E072,housekeeping,2_TssAFlnk,0.10736727289972257
+superior temporal gyrus,E072,housekeeping,3_TxFlnk,0.0019680838451141725
+superior temporal gyrus,E072,housekeeping,4_Tx,0.007421810162900434
+superior temporal gyrus,E072,housekeeping,5_TxWk,0.047376283404073696
+superior temporal gyrus,E072,housekeeping,6_EnhG,0.0032959476442273494
+superior temporal gyrus,E072,housekeeping,7_Enh,0.030066630308491216
+superior temporal gyrus,E072,housekeeping,8_ZNF/Rpts,0.0006876437531121807
+superior temporal gyrus,E072,housekeeping,9_Het,0.00040310151044507147
+superior temporal gyrus,E072,housekeeping,10_TssBiv,0.0010196097028904749
+superior temporal gyrus,E072,housekeeping,11_BivFlnk,0.00028454224266710927
+superior temporal gyrus,E072,housekeeping,12_EnhBiv,0.0001185592677779622
+superior temporal gyrus,E072,housekeeping,13_ReprPC,0.00026083038911151686
+superior temporal gyrus,E072,housekeeping,14_ReprPCWk,0.0023948972091148366
+superior temporal gyrus,E072,housekeeping,15_Quies,0.02544281886515069
+superior temporal gyrus,E072,housekeeping,none,0.0
+superior temporal gyrus,E072,non_essential,1_TssA,0.05237613751263903
+superior temporal gyrus,E072,non_essential,2_TssAFlnk,0.010920121334681496
+superior temporal gyrus,E072,non_essential,3_TxFlnk,0.0
+superior temporal gyrus,E072,non_essential,4_Tx,0.002224469160768453
+superior temporal gyrus,E072,non_essential,5_TxWk,0.02770475227502528
+superior temporal gyrus,E072,non_essential,6_EnhG,0.0
+superior temporal gyrus,E072,non_essential,7_Enh,0.011526794742163803
+superior temporal gyrus,E072,non_essential,8_ZNF/Rpts,0.0
+superior temporal gyrus,E072,non_essential,9_Het,0.014560161779575328
+superior temporal gyrus,E072,non_essential,10_TssBiv,0.05480283114256825
+superior temporal gyrus,E072,non_essential,11_BivFlnk,0.02992922143579373
+superior temporal gyrus,E072,non_essential,12_EnhBiv,0.03296258847320526
+superior temporal gyrus,E072,non_essential,13_ReprPC,0.123154701718908
+superior temporal gyrus,E072,non_essential,14_ReprPCWk,0.19959555106167845
+superior temporal gyrus,E072,non_essential,15_Quies,0.44024266936299294
+superior temporal gyrus,E072,non_essential,none,0.0
+superior temporal gyrus,E072,background,1_TssA,0.45013333333333333
+superior temporal gyrus,E072,background,2_TssAFlnk,0.08506666666666667
+superior temporal gyrus,E072,background,3_TxFlnk,0.0012
+superior temporal gyrus,E072,background,4_Tx,0.011466666666666667
+superior temporal gyrus,E072,background,5_TxWk,0.07423333333333333
+superior temporal gyrus,E072,background,6_EnhG,0.00345
+superior temporal gyrus,E072,background,7_Enh,0.047716666666666664
+superior temporal gyrus,E072,background,8_ZNF/Rpts,0.00355
+superior temporal gyrus,E072,background,9_Het,0.003933333333333333
+superior temporal gyrus,E072,background,10_TssBiv,0.047516666666666665
+superior temporal gyrus,E072,background,11_BivFlnk,0.0207
+superior temporal gyrus,E072,background,12_EnhBiv,0.010133333333333333
+superior temporal gyrus,E072,background,13_ReprPC,0.03895
+superior temporal gyrus,E072,background,14_ReprPCWk,0.0594
+superior temporal gyrus,E072,background,15_Quies,0.14255
+superior temporal gyrus,E072,background,none,0.0
+entorhinal cortex,E071,core_essential,1_TssA,0.8273109853432012
+entorhinal cortex,E071,core_essential,2_TssAFlnk,0.09838920330866348
+entorhinal cortex,E071,core_essential,3_TxFlnk,0.0011609345523146133
+entorhinal cortex,E071,core_essential,4_Tx,0.004643738209258453
+entorhinal cortex,E071,core_essential,5_TxWk,0.025685676969960818
+entorhinal cortex,E071,core_essential,6_EnhG,0.003773037295022493
+entorhinal cortex,E071,core_essential,7_Enh,0.01697866782760122
+entorhinal cortex,E071,core_essential,8_ZNF/Rpts,0.0
+entorhinal cortex,E071,core_essential,9_Het,0.0
+entorhinal cortex,E071,core_essential,10_TssBiv,0.0020316354665505733
+entorhinal cortex,E071,core_essential,11_BivFlnk,0.0017414018284719198
+entorhinal cortex,E071,core_essential,12_EnhBiv,0.0002902336380786533
+entorhinal cortex,E071,core_essential,13_ReprPC,0.00043535045711797995
+entorhinal cortex,E071,core_essential,14_ReprPCWk,0.0017414018284719198
+entorhinal cortex,E071,core_essential,15_Quies,0.015817733275286606
+entorhinal cortex,E071,core_essential,none,0.0
+entorhinal cortex,E071,housekeeping,1_TssA,0.7731486970336471
+entorhinal cortex,E071,housekeeping,2_TssAFlnk,0.10973845825528182
+entorhinal cortex,E071,housekeeping,3_TxFlnk,0.002252626087781282
+entorhinal cortex,E071,housekeeping,4_Tx,0.0069001493846774006
+entorhinal cortex,E071,housekeeping,5_TxWk,0.042325658596732506
+entorhinal cortex,E071,housekeeping,6_EnhG,0.004291845493562232
+entorhinal cortex,E071,housekeeping,7_Enh,0.034097645412941927
+entorhinal cortex,E071,housekeeping,8_ZNF/Rpts,0.0007587793137789581
+entorhinal cortex,E071,housekeeping,9_Het,0.0001185592677779622
+entorhinal cortex,E071,housekeeping,10_TssBiv,0.0009484741422236976
+entorhinal cortex,E071,housekeeping,11_BivFlnk,0.0007587793137789581
+entorhinal cortex,E071,housekeeping,12_EnhBiv,0.00004742370711118488
+entorhinal cortex,E071,housekeeping,13_ReprPC,0.00026083038911151686
+entorhinal cortex,E071,housekeeping,14_ReprPCWk,0.002750575012448723
+entorhinal cortex,E071,housekeeping,15_Quies,0.021601498589144712
+entorhinal cortex,E071,housekeeping,none,0.0
+entorhinal cortex,E071,non_essential,1_TssA,0.025884732052578362
+entorhinal cortex,E071,non_essential,2_TssAFlnk,0.006875631951466127
+entorhinal cortex,E071,non_essential,3_TxFlnk,0.0
+entorhinal cortex,E071,non_essential,4_Tx,0.0010111223458038423
+entorhinal cortex,E071,non_essential,5_TxWk,0.03640040444893832
+entorhinal cortex,E071,non_essential,6_EnhG,0.0
+entorhinal cortex,E071,non_essential,7_Enh,0.012133468149646108
+entorhinal cortex,E071,non_essential,8_ZNF/Rpts,0.0
+entorhinal cortex,E071,non_essential,9_Het,0.01031344792719919
+entorhinal cortex,E071,non_essential,10_TssBiv,0.053185035389282105
+entorhinal cortex,E071,non_essential,11_BivFlnk,0.07320525783619818
+entorhinal cortex,E071,non_essential,12_EnhBiv,0.0416582406471183
+entorhinal cortex,E071,non_essential,13_ReprPC,0.11688574317492417
+entorhinal cortex,E071,non_essential,14_ReprPCWk,0.2295247724974722
+entorhinal cortex,E071,non_essential,15_Quies,0.3929221435793731
+entorhinal cortex,E071,non_essential,none,0.0
+entorhinal cortex,E071,background,1_TssA,0.4186666666666667
+entorhinal cortex,E071,background,2_TssAFlnk,0.0934
+entorhinal cortex,E071,background,3_TxFlnk,0.0012166666666666667
+entorhinal cortex,E071,background,4_Tx,0.01195
+entorhinal cortex,E071,background,5_TxWk,0.06411666666666667
+entorhinal cortex,E071,background,6_EnhG,0.0029833333333333335
+entorhinal cortex,E071,background,7_Enh,0.052083333333333336
+entorhinal cortex,E071,background,8_ZNF/Rpts,0.0035666666666666668
+entorhinal cortex,E071,background,9_Het,0.004166666666666667
+entorhinal cortex,E071,background,10_TssBiv,0.061266666666666664
+entorhinal cortex,E071,background,11_BivFlnk,0.04505
+entorhinal cortex,E071,background,12_EnhBiv,0.015483333333333333
+entorhinal cortex,E071,background,13_ReprPC,0.03785
+entorhinal cortex,E071,background,14_ReprPCWk,0.06441666666666666
+entorhinal cortex,E071,background,15_Quies,0.12378333333333333
+entorhinal cortex,E071,background,none,0.0

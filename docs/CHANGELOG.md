@@ -4,6 +4,7 @@ Newest first.
 
 ## Unreleased
 
+- 2026-11-18: R104, chromatin matching with region-matched brain maps: own maps remove 5-10 % of each region's gap, blood's 25-27 %; paper updated.
 - 2026-11-18: read_qc uses SeSAMe's species-mask detection where the rebuild records it (90 % cut, as on every platform); mouse series rebuilt with the per-platform recipe: BXD 288/338 pass, Browder 155/166, Tet1 BS 19/24, Dnmt3a 72/72, Huang 581/583; 3 arrays failed in the species step (RM43 item 4).
 - 2026-11-18: figures tissues_matched: blood minus cortex on the shared age range with blood holding its EpiDISH cell fractions (RM43 item 2).
 - 2026-11-18: chromatin matching gives Lunnon's superior temporal gyrus E072 and entorhinal cortex E071, drops the cerebellum (no Roadmap map), and uses the BA9 sorted ATAC for frontal cortex only (RM43 item 3).
