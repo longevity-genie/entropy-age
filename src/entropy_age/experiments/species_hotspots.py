@@ -49,11 +49,14 @@ def hot_labels(v: np.ndarray) -> np.ndarray:
     return hot
 
 
-def shuffled(hot: np.ndarray, strata: np.ndarray, rng: np.random.Generator) -> np.ndarray:
-    """``hot`` with its labels permuted within each stratum."""
+def shuffled(
+    hot: np.ndarray, strata: np.ndarray, rng: np.random.Generator, measured: np.ndarray | None = None
+) -> np.ndarray:
+    """``hot`` with its labels permuted within each stratum, among the ``measured`` CpGs only."""
     out = hot.copy()
+    measured = np.ones(hot.size, dtype=bool) if measured is None else measured
     for s in np.unique(strata):
-        k = np.flatnonzero(strata == s)
+        k = np.flatnonzero((strata == s) & measured)
         out[k] = hot[k][rng.permutation(k.size)]
     return out
 
@@ -130,7 +133,7 @@ def run(ctx: Context) -> list[Path]:
         thresholds = (5, 10, int(UNIVERSAL * n_groups))
         null_counts = {t: [] for t in thresholds}
         for _ in range(N_NULL):
-            c = np.vstack([shuffled(hot[g], strata[g], rng) for g in range(n_groups)]).sum(axis=0)
+            c = np.vstack([shuffled(hot[g], strata[g], rng, np.isfinite(v[g])) for g in range(n_groups)]).sum(axis=0)
             null_max.append(c.max())
             for t in thresholds:
                 null_counts[t].append(int((c >= t).sum()))
@@ -145,7 +148,7 @@ def run(ctx: Context) -> list[Path]:
                     "observed_cpgs": obs,
                     "null_mean": float(nc.mean()),
                     "null_q95": float(np.quantile(nc, 0.95)),
-                    "excess_ratio": obs / nc.mean() if nc.mean() > 0 else float("inf"),
+                    "excess_ratio": obs / nc.mean() if nc.mean() > 0 else (None if obs == 0 else float("inf")),
                     "p_null": float(((nc >= obs).sum() + 1) / (N_NULL + 1)),
                 }
             )

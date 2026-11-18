@@ -55,10 +55,20 @@ def measures(p: Prepared, rows: np.ndarray, probes, membership, members: set[str
     q = dataclasses.replace(p, x=p.x[rows], ages=p.ages[rows], covariates=cov, donors=p.donors[rows])
     m = _with_strata(_lifespan_metrics(q), probes)
     gaps = _matched_sd(m, membership, METRICS, 0, 0)
-    out = [{"metric": r["metric"], "group": r["group"], "value": r["matched_diff_sd"]} for r in gaps.to_dicts()]
+    out = [
+        {
+            "metric": r["metric"],
+            "group": r["group"],
+            "value": r["matched_diff_sd"],
+            "raw": r["matched_diff"],
+            "sd": r["sd"],
+        }
+        for r in gaps.to_dicts()
+    ]
     background = m.filter(~pl.col("feature").is_in(list(members)))
     for metric in (*METRICS, "abs_slope"):
-        out.append({"metric": metric, "group": "background median", "value": float(background[metric].median())})
+        v = float(background[metric].median())
+        out.append({"metric": metric, "group": "background median", "value": v, "raw": v, "sd": 1.0})
     return out
 
 
@@ -111,6 +121,11 @@ def run(ctx: Context) -> list[Path]:
     diff = _women_minus_men(point, keys)
     if boot:
         boot = pl.DataFrame(boot)
+        # every resample on the full sample's sd for its tissue, sex, metric and group (audit 2026-11-18)
+        sds = point.select("tissue", "sex", "metric", "group", pl.col("sd").alias("sd_point"))
+        boot = boot.join(sds, on=["tissue", "sex", "metric", "group"], how="left").with_columns(
+            value=pl.col("raw") / pl.col("sd_point")
+        )
         boot.write_parquet(out / "bootstrap.parquet")
         bd = _women_minus_men(boot, [*keys, "b"])
         ci = bd.group_by(keys).agg(

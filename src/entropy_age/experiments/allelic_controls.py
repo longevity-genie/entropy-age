@@ -31,7 +31,7 @@ import polars as pl
 from entropy_age import plots
 from entropy_age.data.annotation import AnnotationLayout, link_membership
 from entropy_age.data.cohorts import layout as cohort_layout
-from entropy_age.experiments.common import Context, write_table
+from entropy_age.experiments.common import Context, rescale, write_table
 from entropy_age.experiments.tissue_contrast import (
     SETS,
     Prepared,
@@ -77,7 +77,7 @@ def gaps(metrics: pl.DataFrame, membership: pl.DataFrame, permutations: int, see
             metrics, membership, metric=metric, stratify_by="stratum", n_permutations=permutations, seed=seed
         )
         sd = float(metrics[metric].std())
-        rows += [{"metric": metric, **r, "matched_diff_sd": r["matched_diff"] / sd} for r in t.to_dicts()]
+        rows += [{"metric": metric, **r, "sd": sd, "matched_diff_sd": r["matched_diff"] / sd} for r in t.to_dicts()]
     return pl.DataFrame(rows)
 
 
@@ -169,11 +169,12 @@ def run(ctx: Context) -> list[Path]:
         for b in range(n_boot):
             draw = rng.choice(idx, size=idx.size, replace=True)
             tb = _one(p, probes, sets, fn, 0, b, draw)
-            boot.append(tb.select("metric", "group", "matched_diff_sd").with_columns(tissue=pl.lit(label), b=pl.lit(b)))
+            boot.append(tb.select("metric", "group", "matched_diff").with_columns(tissue=pl.lit(label), b=pl.lit(b)))
         print(f"allelic_controls: {label}: {idx.size} samples", file=sys.stderr, flush=True)
     point = pl.concat(point, how="diagonal")
     boot = pl.concat(boot) if boot else pl.DataFrame()
     if boot.height:
+        boot = rescale(boot, point, ["tissue", "metric", "group"])  # the full sample's sd (audit 2026-11-18)
         ci = boot.group_by("tissue", "metric", "group").agg(
             lo=pl.col("matched_diff_sd").quantile(0.025), hi=pl.col("matched_diff_sd").quantile(0.975)
         )

@@ -19,7 +19,7 @@ from pathlib import Path
 import numpy as np
 import polars as pl
 
-from entropy_age.experiments.common import Context, write_table
+from entropy_age.experiments.common import Context, rescale, write_table
 from entropy_age.experiments.tissue_contrast import (
     LIFESPAN_METRICS,
     Prepared,
@@ -67,13 +67,13 @@ def run(ctx: Context) -> list[Path]:
         for b in range(n_boot):
             draw = np.sort(rng.choice(idx, size=idx.size, replace=True))
             t = gaps(p, draw, probes, membership, 0, b)
-            boot.append(t.select("band", "metric", "group", "matched_diff_sd").with_columns(tissue=pl.lit(p.label)))
+            boot.append(t.select("band", "metric", "group", "matched_diff").with_columns(tissue=pl.lit(p.label)))
         print(f"floor_check: {p.label}", file=sys.stderr, flush=True)
     point = pl.concat(point, how="diagonal")
     keys = ["tissue", "band", "metric", "group"]
     if boot:
         ci = (
-            pl.concat(boot)
+            rescale(pl.concat(boot), point, keys)  # every resample on the full sample's sd (RM9; audit 2026-11-18)
             .group_by(keys)
             .agg(lo=pl.col("matched_diff_sd").quantile(0.025), hi=pl.col("matched_diff_sd").quantile(0.975))
         )

@@ -22,13 +22,24 @@ from scipy.stats import false_discovery_control
 from entropy_age import plots
 from entropy_age.experiments.common import Context, write_table
 
-SKIP_PREFIXES = ("p_bh", "p_fdr", "p_adj", "p_holm")
+ADJUSTED = ("bh", "fdr", "adj", "holm", "q", "bonferroni")
 FOLDER = "global_fdr"
 
 
 def p_columns(columns: list[str]) -> list[str]:
-    """The raw p-value columns of a table: ``p`` or ``p_*``, adjusted ones left out."""
-    return [c for c in columns if (c == "p" or c.startswith("p_")) and not c.startswith(SKIP_PREFIXES)]
+    """The raw p-value columns of a table, adjusted ones left out.
+
+    Raw: ``p``, ``p_*`` (``p_permutation``, ``p_boot``) and ``*_p`` (``directed_p``, ``B_p_welch`` reads as
+    ``*_p_*``). Adjusted: any name with a part ``bh``, ``fdr``, ``adj``, ``holm``, ``q`` or ``bonferroni``.
+    (Until 2026-11-18 only ``p`` and ``p_*`` were read; an outside audit found 366 p-values left out.)
+    """
+    out = []
+    for c in columns:
+        parts = c.lower().split("_")
+        if "p" not in parts or any(a in parts for a in ADJUSTED):
+            continue
+        out.append(c)
+    return out
 
 
 def ledger(output: Path) -> pl.DataFrame:
@@ -39,7 +50,8 @@ def ledger(output: Path) -> pl.DataFrame:
             continue
         try:
             t = pl.read_csv(path, infer_schema_length=10_000)
-        except Exception:  # a malformed or empty table is not a test
+        except Exception as err:  # a malformed or empty table is not a test; say so
+            print(f"global_fdr: skipped {path.parent.name}/{path.name}: {type(err).__name__}", file=sys.stderr)
             continue
         cols = p_columns(t.columns)
         if not cols:
@@ -51,13 +63,15 @@ def ledger(output: Path) -> pl.DataFrame:
             for i, (p, *labels) in enumerate(t.select(c, *label_cols).iter_rows()):
                 if p is None or not np.isfinite(p):
                     continue
+                if not 0.0 <= p <= 1.0:  # a sentinel or an error, never evidence (audit 2026-11-18)
+                    raise ValueError(f"global_fdr: {path.parent.name}/{path.name} row {i} {c} = {p} is not a p-value")
                 rows.append(
                     {
                         "folder": path.parent.name,
                         "table": path.stem,
                         "row": i,
                         "column": c,
-                        "p": float(min(max(p, 0.0), 1.0)),
+                        "p": float(p),
                         "label": " | ".join(str(v) for v in labels),
                     }
                 )

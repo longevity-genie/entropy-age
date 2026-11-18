@@ -199,9 +199,9 @@ def rescale(boot: pl.DataFrame, point: pl.DataFrame, keys: list[str]) -> pl.Data
     resample by its own spread, which resampling inflates, shrinks every resampled gap toward zero (roadmap RM9);
     one divisor for the point estimate and all its resamples keeps them on one scale.
     """
-    sd = point.select(*keys, "sd").unique(subset=keys)
+    sd = point.select(*keys, "sd").unique()
     if sd.group_by(keys).len()["len"].max() != 1:
-        raise ValueError("rescale: more than one sd per key")
+        raise ValueError("rescale: conflicting sd for one key")
     out = boot.join(sd, on=keys, how="left")
     if out["sd"].null_count():
         raise ValueError("rescale: a resample has no full-sample sd")

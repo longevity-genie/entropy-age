@@ -4,6 +4,7 @@ Newest first.
 
 ## Unreleased
 
+- 2026-11-18: fixes from an outside audit: relative entropy regularises sample and reference alike (it could fall as a site left the 0 % floor); bootstraps of floor_check, allelic_controls and sex_drift on the full sample's SD; global FDR reads every raw p column and rejects out-of-range values; level strata survive a missing value; rescale catches conflicting SDs; species_hotspots null among measured CpGs, 0/0 no longer "inf". Regression tests in tests/test_audit_fixes.py.
 - 2026-11-18: `floor_check` (RM38 item 1): the shield on CpGs at a young level of 10-90 % and 20-80 %.
 - 2026-11-17: R79 across 139 mammal groups age-drift hotspots are barely shared (r 0.06); the shared tail is Polycomb developmental islands. RM35 done.
 - 2026-11-16: `species_hotspots` (RM35 item 3): do the same CpGs become disordered across 65 mammals?

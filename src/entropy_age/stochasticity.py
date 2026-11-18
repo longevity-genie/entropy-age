@@ -41,15 +41,28 @@ def binary_entropy(p: np.ndarray) -> np.ndarray:
     return -(p * np.log2(p) + (1 - p) * np.log2(1 - p))
 
 
+KL_PSEUDO = 0.01
+
+
+def regularised(level: np.ndarray, a: float = KL_PSEUDO) -> np.ndarray:
+    """``(level + a) / (1 + 2a)``: a pseudo-count that keeps a level off 0 and 1 and keeps its order."""
+    return (np.clip(np.asarray(level, dtype=float), 0.0, 1.0) + a) / (1 + 2 * a)
+
+
 def relative_entropy(x: np.ndarray, reference: np.ndarray) -> np.ndarray:
     """``KL(Bernoulli(x) || Bernoulli(m))`` in bits: how far ``x`` has moved from the reference level ``m``.
 
     Unlike binary entropy, which measures distance from 0.5 and so counts a move toward 0 or 1 as a gain in order,
     it counts a move up or down alike and needs no assumption about where a site drifts to; a move away from an
-    extreme level weighs more, as binomial sampling says it should. The reference is clipped to [0.01, 0.99].
+    extreme level weighs more, as binomial sampling says it should.
+
+    Both levels get the same pseudo-count (``regularised``) so the divergence is finite at 0 and 1, exactly 0 when
+    ``x`` equals the reference, and rises as ``x`` moves away on either side. (Until 2026-11-18 only the reference
+    was clipped to [0.01, 0.99]; near a bound a sample moving away from it could score closer. An outside audit
+    found it.)
     """
-    p = np.clip(np.asarray(x, dtype=float), _EPS, 1 - _EPS)
-    m = np.clip(np.asarray(reference, dtype=float), 0.01, 0.99)  # as the per-person deviations clip the level
+    p = regularised(x)
+    m = regularised(reference)
     return p * np.log2(p / m) + (1 - p) * np.log2((1 - p) / (1 - m))
 
 
@@ -271,9 +284,19 @@ def fit_relaxation(
 
 
 def baseline_strata(values: np.ndarray, n_bins: int = 10) -> np.ndarray:
-    """Quantile bin index (0..n_bins-1) of every value, used to match features by start level."""
-    edges = np.unique(np.quantile(values, np.linspace(0, 1, n_bins + 1)))
-    return np.clip(np.searchsorted(edges, values, side="right") - 1, 0, max(len(edges) - 2, 0))
+    """Quantile bin index (0..n_bins-1) of every value, used to match features by start level.
+
+    Edges come from the finite values only; a non-finite value gets its own stratum ``n_bins`` (one NaN once
+    collapsed every value into bin 0, an outside audit found).
+    """
+    values = np.asarray(values, dtype=float)
+    ok = np.isfinite(values)
+    out = np.full(values.shape, n_bins, dtype=int)
+    if not ok.any():
+        return out
+    edges = np.unique(np.quantile(values[ok], np.linspace(0, 1, n_bins + 1)))
+    out[ok] = np.clip(np.searchsorted(edges, values[ok], side="right") - 1, 0, max(len(edges) - 2, 0))
+    return out
 
 
 def _matched_difference(values: np.ndarray, labels: np.ndarray, codes: np.ndarray, n_strata: int) -> float:
