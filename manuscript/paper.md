@@ -458,10 +458,10 @@ raw IDATs on GEO (Hannum, Lunnon, GTEx, the sorted-cell MESA series, GSE41037 an
 superseries) rest on the authors' processing and are marked as not rebuilt wherever they are reported; their
 normalisation is the authors' (GTEx noob and BMIQ; SATSA functional normalisation). Rebuilt arrays receive only
 SeSAMe's per-sample steps, with no between-sample normalisation (no quantile, BMIQ or functional normalisation);
-each sample's beta distribution is compared with its series' median (Supplementary Table S1). Effects are estimated
+each sample's beta distribution is compared with its series' median (R103). Effects are estimated
 within one dataset and platform, with two exceptions that pool platforms inside one study with a term for it:
 SATSA's 450k and EPIC waves (a chip-change term per pair of draws; the 450k-only rebuild is reported beside it) and
-the transplant series' batches (batch terms; each donor-recipient pair within one batch). Supplementary Table S1 lists,
+the transplant series' batches (batch terms; each donor-recipient pair within one batch). Supplementary Table S4 lists,
 for every analysis, the platform, processing, the source of any second track (chromatin, expression, outcome) and
 whether it comes from the same samples, the same study or another study. Technical covariates were removed in every age slope (blood: plate, site, sex, ancestry; cortex: plate,
 sex, ancestry, neuron fraction; other cohorts as available). RRBS CpGs were kept when covered at least 10 times in 90 %

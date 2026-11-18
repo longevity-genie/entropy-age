@@ -178,22 +178,22 @@ draws kept a third of Hannum's dispersion gap (−0.12) and none of its entropy 
 | Lunnon blood and four brain regions | GSE59685 | 450k | deposited; **no raw IDATs on GEO, not rebuilt** |
 | GSE41037 blood | GSE41037 | 27k | deposited; **no raw IDATs on GEO, not rebuilt** |
 | GTEx nine tissues | GSE213478 | EPIC | deposited (noob + BMIQ); **raw IDATs controlled access, not rebuilt** |
-| Muscle fibres | GSE304045 | EPIC v2 | deposited; rebuild from IDATs running (RM41) |
+| Muscle fibres | GSE304045 | EPIC v2 | deposited; rebuild running (R101) |
 | SATSA twins, longitudinal | E-MTAB-7309 / S-BSST1206 | 450k | deposited (R52); rebuilt from IDATs (R66) |
 | Gill 2022 transient reprogramming | GSE165179 | EPIC | rebuilt from IDATs (R65) |
-| Cellular Lifespan Study fibroblasts | GSE179847 | EPIC | deposited |
-| Endicott primary cells | GSE197512 | EPIC | deposited |
-| EPIC-Italy incident cancer | GSE51032 | 450k | deposited |
+| Cellular Lifespan Study fibroblasts | GSE179847 | EPIC | deposited; rebuilt from IDATs (R94) |
+| Endicott primary cells | GSE197512 | EPIC | deposited; rebuilt from IDATs (R94) |
+| EPIC-Italy incident cancer | GSE51032 | 450k | deposited; rebuilt from IDATs (R96) |
 | SJLIFE survivors | GSE314261 | EPIC | deposited |
 | MESA sorted monocytes, CD4+ T cells | GSE56046, GSE56581 | 450k | deposited |
 | Vitality 90+ survival | GSE68194 | 450k | deposited |
-| Chromatin-writer syndromes | GSE74432, GSE97362 | 450k | deposited |
+| Chromatin-writer syndromes | GSE74432, GSE97362 | 450k | deposited; rebuilt from IDATs (R95) |
 | Stem-cell transplant series | Mendeley Data, https://doi.org/10.17632/j5krtjfj6y.1 | 450k/EPIC | deposited |
 | Loyfer 2023 WGBS | GSE186458 | WGBS | authors' read files, our per-read summaries |
 | Mammalian Methylation Consortium (65 species; interventions incl. Tet3) | GSE223748 | Mammal40 | deposited |
 | Huang 11 mouse tissues | GSE279437 | Mammal320 | rebuilt (R97; deposited = R SeSAMe output) |
 | Petkovich mouse blood | GSE80672 | RRBS | deposited |
-| CR blood replication | GSE282661 | Mammal320 | deposited |
+| CR blood replication | GSE282661 | Mammal320 | deposited; rebuild running (R98) |
 | Mouse RRBS six tissues | GSE120132 | RRBS | deposited |
 | Meer 2018 four tissues | GSE121141 | RRBS | deposited |
 | BXD liver | GSE199979 | mammalian methylation array (40k) | rebuilt (R100) |
@@ -260,6 +260,66 @@ Source: `docs/PROVENANCE.md`, `docs/extension.md`.
 | Clocks read direction | C8, C9 | R38, R33, R29, R64 | `data/output/stochastic_component/`, `own_clocks/`, `shield_clocks/correlations`, `clock_weights/summary` |
 | Breast-cancer lead (1.43; 1.62/1.66; adjusted 1.44) | C12 | R46, R46b | `data/output/incident_cancer/effects.csv`, `per_person.csv` |
 | B beside DunedinPACE/PhenoAge (1.44), SJLIFE (1.01) | C12 | R48, R48b | `data/output/sjlife_deaths/`, `data/output/incident_cancer/per_person.csv` (joint models fitted ad hoc from the per-person tables; not in a module) |
+
+## Supplementary Table S4. Provenance of every comparison
+
+For each analysis: the methylation data and its platform and processing; any second track (chromatin, expression,
+outcome, cell fractions) and its source; whether the comparison stays within one batch or study; whether the second
+track comes from the same samples, the same study or another study; and whether it comes from the same cell or tissue
+type. Generated from `docs/provenance.csv` by `scripts/provenance_table.py`.
+
+<!-- provenance:start -->
+
+| analysis | runs | claim | tissue / species | methylation (study, accession) | platform | processing | second track | its source | batch | second track from | cell or tissue type of second track | notes |
+|---|---|---|---|---|---|---|---|---|---|---|---|---|
+| Blood headline gap | R68a | C1 | human whole blood | Hannum, GSE40279 | 450k | deposited (no IDATs) | none |  | one study | none | n.a. |  |
+| Cortex headline gap | R68a R93 | C1 | human prefrontal cortex | Jaffe, GSE74193 | 450k | rebuilt (R SeSAMe) | neuron fraction (covariate) | same arrays' metadata | one study | same samples | same | R93: raw routes agree; gap stronger rebuilt |
+| Blood minus cortex | R68a | C1 | blood vs cortex | Hannum vs Jaffe | 450k | deposited vs rebuilt | none |  | across studies | none | n.a. | two studies of different people; same platform |
+| Same-donor blood and brain | R68a R2 | C1 | human blood and 4 brain regions | Lunnon, GSE59685 | 450k | deposited (no IDATs) | none |  | one study | none | n.a. | same donors across tissues |
+| Cell fractions held | R70 | C1 | human whole blood | Hannum, GSE40279 | 450k | deposited | 12 cell fractions | EpiDISH reference panel (Luo 2023) | one study | other study | related | reference panel of sorted cells |
+| Sorted monocytes and T cells | R44 R68b | C1 | human CD14+ monocytes / CD4+ T cells | MESA, GSE56046 GSE56581 | 450k | deposited | none |  | one study | none | n.a. | text sets them beside Hannum (other study) |
+| Read-level blood | R50 | C1 | human white blood cells | Loyfer, GSE186458 | WGBS | authors' reads | Hannum array means (check) | GSE40279 | across studies | other study | same | cross-platform used only as a validation (r 0.963) |
+| GTEx nine tissues | R68d | C1 | human 9 tissues | GTEx, GSE213478 | EPIC | deposited (IDATs controlled) | none |  | one study | none | n.a. | same donors across tissues |
+| Huang mouse tissues | R68a R92 R97 | C1 C2 | mouse 11 tissues | Huang, GSE279437 | Mammal320 | rebuilt (= deposited) | none |  | one study; age confounded with chip | none | n.a. | within chip (R92) the turnover ordering vanishes |
+| Mouse RRBS tissues | R63 R10 R11 R7 R73 | C1 | mouse tissues and blood | Meer GSE121141; Thompson GSE120132; Petkovich GSE80672 | RRBS | deposited | none |  | one study each | none | n.a. | reported per study; not ranked against arrays |
+| BXD liver | R9 R100 | C1 | mouse liver | BXD, GSE199979 | Mammal40 | rebuilt (R SeSAMe) | cell-mix components | same arrays | one study | same samples | same | HFD effect partly survives components on rebuild |
+| Mouse turnover across platforms | paper text | C1 C2 | mouse tissues | Huang vs Meer/Thompson/Petkovich vs BXD | Mammal320 vs RRBS vs Mammal40 | mixed | none |  | across studies and platforms | none | n.a. | cross-platform: side by side only (RM41 9b) |
+| Culture Endicott | R94 | C3 | human primary cell lines | Endicott, GSE197512 | EPIC | rebuilt (R SeSAMe) | none |  | one study | none | n.a. | shield-in-culture vanishes on rebuild |
+| Culture Sturm | R1 R94 | C3 | human fibroblasts | Sturm, GSE179847 | EPIC | rebuilt (R SeSAMe) | none |  | one study | none | n.a. | unchanged on rebuild |
+| Species shield | R12 R68c R59 R22 | C6 | 65 mammals | MMC, GSE223748 | Mammal40 | deposited (no IDATs) | lifespan and weight; NCBI taxonomy | same metadata | one study | same samples | n.a. | mouse mm10 promoter and island annotation applied to every species |
+| Gain and loss rates | R67 R83 | C2 C4 | human blood / cortex | Hannum, Jaffe | 450k | deposited / rebuilt | none |  | one study each | none | n.a. |  |
+| Within active promoters | R74 | C2 | human blood / cortex | Hannum, Jaffe | 450k | deposited / rebuilt | chromatin state (TssA) | Roadmap E062 (PBMC) / E073 (DLPFC) | one study each | other study | blood: related (PBMC vs whole blood); cortex: same | reference epigenomes from other people |
+| Chromatin match blood | R3 R68b | C2 | human whole blood | Hannum, GSE40279 | 450k | deposited | chromatin state | Roadmap E062 PBMC, E030 neutrophils; E073 control | one study | other study | related | E062 lacks granulocytes; E073 a deliberate other-tissue control |
+| Chromatin match cortex | R3 R4 R68b | C2 | human prefrontal cortex | Jaffe, GSE74193 | 450k | rebuilt | chromatin state and sorted ATAC | Roadmap E073 DLPFC; GSE96614 NeuN+/- ATAC BA9; E062 control | one study | other study | same |  |
+| Chromatin match Lunnon brain | R3 R68b | C2 | human FC STG EC cerebellum | Lunnon, GSE59685 | 450k | deposited | chromatin state | Roadmap E073 DLPFC; GSE96614 BA9 | one study | other study | FC same; STG EC related; cerebellum other | cerebellum matched to a cortex reference |
+| Essentiality gradient | R58 R68b | C2 | human blood / cortex | Hannum, Jaffe | 450k | deposited / rebuilt | DepMap gene effect; GTEx expression; chromatin state | DepMap 24Q4 (cancer lines); GTEx v8; E062/E073 | one study each | other study | expression same tissue; essentiality cell lines; chromatin as above | three external tracks |
+| Drift hotspots | R72 | C1 | human blood / cortex | Hannum, Jaffe | 450k | deposited / rebuilt | chromatin state | E062 / E073 | one study each | other study | blood related; cortex same | Polycomb enrichment rests on E062 labels |
+| Expression-matched placebo | R82 | C1 | human blood / cortex | Hannum, Jaffe | 450k | deposited / rebuilt | expression | GTEx v8 whole blood / frontal cortex BA9 | one study each | other study | same tissue |  |
+| Within-person SATSA deposited | R52 R60 | C1 | human blood | SATSA, S-BSST1206 | 450k + EPIC pooled | deposited | none |  | batches pooled with a chip-change term | none | n.a. | pools two platforms within people |
+| Within-person SATSA rebuilt | R66 | C1 | human blood | SATSA, E-MTAB-7309 | 450k only | rebuilt (methylprep) | none |  | one platform | none | n.a. |  |
+| Tet3 heterozygous | R13 R15 R16 R36 | C4 | mouse cortex / striatum | MMC, GSE223748 | Mammal40 | deposited (no IDATs) | none |  | one study; same-chip wild types | none | n.a. |  |
+| Tet1 knockout | R35 R99 | C4 | mouse cortex | Foong, GSE271375 | MM285 | rebuilt (R SeSAMe) | none |  | one study | none | n.a. | 19 of 24 arrays pass |
+| Tet3 vs Tet1 | paper text | C4 | mouse brain | GSE223748 vs GSE271375 | Mammal40 vs MM285 | mixed | none |  | across studies and platforms | none | n.a. | cross-platform: stated as different arrays |
+| Dnmt3a W326R | R37 R99 | C4 | mouse marrow / intestine / liver | Sarni, GSE324160 | MM285 | rebuilt (R SeSAMe) | none |  | one study | none | n.a. | littermate controls |
+| Writer syndromes | R18 R95 | C5 | human blood | GSE74432, GSE97362 | 450k | rebuilt (R SeSAMe) | none |  | one study each vs own controls | none | n.a. | concordance pools the two series' effects |
+| Clonal haematopoiesis | R25 R99 | C3 | human blood | Basrai, GSE315366 | EPIC | rebuilt (R SeSAMe) | CH calls | same patients | one study | same samples | same |  |
+| Stem-cell transplant | R57 | C3 | human blood | Holland, Mendeley j5krtjfj6y | 450k + EPIC batches | deposited (ENmix) | none |  | batches pooled with batch terms; pairs within batch | none | n.a. | platform per batch not recorded |
+| CR mouse blood RRBS | R7 R8 | C3 | mouse whole blood | Petkovich, GSE80672 | RRBS | deposited | none |  | one study | none | n.a. |  |
+| CR openness-matched | R55 | C3 | mouse whole blood | Petkovich, GSE80672 | RRBS | deposited | chromatin accessibility | ImmGen ATAC GSE100738 (6 sorted blood cell types) | one study | other study | related (sorted lineages vs whole blood) | strain of ImmGen mice vs B6D2F1 not recorded |
+| CR blood second series | R56 R91 R98 | C3 | mouse whole blood | Jayne, GSE282661 | Mammal320 | rebuilt run pending (R98) | none |  | one study; aging contrast confounded with chip | none | n.a. | R91: CR p 0.006 -> 0.16 under within-chip randomisation |
+| Cyclic OSKM | R32 R100 | C10 | mouse 6 tissues | Browder, GSE190665 | Mammal40 | rebuilt (R SeSAMe) | none |  | one study | none | n.a. |  |
+| One OSKM cycle | R62 | C10 | mouse pancreas / spleen / liver | Chondronasiou, GSE156557 | RRBS | deposited | none |  | one study | none | n.a. |  |
+| Transient reprogramming | R65 | C10 | human fibroblasts | Gill, GSE165179 | EPIC | rebuilt (methylprep) | epigenetic clock | same arrays | one study | same samples | same |  |
+| Breast cancer | R46 R84b R96 | C12 | human blood | EPIC-Italy, GSE51032 | 450k | rebuilt (R SeSAMe) | registry outcomes; cell fractions; clocks | same participants | one study | same samples | same | adjusted OR 1.76 -> 1.11 on rebuild |
+| SJLIFE deaths | R48 | C12 | human PBMC | SJLIFE, GSE314261 | EPIC | deposited | deaths; cell fractions | same participants | one study | same samples | same |  |
+| Health states | R39 | – | human blood / brain / GTEx | Lunnon, Jaffe, GSE41037, GTEx | 450k / 27k / EPIC | mixed | disease and smoking labels | same samples | one study per contrast | same samples | same | GSE41037 is 27k |
+| Methylation-expression spread | R43 | – | human 5 tissues | GTEx, GSE213478 | EPIC | deposited | expression | GTEx v10 RNA (same donors) | one study | same donors | same |  |
+| Blood ATAC spread | atac_variance | C11 | human PBMC | none | – | – | bulk ATAC | Morandini, GSE193140 | one study | the measure itself | own tissue |  |
+| Cortex snATAC | R23 R24 | C11 | human prefrontal cortex | none | – | – | single-nucleus ATAC | Catching 2026, Zenodo 18394349 | one study | the measure itself | own tissue |  |
+| Hippocampus snATAC | R27 | C11 | human hippocampus | none | – | – | single-nucleus ATAC | Zemke, GSE278576 | one study | the measure itself | own tissue |  |
+| RNA spread GTEx and rodents | rna_gtex rna_rodents R75 | – | human 47 tissues; mouse; rat | none | – | – | RNA-seq | GTEx v10; GSE314817; GSE314970; GSE132040 | one study each | the measure itself | own tissue |  |
+
+<!-- provenance:end -->
 
 ## Open items for the authors
 

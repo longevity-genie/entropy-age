@@ -4,6 +4,7 @@ Newest first.
 
 ## Unreleased
 
+- 2026-11-18: Supplementary Table S4, provenance of every comparison, rendered from docs/provenance.csv by scripts/provenance_table.py; Table S1 names the rebuilt series.
 - 2026-11-18: Methods (RM42): relative entropy, the matched gap and P, B, S as equations; "matched control CpGs (look-alikes)"; no DMP/DMR calling; normalisation per source; the two platform-pooling exceptions (SATSA, transplant) replace "no analysis pools datasets or platforms". docs/provenance.csv lists every analysis's sources.
 - 2026-11-18: R100, BXD liver and Browder OSKM on rebuilt arrays: directions hold; the BXD diet effect partly survives composition (-0.040, p 0.011); paper drops the cross-platform turnover ranking.
 - 2026-11-18: preprocessing_qc adds per-sample beta distributions (quantiles, distance from the series median curve, outlier flag).
