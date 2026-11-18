@@ -4,6 +4,7 @@ Newest first.
 
 ## Unreleased
 
+- 2026-11-18: R79 rerun on the audit fixes: hotspots still barely shared across mammals (1.04× and 1.23× chance at ≥ 10 groups).
 - 2026-11-18: `per_cpg_interval` (RM38 item 2): donor intervals for the per-CpG relaxation gaps of R67.
 - 2026-11-18: `placebo_expression` (RM38 item 3): placebo gene sets drawn within the real set's GTEx expression deciles, through the shield's matching.
 - 2026-11-18: R80, the shield off the 0 % floor: in blood most of it is the floor (housekeeping spread to −0.08 SD at 20-80 %, core-essential to 0); cortex keeps its size. Table data/output/floor_check/gaps_by_band.csv.

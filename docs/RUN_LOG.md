@@ -54,6 +54,10 @@ commit it ran, its job ids, its scale and seed, and its result or its failure wi
   than phylogeny. The small shared tail is the Polycomb developmental islands that universal clocks are built on
   (Lu 2023), the programme R72 found in human blood. No universal noise hotspot outside it. Tables
   `data/output/species_hotspots/`.
+- Rerun on the audit fixes (963a9ff; null shuffled among measured CpGs, fixed relative entropy): job 6503583,
+  1 h 41 min. Hot in ≥ 10 groups: 6,965 against 6,716 (1.04×, relative entropy), 6,388 against 5,190 (1.23×,
+  dispersion); hot in half the groups: 2 CpGs (relative entropy), 0 (dispersion). Slope correlation 0.058 and 0.028;
+  same tissue 0.12, same order 0.07. The reading stands.
 
 ## R77 — loci held at one half by allele as a noise floor (RM35 item 1), 2026-11-16
 
