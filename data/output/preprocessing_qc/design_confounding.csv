@@ -1,0 +1,105 @@
+series,variable,kind,r2_on_chip
+GSE179847,study_sample_id,numeric,0.15598164575271667
+GSE179847,cell_line_group,71 levels,0.13438318456571885
+GSE179847,unique_variable_name,462 levels,0.13665943600867686
+GSE179847,cell_line_inhouse,9 levels,0.1419046994525607
+GSE179847,cell_line,9 levels,0.1419046994525607
+GSE179847,cell_type,4 levels,0.15312036611065466
+GSE179847,Sex,2 levels,0.15709670781893004
+GSE179847,clinical_condition,2 levels,0.14362263033175315
+GSE179847,donor_age,numeric,0.14473817974485303
+GSE179847,study_part,4 levels,0.13864444092537126
+GSE179847,replicate_line,3 levels,0.14661496443590727
+GSE179847,treatments,19 levels,0.13520893097343673
+GSE179847,percent_oxygen,2 levels,0.14614396372567534
+GSE179847,date_of_collection,95 levels,0.1372130846296828
+GSE179847,time_of_day,37 levels,0.1370721917252396
+GSE179847,pre_designated_time_point_udays,8 levels,0.14174101695596902
+GSE179847,passage,numeric,0.14057272644162055
+GSE179847,pre_study_passages_udivisions,7 levels,0.14338309160520604
+GSE179847,days_grown_udays,numeric,0.12662464208526036
+GSE179847,days_after_treatment_udays,numeric,0.1273751821866972
+GSE179847,days_per_passage_udays,numeric,0.13997063812439747
+GSE179847,cells_plated_umillioncells,numeric,0.1202814613281864
+GSE179847,cells_counted_with_dead_umillioncells,numeric,0.1323867996640704
+GSE179847,divisions_per_passage_udoublings,numeric,0.12765624084843952
+GSE179847,population_doublings_utotal_divisions,numeric,0.12711835286768247
+GSE179847,population_doubling_time_uhours_per_division,numeric,0.12100494054968258
+GSE179847,dneasy_batch,numeric,0.1527740747211458
+GSE179847,sample_plate,6 levels,1.0
+GSE179847,slide,numeric,1.0
+GSE179847,array,8 levels,0.015189501139711709
+GSE179847,well,96 levels,0.12973703146772275
+GSE179847,notes,10 levels,0.13700050089247623
+GSE190665,age,numeric,0.19050199984108207
+GSE190665,Sex,2 levels,0.09730148619037526
+GSE190665,samplename,30 levels,0.10670474622111718
+GSE190665,genotype,2 levels,0.29443336685760924
+GSE190665,condition,2 levels,0.05432211482923832
+GSE190665,group,7 levels,0.27634640470955196
+GSE190665,durationtreatment,5 levels,0.3067809550428875
+GSE197512,subexperiment,5 levels,0.981309316473919
+GSE197512,coriell_id,7 levels,0.8092971455989841
+GSE197512,cell_line,7 levels,0.8092971455989841
+GSE197512,donor_age,5 levels,0.7650664733819178
+GSE197512,donor_sex,2 levels,0.9732027896995709
+GSE197512,culture_oxygen,2 levels,0.9506110583768391
+GSE197512,culture_agent,3 levels,0.6774449426235142
+GSE197512,culture_pctfbs,5 levels,0.45365073685690405
+GSE197512,expression_vector,3 levels,0.8989291958041958
+GSE197512,subculture,12 levels,0.3557915676489188
+GSE197512,population_doublings,numeric,0.7744627473048683
+GSE197512,days_in_culture,numeric,0.8100691551004157
+GSE197512,batch_date,8 levels,1.0
+GSE197512,growth protocol,10 levels,0.6107619787450047
+GSE197512,treatment protocol,5 levels,0.751168802365789
+GSE199979,age (days),numeric,0.13274234109507965
+GSE199979,strain,43 levels,0.18021294440631228
+GSE199979,Sex,2 levels,0.22467391518834956
+GSE199979,diet,2 levels,0.1186912634876437
+GSE199979,weight (g),numeric,0.15339191948871067
+GSE271375,genotype,3 levels,0.0
+GSE282661,treatment,6 levels,0.3904671371776635
+GSE304045,cell type,6 levels,0.14015271981736055
+GSE304045,Sex,3 levels,0.21057627688522781
+GSE304045,sample_id,16 levels,0.11839991787404261
+GSE304045,timepoint,3 levels,0.04331445643120387
+GSE304045,replicate,2 levels,0.12967032967032993
+GSE315366,age,numeric,0.2540659581570778
+GSE315366,Sex,2 levels,0.1288888888888885
+GSE315366,dnmt3a mutation,2 levels,0.15540789959394585
+GSE315366,tet2 mutation,2 levels,0.21367521367521358
+GSE315366,clonal hematopoiesis,2 levels,0.20131362889983562
+GSE324160,genotype,2 levels,0.0
+GSE324160,tissue,3 levels,0.0
+GSE51032,gender,2 levels,0.6196139131771203
+GSE51032,age,numeric,0.2574169546667954
+GSE51032,age at menarche,11 levels,0.1454030543950241
+GSE51032,cancer type (icd-10),14 levels,0.11617214129690849
+GSE51032,time to diagnosis,401 levels,0.08394625916101593
+GSE74193,"brnum (brain number, indicates unique subjects)",522 levels,0.12367852834821962
+GSE74193,plate (processing plate),5 levels,1.0
+GSE74193,dropsample (whether to remove the sample for failing quality control),2 levels,0.2371472325530518
+GSE74193,sex (clinical gender),2 levels,0.16182402357975556
+GSE74193,race,2 levels,0.26028905370868705
+GSE74193,group,2 levels,0.773857733175915
+GSE74193,age (in years),numeric,0.4582393662288793
+GSE74193,negativecontrolpc1 (negative control principal component 1 for batch correction),numeric,0.6224954226687898
+GSE74193,negativecontrolpc2 (negative control principal component 2 for batch correction),numeric,0.8837446637160878
+GSE74193,negativecontrolpc3 (negative control principal component 3 for batch correction),numeric,0.687283205316495
+GSE74193,negativecontrolpc4 (negative control principal component 4 for batch correction),numeric,0.6802290800276376
+GSE74193,predictedsex (sex predicted by sex chromosome probes),2 levels,0.16739857919502948
+GSE74193,bestqc (best sample to use when more than 1 array were run on the same subject/brnum),2 levels,0.5469121823462535
+GSE74193,comp_es (composition estimates for embryonic stem cells (escs),numeric,0.6671828973238725
+GSE74193,comp_npc (composition estimates for neural progenitor cells (npcs),numeric,0.6661067314113402
+GSE74193,comp_da_neuron (composition estimates for dopamine neurons derived from escs),numeric,0.1527006709772628
+GSE74193,comp_neun_pos (composition estimates for adult cortex-derived neuronal cells),numeric,0.21799953673297823
+GSE74193,comp_neun_neg(composition estimates for adult cortex-derived non-neuronal cells),numeric,0.4405975636365993
+GSE74432,gender,2 levels,0.15282959613089608
+GSE74432,disease state,4 levels,0.4185995890959832
+GSE74432,tissue,2 levels,0.5215643274853805
+GSE74432,cell type,2 levels,0.5215643274853805
+GSE97362,gender,2 levels,0.11633380133380095
+GSE97362,age (years),numeric,0.19446832845180095
+GSE97362,sample type,8 levels,0.4724417418953695
+GSE97362,disease state,6 levels,0.3255257575934269

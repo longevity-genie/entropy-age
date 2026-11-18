@@ -3,6 +3,24 @@
 Owned by the runner seat (`docs/seats/RUNNER.md`): one entry per run, newest first, with its inputs, the
 commit it ran, its job ids, its scale and seed, and its result or its failure with the cause.
 
+## R103b — QC, batch and sample distributions over the rebuilt series (RM41, RM42), 2026-11-18
+
+- `figures preprocessing_qc`, job 6518679 (test partition), 6 min; R103 (6517574) failed on mixed column types.
+  15 series (GSE282661 still on the first recipe).
+- **Batch share of the 10 leading components explained by chip:** Endicott GSE197512 0.79, Browder 0.61, EPIC-Italy
+  0.55, Jaffe 0.51 (adult controls 0.31), GSE74432 0.41, CH 0.25, BXD 0.20, Huang 0.20, Sturm 0.15, others ≤ 0.16.
+  Row and position ≤ 0.11 everywhere.
+- **Design confounded with chip (share of variance):** Endicott population doublings 0.77, days in culture 0.81, cell
+  line 0.81, batch date 1.00; Jaffe group 0.77 (full series); EPIC-Italy sex 0.62. Endicott's passage contrast is
+  largely a chip contrast.
+- **Sample distributions** (distance of each array's beta quantile curve from its series median; flagged beyond
+  median + 5 MAD): Jaffe full 48 of 660, Browder 10 of 155, Tet1 7 of 26, EPIC-Italy 7 of 839, BXD 5 of 288,
+  GSE74432 4 of 119; none in Endicott, Sturm, Huang, CR, CH, Dnmt3a, GSE97362. Flags are recorded, not yet used to
+  exclude.
+- **Rebuilt against deposited:** Huang identical (r 1.000); Endicott per-probe r 0.999; Sturm 0.976; Jaffe per-sample
+  r 0.990 but per-probe r 0.815 (mean |difference| 0.05), so the authors' processing changed between-sample
+  variation at single CpGs.
+
 ## R106 — BXD, Browder, Tet1, Dnmt3a on SeSAMe's per-platform mouse recipe (RM43 item 4), 2026-11-18
 
 - Rebuilds with TQCDPB (MM285) and SHCDPB (Mammal40), detection over the species-mask probes, 90 % cut (4fd2503);
