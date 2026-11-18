@@ -365,7 +365,8 @@ def _run(
         write_table(dropped, out / "samples_dropped")
         samples = samples.filter(pl.col("sample").is_in(passed))
     if universe is not None:  # the paired comparison: one CpG universe, complete in both sources, nothing filled
-        features = [f for f in features if f in set(universe)]
+        keep = set(universe)
+        features = [f for f in features if f in keep]
     if source == "sesame":
         m = _sesame_matrix(cohort, ctx.paths, samples["sample"].to_list(), features, 0.0 if universe else MAX_MISSING)
     elif universe is not None:
