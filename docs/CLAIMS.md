@@ -109,7 +109,8 @@ a test with little power), **refuted**.
 - **If true, we should see:** higher drift in carriers of NSD1, EZH2, KMT2D, CHD7 variants, with an unchanged or
   stronger shield share.
 - **We should not see:** a weaker shield share.
-- **Observed:** drift up in Sotos, Weaver, Kabuki, CHARGE; shield share unchanged or stronger.
+- **Observed:** drift up in Sotos, Weaver, Kabuki, CHARGE; shield share unchanged or stronger. Holds on arrays rebuilt
+  from raw IDATs (R95): Sotos F −0.051 → −0.069, Weaver −0.063 → −0.078; drift effects within 0.002.
 - **Alternatives:** each syndrome's own methylation signature raises drift by design; the Sotos/Weaver series
   has no ages; infants misled the first run (fixed).
 - **Separating test:** ages for GSE74432; signatures removed before scoring.

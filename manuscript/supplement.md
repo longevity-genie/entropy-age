@@ -60,7 +60,7 @@ and starting level; DamAge (Ying et al. 2024) alone weights them up (1.66, 1.14-
 PhenoAge's acceleration and 4.9 % of StocP's (R38).
 
 **Chromatin writers and DNMT3A gain of function.** Blood of carriers against controls (5 composition components;
-R18): Sotos drift B +0.021 (p 10⁻⁴²), F −0.043; other NSD1 variants F −0.039; Weaver F −0.037; Kabuki B +0.011, F
+R18; on arrays rebuilt from raw IDATs, R95, every drift effect within 0.002 and the F effects 0.01-0.02 stronger): Sotos drift B +0.021 (p 10⁻⁴²), F −0.043; other NSD1 variants F −0.039; Weaver F −0.037; Kabuki B +0.011, F
 +0.003 (n.s.); CHARGE F −0.012; KMT2D and CHD7 variant carriers ≈ 0. GSE74432 has no ages. Dnmt3a W326R/+ against
 littermates (R37): F −0.53 to −0.61 for essential and housekeeping sets in bone marrow, intestine and liver, +0.56 to
 +0.67 for non-essential; S −0.06 to −0.09 and +0.07 to +0.09; B +0.06 to +0.10.
