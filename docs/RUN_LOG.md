@@ -3,6 +3,18 @@
 Owned by the runner seat (`docs/seats/RUNNER.md`): one entry per run, newest first, with its inputs, the
 commit it ran, its job ids, its scale and seed, and its result or its failure with the cause.
 
+## R106 — BXD, Browder, Tet1, Dnmt3a on SeSAMe's per-platform mouse recipe (RM43 item 4), 2026-11-18
+
+- Rebuilds with TQCDPB (MM285) and SHCDPB (Mammal40), detection over the species-mask probes, 90 % cut (4fd2503);
+  `ENTROPY_AGE_BETAS=sesame figures bxd|reprogramming|tet1|dnmt3a`, job 6518427 (test), 66 s.
+- **BXD:** 288 of 338 arrays pass, 230 females with 160 in the aging fit. Aging gap, relative entropy: housekeeping −0.279
+  (−0.452 to −0.143), core-essential −0.282. Housekeeping F per 10 months −0.248, −0.109 with 5 components; HFD −0.086
+  (p 0.001), **−0.035 with components (p 0.072)**: R100's "part survives composition" (p 0.011) does not hold under
+  the mouse masks; unresolved. extension.md and Supplementary Note 3 corrected.
+- **Browder:** spleen core-essential F +0.171 (p 0.007), housekeeping +0.109 (p 0.068); muscle housekeeping −0.107
+  (p 0.066; deposited −0.115, p 0.019). Directions hold; muscle no longer below 0.05.
+- **Tet1:** 19 of 24 BS arrays, F −0.12 to −0.17 (p < 0.001), as R99. **Dnmt3a:** F −0.54 to −0.65, as R99.
+
 ## R104 — chromatin matching with region-matched brain maps (RM43 item 3), 2026-11-18
 
 - `figures chromatin --scale paper --seed 42`, commit 1316d9d, job 6517856 (test partition), 21 min. Lunnon superior

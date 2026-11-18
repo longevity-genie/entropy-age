@@ -80,8 +80,8 @@ controls' reference per assignment (720 assignments, R91) p 0.16 and 0.23 (the e
 scores gave 0.006 and 0.026). GHRKO liver strengthening was batch (same-chip +0.01, p 0.67). Clonal haematopoiesis (R25): 64
 patients, |F| ≤ 0.022, p ≥ 0.15. Transplant (R57): F core-essential −0.058 (−0.091 to −0.028), housekeeping −0.039,
 non-essential −0.057. Per-mouse shield share grows with age: GSE80672 standard C57BL/6 F −0.052 per 10 months
-(−0.041 with components); BXD liver −0.28 (−0.055 with components) (R8, R9); re-processed from the IDATs (R100) −0.24 (−0.116 with components),
-and the high-fat diet −0.097 (−0.040 with components, p 0.011; deposited −0.017, p 0.26). Chemotherapy in SJLIFE moved B and F in
+(−0.041 with components); BXD liver −0.28 (−0.055 with components) (R8, R9); re-processed from the IDATs with SeSAMe's mouse masks (R106) −0.25 (−0.109 with components),
+and the high-fat diet −0.086 (−0.035 with components, p 0.07; deposited −0.017, p 0.26). Chemotherapy in SJLIFE moved B and F in
 opposite directions (alkylating agents B +0.15, F −0.16; anthracyclines B −0.22, F +0.21; R60).
 
 **Reprogramming.** Gill 2022 from IDATs (R65): reprogrammed − failed B housekeeping +0.045, core +0.036,
@@ -89,7 +89,7 @@ non-essential +0.125 (p 0.0002 each); F −0.016 (p 0.25), −0.015 (p 0.35), no
 skin & blood (Horvath et al. 2018) −0.36 transformed units (p 0.085). Cyclic OSKM in mouse tissues (Browder et al. 2022) changed the shield
 inconsistently, and one cycle in one-year-old mice (Chondronasiou et al. 2022) left too little aging to test.
 Browder cyclic OSKM (R32): muscle F −0.115 (p 0.02), spleen core-essential +0.211 (p 0.001), other tissues n.s.;
-re-processed from the IDATs (R100) muscle −0.109 (p 0.04), spleen core-essential +0.158 (p 0.006). One
+re-processed from the IDATs with SeSAMe's mouse masks (R106) muscle −0.107 (p 0.07), spleen core-essential +0.171 (p 0.007). One
 OSKM cycle (R62): no measurable aging between 13 and 52 weeks.
 
 **Species.** Phylogenetic GLS (taxonomy covariance, Pagel's λ) on entropy: housekeeping +0.025 per log lifespan
