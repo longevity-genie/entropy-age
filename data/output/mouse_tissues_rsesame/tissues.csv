@@ -1,0 +1,12 @@
+tissue,turnover,cpgs,Aged_ctrl,Aged_ctrl_KD,Aged_exenatide,Aged_exenatide_KD,Aged_rapamycin,Young_ctrl,Young_exenatide
+white blood cells,renewing,68127,14,5,11,5,5,14,6
+colon,renewing,69447,14,5,13,5,5,20,8
+spleen,renewing,69410,8,0,8,0,0,8,0
+liver,slow,69317,8,0,8,0,0,8,0
+kidney,slow,69533,9,0,8,0,0,7,0
+adipose,slow,69217,13,5,13,5,5,21,8
+skeletal muscle,post-mitotic,69034,13,5,13,5,5,21,8
+heart,post-mitotic,68983,13,5,13,5,5,21,8
+frontal cortex,post-mitotic,68080,13,5,13,5,5,21,8
+hippocampus,post-mitotic,68343,13,5,13,5,5,20,8
+hypothalamus,post-mitotic,69086,4,0,5,0,0,12,8

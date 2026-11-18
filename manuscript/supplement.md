@@ -123,7 +123,9 @@ it, a gap's size carries roughly ±0.05 SD of preprocessing uncertainty.
 
 **Mouse array tissues (GSE279437; R68a).** Housekeeping gap on relative entropy: white blood cells −0.08 SD, colon
 −0.18, spleen −0.19, kidney −0.18 and liver −0.05; skeletal muscle +0.09, heart +0.08, frontal cortex +0.07,
-hippocampus +0.03 and adipose tissue +0.03; the hypothalamus, with four aged controls, −0.08. Within chip (R92; animals
+hippocampus +0.03 and adipose tissue +0.03; the hypothalamus, with four aged controls, −0.08. Re-processed from the raw
+IDATs (R97) the deposited betas proved to be R SeSAMe's own output, identical to float precision; three young
+controls fail detection there; relative-entropy contrasts move by at most 0.02 (entropy slopes by up to 0.04). Within chip (R92; animals
 on chips shared by both ages, chip intercepts; identifiable in 7 tissues): white blood cells +0.04, liver +0.01,
 skeletal muscle −0.04, heart +0.09, frontal cortex −0.01, hippocampus −0.05, hypothalamus −0.14; colon, spleen, kidney
 and adipose tissue drop out. Renewing minus post-mitotic +0.02 (−0.06 to +0.19), slowly renewing minus post-mitotic
@@ -187,7 +189,7 @@ draws kept a third of Hannum's dispersion gap (−0.12) and none of its entropy 
 | Stem-cell transplant series | Mendeley Data, https://doi.org/10.17632/j5krtjfj6y.1 | 450k/EPIC | deposited |
 | Loyfer 2023 WGBS | GSE186458 | WGBS | authors' read files, our per-read summaries |
 | Mammalian Methylation Consortium (65 species; interventions incl. Tet3) | GSE223748 | Mammal40 | deposited |
-| Huang 11 mouse tissues | GSE279437 | Mammal320 | deposited |
+| Huang 11 mouse tissues | GSE279437 | Mammal320 | rebuilt (R97; deposited = R SeSAMe output) |
 | Petkovich mouse blood | GSE80672 | RRBS | deposited |
 | CR blood replication | GSE282661 | Mammal320 | deposited |
 | Mouse RRBS six tissues | GSE120132 | RRBS | deposited |

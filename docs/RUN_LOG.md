@@ -3,6 +3,18 @@
 Owned by the runner seat (`docs/seats/RUNNER.md`): one entry per run, newest first, with its inputs, the
 commit it ran, its job ids, its scale and seed, and its result or its failure with the cause.
 
+## R97 — Huang mouse tissues on R SeSAMe betas (RM41), 2026-11-18
+
+- `ENTROPY_AGE_BETAS=sesame figures mouse --scale paper --seed 42`, job 6514013 (test partition), 2 h 05 min, on the
+  chip-aware code of R92 (before 4711d89, so its within-chip dispersion intervals are degenerate and not reported).
+- **The deposited Huang betas are R SeSAMe's own output.** On the 580 arrays both hold, all 279,644 shared probes agree
+  to float32 rounding (max |difference| 3e-8) with identical missing cells. The rebuild adds 16,426 probes and drops 3
+  arrays that fail the 90 % detection cut (young controls: two white-blood-cell, one hippocampus).
+- Relative-entropy contrasts move by at most 0.02 (entropy slopes up to 0.04): housekeeping relative entropy, renewing − post-mitotic −0.191 (−0.508 to −0.066)
+  unadjusted and +0.023 (−0.057 to +0.181) within chip; slow − post-mitotic −0.095 and +0.031. Per tissue, white
+  blood cells −0.072 unadjusted, +0.028 within chip; kidney −0.162 (was −0.176). R92's reading holds on raw data.
+- Claims unchanged beyond R92; E32 and Supplementary Note 3 name R97. Huang counts as rebuilt for RM41.
+
 ## R92 — mouse turnover contrast within chip (selection audit), 2026-11-18
 
 - `figures mouse --scale paper --seed 42` on deposited betas, after the chip-aware code (3518b5f) and the bootstrap
