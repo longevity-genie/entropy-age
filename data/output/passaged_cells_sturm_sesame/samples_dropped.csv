@@ -1,0 +1,18 @@
+sample,donor,tissue,age,subexperiment,donor_age,sex,oxygen,agent,serum,vector,subculture,doublings,days,days_treated,culture,batch
+GSM5435200,HC2,dermal fibroblast,,Baseline profiling,18.0,female,Ambient,control,Full,NA,25,71.78975307,122.0416667,104.7916667,HC2_sp2_Normal_Control_ox21,WG6994424-MSA4
+GSM5435119,HC6,dermal fibroblast,,Baseline profiling,36.0,female,Ambient,control,Full,NA,5,3.077139398,4.0,-12.95833333,HC6|5|4,WG6994424-MSA4
+GSM5435279,SURF1_3,dermal fibroblast,,SURF1 mutation,10.0,female,Ambient,DEX,Full,NA,21,22.02176519,58.125,40.875,SURF1_3_sp2_SURF1_Mutation_DEX_ox21,WG6994424-MSA4
+GSM5435138,HC6,dermal fibroblast,,Study part 1,36.0,female,Ambient,Pulsated_DEX,Full,NA,12,27.41367869,37.22916667,20.27083334,HC6_sp1_Normal_Pulsated_DEX_ox21,WG6994417-MSA4
+GSM5435174,HC6,dermal fibroblast,,Study part 1,36.0,female,Ambient,a-ketogluturate,Full,NA,14,28.58944153,47.08333333,30.125,HC6_sp1_Normal_a-ketogluturate_ox21,WG6994409-MSA4
+GSM5435374,HC1,dermal fibroblast,,Study part 2,18.0,male,Ambient,5-azacytidine+mitoNUITs,Full,NA,18,42.53817134,83.08333333,66.75,HC1_sp2_Normal_5-azacytidine+mitoNUITs_ox21,WG6994424-MSA4
+GSM5435307,HC1,dermal fibroblast,,Study part 2,18.0,male,Ambient,mitoNUITs+DEX,Full,NA,19,33.4947292,88.04166667,71.70833334,HC1_sp2_Normal_mitoNUITs+DEX_ox21,WG6994424-MSA4
+GSM5435378,HC1,dermal fibroblast,,Study part 2,18.0,male,Ambient,5-azacytidine+mitoNUITs,Full,NA,30,50.28109602,157.9166667,141.5833334,HC1_sp2_Normal_5-azacytidine+mitoNUITs_ox21,WG6994424-MSA4
+GSM5435385,HC2,dermal fibroblast,,Study part 2,18.0,female,Ambient,5-azacytidine+mitoNUITs,Full,NA,23,58.86889938,109.2083333,91.9583333,HC2_sp2_Normal_5-azacytidine+mitoNUITs_ox21,WG6994409-MSA4
+GSM5435367,HC2,dermal fibroblast,,Study part 2,18.0,female,Ambient,5-azacytidine,Full,NA,25,68.41898078,122.0416667,58.9166667,HC2_sp2_Normal_5-azacytidine_ox21,WG6994408-MSA4
+GSM5435258,HC2,dermal fibroblast,,Study part 2,18.0,female,Ambient,DEX,Full,NA,42,64.6215574,265.3333333,248.0833333,HC2_sp2_Normal_DEX_ox21,WG6994424-MSA4
+GSM5435324,HC2,dermal fibroblast,,Study part 2,18.0,female,Ambient,mitoNUITs+DEX,Full,NA,42,54.34938753,265.3333333,248.0833333,HC2_sp2_Normal_mitoNUITs+DEX_ox21,WG6994408-MSA4
+GSM5435442,HC1,dermal fibroblast,,Study part 3,18.0,male,3%,control,Full,NA,7,11.70940271,27.66666667,7.20833334,HC1_sp3_Normal_Control_ox3,WG6994424-MSA4
+GSM5435427,HC2,dermal fibroblast,,Study part 3,18.0,female,Ambient,DEX,Full,NA,10,23.13816116,49.0,27.79166667,HC2_sp3_Normal_DEX_ox21,WG6994424-MSA4
+GSM5435435,HC4,dermal fibroblast,,Study part 3,3.0,male,3%,control,Full,NA,12,21.84041579,41.33333333,20.875,HC4_sp3_Normal_Control_ox3,WG6994424-MSA4
+GSM5435579,HC1,dermal fibroblast,,Study part 4,18.0,male,Ambient,betahydroxybutyrate,Full,NA,6,11.18967897,22.97083333,7.09027777,HC1_sp4_Normal_betahydroxybutyrate_ox21,WG6994417-MSA4
+GSM5435545,HC1,dermal fibroblast,,Study part 4,18.0,male,Ambient,control,Full,NA,11,32.7616941,57.92916667,42.04861111,HC1_sp4_Normal_Control_ox21,WG6994425-MSA4

@@ -50,6 +50,26 @@ commit it ran, its job ids, its scale and seed, and its result or its failure wi
   two NSD1 arms disagree. Where these variants act, they look like noise added at the CpGs aging makes noisy, not
   a faster directed clock.
 
+## R94 — the culture test on rebuilt betas: deposited against R SeSAMe on the same samples (RM41), 2026-11-18
+
+- Commit 53b4db5 (after a filter that rebuilt a set per feature ran for hours, 6512015 cancelled); `figures
+  passage_pipelines --scale paper --seed 42`; job 6513615 (test partition). Endicott GSE197512 and Sturm GSE179847
+  each scored twice on exactly the samples R SeSAMe passes (Endicott 333 of 372: 33 dropped in the TERT arm, 4
+  baseline and 2 reduced-oxygen samples of one foreskin line; Sturm 462 of 479), on the CpGs complete in both
+  sources (no fill).
+- Result, as measured (coupling = gap per unit of noise-free matched drift; its change per 10 doublings, mean over
+  lines with t interval). Endicott, 7 lines, housekeeping: coupling −0.202 deposited, −0.003 rebuilt; change −0.113
+  (−0.257, +0.032) deposited, −0.176 (−0.392, +0.040, p 0.09) rebuilt. Core-essential: coupling −0.229 → +0.133;
+  change −0.086 → −0.191 (−0.395, +0.013, p 0.06). Sturm, 4 lines (HC6 falls below 5 samples): housekeeping coupling
+  −0.492 → −0.368, change −0.009 (−0.085, +0.066) → −0.025 (−0.082, +0.033); core −0.526 → −0.381, change +0.003 →
+  −0.005. Original estimates on all samples for reference: Endicott −0.139 (−0.334, +0.056), Sturm −0.055.
+- Reading: processing, not sample selection, moves Endicott. On rebuilt betas the shield in Endicott's cultures is
+  about zero at the reference (housekeeping) or reversed (core), and its change with doublings is more negative,
+  the direction selection predicts, with intervals still including zero. Sturm keeps a shield on both versions and
+  no change with doublings. The culture result no longer argues against selection; it is unresolved and
+  processing-sensitive. Tables `data/output/passaged_cells_{deposited_subset,sesame}`,
+  `passaged_cells_sturm_{deposited_subset,sesame}`.
+
 ## R93 — Jaffe cortex, paired pipeline pilot: deposited, methylprep and R SeSAMe on identical donors (RM41), 2026-11-18
 
 - Raw step: `scripts/sesame_preprocess.R` (R 4.4.3, sesame 1.24.0, sesameData 1.24.0, ExperimentHub 2.14.0,

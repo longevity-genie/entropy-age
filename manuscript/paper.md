@@ -160,7 +160,11 @@ Culture follows the shield through cell divisions, along which selection among c
 (Introduction). In seven primary human cell lines passaged to senescence (Endicott et al. 2022), with the
 replicate-culture noise floor removed, set CpGs drifted about half as much as matched CpGs once drift was well above the floor. The change of this
 share with population doublings was −0.14 per 10 doublings (95 % interval −0.33 to +0.06, seven lines; negative means stronger protection; one line reached 136 doublings),
-and −0.055 (−0.21 to +0.10, five lines) in a second study (Sturm et al. 2023; Supplementary Fig. S14). Neither differs detectably from zero, but the intervals also admit changes of the size selection could produce, so they do not show the share to be constant. With batch intercepts the first estimate is −0.14 (−0.34 to +0.05); in the second, plate adjustment is possible in four lines, which give −0.003 unadjusted and +0.003 adjusted (intervals about ±0.08), and all five of its baseline lines used a pooled noise floor.
+and −0.055 (−0.21 to +0.10, five lines) in a second study (Sturm et al. 2023; Supplementary Fig. S14). Neither differs detectably from zero, but the intervals also admit changes of the size selection could produce, so they do not show the share to be constant. With batch intercepts the first estimate is −0.14 (−0.34 to +0.05); in the second, plate adjustment is possible in four lines, which give −0.003 unadjusted and +0.003 adjusted (intervals about ±0.08), and all five of its baseline lines used a pooled noise floor. Rebuilt from raw IDATs and scored on the same
+samples, Endicott's lines lose their shield at the reference (housekeeping coupling −0.20 deposited, −0.00
+rebuilt) and the change per 10 doublings becomes −0.18 (−0.39 to +0.04), the direction selection predicts; Sturm's
+four lines with enough samples keep their shield (−0.37) and show no change (−0.025, −0.08 to +0.03). The culture
+test is therefore sensitive to processing and does not separate the two accounts.
 
 Across mammals (Mammalian Methylation Consortium, GSE223748; Lu et al. 2023; Haghani et al. 2023), 139
 species-tissue groups of 65 species had at least 15 animals spanning 15 % of the species' maximum lifespan. The

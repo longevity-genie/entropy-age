@@ -4,6 +4,7 @@ Newest first.
 
 ## Unreleased
 
+- 2026-11-18: R94, culture on rebuilt betas: Endicott's shield vanishes at the reference and trends toward growth with doublings (selection direction, CI includes 0); Sturm unchanged. Claims and manuscript updated.
 - 2026-11-18: R84b (matched breast-cancer design holds, OR 1.7), R85 (no sex difference across mammals), R86 (no Braak gradient), R88 (organs of one mouse drift together, r 0.15-0.19), R90 (writer variants add noise at noisy-aging CpGs).
 - 2026-11-18: R93, Jaffe paired pipeline pilot: R SeSAMe and methylprep agree within 0.004 SD; both strengthen the cortex gap against deposited betas (spread −0.07 → −0.12 SD).
 - 2026-11-18: R83, per-CpG intervals: faster methylation loss at essential promoters holds in blood only and goes with chromatin state; a lower resting level holds in blood and cortex.

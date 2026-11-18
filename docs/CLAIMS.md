@@ -71,7 +71,9 @@ a test with little power), **refuted**.
 - **If selection, we should see:** the shield grow with divisions; stronger in renewing tissues; absent in
   non-dividing neurons; weaker when proliferation slows (CR); changed in clonal expansions.
 - **If selection, we should not see:** a shield in neurons; a constant share over doublings.
-- **Observed:** no detectable change of the share in culture (intervals wide enough to allow selection-sized growth); not ordered by turnover; equal in blood and brain after chromatin;
+- **Observed:** no detectable change of the share in culture (intervals wide enough to allow selection-sized growth;
+  on betas rebuilt from IDATs, R94, Endicott's shield is about zero at the reference and its change per 10
+  doublings −0.18, −0.39 to +0.04, the direction selection predicts; Sturm unchanged); not ordered by turnover; equal in blood and brain after chromatin;
   bulk brain tissue loses it when Tet3 is halved; clonal haematopoiesis leaves it; not tuned to lifespan. One result
   favours selection: CR weakened it in one blood study, not replicated in liver; with chromatin openness
   matched two thirds of that effect goes with the shield (R55); a second, short CR series in young mice shows CR's

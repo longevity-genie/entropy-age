@@ -1,0 +1,40 @@
+sample,donor,tissue,age,title,subexperiment,donor_age,sex,oxygen,agent,serum,vector,subculture,doublings,days,batch
+GSM5918990,Neonatal_foreskin_fibroblast_2,Foreskin,,NFF2_2,Baseline profiling,0 years,male,Ambient,NA,Full,NA,c,13.94172894,8.0,08.31.18
+GSM5919021,Neonatal_foreskin_fibroblast_2,Foreskin,,NFF2_33,Baseline profiling,0 years,male,Ambient,NA,Full,NA,a,46.61435519,54.0,08.31.18
+GSM5919022,Neonatal_foreskin_fibroblast_2,Foreskin,,NFF2_34,Baseline profiling,0 years,male,Ambient,NA,Full,NA,b,46.81364153,54.0,08.31.18
+GSM5919026,Neonatal_foreskin_fibroblast_2,Foreskin,,NFF2_38,Baseline profiling,0 years,male,Ambient,NA,Full,NA,c,52.83566353,65.0,08.31.18
+GSM5919111,Neonatal_foreskin_fibroblast_2,Foreskin,,NFF2_AMBO2_15,Reduced oxygen,0 years,male,Ambient,NA,Full,NA,a,56.34256194,103.0,10.04.19
+GSM5919143,Neonatal_foreskin_fibroblast_2,Foreskin,,NFF2_LOWO2_32,Reduced oxygen,0 years,male,Low 3% O2,NA,Full,NA,b,63.84804174,121.0,10.04.19
+GSM5919147,Fetal_skin_fibroblast_1,"Skin, sacrum",,FSF1_TERTCtl_3,TERT immortalization,16 fetal weeks,female,Ambient,NA,Full,Hygromycin B resistance,2a,19.95,21.0,09.24.21
+GSM5919155,Fetal_skin_fibroblast_1,"Skin, sacrum",,FSF1_TERT_2,TERT immortalization,16 fetal weeks,female,Ambient,NA,Full,TERT,2a,20.91,29.0,09.24.21
+GSM5919156,Fetal_skin_fibroblast_1,"Skin, sacrum",,FSF1_TERT_3,TERT immortalization,16 fetal weeks,female,Ambient,NA,Full,TERT,2b,21.24,29.0,09.24.21
+GSM5919157,Fetal_skin_fibroblast_1,"Skin, sacrum",,FSF1_TERT_4,TERT immortalization,16 fetal weeks,female,Ambient,NA,Full,TERT,2a,25.22,35.0,09.24.21
+GSM5919158,Fetal_skin_fibroblast_1,"Skin, sacrum",,FSF1_TERT_5,TERT immortalization,16 fetal weeks,female,Ambient,NA,Full,TERT,2b,25.64,35.0,09.24.21
+GSM5919163,Fetal_skin_fibroblast_1,"Skin, sacrum",,FSF1_TERT_10,TERT immortalization,16 fetal weeks,female,Ambient,NA,Full,TERT,2b,35.0,53.0,09.24.21
+GSM5919166,Fetal_skin_fibroblast_1,"Skin, sacrum",,FSF1_TERT_13,TERT immortalization,16 fetal weeks,female,Ambient,NA,Full,TERT,2a,42.29,69.0,09.24.21
+GSM5919168,Fetal_skin_fibroblast_1,"Skin, sacrum",,FSF1_TERT_15,TERT immortalization,16 fetal weeks,female,Ambient,NA,Full,TERT,2a,47.91,80.0,09.24.21
+GSM5919172,Fetal_skin_fibroblast_1,"Skin, sacrum",,FSF1_TERT_19,TERT immortalization,16 fetal weeks,female,Ambient,NA,Full,TERT,2a,53.92,92.0,09.24.21
+GSM5919173,Fetal_skin_fibroblast_1,"Skin, sacrum",,FSF1_TERT_20,TERT immortalization,16 fetal weeks,female,Ambient,NA,Full,TERT,2a,57.58,99.0,09.24.21
+GSM5919174,Fetal_skin_fibroblast_1,"Skin, sacrum",,FSF1_TERT_21,TERT immortalization,16 fetal weeks,female,Ambient,NA,Full,TERT,2b,57.69,99.0,09.24.21
+GSM5919182,Fetal_skin_fibroblast_1,"Skin, sacrum",,FSF1_TERT_29,TERT immortalization,16 fetal weeks,female,Ambient,NA,Full,TERT,2b,78.03,142.0,09.24.21
+GSM5919188,Fetal_skin_fibroblast_1,"Skin, sacrum",,FSF1_TERT_35,TERT immortalization,16 fetal weeks,female,Ambient,NA,Full,TERT,2a,93.3,174.0,09.24.21
+GSM5919189,Fetal_skin_fibroblast_1,"Skin, sacrum",,FSF1_TERT_36,TERT immortalization,16 fetal weeks,female,Ambient,NA,Full,TERT,2b,95.74,179.0,09.24.21
+GSM5919190,Fetal_skin_fibroblast_1,"Skin, sacrum",,FSF1_TERT_37,TERT immortalization,16 fetal weeks,female,Ambient,NA,Full,TERT,2a,97.11,179.0,09.24.21
+GSM5919192,Fetal_skin_fibroblast_1,"Skin, sacrum",,FSF1_TERT_39,TERT immortalization,16 fetal weeks,female,Ambient,NA,Full,TERT,2a,104.85,190.0,09.24.21
+GSM5919193,Fetal_skin_fibroblast_1,"Skin, sacrum",,FSF1_TERT_40,TERT immortalization,16 fetal weeks,female,Ambient,NA,Full,TERT,2b,106.33,195.0,09.24.21
+GSM5919194,Fetal_skin_fibroblast_1,"Skin, sacrum",,FSF1_TERT_41,TERT immortalization,16 fetal weeks,female,Ambient,NA,Full,TERT,2a,107.82,195.0,09.24.21
+GSM5919196,Fetal_skin_fibroblast_1,"Skin, sacrum",,FSF1_TERT_43,TERT immortalization,16 fetal weeks,female,Ambient,NA,Full,TERT,2a,109.57,202.0,09.24.21
+GSM5919197,Fetal_skin_fibroblast_1,"Skin, sacrum",,FSF1_TERT_44,TERT immortalization,16 fetal weeks,female,Ambient,NA,Full,TERT,2b,113.39,209.0,09.24.21
+GSM5919199,Fetal_skin_fibroblast_1,"Skin, sacrum",,FSF1_TERT_46,TERT immortalization,16 fetal weeks,female,Ambient,NA,Full,TERT,2b,116.22,214.0,09.24.21
+GSM5919201,Fetal_skin_fibroblast_1,"Skin, sacrum",,FSF1_TERT_48,TERT immortalization,16 fetal weeks,female,Ambient,NA,Full,TERT,2b,120.57,221.0,09.24.21
+GSM5919202,Fetal_skin_fibroblast_1,"Skin, sacrum",,FSF1_TERT_49,TERT immortalization,16 fetal weeks,female,Ambient,NA,Full,TERT,2a,121.85,221.0,09.24.21
+GSM5919204,Fetal_skin_fibroblast_1,"Skin, sacrum",,FSF1_TERT_51,TERT immortalization,16 fetal weeks,female,Ambient,NA,Full,TERT,2a,126.15,227.0,09.24.21
+GSM5919205,Fetal_skin_fibroblast_1,"Skin, sacrum",,FSF1_TERT_52,TERT immortalization,16 fetal weeks,female,Ambient,NA,Full,TERT,2b,126.2,231.0,09.24.21
+GSM5919206,Fetal_skin_fibroblast_1,"Skin, sacrum",,FSF1_TERT_53,TERT immortalization,16 fetal weeks,female,Ambient,NA,Full,TERT,2a,128.72,231.0,09.24.21
+GSM5919207,Fetal_skin_fibroblast_1,"Skin, sacrum",,FSF1_TERT_54,TERT immortalization,16 fetal weeks,female,Ambient,NA,Full,TERT,2b,129.9,241.0,09.24.21
+GSM5919210,Fetal_skin_fibroblast_1,"Skin, sacrum",,FSF1_TERT_57,TERT immortalization,16 fetal weeks,female,Ambient,NA,Full,TERT,2a,137.37,245.0,09.24.21
+GSM5919211,Fetal_skin_fibroblast_1,"Skin, sacrum",,FSF1_TERT_58,TERT immortalization,16 fetal weeks,female,Ambient,NA,Full,TERT,2a,139.79,250.0,09.24.21
+GSM5919212,Fetal_skin_fibroblast_1,"Skin, sacrum",,FSF1_TERT_59,TERT immortalization,16 fetal weeks,female,Ambient,NA,Full,TERT,2b,139.84,255.0,09.24.21
+GSM5919213,Fetal_skin_fibroblast_1,"Skin, sacrum",,FSF1_TERT_60,TERT immortalization,16 fetal weeks,female,Ambient,NA,Full,TERT,2a,143.38,255.0,09.24.21
+GSM5919215,Fetal_skin_fibroblast_1,"Skin, sacrum",,FSF1_TERT_62,TERT immortalization,16 fetal weeks,female,Ambient,NA,Full,TERT,2b,147.43,268.0,09.24.21
+GSM5919216,Fetal_skin_fibroblast_1,"Skin, sacrum",,FSF1_TERT_63,TERT immortalization,16 fetal weeks,female,Ambient,NA,Full,TERT,2b,150.32,272.0,09.24.21
