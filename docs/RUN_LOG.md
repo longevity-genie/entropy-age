@@ -3,6 +3,22 @@
 Owned by the runner seat (`docs/seats/RUNNER.md`): one entry per run, newest first, with its inputs, the
 commit it ran, its job ids, its scale and seed, and its result or its failure with the cause.
 
+## R81 — outside audit: old against fixed relative entropy on the headline gaps, 2026-11-18
+
+- An outside audit (2026-11-18, another model, read-only) found that `relative_entropy` clipped only the reference
+  to [0.01, 0.99], so near 0 % a sample moving away could score closer; fixed in 77aa712 (one pseudo-count on both
+  levels), with the bootstrap scale of floor_check, allelic_controls and sex_drift, the global FDR columns, NaN
+  strata, rescale's duplicate check and the hotspot null (tests/test_audit_fixes.py).
+- Commit 77aa712; `/data/uq2347/logs/kl_impact.py` (the old function inline against the fixed one); 4 cores, 64 GB;
+  job 6503280, 1 min 25 s. Hannum and Jaffe, `tissue_contrast` features, covariates and matching, 200 permutations.
+- Result, as measured (matched gap on relative entropy, SD, old → fixed): blood housekeeping −0.146 → −0.141,
+  core-essential −0.084 → −0.082, non-essential +0.135 → +0.133; cortex housekeeping −0.056 → −0.056, core-essential
+  −0.070 → −0.070, non-essential −0.000 → −0.001; every p unchanged. 15.6 % of blood housekeeping CpGs start below
+  1 % (7.3 % of the rest), none in cortex.
+- Reading: the fix moves the headline gaps by at most 0.005 SD; no claim changes. The global FDR rerun (963a9ff):
+  8,532 tests, 4,207 survive, largest surviving p 0.024 as before. Reruns of R77-R80 on the fixed code follow;
+  earlier relative-entropy tables stay as they are, with this measured shift as their correction bound.
+
 ## R79 — hotspots of rising disorder across mammals (RM35 item 3), 2026-11-17
 
 - Commit eb834c1; `figures species_hotspots --scale paper --seed 42`; 4 cores, 96 GB; job 6495752, 1 h 36 min.
