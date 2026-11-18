@@ -23,6 +23,21 @@ adds R77 (held loci protected in blood), R78 (no sex difference), R79 (no univer
 
 Each is reused from a past run where one fits (Anton's rule, 2026-11-14), and goes into round v0.2.
 
+## RM39 — The eight open gaps of the beyond-the-shield review
+
+**State:** unattended (asked by antonkulaga 2026-11-18: "we still have 8 ideas that we can analyze, can you do it?"; the 8 read from `docs/LITERATURE_COVERAGE.md`, sent to him with this default) · **Owner:** lead
+
+Jobs may go to account `cluster`, partition `requeue` (preemptible; he allowed it the same day), each restartable.
+
+1. **Organs aging together at one age, in mice:** clock and drift residuals correlated across tissues of the same animals (Huang, Thompson).
+2. **A regional gradient within AD donors:** drift by region in the same Lunnon donors, entorhinal cortex first, against Braak.
+3. **Directed pace against noise pace across species:** do tissues rank alike on both, species by species?
+4. **Onset of drift against age at maturity:** does where drift starts to rise scale with maturity across mammals (R45's fits)?
+5. **Per day or per division:** drift per day against drift per doubling across every culture series and agent.
+6. **Progeroid and machinery mutants:** is their extra noise at the CpGs that gain noise in normal aging?
+7. **Sex in mice and mammals:** R78's sex contrast on mouse tissues and the species array.
+8. **Every species of the array:** per-CpG variance gain over all species with enough animals, not only R79's 139 groups.
+
 ## RM15 — Directed demethylation outside promoters: the culture and cortex follow-ups
 
 **State:** after RM19 · **Owner:** lead
