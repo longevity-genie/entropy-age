@@ -52,7 +52,7 @@ commit it ran, its job ids, its scale and seed, and its result or its failure wi
 
 ## R96 — EPIC-Italy breast cancer on rebuilt arrays (RM41), 2026-11-18
 
-- `ENTROPY_AGE_BETAS=sesame figures cancer cancer_matched --scale paper --seed 42` (commits b36c116, 9bd2e75 fix:
+- `ENTROPY_AGE_BETAS=sesame figures cancer cancer_matched --scale paper --seed 42` (commits b36c116, 8c00678 fix:
   reference CpGs masked in every array left out of the cell-mix projection); job 6514018 (test partition), 24 min.
   GSE51032 rebuilt with R SeSAMe (6 of 845 arrays fail detection); mean beta and cell fractions from the rebuild too.
 - Result, as measured (matched case-control among women, odds ratio per SD; deposited R84b → rebuilt). Drift B,
