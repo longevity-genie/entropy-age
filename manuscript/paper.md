@@ -455,18 +455,25 @@ correction, pOOBAH detection masking and noob background correction (Triche et a
 samples detected below 90 % are excluded and listed. Three series were first rebuilt with methylprep 1.7.1 in
 SeSAMe-like mode; on Jaffe's cortex the two implementations agreed within 0.004 SD. Results from cohorts with no
 raw IDATs on GEO (Hannum, Lunnon, GTEx, the sorted-cell MESA series, GSE41037 and the mammalian consortium's
-superseries) rest on the authors' processing and are marked as not rebuilt wherever they are reported. No analysis pools datasets or
-platforms. Technical covariates were removed in every age slope (blood: plate, site, sex, ancestry; cortex: plate,
+superseries) rest on the authors' processing and are marked as not rebuilt wherever they are reported; their
+normalisation is the authors' (GTEx noob and BMIQ; SATSA functional normalisation). Rebuilt arrays receive only
+SeSAMe's per-sample steps, with no between-sample normalisation (no quantile, BMIQ or functional normalisation);
+each sample's beta distribution is compared with its series' median (Supplementary Table S1). Effects are estimated
+within one dataset and platform, with two exceptions that pool platforms inside one study with a term for it:
+SATSA's 450k and EPIC waves (a chip-change term per pair of draws; the 450k-only rebuild is reported beside it) and
+the transplant series' batches (batch terms; each donor-recipient pair within one batch). Supplementary Table S1 lists,
+for every analysis, the platform, processing, the source of any second track (chromatin, expression, outcome) and
+whether it comes from the same samples, the same study or another study. Technical covariates were removed in every age slope (blood: plate, site, sex, ancestry; cortex: plate,
 sex, ancestry, neuron fraction; other cohorts as available). RRBS CpGs were kept when covered at least 10 times in 90 %
 of a tissue's samples.
 
 ### Drift measures
 
-For each CpG we fitted, with covariates, the age slope of (i) relative entropy from the young state, (ii) binary
+No differentially methylated positions or regions are called. For each CpG we fitted, with covariates, the age slope of (i) relative entropy from the young state, (ii) binary
 entropy H(m) = −m log2 m − (1−m) log2(1−m), (iii) between-individual dispersion |residual| / sqrt(m̄(1−m̄)), and (iv)
 the absolute age slope of the mean. Relative entropy is the Kullback-Leibler divergence KL(x ‖ m_young), in bits,
 between a sample's methylation level x and the young reference level m_young at the same CpG, treated as Bernoulli
-probabilities; its age slope ("kl_slope") is the headline measure. The young reference m_young is the mean of the youngest fifth of donors by age in each cohort; these donors stay in the slope fit, and the same reference sets the young-level deciles used for matching. Relative entropy counts a move up or down alike, assumes no
+probabilities: KL = x log2(x / m_young) + (1 − x) log2((1 − x) / (1 − m_young)); its age slope ("kl_slope") is the headline measure. The young reference m_young is the mean of the youngest fifth of donors by age in each cohort; these donors stay in the slope fit, and the same reference sets the young-level deciles used for matching. Relative entropy counts a move up or down alike, assumes no
 destination, weighs a move away from an extreme level more, as binomial sampling does, and is close to the squared
 standardised deviation, so it carries both mean change and spread. Binary entropy was the first measure used; because
 it reads a loss of methylation at a low-methylated site as a gain in order, it overstated the gaps
@@ -476,8 +483,9 @@ on the same seeds.
 ### Matched comparison
 
 Each set's CpGs were compared with all other CpGs in the same stratum of CpG-island status (fixed by sequence) and
-young-reference methylation decile; the set-minus-matched difference was averaged over strata weighted by the set's
-count and divided by the measure's SD across CpGs. Significance came from 1,000 permutations of set labels within
+young-reference methylation decile, the matched control CpGs ("look-alikes"). With s_k the set's CpGs in stratum k,
+c_k the controls there, n_k = |s_k| and v̄ a mean of the per-CpG measure v (an age slope), the gap is
+G = Σ_k n_k (v̄(s_k) − v̄(c_k)) / (Σ_k n_k · SD(v)), SD(v) taken over all CpGs analysed. Significance came from 1,000 permutations of set labels within
 strata, permuting CpGs (two-sided; smallest p 0.001). CpGs of one promoter are correlated, but these p-values treat CpGs as independent units; the placebo gene sets below give the corresponding test at the level of genes. Intervals came from 200 donor bootstraps, each resample divided by the full sample's
 spread (an earlier version divided by each resample's own spread and drew intervals toward zero). For blood minus
 brain, the two lifespan cohorts were resampled independently and Lunnon's tissues with the same resampled donors.
@@ -488,9 +496,11 @@ differed (GTEx: 32 donors per resample). Tissues were grouped by cell turnover a
 ### Per-person scores
 
 For a sample and a reference state m (the young controls, or the other people in the contrast), each CpG's deviation
-is d = |x − m| / sqrt(m(1−m)). P is the mean d of a set's promoter CpGs minus that of matched CpGs in the same
-sample; B is the matched (look-alike) deviation; F = P / B is the shield share (negative: the set deviates less); S is
-the signed shift of set CpGs against look-alikes (positive: gained methylation). Reliability was estimated by
+is d = |x − m| / sqrt(m(1−m)). With the same strata weights as above, P = Σ_k n_k (d̄(s_k) − d̄(c_k)) / Σ_k n_k is the
+set's deviation minus its matched controls' in the same sample; B = Σ_k n_k d̄(c_k) / Σ_k n_k is the matched controls'
+deviation; F = P / B is the shield share (negative: the set deviates less); S is the same weighted difference of the
+signed deviation (x − m) / sqrt(m(1−m)) (positive: the set gained methylation against its controls). Strata holding no
+set CpG or no control CpG are dropped. Reliability was estimated by
 resampling the set's genes. Group differences in per-sample scores (consortium interventions including Tet3, Tet1, Dnmt3a, chromatin-writer syndromes) were estimated by ordinary least squares with group and covariates, with two-sided t-test p-values. In the reprogramming series, p came from permuting labels within donors. In culture, squared deviations from the earliest samples minus the replicate-culture
 noise floor were used, and the gap was regressed on drift and drift × population doublings. Within SATSA, each
 person's change between consecutive draws was split into the cohort-wide directed change and the person's departure
