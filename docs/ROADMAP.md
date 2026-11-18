@@ -23,6 +23,18 @@ adds R77 (held loci protected in blood), R78 (no sex difference), R79 (no univer
 
 Each is reused from a past run where one fits (Anton's rule, 2026-11-14), and goes into round v0.2.
 
+## RM40 — Replacement data for the chip-confounded designs
+
+**State:** unattended (asked by antonkulaga 2026-11-18: "can you search for replacement samples?") · **Owner:** lead
+
+1. **Mouse turnover within chips, from data on disk:** GSE223748's untreated mice have numeric ages and young
+   (<= 6 months) and old (>= 18 months) animals on shared chips in liver (72/100), muscle (20/54), cortex (21/46),
+   blood (17/18), striatum (6/18), cerebellum (6/11), lung (6/9); spleen (4/2), kidney (6/2), heart (3/3) thin; no
+   colon. A per-tissue age slope with chip intercepts, then the turnover-class contrast.
+2. **Renewing tissues and CR blood over time from other series:** a GEO search (running 2026-11-18) for mouse colon,
+   intestine, spleen, marrow, skin and blood with young and old processed together, and CR blood with baseline and
+   endpoint on shared batches.
+
 ## RM39 — The eight open gaps of the beyond-the-shield review
 
 **State:** unattended (asked by antonkulaga 2026-11-18: "we still have 8 ideas that we can analyze, can you do it?"; the 8 read from `docs/LITERATURE_COVERAGE.md`, sent to him with this default) · **Owner:** lead
