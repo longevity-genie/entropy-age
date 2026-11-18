@@ -248,6 +248,9 @@ def _adjustments(ctx, matrix: Path, people: pl.DataFrame, x_all: np.ndarray, wan
     col = {f: j for j, f in enumerate(wanted)}
     keep = [i for i, c in enumerate(ref_cpgs) if c in col]
     xr = x_all[:, [col[ref_cpgs[i]] for i in keep]]
+    measured = ~np.isnan(xr).all(axis=0)  # a reference CpG masked in every array (rebuilt betas) has no fill
+    keep = [k for k, m in zip(keep, measured, strict=True) if m]
+    xr = xr[:, measured]
     xr = np.where(np.isnan(xr), np.nanmean(xr, axis=0), xr)
     fractions = deconvolve(xr, ref.values[keep])
     print(
