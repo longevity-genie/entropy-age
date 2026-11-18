@@ -44,6 +44,19 @@ effects ... apply it to all samples and validate if things are done properly for
 6. **QC and batch:** samples failing detection (< 90 % of probes) or bisulfite conversion dropped and listed; per
    series, principal components of betas and of control-probe intensities against chip, position, plate and the
    design (age, group): the variance each explains, and age-on-chip confounding as in the 2026-11-18 audit.
+8. **Decided by antonkulaga (2026-11-18):** results from cohorts without raw IDATs (Hannum, Lunnon, MESA, GSE68194,
+   GSE41037, GTEx, the mammal superseries) are kept, each carrying a warning that it rests on the authors'
+   processing and was not rebuilt; every series with IDATs is rebuilt. After each rebuilt series lands, the
+   manuscript (`manuscript/paper.md`, supplement) and the hypotheses (`docs/CLAIMS.md`,
+   `docs/evidence_matrix.csv`) are updated with it, not batched.
+9. **Comparisons across platforms (antonkulaga, 2026-11-18: "you also had mistakes where you compared samples on
+   different arrays"):** every claim that sets one array's result against another's is redone on the CpGs both
+   measure, or reported only as separate within-study estimates with their heterogeneity. Known cases: (a) Tet3
+   (Mammal40, GSE223748) against Tet1 (MM285, GSE271375): both rescored on the mouse CpGs the two arrays share
+   (by mm10 position); (b) mouse turnover, Huang (Mammal320, MM285 probes) against RRBS (Meer, Thompson, Petkovich)
+   and BXD liver (Mammal40): within-platform estimates side by side, no pooled ranking across platforms; (c) the
+   species array (R59) against human 450k blood (R80): stated as different arrays and CpG universes; (d) GTEx
+   (EPIC) gap sizes beside the 450k cohorts': on the 450k-EPIC shared probes. Status: (a)-(d) open.
 7. **Validation of what exists:** per cohort with both, deposited against reprocessed betas (per-probe and
    per-sample correlation) and each headline result rerun on the reprocessed betas, the change reported.
 
