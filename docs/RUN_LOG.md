@@ -3,6 +3,24 @@
 Owned by the runner seat (`docs/seats/RUNNER.md`): one entry per run, newest first, with its inputs, the
 commit it ran, its job ids, its scale and seed, and its result or its failure with the cause.
 
+## R89 — drift per division or per day, across every culture arm (RM39 item 5), 2026-11-18
+
+- Commit (this one); `figures culture_rates`, login node, seconds: the saved per-sample scores of the RM5 runs
+  (Endicott GSE197512, 354 samples, 13 experiments: passaging, mitomycin arrest, serum withdrawal, 3 % oxygen,
+  TERT; Sturm GSE179847, 440 samples, 19 experiments: dexamethasone, galactose, 2-deoxyglucose,
+  beta-hydroxybutyrate, SURF1). Look-alike drift ``B`` regressed jointly on doublings and days, one intercept per
+  experiment. Reused, not rerun (Anton's rule): the scores are R1's and the RM5 runs'.
+- Result, as measured (per 10 doublings / per 10 days, SE): Sturm (doublings and days r 0.73) housekeeping-matched
+  B +0.0154 (0.0007) / +0.0012 (0.0002); core-essential-matched +0.0112 / +0.0009; non-essential-matched +0.0319 /
+  +0.0013. Endicott (r 0.97; the arrest arms carry the split) +0.0148 (0.0022) / +0.0052 (0.0011); core +0.0103 /
+  +0.0035; non-essential-matched 0.000 (0.004) / +0.0127 (0.0022).
+- Reading: in cells, drift at unmethylated promoter strata is mostly per division: at about 3 days per doubling,
+  divisions give three to ten times what time alone gives, and the per-doubling rate replicates across the two
+  series (0.0148 and 0.0154). Time adds a smaller part, larger where cells sit arrested (Endicott). Methylated
+  strata (matched to non-essential promoters) drift per day in Endicott and per division in Sturm; not settled.
+  The shield's relative gap is left out: its fall with doublings is the array-noise artefact found in RM5.
+  Table `data/output/culture_rates/rates.csv`.
+
 ## R82 — placebo gene sets matched on expression (RM38 item 3), 2026-11-18
 
 - Commit 6c22e54; `figures placebo_expression --scale paper --seed 42`; 4 cores, 64 GB; job 6506412, 32 min. R69's
