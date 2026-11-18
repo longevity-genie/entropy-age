@@ -36,7 +36,7 @@ Jobs may go to account `cluster`, partition `requeue` (preemptible; he allowed i
 5. **Per day or per division:** drift per day against drift per doubling across every culture series and agent.
 6. **Progeroid and machinery mutants:** is their extra noise at the CpGs that gain noise in normal aging?
 7. **Sex in mice and mammals:** R78's sex contrast on mouse tissues and the species array.
-8. **Every species of the array:** per-CpG variance gain over all species with enough animals, not only R79's 139 groups.
+8. **Every species of the array:** per-CpG variance gain over all species with enough animals, not only R79's 139 groups. Answered by R79, no new run (2026-11-18): the public GSE223748 has 187 species with ages (the ~349 of Haghani 2023 include unreleased or age-less ones); 450 species-tissue groups, median 4 animals; 139 groups (65 species) have >= 15 animals over >= 15 % of the lifespan, all of them in R79; pooling tissues adds 2 species. A per-CpG slope cannot be fitted on the rest.
 
 ## RM15 — Directed demethylation outside promoters: the culture and cortex follow-ups
 
