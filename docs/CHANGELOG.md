@@ -4,6 +4,7 @@ Newest first.
 
 ## Unreleased
 
+- 2026-11-18: R98, CR blood on rebuilt arrays: core-essential F -0.078, p 0.36; the withdrawal stands.
 - 2026-11-18: docs/REASSESSMENT_2026-11-18.md: status of every result, the corrected interpretation and the research plan; RM44 (joint test in cortex); R103b QC written up.
 - 2026-11-18: R106, mouse series on SeSAMe's mouse masks: Tet1, Dnmt3a, Browder spleen hold; BXD diet effect after composition back to unresolved (p 0.07); Browder muscle p 0.07.
 - 2026-11-18: R104, chromatin matching with region-matched brain maps: own maps remove 5-10 % of each region's gap, blood's 25-27 %; paper updated.

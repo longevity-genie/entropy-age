@@ -235,7 +235,7 @@ items still open).
 | Mammalian Methylation Consortium (65 species; interventions incl. Tet3) | GSE223748 | Mammal40 | deposited |
 | Huang 11 mouse tissues | GSE279437 | Mammal320 | rebuilt (R97; deposited = R SeSAMe output) |
 | Petkovich mouse blood | GSE80672 | RRBS | deposited |
-| CR blood replication | GSE282661 | Mammal320 | deposited; rebuild running (R98) |
+| CR blood replication | GSE282661 | Mammal320 | deposited; rebuilt from IDATs (R98) |
 | Mouse RRBS six tissues | GSE120132 | RRBS | deposited |
 | Meer 2018 four tissues | GSE121141 | RRBS | deposited |
 | BXD liver | GSE199979 | mammalian methylation array (40k) | rebuilt (R100) |

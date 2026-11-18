@@ -3,6 +3,15 @@
 Owned by the runner seat (`docs/seats/RUNNER.md`): one entry per run, newest first, with its inputs, the
 commit it ran, its job ids, its scale and seed, and its result or its failure with the cause.
 
+## R98 — CR blood (GSE282661) on R SeSAMe betas (RM41), 2026-11-18
+
+- `ENTROPY_AGE_BETAS=sesame figures cr_blood_replication --scale paper --seed 42`, commit d4997f3, job 6515170
+  (itmz), 3 h 04 min. First recipe (QCDPB); all 45 arrays pass; 67,065 promoter probes.
+- CR against controls, within-chip refitting randomisation (720 assignments, exact): core-essential F −0.078
+  (p 0.36), housekeeping F −0.037 (p 0.46); deposited −0.09 (p 0.16) and p 0.23. TLS+CR and long-term TLS: all
+  p ≥ 0.40. The 12-week aging contrast still has no chip overlap and no p.
+- R56's CR finding stays withdrawn; the rebuild weakens it further. Paper and Table S1 name the rebuild.
+
 ## R103b — QC, batch and sample distributions over the rebuilt series (RM41, RM42), 2026-11-18
 
 - `figures preprocessing_qc`, job 6518679 (test partition), 6 min; R103 (6517574) failed on mixed column types.

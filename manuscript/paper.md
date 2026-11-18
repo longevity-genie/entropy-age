@@ -315,7 +315,7 @@ non-essential): a bottleneck did not protect essential promoters specifically (S
 haematopoietic proliferation, weakened the shield in one mouse blood series, by less once blood-cell chromatin
 openness was matched; the effect was absent in liver, and a second, short series in young mice pointed the other way without reaching significance once
 the test reassigned treatment within array chips and refitted each animal's reference (core-essential shield share
-−0.09, p 0.16; Supplementary Note 3); its start and end controls sat on different chips, so its 12-week aging
+−0.09, p 0.16; on arrays rebuilt from IDATs −0.08, p 0.36; Supplementary Note 3); its start and end controls sat on different chips, so its 12-week aging
 contrast cannot be told from chip. The turnover ordering in mouse (above), which a selection account would predict, did not survive holding array chip,
 so this family holds no observation that favours selection.
 
