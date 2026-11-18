@@ -42,51 +42,64 @@ MEASURES = (
 def match(cases: pl.DataFrame, controls: pl.DataFrame, k: int = K, caliper: float = AGE_CALIPER) -> list[list[int]]:
     """Matched sets as row lists ``[case, control, ...]`` into ``cases.vstack(controls)``; controls used once.
 
-    Cases are taken oldest first (older controls are scarcer); for each, the unused controls within ``caliper``
-    years, same chip first, then nearest in age.
+    Controls are dealt in rounds, one per case per round (oldest case first, older controls being scarcer), so a
+    short supply of controls spreads over all cases instead of filling the first ones; each takes the unused
+    control within ``caliper`` years, same chip first, then nearest in age. Cases left without a control drop out.
     """
     n_case = cases.height
     c_age, c_chip = controls["age"].to_numpy(), controls["chip"].to_list()
     used = np.zeros(controls.height, bool)
-    sets = []
-    for i in np.argsort(-cases["age"].to_numpy(), kind="stable"):
-        age, chip = cases["age"][int(i)], cases["chip"][int(i)]
-        d = np.abs(c_age - age)
-        ok = np.flatnonzero(~used & (d <= caliper))
-        if ok.size == 0:
-            continue
-        order = sorted(ok.tolist(), key=lambda j: (c_chip[j] != chip, d[j]))[:k]
-        used[order] = True
-        sets.append([int(i), *(n_case + j for j in order)])
-    return sets
+    chosen: dict[int, list[int]] = {}
+    order = [int(i) for i in np.argsort(-cases["age"].to_numpy(), kind="stable")]
+    for _ in range(k):
+        for i in order:
+            age, chip = cases["age"][i], cases["chip"][i]
+            d = np.abs(c_age - age)
+            ok = np.flatnonzero(~used & (d <= caliper))
+            if ok.size == 0:
+                continue
+            j = min(ok.tolist(), key=lambda j: (c_chip[j] != chip, d[j]))
+            used[j] = True
+            chosen.setdefault(i, []).append(j)
+    return [[i, *(n_case + j for j in chosen[i])] for i in order if i in chosen]
 
 
 def clogit(x: np.ndarray, sets: list[list[int]], *, steps: int = 50) -> tuple[np.ndarray, np.ndarray]:
-    """Conditional logistic regression, one case first in each set; coefficients and SEs by Newton steps."""
+    """Conditional logistic regression, one case first in each set; coefficients and SEs by Newton steps, each
+    halved until the log-likelihood does not fall (an undamped step overshoots and diverges)."""
     beta = np.zeros(x.shape[1])
+    ll, grad, info = _score(x, sets, beta)
     for _ in range(steps):
-        grad, info = _score(x, sets, beta)
         step = np.linalg.lstsq(info, grad, rcond=None)[0]
+        for _ in range(30):
+            new_ll, new_grad, new_info = _score(x, sets, beta + step)
+            if new_ll >= ll - 1e-12:
+                break
+            step = step / 2
         beta += step
+        ll, grad, info = new_ll, new_grad, new_info
         if np.abs(step).max() < 1e-10:
             break
-    _, info = _score(x, sets, beta)
     return beta, np.sqrt(np.diag(np.linalg.pinv(info)))
 
 
 def _score(x, sets, beta):
+    ll = 0.0
     grad = np.zeros(x.shape[1])
     info = np.zeros((x.shape[1], x.shape[1]))
     for s in sets:
         xs = x[s]
         e = xs @ beta
-        w = np.exp(e - e.max())
-        w /= w.sum()
+        top = e.max()
+        w = np.exp(e - top)
+        total = w.sum()
+        ll += e[0] - top - np.log(total)
+        w /= total
         mean = w @ xs
         grad += xs[0] - mean
         centred = xs - mean
         info += centred.T @ (centred * w[:, None])
-    return grad, info
+    return ll, grad, info
 
 
 def _z(v: np.ndarray) -> np.ndarray:

@@ -28,3 +28,17 @@ def test_clogit_recovers_a_known_effect():
         rows += [x[j] for j in order]
     beta, se = clogit(np.array(rows)[:, None], sets)
     assert abs(beta[0] - 0.7) < 3 * se[0]
+
+
+def test_short_supply_spreads_over_all_cases():
+    cases = pl.DataFrame({"age": [50.0, 51.0, 52.0], "chip": ["a", "a", "a"]})
+    controls = pl.DataFrame({"age": [50.0, 51.0, 52.0, 50.5], "chip": ["a", "a", "a", "a"]})
+    sets = match(cases, controls, k=3, caliper=3.0)
+    assert len(sets) == 3  # every case gets one before any gets a second
+    assert sorted(len(s) - 1 for s in sets) == [1, 1, 2]
+
+
+def test_clogit_converges_where_an_undamped_step_overshoots():
+    x = np.array([[3.0], [-3.0], [2.5], [-2.0], [2.8], [0.0]])
+    beta, se = clogit(x, [[0, 1], [2, 3], [4, 5]])  # cases always higher: the estimate grows, never flips sign
+    assert np.isfinite(beta).all() and beta[0] > 0
