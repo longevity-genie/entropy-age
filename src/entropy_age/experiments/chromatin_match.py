@@ -49,7 +49,6 @@ from entropy_age.data.chromatin import (
 from entropy_age.experiments.common import Context, write_table
 from entropy_age.experiments.per_person import _sets
 from entropy_age.experiments.tissue_contrast import (
-    LUNNON_BRAIN,
     SET_LABELS,
     SETS,
     _dispersion_metrics,
@@ -68,8 +67,13 @@ OWN_AND_OTHER = {
     "blood (Hannum)": ("E062", "E073"),
     "cortex (Jaffe)": ("E073", "E062"),
     "whole blood": ("E062", "E073"),
-    **{region: ("E073", "E062") for region in LUNNON_BRAIN},
+    # each Lunnon region with its nearest Roadmap brain map; the cerebellum has none and is left out (RM43)
+    "frontal cortex": ("E073", "E062"),
+    "superior temporal gyrus": ("E072", "E062"),
+    "entorhinal cortex": ("E071", "E062"),
 }
+#: the one region the sorted BA9 (prefrontal) accessibility describes
+SORTED_ATAC_TISSUES = ("cortex (Jaffe)", "frontal cortex")
 N_RESAMPLES = {"paper": 200, "quick": 40}
 NO_STATE = "none"
 #: the matchings' kinds, in the colour order of the figure
@@ -85,7 +89,7 @@ def strata_variants(island: np.ndarray, baseline: np.ndarray, states: dict[str, 
     variants[f"+ other state ({other})"] = np.char.add(np.char.add(base, "|"), states[other])
     if own == "E062":
         variants["+ own state (E030)"] = np.char.add(np.char.add(base, "|"), states["E030"])
-    if own == "E073" and "NeuN+" in states:
+    if tissue in SORTED_ATAC_TISSUES and "NeuN+" in states:
         cells = np.char.add(np.char.add(states["NeuN+"], "|"), states["NeuN-"])
         variants["+ sorted ATAC (NeuN+, NeuN-)"] = np.char.add(np.char.add(base, "|"), cells)
         own_state = variants[f"+ own state ({own})"]
@@ -183,7 +187,7 @@ def run(ctx: Context) -> list[Path]:
     rows, composition = [], []
     for label, p, metric_fn, metric_names in [
         *((k, v, _lifespan_metrics, ("entropy_slope", "dispersion_slope", "kl_slope")) for k, v in tissues.items()),
-        *((k, v, _dispersion_metrics, ("dispersion",)) for k, v in lunnon.items()),
+        *((k, v, _dispersion_metrics, ("dispersion",)) for k, v in lunnon.items() if k in OWN_AND_OTHER),
     ]:
         metrics = metric_fn(p)
         feats = metrics["feature"].to_list()

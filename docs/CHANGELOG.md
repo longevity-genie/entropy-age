@@ -4,6 +4,7 @@ Newest first.
 
 ## Unreleased
 
+- 2026-11-18: chromatin matching gives Lunnon's superior temporal gyrus E072 and entorhinal cortex E071, drops the cerebellum (no Roadmap map), and uses the BA9 sorted ATAC for frontal cortex only (RM43 item 3).
 - 2026-11-18: Supplementary Note 4 and a Methods paragraph set out the array processing and QC practice (Anton's reprocessing brief), each item with its status; RM43 item 9 tests the median fill of sporadic missing values.
 - 2026-11-18: cohort layouts name their processing; a sesame-mode run warns when it uses a cohort without raw IDATs, and tissue_differences carries each side's processing with a mixed_processing flag (RM43 item 1).
 - 2026-11-18: sesame_preprocess.R follows SeSAMe's per-platform recipe (MM285 TQCDPB, Mammal40 SHCDPB, human QCDPB), records the steps per array, and measures Mammal40 detection over the species-mask probes; mouse series rebuilt again (RM43 item 4), the first rebuilds kept in data/interim/sesame_v1.

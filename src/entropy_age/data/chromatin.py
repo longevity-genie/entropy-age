@@ -30,11 +30,15 @@ URL = (
 SORTED_BRAIN_URL = (
     "https://ftp.ncbi.nlm.nih.gov/geo/series/GSE96nnn/GSE96614/suppl/GSE96614_flow_sorted_brain.ATAC-seq_counts.txt.gz"
 )
-#: reference epigenomes used here: peripheral-blood mononuclear cells, neutrophils, dorsolateral prefrontal cortex
+#: reference epigenomes used here: peripheral-blood mononuclear cells, neutrophils, dorsolateral prefrontal cortex,
+#: and for Lunnon's other brain regions the nearest Roadmap brain maps (methods review, RM43): hippocampus middle for
+#: entorhinal cortex, inferior temporal lobe for the superior temporal gyrus. Roadmap has no cerebellum epigenome.
 EPIGENOMES = {
     "E062": "blood mononuclear cells",
     "E030": "blood neutrophils",
     "E073": "prefrontal cortex",
+    "E071": "brain hippocampus middle",
+    "E072": "brain inferior temporal lobe",
 }
 STATES = (
     "1_TssA",
