@@ -35,8 +35,8 @@ def p_columns(columns: list[str]) -> list[str]:
     """
     out = []
     for c in columns:
-        parts = c.lower().split("_")
-        if "p" not in parts or any(a in parts for a in ADJUSTED):
+        parts = c.split("_")  # case-sensitive: ``P_core_essential`` is the per-person shield score, not a p
+        if "p" not in parts or any(a in (q.lower() for q in parts) for a in ADJUSTED):
             continue
         out.append(c)
     return out

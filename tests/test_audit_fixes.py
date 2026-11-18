@@ -39,5 +39,5 @@ def test_rescale_refuses_conflicting_denominators():
 
 
 def test_p_columns_read_every_raw_p_and_no_adjusted_one():
-    cols = ["p", "p_permutation", "directed_p", "B_p_welch", "spearman_p", "p_bh", "q_global", "adj_p", "sd"]
+    cols = ["p", "p_permutation", "directed_p", "B_p_welch", "spearman_p", "p_bh", "q_global", "adj_p", "sd", "P_core_essential"]
     assert p_columns(cols) == ["p", "p_permutation", "directed_p", "B_p_welch", "spearman_p"]
