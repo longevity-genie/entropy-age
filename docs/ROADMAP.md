@@ -53,7 +53,8 @@ effects ... apply it to all samples and validate if things are done properly for
    and BXD liver (Mammal40): within-platform estimates side by side, no pooled ranking across platforms; (c) the
    species array (R59) against human 450k blood (R80): stated as different arrays and CpG universes; (d) GTEx
    (EPIC) gap sizes beside the 450k cohorts': on the 450k-EPIC shared probes. Status: (a)-(d) open; (b) within
-   Huang the turnover ordering itself vanishes within chip (R92), so no cross-platform ranking is drawn. Within-chip
+   Huang the turnover ordering itself vanishes within chip (R92), so no cross-platform ranking is drawn; the paper's
+   RRBS-against-array ranking sentence removed (R100). (b) done. Within-chip
    dispersion-slope intervals were degenerate (±1e12): hypothalamus has one aged-young pair per shared chip, so its
    within-chip dispersion slope is 0 by construction; dropped there from the next run on (paired_only).
 7. **Validation of what exists:** per cohort with both, deposited against reprocessed betas (per-probe and

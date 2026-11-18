@@ -153,7 +153,7 @@ promoters still shifted their mean less (|mean change| −0.05 to −0.09 SD) bu
 reduced-representation bisulfite sequencing (RRBS), which covers far more promoter CpGs, cortex kept a small shield (−0.06 SD, interval excluding zero) and heart
 −0.07, against −0.22 in liver and −0.14 in lung (Meer et al. 2018; about 20 mice; the heart, liver and lung intervals
 include zero). Other RRBS series gave −0.03 (adipose) to −0.21 SD (lung) in six tissues (Thompson et al. 2018) and −0.30
-in whole blood (Petkovich et al. 2017), and the mammalian array gave −0.32 in BXD liver (Mozhui et al. 2022). Meer's four tissues and the array thus rank the shield by turnover, although in Thompson's six tissues muscle (−0.08) matched blood (−0.08). Meer's RRBS and the array disagree on whether post-mitotic tissue keeps a little of
+in whole blood (Petkovich et al. 2017), and the mammalian array gave −0.32 in BXD liver (Mozhui et al. 2022; −0.26, −0.38 to −0.15, re-processed from the IDATs). These are different platforms and CpG sets, so they are reported side by side and not ranked against one another; within Meer's four tissues the shield is smaller in cortex and heart, and in Thompson's six tissues muscle (−0.08) matched blood (−0.08). Meer's RRBS and the array disagree on whether post-mitotic tissue keeps a little of
 the shield or none.
 
 Culture follows the shield through cell divisions, along which selection among cells should accumulate

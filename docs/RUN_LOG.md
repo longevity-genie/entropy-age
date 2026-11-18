@@ -3,6 +3,21 @@
 Owned by the runner seat (`docs/seats/RUNNER.md`): one entry per run, newest first, with its inputs, the
 commit it ran, its job ids, its scale and seed, and its result or its failure with the cause.
 
+## R100 — BXD liver and Browder cyclic OSKM on R SeSAMe betas (RM41), 2026-11-18
+
+- `ENTROPY_AGE_BETAS=sesame figures bxd|reprogramming --scale paper --seed 42`, commit fa2ce10, job 6516403 (test
+  partition), 40 s.
+- **BXD liver (GSE199979):** all 339 arrays pass; 3,927 promoter probes (deposited 4,221), 321 females. Aging gap,
+  relative entropy: housekeeping −0.256 (−0.378 to −0.153), core-essential −0.277 (was −0.320, −0.315). Housekeeping
+  F per 10 months −0.244 (was −0.283), −0.116 with 5 components (was −0.055). **HFD −0.097 (was −0.105), and −0.040
+  (p 0.011) with components, where the deposited betas gave −0.017 (p 0.26):** part of the diet effect is not
+  composition. extension.md and Supplementary Note 3 changed.
+- **Browder OSKM (GSE190665):** 167 of 168 arrays in the rebuild; the same mice per tissue. Muscle F housekeeping
+  −0.109 (p 0.043; was −0.115, p 0.019); spleen core-essential +0.158 (p 0.006; was +0.211, p 0.001), housekeeping
+  +0.094 (p 0.075; was +0.104, p 0.046). Young − old skin −0.122 (p 0.004). Directions hold; spleen weakens.
+- Manuscript: the BXD gap names the rebuild, and the RRBS-against-array turnover ranking is removed (RM41 item 9b:
+  different platforms are reported side by side, not ranked).
+
 ## R99 — CH, Tet1 and Dnmt3a gain of function on R SeSAMe betas (RM41), 2026-11-18
 
 - `ENTROPY_AGE_BETAS=sesame figures chip|tet1|dnmt3a --scale paper --seed 42`, commit b25c777, job 6515945 (test

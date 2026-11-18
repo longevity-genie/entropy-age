@@ -1136,9 +1136,10 @@ throughout; the reference is 49 chow females of at most 9 months.
   by 0.055 with five composition components removed (p 10⁻⁴). Core-essential genes give the same (−0.26 and
   −0.065). Liver drift is small (`B` 0.03–0.08 against 0.10–0.20 in blood), so `F` scatters widely per
   mouse, but the age trend is clear.
-* **The high-fat diet's effect is the cell mix.** HFD strengthens the shield (`F` −0.105, p 3·10⁻⁵), but
+* **The high-fat diet's effect is mostly the cell mix.** HFD strengthens the shield (`F` −0.105, p 3·10⁻⁵), but
   with composition components removed it is −0.017 (p 0.26). A fatty, inflamed liver changes its cell
-  mix, and the components absorb it.
+  mix, and the components absorb most of it. Re-processed from the IDATs (R100) a part survives the
+  components (−0.040, p 0.011, against −0.097 without them), so the diet's effect is not all composition.
 
 So the growing share is not a feature of renewing tissue: liver, whose hepatocytes rarely divide, shows it
 as clearly as blood. That argues against selection among stem cells as its cause. More likely, in living
