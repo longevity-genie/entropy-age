@@ -148,7 +148,7 @@ follow turnover in humans: testis renews fastest.
 On the mammalian array, the corrected measure separated 11 tissues of the same male C57BL/6 mice sharply (GSE279437;
 Huang et al. 2025). The mice were the untreated young and aged controls of an exenatide and rapamycin study, compared as aged minus young because GEO gives no numeric ages. The housekeeping gap was negative in the three renewing tissues and in kidney and liver (−0.05 to −0.19 SD) and
 positive in four of five post-mitotic tissues and in adipose tissue (+0.03 to +0.09); the hypothalamus, with four
-aged controls, was the exception (−0.08; values per tissue in Supplementary Note 3). Renewing tissues (blood cells, colon, spleen) minus post-mitotic tissues was −0.19 SD (−0.47 to −0.06; Supplementary Fig. S6). This contrast is not adjusted for array chip: aged and young controls shared no chip in spleen and adipose and one in colon and kidney, so in those tissues age cannot be separated from chip (Supplementary Note 3); a chip-aware analysis is pending. For the slowly renewing liver, kidney and adipose tissue, the difference from post-mitotic tissues was −0.10 (−0.20 to −0.02). In post-mitotic tissues, essential
+aged controls, was the exception (−0.08; values per tissue in Supplementary Note 3). Renewing tissues (blood cells, colon, spleen) minus post-mitotic tissues was −0.19 SD (−0.45 to −0.07; Supplementary Fig. S6), and slowly renewing liver, kidney and adipose tissue minus post-mitotic −0.10 (−0.20 to −0.02). Neither survives holding array chip. Aged and young controls shared no chip in spleen and adipose and one in colon and kidney, so in those tissues age cannot be separated from chip (Supplementary Note 3). Among animals on chips shared by both ages, with a chip intercept, the two contrasts were +0.02 (−0.06 to +0.19) and +0.03 (−0.04 to +0.18); white blood cells, the one renewing tissue left, turned from −0.08 to +0.04. On the same tissues without the chip terms the renewing contrast was −0.13 (−0.94 to +0.08), so losing tissues widens the interval and holding chip moves the estimate to zero. In post-mitotic tissues, essential
 promoters still shifted their mean less (|mean change| −0.05 to −0.09 SD) but scattered more between animals. By
 reduced-representation bisulfite sequencing (RRBS), which covers far more promoter CpGs, cortex kept a small shield (−0.06 SD, interval excluding zero) and heart
 −0.07, against −0.22 in liver and −0.14 in lung (Meer et al. 2018; about 20 mice; the heart, liver and lung intervals
@@ -398,9 +398,9 @@ for a second prospective cohort.
 
 **Where prior work and our own data cut against us.** (i) On the mouse array,
 the corrected measure, not adjusted for array chip, orders the shield by turnover: present in all three renewing tissues and in slowly renewing liver and kidney, reversed in four of five
-post-mitotic ones and in adipose tissue. Our chromatin-maintenance reading predicted no dependence on turnover. RRBS in the same species
-keeps a small shield in cortex and heart, and human GTEx tissues do not follow turnover, but the mouse array result
-stands, with the caveat that age and chip are confounded in spleen, adipose, colon and kidney (a chip-aware analysis is pending). One reconciliation is that faster removal at essential promoters is partly passive, requiring replication to
+post-mitotic ones and in adipose tissue. Our chromatin-maintenance reading predicted no dependence on turnover. Among animals on shared chips the
+ordering disappears (+0.02, interval −0.06 to +0.19), so this array cannot say whether the shield follows turnover; RRBS in the same species
+keeps a small shield in cortex and heart, and human GTEx tissues do not follow turnover. Should a chip-free design show the ordering, one reconciliation is that faster removal at essential promoters is partly passive, requiring replication to
 dilute methylation, which would make the shield larger where cells divide without any selection; we have not tested
 this. Vaidya et al. (2023) tie methylation entropy to stem-cell division across mouse tissues, which points the same
 way. (ii) Matching on chromatin may be circular: an active, unmethylated promoter and its chromatin state may both be

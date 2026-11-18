@@ -11,7 +11,7 @@
 **Next, in order**
 
 1. Raw-IDAT rebuild with R SeSAMe: Jaffe cortex paired pilot, then the two culture studies on the same lines (lead; running, then a cluster slot).
-2. Corrected CR permutation p and chip-aware mouse contrast (lead; R91, R92 queued).
+2. Corrected CR permutation p and chip-aware mouse contrast: done (R91 withdrew the CR finding; R92 the mouse turnover ordering).
 3. The 8 open ideas, RM39: five runs queued (lead; cluster slots).
 4. Clock-scorer audit for the clock-based claims (lead; after 1).
 5. Manuscript v0.2 with all of the above (lead; waits for Anton's comments, from 2026-11-23).

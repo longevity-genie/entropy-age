@@ -63,7 +63,9 @@ effects ... apply it to all samples and validate if things are done properly for
    (by mm10 position); (b) mouse turnover, Huang (Mammal320, MM285 probes) against RRBS (Meer, Thompson, Petkovich)
    and BXD liver (Mammal40): within-platform estimates side by side, no pooled ranking across platforms; (c) the
    species array (R59) against human 450k blood (R80): stated as different arrays and CpG universes; (d) GTEx
-   (EPIC) gap sizes beside the 450k cohorts': on the 450k-EPIC shared probes. Status: (a)-(d) open.
+   (EPIC) gap sizes beside the 450k cohorts': on the 450k-EPIC shared probes. Status: (a)-(d) open; (b) within
+   Huang the turnover ordering itself vanishes within chip (R92), so no cross-platform ranking is drawn. Within-chip
+   dispersion-slope bootstrap intervals are degenerate (±1e12): trace before any dispersion claim from them.
 7. **Validation of what exists:** per cohort with both, deposited against reprocessed betas (per-probe and
    per-sample correlation) and each headline result rerun on the reprocessed betas, the change reported.
 

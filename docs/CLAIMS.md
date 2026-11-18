@@ -58,9 +58,11 @@ a test with little power), **refuted**.
 - **Metric audit (R68):** blood's share holds (83-91 % on relative entropy); cortex's falls to a quarter with its own
   chromatin state, a half with sorted ATAC (entropy said 43-69 %). Essentiality beyond chromatin survives in cortex
   only (R58's blood remainder is entropy-only). On the mouse array the corrected measure orders the shield by
-  turnover: present in all three renewing tissues, reversed in four of five post-mitotic ones (not adjusted for chip:
-  aged and young share no chip in spleen and adipose, one in colon and kidney; chip-aware rerun R92 pending). That is the pattern
-  this claim said we should not see; R67's faster removal at essential promoters would need division to act.
+  turnover: present in all three renewing tissues, reversed in four of five post-mitotic ones, but only without
+  chip. Aged and young share no chip in spleen and adipose and one in colon and kidney; among animals on shared
+  chips, with chip intercepts (R92), renewing minus post-mitotic is +0.02 (−0.06 to +0.19) and white blood cells
+  turn from −0.08 to +0.04. The ordering is not separable from array chip, so it neither supports nor cuts against
+  this claim.
 - **Beyond the state map (R74):** within active-TSS chromatin, essential island promoters still lose methylation
   faster than other active promoters (blood core +0.006, cortex +0.006-0.007 per decade); the state explains most
   of their lower resting level.
@@ -86,7 +88,7 @@ a test with little power), **refuted**.
   fractions).
 - **Separating test:** sorted stem cells young against old; a cohort with clone sizes (controlled access).
 - **Status:** no evidence for selection as the main cause; a contribution is not excluded (culture intervals allow
-  it; the mouse turnover ordering is open and partly chip-confounded). Audit 2026-11-18.
+  it; the mouse turnover ordering vanishes within chip, R92). Audit 2026-11-18.
 
 ## C4 — Tet3 guards essential promoters in brain tissue (H4)
 

@@ -3,6 +3,24 @@
 Owned by the runner seat (`docs/seats/RUNNER.md`): one entry per run, newest first, with its inputs, the
 commit it ran, its job ids, its scale and seed, and its result or its failure with the cause.
 
+## R92 — mouse turnover contrast within chip (selection audit), 2026-11-18
+
+- `figures mouse --scale paper --seed 42` on deposited betas, after the chip-aware code (3518b5f) and the bootstrap
+  key fix; job 6512998 (test partition), 2 h 02 min. Adds `aging, within chip` (controls on chips shared by both
+  ages, chip intercepts) and `aging, same tissues` (those tissues, no chip terms) beside the unadjusted `aging`.
+- Unadjusted contrasts reproduce the published ones after the relative-entropy fix: housekeeping relative entropy,
+  renewing − post-mitotic −0.186 (−0.451 to −0.066, p 0.005), slow − post-mitotic −0.099 (−0.195 to −0.019).
+- **Within chip the ordering is gone:** renewing − post-mitotic +0.023 (−0.058 to +0.187, p 0.54), slow −
+  post-mitotic +0.031 (−0.038 to +0.177, p 0.38); core-essential +0.007 and +0.010. Per tissue, white blood cells
+  −0.075 → +0.039, liver −0.049 → +0.008, post-mitotic tissues −0.14 to +0.09. Colon, spleen, kidney and adipose
+  drop out (fewer than 2 aged and 2 young on a shared chip).
+- Same tissues without chip: renewing −0.130 (−0.935 to +0.075), slow −0.107 (−0.313 to +0.028). Losing tissues
+  widens the interval; holding chip moves the estimate to zero. The slow − post-mitotic entropy-slope contrast
+  (not relative entropy) holds on the same tissues (−0.190, p 0.005) but not within chip (−0.092, p 0.08).
+- Defect: within-chip dispersion-slope intervals are degenerate (±1e12), cause not traced; not reported (RM41).
+- Claims C2 and C3 and E32 changed: the mouse turnover ordering is not separable from chip. Manuscript Results,
+  Discussion (i) and Supplementary Note 3 updated. R97 reruns the same on R SeSAMe betas.
+
 ## R87 — directed against noise pace of tissues across mammals (RM39 item 3), 2026-11-18
 
 - Commit ab708cc; `figures species_pace --scale paper --seed 42`; job 6511070 (itmz), 41 min. 139 species-tissue

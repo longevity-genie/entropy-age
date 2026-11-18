@@ -123,7 +123,12 @@ it, a gap's size carries roughly ±0.05 SD of preprocessing uncertainty.
 
 **Mouse array tissues (GSE279437; R68a).** Housekeeping gap on relative entropy: white blood cells −0.08 SD, colon
 −0.18, spleen −0.19, kidney −0.18 and liver −0.05; skeletal muscle +0.09, heart +0.08, frontal cortex +0.07,
-hippocampus +0.03 and adipose tissue +0.03; the hypothalamus, with four aged controls, −0.08.
+hippocampus +0.03 and adipose tissue +0.03; the hypothalamus, with four aged controls, −0.08. Within chip (R92; animals
+on chips shared by both ages, chip intercepts; identifiable in 7 tissues): white blood cells +0.04, liver +0.01,
+skeletal muscle −0.04, heart +0.09, frontal cortex −0.01, hippocampus −0.05, hypothalamus −0.14; colon, spleen, kidney
+and adipose tissue drop out. Renewing minus post-mitotic +0.02 (−0.06 to +0.19), slowly renewing minus post-mitotic
++0.03 (−0.04 to +0.18). The dispersion-slope intervals within chip are degenerate (bounds near ±10^12, cause not yet
+traced) and are not reported.
 
 **Health states and outcomes.** Cross-sectional (R39): 19 of 522 effects pass FDR; schizophrenia cortex F +0.57 SD
 (5 components); smoking lung S −0.67 raw; Alzheimer's none. Vitality 90+ (R42): positive-control clocks fail, so

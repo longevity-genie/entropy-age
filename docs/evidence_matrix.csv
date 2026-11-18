@@ -30,4 +30,4 @@ E28,Rapamycin narrows age noise in dividing and non-dividing tissue alike,R47,1,
 E29,Drift at look-alikes predicts breast cancer years ahead; shield share does not,R46,0,0,0,0,0,0,0,-1,1
 E30,Molecule-level disorder grows slower at essential promoters (read-level WGBS; blood; cfDNA; 27 sorted cell types),R50 R51 R53,1,0,0,0,0,-1,-2,-1,-1
 E31,Shield share grows within a person as they age; CpG divergence gap small (SATSA),R52,1,0,0,0,0,0,0,0,-1
-E32,Mouse array orders the shield by turnover (unadjusted; age and chip confounded in 4 tissues),R68 R92,-1,1,0,0,0,0,0,0,1
+E32,Mouse array turnover ordering vanishes within chip (R92: renewing minus post-mitotic +0.02; unadjusted -0.19),R68 R92,0,0,0,0,0,0,0,0,1
