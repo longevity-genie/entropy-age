@@ -12,6 +12,8 @@ signed shift ``S``; raw and with 3 composition components.
 
 from __future__ import annotations
 
+import gzip
+import re
 import sys
 from pathlib import Path
 
@@ -19,6 +21,7 @@ import numpy as np
 import polars as pl
 
 from entropy_age import plots
+from entropy_age.data import reprocessed
 from entropy_age.data.mouse import MouseAnnotationLayout, mouse_membership
 from entropy_age.experiments.bxd_liver import ols
 from entropy_age.experiments.common import Context, write_table
@@ -45,6 +48,24 @@ def wide_bisulfite(long: pl.DataFrame) -> pl.DataFrame:
     return bs.pivot(on="animal", index="ProbeID", values="Betas").rename({"ProbeID": "cpg"})
 
 
+def bisulfite_animals(matrix: Path) -> dict[str, str]:
+    """GSM -> animal (``WT3``, ``Hxd7``) for the bisulfite arrays, read from titles like ``Tet1, Cortex, BS, HxD Rep7``."""
+    titles, gsms = [], []
+    with gzip.open(matrix, "rt") as handle:
+        for line in handle:
+            cells = [c.strip().strip('"') for c in line.rstrip("\n").split("\t")[1:]]
+            if line.startswith("!Sample_title"):
+                titles = cells
+            elif line.startswith("!Sample_geo_accession"):
+                gsms = cells
+    out = {}
+    for gsm, title in zip(gsms, titles, strict=True):
+        m = re.fullmatch(r".*, BS, (\w+) Rep(\d+)", title)
+        if m:
+            out[gsm] = {"HxD": "Hxd"}.get(m.group(1), m.group(1)) + m.group(2)
+    return out
+
+
 def genotype(animal: str) -> str:
     """``WT3`` -> ``WT``, ``Hxd7`` -> ``Hxd``."""
     return animal.rstrip("0123456789")
@@ -59,9 +80,12 @@ def run(ctx: Context) -> list[Path]:
     plots.apply_style()
     out = ctx.out_dir("tet1_cortex")
     probes = pl.read_parquet(lay.probes).filter(pl.col("promoter") & ~pl.col("chr").is_in(["X", "Y", "MT"]))
-    wide = wide_bisulfite(pl.read_csv(path, null_values=["NA"], schema_overrides={"Betas": pl.Float64})).filter(
-        pl.col("cpg").is_in(probes["cpg"].implode())
-    )
+    if reprocessed.in_use():  # RM41: rebuilt from the IDATs, failing arrays left out
+        names = bisulfite_animals(path.parent / f"{GSE}_series_matrix.txt.gz")
+        wide = reprocessed.by_accession(ctx.paths, GSE, names)
+    else:
+        wide = wide_bisulfite(pl.read_csv(path, null_values=["NA"], schema_overrides={"Betas": pl.Float64}))
+    wide = wide.filter(pl.col("cpg").is_in(probes["cpg"].implode()))
     animals = [c for c in wide.columns if c != "cpg"]
     features = wide["cpg"].to_list()
     x_all = wide.select(animals).to_numpy().T.astype(float)

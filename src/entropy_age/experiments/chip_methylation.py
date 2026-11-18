@@ -23,6 +23,7 @@ import numpy as np
 import polars as pl
 
 from entropy_age import plots
+from entropy_age.data import reprocessed
 from entropy_age.data.cohorts import _characteristics
 from entropy_age.experiments.common import Context, dummies, write_table
 from entropy_age.experiments.consortium_interventions import arm_scores
@@ -93,7 +94,12 @@ def run(ctx: Context) -> list[Path]:
     features, probes, membership = _features(ctx.paths, ctx.rng(150_000))
     island = _islands(features, probes)
     people = with_known_age(read_patients(matrix))
-    x_all = read_beta_table(betas, features, people["sample"].to_list())
+    if reprocessed.in_use():  # RM41: rebuilt from the IDATs, failing arrays left out
+        frame = reprocessed.by_accession(ctx.paths, GSE, dict(people.select("accession", "sample").iter_rows()))
+        people = people.filter(pl.col("sample").is_in(frame.columns))
+        x_all = reprocessed.matrix(frame, features, people["sample"].to_list())
+    else:
+        x_all = read_beta_table(betas, features, people["sample"].to_list())
     ok = ~np.isnan(x_all).any(axis=0)
     x_all = x_all[:, ok]
     kept = [f for f, k in zip(features, ok, strict=True) if k]

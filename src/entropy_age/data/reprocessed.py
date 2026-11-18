@@ -7,6 +7,7 @@ sample, named by GSM where the IDAT names carry one), ``<GSE>.qc.csv`` (per-samp
 
 from __future__ import annotations
 
+import os
 from pathlib import Path
 
 import polars as pl
@@ -81,6 +82,29 @@ def read_betas(paths: ProjectPaths, gse: str, *, passed_only: bool = True, colla
     platforms = set(qc["platform"].unique().to_list()) if "platform" in qc.columns else set()
     # only EPIC v2 repeats a CpG under suffixed ids; MM285's suffixes are its probe names, as the annotation has them
     return collapse_probes(frame) if platforms & COLLAPSE_PLATFORMS else frame
+
+
+def in_use() -> bool:
+    """True when the run reads rebuilt betas (``ENTROPY_AGE_BETAS=sesame``)."""
+    return os.environ.get("ENTROPY_AGE_BETAS", "deposited") == "sesame"
+
+
+def by_accession(paths: ProjectPaths, gse: str, names: dict[str, str]) -> pl.DataFrame:
+    """``cpg`` plus one column per passing array, renamed from its GSM by ``names`` (GSM -> the experiment's sample
+    name); arrays not in ``names`` are left out. Raises when the series was not rebuilt."""
+    if not available(paths, gse):
+        raise FileNotFoundError(f"{gse} has no R SeSAMe rebuild in {series_dir(paths, gse)}; run scripts/sesame_preprocess.R")
+    frame = read_betas(paths, gse)
+    keep = [c for c in frame.columns[1:] if c in names]
+    return frame.select(pl.col("probe").alias("cpg"), *(pl.col(c).alias(names[c]) for c in keep))
+
+
+def matrix(frame: pl.DataFrame, features: list[str], samples: list[str]) -> "np.ndarray":
+    """``frame`` (``cpg`` plus sample columns) as samples by ``features``, NaN where a CpG is absent."""
+    import numpy as np
+
+    aligned = pl.DataFrame({"cpg": features}).join(frame.select("cpg", *samples), on="cpg", how="left")
+    return aligned.select(samples).to_numpy().T.astype(float) if samples else np.empty((0, len(features)))
 
 
 def cohort_betas(paths: ProjectPaths, gse: str, name: str, samples_path: Path) -> Path:

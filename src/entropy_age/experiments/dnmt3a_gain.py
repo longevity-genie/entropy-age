@@ -20,6 +20,7 @@ import numpy as np
 import polars as pl
 
 from entropy_age import plots
+from entropy_age.data import reprocessed
 from entropy_age.data.mouse import MouseAnnotationLayout, mouse_membership
 from entropy_age.experiments.bxd_liver import ols
 from entropy_age.experiments.common import Context, dummies, write_table
@@ -38,19 +39,22 @@ def layout(paths) -> tuple[Path, Path]:
 
 
 def read_mice(matrix: Path) -> pl.DataFrame:
-    """``column`` (the beta table's name), ``tissue``, ``age`` (group) and ``mutant`` from the sample titles."""
+    """``column`` (the beta table's name), ``tissue``, ``age`` (group) and ``mutant`` from the sample titles, and
+    ``gsm`` (the GEO accession)."""
+    titles, gsms = [], []
     with gzip.open(matrix, "rt") as handle:
-        titles = next(
-            [c.strip().strip('"') for c in line.rstrip("\n").split("\t")[1:]]
-            for line in handle
-            if line.startswith("!Sample_title")
-        )
+        for line in handle:
+            cells = [c.strip().strip('"') for c in line.rstrip("\n").split("\t")[1:]]
+            if line.startswith("!Sample_title"):
+                titles = cells
+            elif line.startswith("!Sample_geo_accession"):
+                gsms = cells
     rows = []
-    for t in titles:
+    for t, gsm in zip(titles, gsms or [None] * len(titles), strict=True):
         column, desc = (part.strip() for part in t.split(":", 1))
         tissue = desc.split(" ")[0] if not desc.startswith("Bone marrow") else "Bone marrow"
         age = next(a for a in AGES if a in desc)
-        rows.append({"column": column, "tissue": tissue, "age": age, "mutant": "W326R" in desc})
+        rows.append({"column": column, "tissue": tissue, "age": age, "mutant": "W326R" in desc, "gsm": gsm})
     return pl.DataFrame(rows)
 
 
@@ -74,12 +78,17 @@ def run(ctx: Context) -> list[Path]:
     out = ctx.out_dir("dnmt3a_gain")
     mice = read_mice(matrix)
     probes = pl.read_parquet(lay.probes).filter(pl.col("promoter") & ~pl.col("chr").is_in(["X", "Y", "MT"]))
-    frame = (
-        pl.scan_csv(betas, separator="\t", null_values=["NA", ""])
-        .select(["ID_REF", *mice["column"].to_list()])
-        .filter(pl.col("ID_REF").is_in(probes["cpg"].implode()))
-        .collect()
-    )
+    if reprocessed.in_use():  # RM41: rebuilt from the IDATs, failing arrays left out
+        rebuilt = reprocessed.by_accession(ctx.paths, GSE, dict(mice.select("gsm", "column").iter_rows()))
+        mice = mice.filter(pl.col("column").is_in(rebuilt.columns))
+        frame = rebuilt.rename({"cpg": "ID_REF"}).filter(pl.col("ID_REF").is_in(probes["cpg"].implode()))
+    else:
+        frame = (
+            pl.scan_csv(betas, separator="\t", null_values=["NA", ""])
+            .select(["ID_REF", *mice["column"].to_list()])
+            .filter(pl.col("ID_REF").is_in(probes["cpg"].implode()))
+            .collect()
+        )
     features = frame["ID_REF"].to_list()
     members = mouse_membership(probes.filter(pl.col("cpg").is_in(features)), pl.read_parquet(lay.gene_sets)).filter(
         pl.col("group").is_in(SETS)
