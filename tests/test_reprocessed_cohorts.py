@@ -54,3 +54,15 @@ def test_rebuilt_runs_write_beside_the_deposited_outputs(tmp_path, monkeypatch):
     assert source_suffix() == "_rsesame"
     monkeypatch.delenv("ENTROPY_AGE_BETAS")
     assert source_suffix() == ""
+
+
+def test_processing_label_follows_the_switch(tmp_path, monkeypatch):
+    from entropy_age.data.cohorts import layout
+    from entropy_age.paths import ProjectPaths
+
+    paths = ProjectPaths(tmp_path)
+    monkeypatch.delenv("ENTROPY_AGE_BETAS", raising=False)
+    assert layout("jaffe", paths).processing == "deposited"
+    monkeypatch.setenv("ENTROPY_AGE_BETAS", "sesame")
+    assert layout("jaffe", paths).processing == "rebuilt"
+    assert layout("hannum", paths).processing == "deposited"  # no raw IDATs

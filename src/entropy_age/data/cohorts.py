@@ -40,6 +40,7 @@ from __future__ import annotations
 
 import gzip
 import os
+import sys
 from dataclasses import dataclass
 from pathlib import Path
 
@@ -132,13 +133,25 @@ class CohortLayout:
         return self.paths.interim / "cohorts" / f"{self.spec.name}_samples.parquet"
 
     @property
+    def processing(self) -> str:
+        """``rebuilt`` when :attr:`betas` is the R SeSAMe rebuild, else ``deposited`` (the authors' processing)."""
+        rebuilt = os.environ.get("ENTROPY_AGE_BETAS", "deposited") == "sesame" and self.spec.name not in NO_RAW_IDATS
+        return "rebuilt" if rebuilt else "deposited"
+
+    @property
     def betas(self) -> Path:
         """The cohort's betas: the authors' deposited ones, or with ``ENTROPY_AGE_BETAS=sesame`` the ones rebuilt from
         raw IDATs by ``scripts/sesame_preprocess.R`` (roadmap RM41), in the same shape and sample ids, made on first
         use. A cohort without a rebuild raises rather than quietly falling back to deposited betas."""
         deposited = self.paths.interim / "cohorts" / f"{self.spec.name}_betas.parquet"
-        if os.environ.get("ENTROPY_AGE_BETAS", "deposited") != "sesame" or self.spec.name in NO_RAW_IDATS:
-            return deposited  # no raw IDATs on GEO: kept on the authors' processing, reported with a warning
+        if os.environ.get("ENTROPY_AGE_BETAS", "deposited") != "sesame":
+            return deposited
+        if self.spec.name in NO_RAW_IDATS:  # no raw IDATs on GEO: kept on the authors' processing, with a warning
+            print(
+                f"warning: {self.spec.name} has no raw IDATs; its deposited betas are used beside rebuilt cohorts",
+                file=sys.stderr,
+            )
+            return deposited
         from entropy_age.data import reprocessed
 
         return reprocessed.cohort_betas(self.paths, self.spec.gse, self.spec.name, self.samples)

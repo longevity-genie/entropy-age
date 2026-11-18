@@ -322,8 +322,23 @@ def run(ctx: Context) -> list[Path]:
     write_table(point, out / "point_estimates")
     boot_life.write_parquet(out / "bootstrap_lifespan.parquet")
     boot_same.write_parquet(out / "bootstrap_same_donors.parquet")
+    contrasts = with_processing(contrasts, ctx.paths)
     write_table(contrasts, out / "tissue_differences")
     return [_figure(ctx, point, boot_life, boot_same, contrasts)]
+
+
+def with_processing(contrasts: pl.DataFrame, paths) -> pl.DataFrame:
+    """``contrasts`` with the processing of each side (RM43 item 1): blood minus cortex sets Hannum against Jaffe, a
+    cross-study difference; when the two are processed differently (deposited against rebuilt) it is flagged
+    ``mixed_processing`` and a warning is printed, so it is never read as a like-for-like difference."""
+    blood, cortex = cohort_layout("hannum", paths).processing, cohort_layout("jaffe", paths).processing
+    mixed = blood != cortex
+    if mixed:
+        print(f"warning: blood minus cortex sets {blood} Hannum against {cortex} Jaffe", file=sys.stderr)
+    return contrasts.with_columns(
+        processing=pl.lit(f"Hannum {blood}, Jaffe {cortex}, Lunnon {cohort_layout('lunnon', paths).processing}"),
+        mixed_processing=pl.lit(mixed),
+    )
 
 
 def _analyse(lifespan: dict, lunnon: dict, probes, membership, n_boot: int, workers: int):
