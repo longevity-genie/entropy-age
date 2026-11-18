@@ -178,7 +178,7 @@ def run(ctx: Context) -> list[Path]:
                 agree_rows.append({"series": gse, **agreement(betas, qc, pl.read_parquet(dep_path))})
         print(f"preprocessing_qc: {gse}: {len(samples)} passing samples", file=sys.stderr, flush=True)
     if qc_rows:
-        write_table(pl.concat(qc_rows, how="diagonal"), out / "sample_qc")
+        write_table(pl.concat(qc_rows, how="diagonal_relaxed"), out / "sample_qc")
     write_table(pl.DataFrame(batch_rows), out / "batch")
     write_table(pl.DataFrame(conf_rows), out / "design_confounding")
     write_table(pl.DataFrame(agree_rows), out / "agreement")
