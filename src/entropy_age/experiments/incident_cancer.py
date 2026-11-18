@@ -223,7 +223,11 @@ def run(ctx: Context) -> list[Path]:
     chip = np.array([chip_of[x] for x in people["sample"].to_list()])
     table = pl.DataFrame(outcome_rows(people, measures, extra, chip))
     write_table(table, out / "effects")
-    write_table(people.with_columns(**{k: pl.Series(v) for k, v in measures.items()}), out / "per_person")
+    adjust = {"mean_beta": extra[:, 0], **{f"fraction_{i}": extra[:, i] for i in range(1, extra.shape[1])}}
+    per_person = people.with_columns(
+        chip=pl.Series(chip), **{k: pl.Series(v) for k, v in {**measures, **adjust}.items()}
+    )  # chip and the adjustments feed cancer_matched (RM38 item 4)
+    write_table(per_person, out / "per_person")
     return [_figure(ctx, table)]
 
 

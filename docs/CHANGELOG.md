@@ -4,6 +4,7 @@ Newest first.
 
 ## Unreleased
 
+- 2026-11-18: `cancer_matched` (RM38 item 4): breast cancer in EPIC-Italy as a matched case-control among women (age within 3 years, same chip first, conditional logistic regression, set bootstrap); `cancer` now writes chip and adjustments into its per-person table.
 - 2026-11-18: R79 rerun on the audit fixes: hotspots still barely shared across mammals (1.04× and 1.23× chance at ≥ 10 groups).
 - 2026-11-18: `per_cpg_interval` (RM38 item 2): donor intervals for the per-CpG relaxation gaps of R67.
 - 2026-11-18: `placebo_expression` (RM38 item 3): placebo gene sets drawn within the real set's GTEx expression deciles, through the shield's matching.
