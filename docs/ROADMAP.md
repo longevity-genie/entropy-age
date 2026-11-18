@@ -65,7 +65,8 @@ effects ... apply it to all samples and validate if things are done properly for
    species array (R59) against human 450k blood (R80): stated as different arrays and CpG universes; (d) GTEx
    (EPIC) gap sizes beside the 450k cohorts': on the 450k-EPIC shared probes. Status: (a)-(d) open; (b) within
    Huang the turnover ordering itself vanishes within chip (R92), so no cross-platform ranking is drawn. Within-chip
-   dispersion-slope bootstrap intervals are degenerate (±1e12): trace before any dispersion claim from them.
+   dispersion-slope intervals were degenerate (±1e12): hypothalamus has one aged-young pair per shared chip, so its
+   within-chip dispersion slope is 0 by construction; dropped there from the next run on (paired_only).
 7. **Validation of what exists:** per cohort with both, deposited against reprocessed betas (per-probe and
    per-sample correlation) and each headline result rerun on the reprocessed betas, the change reported.
 

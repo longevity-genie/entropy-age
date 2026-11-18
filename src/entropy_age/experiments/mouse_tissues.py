@@ -64,6 +64,8 @@ TURNOVER: dict[str, str] = {
 }
 CLASSES = ("renewing", "slow", "post-mitotic")
 AGING_METRICS = ("entropy_slope", "dispersion_slope", "abs_slope", "kl_slope")
+#: within chip, when every chip is one aged-young pair (``paired_only``): dispersion is not identifiable
+PAIRED_METRICS = tuple(m for m in AGING_METRICS if m != "dispersion_slope")
 INTERVENTION_GROUPS = ("Aged_ctrl", "Aged_exenatide", "Aged_rapamycin")
 MIN_GROUP = 4  # fewer animals than this give no per-group dispersion
 BACKGROUND = 60_000
@@ -182,7 +184,18 @@ def _within_chip(t: MouseTissue, rows: np.ndarray, pair: np.ndarray, probes, ref
         covariates=cov if cov.shape[1] else None,
         spearman=False,
     )
-    return _strata(drift, probes, ref), AGING_METRICS
+    # decided on the tissue's full design, so a bootstrap draw keeps the point estimate's metrics
+    sel = np.isin(t.groups, ["Aged_ctrl", "Young_ctrl"])
+    full_aged = t.groups[sel] == "Aged_ctrl"
+    full_keep = np.isin(t.chips[sel], shared_chips(t.chips[sel], full_aged))
+    metrics = PAIRED_METRICS if paired_only(t.chips[sel][full_keep], full_aged[full_keep]) else AGING_METRICS
+    return _strata(drift, probes, ref), metrics
+
+
+def paired_only(chips: np.ndarray, aged: np.ndarray) -> bool:
+    """True when every chip holds exactly one aged and one young animal. With chip intercepts the two residuals of a
+    chip are then equal in size, so the dispersion slope is 0 by construction (R92: hypothalamus, sd 6e-16)."""
+    return all((aged[chips == c].sum(), (~aged[chips == c]).sum()) == (1, 1) for c in np.unique(chips))
 
 
 def chip_overlap(t: MouseTissue) -> dict:

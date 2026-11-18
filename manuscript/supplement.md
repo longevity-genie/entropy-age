@@ -127,8 +127,8 @@ hippocampus +0.03 and adipose tissue +0.03; the hypothalamus, with four aged con
 on chips shared by both ages, chip intercepts; identifiable in 7 tissues): white blood cells +0.04, liver +0.01,
 skeletal muscle −0.04, heart +0.09, frontal cortex −0.01, hippocampus −0.05, hypothalamus −0.14; colon, spleen, kidney
 and adipose tissue drop out. Renewing minus post-mitotic +0.02 (−0.06 to +0.19), slowly renewing minus post-mitotic
-+0.03 (−0.04 to +0.18). The dispersion-slope intervals within chip are degenerate (bounds near ±10^12, cause not yet
-traced) and are not reported.
++0.03 (−0.04 to +0.18). Within-chip dispersion slopes are not reported: in the hypothalamus each shared chip holds one
+aged and one young animal, so with chip intercepts its dispersion slope is zero by construction.
 
 **Health states and outcomes.** Cross-sectional (R39): 19 of 522 effects pass FDR; schizophrenia cortex F +0.57 SD
 (5 components); smoking lung S −0.67 raw; Alzheimer's none. Vitality 90+ (R42): positive-control clocks fail, so

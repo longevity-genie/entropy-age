@@ -22,3 +22,11 @@ def test_shared_chips_and_overlap_table():
     assert 0 < row["r2_age_on_chips"] < 1
     full = MouseTissue("spleen", np.zeros((4, 2)), groups[:4], np.array(list("abcd")), ["x", "y"], chips[:4])
     assert chip_overlap(full)["r2_age_on_chips"] == 1.0  # age fully confounded with chip
+
+
+def test_paired_only_flags_one_pair_per_chip():
+    from entropy_age.experiments.mouse_tissues import paired_only
+
+    chips = np.array(["a", "a", "b", "b"])
+    assert paired_only(chips, np.array([True, False, True, False]))
+    assert not paired_only(np.array(["a", "a", "a", "b", "b"]), np.array([True, True, False, True, False]))
