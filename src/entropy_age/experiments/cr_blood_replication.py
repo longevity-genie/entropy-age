@@ -35,6 +35,7 @@ from __future__ import annotations
 import gzip
 import itertools
 import math
+import os
 import re
 import sys
 from pathlib import Path
@@ -43,6 +44,7 @@ import numpy as np
 import polars as pl
 
 from entropy_age import plots
+from entropy_age.data import reprocessed
 from entropy_age.data.mouse import MouseAnnotationLayout, mouse_membership
 from entropy_age.experiments.bxd_liver import ols
 from entropy_age.experiments.common import Context, write_table
@@ -65,13 +67,15 @@ MAX_EXACT = {"paper": 1000, "quick": 50}
 
 def read_groups(matrix: Path) -> pl.DataFrame:
     """``sample`` (the betas' column name, the title before ``__``), ``group`` (the title after it) and ``chip``
-    (the physical array, from the deposited IDAT names; null if none)."""
-    titles, chips = [], []
+    (the physical array, from the deposited IDAT names; null if none), ``gsm`` (the GEO accession)."""
+    titles, chips, gsms = [], [], []
     with gzip.open(matrix, "rt") as handle:
         for line in handle:
             cells = [c.strip().strip('"') for c in line.rstrip("\n").split("\t")[1:]]
             if line.startswith("!Sample_title"):
                 titles = cells
+            elif line.startswith("!Sample_geo_accession"):
+                gsms = cells
             elif line.startswith("!Sample_supplementary_file") and not chips and any("_Grn" in c for c in cells):
                 chips = [m.group(1) if (m := re.search(r"_(\d+)_R\d+C\d+_Grn", c)) else None for c in cells]
     parts = [t.split("__", 1) for t in titles]
@@ -80,6 +84,7 @@ def read_groups(matrix: Path) -> pl.DataFrame:
             "sample": [p[0] for p in parts],
             "group": [p[1] if len(p) > 1 else "" for p in parts],
             "chip": chips or [None] * len(parts),
+            "gsm": gsms or [None] * len(parts),
         }
     )
 
@@ -122,6 +127,19 @@ def effect(y: np.ndarray, treated: np.ndarray, extra: np.ndarray | None = None) 
     return ols(y, np.column_stack(cols), 1)
 
 
+def _betas(ctx: Context, base: Path, groups: pl.DataFrame) -> pl.DataFrame:
+    """``cpg`` plus one column per animal (its title): the deposited csv, or with ``ENTROPY_AGE_BETAS=sesame`` the R
+    SeSAMe rebuild (RM41), passing arrays only, renamed from GSM to title."""
+    if os.environ.get("ENTROPY_AGE_BETAS", "deposited") == "sesame":
+        if not reprocessed.available(ctx.paths, GSE):
+            raise FileNotFoundError(f"{GSE} has no R SeSAMe rebuild; run scripts/sesame_preprocess.R")
+        rebuilt = reprocessed.read_betas(ctx.paths, GSE)
+        names = {g: s for g, s in groups.select("gsm", "sample").iter_rows() if g in rebuilt.columns}
+        return rebuilt.select(pl.col("probe").alias("cpg"), *(pl.col(g).alias(s) for g, s in names.items()))
+    header = pl.read_csv(base / BETAS, n_rows=0).columns
+    return pl.scan_csv(base / BETAS, null_values=["NA", ""]).rename({header[0]: "cpg"}).collect()
+
+
 def run(ctx: Context) -> list[Path]:
     base = ctx.paths.input / "geo" / GSE
     if not (base / BETAS).exists():
@@ -132,14 +150,8 @@ def run(ctx: Context) -> list[Path]:
     groups = read_groups(base / f"{GSE}_series_matrix.txt.gz")
     lay = MouseAnnotationLayout(ctx.paths)
     probes = pl.read_parquet(lay.probes).filter(pl.col("promoter") & ~pl.col("chr").is_in(["X", "Y", "MT"]))
-    header = pl.read_csv(base / BETAS, n_rows=0).columns
-    frame = (
-        pl.scan_csv(base / BETAS, null_values=["NA", ""])
-        .rename({header[0]: "cpg"})
-        .filter(pl.col("cpg").is_in(probes["cpg"].implode()))
-        .collect()
-        .drop_nulls()
-    )
+    frame = _betas(ctx, base, groups).filter(pl.col("cpg").is_in(probes["cpg"].implode())).drop_nulls()
+    header = frame.columns
     features = frame["cpg"].to_list()
     island = dict(probes.select("cpg", "cpg_island").iter_rows())
     isl = np.array([bool(island.get(f, False)) for f in features])
