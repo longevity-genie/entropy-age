@@ -253,7 +253,9 @@ class FibreSet:
 
 
 def _fibre_sets(paths, features: list[str]) -> dict[str, FibreSet]:
-    samples = pl.read_parquet(cohort_layout("fibres", paths).samples)
+    lay = cohort_layout("fibres", paths)
+    samples = pl.read_parquet(lay.samples)
+    samples = samples.filter(pl.col("sample").is_in(pl.read_parquet_schema(lay.betas).names()))  # failed arrays
     first = samples.sort("replicate").unique(subset=["donor", "fibre", "timepoint"], keep="first")
     out = {}
     for timepoint in TIMEPOINTS:

@@ -5,6 +5,7 @@ Newest first.
 ## Unreleased
 
 - 2026-11-18: R100, BXD liver and Browder OSKM on rebuilt arrays: directions hold; the BXD diet effect partly survives composition (-0.040, p 0.011); paper drops the cross-platform turnover ranking.
+- 2026-11-18: the fibres rebuild maps technical replicates to the table's -N names (92 of 92 arrays, was 86); the fibre sets skip arrays the betas lack.
 - 2026-11-18: R99, CH, Tet1 and Dnmt3a gain of function on rebuilt arrays: all three results hold (Tet1 on 19 of 24 arrays).
 - 2026-11-18: BXD liver (GSE199979) and Browder OSKM (GSE190665) readers take the R SeSAMe rebuild under ENTROPY_AGE_BETAS=sesame.
 - 2026-11-18: R97, Huang mouse tissues on rebuilt arrays: the deposited betas are R SeSAMe output to float precision; relative-entropy contrasts move <= 0.02, R92 holds.

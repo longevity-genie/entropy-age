@@ -25,6 +25,9 @@ manuscript and comparisons") · **Owner:** lead
    the same tissue, of another tissue, sorted cells, or none.
 2. The table goes into the supplement (and a short version in Methods); every Results sentence that joins tracks
    from different studies says so; cross-platform and cross-tissue pairings are flagged in claims and wording.
+   The artifact gets the same table, and each result there carries icons: same or different batch (chip);
+   second modality (chromatin etc.) from the same samples or not; same cell or tissue type or not (antonkulaga,
+   2026-11-18).
 3. Comparisons that join another tissue's chromatin reference, or two platforms, are redone on matched sources
    where data exist, or reported as such.
 

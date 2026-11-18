@@ -121,7 +121,7 @@ def cohort_betas(paths: ProjectPaths, gse: str, name: str, samples_path: Path) -
     qc = read_qc(paths, gse).filter(pl.col("passed"))
     frame = read_betas(paths, gse)
     ids = set(pl.read_parquet(samples_path)["sample"].to_list())
-    titles = {k: _fibre_id(v) for k, v in _titles(paths, gse).items()} if name == "fibres" else _titles(paths, gse)
+    titles = {k: _fibre_id(v, ids) for k, v in _titles(paths, gse).items()} if name == "fibres" else _titles(paths, gse)
     rename = {}
     for row in qc.iter_rows(named=True):
         position = f"{row['chip']}_{row['position']}"
@@ -160,13 +160,18 @@ def _titles(paths: ProjectPaths, gse: str) -> dict[str, str]:
 FIBRE = {"WM": "WM", "TII": "T2", "TI": "T1"}
 
 
-def _fibre_id(title: str) -> str:
-    """GEO's fibre title (``s203_pre_WM_rep1``) as the authors' matrix names the sample (``WM.s203-preWM``); a
-    technical replicate other than the first keeps its title, so it matches nothing (the table has one per sample)."""
+def _fibre_id(title: str, ids: set[str] | frozenset[str] = frozenset()) -> str:
+    """GEO's fibre title (``s203_pre_WM_rep1``) as the authors' matrix names the sample: ``WM.s203-preWM`` for a single
+    array, ``WM.s201-preWM-2`` for technical replicate 2 where the table keeps replicates apart (``ids`` says which).
+    A title that matches no table name is returned unchanged, so it matches nothing."""
     import re
 
     m = re.fullmatch(r"([a-z]\d+)_(pre|4w|12w)_(WM|TII|TI)_rep(\d+)", title)
-    if not m or m.group(4) != "1":
+    if not m:
         return title
     fibre = FIBRE[m.group(3)]
-    return f"{fibre}.{m.group(1)}-{m.group(2)}{fibre}"
+    base = f"{fibre}.{m.group(1)}-{m.group(2)}{fibre}"
+    for candidate in (f"{base}-{m.group(4)}", base if m.group(4) == "1" else None):
+        if candidate is not None and (candidate in ids or (not ids and candidate == base)):
+            return candidate
+    return title

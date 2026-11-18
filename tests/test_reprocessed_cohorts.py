@@ -9,6 +9,10 @@ def test_fibre_titles_become_the_authors_sample_names():
     assert reprocessed._fibre_id("s203_pre_WM_rep1") == "WM.s203-preWM"
     assert reprocessed._fibre_id("f29_12w_TII_rep1") == "T2.f29-12wT2"
     assert reprocessed._fibre_id("f28_pre_WM_rep2") == "f28_pre_WM_rep2"  # a technical replicate matches nothing
+    ids = {"WM.f28-preWM-1", "WM.f28-preWM-2", "T1.f28-preT1"}
+    assert reprocessed._fibre_id("f28_pre_WM_rep2", ids) == "WM.f28-preWM-2"  # replicates kept apart in the table
+    assert reprocessed._fibre_id("f28_pre_WM_rep1", ids) == "WM.f28-preWM-1"
+    assert reprocessed._fibre_id("f28_pre_TI_rep1", ids) == "T1.f28-preT1"
 
 
 def test_switch_keeps_cohorts_without_raw_idats_on_deposited_betas(tmp_path, monkeypatch):
