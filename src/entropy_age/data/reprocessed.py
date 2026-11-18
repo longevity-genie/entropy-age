@@ -48,8 +48,13 @@ def species_detection(paths: ProjectPaths, gse: str) -> pl.DataFrame:
 
 def read_qc(paths: ProjectPaths, gse: str) -> pl.DataFrame:
     """Per-sample QC with ``passed``: detection at or above ``MIN_DETECTED`` over the whole array, or, on a
-    multi-species array (``MULTI_SPECIES``), over the probes the series measures."""
+    multi-species array, over the probes SeSAMe's species mask keeps (``frac_dt_species``, written by the R script
+    since RM43); rebuilds made before that fall back to the probes the series measures (circular, kept for them)."""
     qc = pl.read_csv(series_dir(paths, gse) / f"{gse}.qc.csv", infer_schema_length=None)
+    if "frac_dt_species" in qc.columns:  # SeSAMe's species mask decided the expected probes (RM43): not circular
+        return qc.with_columns(
+            passed=pl.col("frac_dt_species").cast(pl.Float64) >= MIN_DETECTED, chip=pl.col("chip").cast(pl.String)
+        )
     if "platform" in qc.columns and set(qc["platform"].unique().to_list()) <= set(MULTI_SPECIES):
         qc = qc.join(species_detection(paths, gse), on="sample", how="left")
         passed = pl.col("frac_dt_species") >= MIN_DETECTED
