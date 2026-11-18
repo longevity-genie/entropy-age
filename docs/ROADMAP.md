@@ -142,6 +142,15 @@ effects ... apply it to all samples and validate if things are done properly for
    ATAC-seq or histone marks from the same animals, donors, cells or cultures across ages or passages; open-access
    animal and cell data first; single-cell multi-omics too. These replace the reference maps from other people
    (Table S4's weakest column) and rank with the second brain cohort.
+6. **Scope widened and a gap recorded (external search, handoff revision 2, 2026-11-19):** for matched modalities
+   the study need not be about aging: any dataset with methylation plus RNA or chromatin from the same samples and an
+   age per sample qualifies, IDAT-backed arrays first. Sequencing-based methylation (bisulfite, enzymatic, nanopore,
+   PacBio) with a second modality from the same samples is a recorded gap: 0 of the 46 analyses in
+   `docs/provenance.csv` have it (arrays: 1 of 36, GTEx). Every fetched series is audited first with the external
+   agent's `geo_audit.py` (and `sra_flowcell.py` for sequencing), with the filter that will be analysed, and the
+   output kept in `data/input/geo/audit/<GSE>/`. Fetched so far: GSE252501, GSE279509 (IDATs), GSE233734 (per-CpG
+   files). Corrections to the first search are at the top of `docs/DATASET_SEARCH_2026-11-18.md`. Other downloads
+   wait for the external search's manifest.
 3. **CR blood over time:** no public series has CR and ad-lib blood at more than one age in shared batches
    (closest: GSE75495, CR at one old age, batch unknown; liver only: GSE92486, GSE89274). The CR 12-week aging
    contrast stays unresolved.

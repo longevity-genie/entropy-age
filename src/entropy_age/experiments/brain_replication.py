@@ -43,7 +43,7 @@ CELL_TYPES = {"NeuNPos": "neurons (NeuN+)", "Sox10Pos": "oligodendrocyte lineage
               "DoubleNeg": "other glia (NeuN-/SOX10-)", "Total": "unsorted nuclei"}  # fmt: skip
 BANDS = {"all": (0.0, 1.0), "10-90 %": (0.1, 0.9)}
 METRICS = ("kl_slope", "dispersion_slope", "entropy_slope")
-MIN_SAMPLES = 30
+MIN_SAMPLES = 20  # below 30 a group is reported but flagged in the write-up as underpowered
 
 
 def _titles(matrix: Path) -> list[str]:
@@ -55,7 +55,10 @@ def _titles(matrix: Path) -> list[str]:
 
 
 def white_groups(matrix: Path, exclude_donors: set[str]) -> dict[str, pl.DataFrame]:
-    """Region -> ``sample``, ``donor``, ``age``, ``sex`` of donors without alcohol use disorder, Jaffe's donors out."""
+    """Region -> ``sample``, ``donor``, ``age``, ``sex``, ``mdd`` of donors without alcohol use disorder, Jaffe's donors
+    out. "Control" in this series means no alcohol use disorder only: about half carry a major-depression diagnosis
+    (external audit, 2026-11-19). Decision recorded here: they are kept, with the diagnosis held as a covariate
+    (``mdd``), and the donors with neither diagnosis are also reported apart, small as that group is."""
     chars = _characteristics(matrix)
     titles = _titles(matrix)
     frame = chars.with_columns(
@@ -63,11 +66,14 @@ def white_groups(matrix: Path, exclude_donors: set[str]) -> dict[str, pl.DataFra
         region=pl.Series([t.split(",")[1].strip() if "," in t else "" for t in titles]),
         age=pl.col("agedeath").cast(pl.Float64, strict=False),
         sex=pl.col("Sex"),
+        mdd=pl.col("dsm-5 major depression diagnosis"),
     ).filter((pl.col("dsm-5 aud status") == "Control") & ~pl.col("donor").is_in(list(exclude_donors)))
-    return {
-        f"{WHITE} {region}, controls": part.select("sample", "donor", "age", "sex")
-        for (region,), part in frame.group_by("region", maintain_order=True)
-    }
+    out = {}
+    for (region,), part in frame.group_by("region", maintain_order=True):
+        part = part.select("sample", "donor", "age", "sex", "mdd")
+        out[f"{WHITE} {region}, no alcohol use disorder (depression held)"] = part
+        out[f"{WHITE} {region}, no alcohol use disorder, no depression"] = part.filter(pl.col("mdd") == "No")
+    return out
 
 
 def walker_groups(matrix: Path) -> dict[str, pl.DataFrame]:
@@ -144,6 +150,8 @@ def run(ctx: Context) -> list[Path]:
             ages = s["age"].to_numpy()
             chips = np.array([chip_of.get(v) or "NA" for v in s["sample"].to_list()])
             sex = dummies(s["sex"].fill_null("NA").to_numpy())
+            if "mdd" in s.columns:  # the diagnosis the series' "controls" may carry, held where it varies
+                sex = np.column_stack([sex, dummies(s["mdd"].fill_null("NA").to_numpy())])
             designs = {"sex": sex, "sex + chip": np.column_stack([sex, dummies(chips)])}
             shared = sum(1 for c in np.unique(chips) if (chips == c).sum() >= 2)
             sizes.append(

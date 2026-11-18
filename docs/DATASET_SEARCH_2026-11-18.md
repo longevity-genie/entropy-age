@@ -1,5 +1,32 @@
 <!-- Search by a delegated agent, 2026-11-18 (RM40 items 4-5). Verified from GEO records and file lists only; papers not read; nothing downloaded. Statements marked unverified are to be checked before use. -->
 
+# Corrections, 2026-11-19 (external search agent, interim results; reproduced here with its audit tools)
+
+The text below this section is the first search as committed in f8f7a1a and is left unchanged. These points
+supersede it:
+
+- **GSE252501 is not the "cleanest independent DLPFC replicate".** It is a series of the same brain bank (LIBD) as
+  our cortex cohort GSE74193: 8 of its 119 donors are in GSE74193, and 7 of its 59 DLPFC controls are adult controls
+  there (Br1378, Br1446, Br1474, Br1735, Br1995, Br1998, Br2015). Excluding them leaves 52 controls. "Control" means no
+  alcohol use disorder only: 29 of the 59 carry a major-depression diagnosis; 23 of the 52 independent ones have
+  neither. Verdict: meets with a caveat. Decision recorded (lead): shared donors are excluded; depression cases are
+  kept with the diagnosis as a covariate, and the 23 without either diagnosis are reported apart.
+- **Sizes:** GSE279509 is 14.9 GB (RAW.tar 10 GB), not 11.2 GB; GSE252501 is 5.8 GB (RAW.tar 3.4 GB), not 3.6 GB.
+- **GSE279509:** NeuN+ is 182 arrays from 178 individuals aged 18-95; age by chip R2 0.73 (0.63 by chance), by
+  position 0.08; 29 of 115 chips hold two or more of the bins <40, 40-<70, >=70. Verdict unchanged.
+- **GSE238172 sorted marrow fails:** 36 arrays are 9 mice x 4 populations, each population on its own chip, and age
+  is fully determined by array position (R2 1.00).
+- **GSE233734 confirmed:** 5 flowcells, each holding every age bin; R2 of age by flowcell 0.02.
+- **GSE225166 is open, not "meets":** read headers are stripped in the archive; the lane labels in file names that
+  the first search relied on have not been re-checked. **GSE213628 fails as it stands:** where batch is recoverable,
+  all 18-month samples sit alone on one flowcell.
+- **Added criteria** (handoff revision 2, section 3, points 6-10): sequencing batch from read headers; array
+  position as a second batch variable; donor overlap with cohorts in hand; "control" defined from the record;
+  individuals counted, not arrays.
+
+The external search is interim: only its verified items are used; its final results and download manifest are
+awaited before any further download.
+
 # Dataset search for the shield tests: verified candidates per need
 
 Six needs have at least one usable candidate; clonal haematopoiesis with VAF, a breast-specific prospective cohort, and calorie restriction at several ages with n ≥ 8 have nothing adequate in the open.
