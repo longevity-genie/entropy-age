@@ -3,6 +3,25 @@
 Owned by the runner seat (`docs/seats/RUNNER.md`): one entry per run, newest first, with its inputs, the
 commit it ran, its job ids, its scale and seed, and its result or its failure with the cause.
 
+## R82 — placebo gene sets matched on expression (RM38 item 3), 2026-11-18
+
+- Commit 6c22e54; `figures placebo_expression --scale paper --seed 42`; 4 cores, 64 GB; job 6506412, 32 min. R69's
+  design (Hannum and Jaffe, every autosomal promoter CpG, the shield's matching), but each placebo set drawn decile
+  by decile of the tissue's GTEx v8 median expression (Whole Blood; Brain - Frontal Cortex BA9) to the real set's
+  counts; 200 draws per set and tissue. Balance: no decile ran short; mean log2(TPM + 1) real against placebo,
+  blood housekeeping 3.59 / 3.66, core 3.85 / 3.79; cortex 4.54 / 4.59, 4.64 / 4.63.
+- Result, as measured (real gap vs expression-matched placebo mean [95 %], SD): blood housekeeping relative
+  entropy −0.138 vs −0.111 [−0.120, −0.103], dispersion −0.273 vs −0.212; blood core-essential relative entropy
+  −0.104 vs −0.093 [−0.118, −0.069] (18 % of placebos below it), dispersion −0.214 vs −0.177. Cortex housekeeping
+  relative entropy −0.053 vs −0.014 [−0.022, −0.006], dispersion −0.067 vs −0.015; core-essential −0.074 vs −0.011
+  [−0.035, +0.011], dispersion −0.086 vs −0.011. Non-essential sets sit below their low-expression placebos
+  (blood +0.118 vs +0.187).
+- Reading: in blood, expression alone gives about four fifths of the housekeeping gap and all of the core-essential
+  gap; what essentiality adds beyond expression is about −0.03 SD (housekeeping) and nothing (core). In cortex the
+  gap is four to seven times what expression gives (−0.04 to −0.06 SD beyond it). With R80 (blood's gap is mostly
+  the 0 % floor, cortex keeps its size) the robust shield is cortex's; blood's is mostly expressed, unmethylated
+  promoters. R69's random placebos (gap 0) did not separate these. Table `data/output/placebo_expression/`.
+
 ## R80 — the shield away from the 0 % floor (RM38 item 1), 2026-11-18
 
 - Commit 963a9ff (audit fixes in); `figures floor_check --scale paper --seed 42`, ENTROPY_AGE_BOOT=100; 4 cores,

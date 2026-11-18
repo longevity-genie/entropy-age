@@ -1,0 +1,7 @@
+tissue,set,real_genes,placebo_genes,shortfall,real_log_tpm,placebo_log_tpm
+blood (Hannum),core_essential,609,609,0,3.8508304648380283,3.794169604352521
+blood (Hannum),housekeeping,3297,3297,0,3.5909393484627747,3.662007732985078
+blood (Hannum),non_essential,742,742,0,0.040463051002857596,0.04187489627362307
+cortex (Jaffe),core_essential,609,609,0,4.637036703768117,4.627715589061391
+cortex (Jaffe),housekeeping,3297,3297,0,4.543370823305965,4.585052460197183
+cortex (Jaffe),non_essential,743,743,0,0.262446566197554,0.2866379527342308

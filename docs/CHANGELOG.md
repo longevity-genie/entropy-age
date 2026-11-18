@@ -4,6 +4,7 @@ Newest first.
 
 ## Unreleased
 
+- 2026-11-18: R82, placebo sets matched on expression: in blood expression alone gives most of the shield (core-essential all of it); in cortex the gap is 4-7x the placebo.
 - 2026-11-18: `cancer_matched` (RM38 item 4): breast cancer in EPIC-Italy as a matched case-control among women (age within 3 years, same chip first, conditional logistic regression, set bootstrap); `cancer` now writes chip and adjustments into its per-person table.
 - 2026-11-18: R79 rerun on the audit fixes: hotspots still barely shared across mammals (1.04× and 1.23× chance at ≥ 10 groups).
 - 2026-11-18: `per_cpg_interval` (RM38 item 2): donor intervals for the per-CpG relaxation gaps of R67.
