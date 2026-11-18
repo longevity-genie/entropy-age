@@ -23,6 +23,30 @@ adds R77 (held loci protected in blood), R78 (no sex difference), R79 (no univer
 
 Each is reused from a past run where one fits (Anton's rule, 2026-11-14), and goes into round v0.2.
 
+## RM41 — One preprocessing from raw IDATs for every array series, with QC and batch checks
+
+**State:** unattended (asked by antonkulaga 2026-11-18: "use raw idat, preprocess data same way, check for batch
+effects ... apply it to all samples and validate if things are done properly for existing one") · **Owner:** lead
+
+1. **Environment:** R with Bioconductor `sesame` in `/data/uq2347/envs/sesame` (micromamba), its platform data cached.
+2. **One recipe:** `scripts/sesame_preprocess.R`, `prepSesame("QCDPB")` (quality mask, channel inference,
+   non-linear dye bias, pOOBAH detection masking, noob) for HM450, EPIC, EPICv2, MM285 and Mammal40; per-sample
+   `sesameQC_calcStats`; chip and position from the IDAT names. Replaces methylprep's SeSAMe imitation (R61).
+3. **Samples with raw IDATs on GEO:** Jaffe GSE74193, EPIC-Italy GSE51032, writer syndromes GSE74432 and GSE97362,
+   clonal haematopoiesis GSE315366, Gill GSE165179, Endicott GSE197512, Sturm GSE179847, fibres GSE304045, Huang
+   GSE279437, CR blood GSE282661, Sarni GSE324160, Tet1 GSE271375, mammal subseries GSE190665 and GSE199979, SJLIFE
+   GSE314261 (5,013 EPIC, 70 GB, last).
+4. **No raw IDATs, kept on deposited betas and labelled so:** Hannum GSE40279, Lunnon GSE59685, MESA GSE56046 and
+   GSE56581, GSE68194, GSE41037 (27k), GTEx GSE213478 (IDATs controlled access, dbGaP), the mammal superseries
+   GSE223748 (only some subseries carry IDATs). Human lifespan blood from IDATs: EPIC-Italy and SJLIFE.
+5. **Comparable arrays:** within a comparison, one platform; across 450k, EPIC and EPICv2 only their shared probes
+   (EPICv2 replicates collapsed to the cg id); mouse MM285 against Mammal40 by mm10 CpG position.
+6. **QC and batch:** samples failing detection (< 90 % of probes) or bisulfite conversion dropped and listed; per
+   series, principal components of betas and of control-probe intensities against chip, position, plate and the
+   design (age, group): the variance each explains, and age-on-chip confounding as in the 2026-11-18 audit.
+7. **Validation of what exists:** per cohort with both, deposited against reprocessed betas (per-probe and
+   per-sample correlation) and each headline result rerun on the reprocessed betas, the change reported.
+
 ## RM40 — Replacement data for the chip-confounded designs
 
 **State:** unattended (asked by antonkulaga 2026-11-18: "can you search for replacement samples?") · **Owner:** lead
