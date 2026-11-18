@@ -4,7 +4,7 @@ Newest first.
 
 ## Unreleased
 
-- 2026-11-18: `culture_rates` (RM39 item 5), R89: drift per 10 doublings +0.015 in both culture series, per 10 days +0.001 to +0.005.
+- 2026-11-18: `culture_rates` (RM39 item 5), R89: drift per 10 doublings +0.015 in both culture series, per 10 days +0.001 to +0.005 (divisions about 4x time in Sturm, about equal in Endicott).
 - 2026-11-18: `mouse_coupling` (RM39 item 1): clock-free drift coupling across tissues of the same Huang control mice at a fixed age, with a within-group shuffle null.
 - 2026-11-18: `species_pace` (RM39 item 3): directed against noise pace of look-alike CpGs per species and tissue; within-species rank agreement and tissue-pair order across species.
 - 2026-11-18: `braak_gradient` (RM39 item 2): within-donor regional gradient of drift along the Braak order in Lunnon, against Braak stage.

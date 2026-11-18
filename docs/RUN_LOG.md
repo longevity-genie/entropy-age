@@ -14,9 +14,9 @@ commit it ran, its job ids, its scale and seed, and its result or its failure wi
   B +0.0154 (0.0007) / +0.0012 (0.0002); core-essential-matched +0.0112 / +0.0009; non-essential-matched +0.0319 /
   +0.0013. Endicott (r 0.97; the arrest arms carry the split) +0.0148 (0.0022) / +0.0052 (0.0011); core +0.0103 /
   +0.0035; non-essential-matched 0.000 (0.004) / +0.0127 (0.0022).
-- Reading: in cells, drift at unmethylated promoter strata is mostly per division: at about 3 days per doubling,
-  divisions give three to ten times what time alone gives, and the per-doubling rate replicates across the two
-  series (0.0148 and 0.0154). Time adds a smaller part, larger where cells sit arrested (Endicott). Methylated
+- Reading: in cells, drift at unmethylated promoter strata rises with divisions at the same rate in both series
+  (0.0148 and 0.0154 per 10 doublings). Time adds its own part: at about 3 days per doubling, divisions give
+  about four times what time gives in Sturm, about as much in Endicott, whose arrested arms carry the split. Methylated
   strata (matched to non-essential promoters) drift per day in Endicott and per division in Sturm; not settled.
   The shield's relative gap is left out: its fall with doublings is the array-noise artefact found in RM5.
   Table `data/output/culture_rates/rates.csv`.
