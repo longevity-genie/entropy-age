@@ -32,7 +32,7 @@ Jobs may go to account `cluster`, partition `requeue` (preemptible; he allowed i
 1. **Organs aging together at one age, in mice:** clock and drift residuals correlated across tissues of the same animals (Huang, Thompson).
 2. **A regional gradient within AD donors:** drift by region in the same Lunnon donors, entorhinal cortex first, against Braak.
 3. **Directed pace against noise pace across species:** do tissues rank alike on both, species by species?
-4. **Onset of drift against age at maturity:** does where drift starts to rise scale with maturity across mammals (R45's fits)?
+4. **Onset of drift against age at maturity:** does where drift starts to rise scale with maturity across mammals (R45's fits)? Answered by past runs, no new run (2026-11-18): R45 found no onset to scale (noise rises from early life; 6 bends, all late, too few for a fit), and R22 measured the per-year rate on raw drift, falling as lifespan^-1.4 with weight and tissue held. R45's noise is z-scored within each group, so its per-year slopes shrink with each group's age span whatever the biology and cannot test scaling (checked, not used).
 5. **Per day or per division:** drift per day against drift per doubling across every culture series and agent.
 6. **Progeroid and machinery mutants:** is their extra noise at the CpGs that gain noise in normal aging?
 7. **Sex in mice and mammals:** R78's sex contrast on mouse tissues and the species array.
