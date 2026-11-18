@@ -30,6 +30,7 @@ from scipy import stats
 
 from entropy_age import plots
 from entropy_age.data.cohorts import _characteristics
+from entropy_age.data import reprocessed
 from entropy_age.data.matrix import FeatureMatrix
 from entropy_age.data.mouse import MouseAnnotationLayout, mouse_membership
 from entropy_age.experiments.common import Context, dummies, scaled_intervals, write_table
@@ -92,6 +93,9 @@ def run(ctx: Context) -> list[Path]:
     plots.apply_style()
     out = ctx.out_dir("bxd_liver")
     samples, betas = read_bxd(matrix)
+    if reprocessed.in_use():  # RM41: rebuilt from the IDATs (columns already GSM), failing arrays left out
+        betas = reprocessed.by_accession(ctx.paths, "GSE199979", {s: s for s in samples["sample"].to_list()})
+        samples = samples.filter(pl.col("sample").is_in(betas.columns))
     samples = samples.filter(pl.col("sex") == "F").sort("sample")
     lay = MouseAnnotationLayout(ctx.paths)
     probes = probes_without_suffix(

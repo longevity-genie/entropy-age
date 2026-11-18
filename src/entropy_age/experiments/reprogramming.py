@@ -23,6 +23,7 @@ import numpy as np
 import polars as pl
 
 from entropy_age import plots
+from entropy_age.data import reprocessed
 from entropy_age.data.cohorts import _characteristics
 from entropy_age.data.mouse import MouseAnnotationLayout, mouse_membership
 from entropy_age.experiments.bxd_liver import ols, probes_without_suffix
@@ -89,15 +90,20 @@ def run(ctx: Context) -> list[Path]:
     probes = probes_without_suffix(
         pl.read_parquet(lay.probes).filter(pl.col("promoter") & ~pl.col("chr").is_in(["X", "Y", "MT"]))
     )
-    header = pl.read_csv(betas, n_rows=0).columns
-    mice = mice.filter(pl.col("barcode").is_in(header))
-    frame = (
-        pl.scan_csv(betas, null_values=["NA", ""])
-        .select([header[0], *mice["barcode"].to_list()])
-        .filter(pl.col(header[0]).is_in(probes["cpg"].implode()))
-        .collect()
-        .rename({header[0]: "cpg"})
-    )
+    if reprocessed.in_use():  # RM41: rebuilt from the IDATs, failing arrays left out, renamed GSM -> barcode
+        rebuilt = reprocessed.by_accession(ctx.paths, GSE, dict(mice.select("sample", "barcode").iter_rows()))
+        mice = mice.filter(pl.col("barcode").is_in(rebuilt.columns))
+        frame = rebuilt.filter(pl.col("cpg").is_in(probes["cpg"].implode()))
+    else:
+        header = pl.read_csv(betas, n_rows=0).columns
+        mice = mice.filter(pl.col("barcode").is_in(header))
+        frame = (
+            pl.scan_csv(betas, null_values=["NA", ""])
+            .select([header[0], *mice["barcode"].to_list()])
+            .filter(pl.col(header[0]).is_in(probes["cpg"].implode()))
+            .collect()
+            .rename({header[0]: "cpg"})
+        )
     features = frame["cpg"].to_list()
     members = mouse_membership(probes.filter(pl.col("cpg").is_in(features)), pl.read_parquet(lay.gene_sets)).filter(
         pl.col("group").is_in(SETS)
