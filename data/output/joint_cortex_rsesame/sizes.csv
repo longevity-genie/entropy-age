@@ -1,0 +1,4 @@
+band,cpgs,n_core_essential,n_housekeeping,n_non_essential,strata_all_tracks,donors,processing
+all,94513,6223,37517,3960,6600,208,rebuilt
+10-90 %,26871,736,5969,1785,5386,208,rebuilt
+20-80 %,15385,373,3154,881,4396,208,rebuilt

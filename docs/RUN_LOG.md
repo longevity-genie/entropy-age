@@ -3,6 +3,59 @@
 Owned by the runner seat (`docs/seats/RUNNER.md`): one entry per run, newest first, with its inputs, the
 commit it ran, its job ids, its scale and seed, and its result or its failure with the cause.
 
+## R109 — the shield in two new brain series, sorted nuclei included (RM40, RM44), 2026-11-19
+
+- `figures brain_replication --scale paper --seed 42`, commit b9b866f, job 6520486 (test partition), 13 min. Both
+  series rebuilt from IDATs (QCDPB), complete CpGs only (81-90 thousand), gene-resampling intervals. Audits of both
+  with the external agent's tool are in `data/input/geo/audit/`. GSE279509: 524 of 749 arrays pass 90 % detection
+  (2 unreadable); in NeuN+ detection falls with age (r −0.23). GSE252501: 232 of 232 pass; Jaffe's donors excluded.
+- **GSE279509 (Walker 2025), housekeeping relative-entropy gap, sex held / sex and chip held:**
+  unsorted nuclei (148 donors, 18-95 y) −0.053 (−0.062 to −0.043) / −0.050; other glia, NeuN−/SOX10− (89) −0.077
+  (−0.086 to −0.068) / −0.067; oligodendrocyte lineage, SOX10+ (127) −0.034 (−0.045 to −0.020) / −0.036; **neurons,
+  NeuN+ (130) −0.021 (−0.032 to −0.009) / −0.008 (−0.019 to +0.003).** Core-essential: unsorted −0.054 / −0.044,
+  other glia −0.055 / −0.050, oligodendrocyte lineage −0.023 / −0.026 (intervals reach zero), neurons −0.032 (to
+  +0.001) / −0.003. Off the floor (10-90 %) the glial and unsorted gaps hold (housekeeping −0.04 to −0.09), the
+  neuronal ones do not survive chip intercepts.
+- **GSE252501 (White 2024), 52 DLPFC donors without alcohol use disorder, 25-78 y:** housekeeping −0.005 (−0.016 to
+  +0.006) / −0.014 (−0.025 to −0.005); core-essential −0.015 / −0.019 (intervals exclude zero). Nucleus accumbens
+  (51): −0.009 / −0.024. Same sign as Jaffe, a quarter of its size or less. This run did not hold the
+  major-depression diagnosis that half of these donors carry; R109b (job 6521034) does.
+- Dispersion slopes with chip intercepts change sign between groups (unsorted +0.064 off the floor) and are not
+  interpreted: with 72-101 chips for 89-148 arrays the chip terms absorb most of the between-person spread.
+- **Reading:** the cortex shield replicates in an independent series of unsorted nuclei at the size first seen in
+  Jaffe. By cell type it is largest in the glial fractions, which can divide, and smallest in neurons, which cannot;
+  within chips the neuronal gap is not distinguishable from zero. That is the ordering a division-dependent cause
+  (selection among cells, or replication-coupled maintenance) predicts, and not what "a shield in neurons would
+  exclude selection" hoped for. Limits: one series; intervals resample genes, not donors; no direct test of the
+  neuron-glia difference yet (the same donors and chips carry both, so a paired donor bootstrap is possible and is
+  the next run).
+
+## R108 — the joint test in cortex (RM44), 2026-11-19
+
+- `ENTROPY_AGE_BETAS=sesame figures joint_cortex --scale paper --seed 42`, commit b9b866f, job 6520485 (test
+  partition), 9 min; first attempt 6519456 failed in the cortex loader (an array that failed QC). Jaffe rebuilt, 208
+  donors; 94,513 promoter CpGs, 26,871 at 10-90 % young level, 15,385 at 20-80 %. Under the fullest matching 90-99 %
+  of each set's CpGs still have a control.
+- **Relative entropy, housekeeping:** all CpGs −0.082 (−0.094 to −0.070) with island and level; −0.045 with
+  expression; −0.046 with chromatin state; −0.047 with sorted accessibility; **−0.019 (−0.030 to −0.005) with all
+  three.** At 10-90 %: −0.091 → −0.032 (−0.061 to +0.005). At 20-80 %: −0.031 → +0.015 (−0.032 to +0.075).
+- **Core-essential:** all CpGs −0.073 → −0.035 (−0.056 to −0.018); 10-90 % −0.106 → −0.030 (−0.092 to +0.026);
+  20-80 % −0.066 → +0.007.
+- **Dispersion slope:** all CpGs housekeeping −0.118 → −0.041 (−0.053 to −0.029), core-essential −0.099 → −0.059; off
+  the floor the gap is absent already under the base matching (10-90 %: −0.027 and +0.014).
+- **Reading:** held together, expression, chromatin state and accessibility remove about three quarters of the
+  housekeeping gap and half of the core-essential gap; what is left (−0.02 to −0.04 SD) sits at CpGs near 0 %, and
+  off the floor nothing distinguishable from zero remains. In cortex too, the supported statement is "constitutively
+  active promoters drift less"; an essentiality-specific shield beyond activity is not shown. The three reference
+  tracks come from other people than the methylation.
+
+## R107 — Huang mouse tissues on SeSAMe's mouse recipe (RM43 item 4), 2026-11-19
+
+- `ENTROPY_AGE_BETAS=sesame figures mouse`, commit 4fd2503 (with the paired-chip dispersion fix), job 6518430 (itmz),
+  2 h 38 min; rebuild TQCDPB, 581 of 583 arrays. Housekeeping relative entropy, renewing − post-mitotic: −0.191
+  (−0.507 to −0.066) unadjusted, +0.023 (−0.054 to +0.182) within chip; slow − post-mitotic −0.099 and +0.031. As R97
+  and R92: the turnover ordering is not separable from chip in this series.
+
 ## R98 — CR blood (GSE282661) on R SeSAMe betas (RM41), 2026-11-18
 
 - `ENTROPY_AGE_BETAS=sesame figures cr_blood_replication --scale paper --seed 42`, commit d4997f3, job 6515170

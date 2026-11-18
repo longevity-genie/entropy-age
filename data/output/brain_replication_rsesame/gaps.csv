@@ -1,0 +1,217 @@
+cohort,covariates,band,metric,cpgs,group,matching,gap_sd,ci_low,ci_high,share_removed,share_ci_low,share_ci_high,n_set
+"GSE252501 Nucleus Accumbens, controls",sex,all,kl_slope,88667,core_essential,island x level,-0.02122210643026646,-0.040875300303204916,0.0018011425939495186,0.0,0.0,0.0,5816
+"GSE252501 Nucleus Accumbens, controls",sex,all,kl_slope,88667,housekeeping,island x level,-0.009239657135258322,-0.02260758872153144,0.004389598886416235,0.0,0.0,0.0,35059
+"GSE252501 Nucleus Accumbens, controls",sex,all,kl_slope,88667,non_essential,island x level,-0.046404323431290036,-0.06875947354593043,-0.02134018333038131,0.0,0.0,0.0,3784
+"GSE252501 Nucleus Accumbens, controls",sex,all,dispersion_slope,88667,core_essential,island x level,-0.00633783916488346,-0.03109161502840235,0.019604690983758097,0.0,0.0,0.0,5816
+"GSE252501 Nucleus Accumbens, controls",sex,all,dispersion_slope,88667,housekeeping,island x level,-0.0020595027428300917,-0.01337444144852098,0.010398521642163518,0.0,0.0,0.0,35059
+"GSE252501 Nucleus Accumbens, controls",sex,all,dispersion_slope,88667,non_essential,island x level,-0.11553449688097947,-0.14882039935821864,-0.07484168999083539,0.0,0.0,0.0,3784
+"GSE252501 Nucleus Accumbens, controls",sex,all,entropy_slope,88667,core_essential,island x level,-0.031680046415487426,-0.054683361291452195,-0.009960755589554903,0.0,0.0,0.0,5816
+"GSE252501 Nucleus Accumbens, controls",sex,all,entropy_slope,88667,housekeeping,island x level,-0.06964285001632185,-0.08000154809043186,-0.06119114454205314,0.0,0.0,0.0,35059
+"GSE252501 Nucleus Accumbens, controls",sex,all,entropy_slope,88667,non_essential,island x level,-0.07298279525591381,-0.12321577099284316,-0.018594022819358434,0.0,0.0,0.0,3784
+"GSE252501 Nucleus Accumbens, controls",sex,10-90 %,kl_slope,27228,core_essential,island x level,0.016732190193087602,-0.07433037802640612,0.11927868205442096,0.0,0.0,0.0,808
+"GSE252501 Nucleus Accumbens, controls",sex,10-90 %,kl_slope,27228,housekeeping,island x level,0.0130980796240124,-0.019354450914799082,0.04584863627965943,0.0,0.0,0.0,6550
+"GSE252501 Nucleus Accumbens, controls",sex,10-90 %,kl_slope,27228,non_essential,island x level,-0.06565668565083023,-0.10743330713281654,-0.021064741481376065,0.0,0.0,0.0,1714
+"GSE252501 Nucleus Accumbens, controls",sex,10-90 %,dispersion_slope,27228,core_essential,island x level,0.004978873303799054,-0.07198671018653169,0.07904656976646775,0.0,0.0,0.0,808
+"GSE252501 Nucleus Accumbens, controls",sex,10-90 %,dispersion_slope,27228,housekeeping,island x level,0.029767391461630044,-0.002125919866844151,0.06070908958316189,0.0,0.0,0.0,6550
+"GSE252501 Nucleus Accumbens, controls",sex,10-90 %,dispersion_slope,27228,non_essential,island x level,-0.14130583121200616,-0.19255100327187982,-0.09535819569399671,0.0,0.0,0.0,1714
+"GSE252501 Nucleus Accumbens, controls",sex,10-90 %,entropy_slope,27228,core_essential,island x level,0.02415076710733091,-0.04672561177001809,0.07712886918373983,0.0,0.0,0.0,808
+"GSE252501 Nucleus Accumbens, controls",sex,10-90 %,entropy_slope,27228,housekeeping,island x level,-0.007372666155976277,-0.031163234568506518,0.017449306661257578,0.0,0.0,0.0,6550
+"GSE252501 Nucleus Accumbens, controls",sex,10-90 %,entropy_slope,27228,non_essential,island x level,-0.11821416957471868,-0.1736135377855825,-0.06890593054757506,0.0,0.0,0.0,1714
+"GSE252501 Nucleus Accumbens, controls",sex + chip,all,kl_slope,88667,core_essential,island x level,0.007165225392321558,-0.009948066196056446,0.022686071803573626,0.0,0.0,0.0,5816
+"GSE252501 Nucleus Accumbens, controls",sex + chip,all,kl_slope,88667,housekeeping,island x level,-0.023891256450236646,-0.036123916881949776,-0.013831945304696119,0.0,0.0,0.0,35059
+"GSE252501 Nucleus Accumbens, controls",sex + chip,all,kl_slope,88667,non_essential,island x level,-0.04464225904488408,-0.08136854424136615,-0.0032893522347548654,0.0,0.0,0.0,3784
+"GSE252501 Nucleus Accumbens, controls",sex + chip,all,dispersion_slope,88667,core_essential,island x level,0.008028634019077734,-0.006282097154582795,0.02079038131093759,0.0,0.0,0.0,5816
+"GSE252501 Nucleus Accumbens, controls",sex + chip,all,dispersion_slope,88667,housekeeping,island x level,0.007601468511104603,0.00023079314687561762,0.014737509896497232,0.0,0.0,0.0,35059
+"GSE252501 Nucleus Accumbens, controls",sex + chip,all,dispersion_slope,88667,non_essential,island x level,-0.007617223676311391,-0.0535813866525908,0.04438702116505629,0.0,0.0,0.0,3784
+"GSE252501 Nucleus Accumbens, controls",sex + chip,all,entropy_slope,88667,core_essential,island x level,-0.009070110826075227,-0.03357638002720899,0.013554385610805473,0.0,0.0,0.0,5816
+"GSE252501 Nucleus Accumbens, controls",sex + chip,all,entropy_slope,88667,housekeeping,island x level,-0.05174573881271455,-0.06313053166588939,-0.040262981512958144,0.0,0.0,0.0,35059
+"GSE252501 Nucleus Accumbens, controls",sex + chip,all,entropy_slope,88667,non_essential,island x level,0.00654045221749997,-0.04741890331675613,0.0667858150233239,0.0,0.0,0.0,3784
+"GSE252501 Nucleus Accumbens, controls",sex + chip,10-90 %,kl_slope,27228,core_essential,island x level,0.03740273264167756,-0.013573545906392485,0.10457734447086858,0.0,0.0,0.0,808
+"GSE252501 Nucleus Accumbens, controls",sex + chip,10-90 %,kl_slope,27228,housekeeping,island x level,-0.025272587637581362,-0.06429948477707406,0.009564977874523737,0.0,0.0,0.0,6550
+"GSE252501 Nucleus Accumbens, controls",sex + chip,10-90 %,kl_slope,27228,non_essential,island x level,-0.03770461214069791,-0.08909833720295021,0.01975913918598812,0.0,0.0,0.0,1714
+"GSE252501 Nucleus Accumbens, controls",sex + chip,10-90 %,dispersion_slope,27228,core_essential,island x level,0.06432846225640677,0.0023329817509730624,0.13438840651200765,0.0,0.0,0.0,808
+"GSE252501 Nucleus Accumbens, controls",sex + chip,10-90 %,dispersion_slope,27228,housekeeping,island x level,0.022308430832427784,0.002516138384052155,0.04494137262287686,0.0,0.0,0.0,6550
+"GSE252501 Nucleus Accumbens, controls",sex + chip,10-90 %,dispersion_slope,27228,non_essential,island x level,-0.014398759991556386,-0.06643275515985447,0.04870621198897664,0.0,0.0,0.0,1714
+"GSE252501 Nucleus Accumbens, controls",sex + chip,10-90 %,entropy_slope,27228,core_essential,island x level,0.041094293242265274,-0.018091721639013902,0.0953857539514584,0.0,0.0,0.0,808
+"GSE252501 Nucleus Accumbens, controls",sex + chip,10-90 %,entropy_slope,27228,housekeeping,island x level,0.01914023531749975,-0.006739070957855581,0.04870982410324865,0.0,0.0,0.0,6550
+"GSE252501 Nucleus Accumbens, controls",sex + chip,10-90 %,entropy_slope,27228,non_essential,island x level,0.0073518040101904665,-0.06189496844435515,0.07431828611657103,0.0,0.0,0.0,1714
+"GSE252501 DLPFC, controls",sex,all,kl_slope,89784,core_essential,island x level,-0.015099166955769332,-0.026186400707769494,-0.003245253728547197,0.0,0.0,0.0,5862
+"GSE252501 DLPFC, controls",sex,all,kl_slope,89784,housekeeping,island x level,-0.004506789793171869,-0.016454172354392036,0.005753144313203482,0.0,0.0,0.0,35461
+"GSE252501 DLPFC, controls",sex,all,kl_slope,89784,non_essential,island x level,0.008167259832207141,-0.007074037718602137,0.026337587682942476,0.0,0.0,0.0,3838
+"GSE252501 DLPFC, controls",sex,all,dispersion_slope,89784,core_essential,island x level,-0.009533861512802156,-0.03428634690861316,0.014967811724272554,0.0,0.0,0.0,5862
+"GSE252501 DLPFC, controls",sex,all,dispersion_slope,89784,housekeeping,island x level,-0.0053836381963530446,-0.01659728383994882,0.007414570801399402,0.0,0.0,0.0,35461
+"GSE252501 DLPFC, controls",sex,all,dispersion_slope,89784,non_essential,island x level,0.015551052978351852,-0.011525524562617634,0.04430639645860101,0.0,0.0,0.0,3838
+"GSE252501 DLPFC, controls",sex,all,entropy_slope,89784,core_essential,island x level,-0.05294723926136001,-0.07419296531449789,-0.02940410714721489,0.0,0.0,0.0,5862
+"GSE252501 DLPFC, controls",sex,all,entropy_slope,89784,housekeeping,island x level,-0.09276336958290518,-0.10315048008179746,-0.08310253237537757,0.0,0.0,0.0,35461
+"GSE252501 DLPFC, controls",sex,all,entropy_slope,89784,non_essential,island x level,-0.005559845942718427,-0.05222835020422291,0.04973433587528674,0.0,0.0,0.0,3838
+"GSE252501 DLPFC, controls",sex,10-90 %,kl_slope,30837,core_essential,island x level,0.0065959421923895015,-0.033457221949551065,0.0481977413989226,0.0,0.0,0.0,1038
+"GSE252501 DLPFC, controls",sex,10-90 %,kl_slope,30837,housekeeping,island x level,0.022567934476183157,-0.008033178256828102,0.054764715077746356,0.0,0.0,0.0,7874
+"GSE252501 DLPFC, controls",sex,10-90 %,kl_slope,30837,non_essential,island x level,0.00975372860943407,-0.02025678207511572,0.04279698274996686,0.0,0.0,0.0,1838
+"GSE252501 DLPFC, controls",sex,10-90 %,dispersion_slope,30837,core_essential,island x level,0.003894089792013141,-0.07146740116944994,0.07823849650726387,0.0,0.0,0.0,1038
+"GSE252501 DLPFC, controls",sex,10-90 %,dispersion_slope,30837,housekeeping,island x level,0.033346333141783285,0.0038400440585177253,0.05976142319064308,0.0,0.0,0.0,7874
+"GSE252501 DLPFC, controls",sex,10-90 %,dispersion_slope,30837,non_essential,island x level,0.019240684029702033,-0.03166606694645556,0.06868039229118665,0.0,0.0,0.0,1838
+"GSE252501 DLPFC, controls",sex,10-90 %,entropy_slope,30837,core_essential,island x level,-0.008605720325275536,-0.06814965600245508,0.04557209022917863,0.0,0.0,0.0,1038
+"GSE252501 DLPFC, controls",sex,10-90 %,entropy_slope,30837,housekeeping,island x level,-0.030793205597250923,-0.05210105449355584,-0.010064817889555872,0.0,0.0,0.0,7874
+"GSE252501 DLPFC, controls",sex,10-90 %,entropy_slope,30837,non_essential,island x level,-0.0473647161162079,-0.11269052750778683,0.007314534392587731,0.0,0.0,0.0,1838
+"GSE252501 DLPFC, controls",sex + chip,all,kl_slope,89784,core_essential,island x level,-0.01857583715770858,-0.02843046732381841,-0.005438397997893215,0.0,0.0,0.0,5862
+"GSE252501 DLPFC, controls",sex + chip,all,kl_slope,89784,housekeeping,island x level,-0.014410127513577281,-0.024935887407767428,-0.0047489794026895505,0.0,0.0,0.0,35461
+"GSE252501 DLPFC, controls",sex + chip,all,kl_slope,89784,non_essential,island x level,0.0734525982700733,0.041592843982108336,0.11393757245011195,0.0,0.0,0.0,3838
+"GSE252501 DLPFC, controls",sex + chip,all,dispersion_slope,89784,core_essential,island x level,-0.009916232528894856,-0.023594878581096934,0.0035632645069528057,0.0,0.0,0.0,5862
+"GSE252501 DLPFC, controls",sex + chip,all,dispersion_slope,89784,housekeeping,island x level,-0.015912670687005165,-0.023060947196768437,-0.00929444756756526,0.0,0.0,0.0,35461
+"GSE252501 DLPFC, controls",sex + chip,all,dispersion_slope,89784,non_essential,island x level,0.1709794305693523,0.11623009943869696,0.22754074754356934,0.0,0.0,0.0,3838
+"GSE252501 DLPFC, controls",sex + chip,all,entropy_slope,89784,core_essential,island x level,-0.048703647954078895,-0.07344349674020978,-0.026032783086592327,0.0,0.0,0.0,5862
+"GSE252501 DLPFC, controls",sex + chip,all,entropy_slope,89784,housekeeping,island x level,-0.11712928747498333,-0.12811221375056958,-0.10642198419360258,0.0,0.0,0.0,35461
+"GSE252501 DLPFC, controls",sex + chip,all,entropy_slope,89784,non_essential,island x level,-0.08216187241631857,-0.13347719950934406,-0.024774589536498005,0.0,0.0,0.0,3838
+"GSE252501 DLPFC, controls",sex + chip,10-90 %,kl_slope,30837,core_essential,island x level,-0.07924714245382539,-0.12340420976574006,-0.04027028977272697,0.0,0.0,0.0,1038
+"GSE252501 DLPFC, controls",sex + chip,10-90 %,kl_slope,30837,housekeeping,island x level,-0.03466084493231895,-0.06229225327861914,-0.007800895080482537,0.0,0.0,0.0,7874
+"GSE252501 DLPFC, controls",sex + chip,10-90 %,kl_slope,30837,non_essential,island x level,0.11244110296824517,0.05158078584322961,0.17020388614510706,0.0,0.0,0.0,1838
+"GSE252501 DLPFC, controls",sex + chip,10-90 %,dispersion_slope,30837,core_essential,island x level,-0.01646290543045769,-0.07178060327072787,0.04805270214503999,0.0,0.0,0.0,1038
+"GSE252501 DLPFC, controls",sex + chip,10-90 %,dispersion_slope,30837,housekeeping,island x level,-0.03824427668191895,-0.057766796860017504,-0.015145470200815693,0.0,0.0,0.0,7874
+"GSE252501 DLPFC, controls",sex + chip,10-90 %,dispersion_slope,30837,non_essential,island x level,0.281137183367269,0.21130289013280606,0.3435159894521037,0.0,0.0,0.0,1838
+"GSE252501 DLPFC, controls",sex + chip,10-90 %,entropy_slope,30837,core_essential,island x level,-0.039957467961438745,-0.12204899908626891,0.01840909897190774,0.0,0.0,0.0,1038
+"GSE252501 DLPFC, controls",sex + chip,10-90 %,entropy_slope,30837,housekeeping,island x level,-0.09918592572307348,-0.11982342996392598,-0.07109364583990796,0.0,0.0,0.0,7874
+"GSE252501 DLPFC, controls",sex + chip,10-90 %,entropy_slope,30837,non_essential,island x level,-0.16265545163885922,-0.23223565321035292,-0.09529179966593392,0.0,0.0,0.0,1838
+GSE279509 neurons (NeuN+),sex,all,kl_slope,82504,core_essential,island x level,-0.032486062850581546,-0.060697644822441776,0.0010566769115633425,0.0,0.0,0.0,5506
+GSE279509 neurons (NeuN+),sex,all,kl_slope,82504,housekeeping,island x level,-0.021444158830156733,-0.03201050901980662,-0.008714670848616176,0.0,0.0,0.0,32804
+GSE279509 neurons (NeuN+),sex,all,kl_slope,82504,non_essential,island x level,-0.000715526105682313,-0.044563556816128176,0.05383642332754833,0.0,0.0,0.0,3522
+GSE279509 neurons (NeuN+),sex,all,dispersion_slope,82504,core_essential,island x level,-0.0480818119696979,-0.07406100232689034,-0.024943090258560115,0.0,0.0,0.0,5506
+GSE279509 neurons (NeuN+),sex,all,dispersion_slope,82504,housekeeping,island x level,-0.054958137096090647,-0.06536834415028399,-0.04373517382192378,0.0,0.0,0.0,32804
+GSE279509 neurons (NeuN+),sex,all,dispersion_slope,82504,non_essential,island x level,0.06957893268232522,0.022861042752958957,0.12463555406202403,0.0,0.0,0.0,3522
+GSE279509 neurons (NeuN+),sex,all,entropy_slope,82504,core_essential,island x level,-0.09584665497073658,-0.11638938055492686,-0.07510941964788936,0.0,0.0,0.0,5506
+GSE279509 neurons (NeuN+),sex,all,entropy_slope,82504,housekeeping,island x level,-0.12204201216693902,-0.13106849352617272,-0.11015736014677026,0.0,0.0,0.0,32804
+GSE279509 neurons (NeuN+),sex,all,entropy_slope,82504,non_essential,island x level,0.15972487406553004,0.09891481361540978,0.23097163381879637,0.0,0.0,0.0,3522
+GSE279509 neurons (NeuN+),sex,10-90 %,kl_slope,21832,core_essential,island x level,-0.08855931697040385,-0.15810835563793857,-0.021618044935115384,0.0,0.0,0.0,779
+GSE279509 neurons (NeuN+),sex,10-90 %,kl_slope,21832,housekeeping,island x level,-0.014175731679168527,-0.04087790267954913,0.018111035655562317,0.0,0.0,0.0,5993
+GSE279509 neurons (NeuN+),sex,10-90 %,kl_slope,21832,non_essential,island x level,-0.0037403845010083644,-0.07533814698449533,0.08016780357042465,0.0,0.0,0.0,1053
+GSE279509 neurons (NeuN+),sex,10-90 %,dispersion_slope,21832,core_essential,island x level,-0.0726344920873445,-0.14927902811110777,0.00399330151282172,0.0,0.0,0.0,779
+GSE279509 neurons (NeuN+),sex,10-90 %,dispersion_slope,21832,housekeeping,island x level,-0.05494617321379822,-0.08337696292079673,-0.02414201881337473,0.0,0.0,0.0,5993
+GSE279509 neurons (NeuN+),sex,10-90 %,dispersion_slope,21832,non_essential,island x level,0.05312636785418894,-0.03573288031557596,0.13951799190221967,0.0,0.0,0.0,1053
+GSE279509 neurons (NeuN+),sex,10-90 %,entropy_slope,21832,core_essential,island x level,-0.07264310597429283,-0.13783440069977115,-0.006310415640911521,0.0,0.0,0.0,779
+GSE279509 neurons (NeuN+),sex,10-90 %,entropy_slope,21832,housekeeping,island x level,-0.07913717449596308,-0.10155516242100339,-0.05423471062881663,0.0,0.0,0.0,5993
+GSE279509 neurons (NeuN+),sex,10-90 %,entropy_slope,21832,non_essential,island x level,0.1524625952559341,0.06650249788041174,0.2278844633779539,0.0,0.0,0.0,1053
+GSE279509 neurons (NeuN+),sex + chip,all,kl_slope,82504,core_essential,island x level,-0.0034723844699544705,-0.03437450481348102,0.030918066742040503,0.0,0.0,0.0,5506
+GSE279509 neurons (NeuN+),sex + chip,all,kl_slope,82504,housekeeping,island x level,-0.007753974944290872,-0.019250659406240305,0.00311295906488718,0.0,0.0,0.0,32804
+GSE279509 neurons (NeuN+),sex + chip,all,kl_slope,82504,non_essential,island x level,-0.03018737353774257,-0.06494716384721057,0.00845276803614243,0.0,0.0,0.0,3522
+GSE279509 neurons (NeuN+),sex + chip,all,dispersion_slope,82504,core_essential,island x level,-0.0070375915911143555,-0.02090785320927711,0.0053278919981343854,0.0,0.0,0.0,5506
+GSE279509 neurons (NeuN+),sex + chip,all,dispersion_slope,82504,housekeeping,island x level,-0.0011649133872964157,-0.007012610237457726,0.0058266874097158364,0.0,0.0,0.0,32804
+GSE279509 neurons (NeuN+),sex + chip,all,dispersion_slope,82504,non_essential,island x level,-0.03516003345524523,-0.09239091921687037,0.03194761141547328,0.0,0.0,0.0,3522
+GSE279509 neurons (NeuN+),sex + chip,all,entropy_slope,82504,core_essential,island x level,-0.07544504198540704,-0.09854199699671846,-0.058091777867742334,0.0,0.0,0.0,5506
+GSE279509 neurons (NeuN+),sex + chip,all,entropy_slope,82504,housekeeping,island x level,-0.09463812834917407,-0.10469335594911987,-0.08449670506936531,0.0,0.0,0.0,32804
+GSE279509 neurons (NeuN+),sex + chip,all,entropy_slope,82504,non_essential,island x level,0.07419857514536282,0.01166806181569589,0.13155424338357824,0.0,0.0,0.0,3522
+GSE279509 neurons (NeuN+),sex + chip,10-90 %,kl_slope,21832,core_essential,island x level,0.007351073385058699,-0.05996697792933323,0.06058233649997286,0.0,0.0,0.0,779
+GSE279509 neurons (NeuN+),sex + chip,10-90 %,kl_slope,21832,housekeeping,island x level,0.013754290981575858,-0.019022071838364407,0.04963373724171126,0.0,0.0,0.0,5993
+GSE279509 neurons (NeuN+),sex + chip,10-90 %,kl_slope,21832,non_essential,island x level,-0.03660814996686055,-0.09914237113463552,0.02121730367895921,0.0,0.0,0.0,1053
+GSE279509 neurons (NeuN+),sex + chip,10-90 %,dispersion_slope,21832,core_essential,island x level,-0.06549683383874018,-0.1246766766968974,-0.014698307809136626,0.0,0.0,0.0,779
+GSE279509 neurons (NeuN+),sex + chip,10-90 %,dispersion_slope,21832,housekeeping,island x level,-0.01171061800368771,-0.03864082453616388,0.01019520576392646,0.0,0.0,0.0,5993
+GSE279509 neurons (NeuN+),sex + chip,10-90 %,dispersion_slope,21832,non_essential,island x level,0.039703513665678127,-0.01576554700543801,0.10767579250216268,0.0,0.0,0.0,1053
+GSE279509 neurons (NeuN+),sex + chip,10-90 %,entropy_slope,21832,core_essential,island x level,-0.0812381134540955,-0.14417512463829946,-0.018943779104762668,0.0,0.0,0.0,779
+GSE279509 neurons (NeuN+),sex + chip,10-90 %,entropy_slope,21832,housekeeping,island x level,-0.06373786750454632,-0.08803051935974392,-0.0367111733784207,0.0,0.0,0.0,5993
+GSE279509 neurons (NeuN+),sex + chip,10-90 %,entropy_slope,21832,non_essential,island x level,0.14532039814467973,0.05482598174932341,0.23049728537335779,0.0,0.0,0.0,1053
+GSE279509 oligodendrocyte lineage (SOX10+),sex,all,kl_slope,82608,core_essential,island x level,-0.0225145321642968,-0.04154289445304103,0.0006906973169273968,0.0,0.0,0.0,5489
+GSE279509 oligodendrocyte lineage (SOX10+),sex,all,kl_slope,82608,housekeeping,island x level,-0.03417581649166592,-0.04516489479655879,-0.020314371042483,0.0,0.0,0.0,32715
+GSE279509 oligodendrocyte lineage (SOX10+),sex,all,kl_slope,82608,non_essential,island x level,0.04742432223025888,0.0017224296906568218,0.09674441565430941,0.0,0.0,0.0,3537
+GSE279509 oligodendrocyte lineage (SOX10+),sex,all,dispersion_slope,82608,core_essential,island x level,-0.017033543658830568,-0.03650913448920912,0.005656537954778585,0.0,0.0,0.0,5489
+GSE279509 oligodendrocyte lineage (SOX10+),sex,all,dispersion_slope,82608,housekeeping,island x level,-0.03620310758056526,-0.047671394457771715,-0.026130961326898426,0.0,0.0,0.0,32715
+GSE279509 oligodendrocyte lineage (SOX10+),sex,all,dispersion_slope,82608,non_essential,island x level,0.06529379955729676,0.019476509364337872,0.11661278272412474,0.0,0.0,0.0,3537
+GSE279509 oligodendrocyte lineage (SOX10+),sex,all,entropy_slope,82608,core_essential,island x level,-0.12859954425906273,-0.14945420860830652,-0.1036650456880067,0.0,0.0,0.0,5489
+GSE279509 oligodendrocyte lineage (SOX10+),sex,all,entropy_slope,82608,housekeeping,island x level,-0.2061173775042398,-0.21746110690137724,-0.1961109250532298,0.0,0.0,0.0,32715
+GSE279509 oligodendrocyte lineage (SOX10+),sex,all,entropy_slope,82608,non_essential,island x level,0.05724940279163119,0.0025121866795402075,0.11635188153742744,0.0,0.0,0.0,3537
+GSE279509 oligodendrocyte lineage (SOX10+),sex,10-90 %,kl_slope,24468,core_essential,island x level,-0.008129182037103623,-0.0735028362836441,0.06694826563556261,0.0,0.0,0.0,915
+GSE279509 oligodendrocyte lineage (SOX10+),sex,10-90 %,kl_slope,24468,housekeeping,island x level,0.0074999605183491734,-0.02348904807222821,0.03477803968837098,0.0,0.0,0.0,6738
+GSE279509 oligodendrocyte lineage (SOX10+),sex,10-90 %,kl_slope,24468,non_essential,island x level,0.019209615311151163,-0.03355911472581212,0.07355747754493325,0.0,0.0,0.0,1447
+GSE279509 oligodendrocyte lineage (SOX10+),sex,10-90 %,dispersion_slope,24468,core_essential,island x level,0.045041435283972996,-0.021465662656297003,0.10609664920405959,0.0,0.0,0.0,915
+GSE279509 oligodendrocyte lineage (SOX10+),sex,10-90 %,dispersion_slope,24468,housekeeping,island x level,0.029214107820723055,-0.002649825476532728,0.05407622525938554,0.0,0.0,0.0,6738
+GSE279509 oligodendrocyte lineage (SOX10+),sex,10-90 %,dispersion_slope,24468,non_essential,island x level,0.05974714541684148,-0.012428426574892107,0.13059966202299503,0.0,0.0,0.0,1447
+GSE279509 oligodendrocyte lineage (SOX10+),sex,10-90 %,entropy_slope,24468,core_essential,island x level,-0.0905602672009123,-0.14325039513034318,-0.04456606075192544,0.0,0.0,0.0,915
+GSE279509 oligodendrocyte lineage (SOX10+),sex,10-90 %,entropy_slope,24468,housekeeping,island x level,-0.19282936984071938,-0.21667169798578229,-0.16749931611747237,0.0,0.0,0.0,6738
+GSE279509 oligodendrocyte lineage (SOX10+),sex,10-90 %,entropy_slope,24468,non_essential,island x level,-0.002239536975770332,-0.061420083901378326,0.05754014126265466,0.0,0.0,0.0,1447
+GSE279509 oligodendrocyte lineage (SOX10+),sex + chip,all,kl_slope,82608,core_essential,island x level,-0.02605488492819875,-0.053350562962453676,0.006444100865095523,0.0,0.0,0.0,5489
+GSE279509 oligodendrocyte lineage (SOX10+),sex + chip,all,kl_slope,82608,housekeeping,island x level,-0.036208979372333853,-0.04863435748209596,-0.025133156738214306,0.0,0.0,0.0,32715
+GSE279509 oligodendrocyte lineage (SOX10+),sex + chip,all,kl_slope,82608,non_essential,island x level,0.039149145235870694,-0.004629471869272144,0.0982969558492629,0.0,0.0,0.0,3537
+GSE279509 oligodendrocyte lineage (SOX10+),sex + chip,all,dispersion_slope,82608,core_essential,island x level,-0.02568532359309105,-0.04528697994655245,-0.0033486960149815806,0.0,0.0,0.0,5489
+GSE279509 oligodendrocyte lineage (SOX10+),sex + chip,all,dispersion_slope,82608,housekeeping,island x level,-0.011672849745025365,-0.025519632821820747,0.0003780057396338714,0.0,0.0,0.0,32715
+GSE279509 oligodendrocyte lineage (SOX10+),sex + chip,all,dispersion_slope,82608,non_essential,island x level,0.0038923204840042875,-0.04369802589305012,0.04613077114299849,0.0,0.0,0.0,3537
+GSE279509 oligodendrocyte lineage (SOX10+),sex + chip,all,entropy_slope,82608,core_essential,island x level,-0.13237186727022013,-0.15377686047638814,-0.10726270158746054,0.0,0.0,0.0,5489
+GSE279509 oligodendrocyte lineage (SOX10+),sex + chip,all,entropy_slope,82608,housekeeping,island x level,-0.198834033575698,-0.21142422458913943,-0.18615721372127567,0.0,0.0,0.0,32715
+GSE279509 oligodendrocyte lineage (SOX10+),sex + chip,all,entropy_slope,82608,non_essential,island x level,0.04863510760309559,-0.006738519173042766,0.10998743496569678,0.0,0.0,0.0,3537
+GSE279509 oligodendrocyte lineage (SOX10+),sex + chip,10-90 %,kl_slope,24468,core_essential,island x level,-0.01886755886482397,-0.09751628802331917,0.08663250203413811,0.0,0.0,0.0,915
+GSE279509 oligodendrocyte lineage (SOX10+),sex + chip,10-90 %,kl_slope,24468,housekeeping,island x level,-0.03953441335991612,-0.06881206413040315,-0.012876688018725659,0.0,0.0,0.0,6738
+GSE279509 oligodendrocyte lineage (SOX10+),sex + chip,10-90 %,kl_slope,24468,non_essential,island x level,0.012750245022467356,-0.032273827979654265,0.07289131858982195,0.0,0.0,0.0,1447
+GSE279509 oligodendrocyte lineage (SOX10+),sex + chip,10-90 %,dispersion_slope,24468,core_essential,island x level,-0.06521930473029386,-0.135890517705021,-0.007309874159302681,0.0,0.0,0.0,915
+GSE279509 oligodendrocyte lineage (SOX10+),sex + chip,10-90 %,dispersion_slope,24468,housekeeping,island x level,-0.0019020270295200003,-0.03195313253859698,0.027866430493385164,0.0,0.0,0.0,6738
+GSE279509 oligodendrocyte lineage (SOX10+),sex + chip,10-90 %,dispersion_slope,24468,non_essential,island x level,0.020882449940370394,-0.04372505911524121,0.09432803806582228,0.0,0.0,0.0,1447
+GSE279509 oligodendrocyte lineage (SOX10+),sex + chip,10-90 %,entropy_slope,24468,core_essential,island x level,-0.14607225710567595,-0.20384686948000344,-0.09222533836404292,0.0,0.0,0.0,915
+GSE279509 oligodendrocyte lineage (SOX10+),sex + chip,10-90 %,entropy_slope,24468,housekeeping,island x level,-0.20427901829914197,-0.22205776278445116,-0.1788563654811473,0.0,0.0,0.0,6738
+GSE279509 oligodendrocyte lineage (SOX10+),sex + chip,10-90 %,entropy_slope,24468,non_essential,island x level,-6.325217790940836e-6,-0.06199957927729535,0.05721639063071455,0.0,0.0,0.0,1447
+GSE279509 other glia (NeuN-/SOX10-),sex,all,kl_slope,81291,core_essential,island x level,-0.055400195616500864,-0.07274016271377848,-0.037020688733867324,0.0,0.0,0.0,5445
+GSE279509 other glia (NeuN-/SOX10-),sex,all,kl_slope,81291,housekeeping,island x level,-0.0773615747793369,-0.08579603988000715,-0.06830149763469184,0.0,0.0,0.0,32323
+GSE279509 other glia (NeuN-/SOX10-),sex,all,kl_slope,81291,non_essential,island x level,0.034258370740068135,-0.025356763673874093,0.10271599271074729,0.0,0.0,0.0,3470
+GSE279509 other glia (NeuN-/SOX10-),sex,all,dispersion_slope,81291,core_essential,island x level,-0.06557600616310509,-0.08738653533425772,-0.045383364376775766,0.0,0.0,0.0,5445
+GSE279509 other glia (NeuN-/SOX10-),sex,all,dispersion_slope,81291,housekeeping,island x level,-0.09726567952799516,-0.10763513860263305,-0.08502535676903866,0.0,0.0,0.0,32323
+GSE279509 other glia (NeuN-/SOX10-),sex,all,dispersion_slope,81291,non_essential,island x level,-0.003987739083675705,-0.05253882730165602,0.054234492847660555,0.0,0.0,0.0,3470
+GSE279509 other glia (NeuN-/SOX10-),sex,all,entropy_slope,81291,core_essential,island x level,-0.1014462533676547,-0.11812246418142275,-0.08308343765795684,0.0,0.0,0.0,5445
+GSE279509 other glia (NeuN-/SOX10-),sex,all,entropy_slope,81291,housekeeping,island x level,-0.16235135260393815,-0.1711102716963656,-0.15188434357910352,0.0,0.0,0.0,32323
+GSE279509 other glia (NeuN-/SOX10-),sex,all,entropy_slope,81291,non_essential,island x level,-0.028213102493192872,-0.08699130085231666,0.04728346553352445,0.0,0.0,0.0,3470
+GSE279509 other glia (NeuN-/SOX10-),sex,10-90 %,kl_slope,25678,core_essential,island x level,-0.06396584359017937,-0.12453263926584413,0.007821121866593415,0.0,0.0,0.0,854
+GSE279509 other glia (NeuN-/SOX10-),sex,10-90 %,kl_slope,25678,housekeeping,island x level,-0.08037372123168832,-0.10431869997646097,-0.055237448919484705,0.0,0.0,0.0,6508
+GSE279509 other glia (NeuN-/SOX10-),sex,10-90 %,kl_slope,25678,non_essential,island x level,0.027237945692752383,-0.04644397924642378,0.11776705641783326,0.0,0.0,0.0,1654
+GSE279509 other glia (NeuN-/SOX10-),sex,10-90 %,dispersion_slope,25678,core_essential,island x level,-0.004543280928864097,-0.06642662556994572,0.06523733566440129,0.0,0.0,0.0,854
+GSE279509 other glia (NeuN-/SOX10-),sex,10-90 %,dispersion_slope,25678,housekeeping,island x level,-0.04100848059528098,-0.06400213405059998,-0.016931811981607453,0.0,0.0,0.0,6508
+GSE279509 other glia (NeuN-/SOX10-),sex,10-90 %,dispersion_slope,25678,non_essential,island x level,-0.058875488086336615,-0.11625543539177338,0.016278089084742216,0.0,0.0,0.0,1654
+GSE279509 other glia (NeuN-/SOX10-),sex,10-90 %,entropy_slope,25678,core_essential,island x level,-0.08213566133510218,-0.1404385155389137,-0.032199167334576465,0.0,0.0,0.0,854
+GSE279509 other glia (NeuN-/SOX10-),sex,10-90 %,entropy_slope,25678,housekeeping,island x level,-0.12327362215845374,-0.14201122042163059,-0.10129249319234429,0.0,0.0,0.0,6508
+GSE279509 other glia (NeuN-/SOX10-),sex,10-90 %,entropy_slope,25678,non_essential,island x level,-0.12600943859407257,-0.20140398476311624,-0.06898101857675375,0.0,0.0,0.0,1654
+GSE279509 other glia (NeuN-/SOX10-),sex + chip,all,kl_slope,81291,core_essential,island x level,-0.04985601522706418,-0.06602188375594632,-0.03347540024766558,0.0,0.0,0.0,5445
+GSE279509 other glia (NeuN-/SOX10-),sex + chip,all,kl_slope,81291,housekeeping,island x level,-0.06739805623594267,-0.0764409546177251,-0.056148740336321695,0.0,0.0,0.0,32323
+GSE279509 other glia (NeuN-/SOX10-),sex + chip,all,kl_slope,81291,non_essential,island x level,0.01728115140931824,-0.03632363469065204,0.06605839356257277,0.0,0.0,0.0,3470
+GSE279509 other glia (NeuN-/SOX10-),sex + chip,all,dispersion_slope,81291,core_essential,island x level,-0.01571965646829477,-0.02940455263310481,0.0015310497029620326,0.0,0.0,0.0,5445
+GSE279509 other glia (NeuN-/SOX10-),sex + chip,all,dispersion_slope,81291,housekeeping,island x level,0.006884197664600765,0.0003016310638992712,0.01504354136448979,0.0,0.0,0.0,32323
+GSE279509 other glia (NeuN-/SOX10-),sex + chip,all,dispersion_slope,81291,non_essential,island x level,-0.05937378775665947,-0.1231457507937441,-0.0014901412649918873,0.0,0.0,0.0,3470
+GSE279509 other glia (NeuN-/SOX10-),sex + chip,all,entropy_slope,81291,core_essential,island x level,-0.08678507483266643,-0.10321347961739655,-0.06807663163593872,0.0,0.0,0.0,5445
+GSE279509 other glia (NeuN-/SOX10-),sex + chip,all,entropy_slope,81291,housekeeping,island x level,-0.11695579640142159,-0.12592255621236267,-0.10571950860507431,0.0,0.0,0.0,32323
+GSE279509 other glia (NeuN-/SOX10-),sex + chip,all,entropy_slope,81291,non_essential,island x level,-0.06379071595220799,-0.12144685383514638,0.006250226247660418,0.0,0.0,0.0,3470
+GSE279509 other glia (NeuN-/SOX10-),sex + chip,10-90 %,kl_slope,25678,core_essential,island x level,-0.07101419907363668,-0.13549605597429162,0.002562167024504628,0.0,0.0,0.0,854
+GSE279509 other glia (NeuN-/SOX10-),sex + chip,10-90 %,kl_slope,25678,housekeeping,island x level,-0.09256491937369467,-0.11833377038133051,-0.06470742448885405,0.0,0.0,0.0,6508
+GSE279509 other glia (NeuN-/SOX10-),sex + chip,10-90 %,kl_slope,25678,non_essential,island x level,0.029761028019836388,-0.035779848645404476,0.11649453912178696,0.0,0.0,0.0,1654
+GSE279509 other glia (NeuN-/SOX10-),sex + chip,10-90 %,dispersion_slope,25678,core_essential,island x level,-0.03176013844593881,-0.0805616242538447,0.02010898944557008,0.0,0.0,0.0,854
+GSE279509 other glia (NeuN-/SOX10-),sex + chip,10-90 %,dispersion_slope,25678,housekeeping,island x level,-0.018971947310369688,-0.0410775380178033,-0.0002676892286101051,0.0,0.0,0.0,6508
+GSE279509 other glia (NeuN-/SOX10-),sex + chip,10-90 %,dispersion_slope,25678,non_essential,island x level,-0.029758348245133563,-0.10203977399160838,0.04391585937576196,0.0,0.0,0.0,1654
+GSE279509 other glia (NeuN-/SOX10-),sex + chip,10-90 %,entropy_slope,25678,core_essential,island x level,-0.09779643388500452,-0.14525000635979987,-0.05130891822171901,0.0,0.0,0.0,854
+GSE279509 other glia (NeuN-/SOX10-),sex + chip,10-90 %,entropy_slope,25678,housekeeping,island x level,-0.08740676091639589,-0.11172579040810525,-0.06437010767386278,0.0,0.0,0.0,6508
+GSE279509 other glia (NeuN-/SOX10-),sex + chip,10-90 %,entropy_slope,25678,non_essential,island x level,-0.1391692717939437,-0.21539218343419617,-0.0794739884916118,0.0,0.0,0.0,1654
+GSE279509 unsorted nuclei,sex,all,kl_slope,81827,core_essential,island x level,-0.05370377368184842,-0.07112304362900107,-0.03115904414611505,0.0,0.0,0.0,5455
+GSE279509 unsorted nuclei,sex,all,kl_slope,81827,housekeeping,island x level,-0.05308286272575545,-0.062334988792383764,-0.042622502749591486,0.0,0.0,0.0,32537
+GSE279509 unsorted nuclei,sex,all,kl_slope,81827,non_essential,island x level,-0.040212230258200934,-0.080110833047223,0.0059126906331501755,0.0,0.0,0.0,3488
+GSE279509 unsorted nuclei,sex,all,dispersion_slope,81827,core_essential,island x level,-0.06678590276739567,-0.09364507017773142,-0.0463792392642253,0.0,0.0,0.0,5455
+GSE279509 unsorted nuclei,sex,all,dispersion_slope,81827,housekeeping,island x level,-0.08635476060116433,-0.0981843420788527,-0.07526408572337198,0.0,0.0,0.0,32537
+GSE279509 unsorted nuclei,sex,all,dispersion_slope,81827,non_essential,island x level,0.04186704471966122,-0.0031496049886227937,0.08881932761157452,0.0,0.0,0.0,3488
+GSE279509 unsorted nuclei,sex,all,entropy_slope,81827,core_essential,island x level,-0.1247109011463652,-0.14456261797648154,-0.10309049976379735,0.0,0.0,0.0,5455
+GSE279509 unsorted nuclei,sex,all,entropy_slope,81827,housekeeping,island x level,-0.17481483331678752,-0.18568558168214958,-0.16282146542462264,0.0,0.0,0.0,32537
+GSE279509 unsorted nuclei,sex,all,entropy_slope,81827,non_essential,island x level,0.17780455414622973,0.12126670631363823,0.24372984421783986,0.0,0.0,0.0,3488
+GSE279509 unsorted nuclei,sex,10-90 %,kl_slope,25524,core_essential,island x level,-0.1098941920465555,-0.16165031481113187,-0.05317554320639317,0.0,0.0,0.0,872
+GSE279509 unsorted nuclei,sex,10-90 %,kl_slope,25524,housekeeping,island x level,-0.04108922652908953,-0.06324778330343221,-0.017557722014594934,0.0,0.0,0.0,6802
+GSE279509 unsorted nuclei,sex,10-90 %,kl_slope,25524,non_essential,island x level,-0.06903659642619936,-0.12340894878406063,-0.01626296751744406,0.0,0.0,0.0,1375
+GSE279509 unsorted nuclei,sex,10-90 %,dispersion_slope,25524,core_essential,island x level,-0.11246482359801878,-0.18178522700181846,-0.049814735967631744,0.0,0.0,0.0,872
+GSE279509 unsorted nuclei,sex,10-90 %,dispersion_slope,25524,housekeeping,island x level,-0.07558193765008502,-0.1027335908077804,-0.05260946351793183,0.0,0.0,0.0,6802
+GSE279509 unsorted nuclei,sex,10-90 %,dispersion_slope,25524,non_essential,island x level,0.010017651368328674,-0.05175840038199816,0.07642408084088784,0.0,0.0,0.0,1375
+GSE279509 unsorted nuclei,sex,10-90 %,entropy_slope,25524,core_essential,island x level,-0.11577691639029737,-0.17722810861296884,-0.06549106465151944,0.0,0.0,0.0,872
+GSE279509 unsorted nuclei,sex,10-90 %,entropy_slope,25524,housekeeping,island x level,-0.14890405509863971,-0.17336101684967367,-0.123205448840689,0.0,0.0,0.0,6802
+GSE279509 unsorted nuclei,sex,10-90 %,entropy_slope,25524,non_essential,island x level,0.18681650287783427,0.10573234279808158,0.26279568639646667,0.0,0.0,0.0,1375
+GSE279509 unsorted nuclei,sex + chip,all,kl_slope,81827,core_essential,island x level,-0.043508721083240144,-0.07294822106849443,-0.01430131631061425,0.0,0.0,0.0,5455
+GSE279509 unsorted nuclei,sex + chip,all,kl_slope,81827,housekeeping,island x level,-0.04977032456163032,-0.06155064522852398,-0.03890896736707082,0.0,0.0,0.0,32537
+GSE279509 unsorted nuclei,sex + chip,all,kl_slope,81827,non_essential,island x level,-0.061325256827472724,-0.09214920617696629,-0.029934171884135524,0.0,0.0,0.0,3488
+GSE279509 unsorted nuclei,sex + chip,all,dispersion_slope,81827,core_essential,island x level,0.02101924344895715,0.007063027209714967,0.03525971802728313,0.0,0.0,0.0,5455
+GSE279509 unsorted nuclei,sex + chip,all,dispersion_slope,81827,housekeeping,island x level,0.024028090511232995,0.016680596956226746,0.031530429304544944,0.0,0.0,0.0,32537
+GSE279509 unsorted nuclei,sex + chip,all,dispersion_slope,81827,non_essential,island x level,-0.1165534977017686,-0.18264883796868014,-0.05485755218602159,0.0,0.0,0.0,3488
+GSE279509 unsorted nuclei,sex + chip,all,entropy_slope,81827,core_essential,island x level,-0.08345233032032189,-0.10408541807843934,-0.061914775103284844,0.0,0.0,0.0,5455
+GSE279509 unsorted nuclei,sex + chip,all,entropy_slope,81827,housekeeping,island x level,-0.10347323407869885,-0.11318872702090002,-0.09392320493041549,0.0,0.0,0.0,32537
+GSE279509 unsorted nuclei,sex + chip,all,entropy_slope,81827,non_essential,island x level,-0.012427966259940642,-0.08047536956433395,0.055513511652004376,0.0,0.0,0.0,3488
+GSE279509 unsorted nuclei,sex + chip,10-90 %,kl_slope,25524,core_essential,island x level,-0.11688043030128667,-0.1634612502878802,-0.07239794944324324,0.0,0.0,0.0,872
+GSE279509 unsorted nuclei,sex + chip,10-90 %,kl_slope,25524,housekeeping,island x level,-0.06150352904866131,-0.09051054357920467,-0.029425131167191487,0.0,0.0,0.0,6802
+GSE279509 unsorted nuclei,sex + chip,10-90 %,kl_slope,25524,non_essential,island x level,-0.09250708124697439,-0.14691375883204916,-0.039039161320102087,0.0,0.0,0.0,1375
+GSE279509 unsorted nuclei,sex + chip,10-90 %,dispersion_slope,25524,core_essential,island x level,0.09754485655839484,0.04660509573773192,0.1504823659108428,0.0,0.0,0.0,872
+GSE279509 unsorted nuclei,sex + chip,10-90 %,dispersion_slope,25524,housekeeping,island x level,0.0635203980692237,0.045284364967567374,0.08909323990824504,0.0,0.0,0.0,6802
+GSE279509 unsorted nuclei,sex + chip,10-90 %,dispersion_slope,25524,non_essential,island x level,-0.24184458451019555,-0.31458205495729075,-0.17723972569872998,0.0,0.0,0.0,1375
+GSE279509 unsorted nuclei,sex + chip,10-90 %,entropy_slope,25524,core_essential,island x level,-0.058047085462068666,-0.11893438068994783,0.002324048529012189,0.0,0.0,0.0,872
+GSE279509 unsorted nuclei,sex + chip,10-90 %,entropy_slope,25524,housekeeping,island x level,-0.06273276687925392,-0.08272528764619948,-0.03835417963092208,0.0,0.0,0.0,6802
+GSE279509 unsorted nuclei,sex + chip,10-90 %,entropy_slope,25524,non_essential,island x level,-0.020528413803242024,-0.08968944427276192,0.06198256755226511,0.0,0.0,0.0,1375

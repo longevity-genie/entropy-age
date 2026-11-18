@@ -1,0 +1,7 @@
+group,arrays,donors,age_min,age_max,cpgs,chips,chips_with_2_or_more
+"GSE252501 Nucleus Accumbens, controls",51,51,24.76,78.04,88667,30,21
+"GSE252501 DLPFC, controls",52,52,24.76,78.04,89784,30,22
+GSE279509 neurons (NeuN+),130,130,18.0,92.0,82504,90,40
+GSE279509 oligodendrocyte lineage (SOX10+),127,127,18.0,108.0,82608,90,36
+GSE279509 other glia (NeuN-/SOX10-),89,89,18.0,95.0,81291,72,17
+GSE279509 unsorted nuclei,148,148,18.0,95.0,81827,101,47

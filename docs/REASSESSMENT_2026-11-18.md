@@ -6,6 +6,25 @@ independent methods review), the rebuild of every array series from raw IDATs, a
 Still running when this was written: R98 (CR blood rebuilt), R102 (main tissues with rebuilt cortex), R105 (blood
 minus cortex on matched ages), R107 (Huang on the mouse recipe).
 
+## Update, 19 November: the two tests section 5 called decisive
+
+- **The joint test in cortex (R108).** With expression, chromatin state and sorted accessibility held together on the
+  rebuilt Jaffe arrays, the housekeeping gap falls from −0.082 to −0.019 SD and the core-essential gap from −0.073 to
+  −0.035; off the 0 % floor nothing distinguishable from zero is left. So the "interesting residue in cortex" of
+  section 3 is mostly promoter activity and the floor as well. An essentiality-specific shield is not shown in either
+  tissue.
+- **Sorted nuclei (R109, GSE279509).** The shield replicates in an independent series: unsorted cortical nuclei
+  −0.053 (148 donors). By cell type: other glia −0.077, oligodendrocyte lineage −0.034, neurons −0.021, and within
+  chips the neuronal gap is −0.008 with an interval across zero. It is strongest where cells can divide and weakest
+  where they cannot. Selection, or any division-coupled maintenance, is therefore back as a live explanation; the
+  direct paired test of neurons against glia in the same donors is the next run.
+- **Second DLPFC series (R109, GSE252501).** Same sign, −0.005 to −0.019, a quarter of Jaffe's size or less, in 52
+  independent donors.
+- **What this does to the plan.** B is answered (the claim is "active promoters drift less"). C is half answered:
+  replication yes, neurons no. D now has usable data: the neuron-glia contrast within donors and chips is the
+  cleanest selection-type test found so far. The paper's centre moves from "essential genes are shielded by
+  chromatin" towards "promoter drift is lowest at active promoters, and in brain the difference is carried by glia".
+
 ## 1. What the project set out to show
 
 1. **The shield.** Promoters of essential and housekeeping genes drift less with age than CpGs of the same island

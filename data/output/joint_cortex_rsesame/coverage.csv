@@ -1,0 +1,46 @@
+band,group,matching,set_cpgs,usable
+all,core_essential,island x level,6223,1.0
+all,core_essential,+ expression,6223,1.0
+all,core_essential,+ chromatin state,6223,1.0
+all,core_essential,+ sorted ATAC,6223,1.0
+all,core_essential,+ expression + state + sorted ATAC,6223,0.993893620440302
+all,housekeeping,island x level,37517,1.0
+all,housekeeping,+ expression,37517,1.0
+all,housekeeping,+ chromatin state,37517,0.9993869445851215
+all,housekeeping,+ sorted ATAC,37517,0.9998400725004665
+all,housekeeping,+ expression + state + sorted ATAC,37517,0.986192925873604
+all,non_essential,island x level,3960,1.0
+all,non_essential,+ expression,3960,0.9997474747474747
+all,non_essential,+ chromatin state,3960,1.0
+all,non_essential,+ sorted ATAC,3960,1.0
+all,non_essential,+ expression + state + sorted ATAC,3960,0.8742424242424243
+10-90 %,core_essential,island x level,736,1.0
+10-90 %,core_essential,+ expression,736,1.0
+10-90 %,core_essential,+ chromatin state,736,1.0
+10-90 %,core_essential,+ sorted ATAC,736,1.0
+10-90 %,core_essential,+ expression + state + sorted ATAC,736,0.9565217391304348
+10-90 %,housekeeping,island x level,5969,1.0
+10-90 %,housekeeping,+ expression,5969,1.0
+10-90 %,housekeeping,+ chromatin state,5969,0.9978220807505445
+10-90 %,housekeeping,+ sorted ATAC,5969,0.9991623387502094
+10-90 %,housekeeping,+ expression + state + sorted ATAC,5969,0.9396883900150779
+10-90 %,non_essential,island x level,1785,1.0
+10-90 %,non_essential,+ expression,1785,0.9921568627450981
+10-90 %,non_essential,+ chromatin state,1785,1.0
+10-90 %,non_essential,+ sorted ATAC,1785,0.9994397759103641
+10-90 %,non_essential,+ expression + state + sorted ATAC,1785,0.77703081232493
+20-80 %,core_essential,island x level,373,1.0
+20-80 %,core_essential,+ expression,373,1.0
+20-80 %,core_essential,+ chromatin state,373,0.9973190348525469
+20-80 %,core_essential,+ sorted ATAC,373,1.0
+20-80 %,core_essential,+ expression + state + sorted ATAC,373,0.9195710455764075
+20-80 %,housekeeping,island x level,3154,1.0
+20-80 %,housekeeping,+ expression,3154,1.0
+20-80 %,housekeeping,+ chromatin state,3154,0.9974635383639823
+20-80 %,housekeeping,+ sorted ATAC,3154,0.9974635383639823
+20-80 %,housekeeping,+ expression + state + sorted ATAC,3154,0.8963221306277742
+20-80 %,non_essential,island x level,881,1.0
+20-80 %,non_essential,+ expression,881,0.9761634506242906
+20-80 %,non_essential,+ chromatin state,881,0.996594778660613
+20-80 %,non_essential,+ sorted ATAC,881,0.9988649262202043
+20-80 %,non_essential,+ expression + state + sorted ATAC,881,0.6969353007945517
