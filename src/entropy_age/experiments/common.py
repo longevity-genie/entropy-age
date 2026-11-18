@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+import os
 import sys
 from dataclasses import dataclass, field
 from enum import StrEnum
@@ -72,12 +73,18 @@ class Context:
         return np.random.default_rng([self.seed, stream])
 
     def out_dir(self, figure: str) -> Path:
-        path = self.paths.output / figure
+        path = self.paths.output / f"{figure}{source_suffix()}"
         path.mkdir(parents=True, exist_ok=True)
         return path
 
     def figure_path(self, name: str) -> Path:
-        return self.paths.figures / f"{name}.png"
+        return self.paths.figures / f"{name}{source_suffix()}.png"
+
+
+def source_suffix() -> str:
+    """``_rsesame`` when the run reads betas rebuilt from raw IDATs (``ENTROPY_AGE_BETAS=sesame``, roadmap RM41), so its
+    tables and figures sit beside, never over, those from the authors' deposited betas."""
+    return "_rsesame" if os.environ.get("ENTROPY_AGE_BETAS", "deposited") == "sesame" else ""
 
 
 # ----------------------------------------------------------------------------- datasets

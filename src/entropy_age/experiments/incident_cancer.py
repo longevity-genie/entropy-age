@@ -29,6 +29,7 @@ import polars as pl
 from scipy import stats
 
 from entropy_age import plots
+from entropy_age.data import reprocessed
 from entropy_age.data.clocks import ClockLayout, read_clock
 from entropy_age.data.cohorts import _characteristics
 from entropy_age.experiments.common import Context, write_table
@@ -36,7 +37,7 @@ from entropy_age.experiments.health_states import loo_scores
 from entropy_age.experiments.per_person import _islands, _sets
 from entropy_age.experiments.shield_clocks import linear_score
 from entropy_age.experiments.stochastic_component import EPIDISH, deconvolve
-from entropy_age.experiments.syndromes import matrix_path, read_betas
+from entropy_age.experiments.syndromes import _rebuilt, matrix_path, read_betas, usable
 from entropy_age.experiments.tissue_contrast import _features
 
 GSE = "GSE51032"
@@ -78,6 +79,10 @@ def read_people(matrix: Path) -> pl.DataFrame:
 
 def mean_betas(matrix: Path, samples: list[str]) -> np.ndarray:
     """Each sample's mean beta over every CpG row of the series matrix's table (missing values skipped)."""
+    rebuilt = _rebuilt(matrix)
+    if rebuilt is not None:  # the rebuild's own mean, so mean beta and the scores come from one source
+        frame = reprocessed.read_betas(*rebuilt).select(samples)
+        return frame.mean().to_numpy().ravel().astype(float)
     total, count, columns = None, None, None
     with gzip.open(matrix, "rt") as handle:
         inside = False
@@ -198,6 +203,7 @@ def run(ctx: Context) -> list[Path]:
         str(c) for c in next(iter(rdata.read_rda(str(ctx.paths.input / EPIDISH)).values())).coords["dim_0"].values
     ]
     wanted = sorted(set(features) | set(clock_cpgs) | set(ref_cpgs))
+    people = people.filter(pl.col("sample").is_in(usable(matrix, people["sample"].to_list())))
     x_all = read_betas(matrix, wanted, people["sample"].to_list())
     col = {f: j for j, f in enumerate(wanted)}
     x = x_all[:, [col[f] for f in features]]

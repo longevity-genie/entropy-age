@@ -29,7 +29,7 @@ import polars as pl
 from scipy import stats
 
 from entropy_age.experiments.common import Context, write_table
-from entropy_age.experiments.syndromes import CONTROL, MIN_ARM, SERIES, matrix_path, read_betas, read_people
+from entropy_age.experiments.syndromes import CONTROL, MIN_ARM, SERIES, matrix_path, read_betas, read_people, usable
 from entropy_age.experiments.tissue_contrast import _features, _hannum, _lifespan_metrics
 from entropy_age.stochasticity import baseline_strata
 
@@ -81,6 +81,7 @@ def run(ctx: Context) -> list[Path]:
     for gse, arms in SERIES.items():
         people = read_people(matrix_path(ctx.paths, gse)).filter(pl.col("tissue") == "whole blood")
         feats = classes["feature"].to_list()
+        people = people.filter(pl.col("sample").is_in(usable(matrix_path(ctx.paths, gse), people["sample"].to_list())))
         x_all = read_betas(matrix_path(ctx.paths, gse), feats, people["sample"].to_list())
         ok = ~np.isnan(x_all).any(axis=0)
         x_all = x_all[:, ok]

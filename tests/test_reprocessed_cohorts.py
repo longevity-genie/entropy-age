@@ -41,3 +41,12 @@ def test_cohort_table_renames_by_gsm_or_position(tmp_path):
     pl.DataFrame({"sample": ["GSM1", "1_R02C01", "GSM3"]}).write_parquet(samples)
     out = pl.read_parquet(reprocessed.cohort_betas(paths, "GSE1", "x", samples))
     assert out.columns == ["cpg", "GSM1", "1_R02C01"]  # GSM3 failed detection
+
+
+def test_rebuilt_runs_write_beside_the_deposited_outputs(tmp_path, monkeypatch):
+    from entropy_age.experiments.common import source_suffix
+
+    monkeypatch.setenv("ENTROPY_AGE_BETAS", "sesame")
+    assert source_suffix() == "_rsesame"
+    monkeypatch.delenv("ENTROPY_AGE_BETAS")
+    assert source_suffix() == ""

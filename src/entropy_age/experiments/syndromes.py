@@ -25,6 +25,7 @@ Run as a job after ``entropy-age fetch syndromes``: ``entropy-age figures syndro
 from __future__ import annotations
 
 import gzip
+import os
 import sys
 from pathlib import Path
 
@@ -32,6 +33,7 @@ import numpy as np
 import polars as pl
 
 from entropy_age import plots
+from entropy_age.data import reprocessed
 from entropy_age.data.cohorts import _characteristics
 from entropy_age.experiments.bxd_liver import ols
 from entropy_age.experiments.common import Context, dummies, write_table
@@ -39,6 +41,7 @@ from entropy_age.experiments.consortium_interventions import arm_scores
 from entropy_age.experiments.interventions import _sets
 from entropy_age.experiments.per_person import _islands
 from entropy_age.experiments.tissue_contrast import _features
+from entropy_age.paths import ProjectPaths
 
 SERIES = {
     "GSE74432": {"Sotos": "NSD1", "NSD1 variant": "NSD1", "Weaver": "EZH2"},
@@ -94,8 +97,42 @@ def with_known_age(people: pl.DataFrame) -> pl.DataFrame:
     return known.filter(pl.col("age").is_between(lo, hi))
 
 
+def _rebuilt(matrix: Path):
+    """(paths, GSE) when ``ENTROPY_AGE_BETAS=sesame`` and the series has an R SeSAMe rebuild (RM41), else None."""
+    if os.environ.get("ENTROPY_AGE_BETAS", "deposited") != "sesame":
+        return None
+    gse = matrix.parent.name
+    paths = ProjectPaths(matrix.parents[4])  # data/input/geo/<GSE>/<file> -> the project root
+    if not reprocessed.available(paths, gse):
+        raise FileNotFoundError(
+            f"{gse} has no R SeSAMe rebuild; run scripts/sesame_preprocess.R (or unset ENTROPY_AGE_BETAS)"
+        )
+    return paths, gse
+
+
+def usable(matrix: Path, samples: list[str]) -> list[str]:
+    """``samples`` that have betas in the source in use: all of them for deposited betas, those passing SeSAMe QC for a
+    rebuild. Callers filter their people with it, so a failed array never becomes a row of NaN."""
+    rebuilt = _rebuilt(matrix)
+    if rebuilt is None:
+        return samples
+    passed = set(reprocessed.read_qc(*rebuilt).filter(pl.col("passed"))["sample"].to_list())
+    return [s for s in samples if s in passed]
+
+
 def read_betas(matrix: Path, features: list[str], samples: list[str]) -> np.ndarray:
-    """The series matrix's beta table, samples by ``features`` (NaN where a CpG is missing)."""
+    """The series matrix's beta table, samples by ``features`` (NaN where a CpG is missing); with
+    ``ENTROPY_AGE_BETAS=sesame`` the R SeSAMe rebuild of the same series (samples by GSM)."""
+    rebuilt = _rebuilt(matrix)
+    if rebuilt is not None:
+        frame = reprocessed.read_betas(*rebuilt)
+        missing = [s for s in samples if s not in frame.columns]
+        if missing:
+            raise ValueError(
+                f"{rebuilt[1]}: {len(missing)} samples not in the rebuild (filter with usable()): {missing[:5]}"
+            )
+        frame = pl.DataFrame({"probe": features}).join(frame.select("probe", *samples), on="probe", how="left")
+        return frame.select(samples).to_numpy().T.astype(float)
     index = {f: i for i, f in enumerate(features)}
     x = np.full((len(samples), len(features)), np.nan)
     columns = None
@@ -159,6 +196,7 @@ def run(ctx: Context) -> list[Path]:
     rows, scored = [], []
     for gse, arms in SERIES.items():
         people = with_known_age(read_people(matrix_path(ctx.paths, gse)).filter(pl.col("tissue") == "whole blood"))
+        people = people.filter(pl.col("sample").is_in(usable(matrix_path(ctx.paths, gse), people["sample"].to_list())))
         x_all = read_betas(matrix_path(ctx.paths, gse), features, people["sample"].to_list())
         ok = ~np.isnan(x_all).any(axis=0)
         x_all = x_all[:, ok]
