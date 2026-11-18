@@ -54,6 +54,8 @@ labels; claims C1, C2, C12). Reruns, in order:
 7. **Lunnon (H1):** renormalise all tissues jointly from GEO's raw intensities; slide stays confounded with tissue, so
    the same-donor contrast is reported as batch-confounded whatever the result.
 8. **Tet3 against Tet1 (M9):** rescore both on the mouse CpGs the two arrays share.
+9. **Missing values (best-practice check):** `FeatureMatrix` median-fills sporadic missing values (up to 5-10 % per
+   CpG); rerun the headline gaps on complete CpGs only and report the change.
 
 ## RM41 — One preprocessing from raw IDATs for every array series, with QC and batch checks
 

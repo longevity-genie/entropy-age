@@ -143,6 +143,48 @@ scores against confounders (R60): slide explains 36 % of B, 23 % of F, 20 % of S
 +0.013 (p 0.10); within-person F slope −0.14 per decade (−0.23 to −0.05); B +0.03 (spans 0). Positive control on first
 draws kept a third of Hannum's dispersion gap (−0.12) and none of its entropy gap.
 
+## Supplementary Note 4. Array processing and quality-control practice
+
+The practice the analyses follow, item by item, with where it stands (R numbers are runs; RM numbers are roadmap
+items still open).
+
+- **Raw data, one recipe.** Every array series with public raw IDATs is rebuilt with R SeSAMe 1.24.0 (sesameData
+  1.24.0, R 4.4.3), following SeSAMe's recommendation per platform: QCDPB for human 450k, EPIC and EPIC v2; TQCDPB for
+  the mouse MM285 design (T masks probes hit by the inferred strain's variants); SHCDPB for the 40k mammalian array in
+  mouse (S the species mask, H cg/ch probes only). The steps applied are recorded for each array. The mouse series were
+  first rebuilt with the human recipe and are being rebuilt again (RM43). SATSA and Gill were rebuilt with methylprep
+  1.7.1, labelled as such; on Jaffe's cortex the two implementations agreed within 0.004 SD (R93). Cohorts without
+  raw IDATs keep the authors' processing and are marked wherever reported.
+- **Sample flow.** Per series: deposited samples, samples with both IDAT channels, samples passing QC, samples in each
+  model, and donors (Supplementary Table S4 names the analyses; per-series counts are in each run's log).
+- **Sample QC.** Detection by pOOBAH: an array passes when it detects at least 90 % of its probes (for the
+  multi-species 40k array, of the probes the species mask keeps). Recorded beside it: the bisulfite-conversion index
+  (GCT, near 1 when conversion is complete), mean intensities, dye-bias statistics and each sample's beta quantile
+  curve with its distance from the series' median curve (R103). Three human series have a high conversion index
+  (clonal haematopoiesis 1.58, the two writer-syndrome series 1.39-1.47, against about 1.07 elsewhere); their results
+  are rerun with high-index arrays excluded (RM43).
+- **Probe QC and one CpG universe.** The CpGs analysed are those measured in the samples of a contrast, fixed before
+  any group comparison, and set and background CpGs come from that same universe. CpGs missing in more than a small
+  share of samples (5 % for most array analyses; 10 % for RRBS, the two mouse blood RRBS analyses and Gill) are dropped; the remaining
+  sporadic missing values are filled with that CpG's median across the contrast's samples, alike for set and
+  background. Filling lowers spread slightly at the filled CpGs, so the headline gaps are being rerun on complete
+  CpGs only (RM43). No clock training means or values pooled across studies are imputed.
+- **Batch.** Within each series, the share of the leading principal components explained by chip, row and position,
+  and how far each design variable (age, group, tissue, sex) is confounded with chip (R103). Where chip and the
+  contrast overlap, the contrast is estimated within chip (Huang mouse tissues, R92; CR blood, R91; EPIC-Italy with
+  same-chip matching, R84b; Tet3 against same-chip wild types). Where chip fully determines the contrast (CR blood's
+  aging controls; Lunnon blood against brain) it is reported as unidentifiable; batch correction does not create the
+  missing comparison.
+- **Platforms and studies.** Effects are estimated within one study and platform and reported side by side, with two
+  pooled exceptions named in Methods (SATSA, the transplant series). Comparisons across arrays are to be redone on
+  the CpGs both measure (RM41: Tet3 against Tet1, GTEx EPIC against 450k cohorts); RRBS and array estimates are not
+  ranked against each other.
+- **Second tracks.** For each analysis Supplementary Table S4 says whether chromatin, expression or outcome comes
+  from the same samples, the same study or another study, and from the same cell or tissue type.
+- **Published clocks.** Scoring with each clock's own inputs, reference and missing-data rule, and an audit of how
+  much coefficient weight is lost per person, are not yet done (RM41); results that use published clocks are
+  reported as indices on our matrices, not as the clocks' published outputs.
+
 ## Supplementary figures
 
 | figure | file | content |

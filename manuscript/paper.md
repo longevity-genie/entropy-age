@@ -476,7 +476,12 @@ within one dataset and platform, with two exceptions that pool platforms inside 
 SATSA's 450k and EPIC waves (a chip-change term per pair of draws; the 450k-only rebuild is reported beside it) and
 the transplant series' batches (batch terms; each donor-recipient pair within one batch). Supplementary Table S4 lists,
 for every analysis, the platform, processing, the source of any second track (chromatin, expression, outcome) and
-whether it comes from the same samples, the same study or another study. Technical covariates were removed in every age slope (blood: plate, site, sex, ancestry; cortex: plate,
+whether it comes from the same samples, the same study or another study. Quality control follows one written practice (Supplementary Note 4): every series has a sample flow from deposited
+samples to IDAT pairs, QC and model rows; arrays are excluded on detection, with the bisulfite-conversion index,
+intensities and each sample's beta distribution recorded beside it; set and background CpGs share one quality-passing
+universe fixed before any group comparison, so missingness cannot differ between them; within each series the leading
+principal components are decomposed by chip, row and position, and each design variable's confounding with chip is
+measured; a contrast that chip fully determines is reported as unidentifiable, not adjusted. Technical covariates were removed in every age slope (blood: plate, site, sex, ancestry; cortex: plate,
 sex, ancestry, neuron fraction; other cohorts as available). RRBS CpGs were kept when covered at least 10 times in 90 %
 of a tissue's samples.
 
