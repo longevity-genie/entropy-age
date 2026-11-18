@@ -14,7 +14,7 @@ adds R77 (held loci protected in blood), R78 (no sex difference), R79 (no univer
 
 ## RM38 — The simulated referees' analyses, before submission
 
-**State:** unattended (the default of the v0.1 decision list: narrow the claim now, run the analysis before submission) · **Owner:** lead
+**State:** done 2026-11-18 (R80, R82, R83, R84b; was unattended, the default of the v0.1 decision list: narrow the claim now, run the analysis before submission) · **Owner:** lead
 
 1. **The 0 % floor:** the shield's gap in blood and cortex with CpGs restricted to a young level of 10-90 %, as R59 did for the species array. Done (R80): in blood most of the shield is the floor (housekeeping spread −0.29 → −0.08 SD at 20-80 %, core-essential and relative entropy to 0); cortex keeps its size, interval to 0 at 20-80 %. v0.2 states the blood shield with this bound.
 2. **Faster loss beyond a pooled fit:** the per-CpG bounded relaxation of R67 reported per set with its interval, not only the pooled rates. Done (R83): faster loss per CpG holds in blood only (housekeeping +0.11 SD, +0.05 to +0.15) and goes with own chromatin state; not seen in cortex. A lower resting level holds in both tissues. v0.2 narrows the Tet3-removal story to blood plus the resting level.
@@ -90,7 +90,7 @@ effects ... apply it to all samples and validate if things are done properly for
 
 ## RM39 — The eight open gaps of the beyond-the-shield review
 
-**State:** unattended (asked by antonkulaga 2026-11-18: "we still have 8 ideas that we can analyze, can you do it?"; the 8 read from `docs/LITERATURE_COVERAGE.md`, sent to him with this default) · **Owner:** lead
+**State:** done 2026-11-18 (R85-R90, items 4 and 8 from past runs; was unattended, asked by antonkulaga 2026-11-18: "we still have 8 ideas that we can analyze, can you do it?"; the 8 read from `docs/LITERATURE_COVERAGE.md`, sent to him with this default) · **Owner:** lead
 
 Jobs may go to account `cluster`, partition `requeue` (preemptible; he allowed it the same day), each restartable.
 
