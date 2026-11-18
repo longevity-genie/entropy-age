@@ -55,9 +55,15 @@ effects ... apply it to all samples and validate if things are done properly for
    (<= 6 months) and old (>= 18 months) animals on shared chips in liver (72/100), muscle (20/54), cortex (21/46),
    blood (17/18), striatum (6/18), cerebellum (6/11), lung (6/9); spleen (4/2), kidney (6/2), heart (3/3) thin; no
    colon. A per-tissue age slope with chip intercepts, then the turnover-class contrast.
-2. **Renewing tissues and CR blood over time from other series:** a GEO search (running 2026-11-18) for mouse colon,
-   intestine, spleen, marrow, skin and blood with young and old processed together, and CR blood with baseline and
-   endpoint on shared batches.
+2. **Renewing tissues from other series** (GEO search 2026-11-18; batch read from IDAT chip ids or FASTQ flowcells):
+   GSE233734 colon RRBS, 3-28 months, n 16-18 per age, every flowcell holds every age (best); GSE238172 mammal
+   array, sorted marrow (each cell type on one chip with all ages) and blood (one chip), check overlap with
+   GSE223748 first; GSE200527 MM285 blood, both B6 chips hold young and old; GSE198638 intestinal stem-cell WGBS,
+   3 lanes hold both ages; GSE161141 rat blood RRBS, every lane holds both. Unknown or weak: GSE213628, GSE129712,
+   GSE236617, GSE225166. Arrays enter through RM41's SeSAMe recipe; RRBS and WGBS need a sequencing pipeline.
+3. **CR blood over time:** no public series has CR and ad-lib blood at more than one age in shared batches
+   (closest: GSE75495, CR at one old age, batch unknown; liver only: GSE92486, GSE89274). The CR 12-week aging
+   contrast stays unresolved.
 
 ## RM39 — The eight open gaps of the beyond-the-shield review
 
