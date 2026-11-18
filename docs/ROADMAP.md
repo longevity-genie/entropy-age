@@ -12,6 +12,22 @@ Round v0.1 (RM36, done 2026-11-16) is on Drive. v0.2 narrows the claims the simu
 floor, faster loss resting on a pooled fit, placebo sets not matched on expression, the cancer cohort's design),
 adds R77 (held loci protected in blood), R78 (no sex difference), R79 (no universal hotspots), R80 (the blood shield is mostly the floor) and R82 (in blood, mostly expression), and fills the authors' decisions as they come.
 
+## RM42 — A provenance table for every comparison: same samples or not, platform, chromatin source
+
+**State:** urgent (asked by antonkulaga 2026-11-18: "have a table for comparisons to clearly separate: where several
+tracks (chromatin and methylation) is from same sample or study and where not, what are the arrays. Also, how
+chromatin is decided by a tissue-specific atac assay, or from general ensembl track (and if general - from same cell
+or tissue type or general) these things must be clearly shown in paper and taken into consideration in paper,
+manuscript and comparisons") · **Owner:** lead
+
+1. Inventory every reported analysis: methylation study and platform; second track (chromatin, expression, outcome)
+   and its source; same samples, same study or other study; chromatin as own-tissue assay, reference epigenome of
+   the same tissue, of another tissue, sorted cells, or none.
+2. The table goes into the supplement (and a short version in Methods); every Results sentence that joins tracks
+   from different studies says so; cross-platform and cross-tissue pairings are flagged in claims and wording.
+3. Comparisons that join another tissue's chromatin reference, or two platforms, are redone on matched sources
+   where data exist, or reported as such.
+
 ## RM41 — One preprocessing from raw IDATs for every array series, with QC and batch checks
 
 **State:** unattended (asked by antonkulaga 2026-11-18: "use raw idat, preprocess data same way, check for batch
