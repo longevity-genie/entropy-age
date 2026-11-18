@@ -178,7 +178,7 @@ draws kept a third of Hannum's dispersion gap (−0.12) and none of its entropy 
 | Lunnon blood and four brain regions | GSE59685 | 450k | deposited; **no raw IDATs on GEO, not rebuilt** |
 | GSE41037 blood | GSE41037 | 27k | deposited; **no raw IDATs on GEO, not rebuilt** |
 | GTEx nine tissues | GSE213478 | EPIC | deposited (noob + BMIQ); **raw IDATs controlled access, not rebuilt** |
-| Muscle fibres | GSE304045 | EPIC v2 | deposited; rebuild running (R101) |
+| Muscle fibres | GSE304045 | EPIC v2 | deposited; rebuilt from IDATs (R101) |
 | SATSA twins, longitudinal | E-MTAB-7309 / S-BSST1206 | 450k | deposited (R52); rebuilt from IDATs (R66) |
 | Gill 2022 transient reprogramming | GSE165179 | EPIC | rebuilt from IDATs (R65) |
 | Cellular Lifespan Study fibroblasts | GSE179847 | EPIC | deposited; rebuilt from IDATs (R94) |

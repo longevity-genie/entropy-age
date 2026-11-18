@@ -3,6 +3,15 @@
 Owned by the runner seat (`docs/seats/RUNNER.md`): one entry per run, newest first, with its inputs, the
 commit it ran, its job ids, its scale and seed, and its result or its failure with the cause.
 
+## R101 — muscle fibres on R SeSAMe betas (RM41), 2026-11-18
+
+- `ENTROPY_AGE_BETAS=sesame figures fibres --scale paper --seed 42`, commit f37945f (after the replicate-name fix),
+  job 6517530 (test partition), 7.5 min; first attempt 6517106 failed on a replicate's name. 92 of 92 arrays mapped;
+  12 people before training, 11 at 12 weeks; 88,247-88,549 CpGs.
+- Whole muscle minus pure fibres, housekeeping: pre WM − T1 +0.008 (0.000 to +0.016), WM − T2 −0.006 (−0.013 to 0.000);
+  12 weeks +0.007 and +0.002, intervals across zero (deposited: +0.004, −0.006, +0.001, +0.007). Still no difference
+  between non-dividing fibres and whole muscle. Not in the paper's text; Table S1 names the rebuild.
+
 ## R100 — BXD liver and Browder cyclic OSKM on R SeSAMe betas (RM41), 2026-11-18
 
 - `ENTROPY_AGE_BETAS=sesame figures bxd|reprogramming --scale paper --seed 42`, commit fa2ce10, job 6516403 (test
