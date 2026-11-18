@@ -46,6 +46,10 @@ commit it ran, its job ids, its scale and seed, and its result or its failure wi
   Lunnon blood men −0.20 (−0.26, −0.01), women −0.08 (−0.19, 0.11); cortex 0 (Jaffe −0.03, Lunnon −0.02/−0.02, all
   intervals across 0). X-island CpGs at one half in women: Lunnon blood −0.29 (−0.35, −0.09); Jaffe cortex −0.03
   (−0.16, 0.07), Lunnon frontal cortex +0.10 (−0.26, 0.22). Housekeeping in the same runs: Hannum −0.16, Jaffe −0.05.
+- Rerun on the audit fixes (77aa712; resamples on the full sample's SD, fixed relative entropy): job 6503581,
+  50 min. Imprinted, Hannum blood −0.51 (−0.71, −0.39); Jaffe cortex −0.03 (−0.17, 0.09); X at one half in women,
+  Lunnon blood −0.29 (−0.55, −0.13), Lunnon frontal cortex +0.10 (−0.43, 0.32); housekeeping Hannum −0.15 (−0.22,
+  −0.11), Jaffe −0.05 (−0.09, −0.03). Intervals now contain their estimates; the reading stands.
 - Reading: loci a maintenance machinery holds at one half are protected from drift in blood, two to three times
   the essential-promoter shield, and not in cortex. The blood-brain difference of the shield is a property of the
   tissue's maintenance of held states, not of essential genes alone. Tables `data/output/allelic_controls/`.
@@ -58,6 +62,9 @@ commit it ran, its job ids, its scale and seed, and its result or its failure wi
   relative entropy) does not differ in any of nine tissues (p_boot 0.14-1.0). The housekeeping shield on relative
   entropy does not differ either (−0.09 to +0.07 SD, every interval across 0); on dispersion it is weaker in women in
   Jaffe cortex (+0.08, 0.01-0.10) and GTEx colon (+0.14, 0.02-0.24), nowhere on relative entropy.
+- Rerun on the audit fixes (77aa712): job 6503582, 47 min. Relative entropy, women − men, housekeeping: −0.09 to
+  +0.06 SD, every interval across 0; dispersion weaker in women in Jaffe cortex (+0.08, 0.01-0.15) and GTEx colon
+  (+0.14, 0.01-0.30). The reading stands.
 - Reading: no sex difference in drift or the shield; sex need not be split in the shield's analyses. Tables
   `data/output/sex_drift/`.
 
