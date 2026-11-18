@@ -4,6 +4,7 @@ Newest first.
 
 ## Unreleased
 
+- 2026-11-18: R95, writer syndromes on rebuilt arrays: drift and shield effects hold (NSD1/EZH2 shield loss slightly stronger); concordance now rests on NSD1 and Weaver, CHARGE drops to p 0.064.
 - 2026-11-18: R94, culture on rebuilt betas: Endicott's shield vanishes at the reference and trends toward growth with doublings (selection direction, CI includes 0); Sturm unchanged. Claims and manuscript updated.
 - 2026-11-18: R84b (matched breast-cancer design holds, OR 1.7), R85 (no sex difference across mammals), R86 (no Braak gradient), R88 (organs of one mouse drift together, r 0.15-0.19), R90 (writer variants add noise at noisy-aging CpGs).
 - 2026-11-18: R93, Jaffe paired pipeline pilot: R SeSAMe and methylprep agree within 0.004 SD; both strengthen the cortex gap against deposited betas (spread −0.07 → −0.12 SD).

@@ -50,6 +50,21 @@ commit it ran, its job ids, its scale and seed, and its result or its failure wi
   two NSD1 arms disagree. Where these variants act, they look like noise added at the CpGs aging makes noisy, not
   a faster directed clock.
 
+## R95 — writer syndromes and their concordance on rebuilt betas (RM41), 2026-11-18
+
+- `ENTROPY_AGE_BETAS=sesame figures syndromes syndrome_concordance --scale paper --seed 42` (commit b36c116); job
+  6513665 (test partition), 29 min. GSE74432 and GSE97362 from R SeSAMe (HM450; 2 and 1 arrays fail detection).
+  Outputs `data/output/syndromes_rsesame/`, `syndrome_concordance_rsesame/` beside the deposited ones.
+- Result, as measured (housekeeping, deposited → rebuilt). Look-alike drift B: Sotos +0.018 → +0.019, NSD1 variants
+  +0.013 → +0.014, Weaver +0.012 → +0.014, Kabuki +0.009 → +0.009, CHARGE +0.007 → +0.007 (all p < 0.001 both);
+  KMT2D and CHD7 variants about 0 both. Shield share F: Sotos −0.051 → −0.069, NSD1 variants −0.067 → −0.079,
+  Weaver −0.063 → −0.078 (all p ≤ 0.02 both); the others within ±0.02, n.s. Noise concordance at noisy-aging
+  CpGs: NSD1 variants +0.38 (p 0.012) → +0.42 (p 0.004), Weaver +0.58 (0.016) → +0.82 (0.012), CHARGE +0.25 (0.002)
+  → +0.14 (0.064), Sotos, Kabuki, KMT2D and CHD7 variants about 0 both; directed concordance none either way.
+- Reading: the syndrome results hold on rebuilt arrays, the NSD1 and EZH2 shield loss a little stronger. In R90 the
+  arm that survived Bonferroni changes: on rebuilt betas it is NSD1 variants (p 0.004), and CHARGE no longer
+  reaches 0.05. The concordance claim rests on NSD1 and EZH2, not CHARGE.
+
 ## R94 — the culture test on rebuilt betas: deposited against R SeSAMe on the same samples (RM41), 2026-11-18
 
 - Commit 53b4db5 (after a filter that rebuilt a set per feature ran for hours, 6512015 cancelled); `figures
