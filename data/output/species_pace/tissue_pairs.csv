@@ -1,0 +1,9 @@
+tissue_a,tissue_b,unit,species,directed_share_a_faster,directed_p,noise_share_a_faster,noise_p
+Blood,Liver,year,7,0.5714285714285714,1.0,0.42857142857142855,1.0
+Blood,Skin,year,12,0.5,1.0,0.4166666666666667,0.7744140625
+CerebralCortex,Liver,year,5,0.4,1.0,0.2,0.375
+Heart,Liver,year,5,0.8,0.375,0.2,0.375
+Blood,Liver,life,7,0.5714285714285714,1.0,0.42857142857142855,1.0
+Blood,Skin,life,12,0.5,1.0,0.4166666666666667,0.7744140625
+CerebralCortex,Liver,life,5,0.4,1.0,0.2,0.375
+Heart,Liver,life,5,0.8,0.375,0.2,0.375

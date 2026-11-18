@@ -3,6 +3,19 @@
 Owned by the runner seat (`docs/seats/RUNNER.md`): one entry per run, newest first, with its inputs, the
 commit it ran, its job ids, its scale and seed, and its result or its failure with the cause.
 
+## R87 — directed against noise pace of tissues across mammals (RM39 item 3), 2026-11-18
+
+- Commit ab708cc; `figures species_pace --scale paper --seed 42`; job 6511070 (itmz), 41 min. 139 species-tissue
+  groups of 65 species (`species_shield`'s), look-alike CpGs; directed pace = median |age slope of the mean|,
+  noise pace = median age slope of dispersion, per year and per lifespan.
+- Result, as measured: within the 9 species with >= 3 tissues, Spearman of directed against noise pace, median
+  +0.18 (mouse +0.18 over 17 tissues, rat +0.48 over 13, human +0.07 over 13, naked mole rat −0.71 over 8), positive in
+  7 of 9, Wilcoxon p 0.20; per lifespan the same. Tissue pairs seen in >= 5 species: 8; blood against skin ordered
+  alike in 50 % (directed) and 42 % (noise) of 12 species; no pair ordered consistently.
+- Reading: tissues that change fastest in a directed way are not clearly the noisiest, and no tissue order is
+  shared across species, as R40 found in rodent RNA for noise. The data hold few species with several tissues.
+  Table `data/output/species_pace/`.
+
 ## R84b, R85, R86, R88, R90 — the matched cancer design and four of the eight open ideas (RM38 item 4, RM39), 2026-11-18
 
 - Jobs on the test partition (account cluster) and itmz, twins cancelling each other: R84b 6511660 (12 min, commit

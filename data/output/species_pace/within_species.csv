@@ -1,0 +1,19 @@
+species,unit,tissues,rho
+Mouse,year,17,0.17647058823529413
+Vervet,year,3,1.0
+Olive baboon,year,6,0.028571428571428574
+Naked mole rat,year,8,-0.7142857142857144
+Human,year,13,0.07142857142857142
+Rat,year,13,0.4835164835164835
+Pig,year,6,0.7714285714285715
+Cattle,year,3,1.0
+Prairie vole,year,3,-0.5
+Mouse,life,17,0.17647058823529413
+Vervet,life,3,1.0
+Olive baboon,life,6,0.028571428571428574
+Naked mole rat,life,8,-0.7142857142857144
+Human,life,13,0.07142857142857142
+Rat,life,13,0.4835164835164835
+Pig,life,6,0.7714285714285715
+Cattle,life,3,1.0
+Prairie vole,life,3,-0.5
