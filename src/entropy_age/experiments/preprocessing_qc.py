@@ -10,6 +10,9 @@ For each series in ``data/interim/sesame`` (``scripts/sesame_preprocess.R``):
 * **Design confounding:** for every characteristic GEO records for the series (age, group, tissue, sex ...), the
   share of its variance chip explains: 1 means the variable cannot be separated from chip in this series (the
   2026-11-18 audit's finding, made routine).
+* **Distributions:** per sample, the beta quantiles (1 to 99 %) and the largest distance between its quantile curve
+  and the series' median curve (a Kolmogorov-type distance on the quantile scale); a sample beyond the series'
+  median distance + 5 MADs is flagged, so a shifted or squashed array is seen before it enters any comparison.
 * **Agreement:** where the project also holds the authors' deposited betas, per-sample Pearson r between deposited
   and rebuilt betas over shared probes, and per-probe r across samples (median), matched by GSM or by chip_position.
 
@@ -84,6 +87,29 @@ def confounding(design: pl.DataFrame, chips: np.ndarray) -> list[dict]:
     return rows
 
 
+QUANTILES = np.linspace(0.01, 0.99, 99)
+
+
+def distributions(x: np.ndarray, samples: list[str]) -> list[dict]:
+    """Per sample (rows of ``x``, all probes, NaN ignored): quartiles, 5/95 %, the distance of its quantile curve from
+    the series' median curve (max |difference| in beta units), and whether that distance is an outlier."""
+    curves = np.vstack([np.nanquantile(row, QUANTILES) for row in x])
+    reference = np.median(curves, axis=0)
+    dist = np.abs(curves - reference).max(axis=1)
+    mad = np.median(np.abs(dist - np.median(dist))) or 1e-9
+    cut = np.median(dist) + 5 * 1.4826 * mad
+    at = {q: int(round(q * 100)) - 1 for q in (0.05, 0.25, 0.5, 0.75, 0.95)}
+    return [
+        {
+            "sample": s,
+            **{f"q{int(q * 100):02d}": float(curves[i, j]) for q, j in at.items()},
+            "distance": float(dist[i]),
+            "outlier": bool(dist[i] > cut),
+        }
+        for i, s in enumerate(samples)
+    ]
+
+
 def agreement(rebuilt: pl.DataFrame, qc: pl.DataFrame, deposited: pl.DataFrame) -> dict:
     """Per-sample and per-probe Pearson r between deposited and rebuilt betas, samples matched by GSM or position."""
     key = dict(zip(qc["sample"], (qc["chip"] + "_" + qc["position"]).fill_null(""), strict=True))
@@ -121,7 +147,7 @@ def run(ctx: Context) -> list[Path]:
     out = ctx.out_dir("preprocessing_qc")
     root = ctx.paths.interim / "sesame"
     series = sorted(p.name for p in root.iterdir()) if root.exists() else []
-    qc_rows, batch_rows, conf_rows, agree_rows = [], [], [], []
+    qc_rows, batch_rows, conf_rows, agree_rows, dist_rows = [], [], [], [], []
     for gse in series:
         if not reprocessed.available(ctx.paths, gse):
             continue
@@ -132,6 +158,7 @@ def run(ctx: Context) -> list[Path]:
         q = qc.filter(pl.col("sample").is_in(samples)).with_columns(pl.col("sample").cast(pl.String))
         q = pl.DataFrame({"sample": samples}).join(q, on="sample", how="left")
         x = betas.drop("probe").to_numpy().T.astype(float)
+        dist_rows += [{"series": gse, **r} for r in distributions(x, samples)]
         x = x[:, ~np.isnan(x).any(axis=0)]
         if x.shape[1] > TOP_PROBES:
             x = x[:, np.argsort(x.var(axis=0))[-TOP_PROBES:]]
@@ -155,4 +182,5 @@ def run(ctx: Context) -> list[Path]:
     write_table(pl.DataFrame(batch_rows), out / "batch")
     write_table(pl.DataFrame(conf_rows), out / "design_confounding")
     write_table(pl.DataFrame(agree_rows), out / "agreement")
+    write_table(pl.DataFrame(dist_rows), out / "distributions")
     return []

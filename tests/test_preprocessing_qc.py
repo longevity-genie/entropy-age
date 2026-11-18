@@ -43,3 +43,15 @@ def test_agreement_matches_by_position():
     dep = rebuilt.rename({"probe": "cpg", "GSM1": "c_R01C01", "GSM2": "c_R02C01", "GSM3": "c_R03C01"})
     r = agreement(rebuilt, qc, dep)
     assert r["matched_samples"] == 3 and abs(r["sample_r_median"] - 1) < 1e-12
+
+
+def test_distributions_flag_a_shifted_sample():
+    import numpy as np
+
+    from entropy_age.experiments.preprocessing_qc import distributions
+
+    rng = np.random.default_rng(0)
+    x = rng.beta(0.5, 0.5, size=(12, 2000))
+    x[3] = np.clip(x[3] + 0.2, 0, 1)
+    rows = distributions(x, [f"s{i}" for i in range(12)])
+    assert [r["sample"] for r in rows if r["outlier"]] == ["s3"]
