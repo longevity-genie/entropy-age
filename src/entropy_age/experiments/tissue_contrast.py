@@ -172,7 +172,7 @@ def _lifespan_metrics(p: Prepared, rows: np.ndarray | None = None) -> pl.DataFra
     rows = np.arange(p.x.shape[0]) if rows is None else rows
     cov = None if p.covariates is None else p.covariates[rows]
     if cov is not None:  # a resample can drop a level entirely; keep the design full rank
-        cov = cov[:, cov.std(axis=0) > 0]
+        cov = cov[:, np.ptp(cov, axis=0) > 1e-12]
     return drift_metrics(p.x[rows], p.ages[rows], p.features, covariates=cov, spearman=False)
 
 
@@ -596,7 +596,7 @@ def _subset(p: Prepared, keep: np.ndarray, extra: np.ndarray | None = None) -> P
     if extra is not None:
         cov = extra[keep] if cov is None else np.column_stack([cov, extra[keep]])
     if cov is not None:
-        cov = cov[:, cov.std(axis=0) > 0]
+        cov = cov[:, np.ptp(cov, axis=0) > 1e-12]
     tech = p.technical[keep] if p.technical is not None else None
     return dataclasses.replace(p, x=p.x[keep], ages=p.ages[keep], covariates=cov, donors=p.donors[keep], technical=tech)
 
