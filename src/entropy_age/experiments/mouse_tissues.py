@@ -292,7 +292,11 @@ def run(ctx: Context) -> list[Path]:
     animals = {g: np.array(sorted(d)) for g, d in sorted(groups.items())}
     state = {"tissues": tissues, "probes": probes, "membership": membership, "animals": animals}
     boot = pl.DataFrame(_run_parallel(_boot, [5000 + b for b in range(n_boot)], workers, state))
-    boot = rescale(boot, point, ["tissue", "measure", "metric"])
+    # A resample can make a within-chip contrast identifiable in a tissue where the full sample has none: such rows
+    # measure nothing the point estimate has and are left out (2026-11-18, R92's first run).
+    keys = ["tissue", "measure", "metric"]
+    boot = boot.join(point.select(keys).unique(), on=keys, how="semi")
+    boot = rescale(boot, point, keys)
     boot.write_parquet(out / "bootstrap.parquet")
 
     summary = summarise(point, boot)
