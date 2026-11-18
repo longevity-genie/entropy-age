@@ -4,6 +4,7 @@ Newest first.
 
 ## Unreleased
 
+- 2026-11-18: R99, CH, Tet1 and Dnmt3a gain of function on rebuilt arrays: all three results hold (Tet1 on 19 of 24 arrays).
 - 2026-11-18: R97, Huang mouse tissues on rebuilt arrays: the deposited betas are R SeSAMe output to float precision; relative-entropy contrasts move <= 0.02, R92 holds.
 - 2026-11-18: CH (GSE315366), Tet1 (GSE271375) and Sarni (GSE324160) readers take the R SeSAMe rebuild under ENTROPY_AGE_BETAS=sesame (reprocessed.by_accession, matrix).
 - 2026-11-18: R92, mouse turnover within chip: the renewing-vs-post-mitotic ordering (−0.19) goes to +0.02 among animals on shared chips; claims C2/C3, E32 and the manuscript now say the ordering is not separable from chip.

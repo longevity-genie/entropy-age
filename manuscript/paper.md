@@ -229,11 +229,13 @@ et al. 2016), and not with Tet1. These are single studies on different arrays (T
 the mouse array), each with eight mutants per tissue, and knockouts show a state, not a rate. The result agrees with
 Krepelova et al. (2025), who found impaired TET activity driving drift in the mouse intestine; our data add
 that the effect falls on essential promoters specifically, against same-chip wild types (Supplementary Figs. S3, S4).
+Re-processed from the raw IDATs, five of the 24 Tet1 arrays fail detection; on the remaining six or seven animals
+per genotype the Tet1 result holds (F −0.09 to −0.17, p ≤ 0.002; S −0.015 to −0.020).
 
 Because F is a ratio, a perturbation of the look-alikes moves it as much as one of the set, and two other
 perturbations act on the look-alikes instead. A DNMT3A gain-of-function mutation (W326R; Sarni et al.
 2026), which retargets methylation to Polycomb-marked regions (Heyn et al. 2019), moved essential sets' look-alikes
-(F about −0.6 in bone marrow, intestine and liver). Children with constitutional variants in chromatin writers
+(F about −0.6 in bone marrow, intestine and liver; −0.54 to −0.68 re-processed from the IDATs). Children with constitutional variants in chromatin writers
 (NSD1, EZH2, KMT2D, CHD7) drifted more while keeping the shield share (Supplementary Note 3; Supplementary Fig. S21).
 
 ### Chromatin accounts for most of the shield in blood and less in cortex
@@ -295,7 +297,7 @@ cells, lifespan, reprogramming state or transcription.**
 per 10 doublings (above): no detectable growth, but intervals that do not exclude growth of the size selection might give.
 Selection would make the share grow, although steady selection per doubling could also keep it constant in long-term cultures that lose clonal diversity,
 as mesenchymal stromal cells and iPSCs do (Hollmann et al. 2020). Clonal haematopoiesis, a form of selection in living
-blood, did not move the shield (64 patients of Basrai et al. 2026, any clone, DNMT3A or TET2; |F| ≤ 0.022, p ≥ 0.15), although clones
+blood, did not move the shield (64 patients of Basrai et al. 2026, any clone, DNMT3A or TET2; |F| ≤ 0.022, p ≥ 0.15; re-processed from the IDATs |F| ≤ 0.031, p ≥ 0.19), although clones
 without allele fractions are diluted in bulk blood. Across a stem-cell transplant (92 transplants, up to 23 years; Holland 2024),
 essential and non-essential promoters moved alike (F −0.058, −0.039, −0.057 for core-essential, housekeeping and
 non-essential): a bottleneck did not protect essential promoters specifically (Supplementary Fig. S17). Caloric restriction, which slows

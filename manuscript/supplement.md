@@ -197,9 +197,9 @@ draws kept a third of Hannum's dispersion gap (−0.12) and none of its entropy 
 | BXD liver | GSE199979 | mammalian methylation array (40k) | deposited |
 | Browder 2022 cyclic OSKM | GSE190665 | Mammal40 | deposited |
 | Chondronasiou 2022 one OSKM cycle | GSE156557 | RRBS | deposited |
-| Tet1 cortex | GSE271375 | MM285 | deposited |
-| Dnmt3a gain of function | GSE324160 | mouse array | deposited |
-| Clonal haematopoiesis | GSE315366 | EPIC | deposited |
+| Tet1 cortex | GSE271375 | MM285 | rebuilt (R99; 19 of 24 arrays pass) |
+| Dnmt3a gain of function | GSE324160 | mouse array | rebuilt (R99) |
+| Clonal haematopoiesis | GSE315366 | EPIC | rebuilt (R99) |
 | ImmGen ATAC (mouse blood cells) | GSE100738 | ATAC-seq | deposited peaks |
 | Sorted neuron/glia chromatin | GSE96614 | ATAC-seq | deposited |
 | Reference epigenomes | Roadmap E062, E030, E073 | ChromHMM | deposited |

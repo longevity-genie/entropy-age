@@ -3,6 +3,19 @@
 Owned by the runner seat (`docs/seats/RUNNER.md`): one entry per run, newest first, with its inputs, the
 commit it ran, its job ids, its scale and seed, and its result or its failure with the cause.
 
+## R99 — CH, Tet1 and Dnmt3a gain of function on R SeSAMe betas (RM41), 2026-11-18
+
+- `ENTROPY_AGE_BETAS=sesame figures chip|tet1|dnmt3a --scale paper --seed 42`, commit b25c777, job 6515945 (test
+  partition), 2 min for all three.
+- **CH (GSE315366):** all 64 patients pass; 87,669 CpGs (deposited 101,667). Still no effect: |F| ≤ 0.031, p ≥ 0.19
+  for any CH, DNMT3A and TET2, raw or with 5 components (deposited |F| ≤ 0.022, p ≥ 0.15).
+- **Tet1 (GSE271375):** 19 of 24 bisulfite arrays pass detection, 6 KO, 6 Hxd and 7 wild types (was 8 each).
+  KO F core-essential −0.169/−0.128 (raw / 3 components), housekeeping −0.128/−0.094; Hxd −0.136/−0.134 and
+  −0.123/−0.116; all F p ≤ 0.002. S −0.015 to −0.020 (p < 10⁻⁵). The shield strengthening holds (was F −0.11 to −0.17).
+- **Dnmt3a W326R (GSE324160):** all 72 arrays pass. F core-essential −0.68, −0.54, −0.56 (bone marrow, intestine,
+  liver; was −0.60, −0.53, −0.61), housekeeping −0.65, −0.54, −0.57; B +0.065 to +0.093.
+- No claim changes. Manuscript Results and the supplement's data table name the rebuild.
+
 ## R97 — Huang mouse tissues on R SeSAMe betas (RM41), 2026-11-18
 
 - `ENTROPY_AGE_BETAS=sesame figures mouse --scale paper --seed 42`, job 6514013 (test partition), 2 h 05 min, on the

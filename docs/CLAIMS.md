@@ -66,7 +66,7 @@ a test with little power), **refuted**.
 - **Beyond the state map (R74):** within active-TSS chromatin, essential island promoters still lose methylation
   faster than other active promoters (blood core +0.006, cortex +0.006-0.007 per decade); the state explains most
   of their lower resting level.
-- **Status:** holds as association in blood; weaker in cortex; the turnover result now stands against it and is open.
+- **Status:** holds as association in blood; weaker in cortex; the mouse turnover ordering that stood against it vanishes within chip (R92; same on rebuilt arrays, R97).
 
 ## C3 — Selection among cells is not supported as the main cause (H2 not rejected outright)
 
@@ -96,7 +96,7 @@ a test with little power), **refuted**.
   against littermates, in neurons that do not divide; specific to Tet3, not every TET.
 - **We should not see:** the effect explained by batch or age; an equal change at all CpGs (a global shift).
 - **Observed:** against same-chip, same-age wild types (litters not recorded) F +0.17 (cortex), +0.25 (striatum); essential CpGs gain
-  methylation (S +0.012, +0.014); Tet1 loss strengthens the shield instead (R35).
+  methylation (S +0.012, +0.014); Tet1 loss strengthens the shield instead (R35; holds on arrays rebuilt from IDATs, 19 of 24 pass, R99).
 - **Alternatives:** (a) array compression lifting the lowest CpGs (S also rose in other arms); (b) a shift of
   neuron and glia proportions in Tet3 mice; (c) one study, 8 mice per tissue; different arrays for Tet1 and Tet3.
 - **Separating test:** S with compression held fixed (R36): the gain stays (+0.010 cortex, +0.013 striatum), so
