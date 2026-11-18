@@ -137,6 +137,11 @@ effects ... apply it to all samples and validate if things are done properly for
    brain cohort and sorted neurons; culture passages not confounded with batch; clonal expansions with methylation;
    tissue turnover within animals; CR over time; a second prospective cancer cohort; single-cell methylation with
    ages (none in the project yet: `fig3` is a simulation, R50-R53 are read-level, not cell-level).
+5. **Matched modalities from the same samples (antonkulaga 2026-11-18: "datasets where people got several modalities
+   together like methylation+rna-seq, or methylation+atac-seq ... extremely important"):** methylation with RNA-seq,
+   ATAC-seq or histone marks from the same animals, donors, cells or cultures across ages or passages; open-access
+   animal and cell data first; single-cell multi-omics too. These replace the reference maps from other people
+   (Table S4's weakest column) and rank with the second brain cohort.
 3. **CR blood over time:** no public series has CR and ad-lib blood at more than one age in shared batches
    (closest: GSE75495, CR at one old age, batch unknown; liver only: GSE92486, GSE89274). The CR 12-week aging
    contrast stays unresolved.
