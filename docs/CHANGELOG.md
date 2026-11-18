@@ -4,6 +4,7 @@ Newest first.
 
 ## Unreleased
 
+- 2026-11-18: `placebo_expression` (RM38 item 3): placebo gene sets drawn within the real set's GTEx expression deciles, through the shield's matching.
 - 2026-11-18: R80, the shield off the 0 % floor: in blood most of it is the floor (housekeeping spread to −0.08 SD at 20-80 %, core-essential to 0); cortex keeps its size. Table data/output/floor_check/gaps_by_band.csv.
 - 2026-11-18: fixes from an outside audit: relative entropy regularises sample and reference alike (it could fall as a site left the 0 % floor); bootstraps of floor_check, allelic_controls and sex_drift on the full sample's SD; global FDR reads every raw p column and rejects out-of-range values; level strata survive a missing value; rescale catches conflicting SDs; species_hotspots null among measured CpGs, 0/0 no longer "inf". Regression tests in tests/test_audit_fixes.py.
 - 2026-11-18: `floor_check` (RM38 item 1): the shield on CpGs at a young level of 10-90 % and 20-80 %.
