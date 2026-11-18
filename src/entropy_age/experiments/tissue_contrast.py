@@ -587,3 +587,49 @@ def _figure(ctx: Context, point, boot_life, boot_same, contrasts) -> Path:
     )
     fig.tight_layout()
     return plots.save(fig, ctx.figure_path("tissue_contrast"))
+
+
+# ----------------------------------------------------------------------------- matched cross-study check (RM43)
+def _subset(p: Prepared, keep: np.ndarray, extra: np.ndarray | None = None) -> Prepared:
+    """``p`` on the rows ``keep``, with ``extra`` covariates appended; constant covariate columns are dropped."""
+    cov = p.covariates[keep] if p.covariates is not None else None
+    if extra is not None:
+        cov = extra[keep] if cov is None else np.column_stack([cov, extra[keep]])
+    if cov is not None:
+        cov = cov[:, cov.std(axis=0) > 0]
+    tech = p.technical[keep] if p.technical is not None else None
+    return dataclasses.replace(p, x=p.x[keep], ages=p.ages[keep], covariates=cov, donors=p.donors[keep], technical=tech)
+
+
+def run_matched(ctx: Context) -> list[Path]:
+    """Blood minus cortex as like for like as two studies allow (methods review H2): Hannum and Jaffe on the age
+    range both cover, and blood holding 11 of its 12 EpiDISH cell fractions as cortex holds its neuron fraction.
+    Still two studies and two processings; the table carries both, side by side with the unmatched contrast."""
+    from entropy_age.experiments.composition_gaps import EPIDISH, fractions
+
+    if _inputs_missing(ctx, "tissues_matched") or not (ctx.paths.input / EPIDISH).exists():
+        return []
+    out = ctx.out_dir("tissue_contrast_matched")
+    workers, n_boot = _settings(ctx)
+    lifespan, lunnon, probes, membership = _load(ctx)
+    blood, cortex = lifespan["blood (Hannum)"], lifespan["cortex (Jaffe)"]
+    samples = pl.read_parquet(cohort_layout("hannum", ctx.paths).samples).drop_nulls("age").sort("age", "sample")
+    frac, cells = fractions(ctx, samples["sample"].to_list())
+    lo, hi = max(blood.ages.min(), cortex.ages.min()), min(blood.ages.max(), cortex.ages.max())
+    matched = {
+        "blood (Hannum)": _subset(blood, (blood.ages >= lo) & (blood.ages <= hi), frac[:, :-1]),
+        "cortex (Jaffe)": _subset(cortex, (cortex.ages >= lo) & (cortex.ages <= hi)),
+    }
+    print(
+        f"tissues_matched: ages {lo:g}-{hi:g}; blood {matched['blood (Hannum)'].x.shape[0]} of {blood.x.shape[0]}, "
+        f"cortex {matched['cortex (Jaffe)'].x.shape[0]} of {cortex.x.shape[0]}; {len(cells)} cell fractions",
+        file=sys.stderr,
+        flush=True,
+    )
+    point, _, _, contrasts = _analyse(matched, lunnon, probes, membership, n_boot, workers)
+    contrasts = with_processing(contrasts, ctx.paths).with_columns(
+        ages=pl.lit(f"{lo:g}-{hi:g}"), blood_cell_fractions=pl.lit(True)
+    )
+    write_table(point.filter(pl.col("tissue").is_in(list(matched))), out / "point_estimates")
+    write_table(contrasts.filter(pl.col("part") == "lifespan"), out / "tissue_differences")
+    return []

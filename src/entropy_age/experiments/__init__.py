@@ -98,6 +98,7 @@ FIGURES: dict[str, Callable[[Context], list[Path]]] = {
     "genesets": gene_sets.run,
     "tissues": tissue_contrast.run,
     "tissues_cells": tissue_contrast.run_cells,
+    "tissues_matched": tissue_contrast.run_matched,
     "mouse": mouse_tissues.run,
     "mouse_coupling": mouse_coupling.run,
     "gtex": human_tissues.run,

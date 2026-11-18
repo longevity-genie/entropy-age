@@ -66,3 +66,15 @@ def test_processing_label_follows_the_switch(tmp_path, monkeypatch):
     monkeypatch.setenv("ENTROPY_AGE_BETAS", "sesame")
     assert layout("jaffe", paths).processing == "rebuilt"
     assert layout("hannum", paths).processing == "deposited"  # no raw IDATs
+
+
+def test_subset_keeps_rows_and_drops_constant_covariates():
+    import numpy as np
+
+    from entropy_age.experiments.tissue_contrast import Prepared, _subset
+
+    p = Prepared("t", np.arange(12.0).reshape(4, 3), np.array([20.0, 30, 40, 90]),
+                 np.array([[1.0], [0.0], [1.0], [0.0]]), ["a", "b", "c"], np.array(list("wxyz")), None)
+    keep = p.ages <= 40
+    q = _subset(p, keep, np.array([[0.2], [0.2], [0.2], [0.5]]))
+    assert q.x.shape == (3, 3) and q.covariates.shape == (3, 1)  # the extra column is constant on the kept rows
