@@ -50,6 +50,21 @@ commit it ran, its job ids, its scale and seed, and its result or its failure wi
   two NSD1 arms disagree. Where these variants act, they look like noise added at the CpGs aging makes noisy, not
   a faster directed clock.
 
+## R96 — EPIC-Italy breast cancer on rebuilt arrays (RM41), 2026-11-18
+
+- `ENTROPY_AGE_BETAS=sesame figures cancer cancer_matched --scale paper --seed 42` (commits b36c116, 9bd2e75 fix:
+  reference CpGs masked in every array left out of the cell-mix projection); job 6514018 (test partition), 24 min.
+  GSE51032 rebuilt with R SeSAMe (6 of 845 arrays fail detection); mean beta and cell fractions from the rebuild too.
+- Result, as measured (matched case-control among women, odds ratio per SD; deposited R84b → rebuilt). Drift B,
+  housekeeping look-alikes, cases over 2 years after the draw: age only 1.71 → 1.84 (1.37-3.48, p 1e-4); with mean
+  beta and 11 cell fractions 1.76 → 1.11 (0.69-2.18, p 0.66). All cases: 1.46 → 1.52 (age only), 1.48 → 1.15
+  (adjusted). Shield share F adjusted: 1.02 → 0.69 (0.49-0.95, p 0.015). DunedinPACE 1.26 → 1.19, PhenoAge 1.27 →
+  1.18, n.s. Sets 167 → 163.
+- Reading: on raw-processed arrays the drift signal is there but cannot be separated from global methylation and
+  cell mix; the processed-data result (adjusted 1.76) depended on the authors' normalisation. The F signal that
+  appears on rebuilt data was not seen before and is not claimed. The lead is downgraded: unresolved, needs a
+  second cohort and a decision on which adjustment fits the question.
+
 ## R91 — the CR blood series with a within-chip, refitting randomisation (selection audit), 2026-11-18
 
 - Commit 7357864; `figures cr_blood_replication --scale paper --seed 42`; job 6511076 (itmz), 3 h 35 min (smoke

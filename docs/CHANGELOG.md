@@ -4,6 +4,7 @@ Newest first.
 
 ## Unreleased
 
+- 2026-11-18: R96, breast cancer on rebuilt arrays: age-adjusted OR holds (1.84) but the adjusted OR vanishes (1.11, 0.69-2.18); the lead is downgraded in claims and manuscript.
 - 2026-11-18: R91, CR blood with the corrected within-chip randomisation: core-essential F p 0.0065 → 0.16, housekeeping 0.026 → 0.23; R56's finding withdrawn. Claims and manuscript corrected.
 - 2026-11-18: R95, writer syndromes on rebuilt arrays: drift and shield effects hold (NSD1/EZH2 shield loss slightly stronger); concordance now rests on NSD1 and Weaver, CHARGE drops to p 0.064.
 - 2026-11-18: R94, culture on rebuilt betas: Endicott's shield vanishes at the reference and trends toward growth with doublings (selection direction, CI includes 0); Sturm unchanged. Claims and manuscript updated.

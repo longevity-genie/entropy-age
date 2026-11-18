@@ -202,6 +202,9 @@ a test with little power), **refuted**.
   adjusted for mean beta, 11 cell fractions and chip 1.44 (p 6e-4); balanced over 72 chips; the shield share F
   does not predict; clocks' signals do not survive adjustment; B keeps 1.44 with DunedinPACE and PhenoAge in the model
   (r with DunedinPACE 0.02). In SJLIFE deaths (R48) B adds nothing beyond DunedinPACE: breast-specific, not mortality.
+  Matched case-control (R84b): 1.71 age-adjusted, 1.76 fully adjusted. **On arrays rebuilt from raw IDATs (R96) the
+  age-adjusted odds ratio holds (1.84, 1.37-3.48) and the adjusted one vanishes (1.11, 0.69-2.18)**: what this claim
+  said we should not see.
 - **Alternatives:** (a) a cell type outside EpiDISH's 12 or a rare clone; (b) a cohort-specific artefact, since
   van Veldhoven's global hypomethylation did not replicate in NOWAC; (c) reproductive or hormonal factors that
   shift blood methylation and raise breast-cancer risk.

@@ -27,7 +27,7 @@ In mouse brain, heterozygous Tet3 loss made essential promoters gain methylation
 states account for 83-91 % of the gap in blood and a quarter to a half in cortex. Within one person over time, housekeeping CpGs change less in direction than look-alikes. The shield showed
 no detectable sign of selection among cells in culture or blood, though the estimates are imprecise, is not tuned to species lifespan, persists through transient reprogramming and
 has no clear RNA counterpart. In one prospective cohort, drift at unprotected look-alike promoters was associated with
-breast cancer diagnosed years later (odds ratio 1.44 per SD with cell mix, chip and mean methylation held; lifestyle and reproductive factors were not held). This lead needs replication.
+breast cancer diagnosed years later (odds ratio 1.44 per SD with cell mix, chip and mean methylation held, on the authors' processed data); on the same arrays rebuilt from raw files the unadjusted association held (1.84) but the adjusted one did not (1.11, 0.69-2.18), so the lead cannot yet be separated from global methylation and cell mix and needs replication.
 
 ## Introduction
 
@@ -343,7 +343,11 @@ over the 72 chips. B kept 1.44 with DunedinPACE (Belsky et al. 2022) and PhenoAg
 (r 0.02). The clocks' own signals did not survive adjustment (DunedinPACE for breast 1.21 → 1.04), and B had no
 colorectal signal once adjusted. The shield share F did not predict cancer (0.95-1.11). Of 168 effects in this
 analysis, only the eight breast-cancer B variants passed a 5 % false discovery rate, and they survived the
-project-wide correction.
+project-wide correction. Rebuilt from the raw arrays with one SeSAMe recipe and analysed as a matched case-control
+(women, age within 3 years, same chip first; 163 sets for cases over 2 years), B kept its age-adjusted association
+(1.84, 1.37-3.48) but lost the adjusted one (1.11, 0.69-2.18), while the shield share F became protective (0.69,
+0.49-0.95). On the authors' processed data the matched estimates were 1.71 and 1.76. Which preprocessing is right for
+this question is open; the lead is therefore weaker than the processed data suggested.
 
 In childhood-cancer survivors (SJLIFE, 277 deaths among 4,518), B added nothing to DunedinPACE for death (1.01; Supplementary Fig. S20), so it
 is not a general mortality marker. Genome-wide hypomethylation before breast cancer reported in EPIC-Italy (van
