@@ -25,7 +25,7 @@ def test_confounding_flags_age_set_by_chip():
 def test_collapse_probes_averages_replicates():
     f = pl.DataFrame({"probe": ["cg1_TC11", "cg1_TC12", "cg2_BC21"], "s": [0.2, 0.4, 0.9]})
     c = collapse_probes(f)
-    assert dict(zip(c["probe"], c["s"])) == {"cg1": 0.30000000000000004, "cg2": 0.9}
+    assert dict(zip(c["probe"], c["s"], strict=True)) == {"cg1": 0.30000000000000004, "cg2": 0.9}
 
 
 def test_agreement_matches_by_position():

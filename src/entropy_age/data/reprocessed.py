@@ -75,3 +75,68 @@ def read_betas(paths: ProjectPaths, gse: str, *, passed_only: bool = True, colla
         keep = set(read_qc(paths, gse).filter(pl.col("passed"))["sample"].to_list())
         frame = frame.select("probe", *(c for c in frame.columns[1:] if c in keep))
     return collapse_probes(frame) if collapse else frame
+
+
+def cohort_betas(paths: ProjectPaths, gse: str, name: str, samples_path: Path) -> Path:
+    """``data/interim/cohorts/<name>_betas_rsesame.parquet``: the rebuilt betas as the cohort table expects them
+    (``cpg`` plus one column per sample id of ``<name>_samples.parquet``, GSM or chip_position), passing samples
+    only; written on first use. Raises when the series was not rebuilt."""
+    out = paths.interim / "cohorts" / f"{name}_betas_rsesame.parquet"  # not *_sesame: that name is R61's methylprep
+    if out.exists():
+        return out
+    if not available(paths, gse):
+        raise FileNotFoundError(
+            f"{gse} has no R SeSAMe rebuild in {series_dir(paths, gse)}; run scripts/sesame_preprocess.R"
+        )
+    qc = read_qc(paths, gse).filter(pl.col("passed"))
+    frame = read_betas(paths, gse)
+    ids = set(pl.read_parquet(samples_path)["sample"].to_list())
+    titles = {k: _fibre_id(v) for k, v in _titles(paths, gse).items()} if name == "fibres" else _titles(paths, gse)
+    rename = {}
+    for row in qc.iter_rows(named=True):
+        position = f"{row['chip']}_{row['position']}"
+        if row["sample"] in ids:
+            rename[row["sample"]] = row["sample"]
+        elif position in ids:
+            rename[row["sample"]] = position
+        elif titles.get(row["sample"]) in ids:
+            rename[row["sample"]] = titles[row["sample"]]
+    keep = [c for c in frame.columns[1:] if c in rename]
+    out.parent.mkdir(parents=True, exist_ok=True)
+    frame.select(pl.col("probe").alias("cpg"), *(pl.col(c).alias(rename[c]) for c in keep)).write_parquet(out)
+    return out
+
+
+def _titles(paths: ProjectPaths, gse: str) -> dict[str, str]:
+    """GSM accession -> GEO sample title, from the series matrix (empty when there is none)."""
+    import gzip
+
+    matrix = paths.input / "geo" / gse / f"{gse}_series_matrix.txt.gz"
+    if not matrix.exists():
+        return {}
+    acc = titles = None
+    with gzip.open(matrix, "rt") as handle:
+        for line in handle:
+            cells = [c.strip().strip('"') for c in line.rstrip("\n").split("\t")[1:]]
+            if line.startswith("!Sample_title"):
+                titles = cells
+            elif line.startswith("!Sample_geo_accession"):
+                acc = cells
+            if acc and titles:
+                break
+    return dict(zip(acc or [], titles or [], strict=False))
+
+
+FIBRE = {"WM": "WM", "TII": "T2", "TI": "T1"}
+
+
+def _fibre_id(title: str) -> str:
+    """GEO's fibre title (``s203_pre_WM_rep1``) as the authors' matrix names the sample (``WM.s203-preWM``); a
+    technical replicate other than the first keeps its title, so it matches nothing (the table has one per sample)."""
+    import re
+
+    m = re.fullmatch(r"([a-z]\d+)_(pre|4w|12w)_(WM|TII|TI)_rep(\d+)", title)
+    if not m or m.group(4) != "1":
+        return title
+    fibre = FIBRE[m.group(3)]
+    return f"{fibre}.{m.group(1)}-{m.group(2)}{fibre}"

@@ -39,6 +39,7 @@ Every cohort is normalised to ``data/interim/cohorts/<name>_samples.parquet`` (`
 from __future__ import annotations
 
 import gzip
+import os
 from dataclasses import dataclass
 from pathlib import Path
 
@@ -100,6 +101,11 @@ COHORTS: dict[str, CohortSpec] = {
 }
 
 
+#: Cohorts whose raw IDATs GEO does not serve (GTEx's are controlled access): their deposited betas stay in every run,
+#: and each result from them carries the warning that it was not rebuilt (antonkulaga, 2026-11-18).
+NO_RAW_IDATS = frozenset({"hannum", "lunnon", "gtex"})
+
+
 @dataclass(frozen=True, slots=True)
 class CohortLayout:
     paths: ProjectPaths
@@ -127,7 +133,15 @@ class CohortLayout:
 
     @property
     def betas(self) -> Path:
-        return self.paths.interim / "cohorts" / f"{self.spec.name}_betas.parquet"
+        """The cohort's betas: the authors' deposited ones, or with ``ENTROPY_AGE_BETAS=sesame`` the ones rebuilt from
+        raw IDATs by ``scripts/sesame_preprocess.R`` (roadmap RM41), in the same shape and sample ids, made on first
+        use. A cohort without a rebuild raises rather than quietly falling back to deposited betas."""
+        deposited = self.paths.interim / "cohorts" / f"{self.spec.name}_betas.parquet"
+        if os.environ.get("ENTROPY_AGE_BETAS", "deposited") != "sesame" or self.spec.name in NO_RAW_IDATS:
+            return deposited  # no raw IDATs on GEO: kept on the authors' processing, reported with a warning
+        from entropy_age.data import reprocessed
+
+        return reprocessed.cohort_betas(self.paths, self.spec.gse, self.spec.name, self.samples)
 
 
 def layout(name: str, paths: ProjectPaths) -> CohortLayout:
