@@ -4,6 +4,7 @@ Newest first.
 
 ## Unreleased
 
+- 2026-11-19: figures brain_replication: the shield in two new rebuilt brain series (GSE252501 DLPFC and nucleus accumbens controls, Jaffe donors excluded; GSE279509 sorted neurons, oligodendrocyte lineage, other glia, unsorted), complete CpGs only, with and without chip intercepts. Jaffe loader skips arrays a rebuild lacks; tissues_matched keys fixed.
 - 2026-11-18: docs/DATASET_SEARCH_2026-11-18.md: replacement and matched-modality datasets checked against GEO (RM40); first to fetch: GSE279509 (sorted neurons and glia, EPIC, 18-108 y), GSE252501 (DLPFC), GSE225166, GSE121437, GSE268145, GSE202554.
 - 2026-11-18: figures joint_cortex (RM44): the cortex gap with the floor band, expression decile, chromatin state and sorted accessibility held together, with the share of set CpGs that keep a control.
 - 2026-11-18: R98, CR blood on rebuilt arrays: core-essential F -0.078, p 0.36; the withdrawal stands.

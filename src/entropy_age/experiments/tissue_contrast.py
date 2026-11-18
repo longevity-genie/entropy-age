@@ -106,8 +106,11 @@ def _hannum(paths, features) -> Prepared:
 
 
 def _jaffe(paths, features) -> Prepared:
+    lay = cohort_layout("jaffe", paths)
+    measured = pl.read_parquet_schema(lay.betas).names()  # a rebuild lacks the arrays that failed QC
     s = (
-        pl.read_parquet(cohort_layout("jaffe", paths).samples)
+        pl.read_parquet(lay.samples)
+        .filter(pl.col("sample").is_in(measured))
         .filter((pl.col("group") == "Control") & ~pl.col("drop_sample") & (pl.col("age") >= 20))
         .sort("best_qc", descending=True)
         .unique(subset="donor", keep="first", maintain_order=True)
@@ -612,17 +615,17 @@ def run_matched(ctx: Context) -> list[Path]:
     out = ctx.out_dir("tissue_contrast_matched")
     workers, n_boot = _settings(ctx)
     lifespan, lunnon, probes, membership = _load(ctx)
-    blood, cortex = lifespan["blood (Hannum)"], lifespan["cortex (Jaffe)"]
+    blood, cortex = lifespan["blood"], lifespan["cortex"]
     samples = pl.read_parquet(cohort_layout("hannum", ctx.paths).samples).drop_nulls("age").sort("age", "sample")
     frac, cells = fractions(ctx, samples["sample"].to_list())
     lo, hi = max(blood.ages.min(), cortex.ages.min()), min(blood.ages.max(), cortex.ages.max())
     matched = {
-        "blood (Hannum)": _subset(blood, (blood.ages >= lo) & (blood.ages <= hi), frac[:, :-1]),
-        "cortex (Jaffe)": _subset(cortex, (cortex.ages >= lo) & (cortex.ages <= hi)),
+        "blood": _subset(blood, (blood.ages >= lo) & (blood.ages <= hi), frac[:, :-1]),
+        "cortex": _subset(cortex, (cortex.ages >= lo) & (cortex.ages <= hi)),
     }
     print(
-        f"tissues_matched: ages {lo:g}-{hi:g}; blood {matched['blood (Hannum)'].x.shape[0]} of {blood.x.shape[0]}, "
-        f"cortex {matched['cortex (Jaffe)'].x.shape[0]} of {cortex.x.shape[0]}; {len(cells)} cell fractions",
+        f"tissues_matched: ages {lo:g}-{hi:g}; blood {matched['blood'].x.shape[0]} of {blood.x.shape[0]}, "
+        f"cortex {matched['cortex'].x.shape[0]} of {cortex.x.shape[0]}; {len(cells)} cell fractions",
         file=sys.stderr,
         flush=True,
     )
@@ -630,6 +633,6 @@ def run_matched(ctx: Context) -> list[Path]:
     contrasts = with_processing(contrasts, ctx.paths).with_columns(
         ages=pl.lit(f"{lo:g}-{hi:g}"), blood_cell_fractions=pl.lit(True)
     )
-    write_table(point.filter(pl.col("tissue").is_in(list(matched))), out / "point_estimates")
+    write_table(point.filter(pl.col("part") == "lifespan"), out / "point_estimates")
     write_table(contrasts.filter(pl.col("part") == "lifespan"), out / "tissue_differences")
     return []
