@@ -9,7 +9,8 @@ consistent change on the mammalian array with cyclic OSKM (Browder 2022); this i
 Per tissue: promoter CpGs (RefSeq TSS −1500 to +500, mm10) covered ``MIN_COVERAGE`` times in every sample of the
 tissue; each old mouse scored against the young controls (``entropy_age.protection``; each young control against
 the other young ones), drift ``B``, the shield share ``F`` and the gap ``P``; the effects of age (old controls
-against young) and of OSKM (old OSKM against old controls), with a label-permutation p for 5 against 5.
+against young) and of OSKM (old OSKM against old controls), with a label-permutation p for 5 against 5 (valid for
+OSKM, whose two arms share the young reference; approximate for age, see ``permutation_p``).
 
 ``entropy-age figures reprogramming_rrbs`` as a Slurm job, after GSE156557's RAW.tar is unpacked into
 ``data/input/geo/GSE156557/cov``.
@@ -28,7 +29,6 @@ import polars as pl
 from entropy_age import plots
 from entropy_age.data.rrbs import TRACKS, RrbsLayout, in_intervals, islands, promoters
 from entropy_age.experiments.common import Context, write_table
-from entropy_age.experiments.cr_blood_replication import permutation_p
 from entropy_age.experiments.interventions import _sets, membership
 from entropy_age.experiments.per_person import score_against
 from entropy_age.protection import fit_reference
@@ -37,6 +37,22 @@ GSE = "GSE156557"
 MIN_COVERAGE = 10
 ARMS = {"young": "Young control", "old": "Old control", "oskm": "Old OSKM"}
 N_PERM = {"paper": 5000, "quick": 500}
+
+
+def permutation_p(y: np.ndarray, treated: np.ndarray, n: int, rng: np.random.Generator) -> float:
+    """Two-sided p of the treated-minus-control mean difference from ``n`` label shuffles of fixed scores.
+
+    Valid only where the scores do not depend on the labels: OSKM against old controls, both scored against the
+    young reference. For age (old against young) the young are scored leave-one-out against each other, so the
+    scores depend on who is young and this p is approximate (the same flaw the 2026-11-18 audit found in
+    ``cr_blood_replication``, not refitted here).
+    """
+    obs = y[treated].mean() - y[~treated].mean()
+    hits = 0
+    for _ in range(n):
+        t = rng.permutation(treated)
+        hits += abs(y[t].mean() - y[~t].mean()) >= abs(obs) - 1e-12
+    return (hits + 1) / (n + 1)
 
 
 def read_arms(matrix: Path) -> pl.DataFrame:
