@@ -14,7 +14,7 @@
 # OUT_PREFIX.qc.csv and
 # OUT_PREFIX.session.txt (package versions). Probe ids are the platform's (cg... for HM450/EPIC; EPICv2 and the
 # mouse arrays carry suffixes, which the Python side collapses or maps). A stopped run (a preempted job) resumes:
-# chunks already written are skipped.
+# chunks already written are skipped. A pair SeSAMe cannot read is listed in OUT_PREFIX.failed.chunkNNN.csv.
 
 suppressPackageStartupMessages({
   library(sesame)
@@ -62,7 +62,14 @@ for (i in seq_along(groups)) {
     message(sprintf("chunk %d of %d: already written", i, length(groups)))
     next
   }
-  res <- bplapply(pfxs[groups[[i]]], one, BPPARAM = param)
+  res <- bplapply(pfxs[groups[[i]]], function(p) tryCatch(one(p), error = function(e) conditionMessage(e)),
+    BPPARAM = param)
+  failed <- vapply(res, is.character, logical(1))
+  if (any(failed)) {  # an unreadable pair is listed, never silently dropped
+    write.csv(data.frame(prefix = basename(pfxs[groups[[i]]][failed]), error = unlist(res[failed])),
+      sprintf("%s.failed.chunk%03d.csv", out, i), row.names = FALSE)
+    res <- res[!failed]
+  }
   betas <- do.call(cbind, lapply(res, `[[`, "beta"))
   meta <- do.call(rbind, lapply(res, `[[`, "qc"))
   colnames(betas) <- meta$sample
