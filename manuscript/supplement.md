@@ -139,7 +139,9 @@ aged and one young animal, so with chip intercepts its dispersion slope is zero 
 uninformative. MESA monocytes (R44): plaque and calcium track DunedinPACE (+0.37 per SD), not the shield. Per-person
 scores against confounders (R60): slide explains 36 % of B, 23 % of F, 20 % of S (13 % by chance); smoking moves S only.
 
-**Within one person, deposited betas (R52).** Divergence per year housekeeping −0.017 (p 0.001), core-essential
+**Within one person, deposited betas (R52).** On the 450k draws alone (R119; 647 pairs of 447 people, no array
+change inside any pair) the shield share F still falls within a person, housekeeping −0.126 per decade (−0.226 to
+−0.030), while the divergence gap below does not hold (−0.003, p 0.41). Pooled over both arrays: divergence per year housekeeping −0.017 (p 0.001), core-essential
 +0.013 (p 0.10); within-person F slope −0.14 per decade (−0.23 to −0.05); B +0.03 (spans 0). Positive control on first
 draws kept a third of Hannum's dispersion gap (−0.12) and none of its entropy gap.
 
@@ -167,8 +169,8 @@ items still open).
   any group comparison, and set and background CpGs come from that same universe. CpGs missing in more than a small
   share of samples (5 % for most array analyses; 10 % for RRBS, the two mouse blood RRBS analyses and Gill) are dropped; the remaining
   sporadic missing values are filled with that CpG's median across the contrast's samples, alike for set and
-  background. Filling lowers spread slightly at the filled CpGs, so the headline gaps are being rerun on complete
-  CpGs only (RM43). No clock training means or values pooled across studies are imputed.
+  background. Rerun on complete CpGs only (R117), every headline gap agreed to the third decimal; only the rebuilt
+  cortex arrays had missing values (4,577 of 94,513 CpGs). No clock training means or values pooled across studies are imputed.
 - **Batch.** Within each series, the share of the leading principal components explained by chip, row and position,
   and how far each design variable (age, group, tissue, sex) is confounded with chip (R103). Where chip and the
   contrast overlap, the contrast is estimated within chip (Huang mouse tissues, R92; CR blood, R91; EPIC-Italy with

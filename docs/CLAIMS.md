@@ -16,7 +16,8 @@ a test with little power), **refuted**.
   chip is held, R92), 89 % of 139 species-tissue groups of 65 mammals (R68c), and inside sorted monocytes (R44, R68b;
   the CD4+ T-cell size was withdrawn in R68); culture's shield vanished on rebuilt arrays (R94);
   molecule by molecule in read-level WGBS (entropy -0.05 to -0.075 SD, R50; cfDNA -0.03 to -0.06, R51; within 27 sorted cell types -0.04 to -0.08, R53); within one person over
-  time weakly (SATSA housekeeping divergence -0.017 SD, R52, on betas with cell counts regressed out);
+  time weakly (SATSA housekeeping divergence -0.017 SD, R52, on betas with cell counts regressed out; -0.003, p 0.41, on the
+  450k draws alone, R119, so this small gap rested on pooling two arrays; the shield-share slope does not);
   probe design explains a sixth of blood's gap, masks nothing (R20); per-person reliability 0.997.
 - **Alternatives:** (a) a floor: CpGs near 0 % cannot drift down, and deciles leave a floor inside the lowest
   stratum; (b) array compression at the extremes; (c) island CpGs vary less for technical reasons.
