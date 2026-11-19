@@ -23,11 +23,11 @@ most GTEx tissues, mouse tissues and 89 % of 139 species-tissue groups of 65 mam
 matching (200 placebo gene sets), blood-cell composition or probe design, survives one false-discovery correction over
 7,626 tests, and in cortex grows when the arrays are rebuilt from raw IDATs; the blood cohorts have no public raw files.
 Two results depend on processing: a shield in cultured cells vanished on rebuilt arrays, and a breast-cancer association
-weakened (below). In mouse, an ordering of the shield by cell turnover could not be separated from array chip. Kinetically, essential island promoters gain
+weakened (below). In mouse, an ordering of the shield by cell turnover could not be separated from chip on the array, but by bisulfite sequencing of one cohort on shared flowcells the gap was more than twice as large in colon as in hippocampus (−0.19 against −0.08 SD). Kinetically, essential island promoters gain
 methylation no faster than look-alikes but, in pooled fits, lose it faster, and so rest lower; the faster loss persists within active-TSS chromatin.
 In mouse brain, heterozygous Tet3 loss made essential promoters gain methylation against look-alikes and weakened the shield; Tet1 knockout did not. Reference chromatin
-states account for 83-91 % of the gap in blood and a quarter to a half in cortex. Within one person over time, housekeeping CpGs change less in direction than look-alikes. The shield showed
-no detectable sign of selection among cells in culture or blood, though the estimates are imprecise, is not tuned to species lifespan, persists through transient reprogramming and
+states account for 83-91 % of the gap in blood and a quarter to a half in cortex; with expression and sorted-nuclei accessibility also held, little of the cortex gap is left (−0.02 SD), so the shield is a property of active promoters and not of essentiality as such. Within one person over time, housekeeping CpGs change less in direction than look-alikes. The shield goes with cell
+division: besides colon over hippocampus, it is larger in glia than in the same donors' neurons, it is large in fibroblasts driven to replicative senescence, and cultures kept from dividing for six months show neither drift nor shield; this fits selection among dividing cells or replication-coupled maintenance, which the data cannot separate. The shield is not tuned to species lifespan, persists through transient reprogramming and
 has no clear RNA counterpart. In one prospective cohort, drift at unprotected look-alike promoters was associated with
 breast cancer diagnosed years later (odds ratio 1.44 per SD with cell mix, chip and mean methylation held, on the authors' processed data); on the same arrays rebuilt from raw files the unadjusted association held (1.84) but the adjusted one did not (1.11, 0.69-2.18), so the lead cannot yet be separated from global methylation and cell mix and needs replication.
 
@@ -216,6 +216,40 @@ it by about four fifths in blood (housekeeping −0.335 → −0.060 SD; core-es
 (c, d): age slope regressed on young level per set, giving the gain rate (intercept) and loss rate, for CpG-island
 (blue) and non-island (orange) promoter CpGs of each set and of look-alikes. Rates are fitted estimates and can fall below zero; the text compares each set with its look-alikes. Per decade; 95 % intervals from 200
 donor resamples.
+
+### The shield goes with cell division
+
+**On data chosen so that batch cannot explain the contrast, the shield is larger where cells divide and absent where
+they do not.** After the audits, a search of public repositories was run for series with raw data, one platform per
+contrast and the contrast spread across chips or flowcells (Supplementary Note 4); each was audited before download
+and rebuilt from raw files where it is an array.
+
+*A renewing and a post-mitotic tissue.* Colon and hippocampus of one cohort of male C57BL/6J mice aged 3 to 28 months
+(82 and 83 animals; RRBS) ran on the same four flowcells, each holding every age. The housekeeping gap was −0.19 SD
+in colon (−0.29 to −0.17) and −0.08 in hippocampus (−0.09 to −0.07): a difference of −0.11 (−0.22 to −0.09). The
+core-essential gap differed likewise (−0.17 against −0.07), and non-essential promoters drifted more than their
+matched CpGs in both, most in colon (+0.54 against +0.16).
+
+*Glia and neurons of the same brains.* In nuclei sorted from human cortex (EPIC; ages 18-108), the shield replicated
+in unsorted nuclei (housekeeping −0.05 SD, 148 donors) and was −0.08 in NeuN−/SOX10− glia, −0.03 in the
+oligodendrocyte lineage and −0.02 in neurons, where it was not distinguishable from zero once chip was held. In the
+65 donors with both fractions, glia exceeded neurons by −0.055 (−0.121 to −0.007; donor bootstrap of both fractions
+together, p 0.025); the oligodendrocyte lineage did not (−0.003). A second sorted series on the 450k array (31
+donors, only two under 60) gave −0.044 (−0.108 to +0.015).
+
+*Division against arrest in culture.* In fibroblasts laid out so that each of 12 chips held untreated cultures and
+cultures made senescent by replication, by X-rays and by oncogenic RAS, replicative senescence moved matched CpGs far
+from the untreated state, and essential and housekeeping promoters carried less than half of that squared drift
+(share −0.58, −0.60 to −0.55, on 12 of 12 chips, after subtracting a noise floor estimated from each chip's untreated
+pair). The X-ray and RAS cultures showed no drift beyond that floor, so no shield could be measured in them. In a
+separate series, fibroblasts held confluent and non-dividing were sampled monthly for six months: the two donors
+whose arrays were not ordered by time along the chip showed no drift (0.88 and 0.86 of the value under reordered
+months), and no gap exceeded 0.02 SD.
+
+These lines agree: promoter drift in culture follows division and not time, and where there is drift the shield is
+there, more of it the more cells divide. Each has limits (two tissues of one strain; one glial fraction of two
+separating from neurons; replicative and arrested cultures from different experiments, with donors and doublings
+not recorded), and none separates selection among dividing cells from maintenance that is coupled to replication.
 
 ### Tet3 loss weakens the shield in mouse brain; Tet1 loss, in another study, does not
 

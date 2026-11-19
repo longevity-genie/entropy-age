@@ -4,6 +4,7 @@ Newest first.
 
 ## Unreleased
 
+- 2026-11-19: paper: abstract and a new Results subsection "The shield goes with cell division" (R108-R115); eight provenance rows added, Table S4 regenerated. The Discussion still carries the earlier reading and is rewritten in round v0.2.
 - 2026-11-19: claims C2 (weakened) and C3 (reopened: the shield goes with division) rewritten; evidence rows E33-E38.
 - 2026-11-19: R114: by RRBS in one mouse cohort the shield is more than twice as large in colon as in hippocampus (housekeeping -0.189 against -0.078; both tissues on the same flowcells, age balanced). Reassessment updated.
 - 2026-11-19: R115: in GSE66351 glia are again more shielded than the same donors' neurons (housekeeping -0.044, p 0.11; 31 donors), the direction and size of R110.
