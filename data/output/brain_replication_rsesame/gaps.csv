@@ -1,76 +1,112 @@
 cohort,covariates,band,metric,cpgs,group,matching,gap_sd,ci_low,ci_high,share_removed,share_ci_low,share_ci_high,n_set
-"GSE252501 Nucleus Accumbens, controls",sex,all,kl_slope,88667,core_essential,island x level,-0.02122210643026646,-0.040875300303204916,0.0018011425939495186,0.0,0.0,0.0,5816
-"GSE252501 Nucleus Accumbens, controls",sex,all,kl_slope,88667,housekeeping,island x level,-0.009239657135258322,-0.02260758872153144,0.004389598886416235,0.0,0.0,0.0,35059
-"GSE252501 Nucleus Accumbens, controls",sex,all,kl_slope,88667,non_essential,island x level,-0.046404323431290036,-0.06875947354593043,-0.02134018333038131,0.0,0.0,0.0,3784
-"GSE252501 Nucleus Accumbens, controls",sex,all,dispersion_slope,88667,core_essential,island x level,-0.00633783916488346,-0.03109161502840235,0.019604690983758097,0.0,0.0,0.0,5816
-"GSE252501 Nucleus Accumbens, controls",sex,all,dispersion_slope,88667,housekeeping,island x level,-0.0020595027428300917,-0.01337444144852098,0.010398521642163518,0.0,0.0,0.0,35059
-"GSE252501 Nucleus Accumbens, controls",sex,all,dispersion_slope,88667,non_essential,island x level,-0.11553449688097947,-0.14882039935821864,-0.07484168999083539,0.0,0.0,0.0,3784
-"GSE252501 Nucleus Accumbens, controls",sex,all,entropy_slope,88667,core_essential,island x level,-0.031680046415487426,-0.054683361291452195,-0.009960755589554903,0.0,0.0,0.0,5816
-"GSE252501 Nucleus Accumbens, controls",sex,all,entropy_slope,88667,housekeeping,island x level,-0.06964285001632185,-0.08000154809043186,-0.06119114454205314,0.0,0.0,0.0,35059
-"GSE252501 Nucleus Accumbens, controls",sex,all,entropy_slope,88667,non_essential,island x level,-0.07298279525591381,-0.12321577099284316,-0.018594022819358434,0.0,0.0,0.0,3784
-"GSE252501 Nucleus Accumbens, controls",sex,10-90 %,kl_slope,27228,core_essential,island x level,0.016732190193087602,-0.07433037802640612,0.11927868205442096,0.0,0.0,0.0,808
-"GSE252501 Nucleus Accumbens, controls",sex,10-90 %,kl_slope,27228,housekeeping,island x level,0.0130980796240124,-0.019354450914799082,0.04584863627965943,0.0,0.0,0.0,6550
-"GSE252501 Nucleus Accumbens, controls",sex,10-90 %,kl_slope,27228,non_essential,island x level,-0.06565668565083023,-0.10743330713281654,-0.021064741481376065,0.0,0.0,0.0,1714
-"GSE252501 Nucleus Accumbens, controls",sex,10-90 %,dispersion_slope,27228,core_essential,island x level,0.004978873303799054,-0.07198671018653169,0.07904656976646775,0.0,0.0,0.0,808
-"GSE252501 Nucleus Accumbens, controls",sex,10-90 %,dispersion_slope,27228,housekeeping,island x level,0.029767391461630044,-0.002125919866844151,0.06070908958316189,0.0,0.0,0.0,6550
-"GSE252501 Nucleus Accumbens, controls",sex,10-90 %,dispersion_slope,27228,non_essential,island x level,-0.14130583121200616,-0.19255100327187982,-0.09535819569399671,0.0,0.0,0.0,1714
-"GSE252501 Nucleus Accumbens, controls",sex,10-90 %,entropy_slope,27228,core_essential,island x level,0.02415076710733091,-0.04672561177001809,0.07712886918373983,0.0,0.0,0.0,808
-"GSE252501 Nucleus Accumbens, controls",sex,10-90 %,entropy_slope,27228,housekeeping,island x level,-0.007372666155976277,-0.031163234568506518,0.017449306661257578,0.0,0.0,0.0,6550
-"GSE252501 Nucleus Accumbens, controls",sex,10-90 %,entropy_slope,27228,non_essential,island x level,-0.11821416957471868,-0.1736135377855825,-0.06890593054757506,0.0,0.0,0.0,1714
-"GSE252501 Nucleus Accumbens, controls",sex + chip,all,kl_slope,88667,core_essential,island x level,0.007165225392321558,-0.009948066196056446,0.022686071803573626,0.0,0.0,0.0,5816
-"GSE252501 Nucleus Accumbens, controls",sex + chip,all,kl_slope,88667,housekeeping,island x level,-0.023891256450236646,-0.036123916881949776,-0.013831945304696119,0.0,0.0,0.0,35059
-"GSE252501 Nucleus Accumbens, controls",sex + chip,all,kl_slope,88667,non_essential,island x level,-0.04464225904488408,-0.08136854424136615,-0.0032893522347548654,0.0,0.0,0.0,3784
-"GSE252501 Nucleus Accumbens, controls",sex + chip,all,dispersion_slope,88667,core_essential,island x level,0.008028634019077734,-0.006282097154582795,0.02079038131093759,0.0,0.0,0.0,5816
-"GSE252501 Nucleus Accumbens, controls",sex + chip,all,dispersion_slope,88667,housekeeping,island x level,0.007601468511104603,0.00023079314687561762,0.014737509896497232,0.0,0.0,0.0,35059
-"GSE252501 Nucleus Accumbens, controls",sex + chip,all,dispersion_slope,88667,non_essential,island x level,-0.007617223676311391,-0.0535813866525908,0.04438702116505629,0.0,0.0,0.0,3784
-"GSE252501 Nucleus Accumbens, controls",sex + chip,all,entropy_slope,88667,core_essential,island x level,-0.009070110826075227,-0.03357638002720899,0.013554385610805473,0.0,0.0,0.0,5816
-"GSE252501 Nucleus Accumbens, controls",sex + chip,all,entropy_slope,88667,housekeeping,island x level,-0.05174573881271455,-0.06313053166588939,-0.040262981512958144,0.0,0.0,0.0,35059
-"GSE252501 Nucleus Accumbens, controls",sex + chip,all,entropy_slope,88667,non_essential,island x level,0.00654045221749997,-0.04741890331675613,0.0667858150233239,0.0,0.0,0.0,3784
-"GSE252501 Nucleus Accumbens, controls",sex + chip,10-90 %,kl_slope,27228,core_essential,island x level,0.03740273264167756,-0.013573545906392485,0.10457734447086858,0.0,0.0,0.0,808
-"GSE252501 Nucleus Accumbens, controls",sex + chip,10-90 %,kl_slope,27228,housekeeping,island x level,-0.025272587637581362,-0.06429948477707406,0.009564977874523737,0.0,0.0,0.0,6550
-"GSE252501 Nucleus Accumbens, controls",sex + chip,10-90 %,kl_slope,27228,non_essential,island x level,-0.03770461214069791,-0.08909833720295021,0.01975913918598812,0.0,0.0,0.0,1714
-"GSE252501 Nucleus Accumbens, controls",sex + chip,10-90 %,dispersion_slope,27228,core_essential,island x level,0.06432846225640677,0.0023329817509730624,0.13438840651200765,0.0,0.0,0.0,808
-"GSE252501 Nucleus Accumbens, controls",sex + chip,10-90 %,dispersion_slope,27228,housekeeping,island x level,0.022308430832427784,0.002516138384052155,0.04494137262287686,0.0,0.0,0.0,6550
-"GSE252501 Nucleus Accumbens, controls",sex + chip,10-90 %,dispersion_slope,27228,non_essential,island x level,-0.014398759991556386,-0.06643275515985447,0.04870621198897664,0.0,0.0,0.0,1714
-"GSE252501 Nucleus Accumbens, controls",sex + chip,10-90 %,entropy_slope,27228,core_essential,island x level,0.041094293242265274,-0.018091721639013902,0.0953857539514584,0.0,0.0,0.0,808
-"GSE252501 Nucleus Accumbens, controls",sex + chip,10-90 %,entropy_slope,27228,housekeeping,island x level,0.01914023531749975,-0.006739070957855581,0.04870982410324865,0.0,0.0,0.0,6550
-"GSE252501 Nucleus Accumbens, controls",sex + chip,10-90 %,entropy_slope,27228,non_essential,island x level,0.0073518040101904665,-0.06189496844435515,0.07431828611657103,0.0,0.0,0.0,1714
-"GSE252501 DLPFC, controls",sex,all,kl_slope,89784,core_essential,island x level,-0.015099166955769332,-0.026186400707769494,-0.003245253728547197,0.0,0.0,0.0,5862
-"GSE252501 DLPFC, controls",sex,all,kl_slope,89784,housekeeping,island x level,-0.004506789793171869,-0.016454172354392036,0.005753144313203482,0.0,0.0,0.0,35461
-"GSE252501 DLPFC, controls",sex,all,kl_slope,89784,non_essential,island x level,0.008167259832207141,-0.007074037718602137,0.026337587682942476,0.0,0.0,0.0,3838
-"GSE252501 DLPFC, controls",sex,all,dispersion_slope,89784,core_essential,island x level,-0.009533861512802156,-0.03428634690861316,0.014967811724272554,0.0,0.0,0.0,5862
-"GSE252501 DLPFC, controls",sex,all,dispersion_slope,89784,housekeeping,island x level,-0.0053836381963530446,-0.01659728383994882,0.007414570801399402,0.0,0.0,0.0,35461
-"GSE252501 DLPFC, controls",sex,all,dispersion_slope,89784,non_essential,island x level,0.015551052978351852,-0.011525524562617634,0.04430639645860101,0.0,0.0,0.0,3838
-"GSE252501 DLPFC, controls",sex,all,entropy_slope,89784,core_essential,island x level,-0.05294723926136001,-0.07419296531449789,-0.02940410714721489,0.0,0.0,0.0,5862
-"GSE252501 DLPFC, controls",sex,all,entropy_slope,89784,housekeeping,island x level,-0.09276336958290518,-0.10315048008179746,-0.08310253237537757,0.0,0.0,0.0,35461
-"GSE252501 DLPFC, controls",sex,all,entropy_slope,89784,non_essential,island x level,-0.005559845942718427,-0.05222835020422291,0.04973433587528674,0.0,0.0,0.0,3838
-"GSE252501 DLPFC, controls",sex,10-90 %,kl_slope,30837,core_essential,island x level,0.0065959421923895015,-0.033457221949551065,0.0481977413989226,0.0,0.0,0.0,1038
-"GSE252501 DLPFC, controls",sex,10-90 %,kl_slope,30837,housekeeping,island x level,0.022567934476183157,-0.008033178256828102,0.054764715077746356,0.0,0.0,0.0,7874
-"GSE252501 DLPFC, controls",sex,10-90 %,kl_slope,30837,non_essential,island x level,0.00975372860943407,-0.02025678207511572,0.04279698274996686,0.0,0.0,0.0,1838
-"GSE252501 DLPFC, controls",sex,10-90 %,dispersion_slope,30837,core_essential,island x level,0.003894089792013141,-0.07146740116944994,0.07823849650726387,0.0,0.0,0.0,1038
-"GSE252501 DLPFC, controls",sex,10-90 %,dispersion_slope,30837,housekeeping,island x level,0.033346333141783285,0.0038400440585177253,0.05976142319064308,0.0,0.0,0.0,7874
-"GSE252501 DLPFC, controls",sex,10-90 %,dispersion_slope,30837,non_essential,island x level,0.019240684029702033,-0.03166606694645556,0.06868039229118665,0.0,0.0,0.0,1838
-"GSE252501 DLPFC, controls",sex,10-90 %,entropy_slope,30837,core_essential,island x level,-0.008605720325275536,-0.06814965600245508,0.04557209022917863,0.0,0.0,0.0,1038
-"GSE252501 DLPFC, controls",sex,10-90 %,entropy_slope,30837,housekeeping,island x level,-0.030793205597250923,-0.05210105449355584,-0.010064817889555872,0.0,0.0,0.0,7874
-"GSE252501 DLPFC, controls",sex,10-90 %,entropy_slope,30837,non_essential,island x level,-0.0473647161162079,-0.11269052750778683,0.007314534392587731,0.0,0.0,0.0,1838
-"GSE252501 DLPFC, controls",sex + chip,all,kl_slope,89784,core_essential,island x level,-0.01857583715770858,-0.02843046732381841,-0.005438397997893215,0.0,0.0,0.0,5862
-"GSE252501 DLPFC, controls",sex + chip,all,kl_slope,89784,housekeeping,island x level,-0.014410127513577281,-0.024935887407767428,-0.0047489794026895505,0.0,0.0,0.0,35461
-"GSE252501 DLPFC, controls",sex + chip,all,kl_slope,89784,non_essential,island x level,0.0734525982700733,0.041592843982108336,0.11393757245011195,0.0,0.0,0.0,3838
-"GSE252501 DLPFC, controls",sex + chip,all,dispersion_slope,89784,core_essential,island x level,-0.009916232528894856,-0.023594878581096934,0.0035632645069528057,0.0,0.0,0.0,5862
-"GSE252501 DLPFC, controls",sex + chip,all,dispersion_slope,89784,housekeeping,island x level,-0.015912670687005165,-0.023060947196768437,-0.00929444756756526,0.0,0.0,0.0,35461
-"GSE252501 DLPFC, controls",sex + chip,all,dispersion_slope,89784,non_essential,island x level,0.1709794305693523,0.11623009943869696,0.22754074754356934,0.0,0.0,0.0,3838
-"GSE252501 DLPFC, controls",sex + chip,all,entropy_slope,89784,core_essential,island x level,-0.048703647954078895,-0.07344349674020978,-0.026032783086592327,0.0,0.0,0.0,5862
-"GSE252501 DLPFC, controls",sex + chip,all,entropy_slope,89784,housekeeping,island x level,-0.11712928747498333,-0.12811221375056958,-0.10642198419360258,0.0,0.0,0.0,35461
-"GSE252501 DLPFC, controls",sex + chip,all,entropy_slope,89784,non_essential,island x level,-0.08216187241631857,-0.13347719950934406,-0.024774589536498005,0.0,0.0,0.0,3838
-"GSE252501 DLPFC, controls",sex + chip,10-90 %,kl_slope,30837,core_essential,island x level,-0.07924714245382539,-0.12340420976574006,-0.04027028977272697,0.0,0.0,0.0,1038
-"GSE252501 DLPFC, controls",sex + chip,10-90 %,kl_slope,30837,housekeeping,island x level,-0.03466084493231895,-0.06229225327861914,-0.007800895080482537,0.0,0.0,0.0,7874
-"GSE252501 DLPFC, controls",sex + chip,10-90 %,kl_slope,30837,non_essential,island x level,0.11244110296824517,0.05158078584322961,0.17020388614510706,0.0,0.0,0.0,1838
-"GSE252501 DLPFC, controls",sex + chip,10-90 %,dispersion_slope,30837,core_essential,island x level,-0.01646290543045769,-0.07178060327072787,0.04805270214503999,0.0,0.0,0.0,1038
-"GSE252501 DLPFC, controls",sex + chip,10-90 %,dispersion_slope,30837,housekeeping,island x level,-0.03824427668191895,-0.057766796860017504,-0.015145470200815693,0.0,0.0,0.0,7874
-"GSE252501 DLPFC, controls",sex + chip,10-90 %,dispersion_slope,30837,non_essential,island x level,0.281137183367269,0.21130289013280606,0.3435159894521037,0.0,0.0,0.0,1838
-"GSE252501 DLPFC, controls",sex + chip,10-90 %,entropy_slope,30837,core_essential,island x level,-0.039957467961438745,-0.12204899908626891,0.01840909897190774,0.0,0.0,0.0,1038
-"GSE252501 DLPFC, controls",sex + chip,10-90 %,entropy_slope,30837,housekeeping,island x level,-0.09918592572307348,-0.11982342996392598,-0.07109364583990796,0.0,0.0,0.0,7874
-"GSE252501 DLPFC, controls",sex + chip,10-90 %,entropy_slope,30837,non_essential,island x level,-0.16265545163885922,-0.23223565321035292,-0.09529179966593392,0.0,0.0,0.0,1838
+"GSE252501 Nucleus Accumbens, no alcohol use disorder (depression held)",sex,all,kl_slope,88667,core_essential,island x level,-0.022089297686413253,-0.04189070293275351,0.0012106416965138418,0.0,0.0,0.0,5816
+"GSE252501 Nucleus Accumbens, no alcohol use disorder (depression held)",sex,all,kl_slope,88667,housekeeping,island x level,-0.009819037322608925,-0.02333255101640027,0.004065804466031212,0.0,0.0,0.0,35059
+"GSE252501 Nucleus Accumbens, no alcohol use disorder (depression held)",sex,all,kl_slope,88667,non_essential,island x level,-0.04480225885223334,-0.06798118396964234,-0.019999570734197062,0.0,0.0,0.0,3784
+"GSE252501 Nucleus Accumbens, no alcohol use disorder (depression held)",sex,all,dispersion_slope,88667,core_essential,island x level,-0.0026918339006148156,-0.028127287215216755,0.023394008272336186,0.0,0.0,0.0,5816
+"GSE252501 Nucleus Accumbens, no alcohol use disorder (depression held)",sex,all,dispersion_slope,88667,housekeeping,island x level,0.0013431896904754182,-0.010780035974984448,0.01339458374134266,0.0,0.0,0.0,35059
+"GSE252501 Nucleus Accumbens, no alcohol use disorder (depression held)",sex,all,dispersion_slope,88667,non_essential,island x level,-0.11360341557334852,-0.15051195627246156,-0.07822147166817982,0.0,0.0,0.0,3784
+"GSE252501 Nucleus Accumbens, no alcohol use disorder (depression held)",sex,all,entropy_slope,88667,core_essential,island x level,-0.031759466877552225,-0.054009039613340505,-0.010169402416213318,0.0,0.0,0.0,5816
+"GSE252501 Nucleus Accumbens, no alcohol use disorder (depression held)",sex,all,entropy_slope,88667,housekeeping,island x level,-0.07036815095953536,-0.08086280090450702,-0.0620893515683355,0.0,0.0,0.0,35059
+"GSE252501 Nucleus Accumbens, no alcohol use disorder (depression held)",sex,all,entropy_slope,88667,non_essential,island x level,-0.06505500501891993,-0.11362881344069738,-0.009142562006427914,0.0,0.0,0.0,3784
+"GSE252501 Nucleus Accumbens, no alcohol use disorder (depression held)",sex,10-90 %,kl_slope,27228,core_essential,island x level,0.014652079274288923,-0.0793786667059299,0.1189215978807323,0.0,0.0,0.0,808
+"GSE252501 Nucleus Accumbens, no alcohol use disorder (depression held)",sex,10-90 %,kl_slope,27228,housekeeping,island x level,0.011001945626423882,-0.02173025132848626,0.045000578373715065,0.0,0.0,0.0,6550
+"GSE252501 Nucleus Accumbens, no alcohol use disorder (depression held)",sex,10-90 %,kl_slope,27228,non_essential,island x level,-0.06427962093735036,-0.1059146384233768,-0.020369799255161886,0.0,0.0,0.0,1714
+"GSE252501 Nucleus Accumbens, no alcohol use disorder (depression held)",sex,10-90 %,dispersion_slope,27228,core_essential,island x level,0.01519974218060429,-0.05815684285557521,0.09085339370953306,0.0,0.0,0.0,808
+"GSE252501 Nucleus Accumbens, no alcohol use disorder (depression held)",sex,10-90 %,dispersion_slope,27228,housekeeping,island x level,0.0332211200757326,0.0006165867088354891,0.0647747928806974,0.0,0.0,0.0,6550
+"GSE252501 Nucleus Accumbens, no alcohol use disorder (depression held)",sex,10-90 %,dispersion_slope,27228,non_essential,island x level,-0.14140595334151068,-0.18912501088898998,-0.09470017381192052,0.0,0.0,0.0,1714
+"GSE252501 Nucleus Accumbens, no alcohol use disorder (depression held)",sex,10-90 %,entropy_slope,27228,core_essential,island x level,0.026949366451391118,-0.042432216331174784,0.07942262894438087,0.0,0.0,0.0,808
+"GSE252501 Nucleus Accumbens, no alcohol use disorder (depression held)",sex,10-90 %,entropy_slope,27228,housekeeping,island x level,-0.007390266133501747,-0.030878768894990364,0.017847428813951086,0.0,0.0,0.0,6550
+"GSE252501 Nucleus Accumbens, no alcohol use disorder (depression held)",sex,10-90 %,entropy_slope,27228,non_essential,island x level,-0.11104327090673063,-0.16599016552384402,-0.06300247954431065,0.0,0.0,0.0,1714
+"GSE252501 Nucleus Accumbens, no alcohol use disorder (depression held)",sex + chip,all,kl_slope,88667,core_essential,island x level,0.006179588699678275,-0.01071093121680882,0.021035856356142843,0.0,0.0,0.0,5816
+"GSE252501 Nucleus Accumbens, no alcohol use disorder (depression held)",sex + chip,all,kl_slope,88667,housekeeping,island x level,-0.026379020928999932,-0.03882467692148815,-0.01680405485124365,0.0,0.0,0.0,35059
+"GSE252501 Nucleus Accumbens, no alcohol use disorder (depression held)",sex + chip,all,kl_slope,88667,non_essential,island x level,-0.03984194578566425,-0.07891562337320557,0.003862173881937509,0.0,0.0,0.0,3784
+"GSE252501 Nucleus Accumbens, no alcohol use disorder (depression held)",sex + chip,all,dispersion_slope,88667,core_essential,island x level,-0.0009606590453175782,-0.013884235839087964,0.01179808794802545,0.0,0.0,0.0,5816
+"GSE252501 Nucleus Accumbens, no alcohol use disorder (depression held)",sex + chip,all,dispersion_slope,88667,housekeeping,island x level,0.013767311973724513,0.006861827862092677,0.020808659172218996,0.0,0.0,0.0,35059
+"GSE252501 Nucleus Accumbens, no alcohol use disorder (depression held)",sex + chip,all,dispersion_slope,88667,non_essential,island x level,-0.12082603375786247,-0.18207454044161342,-0.06294898219736493,0.0,0.0,0.0,3784
+"GSE252501 Nucleus Accumbens, no alcohol use disorder (depression held)",sex + chip,all,entropy_slope,88667,core_essential,island x level,-0.00958552996154018,-0.033046938616707704,0.0125363562459696,0.0,0.0,0.0,5816
+"GSE252501 Nucleus Accumbens, no alcohol use disorder (depression held)",sex + chip,all,entropy_slope,88667,housekeeping,island x level,-0.05362657468478609,-0.06525188012019845,-0.04264116804951397,0.0,0.0,0.0,35059
+"GSE252501 Nucleus Accumbens, no alcohol use disorder (depression held)",sex + chip,all,entropy_slope,88667,non_essential,island x level,0.0274488798171851,-0.022297593552275688,0.08623864803723041,0.0,0.0,0.0,3784
+"GSE252501 Nucleus Accumbens, no alcohol use disorder (depression held)",sex + chip,10-90 %,kl_slope,27228,core_essential,island x level,0.03485374474656793,-0.016051993405844973,0.09474015660039986,0.0,0.0,0.0,808
+"GSE252501 Nucleus Accumbens, no alcohol use disorder (depression held)",sex + chip,10-90 %,kl_slope,27228,housekeeping,island x level,-0.030861047952176972,-0.0692640877062493,0.0033791015270956343,0.0,0.0,0.0,6550
+"GSE252501 Nucleus Accumbens, no alcohol use disorder (depression held)",sex + chip,10-90 %,kl_slope,27228,non_essential,island x level,-0.0340494386090452,-0.08337399063285521,0.022961169162780428,0.0,0.0,0.0,1714
+"GSE252501 Nucleus Accumbens, no alcohol use disorder (depression held)",sex + chip,10-90 %,dispersion_slope,27228,core_essential,island x level,0.024248164997977887,-0.032189945901090845,0.08867566323314352,0.0,0.0,0.0,808
+"GSE252501 Nucleus Accumbens, no alcohol use disorder (depression held)",sex + chip,10-90 %,dispersion_slope,27228,housekeeping,island x level,0.05898401710222576,0.034524347956699335,0.08046223317920478,0.0,0.0,0.0,6550
+"GSE252501 Nucleus Accumbens, no alcohol use disorder (depression held)",sex + chip,10-90 %,dispersion_slope,27228,non_essential,island x level,-0.09048078307488774,-0.15649051072278833,-0.028992996777831747,0.0,0.0,0.0,1714
+"GSE252501 Nucleus Accumbens, no alcohol use disorder (depression held)",sex + chip,10-90 %,entropy_slope,27228,core_essential,island x level,0.04472244865743873,-0.014346273332939518,0.09774482737704292,0.0,0.0,0.0,808
+"GSE252501 Nucleus Accumbens, no alcohol use disorder (depression held)",sex + chip,10-90 %,entropy_slope,27228,housekeeping,island x level,0.018097583805319537,-0.007584856898986416,0.04694009631057103,0.0,0.0,0.0,6550
+"GSE252501 Nucleus Accumbens, no alcohol use disorder (depression held)",sex + chip,10-90 %,entropy_slope,27228,non_essential,island x level,0.025015545888070496,-0.04249529988680037,0.09202547806432529,0.0,0.0,0.0,1714
+"GSE252501 Nucleus Accumbens, no alcohol use disorder, no depression",sex,all,kl_slope,89888,core_essential,island x level,-0.010364468718023443,-0.034984132521125824,0.01817749580270779,0.0,0.0,0.0,5884
+"GSE252501 Nucleus Accumbens, no alcohol use disorder, no depression",sex,all,kl_slope,89888,housekeeping,island x level,0.012187300914167313,0.000035061561987588446,0.025224862977996153,0.0,0.0,0.0,35526
+"GSE252501 Nucleus Accumbens, no alcohol use disorder, no depression",sex,all,kl_slope,89888,non_essential,island x level,-0.04280992659253994,-0.061048887688980556,-0.015556093703399717,0.0,0.0,0.0,3837
+"GSE252501 Nucleus Accumbens, no alcohol use disorder, no depression",sex,all,dispersion_slope,89888,core_essential,island x level,-0.007406476701025801,-0.03682366027211112,0.02354971001446464,0.0,0.0,0.0,5884
+"GSE252501 Nucleus Accumbens, no alcohol use disorder, no depression",sex,all,dispersion_slope,89888,housekeeping,island x level,0.025937948377387585,0.013833516036437964,0.03745534212461888,0.0,0.0,0.0,35526
+"GSE252501 Nucleus Accumbens, no alcohol use disorder, no depression",sex,all,dispersion_slope,89888,non_essential,island x level,-0.114960875441552,-0.14454840405375427,-0.0789344724089888,0.0,0.0,0.0,3837
+"GSE252501 Nucleus Accumbens, no alcohol use disorder, no depression",sex,all,entropy_slope,89888,core_essential,island x level,-0.0347058244350556,-0.0558281242222684,-0.010790260306799698,0.0,0.0,0.0,5884
+"GSE252501 Nucleus Accumbens, no alcohol use disorder, no depression",sex,all,entropy_slope,89888,housekeeping,island x level,-0.04307682122260007,-0.052205689022554125,-0.03307705530830795,0.0,0.0,0.0,35526
+"GSE252501 Nucleus Accumbens, no alcohol use disorder, no depression",sex,all,entropy_slope,89888,non_essential,island x level,-0.07952305337712727,-0.1318813972654273,-0.03585798018116097,0.0,0.0,0.0,3837
+"GSE252501 Nucleus Accumbens, no alcohol use disorder, no depression",sex,10-90 %,kl_slope,31749,core_essential,island x level,0.01541254558872454,-0.03998312152593456,0.08148943365143597,0.0,0.0,0.0,1121
+"GSE252501 Nucleus Accumbens, no alcohol use disorder, no depression",sex,10-90 %,kl_slope,31749,housekeeping,island x level,0.034865146706156876,0.012093748454995413,0.058576790886167615,0.0,0.0,0.0,8307
+"GSE252501 Nucleus Accumbens, no alcohol use disorder, no depression",sex,10-90 %,kl_slope,31749,non_essential,island x level,-0.08651431705349816,-0.13511791026453143,-0.027784491076851513,0.0,0.0,0.0,1928
+"GSE252501 Nucleus Accumbens, no alcohol use disorder, no depression",sex,10-90 %,dispersion_slope,31749,core_essential,island x level,0.008750404536018266,-0.055786431922780266,0.08262035638081648,0.0,0.0,0.0,1121
+"GSE252501 Nucleus Accumbens, no alcohol use disorder, no depression",sex,10-90 %,dispersion_slope,31749,housekeeping,island x level,0.061907960182718956,0.034683623989179194,0.08998366682273672,0.0,0.0,0.0,8307
+"GSE252501 Nucleus Accumbens, no alcohol use disorder, no depression",sex,10-90 %,dispersion_slope,31749,non_essential,island x level,-0.16170742299005036,-0.20922236565826496,-0.11381570411293386,0.0,0.0,0.0,1928
+"GSE252501 Nucleus Accumbens, no alcohol use disorder, no depression",sex,10-90 %,entropy_slope,31749,core_essential,island x level,-0.007702244661361097,-0.05400855602767164,0.047305579817535345,0.0,0.0,0.0,1121
+"GSE252501 Nucleus Accumbens, no alcohol use disorder, no depression",sex,10-90 %,entropy_slope,31749,housekeeping,island x level,-0.03434584967967803,-0.06227650670391418,-0.010992443826872086,0.0,0.0,0.0,8307
+"GSE252501 Nucleus Accumbens, no alcohol use disorder, no depression",sex,10-90 %,entropy_slope,31749,non_essential,island x level,-0.11246193166984865,-0.16490243134834034,-0.05914636717470917,0.0,0.0,0.0,1928
+"GSE252501 DLPFC, no alcohol use disorder (depression held)",sex,all,kl_slope,89784,core_essential,island x level,-0.014716176696793842,-0.025756491517059374,-0.0031246582755079765,0.0,0.0,0.0,5862
+"GSE252501 DLPFC, no alcohol use disorder (depression held)",sex,all,kl_slope,89784,housekeeping,island x level,-0.004569271437124517,-0.01667451424389727,0.005869894500900161,0.0,0.0,0.0,35461
+"GSE252501 DLPFC, no alcohol use disorder (depression held)",sex,all,kl_slope,89784,non_essential,island x level,0.009661048412111437,-0.005500940005937766,0.028009542004197772,0.0,0.0,0.0,3838
+"GSE252501 DLPFC, no alcohol use disorder (depression held)",sex,all,dispersion_slope,89784,core_essential,island x level,-0.01198716161500377,-0.0362044150061118,0.011675216592138387,0.0,0.0,0.0,5862
+"GSE252501 DLPFC, no alcohol use disorder (depression held)",sex,all,dispersion_slope,89784,housekeeping,island x level,-0.0068324646058493645,-0.01851293257430375,0.005790973799868319,0.0,0.0,0.0,35461
+"GSE252501 DLPFC, no alcohol use disorder (depression held)",sex,all,dispersion_slope,89784,non_essential,island x level,0.008082950789099076,-0.019792415353466625,0.03869229426617229,0.0,0.0,0.0,3838
+"GSE252501 DLPFC, no alcohol use disorder (depression held)",sex,all,entropy_slope,89784,core_essential,island x level,-0.053851658124633536,-0.07499953937604262,-0.030004294046647506,0.0,0.0,0.0,5862
+"GSE252501 DLPFC, no alcohol use disorder (depression held)",sex,all,entropy_slope,89784,housekeeping,island x level,-0.09437221781863571,-0.10466612079924242,-0.08473292052414733,0.0,0.0,0.0,35461
+"GSE252501 DLPFC, no alcohol use disorder (depression held)",sex,all,entropy_slope,89784,non_essential,island x level,-0.004267622248083116,-0.05057075058029817,0.0521188710256731,0.0,0.0,0.0,3838
+"GSE252501 DLPFC, no alcohol use disorder (depression held)",sex,10-90 %,kl_slope,30837,core_essential,island x level,0.006621515341278619,-0.032604292320393705,0.04627020655446393,0.0,0.0,0.0,1038
+"GSE252501 DLPFC, no alcohol use disorder (depression held)",sex,10-90 %,kl_slope,30837,housekeeping,island x level,0.022907542971442606,-0.00785193515901122,0.055404863384306745,0.0,0.0,0.0,7874
+"GSE252501 DLPFC, no alcohol use disorder (depression held)",sex,10-90 %,kl_slope,30837,non_essential,island x level,0.012374266186957913,-0.01738356286673282,0.0452298765797507,0.0,0.0,0.0,1838
+"GSE252501 DLPFC, no alcohol use disorder (depression held)",sex,10-90 %,dispersion_slope,30837,core_essential,island x level,-0.0026702398830072043,-0.08562135880216935,0.06836905864103818,0.0,0.0,0.0,1038
+"GSE252501 DLPFC, no alcohol use disorder (depression held)",sex,10-90 %,dispersion_slope,30837,housekeeping,island x level,0.02953739069712944,0.0017978882327806846,0.05686481380696619,0.0,0.0,0.0,7874
+"GSE252501 DLPFC, no alcohol use disorder (depression held)",sex,10-90 %,dispersion_slope,30837,non_essential,island x level,0.007218316070289984,-0.04231147489359671,0.058113924428247844,0.0,0.0,0.0,1838
+"GSE252501 DLPFC, no alcohol use disorder (depression held)",sex,10-90 %,entropy_slope,30837,core_essential,island x level,-0.0106102276816669,-0.06963654574701082,0.04348794739363902,0.0,0.0,0.0,1038
+"GSE252501 DLPFC, no alcohol use disorder (depression held)",sex,10-90 %,entropy_slope,30837,housekeeping,island x level,-0.03245722208235586,-0.054413949378599245,-0.011699183202026744,0.0,0.0,0.0,7874
+"GSE252501 DLPFC, no alcohol use disorder (depression held)",sex,10-90 %,entropy_slope,30837,non_essential,island x level,-0.046551290346674136,-0.11234833771798375,0.008916842945607155,0.0,0.0,0.0,1838
+"GSE252501 DLPFC, no alcohol use disorder (depression held)",sex + chip,all,kl_slope,89784,core_essential,island x level,-0.01956156453388815,-0.03008028746054169,-0.005940723714741826,0.0,0.0,0.0,5862
+"GSE252501 DLPFC, no alcohol use disorder (depression held)",sex + chip,all,kl_slope,89784,housekeeping,island x level,-0.013228143487564844,-0.024045732228749367,-0.0032826299554713115,0.0,0.0,0.0,35461
+"GSE252501 DLPFC, no alcohol use disorder (depression held)",sex + chip,all,kl_slope,89784,non_essential,island x level,0.06913529058588345,0.038911772813777876,0.10878032053336562,0.0,0.0,0.0,3838
+"GSE252501 DLPFC, no alcohol use disorder (depression held)",sex + chip,all,dispersion_slope,89784,core_essential,island x level,-0.0002199206343525281,-0.015244888361666145,0.015515497642113199,0.0,0.0,0.0,5862
+"GSE252501 DLPFC, no alcohol use disorder (depression held)",sex + chip,all,dispersion_slope,89784,housekeeping,island x level,-0.008004917863633438,-0.01635357150600611,-0.0011348388895803397,0.0,0.0,0.0,35461
+"GSE252501 DLPFC, no alcohol use disorder (depression held)",sex + chip,all,dispersion_slope,89784,non_essential,island x level,0.17300205270688968,0.12510501177380576,0.2335474918846746,0.0,0.0,0.0,3838
+"GSE252501 DLPFC, no alcohol use disorder (depression held)",sex + chip,all,entropy_slope,89784,core_essential,island x level,-0.04672840436583526,-0.07059742377440588,-0.024972658588231895,0.0,0.0,0.0,5862
+"GSE252501 DLPFC, no alcohol use disorder (depression held)",sex + chip,all,entropy_slope,89784,housekeeping,island x level,-0.11271214270243508,-0.12364125041609042,-0.10211589873106423,0.0,0.0,0.0,35461
+"GSE252501 DLPFC, no alcohol use disorder (depression held)",sex + chip,all,entropy_slope,89784,non_essential,island x level,-0.08709286994556124,-0.13847495764810797,-0.028931303942363658,0.0,0.0,0.0,3838
+"GSE252501 DLPFC, no alcohol use disorder (depression held)",sex + chip,10-90 %,kl_slope,30837,core_essential,island x level,-0.07891417031844114,-0.12253367541931362,-0.037250517130793595,0.0,0.0,0.0,1038
+"GSE252501 DLPFC, no alcohol use disorder (depression held)",sex + chip,10-90 %,kl_slope,30837,housekeeping,island x level,-0.03488471394077896,-0.062261748248336815,-0.008471757434579395,0.0,0.0,0.0,7874
+"GSE252501 DLPFC, no alcohol use disorder (depression held)",sex + chip,10-90 %,kl_slope,30837,non_essential,island x level,0.10849770666498193,0.04709259465846016,0.16799894386408606,0.0,0.0,0.0,1838
+"GSE252501 DLPFC, no alcohol use disorder (depression held)",sex + chip,10-90 %,dispersion_slope,30837,core_essential,island x level,0.012936396692073056,-0.0417607256898885,0.07503738850057634,0.0,0.0,0.0,1038
+"GSE252501 DLPFC, no alcohol use disorder (depression held)",sex + chip,10-90 %,dispersion_slope,30837,housekeeping,island x level,-0.03773716382403283,-0.05775560097679446,-0.014113156385592702,0.0,0.0,0.0,7874
+"GSE252501 DLPFC, no alcohol use disorder (depression held)",sex + chip,10-90 %,dispersion_slope,30837,non_essential,island x level,0.22345039317355941,0.15610688119639493,0.2872875049982882,0.0,0.0,0.0,1838
+"GSE252501 DLPFC, no alcohol use disorder (depression held)",sex + chip,10-90 %,entropy_slope,30837,core_essential,island x level,-0.03423094573192384,-0.11672870590817061,0.024171080908120573,0.0,0.0,0.0,1038
+"GSE252501 DLPFC, no alcohol use disorder (depression held)",sex + chip,10-90 %,entropy_slope,30837,housekeeping,island x level,-0.09301549085006931,-0.11404059429217495,-0.0646837134926014,0.0,0.0,0.0,7874
+"GSE252501 DLPFC, no alcohol use disorder (depression held)",sex + chip,10-90 %,entropy_slope,30837,non_essential,island x level,-0.16774885374860019,-0.235920069952102,-0.10227971090911264,0.0,0.0,0.0,1838
+"GSE252501 DLPFC, no alcohol use disorder, no depression",sex,all,kl_slope,90849,core_essential,island x level,-0.015056911564419677,-0.028166738906602935,-0.0010329168896814768,0.0,0.0,0.0,5931
+"GSE252501 DLPFC, no alcohol use disorder, no depression",sex,all,kl_slope,90849,housekeeping,island x level,-0.01757138392417889,-0.0275419818035902,-0.007575397858926333,0.0,0.0,0.0,35869
+"GSE252501 DLPFC, no alcohol use disorder, no depression",sex,all,kl_slope,90849,non_essential,island x level,0.009566858872416846,-0.032613480125034885,0.051253872268849865,0.0,0.0,0.0,3868
+"GSE252501 DLPFC, no alcohol use disorder, no depression",sex,all,dispersion_slope,90849,core_essential,island x level,-0.05649447895434201,-0.07974706312087473,-0.03416458410374656,0.0,0.0,0.0,5931
+"GSE252501 DLPFC, no alcohol use disorder, no depression",sex,all,dispersion_slope,90849,housekeeping,island x level,-0.07308866836486469,-0.0846153587091161,-0.06189430182567959,0.0,0.0,0.0,35869
+"GSE252501 DLPFC, no alcohol use disorder, no depression",sex,all,dispersion_slope,90849,non_essential,island x level,0.08178882440212572,0.049902707712640965,0.13144235165574505,0.0,0.0,0.0,3868
+"GSE252501 DLPFC, no alcohol use disorder, no depression",sex,all,entropy_slope,90849,core_essential,island x level,-0.05692617836409172,-0.07702060720075048,-0.030471413376763734,0.0,0.0,0.0,5931
+"GSE252501 DLPFC, no alcohol use disorder, no depression",sex,all,entropy_slope,90849,housekeeping,island x level,-0.1117892136477994,-0.12290346821746394,-0.1004922394116838,0.0,0.0,0.0,35869
+"GSE252501 DLPFC, no alcohol use disorder, no depression",sex,all,entropy_slope,90849,non_essential,island x level,0.1294878099465369,0.0851534067937778,0.1803652743328438,0.0,0.0,0.0,3868
+"GSE252501 DLPFC, no alcohol use disorder, no depression",sex,10-90 %,kl_slope,34451,core_essential,island x level,-0.03759245268344454,-0.06196698534313384,-0.014613560769646068,0.0,0.0,0.0,1304
+"GSE252501 DLPFC, no alcohol use disorder, no depression",sex,10-90 %,kl_slope,34451,housekeeping,island x level,-0.024187210754891983,-0.0413390098767668,0.00037150709863289165,0.0,0.0,0.0,9418
+"GSE252501 DLPFC, no alcohol use disorder, no depression",sex,10-90 %,kl_slope,34451,non_essential,island x level,0.0005834736910090793,-0.04522800055773851,0.06920387823870935,0.0,0.0,0.0,1962
+"GSE252501 DLPFC, no alcohol use disorder, no depression",sex,10-90 %,dispersion_slope,34451,core_essential,island x level,-0.10351573130986157,-0.1507222909983735,-0.06357372693747539,0.0,0.0,0.0,1304
+"GSE252501 DLPFC, no alcohol use disorder, no depression",sex,10-90 %,dispersion_slope,34451,housekeeping,island x level,-0.1102508425038434,-0.13654049956015465,-0.08347648884129956,0.0,0.0,0.0,9418
+"GSE252501 DLPFC, no alcohol use disorder, no depression",sex,10-90 %,dispersion_slope,34451,non_essential,island x level,0.05910310508570683,0.005324615772527773,0.1256368984381345,0.0,0.0,0.0,1962
+"GSE252501 DLPFC, no alcohol use disorder, no depression",sex,10-90 %,entropy_slope,34451,core_essential,island x level,-0.03320969329257687,-0.08801503319879116,0.013340924902675211,0.0,0.0,0.0,1304
+"GSE252501 DLPFC, no alcohol use disorder, no depression",sex,10-90 %,entropy_slope,34451,housekeeping,island x level,-0.12392909626375377,-0.14792270783788392,-0.10229582029419966,0.0,0.0,0.0,9418
+"GSE252501 DLPFC, no alcohol use disorder, no depression",sex,10-90 %,entropy_slope,34451,non_essential,island x level,0.10986070505917749,0.058287938393895414,0.16626302700391685,0.0,0.0,0.0,1962
 GSE279509 neurons (NeuN+),sex,all,kl_slope,82504,core_essential,island x level,-0.032486062850581546,-0.060697644822441776,0.0010566769115633425,0.0,0.0,0.0,5506
 GSE279509 neurons (NeuN+),sex,all,kl_slope,82504,housekeeping,island x level,-0.021444158830156733,-0.03201050901980662,-0.008714670848616176,0.0,0.0,0.0,32804
 GSE279509 neurons (NeuN+),sex,all,kl_slope,82504,non_essential,island x level,-0.000715526105682313,-0.044563556816128176,0.05383642332754833,0.0,0.0,0.0,3522

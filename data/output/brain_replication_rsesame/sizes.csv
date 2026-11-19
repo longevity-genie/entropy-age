@@ -1,6 +1,8 @@
 group,arrays,donors,age_min,age_max,cpgs,chips,chips_with_2_or_more
-"GSE252501 Nucleus Accumbens, controls",51,51,24.76,78.04,88667,30,21
-"GSE252501 DLPFC, controls",52,52,24.76,78.04,89784,30,22
+"GSE252501 Nucleus Accumbens, no alcohol use disorder (depression held)",51,51,24.76,78.04,88667,30,21
+"GSE252501 Nucleus Accumbens, no alcohol use disorder, no depression",22,22,38.99,76.38,89888,22,0
+"GSE252501 DLPFC, no alcohol use disorder (depression held)",52,52,24.76,78.04,89784,30,22
+"GSE252501 DLPFC, no alcohol use disorder, no depression",23,23,38.99,76.38,90849,23,0
 GSE279509 neurons (NeuN+),130,130,18.0,92.0,82504,90,40
 GSE279509 oligodendrocyte lineage (SOX10+),127,127,18.0,108.0,82608,90,36
 GSE279509 other glia (NeuN-/SOX10-),89,89,18.0,95.0,81291,72,17

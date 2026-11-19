@@ -1,0 +1,25 @@
+part,comparison,group,metric,difference,ci_low,ci_high,p_bootstrap,processing,mixed_processing
+lifespan,blood - cortex,core_essential,entropy_slope,-0.13502698315950573,-0.22895901851696043,-0.04186590130502978,0.005,"Hannum deposited, Jaffe rebuilt, Lunnon deposited",true
+lifespan,blood - cortex,core_essential,dispersion_slope,-0.0770366316487548,-0.16356705836607707,0.00942474749171519,0.09,"Hannum deposited, Jaffe rebuilt, Lunnon deposited",true
+lifespan,blood - cortex,core_essential,abs_slope,-0.02635630446271542,-0.07674864917916037,0.02757943293581096,0.31,"Hannum deposited, Jaffe rebuilt, Lunnon deposited",true
+lifespan,blood - cortex,core_essential,kl_slope,-0.016564202674009793,-0.08403888883657383,0.05125473806148474,0.72,"Hannum deposited, Jaffe rebuilt, Lunnon deposited",true
+same donors,blood - frontal cortex,core_essential,dispersion,-0.030502188935689015,-0.0499632482221414,-0.014370955807250011,0.005,"Hannum deposited, Jaffe rebuilt, Lunnon deposited",true
+same donors,blood - superior temporal gyrus,core_essential,dispersion,-0.03474740336008274,-0.05179992926279489,-0.018510048928482185,0.005,"Hannum deposited, Jaffe rebuilt, Lunnon deposited",true
+same donors,blood - entorhinal cortex,core_essential,dispersion,-0.01966986174988552,-0.03790798198872104,-0.0021308537202963393,0.04,"Hannum deposited, Jaffe rebuilt, Lunnon deposited",true
+same donors,blood - cerebellum,core_essential,dispersion,-0.026361556647072036,-0.042792291802911865,-0.010729433085524364,0.005,"Hannum deposited, Jaffe rebuilt, Lunnon deposited",true
+lifespan,blood - cortex,housekeeping,entropy_slope,-0.20162476924775463,-0.31766152246202745,-0.07246626981949061,0.005,"Hannum deposited, Jaffe rebuilt, Lunnon deposited",true
+lifespan,blood - cortex,housekeeping,dispersion_slope,-0.16739806004349403,-0.2704304730478188,-0.05694882114922193,0.005,"Hannum deposited, Jaffe rebuilt, Lunnon deposited",true
+lifespan,blood - cortex,housekeeping,abs_slope,-0.043835062436661416,-0.1305521979925289,0.04109567706441471,0.27,"Hannum deposited, Jaffe rebuilt, Lunnon deposited",true
+lifespan,blood - cortex,housekeeping,kl_slope,-0.06625051204276655,-0.14464437710687256,0.004792997892280499,0.07,"Hannum deposited, Jaffe rebuilt, Lunnon deposited",true
+same donors,blood - frontal cortex,housekeeping,dispersion,-0.09169211022911941,-0.11082911505040546,-0.0691336616967567,0.005,"Hannum deposited, Jaffe rebuilt, Lunnon deposited",true
+same donors,blood - superior temporal gyrus,housekeeping,dispersion,-0.09578488213040542,-0.11597736060181983,-0.07708792046558373,0.005,"Hannum deposited, Jaffe rebuilt, Lunnon deposited",true
+same donors,blood - entorhinal cortex,housekeeping,dispersion,-0.07238340800140189,-0.09265589223448087,-0.0492019787979022,0.005,"Hannum deposited, Jaffe rebuilt, Lunnon deposited",true
+same donors,blood - cerebellum,housekeeping,dispersion,-0.08749919655825084,-0.10958443860210942,-0.0687195332635895,0.005,"Hannum deposited, Jaffe rebuilt, Lunnon deposited",true
+lifespan,blood - cortex,non_essential,entropy_slope,0.2625429644515779,0.1258910012827931,0.3999638106273291,0.005,"Hannum deposited, Jaffe rebuilt, Lunnon deposited",true
+lifespan,blood - cortex,non_essential,dispersion_slope,0.2309870375305932,0.11727910418561872,0.34302682233962367,0.005,"Hannum deposited, Jaffe rebuilt, Lunnon deposited",true
+lifespan,blood - cortex,non_essential,abs_slope,0.05220704759747327,-0.10084075743381184,0.2107852127502542,0.59,"Hannum deposited, Jaffe rebuilt, Lunnon deposited",true
+lifespan,blood - cortex,non_essential,kl_slope,0.09639697809659581,0.003532981538651898,0.20910640613515416,0.05,"Hannum deposited, Jaffe rebuilt, Lunnon deposited",true
+same donors,blood - frontal cortex,non_essential,dispersion,0.14884943732882244,0.11565958977955502,0.17731868684135135,0.005,"Hannum deposited, Jaffe rebuilt, Lunnon deposited",true
+same donors,blood - superior temporal gyrus,non_essential,dispersion,0.12469343705662492,0.09701882417795864,0.16112826235777125,0.005,"Hannum deposited, Jaffe rebuilt, Lunnon deposited",true
+same donors,blood - entorhinal cortex,non_essential,dispersion,0.18648096350853752,0.15358778718597665,0.2144386522802234,0.005,"Hannum deposited, Jaffe rebuilt, Lunnon deposited",true
+same donors,blood - cerebellum,non_essential,dispersion,0.0879751233295903,0.05436070557739715,0.11929917949601103,0.005,"Hannum deposited, Jaffe rebuilt, Lunnon deposited",true

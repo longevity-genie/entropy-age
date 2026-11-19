@@ -3,6 +3,26 @@
 Owned by the runner seat (`docs/seats/RUNNER.md`): one entry per run, newest first, with its inputs, the
 commit it ran, its job ids, its scale and seed, and its result or its failure with the cause.
 
+## R102, R105, R109b — cortex on rebuilt arrays in the main comparison; blood minus cortex matched; GSE252501 with depression held, 2026-11-19
+
+- **R102** (`ENTROPY_AGE_BETAS=sesame figures tissues`, job 6520488, test partition, 1 h 02 min; Jaffe rebuilt, 208
+  donors; Hannum and Lunnon deposited, flagged). Cortex housekeeping gap: relative entropy −0.058 → −0.082,
+  dispersion −0.075 → −0.118; core-essential −0.072 → −0.073 and −0.081 → −0.099; non-essential 0.00 → +0.03 (p
+  0.11). Blood minus cortex with the rebuilt cortex (mixed processing): housekeeping −0.066 (−0.145 to +0.005),
+  core-essential −0.017 (−0.084 to +0.051): not resolved.
+- **R105** (`figures tissues_matched`, job 6520487, 1 h 07 min; both deposited; ages 20.8-85.2, so 616 of 656 blood
+  donors and all 213 cortex donors; 11 of 12 EpiDISH fractions held in blood). Blood minus cortex, housekeeping:
+  relative entropy −0.067 (−0.134 to −0.014; unmatched −0.093), dispersion −0.103 (−0.169 to −0.038; unmatched
+  −0.209); core-essential +0.001 and −0.023 (intervals across zero). Matching ages and holding cell fractions removes
+  a third to a half of the difference; the rest is still a contrast of two studies.
+- **R109b** (job 6521034, 14 min; commit b8f4e69): GSE252501 DLPFC, 52 donors without alcohol use disorder,
+  depression diagnosis held: housekeeping −0.005 (−0.017 to +0.006), −0.013 (−0.024 to −0.003) with chip;
+  core-essential −0.015 and −0.020 (intervals exclude zero). The 23 with neither diagnosis: housekeeping −0.018
+  (−0.028 to −0.008), core-essential −0.015 (−0.028 to −0.001). Holding the diagnosis changes nothing. The sorted
+  nuclei groups are as in R109.
+- Reading: "blood more shielded than cortex" is at most −0.07 SD for housekeeping genes and absent for core-essential
+  genes, in a cross-study contrast whose interval touches zero once cortex is rebuilt. Not a finding.
+
 ## R109 — the shield in two new brain series, sorted nuclei included (RM40, RM44), 2026-11-19
 
 - `figures brain_replication --scale paper --seed 42`, commit b9b866f, job 6520486 (test partition), 13 min. Both

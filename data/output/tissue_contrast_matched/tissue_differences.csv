@@ -1,0 +1,13 @@
+part,comparison,group,metric,difference,ci_low,ci_high,p_bootstrap,processing,mixed_processing,ages,blood_cell_fractions
+lifespan,blood - cortex,core_essential,entropy_slope,-0.10983434501827158,-0.16348246470662184,-0.05875991832526635,0.005,"Hannum deposited, Jaffe deposited, Lunnon deposited",false,20.7863-85.2,true
+lifespan,blood - cortex,core_essential,dispersion_slope,-0.02297483601790904,-0.07581645523231284,0.03464416641035508,0.46,"Hannum deposited, Jaffe deposited, Lunnon deposited",false,20.7863-85.2,true
+lifespan,blood - cortex,core_essential,abs_slope,-0.06590846802205147,-0.10462460382096303,-0.0277438561463025,0.005,"Hannum deposited, Jaffe deposited, Lunnon deposited",false,20.7863-85.2,true
+lifespan,blood - cortex,core_essential,kl_slope,0.0009675477857266808,-0.06148544195795309,0.04897398509579281,0.97,"Hannum deposited, Jaffe deposited, Lunnon deposited",false,20.7863-85.2,true
+lifespan,blood - cortex,housekeeping,entropy_slope,-0.14008587407065953,-0.21449966323276243,-0.0749906231859712,0.01,"Hannum deposited, Jaffe deposited, Lunnon deposited",false,20.7863-85.2,true
+lifespan,blood - cortex,housekeeping,dispersion_slope,-0.10341158335960042,-0.16899497844242975,-0.03761173341106548,0.005,"Hannum deposited, Jaffe deposited, Lunnon deposited",false,20.7863-85.2,true
+lifespan,blood - cortex,housekeeping,abs_slope,-0.12457846043457779,-0.16888443652275767,-0.07893220727801564,0.005,"Hannum deposited, Jaffe deposited, Lunnon deposited",false,20.7863-85.2,true
+lifespan,blood - cortex,housekeeping,kl_slope,-0.06709725631790672,-0.1344692575641797,-0.0137852381545187,0.005,"Hannum deposited, Jaffe deposited, Lunnon deposited",false,20.7863-85.2,true
+lifespan,blood - cortex,non_essential,entropy_slope,0.1915256707663014,0.11371642515113657,0.2752339022504209,0.005,"Hannum deposited, Jaffe deposited, Lunnon deposited",false,20.7863-85.2,true
+lifespan,blood - cortex,non_essential,dispersion_slope,0.2182629345038511,0.12933865265635244,0.30169445593970967,0.005,"Hannum deposited, Jaffe deposited, Lunnon deposited",false,20.7863-85.2,true
+lifespan,blood - cortex,non_essential,abs_slope,0.21070806820987203,0.14122292683892268,0.28620987432202266,0.005,"Hannum deposited, Jaffe deposited, Lunnon deposited",false,20.7863-85.2,true
+lifespan,blood - cortex,non_essential,kl_slope,0.16391304032742854,0.06811957489360189,0.26583480243387336,0.005,"Hannum deposited, Jaffe deposited, Lunnon deposited",false,20.7863-85.2,true

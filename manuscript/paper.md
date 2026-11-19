@@ -83,8 +83,8 @@ were −0.06 and −0.07 SD, and non-essential CpGs did not differ from their lo
 housekeeping gap was larger in blood than in cortex by 0.09 SD (95 % interval −0.19 to −0.02); for core-essential
 genes the difference was not resolved (−0.02, −0.09 to +0.04; Fig. 1b). These are two studies, processed by different
 pipelines, over different age ranges (19-101 and 21-85 years), with neuron fraction held in cortex but no cell fractions
-in blood; the difference is therefore descriptive, and its size is within what processing alone moved the cortex gap
-(0.02 SD, below). Other drift measures gave the same signs: the absolute
+in blood; the difference is therefore descriptive. Restricted to the ages both cohorts cover and with blood-cell
+fractions held, it is −0.07 (−0.13 to −0.01); with the cortex arrays rebuilt from raw files, −0.07 (−0.15 to +0.01). Other drift measures gave the same signs: the absolute
 age slope of the mean (blood housekeeping −0.16 SD, cortex −0.05) and between-person dispersion (−0.29, −0.07).
 
 In blood and four brain regions from the same donors (Lunnon et al. 2014; 71-80 donors per tissue), between-person
