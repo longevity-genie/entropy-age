@@ -150,6 +150,7 @@ FIGURES: dict[str, Callable[[Context], list[Path]]] = {
     "lineage_shield": lineage_shield.run,
     "read_level": read_level.run,
     "within_person": within_person.run,
+    "within_person_450k": within_person.run_450k,
     "marrow_anomaly": marrow_anomaly.run,
     "cr_chromatin": cr_chromatin.run,
     "cr_blood_replication": cr_blood_replication.run,

@@ -211,6 +211,21 @@ def run_idats(ctx: Context) -> list[Path]:
     return analyse(ctx, people, frame["cpg"].to_list(), x, probes, membership, "satsa_idats", "SATSA from IDATs")
 
 
+def run_450k(ctx: Context) -> list[Path]:
+    """The deposited series on its 450k draws only (methods review, RM43 item 6): no pair spans the change to the EPIC
+    array, so no chip term is needed and no platform is pooled. Tables under ``within_person_450k``."""
+    folder = ctx.paths.input / "biostudies" / STUDY
+    tables = [folder / t for t in TABLES]
+    if not (folder / "SATSA_pheno.txt").exists() or not all(t.exists() for t in tables):
+        print(f"within_person: {STUDY} tables missing. Nothing run.", file=sys.stderr)
+        return []
+    plots.apply_style()
+    people = read_people(folder / "SATSA_pheno.txt").filter(~pl.col("epic"))
+    features, probes, membership = _features(ctx.paths, ctx.rng(140_000))
+    cpgs, x = read_rows(tables, set(features), people["sample"].to_list())
+    return analyse(ctx, people, cpgs, x, probes, membership, "within_person_450k", "SATSA, 450k draws only")
+
+
 def analyse(ctx, people, cpgs, x, probes, membership, name: str, label: str) -> list[Path]:
     """Pair metrics, gaps, the cross-sectional control and per-person slopes; tables under ``name``."""
     out = ctx.out_dir(name)

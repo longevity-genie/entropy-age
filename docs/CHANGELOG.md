@@ -4,6 +4,7 @@ Newest first.
 
 ## Unreleased
 
+- 2026-11-19: figures within_person_450k: the deposited SATSA series on its 450k draws only (RM43 item 6).
 - 2026-11-19: ENTROPY_AGE_CHIP=1 adds chip intercepts to the species age slopes (RM43 item 5), outputs under species_shield_chip.
 - 2026-11-19: ENTROPY_AGE_COMPLETE=1 restricts the tissue comparison to CpGs measured in every sample (no median fill; RM43 item 9), outputs under *_complete.
 - 2026-11-19: paper: abstract and a new Results subsection "The shield goes with cell division" (R108-R115); eight provenance rows added, Table S4 regenerated. The Discussion still carries the earlier reading and is rewritten in round v0.2.
