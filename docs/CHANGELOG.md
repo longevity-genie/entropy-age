@@ -4,6 +4,7 @@ Newest first.
 
 ## Unreleased
 
+- 2026-11-19: R117: headline gaps unchanged on complete CpGs only. R119: SATSA shield-share slope holds on 450k draws alone (-0.126 per decade); the CpG divergence gap does not (-0.003, p 0.41).
 - 2026-11-19: figures within_person_450k: the deposited SATSA series on its 450k draws only (RM43 item 6).
 - 2026-11-19: ENTROPY_AGE_CHIP=1 adds chip intercepts to the species age slopes (RM43 item 5), outputs under species_shield_chip.
 - 2026-11-19: ENTROPY_AGE_COMPLETE=1 restricts the tissue comparison to CpGs measured in every sample (no median fill; RM43 item 9), outputs under *_complete.

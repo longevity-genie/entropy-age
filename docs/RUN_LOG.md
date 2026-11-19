@@ -3,6 +3,20 @@
 Owned by the runner seat (`docs/seats/RUNNER.md`): one entry per run, newest first, with its inputs, the
 commit it ran, its job ids, its scale and seed, and its result or its failure with the cause.
 
+## R117, R119 — two checks from the methods review: complete CpGs only; SATSA on one platform (RM43 items 9, 6), 2026-11-19
+
+- **R117** (`ENTROPY_AGE_BETAS=sesame ENTROPY_AGE_COMPLETE=1 figures tissues`, job 6538038, test partition, 57 min):
+  the main tissue comparison on CpGs measured in every sample, nothing median-filled. Only the rebuilt cortex had
+  missing values (94,513 → 89,936 CpGs); Hannum and Lunnon are complete as deposited. Every gap agrees with the filled
+  run to the third decimal (cortex housekeeping relative entropy −0.082 and −0.082, dispersion −0.118 and −0.119;
+  core-essential −0.073 and −0.099 unchanged). The median fill does not move the headline gaps.
+- **R119** (`figures within_person_450k`, job 6538161, 5 min): deposited SATSA on its 450k draws only, 1,094 draws of
+  447 people, 647 consecutive pairs (pooled run: 873 pairs), no chip term. Per-person shield share F, housekeeping,
+  per decade within a person: −0.126 (−0.226 to −0.030), against −0.142 (−0.228 to −0.054) pooled; core-essential
+  −0.053 (−0.161 to +0.048) against −0.073. Signed shift S, housekeeping −0.135 (−0.229 to −0.034). The within-person
+  growth of the shield share does not depend on pooling the two arrays. The small CpG-level divergence gap does:
+  housekeeping −0.017 (p 0.001) pooled, −0.003 (p 0.41) on 450k alone; the measurement-floor gap holds (−0.036).
+
 ## R114 — colon against hippocampus by RRBS in one mouse cohort (RM40), 2026-11-19
 
 - `figures jena_rrbs --scale paper --seed 42`, job 6537454 (test partition), 46 min after a smoke pass in the same
