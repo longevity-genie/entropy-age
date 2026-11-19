@@ -4,6 +4,7 @@ Newest first.
 
 ## Unreleased
 
+- 2026-11-19: figures nuclei_paired: glia minus neurons in the same donors of GSE279509, donor bootstrap resampling both fractions together (RM40, RM44).
 - 2026-11-19: R102, R105, R109b: cortex gap on rebuilt arrays -0.082; blood minus cortex -0.07 once ages are matched and cell fractions held, interval touching zero with rebuilt cortex; GSE252501 unchanged with depression held.
 - 2026-11-19: dataset search: the external search's final corrections recorded (arrested-culture series GSE197723 and E-MTAB-15859 exist; breast pre-diagnostic GSE283951 exists; GSE304754 pairs with GSE233734; several first-search verdicts downgraded); fetch order adopted (RM40 item 7).
 - 2026-11-19: R108 joint cortex test: with expression, state and accessibility held together the cortex gap falls to -0.02 (housekeeping) and -0.035 (core-essential), and to zero off the floor. R109: the shield replicates in unsorted nuclei of a new series (-0.053) and is largest in glia (-0.077, -0.034), smallest in neurons (-0.021; -0.008 within chip). R107 as R97. Reassessment updated.
