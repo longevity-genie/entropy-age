@@ -24,8 +24,36 @@ supersede it:
   position as a second batch variable; donor overlap with cohorts in hand; "control" defined from the record;
   individuals counted, not arrays.
 
-The external search is interim: only its verified items are used; its final results and download manifest are
-awaited before any further download.
+**Added from the external search's final results (section 4, "Corrections"), 2026-11-19.** Marks: [A] re-run by
+its lead agent, [T] audited by one of its tracks, [P] a lead without a chip or flowcell table (not to be fetched or
+cited before our own audit).
+
+- "Nothing with arrested controls beyond GSE197512" was wrong: GSE197723 [A] (fibroblasts, EPIC, 317 IDAT pairs; 12
+  chips each hold 2 replicative-senescence, 2 X-ray, 2 RAS and 2 untreated arrays) and E-MTAB-15859 [T] (fibroblasts
+  held confluent up to 6 months, 4 donors, with RNA-seq of the same cultures in E-MTAB-16089).
+- "No breast-specific prospective cohort with open IDATs" was wrong: GSE283951 [T] (EPIC, 34 cases, 56 controls). Our
+  audit: 16 chips, 10 hold both groups.
+- GSE304754 is the hippocampus half of the mouse cohort whose colon is GSE233734 [T]; it does have a processed
+  per-CpG file (the first search said none).
+- GSE268145: within each mortal trajectory, doublings are half chip-bound (R2 0.48 and 0.64) [T]. GSE112179: control
+  age is chip-bound (R2 0.82) [T]. GSE242660 holds bisulfite only, no second modality [T]. GSE141254: 4 of 5 chips,
+  not 5 of 5 [T]. GSE290999 raw reads are public [T]. GSE292803 and GSE313770 have per-cell reads in SRA, animals
+  pooled per replicate [T].
+- GSE125895 shares 44 of 47 DLPFC control donors with GSE74193, and GSE51057 is a subset of GSE51032 [T]: neither is
+  a replication cohort.
+- **Matched modalities, cheapest gain:** expression series exist for three cohorts already in hand (GSE179848 for
+  GSE179847, GSE197471 for GSE197512, GSE56045 and GSE56580 for the MESA sorted cells); donor linkage is to be
+  established first. New same-donor sets with ages: E-MTAB-8993/8992 with E-MTAB-8995 (epidermis, 121 women; chip
+  not recoverable), E-MTAB-12674 with E-MTAB-12647 (frontal lobe, 44 brains), ENCODE ENTEx (4 donors, same-sample
+  EPIC, RNA, ATAC, histone marks: a source of same-sample tracks, not an age series).
+- **Nothing adequate in the open** for: an established lifespan intervention at several ages with 8 per arm; clonal
+  haematopoiesis with allele fractions; single-cell-derived clones of young and old donors; culture with barcoded
+  lineages; sequencing-based methylation with same-sample RNA or chromatin at adequate n.
+- Thirteen of the fourteen external search tracks were stopped early; their unfinished parts are listed in the
+  handoff and are not negative results.
+
+Fetch order followed (its section 1): GSE279509 (done); GSE304754 with GSE233734; GSE197723, then E-MTAB-15859 with
+E-MTAB-16089; the expression series of cohorts in hand and the epidermis set; GSE283951.
 
 # Dataset search for the shield tests: verified candidates per need
 

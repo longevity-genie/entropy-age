@@ -70,7 +70,7 @@ labels; claims C1, C2, C12). Reruns, in order:
 
 ## RM41 — One preprocessing from raw IDATs for every array series, with QC and batch checks
 
-**State:** unattended (asked by antonkulaga 2026-11-18: "use raw idat, preprocess data same way, check for batch
+**State:** urgent (in progress: 16 series rebuilt, reruns R93-R109 written up; asked by antonkulaga 2026-11-18: "use raw idat, preprocess data same way, check for batch
 effects ... apply it to all samples and validate if things are done properly for existing one") · **Owner:** lead
 
 1. **Environment:** R with Bioconductor `sesame` in `/data/uq2347/envs/sesame` (micromamba), its platform data cached.
@@ -118,7 +118,7 @@ effects ... apply it to all samples and validate if things are done properly for
 
 ## RM40 — Replacement data for the chip-confounded designs
 
-**State:** unattended (asked by antonkulaga 2026-11-18: "can you search for replacement samples?") · **Owner:** lead
+**State:** urgent (asked by antonkulaga 2026-11-18: "can you search for replacement samples?"; on 2026-11-19 he pointed to the external search's final list: fetch and analyse it now) · **Owner:** lead
 
 1. **Mouse turnover within chips, from data on disk:** GSE223748's untreated mice have numeric ages and young
    (<= 6 months) and old (>= 18 months) animals on shared chips in liver (72/100), muscle (20/54), cortex (21/46),
@@ -149,8 +149,14 @@ effects ... apply it to all samples and validate if things are done properly for
    `docs/provenance.csv` have it (arrays: 1 of 36, GTEx). Every fetched series is audited first with the external
    agent's `geo_audit.py` (and `sra_flowcell.py` for sequencing), with the filter that will be analysed, and the
    output kept in `data/input/geo/audit/<GSE>/`. Fetched so far: GSE252501, GSE279509 (IDATs), GSE233734 (per-CpG
-   files). Corrections to the first search are at the top of `docs/DATASET_SEARCH_2026-11-18.md`. Other downloads
-   wait for the external search's manifest.
+   files). Corrections to the first search are at the top of `docs/DATASET_SEARCH_2026-11-18.md`.
+7. **Final external results, 2026-11-19:** fetch order from its manifest: GSE279509 (analysed, R109); GSE304754 with
+   GSE233734 (colon and hippocampus RRBS of one mouse cohort); GSE197723 and E-MTAB-15859 (division against arrest in
+   culture); expression for cohorts in hand after donor linkage is established (GSE179848, GSE197471, GSE56045,
+   GSE56580) and the epidermis set; GSE283951 (breast, pre-diagnostic). Rows marked [P] are held until audited here.
+   Sequencing-based methylation with a same-sample second modality remains a gap: 0 of 46 analyses, and nothing
+   adequate found in the open. The external search's unfinished tracks are to be completed or scheduled, not read
+   as negative results.
 3. **CR blood over time:** no public series has CR and ad-lib blood at more than one age in shared batches
    (closest: GSE75495, CR at one old age, batch unknown; liver only: GSE92486, GSE89274). The CR 12-week aging
    contrast stays unresolved.

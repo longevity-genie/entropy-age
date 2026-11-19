@@ -4,6 +4,7 @@ Newest first.
 
 ## Unreleased
 
+- 2026-11-19: dataset search: the external search's final corrections recorded (arrested-culture series GSE197723 and E-MTAB-15859 exist; breast pre-diagnostic GSE283951 exists; GSE304754 pairs with GSE233734; several first-search verdicts downgraded); fetch order adopted (RM40 item 7).
 - 2026-11-19: R108 joint cortex test: with expression, state and accessibility held together the cortex gap falls to -0.02 (housekeeping) and -0.035 (core-essential), and to zero off the floor. R109: the shield replicates in unsorted nuclei of a new series (-0.053) and is largest in glia (-0.077, -0.034), smallest in neurons (-0.021; -0.008 within chip). R107 as R97. Reassessment updated.
 - 2026-11-19: dataset search corrected from the external agent's interim audit (kept: the first text of f8f7a1a below the corrections): GSE252501 shares donors with GSE74193 and its controls include depression cases; sizes; GSE238172 marrow fails; GSE233734 confirmed; GSE225166 open. brain_replication holds the depression diagnosis and reports the no-diagnosis donors apart. RM40 item 6.
 - 2026-11-19: figures brain_replication: the shield in two new rebuilt brain series (GSE252501 DLPFC and nucleus accumbens controls, Jaffe donors excluded; GSE279509 sorted neurons, oligodendrocyte lineage, other glia, unsorted), complete CpGs only, with and without chip intercepts. Jaffe loader skips arrays a rebuild lacks; tissues_matched keys fixed.
