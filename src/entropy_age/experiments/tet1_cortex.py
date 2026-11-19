@@ -49,7 +49,7 @@ def wide_bisulfite(long: pl.DataFrame) -> pl.DataFrame:
 
 
 def bisulfite_animals(matrix: Path) -> dict[str, str]:
-    """GSM -> animal (``WT3``, ``Hxd7``) for the bisulfite arrays, read from titles like ``Tet1, Cortex, BS, HxD Rep7``."""
+    """GSM -> animal (``WT3``, ``Hxd7``) for the bisulfite arrays, from titles like ``Tet1, Cortex, BS, HxD Rep7``."""
     titles, gsms = [], []
     with gzip.open(matrix, "rt") as handle:
         for line in handle:

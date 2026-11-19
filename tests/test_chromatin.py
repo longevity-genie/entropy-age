@@ -40,7 +40,13 @@ def test_matching_on_the_state_that_explains_the_gap_removes_it():
         "E030": np.where(active, "1_TssA", "15_Quies"),
     }
     variants = strata_variants(np.zeros(n, dtype=bool), rng.random(n), states, "blood (Hannum)")
-    assert set(variants) == {"island x level", "+ own state (E062)", "+ other state (E073)", "+ own state (E030)"}
+    assert set(variants) == {
+        "island x level",
+        "+ own state (E062)",
+        "+ other state (E073)",
+        "+ own state (E030)",
+        "+ both blood states (E062, E030)",
+    }
     rows = {r["matching"]: r for r in matched_gaps(values, {"housekeeping": (in_set, genes)}, variants, 50, 1)}
     assert rows["island x level"]["gap_sd"] < -1.0
     assert abs(rows["+ own state (E062)"]["gap_sd"]) < 0.05

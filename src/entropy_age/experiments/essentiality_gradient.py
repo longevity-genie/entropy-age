@@ -33,7 +33,7 @@ from entropy_age import plots
 from entropy_age.data.annotation import AnnotationLayout
 from entropy_age.experiments.chromatin_match import NO_STATE, OWN_AND_OTHER
 from entropy_age.experiments.chromatin_match import _states as chromatin_states
-from entropy_age.experiments.common import Context, write_table
+from entropy_age.experiments.common import Context, own_epigenome, write_table
 from entropy_age.experiments.tissue_contrast import _hannum, _jaffe, _lifespan_metrics
 from entropy_age.stochasticity import baseline_strata
 
@@ -127,7 +127,7 @@ def run(ctx: Context) -> list[Path]:
         metrics = _lifespan_metrics(p)
         feats = metrics["feature"].to_list()
         g = pl.DataFrame({"cpg": feats}).join(genes, on="cpg", how="left", maintain_order="left")
-        state = chromatin_states(feats, probes, paths)[OWN_AND_OTHER[label][0]]
+        state = chromatin_states(feats, probes, paths)[own_epigenome(label, OWN_AND_OTHER[label][0])]
         isl = np.array([bool(island.get(f, False)) for f in feats])
         base = np.char.add(isl.astype(str), baseline_strata(metrics["baseline"].to_numpy(), 10).astype(str))
         strata = {STEPS[0]: base, STEPS[1]: np.char.add(base, state), STEPS[2]: np.char.add(base, state)}

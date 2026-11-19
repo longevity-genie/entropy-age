@@ -89,6 +89,10 @@ def strata_variants(island: np.ndarray, baseline: np.ndarray, states: dict[str, 
     variants[f"+ other state ({other})"] = np.char.add(np.char.add(base, "|"), states[other])
     if own == "E062":
         variants["+ own state (E030)"] = np.char.add(np.char.add(base, "|"), states["E030"])
+        # both blood maps held at once: a set CpG is compared only with CpGs of the same state in mononuclear cells
+        # and in neutrophils (RM43 item 3)
+        both = np.char.add(np.char.add(states["E062"], "|"), states["E030"])
+        variants["+ both blood states (E062, E030)"] = np.char.add(np.char.add(base, "|"), both)
     if tissue in SORTED_ATAC_TISSUES and "NeuN+" in states:
         cells = np.char.add(np.char.add(states["NeuN+"], "|"), states["NeuN-"])
         variants["+ sorted ATAC (NeuN+, NeuN-)"] = np.char.add(np.char.add(base, "|"), cells)

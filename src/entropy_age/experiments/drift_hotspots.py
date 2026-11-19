@@ -27,7 +27,7 @@ import polars as pl
 from entropy_age import plots
 from entropy_age.data.annotation import AnnotationLayout, link_membership
 from entropy_age.data.chromatin import ChromatinLayout, cpg_states, read_segmentation
-from entropy_age.experiments.common import Context, write_table
+from entropy_age.experiments.common import Context, own_epigenome, write_table
 from entropy_age.experiments.tissue_contrast import SETS, _hannum, _jaffe, _lifespan_metrics
 from entropy_age.stochasticity import baseline_strata
 
@@ -82,7 +82,7 @@ def run(ctx: Context) -> list[Path]:
         p = dataclasses.replace(p, x=p.x.astype(np.float32))
         metrics = _lifespan_metrics(p)
         frame = pl.DataFrame({"cpg": p.features}).join(probes.select("cpg", "chr", "pos"), on="cpg", how="left")
-        seg = read_segmentation(layout.segmentation(OWN_STATE[p.label]))
+        seg = read_segmentation(layout.segmentation(own_epigenome(p.label, OWN_STATE[p.label])))
         states = cpg_states(frame, seg).fill_null("none").to_numpy().astype(str)
         masks = classes(p.features, probes, membership, states)
         strata = baseline_strata(metrics["baseline"].to_numpy(), 10)

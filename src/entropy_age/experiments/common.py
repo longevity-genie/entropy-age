@@ -85,7 +85,27 @@ def source_suffix() -> str:
     """``_rsesame`` when the run reads betas rebuilt from raw IDATs (``ENTROPY_AGE_BETAS=sesame``, roadmap RM41), so its
     tables and figures sit beside, never over, those from the authors' deposited betas."""
     suffix = "_rsesame" if os.environ.get("ENTROPY_AGE_BETAS", "deposited") == "sesame" else ""
-    return suffix + ("_complete" if complete_only() else "") + ("_chip" if chip_terms() else "")
+    suffix += ("_complete" if complete_only() else "") + ("_chip" if chip_terms() else "")
+    return suffix + (f"_{blood_state().lower()}" if blood_state() != BLOOD_DEFAULT else "")
+
+
+BLOOD_DEFAULT = "E062"
+BLOOD_STATES = ("E062", "E030")
+
+
+def blood_state() -> str:
+    """The Roadmap epigenome that gives blood its chromatin state: mononuclear cells (E062) by default, neutrophils
+    with ``ENTROPY_AGE_BLOOD_STATE=E030`` (RM43 item 3: whole blood is mostly neutrophils). Analyses that honour it
+    write to a directory ending ``_e030``."""
+    state = os.environ.get("ENTROPY_AGE_BLOOD_STATE", BLOOD_DEFAULT)
+    if state not in BLOOD_STATES:
+        raise ValueError(f"ENTROPY_AGE_BLOOD_STATE must be one of {BLOOD_STATES}, got {state!r}")
+    return state
+
+
+def own_epigenome(label: str, default: str) -> str:
+    """``default``, or the blood epigenome in force when ``default`` is blood's."""
+    return blood_state() if default == BLOOD_DEFAULT else default
 
 
 def chip_terms() -> bool:

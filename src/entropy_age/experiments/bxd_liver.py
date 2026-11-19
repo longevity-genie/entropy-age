@@ -29,8 +29,8 @@ import polars as pl
 from scipy import stats
 
 from entropy_age import plots
-from entropy_age.data.cohorts import _characteristics
 from entropy_age.data import reprocessed
+from entropy_age.data.cohorts import _characteristics
 from entropy_age.data.matrix import FeatureMatrix
 from entropy_age.data.mouse import MouseAnnotationLayout, mouse_membership
 from entropy_age.experiments.common import Context, dummies, scaled_intervals, write_table

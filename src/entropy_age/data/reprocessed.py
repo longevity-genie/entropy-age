@@ -10,6 +10,7 @@ from __future__ import annotations
 import os
 from pathlib import Path
 
+import numpy as np
 import polars as pl
 
 from entropy_age.paths import ProjectPaths
@@ -34,7 +35,6 @@ def species_detection(paths: ProjectPaths, gse: str) -> pl.DataFrame:
     """``sample`` and ``frac_dt_species``: each sample's detection over the probes this series measures (unmasked in
     at least ``MIN_DETECTED`` of its samples), for multi-species arrays where the whole-array rate reads the
     probes made for other species as failures (all of a mouse series fell below 90 %, 2026-11-18)."""
-    import numpy as np
 
     frames = [pl.read_parquet(c) for c in sorted(series_dir(paths, gse).glob(f"{gse}.betas.chunk*.parquet"))]
     rows = []
@@ -98,13 +98,14 @@ def by_accession(paths: ProjectPaths, gse: str, names: dict[str, str]) -> pl.Dat
     """``cpg`` plus one column per passing array, renamed from its GSM by ``names`` (GSM -> the experiment's sample
     name); arrays not in ``names`` are left out. Raises when the series was not rebuilt."""
     if not available(paths, gse):
-        raise FileNotFoundError(f"{gse} has no R SeSAMe rebuild in {series_dir(paths, gse)}; run scripts/sesame_preprocess.R")
+        where = series_dir(paths, gse)
+        raise FileNotFoundError(f"{gse} has no R SeSAMe rebuild in {where}; run scripts/sesame_preprocess.R")
     frame = read_betas(paths, gse)
     keep = [c for c in frame.columns[1:] if c in names]
     return frame.select(pl.col("probe").alias("cpg"), *(pl.col(c).alias(names[c]) for c in keep))
 
 
-def matrix(frame: pl.DataFrame, features: list[str], samples: list[str]) -> "np.ndarray":
+def matrix(frame: pl.DataFrame, features: list[str], samples: list[str]) -> np.ndarray:
     """``frame`` (``cpg`` plus sample columns) as samples by ``features``, NaN where a CpG is absent."""
     import numpy as np
 

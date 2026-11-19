@@ -33,7 +33,7 @@ import polars as pl
 
 from entropy_age import plots
 from entropy_age.data.chromatin import ChromatinLayout, cpg_states, read_segmentation
-from entropy_age.experiments.common import Context, write_table
+from entropy_age.experiments.common import Context, own_epigenome, write_table
 from entropy_age.experiments.tissue_contrast import SETS, Prepared, _features, _hannum, _jaffe, _matched_sd
 from entropy_age.stochasticity import baseline_strata
 
@@ -210,7 +210,7 @@ def run(ctx: Context) -> list[Path]:
         isl = dict(zip(probes["cpg"].to_list(), probes["cpg_island"].to_list(), strict=True))
         island = np.array([bool(isl.get(f, False)) for f in p.features])
         labels = _labels(p.features, membership)
-        state = _states(ctx, p.features, probes, OWN_STATE[p.label])
+        state = _states(ctx, p.features, probes, own_epigenome(p.label, OWN_STATE[p.label]))
         for matching, sel in (
             ("island x level", np.ones(island.size, bool)),
             (f"active TSS only ({ACTIVE})", state == ACTIVE),
