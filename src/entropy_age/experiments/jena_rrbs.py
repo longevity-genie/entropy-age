@@ -56,10 +56,16 @@ def read_colon(rates: Path, coverage: Path, prom: pl.DataFrame) -> tuple[pl.Data
     keep = _promoter_rows(r["chrom"], r["start"], prom)
     r, c = r.filter(pl.Series(keep)), c.filter(pl.Series(keep))
     names = r.columns[3:]
-    cpg = pl.format("{}:{}", r["chrom"].str.strip_prefix("chr"), r["start"] + 1).alias("cpg")
-    betas = r.select(
-        cpg, *(pl.when(c[n].cast(pl.Float64) >= MIN_COVERAGE).then(r[n].cast(pl.Float64)).alias(n) for n in names)
+    cpg = (r["chrom"].str.strip_prefix("chr") + ":" + (r["start"] + 1).cast(pl.String)).alias("cpg")
+    joined = pl.concat(
+        [
+            r.select(pl.col(n).cast(pl.Float64) for n in names),
+            c.select(pl.col(n).cast(pl.Float64).alias(f"cov::{n}") for n in names),
+        ],
+        how="horizontal",
     )
+    betas = joined.select(pl.when(pl.col(f"cov::{n}") >= MIN_COVERAGE).then(pl.col(n)).alias(n) for n in names)
+    betas = betas.insert_column(0, cpg)
     samples = pl.DataFrame(
         {"sample": names, "age_months": [float(re.match(r"(\d+)M", n).group(1)) for n in names]}  # type: ignore[union-attr]
     )
@@ -74,11 +80,14 @@ def read_hippocampus(counts: Path, matrix: Path, prom: pl.DataFrame) -> tuple[pl
     keep = _promoter_rows(chrom, pos - 1, prom)
     t, chrom, pos = t.filter(pl.Series(keep)), chrom.filter(pl.Series(keep)), pos.filter(pl.Series(keep))
     ids = [c.removesuffix("_5mC") for c in t.columns if c.endswith("_5mC")]
-    cols = []
-    for i in ids:
-        m, u = t[f"{i}_5mC"].cast(pl.Float64), t[f"{i}_C"].cast(pl.Float64)
-        cols.append(pl.when((m + u) >= MIN_COVERAGE).then(m / (m + u)).alias(i))
-    betas = pl.select(pl.format("{}:{}", chrom.str.strip_prefix("chr"), pos).alias("cpg"), *cols)
+    counts = t.select(pl.col(f"{i}_5mC", f"{i}_C").cast(pl.Float64) for i in ids)
+    betas = counts.select(
+        pl.when((pl.col(f"{i}_5mC") + pl.col(f"{i}_C")) >= MIN_COVERAGE)
+        .then(pl.col(f"{i}_5mC") / (pl.col(f"{i}_5mC") + pl.col(f"{i}_C")))
+        .alias(i)
+        for i in ids
+    )
+    betas = betas.insert_column(0, (chrom.str.strip_prefix("chr") + ":" + pos.cast(pl.String)).alias("cpg"))
     ages, descriptions = [], []
     with gzip.open(matrix, "rt") as handle:
         for line in handle:
