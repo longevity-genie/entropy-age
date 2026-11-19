@@ -3,6 +3,19 @@
 Owned by the runner seat (`docs/seats/RUNNER.md`): one entry per run, newest first, with its inputs, the
 commit it ran, its job ids, its scale and seed, and its result or its failure with the cause.
 
+## R115 — glia against neurons in a second sorted series, GSE66351 (RM40), 2026-11-19
+
+- `figures nuclei_paired_gse66351 --scale paper --seed 42`, job 6537455 (test partition), 15 min; two earlier
+  attempts failed on a column name. Rebuilt from IDATs (189 of 190 arrays pass; 450k). 31 donors with both NeuN+ and
+  NeuN− nuclei (16 controls, 15 Alzheimer's), 18-94 y, only 2 under 60; sex and diagnosis held; 92,035 complete
+  CpGs; 400 paired donor resamples.
+- Glia minus neurons, relative entropy: housekeeping −0.043 against +0.001, difference −0.044 (−0.108 to +0.015),
+  p 0.11; core-essential −0.019 against +0.007, difference −0.026 (−0.088 to +0.036), p 0.38. Absolute slope:
+  −0.035 and −0.032 (p 0.34, 0.48).
+- Reading: the same direction and nearly the same size as R110 (−0.055) in an independent series on another array,
+  not significant alone, as expected with an age slope resting on two young donors. Two series now agree that glia
+  carry more of the housekeeping shield than neurons; neither is strong alone.
+
 ## R113 — the breast-cancer lead in a second series, GSE283951 (C12, RM40), 2026-11-19
 
 - `figures breast_replication --scale paper --seed 42`, job 6536367 (test partition), 23 s. Rebuilt from IDATs (85
