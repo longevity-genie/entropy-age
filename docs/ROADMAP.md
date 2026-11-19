@@ -49,13 +49,15 @@ labels; claims C1, C2, C12). Reruns, in order:
 4. **Array recipe (M6, M7):** mouse series with SeSAMe's mouse steps (MM285: T strain mask; Mammal40 in mouse: S and H
    masks); sample QC with expected probes from the species mask, not the data, plus a bisulfite-conversion (GCT) and
    intensity cut; rerun BXD, Browder, Tet1, Dnmt3a, CR, Huang; check CH and the syndromes against their high GCT.
-5. **Species shield (M5):** group gaps with chip intercepts; human groups with the human annotation.
-6. **SATSA (M8):** the deposited within-person analysis on 450k-only pairs beside the pooled one.
+5. **Species shield (M5):** group gaps with chip intercepts: done, R118 (holds). Left: human groups with the human
+   annotation.
+6. **SATSA (M8):** done, R119.
 7. **Lunnon (H1):** renormalise all tissues jointly from GEO's raw intensities; slide stays confounded with tissue, so
    the same-donor contrast is reported as batch-confounded whatever the result.
-8. **Tet3 against Tet1 (M9):** rescore both on the mouse CpGs the two arrays share.
+8. **Tet3 against Tet1 (M9):** done, R120: the arrays share 150 CpG positions (42 at promoters), so shared CpGs cannot
+   carry the comparison; on the 314 genes both cover, the opposite signs hold.
 9. **Missing values (best-practice check):** `FeatureMatrix` median-fills sporadic missing values (up to 5-10 % per
-   CpG); rerun the headline gaps on complete CpGs only and report the change.
+   CpG); rerun the headline gaps on complete CpGs only and report the change. Done, R117 (no change).
 
 ## RM41 — One preprocessing from raw IDATs for every array series, with QC and batch checks
 

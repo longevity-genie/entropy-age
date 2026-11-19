@@ -112,7 +112,9 @@ a test with little power), **refuted**.
 - **Observed:** against same-chip, same-age wild types (litters not recorded) F +0.17 (cortex), +0.25 (striatum); essential CpGs gain
   methylation (S +0.012, +0.014); Tet1 loss strengthens the shield instead (R35; holds on arrays rebuilt from IDATs, 19 of 24 pass, R99).
 - **Alternatives:** (a) array compression lifting the lowest CpGs (S also rose in other arms); (b) a shift of
-  neuron and glia proportions in Tet3 mice; (c) one study, 8 mice per tissue; different arrays for Tet1 and Tet3.
+  neuron and glia proportions in Tet3 mice; (c) one study, 8 mice per tissue; different arrays for Tet1 and Tet3, which share only
+  150 CpG positions; with the gene sets cut to the 314 genes both arrays cover, the opposite signs hold (Tet1 F −0.19,
+  Tet3 +0.17 and +0.25; R120).
 - **Separating test:** S with compression held fixed (R36): the gain stays (+0.010 cortex, +0.013 striatum), so
   (a) is excluded; composition components; a Tet3 knockout on the same platform; sorted neurons.
 - **Gain and loss (R67, R74):** essential island promoters lose methylation faster than other active promoters;

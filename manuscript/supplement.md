@@ -180,7 +180,8 @@ items still open).
   missing comparison.
 - **Platforms and studies.** Effects are estimated within one study and platform and reported side by side, with two
   pooled exceptions named in Methods (SATSA, the transplant series). Comparisons across arrays are to be redone on
-  the CpGs both measure (RM41: Tet3 against Tet1, GTEx EPIC against 450k cohorts); RRBS and array estimates are not
+  the CpGs both measure (GTEx EPIC against 450k cohorts; the Tet3 and Tet1 arrays share only 150 CpG positions, so
+  those two models are compared on the genes both arrays cover, R120); RRBS and array estimates are not
   ranked against each other.
 - **Second tracks.** For each analysis Supplementary Table S4 says whether chromatin, expression or outcome comes
   from the same samples, the same study or another study, and from the same cell or tissue type.
@@ -344,7 +345,7 @@ type. Generated from `docs/provenance.csv` by `scripts/provenance_table.py`.
 | Within-person SATSA rebuilt | R66 | C1 | human blood | SATSA, E-MTAB-7309 | 450k only | rebuilt (methylprep) | none |  | one platform | none | n.a. |  |
 | Tet3 heterozygous | R13 R15 R16 R36 | C4 | mouse cortex / striatum | MMC, GSE223748 | Mammal40 | deposited (no IDATs) | none |  | one study; same-chip wild types | none | n.a. |  |
 | Tet1 knockout | R35 R99 | C4 | mouse cortex | Foong, GSE271375 | MM285 | rebuilt (R SeSAMe) | none |  | one study | none | n.a. | 19 of 24 arrays pass |
-| Tet3 vs Tet1 | paper text | C4 | mouse brain | GSE223748 vs GSE271375 | Mammal40 vs MM285 | mixed | none |  | across studies and platforms | none | n.a. | cross-platform: stated as different arrays |
+| Tet3 vs Tet1 | R120 | C4 | mouse brain | GSE223748 vs GSE271375 | Mammal40 vs MM285 | mixed | none |  | across studies and platforms | none | n.a. | arrays share 150 CpG positions (42 promoter), so no shared-CpG test; opposite signs hold on the 314 genes both cover |
 | Dnmt3a W326R | R37 R99 | C4 | mouse marrow / intestine / liver | Sarni, GSE324160 | MM285 | rebuilt (R SeSAMe) | none |  | one study | none | n.a. | littermate controls |
 | Writer syndromes | R18 R95 | C5 | human blood | GSE74432, GSE97362 | 450k | rebuilt (R SeSAMe) | none |  | one study each vs own controls | none | n.a. | concordance pools the two series' effects; bisulfite conversion index high (median GCT 1.4-1.6 vs ~1.07) |
 | Clonal haematopoiesis | R25 R99 | C3 | human blood | Basrai, GSE315366 | EPIC | rebuilt (R SeSAMe) | CH calls | same patients | one study | same samples | same | bisulfite conversion index high (median GCT 1.4-1.6 vs ~1.07) |

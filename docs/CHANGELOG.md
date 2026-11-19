@@ -4,6 +4,7 @@ Newest first.
 
 ## Unreleased
 
+- 2026-11-19: R120 (RM43 item 8): the Tet3 and Tet1 arrays share 150 CpG positions, so no shared-CpG test is possible; on the 314 genes both cover the opposite signs hold (Tet1 F -0.19, Tet3 +0.17 and +0.25). Run log, claims C4, E41, paper, supplement, Table S4; RM43 items 5, 6, 8, 9 marked done.
 - 2026-11-19: `figures tet_shared` (RM43 item 8): Tet3 heterozygous and Tet1 mutant brain each scored on its own array's promoter CpGs and on the CpGs both arrays measure.
 - 2026-11-19: R118 carried into claims C1 and C6, evidence rows E39 and E40, the species row of the provenance table (Table S4) and Supplementary Table S1.
 - 2026-11-19: R118: the species shield holds with chip intercepts (86 % of 122 groups); within chips the consortium's mouse tissues order by turnover (lung, spleen, liver, blood, skin -0.22 to -0.49; brain regions, heart, kidney near zero). Paper and reassessment updated.

@@ -275,7 +275,10 @@ the mouse array), each with eight mutants per tissue, and knockouts show a state
 Krepelova et al. (2025), who found impaired TET activity driving drift in the mouse intestine; our data add
 that the effect falls on essential promoters specifically, against same-chip wild types (Supplementary Figs. S3, S4).
 Re-processed from the raw IDATs, five of the 24 Tet1 arrays fail detection; on the remaining six or seven animals
-per genotype the Tet1 result holds (F −0.09 to −0.17, p ≤ 0.002; S −0.015 to −0.020).
+per genotype the Tet1 result holds (F −0.09 to −0.17, p ≤ 0.002; S −0.015 to −0.020). The two arrays share only 150
+CpG positions in the mouse genome (42 at promoters), so the two models cannot be compared on the same CpGs. Scored
+on the 314 genes with promoter CpGs on both arrays, the signs stay opposite: housekeeping F −0.19 in both Tet1 arms
+(p ≤ 3·10⁻⁵) against +0.17 in Tet3 heterozygous cortex and +0.25 in striatum (p ≤ 0.009).
 
 Because F is a ratio, a perturbation of the look-alikes moves it as much as one of the set, and two other
 perturbations act on the look-alikes instead. A DNMT3A gain-of-function mutation (W326R; Sarni et al.

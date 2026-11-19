@@ -3,6 +3,24 @@
 Owned by the runner seat (`docs/seats/RUNNER.md`): one entry per run, newest first, with its inputs, the
 commit it ran, its job ids, its scale and seed, and its result or its failure with the cause.
 
+## R120 — Tet3 against Tet1 on shared CpGs and shared genes (RM43 item 8), 2026-11-19
+
+- `ENTROPY_AGE_BETAS=sesame figures tet_shared --scale paper --seed 42`, commit 7537767, jobs 6538512 and 6538532
+  (test partition), 38 s, 1.2 GB. Tet1: rebuilt 285k mouse arrays (6 mutants against 7 wild types per arm). Tet3:
+  deposited 40k mammalian arrays, 8 heterozygous against 8 same-chip wild types per tissue.
+- **The arrays share almost no CpGs.** By mm10 position 150 CpGs sit on both arrays, 42 at promoters; 37 promoter
+  CpGs are measured in every animal of both series, 5 of them in the housekeeping set. On those 37 no score can be
+  estimated (housekeeping F: Tet1 knockout +0.21, SE 0.26; Tet3 cortex +1.9, SE 0.68). The shared-CpG comparison the
+  review asked for cannot be made with these arrays.
+- **On shared genes** (each array's own CpGs, the gene sets cut to the 314 genes with promoter CpGs on both arrays):
+  housekeeping F, Tet1 knockout −0.190 (SE 0.015, p 6·10⁻⁸), catalytic-dead −0.193 (p 3·10⁻⁵), on 1,034 set CpGs;
+  Tet3 heterozygous cortex +0.169 (p 0.009), striatum +0.246 (p 5·10⁻⁶), on 553. Core-essential: Tet1 −0.20 and
+  −0.22, Tet3 +0.25 and +0.53. On each array's full set: Tet1 −0.127 and −0.122, Tet3 +0.168 and +0.245.
+- Reading: the opposite signs are not made by the two arrays covering different genes. What still differs: the
+  CpGs within those genes, array chemistry and processing (rebuilt against deposited), laboratory, heterozygous
+  against homozygous loss, and age. Both mutants raise the matched CpGs' deviation B (Tet1 +0.02 to +0.03, Tet3
+  +0.005 to +0.009).
+
 ## R118 — the species shield with chip intercepts (RM43 item 5), 2026-11-19
 
 - `ENTROPY_AGE_CHIP=1 figures species --scale paper --seed 42`, job 6538040 (test partition), 1 h 07 min. Deposited
