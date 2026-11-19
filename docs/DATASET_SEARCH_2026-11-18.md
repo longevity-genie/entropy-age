@@ -52,6 +52,19 @@ cited before our own audit).
 - Thirteen of the fourteen external search tracks were stopped early; their unfinished parts are listed in the
   handoff and are not negative results.
 
+**Donor linkage between methylation and expression of cohorts in hand** (checked 2026-11-19 from the GEO sample
+records, `data/input/geo/audit/<GSE>/samples.tsv`; asked for before any expression data is fetched):
+
+- MESA monocytes, GSE56046 (450k) with GSE56045 (expression array): all 1,202 samples join one to one on the title
+  (`100001_peripheral_CD14`), with equal ages. Same donors, same cell preparation.
+- Sturm fibroblasts, GSE179847 (EPIC) with GSE179848 (RNA-seq): 109 of 479 methylation samples have an RNA sample of
+  the same culture and passage (title, or `cell_line_group` with `passage`); the other RNA samples are other
+  passages of the same cultures.
+- Endicott, GSE197512 (EPIC) with GSE197471 (RNA-seq): all 76 RNA samples share a title and cell line with a
+  methylation sample, but the recorded population doublings agree for only 8 of the 76, so most pairs are the same
+  culture harvested at different times. They are to be matched by nearest doubling and labelled "same culture, not
+  same harvest".
+
 Fetch order followed (its section 1): GSE279509 (done); GSE304754 with GSE233734; GSE197723, then E-MTAB-15859 with
 E-MTAB-16089; the expression series of cohorts in hand and the epidermis set; GSE283951.
 

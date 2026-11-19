@@ -4,6 +4,7 @@ Newest first.
 
 ## Unreleased
 
+- 2026-11-19: donor linkage between methylation and expression established for MESA (1,202 of 1,202), Sturm (109 same culture and passage) and Endicott (same culture, mostly other harvests); recorded in docs/DATASET_SEARCH_2026-11-18.md.
 - 2026-11-19: figures jena_rrbs: colon against hippocampus RRBS of one mouse cohort (GSE233734, GSE304754), per-tissue matched gaps with a mouse bootstrap (RM40).
 - 2026-11-19: R113: the breast lead finds no support in GSE283951 (OR 1.11, 0.71-1.73; 32 cases); C12 noted.
 - 2026-11-19: figures breast_replication: drift at unprotected promoters in breast cases against controls, GSE283951, chip-centred (C12; RM40).
