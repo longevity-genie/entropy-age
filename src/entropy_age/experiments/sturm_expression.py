@@ -30,7 +30,7 @@ from entropy_age.data.cohorts import _characteristics
 from entropy_age.data.cohorts import layout as cohort_layout
 from entropy_age.experiments.brain_replication import complete_matrix
 from entropy_age.experiments.chromatin_match import N_RESAMPLES, matched_gaps
-from entropy_age.experiments.common import Context, dummies, write_table
+from entropy_age.experiments.common import Context, chip_terms, dummies, write_table
 from entropy_age.experiments.mesa_expression import BINS, METRICS, NO_PROBE, cpg_expression, expression_bins, gradient
 from entropy_age.experiments.per_person import _sets
 from entropy_age.experiments.tissue_contrast import Prepared, _features, _lifespan_metrics
@@ -73,6 +73,26 @@ def gene_means(path: Path, sample_ids: list[str]) -> dict[str, float]:
     return dict(zip(frame[frame.columns[0]].to_list(), np.nanmean(values, axis=1).tolist(), strict=True))
 
 
+def chip_overlap(doublings: np.ndarray, lines: np.ndarray, chips: np.ndarray) -> pl.DataFrame:
+    """Per chip: cultures, lines and the range of doublings on it; and, on every row, the share of the variance of
+    doublings left within line and chip (0 means chip and line fix the doublings: nothing can be estimated)."""
+    design = np.column_stack([np.ones(doublings.size), dummies(lines), dummies(chips)])
+    coef, *_ = np.linalg.lstsq(design, doublings, rcond=None)
+    within = float(((doublings - design @ coef) ** 2).sum() / ((doublings - doublings.mean()) ** 2).sum())
+    rows = [
+        {
+            "chip": c,
+            "cultures": int((chips == c).sum()),
+            "lines": int(np.unique(lines[chips == c]).size),
+            "doublings_min": float(doublings[chips == c].min()),
+            "doublings_max": float(doublings[chips == c].max()),
+            "variance_left_within_line_and_chip": within,
+        }
+        for c in sorted(set(chips.tolist()))
+    ]
+    return pl.DataFrame(rows)
+
+
 def run(ctx: Context) -> list[Path]:
     paths = ctx.paths
     rna_dir = paths.input / "geo" / EXPRESSION
@@ -82,7 +102,8 @@ def run(ctx: Context) -> list[Path]:
     out = ctx.out_dir("sturm_expression")
     scale = str(ctx.scale.name)
     features, probes, membership = _features(paths, ctx.rng(140_000))
-    passed = set(reprocessed.read_qc(paths, METHYLATION).filter(pl.col("passed"))["sample"].to_list())
+    qc = reprocessed.read_qc(paths, METHYLATION).filter(pl.col("passed"))
+    passed = set(qc["sample"].to_list())
     cultures = control_cultures(pl.read_parquet(cohort_layout("sturm", paths).samples))
     cultures = cultures.filter(pl.col("sample").is_in(list(passed)))
     betas = reprocessed.by_accession(paths, METHYLATION, {s: s for s in cultures["sample"].to_list()})
@@ -97,6 +118,11 @@ def run(ctx: Context) -> list[Path]:
     )
     lines = dummies(cultures["donor"].to_numpy())
     doublings = cultures["doublings"].to_numpy().astype(float)
+    chip_of = dict(qc.select("sample", pl.col("chip").cast(pl.String)).iter_rows())
+    chips = np.array([chip_of[s] for s in cultures["sample"].to_list()])
+    write_table(chip_overlap(doublings, cultures["donor"].to_numpy(), chips), out / "chip_overlap")
+    if chip_terms():  # doublings estimated within chips (RM43 item 5)
+        lines = np.column_stack([lines, dummies(chips)])
     donors = cultures["donor"].to_numpy()
     metrics = _lifespan_metrics(Prepared("fibroblasts (Sturm)", x, doublings, lines, feats, donors, lines))
     island_of = dict(probes.select("cpg", "cpg_island").iter_rows())

@@ -4,6 +4,7 @@ Newest first.
 
 ## Unreleased
 
+- 2026-11-19: `figures sturm_expression` writes a chip-overlap table and, with `ENTROPY_AGE_CHIP=1`, holds chip in the slopes on doublings.
 - 2026-11-19: R124: in Sturm fibroblast cultures (rebuilt arrays) drift per doubling follows expression of the same cultures: housekeeping gap -0.102 to -0.028 with the expression decile matched; gradient outside the gene sets. Run log, paper, supplement, claim C2, E43, provenance.
 - 2026-11-19: GSE179848 fetched (Sturm fibroblast RNA-seq gene tables). `figures sturm_expression`: drift on doublings in untreated healthy-line cultures (rebuilt arrays), matched with and without the gene's expression decile in the same cultures.
 - 2026-11-19: R123: CD4+ T cells with their own expression (GSE56580): almost no gap on relative entropy and no gradient with expression; on the entropy slope the expression decile removes 69 %. Run log, paper, supplement, provenance.

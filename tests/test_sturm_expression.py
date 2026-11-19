@@ -1,8 +1,9 @@
 import gzip
 
+import numpy as np
 import polars as pl
 
-from entropy_age.experiments.sturm_expression import control_cultures, control_rna, gene_means
+from entropy_age.experiments.sturm_expression import chip_overlap, control_cultures, control_rna, gene_means
 
 
 def test_control_cultures_keeps_untreated_healthy_ambient_lines_with_enough_samples():
@@ -39,3 +40,12 @@ def test_control_rna_and_gene_means(tmp_path):
     means = gene_means(path, ["1", "10"])
     assert means["A"] == (2.0 + 3.0) / 2  # log2(4), log2(8)
     assert means["B"] == 0.5  # log2(1), log2(2)
+
+
+def test_chip_overlap_is_zero_when_chip_fixes_the_doublings_and_positive_otherwise():
+    lines = np.array(["a"] * 4)
+    fixed = chip_overlap(np.array([1.0, 1.0, 5.0, 5.0]), lines, np.array(["c1", "c1", "c2", "c2"]))
+    assert fixed["variance_left_within_line_and_chip"][0] < 1e-12
+    mixed = chip_overlap(np.array([1.0, 5.0, 2.0, 6.0]), lines, np.array(["c1", "c1", "c2", "c2"]))
+    assert mixed["variance_left_within_line_and_chip"][0] > 0.9
+    assert mixed["cultures"].to_list() == [2, 2]
