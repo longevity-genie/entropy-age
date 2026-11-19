@@ -77,7 +77,14 @@ SORTED_ATAC_TISSUES = ("cortex (Jaffe)", "frontal cortex")
 N_RESAMPLES = {"paper": 200, "quick": 40}
 NO_STATE = "none"
 #: the matchings' kinds, in the colour order of the figure
-KINDS = ("island x level", "+ own state", "+ other state", "+ sorted ATAC", "+ own state + sorted ATAC")
+KINDS = (
+    "island x level",
+    "+ own state",
+    "+ other state",
+    "+ sorted ATAC",
+    "+ own state + sorted ATAC",
+    "+ both blood states",
+)
 
 
 def strata_variants(island: np.ndarray, baseline: np.ndarray, states: dict[str, np.ndarray], tissue: str) -> dict:

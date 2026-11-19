@@ -2,7 +2,7 @@ import numpy as np
 import pytest
 
 from entropy_age.experiments import common
-from entropy_age.experiments.chromatin_match import strata_variants
+from entropy_age.experiments.chromatin_match import KINDS, strata_variants
 
 
 def test_blood_state_default_and_switch(monkeypatch):
@@ -36,3 +36,5 @@ def test_joint_blood_matching_is_finer_than_either_map():
     for other in ("+ own state (E062)", "+ own state (E030)"):
         for s in np.unique(joint):
             assert np.unique(v[other][joint == s]).size == 1
+    # the figure colours a matching by its kind: every matching must have one
+    assert {name.split(" (")[0] for name in v} <= set(KINDS)
