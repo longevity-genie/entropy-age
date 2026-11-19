@@ -6,6 +6,31 @@ independent methods review), the rebuild of every array series from raw IDATs, a
 Still running when this was written: R98 (CR blood rebuilt), R102 (main tissues with rebuilt cortex), R105 (blood
 minus cortex on matched ages), R107 (Huang on the mouse recipe).
 
+## Update, 19 November (night): activity measured in the same cells
+
+Three datasets with expression from the same material as the methylation were fetched (fetch order step 4 of the
+external search) and analysed.
+
+- **MESA monocytes, 1,202 people (R122).** With the decile of each gene's own expression in the matching, the
+  housekeeping gap falls from −0.099 to −0.017 SD (82 % removed) and the core-essential gap to zero. Among 11,678
+  genes in no set, drift relative to matched CpGs falls step by step with expression (+0.07 to −0.20 SD).
+- **MESA CD4+ T cells, 214 people (R123).** Almost no gap on relative entropy (−0.015) and no gradient; on the
+  entropy slope the expression decile removes 69 %. Cell type or sample size: not separable here.
+- **Sturm fibroblasts in culture, 89 untreated cultures (R124).** Per population doubling, on rebuilt arrays with
+  RNA-seq of the same cultures: housekeeping −0.102 → −0.028 (72 % removed), core-essential to zero, and the same
+  gradient outside the gene sets. Chip not held (a chip-held run, R125, is queued).
+
+What this changes: the reading of section 3 ("a property of active promoters, not of essential genes") no longer
+rests on reference maps from other people's cells. In two settings, years in monocytes and doublings in a dish,
+expression in the same cells accounts for most of the shield, and genes in no set carry it in proportion to their
+expression. What it does not settle: why activity protects. Division (previous update) and activity are now two
+separate facts about the shield; a promoter that is used may be re-demethylated at each replication, which would
+tie them together, but nothing here tests that.
+
+Also closed today from the methods review: the species result holds with chip intercepts and the consortium's mouse
+tissues order by turnover within chips (R118); the Tet3 and Tet1 arrays share 150 CpG positions, and on the genes
+both cover the opposite signs hold (R120); no blood conclusion depends on which blood chromatin map is used (R121).
+
 ## Update, 19 November: the two tests section 5 called decisive
 
 - **The joint test in cortex (R108).** With expression, chromatin state and sorted accessibility held together on the
