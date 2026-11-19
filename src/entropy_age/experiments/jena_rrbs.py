@@ -75,7 +75,13 @@ def read_colon(rates: Path, coverage: Path, prom: pl.DataFrame) -> tuple[pl.Data
 def read_hippocampus(counts: Path, matrix: Path, prom: pl.DataFrame) -> tuple[pl.DataFrame, pl.DataFrame]:
     """The same for hippocampus, from per-mouse ``<id>_5mC`` and ``<id>_C`` read counts; ages from the GEO record,
     whose description line carries the mouse id (``3M_4, J14208``)."""
-    t = pl.read_csv(counts, separator="\t", infer_schema_length=10_000, truncate_ragged_lines=True)
+    t = pl.read_csv(
+        counts,
+        separator="\t",
+        infer_schema_length=10_000,
+        truncate_ragged_lines=True,
+        schema_overrides={"Chromosome": pl.String},
+    )
     chrom, pos = t["Chromosome"].cast(pl.String), t["Position"].cast(pl.Int64)
     keep = _promoter_rows(chrom, pos - 1, prom)
     t, chrom, pos = t.filter(pl.Series(keep)), chrom.filter(pl.Series(keep)), pos.filter(pl.Series(keep))

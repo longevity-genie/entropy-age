@@ -177,7 +177,9 @@ def run_gasparoni(ctx: Context) -> list[Path]:
     x_all, feats = complete_matrix(betas, features, [*g["sample"].to_list(), *n["sample"].to_list()])
     xg, xn = x_all[: g.height], x_all[g.height :]
     ages = g["age"].to_numpy()
-    cov = np.column_stack([dummies(g["sex"].to_numpy()), dummies(g["diagnosis"].to_numpy())])
+    cov = np.column_stack(
+        [dummies(g["Sex" if "Sex" in g.columns else "sex"].to_numpy()), dummies(g["diagnosis"].to_numpy())]
+    )
     island = np.array([bool(island_of.get(f, False)) for f in feats])
     sets = _sets(feats, membership)
     point = (gaps(xg, ages, cov, feats, island, sets), gaps(xn, ages, cov, feats, island, sets))
