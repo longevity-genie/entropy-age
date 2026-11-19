@@ -3,6 +3,17 @@
 Owned by the runner seat (`docs/seats/RUNNER.md`): one entry per run, newest first, with its inputs, the
 commit it ran, its job ids, its scale and seed, and its result or its failure with the cause.
 
+## R116 — CR blood on the mouse recipe (RM43 item 4), 2026-11-20
+
+- `ENTROPY_AGE_BETAS=sesame figures cr_blood_replication --scale paper --seed 42`, job 6537808 (itmz, queued 2 h,
+  ran 3 h 19 min). GSE282661 rebuilt with SeSAMe's mouse steps (strain mask, detection over the species mask): all
+  45 arrays pass, 66,406 promoter probes (67,065 under the first recipe, R98).
+- CR against controls (8 against 8, two chips with both), within-chip refitting randomisation, 720 assignments,
+  exact: core-essential F −0.077 (p 0.40), housekeeping F −0.036 (p 0.47); with 3 composition components −0.073
+  (p 0.16) and −0.036 (p 0.22). TLS+CR: −0.040 (p 0.45) and −0.021 (p 0.57). Long-term TLS: +0.002 and −0.008
+  (p ≥ 0.83). The 12-week contrast of the controls has no chip overlap and no p.
+- The recipe changes nothing against R98 (−0.078, p 0.36; −0.037, p 0.46). R56's CR finding stays withdrawn.
+
 ## R124 — fibroblasts in culture: drift per doubling against expression of the same cultures (RM40 item 4), 2026-11-19
 
 - Commit c6f938d; `ENTROPY_AGE_BETAS=sesame figures sturm_expression --scale paper --seed 42`, job 6539446 (test
