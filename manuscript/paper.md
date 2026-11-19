@@ -124,7 +124,8 @@ removed 82 % of the monocyte housekeeping gap (−0.099 → −0.017 SD; 75 to 9
 (−0.035 → +0.020, interval including zero). Among the 11,678 genes outside every gene set, drift relative to
 matched CpGs fell step by step with expression, from +0.07 SD in the lowest decile to −0.20 in the highest (rank
 correlation −0.12, p 5·10⁻³⁷). In these cells the shield follows how strongly a promoter is used, whether or not
-the gene is essential.
+the gene is essential. CD4+ T cells of 214 of the same people, which have almost no gap on this measure (−0.015 SD), show no
+such gradient (Supplementary Note 3).
 
 Adding probe design to the matching changed no sign, masking unreliable probes moved no essential-set gap by more
 than 0.012 SD, and rebuilding Jaffe's cortex series from its raw arrays did not weaken the gap. On the same 208 donors and the

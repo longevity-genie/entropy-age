@@ -4,6 +4,7 @@ Newest first.
 
 ## Unreleased
 
+- 2026-11-19: R123: CD4+ T cells with their own expression (GSE56580): almost no gap on relative entropy and no gradient with expression; on the entropy slope the expression decile removes 69 %. Run log, paper, supplement, provenance.
 - 2026-11-19: `figures mesa_expression` covers CD4+ T cells too (GSE56581 with GSE56580, fetched and audited); tables gain a `cell` column.
 - 2026-11-19: R122: in MESA monocytes, expression measured in the same samples removes 82 % of the housekeeping gap and all of the core-essential one; genes outside every set are shielded in step with their expression. Run log, paper, claim C2, E42, supplement Note 3, provenance (first same-sample second layer). ONNX default noted in the lead notes.
 - 2026-11-19: GSE56045 fetched (MESA monocyte expression, same 1,202 people as GSE56046). `figures mesa_expression` (RM40 item 4): the gap with each gene's own expression decile in the same cells added to the matching, the gradient with expression outside the gene sets, and the methylation-expression coupling as positive control.

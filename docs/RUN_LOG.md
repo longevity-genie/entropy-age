@@ -3,6 +3,22 @@
 Owned by the runner seat (`docs/seats/RUNNER.md`): one entry per run, newest first, with its inputs, the
 commit it ran, its job ids, its scale and seed, and its result or its failure with the cause.
 
+## R123 — the same in CD4+ T cells (RM40 item 4), 2026-11-19
+
+- Commit 31b8d82; `figures mesa_expression --scale paper --seed 42`, job 6539223 (test partition), 27 min with the
+  smoke run. CD4+ T cells of 214 people (45-79 years), GSE56581 (450k, deposited) with GSE56580 (HT-12), joined on
+  the participant id. The monocyte rows reproduce R122 to the last digit.
+- Join check: mean r −0.0085 over 15,885 genes (51 % negative; permutation p 0.005).
+- **Relative entropy:** there is almost no shield to explain. Housekeeping −0.015 SD (−0.024 to −0.006), −0.013
+  with the expression decile (9 % removed), −0.010 with the chromatin state; core-essential −0.006 (−0.029 to
+  +0.018). Outside the gene sets no gradient with expression (rank correlation +0.02; deciles −0.00 to +0.07).
+- **Entropy slope:** housekeeping −0.219 → −0.069 with the expression decile (69 % removed, 66 to 72), −0.031 with
+  the state, −0.019 with both; core-essential −0.091 → +0.007.
+- Reading: where T cells show a shield at all (entropy slope, which carries the floor effect of R68), expression
+  in the same cells accounts for it as in monocytes. On the corrected measure T cells have next to none, in a
+  series six times smaller and with a narrower age range; the monocyte gradient is not reproduced here and this
+  cannot say whether that is the cell type or the sample size.
+
 ## R122 — the shield against expression measured in the same cells: MESA monocytes (RM40 item 4), 2026-11-19
 
 - Commit 4ae98cb; `figures mesa_expression --scale paper --seed 42`, job 6539095 (test partition), 17 min with the
