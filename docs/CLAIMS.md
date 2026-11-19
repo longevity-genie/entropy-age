@@ -69,9 +69,13 @@ a test with little power), **refuted**.
 - **Beyond the state map (R74):** within active-TSS chromatin, essential island promoters still lose methylation
   faster than other active promoters (blood core +0.006, cortex +0.006-0.007 per decade); the state explains most
   of their lower resting level.
-- **Status:** holds as association in blood; weaker in cortex; the mouse turnover ordering that stood against it vanishes within chip (R92; same on rebuilt arrays, R97).
+- **Status:** weakened, 2026-11-19. Chromatin state, expression and accessibility together account for most of the gap
+  in cortex as in blood (R108), so the shield is a property of active promoters; but it is larger where cells
+  divide (colon over hippocampus by RRBS on shared flowcells, R114; glia over neurons, R110, R115; replicative
+  senescence, R111) and absent where nothing divides (R112). A division-independent chromatin shield does not predict
+  that ordering. The mouse-array ordering withdrawn in R92 is now seen on clean data.
 
-## C3 — Selection among cells is not supported as the main cause (H2 not rejected outright)
+## C3 — The shield goes with cell division; selection or replication-coupled maintenance (H2, H3 open)
 
 - **If selection, we should see:** the shield grow with divisions; stronger in renewing tissues; absent in
   non-dividing neurons; weaker when proliferation slows (CR); changed in clonal expansions.
@@ -90,8 +94,13 @@ a test with little power), **refuted**.
   selection per doubling also gives a constant share; clonal haematopoiesis clones were diluted (no allele
   fractions).
 - **Separating test:** sorted stem cells young against old; a cohort with clone sizes (controlled access).
-- **Status:** no evidence for selection as the main cause; a contribution is not excluded (culture intervals allow
-  it; the mouse turnover ordering vanishes within chip, R92). Audit 2026-11-18.
+- **Status:** reopened, 2026-11-19. The earlier "no evidence" rested on designs confounded with chip (culture, CR,
+  mouse array). On clean data the shield goes with division: colon −0.189 against hippocampus −0.078 (R114); other
+  glia more than the same donors' neurons (−0.055, p 0.025, R110; −0.044, p 0.11 in a second series, R115);
+  replicative senescence −0.58 of squared drift on 12 of 12 chips, arrested cultures no drift (R111, R112). This
+  fits selection among dividing cells and equally a replication-coupled maintenance at active promoters; the data in
+  hand cannot separate the two. Separating test: lineage-tracked or clonal cultures (found only under controlled
+  access).
 
 ## C4 — Tet3 guards essential promoters in brain tissue (H4)
 

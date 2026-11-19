@@ -31,3 +31,9 @@ E29,Drift at look-alikes predicts breast cancer years ahead; shield share does n
 E30,Molecule-level disorder grows slower at essential promoters (read-level WGBS; blood; cfDNA; 27 sorted cell types),R50 R51 R53,1,0,0,0,0,-1,-2,-1,-1
 E31,Shield share grows within a person as they age; CpG divergence gap small (SATSA),R52,1,0,0,0,0,0,0,0,-1
 E32,Mouse array turnover ordering vanishes within chip (R92: renewing minus post-mitotic +0.02; unadjusted -0.19; same on rebuilt arrays R97),R68 R92 R97,0,0,0,0,0,0,0,0,1
+E33,Cortex gap mostly removed with expression chromatin state and accessibility held together; none off the floor,R108,1,0,0,0,0,1,0,0,1
+E34,Shield larger in glia than in the same donors' neurons (two sorted series; one significant),R109 R110 R115,-1,1,1,0,0,0,-1,0,0
+E35,Replicative senescence shows a large noise-corrected shield within chips; arrested cultures show no drift,R111,0,1,1,0,0,0,-1,0,1
+E36,No promoter drift and no shield over six months without division,R112,-1,1,2,0,0,0,0,0,1
+E37,Colon more than twice as shielded as hippocampus by RRBS on shared flowcells,R114,-1,2,2,0,0,0,-2,0,-1
+E38,Breast-cancer lead finds no support in a second IDAT-backed series,R113,0,0,0,0,0,0,0,0,1
