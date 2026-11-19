@@ -3,7 +3,8 @@
 The corrected reading of this project is that the shield is a property of active promoters, not of essential genes
 (R108). Until now activity came from reference maps of other people's cells. MESA measured CD14+ monocytes of the
 same 1,202 people twice: methylation on the 450k array (GSE56046, deposited values, no IDATs) and expression on the
-HT-12 array (GSE56045); the samples join one to one on the participant id in the title.
+HT-12 array (GSE56045); the samples join one to one on the participant id in the title. CD4+ T cells of 214 of
+them were measured the same way (GSE56581, GSE56580) and are analysed beside the monocytes.
 
 1. **Matching on the gene's own expression.** Per-CpG age slopes as in ``sorted_cells`` (race-sex-site and
    contamination scores held). Set CpGs against matched CpGs under four matchings: island x level; + the decile of
@@ -42,7 +43,10 @@ from entropy_age.experiments.syndromes import matrix_path
 from entropy_age.experiments.tissue_contrast import Prepared, _features, _lifespan_metrics
 from entropy_age.stochasticity import baseline_strata
 
-METHYLATION, EXPRESSION = "GSE56046", "GSE56045"
+#: cell type -> (methylation series, expression series); both arrays in the same samples
+SERIES = {"CD14+ monocytes": ("GSE56046", "GSE56045"), "CD4+ T cells": ("GSE56581", "GSE56580")}
+#: the series whose folder holds the expression platform annotation
+PLATFORM_DIR = "GSE56045"
 PLATFORM = "GPL10558.annot.gz"
 METRICS = ("kl_slope", "entropy_slope", "dispersion_slope")
 NO_PROBE = "none"
@@ -177,39 +181,51 @@ def coupling(meth: np.ndarray, expr: np.ndarray, design: np.ndarray, n_perm: int
 
 def run(ctx: Context) -> list[Path]:
     paths = ctx.paths
-    expr_dir = paths.input / "geo" / EXPRESSION
-    needed = [normalized_path(paths, METHYLATION), matrix_path(paths, EXPRESSION), expr_dir / PLATFORM]
-    if not all(p.exists() for p in needed):
-        print(
-            f"mesa_expression: missing {[str(p.name) for p in needed if not p.exists()]}. Nothing run.", file=sys.stderr
-        )
-        return []
+    platform = paths.input / "geo" / PLATFORM_DIR / PLATFORM
     out = ctx.out_dir("mesa_expression")
-    scale = str(ctx.scale.name)
     features, probes, membership = _features(paths, ctx.rng(140_000))
-    people = read_people(matrix_path(paths, METHYLATION)).drop_nulls("age")
-    probe_ids, titles, table = read_expression(matrix_path(paths, EXPRESSION))
+    links = pl.read_parquet(AnnotationLayout(paths).links_450k)
+    tables: dict[str, list[dict]] = {"matched_gaps": [], "gradient": [], "set_expression": [], "coupling": []}
+    for cell, (methylation, expression) in SERIES.items():
+        needed = [normalized_path(paths, methylation), matrix_path(paths, expression), platform]
+        if not all(p.exists() for p in needed):
+            print(f"mesa_expression: {cell}: missing {[p.name for p in needed if not p.exists()]}", file=sys.stderr)
+            continue
+        for name, rows in one_cell(ctx, cell, methylation, expression, platform, features, probes, membership, links):
+            tables[name] += [{"cell": cell, **r} for r in rows]
+    for name, rows in tables.items():
+        if rows:
+            write_table(pl.DataFrame(rows), out / name)
+    return []
+
+
+def one_cell(ctx, cell, methylation, expression, platform, features, probes, membership, links):
+    """The four tables of one cell type, as (name, rows) pairs."""
+    paths, scale = ctx.paths, str(ctx.scale.name)
+    people = read_people(matrix_path(paths, methylation)).drop_nulls("age")
+    probe_ids, titles, table = read_expression(matrix_path(paths, expression))
     column = {t: j for j, t in enumerate(titles)}
     people = people.filter(pl.col("id").is_in(titles))
     ids = people["id"].to_list()
-    genes, expr = gene_level(probe_ids, table[:, [column[i] for i in ids]], read_platform(expr_dir / PLATFORM))
+    genes, expr = gene_level(probe_ids, table[:, [column[i] for i in ids]], read_platform(platform))
     gene_mean = dict(zip(genes, np.nanmean(expr, axis=1).tolist(), strict=True))
-    print(f"mesa_expression: {len(ids)} people with both layers, {len(genes)} genes", file=sys.stderr, flush=True)
+    print(
+        f"mesa_expression: {cell}: {len(ids)} people with both layers, {len(genes)} genes", file=sys.stderr, flush=True
+    )
 
-    x = read_betas(normalized_path(paths, METHYLATION), features, ids)
+    x = read_betas(normalized_path(paths, methylation), features, ids)
     ok = ~np.isnan(x).any(axis=0)
     x, feats = x[:, ok], [f for f, k in zip(features, ok, strict=True) if k]
     cov = covariates(people)
     ages = people["age"].to_numpy()
-    metrics = _lifespan_metrics(Prepared("CD14+ monocytes", x, ages, cov, feats, np.array(ids), cov))
+    metrics = _lifespan_metrics(Prepared(cell, x, ages, cov, feats, np.array(ids), cov))
     island_of = dict(probes.select("cpg", "cpg_island").iter_rows())
     island = np.array([bool(island_of.get(f, False)) for f in feats])
-    level, gene = cpg_expression(feats, pl.read_parquet(AnnotationLayout(paths).links_450k), gene_mean)
+    level, gene = cpg_expression(feats, links, gene_mean)
     bins = expression_bins(level)
     state = chromatin_states(feats, probes, paths)["E062"]
-    base = np.char.add(
-        np.char.add(island.astype(str), "|"), baseline_strata(metrics["baseline"].to_numpy(), 10).astype(str)
-    )
+    levels = baseline_strata(metrics["baseline"].to_numpy(), 10).astype(str)
+    base = np.char.add(np.char.add(island.astype(str), "|"), levels)
     with_expr = np.char.add(np.char.add(base, "|"), bins)
     variants = {
         "island x level": base,
@@ -224,17 +240,12 @@ def run(ctx: Context) -> list[Path]:
         values = metrics[metric].to_numpy()
         gaps += [{"metric": metric, **r} for r in matched_gaps(values, sets, variants, N_RESAMPLES[scale], ctx.seed)]
         grad += [{"metric": metric, **r} for r in gradient(values, base, bins, gene, ~in_any)]
-    write_table(pl.DataFrame(gaps), out / "matched_gaps")
-    write_table(pl.DataFrame(grad), out / "gradient")
-
-    # set CpGs by expression bin: where the sets sit
+    # where the sets sit on the expression scale
     where = [
         {"group": g, "bin": b, "cpgs": int(((bins == b) & s).sum()), "share": float(((bins == b) & s).sum() / s.sum())}
         for g, (s, _) in {**sets, "outside the sets": (~in_any, [])}.items()
         for b in [NO_PROBE, *map(str, range(1, BINS + 1))]
     ]
-    write_table(pl.DataFrame(where), out / "set_expression")
-
     # positive control: per gene, promoter methylation against expression across people
     row_of = {g: i for i, g in enumerate(genes)}
     by_gene: dict[str, list[int]] = {}
@@ -245,5 +256,5 @@ def run(ctx: Context) -> list[Path]:
     meth = np.vstack([x[:, by_gene[g]].mean(axis=1) for g in used])
     design = np.column_stack([np.ones(len(ids)), ages, cov[:, np.ptp(cov, axis=0) > 1e-12]])
     row = coupling(meth, expr[[row_of[g] for g in used]], design, PERMUTATIONS[scale], ctx.rng(141_000))
-    write_table(pl.DataFrame([{**row, "people": len(ids), "cpgs": len(feats)}]), out / "coupling")
-    return []
+    control = [{**row, "people": len(ids), "cpgs": len(feats)}]
+    return [("matched_gaps", gaps), ("gradient", grad), ("set_expression", where), ("coupling", control)]
