@@ -4,6 +4,7 @@ Newest first.
 
 ## Unreleased
 
+- 2026-11-19: figures jena_rrbs: colon against hippocampus RRBS of one mouse cohort (GSE233734, GSE304754), per-tissue matched gaps with a mouse bootstrap (RM40).
 - 2026-11-19: R113: the breast lead finds no support in GSE283951 (OR 1.11, 0.71-1.73; 32 cases); C12 noted.
 - 2026-11-19: figures breast_replication: drift at unprotected promoters in breast cases against controls, GSE283951, chip-centred (C12; RM40).
 - 2026-11-19: R112: confluent non-dividing fibroblasts show no promoter drift over six months (two clean donors) and no shield; with R111, drift in culture goes with division, not time. Reassessment updated.
