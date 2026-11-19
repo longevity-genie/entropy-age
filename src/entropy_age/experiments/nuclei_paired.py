@@ -143,3 +143,70 @@ def run(ctx: Context) -> list[Path]:
     write_table(pl.DataFrame(sizes), out / "sizes")
     write_table(pl.DataFrame(rows), out / "paired")
     return []
+
+
+# ----------------------------------------------------------------------------- a second series (low power)
+GASPARONI = "GSE66351"
+
+
+def run_gasparoni(ctx: Context) -> list[Path]:
+    """The same contrast in GSE66351 (Gasparoni et al. 2018; 450k): NeuN- glia minus NeuN+ neurons of the donors who
+    have both, sex and diagnosis (Alzheimer's or control) held. A check of low power: 31 donors, 29 of them over 60,
+    so the age slope rests on two young donors."""
+    from entropy_age.data.cohorts import _characteristics
+
+    if not reprocessed.available(ctx.paths, GASPARONI):
+        print(f"nuclei_paired: no SeSAMe rebuild for {GASPARONI}; nothing run", file=sys.stderr)
+        return []
+    out = ctx.out_dir("nuclei_paired_gse66351")
+    n_boot = int(os.environ.get("ENTROPY_AGE_BOOT", N_BOOT[str(ctx.scale.name)]))
+    features, _, membership = _features(ctx.paths, ctx.rng(120_000))
+    probes = pl.read_parquet(AnnotationLayout(ctx.paths).probes_450k).filter(pl.col("cpg").is_in(features))
+    island_of = dict(probes.select("cpg", "cpg_island").iter_rows())
+    qc = reprocessed.read_qc(ctx.paths, GASPARONI).filter(pl.col("passed"))
+    chars = _characteristics(ctx.paths.input / "geo" / GASPARONI / f"{GASPARONI}_series_matrix.txt.gz")
+    s = qc.select("sample").join(chars, on="sample").with_columns(age=pl.col("age").cast(pl.Float64, strict=False))
+    s = s.filter(pl.col("cell type").is_in(["Neuron", "Glia"])).drop_nulls("age")
+    both = sorted(
+        s.group_by("donor_id").agg(pl.col("cell type").n_unique().alias("k")).filter(pl.col("k") == 2)["donor_id"]
+    )
+    g = s.filter((pl.col("cell type") == "Glia") & pl.col("donor_id").is_in(both)).sort("donor_id")
+    n = s.filter((pl.col("cell type") == "Neuron") & pl.col("donor_id").is_in(both)).sort("donor_id")
+    g, n = (d.unique(subset="donor_id", keep="first", maintain_order=True) for d in (g, n))
+    betas = reprocessed.by_accession(ctx.paths, GASPARONI, {v: v for v in s["sample"].to_list()})
+    x_all, feats = complete_matrix(betas, features, [*g["sample"].to_list(), *n["sample"].to_list()])
+    xg, xn = x_all[: g.height], x_all[g.height :]
+    ages = g["age"].to_numpy()
+    cov = np.column_stack([dummies(g["sex"].to_numpy()), dummies(g["diagnosis"].to_numpy())])
+    island = np.array([bool(island_of.get(f, False)) for f in feats])
+    sets = _sets(feats, membership)
+    point = (gaps(xg, ages, cov, feats, island, sets), gaps(xn, ages, cov, feats, island, sets))
+    rng = ctx.rng(311_000)
+    boots = []
+    for _ in range(n_boot):
+        idx = rng.integers(0, len(both), len(both))
+        if np.ptp(ages[idx]) < 20:  # a resample without a young donor carries no age slope
+            continue
+        boots.append(
+            (
+                gaps(xg[idx], ages[idx], cov[idx], feats, island, sets),
+                gaps(xn[idx], ages[idx], cov[idx], feats, island, sets),
+            )
+        )
+    rows = [{"glia": "glia (NeuN-)", **r} for r in paired_difference(point[0], point[1], boots)]
+    write_table(pl.DataFrame(rows), out / "paired")
+    write_table(
+        pl.DataFrame(
+            {
+                "donors": [len(both)],
+                "under_60": [int((ages < 60).sum())],
+                "age_min": [float(ages.min())],
+                "age_max": [float(ages.max())],
+                "cpgs": [len(feats)],
+                "resamples_used": [len(boots)],
+            }
+        ),
+        out / "sizes",
+    )
+    print(f"nuclei_paired: {GASPARONI}: {len(both)} donors, {len(feats)} CpGs, {len(boots)} resamples", file=sys.stderr)
+    return []

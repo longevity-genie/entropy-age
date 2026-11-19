@@ -109,6 +109,7 @@ FIGURES: dict[str, Callable[[Context], list[Path]]] = {
     "joint_cortex": joint_cortex.run,
     "brain_replication": brain_replication.run,
     "nuclei_paired": nuclei_paired.run,
+    "nuclei_paired_gse66351": nuclei_paired.run_gasparoni,
     "senescence_modes": senescence_modes.run,
     "arrest_timecourse": arrest_timecourse.run,
     "breast_replication": breast_replication.run,
