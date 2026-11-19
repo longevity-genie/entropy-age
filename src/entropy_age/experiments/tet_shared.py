@@ -7,6 +7,11 @@ promoter CpG its own array measures in all its animals, and on the promoter CpGs
 probe's cg identifier, the design suffix of the mouse array removed). A different sign on the shared CpGs is then a
 difference between the models and their series, not between the CpGs each array happens to carry.
 
+The arrays turn out to share almost nothing: 150 CpG positions in the mouse genome, 42 of them at promoters (R120),
+so the shared-CpG score rests on a handful of CpGs and is reported only to show that. The usable version is by gene:
+each array's own CpGs, with every gene set cut down to the genes that have promoter CpGs on both arrays
+(``shared genes``), so both models are scored on the same genes.
+
 What stays different whatever the CpGs: the array chemistry and processing (deposited against rebuilt), the
 laboratory, heterozygous against homozygous loss, and age. ``entropy-age figures tet_shared`` as a Slurm job.
 """
@@ -52,10 +57,20 @@ def complete(wide: pl.DataFrame, samples: list[str]) -> tuple[np.ndarray, list[s
 
 
 def effects(
-    x: np.ndarray, features: list[str], keep: list[str], treated: np.ndarray, design: np.ndarray, probes, members
+    x: np.ndarray,
+    features: list[str],
+    keep: list[str],
+    treated: np.ndarray,
+    design: np.ndarray,
+    probes,
+    members,
+    genes: set[str] | None = None,
 ) -> list[dict]:
-    """Arm effect on B, F and S of every gene set, scored on the CpGs of ``keep`` only."""
+    """Arm effect on B, F and S of every gene set, scored on the CpGs of ``keep`` only; with ``genes``, the sets
+    keep only those genes' CpGs and the other set CpGs leave the analysis (they are not matched controls)."""
     wanted = set(keep)
+    if genes is not None:
+        wanted -= set(members.filter(~pl.col("gene").is_in(list(genes)))["feature"].to_list())
     cols = np.array([f in wanted for f in features])
     feats = [f for f, c in zip(features, cols, strict=True) if c]
     island_of = dict(probes.select("cpg", "cpg_island").iter_rows())
@@ -145,8 +160,12 @@ def run(ctx: Context) -> list[Path]:
     for _, feats, _, _ in tet3.values():
         shared &= set(feats)
     shared = sorted(shared)
+    genes = set(members.filter(pl.col("feature").is_in(feats1))["gene"].to_list())
+    for _, feats, _, _ in tet3.values():
+        genes &= set(members.filter(pl.col("feature").is_in(feats))["gene"].to_list())
     print(
-        f"tet_shared: Tet1 {len(feats1)} CpGs, Tet3 {[len(v[1]) for v in tet3.values()]}, shared {len(shared)}",
+        f"tet_shared: Tet1 {len(feats1)} CpGs, Tet3 {[len(v[1]) for v in tet3.values()]}, "
+        f"shared {len(shared)}, genes {len(genes)}",
         file=sys.stderr,
         flush=True,
     )
@@ -158,9 +177,13 @@ def run(ctx: Context) -> list[Path]:
         for label, cpgs in (("own array", feats1), ("shared", shared)):
             for r in effects(x1[keep], feats1, cpgs, treated, design, probes, members):
                 rows.append({"model": f"Tet1 {arm}", "tissue": "cortex", "cpg_set": label, **r})
+        for r in effects(x1[keep], feats1, feats1, treated, design, probes, members, genes):
+            rows.append({"model": f"Tet1 {arm}", "tissue": "cortex", "cpg_set": "shared genes", **r})
     for tissue, (x, feats, treated, design) in tet3.items():
         for label, cpgs in (("own array", feats), ("shared", shared)):
             for r in effects(x, feats, cpgs, treated, design, probes, members):
                 rows.append({"model": "Tet3 het", "tissue": tissue, "cpg_set": label, **r})
+        for r in effects(x, feats, feats, treated, design, probes, members, genes):
+            rows.append({"model": "Tet3 het", "tissue": tissue, "cpg_set": "shared genes", **r})
     write_table(pl.DataFrame(rows), out / "effects")
     return []

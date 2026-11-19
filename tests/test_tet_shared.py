@@ -37,3 +37,18 @@ def test_effects_scores_only_the_kept_cpgs():
     assert {r["measure"] for r in rows} == {"B", "F", "S"}
     assert all(r["cpgs"] == 300 and r["set_cpgs"] == 80 for r in rows)
     assert all(np.isfinite(r["effect"]) for r in rows)
+
+
+def test_effects_with_genes_drops_other_set_cpgs():
+    rng = np.random.default_rng(1)
+    features = [f"cg{i:03d}" for i in range(400)]
+    x = np.clip(rng.normal(0.2, 0.05, (16, 400)), 0.01, 0.99)
+    treated = np.arange(16) >= 8
+    probes = pl.DataFrame({"cpg": features, "cpg_island": [i % 2 == 0 for i in range(400)]})
+    members = pl.DataFrame(
+        {"feature": features[:80], "group": ["housekeeping"] * 80, "gene": [f"g{i // 2}" for i in range(80)]}
+    )
+    design = np.column_stack([np.ones(16), treated.astype(float)])
+    genes = {f"g{i}" for i in range(30)}
+    rows = effects(x, features, features, treated, design, probes, members, genes)
+    assert all(r["set_cpgs"] == 60 and r["cpgs"] == 380 for r in rows)
