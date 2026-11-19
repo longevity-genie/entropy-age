@@ -4,6 +4,7 @@ Newest first.
 
 ## Unreleased
 
+- 2026-11-19: R110: other glia are more shielded than the same donors' neurons for housekeeping genes (-0.055, p 0.025); the oligodendrocyte lineage is not. R111: replicative senescence shows a large shield on chip-balanced rebuilt arrays (noise-corrected share -0.58, 12 of 12 chips); X-ray and RAS arrest show no measurable drift, so no division-against-arrest comparison is possible there.
 - 2026-11-19: figures senescence_modes: replicative against X-ray and RAS senescence within chips in GSE197723 (division against arrest; RM40).
 - 2026-11-19: figures nuclei_paired: glia minus neurons in the same donors of GSE279509, donor bootstrap resampling both fractions together (RM40, RM44).
 - 2026-11-19: R102, R105, R109b: cortex gap on rebuilt arrays -0.082; blood minus cortex -0.07 once ages are matched and cell fractions held, interval touching zero with rebuilt cortex; GSE252501 unchanged with depression held.

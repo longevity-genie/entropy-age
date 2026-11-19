@@ -3,6 +3,45 @@
 Owned by the runner seat (`docs/seats/RUNNER.md`): one entry per run, newest first, with its inputs, the
 commit it ran, its job ids, its scale and seed, and its result or its failure with the cause.
 
+## R111 — replicative against X-ray and RAS senescence within chips, GSE197723 (RM40), 2026-11-19
+
+- `figures senescence_modes --scale paper --seed 42`, commit d67772f, job 6536147 (test partition), 18 s; first pass
+  6534668 without the noise floor (ccb2d35). Rebuilt from IDATs (313 of 316 arrays pass); fibroblasts on 12 chips,
+  each with 2 untreated, 2 replicative-senescent, 2 X-ray and 2 RAS cultures; 86,856 complete promoter CpGs; reference
+  per chip = its two untreated cultures; one value per chip and arm; exact sign-flip tests over 12 chips.
+- **Uncorrected scores mislead.** Matched-CpG deviation B: replication 0.126, X-ray 0.032, RAS 0.039; shield share F:
+  −0.33, −0.03, −0.08 (housekeeping). The low F of the arrested arms is array noise in the denominator.
+- **With the noise floor subtracted** (squared deviations; floor from each chip's untreated pair): real drift B2 is
+  0.090 (0.079 to 0.101) in replicative senescence and 0.000 to 0.001 in the X-ray and RAS arms, that is, none
+  measurable. Shield in replicative senescence: P2 −0.052 (housekeeping) and −0.033 (core-essential), **F2 −0.58
+  (−0.60 to −0.55) and −0.56 (−0.60 to −0.52), negative on 12 of 12 chips.** In the arrested arms P2 is 0.000 (±0.001)
+  and F2 is undefined (intervals of several units).
+- **Reading:** (1) cultures that reached senescence by dividing show a large shield on rebuilt, chip-balanced arrays:
+  essential and housekeeping promoters carry less than half the squared drift of matched CpGs. This is the first
+  culture result that is clean of chip confounding. (2) Cultures arrested by X-rays or RAS show no drift from their
+  untreated chip-mates, so there is nothing for a shield to act on and the division-against-arrest comparison of
+  shield share cannot be made in this series. (3) How long the arrested cultures were kept, their donors and the
+  doublings of the replicative arm are not in the record, so "drift needs division" is not shown either: the arrested
+  cultures may simply be younger in culture time. E-MTAB-15859 (confluent cultures held up to 6 months) is the series
+  that can separate time from division.
+
+## R110 — glia against neurons in the same donors (RM40), 2026-11-19
+
+- `figures nuclei_paired --scale paper --seed 42`, commit ccb2d35, job 6534603 (test partition), 27 min after a
+  smoke pass in the same job. GSE279509 rebuilt; donors with both fractions passing QC; CpGs complete in both; sex
+  held; 400 donor resamples that take both of a donor's arrays.
+- **Other glia (NeuN−/SOX10−) minus neurons, 65 donors, 18-92 y:** housekeeping relative entropy −0.084 against −0.029,
+  difference **−0.055 (−0.121 to −0.007), p 0.025**; core-essential −0.054 against −0.038, difference −0.016 (−0.057
+  to +0.017), p 0.27. Absolute slope of the mean: housekeeping −0.049 (−0.097 to −0.008), p 0.02; core-essential
+  −0.038 (−0.083 to +0.004), p 0.09.
+- **Oligodendrocyte lineage (SOX10+) minus neurons, 101 donors:** housekeeping −0.021 against −0.018, difference
+  −0.003 (−0.044 to +0.037), p 0.75; core-essential −0.007, p 0.72. Absolute slope: −0.017 (p 0.045) and −0.015
+  (p 0.05).
+- Reading: one of the two glial fractions is more shielded than the same donors' neurons, for housekeeping genes, at
+  p 0.025 among four primary tests; the oligodendrocyte lineage is not distinguishable from neurons on relative
+  entropy. R109's ordering (other glia > oligodendrocyte lineage > neurons) is kept in sign, but only its extreme
+  pair is separated. Suggestive, not established; a second sorted series (GSE107729 WGBS, GSE66351) is the check.
+
 ## R102, R105, R109b — cortex on rebuilt arrays in the main comparison; blood minus cortex matched; GSE252501 with depression held, 2026-11-19
 
 - **R102** (`ENTROPY_AGE_BETAS=sesame figures tissues`, job 6520488, test partition, 1 h 02 min; Jaffe rebuilt, 208

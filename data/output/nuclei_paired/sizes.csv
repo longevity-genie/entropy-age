@@ -1,0 +1,3 @@
+glia,donors,age_min,age_max,cpgs,resamples
+other glia (NeuN-/SOX10-),65,18.0,92.0,81086,400
+oligodendrocyte lineage (SOX10+),101,18.0,92.0,81605,400
