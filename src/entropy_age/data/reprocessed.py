@@ -181,3 +181,24 @@ def _fibre_id(title: str, ids: set[str] | frozenset[str] = frozenset()) -> str:
         if candidate is not None and (candidate in ids or (not ids and candidate == base)):
             return candidate
     return title
+
+
+def conversion_index(paths: ProjectPaths, gse: str, samples: list[str]) -> np.ndarray:
+    """SeSAMe's bisulfite-conversion index (GCT) of ``samples`` (the ids of the QC table), in that order."""
+    qc = read_qc(paths, gse)
+    gct = dict(qc.select("sample", pl.col("GCT").cast(pl.Float64, strict=False)).iter_rows())
+    return np.array([gct[s] for s in samples], dtype=float)
+
+
+def conversion_by_group(gct: np.ndarray, carrier: np.ndarray) -> dict:
+    """Mean conversion index of carriers and controls, their difference in pooled SDs and Welch's p."""
+    from scipy import stats
+
+    a, b = gct[carrier], gct[~carrier]
+    pooled = float(np.sqrt((a.var(ddof=1) + b.var(ddof=1)) / 2))
+    return {
+        "gct_carriers": float(a.mean()),
+        "gct_controls": float(b.mean()),
+        "difference_sd": float((a.mean() - b.mean()) / pooled) if pooled > 0 else float("nan"),
+        "p_welch": float(stats.ttest_ind(a, b, equal_var=False).pvalue),
+    }

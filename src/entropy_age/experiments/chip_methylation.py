@@ -25,7 +25,7 @@ import polars as pl
 from entropy_age import plots
 from entropy_age.data import reprocessed
 from entropy_age.data.cohorts import _characteristics
-from entropy_age.experiments.common import Context, dummies, write_table
+from entropy_age.experiments.common import Context, conversion_terms, dummies, write_table
 from entropy_age.experiments.consortium_interventions import arm_scores
 from entropy_age.experiments.interventions import _sets
 from entropy_age.experiments.per_person import _islands
@@ -106,7 +106,7 @@ def run(ctx: Context) -> list[Path]:
     sets = _sets(kept, membership)
     print(f"chip: {people.height} patients, {len(kept)} CpGs", file=sys.stderr, flush=True)
     is_control = (people["disease"] == CONTROL).to_numpy()
-    rows = []
+    rows, conversion = [], []
     for arm, column in ARMS.items():
         is_arm = people[column].to_numpy()
         if is_arm.sum() < MIN_ARM:
@@ -116,6 +116,11 @@ def run(ctx: Context) -> list[Path]:
         sel = people.filter(pl.Series(keep))
         carrier = is_arm[keep]
         covariates = np.column_stack([dummies(sel["sex"].to_numpy()), sel["age"].to_numpy()])
+        if reprocessed.in_use():
+            gct = reprocessed.conversion_index(ctx.paths, GSE, sel["accession"].to_list())
+            conversion.append({"arm": arm, **reprocessed.conversion_by_group(gct, carrier)})
+            if conversion_terms():
+                covariates = np.column_stack([covariates, gct])
         for k in COMPONENTS:
             scores = arm_scores(x_all[keep], carrier, island[ok], sets, components=k)
             for r in effects(scores, carrier, covariates):
@@ -131,6 +136,8 @@ def run(ctx: Context) -> list[Path]:
         print(f"chip: {arm}: done", file=sys.stderr, flush=True)
     table = pl.DataFrame(rows)
     write_table(table, out / "effects")
+    if conversion:
+        write_table(pl.DataFrame(conversion), out / "conversion")
     return [_figure(ctx, table)]
 
 

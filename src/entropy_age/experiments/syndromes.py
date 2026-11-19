@@ -36,7 +36,7 @@ from entropy_age import plots
 from entropy_age.data import reprocessed
 from entropy_age.data.cohorts import _characteristics
 from entropy_age.experiments.bxd_liver import ols
-from entropy_age.experiments.common import Context, dummies, write_table
+from entropy_age.experiments.common import Context, conversion_terms, dummies, write_table
 from entropy_age.experiments.consortium_interventions import arm_scores
 from entropy_age.experiments.interventions import _sets
 from entropy_age.experiments.per_person import _islands
@@ -193,7 +193,7 @@ def run(ctx: Context) -> list[Path]:
     out = ctx.out_dir("syndromes")
     features, probes, membership = _features(ctx.paths, ctx.rng(140_000))
     island = _islands(features, probes)
-    rows, scored = [], []
+    rows, scored, conversion = [], [], []
     for gse, arms in SERIES.items():
         people = with_known_age(read_people(matrix_path(ctx.paths, gse)).filter(pl.col("tissue") == "whole blood"))
         people = people.filter(pl.col("sample").is_in(usable(matrix_path(ctx.paths, gse), people["sample"].to_list())))
@@ -216,6 +216,12 @@ def run(ctx: Context) -> list[Path]:
             cov = [dummies(sel["sex"].to_numpy())]
             if not np.isnan(ages.astype(float)).any():
                 cov.append(ages[:, None].astype(float))
+            rebuilt = _rebuilt(matrix_path(ctx.paths, gse))
+            if rebuilt is not None:
+                gct = reprocessed.conversion_index(*rebuilt, sel["sample"].to_list())
+                conversion.append({"series": gse, "arm": arm, **reprocessed.conversion_by_group(gct, carrier)})
+                if conversion_terms():
+                    cov.append(gct[:, None])
             covariates = np.column_stack(cov)
             for k in COMPONENTS:
                 scores = arm_scores(x_all[keep], carrier, island[ok], sets, components=k)
@@ -250,6 +256,8 @@ def run(ctx: Context) -> list[Path]:
     table = pl.DataFrame(rows)
     write_table(table, out / "effects")
     write_table(pl.concat(scored, how="diagonal"), out / "person_scores")
+    if conversion:
+        write_table(pl.DataFrame(conversion), out / "conversion")
     return [_figure(ctx, table)]
 
 

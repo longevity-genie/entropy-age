@@ -86,7 +86,15 @@ def source_suffix() -> str:
     tables and figures sit beside, never over, those from the authors' deposited betas."""
     suffix = "_rsesame" if os.environ.get("ENTROPY_AGE_BETAS", "deposited") == "sesame" else ""
     suffix += ("_complete" if complete_only() else "") + ("_chip" if chip_terms() else "")
-    return suffix + (f"_{blood_state().lower()}" if blood_state() != BLOOD_DEFAULT else "")
+    suffix += f"_{blood_state().lower()}" if blood_state() != BLOOD_DEFAULT else ""
+    return suffix + ("_gct" if conversion_terms() else "")
+
+
+def conversion_terms() -> bool:
+    """True with ``ENTROPY_AGE_GCT=1``: analyses that honour it hold each array's bisulfite-conversion index (SeSAMe's
+    GCT, near 1 when conversion is complete) as a covariate of the group contrast (RM43 item 4); outputs carry
+    ``_gct``. Only meaningful on rebuilt arrays."""
+    return os.environ.get("ENTROPY_AGE_GCT", "0") == "1"
 
 
 BLOOD_DEFAULT = "E062"
