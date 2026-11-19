@@ -37,3 +37,5 @@ E35,Replicative senescence shows a large noise-corrected shield within chips; ar
 E36,No promoter drift and no shield over six months without division,R112,-1,1,2,0,0,0,0,0,1
 E37,Colon more than twice as shielded as hippocampus by RRBS on shared flowcells,R114,-1,2,2,0,0,0,-2,0,-1
 E38,Breast-cancer lead finds no support in a second IDAT-backed series,R113,0,0,0,0,0,0,0,0,1
+E39,Species shield unchanged by chip intercepts (86 % of 122 groups),R118,1,0,0,0,0,0,-1,0,-1
+E40,Consortium mouse tissues order by turnover within chips,R118,-1,1,2,0,0,0,-1,-1,0

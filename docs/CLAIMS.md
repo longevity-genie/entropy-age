@@ -12,8 +12,9 @@ a test with little power), **refuted**.
 - **If true, we should see:** a negative gap in every tissue and species; robust to how CpGs are matched
   (island status, starting level, probe design); present per person, not only on average.
 - **We should not see:** the gap vanish or flip once CpGs are matched more finely, or in an independent cohort.
-- **Observed:** negative in human blood, brain and GTEx tissues, most of 11 mouse tissues (not ordered by turnover once
-  chip is held, R92), 89 % of 139 species-tissue groups of 65 mammals (R68c), and inside sorted monocytes (R44, R68b;
+- **Observed:** negative in human blood, brain and GTEx tissues, most of 11 mouse tissues (on Huang's mouse array not ordered by turnover once
+  chip is held, R92; on the consortium's array ordered by turnover within chips, R118), 89 % of 139 species-tissue
+  groups of 65 mammals (R68c; 86 % of 122 with chip intercepts, R118), and inside sorted monocytes (R44, R68b;
   the CD4+ T-cell size was withdrawn in R68); culture's shield vanished on rebuilt arrays (R94);
   molecule by molecule in read-level WGBS (entropy -0.05 to -0.075 SD, R50; cfDNA -0.03 to -0.06, R51; within 27 sorted cell types -0.04 to -0.08, R53); within one person over
   time weakly (SATSA housekeeping divergence -0.017 SD, R52, on betas with cell counts regressed out; -0.003, p 0.41, on the
@@ -142,6 +143,9 @@ a test with little power), **refuted**.
   lifespan slope is −0.014 (p 0.48, R59). Metric audit (R68): relative entropy keeps 89 % of groups negative
   (−0.13 SD; 73 % off the floor) and no lifespan slope off the floor (+0.004, p 0.84); "the relative shield grows
   with lifespan" (R22) was entropy-only (relative entropy +1.4, p 0.23) and is withdrawn.
+  With chip intercepts in every age slope (R118): 86 % of the 122 groups that can be fitted (88.5 % of the same
+  groups without chip terms), median −0.108 against −0.126, correlation of the two fits 0.93; no lifespan slope
+  (p 0.93). Chip going with age does not make the result.
 - **Alternatives:** conserved array CpGs at essential promoters sit near 0 % (floor); taxonomy covariance is
   coarse.
 - **Separating test:** a dated phylogeny; species with WGBS.

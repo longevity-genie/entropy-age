@@ -4,6 +4,7 @@ Newest first.
 
 ## Unreleased
 
+- 2026-11-19: R118 carried into claims C1 and C6, evidence rows E39 and E40, the species row of the provenance table (Table S4) and Supplementary Table S1.
 - 2026-11-19: R118: the species shield holds with chip intercepts (86 % of 122 groups); within chips the consortium's mouse tissues order by turnover (lung, spleen, liver, blood, skin -0.22 to -0.49; brain regions, heart, kidney near zero). Paper and reassessment updated.
 - 2026-11-19: R117: headline gaps unchanged on complete CpGs only. R119: SATSA shield-share slope holds on 450k draws alone (-0.126 per decade); the CpG divergence gap does not (-0.003, p 0.41).
 - 2026-11-19: figures within_person_450k: the deposited SATSA series on its 450k draws only (RM43 item 6).
