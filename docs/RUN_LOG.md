@@ -3,6 +3,33 @@
 Owned by the runner seat (`docs/seats/RUNNER.md`): one entry per run, newest first, with its inputs, the
 commit it ran, its job ids, its scale and seed, and its result or its failure with the cause.
 
+## R122 — the shield against expression measured in the same cells: MESA monocytes (RM40 item 4), 2026-11-19
+
+- Commit 4ae98cb; `figures mesa_expression --scale paper --seed 42`, job 6539095 (test partition), 17 min with the
+  smoke run. CD14+ monocytes of 1,202 people (44-83 years), methylation GSE56046 (450k, deposited, no IDATs) and
+  expression GSE56045 (HT-12 array, deposited normalised values), joined one to one on the participant id; 109,137
+  promoter CpGs, 20,716 genes with an expression probe. First use in this project of a second layer measured in
+  the same samples as the methylation.
+- **Join check.** Promoter methylation against expression across people, per gene, age and covariates held: mean
+  r −0.0068 over 15,890 genes (52.5 % negative; permutation null 0.0000 ± 0.0007, p 0.005). Negative, as it must
+  be, and very small: in one sorted cell type few promoters vary between people.
+- **Matching on the gene's own expression decile.** Housekeeping gap on relative entropy −0.099 SD (−0.107 to
+  −0.089) with island x level; −0.017 (−0.026 to −0.008) with expression added: 82 % removed (75 to 92). With the
+  mononuclear chromatin state instead +0.001; with both +0.017 (+0.010 to +0.026), the sign reversed.
+  Core-essential: −0.035 → +0.020 (−0.003 to +0.044) with expression. Entropy slope, housekeeping: −0.137 → −0.040
+  (71 % removed). Non-essential promoters, which drift more than matched CpGs: +0.218 → +0.124 with expression
+  (43 % removed), +0.073 with both.
+- **Outside every gene set** (11,678 genes): the slope relative to the island x level stratum falls with
+  expression decile, from +0.072 SD (lowest) through −0.10 (deciles 5 to 9) to −0.199 (highest); rank correlation
+  across genes −0.117 (p 5·10⁻³⁷); dispersion slope +0.106 to −0.247 (−0.167).
+- **Where the sets sit.** 75 % of housekeeping and 82 % of core-essential CpGs are in expression deciles 6 to 10,
+  against 27 % of CpGs outside the sets; 86 % of non-essential CpGs are in deciles 1 to 3.
+- Reading: in one cell type, with expression from the same samples, the gene's expression level accounts for four
+  fifths of the housekeeping shield and all of the core-essential one, and genes in no set are shielded in step
+  with their expression. This is the direct form of the activity reading (R108) and removes its weakest point,
+  reference maps from other people's cells. Limits: deposited values on both layers; one array of each; the cell
+  type is the one where turnover selection would act on precursors, not on the cells measured.
+
 ## R121 — blood with the neutrophil chromatin map (RM43 item 3), 2026-11-19
 
 - Commits 5a835c6 and the figure fix after it. `ENTROPY_AGE_BLOOD_STATE=E030 figures equilibrium_drift`,

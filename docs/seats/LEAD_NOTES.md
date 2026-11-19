@@ -32,3 +32,6 @@ Anton, forwarded by the desk's secretary: "manuscript skills is super token cons
 not initialize run without asking me or getting explicit instruction on it". No seat of this repository starts a run
 of the manuscript-skills plugin (review panels, improve, dashboard, other-model runs) unless he asked for that run in
 his own words or said yes when asked. Hand edits of `manuscript/` are not such a run. A run in progress is finished.
+- 2026-11-19, Anton, forwarded to every seat that trains or publishes ML models: ONNX is the default format for any
+  model published or handed over (model.onnx with a meta file of inputs, outputs and the ONNX Runtime check, beside
+  safetensors and config). This repo publishes no model now; it applies if a clock or scorer is ever released.

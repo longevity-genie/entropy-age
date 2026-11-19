@@ -72,7 +72,9 @@ a test with little power), **refuted**.
   faster than other active promoters (blood core +0.006, cortex +0.006-0.007 per decade); the state explains most
   of their lower resting level.
 - **Status:** weakened, 2026-11-19. Chromatin state, expression and accessibility together account for most of the gap
-  in cortex as in blood (R108), so the shield is a property of active promoters; but it is larger where cells
+  in cortex as in blood (R108), so the shield is a property of active promoters; in MESA monocytes, expression measured
+  in the same samples removes 82 % of the housekeeping gap and all of the core-essential one, and genes outside every
+  set are shielded in step with their expression (R122); but it is larger where cells
   divide (colon over hippocampus by RRBS on shared flowcells, R114; glia over neurons, R110, R115; replicative
   senescence, R111) and absent where nothing divides (R112). A division-independent chromatin shield does not predict
   that ordering. The mouse-array ordering withdrawn in R92 is now seen on clean data.

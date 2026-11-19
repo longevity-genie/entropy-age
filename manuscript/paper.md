@@ -118,7 +118,13 @@ slope left the blood housekeeping gap unchanged on relative entropy (−0.152 �
 slope (−0.159 → −0.177). Only the dispersion gap shrank, by a third (−0.29 → −0.20), as expected when people differ
 in cell mix (Supplementary Fig. S5). In sorted CD14+ monocytes of 1,202 people (MESA; Reynolds et al. 2014), the housekeeping gap was −0.10 SD; in CD4+ T cells of
 214 people it was small (−0.015 SD, p 0.005; Supplementary Fig. S10). The shield is therefore present inside a single cell type, but its
-size varies between cell types.
+size varies between cell types. The same monocyte samples also have expression arrays, so promoter activity can be
+read in the cells whose methylation is measured. Adding the decile of each gene's own expression to the matching
+removed 82 % of the monocyte housekeeping gap (−0.099 → −0.017 SD; 75 to 92 %) and all of the core-essential one
+(−0.035 → +0.020, interval including zero). Among the 11,678 genes outside every gene set, drift relative to
+matched CpGs fell step by step with expression, from +0.07 SD in the lowest decile to −0.20 in the highest (rank
+correlation −0.12, p 5·10⁻³⁷). In these cells the shield follows how strongly a promoter is used, whether or not
+the gene is essential.
 
 Adding probe design to the matching changed no sign, masking unreliable probes moved no essential-set gap by more
 than 0.012 SD, and rebuilding Jaffe's cortex series from its raw arrays did not weaken the gap. On the same 208 donors and the

@@ -107,6 +107,15 @@ blood (−0.21 against −0.08 percentage points per decade, p 4·10⁻⁵), non
 components, −0.031 raw (p 0.14). Cortical snATAC: core-essential +0.07 to +0.23 SD in 6 of 7 cell types. Hippocampus:
 signs depend on adjustment.
 
+**Expression in the same monocytes (R122).** MESA measured methylation (GSE56046) and expression (GSE56045) in
+the same 1,202 monocyte samples. Join check: per-gene correlation of promoter methylation and expression across
+people, mean −0.007 (52.5 % of 15,890 genes negative; permutation p 0.005). Housekeeping gap on relative entropy:
+−0.099 SD with island x level, −0.017 with the gene's expression decile added, +0.001 with the mononuclear
+chromatin state, +0.017 with both. Core-essential: −0.035, +0.020, +0.028, +0.039. Non-essential: +0.218, +0.124,
++0.080, +0.073. Outside the gene sets, the slope relative to matched CpGs by expression decile, lowest to highest:
++0.07, +0.04, +0.03, −0.02, −0.10, −0.10, −0.11, −0.11, −0.12, −0.20 SD. Of housekeeping CpGs 75 % and of
+core-essential CpGs 82 % lie in expression deciles 6 to 10, against 27 % of CpGs outside the sets.
+
 **Blood with the neutrophil chromatin map (R121).** Whole blood has no reference map of its own; the analyses use
 mononuclear cells (Roadmap E062). With neutrophils (E030) in its place: loss per decade at active-TSS island
 promoters, set minus matched, core-essential +0.0053 (+0.0026 to +0.0081; E062 +0.0063), housekeeping +0.0041
@@ -331,6 +340,7 @@ type. Generated from `docs/provenance.csv` by `scripts/provenance_table.py`.
 | Blood minus cortex | R68a | C1 | blood vs cortex | Hannum vs Jaffe | 450k | deposited (both); two pipelines | none |  | across studies | none | n.a. | two studies, different pipelines and age ranges; neuron fraction held in cortex only; descriptive |
 | Same-donor blood and brain | R68a R2 | C1 | human blood and 4 brain regions | Lunnon, GSE59685 | 450k | deposited (no IDATs) | none |  | one study; tissue confounded with slide and per-tissue normalisation | none | n.a. | blood drawn in life, brain at death |
 | Cell fractions held | R70 | C1 | human whole blood | Hannum, GSE40279 | 450k | deposited | 12 cell fractions | EpiDISH reference panel (Luo 2023) | one study | other study | related | reference panel of sorted cells |
+| Monocytes with own expression | R122 | C2 | human CD14+ monocytes | MESA, GSE56046 | 450k | deposited | expression (HT-12 array) | MESA, GSE56045 | one study | same samples | same | 1,202 samples joined one to one; expression deposited normalised values |
 | Sorted monocytes and T cells | R44 R68b | C1 | human CD14+ monocytes / CD4+ T cells | MESA, GSE56046 GSE56581 | 450k | deposited | none |  | one study | none | n.a. | text sets them beside Hannum (other study) |
 | Read-level blood | R50 | C1 | human white blood cells | Loyfer, GSE186458 | WGBS | authors' reads | Hannum array means (check) | GSE40279 | across studies | other study | same | cross-platform used only as a validation (r 0.963) |
 | GTEx nine tissues | R68d | C1 | human 9 tissues | GTEx, GSE213478 | EPIC | deposited (IDATs controlled) | none |  | one study | none | n.a. | same donors across tissues |
