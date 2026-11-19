@@ -75,7 +75,7 @@ a test with little power), **refuted**.
   in cortex as in blood (R108), so the shield is a property of active promoters; in MESA monocytes, expression measured
   in the same samples removes 82 % of the housekeeping gap and all of the core-essential one, and genes outside every
   set are shielded in step with their expression (R122); the same per doubling in cultured fibroblasts with RNA-seq of
-  the same cultures (72 % of the housekeeping gap removed, R124; chip not held); but it is larger where cells
+  the same cultures (72 % of the housekeeping gap removed, R124; 77 % with chip held, R125); but it is larger where cells
   divide (colon over hippocampus by RRBS on shared flowcells, R114; glia over neurons, R110, R115; replicative
   senescence, R111) and absent where nothing divides (R112). A division-independent chromatin shield does not predict
   that ordering. The mouse-array ordering withdrawn in R92 is now seen on clean data.

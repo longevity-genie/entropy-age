@@ -4,6 +4,7 @@ Newest first.
 
 ## Unreleased
 
+- 2026-11-19: R125: the fibroblast result of R124 holds with chip intercepts (housekeeping -0.102 to -0.024, 77 % removed). Run log, paper, supplement, claim C2, provenance, reassessment.
 - 2026-11-19: Reassessment: a third update section (activity measured in the same cells, R122-R124; methods-review items closed by R118, R120, R121).
 - 2026-11-19: `figures sturm_expression` writes a chip-overlap table and, with `ENTROPY_AGE_CHIP=1`, holds chip in the slopes on doublings.
 - 2026-11-19: R124: in Sturm fibroblast cultures (rebuilt arrays) drift per doubling follows expression of the same cultures: housekeeping gap -0.102 to -0.028 with the expression decile matched; gradient outside the gene sets. Run log, paper, supplement, claim C2, E43, provenance.

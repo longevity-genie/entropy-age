@@ -21,8 +21,14 @@ commit it ran, its job ids, its scale and seed, and its result or its failure wi
 - Against R94: there the per-sample coupling of the shield to matched drift was near zero on the rebuilt arrays.
   That statistic asks whether a culture with more drift has proportionally more shield; this one compares per-CpG
   slopes over all cultures. They are not the same question, and this run does not restore R94's claim.
-- Limits: chip is not held (lines and time points sit unevenly on chips, R94, R103b); HC1 and HC2 give two thirds
-  of the cultures; expression is a culture-wide mean, not paired sample by sample.
+- **With chip held (R125**, commit ce2fe91, `ENTROPY_AGE_CHIP=1`, job 6539692, 3 min). The 89 cultures sit on 50
+  chips, 27 of them with two or more cultures; a third of the variance of doublings (0.325) is left within line and
+  chip, so the slopes are estimable but on less. Relative entropy: housekeeping −0.102 (−0.109 to −0.094) → −0.024
+  (−0.031 to −0.016) with the expression decile, 77 % removed; core-essential −0.053 → −0.002; non-essential +0.164
+  → +0.056. Gradient outside the sets +0.141 to −0.106, rank correlation −0.061 (p 2·10⁻¹⁰). The result does not
+  come from chip.
+- Limits: HC1 and HC2 give two thirds of the cultures; expression is a culture-wide mean, not paired sample by
+  sample; the chip-held slopes rest on a third of the spread in doublings.
 
 ## R123 — the same in CD4+ T cells (RM40 item 4), 2026-11-19
 

@@ -129,7 +129,8 @@ such gradient (Supplementary Note 3). In fibroblasts grown for up to 79 populati
 89 untreated cultures of six healthy lines, arrays rebuilt from raw files, RNA-seq of the same cultures), drift per
 doubling showed the monocyte pattern: the housekeeping gap of −0.102 SD fell to −0.028 with the expression decile
 in the matching (72 % removed), the core-essential gap from −0.055 to −0.006, and outside the gene sets drift
-relative to matched CpGs fell with expression (rank correlation −0.06, p 1·10⁻⁹). Chip is not held in this series.
+relative to matched CpGs fell with expression (rank correlation −0.06, p 1·10⁻⁹). With chip intercepts in the
+slopes the numbers were the same (−0.102 to −0.024; a third of the spread in doublings is left within line and chip).
 
 Adding probe design to the matching changed no sign, masking unreliable probes moved no essential-set gap by more
 than 0.012 SD, and rebuilding Jaffe's cortex series from its raw arrays did not weaken the gap. On the same 208 donors and the

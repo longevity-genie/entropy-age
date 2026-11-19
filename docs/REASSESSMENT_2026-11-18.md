@@ -18,7 +18,7 @@ external search) and analysed.
   entropy slope the expression decile removes 69 %. Cell type or sample size: not separable here.
 - **Sturm fibroblasts in culture, 89 untreated cultures (R124).** Per population doubling, on rebuilt arrays with
   RNA-seq of the same cultures: housekeeping −0.102 → −0.028 (72 % removed), core-essential to zero, and the same
-  gradient outside the gene sets. Chip not held (a chip-held run, R125, is queued).
+  gradient outside the gene sets. With chip held (R125) the same: −0.102 → −0.024.
 
 What this changes: the reading of section 3 ("a property of active promoters, not of essential genes") no longer
 rests on reference maps from other people's cells. In two settings, years in monocytes and doublings in a dish,
