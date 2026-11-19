@@ -4,6 +4,7 @@ Newest first.
 
 ## Unreleased
 
+- 2026-11-19: GSE56045 fetched (MESA monocyte expression, same 1,202 people as GSE56046). `figures mesa_expression` (RM40 item 4): the gap with each gene's own expression decile in the same cells added to the matching, the gradient with expression outside the gene sets, and the methylation-expression coupling as positive control.
 - 2026-11-19: `figures chromatin` rerun with the both-blood-maps matching (R121, job 6538876): table and figure committed; the paper-scale interval of the housekeeping gap with both maps held is -0.013 to +0.001, as written.
 - 2026-11-19: R121 (RM43 item 3): blood analyses with the neutrophil chromatin map (E030) read as with the mononuclear one; with both maps held 96 % of the housekeeping gap is removed. Run log, paper, supplement Note 3, claim C2, roadmap.
 - 2026-11-19: `ENTROPY_AGE_BLOOD_STATE=E030` gives blood its chromatin state from neutrophils in `equilibrium_drift`, `drift_hotspots` and `essentiality_gradient` (outputs end `_e030`); `figures chromatin` adds a matching on both blood maps at once (RM43 item 3). Lint cleared in four files.
