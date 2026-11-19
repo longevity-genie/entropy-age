@@ -12,7 +12,10 @@ cultures arrested without dividing, at equal distance from the untreated state.
 Per chip, the reference is the mean of its two untreated cultures. Each treated culture is scored against it as in
 ``per_person``: ``d = |x - m| / sqrt(m (1 - m))`` per CpG; ``B`` the matched CpGs' mean deviation, ``P`` the set's
 minus the matched CpGs', ``F = P / B``, ``K`` the same matched gap of relative entropy, ``S`` of the signed
-deviation; strata are island status x decile of the reference level over all untreated cultures. Scores are averaged
+deviation; strata are island status x decile of the reference level over all untreated cultures. Because ``F`` is a
+share of total deviation, array noise dilutes it where real drift is small; ``B2``, ``P2`` and ``F2`` repeat the
+scores on squared deviations with a noise floor subtracted, estimated per chip from its two untreated replicates.
+Scores are averaged
 over a chip's two replicates, giving one value per chip and arm. Arms are compared by the mean of the within-chip
 differences, with an exact sign-flip test over the 12 chips (4,096 assignments) and a t interval.
 
@@ -39,7 +42,7 @@ from entropy_age.experiments.brain_replication import complete_matrix
 from entropy_age.experiments.common import Context, write_table
 from entropy_age.experiments.per_person import _sets
 from entropy_age.experiments.tissue_contrast import _features
-from entropy_age.protection import deviations, matched_scores, signed_deviations
+from entropy_age.protection import LEVEL_CLIP, deviations, matched_scores, signed_deviations
 from entropy_age.stochasticity import baseline_strata, relative_entropy
 
 GSE = "GSE197723"
@@ -49,8 +52,22 @@ CONTRASTS = (("Replication", "X-ray"), ("Replication", "RAS"), ("X-ray", "RAS"))
 MEASURES = ("B", "P", "F", "K", "S")
 
 
-def sample_scores(x: np.ndarray, reference: np.ndarray, strata: np.ndarray, sets: dict) -> dict[str, np.ndarray]:
-    """Scores of each row of ``x`` against ``reference``: ``<measure>_<set>`` -> one value per row."""
+def noise_floor(controls: np.ndarray, reference: np.ndarray) -> np.ndarray | None:
+    """Per CpG, the squared scaled deviation a treated culture would show from array noise alone, estimated from a
+    chip's two untreated replicates: ``(u1 - u2)^2`` has variance ``2 s^2`` and a treated culture against their mean
+    ``1.5 s^2``, so the floor is ``0.75 (u1 - u2)^2 / (m (1 - m))``. None unless the chip has exactly two."""
+    if controls.shape[0] != 2:
+        return None
+    m = np.clip(reference, LEVEL_CLIP, 1 - LEVEL_CLIP)
+    return 0.75 * (controls[0] - controls[1]) ** 2 / (m * (1 - m))
+
+
+def sample_scores(
+    x: np.ndarray, reference: np.ndarray, strata: np.ndarray, sets: dict, floor: np.ndarray | None = None
+) -> dict[str, np.ndarray]:
+    """Scores of each row of ``x`` against ``reference``: ``<measure>_<set>`` -> one value per row. With ``floor``
+    (see :func:`noise_floor`) also ``B2``, ``P2``, ``F2``: the same on squared deviations with the noise floor
+    subtracted, so that a share of drift is not diluted by array noise where drift is small."""
     d = deviations(x, reference)
     signed = signed_deviations(x, reference)
     kl = relative_entropy(np.clip(x, 0.0, 1.0), reference)
@@ -60,6 +77,11 @@ def sample_scores(x: np.ndarray, reference: np.ndarray, strata: np.ndarray, sets
         out[f"B_{group}"], out[f"P_{group}"], out[f"F_{group}"] = b, p, p / b
         out[f"K_{group}"] = matched_scores(kl, in_set, strata)[0]
         out[f"S_{group}"] = matched_scores(signed, in_set, strata)[0]
+        if floor is not None:
+            p2, b2 = matched_scores(d**2, in_set, strata)
+            fp, fb = matched_scores(floor[None, :], in_set, strata)
+            out[f"B2_{group}"], out[f"P2_{group}"] = b2 - fb[0], p2 - fp[0]
+            out[f"F2_{group}"] = (p2 - fp[0]) / (b2 - fb[0])
     return out
 
 
@@ -126,7 +148,8 @@ def run(ctx: Context) -> list[Path]:
         on = chip == c
         reference = x[on & (arm == CONTROL)].mean(axis=0)
         treated = on & (arm != CONTROL)
-        scores = sample_scores(x[treated], reference, strata, sets)
+        floor = noise_floor(x[on & (arm == CONTROL)], reference)
+        scores = sample_scores(x[treated], reference, strata, sets, floor)
         for i, (s, a) in enumerate(zip(samples["sample"].to_numpy()[treated], arm[treated], strict=True)):
             rows.append({"sample": s, "chip": c, "arm": a, **{k: float(v[i]) for k, v in scores.items()}})
     per_sample = pl.DataFrame(rows)

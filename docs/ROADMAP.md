@@ -31,17 +31,6 @@ manuscript and comparisons") · **Owner:** lead
 3. Comparisons that join another tissue's chromatin reference, or two platforms, are redone on matched sources
    where data exist, or reported as such.
 
-## RM44 — The joint test in cortex: is anything left beyond promoter activity?
-
-**State:** unattended (the lead's proposal in `docs/REASSESSMENT_2026-11-18.md` section 5B, sent to antonkulaga
-2026-11-18 with this default: build it) · **Owner:** lead
-
-One matching in Jaffe cortex (rebuilt betas) that holds together what R80, R82 and R68b held one at a time: island
-status, young level off the floor (10-90 % and 20-80 %), GTEx frontal-cortex expression decile, E073 chromatin state
-and sorted NeuN+/NeuN− accessibility. Report the housekeeping and core-essential gaps with intervals at each step.
-If the gap goes to zero the claim becomes "active promoters drift less"; if it stays it is the paper's main finding
-and goes to replication (RM40: a second brain cohort with raw IDATs, sorted neurons first).
-
 ## RM43 — The independent methods review of 2026-11-18: reruns on comparable data
 
 **State:** urgent (antonkulaga 2026-11-18 asked for "a separate reviewer agent to check if we compare comparable stuff
