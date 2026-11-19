@@ -25,3 +25,10 @@ Not yet seated.
 - Asked of antonkulaga and still open: the paper's working title (`#entropy-age > decisions`).
 
 - 2026-11-18: acting duties from the watcher (L139): milestones (state post kept from docs/seats/LEAD_STATE.md, `watchdog.py keep lead state`) and upstream-index: entropy-age has no in-house key upstream (polars, numpy, scipy are ordinary dependencies), so no index watcher is declared.
+
+## Standing rule: no manuscript-skills run without Anton's word (2026-11-19)
+
+Anton, forwarded by the desk's secretary: "manuscript skills is super token consuming, please finish this run but do
+not initialize run without asking me or getting explicit instruction on it". No seat of this repository starts a run
+of the manuscript-skills plugin (review panels, improve, dashboard, other-model runs) unless he asked for that run in
+his own words or said yes when asked. Hand edits of `manuscript/` are not such a run. A run in progress is finished.
