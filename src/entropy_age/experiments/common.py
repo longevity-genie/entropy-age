@@ -85,7 +85,13 @@ def source_suffix() -> str:
     """``_rsesame`` when the run reads betas rebuilt from raw IDATs (``ENTROPY_AGE_BETAS=sesame``, roadmap RM41), so its
     tables and figures sit beside, never over, those from the authors' deposited betas."""
     suffix = "_rsesame" if os.environ.get("ENTROPY_AGE_BETAS", "deposited") == "sesame" else ""
-    return suffix + ("_complete" if complete_only() else "")
+    return suffix + ("_complete" if complete_only() else "") + ("_chip" if chip_terms() else "")
+
+
+def chip_terms() -> bool:
+    """True with ``ENTROPY_AGE_CHIP=1``: analyses that honour it add chip intercepts to every age slope, so age is
+    estimated within chips only (RM43 item 5); their outputs carry ``_chip``."""
+    return os.environ.get("ENTROPY_AGE_CHIP", "0") == "1"
 
 
 def complete_only() -> bool:

@@ -31,7 +31,7 @@ from entropy_age import plots
 from entropy_age.data.cohorts import _characteristics
 from entropy_age.data.mouse import MouseAnnotationLayout, mouse_membership
 from entropy_age.experiments.bxd_liver import ols, probes_without_suffix
-from entropy_age.experiments.common import Context, dummies, write_table
+from entropy_age.experiments.common import Context, chip_terms, dummies, write_table
 from entropy_age.experiments.interventions import _sets
 from entropy_age.experiments.tissue_contrast import SET_LABELS, SETS
 from entropy_age.protection import matched_scores, resampled_gaps
@@ -82,14 +82,19 @@ def read_samples(matrix: Path) -> pl.DataFrame:
     return meta.join(frame, on="sample").with_columns(barcode=pl.col("title").str.extract(r"(\d+_R\d+C\d+)\s*$"))
 
 
-def group_gap(x: np.ndarray, ages: np.ndarray, features: list[str], island: np.ndarray, sets: dict, n: int, rng):
+MIN_RESIDUAL_DF = 10  # animals minus chips minus 2, below which a within-chip age slope is not fitted
+
+
+def group_gap(
+    x: np.ndarray, ages: np.ndarray, features: list[str], island: np.ndarray, sets: dict, n: int, rng, covariates=None
+):
     """Per set and metric: gap in SD and its gene-resampling interval, strata from the youngest quarter.
 
     ``gap`` is the unscaled set-minus-matched difference of the metric's age slope (per year), and
     ``background_rate`` the matched look-alikes' own slope: how fast unprotected CpGs drift in this species
     (roadmap RM20: does a long life lower it toward the protected CpGs' floor?).
     """
-    metrics = drift_metrics(x, ages, features, spearman=False)
+    metrics = drift_metrics(x, ages, features, covariates=covariates, spearman=False)
     young = ages <= np.quantile(ages, 0.25)
     strata = np.char.add(island.astype(str), baseline_strata(x[young].mean(axis=0), 10).astype(str))
     out = []
@@ -217,6 +222,16 @@ def run(ctx: Context) -> list[Path]:
             g: (s[cols], [np.searchsorted(cols, gi[np.isin(gi, cols)]) for gi in genes if np.isin(gi, cols).any()])
             for g, (s, genes) in sets.items()
         }
+        cov = None
+        if chip_terms():  # age within chips only (RM43 item 5): chip intercepts, where enough freedom is left
+            chips = sel["barcode"].str.extract(r"^(\d+)_").to_numpy()
+            cov = dummies(chips)
+            cov = cov[:, np.ptp(cov, axis=0) > 0]
+            if sel.height - cov.shape[1] - 2 < MIN_RESIDUAL_DF:
+                print(
+                    f"species: {species}, {tissue}: too few animals per chip for chip terms; left out", file=sys.stderr
+                )
+                continue
         gaps = group_gap(
             x[:, cols],
             sel["age"].to_numpy(),
@@ -225,6 +240,7 @@ def run(ctx: Context) -> list[Path]:
             sub_sets,
             N_RESAMPLES[str(ctx.scale.name)],
             rng,
+            cov,
         )
         first = sel.row(0, named=True)
         rows += [
