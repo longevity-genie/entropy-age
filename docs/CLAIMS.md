@@ -215,5 +215,6 @@ a test with little power), **refuted**.
   shift blood methylation and raise breast-cancer risk.
 - **Separating test:** a second prospective cohort (NOWAC, Breakthrough Generations, controlled access); sorted
   cells; hormonal covariates.
-- **Status:** weak (one cohort); the adjusted association did not survive the rebuild from raw IDATs (R96: 1.76 → 1.11).
+- **Status:** weak (one cohort); the adjusted association did not survive the rebuild from raw IDATs (R96: 1.76 → 1.11). A second series
+  (GSE283951, 32 cases, R113) gives 1.11 (0.71 to 1.73): no support, too small to refute.
 

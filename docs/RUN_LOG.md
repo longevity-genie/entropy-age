@@ -3,6 +3,19 @@
 Owned by the runner seat (`docs/seats/RUNNER.md`): one entry per run, newest first, with its inputs, the
 commit it ran, its job ids, its scale and seed, and its result or its failure with the cause.
 
+## R113 — the breast-cancer lead in a second series, GSE283951 (C12, RM40), 2026-11-19
+
+- `figures breast_replication --scale paper --seed 42`, job 6536367 (test partition), 23 s. Rebuilt from IDATs (85
+  of 87 arrays pass); 32 cases, 53 controls, mean age 54.0 and 52.8; 16 chips, 9 holding both groups; 82,067 complete
+  promoter CpGs; scores against controls, centred within chip.
+- Odds ratio per SD, age held: B housekeeping 1.11 (0.71 to 1.73), p 0.66; B core-essential 1.09 (0.70 to 1.70);
+  F 0.88 (0.56 to 1.38); S housekeeping 0.73 (0.44 to 1.23). With mean methylation held: unchanged (B 1.11, 0.68 to
+  1.79).
+- Reading: no association. The interval holds both 1.0 and the 1.7-1.8 first seen in EPIC-Italy, so 32 cases neither
+  replicate nor refute; the point estimate equals EPIC-Italy's on rebuilt arrays with adjustment (1.11). Blood here
+  was not shown to be drawn before diagnosis, and cell fractions are not held. C12 stays weak, with no support from
+  a second series.
+
 ## R112 — drift and the shield in non-dividing fibroblasts over six months, E-MTAB-15859 (RM40), 2026-11-19
 
 - `figures arrest_timecourse --scale paper --seed 42`, commit after ccb2d35 (arrest_timecourse), job 6536205 (test
