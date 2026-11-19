@@ -3,6 +3,25 @@
 Owned by the runner seat (`docs/seats/RUNNER.md`): one entry per run, newest first, with its inputs, the
 commit it ran, its job ids, its scale and seed, and its result or its failure with the cause.
 
+## R112 — drift and the shield in non-dividing fibroblasts over six months, E-MTAB-15859 (RM40), 2026-11-19
+
+- `figures arrest_timecourse --scale paper --seed 42`, commit after ccb2d35 (arrest_timecourse), job 6536205 (test
+  partition), 3.5 min. Rebuilt from IDATs (79 of 79 arrays pass; EPIC v1 and v2 in one study). Used: untreated
+  confluent fibroblasts on EPIC v1, three donors, six monthly arrays each, each donor within one chip; 76-80 thousand
+  complete promoter CpGs. Donor 2 (EPIC v2, months split over three chips) left out.
+- **Drift** (mean squared slope per month against all 720 reorderings of the months): donor 1 0.88 of the null
+  median (p 0.67), donor 4 0.86 (p 0.64): none. Donor 3 1.96 (p 0.007), but in donor 3 month runs down the chip in
+  order (correlation with array row 0.99; −0.15 and −0.14 in donors 1 and 4), so its trend cannot be told from
+  array position.
+- **Shield:** matched gaps of the absolute slope and of the relative-entropy slope are within ±0.02 SD in every
+  donor and set, intervals across or touching zero (housekeeping: −0.010, +0.013, +0.004).
+- **Reading:** six months without division leave promoter methylation where it was, within what six arrays per
+  donor can see; the noise level is about 0.004 per month in beta, so a change of the size seen in replicative
+  senescence (R111: about 0.1 in beta at mid-level CpGs) would have been plain. With R111 this says that promoter
+  drift in fibroblast culture goes with division, not with time, and that where there is no drift there is no
+  shield to measure. Limits: three donors, six arrays each, no replicates; two series from different laboratories
+  are being read together; replicative and arrested cultures are not from the same experiment.
+
 ## R111 — replicative against X-ray and RAS senescence within chips, GSE197723 (RM40), 2026-11-19
 
 - `figures senescence_modes --scale paper --seed 42`, commit d67772f, job 6536147 (test partition), 18 s; first pass

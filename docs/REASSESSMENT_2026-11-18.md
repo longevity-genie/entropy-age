@@ -25,6 +25,24 @@ minus cortex on matched ages), R107 (Huang on the mouse recipe).
   cleanest selection-type test found so far. The paper's centre moves from "essential genes are shielded by
   chromatin" towards "promoter drift is lowest at active promoters, and in brain the difference is carried by glia".
 
+## Update, 19 November (afternoon): division
+
+Three runs on data found by the external search, all rebuilt from IDATs and all within chip:
+
+- **Glia against neurons in the same donors (R110).** Other glia are more shielded than neurons for housekeeping
+  genes (−0.055 SD, −0.121 to −0.007, p 0.025); the oligodendrocyte lineage is not (−0.003). Suggestive.
+- **Replicative senescence (R111).** A large, noise-corrected shield: essential and housekeeping promoters carry
+  less than half the squared drift of matched CpGs (share −0.58, 12 of 12 chips). Cultures arrested by X-rays or RAS
+  on the same chips show no drift.
+- **Six months without division (R112).** Confluent fibroblasts show no drift in the two donors with a clean layout,
+  and no shield.
+
+Together: in culture, promoter drift goes with division, not with time, and the shield appears where drift does. In
+brain, the fraction most able to divide is the most shielded. Division-coupled explanations (selection among cells,
+or replication-coupled maintenance at active promoters) now fit better than a division-independent "chromatin
+shield". These cannot yet be told apart: both predict a shield that grows with divisions. What would separate them
+is lineage data (barcoded or clonal cultures), which the search found only under controlled access.
+
 ## 1. What the project set out to show
 
 1. **The shield.** Promoters of essential and housekeeping genes drift less with age than CpGs of the same island

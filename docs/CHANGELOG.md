@@ -4,6 +4,7 @@ Newest first.
 
 ## Unreleased
 
+- 2026-11-19: R112: confluent non-dividing fibroblasts show no promoter drift over six months (two clean donors) and no shield; with R111, drift in culture goes with division, not time. Reassessment updated.
 - 2026-11-19: figures arrest_timecourse: drift and the shield over six months in non-dividing confluent fibroblasts, per donor within one chip (E-MTAB-15859; RM40).
 - 2026-11-19: R110: other glia are more shielded than the same donors' neurons for housekeeping genes (-0.055, p 0.025); the oligodendrocyte lineage is not. R111: replicative senescence shows a large shield on chip-balanced rebuilt arrays (noise-corrected share -0.58, 12 of 12 chips); X-ray and RAS arrest show no measurable drift, so no division-against-arrest comparison is possible there.
 - 2026-11-19: figures senescence_modes: replicative against X-ray and RAS senescence within chips in GSE197723 (division against arrest; RM40).
