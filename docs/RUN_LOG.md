@@ -13,7 +13,9 @@ commit it ran, its job ids, its scale and seed, and its result or its failure wi
   with the expression decile (9 % removed), −0.010 with the chromatin state; core-essential −0.006 (−0.029 to
   +0.018). Outside the gene sets no gradient with expression (rank correlation +0.02; deciles −0.00 to +0.07).
 - **Entropy slope:** housekeeping −0.219 → −0.069 with the expression decile (69 % removed, 66 to 72), −0.031 with
-  the state, −0.019 with both; core-essential −0.091 → +0.007.
+  the state, −0.019 with both; core-essential −0.091 → +0.007. Outside the gene sets the entropy slope falls with
+  expression (+0.13 in the lowest decile to −0.18 in the highest; rank correlation −0.197, p 4·10⁻¹⁰²); the
+  dispersion slope barely (−0.054).
 - Reading: where T cells show a shield at all (entropy slope, which carries the floor effect of R68), expression
   in the same cells accounts for it as in monocytes. On the corrected measure T cells have next to none, in a
   series six times smaller and with a narrower age range; the monocyte gradient is not reproduced here and this

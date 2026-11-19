@@ -117,7 +117,8 @@ chromatin state, +0.017 with both. Core-essential: −0.035, +0.020, +0.028, +0.
 core-essential CpGs 82 % lie in expression deciles 6 to 10, against 27 % of CpGs outside the sets. In CD4+ T cells of
 214 of the same people (GSE56581 with GSE56580; R123) the housekeeping gap on relative entropy is −0.015 SD and
 the expression decile leaves −0.013; outside the gene sets there is no gradient with expression (rank correlation
-+0.02). On the entropy slope the T-cell gap, −0.219, falls to −0.069 with the expression decile.
++0.02). On the entropy slope the T-cell gap, −0.219, falls to −0.069 with the expression decile, and outside the gene
+sets that slope falls with expression (rank correlation −0.20).
 
 **Blood with the neutrophil chromatin map (R121).** Whole blood has no reference map of its own; the analyses use
 mononuclear cells (Roadmap E062). With neutrophils (E030) in its place: loss per decade at active-TSS island
