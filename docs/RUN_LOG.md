@@ -3,6 +3,28 @@
 Owned by the runner seat (`docs/seats/RUNNER.md`): one entry per run, newest first, with its inputs, the
 commit it ran, its job ids, its scale and seed, and its result or its failure with the cause.
 
+## R114 — colon against hippocampus by RRBS in one mouse cohort (RM40), 2026-11-19
+
+- `figures jena_rrbs --scale paper --seed 42`, job 6537454 (test partition), 46 min after a smoke pass in the same
+  job; two earlier attempts failed in the readers. GSE233734 (colon, 82 mice) and GSE304754 (hippocampus, 83 mice):
+  C57BL/6J/Ukj males, 16-18 per age at 3, 9, 15, 24 and 28 months; processed per-CpG tables; promoter CpGs covered
+  10 times in 90 % of a tissue's mice: 439,323 and 462,430. 200 mouse resamples per tissue, tissues resampled
+  independently.
+- **Batch:** our audit of both series (`data/input/geo/audit/`): the hippocampus libraries ran on four flowcells,
+  the same four that carry the colon libraries (a fifth holds colon only), and every flowcell holds every age bin
+  in both tissues (R2 of age by flowcell 0.02 and 0.01). Age and tissue are both free of flowcell.
+- **Gaps (relative entropy):** housekeeping, colon −0.189 (−0.294 to −0.170), hippocampus −0.078 (−0.094 to −0.065);
+  core-essential −0.166 and −0.071; non-essential +0.537 and +0.155.
+- **Colon minus hippocampus:** housekeeping −0.111 (−0.222 to −0.085), core-essential −0.095 (−0.196 to −0.068),
+  non-essential +0.382 (+0.312 to +0.660); p 0.005 each (the floor of 200 resamples). Entropy slope and dispersion
+  slope agree (housekeeping −0.144 and −0.179).
+- **Reading:** the shield is more than twice as large in the renewing tissue as in the post-mitotic one, in a
+  sequencing series where neither age nor tissue is tied to batch. This is the turnover ordering that was withdrawn
+  for the mouse array (R92) because of chip confounding, now seen on clean data. Limits: two tissues, one strain,
+  males; hippocampus is bulk tissue and contains dividing glia; a one-base uncertainty in the hippocampus
+  coordinates could not be resolved by overlap (222,930 shared CpGs unshifted, 223,304 shifted) and does not matter
+  for promoter membership; sporadic missing values (up to 10 % per CpG) are median-filled as in the other RRBS runs.
+
 ## R115 — glia against neurons in a second sorted series, GSE66351 (RM40), 2026-11-19
 
 - `figures nuclei_paired_gse66351 --scale paper --seed 42`, job 6537455 (test partition), 15 min; two earlier

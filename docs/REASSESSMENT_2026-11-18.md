@@ -37,6 +37,11 @@ Three runs on data found by the external search, all rebuilt from IDATs and all 
 - **Six months without division (R112).** Confluent fibroblasts show no drift in the two donors with a clean layout,
   and no shield.
 
+- **Colon against hippocampus, one mouse cohort, RRBS (R114).** Housekeeping gap −0.189 in colon against −0.078 in
+  hippocampus (difference −0.111, −0.222 to −0.085); both tissues on the same flowcells, every flowcell holding
+  every age. The turnover ordering withdrawn for the mouse array is back on clean data.
+- **Glia against neurons, second series (R115).** Same direction and size as R110 (−0.044, p 0.11, 31 donors).
+
 Together: in culture, promoter drift goes with division, not with time, and the shield appears where drift does. In
 brain, the fraction most able to divide is the most shielded. Division-coupled explanations (selection among cells,
 or replication-coupled maintenance at active promoters) now fit better than a division-independent "chromatin
