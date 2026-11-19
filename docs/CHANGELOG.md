@@ -4,6 +4,7 @@ Newest first.
 
 ## Unreleased
 
+- 2026-11-19: `figures chromatin` rerun with the both-blood-maps matching (R121, job 6538876): table and figure committed; the paper-scale interval of the housekeeping gap with both maps held is -0.013 to +0.001, as written.
 - 2026-11-19: R121 (RM43 item 3): blood analyses with the neutrophil chromatin map (E030) read as with the mononuclear one; with both maps held 96 % of the housekeeping gap is removed. Run log, paper, supplement Note 3, claim C2, roadmap.
 - 2026-11-19: `ENTROPY_AGE_BLOOD_STATE=E030` gives blood its chromatin state from neutrophils in `equilibrium_drift`, `drift_hotspots` and `essentiality_gradient` (outputs end `_e030`); `figures chromatin` adds a matching on both blood maps at once (RM43 item 3). Lint cleared in four files.
 - 2026-11-19: R120 (RM43 item 8): the Tet3 and Tet1 arrays share 150 CpG positions, so no shared-CpG test is possible; on the 314 genes both cover the opposite signs hold (Tet1 F -0.19, Tet3 +0.17 and +0.25). Run log, claims C4, E41, paper, supplement, Table S4; RM43 items 5, 6, 8, 9 marked done.
