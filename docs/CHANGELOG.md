@@ -4,6 +4,7 @@ Newest first.
 
 ## Unreleased
 
+- 2026-11-19: GSE179848 fetched (Sturm fibroblast RNA-seq gene tables). `figures sturm_expression`: drift on doublings in untreated healthy-line cultures (rebuilt arrays), matched with and without the gene's expression decile in the same cultures.
 - 2026-11-19: R123: CD4+ T cells with their own expression (GSE56580): almost no gap on relative entropy and no gradient with expression; on the entropy slope the expression decile removes 69 %. Run log, paper, supplement, provenance.
 - 2026-11-19: `figures mesa_expression` covers CD4+ T cells too (GSE56581 with GSE56580, fetched and audited); tables gain a `cell` column.
 - 2026-11-19: R122: in MESA monocytes, expression measured in the same samples removes 82 % of the housekeeping gap and all of the core-essential one; genes outside every set are shielded in step with their expression. Run log, paper, claim C2, E42, supplement Note 3, provenance (first same-sample second layer). ONNX default noted in the lead notes.
