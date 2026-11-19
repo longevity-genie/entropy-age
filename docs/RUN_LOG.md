@@ -3,6 +3,25 @@
 Owned by the runner seat (`docs/seats/RUNNER.md`): one entry per run, newest first, with its inputs, the
 commit it ran, its job ids, its scale and seed, and its result or its failure with the cause.
 
+## R118 — the species shield with chip intercepts (RM43 item 5), 2026-11-19
+
+- `ENTROPY_AGE_CHIP=1 figures species --scale paper --seed 42`, job 6538040 (test partition), 1 h 07 min. Deposited
+  consortium betas (no IDATs). Chip intercepts in every age slope; 17 of 139 groups left out for too few animals per
+  chip, leaving 122 groups of 57 species.
+- Housekeeping relative-entropy gap negative in 86 % of groups (88.5 % of the same groups without chip terms),
+  median −0.108 (−0.126), interval below zero in 79 groups and above in 3; correlation of the two fits across groups
+  0.93. Core-essential: negative in 80 %, median −0.129. Dispersion slope: 81 %, median −0.111.
+- Lifespan: the gap is still not tuned to maximum lifespan (core-essential entropy gap, p 0.93); the matched CpGs'
+  own rate still falls with lifespan (p < 0.001).
+- **Mouse tissues within chips** (numeric ages, 19 to 903 animals per tissue): lung −0.49 (−0.54 to −0.44), spleen
+  −0.45, liver −0.35, blood −0.32, skin −0.22 (−0.32 to −0.11); whole brain −0.13, fibroblasts −0.12; muscle −0.08,
+  cortex −0.06, heart −0.04, kidney −0.04 (intervals across zero); hippocampus +0.03, cerebellum +0.04, striatum
+  +0.10 (+0.03 to +0.17).
+- Reading: the species result does not come from chip going with age. And with chip held, mouse tissues on the
+  consortium array order as colon and hippocampus do by RRBS (R114): large in renewing tissues and liver, absent in
+  brain regions and heart. This is the within-chip turnover check asked for under RM40 item 1, on a second platform
+  and a third dataset. (Kidney sits with the post-mitotic tissues; liver with the renewing ones.)
+
 ## R117, R119 — two checks from the methods review: complete CpGs only; SATSA on one platform (RM43 items 9, 6), 2026-11-19
 
 - **R117** (`ENTROPY_AGE_BETAS=sesame ENTROPY_AGE_COMPLETE=1 figures tissues`, job 6538038, test partition, 57 min):

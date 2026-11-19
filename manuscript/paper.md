@@ -228,7 +228,10 @@ and rebuilt from raw files where it is an array.
 (82 and 83 animals; RRBS) ran on the same four flowcells, each holding every age. The housekeeping gap was −0.19 SD
 in colon (−0.29 to −0.17) and −0.08 in hippocampus (−0.09 to −0.07): a difference of −0.11 (−0.22 to −0.09). The
 core-essential gap differed likewise (−0.17 against −0.07), and non-essential promoters drifted more than their
-matched CpGs in both, most in colon (+0.54 against +0.16).
+matched CpGs in both, most in colon (+0.54 against +0.16). On the mammalian consortium's array, with chip
+intercepts in every age slope, mouse tissues ordered the same way: lung −0.49, spleen −0.45, liver −0.35, blood −0.32
+and skin −0.22, against cortex −0.06, heart −0.04, kidney −0.04, hippocampus +0.03, cerebellum +0.04 and striatum
++0.10 (19 to 903 animals per tissue; Supplementary Note 3).
 
 *Glia and neurons of the same brains.* In nuclei sorted from human cortex (EPIC; ages 18-108), the shield replicated
 in unsorted nuclei (housekeeping −0.05 SD, 148 donors) and was −0.08 in NeuN−/SOX10− glia, −0.03 in the

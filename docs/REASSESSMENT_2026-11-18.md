@@ -40,6 +40,9 @@ Three runs on data found by the external search, all rebuilt from IDATs and all 
 - **Colon against hippocampus, one mouse cohort, RRBS (R114).** Housekeeping gap −0.189 in colon against −0.078 in
   hippocampus (difference −0.111, −0.222 to −0.085); both tissues on the same flowcells, every flowcell holding
   every age. The turnover ordering withdrawn for the mouse array is back on clean data.
+- **Mouse tissues on the consortium array, within chips (R118).** Lung, spleen, liver, blood and skin −0.22 to −0.49;
+  every brain region, heart and kidney within ±0.1 of zero. The same ordering on a second platform. The species
+  shield itself is unchanged by chip terms (86 % of 122 groups, median −0.11).
 - **Glia against neurons, second series (R115).** Same direction and size as R110 (−0.044, p 0.11, 31 donors).
 
 Together: in culture, promoter drift goes with division, not with time, and the shield appears where drift does. In
