@@ -5,6 +5,7 @@ from pathlib import Path
 
 from entropy_age.experiments import (
     allelic_controls,
+    arrest_timecourse,
     atac_cortex,
     atac_hippocampus,
     atac_variance,
@@ -107,6 +108,7 @@ FIGURES: dict[str, Callable[[Context], list[Path]]] = {
     "brain_replication": brain_replication.run,
     "nuclei_paired": nuclei_paired.run,
     "senescence_modes": senescence_modes.run,
+    "arrest_timecourse": arrest_timecourse.run,
     "mouse": mouse_tissues.run,
     "mouse_coupling": mouse_coupling.run,
     "gtex": human_tissues.run,
