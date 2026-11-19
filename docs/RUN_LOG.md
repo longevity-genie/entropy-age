@@ -3,6 +3,28 @@
 Owned by the runner seat (`docs/seats/RUNNER.md`): one entry per run, newest first, with its inputs, the
 commit it ran, its job ids, its scale and seed, and its result or its failure with the cause.
 
+## R121 — blood with the neutrophil chromatin map (RM43 item 3), 2026-11-19
+
+- Commits 5a835c6 and the figure fix after it. `ENTROPY_AGE_BLOOD_STATE=E030 figures equilibrium_drift`,
+  `drift_hotspots`, `essentiality_gradient` (jobs 6538747, 6538749, 6538751; 35, 3 and 7 min) and `figures chromatin`
+  with a new matching on both blood maps at once (job 6538876); `--scale paper --seed 42`, test partition, deposited
+  Hannum betas (no IDATs). Blood rows only change; each is given as neutrophils (E030) against mononuclear cells
+  (E062, the earlier run).
+- **Gain and loss rates (R74).** Active-TSS island promoters, set minus matched, loss per decade: core-essential
+  +0.0053 (+0.0026 to +0.0081) against +0.0063 (+0.0031 to +0.0097); housekeeping +0.0041 (+0.0022 to +0.0061)
+  against +0.0015 (+0.0001 to +0.0034), on 18,137 CpGs instead of 7,256. Per-CpG resting level with the state in the
+  strata: housekeeping −0.076 against −0.060 SD, core −0.066 against −0.062 (from −0.335 and −0.243 unmatched).
+- **Drift hotspots (R72).** Same pattern: Polycomb-repressed 2.02 against 2.11 times expected (dispersion slope),
+  bivalent TSS 1.78 against 1.99, active TSS 0.32 against 0.59, flanking active TSS 0.56 against 0.40.
+- **Essentiality gradient (R58).** Per unit of essentiality with the state held: entropy slope +0.054 (0.041 to
+  0.071) against +0.046; relative entropy +0.007 (p 0.28) against +0.004 (p 0.54); with expression and breadth
+  added +0.023 against +0.022 (entropy), −0.009 against −0.007 (relative entropy).
+- **Chromatin matching (R104).** Housekeeping gap on relative entropy: −0.147 unmatched; −0.013 with E062 (91 %
+  removed), −0.025 with E030 (83 %), −0.006 with both maps held (96 %; interval reaches zero). Core-essential:
+  −0.085; −0.001, −0.006, −0.001. Lunnon whole-blood dispersion, housekeeping: 67 %, 66 %, 78 % removed.
+- Reading: no blood conclusion depends on which of the two blood maps is used. The neutrophil map leaves slightly
+  more of the gap than the mononuclear one; holding both leaves none on relative entropy.
+
 ## R120 — Tet3 against Tet1 on shared CpGs and shared genes (RM43 item 8), 2026-11-19
 
 - `ENTROPY_AGE_BETAS=sesame figures tet_shared --scale paper --seed 42`, commit 7537767, jobs 6538512 and 6538532

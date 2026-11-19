@@ -52,7 +52,7 @@ a test with little power), **refuted**.
   enzyme removes it.
 - **We should not see:** the shield grow with divisions or follow turnover; survive chromatin matching intact.
 - **Observed:** a related reference chromatin state (E062 mononuclear cells, E030 neutrophils; whole blood has no own
-  map) removes 83-91 % in blood (67 % on Lunnon dispersion), cortex's about 30 %; in cortex blood's state removes as
+  map) removes 83-91 % in blood, 96 % with both maps held (R121; 67 % on Lunnon dispersion), cortex's about 30 %; in cortex blood's state removes as
   much as cortex's own (29 % against 25 %), so the reference acts there as a generic activity label (review 2026-11-18); no detectable change of the share with
   doublings (−0.14 per 10, −0.33 to +0.06; second series −0.055, −0.21 to +0.10: wide, not equivalence); not ordered by turnover; Tet3 loss removes it (C4).
 - **Alternatives:** circularity: active chromatin and an unmethylated promoter may both be outcomes of the same

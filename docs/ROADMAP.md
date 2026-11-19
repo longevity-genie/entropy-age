@@ -45,7 +45,8 @@ labels; claims C1, C2, C12). Reruns, in order:
    neuron fraction is in Jaffe; reported side by side.
 3. **Chromatin references (M2, M3):** Lunnon entorhinal cortex with E071, superior temporal gyrus with E072, cerebellum
    out of chromatin matching, BA9 accessibility for frontal cortex only; blood rerun with E030 alone and with CpGs
-   whose state agrees between E062 and E030 (R74, R72, R58 too).
+   whose state agrees between E062 and E030 (R74, R72, R58 too). Done: R104 (brain maps), R121 (blood: no conclusion
+   depends on the map).
 4. **Array recipe (M6, M7):** mouse series with SeSAMe's mouse steps (MM285: T strain mask; Mammal40 in mouse: S and H
    masks); sample QC with expected probes from the species mask, not the data, plus a bisulfite-conversion (GCT) and
    intensity cut; rerun BXD, Browder, Tet1, Dnmt3a, CR, Huang; check CH and the syndromes against their high GCT.

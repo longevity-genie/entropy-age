@@ -107,6 +107,14 @@ blood (−0.21 against −0.08 percentage points per decade, p 4·10⁻⁵), non
 components, −0.031 raw (p 0.14). Cortical snATAC: core-essential +0.07 to +0.23 SD in 6 of 7 cell types. Hippocampus:
 signs depend on adjustment.
 
+**Blood with the neutrophil chromatin map (R121).** Whole blood has no reference map of its own; the analyses use
+mononuclear cells (Roadmap E062). With neutrophils (E030) in its place: loss per decade at active-TSS island
+promoters, set minus matched, core-essential +0.0053 (+0.0026 to +0.0081; E062 +0.0063), housekeeping +0.0041
+(+0.0022 to +0.0061; E062 +0.0015); drift hotspots 2.02 times expected in Polycomb-repressed chromatin (E062 2.11)
+and 0.32 in active TSS (0.59); essentiality per unit with the state held +0.054 on entropy (E062 +0.046) and +0.007
+on relative entropy (p 0.28; E062 +0.004). The housekeeping gap on relative entropy, −0.147 unmatched, is −0.013
+with E062, −0.025 with E030 and −0.006 with both maps held at once.
+
 **RNA.** Housekeeping minus matched expression spread gain (mean over class): renewing GTEx −0.08, mouse −0.29, rat
 −0.10; brain +0.06, +0.01, −0.04. Tabula Muris Senis (R75): 15 of 17 organ intervals include 0; renewing − brain +0.20
 (p 0.21). Methylation-expression spread coupling (R43): mean |r| above null by 0.015-0.022.
