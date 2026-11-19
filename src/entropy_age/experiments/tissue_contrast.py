@@ -43,7 +43,7 @@ from entropy_age import plots
 from entropy_age.data.annotation import AnnotationLayout, link_membership
 from entropy_age.data.cohorts import layout as cohort_layout
 from entropy_age.data.matrix import FeatureMatrix
-from entropy_age.experiments.common import Context, dummies, rescale, write_table
+from entropy_age.experiments.common import Context, dummies, max_missing, rescale, write_table
 from entropy_age.stochasticity import (
     baseline_strata,
     compare_groups,
@@ -95,7 +95,7 @@ def _features(paths, rng: np.random.Generator) -> tuple[list[str], pl.DataFrame,
 def _matrix(name: str, paths, samples: list[str], features: list[str]) -> FeatureMatrix:
     lay = cohort_layout(name, paths)
     frame = pl.scan_parquet(lay.betas).select("cpg", *samples).filter(pl.col("cpg").is_in(features)).collect()
-    return FeatureMatrix.from_frame(frame, feature_col="cpg", samples=samples, max_missing=MAX_MISSING)
+    return FeatureMatrix.from_frame(frame, feature_col="cpg", samples=samples, max_missing=max_missing(MAX_MISSING))
 
 
 def _hannum(paths, features) -> Prepared:

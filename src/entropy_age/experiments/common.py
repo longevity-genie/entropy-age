@@ -84,7 +84,19 @@ class Context:
 def source_suffix() -> str:
     """``_rsesame`` when the run reads betas rebuilt from raw IDATs (``ENTROPY_AGE_BETAS=sesame``, roadmap RM41), so its
     tables and figures sit beside, never over, those from the authors' deposited betas."""
-    return "_rsesame" if os.environ.get("ENTROPY_AGE_BETAS", "deposited") == "sesame" else ""
+    suffix = "_rsesame" if os.environ.get("ENTROPY_AGE_BETAS", "deposited") == "sesame" else ""
+    return suffix + ("_complete" if complete_only() else "")
+
+
+def complete_only() -> bool:
+    """True with ``ENTROPY_AGE_COMPLETE=1``: analyses that honour it use only CpGs measured in every sample, so no
+    missing value is median-filled (RM43 item 9); their outputs carry ``_complete``."""
+    return os.environ.get("ENTROPY_AGE_COMPLETE", "0") == "1"
+
+
+def max_missing(default: float) -> float:
+    """The share of samples a CpG may miss: ``default``, or 0 under :func:`complete_only`."""
+    return 0.0 if complete_only() else default
 
 
 # ----------------------------------------------------------------------------- datasets

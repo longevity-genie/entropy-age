@@ -78,3 +78,13 @@ def test_subset_keeps_rows_and_drops_constant_covariates():
     keep = p.ages <= 40
     q = _subset(p, keep, np.array([[0.2], [0.2], [0.2], [0.5]]))
     assert q.x.shape == (3, 3) and q.covariates.shape == (3, 1)  # the extra column is constant on the kept rows
+
+
+def test_complete_only_switch_sets_the_limit_and_the_suffix(monkeypatch):
+    from entropy_age.experiments import common
+
+    monkeypatch.delenv("ENTROPY_AGE_BETAS", raising=False)
+    monkeypatch.delenv("ENTROPY_AGE_COMPLETE", raising=False)
+    assert common.max_missing(0.05) == 0.05 and common.source_suffix() == ""
+    monkeypatch.setenv("ENTROPY_AGE_COMPLETE", "1")
+    assert common.max_missing(0.05) == 0.0 and common.source_suffix() == "_complete"
