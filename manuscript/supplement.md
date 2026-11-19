@@ -120,6 +120,13 @@ the expression decile leaves −0.013; outside the gene sets there is no gradien
 +0.02). On the entropy slope the T-cell gap, −0.219, falls to −0.069 with the expression decile, and outside the gene
 sets that slope falls with expression (rank correlation −0.20).
 
+**Expression in the same fibroblast cultures (R124).** Sturm et al. 2022: 89 untreated cultures of six healthy
+lines at ambient oxygen (GSE179847, rebuilt), slopes on population doublings with a line intercept; expression is
+the mean over 77 untreated RNA-seq samples of the same lines (GSE179848). Relative entropy, island x level against
+the expression decile added: housekeeping −0.102 and −0.028 SD; core-essential −0.055 and −0.006; non-essential
++0.113 and +0.023. Outside the gene sets, by expression decile: +0.11, +0.09, +0.01, −0.06, −0.08, −0.03, −0.08,
+−0.08, −0.09, −0.10. Two lines give 60 of the 89 cultures, and chip is not held.
+
 **Blood with the neutrophil chromatin map (R121).** Whole blood has no reference map of its own; the analyses use
 mononuclear cells (Roadmap E062). With neutrophils (E030) in its place: loss per decade at active-TSS island
 promoters, set minus matched, core-essential +0.0053 (+0.0026 to +0.0081; E062 +0.0063), housekeeping +0.0041
@@ -344,6 +351,7 @@ type. Generated from `docs/provenance.csv` by `scripts/provenance_table.py`.
 | Blood minus cortex | R68a | C1 | blood vs cortex | Hannum vs Jaffe | 450k | deposited (both); two pipelines | none |  | across studies | none | n.a. | two studies, different pipelines and age ranges; neuron fraction held in cortex only; descriptive |
 | Same-donor blood and brain | R68a R2 | C1 | human blood and 4 brain regions | Lunnon, GSE59685 | 450k | deposited (no IDATs) | none |  | one study; tissue confounded with slide and per-tissue normalisation | none | n.a. | blood drawn in life, brain at death |
 | Cell fractions held | R70 | C1 | human whole blood | Hannum, GSE40279 | 450k | deposited | 12 cell fractions | EpiDISH reference panel (Luo 2023) | one study | other study | related | reference panel of sorted cells |
+| Fibroblast cultures with own expression | R124 | C2 | human dermal fibroblasts in culture | Sturm, GSE179847 | EPIC | rebuilt (R SeSAMe) | expression (RNA-seq) | Sturm, GSE179848 | one study; chip not held | same cultures (mean over cultures) | same | 89 untreated cultures of 6 lines; 2 lines give 60 |
 | Monocytes and T cells with own expression | R122 R123 | C2 | human CD14+ monocytes / CD4+ T cells | MESA, GSE56046 GSE56581 | 450k | deposited | expression (HT-12 array) | MESA, GSE56045 GSE56580 | one study | same samples | same | 1,202 and 214 samples joined one to one; expression deposited normalised values |
 | Sorted monocytes and T cells | R44 R68b | C1 | human CD14+ monocytes / CD4+ T cells | MESA, GSE56046 GSE56581 | 450k | deposited | none |  | one study | none | n.a. | text sets them beside Hannum (other study) |
 | Read-level blood | R50 | C1 | human white blood cells | Loyfer, GSE186458 | WGBS | authors' reads | Hannum array means (check) | GSE40279 | across studies | other study | same | cross-platform used only as a validation (r 0.963) |

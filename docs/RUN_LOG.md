@@ -3,6 +3,27 @@
 Owned by the runner seat (`docs/seats/RUNNER.md`): one entry per run, newest first, with its inputs, the
 commit it ran, its job ids, its scale and seed, and its result or its failure with the cause.
 
+## R124 — fibroblasts in culture: drift per doubling against expression of the same cultures (RM40 item 4), 2026-11-19
+
+- Commit c6f938d; `ENTROPY_AGE_BETAS=sesame figures sturm_expression --scale paper --seed 42`, job 6539446 (test
+  partition), 3 min with the smoke run. Sturm GSE179847 rebuilt from IDATs: 89 untreated cultures of 6 healthy
+  lines at ambient oxygen (HC1 31, HC2 29, HC3 10, HC4 7, HC5 7, HC6 5; 0 to 79 doublings), 83,740 promoter CpGs
+  measured in all. Per-CpG slopes on doublings with a line intercept. Expression: mean log2(TPM + 1) over the 77
+  untreated healthy-line RNA-seq samples of GSE179848 at 21 % oxygen (28,633 genes).
+- **Gap per doubling, relative entropy.** Housekeeping −0.102 SD (−0.109 to −0.094); with the gene's expression
+  decile in the matching −0.028 (−0.036 to −0.021), 72 % removed. Core-essential −0.055 → −0.006 (−0.024 to
+  +0.011). Non-essential +0.113 → +0.023 (−0.043 to +0.075). Entropy slope: housekeeping −0.208 → −0.053.
+- **Outside every gene set** (10,662 genes): slope relative to matched CpGs by expression decile from +0.106
+  (lowest) to −0.100 (highest); rank correlation −0.059 (p 1·10⁻⁹); entropy slope −0.255, dispersion slope −0.164.
+- Reading: the monocyte pattern (R122) appears again where time is cell divisions in a dish: promoters of
+  expressed genes drift less per doubling, and expression in the same cultures accounts for about three quarters
+  of the housekeeping gap and all of the core-essential one.
+- Against R94: there the per-sample coupling of the shield to matched drift was near zero on the rebuilt arrays.
+  That statistic asks whether a culture with more drift has proportionally more shield; this one compares per-CpG
+  slopes over all cultures. They are not the same question, and this run does not restore R94's claim.
+- Limits: chip is not held (lines and time points sit unevenly on chips, R94, R103b); HC1 and HC2 give two thirds
+  of the cultures; expression is a culture-wide mean, not paired sample by sample.
+
 ## R123 — the same in CD4+ T cells (RM40 item 4), 2026-11-19
 
 - Commit 31b8d82; `figures mesa_expression --scale paper --seed 42`, job 6539223 (test partition), 27 min with the

@@ -125,7 +125,11 @@ removed 82 % of the monocyte housekeeping gap (−0.099 → −0.017 SD; 75 to 9
 matched CpGs fell step by step with expression, from +0.07 SD in the lowest decile to −0.20 in the highest (rank
 correlation −0.12, p 5·10⁻³⁷). In these cells the shield follows how strongly a promoter is used, whether or not
 the gene is essential. CD4+ T cells of 214 of the same people, which have almost no gap on this measure (−0.015 SD), show no
-such gradient (Supplementary Note 3).
+such gradient (Supplementary Note 3). In fibroblasts grown for up to 79 population doublings (Sturm et al. 2022;
+89 untreated cultures of six healthy lines, arrays rebuilt from raw files, RNA-seq of the same cultures), drift per
+doubling showed the monocyte pattern: the housekeeping gap of −0.102 SD fell to −0.028 with the expression decile
+in the matching (72 % removed), the core-essential gap from −0.055 to −0.006, and outside the gene sets drift
+relative to matched CpGs fell with expression (rank correlation −0.06, p 1·10⁻⁹). Chip is not held in this series.
 
 Adding probe design to the matching changed no sign, masking unreliable probes moved no essential-set gap by more
 than 0.012 SD, and rebuilding Jaffe's cortex series from its raw arrays did not weaken the gap. On the same 208 donors and the
