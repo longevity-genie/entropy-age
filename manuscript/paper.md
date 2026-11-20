@@ -134,6 +134,12 @@ doubling showed the monocyte pattern: the housekeeping gap of −0.102 SD fell t
 in the matching (72 % removed), the core-essential gap from −0.055 to −0.006, and outside the gene sets drift
 relative to matched CpGs fell with expression (rank correlation −0.06, p 1·10⁻⁹). With chip intercepts in the
 slopes the numbers were the same (−0.102 to −0.024; a third of the spread in doublings is left within line and chip).
+Two further cultured series, rebuilt from raw files and without expression data, gave a housekeeping gap per
+doubling of the same sign and size: −0.136 SD (95 % interval −0.143 to −0.129) in a foreskin fibroblast line
+immortalised with telomerase (GSE268145, 20 cultures), which divides without approaching senescence, and −0.102
+(−0.111 to −0.094) in fetal astrocytes (GSE202554, 45 cultures of two donors, 37 from one); chip intercepts left
+both unchanged (−0.138 and −0.101). Each is one cell line or two donors with no arrested control (Supplementary
+Note 3).
 In epidermis of 117 healthy women aged 21 to 79 (Holzscheck et al. 2020; arrays rebuilt from raw files, RNA-seq of
 the same women), analysed as two groups by array type (61 on EPIC, 56 on 450k), the housekeeping gap was −0.106 and
 −0.105 SD and fell to −0.031 in both with the expression decile in the matching (71 % removed); the core-essential
