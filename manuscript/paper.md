@@ -449,7 +449,10 @@ this question is open; the lead is therefore weaker than the processed data sugg
 In childhood-cancer survivors (SJLIFE, 277 deaths among 4,518), B added nothing to DunedinPACE for death (1.01; Supplementary Fig. S20), so it
 is not a general mortality marker. Genome-wide hypomethylation before breast cancer reported in EPIC-Italy (van
 Veldhoven et al. 2015) did not replicate in NOWAC; B survives adjustment for mean methylation, but a cohort-specific
-finding remains possible until a second prospective cohort is tested.
+finding remains possible until a second prospective cohort is tested. A second series, not prospective (GSE283951; 32 cases
+and 53 controls on the EPIC array, rebuilt from raw files, scores centred within chip; blood not shown to precede
+diagnosis), gave an odds ratio of 1.11 per SD of B (0.71 to 1.73): no association, with an interval too wide to
+refute the first (Supplementary Table S4).
 
 ![Figure 7](../docs/figures/incident_cancer.png)
 
@@ -466,58 +469,86 @@ and species tested, by a modest margin (about 0.15 SD in blood, 0.06 SD in corte
 types) that the matching, cell composition, probe design and normalisation do not produce.
 
 The qualitative claim belongs to Teschendorff, West and Beck (2013) and West et al. (2013), and Day et al. (2013)
-already linked age-related methylation change with tissue-specific expression and chromatin state. Our contribution is quantitative and mechanistic. First, the
-matched design gives a size, with intervals, that can be compared across tissues and species and checked against a
-null. Second, the kinetic reading: essential island promoters gain methylation no faster than look-alikes but remove it
-faster, which keeps them at a lower resting level. This faster
-loss persists among promoters that share the active-TSS state, which is the first sign of something beyond the
-chromatin label a reference map records. Third, a genetic test: halving Tet3 in mouse brain makes essential
-promoters gain methylation and weaken the shield against same-chip wild types, while losing Tet1 does not. Krepelova et al.
-(2025) showed that impaired TET activity drives intestinal drift; our data are consistent with it and specify that
-the effect falls on essential promoters in bulk brain tissue.
+already linked age-related methylation change with tissue-specific expression and chromatin state. Our contribution
+is a size, two things the shield follows, and a kinetic and a genetic observation. The matched design gives a gap
+with intervals that can be compared across tissues and species and checked against a null. The gap then turns out to
+follow two things: how strongly a promoter is used, and whether the cells divide.
 
-Chromatin accounts for most of the shield in blood and for a quarter to a half in cortex. The binary-entropy
-measure had overstated the cortex share and suggested an essentiality effect beyond chromatin in blood; on the
-corrected measure the blood remainder is gone and the small remainder is cortex's. Where drift concentrates is the
-mirror image: in blood the CpGs whose spread rises fastest are Polycomb targets, the known age-hypermethylated
-programme (Teschendorff et al. 2010; Rakyan et al. 2010; Slieker et al. 2016). Calling blood drift "stochastic" is
-therefore accurate only for the part outside that programme; in cortex rising spread is close to uniform.
+**The shield belongs to active promoters, not to essential genes as such.** Reference chromatin states account for
+most of the gap in blood and a quarter to a half in cortex, and with expression and sorted-nuclei accessibility also
+held little of the cortex gap is left. The sharper test uses expression measured in the samples whose methylation is
+measured. In sorted monocytes, in epidermis and in cultured fibroblasts, three systems from different laboratories
+and on different measures of time (age in two, population doublings in one), matching on the decile of the gene's
+own expression removed 71 to 82 % of the housekeeping gap and all of the core-essential one, and genes that belong
+to no gene set were shielded in step with their expression. Essential and housekeeping genes are therefore shielded
+because they are expressed everywhere, and a gene set is a proxy for promoter activity. This is close to what Day et
+al. (2013) described; what the matched design adds is the share explained and the gradient outside the sets. Where
+drift concentrates is the mirror image: in blood the CpGs whose spread rises fastest are Polycomb targets, the known
+age-hypermethylated programme (Teschendorff et al. 2010; Rakyan et al. 2010; Slieker et al. 2016). Calling blood
+drift "stochastic" is therefore accurate only for the part outside that programme; in cortex rising spread is close
+to uniform.
 
-We found no evidence that selection among cells is the main source, though these data do not exclude a contribution: the share shows no detectable change through many divisions in culture, with wide intervals,
-survives reprogramming that acts in days, does not change specifically across a transplant bottleneck or with clonal
-haematopoiesis, and is weakened in brain when Tet3 is halved. Nor is the shield tuned to species lifespan
-once the 0 % floor is accounted for, in line with Crofts et al. (2026).
+**The shield goes with cell division.** Our earlier analyses found no dependence on division, and we read that as
+evidence against selection among cells. Those analyses compared groups that sat on different array chips, and they
+did not survive the audit. On series chosen so that batch cannot make the contrast, the gap is more than twice as
+large in colon as in hippocampus of the same mouse cohort, larger in glia than in the same donors' neurons, large in
+fibroblasts driven to replicative senescence, and absent, with drift itself, in cultures kept from dividing for six
+months. It accrues per doubling in fibroblasts immortalised with telomerase, so the approach to senescence is not
+needed, and at the same rate in passaged astrocytes as in fibroblasts. Vaidya et al. (2023) tie methylation entropy
+to stem-cell division across mouse tissues, which points the same way. Two readings fit. Cells whose active
+promoters have drifted may be lost from a dividing population (selection), or maintenance at active promoters may be
+coupled to replication, so that each division both creates errors elsewhere and corrects them here. Nothing in hand
+separates the two: long-term cultures lose clonal diversity (Hollmann et al. 2020), steady selection per doubling
+and replication-coupled maintenance both predict a constant gap per doubling, and the series that track lineages
+or clone sizes are under controlled access. The two readings are not exclusive of the first finding: expression may
+mark the promoters at which either process acts. Among tissues that all renew (buccal epithelium and two blood
+preparations of the same adults) we could not resolve an ordering once chip was held, with 32 to 43 donors per pair.
 
-The EPIC-Italy lead is the result closest to human health, and the one with the least support: drift at unprotected look-alike
-promoters, not the shield itself, predicted breast cancer diagnosed more than two years after the blood draw, and, in a women-only model, also more than five years after it. For the cases diagnosed over two years later it did so beyond cell
-mix, chip, global methylation and two outcome clocks. One cohort and possible hormonal or reproductive confounding make it a hypothesis
-for a second prospective cohort.
+**Kinetics and Tet3.** Essential island promoters gain methylation no faster than look-alikes but, in pooled fits,
+lose it faster, and so rest at a lower level; the faster loss persists among promoters that share the active-TSS
+state. Halving Tet3 in mouse brain makes essential promoters gain methylation and weakens the shield against
+same-chip wild types, while losing Tet1 in another study does not. Krepelova et al. (2025) showed that impaired TET
+activity drives intestinal drift; our data are consistent with it and specify that the effect falls on essential
+promoters in bulk brain tissue. Faster removal that needs replication to dilute methylation would be one form of
+replication-coupled maintenance, and would make the shield larger where cells divide without any selection; we have
+not tested this.
 
-**Where prior work and our own data cut against us.** (i) On the mouse array,
-the corrected measure, not adjusted for array chip, orders the shield by turnover: present in all three renewing tissues and in slowly renewing liver and kidney, reversed in four of five
-post-mitotic ones and in adipose tissue. Our chromatin-maintenance reading predicted no dependence on turnover. Among animals on shared chips the
-ordering disappears (+0.02, interval −0.06 to +0.19), so this array cannot say whether the shield follows turnover; RRBS in the same species
-keeps a small shield in cortex and heart, and human GTEx tissues do not follow turnover. Should a chip-free design show the ordering, one reconciliation is that faster removal at essential promoters is partly passive, requiring replication to
-dilute methylation, which would make the shield larger where cells divide without any selection; we have not tested
-this. Vaidya et al. (2023) tie methylation entropy to stem-cell division across mouse tissues, which points the same
-way. (ii) Matching on chromatin may be circular: an active, unmethylated promoter and its chromatin state may both be
-outcomes of the same protection, and the reference epigenomes come from other individuals. (iii) Long-term cultures
-can lose clonal diversity, as mesenchymal stromal cells and iPSCs do (Hollmann et al. 2020), and steady selection per doubling would also leave the share unchanged. (iv)
-The Tet3 result is one study of 16 mice per tissue on one array; the Tet1 comparison uses another array and
-homozygous mutants; and some weaker Tet3 contrasts did not survive the project-wide correction. (v) Seeboth et al.
-(2020) found cell mix, body mass index, smoking and batch to confound per-person methylation outlier burdens; our within-sample
-contrast removes about half of the slide-batch excess, not all, so batch must be held in every per-person use. (vi) Effects in the shield share of 0.02-0.1 are near the ±0.05 SD preprocessing
-uncertainty of a gap, which is why every array series with public raw IDATs was rebuilt; cohorts without them (Hannum,
-Lunnon, GTEx, MESA, the mammalian consortium) keep the authors' processing. Effects are estimated within one dataset,
-with the exceptions listed in Methods and Supplementary Table S4; the mouse array series were rebuilt with SeSAMe's
-human-array recipe, not its mouse-specific masks. (vii) Read-level epiallele
-entropy has not yet been recomputed under the corrected measure. (viii) Three of our
-earlier statements did not survive the metric audit and are not made here: an essentiality effect beyond chromatin in
-blood, a shield share growing with species lifespan, and a large shield in CD4+ T cells.
+**What the shield is not.** It is not tuned to species lifespan once the 0 % floor is accounted for, in line with
+Crofts et al. (2026); it persists through transient reprogramming; and it has no clear RNA counterpart.
 
-In sum, essential promoters are protected from age-related methylation drift by a modest, reproducible margin, held
-by faster removal of methylation that is concentrated in, but not fully explained by, active chromatin, and that
-depends in part on Tet3 in brain. Whether drift outside this protection marks disease risk is now a testable question.
+**The breast-cancer lead has not held up.** In EPIC-Italy, drift at unprotected look-alike promoters, not the shield
+itself, was associated with breast cancer diagnosed years after the blood draw on the authors' processed data. With
+the same arrays rebuilt from raw files the adjusted association was not distinguishable from none (odds ratio 1.11,
+0.69 to 2.18), and a second, small series gave the same point estimate with an interval that includes no effect. We
+report it as a lead that global methylation and cell mix may explain, not as a marker.
+
+**Limits.** (i) Processing moves results of this size. Effects of 0.02 to 0.1 in a gap are near the ±0.05 SD
+preprocessing uncertainty, a shield in one cultured series vanished on rebuilt arrays, and the breast-cancer
+association weakened; every array series with public raw IDATs was therefore rebuilt, but the cohorts without them
+(Hannum, Lunnon, GTEx, MESA, the mammalian consortium) keep the authors' processing, and the mouse array series were
+rebuilt with SeSAMe's human-array recipe, not its mouse-specific masks. (ii) Chip was the confound we met most often.
+Contrasts that chip fully determines are reported as unidentifiable; on the mouse array an ordering of tissues by
+turnover is seen with chip intercepts but cannot be confirmed among animals on shared chips, and the evidence for
+division rests on the series named above. (iii) Each line of that evidence is narrow: two tissues of one mouse strain;
+one glial fraction of two, with a second sorted series that agrees in sign only (−0.044, interval including zero);
+replicative and arrested cultures from different experiments; one immortalised line; astrocytes of two donors.
+(iv) Matching on chromatin or expression may be circular: an active, unmethylated promoter and its chromatin state
+may both be outcomes of the same protection, the reference epigenomes come from other individuals, and expression in
+epidermis is the depositors' table. That expression explains the gap does not say that transcription causes the
+protection. (v) The Tet3 result is one study of 16 mice per tissue on one array; the Tet1 comparison uses another
+array and homozygous mutants; and some weaker Tet3 contrasts did not survive the project-wide correction. (vi)
+Seeboth et al. (2020) found cell mix, body mass index, smoking and batch to confound per-person methylation outlier
+burdens; our within-sample contrast removes about half of the slide-batch excess, not all, so batch must be held in
+every per-person use. (vii) Read-level epiallele entropy has not yet been recomputed under the corrected measure.
+(viii) Four of our earlier statements did not survive the audits and are not made here: an essentiality effect
+beyond chromatin in blood, a shield share growing with species lifespan, a large shield in CD4+ T cells, and the
+absence of any dependence on cell division.
+
+In sum, promoters of essential genes are protected from age-related methylation drift by a modest, reproducible
+margin. Most of that margin is what the promoter's own activity predicts, it is larger where cells divide and absent
+where they do not, and in brain it depends in part on Tet3. Whether selection among dividing cells or maintenance
+coupled to replication produces it is the question the next experiment should answer, with lineage-tracked or
+clonal cultures in which promoter activity is measured in the same cells.
 
 ## Methods
 

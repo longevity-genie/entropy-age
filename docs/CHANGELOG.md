@@ -4,6 +4,7 @@ Newest first.
 
 ## Unreleased
 
+- 2026-11-20: Discussion rewritten to the post-audit findings (Anton asked): shield follows promoter activity and cell division; selection reopened; breast lead weakened; limits renumbered. Second breast series (R113) added to Results.
 - 2026-11-20: paper brought up to the new datasets (Anton asked): abstract (expression in the same samples; hTERT and astrocytes), third cortex series R132 and same-adult tissues R131 in Results, datasets in Methods.
 - 2026-11-20: paper main text: hTERT fibroblasts (R130) and passaged astrocytes (R133) in the division paragraph, one passage.
 - 2026-11-20: R133 passaged astrocytes (GSE202554): run log, claims, evidence E48, provenance row and Table S4, Supplementary Note 3.
