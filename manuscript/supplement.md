@@ -154,6 +154,15 @@ Mortal cells on the same chips (12 arrays): −0.026 (−0.036 to −0.018); cor
 earlier batch (23 arrays, other chips): +0.087 on relative entropy and −0.164 on the entropy slope, so that group
 gives no reading. One cell line; no arrested control; hTERT and mortal cells are not compared.
 
+**Tissues of the same adults on shared chips (R131).** GSE280465 (Apsley et al. 2025): buccal swab, saliva, dried
+blood spot and blood mononuclear cells of adults aged 19 to 70 on EPIC v2, rebuilt; 17 of 27 chips carry all four
+tissues. Saliva is left out: 16 of 37 arrays fall below 90 % detection. Per pair of tissues, donors with both;
+housekeeping gap on between-person dispersion, first tissue, second tissue and their difference with a donor
+bootstrap: buccal −0.046, dried blood spot −0.071, +0.026 (−0.004 to +0.049; 33 donors); buccal −0.042, mononuclear
+cells −0.107, +0.064 (+0.012 to +0.095; 43 donors); dried blood spot −0.071, mononuclear cells −0.079, +0.008
+(−0.032 to +0.039; 32 donors). With chip intercepts no pair differs (+0.012, +0.042, +0.039; every interval
+includes zero). Age slopes on relative entropy: −0.07 to −0.13 in every tissue, no pair differing (p 0.34 to 0.64).
+
 **Blood with the neutrophil chromatin map (R121).** Whole blood has no reference map of its own; the analyses use
 mononuclear cells (Roadmap E062). With neutrophils (E030) in its place: loss per decade at active-TSS island
 promoters, set minus matched, core-essential +0.0053 (+0.0026 to +0.0081; E062 +0.0063), housekeeping +0.0041
@@ -385,6 +394,7 @@ type. Generated from `docs/provenance.csv` by `scripts/provenance_table.py`.
 | Fibroblast cultures with own expression | R124 R125 | C2 | human dermal fibroblasts in culture | Sturm, GSE179847 | EPIC | rebuilt (R SeSAMe) | expression (RNA-seq) | Sturm, GSE179848 | one study; holds with chip intercepts (R125) | same cultures (mean over cultures) | same | 89 untreated cultures of 6 lines; 2 lines give 60 |
 | Epidermis with own expression | R129 | C2 | human epidermis (women) | Holzscheck, E-MTAB-8993 / E-MTAB-8992 | EPIC / 450k (apart) | rebuilt (R SeSAMe) | expression (RNA-seq); chromatin state | Holzscheck, E-MTAB-8995 (depositors' TPM); Roadmap E057 keratinocytes | one study; holds with chip intercepts (chip read from IDAT headers) | same women; chromatin other study | same tissue; cultured keratinocytes for chromatin (related) | 61 + 56 women; cell composition not held |
 | Fibroblast line with and without telomerase | R130 | C2 | human BJ fibroblasts in culture | GSE268145 | EPIC | rebuilt (R SeSAMe) | none |  | one study; hTERT and 12 mortal arrays share chips; holds with chip intercepts in hTERT | none | n.a. | one cell line; mortal groups small or inconsistent across measures; no arrested control |
+| Tissues of the same adults on shared chips | R131 | C1 | human buccal, dried blood spot, blood mononuclear cells | GSE280465 | EPIC v2 | rebuilt (R SeSAMe) | none |  | one study; tissues share chips (17 of 27 hold all four) | none | n.a. | 32 to 43 donors per pair; saliva out (detection); no tissue difference with chip held; all tissues renew |
 | Monocytes and T cells with own expression | R122 R123 | C2 | human CD14+ monocytes / CD4+ T cells | MESA, GSE56046 GSE56581 | 450k | deposited | expression (HT-12 array) | MESA, GSE56045 GSE56580 | one study | same samples | same | 1,202 and 214 samples joined one to one; expression deposited normalised values |
 | Sorted monocytes and T cells | R44 R68b | C1 | human CD14+ monocytes / CD4+ T cells | MESA, GSE56046 GSE56581 | 450k | deposited | none |  | one study | none | n.a. | text sets them beside Hannum (other study) |
 | Read-level blood | R50 | C1 | human white blood cells | Loyfer, GSE186458 | WGBS | authors' reads | Hannum array means (check) | GSE40279 | across studies | other study | same | cross-platform used only as a validation (r 0.963) |

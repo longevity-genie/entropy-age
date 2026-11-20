@@ -44,3 +44,4 @@ E42,Same-sample expression removes 82 % of the monocyte housekeeping gap; gradie
 E41,Tet3 and Tet1 opposite signs hold on the genes both arrays cover; arrays share 150 CpGs,R120,0,0,0,1,0,0,-1,0,0
 E44,Epidermis: same-woman expression removes 71 % of the housekeeping gap in two array groups; gradient outside the sets; chip held,R129,2,-1,0,0,0,0,-1,0,-1
 E45,hTERT fibroblasts carry the shield per doubling without approaching senescence (one line; mortal arms unclear),R130,0,1,1,0,0,0,-1,0,-1
+E46,Same adults on shared chips: the gap in buccal and blood cells; no tissue difference once chip is held (32-43 donors),R131,0,0,0,0,0,0,0,0,1

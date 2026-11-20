@@ -3,6 +3,34 @@
 Owned by the runner seat (`docs/seats/RUNNER.md`): one entry per run, newest first, with its inputs, the
 commit it ran, its job ids, its scale and seed, and its result or its failure with the cause.
 
+## R131 — four tissues of the same adults on shared chips (RM40, GSE280465), 2026-11-20
+
+- Commit 9464bd5; `figures cross_tissue --scale paper --seed 42` (31 min), then with `ENTROPY_AGE_CHIP=1`; job
+  6555050 (test partition) after the SeSAMe rebuild of the 163 EPIC v2 arrays. GSE280465 (Apsley et al. 2025):
+  buccal swab, saliva, dried blood spot and blood mononuclear cells of adults aged 19 to 70. 17 of 27 chips carry
+  all four tissues; in 88 to 100 % of donors the two tissues of a pair sit on one chip.
+- **Saliva is out.** 16 of 37 saliva arrays fall below 90 % detection (median 0.93 against 0.98 elsewhere), which
+  leaves 16 to 20 donors per saliva pair, under the minimum of 25. The cut was not loosened.
+- **Between-person dispersion, housekeeping gap** (age and sex held; first, second, difference with donor
+  bootstrap, 400 resamples): buccal −0.046, dried blood spot −0.071, +0.026 (−0.004 to +0.049), p 0.12, 33 donors;
+  buccal −0.042, mononuclear cells −0.107, +0.064 (+0.012 to +0.095), p 0.015, 43 donors; dried blood spot −0.071,
+  mononuclear cells −0.079, +0.008 (−0.032 to +0.039), p 0.80, 32 donors. Core-essential: no pair differs
+  (p 0.17 to 0.86).
+- **Age slopes, housekeeping gap.** Relative entropy: buccal −0.110 and −0.126, dried blood spot −0.070 and −0.065,
+  mononuclear cells −0.085 and −0.091; no pair differs (p 0.34, 0.64, 0.53). Entropy slope: buccal −0.26, dried
+  blood spot −0.16, mononuclear cells −0.27; dried blood spot against mononuclear cells +0.097 (+0.007 to +0.182),
+  p 0.025, the others p 0.22 and 0.88.
+- **Chip held** (chip intercepts in the dispersion model; the age slopes carry none, about 40 donors on 27 chips
+  leave too little): buccal −0.049, dried blood spot −0.061, +0.012 (−0.029 to +0.027), p 0.96; buccal −0.048,
+  mononuclear cells −0.089, +0.042 (−0.027 to +0.062), p 0.55; dried blood spot −0.062, mononuclear cells −0.101,
+  +0.039 (−0.023 to +0.060), p 0.66.
+- Reading: with tissue no longer tied to slide, every tissue shows the gap (−0.04 to −0.11 SD on dispersion,
+  −0.07 to −0.13 on relative entropy). No difference between tissues holds once chip is in the model: the one
+  seen without it (mononuclear cells more shielded than buccal cells, +0.064) keeps its direction and loses its
+  interval. All tissues here renew, so the series does not test turnover, and with 32 to 43 donors a difference
+  of the size seen in Lunnon (0.08 to 0.10 SD) is at the edge of what it can detect. Buccal swabs are a mixture
+  of epithelial cells and leukocytes, not held.
+
 ## R130 — one fibroblast line with and without telomerase: shield per doubling (RM40, GSE268145), 2026-11-20
 
 - Commits c82b42a and the column fix after it; `figures bj_telomerase --scale paper --seed 42`, then with

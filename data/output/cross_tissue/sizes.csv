@@ -1,0 +1,4 @@
+first,second,donors,age_min,age_max,cpgs,share_of_donors_with_both_on_one_chip,resamples
+Buccal,DBS,33,19.2,70.0,89396,0.9696969696969697,400
+Buccal,PBMC,43,19.2,70.0,88799,0.8837209302325582,400
+DBS,PBMC,32,19.2,70.0,88931,1.0,400

@@ -4,6 +4,7 @@ Newest first.
 
 ## Unreleased
 
+- 2026-11-20: R131 four tissues of the same adults on shared chips (GSE280465): run log, claims, evidence E46, provenance row and Table S4, Supplementary Note 3.
 - 2026-11-20: `cross_tissue` (RM40): four renewing tissues of the same adults on shared chips (GSE280465, EPIC v2), paired tissue differences with a donor bootstrap.
 - 2026-11-20: R130 BJ fibroblasts with and without hTERT (GSE268145): run log, claim C2, evidence E45, provenance row and Table S4, Supplementary Note 3.
 - 2026-11-20: `bj_telomerase` (RM40): one fibroblast line with and without hTERT (GSE268145, rebuilt), gap per doubling in three groups, chip overlap tabulated.

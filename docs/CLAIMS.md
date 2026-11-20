@@ -105,7 +105,9 @@ a test with little power), **refuted**.
 - **Status:** reopened, 2026-11-19. The earlier "no evidence" rested on designs confounded with chip (culture, CR,
   mouse array). On clean data the shield goes with division: colon −0.189 against hippocampus −0.078 (R114); other
   glia more than the same donors' neurons (−0.055, p 0.025, R110; −0.044, p 0.11 in a second series, R115);
-  replicative senescence −0.58 of squared drift on 12 of 12 chips, arrested cultures no drift (R111, R112). This
+  replicative senescence −0.58 of squared drift on 12 of 12 chips, arrested cultures no drift (R111, R112); hTERT
+  fibroblasts, dividing without senescence, carry it per doubling (R130). Among renewing tissues of the same adults on
+  shared chips (buccal, blood) no difference holds with chip in the model (R131, 32 to 43 donors). This
   fits selection among dividing cells and equally a replication-coupled maintenance at active promoters; the data in
   hand cannot separate the two. Separating test: lineage-tracked or clonal cultures (found only under controlled
   access).
