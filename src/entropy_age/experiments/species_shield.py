@@ -28,10 +28,11 @@ import numpy as np
 import polars as pl
 
 from entropy_age import plots
+from entropy_age.data.annotation import AnnotationLayout, link_membership
 from entropy_age.data.cohorts import _characteristics
 from entropy_age.data.mouse import MouseAnnotationLayout, mouse_membership
 from entropy_age.experiments.bxd_liver import ols, probes_without_suffix
-from entropy_age.experiments.common import Context, chip_terms, dummies, write_table
+from entropy_age.experiments.common import Context, chip_terms, dummies, human_annotation, write_table
 from entropy_age.experiments.interventions import _sets
 from entropy_age.experiments.tissue_contrast import SET_LABELS, SETS
 from entropy_age.protection import matched_scores, resampled_gaps
@@ -178,6 +179,11 @@ def run(ctx: Context) -> list[Path]:
     probes = probes_without_suffix(
         pl.read_parquet(lay.probes).filter(pl.col("promoter") & ~pl.col("chr").is_in(["X", "Y", "MT"]))
     )
+    human = human_annotation()
+    if human:  # RM43 item 5: the human groups with promoters, islands and gene sets from the human genome
+        samples = samples.filter(pl.col("species") == "Human")
+        annotation = AnnotationLayout(ctx.paths)
+        probes = pl.read_parquet(annotation.probes_450k).filter(pl.col("promoter") & ~pl.col("chr").is_in(["X", "Y"]))
     header = pl.read_csv(betas_path, n_rows=0).columns
     id_col = header[0]
     groups = (
@@ -203,12 +209,21 @@ def run(ctx: Context) -> list[Path]:
         .rename({id_col: "cpg"})
     )
     features = frame["cpg"].to_list()
-    members = mouse_membership(probes.filter(pl.col("cpg").is_in(features)), pl.read_parquet(lay.gene_sets)).filter(
-        pl.col("group").is_in(SETS)
-    )
+    if human:
+        members = link_membership(pl.read_parquet(annotation.links_450k), pl.read_parquet(annotation.gene_sets))
+        members = members.filter(pl.col("group").is_in(SETS) & pl.col("feature").is_in(features))
+    else:
+        members = mouse_membership(probes.filter(pl.col("cpg").is_in(features)), pl.read_parquet(lay.gene_sets)).filter(
+            pl.col("group").is_in(SETS)
+        )
     island = dict(probes.select("cpg", "cpg_island").iter_rows())
     isl = np.array([bool(island.get(f, False)) for f in features])
     sets = _sets(features, members)
+    print(
+        f"species: {len(features)} promoter probes, set CpGs { ({g: int(s.sum()) for g, (s, _) in sets.items()}) }",
+        file=sys.stderr,
+        flush=True,
+    )
     rng = ctx.rng(190_000)
     rows = []
     for (species, tissue), sel in keep.group_by("species", "tissue", maintain_order=True):
@@ -258,6 +273,8 @@ def run(ctx: Context) -> list[Path]:
         ]
     gaps = pl.DataFrame(rows)
     write_table(gaps, out / "species_gaps")
+    if human:  # one species: no lifespan fit and no figure
+        return []
 
     fits = []
     for metric in ("entropy_slope", "dispersion_slope", "kl_slope"):

@@ -51,3 +51,11 @@ def test_conversion_switch_and_group_table(monkeypatch):
     row = conversion_by_group(gct, np.array([False, False, False, True, True, True]))
     assert abs(row["gct_carriers"] - 1.6) < 1e-12 and abs(row["gct_controls"] - 1.1) < 1e-12
     assert abs(row["difference_sd"] - 5.0) < 1e-9 and row["p_welch"] < 0.01
+
+
+def test_human_annotation_switch(monkeypatch):
+    for k in ("ENTROPY_AGE_BLOOD_STATE", "ENTROPY_AGE_BETAS", "ENTROPY_AGE_GCT", "ENTROPY_AGE_LUNNON"):
+        monkeypatch.delenv(k, raising=False)
+    assert not common.human_annotation()
+    monkeypatch.setenv("ENTROPY_AGE_SPECIES_ANNOTATION", "human")
+    assert common.human_annotation() and common.source_suffix() == "_humanann"

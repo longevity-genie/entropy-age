@@ -88,7 +88,15 @@ def source_suffix() -> str:
     suffix += ("_complete" if complete_only() else "") + ("_chip" if chip_terms() else "")
     suffix += f"_{blood_state().lower()}" if blood_state() != BLOOD_DEFAULT else ""
     suffix += "_gct" if conversion_terms() else ""
-    return suffix + ("_lunnonjoint" if os.environ.get("ENTROPY_AGE_LUNNON", "deposited") == "joint" else "")
+    suffix += "_lunnonjoint" if os.environ.get("ENTROPY_AGE_LUNNON", "deposited") == "joint" else ""
+    return suffix + ("_humanann" if human_annotation() else "")
+
+
+def human_annotation() -> bool:
+    """True with ``ENTROPY_AGE_SPECIES_ANNOTATION=human``: ``figures species`` then runs the human groups only, with
+    promoters, CpG islands and gene sets from the human genome for the array's probes that the 450k array also
+    carries (RM43 item 5); outputs carry ``_humanann``."""
+    return os.environ.get("ENTROPY_AGE_SPECIES_ANNOTATION", "mouse") == "human"
 
 
 def conversion_terms() -> bool:
