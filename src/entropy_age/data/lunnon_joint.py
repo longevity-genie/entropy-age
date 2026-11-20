@@ -80,12 +80,15 @@ def build(paths: ProjectPaths, *, overwrite: bool = False) -> Path:
     sample_of = dict(zip(meta["barcode"].to_list(), meta["sample"].to_list(), strict=True))
     path = folder / INTENSITIES
     with gzip.open(path, "rt") as handle:
-        skip = 0
+        skip, header = 0, []
         for line in handle:
             if line.startswith(","):
+                header = line.rstrip("\n").split(",")
                 break
             skip += 1
-    frame = pl.read_csv(path, skip_rows=skip, null_values=["NA", ""], infer_schema_length=1000)
+    # every column but the probe id is a number; a detection p-value column can start with thousands of zeros
+    numeric = dict.fromkeys(header[1:], pl.Float64)
+    frame = pl.read_csv(path, skip_rows=skip, null_values=["NA", ""], schema_overrides=numeric)
     frame = frame.rename({frame.columns[0]: "cpg"})
     barcodes = [b for b in sample_of if f"{b} Methylated Signal" in frame.columns]
     probes = pl.read_parquet(AnnotationLayout(paths).probes_450k).select("cpg", "probe_type")
