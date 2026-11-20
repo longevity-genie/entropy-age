@@ -4,6 +4,7 @@ Newest first.
 
 ## Unreleased
 
+- 2026-11-20: `bj_telomerase` (RM40): one fibroblast line with and without hTERT (GSE268145, rebuilt), gap per doubling in three groups, chip overlap tabulated.
 - 2026-11-20: R129 epidermis of 117 women with RNA-seq of the same women (two array groups, chip held): run log, claim C2, evidence E44, provenance row and Table S4, paper and Supplementary Note 3.
 - 2026-11-20: `epidermis_expression` (RM40 fetch order 4): epidermis of 121 women on EPIC or 450k with RNA-seq of the same women; `scripts/idat_barcodes.py` reads the Sentrix chip from IDAT headers when depositors renamed the files.
 - 2026-11-20: R127 in the text: Lunnon joint normalisation in the paper (same-donor contrast, chromatin shares), supplement rerun table and cohort table, provenance rows; Table S4 regenerated. Epidermis studies (E-MTAB-8993/8992/8995) audited, fetch started.
