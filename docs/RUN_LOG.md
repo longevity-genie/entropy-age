@@ -3,6 +3,30 @@
 Owned by the runner seat (`docs/seats/RUNNER.md`): one entry per run, newest first, with its inputs, the
 commit it ran, its job ids, its scale and seed, and its result or its failure with the cause.
 
+## R130 — one fibroblast line with and without telomerase: shield per doubling (RM40, GSE268145), 2026-11-20
+
+- Commits c82b42a and the column fix after it; `figures bj_telomerase --scale paper --seed 42`, then with
+  `ENTROPY_AGE_CHIP=1`; jobs 6554733 and its rerun 6554813 (test partition), 7 min with the smoke run. GSE268145: BJ
+  foreskin fibroblasts (one male line), trajectories A and B, mortal and with hTERT, EPIC, rebuilt from IDATs (job
+  6554698). Slopes on population doublings with a trajectory intercept. Three groups, each alone: hTERT (20 arrays
+  after the detection cut, 8 chips, doublings 2 to 38); mortal on the same chips (12 arrays, 6 chips, 4 to 42; four
+  arrays fall just below 90 % detection); mortal of an earlier batch (23 arrays, 9 other chips, 2.3 to 52). The two
+  deeply senescent arrays are left out.
+- **hTERT cells.** Housekeeping gap per doubling: relative entropy −0.136 SD (−0.143 to −0.129), entropy slope
+  −0.199, dispersion slope −0.122; core-essential −0.064 (−0.082 to −0.037); non-essential +0.137. With chip
+  intercepts: −0.138, −0.198, −0.061; core-essential −0.067. Share of the variance of doublings left within
+  trajectory and chip: 0.71.
+- **Mortal cells on the same chips.** Housekeeping −0.026 (−0.036 to −0.018), entropy slope −0.049, dispersion
+  slope −0.096; core-essential −0.025 (−0.044 to 0.000); chip held −0.025, −0.046, −0.045. Variance left: 0.45.
+- **Mortal cells, earlier batch.** The measures disagree: relative entropy +0.087 (+0.080 to +0.095), dispersion
+  slope +0.045, entropy slope −0.164; core-essential +0.057 and −0.123. Mean drift per doubling on relative
+  entropy is ten times that of the other groups (0.010 against 0.001 and 0.000), and 69,658 CpGs are complete
+  against 88,000. Variance left: 0.59.
+- Reading: cells that divide without approaching senescence carry a shield per doubling as large as any measured
+  in culture (Sturm −0.102, R124), so the shield does not need the approach to senescence. The mortal arms do not
+  give a second estimate: one is small (12 arrays), and the other's sign depends on the measure. One cell line, no
+  arrested control. No comparison between hTERT and mortal is claimed.
+
 ## R129 — epidermis of 117 women: age drift against expression of the same women (RM40, fetch order 4), 2026-11-20
 
 - Commit 5f04674; `figures epidermis_expression --scale paper --seed 42`, then the same with `ENTROPY_AGE_CHIP=1`;

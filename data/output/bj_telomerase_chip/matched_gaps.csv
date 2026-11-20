@@ -1,0 +1,28 @@
+cells,metric,group,matching,gap_sd,ci_low,ci_high,share_removed,share_ci_low,share_ci_high,n_set
+hTERT,kl_slope,core_essential,island x level,-0.06650230449952117,-0.08400164317249399,-0.0377691662743124,0.0,0.0,0.0,5853
+hTERT,kl_slope,housekeeping,island x level,-0.13790231635764497,-0.14437547269355153,-0.13064436887061334,0.0,0.0,0.0,35263
+hTERT,kl_slope,non_essential,island x level,0.15908027432701718,0.11350120391814451,0.21565687094646643,0.0,0.0,0.0,3650
+hTERT,entropy_slope,core_essential,island x level,-0.1446818868803768,-0.16273959956284087,-0.12186032698345689,0.0,0.0,0.0,5853
+hTERT,entropy_slope,housekeeping,island x level,-0.19753576871110823,-0.20682703300109223,-0.1887430525938634,0.0,0.0,0.0,35263
+hTERT,entropy_slope,non_essential,island x level,0.1736604065269639,0.11096010105599279,0.2298301807483996,0.0,0.0,0.0,3650
+hTERT,dispersion_slope,core_essential,island x level,-0.041616576125452026,-0.06483656626882608,-0.020105204067097784,0.0,0.0,0.0,5853
+hTERT,dispersion_slope,housekeeping,island x level,-0.06106968950929532,-0.07196720362839745,-0.05344709952731907,0.0,0.0,0.0,35263
+hTERT,dispersion_slope,non_essential,island x level,-0.008721739715610223,-0.052128870160168345,0.03023885389714138,0.0,0.0,0.0,3650
+"mortal, chips shared with hTERT",kl_slope,core_essential,island x level,-0.025197119487940078,-0.04336864444037661,-0.0012095276093941325,0.0,0.0,0.0,5818
+"mortal, chips shared with hTERT",kl_slope,housekeeping,island x level,-0.025374168528486004,-0.034960532171670874,-0.016574275428597875,0.0,0.0,0.0,35013
+"mortal, chips shared with hTERT",kl_slope,non_essential,island x level,-0.02920804225873068,-0.08272298425483988,0.031099046907916154,0.0,0.0,0.0,3589
+"mortal, chips shared with hTERT",entropy_slope,core_essential,island x level,-0.027381957745152428,-0.043848588224460645,-0.006902149767519013,0.0,0.0,0.0,5818
+"mortal, chips shared with hTERT",entropy_slope,housekeeping,island x level,-0.045796654532525315,-0.05531692241256567,-0.03740058468899105,0.0,0.0,0.0,35013
+"mortal, chips shared with hTERT",entropy_slope,non_essential,island x level,0.10917176413149669,0.06001712511638139,0.1572656126534591,0.0,0.0,0.0,3589
+"mortal, chips shared with hTERT",dispersion_slope,core_essential,island x level,-0.03842804416743591,-0.05947049599552154,-0.01716554857759882,0.0,0.0,0.0,5818
+"mortal, chips shared with hTERT",dispersion_slope,housekeeping,island x level,-0.04478691909428877,-0.052568270556890215,-0.03720542289185236,0.0,0.0,0.0,35013
+"mortal, chips shared with hTERT",dispersion_slope,non_essential,island x level,0.11994768397437452,0.06654779620936,0.15917666334577366,0.0,0.0,0.0,3589
+"mortal, earlier batch",kl_slope,core_essential,island x level,0.05756576428234114,0.040204074887298415,0.07290554664652299,0.0,0.0,0.0,4554
+"mortal, earlier batch",kl_slope,housekeeping,island x level,0.0870113717988666,0.07988026708104934,0.09470592881542234,0.0,0.0,0.0,27561
+"mortal, earlier batch",kl_slope,non_essential,island x level,-0.13111754354646832,-0.1617119632791246,-0.09555106226582598,0.0,0.0,0.0,2897
+"mortal, earlier batch",entropy_slope,core_essential,island x level,-0.11492442526083822,-0.13831453114121403,-0.08949326936351641,0.0,0.0,0.0,4554
+"mortal, earlier batch",entropy_slope,housekeeping,island x level,-0.15698283913217093,-0.16587800341924858,-0.14882525826565166,0.0,0.0,0.0,27561
+"mortal, earlier batch",entropy_slope,non_essential,island x level,0.27271627972942836,0.2380963998327521,0.3082881895200465,0.0,0.0,0.0,2897
+"mortal, earlier batch",dispersion_slope,core_essential,island x level,0.025675991241041387,0.0065266601390342365,0.04112643295598667,0.0,0.0,0.0,4554
+"mortal, earlier batch",dispersion_slope,housekeeping,island x level,0.054337251516209606,0.046147568712349735,0.06144752839333115,0.0,0.0,0.0,27561
+"mortal, earlier batch",dispersion_slope,non_essential,island x level,-0.07249995752155826,-0.10223199727831668,-0.04186388668460455,0.0,0.0,0.0,2897

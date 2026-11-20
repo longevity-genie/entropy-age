@@ -147,6 +147,13 @@ methylation and expression of the same gene correlate weakly (mean r −0.003 an
 −0.024), so the join is checked by the gradient across genes more than by this correlation. Limits: one
 laboratory, women only, cell composition not held.
 
+**One line with and without telomerase (R130).** GSE268145: BJ fibroblasts passaged as mortal cells and with hTERT,
+EPIC, rebuilt; slopes on doublings with a trajectory intercept. hTERT cells (20 arrays, doublings 2 to 38):
+housekeeping −0.136 SD on relative entropy (−0.143 to −0.129), −0.138 with chip intercepts; core-essential −0.064.
+Mortal cells on the same chips (12 arrays): −0.026 (−0.036 to −0.018); core-essential −0.025. Mortal cells of an
+earlier batch (23 arrays, other chips): +0.087 on relative entropy and −0.164 on the entropy slope, so that group
+gives no reading. One cell line; no arrested control; hTERT and mortal cells are not compared.
+
 **Blood with the neutrophil chromatin map (R121).** Whole blood has no reference map of its own; the analyses use
 mononuclear cells (Roadmap E062). With neutrophils (E030) in its place: loss per decade at active-TSS island
 promoters, set minus matched, core-essential +0.0053 (+0.0026 to +0.0081; E062 +0.0063), housekeeping +0.0041
@@ -377,6 +384,7 @@ type. Generated from `docs/provenance.csv` by `scripts/provenance_table.py`.
 | Cell fractions held | R70 | C1 | human whole blood | Hannum, GSE40279 | 450k | deposited | 12 cell fractions | EpiDISH reference panel (Luo 2023) | one study | other study | related | reference panel of sorted cells |
 | Fibroblast cultures with own expression | R124 R125 | C2 | human dermal fibroblasts in culture | Sturm, GSE179847 | EPIC | rebuilt (R SeSAMe) | expression (RNA-seq) | Sturm, GSE179848 | one study; holds with chip intercepts (R125) | same cultures (mean over cultures) | same | 89 untreated cultures of 6 lines; 2 lines give 60 |
 | Epidermis with own expression | R129 | C2 | human epidermis (women) | Holzscheck, E-MTAB-8993 / E-MTAB-8992 | EPIC / 450k (apart) | rebuilt (R SeSAMe) | expression (RNA-seq); chromatin state | Holzscheck, E-MTAB-8995 (depositors' TPM); Roadmap E057 keratinocytes | one study; holds with chip intercepts (chip read from IDAT headers) | same women; chromatin other study | same tissue; cultured keratinocytes for chromatin (related) | 61 + 56 women; cell composition not held |
+| Fibroblast line with and without telomerase | R130 | C2 | human BJ fibroblasts in culture | GSE268145 | EPIC | rebuilt (R SeSAMe) | none |  | one study; hTERT and 12 mortal arrays share chips; holds with chip intercepts in hTERT | none | n.a. | one cell line; mortal groups small or inconsistent across measures; no arrested control |
 | Monocytes and T cells with own expression | R122 R123 | C2 | human CD14+ monocytes / CD4+ T cells | MESA, GSE56046 GSE56581 | 450k | deposited | expression (HT-12 array) | MESA, GSE56045 GSE56580 | one study | same samples | same | 1,202 and 214 samples joined one to one; expression deposited normalised values |
 | Sorted monocytes and T cells | R44 R68b | C1 | human CD14+ monocytes / CD4+ T cells | MESA, GSE56046 GSE56581 | 450k | deposited | none |  | one study | none | n.a. | text sets them beside Hannum (other study) |
 | Read-level blood | R50 | C1 | human white blood cells | Loyfer, GSE186458 | WGBS | authors' reads | Hannum array means (check) | GSE40279 | across studies | other study | same | cross-platform used only as a validation (r 0.963) |

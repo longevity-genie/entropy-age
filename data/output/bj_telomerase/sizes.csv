@@ -1,0 +1,4 @@
+cells,arrays,chips,doublings_min,doublings_max,cpgs
+hTERT,20,8,2.0,38.0,88807
+"mortal, chips shared with hTERT",12,6,4.0,42.0,87995
+"mortal, earlier batch",23,9,2.3,52.0,69658
