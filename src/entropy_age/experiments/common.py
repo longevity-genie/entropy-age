@@ -87,7 +87,8 @@ def source_suffix() -> str:
     suffix = "_rsesame" if os.environ.get("ENTROPY_AGE_BETAS", "deposited") == "sesame" else ""
     suffix += ("_complete" if complete_only() else "") + ("_chip" if chip_terms() else "")
     suffix += f"_{blood_state().lower()}" if blood_state() != BLOOD_DEFAULT else ""
-    return suffix + ("_gct" if conversion_terms() else "")
+    suffix += "_gct" if conversion_terms() else ""
+    return suffix + ("_lunnonjoint" if os.environ.get("ENTROPY_AGE_LUNNON", "deposited") == "joint" else "")
 
 
 def conversion_terms() -> bool:

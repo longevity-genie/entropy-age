@@ -4,6 +4,7 @@ Newest first.
 
 ## Unreleased
 
+- 2026-11-20: `entropy_age.data.lunnon_joint` (RM43 item 7): Lunnon's tissues normalised together from GEO's raw intensities; `ENTROPY_AGE_LUNNON=joint` makes the cohort read them (outputs end `_lunnonjoint`).
 - 2026-11-20: R126: with the bisulfite-conversion index held, clonal haematopoiesis and the syndrome effects are unchanged; in the syndromes the index differs between cases and controls (Sotos +0.93 SD, Kabuki -2.30 SD), stated as a batch caveat. Run log, supplement Note 4, provenance, roadmap.
 - 2026-11-20: `ENTROPY_AGE_GCT=1` holds each array's bisulfite-conversion index as a covariate in `figures chip` and `figures syndromes` (outputs end `_gct`); both write the index by group in sesame mode (RM43 item 4). An exclusion cut is not possible: every array of these three series is above 1.2.
 - 2026-11-20: R116: CR blood on the mouse-recipe rebuild is unchanged against R98 (core-essential F -0.077, p 0.40); the withdrawal of R56 stands.

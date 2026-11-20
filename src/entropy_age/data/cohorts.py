@@ -46,6 +46,7 @@ from pathlib import Path
 
 import polars as pl
 
+from entropy_age.data import lunnon_joint
 from entropy_age.data.download import download
 from entropy_age.data.geo import read_series_matrix, read_supplementary_betas, series_matrix_url
 from entropy_age.paths import ProjectPaths
@@ -144,6 +145,11 @@ class CohortLayout:
         raw IDATs by ``scripts/sesame_preprocess.R`` (roadmap RM41), in the same shape and sample ids, made on first
         use. A cohort without a rebuild raises rather than quietly falling back to deposited betas."""
         deposited = self.paths.interim / "cohorts" / f"{self.spec.name}_betas.parquet"
+        if self.spec.name == "lunnon" and lunnon_joint.in_use():  # all tissues normalised together (RM43 item 7)
+            joint = lunnon_joint.betas_path(self.paths)
+            if not joint.exists():
+                raise FileNotFoundError(f"{joint} is missing: run entropy_age.data.lunnon_joint.build first")
+            return joint
         if os.environ.get("ENTROPY_AGE_BETAS", "deposited") != "sesame":
             return deposited
         if self.spec.name in NO_RAW_IDATS:  # no raw IDATs on GEO: kept on the authors' processing, with a warning
