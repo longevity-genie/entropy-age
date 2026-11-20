@@ -297,6 +297,8 @@ perturbations act on the look-alikes instead. A DNMT3A gain-of-function mutation
 2026), which retargets methylation to Polycomb-marked regions (Heyn et al. 2019), moved essential sets' look-alikes
 (F about −0.6 in bone marrow, intestine and liver; −0.54 to −0.68 re-processed from the IDATs). Children with constitutional variants in chromatin writers
 (NSD1, EZH2, KMT2D, CHD7) drifted more while keeping the shield share (Supplementary Note 3; Supplementary Fig. S21).
+In both syndrome series the arrays' bisulfite-conversion index differs between cases and controls, a sign that they
+were not processed alike; the effects do not change when the index is held (Supplementary Note 4).
 
 ### Chromatin accounts for most of the shield in blood and less in cortex
 
