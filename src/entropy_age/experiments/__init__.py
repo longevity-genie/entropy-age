@@ -6,6 +6,7 @@ from pathlib import Path
 from entropy_age.experiments import (
     allelic_controls,
     arrest_timecourse,
+    astrocyte_passage,
     atac_cortex,
     atac_hippocampus,
     atac_variance,
@@ -189,6 +190,7 @@ FIGURES: dict[str, Callable[[Context], list[Path]]] = {
     "sturm_expression": sturm_expression.run,
     "epidermis_expression": epidermis_expression.run,
     "bj_telomerase": bj_telomerase.run,
+    "astrocyte_passage": astrocyte_passage.run,
     "cross_tissue": cross_tissue.run,
     "orbitofrontal": orbitofrontal.run,
     "sorted_cells": sorted_cells.run,
