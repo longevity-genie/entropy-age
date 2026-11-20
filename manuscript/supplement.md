@@ -168,6 +168,11 @@ diagnosis held. Housekeeping gap on relative entropy −0.017 SD (−0.030 to �
 chip intercepts; on the dispersion slope −0.037 and −0.022. Core-essential −0.024 and −0.016 (the second interval
 includes zero).
 
+**Passaged astrocytes (R133).** GSE202554: primary fetal astrocytes of two donors, 45 unsorted cultures over up to
+15 population doublings, EPIC, rebuilt; slopes on doublings with a donor intercept. Housekeeping gap per doubling
+−0.102 SD on relative entropy (−0.111 to −0.094), −0.101 with chip intercepts; core-essential −0.072; non-essential
++0.342. Most arrays (37) come from one donor.
+
 **Blood with the neutrophil chromatin map (R121).** Whole blood has no reference map of its own; the analyses use
 mononuclear cells (Roadmap E062). With neutrophils (E030) in its place: loss per decade at active-TSS island
 promoters, set minus matched, core-essential +0.0053 (+0.0026 to +0.0081; E062 +0.0063), housekeeping +0.0041
@@ -401,6 +406,7 @@ type. Generated from `docs/provenance.csv` by `scripts/provenance_table.py`.
 | Fibroblast line with and without telomerase | R130 | C2 | human BJ fibroblasts in culture | GSE268145 | EPIC | rebuilt (R SeSAMe) | none |  | one study; hTERT and 12 mortal arrays share chips; holds with chip intercepts in hTERT | none | n.a. | one cell line; mortal groups small or inconsistent across measures; no arrested control |
 | Tissues of the same adults on shared chips | R131 | C1 | human buccal, dried blood spot, blood mononuclear cells | GSE280465 | EPIC v2 | rebuilt (R SeSAMe) | none |  | one study; tissues share chips (17 of 27 hold all four) | none | n.a. | 32 to 43 donors per pair; saliva out (detection); no tissue difference with chip held; all tissues renew |
 | Third cortex series | R132 | C1 | human orbitofrontal cortex (bulk) | GSE254293 | EPIC | rebuilt (R SeSAMe) | none |  | one study; age spread over 12 chips; holds with chip intercepts | none | n.a. | 90 people; diagnosis held; cell mix not held |
+| Passaged astrocytes | R133 | C2 | human fetal astrocytes in culture | GSE202554 | EPIC | rebuilt (R SeSAMe) | none |  | one study; doublings spread over 8 chips; holds with chip intercepts | none | n.a. | 45 cultures of 2 donors (37 from one); 15 doublings; no arrested control |
 | Monocytes and T cells with own expression | R122 R123 | C2 | human CD14+ monocytes / CD4+ T cells | MESA, GSE56046 GSE56581 | 450k | deposited | expression (HT-12 array) | MESA, GSE56045 GSE56580 | one study | same samples | same | 1,202 and 214 samples joined one to one; expression deposited normalised values |
 | Sorted monocytes and T cells | R44 R68b | C1 | human CD14+ monocytes / CD4+ T cells | MESA, GSE56046 GSE56581 | 450k | deposited | none |  | one study | none | n.a. | text sets them beside Hannum (other study) |
 | Read-level blood | R50 | C1 | human white blood cells | Loyfer, GSE186458 | WGBS | authors' reads | Hannum array means (check) | GSE40279 | across studies | other study | same | cross-platform used only as a validation (r 0.963) |

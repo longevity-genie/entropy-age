@@ -3,6 +3,20 @@
 Owned by the runner seat (`docs/seats/RUNNER.md`): one entry per run, newest first, with its inputs, the
 commit it ran, its job ids, its scale and seed, and its result or its failure with the cause.
 
+## R133 — a second cell type in culture: passaged fetal astrocytes (RM40, GSE202554), 2026-11-20
+
+- Commit 82e3311; `figures astrocyte_passage --scale paper --seed 42`, then with `ENTROPY_AGE_CHIP=1`; job 6558106
+  (test partition) after the SeSAMe rebuild of 63 EPIC arrays. Primary human fetal astrocytes, unsorted cultures
+  with doublings recorded: 45 (donor 1: 37, 0 to 11.7 doublings; donor 2: 8, 4.2 to 15.4), 8 chips each spanning
+  at least 6 doublings; 0.68 of the variance of doublings is left within donor and chip. 89,883 promoter CpGs
+  measured in all. Slopes on doublings with a donor intercept.
+- **Gap per doubling.** Housekeeping: relative entropy −0.102 SD (−0.111 to −0.094), entropy slope −0.173,
+  dispersion slope −0.078; with chip intercepts −0.101 (−0.110 to −0.092), −0.167, −0.074. Core-essential −0.072
+  (−0.083 to −0.061); chip held −0.070. Non-essential +0.342 (+0.272 to +0.411); chip held +0.333.
+- Reading: a second cell type in culture gives the fibroblast number (Sturm −0.102, R124; hTERT BJ −0.136, R130),
+  over a span of only 15 doublings and with chip held. Two donors, most arrays from one; no arrested control; no
+  expression from these cultures.
+
 ## R132 — a third cortex series: bulk orbitofrontal cortex (RM40, GSE254293), 2026-11-20
 
 - Commit b79d37c; `figures orbitofrontal --scale paper --seed 42`, job 6556959 (test partition) after the SeSAMe
