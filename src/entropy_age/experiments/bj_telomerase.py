@@ -109,7 +109,7 @@ def run(ctx: Context) -> list[Path]:
         x, feats = complete_matrix(betas, features, group["sample"].to_list())
         doublings = group["doublings"].to_numpy()
         trajectory, chips = group["trajectory"].to_numpy(), group["chip"].to_numpy()
-        overlap += [{"group": name, **r} for r in chip_overlap(doublings, trajectory, chips).to_dicts()]
+        overlap += [{"cells": name, **r} for r in chip_overlap(doublings, trajectory, chips).to_dicts()]
         cov = dummies(trajectory)
         if chip_terms():
             cov = np.column_stack([cov, dummies(chips)])
@@ -121,13 +121,13 @@ def run(ctx: Context) -> list[Path]:
         for metric in METRICS:
             values = metrics[metric].to_numpy()
             gaps += [
-                {"group": name, "metric": metric, **r}
+                {"cells": name, "metric": metric, **r}
                 for r in matched_gaps(values, sets, variants, N_RESAMPLES[scale], ctx.seed)
             ]
-            drift.append({"group": name, "metric": metric, "mean": float(values.mean()), "sd": float(values.std())})
+            drift.append({"cells": name, "metric": metric, "mean": float(values.mean()), "sd": float(values.std())})
         sizes.append(
             {
-                "group": name,
+                "cells": name,
                 "arrays": group.height,
                 "chips": int(np.unique(chips).size),
                 "doublings_min": float(doublings.min()),
