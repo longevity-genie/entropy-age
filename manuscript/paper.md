@@ -93,7 +93,10 @@ dispersion was lower at housekeeping promoters than at matched CpGs in every tis
 A per-person version of the comparison (Methods) found the same donor's blood more shielded than each brain region
 in 86-91 % of donors. In this series tissue cannot be separated from array batch: the blood arrays sit on slides
 that hold only blood, the authors normalised each tissue separately, and blood was drawn in life (70-99 years) while
-brain was taken at death (71-105); the same-donor contrast rests on the authors' processing.
+brain was taken at death (71-105). The separate normalisation did not make the difference: with all 531 arrays
+normalised together from the deposited raw intensities, blood exceeded each brain region by 0.08-0.10 SD (frontal
+cortex −0.105, 95 % interval −0.127 to −0.081, against −0.092 on the authors' values). Slide still goes with tissue,
+so the contrast stays confounded with batch.
 
 ![Figure 1](../docs/figures/tissue_contrast.png)
 
@@ -308,7 +311,7 @@ in cortex the reference acts as a generic label of promoter activity.** We added
 entropy, blood's own state (E062 mononuclear cells, or E030 neutrophils) removed 83-91 % of the housekeeping gap;
 cortex's state removed only 28 % of blood's gap (Fig. 5). The reverse did not hold: blood's state removed as much of the cortex gap as cortex's own (29 % against 25 %). In Lunnon's brain regions, each matched with its nearest Roadmap brain map (frontal cortex E073, superior temporal
 gyrus E072, entorhinal cortex E071; the cerebellum, which has no map, left out), the region's own state removed 5-10 %
-of the dispersion gap and blood's state 25-27 %. Blood's reference is mononuclear cells (E062), which lack the
+of the dispersion gap and blood's state 25-27 % (12-18 % and 35-40 % with the tissues normalised together). Blood's reference is mononuclear cells (E062), which lack the
 neutrophils that make up most of whole blood; E030 (neutrophils) is the second blood reference, and with both maps
 held at once 96 % of the housekeeping gap was removed (−0.006 SD left, interval reaching zero). The gain and loss rates, the drift hotspots and
 the essentiality gradient in blood read the same with the neutrophil map in place of the mononuclear one

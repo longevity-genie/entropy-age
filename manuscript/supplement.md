@@ -33,6 +33,7 @@ Table S2. Results that rested on binary entropy, old against corrected (housekee
 | species, share of 139 groups negative | 96 % (−0.30) | 89 % (−0.13) | kept, resized |
 | species, with chip intercepts (122 groups that can be fitted) | n.a. | 86 % (−0.11) | kept |
 | species, 13 human groups, human annotation instead of mouse | n.a. | 9 of 13 negative under both (−0.05 against −0.02) | kept |
+| same donors, blood minus brain region (Lunnon), tissues normalised together | n.a. | −0.08 to −0.10 against −0.07 to −0.10 on the deposited values | kept; still confounded with slide |
 | species off the floor (10-90 %) | 93 % (−0.24) | 73 % (−0.10) | kept, resized |
 | relative shield grows with lifespan | −2.42, p 0.04 | +1.43, p 0.23 | overturned |
 | no lifespan relation off the floor | −0.014, p 0.48 | +0.004, p 0.84 | kept |
@@ -256,7 +257,7 @@ items still open).
 |---|---|---|---|
 | Hannum blood, 656 people | GSE40279 | 450k | deposited; **no raw IDATs on GEO, not rebuilt** |
 | Jaffe prefrontal cortex | GSE74193 | 450k | deposited; rebuilt from IDATs (R61 methylprep, R93 R SeSAMe) |
-| Lunnon blood and four brain regions | GSE59685 | 450k | deposited; **no raw IDATs on GEO, not rebuilt** |
+| Lunnon blood and four brain regions | GSE59685 | 450k | deposited; **no raw IDATs on GEO, not rebuilt**; all tissues normalised together from the deposited raw intensities as a check (R127) |
 | GSE41037 blood | GSE41037 | 27k | deposited; **no raw IDATs on GEO, not rebuilt** |
 | GTEx nine tissues | GSE213478 | EPIC | deposited (noob + BMIQ); **raw IDATs controlled access, not rebuilt** |
 | Muscle fibres | GSE304045 | EPIC v2 | deposited; rebuilt from IDATs (R101) |
@@ -356,7 +357,7 @@ type. Generated from `docs/provenance.csv` by `scripts/provenance_table.py`.
 | Blood headline gap | R68a | C1 | human whole blood | Hannum, GSE40279 | 450k | deposited (no IDATs) | none |  | one study | none | n.a. |  |
 | Cortex headline gap | R68a R93 | C1 | human prefrontal cortex | Jaffe, GSE74193 | 450k | deposited; rebuilt in the paired pilot (R93) and the full rerun R102 | neuron fraction (covariate) | same arrays' metadata | one study | same samples | same | cross-check: rebuilt on 208 of the 213 donors (R93): gap stronger |
 | Blood minus cortex | R68a | C1 | blood vs cortex | Hannum vs Jaffe | 450k | deposited (both); two pipelines | none |  | across studies | none | n.a. | two studies, different pipelines and age ranges; neuron fraction held in cortex only; descriptive |
-| Same-donor blood and brain | R68a R2 | C1 | human blood and 4 brain regions | Lunnon, GSE59685 | 450k | deposited (no IDATs) | none |  | one study; tissue confounded with slide and per-tissue normalisation | none | n.a. | blood drawn in life, brain at death |
+| Same-donor blood and brain | R68a R2 R127 | C1 | human blood and 4 brain regions | Lunnon, GSE59685 | 450k | deposited (no IDATs); joint normalisation from raw intensities as a check | none |  | one study; tissue confounded with slide | none | n.a. | blood drawn in life, brain at death; R127: joint normalisation, blood minus frontal cortex -0.105 against -0.092 |
 | Cell fractions held | R70 | C1 | human whole blood | Hannum, GSE40279 | 450k | deposited | 12 cell fractions | EpiDISH reference panel (Luo 2023) | one study | other study | related | reference panel of sorted cells |
 | Fibroblast cultures with own expression | R124 R125 | C2 | human dermal fibroblasts in culture | Sturm, GSE179847 | EPIC | rebuilt (R SeSAMe) | expression (RNA-seq) | Sturm, GSE179848 | one study; holds with chip intercepts (R125) | same cultures (mean over cultures) | same | 89 untreated cultures of 6 lines; 2 lines give 60 |
 | Monocytes and T cells with own expression | R122 R123 | C2 | human CD14+ monocytes / CD4+ T cells | MESA, GSE56046 GSE56581 | 450k | deposited | expression (HT-12 array) | MESA, GSE56045 GSE56580 | one study | same samples | same | 1,202 and 214 samples joined one to one; expression deposited normalised values |
@@ -374,7 +375,7 @@ type. Generated from `docs/provenance.csv` by `scripts/provenance_table.py`.
 | Within active promoters | R74 | C2 | human blood / cortex | Hannum, Jaffe | 450k | deposited (both) | chromatin state (TssA) | Roadmap E062 (PBMC) / E073 (DLPFC) | one study each | other study | blood: related (PBMC vs whole blood); cortex: same | reference epigenomes from other people |
 | Chromatin match blood | R3 R68b | C2 | human whole blood | Hannum, GSE40279 | 450k | deposited | chromatin state | Roadmap E062 PBMC, E030 neutrophils; E073 control | one study | other study | related | E062 lacks granulocytes; E073 a deliberate other-tissue control |
 | Chromatin match cortex | R3 R4 R68b | C2 | human prefrontal cortex | Jaffe, GSE74193 | 450k | deposited | chromatin state and sorted ATAC | Roadmap E073 DLPFC; GSE96614 NeuN+/- ATAC BA9; E062 control | one study | other study | same |  |
-| Chromatin match Lunnon brain | R3 R68b R104 | C2 | human FC STG EC (cerebellum excluded) | Lunnon, GSE59685 | 450k | deposited | chromatin state | Roadmap E073 (FC), E072 (STG), E071 (EC); BA9 ATAC for FC only | one study | other study | FC same; STG EC nearest region map (related) | R104: region maps remove 5-10 %, blood's map 25-27 % |
+| Chromatin match Lunnon brain | R3 R68b R104 | C2 | human FC STG EC (cerebellum excluded) | Lunnon, GSE59685 | 450k | deposited | chromatin state | Roadmap E073 (FC), E072 (STG), E071 (EC); BA9 ATAC for FC only | one study | other study | FC same; STG EC nearest region map (related) | R104: region maps remove 5-10 %, blood's map 25-27 %; R127 joint normalisation: 12-18 % and 35-40 % |
 | Essentiality gradient | R58 R68b | C2 | human blood / cortex | Hannum, Jaffe | 450k | deposited (both) | DepMap gene effect; GTEx expression; chromatin state | DepMap 24Q4 (cancer lines); GTEx v8; E062/E073 | one study each | other study | expression same tissue; essentiality other (cancer cell lines); chromatin blood related, cortex same | three external tracks |
 | Drift hotspots | R72 | C1 | human blood / cortex | Hannum, Jaffe | 450k | deposited (both) | chromatin state | E062 / E073 | one study each | other study | blood related; cortex same | Polycomb enrichment rests on E062 labels |
 | Expression-matched placebo | R82 | C1 | human blood / cortex | Hannum, Jaffe | 450k | deposited (both) | expression | GTEx v8 whole blood / frontal cortex BA9 | one study each | other study | same tissue |  |

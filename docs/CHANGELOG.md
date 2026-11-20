@@ -4,6 +4,7 @@ Newest first.
 
 ## Unreleased
 
+- 2026-11-20: R127 in the text: Lunnon joint normalisation in the paper (same-donor contrast, chromatin shares), supplement rerun table and cohort table, provenance rows; Table S4 regenerated. Epidermis studies (E-MTAB-8993/8992/8995) audited, fetch started.
 - 2026-11-20: R127: Lunnon normalised jointly over tissues from raw intensities: the same-donor blood-brain difference holds (frontal cortex -0.105 against -0.092) and stays batch-confounded. Every item of the methods review (RM43) now has its run.
 - 2026-11-20: R128: the 13 human groups of the species analysis give the same housekeeping result under the human annotation as under the mouse one (9 of 13 negative, correlation 0.81). Run log, Table S1, provenance, roadmap.
 - 2026-11-20: `ENTROPY_AGE_SPECIES_ANNOTATION=human` runs the human groups of `figures species` with the human annotation of the 2,843 promoter probes the mammalian array shares with the 450k array (RM43 item 5; outputs end `_humanann`).
