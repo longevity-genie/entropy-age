@@ -3,6 +3,37 @@
 Owned by the runner seat (`docs/seats/RUNNER.md`): one entry per run, newest first, with its inputs, the
 commit it ran, its job ids, its scale and seed, and its result or its failure with the cause.
 
+## R129 — epidermis of 117 women: age drift against expression of the same women (RM40, fetch order 4), 2026-11-20
+
+- Commit 5f04674; `figures epidermis_expression --scale paper --seed 42`, then the same with `ENTROPY_AGE_CHIP=1`;
+  job 6553578 (test partition), 9 min for the first paper pass, after the SeSAMe rebuild of both series and a smoke
+  run. Holzscheck et al. 2020: suction-blister epidermis of healthy women. E-MTAB-8993 (EPIC, 65 women; 4 fall
+  below 90 % detection, 61 kept, 23 to 79 years, 84,425 promoter CpGs measured in all) and E-MTAB-8992 (450k, 56
+  other women, 21 to 76, 96,007 CpGs), never pooled. Expression: E-MTAB-8995, the depositors' Salmon TPM table
+  (34,673 genes, ComBat-corrected on the linear scale; 6 % of values below zero set to zero), mean log2(TPM + 1)
+  per array group; 27,616 genes with one approved symbol. Age slopes hold the depositors' batch.
+- **Chip.** The IDAT files were renamed, and the dataset search recorded the chip as not recoverable. It is in each
+  file's header (`scripts/idat_barcodes.py`): 9 EPIC chips and 5 450k chips, each spanning 27 to 54 years of age;
+  chip explains 0.24 (EPIC) and 0.18 (450k) of the variance of age.
+- **Gap, relative entropy (EPIC; 450k).** Housekeeping −0.106 (−0.112 to −0.097); −0.105 (−0.113 to −0.095). With
+  the gene's expression decile: −0.031 (−0.037 to −0.022), 71 % removed; −0.031 (−0.039 to −0.022), 71 %. With
+  keratinocyte chromatin state (Roadmap E057): −0.052 (51 %); −0.055 (47 %). With both: −0.019 (82 %); −0.021 (80 %).
+  Core-essential −0.058 → −0.003 (−0.016 to +0.012); −0.054 → −0.001. Non-essential +0.218 → +0.088; +0.203 → +0.081.
+  Entropy slope, housekeeping: −0.225 → −0.100; −0.237 → −0.099. Dispersion slope: −0.189 → −0.077; −0.191 → −0.068.
+- **Outside every gene set** (9,761; 10,014 genes): slope relative to matched CpGs from +0.17 (lowest expression
+  decile) to −0.14 (highest) in both groups; rank correlation −0.071 (p 2·10⁻¹²) and −0.086 (p 7·10⁻¹⁸); entropy
+  slope −0.19 and −0.21.
+- **Chip held.** Housekeeping −0.102 → −0.028 (72 %) on EPIC, −0.110 → −0.034 (70 %) on 450k; core-essential to
+  zero in both; gradient −0.067 and −0.096.
+- **Join check.** Across women, per-gene correlation of promoter methylation with expression: mean r −0.003
+  (p 0.87) on EPIC and −0.028 (p 0.045) on 450k; with chip held −0.022 (p 0.15) and −0.024 (p 0.025). Weak, as in
+  monocytes (−0.007); the join is carried by the gradient across genes.
+- Reading: a third tissue and the first with both layers from the same people on rebuilt arrays in two
+  independent groups of women. The two groups agree to the second decimal. Expression of the gene in the same
+  tissue accounts for about 70 % of the housekeeping gap and all of the core-essential one; adding chromatin state
+  brings it to about 80 %; a remainder of −0.02 SD stays, its interval excluding zero. Limits: one laboratory,
+  women only, cell composition not held, chromatin reference from cultured keratinocytes.
+
 ## R127 — Lunnon's tissues normalised together from the raw intensities (RM43 item 7), 2026-11-20
 
 - Commit 52ce0b3 and the reader fix after it; `ENTROPY_AGE_LUNNON=joint figures tissues` (job 6541264, test

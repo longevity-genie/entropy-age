@@ -4,6 +4,7 @@ Newest first.
 
 ## Unreleased
 
+- 2026-11-20: R129 epidermis of 117 women with RNA-seq of the same women (two array groups, chip held): run log, claim C2, evidence E44, provenance row and Table S4, paper and Supplementary Note 3.
 - 2026-11-20: `epidermis_expression` (RM40 fetch order 4): epidermis of 121 women on EPIC or 450k with RNA-seq of the same women; `scripts/idat_barcodes.py` reads the Sentrix chip from IDAT headers when depositors renamed the files.
 - 2026-11-20: R127 in the text: Lunnon joint normalisation in the paper (same-donor contrast, chromatin shares), supplement rerun table and cohort table, provenance rows; Table S4 regenerated. Epidermis studies (E-MTAB-8993/8992/8995) audited, fetch started.
 - 2026-11-20: R127: Lunnon normalised jointly over tissues from raw intensities: the same-donor blood-brain difference holds (frontal cortex -0.105 against -0.092) and stays batch-confounded. Every item of the methods review (RM43) now has its run.

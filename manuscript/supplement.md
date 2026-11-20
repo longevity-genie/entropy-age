@@ -131,6 +131,22 @@ the expression decile added: housekeeping −0.102 and −0.028 SD; core-essenti
 more cultures, 0.33 of the variance of doublings left within line and chip): housekeeping −0.102 and −0.024,
 core-essential −0.053 and −0.002, non-essential +0.164 and +0.056.
 
+**Expression in the same epidermis (R129).** Holzscheck et al. 2020: suction-blister epidermis of healthy women
+aged 21 to 79, on the EPIC array (E-MTAB-8993; 65 women, 61 after the detection cut) or the 450k array (E-MTAB-8992;
+56 other women), rebuilt from IDATs, with RNA-seq of every woman (E-MTAB-8995; the depositors' TPM table,
+batch-corrected by them, values below zero set to zero). The two array groups are analysed apart. Age slopes hold the
+depositors' processing batch. Relative entropy, EPIC then 450k, island x level against the expression decile added:
+housekeeping −0.106 and −0.031, −0.105 and −0.031; core-essential −0.058 and −0.003, −0.054 and −0.001;
+non-essential +0.218 and +0.088, +0.203 and +0.081. With the chromatin state of keratinocytes (Roadmap E057) in
+place of expression: housekeeping −0.052 and −0.055; with both: −0.019 and −0.021. Outside the gene sets, by
+expression decile (EPIC): +0.17, +0.06, +0.01, −0.06, −0.08, −0.07, −0.11, −0.09, −0.13, −0.14 (rank correlation
+−0.07; 450k −0.09). The depositors renamed the IDAT files; the chip was read from each file's header (9 EPIC chips,
+5 450k chips, every chip spanning at least 27 years of age; chip explains 0.24 and 0.18 of the variance of age).
+With chip intercepts: housekeeping −0.102 and −0.028 (EPIC), −0.110 and −0.034 (450k). Across women, promoter
+methylation and expression of the same gene correlate weakly (mean r −0.003 and −0.028; with chip held −0.022 and
+−0.024), so the join is checked by the gradient across genes more than by this correlation. Limits: one
+laboratory, women only, cell composition not held.
+
 **Blood with the neutrophil chromatin map (R121).** Whole blood has no reference map of its own; the analyses use
 mononuclear cells (Roadmap E062). With neutrophils (E030) in its place: loss per decade at active-TSS island
 promoters, set minus matched, core-essential +0.0053 (+0.0026 to +0.0081; E062 +0.0063), housekeeping +0.0041
@@ -360,6 +376,7 @@ type. Generated from `docs/provenance.csv` by `scripts/provenance_table.py`.
 | Same-donor blood and brain | R68a R2 R127 | C1 | human blood and 4 brain regions | Lunnon, GSE59685 | 450k | deposited (no IDATs); joint normalisation from raw intensities as a check | none |  | one study; tissue confounded with slide | none | n.a. | blood drawn in life, brain at death; R127: joint normalisation, blood minus frontal cortex -0.105 against -0.092 |
 | Cell fractions held | R70 | C1 | human whole blood | Hannum, GSE40279 | 450k | deposited | 12 cell fractions | EpiDISH reference panel (Luo 2023) | one study | other study | related | reference panel of sorted cells |
 | Fibroblast cultures with own expression | R124 R125 | C2 | human dermal fibroblasts in culture | Sturm, GSE179847 | EPIC | rebuilt (R SeSAMe) | expression (RNA-seq) | Sturm, GSE179848 | one study; holds with chip intercepts (R125) | same cultures (mean over cultures) | same | 89 untreated cultures of 6 lines; 2 lines give 60 |
+| Epidermis with own expression | R129 | C2 | human epidermis (women) | Holzscheck, E-MTAB-8993 / E-MTAB-8992 | EPIC / 450k (apart) | rebuilt (R SeSAMe) | expression (RNA-seq); chromatin state | Holzscheck, E-MTAB-8995 (depositors' TPM); Roadmap E057 keratinocytes | one study; holds with chip intercepts (chip read from IDAT headers) | same women; chromatin other study | same tissue; cultured keratinocytes for chromatin (related) | 61 + 56 women; cell composition not held |
 | Monocytes and T cells with own expression | R122 R123 | C2 | human CD14+ monocytes / CD4+ T cells | MESA, GSE56046 GSE56581 | 450k | deposited | expression (HT-12 array) | MESA, GSE56045 GSE56580 | one study | same samples | same | 1,202 and 214 samples joined one to one; expression deposited normalised values |
 | Sorted monocytes and T cells | R44 R68b | C1 | human CD14+ monocytes / CD4+ T cells | MESA, GSE56046 GSE56581 | 450k | deposited | none |  | one study | none | n.a. | text sets them beside Hannum (other study) |
 | Read-level blood | R50 | C1 | human white blood cells | Loyfer, GSE186458 | WGBS | authors' reads | Hannum array means (check) | GSE40279 | across studies | other study | same | cross-platform used only as a validation (r 0.963) |

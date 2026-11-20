@@ -134,6 +134,12 @@ doubling showed the monocyte pattern: the housekeeping gap of −0.102 SD fell t
 in the matching (72 % removed), the core-essential gap from −0.055 to −0.006, and outside the gene sets drift
 relative to matched CpGs fell with expression (rank correlation −0.06, p 1·10⁻⁹). With chip intercepts in the
 slopes the numbers were the same (−0.102 to −0.024; a third of the spread in doublings is left within line and chip).
+In epidermis of 117 healthy women aged 21 to 79 (Holzscheck et al. 2020; arrays rebuilt from raw files, RNA-seq of
+the same women), analysed as two groups by array type (61 on EPIC, 56 on 450k), the housekeeping gap was −0.106 and
+−0.105 SD and fell to −0.031 in both with the expression decile in the matching (71 % removed); the core-essential
+gap went from −0.058 and −0.054 to zero, and outside the gene sets drift fell with expression (rank correlation
+−0.07 and −0.09). The chromatin state of keratinocytes removed about half of the gap (51 % and 47 %), expression and
+state together 82 % and 80 %. Chip intercepts changed nothing (−0.102 to −0.028; −0.110 to −0.034).
 
 Adding probe design to the matching changed no sign, masking unreliable probes moved no essential-set gap by more
 than 0.012 SD, and rebuilding Jaffe's cortex series from its raw arrays did not weaken the gap. On the same 208 donors and the
@@ -676,6 +682,8 @@ Heyn P, et al. 2019. Gain-of-function DNMT3A mutations cause microcephalic dwarf
 Holland P. 2024. DNA methylation data of hematopoietic transplantation patients. Mendeley Data, version 1. doi:10.17632/j5krtjfj6y.1.
 
 Hollmann J, et al. 2020. Genetic barcoding reveals clonal dominance in iPSC-derived mesenchymal stromal cells. Stem Cell Res Ther 11:105. doi:10.1186/s13287-020-01619-5.
+
+Holzscheck N, et al. 2020. Multi-omics network analysis reveals distinct stages in the human aging progression in epidermal tissue. Aging (Albany NY) 12. doi:10.18632/aging.103499.
 
 Horvath S. 2013. DNA methylation age of human tissues and cell types. Genome Biol 14:R115. doi:10.1186/gb-2013-14-10-r115.
 

@@ -1,0 +1,3 @@
+arm,accession,women,age_min,age_max,batches,cpgs,genes
+EPIC,E-MTAB-8993,61,23.0,79.0,2,84425,27616
+450k,E-MTAB-8992,56,21.0,76.0,1,96007,27616

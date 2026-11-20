@@ -42,3 +42,4 @@ E40,Consortium mouse tissues order by turnover within chips,R118,-1,1,2,0,0,0,-1
 E43,Culture drift per doubling follows same-culture expression (72 % of housekeeping gap removed),R124,2,-1,0,0,0,0,-1,0,-1
 E42,Same-sample expression removes 82 % of the monocyte housekeeping gap; gradient outside the sets,R122,2,-1,0,0,0,0,0,1,0
 E41,Tet3 and Tet1 opposite signs hold on the genes both arrays cover; arrays share 150 CpGs,R120,0,0,0,1,0,0,-1,0,0
+E44,Epidermis: same-woman expression removes 71 % of the housekeeping gap in two array groups; gradient outside the sets; chip held,R129,2,-1,0,0,0,0,-1,0,-1
