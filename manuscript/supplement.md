@@ -32,6 +32,7 @@ Table S2. Results that rested on binary entropy, old against corrected (housekee
 | mouse array, post-mitotic and adipose | −0.22 to +0.10 | +0.03 to +0.09, all p ≤ 0.002 | reframed (hypothalamus −0.08) |
 | species, share of 139 groups negative | 96 % (−0.30) | 89 % (−0.13) | kept, resized |
 | species, with chip intercepts (122 groups that can be fitted) | n.a. | 86 % (−0.11) | kept |
+| species, 13 human groups, human annotation instead of mouse | n.a. | 9 of 13 negative under both (−0.05 against −0.02) | kept |
 | species off the floor (10-90 %) | 93 % (−0.24) | 73 % (−0.10) | kept, resized |
 | relative shield grows with lifespan | −2.42, p 0.04 | +1.43, p 0.23 | overturned |
 | no lifespan relation off the floor | −0.014, p 0.48 | +0.004, p 0.84 | kept |
@@ -368,7 +369,7 @@ type. Generated from `docs/provenance.csv` by `scripts/provenance_table.py`.
 | Mouse turnover across platforms | paper text | C1 C2 | mouse tissues | Huang vs Meer/Thompson/Petkovich vs BXD | Mammal320 vs RRBS vs Mammal40 | mixed | none |  | across studies and platforms | none | n.a. | cross-platform: side by side only (RM41 9b) |
 | Culture Endicott | R94 | C3 | human primary cell lines | Endicott, GSE197512 | EPIC | rebuilt (R SeSAMe) | none |  | one study | none | n.a. | shield-in-culture vanishes on rebuild |
 | Culture Sturm | R1 R94 | C3 | human fibroblasts | Sturm, GSE179847 | EPIC | rebuilt (R SeSAMe) | none |  | one study | none | n.a. | unchanged on rebuild |
-| Species shield | R12 R68c R59 R22 R118 | C6 | 65 mammals | MMC, GSE223748 | Mammal40 | deposited (no IDATs) | lifespan and weight; NCBI taxonomy | same metadata | one study; chip partly confounded with age (56 of 139 groups); with chip intercepts 86 % of 122 fittable groups stay negative (R118) | same samples | n.a. | mouse mm10 promoter and island annotation applied to every species |
+| Species shield | R12 R68c R59 R22 R118 R128 | C6 | 65 mammals | MMC, GSE223748 | Mammal40 | deposited (no IDATs) | lifespan and weight; NCBI taxonomy | same metadata | one study; chip partly confounded with age (56 of 139 groups); with chip intercepts 86 % of 122 fittable groups stay negative (R118) | same samples | n.a. | mouse mm10 promoter and island annotation applied to every species; the 13 human groups agree under the human annotation (R128) |
 | Gain and loss rates | R67 R83 | C2 C4 | human blood / cortex | Hannum, Jaffe | 450k | deposited (both) | none |  | one study each | none | n.a. |  |
 | Within active promoters | R74 | C2 | human blood / cortex | Hannum, Jaffe | 450k | deposited (both) | chromatin state (TssA) | Roadmap E062 (PBMC) / E073 (DLPFC) | one study each | other study | blood: related (PBMC vs whole blood); cortex: same | reference epigenomes from other people |
 | Chromatin match blood | R3 R68b | C2 | human whole blood | Hannum, GSE40279 | 450k | deposited | chromatin state | Roadmap E062 PBMC, E030 neutrophils; E073 control | one study | other study | related | E062 lacks granulocytes; E073 a deliberate other-tissue control |

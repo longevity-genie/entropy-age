@@ -4,6 +4,7 @@ Newest first.
 
 ## Unreleased
 
+- 2026-11-20: R128: the 13 human groups of the species analysis give the same housekeeping result under the human annotation as under the mouse one (9 of 13 negative, correlation 0.81). Run log, Table S1, provenance, roadmap.
 - 2026-11-20: `ENTROPY_AGE_SPECIES_ANNOTATION=human` runs the human groups of `figures species` with the human annotation of the 2,843 promoter probes the mammalian array shares with the 450k array (RM43 item 5; outputs end `_humanann`).
 - 2026-11-20: `entropy_age.data.lunnon_joint` (RM43 item 7): Lunnon's tissues normalised together from GEO's raw intensities; `ENTROPY_AGE_LUNNON=joint` makes the cohort read them (outputs end `_lunnonjoint`).
 - 2026-11-20: R126: with the bisulfite-conversion index held, clonal haematopoiesis and the syndrome effects are unchanged; in the syndromes the index differs between cases and controls (Sotos +0.93 SD, Kabuki -2.30 SD), stated as a batch caveat. Run log, supplement Note 4, provenance, roadmap.

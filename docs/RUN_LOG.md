@@ -3,6 +3,21 @@
 Owned by the runner seat (`docs/seats/RUNNER.md`): one entry per run, newest first, with its inputs, the
 commit it ran, its job ids, its scale and seed, and its result or its failure with the cause.
 
+## R128 — the human groups of the species analysis with the human annotation (RM43 item 5), 2026-11-20
+
+- Commit 0ccea8d; `ENTROPY_AGE_SPECIES_ANNOTATION=human figures species --scale paper --seed 42`, job 6540997 (test
+  partition), 2.5 min. The species analysis reads promoters, islands and gene sets from the mouse genome for every
+  species. Here the 13 human tissue groups (1,075 samples, 20 to 282 per tissue) are redone with the human
+  annotation, on the 2,843 autosomal promoter probes the mammalian array shares with the 450k array (housekeeping
+  401 CpGs, core-essential 44, non-essential 114; 4,640 probes under the mouse annotation). No chip terms, as R68c.
+- Housekeeping, relative entropy: negative in 9 of 13 tissues under either annotation; median −0.049 SD (human)
+  against −0.024 (mouse); correlation across tissues 0.81. Entropy slope: 11 of 13 under both; −0.097 against
+  −0.113; correlation 0.92. Largest in skin (−0.205) and muscle (−0.147); positive in lung, spleen, adipose.
+- Core-essential, relative entropy: 10 of 13 negative, median −0.041 (human, 44 CpGs) against 11 of 13 and −0.139
+  (mouse); correlation 0.56. Too few CpGs under the human annotation to size it.
+- Reading: the human rows of the species result do not depend on borrowing the mouse annotation; for
+  housekeeping promoters the two agree tissue by tissue. Deposited betas, as the whole analysis.
+
 ## R126 — clonal haematopoiesis and the writer syndromes with the bisulfite-conversion index held (RM43 item 4), 2026-11-20
 
 - Commit 6230082; `ENTROPY_AGE_BETAS=sesame ENTROPY_AGE_GCT=1 figures chip` and `figures syndromes`, `--scale paper
