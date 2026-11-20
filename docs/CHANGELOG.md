@@ -4,6 +4,7 @@ Newest first.
 
 ## Unreleased
 
+- 2026-11-20: paper main text: hTERT fibroblasts (R130) and passaged astrocytes (R133) in the division paragraph, one passage.
 - 2026-11-20: R133 passaged astrocytes (GSE202554): run log, claims, evidence E48, provenance row and Table S4, Supplementary Note 3.
 - 2026-11-20: `astrocyte_passage` (RM40): fetal astrocytes passaged to exhaustion (GSE202554, rebuilt), gap per doubling in a second cultured cell type.
 - 2026-11-20: R132 bulk orbitofrontal cortex (GSE254293): run log, evidence E47, provenance row and Table S4, Supplementary Note 3.
