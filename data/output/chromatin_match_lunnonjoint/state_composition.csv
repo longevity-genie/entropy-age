@@ -1,0 +1,385 @@
+tissue,epigenome,group,state,share
+blood (Hannum),E062,core_essential,1_TssA,0.2463683904706566
+blood (Hannum),E062,core_essential,2_TssAFlnk,0.6048808832074375
+blood (Hannum),E062,core_essential,3_TxFlnk,0.0002905287623474724
+blood (Hannum),E062,core_essential,4_Tx,0.005810575246949448
+blood (Hannum),E062,core_essential,5_TxWk,0.04808251016850668
+blood (Hannum),E062,core_essential,6_EnhG,0.005665310865775712
+blood (Hannum),E062,core_essential,7_Enh,0.05142359093550262
+blood (Hannum),E062,core_essential,8_ZNF/Rpts,0.0005810575246949448
+blood (Hannum),E062,core_essential,9_Het,0.0001452643811737362
+blood (Hannum),E062,core_essential,10_TssBiv,0.0010168506682161533
+blood (Hannum),E062,core_essential,11_BivFlnk,0.0008715862870424172
+blood (Hannum),E062,core_essential,12_EnhBiv,0.0008715862870424172
+blood (Hannum),E062,core_essential,13_ReprPC,0.0008715862870424172
+blood (Hannum),E062,core_essential,14_ReprPCWk,0.007408483439860546
+blood (Hannum),E062,core_essential,15_Quies,0.02571179546775131
+blood (Hannum),E062,core_essential,none,0.0
+blood (Hannum),E062,housekeeping,1_TssA,0.2215128284242755
+blood (Hannum),E062,housekeeping,2_TssAFlnk,0.5833194882870909
+blood (Hannum),E062,housekeeping,3_TxFlnk,0.0018512804689910522
+blood (Hannum),E062,housekeeping,4_Tx,0.014691571926993094
+blood (Hannum),E062,housekeeping,5_TxWk,0.061970426981226116
+blood (Hannum),E062,housekeeping,6_EnhG,0.006835497116274654
+blood (Hannum),E062,housekeeping,7_Enh,0.052690290271283795
+blood (Hannum),E062,housekeeping,8_ZNF/Rpts,0.000830702774547267
+blood (Hannum),E062,housekeeping,9_Het,0.0008069684095602022
+blood (Hannum),E062,housekeeping,10_TssBiv,0.0022784990387582182
+blood (Hannum),E062,housekeeping,11_BivFlnk,0.0023259677687323477
+blood (Hannum),E062,housekeeping,12_EnhBiv,0.0008069684095602022
+blood (Hannum),E062,housekeeping,13_ReprPC,0.0019462179289393112
+blood (Hannum),E062,housekeeping,14_ReprPCWk,0.012151994873377163
+blood (Hannum),E062,housekeeping,15_Quies,0.035981297320390196
+blood (Hannum),E062,housekeeping,none,0.0
+blood (Hannum),E062,non_essential,1_TssA,0.004052684903748734
+blood (Hannum),E062,non_essential,2_TssAFlnk,0.0032421479229989866
+blood (Hannum),E062,non_essential,3_TxFlnk,0.0
+blood (Hannum),E062,non_essential,4_Tx,0.00547112462006079
+blood (Hannum),E062,non_essential,5_TxWk,0.01904761904761905
+blood (Hannum),E062,non_essential,6_EnhG,0.0
+blood (Hannum),E062,non_essential,7_Enh,0.006889564336372847
+blood (Hannum),E062,non_essential,8_ZNF/Rpts,0.0
+blood (Hannum),E062,non_essential,9_Het,0.03282674772036474
+blood (Hannum),E062,non_essential,10_TssBiv,0.024721377912867274
+blood (Hannum),E062,non_essential,11_BivFlnk,0.015400202634245188
+blood (Hannum),E062,non_essential,12_EnhBiv,0.027152988855116515
+blood (Hannum),E062,non_essential,13_ReprPC,0.2204660587639311
+blood (Hannum),E062,non_essential,14_ReprPCWk,0.27396149949341436
+blood (Hannum),E062,non_essential,15_Quies,0.3667679837892604
+blood (Hannum),E062,non_essential,none,0.0
+blood (Hannum),E062,background,1_TssA,0.1304877641638567
+blood (Hannum),E062,background,2_TssAFlnk,0.24987480385937968
+blood (Hannum),E062,background,3_TxFlnk,0.0019363669749273863
+blood (Hannum),E062,background,4_Tx,0.02495576403031416
+blood (Hannum),E062,background,5_TxWk,0.06590324842252863
+blood (Hannum),E062,background,6_EnhG,0.004473675424832237
+blood (Hannum),E062,background,7_Enh,0.039011117417287085
+blood (Hannum),E062,background,8_ZNF/Rpts,0.0029546289186392015
+blood (Hannum),E062,background,9_Het,0.006560277768503989
+blood (Hannum),E062,background,10_TssBiv,0.05794077387907722
+blood (Hannum),E062,background,11_BivFlnk,0.05141388174807198
+blood (Hannum),E062,background,12_EnhBiv,0.021233265449203752
+blood (Hannum),E062,background,13_ReprPC,0.11778452909558308
+blood (Hannum),E062,background,14_ReprPCWk,0.08318031582813074
+blood (Hannum),E062,background,15_Quies,0.14228958701966415
+blood (Hannum),E062,background,none,0.0
+cortex (Jaffe),E073,core_essential,1_TssA,0.8576404005224205
+cortex (Jaffe),E073,core_essential,2_TssAFlnk,0.06559280220577565
+cortex (Jaffe),E073,core_essential,3_TxFlnk,0.0008707009142359599
+cortex (Jaffe),E073,core_essential,4_Tx,0.003773037295022493
+cortex (Jaffe),E073,core_essential,5_TxWk,0.02728196197939341
+cortex (Jaffe),E073,core_essential,6_EnhG,0.002902336380786533
+cortex (Jaffe),E073,core_essential,7_Enh,0.014511681903932665
+cortex (Jaffe),E073,core_essential,8_ZNF/Rpts,0.0
+cortex (Jaffe),E073,core_essential,9_Het,0.0
+cortex (Jaffe),E073,core_essential,10_TssBiv,0.0015962850094325932
+cortex (Jaffe),E073,core_essential,11_BivFlnk,0.0007255840951966333
+cortex (Jaffe),E073,core_essential,12_EnhBiv,0.00043535045711797995
+cortex (Jaffe),E073,core_essential,13_ReprPC,0.0007255840951966333
+cortex (Jaffe),E073,core_essential,14_ReprPCWk,0.0018865186475112464
+cortex (Jaffe),E073,core_essential,15_Quies,0.02205775649397765
+cortex (Jaffe),E073,core_essential,none,0.0
+cortex (Jaffe),E073,housekeeping,1_TssA,0.7926161288027885
+cortex (Jaffe),E073,housekeeping,2_TssAFlnk,0.08605031655324497
+cortex (Jaffe),E073,housekeeping,3_TxFlnk,0.0027031513053375382
+cortex (Jaffe),E073,housekeeping,4_Tx,0.005572285585564224
+cortex (Jaffe),E073,housekeeping,5_TxWk,0.04794536788940792
+cortex (Jaffe),E073,housekeeping,6_EnhG,0.0031536765228937945
+cortex (Jaffe),E073,housekeeping,7_Enh,0.028549071680933298
+cortex (Jaffe),E073,housekeeping,8_ZNF/Rpts,0.0006402200460009959
+cortex (Jaffe),E073,housekeeping,9_Het,0.00004742370711118488
+cortex (Jaffe),E073,housekeeping,10_TssBiv,0.0009010504351125128
+cortex (Jaffe),E073,housekeeping,11_BivFlnk,0.00018969482844473953
+cortex (Jaffe),E073,housekeeping,12_EnhBiv,0.00028454224266710927
+cortex (Jaffe),E073,housekeeping,13_ReprPC,0.00040310151044507147
+cortex (Jaffe),E073,housekeeping,14_ReprPCWk,0.0026557275982263535
+cortex (Jaffe),E073,housekeeping,15_Quies,0.02828824129182178
+cortex (Jaffe),E073,housekeeping,none,0.0
+cortex (Jaffe),E073,non_essential,1_TssA,0.05439838220424671
+cortex (Jaffe),E073,non_essential,2_TssAFlnk,0.0052578361981799795
+cortex (Jaffe),E073,non_essential,3_TxFlnk,0.0
+cortex (Jaffe),E073,non_essential,4_Tx,0.0014155712841253793
+cortex (Jaffe),E073,non_essential,5_TxWk,0.02184024266936299
+cortex (Jaffe),E073,non_essential,6_EnhG,0.0006066734074823053
+cortex (Jaffe),E073,non_essential,7_Enh,0.012740141557128413
+cortex (Jaffe),E073,non_essential,8_ZNF/Rpts,0.00020222446916076846
+cortex (Jaffe),E073,non_essential,9_Het,0.01557128412537917
+cortex (Jaffe),E073,non_essential,10_TssBiv,0.05722952477249747
+cortex (Jaffe),E073,non_essential,11_BivFlnk,0.024671385237613752
+cortex (Jaffe),E073,non_essential,12_EnhBiv,0.01820020222446916
+cortex (Jaffe),E073,non_essential,13_ReprPC,0.13488372093023257
+cortex (Jaffe),E073,non_essential,14_ReprPCWk,0.20424671385237614
+cortex (Jaffe),E073,non_essential,15_Quies,0.4487360970677452
+cortex (Jaffe),E073,non_essential,none,0.0
+cortex (Jaffe),E073,background,1_TssA,0.46925
+cortex (Jaffe),E073,background,2_TssAFlnk,0.06725
+cortex (Jaffe),E073,background,3_TxFlnk,0.0013666666666666666
+cortex (Jaffe),E073,background,4_Tx,0.010283333333333334
+cortex (Jaffe),E073,background,5_TxWk,0.07456666666666667
+cortex (Jaffe),E073,background,6_EnhG,0.00375
+cortex (Jaffe),E073,background,7_Enh,0.04596666666666667
+cortex (Jaffe),E073,background,8_ZNF/Rpts,0.0035666666666666668
+cortex (Jaffe),E073,background,9_Het,0.004183333333333333
+cortex (Jaffe),E073,background,10_TssBiv,0.049683333333333336
+cortex (Jaffe),E073,background,11_BivFlnk,0.0144
+cortex (Jaffe),E073,background,12_EnhBiv,0.009033333333333334
+cortex (Jaffe),E073,background,13_ReprPC,0.03896666666666666
+cortex (Jaffe),E073,background,14_ReprPCWk,0.06428333333333333
+cortex (Jaffe),E073,background,15_Quies,0.14345
+cortex (Jaffe),E073,background,none,0.0
+whole blood,E062,core_essential,1_TssA,0.24651365485183033
+whole blood,E062,core_essential,2_TssAFlnk,0.6050261475886113
+whole blood,E062,core_essential,3_TxFlnk,0.0002905287623474724
+whole blood,E062,core_essential,4_Tx,0.005665310865775712
+whole blood,E062,core_essential,5_TxWk,0.04808251016850668
+whole blood,E062,core_essential,6_EnhG,0.005665310865775712
+whole blood,E062,core_essential,7_Enh,0.05142359093550262
+whole blood,E062,core_essential,8_ZNF/Rpts,0.0005810575246949448
+whole blood,E062,core_essential,9_Het,0.0001452643811737362
+whole blood,E062,core_essential,10_TssBiv,0.0010168506682161533
+whole blood,E062,core_essential,11_BivFlnk,0.0008715862870424172
+whole blood,E062,core_essential,12_EnhBiv,0.0008715862870424172
+whole blood,E062,core_essential,13_ReprPC,0.0008715862870424172
+whole blood,E062,core_essential,14_ReprPCWk,0.007408483439860546
+whole blood,E062,core_essential,15_Quies,0.02556653108657757
+whole blood,E062,core_essential,none,0.0
+whole blood,E062,housekeeping,1_TssA,0.22151583442059067
+whole blood,E062,housekeeping,2_TssAFlnk,0.5833708931324872
+whole blood,E062,housekeeping,3_TxFlnk,0.0018503143162139721
+whole blood,E062,housekeeping,4_Tx,0.01470762661605978
+whole blood,E062,housekeeping,5_TxWk,0.061961807614755074
+whole blood,E062,housekeeping,6_EnhG,0.006831929782943898
+whole blood,E062,housekeeping,7_Enh,0.05263907009844621
+whole blood,E062,housekeeping,8_ZNF/Rpts,0.0008302692444549875
+whole blood,E062,housekeeping,9_Het,0.0008065472660419879
+whole blood,E062,housekeeping,10_TssBiv,0.0022773099276479658
+whole blood,E062,housekeeping,11_BivFlnk,0.002324753884473965
+whole blood,E062,housekeeping,12_EnhBiv,0.0008065472660419879
+whole blood,E062,housekeeping,13_ReprPC,0.001945202229865971
+whole blood,E062,housekeeping,14_ReprPCWk,0.012145652947455818
+whole blood,E062,housekeeping,15_Quies,0.03598624125252046
+whole blood,E062,housekeeping,none,0.0
+whole blood,E062,non_essential,1_TssA,0.004053506282934738
+whole blood,E062,non_essential,2_TssAFlnk,0.003445480340494528
+whole blood,E062,non_essential,3_TxFlnk,0.0
+whole blood,E062,non_essential,4_Tx,0.005472233481961897
+whole blood,E062,non_essential,5_TxWk,0.01905147952979327
+whole blood,E062,non_essential,6_EnhG,0.0
+whole blood,E062,non_essential,7_Enh,0.006890960680989056
+whole blood,E062,non_essential,8_ZNF/Rpts,0.0
+whole blood,E062,non_essential,9_Het,0.032833400891771385
+whole blood,E062,non_essential,10_TssBiv,0.02492906364004864
+whole blood,E062,non_essential,11_BivFlnk,0.015403323875152006
+whole blood,E062,non_essential,12_EnhBiv,0.027158492095662748
+whole blood,E062,non_essential,13_ReprPC,0.2201053911633563
+whole blood,E062,non_essential,14_ReprPCWk,0.27401702472638834
+whole blood,E062,non_essential,15_Quies,0.3666396432914471
+whole blood,E062,non_essential,none,0.0
+whole blood,E062,background,1_TssA,0.13049209872010947
+whole blood,E062,background,2_TssAFlnk,0.25000417174228645
+whole blood,E062,background,3_TxFlnk,0.0019356884209121097
+whole blood,E062,background,4_Tx,0.024947018872962103
+whole blood,E062,background,5_TxWk,0.06583009328015753
+whole blood,E062,background,6_EnhG,0.004472107731072805
+whole blood,E062,background,7_Enh,0.03904750780115807
+whole blood,E062,background,8_ZNF/Rpts,0.0029535935388055466
+whole blood,E062,background,9_Het,0.006574665843442856
+whole blood,E062,background,10_TssBiv,0.05793715687419694
+whole blood,E062,background,11_BivFlnk,0.05142923890733726
+whole blood,E062,background,12_EnhBiv,0.021225824753450032
+whole blood,E062,background,13_ReprPC,0.1177599412618686
+whole blood,E062,background,14_ReprPCWk,0.08310110634605436
+whole blood,E062,background,15_Quies,0.14228978590618585
+whole blood,E062,background,none,0.0
+frontal cortex,E073,core_essential,1_TssA,0.857702918542181
+frontal cortex,E073,core_essential,2_TssAFlnk,0.06563089879483085
+frontal cortex,E073,core_essential,3_TxFlnk,0.0008712066211703209
+frontal cortex,E073,core_essential,4_Tx,0.0036300275882096703
+frontal cortex,E073,core_essential,5_TxWk,0.02729780746333672
+frontal cortex,E073,core_essential,6_EnhG,0.002904022070567736
+frontal cortex,E073,core_essential,7_Enh,0.014520110352838681
+frontal cortex,E073,core_essential,8_ZNF/Rpts,0.0
+frontal cortex,E073,core_essential,9_Het,0.0
+frontal cortex,E073,core_essential,10_TssBiv,0.001597212138812255
+frontal cortex,E073,core_essential,11_BivFlnk,0.000726005517641934
+frontal cortex,E073,core_essential,12_EnhBiv,0.00043560331058516046
+frontal cortex,E073,core_essential,13_ReprPC,0.000726005517641934
+frontal cortex,E073,core_essential,14_ReprPCWk,0.0018876143458690286
+frontal cortex,E073,core_essential,15_Quies,0.022070567736314797
+frontal cortex,E073,core_essential,none,0.0
+frontal cortex,E073,housekeeping,1_TssA,0.7926600716437738
+frontal cortex,E073,housekeeping,2_TssAFlnk,0.08606742106137168
+frontal cortex,E073,housekeeping,3_TxFlnk,0.0027044338481246885
+frontal cortex,E073,housekeeping,4_Tx,0.005574929423765806
+frontal cortex,E073,housekeeping,5_TxWk,0.04792066994045501
+frontal cortex,E073,housekeeping,6_EnhG,0.003155172822812137
+frontal cortex,E073,housekeeping,7_Enh,0.02853889402889474
+frontal cortex,E073,housekeeping,8_ZNF/Rpts,0.0006405238061347947
+frontal cortex,E073,housekeeping,9_Het,0.00004744620786183664
+frontal cortex,E073,housekeeping,10_TssBiv,0.0009014779493748962
+frontal cortex,E073,housekeeping,11_BivFlnk,0.00018978483144734657
+frontal cortex,E073,housekeeping,12_EnhBiv,0.00028467724717101987
+frontal cortex,E073,housekeeping,13_ReprPC,0.00040329276682561145
+frontal cortex,E073,housekeeping,14_ReprPCWk,0.002656987640262852
+frontal cortex,E073,housekeeping,15_Quies,0.02825421678172372
+frontal cortex,E073,housekeeping,none,0.0
+frontal cortex,E073,non_essential,1_TssA,0.05450861195542046
+frontal cortex,E073,non_essential,2_TssAFlnk,0.0052684903748733535
+frontal cortex,E073,non_essential,3_TxFlnk,0.0
+frontal cortex,E073,non_essential,4_Tx,0.0014184397163120568
+frontal cortex,E073,non_essential,5_TxWk,0.02188449848024316
+frontal cortex,E073,non_essential,6_EnhG,0.0006079027355623101
+frontal cortex,E073,non_essential,7_Enh,0.01276595744680851
+frontal cortex,E073,non_essential,8_ZNF/Rpts,0.00020263424518743666
+frontal cortex,E073,non_essential,9_Het,0.015602836879432624
+frontal cortex,E073,non_essential,10_TssBiv,0.05734549138804458
+frontal cortex,E073,non_essential,11_BivFlnk,0.024721377912867274
+frontal cortex,E073,non_essential,12_EnhBiv,0.0182370820668693
+frontal cortex,E073,non_essential,13_ReprPC,0.13515704154002026
+frontal cortex,E073,non_essential,14_ReprPCWk,0.20405268490374873
+frontal cortex,E073,non_essential,15_Quies,0.4482269503546099
+frontal cortex,E073,non_essential,none,0.0
+frontal cortex,E073,background,1_TssA,0.46942896238694387
+frontal cortex,E073,background,2_TssAFlnk,0.06729966959249742
+frontal cortex,E073,background,3_TxFlnk,0.0013683543036411574
+frontal cortex,E073,background,4_Tx,0.010296031772519441
+frontal cortex,E073,background,5_TxWk,0.07459199679604846
+frontal cortex,E073,background,6_EnhG,0.003737943463605113
+frontal cortex,E073,background,7_Enh,0.04595667990521644
+frontal cortex,E073,background,8_ZNF/Rpts,0.0035710709875513133
+frontal cortex,E073,background,9_Het,0.004188499148950372
+frontal cortex,E073,background,10_TssBiv,0.04969462336882155
+frontal cortex,E073,background,11_BivFlnk,0.014417781931048293
+frontal cortex,E073,background,12_EnhBiv,0.009044488202115944
+frontal cortex,E073,background,13_ReprPC,0.03899809765377299
+frontal cortex,E073,background,14_ReprPCWk,0.06421252878550211
+frontal cortex,E073,background,15_Quies,0.14319327170176552
+frontal cortex,E073,background,none,0.0
+superior temporal gyrus,E072,core_essential,1_TssA,0.8373782880395292
+superior temporal gyrus,E072,core_essential,2_TssAFlnk,0.08632466211306496
+superior temporal gyrus,E072,core_essential,3_TxFlnk,0.0014532771399505887
+superior temporal gyrus,E072,core_essential,4_Tx,0.004214503705856707
+superior temporal gyrus,E072,core_essential,5_TxWk,0.02514169452114518
+superior temporal gyrus,E072,core_essential,6_EnhG,0.0037785205638715303
+superior temporal gyrus,E072,core_essential,7_Enh,0.01656735939543671
+superior temporal gyrus,E072,core_essential,8_ZNF/Rpts,0.0
+superior temporal gyrus,E072,core_essential,9_Het,0.0
+superior temporal gyrus,E072,core_essential,10_TssBiv,0.0027612265659061183
+superior temporal gyrus,E072,core_essential,11_BivFlnk,0.001017293997965412
+superior temporal gyrus,E072,core_essential,12_EnhBiv,0.00014532771399505885
+superior temporal gyrus,E072,core_essential,13_ReprPC,0.0005813108559802354
+superior temporal gyrus,E072,core_essential,14_ReprPCWk,0.0018892602819357651
+superior temporal gyrus,E072,core_essential,15_Quies,0.01874727510536259
+superior temporal gyrus,E072,core_essential,none,0.0
+superior temporal gyrus,E072,housekeeping,1_TssA,0.7719614636229889
+superior temporal gyrus,E072,housekeeping,2_TssAFlnk,0.10735133595937545
+superior temporal gyrus,E072,housekeeping,3_TxFlnk,0.0019695315836932275
+superior temporal gyrus,E072,housekeeping,4_Tx,0.007427269707180485
+superior temporal gyrus,E072,housekeeping,5_TxWk,0.047316216601015613
+superior temporal gyrus,E072,housekeeping,6_EnhG,0.0032983721702814295
+superior temporal gyrus,E072,housekeeping,7_Enh,0.030065018271558067
+superior temporal gyrus,E072,housekeeping,8_ZNF/Rpts,0.0006881495894831759
+superior temporal gyrus,E072,housekeeping,9_Het,0.0004033980352142755
+superior temporal gyrus,E072,housekeeping,10_TssBiv,0.0010203597361302264
+superior temporal gyrus,E072,housekeeping,11_BivFlnk,0.0002847515542689004
+superior temporal gyrus,E072,housekeeping,12_EnhBiv,0.00011864648094537516
+superior temporal gyrus,E072,housekeeping,13_ReprPC,0.00026102225807982533
+superior temporal gyrus,E072,housekeeping,14_ReprPCWk,0.0023966589150965782
+superior temporal gyrus,E072,housekeeping,15_Quies,0.025437805514688435
+superior temporal gyrus,E072,housekeeping,none,0.0
+superior temporal gyrus,E072,non_essential,1_TssA,0.0524822695035461
+superior temporal gyrus,E072,non_essential,2_TssAFlnk,0.01094224924012158
+superior temporal gyrus,E072,non_essential,3_TxFlnk,0.0
+superior temporal gyrus,E072,non_essential,4_Tx,0.0022289766970618034
+superior temporal gyrus,E072,non_essential,5_TxWk,0.027760891590678825
+superior temporal gyrus,E072,non_essential,6_EnhG,0.0
+superior temporal gyrus,E072,non_essential,7_Enh,0.011550151975683891
+superior temporal gyrus,E072,non_essential,8_ZNF/Rpts,0.0
+superior temporal gyrus,E072,non_essential,9_Het,0.01458966565349544
+superior temporal gyrus,E072,non_essential,10_TssBiv,0.054913880445795336
+superior temporal gyrus,E072,non_essential,11_BivFlnk,0.02998986828774063
+superior temporal gyrus,E072,non_essential,12_EnhBiv,0.033029381965552176
+superior temporal gyrus,E072,non_essential,13_ReprPC,0.12340425531914893
+superior temporal gyrus,E072,non_essential,14_ReprPCWk,0.19939209726443768
+superior temporal gyrus,E072,non_essential,15_Quies,0.4397163120567376
+superior temporal gyrus,E072,non_essential,none,0.0
+superior temporal gyrus,E072,background,1_TssA,0.45026623712630826
+superior temporal gyrus,E072,background,2_TssAFlnk,0.08514580447011301
+superior temporal gyrus,E072,background,3_TxFlnk,0.0012018227645261982
+superior temporal gyrus,E072,background,4_Tx,0.011484084194361447
+superior temporal gyrus,E072,background,5_TxWk,0.07421255570949273
+superior temporal gyrus,E072,background,6_EnhG,0.0034385484651721777
+superior temporal gyrus,E072,background,7_Enh,0.04773907092423509
+superior temporal gyrus,E072,background,8_ZNF/Rpts,0.003555392345056669
+superior temporal gyrus,E072,background,9_Het,0.003939307950391427
+superior temporal gyrus,E072,background,10_TssBiv,0.04757215109582867
+superior temporal gyrus,E072,background,11_BivFlnk,0.020714750705236276
+superior temporal gyrus,E072,background,12_EnhBiv,0.010148725567110117
+superior temporal gyrus,E072,background,13_ReprPC,0.03900916389857951
+superior temporal gyrus,E072,background,14_ReprPCWk,0.05928992304995911
+superior temporal gyrus,E072,background,15_Quies,0.14228246173362935
+superior temporal gyrus,E072,background,none,0.0
+entorhinal cortex,E071,core_essential,1_TssA,0.827596223674655
+entorhinal cortex,E071,core_essential,2_TssAFlnk,0.09832970225127088
+entorhinal cortex,E071,core_essential,3_TxFlnk,0.0011619462599854757
+entorhinal cortex,E071,core_essential,4_Tx,0.0045025417574437185
+entorhinal cortex,E071,core_essential,5_TxWk,0.025562817719680466
+entorhinal cortex,E071,core_essential,6_EnhG,0.003776325344952796
+entorhinal cortex,E071,core_essential,7_Enh,0.01699346405228758
+entorhinal cortex,E071,core_essential,8_ZNF/Rpts,0.0
+entorhinal cortex,E071,core_essential,9_Het,0.0
+entorhinal cortex,E071,core_essential,10_TssBiv,0.0020334059549745823
+entorhinal cortex,E071,core_essential,11_BivFlnk,0.0017429193899782135
+entorhinal cortex,E071,core_essential,12_EnhBiv,0.00029048656499636893
+entorhinal cortex,E071,core_essential,13_ReprPC,0.00043572984749455336
+entorhinal cortex,E071,core_essential,14_ReprPCWk,0.0017429193899782135
+entorhinal cortex,E071,core_essential,15_Quies,0.015831517792302106
+entorhinal cortex,E071,core_essential,none,0.0
+entorhinal cortex,E071,housekeeping,1_TssA,0.7732589868311781
+entorhinal cortex,E071,housekeeping,2_TssAFlnk,0.10974018270257445
+entorhinal cortex,E071,housekeeping,3_TxFlnk,0.0022541226717285564
+entorhinal cortex,E071,housekeeping,4_Tx,0.00690473365761063
+entorhinal cortex,E071,housekeeping,5_TxWk,0.04230632340728437
+entorhinal cortex,E071,housekeeping,6_EnhG,0.004270969272748843
+entorhinal cortex,E071,housekeeping,7_Enh,0.03404911614663661
+entorhinal cortex,E071,housekeeping,8_ZNF/Rpts,0.0007592834262664611
+entorhinal cortex,E071,housekeeping,9_Het,0.00011863803535413454
+entorhinal cortex,E071,housekeeping,10_TssBiv,0.0009491042828330763
+entorhinal cortex,E071,housekeeping,11_BivFlnk,0.0007592834262664611
+entorhinal cortex,E071,housekeeping,12_EnhBiv,0.00004745521414165382
+entorhinal cortex,E071,housekeeping,13_ReprPC,0.00026100367777909597
+entorhinal cortex,E071,housekeeping,14_ReprPCWk,0.0027524024202159212
+entorhinal cortex,E071,housekeeping,15_Quies,0.021568394827381657
+entorhinal cortex,E071,housekeeping,none,0.0
+entorhinal cortex,E071,non_essential,1_TssA,0.02594769916886276
+entorhinal cortex,E071,non_essential,2_TssAFlnk,0.006892357591729171
+entorhinal cortex,E071,non_essential,3_TxFlnk,0.0
+entorhinal cortex,E071,non_essential,4_Tx,0.0010135819987837015
+entorhinal cortex,E071,non_essential,5_TxWk,0.03648895195621326
+entorhinal cortex,E071,non_essential,6_EnhG,0.0
+entorhinal cortex,E071,non_essential,7_Enh,0.01216298398540442
+entorhinal cortex,E071,non_essential,8_ZNF/Rpts,0.0
+entorhinal cortex,E071,non_essential,9_Het,0.010338536387593756
+entorhinal cortex,E071,non_essential,10_TssBiv,0.053314413136022705
+entorhinal cortex,E071,non_essential,11_BivFlnk,0.07338333671194
+entorhinal cortex,E071,non_essential,12_EnhBiv,0.041759578349888506
+entorhinal cortex,E071,non_essential,13_ReprPC,0.1171700790593959
+entorhinal cortex,E071,non_essential,14_ReprPCWk,0.22906953172511657
+entorhinal cortex,E071,non_essential,15_Quies,0.3924589499290493
+entorhinal cortex,E071,non_essential,none,0.0
+entorhinal cortex,E071,background,1_TssA,0.41889703304225867
+entorhinal cortex,E071,background,2_TssAFlnk,0.09344998580802431
+entorhinal cortex,E071,background,3_TxFlnk,0.0012188402651394988
+entorhinal cortex,E071,background,4_Tx,0.011971348905548228
+entorhinal cortex,E071,background,5_TxWk,0.06411433723473528
+entorhinal cortex,E071,background,6_EnhG,0.0029719666739017915
+entorhinal cortex,E071,background,7_Enh,0.05212629188719884
+entorhinal cortex,E071,background,8_ZNF/Rpts,0.003573038585477435
+entorhinal cortex,E071,background,9_Het,0.004157414055064866
+entorhinal cortex,E071,background,10_TssBiv,0.06137612074866846
+entorhinal cortex,E071,background,11_BivFlnk,0.045030304042208605
+entorhinal cortex,E071,background,12_EnhBiv,0.015494298165061026
+entorhinal cortex,E071,background,13_ReprPC,0.03790092331324195
+entorhinal cortex,E071,background,14_ReprPCWk,0.06436478386455846
+entorhinal cortex,E071,background,15_Quies,0.12335331340891256
+entorhinal cortex,E071,background,none,0.0

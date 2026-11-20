@@ -3,6 +3,26 @@
 Owned by the runner seat (`docs/seats/RUNNER.md`): one entry per run, newest first, with its inputs, the
 commit it ran, its job ids, its scale and seed, and its result or its failure with the cause.
 
+## R127 — Lunnon's tissues normalised together from the raw intensities (RM43 item 7), 2026-11-20
+
+- Commit 52ce0b3 and the reader fix after it; `ENTROPY_AGE_LUNNON=joint figures tissues` (job 6541264, test
+  partition, 2 h 11 min with the build and smoke run) and `figures chromatin` (job 6541910, itmz, 30 min),
+  `--scale paper --seed 42`. GEO's `GSE59685_signal_intensities.csv.gz` (methylated, unmethylated, detection p per
+  array): methylated and unmethylated intensities quantile-normalised across all 531 arrays within probe design,
+  beta = M / (M + U + 100), detection p > 0.01 masked. The deposited betas were dasen-normalised per tissue. Against
+  them, per sample: r 0.999, mean absolute difference 0.01.
+- **Same donors, blood minus brain region** (housekeeping dispersion gap; joint, then deposited): frontal cortex
+  −0.105 (−0.127 to −0.081) against −0.092; superior temporal gyrus −0.104 (−0.127 to −0.082) against −0.096;
+  entorhinal cortex −0.081 (−0.104 to −0.054) against −0.072; cerebellum −0.095 (−0.119 to −0.073) against −0.087.
+- **Gap within each tissue** (island x level): blood −0.179 against −0.146; frontal cortex −0.069 against −0.050;
+  superior temporal gyrus −0.068 against −0.044; entorhinal cortex −0.094 against −0.070.
+- **Chromatin matching.** The region's own state removes 12 % (frontal, E073), 18 % (temporal, E072) and 18 %
+  (entorhinal, E071) of the gap, against 5, 8 and 10 % on deposited betas; blood's state removes 35 to 40 % in the
+  brain regions (25 to 27 %); in blood its own state removes 71 % (67 %).
+- Reading: normalising each tissue separately did not make the blood-brain difference; under one normalisation it
+  is slightly larger. This is not a rebuild (no IDATs exist) and slide still goes with tissue, so the same-donor
+  contrast stays batch-confounded and is reported as such.
+
 ## R128 — the human groups of the species analysis with the human annotation (RM43 item 5), 2026-11-20
 
 - Commit 0ccea8d; `ENTROPY_AGE_SPECIES_ANNOTATION=human figures species --scale paper --seed 42`, job 6540997 (test

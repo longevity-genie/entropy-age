@@ -54,7 +54,7 @@ labels; claims C1, C2, C12). Reruns, in order:
 5. **Species shield (M5):** group gaps with chip intercepts: done, R118 (holds); human groups with the human
    annotation: done, R128 (agree).
 6. **SATSA (M8):** done, R119.
-7. **Lunnon (H1):** renormalise all tissues jointly from GEO's raw intensities; slide stays confounded with tissue, so
+7. **Lunnon (H1):** done, R127 (difference holds, slightly larger; still batch-confounded). Was: renormalise all tissues jointly from GEO's raw intensities; slide stays confounded with tissue, so
    the same-donor contrast is reported as batch-confounded whatever the result.
 8. **Tet3 against Tet1 (M9):** done, R120: the arrays share 150 CpG positions (42 at promoters), so shared CpGs cannot
    carry the comparison; on the 314 genes both cover, the opposite signs hold.
