@@ -1,0 +1,4 @@
+group,people,age_min,age_max,cpgs,chips,r2_age_by_chip
+status 0,34,24.0,82.0,86067,12,0.25364104613471883
+status 1,56,26.0,84.0,85247,12,0.0885730664716664
+"everyone, status held",90,24.0,84.0,84572,12,0.02293236331383508

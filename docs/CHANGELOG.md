@@ -4,6 +4,7 @@ Newest first.
 
 ## Unreleased
 
+- 2026-11-20: R132 bulk orbitofrontal cortex (GSE254293): run log, evidence E47, provenance row and Table S4, Supplementary Note 3.
 - 2026-11-20: `orbitofrontal` (RM40): bulk orbitofrontal cortex of 91 people (GSE254293, rebuilt), the age gap per diagnosis group with sex or sex and chip held.
 - 2026-11-20: R131 four tissues of the same adults on shared chips (GSE280465): run log, claims, evidence E46, provenance row and Table S4, Supplementary Note 3.
 - 2026-11-20: `cross_tissue` (RM40): four renewing tissues of the same adults on shared chips (GSE280465, EPIC v2), paired tissue differences with a donor bootstrap.

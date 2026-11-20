@@ -3,6 +3,24 @@
 Owned by the runner seat (`docs/seats/RUNNER.md`): one entry per run, newest first, with its inputs, the
 commit it ran, its job ids, its scale and seed, and its result or its failure with the cause.
 
+## R132 — a third cortex series: bulk orbitofrontal cortex (RM40, GSE254293), 2026-11-20
+
+- Commit b79d37c; `figures orbitofrontal --scale paper --seed 42`, job 6556959 (test partition) after the SeSAMe
+  rebuild of 96 EPIC arrays. Bulk orbitofrontal cortex, 90 people after duplicates and the detection cut, 24 to 84
+  years, 12 chips (chip explains 0.02 of the variance of age over everyone; 0.25 in the 34 with status 0, 0.09 in
+  the 56 with status 1). The record codes diagnosis 0 and 1 without naming them.
+- **Housekeeping gap, everyone with status held** (84,572 CpGs): relative entropy −0.017 SD (−0.030 to −0.008);
+  with chip intercepts −0.010 (−0.022 to −0.001). Dispersion slope −0.037 (−0.050 to −0.027); chip held −0.022
+  (−0.034 to −0.012). Core-essential: −0.024 (−0.043 to −0.003) and −0.016 (−0.037 to +0.010); dispersion slope
+  −0.046 and −0.037.
+- **By status.** Status 0 (34): relative entropy −0.024 (−0.035 to −0.014), chip held −0.005 (−0.015 to +0.006);
+  dispersion slope −0.054 and −0.020. Status 1 (56): −0.004 (−0.020 to +0.008), chip held −0.018 (−0.032 to
+  −0.006); dispersion slope −0.015 and −0.052. The two groups swap places when chip is held, so neither is read
+  on its own.
+- Reading: a third cortex series gives the same size as the others (Jaffe −0.06 deposited and rebuilt, White
+  −0.005 to −0.02, R109): a small gap, about a tenth of the one in monocytes, epidermis or cultured fibroblasts,
+  with an interval that just excludes zero. Bulk tissue, cell mix not held.
+
 ## R131 — four tissues of the same adults on shared chips (RM40, GSE280465), 2026-11-20
 
 - Commit 9464bd5; `figures cross_tissue --scale paper --seed 42` (31 min), then with `ENTROPY_AGE_CHIP=1`; job
