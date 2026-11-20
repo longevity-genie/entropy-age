@@ -3,6 +3,27 @@
 Owned by the runner seat (`docs/seats/RUNNER.md`): one entry per run, newest first, with its inputs, the
 commit it ran, its job ids, its scale and seed, and its result or its failure with the cause.
 
+## R126 — clonal haematopoiesis and the writer syndromes with the bisulfite-conversion index held (RM43 item 4), 2026-11-20
+
+- Commit 6230082; `ENTROPY_AGE_BETAS=sesame ENTROPY_AGE_GCT=1 figures chip` and `figures syndromes`, `--scale paper
+  --seed 42`, job 6540787 (itmz), 42 min with the smoke runs. Each array's SeSAMe conversion index (GCT) enters
+  the group contrast as a covariate. An exclusion cut is not possible: every array of the three series is above
+  1.2 (medians 1.59, 1.47, 1.39; about 1.07 in Jaffe and EPIC-Italy).
+- **Clonal haematopoiesis (GSE315366).** The index does not differ by group (any CH 1.550 against 1.550, p 1.0;
+  DNMT3A p 0.93; TET2 p 0.77), and every effect is the same to the third decimal. The nulls of R99 stand.
+- **Writer syndromes: the index goes with case status.** GSE74432: Sotos 1.534 against 1.420 in controls (+0.93 SD,
+  p 2·10⁻⁵), NSD1 variants +0.67 SD, Weaver +0.76 SD. GSE97362: Kabuki 1.258 against 1.413 (−2.30 SD, p 2·10⁻²⁰),
+  KMT2D variants −0.94 SD, CHARGE −0.47 SD (p 0.04), CHD7 variants +0.08. Cases and controls were not converted
+  alike.
+- **Effects with the index held** (housekeeping F, 5 components; without → with): Sotos −0.066 → −0.068
+  (p 2·10⁻¹³), NSD1 variants −0.053 → −0.058, Weaver −0.054 → −0.054 (p 0.003), CHARGE −0.019 → −0.019 (p 0.007),
+  Kabuki −0.010 → −0.007 (p 0.47), KMT2D variants −0.001 → +0.000. Core-essential: Kabuki −0.022 → −0.027
+  (p 0.009), Weaver −0.035 → −0.036.
+- Reading: the syndrome effects do not move when the index is held, so incomplete conversion as such does not
+  make them. But an index that differs by 0.5 to 2.3 SD between cases and controls says the groups were processed
+  in different batches, and a linear covariate cannot remove everything a batch does. The syndrome results keep
+  their place with that caveat stated; the comparison stays within each series.
+
 ## R116 — CR blood on the mouse recipe (RM43 item 4), 2026-11-20
 
 - `ENTROPY_AGE_BETAS=sesame figures cr_blood_replication --scale paper --seed 42`, job 6537808 (itmz, queued 2 h,

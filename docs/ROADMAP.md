@@ -49,7 +49,8 @@ labels; claims C1, C2, C12). Reruns, in order:
    depends on the map).
 4. **Array recipe (M6, M7):** mouse series with SeSAMe's mouse steps (MM285: T strain mask; Mammal40 in mouse: S and H
    masks); sample QC with expected probes from the species mask, not the data, plus a bisulfite-conversion (GCT) and
-   intensity cut; rerun BXD, Browder, Tet1, Dnmt3a, CR, Huang (done: R99, R106, R107; CR R116, unchanged); check CH and the syndromes against their high GCT.
+   intensity cut; rerun BXD, Browder, Tet1, Dnmt3a, CR, Huang (done: R99, R106, R107; CR R116, unchanged); check CH and the syndromes against their high GCT (done, R126:
+   effects unchanged with the index held; in the syndromes the index differs between cases and controls).
 5. **Species shield (M5):** group gaps with chip intercepts: done, R118 (holds). Left: human groups with the human
    annotation.
 6. **SATSA (M8):** done, R119.

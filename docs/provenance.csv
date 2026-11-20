@@ -30,8 +30,8 @@ Tet3 heterozygous,R13 R15 R16 R36,C4,mouse cortex / striatum,"MMC, GSE223748",Ma
 Tet1 knockout,R35 R99,C4,mouse cortex,"Foong, GSE271375",MM285,rebuilt (R SeSAMe),none,"",one study,none,n.a.,19 of 24 arrays pass
 Tet3 vs Tet1,R120,C4,mouse brain,GSE223748 vs GSE271375,Mammal40 vs MM285,mixed,none,"",across studies and platforms,none,n.a.,"arrays share 150 CpG positions (42 promoter), so no shared-CpG test; opposite signs hold on the 314 genes both cover"
 Dnmt3a W326R,R37 R99,C4,mouse marrow / intestine / liver,"Sarni, GSE324160",MM285,rebuilt (R SeSAMe),none,"",one study,none,n.a.,littermate controls
-Writer syndromes,R18 R95,C5,human blood,"GSE74432, GSE97362",450k,rebuilt (R SeSAMe),none,"",one study each vs own controls,none,n.a.,concordance pools the two series' effects; bisulfite conversion index high (median GCT 1.4-1.6 vs ~1.07)
-Clonal haematopoiesis,R25 R99,C3,human blood,"Basrai, GSE315366",EPIC,rebuilt (R SeSAMe),CH calls,same patients,one study,same samples,same,bisulfite conversion index high (median GCT 1.4-1.6 vs ~1.07)
+Writer syndromes,R18 R95 R126,C5,human blood,"GSE74432, GSE97362",450k,rebuilt (R SeSAMe),none,"",one study each vs own controls; conversion index differs between cases and controls (R126),none,n.a.,concordance pools the two series' effects; bisulfite conversion index high (median GCT 1.4-1.6 vs ~1.07)
+Clonal haematopoiesis,R25 R99 R126,C3,human blood,"Basrai, GSE315366",EPIC,rebuilt (R SeSAMe),CH calls,same patients,one study,same samples,same,bisulfite conversion index high (median GCT 1.4-1.6 vs ~1.07)
 Stem-cell transplant,R57,C3,human blood,"Holland, Mendeley j5krtjfj6y",450k + EPIC batches,deposited (ENmix),none,"",batches pooled with batch terms; pairs within batch,none,n.a.,platform per batch not recorded
 CR mouse blood RRBS,R7 R8,C3,mouse whole blood,"Petkovich, GSE80672",RRBS,deposited,none,"",one study,none,n.a.,""
 CR openness-matched,R55,C3,mouse whole blood,"Petkovich, GSE80672",RRBS,deposited,chromatin accessibility,ImmGen ATAC GSE100738 (6 sorted blood cell types),one study,other study,related (sorted lineages vs whole blood),strain of ImmGen mice vs B6D2F1 not recorded

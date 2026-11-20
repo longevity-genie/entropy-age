@@ -194,8 +194,12 @@ items still open).
   multi-species 40k array, of the probes the species mask keeps). Recorded beside it: the bisulfite-conversion index
   (GCT, near 1 when conversion is complete), mean intensities, dye-bias statistics and each sample's beta quantile
   curve with its distance from the series' median curve (R103). Three human series have a high conversion index
-  (clonal haematopoiesis 1.58, the two writer-syndrome series 1.39-1.47, against about 1.07 elsewhere); their results
-  are rerun with high-index arrays excluded (RM43).
+  (clonal haematopoiesis 1.58, the two writer-syndrome series 1.39-1.47, against about 1.07 elsewhere). Every array of these
+  series is above 1.2, so none can be excluded; the index was instead held as a covariate of the group contrast
+  (R126). In clonal haematopoiesis it does not differ by group (p ≥ 0.77) and no effect changes. In the syndrome
+  series it differs between cases and controls (Sotos +0.93 SD, Kabuki −2.30 SD), which shows cases and controls
+  were not processed alike; the effects are unchanged with the index held (Sotos housekeeping F −0.066 → −0.068,
+  Weaver −0.054 → −0.054, CHARGE −0.019 → −0.019), and are reported with that caveat.
 - **Probe QC and one CpG universe.** The CpGs analysed are those measured in the samples of a contrast, fixed before
   any group comparison, and set and background CpGs come from that same universe. CpGs missing in more than a small
   share of samples (5 % for most array analyses; 10 % for RRBS, the two mouse blood RRBS analyses and Gill) are dropped; the remaining
@@ -379,8 +383,8 @@ type. Generated from `docs/provenance.csv` by `scripts/provenance_table.py`.
 | Tet1 knockout | R35 R99 | C4 | mouse cortex | Foong, GSE271375 | MM285 | rebuilt (R SeSAMe) | none |  | one study | none | n.a. | 19 of 24 arrays pass |
 | Tet3 vs Tet1 | R120 | C4 | mouse brain | GSE223748 vs GSE271375 | Mammal40 vs MM285 | mixed | none |  | across studies and platforms | none | n.a. | arrays share 150 CpG positions (42 promoter), so no shared-CpG test; opposite signs hold on the 314 genes both cover |
 | Dnmt3a W326R | R37 R99 | C4 | mouse marrow / intestine / liver | Sarni, GSE324160 | MM285 | rebuilt (R SeSAMe) | none |  | one study | none | n.a. | littermate controls |
-| Writer syndromes | R18 R95 | C5 | human blood | GSE74432, GSE97362 | 450k | rebuilt (R SeSAMe) | none |  | one study each vs own controls | none | n.a. | concordance pools the two series' effects; bisulfite conversion index high (median GCT 1.4-1.6 vs ~1.07) |
-| Clonal haematopoiesis | R25 R99 | C3 | human blood | Basrai, GSE315366 | EPIC | rebuilt (R SeSAMe) | CH calls | same patients | one study | same samples | same | bisulfite conversion index high (median GCT 1.4-1.6 vs ~1.07) |
+| Writer syndromes | R18 R95 R126 | C5 | human blood | GSE74432, GSE97362 | 450k | rebuilt (R SeSAMe) | none |  | one study each vs own controls; conversion index differs between cases and controls (R126) | none | n.a. | concordance pools the two series' effects; bisulfite conversion index high (median GCT 1.4-1.6 vs ~1.07) |
+| Clonal haematopoiesis | R25 R99 R126 | C3 | human blood | Basrai, GSE315366 | EPIC | rebuilt (R SeSAMe) | CH calls | same patients | one study | same samples | same | bisulfite conversion index high (median GCT 1.4-1.6 vs ~1.07) |
 | Stem-cell transplant | R57 | C3 | human blood | Holland, Mendeley j5krtjfj6y | 450k + EPIC batches | deposited (ENmix) | none |  | batches pooled with batch terms; pairs within batch | none | n.a. | platform per batch not recorded |
 | CR mouse blood RRBS | R7 R8 | C3 | mouse whole blood | Petkovich, GSE80672 | RRBS | deposited | none |  | one study | none | n.a. |  |
 | CR openness-matched | R55 | C3 | mouse whole blood | Petkovich, GSE80672 | RRBS | deposited | chromatin accessibility | ImmGen ATAC GSE100738 (6 sorted blood cell types) | one study | other study | related (sorted lineages vs whole blood) | strain of ImmGen mice vs B6D2F1 not recorded |
