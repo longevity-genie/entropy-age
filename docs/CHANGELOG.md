@@ -4,6 +4,7 @@ Newest first.
 
 ## Unreleased
 
+- 2026-11-24: jena_rrbs and mouse_atlas_rrbs also write gaps_off_floor: the matched gaps on CpGs whose young level lies between 10 and 90 %, with their own strata and an animal bootstrap on a separate random stream (the existing tables are unchanged). First step of taking the non-blood, non-brain tissues through the follow-up analyses (Anton asked).
 - 2026-11-23: R141b: mouse tissues on CpGs covered in every library (nothing filled): lung −0.09 (resolved), heart −0.05 and cortex −0.01 (not resolved), liver without estimate (518 CpGs); the paper sentence and run log replace the R141 numbers, which used filled values.
 - 2026-11-23: reruns after the interval fix: neuronal gap with chip held −0.030, donors −0.102 to +0.037 (without chip −0.091 to −0.008); culture intervals −0.160 to −0.072 (telomerase fibroblasts), −0.128 to −0.052 (astrocytes), −0.089 to −0.080 (astrocytes with telomerase); paper and run log corrected.
 - 2026-11-23: code review (independent agent) fixes, part 1: donor and culture resampling intervals were divided by each resample's own SD, which pulls them toward zero; they are now scaled by the full sample's SD (series.donor_intervals, astrocyte_passage.culture_bootstrap, musc_single_cell). The shared runner also counts distinct donors for the degrees-of-freedom guard, raises on a title without a donor or a missing donor id, refuses mixed array platforms, and uses one random stream per group and design. Tests: the donor interval brackets its point estimate; titles without a donor are refused.

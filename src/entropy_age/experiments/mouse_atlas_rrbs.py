@@ -100,7 +100,7 @@ def run(ctx: Context) -> list[Path]:
     isl = islands(rr.track(TRACKS[2]))
     samples_all = parse_names([p.name for p in sorted(raw.glob("*.cov.gz"))])
     rng = ctx.rng(340_000)
-    gaps, sizes = [], []
+    gaps, sizes, off_floor = [], [], []
     for (tissue,), samples in samples_all.group_by("tissue", maintain_order=True):
         samples = samples.unique(subset="mouse", keep="first", maintain_order=True).sort("age_months", "sample")
         ages = samples["age_months"].to_numpy()
@@ -154,10 +154,37 @@ def run(ctx: Context) -> list[Path]:
         gaps.append(
             scaled_intervals(point, pl.DataFrame(boot), ["metric", "group"]).with_columns(tissue=pl.lit(tissue))
         )
+        off_floor.append(
+            band_gaps(
+                x, ages, cov, m.features, island, members, young, ctx.rng(341_000), N_BOOT[str(ctx.scale.name)]
+            ).with_columns(tissue=pl.lit(tissue))
+        )
     write_table(pl.DataFrame(sizes, infer_schema_length=None), out / "sizes")
     if gaps:
         write_table(pl.concat(gaps), out / "gaps")
+        write_table(pl.concat(off_floor), out / "gaps_off_floor")
     return []
+
+
+def band_gaps(x, ages, cov, features, island, members, young, rng, n_boot: int, lo=0.1, hi=0.9) -> pl.DataFrame:
+    """The matched gaps on the CpGs whose young level lies between ``lo`` and ``hi`` (off the 0 % and 100 % floors),
+    with their own strata and a bootstrap of animals scaled by the full sample's SD."""
+    level = np.nanmean(x[young], axis=0)
+    keep = (level >= lo) & (level <= hi)
+    kept = [f for f, k in zip(features, keep, strict=True) if k]
+    xb = x[:, keep]
+    strata = np.char.add(island[keep].astype(str), baseline_strata_of(xb[young]))
+    inside = members.filter(pl.col("feature").is_in(kept))
+    point = pl.DataFrame(tissue_gaps(xb, ages, cov, kept, strata, inside))
+    boot = []
+    for k in range(n_boot):
+        rows = np.sort(rng.choice(x.shape[0], size=x.shape[0], replace=True))
+        if (ages[rows] == ages.min()).sum() < 2 or np.unique(ages[rows]).size < 2:
+            continue
+        boot += [{"boot": k, **r} for r in tissue_gaps(xb[rows], ages[rows], cov[rows], kept, strata, inside)]
+    return scaled_intervals(point, pl.DataFrame(boot), ["metric", "group"]).with_columns(
+        cpgs=pl.lit(int(keep.sum())), band=pl.lit(f"{lo:g}-{hi:g}")
+    )
 
 
 def baseline_strata_of(young: np.ndarray) -> np.ndarray:

@@ -134,7 +134,7 @@ def run(ctx: Context) -> list[Path]:
     readers = {"colon": read_colon, "hippocampus": read_hippocampus}
     turnover = {"colon": "renewing", "hippocampus": "post-mitotic"}
     rng = ctx.rng(330_000)
-    gaps, boots, sizes, measured = [], {}, [], {}
+    gaps, boots, sizes, measured, off_floor = [], {}, [], {}, []
     for tissue, (a, b) in files.items():
         betas, samples = readers[tissue](a, b, prom)
         betas = present_enough(betas)
@@ -176,6 +176,13 @@ def run(ctx: Context) -> list[Path]:
                 tissue=pl.lit(tissue), turnover=pl.lit(turnover[tissue])
             )
         )
+        from entropy_age.experiments.mouse_atlas_rrbs import band_gaps
+
+        off_floor.append(
+            band_gaps(
+                x, ages, cov, m.features, island, members, young, ctx.rng(331_000), N_BOOT[str(ctx.scale.name)]
+            ).with_columns(tissue=pl.lit(tissue))
+        )
         boots[tissue] = boot.join(
             point.select("metric", "group", pl.col("sd").alias("sd_full")), on=["metric", "group"]
         )
@@ -213,5 +220,6 @@ def run(ctx: Context) -> list[Path]:
         )
     write_table(pl.DataFrame(sizes), out / "sizes")
     write_table(gaps, out / "gaps")
+    write_table(pl.concat(off_floor), out / "gaps_off_floor")
     write_table(pl.DataFrame(contrast).sort("metric", "group"), out / "contrast")
     return []
