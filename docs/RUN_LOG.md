@@ -29,6 +29,19 @@ commit it ran, its job ids, its scale and seed, and its result or its failure wi
 - Reading: a second immortalised cell type carries the gap per doubling, with chip held, a little below primary
   astrocytes (−0.102, R133) and fibroblasts. Three replicate lines of one source; no arrested control.
 
+## Reruns after the interval fix (991f93d), 2026-11-23
+
+- A code review found that the donor and culture resampling intervals of R138, R140 and R142 divided each resample
+  by its own SD, which pulls them toward zero. They are now scaled by the full sample's SD; point estimates are
+  unchanged. The intervals given in the entries below for these three runs are superseded by:
+- **R142, neurons (82 donors), housekeeping.** Without chip −0.051, donors −0.091 to −0.008; with chip −0.030, donors
+  −0.102 to +0.037. Controls (28): −0.030, −0.085 to +0.001; with chip not estimable.
+- **R138, culture bootstrap, housekeeping.** Telomerase fibroblasts −0.160 to −0.072; mortal cells on shared chips
+  −0.036 to −0.011; earlier batch −0.002 to +0.158; astrocytes −0.128 to −0.052; astrocytes with telomerase −0.089
+  to −0.080.
+- **R140, single muscle stem cells, divergence.** Housekeeping −0.056 (−0.094 to −0.027); core-essential −0.074
+  (−0.141 to −0.010); with expression matched −0.031 (−0.062 to +0.005) and −0.058 (−0.113 to +0.015).
+
 ## R142 — the shared array age-series runner, regression on two series, 2026-11-23
 
 - Commit 6a3bc03; `figures series_neurons`, `figures series_brain_regions` (description files in `config/series`);

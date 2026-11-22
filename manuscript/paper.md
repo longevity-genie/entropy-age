@@ -257,8 +257,8 @@ donors, only two under 60) gave −0.044 (−0.108 to +0.015). A third series ho
 frontal cortex of 82 donors aged 23 to 77 (GSE112179; EPIC; one array per donor; 28 controls, the others with
 schizophrenia or bipolar disorder, diagnosis held). Their housekeeping gap was −0.051 SD (−0.060 to −0.042), and
 −0.030 (−0.040 to −0.020) with chip intercepts; the core-essential gap, −0.043, was not distinguishable from zero
-with chip held (−0.009, −0.028 to +0.014). Those intervals resample genes. Resampling donors, the gap without chip intercepts stays below zero (−0.060 to
-−0.007), but with chip intercepts it is not resolved (−0.047 to +0.022). Neurons therefore show a small gap that
+with chip held (−0.009, −0.028 to +0.014). Those intervals resample genes. Resampling donors, the gap without chip intercepts stays below zero (−0.091 to
+−0.008), but with chip intercepts it is not resolved (−0.102 to +0.037). Neurons therefore show a small gap that
 cannot be separated from chip in this series. In the 28 controls alone, age is largely fixed by chip (18 % of
 its variance is left within chips), so their gap cannot be estimated with chip held.
 
@@ -280,8 +280,8 @@ cells of the telomerase line, (−0.102 SD; see the section on expression): −0
 immortalised with telomerase (GSE268145, 20 cultures), which divides without approaching senescence (the line's
 mortal cells on the same chips gave −0.026, −0.036 to −0.018, and an earlier batch on other chips +0.087), and −0.102
 (−0.111 to −0.094) in fetal astrocytes (GSE202554, 45 cultures of two donors, 37 from one, over 15 doublings); chip intercepts left both unchanged (−0.138 and −0.101). Those intervals resample genes with the cultures held fixed; resampling cultures within each line
-gives −0.139 to −0.097 for the telomerase line and −0.106 to −0.082 for the astrocytes. Astrocytes immortalised with telomerase (GSE226079; 43 cultures in three
-replicate lines, 29 to 72 doublings) gave −0.083 (−0.092 to −0.074; −0.088 to −0.080 resampling cultures), and −0.084 with chip
+gives −0.160 to −0.072 for the telomerase line and −0.128 to −0.052 for the astrocytes. Astrocytes immortalised with telomerase (GSE226079; 43 cultures in three
+replicate lines, 29 to 72 doublings) gave −0.083 (−0.092 to −0.074; −0.089 to −0.080 resampling cultures), and −0.084 with chip
 intercepts; 81 % of the
 spread in doublings lies within line and chip. None of the three series has an arrested control, and each is one cell line, three replicate lines of one immortalisation, or two donors (Supplementary Note 3).
 
