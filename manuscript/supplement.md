@@ -204,6 +204,12 @@ not interpretable. The gap of the absolute coefficient is negative in every trea
 −0.12 SD), including those without drift; it reflects lower array noise at these promoters and is not read as a
 shield.
 
+**Arrays passing the 90 % detection cut (passing of rebuilt).** GSE279509 524 of 749; GSE252501 232 of 232; GSE66351
+189 of 190; GSE197723 313 of 316; E-MTAB-15859 79 of 79; GSE283951 85 of 87; GSE112179 99 of 100; GSE227160 47 of
+48; E-MTAB-8993 61 of 65; GSE280465 saliva 21 of 37; Jaffe adult controls 208 of 213; EPIC-Italy 839 of 845; BXD
+liver 288 of 338; Browder mouse tissues 155 of 166; Tet1 19 of 24; Dnmt3a 72 of 72; Huang
+mouse tissues 581 of 583.
+
 **Blood with the neutrophil chromatin map (R121).** Whole blood has no reference map of its own; the analyses use
 mononuclear cells (Roadmap E062). With neutrophils (E030) in its place: loss per decade at active-TSS island
 promoters, set minus matched, core-essential +0.0053 (+0.0026 to +0.0081; E062 +0.0063), housekeeping +0.0041
@@ -260,7 +266,7 @@ items still open).
   1.24.0, R 4.4.3), following SeSAMe's recommendation per platform: QCDPB for human 450k, EPIC and EPIC v2; TQCDPB for
   the mouse MM285 design (T masks probes hit by the inferred strain's variants); SHCDPB for the 40k mammalian array in
   mouse (S the species mask, H cg/ch probes only). The steps applied are recorded for each array. The mouse series were
-  first rebuilt with the human recipe and are being rebuilt again (RM43). SATSA and Gill were rebuilt with methylprep
+  first rebuilt with the human recipe and were then rebuilt with the recipe of their platform. SATSA and Gill were rebuilt with methylprep
   1.7.1, labelled as such; on Jaffe's cortex the two implementations agreed within 0.004 SD (R93). Cohorts without
   raw IDATs keep the authors' processing and are marked wherever reported.
 - **Sample flow.** Per series: deposited samples, samples with both IDAT channels, samples passing QC, samples in each
@@ -302,7 +308,7 @@ items still open).
 
 | figure | file | content |
 |---|---|---|
-| S1 | `docs/figures/global_fdr.png` | one BH correction over 7,626 tests (R71) |
+| S1 | `docs/figures/global_fdr.png` | one BH correction over 13,955 tests |
 | S2 | `docs/figures/drift_hotspots.png` | region classes of the fastest-rising spread (R72) |
 | S3 | `docs/figures/mmc_interventions.png` | consortium interventions incl. Tet3 (R13, R15, R16) |
 | S4 | `docs/figures/tet1_cortex.png` | Tet1 knockout and catalytic-dead cortex (R35) |
@@ -384,7 +390,7 @@ Source: `docs/PROVENANCE.md`, `docs/extension.md`.
 | Probe design and mask | C1 | R20, R68b | `data/output/probe_robustness/gaps.csv` |
 | Jaffe from IDATs | C1 | R61, R68b | `data/output/reprocessed_jaffe/gaps.csv`, `per_cpg_agreement.csv` |
 | Read-level discordance | C1 | R50, R51, R53 | `data/output/read_level/` |
-| Global FDR, 7,626 tests | all | R71 | `data/output/global_fdr/by_folder.csv` |
+| Global FDR, 13,955 tests | all | R71 | `data/output/global_fdr/by_folder.csv` |
 | GTEx tissues | C1 | R68d | `data/output/gtex_tissues/point_estimates.csv` |
 | Mouse array 11 tissues, renewing − post-mitotic −0.19 | C1, C2 | R68a | `data/output/mouse_tissues/point_estimates.csv`, `contrasts.csv` |
 | RRBS and BXD gaps | C1 | R73 | `data/output/meer_tissues/aging_gaps.csv`, `mouse_rrbs_tissues/aging_gaps.csv`, `interventions/aging_gaps.csv`, `bxd_liver/aging_gaps.csv` |

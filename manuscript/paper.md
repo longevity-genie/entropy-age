@@ -86,7 +86,9 @@ pipelines, over different age ranges (19-101 and 21-85 years), with neuron fract
 in blood; the difference is therefore descriptive. Restricted to the ages both cohorts cover and with blood-cell
 fractions held, it is −0.07 (−0.13 to −0.01); with the cortex arrays rebuilt from raw files, −0.07 (−0.15 to +0.01). Other drift measures gave the same signs: the absolute
 age slope of the mean (blood housekeeping −0.16 SD, cortex −0.05) and between-person dispersion (−0.29, −0.07).
-A third cortex series, bulk orbitofrontal cortex of 90 people aged 24 to 84 on the EPIC array (GSE254293, rebuilt
+A second cortex series (GSE252501; dorsolateral prefrontal cortex of 52 donors on the EPIC array, processed from
+raw files, depression diagnosis held) gave −0.005 SD (−0.017 to +0.006), and −0.013 (−0.024 to −0.003) with chip
+intercepts. A third cortex series, bulk orbitofrontal cortex of 90 people aged 24 to 84 on the EPIC array (GSE254293, rebuilt
 from raw files, diagnosis held), gave a small housekeeping gap of the same sign: −0.017 SD (−0.030 to −0.008), and
 −0.010 (−0.022 to −0.001) with chip intercepts, a separate term for each array slide (chip) on which samples were
 hybridised together, which removes differences between slides (Supplementary Note 3).
@@ -142,8 +144,9 @@ housekeeping and core-essential promoters than at look-alikes, in white blood ce
 and within 27 purified cell-type groups (−0.060, −0.029; all p ≤ 0.002; Supplementary Fig. S11). The shield is therefore not an averaging artefact of
 arrays.
 
-Finally, we applied one Benjamini-Hochberg correction to every raw p-value of the study (7,626 tests). Of these, 3,662 survived; the largest surviving p was 0.024. Every shield
-gap survived (Supplementary Fig. S1).
+Finally, we applied one Benjamini-Hochberg correction to every raw p-value of the study (13,955 tests). Of these, 6,971 survived; the largest surviving p was 0.025. The
+shield gaps in blood, in cortex and across species survived; the difference between glia and neurons (p 0.025,
+below) sits at that threshold (Supplementary Fig. S1).
 
 ![Figure 2](../docs/figures/placebo_sets.png)
 
@@ -217,28 +220,31 @@ donor resamples.
 ### The shield goes with cell division
 
 **In series where batch cannot explain the contrast, the shield is larger where cells divide; neurons carry a
-small gap, and cultures kept from dividing show neither drift nor shield.** The series in this section provide raw data, use one platform per contrast and spread the contrast
-across chips or flowcells (Supplementary Note 4); the array series were processed from raw files.
+small gap, and cultures kept from dividing show neither drift nor shield (Fig. 5).** The series in this section provide raw data, use one platform per contrast and spread the contrast
+across chips or flowcells (Supplementary Table S4); the array series were processed from raw files, except the
+mammalian consortium's, which has none.
 
 *A renewing and a post-mitotic tissue.* Colon and hippocampus of one cohort of male C57BL/6J mice aged 3 to 28 months
-(82 and 83 animals; RRBS) ran on the same four flowcells, each holding every age. The housekeeping gap was −0.19 SD
+(82 and 83 animals; RRBS) ran on the same four flowcells, each holding every age (a fifth held colon only). The housekeeping gap was −0.19 SD
 in colon (−0.29 to −0.17) and −0.08 in hippocampus (−0.09 to −0.07): a difference of −0.11 (−0.22 to −0.09). The
 core-essential gap differed likewise (−0.17 against −0.07), and non-essential promoters drifted more than their
 matched CpGs in both, most in colon (+0.54 against +0.16). On the mammalian consortium's array, a different series from the 11 tissues above, with chip
 intercepts in every age slope, mouse tissues ordered the same way: lung −0.49, spleen −0.45, liver −0.35, blood −0.32
 and skin −0.22, against cortex −0.06, heart −0.04, kidney −0.04, hippocampus +0.03, cerebellum +0.04 and striatum
-+0.10 (19 to 903 animals per tissue; Supplementary Note 3).
++0.10 (19 to 903 animals per tissue).
 
-*Glia and neurons of the same brains.* In nuclei sorted from human cortex (EPIC; ages 18-108), the shield replicated
-in unsorted nuclei (housekeeping −0.05 SD, 148 donors) and was −0.08 in NeuN−/SOX10− glia, −0.03 in the
-oligodendrocyte lineage and −0.02 in neurons, where it was not distinguishable from zero once chip was held. In the
+*Glia and neurons of the same brains.* In nuclei sorted from human cortex (EPIC; ages 18-95), the shield replicated
+in unsorted nuclei (housekeeping −0.053 SD, −0.062 to −0.043; 148 donors) and was −0.077 in NeuN−/SOX10− glia
+(−0.086 to −0.068; 89 donors), −0.034 in the oligodendrocyte lineage (−0.045 to −0.020; 127) and −0.021 in neurons
+(−0.032 to −0.009; 130), where it was not distinguishable from zero once chip was held (−0.008, −0.019 to +0.003). In the
 65 donors with both fractions, glia exceeded neurons by −0.055 (−0.121 to −0.007; donor bootstrap of both fractions
 together, p 0.025); the oligodendrocyte lineage did not (−0.003). A second sorted series on the 450k array (31
 donors, only two under 60) gave −0.044 (−0.108 to +0.015). A third series holds neurons only: NeuN+ nuclei from the
 frontal cortex of 99 donors aged 23 to 77 (GSE112179; EPIC; 33 controls, the others with schizophrenia or bipolar
 disorder, diagnosis held). Their housekeeping gap was −0.054 SD (−0.063 to −0.046), and −0.034 (−0.043 to −0.024)
 with chip intercepts; the core-essential gap, −0.046, was not distinguishable from zero with chip held (−0.017,
-−0.036 to +0.004). Neurons therefore carry a gap, smaller than that of unsorted nuclei and of glia. In the 33
+−0.036 to +0.004). Neurons therefore carry a gap; with chip held it is smaller than that of unsorted nuclei and of glia in the first
+series. In the 33
 controls alone, age is largely fixed by chip (18 % of its variance is left within chips), so their gap cannot be
 estimated with chip held.
 
@@ -257,12 +263,12 @@ separate series, fibroblasts held confluent and non-dividing were sampled monthl
 whose arrays were not ordered by time along the chip showed no drift (0.88 and 0.86 of the value under reordered
 months), and no gap exceeded 0.02 SD. The approach to senescence is not needed. Two further cultured series gave a housekeeping gap per doubling of the same sign and size as untreated
 fibroblasts (−0.102 SD; see the section on expression): −0.136 SD (95 % interval −0.143 to −0.129) in a foreskin fibroblast line
-immortalised with telomerase (GSE268145, 20 cultures), which divides without approaching senescence, and −0.102
+immortalised with telomerase (GSE268145, 20 cultures), which divides without approaching senescence (the line's
+mortal cells on the same chips gave −0.026, −0.036 to −0.018, and an earlier batch on other chips +0.087), and −0.102
 (−0.111 to −0.094) in fetal astrocytes (GSE202554, 45 cultures of two donors, 37 from one, over 15 doublings); chip intercepts left
 both unchanged (−0.138 and −0.101). Astrocytes immortalised with telomerase (GSE226079; 43 cultures in three
 replicate lines, 29 to 72 doublings) gave −0.083 (−0.092 to −0.074), and −0.084 with chip intercepts; 81 % of the
-spread in doublings lies within line and chip. None of the three series has an arrested control, and each is one
-cell line or two donors (Supplementary Note 3).
+spread in doublings lies within line and chip. None of the three series has an arrested control, and each is one cell line, three replicate lines of one immortalisation, or two donors (Supplementary Note 3).
 
 *Renewing tissues of the same adults.* Among tissues that all renew, no ordering was resolved. Buccal swabs, dried
 blood spots and blood mononuclear cells of the same adults aged 19 to 70 (GSE280465, EPIC v2, rebuilt; tissues of
@@ -276,6 +282,15 @@ These lines agree: promoter drift in culture follows division and not time, and 
 there, more of it the more cells divide. Each has limits (two tissues of one strain; one glial fraction of two
 separating from neurons; replicative and arrested cultures from different experiments, with donors and doublings
 not recorded; one immortalised line and two astrocyte donors), and none separates selection among dividing cells from maintenance that is coupled to replication.
+
+![Figure 5](../docs/figures/division_shield.png)
+
+**Figure 5. The shield goes with cell division.** Housekeeping promoter CpGs minus matched CpGs (SD of the
+relative-entropy slope; 95 % intervals), in series where the compared groups share chips or flowcells. Blue: cells
+that divide; orange: cells that do not. Mouse colon and hippocampus of one cohort; glia and neurons sorted from the same human cortices, and
+neurons of a second series with chip intercepts; human cells in culture; confluent fibroblasts kept from dividing
+(the two donors whose arrays are not ordered by time along the chip). Slopes are on age in tissues and nuclei, on
+population doublings in culture and on months in confluent cultures, so sizes are compared within a block.
 
 ### Tet3 loss weakens the shield in mouse brain; Tet1 loss, in another study, does not
 
@@ -317,14 +332,15 @@ were not processed alike; the effects do not change when the index is held (Supp
 in cortex the reference acts as a generic label of promoter activity.** We added each promoter CpG's 15-state chromHMM state (Roadmap Epigenomics Consortium 2015) to the matching. In blood,
 80-85 % of essential and housekeeping CpGs sit in active TSS states against 38 % of background CpGs. On relative
 entropy, blood's own state (E062 mononuclear cells, or E030 neutrophils) removed 83-91 % of the housekeeping gap;
-cortex's state removed only 28 % of blood's gap (Fig. 5). The reverse did not hold: blood's state removed as much of the cortex gap as cortex's own (29 % against 25 %). In Lunnon's brain regions, each matched with its nearest Roadmap brain map (frontal cortex E073, superior temporal
+cortex's state removed only 28 % of blood's gap (Fig. 6). The reverse did not hold: blood's state removed as much of the cortex gap as cortex's own (29 % against 25 %). In Lunnon's brain regions, each matched with its nearest Roadmap brain map (frontal cortex E073, superior temporal
 gyrus E072, entorhinal cortex E071; the cerebellum, which has no map, left out), the region's own state removed 5-10 %
 of the dispersion gap and blood's state 25-27 % (12-18 % and 35-40 % with the tissues normalised together). Blood's reference is mononuclear cells (E062), which lack the
 neutrophils that make up most of whole blood; E030 (neutrophils) is the second blood reference, and with both maps
 held at once 96 % of the housekeeping gap was removed (−0.006 SD left, interval reaching zero). The gain and loss rates, the drift hotspots and
 the essentiality gradient in blood read the same with the neutrophil map in place of the mononuclear one
 (Supplementary Note 3). In cortex, the bulk state removed 25 % and sorted neuron
-and glia accessibility (Rizzardi et al. 2019) together with the state 56 %. On dispersion, the shares were 83-88 %
+and glia accessibility (Rizzardi et al. 2019) together with the state 56 %. With the decile of the gene's expression in GTEx frontal cortex also held, on the
+arrays processed from raw files, the gap fell from −0.082 to −0.019 SD (−0.030 to −0.005; 77 % removed). On dispersion, the shares were 83-88 %
 in blood and 22-46 % in cortex.
 
 To test for a remainder beyond chromatin, we regressed each promoter CpG's drift on its gene's DepMap essentiality among broadly
@@ -340,9 +356,9 @@ and 0.46× (Supplementary Fig. S2). In cortex every class lay between 0.71× and
 essential promoters. Rising spread in cortex is close to uniform; in blood it is concentrated in the known Polycomb
 programme and kept out of active chromatin, of which the shield is the essential-gene side.
 
-![Figure 5](../docs/figures/chromatin_match.png)
+![Figure 6](../docs/figures/chromatin_match.png)
 
-**Figure 5. Chromatin matching.** Housekeeping, core-essential and non-essential gaps (SD) matched on island × young
+**Figure 6. Chromatin matching.** Housekeeping, core-essential and non-essential gaps (SD) matched on island × young
 level, then with the tissue's own Roadmap chromHMM state, another tissue's state, and (cortex) sorted neuron and glia
 accessibility. (a) State
 composition of set and background promoter CpGs in blood (E062). (b) Hannum blood and Jaffe cortex, dispersion slope; (c) Lunnon's tissues, between-person dispersion; (d) share of the housekeeping dispersion-slope gap removed. 95 % intervals resample the set's genes. Panels b-d show the dispersion measures; the relative-entropy shares in the text (blood 83-91 %, cortex 25 % and 56 %) differ from them and are listed in Supplementary Table S2.
@@ -350,7 +366,7 @@ composition of set and background promoter CpGs in blood (E062). (b) Hannum bloo
 ### The shield follows promoter expression measured in the same samples
 
 **Where expression and methylation come from the same samples, the gene's own expression accounts for 71 to 82 % of
-the housekeeping gap, and genes outside every gene set are shielded in step with their expression.** Reference
+the housekeeping gap, and genes outside every gene set are shielded in step with their expression (Fig. 7).** Reference
 chromatin maps come from other people's cells. Three data sets carry both layers from the same material: sorted
 monocytes, cultured fibroblasts and epidermis. The CD14+ monocytes of 1,202 people (MESA; Reynolds et al. 2014) have
 expression arrays of the same samples. Adding the decile of each gene's own expression to the matching
@@ -372,6 +388,15 @@ gap went from −0.058 and −0.054 to zero, and outside the gene sets drift fel
 −0.07 and −0.09). The chromatin state of keratinocytes removed about half of the gap (51 % and 47 %), expression and
 state together 82 % and 80 %. Chip intercepts changed nothing (−0.102 to −0.028; −0.110 to −0.034).
 
+![Figure 7](../docs/figures/expression_shield.png)
+
+**Figure 7. The shield follows expression measured in the same samples.** (a) Housekeeping promoter CpGs minus
+matched CpGs (SD of the relative-entropy slope; 95 % intervals from resampling the set's genes), with CpGs matched
+on island status and starting level (grey) and with the decile of the gene's own expression in the same samples
+added (orange); the share of the gap removed is printed. Slopes are on age in monocytes and epidermis and on
+population doublings in fibroblasts. (b) Genes outside every gene set: drift of their promoter CpGs relative to
+matched CpGs, by decile of the gene's expression in the same samples (mean and 95 % interval).
+
 ### The shield within one person over time
 
 **Within the same people followed for up to 20 years, housekeeping CpGs change less in direction than look-alikes.**
@@ -380,7 +405,7 @@ batch regressed out, and on them the cross-sectional shield almost vanished (|me
 series from its 1,072 raw arrays (444 people, 628 consecutive within-person pairs). Each person's change between two
 draws was split into the change everyone makes and the person's own departure from it (Methods). Housekeeping CpGs
 changed less in direction than look-alikes (−0.14 SD, p 0.001; deposited betas −0.002, p 0.67), sat closer to the
-measurement floor (−0.073) and diverged slightly more slowly (−0.014, p 0.016; Fig. 6). Across people, the rebuilt
+measurement floor (−0.073) and diverged slightly more slowly (−0.014, p 0.016; Fig. 8). Across people, the rebuilt
 series showed a cross-sectional shield like other blood cohorts (relative entropy −0.23 SD, dispersion −0.36,
 |mean| −0.11). On the deposited betas, the per-person shield share F fell by 0.14 per decade within a person
 (−0.23 to −0.05), matching the between-person slope (−0.13). On the rebuilt betas it fell by 0.08 (−0.18 to +0.02), against
@@ -388,9 +413,9 @@ series showed a cross-sectional shield like other blood cohorts (relative entrop
 rebuilt series does not resolve the within-person decline. Processing and the pairs retained both differ between versions, so the size within a person is not
 settled; its direction agrees with every cross-sectional cohort.
 
-![Figure 6](../docs/figures/satsa_idats.png)
+![Figure 8](../docs/figures/satsa_idats.png)
 
-**Figure 6. Change within one person in SATSA.** (a) Within-person gaps in the series rebuilt from raw arrays: core-essential, housekeeping and non-essential CpGs minus look-alikes (SD) for directed change, divergence per year and the measurement floor (permutation p in the text). (b) Per-person drift B, shield share F and signed shift S per decade of age, within a person (circles, 95 % interval) and between people (squares), rebuilt series.
+**Figure 8. Change within one person in SATSA.** (a) Within-person gaps in the series rebuilt from raw arrays: core-essential, housekeeping and non-essential CpGs minus look-alikes (SD) for directed change, divergence per year and the measurement floor (permutation p in the text). (b) Per-person drift B, shield share F and signed shift S per decade of age, within a person (circles, 95 % interval) and between people (squares), rebuilt series.
 
 ### What the shield is not
 
@@ -416,8 +441,8 @@ haematopoietic proliferation. It weakened the shield in one mouse blood series, 
 openness was matched, and the effect was absent in liver. A second, short series in young mice pointed the other way without reaching significance once
 the test reassigned treatment within array chips and refitted each animal's reference (core-essential shield share
 −0.09, p 0.16; on arrays rebuilt from IDATs −0.08, p 0.36; Supplementary Note 3); its start and end controls sat on different chips, so its 12-week aging
-contrast cannot be told from chip. The turnover ordering on the mouse array, which a selection account would predict, did not hold once array chip
-was held (above). None of the observations in this paragraph favours selection and none excludes it; the
+contrast cannot be told from chip. The turnover ordering in Huang's 11 mouse tissues, which a selection account would predict, did not hold once array
+chip was held (section on tissues, platforms and species). None of the observations in this paragraph favours selection and none excludes it; the
 contrasts in which the shield goes with division are those of the section on cell division.
 
 *Tuning to lifespan.* Long-lived species drift less at unprotected CpGs, as found for epigenetic disorder and methylation rates
@@ -452,7 +477,7 @@ EPIC-Italy (GSE51032; Durso et al. 2017) holds blood drawn at enrolment from 845
 shield share F and eight published clocks. With age and sex held, B predicted breast cancer (odds ratio per SD 1.43,
 1.19-1.71, p 10⁻⁴), and more strongly for cases diagnosed over 2 years after the draw (1.59, 1.31-1.93), the
 opposite of what a tumour present at the draw would produce. In a women-only model with B centred within chip, the odds ratios were 1.62 over 2 and 1.66 over 5 years. With mean methylation, 11 cell fractions and
-chip held, the odds ratio for cases diagnosed over 2 years later was 1.44 (1.17-1.76, p 6·10⁻⁴; Fig. 7); cases were balanced
+chip held, the odds ratio for cases diagnosed over 2 years later was 1.44 (1.17-1.76, p 6·10⁻⁴; Fig. 9); cases were balanced
 over the 72 chips. B kept 1.44 with DunedinPACE (Belsky et al. 2022) and PhenoAge (Levine et al. 2018) in the model, and was uncorrelated with DunedinPACE
 (r 0.02). The clocks' own signals did not survive adjustment (DunedinPACE for breast 1.21 → 1.04), and B had no
 colorectal signal once adjusted. The shield share F did not predict cancer (0.95-1.11). Of 168 effects in this
@@ -470,9 +495,9 @@ and 53 controls on the EPIC array, rebuilt from raw files, scores centred within
 diagnosis), gave an odds ratio of 1.11 per SD of B (0.71 to 1.73): no association, with an interval too wide to
 refute the first (Supplementary Table S4).
 
-![Figure 7](../docs/figures/incident_cancer.png)
+![Figure 9](../docs/figures/incident_cancer.png)
 
-**Figure 7. Incident cancer in EPIC-Italy.** Odds ratio per SD of the shield share F, look-alike drift B and the
+**Figure 9. Incident cancer in EPIC-Italy.** Odds ratio per SD of the shield share F, look-alike drift B and the
 signed shift S (core-essential and housekeeping sets) and of published clocks, for any cancer (421 cases), breast
 (235) and colorectal cancer (166). Circles: all cases, age and sex held. Squares: cases diagnosed over 2 years after
 the draw (331, 169 and 146 cases), with mean methylation, 11 blood-cell fractions and chip held. 95 % intervals; log scale.
@@ -491,7 +516,7 @@ follow two things: how strongly a promoter is used, and whether the cells divide
 
 **The shield belongs to active promoters, not to essential genes as such.** Reference chromatin states account for
 most of the gap in blood and a quarter to a half in cortex, and with expression and sorted-nuclei accessibility also
-held little of the cortex gap is left. The sharper test uses expression measured in the samples whose methylation is
+held about a quarter of the cortex gap is left. The sharper test uses expression measured in the samples whose methylation is
 measured. In sorted monocytes, in epidermis and in cultured fibroblasts, three systems from different laboratories
 and on different measures of time (age in two, population doublings in one), matching on the decile of the gene's
 own expression removed 71 to 82 % of the housekeeping gap and all of the core-essential one, and genes that belong
@@ -537,10 +562,9 @@ the same arrays rebuilt from raw files the adjusted association was not distingu
 **Limits.** (i) Processing moves results of this size. Effects of 0.02 to 0.1 in a gap are near the ±0.05 SD
 preprocessing uncertainty, a shield in one cultured series vanished on rebuilt arrays, and the breast-cancer
 association weakened; every array series with public raw IDATs was therefore rebuilt, but the cohorts without them
-(Hannum, Lunnon, GTEx, MESA, the mammalian consortium) keep the authors' processing, and the mouse array series were
-rebuilt with SeSAMe's human-array recipe, not its mouse-specific masks. (ii) Array chip, the slide on which samples are hybridised together, confounds several contrasts. Contrasts that
-chip fully determines are reported as unidentifiable; on the mouse array an ordering of tissues by
-turnover is seen with chip intercepts but cannot be confirmed among animals on shared chips, and the evidence for
+(Hannum, Lunnon, GTEx, MESA, the mammalian consortium) keep the authors' processing, and the mouse array series were rebuilt with SeSAMe's recipes for those platforms (Supplementary Note 4). (ii) Array chip, the slide on which samples are hybridised together, confounds several contrasts. Contrasts that
+chip fully determines are reported as unidentifiable; in Huang's 11 mouse tissues the ordering by turnover vanishes among animals on shared chips, while on the
+consortium's array it is seen with chip intercepts, and the evidence for
 division rests on the series named above. (iii) Each line of that evidence is narrow: two tissues of one mouse strain;
 one glial fraction of two, with a second sorted series that agrees in sign only (−0.044, interval including zero);
 replicative and arrested cultures from different experiments; one immortalised line; astrocytes of two donors.
@@ -571,7 +595,11 @@ SJLIFE (GSE314261); read-level WGBS is from GSE186458. Series added from the rep
 raw files, are epidermis with RNA-seq of the same women (E-MTAB-8993, E-MTAB-8992, E-MTAB-8995), fibroblasts with
 and without telomerase (GSE268145), four tissues of the same adults (GSE280465), orbitofrontal cortex (GSE254293),
 passaged astrocytes (GSE202554), astrocytes immortalised with telomerase (GSE226079), sorted cortical neurons
-(GSE112179) and senescent fibroblasts and stromal cells (GSE227160). Mouse and mammal data are the Mammalian Methylation Consortium
+(GSE112179) and senescent fibroblasts and stromal cells (GSE227160). Further series are sorted cortical nuclei
+(GSE279509, GSE66351), a second cortex series (GSE252501), fibroblasts made senescent in three ways (GSE197723),
+arrested fibroblasts (E-MTAB-15859), mouse colon and hippocampus by RRBS (GSE233734, GSE304754), MESA monocytes and
+T cells with expression (GSE56046, GSE56045, GSE56581, GSE56580), fibroblast cultures with RNA-seq (GSE179847,
+GSE179848) and a breast case-control series (GSE283951). Mouse and mammal data are the Mammalian Methylation Consortium
 (GSE223748), Huang et al. 2025 (GSE279437), RRBS series GSE80672, GSE120132 and GSE121141, and BXD liver on the mammalian array
 (GSE199979; Mozhui et al. 2022); Tet1 mutants are
 GSE271375. Chromatin references are Roadmap 15-state chromHMM (E062, E030, E073) and sorted neuron and glia ATAC
@@ -591,9 +619,9 @@ GTEx v8 tissues (gene median TPM).
 ### Preprocessing
 
 Every array series with raw IDAT files on GEO is rebuilt with one pinned recipe (SATSA and Gill earlier with methylprep 1.7.1), R SeSAMe 1.24.0 (R 4.4.3,
-sesameData 1.24.0): `prepSesame("QCDPB")`, that is the quality mask, channel-switch inference, non-linear dye-bias
+sesameData 1.24.0): `prepSesame("QCDPB")` for human arrays (the mouse and mammalian arrays use SeSAMe's recipes for those platforms, TQCDPB and SHCDPB), that is the quality mask, channel-switch inference, non-linear dye-bias
 correction, pOOBAH detection masking and noob background correction (Triche et al. 2013; Zhou et al. 2017, 2018);
-samples detected below 90 % are excluded and listed. Three series were first rebuilt with methylprep 1.7.1 in
+samples detected below 90 % are excluded (counts per series in Supplementary Note 3). Three series were first rebuilt with methylprep 1.7.1 in
 SeSAMe-like mode; on Jaffe's cortex the two implementations agreed within 0.004 SD. Results from cohorts with no
 raw IDATs on GEO (Hannum, Lunnon, GTEx, the sorted-cell MESA series, GSE41037 and the mammalian consortium's
 superseries) rest on the authors' processing and are marked as not rebuilt wherever they are reported; their
@@ -633,7 +661,7 @@ young-reference methylation decile, the matched control CpGs ("look-alikes"). Wi
 c_k the controls there, n_k = |s_k| and v̄ a mean of the per-CpG measure v (an age slope), the gap is
 G = Σ_k n_k (v̄(s_k) − v̄(c_k)) / (Σ_k n_k · SD(v)), SD(v) taken over all CpGs analysed. Significance came from 1,000 permutations of set labels within
 strata, permuting CpGs (two-sided; smallest p 0.001). CpGs of one promoter are correlated, but these p-values treat CpGs as independent units; the placebo gene sets below give the corresponding test at the level of genes. Intervals came from 200 donor bootstraps, each resample divided by the full sample's
-spread (an earlier version divided by each resample's own spread and drew intervals toward zero). For blood minus
+spread (an earlier version divided by each resample's own spread and drew intervals toward zero). For the series added from the repository search (orbitofrontal cortex, sorted nuclei per fraction, the cultured series and the expression-matched analyses), intervals instead resample the set's genes 200 times with the samples held fixed; they show stability over genes, not the sampling of donors or cultures. Donors are resampled, both arrays of a donor together, in the glia-neuron and tissue-pair contrasts (400 resamples), and mice in colon and hippocampus (200 per tissue, independently). For blood minus
 brain, the two lifespan cohorts were resampled independently and Lunnon's tissues with the same resampled donors.
 Probe design (type I/II), reference chromatin state, or cell-type accessibility quartiles were added to the strata
 where stated. Effects across tissues and species were compared only on size-matched resamples where group sizes
@@ -671,6 +699,25 @@ removed is 1 − (matched gap / island × level gap), with intervals from resamp
 regressed promoter CpG drift on DepMap gene effect with island status and level held, then chromatin state, then
 expression level and breadth (200 gene resamples).
 
+### Expression, division and culture analyses
+
+Expression matching added to the strata the decile of the gene's mean expression in the same samples (monocytes:
+the expression-array probe with the highest mean; fibroblasts: mean log2(TPM + 1) over the untreated RNA-seq samples
+of the same lines; epidermis: the depositors' TPM table, per array group); CpGs of genes without expression formed
+their own class. Outside the gene sets, each gene's mean slope relative to its stratum was correlated with its
+decile across genes (Spearman, two-sided). In culture, slopes were fitted on population doublings with a line, donor
+or trajectory intercept. Chip intercepts, one term per array slide, were added to every slope as a sensitivity
+analysis. For colon and hippocampus, mice were resampled within each tissue. For glia minus neurons, donors with
+both fractions were used with sex held; the bootstrap p is two-sided. In the series with four treatments on every
+chip (GSE197723), each culture was scored against its chip's two untreated cultures on squared deviations minus a
+noise floor estimated from that untreated pair, giving one value per chip and treatment, with a t interval and an
+exact sign-flip test over the 12 chips. In the series with every donor on every chip (GSE227160), methylation was
+regressed per CpG on donor, chip and treatment, and the squared treatment coefficient minus its squared standard
+error estimated the squared change without array noise. In the arrested cultures (E-MTAB-15859), the mean squared
+slope per month was compared, per donor, with its value under every reordering of the months. The EPIC-Italy
+analysis on arrays processed from raw files matched each case to cancer-free women within 3 years of age, on the
+same chip where possible, and used conditional logistic regression with intervals from resampling matched sets.
+
 ### Placebo sets, cell composition and multiple testing
 
 Placebo sets drew random genes with a promoter CpG on the array and in none of the three sets, as many as each real set,
@@ -679,7 +726,7 @@ estimated with EpiDISH's cent12CT450k reference (Teschendorff et al. 2017; Luo e
 (Houseman et al. 2012), and 11 were added to the covariates of every
 age slope. Where no reference exists, leading principal components of background CpGs were used, and only for
 residual-based measures, since components orthogonal to age cannot change an age slope. A single Benjamini-Hochberg correction was applied over every
-raw p-value in every result table (7,626 tests in 53 folders); tests overlap and are positively dependent, which the
+raw p-value in every result table (13,955 tests in 114 folders of result tables); tests overlap and are positively dependent, which the
 procedure allows.
 
 ### Outcome models
@@ -695,9 +742,14 @@ per figure with seed 42, except the joint outcome models of Supplementary Table 
 reproduces their noise-trained clock on blood (r 0.88 against 0.87). Published clock coefficients come from biolearn
 at commit 0d714f5 (each file checked against its hash).
 
+## Ethics
+
+This study reanalyses public, de-identified data. Ethical approval and consent were obtained by the original
+studies; no new samples were collected.
+
 ## Data and code availability
 
-All datasets are public; accessions are listed in Methods and Supplementary Table S1, and Supplementary Table S3 traces each claim to its run and output table. Code, result tables and
+All datasets are public; GTEx raw array files are under controlled access and were not used. Accessions are listed in Methods and Supplementary Table S1, and Supplementary Table S3 traces each claim to its run and output table. Code, result tables and
 figures are at https://github.com/longevity-genie/entropy-age (AGPL-3.0; ported functions of Meyer and Schumacher's
 MIT-licensed code keep their attribution).
 
