@@ -104,7 +104,7 @@ def read_cells(folder: Path, prom: pl.DataFrame) -> tuple[pl.DataFrame, list[str
             separator="\t",
             has_header=False,
             new_columns=["chr", "pos", "end", "pct", "meth", "unmeth"],
-            schema_overrides={"chr": pl.String},
+            schema_overrides={"chr": pl.String, "pct": pl.Float64},
         )
         chrom = cov["chr"].str.strip_prefix("chr")
         inside = in_intervals(chrom.to_numpy(), cov["pos"].to_numpy() - 1, prom)

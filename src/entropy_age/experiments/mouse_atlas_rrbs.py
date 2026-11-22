@@ -70,7 +70,7 @@ def read_library(path: Path, prom: pl.DataFrame) -> pl.DataFrame:
         separator="\t",
         has_header=False,
         new_columns=["chr", "pos", "end", "pct", "meth", "unmeth"],
-        schema_overrides={"chr": pl.String},
+        schema_overrides={"chr": pl.String, "pct": pl.Float64},
     ).filter((pl.col("meth") + pl.col("unmeth")) >= MIN_COVERAGE)
     chrom = cov["chr"].str.strip_prefix("chr")
     c = chrom.to_numpy()
