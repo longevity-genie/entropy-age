@@ -1,0 +1,7 @@
+group,arrays,donors,age_min,age_max,cpgs,chips
+"prefrontal cortex, controls",100,100,17.47,79.9917864476386,87238,43
+"prefrontal cortex, every donor (diagnosis held)",294,294,15.5155144877937,79.9917864476386,85439,62
+"amygdala, controls",99,99,17.47,78.63,87959,44
+"amygdala, every donor (diagnosis held)",297,297,15.5155144877937,79.9206023271731,86940,56
+"hippocampus, controls",98,98,17.47,79.9917864476386,86636,47
+"hippocampus, every donor (diagnosis held)",300,300,15.5155144877937,79.9917864476386,85842,57

@@ -4,6 +4,7 @@ Newest first.
 
 ## Unreleased
 
+- 2026-11-23: R137 written up: three brain regions of about 300 donors (GSE349373): housekeeping gap with chip held −0.081 (prefrontal cortex), −0.070 (amygdala), −0.069 (hippocampus); controls −0.043, −0.036, −0.078; holds off the 0 % floor.
 - 2026-11-23: R138: culture-bootstrap intervals for the per-doubling gaps stated in the paper beside the gene-resampling ones (telomerase fibroblasts, astrocytes, astrocytes with telomerase).
 - 2026-11-23: culture bootstrap (cultures resampled within line, 200 resamples) written beside the gene-resampling interval for the per-doubling gaps of astrocyte_passage, astrocyte_htert and bj_telomerase (table culture_bootstrap; a referee point: the gene interval holds the cultures fixed) (R138).
 - 2026-11-23: figures brain_regions: prefrontal cortex, amygdala and hippocampus of about 300 donors (GSE349373, EPIC, rebuilt from IDATs), controls and every donor with diagnosis held, Jaffe donors left out, with and without chip intercepts (RM40, R137).

@@ -29,6 +29,20 @@ commit it ran, its job ids, its scale and seed, and its result or its failure wi
 - Reading: a second immortalised cell type carries the gap per doubling, with chip held, a little below primary
   astrocytes (−0.102, R133) and fibroblasts. Three replicate lines of one source; no arrested control.
 
+## R137 — three brain regions of about 300 donors (RM40, GSE349373), 2026-11-23
+
+- Commit 90f59f5; `figures brain_regions --scale paper --seed 42`; job 6592740 after the SeSAMe rebuild of 904 EPIC
+  arrays (job 6592305). Prefrontal cortex, amygdala, hippocampus; controls, MDD and PTSD about 100 each per region;
+  one array per donor and region; Jaffe's adult control donors left out; sex and diagnosis held.
+- **Every donor, housekeeping, without / with chip.** PFC −0.086 / −0.081 (−0.089 to −0.069; 294); amygdala −0.065 /
+  −0.070 (−0.081 to −0.058; 297); hippocampus −0.079 / −0.069 (−0.081 to −0.056; 300). Core-essential with chip
+  −0.059, −0.043, −0.053. 10-90 % with chip: −0.061, −0.055, −0.045.
+- **Controls, with chip.** −0.043 (100), −0.036 (99), −0.078 (98); off the floor the amygdala controls are not
+  resolved (−0.012).
+- 0.73 to 0.79 of the variance of age left within diagnosis and chip (0.36 to 0.49 in controls).
+- Reading: the largest brain replication; the gap has the size of the discovery cohort (−0.06) in three regions,
+  holds with chip intercepts and off the floor.
+
 ## R134b — sorted neurons, one array per donor (GSE112179), 2026-11-22
 
 - Commit after 54ca722 (neuron_series keeps one array per donor); job 6592267. The series holds 100 arrays of 83

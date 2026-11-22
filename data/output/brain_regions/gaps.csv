@@ -1,0 +1,217 @@
+cohort,covariates,band,metric,cpgs,group,matching,gap_sd,ci_low,ci_high,share_removed,share_ci_low,share_ci_high,n_set
+"prefrontal cortex, controls",sex,all,kl_slope,87238,core_essential,island x level,-0.05989129142780175,-0.07378550438784388,-0.0487770036412029,0.0,0.0,0.0,5778
+"prefrontal cortex, controls",sex,all,kl_slope,87238,housekeeping,island x level,-0.057765790236285454,-0.06777362526062404,-0.046318820846430665,0.0,0.0,0.0,34669
+"prefrontal cortex, controls",sex,all,kl_slope,87238,non_essential,island x level,-0.002874215032375626,-0.035574405869860666,0.03644820151774261,0.0,0.0,0.0,3652
+"prefrontal cortex, controls",sex,all,dispersion_slope,87238,core_essential,island x level,-0.07311227231401295,-0.09332498915308785,-0.054069217128987185,0.0,0.0,0.0,5778
+"prefrontal cortex, controls",sex,all,dispersion_slope,87238,housekeeping,island x level,-0.06982447298880796,-0.07885234445735766,-0.05901870217635028,0.0,0.0,0.0,34669
+"prefrontal cortex, controls",sex,all,dispersion_slope,87238,non_essential,island x level,0.0313182145801062,-0.01167426385896777,0.07940549407392226,0.0,0.0,0.0,3652
+"prefrontal cortex, controls",sex,all,entropy_slope,87238,core_essential,island x level,-0.0987253463946201,-0.11762753755922205,-0.08077739723310524,0.0,0.0,0.0,5778
+"prefrontal cortex, controls",sex,all,entropy_slope,87238,housekeeping,island x level,-0.1383304316476258,-0.14838943878087918,-0.12664442854588018,0.0,0.0,0.0,34669
+"prefrontal cortex, controls",sex,all,entropy_slope,87238,non_essential,island x level,-0.06357111023855551,-0.13055188846211294,0.012451374103597162,0.0,0.0,0.0,3652
+"prefrontal cortex, controls",sex,10-90 %,kl_slope,28109,core_essential,island x level,-0.07025678956540791,-0.1125805792997411,-0.02311105957402454,0.0,0.0,0.0,900
+"prefrontal cortex, controls",sex,10-90 %,kl_slope,28109,housekeeping,island x level,-0.08156856789531805,-0.11162882811945321,-0.04966782032979943,0.0,0.0,0.0,6971
+"prefrontal cortex, controls",sex,10-90 %,kl_slope,28109,non_essential,island x level,-0.0322190467041846,-0.07727451684005884,0.024383504684219823,0.0,0.0,0.0,1736
+"prefrontal cortex, controls",sex,10-90 %,dispersion_slope,28109,core_essential,island x level,-0.0030890049593897814,-0.06067528931540984,0.054679402491180966,0.0,0.0,0.0,900
+"prefrontal cortex, controls",sex,10-90 %,dispersion_slope,28109,housekeeping,island x level,-0.04371755744815994,-0.07263917229323344,-0.015502182040235924,0.0,0.0,0.0,6971
+"prefrontal cortex, controls",sex,10-90 %,dispersion_slope,28109,non_essential,island x level,-0.008477495765181246,-0.058560152471394275,0.046366440636578986,0.0,0.0,0.0,1736
+"prefrontal cortex, controls",sex,10-90 %,entropy_slope,28109,core_essential,island x level,-0.03610798081212626,-0.11089537074699733,0.025246562847279986,0.0,0.0,0.0,900
+"prefrontal cortex, controls",sex,10-90 %,entropy_slope,28109,housekeeping,island x level,-0.040529325487944586,-0.06270505766637792,-0.015499185343392088,0.0,0.0,0.0,6971
+"prefrontal cortex, controls",sex,10-90 %,entropy_slope,28109,non_essential,island x level,-0.13421099936649442,-0.21390871609545437,-0.06548288031027515,0.0,0.0,0.0,1736
+"prefrontal cortex, controls",sex + chip,all,kl_slope,87238,core_essential,island x level,-0.03112602726852065,-0.0452701902396359,-0.019049192732304706,0.0,0.0,0.0,5778
+"prefrontal cortex, controls",sex + chip,all,kl_slope,87238,housekeeping,island x level,-0.042955486160213954,-0.051723759346347584,-0.0335469242083438,0.0,0.0,0.0,34669
+"prefrontal cortex, controls",sex + chip,all,kl_slope,87238,non_essential,island x level,0.08266768128351556,0.03194432533900117,0.13980177666685278,0.0,0.0,0.0,3652
+"prefrontal cortex, controls",sex + chip,all,dispersion_slope,87238,core_essential,island x level,-0.04149520935883839,-0.06656868111105775,-0.02463439911633125,0.0,0.0,0.0,5778
+"prefrontal cortex, controls",sex + chip,all,dispersion_slope,87238,housekeeping,island x level,-0.03656713936519023,-0.048021806683088204,-0.026885089641828237,0.0,0.0,0.0,34669
+"prefrontal cortex, controls",sex + chip,all,dispersion_slope,87238,non_essential,island x level,0.00507058921777509,-0.041878102774094664,0.062266848115620416,0.0,0.0,0.0,3652
+"prefrontal cortex, controls",sex + chip,all,entropy_slope,87238,core_essential,island x level,-0.10233483721654979,-0.12481560490424638,-0.08318585103409909,0.0,0.0,0.0,5778
+"prefrontal cortex, controls",sex + chip,all,entropy_slope,87238,housekeeping,island x level,-0.15001083653837888,-0.15925875440675424,-0.13824084133633835,0.0,0.0,0.0,34669
+"prefrontal cortex, controls",sex + chip,all,entropy_slope,87238,non_essential,island x level,-0.0663288783278643,-0.1375901688872776,0.011424684861820742,0.0,0.0,0.0,3652
+"prefrontal cortex, controls",sex + chip,10-90 %,kl_slope,28109,core_essential,island x level,-0.0073052296317751226,-0.05308533130520122,0.03619217543406404,0.0,0.0,0.0,900
+"prefrontal cortex, controls",sex + chip,10-90 %,kl_slope,28109,housekeeping,island x level,-0.04355068009967252,-0.07107893476286532,-0.01652915738363073,0.0,0.0,0.0,6971
+"prefrontal cortex, controls",sex + chip,10-90 %,kl_slope,28109,non_essential,island x level,0.08176513088785453,0.022823035920722937,0.14794100013177475,0.0,0.0,0.0,1736
+"prefrontal cortex, controls",sex + chip,10-90 %,dispersion_slope,28109,core_essential,island x level,-0.13753889445990194,-0.21314509275149487,-0.06273044290337028,0.0,0.0,0.0,900
+"prefrontal cortex, controls",sex + chip,10-90 %,dispersion_slope,28109,housekeeping,island x level,-0.06288711975348252,-0.09702721129896653,-0.030589769807836956,0.0,0.0,0.0,6971
+"prefrontal cortex, controls",sex + chip,10-90 %,dispersion_slope,28109,non_essential,island x level,-0.01171203723300271,-0.08833363174772543,0.06315659057190441,0.0,0.0,0.0,1736
+"prefrontal cortex, controls",sex + chip,10-90 %,entropy_slope,28109,core_essential,island x level,-0.08188660387303921,-0.15705226087386223,-0.020147056701838605,0.0,0.0,0.0,900
+"prefrontal cortex, controls",sex + chip,10-90 %,entropy_slope,28109,housekeeping,island x level,-0.09362932071854115,-0.11734801049808428,-0.06591852507386757,0.0,0.0,0.0,6971
+"prefrontal cortex, controls",sex + chip,10-90 %,entropy_slope,28109,non_essential,island x level,-0.15745502483322082,-0.25000828142818704,-0.08291683535433574,0.0,0.0,0.0,1736
+"prefrontal cortex, every donor (diagnosis held)",sex,all,kl_slope,85439,core_essential,island x level,-0.07059935969691766,-0.08726419327255774,-0.054518190857201866,0.0,0.0,0.0,5669
+"prefrontal cortex, every donor (diagnosis held)",sex,all,kl_slope,85439,housekeeping,island x level,-0.08618738116550449,-0.09603399842311135,-0.07617980857341754,0.0,0.0,0.0,34032
+"prefrontal cortex, every donor (diagnosis held)",sex,all,kl_slope,85439,non_essential,island x level,-0.006318884534590314,-0.05885078089890498,0.045927690072785195,0.0,0.0,0.0,3547
+"prefrontal cortex, every donor (diagnosis held)",sex,all,dispersion_slope,85439,core_essential,island x level,-0.0756061901236455,-0.09560917258204293,-0.05528409187018526,0.0,0.0,0.0,5669
+"prefrontal cortex, every donor (diagnosis held)",sex,all,dispersion_slope,85439,housekeeping,island x level,-0.11032892908876596,-0.11937876353141945,-0.09753374524178575,0.0,0.0,0.0,34032
+"prefrontal cortex, every donor (diagnosis held)",sex,all,dispersion_slope,85439,non_essential,island x level,0.032444976414636506,-0.017035052983138253,0.08247230034348467,0.0,0.0,0.0,3547
+"prefrontal cortex, every donor (diagnosis held)",sex,all,entropy_slope,85439,core_essential,island x level,-0.09523799698946754,-0.11330469078026159,-0.07578889859070277,0.0,0.0,0.0,5669
+"prefrontal cortex, every donor (diagnosis held)",sex,all,entropy_slope,85439,housekeeping,island x level,-0.1424638411687035,-0.1509440791064874,-0.13176424531764613,0.0,0.0,0.0,34032
+"prefrontal cortex, every donor (diagnosis held)",sex,all,entropy_slope,85439,non_essential,island x level,0.02025468091785219,-0.04107358028462878,0.09018246219378857,0.0,0.0,0.0,3547
+"prefrontal cortex, every donor (diagnosis held)",sex,10-90 %,kl_slope,27304,core_essential,island x level,-0.08582510000792715,-0.14107024958063888,-0.024976128307167993,0.0,0.0,0.0,858
+"prefrontal cortex, every donor (diagnosis held)",sex,10-90 %,kl_slope,27304,housekeeping,island x level,-0.09159501703618401,-0.12009660814977485,-0.06178527660489107,0.0,0.0,0.0,6719
+"prefrontal cortex, every donor (diagnosis held)",sex,10-90 %,kl_slope,27304,non_essential,island x level,-0.06309515189097321,-0.13377747231554502,-0.0076631170011975955,0.0,0.0,0.0,1707
+"prefrontal cortex, every donor (diagnosis held)",sex,10-90 %,dispersion_slope,27304,core_essential,island x level,0.018914560804926123,-0.04985098905563799,0.09986925915732078,0.0,0.0,0.0,858
+"prefrontal cortex, every donor (diagnosis held)",sex,10-90 %,dispersion_slope,27304,housekeeping,island x level,-0.053849006363674075,-0.07716015090924104,-0.027519897077995056,0.0,0.0,0.0,6719
+"prefrontal cortex, every donor (diagnosis held)",sex,10-90 %,dispersion_slope,27304,non_essential,island x level,-0.03084395080797414,-0.09496479809001161,0.03693097851228038,0.0,0.0,0.0,1707
+"prefrontal cortex, every donor (diagnosis held)",sex,10-90 %,entropy_slope,27304,core_essential,island x level,-0.023699287223485712,-0.07668585175264801,0.042499342903544395,0.0,0.0,0.0,858
+"prefrontal cortex, every donor (diagnosis held)",sex,10-90 %,entropy_slope,27304,housekeeping,island x level,-0.018429970119795334,-0.04805716308676712,0.010512945645616428,0.0,0.0,0.0,6719
+"prefrontal cortex, every donor (diagnosis held)",sex,10-90 %,entropy_slope,27304,non_essential,island x level,-0.04426848556869676,-0.12557298960306854,0.0192727437168127,0.0,0.0,0.0,1707
+"prefrontal cortex, every donor (diagnosis held)",sex + chip,all,kl_slope,85439,core_essential,island x level,-0.05855643661781663,-0.07480818082587014,-0.04367918537656333,0.0,0.0,0.0,5669
+"prefrontal cortex, every donor (diagnosis held)",sex + chip,all,kl_slope,85439,housekeeping,island x level,-0.08124265018155058,-0.08936816601868988,-0.06947471948541784,0.0,0.0,0.0,34032
+"prefrontal cortex, every donor (diagnosis held)",sex + chip,all,kl_slope,85439,non_essential,island x level,0.02072307576675406,-0.029711423574398287,0.07381314988210198,0.0,0.0,0.0,3547
+"prefrontal cortex, every donor (diagnosis held)",sex + chip,all,dispersion_slope,85439,core_essential,island x level,-0.0631810319701935,-0.08189124644720909,-0.04543723991029139,0.0,0.0,0.0,5669
+"prefrontal cortex, every donor (diagnosis held)",sex + chip,all,dispersion_slope,85439,housekeeping,island x level,-0.09985413159031689,-0.10968376474089638,-0.0895284753059621,0.0,0.0,0.0,34032
+"prefrontal cortex, every donor (diagnosis held)",sex + chip,all,dispersion_slope,85439,non_essential,island x level,0.043238811489759034,-0.008223572502424685,0.10168735226703515,0.0,0.0,0.0,3547
+"prefrontal cortex, every donor (diagnosis held)",sex + chip,all,entropy_slope,85439,core_essential,island x level,-0.11738687143324035,-0.1366603066833261,-0.09760532721625709,0.0,0.0,0.0,5669
+"prefrontal cortex, every donor (diagnosis held)",sex + chip,all,entropy_slope,85439,housekeeping,island x level,-0.1716966625949709,-0.18089151630190878,-0.16051636919545348,0.0,0.0,0.0,34032
+"prefrontal cortex, every donor (diagnosis held)",sex + chip,all,entropy_slope,85439,non_essential,island x level,0.011832323847288656,-0.05608894527577677,0.0853724112791939,0.0,0.0,0.0,3547
+"prefrontal cortex, every donor (diagnosis held)",sex + chip,10-90 %,kl_slope,27304,core_essential,island x level,-0.055011702529969474,-0.10699814816832867,-0.001222939133570404,0.0,0.0,0.0,858
+"prefrontal cortex, every donor (diagnosis held)",sex + chip,10-90 %,kl_slope,27304,housekeeping,island x level,-0.06087143191220379,-0.08894820920219867,-0.032666462228405864,0.0,0.0,0.0,6719
+"prefrontal cortex, every donor (diagnosis held)",sex + chip,10-90 %,kl_slope,27304,non_essential,island x level,-0.028352560179722826,-0.09870018750529548,0.03538455123226144,0.0,0.0,0.0,1707
+"prefrontal cortex, every donor (diagnosis held)",sex + chip,10-90 %,dispersion_slope,27304,core_essential,island x level,-0.025262194804207917,-0.07482710611752416,0.032787587602130776,0.0,0.0,0.0,858
+"prefrontal cortex, every donor (diagnosis held)",sex + chip,10-90 %,dispersion_slope,27304,housekeeping,island x level,-0.04974107612344638,-0.0696910748849177,-0.02323545195876618,0.0,0.0,0.0,6719
+"prefrontal cortex, every donor (diagnosis held)",sex + chip,10-90 %,dispersion_slope,27304,non_essential,island x level,-0.0165512328012735,-0.08539154634911582,0.05609858428454723,0.0,0.0,0.0,1707
+"prefrontal cortex, every donor (diagnosis held)",sex + chip,10-90 %,entropy_slope,27304,core_essential,island x level,-0.06829546025971295,-0.12924196901924234,-0.003018264968421462,0.0,0.0,0.0,858
+"prefrontal cortex, every donor (diagnosis held)",sex + chip,10-90 %,entropy_slope,27304,housekeeping,island x level,-0.060146674416767125,-0.08643306633613887,-0.031028911317056176,0.0,0.0,0.0,6719
+"prefrontal cortex, every donor (diagnosis held)",sex + chip,10-90 %,entropy_slope,27304,non_essential,island x level,-0.07179623867295301,-0.14782742742239377,-0.005078113211843403,0.0,0.0,0.0,1707
+"amygdala, controls",sex,all,kl_slope,87959,core_essential,island x level,-0.03086480092096204,-0.04760967894453296,-0.015818255552657045,0.0,0.0,0.0,5841
+"amygdala, controls",sex,all,kl_slope,87959,housekeeping,island x level,-0.03810072080711949,-0.048379495696860335,-0.025790280748794595,0.0,0.0,0.0,35011
+"amygdala, controls",sex,all,kl_slope,87959,non_essential,island x level,-0.04654709389749732,-0.08103447320170082,-0.0072442850150342,0.0,0.0,0.0,3635
+"amygdala, controls",sex,all,dispersion_slope,87959,core_essential,island x level,-0.05451748338927356,-0.08016176474405293,-0.0324995852123651,0.0,0.0,0.0,5841
+"amygdala, controls",sex,all,dispersion_slope,87959,housekeeping,island x level,-0.07461646414798176,-0.0850011835658261,-0.06257006626250934,0.0,0.0,0.0,35011
+"amygdala, controls",sex,all,dispersion_slope,87959,non_essential,island x level,-0.06247601153030152,-0.1081198105782236,-0.013024165127964171,0.0,0.0,0.0,3635
+"amygdala, controls",sex,all,entropy_slope,87959,core_essential,island x level,-0.09326437217641721,-0.11501714115711537,-0.0715266528456132,0.0,0.0,0.0,5841
+"amygdala, controls",sex,all,entropy_slope,87959,housekeeping,island x level,-0.17017756009864887,-0.1805359603392842,-0.1580164336346848,0.0,0.0,0.0,35011
+"amygdala, controls",sex,all,entropy_slope,87959,non_essential,island x level,0.0052465777746468645,-0.07114250969968082,0.09732956538462131,0.0,0.0,0.0,3635
+"amygdala, controls",sex,10-90 %,kl_slope,30688,core_essential,island x level,-0.014490443222007692,-0.05350471764831283,0.024996757701782984,0.0,0.0,0.0,1105
+"amygdala, controls",sex,10-90 %,kl_slope,30688,housekeeping,island x level,-0.01028779854441886,-0.04015015149970016,0.02051454312411117,0.0,0.0,0.0,8173
+"amygdala, controls",sex,10-90 %,kl_slope,30688,non_essential,island x level,-0.07996572929091836,-0.11955283887045247,-0.035832446834891625,0.0,0.0,0.0,1846
+"amygdala, controls",sex,10-90 %,dispersion_slope,30688,core_essential,island x level,-0.04401518739519352,-0.08760872831819003,0.011316141474423938,0.0,0.0,0.0,1105
+"amygdala, controls",sex,10-90 %,dispersion_slope,30688,housekeeping,island x level,-0.041347973594194856,-0.06303883223208544,-0.01507322453873558,0.0,0.0,0.0,8173
+"amygdala, controls",sex,10-90 %,dispersion_slope,30688,non_essential,island x level,-0.1309612925804288,-0.18246802396093684,-0.07617185244793745,0.0,0.0,0.0,1846
+"amygdala, controls",sex,10-90 %,entropy_slope,30688,core_essential,island x level,-0.07234159917292114,-0.1359436010133984,-0.014988618714860704,0.0,0.0,0.0,1105
+"amygdala, controls",sex,10-90 %,entropy_slope,30688,housekeeping,island x level,-0.11946854835685619,-0.14598842930789985,-0.08953232664190085,0.0,0.0,0.0,8173
+"amygdala, controls",sex,10-90 %,entropy_slope,30688,non_essential,island x level,-0.07600588680234566,-0.17161488125681384,-0.0011993223498546386,0.0,0.0,0.0,1846
+"amygdala, controls",sex + chip,all,kl_slope,87959,core_essential,island x level,-0.02941855441543402,-0.04094081276581469,-0.01594798935487951,0.0,0.0,0.0,5841
+"amygdala, controls",sex + chip,all,kl_slope,87959,housekeeping,island x level,-0.03622690816000648,-0.04569930094112981,-0.025034068443807584,0.0,0.0,0.0,35011
+"amygdala, controls",sex + chip,all,kl_slope,87959,non_essential,island x level,-0.027770720048468377,-0.0643617284537309,0.01670106348194795,0.0,0.0,0.0,3635
+"amygdala, controls",sex + chip,all,dispersion_slope,87959,core_essential,island x level,-0.03651131796320959,-0.05861413752740285,-0.012674490826228525,0.0,0.0,0.0,5841
+"amygdala, controls",sex + chip,all,dispersion_slope,87959,housekeeping,island x level,-0.053338181974183725,-0.06390059025863531,-0.042241327844853155,0.0,0.0,0.0,35011
+"amygdala, controls",sex + chip,all,dispersion_slope,87959,non_essential,island x level,0.019624888753589118,-0.03395394430244562,0.07641613037870583,0.0,0.0,0.0,3635
+"amygdala, controls",sex + chip,all,entropy_slope,87959,core_essential,island x level,-0.07485449031594174,-0.09520697825950987,-0.05249740862992811,0.0,0.0,0.0,5841
+"amygdala, controls",sex + chip,all,entropy_slope,87959,housekeeping,island x level,-0.13480223230183155,-0.1429866813097035,-0.12413265486678202,0.0,0.0,0.0,35011
+"amygdala, controls",sex + chip,all,entropy_slope,87959,non_essential,island x level,0.15821998842523,0.10528734224363799,0.2256252057981841,0.0,0.0,0.0,3635
+"amygdala, controls",sex + chip,10-90 %,kl_slope,30688,core_essential,island x level,-0.029543436342443954,-0.056592280120727076,0.00628124181851873,0.0,0.0,0.0,1105
+"amygdala, controls",sex + chip,10-90 %,kl_slope,30688,housekeeping,island x level,-0.011935190437927725,-0.03992119213274556,0.015690344378070722,0.0,0.0,0.0,8173
+"amygdala, controls",sex + chip,10-90 %,kl_slope,30688,non_essential,island x level,-0.06874491886605476,-0.1138393662596762,-0.02887643746594709,0.0,0.0,0.0,1846
+"amygdala, controls",sex + chip,10-90 %,dispersion_slope,30688,core_essential,island x level,-0.032611376830340454,-0.0885184184253374,0.021245404731038864,0.0,0.0,0.0,1105
+"amygdala, controls",sex + chip,10-90 %,dispersion_slope,30688,housekeeping,island x level,-0.04204616930638148,-0.06735911609426068,-0.01602923683004783,0.0,0.0,0.0,8173
+"amygdala, controls",sex + chip,10-90 %,dispersion_slope,30688,non_essential,island x level,-0.01131320549915884,-0.07018384942297826,0.04641806656711433,0.0,0.0,0.0,1846
+"amygdala, controls",sex + chip,10-90 %,entropy_slope,30688,core_essential,island x level,-0.04370153272241051,-0.10366752582690612,0.00907686096639569,0.0,0.0,0.0,1105
+"amygdala, controls",sex + chip,10-90 %,entropy_slope,30688,housekeeping,island x level,-0.07428993702526268,-0.1017268805437399,-0.048395700689883976,0.0,0.0,0.0,8173
+"amygdala, controls",sex + chip,10-90 %,entropy_slope,30688,non_essential,island x level,0.09479054206413688,0.02636839885373419,0.16394546959299144,0.0,0.0,0.0,1846
+"amygdala, every donor (diagnosis held)",sex,all,kl_slope,86940,core_essential,island x level,-0.043680646780144466,-0.060492358989929794,-0.027614914797500483,0.0,0.0,0.0,5781
+"amygdala, every donor (diagnosis held)",sex,all,kl_slope,86940,housekeeping,island x level,-0.06453349887298157,-0.0749275820595132,-0.05350174708510773,0.0,0.0,0.0,34616
+"amygdala, every donor (diagnosis held)",sex,all,kl_slope,86940,non_essential,island x level,0.040641538076880084,-0.011343800226714613,0.10200759969868135,0.0,0.0,0.0,3577
+"amygdala, every donor (diagnosis held)",sex,all,dispersion_slope,86940,core_essential,island x level,-0.039482721635538155,-0.060703337156219936,-0.019360916803503547,0.0,0.0,0.0,5781
+"amygdala, every donor (diagnosis held)",sex,all,dispersion_slope,86940,housekeeping,island x level,-0.08230739543319224,-0.09200046601161259,-0.07242587661405887,0.0,0.0,0.0,34616
+"amygdala, every donor (diagnosis held)",sex,all,dispersion_slope,86940,non_essential,island x level,0.04533042152033703,-0.010038636616180006,0.11078353856833147,0.0,0.0,0.0,3577
+"amygdala, every donor (diagnosis held)",sex,all,entropy_slope,86940,core_essential,island x level,-0.10391993238810675,-0.12371303138266464,-0.08297676555684919,0.0,0.0,0.0,5781
+"amygdala, every donor (diagnosis held)",sex,all,entropy_slope,86940,housekeeping,island x level,-0.1848891866576373,-0.1933444408568854,-0.17377314538479757,0.0,0.0,0.0,34616
+"amygdala, every donor (diagnosis held)",sex,all,entropy_slope,86940,non_essential,island x level,0.023563718141626833,-0.04648702220525236,0.09986745423465515,0.0,0.0,0.0,3577
+"amygdala, every donor (diagnosis held)",sex,10-90 %,kl_slope,29876,core_essential,island x level,-0.0321098209222888,-0.07788217176841626,0.004456892751011891,0.0,0.0,0.0,1055
+"amygdala, every donor (diagnosis held)",sex,10-90 %,kl_slope,29876,housekeeping,island x level,-0.044872216441480886,-0.06765819690852562,-0.018878761764005745,0.0,0.0,0.0,7859
+"amygdala, every donor (diagnosis held)",sex,10-90 %,kl_slope,29876,non_essential,island x level,-0.00744129112347823,-0.07373212932174586,0.056529434161270896,0.0,0.0,0.0,1814
+"amygdala, every donor (diagnosis held)",sex,10-90 %,dispersion_slope,29876,core_essential,island x level,0.027403322310188008,-0.024031934612335173,0.08683150921231973,0.0,0.0,0.0,1055
+"amygdala, every donor (diagnosis held)",sex,10-90 %,dispersion_slope,29876,housekeeping,island x level,-0.024412828467075702,-0.047816143893459624,1.5223804993866575e-6,0.0,0.0,0.0,7859
+"amygdala, every donor (diagnosis held)",sex,10-90 %,dispersion_slope,29876,non_essential,island x level,-0.01059215451390769,-0.07525790196107773,0.06043249677504204,0.0,0.0,0.0,1814
+"amygdala, every donor (diagnosis held)",sex,10-90 %,entropy_slope,29876,core_essential,island x level,-0.07214750347789466,-0.14354460975791802,-0.011173985257959937,0.0,0.0,0.0,1055
+"amygdala, every donor (diagnosis held)",sex,10-90 %,entropy_slope,29876,housekeeping,island x level,-0.12546672851115184,-0.15102426366126054,-0.10001645908788488,0.0,0.0,0.0,7859
+"amygdala, every donor (diagnosis held)",sex,10-90 %,entropy_slope,29876,non_essential,island x level,-0.05295966643815234,-0.13521637788857438,0.018072442396118896,0.0,0.0,0.0,1814
+"amygdala, every donor (diagnosis held)",sex + chip,all,kl_slope,86940,core_essential,island x level,-0.04264294349501458,-0.05795122860481481,-0.026897595247745147,0.0,0.0,0.0,5781
+"amygdala, every donor (diagnosis held)",sex + chip,all,kl_slope,86940,housekeeping,island x level,-0.07006135530894982,-0.08121806564229384,-0.05831170977082134,0.0,0.0,0.0,34616
+"amygdala, every donor (diagnosis held)",sex + chip,all,kl_slope,86940,non_essential,island x level,0.03752686920984102,-0.023697938112776856,0.09363680124591284,0.0,0.0,0.0,3577
+"amygdala, every donor (diagnosis held)",sex + chip,all,dispersion_slope,86940,core_essential,island x level,-0.04656212749045104,-0.06792338724472341,-0.025789284143321278,0.0,0.0,0.0,5781
+"amygdala, every donor (diagnosis held)",sex + chip,all,dispersion_slope,86940,housekeeping,island x level,-0.08010282273064907,-0.08917761022745875,-0.06849747934948675,0.0,0.0,0.0,34616
+"amygdala, every donor (diagnosis held)",sex + chip,all,dispersion_slope,86940,non_essential,island x level,0.022013470396906182,-0.034195537916078544,0.08058885402386899,0.0,0.0,0.0,3577
+"amygdala, every donor (diagnosis held)",sex + chip,all,entropy_slope,86940,core_essential,island x level,-0.10930078941692853,-0.128086213178064,-0.08821317993391753,0.0,0.0,0.0,5781
+"amygdala, every donor (diagnosis held)",sex + chip,all,entropy_slope,86940,housekeeping,island x level,-0.18737309945524644,-0.19577454885782597,-0.17633195755889186,0.0,0.0,0.0,34616
+"amygdala, every donor (diagnosis held)",sex + chip,all,entropy_slope,86940,non_essential,island x level,0.032004329455038415,-0.037005603352769305,0.10595747760451263,0.0,0.0,0.0,3577
+"amygdala, every donor (diagnosis held)",sex + chip,10-90 %,kl_slope,29876,core_essential,island x level,-0.04201880850482874,-0.09049613852453943,-0.004528428424875425,0.0,0.0,0.0,1055
+"amygdala, every donor (diagnosis held)",sex + chip,10-90 %,kl_slope,29876,housekeeping,island x level,-0.05549488952449541,-0.07983642869338767,-0.034436053074475566,0.0,0.0,0.0,7859
+"amygdala, every donor (diagnosis held)",sex + chip,10-90 %,kl_slope,29876,non_essential,island x level,-0.007841304622691383,-0.06189054723197565,0.054204869005063466,0.0,0.0,0.0,1814
+"amygdala, every donor (diagnosis held)",sex + chip,10-90 %,dispersion_slope,29876,core_essential,island x level,0.020721450846443862,-0.04121856920065697,0.07258913202641769,0.0,0.0,0.0,1055
+"amygdala, every donor (diagnosis held)",sex + chip,10-90 %,dispersion_slope,29876,housekeeping,island x level,-0.009138186415255042,-0.029908990402643977,0.01662705080157926,0.0,0.0,0.0,7859
+"amygdala, every donor (diagnosis held)",sex + chip,10-90 %,dispersion_slope,29876,non_essential,island x level,-0.04342915554076909,-0.1185753133024119,0.040470983166252764,0.0,0.0,0.0,1814
+"amygdala, every donor (diagnosis held)",sex + chip,10-90 %,entropy_slope,29876,core_essential,island x level,-0.07042553426857662,-0.1348090185441023,-0.011353734016535381,0.0,0.0,0.0,1055
+"amygdala, every donor (diagnosis held)",sex + chip,10-90 %,entropy_slope,29876,housekeeping,island x level,-0.12149619606121952,-0.14658004949362427,-0.09621386314172702,0.0,0.0,0.0,7859
+"amygdala, every donor (diagnosis held)",sex + chip,10-90 %,entropy_slope,29876,non_essential,island x level,-0.042233251870571614,-0.12257272155155677,0.028559489328412138,0.0,0.0,0.0,1814
+"hippocampus, controls",sex,all,kl_slope,86636,core_essential,island x level,-0.06157918253910945,-0.07630957868962726,-0.048143515179258634,0.0,0.0,0.0,5796
+"hippocampus, controls",sex,all,kl_slope,86636,housekeeping,island x level,-0.07834588098466326,-0.09010851698727991,-0.06554618640396835,0.0,0.0,0.0,34566
+"hippocampus, controls",sex,all,kl_slope,86636,non_essential,island x level,0.07511918425275699,0.03677744967420596,0.11748022598823753,0.0,0.0,0.0,3549
+"hippocampus, controls",sex,all,dispersion_slope,86636,core_essential,island x level,-0.04741577757897793,-0.06688012653435388,-0.02507139302143397,0.0,0.0,0.0,5796
+"hippocampus, controls",sex,all,dispersion_slope,86636,housekeeping,island x level,-0.06801357520091447,-0.07820377568032563,-0.05760717754412095,0.0,0.0,0.0,34566
+"hippocampus, controls",sex,all,dispersion_slope,86636,non_essential,island x level,0.02523832625859264,-0.020061070902716704,0.07490082798026108,0.0,0.0,0.0,3549
+"hippocampus, controls",sex,all,entropy_slope,86636,core_essential,island x level,-0.12736513969912494,-0.1476263843260744,-0.10796561153236238,0.0,0.0,0.0,5796
+"hippocampus, controls",sex,all,entropy_slope,86636,housekeeping,island x level,-0.19284722323647432,-0.2041653174736937,-0.18211587290559553,0.0,0.0,0.0,34566
+"hippocampus, controls",sex,all,entropy_slope,86636,non_essential,island x level,-0.005319272845007488,-0.07442874624696555,0.06320204948216358,0.0,0.0,0.0,3549
+"hippocampus, controls",sex,10-90 %,kl_slope,28257,core_essential,island x level,-0.06575689607229485,-0.11296886318037615,-0.0163267551373221,0.0,0.0,0.0,955
+"hippocampus, controls",sex,10-90 %,kl_slope,28257,housekeeping,island x level,-0.08095420714681908,-0.11443126830767889,-0.05135814218731687,0.0,0.0,0.0,7152
+"hippocampus, controls",sex,10-90 %,kl_slope,28257,non_essential,island x level,0.05781225779060112,0.0128295934732866,0.1103752033134167,0.0,0.0,0.0,1738
+"hippocampus, controls",sex,10-90 %,dispersion_slope,28257,core_essential,island x level,-0.05069230392821735,-0.10186692239885373,0.008008247856399035,0.0,0.0,0.0,955
+"hippocampus, controls",sex,10-90 %,dispersion_slope,28257,housekeeping,island x level,-0.05002826811215129,-0.07724461760972502,-0.024344651915853582,0.0,0.0,0.0,7152
+"hippocampus, controls",sex,10-90 %,dispersion_slope,28257,non_essential,island x level,0.001434006223793872,-0.053555395714074604,0.05922559888027136,0.0,0.0,0.0,1738
+"hippocampus, controls",sex,10-90 %,entropy_slope,28257,core_essential,island x level,-0.09465667570502437,-0.1648565825697944,-0.041208629765680314,0.0,0.0,0.0,955
+"hippocampus, controls",sex,10-90 %,entropy_slope,28257,housekeeping,island x level,-0.12204425695012923,-0.15044416163648244,-0.0932594994677229,0.0,0.0,0.0,7152
+"hippocampus, controls",sex,10-90 %,entropy_slope,28257,non_essential,island x level,-0.11059484317329189,-0.19555186148094936,-0.04680002597047403,0.0,0.0,0.0,1738
+"hippocampus, controls",sex + chip,all,kl_slope,86636,core_essential,island x level,-0.05477700214582423,-0.07078438598442448,-0.04282799623054639,0.0,0.0,0.0,5796
+"hippocampus, controls",sex + chip,all,kl_slope,86636,housekeeping,island x level,-0.07833518732903462,-0.08926162152514326,-0.06913480360843645,0.0,0.0,0.0,34566
+"hippocampus, controls",sex + chip,all,kl_slope,86636,non_essential,island x level,0.10491120653119586,0.06069078382118928,0.14302253907346904,0.0,0.0,0.0,3549
+"hippocampus, controls",sex + chip,all,dispersion_slope,86636,core_essential,island x level,-0.07250414890279223,-0.09286373436074417,-0.05078275995657811,0.0,0.0,0.0,5796
+"hippocampus, controls",sex + chip,all,dispersion_slope,86636,housekeeping,island x level,-0.07477627214938705,-0.08544361575072884,-0.06464871623447167,0.0,0.0,0.0,34566
+"hippocampus, controls",sex + chip,all,dispersion_slope,86636,non_essential,island x level,0.0038770561527087886,-0.05196144131229471,0.053720448094458195,0.0,0.0,0.0,3549
+"hippocampus, controls",sex + chip,all,entropy_slope,86636,core_essential,island x level,-0.11173637522358001,-0.1372061621850525,-0.09031793768994395,0.0,0.0,0.0,5796
+"hippocampus, controls",sex + chip,all,entropy_slope,86636,housekeeping,island x level,-0.18539316449357332,-0.19505184084534066,-0.17488716062833212,0.0,0.0,0.0,34566
+"hippocampus, controls",sex + chip,all,entropy_slope,86636,non_essential,island x level,0.02064476204466575,-0.058315131859140334,0.0905653501807131,0.0,0.0,0.0,3549
+"hippocampus, controls",sex + chip,10-90 %,kl_slope,28257,core_essential,island x level,-0.0849978812029158,-0.13604644341781538,-0.03730059055861487,0.0,0.0,0.0,955
+"hippocampus, controls",sex + chip,10-90 %,kl_slope,28257,housekeeping,island x level,-0.0877764912650185,-0.1107538732278328,-0.06029269667711357,0.0,0.0,0.0,7152
+"hippocampus, controls",sex + chip,10-90 %,kl_slope,28257,non_essential,island x level,0.10063030620030315,0.05371309789364534,0.1524179175711117,0.0,0.0,0.0,1738
+"hippocampus, controls",sex + chip,10-90 %,dispersion_slope,28257,core_essential,island x level,-0.15076095241996473,-0.2122368500501505,-0.09147347189696244,0.0,0.0,0.0,955
+"hippocampus, controls",sex + chip,10-90 %,dispersion_slope,28257,housekeeping,island x level,-0.07284684986432108,-0.10336427682440037,-0.04551724009165846,0.0,0.0,0.0,7152
+"hippocampus, controls",sex + chip,10-90 %,dispersion_slope,28257,non_essential,island x level,0.002159459631585579,-0.061943026954054035,0.07223655069639434,0.0,0.0,0.0,1738
+"hippocampus, controls",sex + chip,10-90 %,entropy_slope,28257,core_essential,island x level,-0.08795780817192368,-0.1462290475351945,-0.04015033553941072,0.0,0.0,0.0,955
+"hippocampus, controls",sex + chip,10-90 %,entropy_slope,28257,housekeeping,island x level,-0.1326248919505116,-0.16338400043130868,-0.10355528465479907,0.0,0.0,0.0,7152
+"hippocampus, controls",sex + chip,10-90 %,entropy_slope,28257,non_essential,island x level,-0.0707000562236615,-0.14901760794544675,-0.0050972077505568964,0.0,0.0,0.0,1738
+"hippocampus, every donor (diagnosis held)",sex,all,kl_slope,85842,core_essential,island x level,-0.060276912666497325,-0.07674984960323564,-0.04200835916059825,0.0,0.0,0.0,5744
+"hippocampus, every donor (diagnosis held)",sex,all,kl_slope,85842,housekeeping,island x level,-0.07879597935430353,-0.08979356794367789,-0.06753521619867514,0.0,0.0,0.0,34242
+"hippocampus, every donor (diagnosis held)",sex,all,kl_slope,85842,non_essential,island x level,0.029731054810383736,-0.021212124146166435,0.07795542164840631,0.0,0.0,0.0,3521
+"hippocampus, every donor (diagnosis held)",sex,all,dispersion_slope,85842,core_essential,island x level,-0.05355602933296445,-0.07093639681024952,-0.036310432746731375,0.0,0.0,0.0,5744
+"hippocampus, every donor (diagnosis held)",sex,all,dispersion_slope,85842,housekeeping,island x level,-0.08729108237094022,-0.09752932893703734,-0.07711631227822537,0.0,0.0,0.0,34242
+"hippocampus, every donor (diagnosis held)",sex,all,dispersion_slope,85842,non_essential,island x level,0.08354858553657539,0.02444214295057548,0.13083932492053513,0.0,0.0,0.0,3521
+"hippocampus, every donor (diagnosis held)",sex,all,entropy_slope,85842,core_essential,island x level,-0.09709295863912638,-0.11707462699834927,-0.07678687392086175,0.0,0.0,0.0,5744
+"hippocampus, every donor (diagnosis held)",sex,all,entropy_slope,85842,housekeeping,island x level,-0.1633311920125009,-0.1738560686703488,-0.1535964839043074,0.0,0.0,0.0,34242
+"hippocampus, every donor (diagnosis held)",sex,all,entropy_slope,85842,non_essential,island x level,0.15140525020089857,0.08489375847544389,0.2245812998423217,0.0,0.0,0.0,3521
+"hippocampus, every donor (diagnosis held)",sex,10-90 %,kl_slope,27739,core_essential,island x level,-0.08142302466760519,-0.13203967983762027,-0.04806508292408033,0.0,0.0,0.0,928
+"hippocampus, every donor (diagnosis held)",sex,10-90 %,kl_slope,27739,housekeeping,island x level,-0.057397992238660475,-0.08009286042806726,-0.01873549121992274,0.0,0.0,0.0,6999
+"hippocampus, every donor (diagnosis held)",sex,10-90 %,kl_slope,27739,non_essential,island x level,-0.037151678682906746,-0.08186867898397997,0.008926129606019345,0.0,0.0,0.0,1699
+"hippocampus, every donor (diagnosis held)",sex,10-90 %,dispersion_slope,27739,core_essential,island x level,-0.031388241968456035,-0.09624352006454809,0.01597660605200004,0.0,0.0,0.0,928
+"hippocampus, every donor (diagnosis held)",sex,10-90 %,dispersion_slope,27739,housekeeping,island x level,-0.03215385376742714,-0.05344158284125602,0.001910631034086387,0.0,0.0,0.0,6999
+"hippocampus, every donor (diagnosis held)",sex,10-90 %,dispersion_slope,27739,non_essential,island x level,0.001918316753243209,-0.05767196230551065,0.056529071799624075,0.0,0.0,0.0,1699
+"hippocampus, every donor (diagnosis held)",sex,10-90 %,entropy_slope,27739,core_essential,island x level,-0.023424142469726295,-0.0783643218641256,0.02779885986373984,0.0,0.0,0.0,928
+"hippocampus, every donor (diagnosis held)",sex,10-90 %,entropy_slope,27739,housekeeping,island x level,-0.059422169322640064,-0.0852811912141987,-0.03296043619686092,0.0,0.0,0.0,6999
+"hippocampus, every donor (diagnosis held)",sex,10-90 %,entropy_slope,27739,non_essential,island x level,0.07211637204591322,0.0028300463162242114,0.13378392753153776,0.0,0.0,0.0,1699
+"hippocampus, every donor (diagnosis held)",sex + chip,all,kl_slope,85842,core_essential,island x level,-0.05339303167462074,-0.06884161641661929,-0.03264554488818025,0.0,0.0,0.0,5744
+"hippocampus, every donor (diagnosis held)",sex + chip,all,kl_slope,85842,housekeeping,island x level,-0.06850073810563893,-0.0806167553293632,-0.0564967726880932,0.0,0.0,0.0,34242
+"hippocampus, every donor (diagnosis held)",sex + chip,all,kl_slope,85842,non_essential,island x level,0.033366452435948574,-0.010204520968451595,0.09354314308061192,0.0,0.0,0.0,3521
+"hippocampus, every donor (diagnosis held)",sex + chip,all,dispersion_slope,85842,core_essential,island x level,-0.03889874998104671,-0.05678667997553921,-0.021194402291151555,0.0,0.0,0.0,5744
+"hippocampus, every donor (diagnosis held)",sex + chip,all,dispersion_slope,85842,housekeeping,island x level,-0.06719998108409507,-0.07613046385753869,-0.05708412631462223,0.0,0.0,0.0,34242
+"hippocampus, every donor (diagnosis held)",sex + chip,all,dispersion_slope,85842,non_essential,island x level,0.0946928989341092,0.041190618101643005,0.14263055884125847,0.0,0.0,0.0,3521
+"hippocampus, every donor (diagnosis held)",sex + chip,all,entropy_slope,85842,core_essential,island x level,-0.09603581232486742,-0.11559484015247339,-0.07629166740782409,0.0,0.0,0.0,5744
+"hippocampus, every donor (diagnosis held)",sex + chip,all,entropy_slope,85842,housekeeping,island x level,-0.16305473890831124,-0.1737462010845015,-0.15217333005903677,0.0,0.0,0.0,34242
+"hippocampus, every donor (diagnosis held)",sex + chip,all,entropy_slope,85842,non_essential,island x level,0.1778269729747059,0.10964800718863414,0.24882356709852885,0.0,0.0,0.0,3521
+"hippocampus, every donor (diagnosis held)",sex + chip,10-90 %,kl_slope,27739,core_essential,island x level,-0.07462429204912041,-0.13279918185132855,-0.04003274412403989,0.0,0.0,0.0,928
+"hippocampus, every donor (diagnosis held)",sex + chip,10-90 %,kl_slope,27739,housekeeping,island x level,-0.04482262620861337,-0.06829113587698081,-0.0074760170699835595,0.0,0.0,0.0,6999
+"hippocampus, every donor (diagnosis held)",sex + chip,10-90 %,kl_slope,27739,non_essential,island x level,-0.030468983200547316,-0.07971156803485382,0.01969613613182549,0.0,0.0,0.0,1699
+"hippocampus, every donor (diagnosis held)",sex + chip,10-90 %,dispersion_slope,27739,core_essential,island x level,0.015033699374118232,-0.05689440629384816,0.0727764971644102,0.0,0.0,0.0,928
+"hippocampus, every donor (diagnosis held)",sex + chip,10-90 %,dispersion_slope,27739,housekeeping,island x level,0.0066548661467372835,-0.01574556344529265,0.03752199977002044,0.0,0.0,0.0,6999
+"hippocampus, every donor (diagnosis held)",sex + chip,10-90 %,dispersion_slope,27739,non_essential,island x level,0.025705033737452053,-0.02994536413802097,0.07982072191628975,0.0,0.0,0.0,1699
+"hippocampus, every donor (diagnosis held)",sex + chip,10-90 %,entropy_slope,27739,core_essential,island x level,-0.029986865953871223,-0.0862493327109381,0.021624087682354055,0.0,0.0,0.0,928
+"hippocampus, every donor (diagnosis held)",sex + chip,10-90 %,entropy_slope,27739,housekeeping,island x level,-0.07204831922540131,-0.09890766305194554,-0.045395706792754675,0.0,0.0,0.0,6999
+"hippocampus, every donor (diagnosis held)",sex + chip,10-90 %,entropy_slope,27739,non_essential,island x level,0.11266613801145231,0.04066883194098534,0.1719828639702417,0.0,0.0,0.0,1699

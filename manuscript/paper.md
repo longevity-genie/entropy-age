@@ -96,8 +96,13 @@ A second cortex series (GSE252501; dorsolateral prefrontal cortex of 52 donors o
 raw files, depression diagnosis held) gave −0.005 SD (−0.017 to +0.006), and −0.013 (−0.024 to −0.003) with chip
 intercepts. A third cortex series, bulk orbitofrontal cortex of 90 people aged 24 to 84 on the EPIC array (GSE254293, rebuilt
 from raw files, diagnosis held), gave a small housekeeping gap of the same sign: −0.017 SD (−0.030 to −0.008), and
-−0.010 (−0.022 to −0.001) with chip intercepts, a separate term for each array slide (chip) on which samples were
-hybridised together, which removes differences between slides (Supplementary Note 3).
+−0.010 (−0.022 to −0.001) with chip intercepts, a separate term for each array slide (chip) on which samples were hybridised together, which removes differences between slides (Supplementary Note 3). The largest replication is a fourth series of three brain
+regions from about 300 donors aged 16 to 80 (GSE349373; EPIC, processed from raw files; controls and donors with
+depression or post-traumatic stress disorder, diagnosis held; donors of the first cortex cohort left out). With chip
+intercepts the housekeeping gap was −0.081 SD in prefrontal cortex (−0.089 to −0.069; 294 donors), −0.070 in
+amygdala (−0.081 to −0.058; 297) and −0.069 in hippocampus (−0.081 to −0.056; 300); in the about 100 controls of
+each region it was −0.043, −0.036 and −0.078. Between 10 and 90 % starting methylation the three gaps were −0.061,
+−0.055 and −0.045, each interval excluding zero.
 
 In blood and four brain regions from the same donors (Lunnon et al. 2014; 71-80 donors per tissue), between-person
 dispersion was lower at housekeeping promoters than at matched CpGs in every tissue (blood −0.15 SD, brain regions
@@ -607,7 +612,7 @@ four brain regions (GSE59685), GTEx nine tissues (GSE213478, EPIC), SATSA (E-MTA
 SJLIFE (GSE314261; Eulalio et al. 2026); read-level WGBS is from GSE186458. Series added from the repository search, all rebuilt from
 raw files, are epidermis with RNA-seq of the same women (E-MTAB-8993, E-MTAB-8992, E-MTAB-8995), fibroblasts with
 and without telomerase (GSE268145), four tissues of the same adults (GSE280465; Apsley et al. 2025), orbitofrontal cortex (GSE254293; Fröhlich et al. 2024),
-passaged astrocytes (GSE202554; Higgins-Chen et al. 2022), astrocytes immortalised with telomerase (GSE226079; Minteer et al. 2023), sorted cortical neurons
+passaged astrocytes (GSE202554; Higgins-Chen et al. 2022), astrocytes immortalised with telomerase (GSE226079; Minteer et al. 2023), three brain regions of about 300 donors (GSE349373), sorted cortical neurons
 (GSE112179; Pai et al. 2019) and senescent fibroblasts and stromal cells (GSE227160; Kwiatkowska et al. 2023). Further series are sorted cortical nuclei
 (GSE279509, Walker et al. 2025; GSE66351, Gasparoni et al. 2018), a second cortex series (GSE252501; White et al. 2024), fibroblasts made senescent in three ways (GSE197723),
 arrested fibroblasts (E-MTAB-15859), mouse colon and hippocampus by RRBS (GSE233734, Olecka et al. 2024; GSE304754), MESA monocytes and
