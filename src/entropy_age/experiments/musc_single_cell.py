@@ -11,7 +11,8 @@ there. Read sampling in one cell is not binomial (neighbouring CpGs are read fro
 no sampling term is subtracted; instead promoters are compared only with promoters of like coverage, and old with
 young. Three readings per promoter: ``heterogeneity_young`` (how much cells of young mice differ), ``divergence``
 (old minus young: what age adds between cells) and ``abs_change`` (the shift of the mean, scaled). Each is compared
-between a gene set's promoters and promoters matched on island status, young-level decile and coverage fifth, and again with the
+between a gene set's promoters and promoters matched on island status, young-level decile and coverage fifth, and
+again with the
 decile of the gene's mean expression in these cells added to the strata. Intervals resample cells within each mouse;
 the table also gives each reading with one mouse left out.
 
