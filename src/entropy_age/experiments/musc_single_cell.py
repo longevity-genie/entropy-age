@@ -6,11 +6,12 @@ and three old mice) and, from the same cells, RNA (GSE121364; counts deposited f
 tissue in which the human array data show almost no shield, and its stem cells divide rarely.
 
 Per cell and promoter, methylated and total reads are pooled over the promoter's CpGs. Per promoter and age group,
-the between-cell variance of its methylation beyond what read sampling gives is estimated by the method of moments,
-``tau2 = (sum n_i (p_i - p)^2 - (C - 1) p (1 - p)) / (N - sum n_i^2 / N)``, and scaled by ``m (1 - m)`` of the young
-level. Three readings per promoter: ``heterogeneity_young`` (how much cells of young mice differ), ``divergence``
+the variance between cells of the cell's methylated share is taken over the cells with at least ``MIN_READS`` reads
+there. Read sampling in one cell is not binomial (neighbouring CpGs are read from the same one or two molecules), so
+no sampling term is subtracted; instead promoters are compared only with promoters of like coverage, and old with
+young. Three readings per promoter: ``heterogeneity_young`` (how much cells of young mice differ), ``divergence``
 (old minus young: what age adds between cells) and ``abs_change`` (the shift of the mean, scaled). Each is compared
-between a gene set's promoters and promoters matched on island status and young-level decile, and again with the
+between a gene set's promoters and promoters matched on island status, young-level decile and coverage fifth, and again with the
 decile of the gene's mean expression in these cells added to the strata. Intervals resample cells within each mouse;
 the table also gives each reading with one mouse left out.
 
@@ -44,36 +45,38 @@ N_BOOT = {"paper": 200, "quick": 10}
 READINGS = ("heterogeneity_young", "divergence", "abs_change")
 
 
-def between_cell_variance(k: np.ndarray, n: np.ndarray) -> tuple[np.ndarray, np.ndarray, np.ndarray]:
-    """Per promoter (column): pooled level, between-cell variance beyond read sampling, and cells used. ``k`` and
-    ``n`` are cells x promoters of methylated and total reads; cells with fewer than ``MIN_READS`` reads are left out
-    of a promoter."""
+def between_cell_variance(k: np.ndarray, n: np.ndarray) -> tuple[np.ndarray, np.ndarray, np.ndarray, np.ndarray]:
+    """Per promoter (column): pooled level, variance between cells of the cell's methylated share, cells used and
+    their mean reads. ``k`` and ``n`` are cells x promoters of methylated and total reads; a cell with fewer than
+    ``MIN_READS`` reads is left out of a promoter. The variance includes read sampling, which in one cell is not
+    binomial (reads over neighbouring CpGs come from the same one or two molecules), so it is compared only between
+    promoters of like coverage and between ages."""
     use = n >= MIN_READS
-    n = np.where(use, n, 0.0)
-    k = np.where(use, k, 0.0)
-    total = n.sum(axis=0)
     cells = use.sum(axis=0)
     with np.errstate(invalid="ignore", divide="ignore"):
-        p = k.sum(axis=0) / total
-        rate = np.where(use, k / np.where(n > 0, n, 1.0), 0.0)
-        weighted = (n * (rate - p) ** 2).sum(axis=0)
-        tau2 = (weighted - (cells - 1) * p * (1 - p)) / (total - (n**2).sum(axis=0) / total)
-    return p, tau2, cells
+        rate = np.where(use, k / np.where(n > 0, n, 1.0), np.nan)
+        p = np.where(use, k, 0.0).sum(axis=0) / np.where(use, n, 0.0).sum(axis=0)
+        variance = np.nanvar(rate, axis=0, ddof=1)
+        reads = np.where(use, n, 0.0).sum(axis=0) / cells
+    return p, variance, cells, reads
 
 
 def readings(k: np.ndarray, n: np.ndarray, old: np.ndarray) -> dict[str, np.ndarray]:
-    """The three per-promoter readings and the young level; NaN where a promoter lacks ``MIN_CELLS`` in a group."""
-    p_y, t_y, c_y = between_cell_variance(k[~old], n[~old])
-    p_o, t_o, c_o = between_cell_variance(k[old], n[old])
+    """The three per-promoter readings, the young level and the mean reads per cell; NaN where a promoter lacks
+    ``MIN_CELLS`` in a group."""
+    p_y, v_y, c_y, r_y = between_cell_variance(k[~old], n[~old])
+    p_o, v_o, c_o, r_o = between_cell_variance(k[old], n[old])
     ok = (c_y >= MIN_CELLS) & (c_o >= MIN_CELLS)
     m = np.clip(p_y, LEVEL_CLIP, 1 - LEVEL_CLIP)
-    scale = m * (1 - m)
     out = {
-        "heterogeneity_young": t_y / scale,
-        "divergence": (t_o - t_y) / scale,
-        "abs_change": np.abs(p_o - p_y) / np.sqrt(scale),
+        "heterogeneity_young": v_y,
+        "divergence": v_o - v_y,
+        "abs_change": np.abs(p_o - p_y) / np.sqrt(m * (1 - m)),
+        "young": p_y,
+        "reads": (r_y + r_o) / 2,
+        "reads_old_minus_young": r_o - r_y,
     }
-    return {name: np.where(ok, v, np.nan) for name, v in out.items()} | {"young": np.where(ok, p_y, np.nan)}
+    return {name: np.where(ok, v, np.nan) for name, v in out.items()}
 
 
 def gaps(values: dict[str, np.ndarray], keep: np.ndarray, sets: dict[str, np.ndarray], strata: np.ndarray) -> dict:
@@ -183,7 +186,12 @@ def run(ctx: Context) -> list[Path]:
     keep = np.isfinite(point["divergence"]) & np.isfinite(point["heterogeneity_young"])
     level = np.full(genes.size, "", dtype=object)
     level[keep] = baseline_strata(point["young"][keep], 10).astype(str)
-    base = np.char.add(np.char.add((island_share > 0.5).astype(str), "|"), level.astype(str))
+    depth = np.full(genes.size, "", dtype=object)
+    depth[keep] = baseline_strata(point["reads"][keep], 5).astype(str)
+    base = np.char.add(
+        np.char.add(np.char.add((island_share > 0.5).astype(str), "|"), level.astype(str)),
+        np.char.add("|", depth.astype(str)),
+    )
     variants = {
         "island x level": base,
         "+ expression decile": np.char.add(np.char.add(base, "|"), expressed.astype(str)),
@@ -231,6 +239,8 @@ def run(ctx: Context) -> list[Path]:
                 "promoters_used": [int(keep.sum())],
                 "used_with_expression": [int((keep & (expressed >= 0)).sum())],
                 "median_divergence": [float(np.nanmedian(point["divergence"][keep]))],
+                "mean_reads_per_cell": [float(np.nanmean(point["reads"][keep]))],
+                "mean_reads_old_minus_young": [float(np.nanmean(point["reads_old_minus_young"][keep]))],
                 "median_heterogeneity_young": [float(np.nanmedian(point["heterogeneity_young"][keep]))],
             }
         ),
