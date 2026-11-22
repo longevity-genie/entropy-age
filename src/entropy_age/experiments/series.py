@@ -71,18 +71,24 @@ def titles(matrix: Path) -> list[str]:
 
 def sample_table(chars: pl.DataFrame, sample_titles: list[str], spec: dict) -> pl.DataFrame:
     """``sample``, ``donor``, ``age``, ``sex``, the held columns and the columns the groups filter on."""
-    donor = spec.get("donor", "sample")
+    if "donor" not in spec:
+        raise ValueError("series: the description file must name the donor (a column or 'title:<regex>')")
+    donor = spec["donor"]
     if donor.startswith("title:"):
         pattern = re.compile(donor.removeprefix("title:"))
         found = [pattern.search(t) for t in sample_titles]
-        donors = pl.Series("donor", [m.group(1) if m else t for m, t in zip(found, sample_titles, strict=True)])
+        missed = [t for m, t in zip(found, sample_titles, strict=True) if m is None]
+        if missed:
+            raise ValueError(f"series: {len(missed)} sample titles do not match the donor pattern, e.g. {missed[0]!r}")
+        donors = pl.Series("donor", [m.group(1) for m in found])
     else:
         donors = chars[donor].cast(pl.String).alias("donor")
     extra = sorted({*spec.get("hold", []), *(c for g in spec["groups"].values() for c in g)})
     sex = pl.col(spec["sex"]).alias("sex") if spec.get("sex") else pl.lit("NA").alias("sex")
-    return chars.select(
-        "sample", donors, pl.col(spec["age"]).cast(pl.Float64, strict=False).alias("age"), sex, *extra
-    ).drop_nulls("age")
+    table = chars.select("sample", donors, pl.col(spec["age"]).cast(pl.Float64, strict=False).alias("age"), sex, *extra)
+    if table["donor"].null_count():
+        raise ValueError(f"series: {table['donor'].null_count()} arrays have no donor id")
+    return table.drop_nulls("age")
 
 
 def groups_of(table: pl.DataFrame, spec: dict, usable: list[str], exclude: set[str]) -> dict[str, pl.DataFrame]:
@@ -100,7 +106,8 @@ def groups_of(table: pl.DataFrame, spec: dict, usable: list[str], exclude: set[s
 
 def donor_intervals(x, ages, cov, feats, island, sets, n: int, rng) -> dict[tuple[str, str, str], tuple[float, float]]:
     """(band, metric, group) -> the 2.5th and 97.5th percentiles of the gap over ``n`` resamples of donors, with the
-    strata and the band taken from the full sample."""
+    strata, the band and the SD that scales the gap all taken from the full sample. A resample whose distinct donors
+    leave fewer than 10 residual degrees of freedom is left out."""
     full = drift_metrics(x, ages, feats, covariates=cov if cov.shape[1] else None, spearman=False)
     baseline = full["baseline"].to_numpy()
     plan = {}
@@ -109,21 +116,22 @@ def donor_intervals(x, ages, cov, feats, island, sets, n: int, rng) -> dict[tupl
         strata = np.char.add(
             np.char.add(island[keep].astype(str), "|"), baseline_strata(baseline[keep], 10).astype(str)
         )
-        plan[band] = (keep, strata)
+        plan[band] = (keep, strata, {m: float(np.std(full[m].to_numpy()[keep])) for m in METRICS})
     draws: dict[tuple[str, str, str], list[float]] = {}
     for _ in range(n):
         rows = rng.integers(0, ages.size, ages.size)
         c = cov[rows]
         c = c[:, np.ptp(c, axis=0) > 1e-12] if c.shape[1] else c
-        if ages.size - c.shape[1] - 2 < 10 or np.ptp(ages[rows]) == 0:
-            continue
+        if np.unique(rows).size - c.shape[1] - 2 < 10 or np.ptp(ages[rows]) == 0:
+            continue  # too few distinct donors for the design: repeated donors add no degrees of freedom
         boot = drift_metrics(x[rows], ages[rows], feats, covariates=c if c.shape[1] else None, spearman=False)
-        for band, (keep, strata) in plan.items():
+        for band, (keep, strata, full_sd) in plan.items():
             for metric in METRICS:
                 values = boot[metric].to_numpy()[keep]
-                sd = float(np.nanstd(values))
                 for group, (in_set, _) in sets.items():
-                    gap = float(matched_scores(np.nan_to_num(values)[None, :], in_set[keep], strata)[0][0]) / sd
+                    # divided by the full sample's SD: a resample's own SD is inflated by sampling noise and would
+                    # pull every resampled gap toward zero (see common.scaled_intervals)
+                    gap = float(matched_scores(values[None, :], in_set[keep], strata)[0][0]) / full_sd[metric]
                     draws.setdefault((band, metric, group), []).append(gap)
     return {k: (float(np.quantile(v, 0.025)), float(np.quantile(v, 0.975))) for k, v in draws.items() if v}
 
@@ -147,9 +155,12 @@ def run_series(ctx: Context, name: str) -> list[Path]:
         exclude = set(jaffe.filter((pl.col("group") == "Control") & (pl.col("age") >= 20))["donor"].to_list())
     table = sample_table(_characteristics(matrix), titles(matrix), spec)
     hold = spec.get("hold", [])
-    rng = ctx.rng(350_000)
     rows, sizes, overlap = [], [], []
-    for label, s in groups_of(table, spec, qc["sample"].to_list(), exclude).items():
+    platform_of = dict(qc.select("sample", "platform").iter_rows()) if "platform" in qc.columns else {}
+    for index, (label, s) in enumerate(groups_of(table, spec, qc["sample"].to_list(), exclude).items()):
+        platforms = {platform_of[v] for v in s["sample"].to_list() if v in platform_of}
+        if len(platforms) > 1:
+            raise ValueError(f"series {name}: {label} mixes array platforms {sorted(platforms)}; they are never pooled")
         if s.height < MIN_SAMPLES:
             print(f"series {name}: {label}: {s.height} arrays, skipped", file=sys.stderr)
             continue
@@ -175,7 +186,9 @@ def run_series(ctx: Context, name: str) -> list[Path]:
                 "chips": int(np.unique(chips).size),
             }
         )
-        for design, cov in {"held": held, "held + chip": np.column_stack([held, dummies(chips)])}.items():
+        designs = {"held": held, "held + chip": np.column_stack([held, dummies(chips)])}
+        for k, (design, cov) in enumerate(designs.items()):
+            rng = ctx.rng(350_000 + 10 * index + k)
             cov = cov[:, np.ptp(cov, axis=0) > 1e-12] if cov.shape[1] else cov
             if s.height - cov.shape[1] - 2 < 10:
                 continue

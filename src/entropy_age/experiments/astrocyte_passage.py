@@ -44,17 +44,17 @@ N_BOOT = {"paper": 200, "quick": 10}
 def culture_bootstrap(prepared: Prepared, lines: np.ndarray, sets: dict, strata: np.ndarray, n: int, rng) -> list[dict]:
     """The gap on the relative-entropy slope with cultures resampled within each line: per set, the 2.5th and 97.5th
     percentiles over ``n`` resamples. The gene-resampling interval of ``matched_gaps`` holds the cultures fixed; this
-    one carries the sampling of cultures. Strata are those of the full sample."""
+    one carries the sampling of cultures. Strata and the SD that scales the gap are those of the full sample."""
     index = [np.flatnonzero(lines == line) for line in np.unique(lines)]
     draws: dict[str, list[float]] = {group: [] for group in sets}
+    full_sd = float(_lifespan_metrics(prepared)["kl_slope"].to_numpy().std())
     for _ in range(n):
         rows = np.concatenate([rng.choice(i, i.size, replace=True) for i in index])
         values = _lifespan_metrics(prepared, rows)["kl_slope"].to_numpy()
         if not np.isfinite(values).all():
             continue
-        sd = float(values.std())
-        for group, (in_set, _) in sets.items():
-            draws[group].append(float(matched_scores(values[None, :], in_set, strata)[0][0]) / sd)
+        for group, (in_set, _) in sets.items():  # scaled by the full sample's SD (common.scaled_intervals)
+            draws[group].append(float(matched_scores(values[None, :], in_set, strata)[0][0]) / full_sd)
     return [
         {
             "group": group,

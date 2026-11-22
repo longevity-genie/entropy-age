@@ -80,12 +80,19 @@ def readings(k: np.ndarray, n: np.ndarray, old: np.ndarray) -> dict[str, np.ndar
     return {name: np.where(ok, v, np.nan) for name, v in out.items()}
 
 
-def gaps(values: dict[str, np.ndarray], keep: np.ndarray, sets: dict[str, np.ndarray], strata: np.ndarray) -> dict:
-    """``(reading, set)`` -> set minus matched promoters, in SD of the reading over the kept promoters."""
+def gaps(
+    values: dict[str, np.ndarray],
+    keep: np.ndarray,
+    sets: dict[str, np.ndarray],
+    strata: np.ndarray,
+    scale: dict[str, float] | None = None,
+) -> dict:
+    """``(reading, set)`` -> set minus matched promoters, in SD of the reading over the kept promoters. ``scale``
+    gives the SD per reading to divide by (the full sample's, for resamples; see ``common.scaled_intervals``)."""
     out = {}
     for name in READINGS:
         v = values[name][keep]
-        sd = float(np.nanstd(v))
+        sd = scale[name] if scale else float(np.nanstd(v))
         for group, in_set in sets.items():
             out[(name, group)] = float(matched_scores(v[None, :], in_set[keep], strata[keep])[0][0]) / sd
     return out
@@ -202,19 +209,20 @@ def run(ctx: Context) -> list[Path]:
     table = []
     for matching, strata in variants.items():
         full = gaps(point, keep, sets, strata)
+        scale = {name: float(np.nanstd(point[name][keep])) for name in READINGS}
         draws: dict[tuple[str, str], list[float]] = {key: [] for key in full}
         for _ in range(N_BOOT[str(ctx.scale.name)]):
             pick = np.concatenate([rng.choice(i, i.size, replace=True) for i in index])
             boot = readings(k[pick], n[pick], old[pick])
             ok = keep & np.isfinite(boot["divergence"]) & np.isfinite(boot["heterogeneity_young"])
-            for key, value in gaps(boot, ok, sets, strata).items():
+            for key, value in gaps(boot, ok, sets, strata, scale).items():
                 draws[key].append(value)
         left_out = {}
         for m in np.unique(mouse):
             rest = mouse != m
             loo = readings(k[rest], n[rest], old[rest])
             ok = keep & np.isfinite(loo["divergence"]) & np.isfinite(loo["heterogeneity_young"])
-            left_out[m] = gaps(loo, ok, sets, strata)
+            left_out[m] = gaps(loo, ok, sets, strata, scale)
         for (name, group), value in full.items():
             d = np.array(draws[(name, group)])
             table.append(
