@@ -4,6 +4,7 @@ Newest first.
 
 ## Unreleased
 
+- 2026-11-22: paper: story, prose and deslop pass after three fresh readers (Anton asked): abstract reordered and cut to the findings (activity, division, kinetics and Tet3, what it is not, sensitivity to preprocessing); expression measured in the same samples gets its own Results section; the culture share-over-doublings paragraph moves to the selection paragraph; project history (audits, withdrawn statements, corrected measure, rebuild narration) replaced by plain facts; chip defined at first use; lead sentences of "What the shield is not" and the breast-cancer section state what the sections show; five overloaded sentences split. No number changed.
 - 2026-11-22: figures astrocyte_htert: the per-doubling shield in hTERT-immortalised astrocytes (GSE226079, three replicate lines, 29 to 72 doublings, rebuilt from IDATs), same analysis as astrocyte_passage with the replicate line in the donor's place (RM40, R135).
 - 2026-11-22: figures neuron_series: the shield in a third sorted-neuron series (GSE112179, NeuN+ nuclei of 100 donors, EPIC, rebuilt from IDATs), every donor with diagnosis held and controls alone, with and without chip intercepts, age-by-chip overlap tabulated (RM40, R134).
 - 2026-11-20: Discussion rewritten to the post-audit findings (Anton asked): shield follows promoter activity and cell division; selection reopened; breast lead weakened; limits renumbered. Second breast series (R113) added to Results.

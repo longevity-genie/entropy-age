@@ -1,10 +1,7 @@
 <!--
-DECISION FOR THE AUTHORS (title): the old working title "Epigenetic clocks tick where chromatin lets them" is not
-proposed. Its first half is refuted by the project's own clock tests (clocks read directed change, not the undirected
-drift the shield acts on; CLAIMS C8), and the corrected measure shrinks the chromatin share in cortex to a quarter to
-a half. The title below states what the corrected results support. Alternatives: "A matched measure of the
-essential-promoter shield against age-related methylation drift"; "Faster demethylation shields essential promoters
-from methylation drift across mammals".
+DECISION FOR THE AUTHORS (title): the title below names chromatin and faster demethylation. The results now centre on
+promoter activity and cell division; proposed: "Promoters of essential genes drift less with age, in step with their
+expression and with cell division". The change is the authors' to make.
 -->
 
 # Essential gene promoters are shielded from age-related DNA methylation drift by chromatin and faster demethylation
@@ -14,22 +11,31 @@ Anton Kulaga, …
 
 ## Abstract
 
-Age-related DNA methylation drift is often modelled as uniform noise, and qualitative work has suggested that
-housekeeping and highly connected genes are spared from it. We quantified this protection, which we call the
-shield, by comparing CpGs in promoters of essential and housekeeping genes with CpGs of the same CpG-island status
-and starting methylation level (look-alikes). Using relative entropy from the young state as the drift measure, essential
-promoters drift less than matched CpGs in human blood (−0.15 SD for housekeeping genes), cortex (−0.06 SD),
-most GTEx tissues, mouse tissues and 89 % of 139 species-tissue groups of 65 mammals. The gap is not produced by the
-matching (200 placebo gene sets), blood-cell composition or probe design, survives one false-discovery correction over
-7,626 tests, and in cortex grows when the arrays are rebuilt from raw IDATs; the blood cohorts have no public raw files.
-Two results depend on processing: a shield in cultured cells vanished on rebuilt arrays, and a breast-cancer association
-weakened (below). In mouse, an ordering of the shield by cell turnover could not be separated from chip on the array, but by bisulfite sequencing of one cohort on shared flowcells the gap was more than twice as large in colon as in hippocampus (−0.19 against −0.08 SD). Kinetically, essential island promoters gain
-methylation no faster than look-alikes but, in pooled fits, lose it faster, and so rest lower; the faster loss persists within active-TSS chromatin.
-In mouse brain, heterozygous Tet3 loss made essential promoters gain methylation against look-alikes and weakened the shield; Tet1 knockout did not. Reference chromatin
-states account for 83-91 % of the gap in blood and a quarter to a half in cortex; with expression and sorted-nuclei accessibility also held, little of the cortex gap is left (−0.02 SD), so the shield is a property of active promoters and not of essentiality as such. Where expression was measured in the same samples (sorted monocytes, epidermis, cultured fibroblasts), the gene's own expression decile removes 71 to 82 % of the housekeeping gap, and genes outside every set are shielded in step with their expression. Within one person over time, housekeeping CpGs change less in direction than look-alikes. The shield goes with cell
-division: besides colon over hippocampus, it is larger in glia than in the same donors' neurons, it is large in fibroblasts driven to replicative senescence, it accrues per doubling in telomerase-immortalised fibroblasts and in passaged astrocytes, and cultures kept from dividing for six months show neither drift nor shield; this fits selection among dividing cells or replication-coupled maintenance, which the data cannot separate. The shield is not tuned to species lifespan, persists through transient reprogramming and
-has no clear RNA counterpart. In one prospective cohort, drift at unprotected look-alike promoters was associated with
-breast cancer diagnosed years later (odds ratio 1.44 per SD with cell mix, chip and mean methylation held, on the authors' processed data); on the same arrays rebuilt from raw files the unadjusted association held (1.84) but the adjusted one did not (1.11, 0.69-2.18), so the lead cannot yet be separated from global methylation and cell mix and needs replication.
+Age-related DNA methylation drift is often modelled as uniform noise, although earlier work suggested that
+housekeeping and highly connected genes are spared. We measured this protection, which we call the shield, by
+comparing CpGs in promoters of essential and housekeeping genes with CpGs of the same CpG-island status and starting
+methylation level (look-alikes), using relative entropy from the young state as the drift measure. Essential
+promoters drift less than look-alikes in human blood (−0.15 SD for housekeeping genes), cortex (−0.06 SD), most GTEx
+tissues, mouse tissues and 89 % of 139 species-tissue groups of 65 mammals. Placebo gene sets, blood-cell
+composition, probe design and reprocessing from raw array files do not produce the gap.
+
+The shield is a property of active promoters and not of essentiality as such. Reference chromatin states account for
+83-91 % of the gap in blood and a quarter to a half in cortex. Where expression was measured in the same samples
+(sorted monocytes, epidermis, cultured fibroblasts), the gene's own expression decile removes 71 to 82 % of the
+housekeeping gap, and genes outside every set are shielded in step with their expression.
+
+The shield also goes with cell division. In one mouse cohort sequenced on shared flowcells, the gap was more than
+twice as large in colon as in hippocampus (−0.19 against −0.08 SD). It is larger in glia than in the same donors'
+neurons, it accrues per population doubling in fibroblasts, in a telomerase-immortalised line and in astrocytes, and
+cultures kept from dividing for six months show neither drift nor shield. Selection among dividing cells and
+replication-coupled maintenance both fit, and the data cannot separate them. Kinetically, essential island promoters
+gain methylation no faster than look-alikes but, in pooled fits, lose it faster and rest lower. In mouse brain,
+heterozygous Tet3 loss weakened the shield; Tet1 knockout did not.
+
+The shield is not tuned to species lifespan, persists through transient reprogramming and has no clear RNA
+counterpart. Effects of this size are sensitive to array batch and preprocessing: an association between drift at
+look-alike promoters and later breast cancer (odds ratio 1.44 per SD) did not hold after adjustment on arrays
+processed from raw files (1.11, 0.69-2.18).
 
 ## Introduction
 
@@ -52,16 +58,16 @@ that difference.
 Two broad explanations of a real shield make different predictions. Selection among cells would purge cells that
 corrupt an essential promoter; it needs cell turnover and should accumulate with divisions. Chromatin maintenance
 would hold active promoters unmethylated in every cell, divide or not; it should follow the tissue's own chromatin
-and act on a fixed share of the errors. A third possibility emerged while this work was in progress: Krepelova et
+and act on a fixed share of the errors. A third possibility concerns removal: Krepelova et
 al. (2025) showed that age-related drift in the mouse intestine is driven by impaired TET activity, arises
 cell-intrinsically in stem cells and spreads through crypt clonality. That finding points to the removal side of methylation turnover.
 
 Here we measure the shield with a matched design across human and mouse tissues, cultured cells, read-level
 bisulfite data and 65 mammal species, and test it against placebo gene sets, cell composition, probe design,
 preprocessing and multiple testing. As the drift measure we use relative entropy from the young state, which counts a
-move up or down alike. An audit during the work replaced binary entropy, which counts a loss of methylation at a
-low-methylated site as a gain in order; because essential promoters turned out to lose methylation faster than
-matched CpGs, the corrected measure gives roughly half of the entropy sizes, and all sizes reported here use it. We
+move up or down alike. Binary entropy, the usual measure, counts a loss of methylation at a
+low-methylated site as a gain in order; because essential promoters lose methylation faster than matched CpGs, it
+roughly doubles the gap, and all sizes reported here are on relative entropy. We
 then ask how the shield is produced, whether it is visible within one person over time, what it is not, and whether
 drift outside it carries health information.
 
@@ -88,7 +94,8 @@ fractions held, it is −0.07 (−0.13 to −0.01); with the cortex arrays rebui
 age slope of the mean (blood housekeeping −0.16 SD, cortex −0.05) and between-person dispersion (−0.29, −0.07).
 A third cortex series, bulk orbitofrontal cortex of 90 people aged 24 to 84 on the EPIC array (GSE254293, rebuilt
 from raw files, diagnosis held), gave a small housekeeping gap of the same sign: −0.017 SD (−0.030 to −0.008), and
-−0.010 (−0.022 to −0.001) with chip intercepts (Supplementary Note 3).
+−0.010 (−0.022 to −0.001) with chip intercepts, a separate term for each array slide (chip) on which samples were
+hybridised together, which removes differences between slides (Supplementary Note 3).
 
 In blood and four brain regions from the same donors (Lunnon et al. 2014; 71-80 donors per tissue), between-person
 dispersion was lower at housekeeping promoters than at matched CpGs in every tissue (blood −0.15 SD, brain regions
@@ -112,7 +119,8 @@ Sizes in the text are the relative-entropy rows ("kl slope"); binary entropy ove
 
 ### The gap is not made by the matching, the cell mix, the array or its preprocessing
 
-**Placebo gene sets, held cell fractions, probe design and reprocessing from raw IDATs leave the gap in place.**
+**Placebo gene sets, held cell fractions, probe design and reprocessing from raw array files (IDATs) leave the gap
+in place.**
 We drew 200 random gene sets of the same sizes from genes outside all three sets and ran them through the same
 matching on all autosomal promoter CpGs (192,719 in blood, 192,998 in cortex). Placebo sets came out at or slightly
 above zero (means +0.01 to +0.05 SD); none of 200 draws reached any essential set's gap, in blood or cortex, on any
@@ -124,37 +132,13 @@ slope left the blood housekeeping gap unchanged on relative entropy (−0.152 �
 slope (−0.159 → −0.177). Only the dispersion gap shrank, by a third (−0.29 → −0.20), as expected when people differ
 in cell mix (Supplementary Fig. S5). In sorted CD14+ monocytes of 1,202 people (MESA; Reynolds et al. 2014), the housekeeping gap was −0.10 SD; in CD4+ T cells of
 214 people it was small (−0.015 SD, p 0.005; Supplementary Fig. S10). The shield is therefore present inside a single cell type, but its
-size varies between cell types. The same monocyte samples also have expression arrays, so promoter activity can be
-read in the cells whose methylation is measured. Adding the decile of each gene's own expression to the matching
-removed 82 % of the monocyte housekeeping gap (−0.099 → −0.017 SD; 75 to 92 %) and all of the core-essential one
-(−0.035 → +0.020, interval including zero). Among the 11,678 genes outside every gene set, drift relative to
-matched CpGs fell step by step with expression, from +0.07 SD in the lowest decile to −0.20 in the highest (rank
-correlation −0.12, p 5·10⁻³⁷). In these cells the shield follows how strongly a promoter is used, whether or not
-the gene is essential. CD4+ T cells of 214 of the same people, which have almost no gap on this measure (−0.015 SD), show no
-such gradient (Supplementary Note 3). In fibroblasts grown for up to 79 population doublings (Sturm et al. 2022;
-89 untreated cultures of six healthy lines, arrays rebuilt from raw files, RNA-seq of the same cultures), drift per
-doubling showed the monocyte pattern: the housekeeping gap of −0.102 SD fell to −0.028 with the expression decile
-in the matching (72 % removed), the core-essential gap from −0.055 to −0.006, and outside the gene sets drift
-relative to matched CpGs fell with expression (rank correlation −0.06, p 1·10⁻⁹). With chip intercepts in the
-slopes the numbers were the same (−0.102 to −0.024; a third of the spread in doublings is left within line and chip).
-Two further cultured series, rebuilt from raw files and without expression data, gave a housekeeping gap per
-doubling of the same sign and size: −0.136 SD (95 % interval −0.143 to −0.129) in a foreskin fibroblast line
-immortalised with telomerase (GSE268145, 20 cultures), which divides without approaching senescence, and −0.102
-(−0.111 to −0.094) in fetal astrocytes (GSE202554, 45 cultures of two donors, 37 from one); chip intercepts left
-both unchanged (−0.138 and −0.101). Each is one cell line or two donors with no arrested control (Supplementary
-Note 3).
-In epidermis of 117 healthy women aged 21 to 79 (Holzscheck et al. 2020; arrays rebuilt from raw files, RNA-seq of
-the same women), analysed as two groups by array type (61 on EPIC, 56 on 450k), the housekeeping gap was −0.106 and
-−0.105 SD and fell to −0.031 in both with the expression decile in the matching (71 % removed); the core-essential
-gap went from −0.058 and −0.054 to zero, and outside the gene sets drift fell with expression (rank correlation
-−0.07 and −0.09). The chromatin state of keratinocytes removed about half of the gap (51 % and 47 %), expression and
-state together 82 % and 80 %. Chip intercepts changed nothing (−0.102 to −0.028; −0.110 to −0.034).
+size varies between cell types. Whether its size follows promoter activity is tested below with expression from the same samples.
 
 Adding probe design to the matching changed no sign, masking unreliable probes moved no essential-set gap by more
 than 0.012 SD, and rebuilding Jaffe's cortex series from its raw arrays did not weaken the gap. On the same 208 donors and the
-89,446 CpGs measured in every donor by every route, R SeSAMe and methylprep agreed within 0.004 SD, and both
-strengthened the gap over the deposited betas: housekeeping relative entropy −0.064 (95 % interval −0.091 to
-−0.034) deposited against −0.081 (−0.125 to −0.046) rebuilt, spread −0.072 against −0.119 (paired difference
+89,446 CpGs measured in every donor by every route, R SeSAMe and methylprep agreed within 0.004 SD. Both strengthened the gap over the deposited values: the
+housekeeping gap on relative entropy was −0.064 (95 % interval −0.091 to −0.034) deposited against −0.081 (−0.125 to
+−0.046) rebuilt, and on spread −0.072 against −0.119 (paired difference
 −0.047, −0.081 to −0.003; Supplementary Note 3; Supplementary Figs. S12, S13). Judging from this rebuild, a gap's
 size carries a few hundredths of an SD of preprocessing uncertainty, in the direction of a weaker gap in the
 deposited data.
@@ -164,8 +148,7 @@ housekeeping and core-essential promoters than at look-alikes, in white blood ce
 and within 27 purified cell-type groups (−0.060, −0.029; all p ≤ 0.002; Supplementary Fig. S11). The shield is therefore not an averaging artefact of
 arrays.
 
-Finally, we pooled every raw p-value in every result table of the project (7,626 tests in 53 output folders) and
-applied one Benjamini-Hochberg correction. Of these, 3,662 survived; the largest surviving p was 0.024. Every shield
+Finally, we applied one Benjamini-Hochberg correction to every raw p-value of the study (7,626 tests). Of these, 3,662 survived; the largest surviving p was 0.024. Every shield
 gap survived (Supplementary Fig. S1).
 
 ![Figure 2](../docs/figures/placebo_sets.png)
@@ -182,26 +165,16 @@ in whole blood, −0.19 in colon, −0.09 in lung and kidney, about 0 in skeleta
 binary entropy, breast and ovary were as weakly protected as muscle. Which tissues lack the gap does not
 follow turnover in humans: testis renews fastest.
 
-On the mammalian array, the corrected measure separated 11 tissues of the same male C57BL/6 mice sharply (GSE279437;
+On the mammalian array, relative entropy separated 11 tissues of the same male C57BL/6 mice sharply (GSE279437;
 Huang et al. 2025). The mice were the untreated young and aged controls of an exenatide and rapamycin study, compared as aged minus young because GEO gives no numeric ages. The housekeeping gap was negative in the three renewing tissues and in kidney and liver (−0.05 to −0.19 SD) and
 positive in four of five post-mitotic tissues and in adipose tissue (+0.03 to +0.09); the hypothalamus, with four
-aged controls, was the exception (−0.08; values per tissue in Supplementary Note 3). Renewing tissues (blood cells, colon, spleen) minus post-mitotic tissues was −0.19 SD (−0.45 to −0.07; Supplementary Fig. S6), and slowly renewing liver, kidney and adipose tissue minus post-mitotic −0.10 (−0.20 to −0.02). Neither survives holding array chip. Aged and young controls shared no chip in spleen and adipose and one in colon and kidney, so in those tissues age cannot be separated from chip (Supplementary Note 3). Among animals on chips shared by both ages, with a chip intercept, the two contrasts were +0.02 (−0.06 to +0.19) and +0.03 (−0.04 to +0.18); white blood cells, the one renewing tissue left, turned from −0.08 to +0.04. On the same tissues without the chip terms the renewing contrast was −0.13 (−0.94 to +0.08), so losing tissues widens the interval and holding chip moves the estimate to zero. In post-mitotic tissues, essential
+aged controls, was the exception (−0.08; values per tissue in Supplementary Note 3). Renewing tissues (blood cells, colon, spleen) minus post-mitotic tissues was −0.19 SD (−0.45 to −0.07; Supplementary Fig. S6), and slowly renewing liver, kidney and adipose tissue minus post-mitotic −0.10 (−0.20 to −0.02). Neither contrast holds once array chip is held. Aged and young controls shared no chip in spleen and adipose and one in colon and kidney, so in those tissues age cannot be separated from chip (Supplementary Note 3). Restricted to animals on chips shared by both ages, and with a chip intercept, the renewing contrast was +0.02 (−0.06 to +0.19) and the slowly renewing one +0.03 (−0.04 to +0.18). White blood cells were the one renewing tissue left, and their gap moved from −0.08 to +0.04. On the same tissues without the chip terms the renewing contrast was −0.13 (−0.94 to +0.08), so losing tissues widens the interval and holding chip moves the estimate to zero. In post-mitotic tissues, essential
 promoters still shifted their mean less (|mean change| −0.05 to −0.09 SD) but scattered more between animals. By
 reduced-representation bisulfite sequencing (RRBS), which covers far more promoter CpGs, cortex kept a small shield (−0.06 SD, interval excluding zero) and heart
 −0.07, against −0.22 in liver and −0.14 in lung (Meer et al. 2018; about 20 mice; the heart, liver and lung intervals
 include zero). Other RRBS series gave −0.03 (adipose) to −0.21 SD (lung) in six tissues (Thompson et al. 2018) and −0.30
 in whole blood (Petkovich et al. 2017), and the mammalian array gave −0.32 in BXD liver (Mozhui et al. 2022; −0.28, −0.45 to −0.14, re-processed from the IDATs). These are different platforms and CpG sets, so they are reported side by side and not ranked against one another; within Meer's four tissues the shield is smaller in cortex and heart, and in Thompson's six tissues muscle (−0.08) matched blood (−0.08). Meer's RRBS and the array disagree on whether post-mitotic tissue keeps a little of
 the shield or none.
-
-Culture follows the shield through cell divisions, along which selection among cells should accumulate
-(Introduction). In seven primary human cell lines passaged to senescence (Endicott et al. 2022), with the
-replicate-culture noise floor removed, set CpGs drifted about half as much as matched CpGs once drift was well above the floor. The change of this
-share with population doublings was −0.14 per 10 doublings (95 % interval −0.33 to +0.06, seven lines; negative means stronger protection; one line reached 136 doublings),
-and −0.055 (−0.21 to +0.10, five lines) in a second study (Sturm et al. 2023; Supplementary Fig. S14). Neither differs detectably from zero, but the intervals also admit changes of the size selection could produce, so they do not show the share to be constant. With batch intercepts the first estimate is −0.14 (−0.34 to +0.05); in the second, plate adjustment is possible in four lines, which give −0.003 unadjusted and +0.003 adjusted (intervals about ±0.08), and all five of its baseline lines used a pooled noise floor. Rebuilt from raw IDATs and scored on the same
-samples, Endicott's lines lose their shield at the reference (housekeeping coupling −0.20 deposited, −0.00
-rebuilt) and the change per 10 doublings becomes −0.18 (−0.39 to +0.04), the direction selection predicts; Sturm's
-four lines with enough samples keep their shield (−0.37) and show no change (−0.025, −0.08 to +0.03). The culture
-test is therefore sensitive to processing and does not separate the two accounts.
 
 Across mammals (Mammalian Methylation Consortium, GSE223748; Lu et al. 2023; Haghani et al. 2023), 139
 species-tissue groups of 65 species had at least 15 animals spanning 15 % of the species' maximum lifespan. The
@@ -249,16 +222,15 @@ donor resamples.
 
 ### The shield goes with cell division
 
-**On data chosen so that batch cannot explain the contrast, the shield is larger where cells divide and absent where
-they do not.** After the audits, a search of public repositories was run for series with raw data, one platform per
-contrast and the contrast spread across chips or flowcells (Supplementary Note 4); each was audited before download
-and rebuilt from raw files where it is an array.
+**In series where batch cannot explain the contrast, the shield is larger where cells divide and absent where
+they do not.** The series in this section provide raw data, use one platform per contrast and spread the contrast
+across chips or flowcells (Supplementary Note 4); the array series were processed from raw files.
 
 *A renewing and a post-mitotic tissue.* Colon and hippocampus of one cohort of male C57BL/6J mice aged 3 to 28 months
 (82 and 83 animals; RRBS) ran on the same four flowcells, each holding every age. The housekeeping gap was −0.19 SD
 in colon (−0.29 to −0.17) and −0.08 in hippocampus (−0.09 to −0.07): a difference of −0.11 (−0.22 to −0.09). The
 core-essential gap differed likewise (−0.17 against −0.07), and non-essential promoters drifted more than their
-matched CpGs in both, most in colon (+0.54 against +0.16). On the mammalian consortium's array, with chip
+matched CpGs in both, most in colon (+0.54 against +0.16). On the mammalian consortium's array, a different series from the 11 tissues above, with chip
 intercepts in every age slope, mouse tissues ordered the same way: lung −0.49, spleen −0.45, liver −0.35, blood −0.32
 and skin −0.22, against cortex −0.06, heart −0.04, kidney −0.04, hippocampus +0.03, cerebellum +0.04 and striatum
 +0.10 (19 to 903 animals per tissue; Supplementary Note 3).
@@ -277,8 +249,12 @@ from the untreated state, and essential and housekeeping promoters carried less 
 pair). The X-ray and RAS cultures showed no drift beyond that floor, so no shield could be measured in them. In a
 separate series, fibroblasts held confluent and non-dividing were sampled monthly for six months: the two donors
 whose arrays were not ordered by time along the chip showed no drift (0.88 and 0.86 of the value under reordered
-months), and no gap exceeded 0.02 SD. The approach to senescence is not needed: fibroblasts immortalised with
-telomerase, and astrocytes over 15 doublings, carry the gap per doubling (above; −0.136 and −0.102 SD).
+months), and no gap exceeded 0.02 SD. The approach to senescence is not needed. Two further cultured series gave a housekeeping gap per doubling of the same sign and size as untreated
+fibroblasts (−0.102 SD; see the section on expression): −0.136 SD (95 % interval −0.143 to −0.129) in a foreskin fibroblast line
+immortalised with telomerase (GSE268145, 20 cultures), which divides without approaching senescence, and −0.102
+(−0.111 to −0.094) in fetal astrocytes (GSE202554, 45 cultures of two donors, 37 from one, over 15 doublings); chip intercepts left
+both unchanged (−0.138 and −0.101). Each is one cell line or two donors with no arrested control (Supplementary
+Note 3).
 
 *Renewing tissues of the same adults.* Among tissues that all renew, no ordering was resolved. Buccal swabs, dried
 blood spots and blood mononuclear cells of the same adults aged 19 to 70 (GSE280465, EPIC v2, rebuilt; tissues of
@@ -363,6 +339,31 @@ level, then with the tissue's own Roadmap chromHMM state, another tissue's state
 accessibility. (a) State
 composition of set and background promoter CpGs in blood (E062). (b) Hannum blood and Jaffe cortex, dispersion slope; (c) Lunnon's tissues, between-person dispersion; (d) share of the housekeeping dispersion-slope gap removed. 95 % intervals resample the set's genes. Panels b-d show the dispersion measures; the relative-entropy shares in the text (blood 83-91 %, cortex 25 % and 56 %) differ from them and are listed in Supplementary Table S2.
 
+### The shield follows promoter expression measured in the same samples
+
+**Where expression and methylation come from the same samples, the gene's own expression accounts for 71 to 82 % of
+the housekeeping gap, and genes outside every gene set are shielded in step with their expression.** Reference
+chromatin maps come from other people's cells. Three data sets carry both layers from the same material: sorted
+monocytes, cultured fibroblasts and epidermis. The CD14+ monocytes of 1,202 people (MESA; Reynolds et al. 2014) have
+expression arrays of the same samples. Adding the decile of each gene's own expression to the matching
+removed 82 % of the monocyte housekeeping gap (−0.099 → −0.017 SD; 75 to 92 %) and all of the core-essential one
+(−0.035 → +0.020, interval including zero). Among the 11,678 genes outside every gene set, drift relative to
+matched CpGs fell step by step with expression, from +0.07 SD in the lowest decile to −0.20 in the highest (rank
+correlation −0.12, p 5·10⁻³⁷). In these cells the shield follows how strongly a promoter is used, whether or not
+the gene is essential. CD4+ T cells of 214 of the same people, which have almost no gap on this measure (−0.015 SD), show no
+such gradient (Supplementary Note 3). In fibroblasts grown for up to 79 population doublings (Sturm et al. 2022;
+89 untreated cultures of six healthy lines, arrays rebuilt from raw files, RNA-seq of the same cultures), drift per
+doubling showed the monocyte pattern: the housekeeping gap of −0.102 SD fell to −0.028 with the expression decile
+in the matching (72 % removed), the core-essential gap from −0.055 to −0.006, and outside the gene sets drift
+relative to matched CpGs fell with expression (rank correlation −0.06, p 1·10⁻⁹). With chip intercepts in the
+slopes the numbers were the same (−0.102 to −0.024; a third of the spread in doublings is left within line and chip).
+In epidermis of 117 healthy women aged 21 to 79 (Holzscheck et al. 2020; arrays rebuilt from raw files, RNA-seq of
+the same women), analysed as two groups by array type (61 on EPIC, 56 on 450k), the housekeeping gap was −0.106 and
+−0.105 SD and fell to −0.031 in both with the expression decile in the matching (71 % removed); the core-essential
+gap went from −0.058 and −0.054 to zero, and outside the gene sets drift fell with expression (rank correlation
+−0.07 and −0.09). The chromatin state of keratinocytes removed about half of the gap (51 % and 47 %), expression and
+state together 82 % and 80 %. Chip intercepts changed nothing (−0.102 to −0.028; −0.110 to −0.034).
+
 ### The shield within one person over time
 
 **Within the same people followed for up to 20 years, housekeeping CpGs change less in direction than look-alikes.**
@@ -381,34 +382,41 @@ settled; its direction agrees with every cross-sectional cohort.
 
 ![Figure 6](../docs/figures/satsa_idats.png)
 
-**Figure 6. SATSA rebuilt from IDATs.** (a) Within-person gaps in the series rebuilt from raw arrays: core-essential, housekeeping and non-essential CpGs minus look-alikes (SD) for directed change, divergence per year and the measurement floor (permutation p in the text). (b) Per-person drift B, shield share F and signed shift S per decade of age, within a person (circles, 95 % interval) and between people (squares), rebuilt series.
+**Figure 6. Change within one person in SATSA.** (a) Within-person gaps in the series rebuilt from raw arrays: core-essential, housekeeping and non-essential CpGs minus look-alikes (SD) for directed change, divergence per year and the measurement floor (permutation p in the text). (b) Per-person drift B, shield share F and signed shift S per decade of age, within a person (circles, 95 % interval) and between people (squares), rebuilt series.
 
 ### What the shield is not
 
-**The shield behaves like a property of each cell's chromatin and methylation turnover, not of competition among
-cells, lifespan, reprogramming state or transcription.**
+**The shield is not tuned to species lifespan, is not reset by transient reprogramming, has no clear counterpart in
+RNA and is not what epigenetic clocks read; the tests of selection among cells in this section are inconclusive.**
 
-*Selection among cells.* In culture the shield's share of drift changed by −0.14 (−0.33 to +0.06) and −0.055 (−0.21 to +0.10)
-per 10 doublings (above): no detectable growth, but intervals that do not exclude growth of the size selection might give.
+*Selection among cells.* Selection among cells should accumulate with divisions, so the shield's share of drift
+should grow along a culture. In seven primary human cell lines passaged to senescence (Endicott et al. 2022), with the
+replicate-culture noise floor removed, set CpGs drifted about half as much as matched CpGs once drift was well above the floor. The change of this
+share with population doublings was −0.14 per 10 doublings (95 % interval −0.33 to +0.06, seven lines; negative means stronger protection; one line reached 136 doublings),
+and −0.055 (−0.21 to +0.10, five lines) in a second study (Sturm et al. 2023; Supplementary Fig. S14). Neither differs detectably from zero, but the intervals also admit changes of the size selection could produce, so they do not show the share to be constant. With batch intercepts the first estimate is −0.14 (−0.34 to +0.05). In the second study, plate adjustment is possible in four lines, which give −0.003 unadjusted and +0.003 adjusted (intervals about ±0.08); all five of its baseline lines used a pooled noise floor. Rebuilt from raw IDATs and scored on the same
+samples, Endicott's lines lose their shield at the reference (housekeeping coupling −0.20 deposited, −0.00
+rebuilt) and the change per 10 doublings becomes −0.18 (−0.39 to +0.04), the direction selection predicts; Sturm's
+four lines with enough samples keep their shield (−0.37) and show no change (−0.025, −0.08 to +0.03). The culture
+test is therefore sensitive to processing and does not separate the two accounts.
 Selection would make the share grow, although steady selection per doubling could also keep it constant in long-term cultures that lose clonal diversity,
 as mesenchymal stromal cells and iPSCs do (Hollmann et al. 2020). Clonal haematopoiesis, a form of selection in living
 blood, did not move the shield (64 patients of Basrai et al. 2026, any clone, DNMT3A or TET2; |F| ≤ 0.022, p ≥ 0.15; re-processed from the IDATs |F| ≤ 0.031, p ≥ 0.19), although clones
 without allele fractions are diluted in bulk blood. Across a stem-cell transplant (92 transplants, up to 23 years; Holland 2024),
 essential and non-essential promoters moved alike (F −0.058, −0.039, −0.057 for core-essential, housekeeping and
-non-essential): a bottleneck did not protect essential promoters specifically (Supplementary Fig. S17). Caloric restriction, which slows
-haematopoietic proliferation, weakened the shield in one mouse blood series, by less once blood-cell chromatin
-openness was matched; the effect was absent in liver, and a second, short series in young mice pointed the other way without reaching significance once
+non-essential): a bottleneck did not protect essential promoters specifically (Supplementary Fig. S17). Caloric restriction slows
+haematopoietic proliferation. It weakened the shield in one mouse blood series, by less once blood-cell chromatin
+openness was matched, and the effect was absent in liver. A second, short series in young mice pointed the other way without reaching significance once
 the test reassigned treatment within array chips and refitted each animal's reference (core-essential shield share
 −0.09, p 0.16; on arrays rebuilt from IDATs −0.08, p 0.36; Supplementary Note 3); its start and end controls sat on different chips, so its 12-week aging
-contrast cannot be told from chip. The turnover ordering in mouse (above), which a selection account would predict, did not survive holding array chip,
-so this family holds no observation that favours selection.
+contrast cannot be told from chip. The turnover ordering on the mouse array, which a selection account would predict, did not hold once array chip
+was held (above). None of the observations in this paragraph favours selection and none excludes it; the
+contrasts in which the shield goes with division are those of the section on cell division.
 
 *Tuning to lifespan.* Long-lived species drift less at unprotected CpGs, as found for epigenetic disorder and methylation rates
 (Bertucci-Richter et al. 2023; Crofts et al. 2024): the look-alikes' dispersion rate fell as
 about lifespan^−1.15 (weight and tissue held). But the gap itself did not track lifespan off the 0 % floor (relative
 entropy +0.004 per log-unit, 95 % interval −0.036 to +0.044, p 0.84). A phylogenetic generalised least-squares fit, run on the binary-entropy and dispersion slopes, gave no lifespan relation
-either. A statement we made earlier, that the shield's share of drift grows with lifespan, rested on binary entropy
-and does not hold on the corrected measure (+1.43, p 0.23); it is withdrawn. This agrees with Crofts et al. (2026),
+either. The shield's share of drift does not grow with lifespan on relative entropy either (+1.43, p 0.23). This agrees with Crofts et al. (2026),
 who explain lifespan scaling of methylation rates by stem-cell dynamics rather than maintenance efficiency.
 
 *Restoration by reprogramming.* Transient OSKM reprogramming of fibroblasts from three donors (Gill et al. 2022;
@@ -427,9 +435,10 @@ donors, unusual promoter methylation was barely reflected in expression (mean |r
 they keep 70-80 % of their accuracy from each CpG's direction alone and 0-10 % from undirected noise
 (Supplementary Note 3).
 
-### A lead: drift at unprotected promoters and incident breast cancer
+### Drift at unprotected promoters and incident breast cancer: an association that depends on preprocessing
 
-**In one prospective cohort, drift at look-alike promoters in blood predicted breast cancer diagnosed years later.**
+**In one prospective cohort, drift at look-alike promoters in blood was associated with breast cancer diagnosed
+years later on the deposited data, but not after adjustment on arrays processed from raw files.**
 EPIC-Italy (GSE51032; Durso et al. 2017) holds blood drawn at enrolment from 845 people, 421 later diagnosed with cancer (235 breast,
 166 colorectal) and 424 without a cancer diagnosis (340 women, 84 men). Cases were diagnosed a median 5.4 years after the draw (range 0.02-14.4), and 169 and 115 of the 235 breast cancers more than 2 and 5 years after it. Per person we scored drift B at look-alike promoter CpGs (each person against everyone else), the
 shield share F and eight published clocks. With age and sex held, B predicted breast cancer (odds ratio per SD 1.43,
@@ -439,12 +448,11 @@ chip held, the odds ratio for cases diagnosed over 2 years later was 1.44 (1.17-
 over the 72 chips. B kept 1.44 with DunedinPACE (Belsky et al. 2022) and PhenoAge (Levine et al. 2018) in the model, and was uncorrelated with DunedinPACE
 (r 0.02). The clocks' own signals did not survive adjustment (DunedinPACE for breast 1.21 → 1.04), and B had no
 colorectal signal once adjusted. The shield share F did not predict cancer (0.95-1.11). Of 168 effects in this
-analysis, only the eight breast-cancer B variants passed a 5 % false discovery rate, and they survived the
-project-wide correction. Rebuilt from the raw arrays with one SeSAMe recipe and analysed as a matched case-control
+analysis, only the eight breast-cancer B variants passed a 5 % false discovery rate, and they passed the correction over all tests of the study. Rebuilt from the raw arrays with one SeSAMe recipe and analysed as a matched case-control
 (women, age within 3 years, same chip first; 163 sets for cases over 2 years), B kept its age-adjusted association
 (1.84, 1.37-3.48) but lost the adjusted one (1.11, 0.69-2.18), while the shield share F became protective (0.69,
-0.49-0.95). On the authors' processed data the matched estimates were 1.71 and 1.76. Which preprocessing is right for
-this question is open; the lead is therefore weaker than the processed data suggested.
+0.49-0.95). On the authors' processed data the matched estimates were 1.71 and 1.76. Which preprocessing is right for this question is open, so the association depends on a choice that cannot yet be
+made.
 
 In childhood-cancer survivors (SJLIFE, 277 deaths among 4,518), B added nothing to DunedinPACE for death (1.01; Supplementary Fig. S20), so it
 is not a general mortality marker. Genome-wide hypomethylation before breast cancer reported in EPIC-Italy (van
@@ -463,8 +471,7 @@ the draw (331, 169 and 146 cases), with mean methylation, 11 blood-cell fraction
 
 ## Discussion
 
-We set out to measure, rather than assert, the protection of essential genes from age-related methylation drift.
-With island status and starting level matched, essential promoters drift less than look-alike CpGs in most tissues
+This study measures the protection of essential genes from age-related methylation drift. With island status and starting level matched, essential promoters drift less than look-alike CpGs in most tissues
 and species tested, by a modest margin (about 0.15 SD in blood, 0.06 SD in cortex, near zero in some tissues and cell
 types) that the matching, cell composition, probe design and normalisation do not produce.
 
@@ -488,9 +495,7 @@ age-hypermethylated programme (Teschendorff et al. 2010; Rakyan et al. 2010; Sli
 drift "stochastic" is therefore accurate only for the part outside that programme; in cortex rising spread is close
 to uniform.
 
-**The shield goes with cell division.** Our earlier analyses found no dependence on division, and we read that as
-evidence against selection among cells. Those analyses compared groups that sat on different array chips, and they
-did not survive the audit. On series chosen so that batch cannot make the contrast, the gap is more than twice as
+**The shield goes with cell division.** In series where batch cannot make the contrast, the gap is more than twice as
 large in colon as in hippocampus of the same mouse cohort, larger in glia than in the same donors' neurons, large in
 fibroblasts driven to replicative senescence, and absent, with drift itself, in cultures kept from dividing for six
 months. It accrues per doubling in fibroblasts immortalised with telomerase, so the approach to senescence is not
@@ -516,18 +521,17 @@ not tested this.
 **What the shield is not.** It is not tuned to species lifespan once the 0 % floor is accounted for, in line with
 Crofts et al. (2026); it persists through transient reprogramming; and it has no clear RNA counterpart.
 
-**The breast-cancer lead has not held up.** In EPIC-Italy, drift at unprotected look-alike promoters, not the shield
+**The association with breast cancer depends on preprocessing.** In EPIC-Italy, drift at unprotected look-alike promoters, not the shield
 itself, was associated with breast cancer diagnosed years after the blood draw on the authors' processed data. With
 the same arrays rebuilt from raw files the adjusted association was not distinguishable from none (odds ratio 1.11,
-0.69 to 2.18), and a second, small series gave the same point estimate with an interval that includes no effect. We
-report it as a lead that global methylation and cell mix may explain, not as a marker.
+0.69 to 2.18), and a second, small series gave the same point estimate with an interval that includes no effect. We report it as a lead that global methylation and cell mix may explain. It is not a marker.
 
 **Limits.** (i) Processing moves results of this size. Effects of 0.02 to 0.1 in a gap are near the ±0.05 SD
 preprocessing uncertainty, a shield in one cultured series vanished on rebuilt arrays, and the breast-cancer
 association weakened; every array series with public raw IDATs was therefore rebuilt, but the cohorts without them
 (Hannum, Lunnon, GTEx, MESA, the mammalian consortium) keep the authors' processing, and the mouse array series were
-rebuilt with SeSAMe's human-array recipe, not its mouse-specific masks. (ii) Chip was the confound we met most often.
-Contrasts that chip fully determines are reported as unidentifiable; on the mouse array an ordering of tissues by
+rebuilt with SeSAMe's human-array recipe, not its mouse-specific masks. (ii) Array chip, the slide on which samples are hybridised together, confounds several contrasts. Contrasts that
+chip fully determines are reported as unidentifiable; on the mouse array an ordering of tissues by
 turnover is seen with chip intercepts but cannot be confirmed among animals on shared chips, and the evidence for
 division rests on the series named above. (iii) Each line of that evidence is narrow: two tissues of one mouse strain;
 one glial fraction of two, with a second sorted series that agrees in sign only (−0.044, interval including zero);
@@ -536,16 +540,13 @@ replicative and arrested cultures from different experiments; one immortalised l
 may both be outcomes of the same protection, the reference epigenomes come from other individuals, and expression in
 epidermis is the depositors' table. That expression explains the gap does not say that transcription causes the
 protection. (v) The Tet3 result is one study of 16 mice per tissue on one array; the Tet1 comparison uses another
-array and homozygous mutants; and some weaker Tet3 contrasts did not survive the project-wide correction. (vi)
+array and homozygous mutants; and some weaker Tet3 contrasts did not pass the correction over all tests of the study. (vi)
 Seeboth et al. (2020) found cell mix, body mass index, smoking and batch to confound per-person methylation outlier
-burdens; our within-sample contrast removes about half of the slide-batch excess, not all, so batch must be held in
-every per-person use. (vii) Read-level epiallele entropy has not yet been recomputed under the corrected measure.
-(viii) Four of our earlier statements did not survive the audits and are not made here: an essentiality effect
-beyond chromatin in blood, a shield share growing with species lifespan, a large shield in CD4+ T cells, and the
-absence of any dependence on cell division.
+burdens; our within-sample contrast removes about half of the slide-batch excess and leaves the rest, so batch must be held in
+every per-person use. (vii) Read-level epiallele entropy was not analysed with relative entropy.
 
-In sum, promoters of essential genes are protected from age-related methylation drift by a modest, reproducible
-margin. Most of that margin is what the promoter's own activity predicts, it is larger where cells divide and absent
+In sum, promoters of essential and housekeeping genes drift less with age than matched CpGs by a modest,
+reproducible margin. Most of that margin is what the promoter's own activity predicts, it is larger where cells divide and absent
 where they do not, and in brain it depends in part on Tet3. Whether selection among dividing cells or maintenance
 coupled to replication produces it is the question the next experiment should answer, with lineage-tracked or
 clonal cultures in which promoter activity is measured in the same cells.
