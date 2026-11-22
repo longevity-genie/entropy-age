@@ -216,8 +216,8 @@ donor resamples.
 
 ### The shield goes with cell division
 
-**In series where batch cannot explain the contrast, the shield is larger where cells divide and absent where
-they do not.** The series in this section provide raw data, use one platform per contrast and spread the contrast
+**In series where batch cannot explain the contrast, the shield is larger where cells divide; neurons carry a
+small gap, and cultures kept from dividing show neither drift nor shield.** The series in this section provide raw data, use one platform per contrast and spread the contrast
 across chips or flowcells (Supplementary Note 4); the array series were processed from raw files.
 
 *A renewing and a post-mitotic tissue.* Colon and hippocampus of one cohort of male C57BL/6J mice aged 3 to 28 months
@@ -234,7 +234,13 @@ in unsorted nuclei (housekeeping −0.05 SD, 148 donors) and was −0.08 in NeuN
 oligodendrocyte lineage and −0.02 in neurons, where it was not distinguishable from zero once chip was held. In the
 65 donors with both fractions, glia exceeded neurons by −0.055 (−0.121 to −0.007; donor bootstrap of both fractions
 together, p 0.025); the oligodendrocyte lineage did not (−0.003). A second sorted series on the 450k array (31
-donors, only two under 60) gave −0.044 (−0.108 to +0.015).
+donors, only two under 60) gave −0.044 (−0.108 to +0.015). A third series holds neurons only: NeuN+ nuclei from the
+frontal cortex of 99 donors aged 23 to 77 (GSE112179; EPIC; 33 controls, the others with schizophrenia or bipolar
+disorder, diagnosis held). Their housekeeping gap was −0.054 SD (−0.063 to −0.046), and −0.034 (−0.043 to −0.024)
+with chip intercepts; the core-essential gap, −0.046, was not distinguishable from zero with chip held (−0.017,
+−0.036 to +0.004). Neurons therefore carry a gap, smaller than that of unsorted nuclei and of glia. In the 33
+controls alone, age is largely fixed by chip (18 % of its variance is left within chips), so their gap cannot be
+estimated with chip held.
 
 *Division against arrest in culture.* In fibroblasts laid out so that each of 12 chips held untreated cultures and
 cultures made senescent by replication, by X-rays and by oncogenic RAS, replicative senescence moved matched CpGs far
@@ -247,8 +253,10 @@ months), and no gap exceeded 0.02 SD. The approach to senescence is not needed. 
 fibroblasts (−0.102 SD; see the section on expression): −0.136 SD (95 % interval −0.143 to −0.129) in a foreskin fibroblast line
 immortalised with telomerase (GSE268145, 20 cultures), which divides without approaching senescence, and −0.102
 (−0.111 to −0.094) in fetal astrocytes (GSE202554, 45 cultures of two donors, 37 from one, over 15 doublings); chip intercepts left
-both unchanged (−0.138 and −0.101). Each is one cell line or two donors with no arrested control (Supplementary
-Note 3).
+both unchanged (−0.138 and −0.101). Astrocytes immortalised with telomerase (GSE226079; 43 cultures in three
+replicate lines, 29 to 72 doublings) gave −0.083 (−0.092 to −0.074), and −0.084 with chip intercepts; 81 % of the
+spread in doublings lies within line and chip. None of the three series has an arrested control, and each is one
+cell line or two donors (Supplementary Note 3).
 
 *Renewing tissues of the same adults.* Among tissues that all renew, no ordering was resolved. Buccal swabs, dried
 blood spots and blood mononuclear cells of the same adults aged 19 to 70 (GSE280465, EPIC v2, rebuilt; tissues of
@@ -540,8 +548,8 @@ burdens; our within-sample contrast removes about half of the slide-batch excess
 every per-person use. (vii) Read-level epiallele entropy was not analysed with relative entropy.
 
 In sum, promoters of essential and housekeeping genes drift less with age than matched CpGs by a modest,
-reproducible margin. Most of that margin is what the promoter's own activity predicts, it is larger where cells divide and absent
-where they do not, and in brain it depends in part on Tet3. Whether selection among dividing cells or maintenance
+reproducible margin. Most of that margin is what the promoter's own activity predicts, it is larger where cells divide, small in neurons and absent, with drift itself, in cultures kept from dividing,
+and in brain it depends in part on Tet3. Whether selection among dividing cells or maintenance
 coupled to replication produces it is the question the next experiment should answer, with lineage-tracked or
 clonal cultures in which promoter activity is measured in the same cells.
 
@@ -555,8 +563,9 @@ or rebuilt values were used, and the analyses that read it. The main human cohor
 four brain regions (GSE59685), GTEx nine tissues (GSE213478, EPIC), SATSA (E-MTAB-7309), EPIC-Italy (GSE51032) and
 SJLIFE (GSE314261); read-level WGBS is from GSE186458. Series added from the repository search, all rebuilt from
 raw files, are epidermis with RNA-seq of the same women (E-MTAB-8993, E-MTAB-8992, E-MTAB-8995), fibroblasts with
-and without telomerase (GSE268145), four tissues of the same adults (GSE280465), orbitofrontal cortex (GSE254293)
-and passaged astrocytes (GSE202554). Mouse and mammal data are the Mammalian Methylation Consortium
+and without telomerase (GSE268145), four tissues of the same adults (GSE280465), orbitofrontal cortex (GSE254293),
+passaged astrocytes (GSE202554), astrocytes immortalised with telomerase (GSE226079) and sorted cortical neurons
+(GSE112179). Mouse and mammal data are the Mammalian Methylation Consortium
 (GSE223748), Huang et al. 2025 (GSE279437), RRBS series GSE80672, GSE120132 and GSE121141, and BXD liver on the mammalian array
 (GSE199979; Mozhui et al. 2022); Tet1 mutants are
 GSE271375. Chromatin references are Roadmap 15-state chromHMM (E062, E030, E073) and sorted neuron and glia ATAC

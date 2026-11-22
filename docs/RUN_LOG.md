@@ -3,6 +3,32 @@
 Owned by the runner seat (`docs/seats/RUNNER.md`): one entry per run, newest first, with its inputs, the
 commit it ran, its job ids, its scale and seed, and its result or its failure with the cause.
 
+## R135 — astrocytes immortalised with telomerase (RM40, GSE226079), 2026-11-22
+
+- Commit d0abc68 plus the module commit after it; `figures astrocyte_htert --scale paper --seed 42`, then with
+  `ENTROPY_AGE_CHIP=1`; job 6592161 after the SeSAMe rebuild of 70 EPIC arrays. hTERT cultures with doublings: 43 in
+  three replicate lines (15, 14, 14), 29.5 to 72.2 doublings, 12 chips; 0.81 of the variance of doublings is left
+  within line and chip. 87,104 promoter CpGs measured in all. Slopes on doublings with a line intercept.
+- **Gap per doubling.** Housekeeping −0.083 SD (−0.092 to −0.074); chip held −0.084 (−0.092 to −0.074).
+  Core-essential −0.041 (−0.060 to −0.023); chip held −0.042. Non-essential +0.141; chip held +0.142.
+- Reading: a second immortalised cell type carries the gap per doubling, with chip held, a little below primary
+  astrocytes (−0.102, R133) and fibroblasts. Three replicate lines of one source; no arrested control.
+
+## R134 — sorted cortical neurons, third series (RM40, GSE112179), 2026-11-22
+
+- Commit d0abc68; `figures neuron_series --scale paper --seed 42`; job 6592157 after the SeSAMe rebuild of 100 EPIC
+  arrays (99 pass detection). NeuN+ nuclei, frontal cortex, ages 23 to 77, 13 chips; 33 controls on 11 chips.
+- **Every donor, sex and diagnosis held.** Housekeeping: relative entropy −0.054 (−0.063 to −0.046); with chip
+  −0.034 (−0.043 to −0.024). Core-essential −0.046 (−0.062 to −0.030); with chip −0.017 (−0.036 to +0.004).
+  10-90 %: housekeeping −0.090, with chip −0.051. Dispersion slope: −0.036, with chip +0.032. 0.61 of the variance
+  of age is left within diagnosis and chip.
+- **Controls alone (33).** Housekeeping −0.028 (−0.040 to −0.016); with chip +0.023, but only 0.18 of the variance
+  of age is left within chips: not estimable with chip held.
+- Reading: neurons carry a small housekeeping gap that survives chip intercepts (about half the size in unsorted
+  nuclei, −0.05, R109). The first sorted series (R109) had −0.02 and −0.008 within chips. "Absent where cells do not
+  divide" therefore holds for arrested cultures, not for neurons; the dispersion measure does not show the gap with
+  chip held.
+
 ## R133 — a second cell type in culture: passaged fetal astrocytes (RM40, GSE202554), 2026-11-20
 
 - Commit 82e3311; `figures astrocyte_passage --scale paper --seed 42`, then with `ENTROPY_AGE_CHIP=1`; job 6558106

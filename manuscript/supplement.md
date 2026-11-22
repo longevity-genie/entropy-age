@@ -173,6 +173,22 @@ includes zero).
 −0.102 SD on relative entropy (−0.111 to −0.094), −0.101 with chip intercepts; core-essential −0.072; non-essential
 +0.342. Most arrays (37) come from one donor.
 
+**Astrocytes immortalised with telomerase (R135).** GSE226079: fetal astrocytes immortalised with hTERT, 43 cultures
+in three replicate lines over 29 to 72 cumulative population doublings, EPIC, rebuilt; slopes on doublings with a
+line intercept. The 12 chips each hold cultures of several doublings, and 81 % of the variance of doublings is left
+within line and chip. Housekeeping gap per doubling −0.083 SD on relative entropy (−0.092 to −0.074), −0.084 with
+chip intercepts; core-essential −0.041 (−0.060 to −0.023); non-essential +0.141 (+0.089 to +0.197). The series'
+primary astrocytes (five passages) are not used.
+
+**Sorted cortical neurons, third series (R134).** GSE112179: NeuN+ nuclei of frontal cortex, 99 donors aged 23 to 77
+after the detection cut (33 controls, the others with schizophrenia or bipolar disorder), EPIC, rebuilt; age slopes
+with sex and diagnosis held, on the 88,079 promoter CpGs measured in every array. Housekeeping gap −0.054 SD on
+relative entropy (−0.063 to −0.046), −0.034 (−0.043 to −0.024) with chip intercepts; core-essential −0.046 (−0.062
+to −0.030), −0.017 (−0.036 to +0.004) with chip. Off the 0 % floor (10-90 %): housekeeping −0.090, −0.051 with chip.
+On the dispersion slope the housekeeping gap is −0.036 and turns positive with chip intercepts (+0.032). With
+diagnosis and chip held, 61 % of the variance of age is left. In the 33 controls alone 18 % is left within chips;
+without chip their housekeeping gap is −0.028 (−0.040 to −0.016), and with chip it is not estimable (+0.023).
+
 **Blood with the neutrophil chromatin map (R121).** Whole blood has no reference map of its own; the analyses use
 mononuclear cells (Roadmap E062). With neutrophils (E030) in its place: loss per decade at active-TSS island
 promoters, set minus matched, core-essential +0.0053 (+0.0026 to +0.0081; E062 +0.0063), housekeeping +0.0041
@@ -407,6 +423,8 @@ type. Generated from `docs/provenance.csv` by `scripts/provenance_table.py`.
 | Tissues of the same adults on shared chips | R131 | C1 | human buccal, dried blood spot, blood mononuclear cells | GSE280465 | EPIC v2 | rebuilt (R SeSAMe) | none |  | one study; tissues share chips (17 of 27 hold all four) | none | n.a. | 32 to 43 donors per pair; saliva out (detection); no tissue difference with chip held; all tissues renew |
 | Third cortex series | R132 | C1 | human orbitofrontal cortex (bulk) | GSE254293 | EPIC | rebuilt (R SeSAMe) | none |  | one study; age spread over 12 chips; holds with chip intercepts | none | n.a. | 90 people; diagnosis held; cell mix not held |
 | Passaged astrocytes | R133 | C2 | human fetal astrocytes in culture | GSE202554 | EPIC | rebuilt (R SeSAMe) | none |  | one study; doublings spread over 8 chips; holds with chip intercepts | none | n.a. | 45 cultures of 2 donors (37 from one); 15 doublings; no arrested control |
+| Astrocytes with telomerase | R135 | C2 | human fetal astrocytes immortalised with hTERT | GSE226079 | EPIC | rebuilt (R SeSAMe) | none |  | one study; doublings spread over 12 chips; holds with chip intercepts | none | n.a. | 43 cultures in 3 replicate lines; 29 to 72 doublings; no arrested control |
+| Sorted neurons third series | R134 | C1 | human frontal cortex NeuN+ nuclei | GSE112179 | EPIC | rebuilt (R SeSAMe) | none |  | one study; age spread over 13 chips; smaller with chip intercepts | none | n.a. | 99 donors (33 controls); diagnosis held; neurons only |
 | Monocytes and T cells with own expression | R122 R123 | C2 | human CD14+ monocytes / CD4+ T cells | MESA, GSE56046 GSE56581 | 450k | deposited | expression (HT-12 array) | MESA, GSE56045 GSE56580 | one study | same samples | same | 1,202 and 214 samples joined one to one; expression deposited normalised values |
 | Sorted monocytes and T cells | R44 R68b | C1 | human CD14+ monocytes / CD4+ T cells | MESA, GSE56046 GSE56581 | 450k | deposited | none |  | one study | none | n.a. | text sets them beside Hannum (other study) |
 | Read-level blood | R50 | C1 | human white blood cells | Loyfer, GSE186458 | WGBS | authors' reads | Hannum array means (check) | GSE40279 | across studies | other study | same | cross-platform used only as a validation (r 0.963) |
