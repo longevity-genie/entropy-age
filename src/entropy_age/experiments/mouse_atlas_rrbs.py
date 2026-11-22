@@ -6,8 +6,9 @@ to 24 months. Each sequencing lane holds libraries of several ages, read from th
 Liver, heart, cortex and lung have 10 to 12 mice at each of 3, 15 and 24 months; the other tissues have few mice per
 age and are reported only when they reach ``MIN_MICE``.
 
-As for the other RRBS series: CpGs in promoters (``data/rrbs.py``) covered at least 10 times, kept when present in
-90 % of a tissue's libraries. Per tissue: the matched gap of each gene set on the age slopes of relative entropy,
+CpGs in promoters (``data/rrbs.py``) covered at least 10 times in every library of the tissue are used; nothing is
+filled. The two strands of a CpG are separate rows of the coverage files and stay separate features here (the files
+carry no strand, and both strands of a CpG fall in the same promoter and stratum). Per tissue: the matched gap of each gene set on the age slopes of relative entropy,
 entropy and dispersion (sex and lane held; strata of island status x young-level decile, young = the youngest age
 of the tissue), with a mouse bootstrap.
 
@@ -28,7 +29,7 @@ from entropy_age.data.matrix import FeatureMatrix
 from entropy_age.data.rrbs import MIN_COVERAGE, TRACKS, RrbsLayout, in_intervals, islands, promoters
 from entropy_age.experiments.common import Context, dummies, scaled_intervals, write_table
 from entropy_age.experiments.interventions import membership
-from entropy_age.experiments.jena_rrbs import CHROMOSOMES, present_enough
+from entropy_age.experiments.jena_rrbs import CHROMOSOMES
 from entropy_age.experiments.mouse_rrbs_tissues import tissue_gaps
 
 GSE = "GSE225166"
@@ -111,8 +112,8 @@ def run(ctx: Context) -> list[Path]:
                 for s, f in zip(samples["sample"].to_list(), samples["file"].to_list(), strict=True)
             ]
         )
-        betas = present_enough(long.pivot(on="sample", index="cpg", values="beta"))
-        m = FeatureMatrix.from_frame(betas, feature_col="cpg", samples=samples["sample"].to_list(), max_missing=0.1)
+        betas = long.pivot(on="sample", index="cpg", values="beta").drop_nulls()  # measured in every library
+        m = FeatureMatrix.from_frame(betas, feature_col="cpg", samples=samples["sample"].to_list(), max_missing=0.0)
         chrom = pl.Series([f.split(":")[0] for f in m.features])
         pos = pl.Series([int(f.split(":")[1]) for f in m.features])
         cpgs = pl.DataFrame({"cpg": m.features, "chr": chrom, "pos": pos}).with_columns(
