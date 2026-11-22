@@ -148,6 +148,21 @@ def promoter_fraction(counts: np.ndarray, total: np.ndarray) -> np.ndarray:
     return counts.sum(axis=1) / total
 
 
+def excess_dispersion_slopes(x: np.ndarray, total: np.ndarray, age: np.ndarray, covariates: np.ndarray) -> np.ndarray:
+    """Per peak (column of the counts ``x``): the age slope of the between-donor variation that counting noise does
+    not explain. A log-linear fit on age and ``covariates`` gives each donor's expected count ``mu`` (rescaled so
+    that expected and observed totals agree per peak); ``((x - mu)^2 - mu) / mu^2`` then estimates the squared
+    coefficient of variation beyond Poisson noise for that donor, and its regression on age is returned. Unlike the
+    spread of log counts, its expectation does not depend on how many reads a peak collects."""
+    design = np.column_stack([np.ones(age.size), age, covariates])
+    y = np.log((x + 0.5) / total[:, None])
+    coef, *_ = np.linalg.lstsq(design, y, rcond=None)
+    mu = np.exp(design @ coef) * total[:, None]
+    mu *= x.sum(axis=0) / mu.sum(axis=0)
+    excess = ((x - mu) ** 2 - mu) / mu**2
+    return np.linalg.lstsq(np.column_stack([np.ones(age.size), age]), excess, rcond=None)[0][1]
+
+
 def run(ctx: Context) -> list[Path]:
     h5ad, demographics = inputs(ctx.paths)
     ann = AnnotationLayout(ctx.paths)
@@ -225,32 +240,39 @@ def run(ctx: Context) -> list[Path]:
             if k:
                 u, s, _ = np.linalg.svd(y - mean, full_matrices=False)
                 cov = np.column_stack([cov, u[:, :k] * s[:k]])
-            slopes = spread_slopes(y, age, cov)
-            metrics = pl.DataFrame({"feature": [str(p) for p in keep], "spread_slope": slopes, "stratum": stratum})
-            res = compare_groups(
-                metrics,
-                membership,
-                metric="spread_slope",
-                stratify_by="stratum",
-                n_permutations=PERMUTATIONS,
-                seed=ctx.seed,
-            )
-            sd = float(np.nanstd(slopes))
-            rows.append(
-                res.with_columns(
-                    cell_type=pl.lit(cell_type),
-                    adjustment=pl.lit(adjustment),
-                    components=pl.lit(k),
-                    gap_sd=pl.col("matched_diff") / sd,
-                    donors=pl.lit(sel.height),
-                    age_min=pl.lit(float(age.min())),
-                    age_max=pl.lit(float(age.max())),
+            measures = {
+                "spread of log counts": spread_slopes(y, age, cov),
+                "excess over counting noise": excess_dispersion_slopes(x, sel["total"].to_numpy(), age, cov),
+            }
+            for measure, slopes in measures.items():
+                metrics = pl.DataFrame(
+                    {"feature": [str(p) for p in keep], "spread_slope": slopes, "stratum": stratum}
+                ).filter(pl.col("spread_slope").is_finite())
+                res = compare_groups(
+                    metrics,
+                    membership,
+                    metric="spread_slope",
+                    stratify_by="stratum",
+                    n_permutations=PERMUTATIONS,
+                    seed=ctx.seed,
                 )
-            )
+                sd = float(np.nanstd(slopes))
+                rows.append(
+                    res.with_columns(
+                        measure=pl.lit(measure),
+                        cell_type=pl.lit(cell_type),
+                        adjustment=pl.lit(adjustment),
+                        components=pl.lit(k),
+                        gap_sd=pl.col("matched_diff") / sd,
+                        donors=pl.lit(sel.height),
+                        age_min=pl.lit(float(age.min())),
+                        age_max=pl.lit(float(age.max())),
+                    )
+                )
         print(f"atac_cortex: {cell_type}: {sel.height} donors done", file=sys.stderr, flush=True)
     result = pl.concat(rows, how="diagonal")
     write_table(result, out / "gaps")
-    return [_figure(ctx, result)]
+    return [_figure(ctx, result.filter(pl.col("measure") == "spread of log counts"))]
 
 
 def _figure(ctx: Context, result: pl.DataFrame) -> Path:
