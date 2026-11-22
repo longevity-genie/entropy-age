@@ -193,6 +193,7 @@ FIGURES: dict[str, Callable[[Context], list[Path]]] = {
     "epidermis_expression": epidermis_expression.run,
     "bj_telomerase": bj_telomerase.run,
     "astrocyte_passage": astrocyte_passage.run,
+    "astrocyte_htert": astrocyte_passage.run_htert,
     "cross_tissue": cross_tissue.run,
     "orbitofrontal": orbitofrontal.run,
     "sorted_cells": sorted_cells.run,

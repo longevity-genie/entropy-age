@@ -9,6 +9,12 @@ CpGs against CpGs matched on island status and starting level.
 
 Limits: two donors, 37 of the 45 arrays from one; a span of 15 doublings against 79 in Sturm; no arrested control.
 ``entropy-age figures astrocyte_passage`` (needs the SeSAMe rebuild of GSE202554).
+
+A second series of the same laboratory, GSE226079, carries astrocytes of the same fetal source immortalised with hTERT
+and passaged from 29 to 72 cumulative doublings in three replicate lines on shared chips. Its hTERT cultures get the
+same analysis with the replicate line in the donor's place (``entropy-age figures astrocyte_htert``): do astrocytes
+that divide without approaching senescence accrue the gap per doubling, as hTERT fibroblasts do (R130)? Its primary
+arm (five passages, adult donors) is too short and is left out.
 """
 
 from __future__ import annotations
@@ -30,6 +36,7 @@ from entropy_age.experiments.tissue_contrast import Prepared, _features, _lifesp
 from entropy_age.stochasticity import baseline_strata
 
 GSE = "GSE202554"
+GSE_HTERT = "GSE226079"
 METRICS = ("kl_slope", "entropy_slope", "dispersion_slope")
 
 
@@ -46,17 +53,40 @@ def bulk_cultures(chars: pl.DataFrame) -> pl.DataFrame:
     )
 
 
+def htert_cultures(chars: pl.DataFrame) -> pl.DataFrame:
+    """``sample``, ``donor`` (the replicate line) and ``doublings`` of the hTERT-immortalised cultures."""
+    chars = chars.rename({c: c.lower() for c in chars.columns})
+    return (
+        chars.filter(pl.col("htert") == "1")
+        .select(
+            "sample",
+            pl.concat_str(pl.lit("line "), pl.col("replicate")).alias("donor"),
+            pl.col("cpd").cast(pl.Float64, strict=False).alias("doublings"),
+        )
+        .drop_nulls("doublings")
+        .sort("donor", "doublings")
+    )
+
+
 def run(ctx: Context) -> list[Path]:
+    return _run(ctx, GSE, "astrocyte_passage", bulk_cultures)
+
+
+def run_htert(ctx: Context) -> list[Path]:
+    return _run(ctx, GSE_HTERT, "astrocyte_htert", htert_cultures)
+
+
+def _run(ctx: Context, gse: str, name: str, select) -> list[Path]:
     paths = ctx.paths
-    matrix = paths.input / "geo" / GSE / f"{GSE}_series_matrix.txt.gz"
-    if not (reprocessed.available(paths, GSE) and matrix.exists()):
-        print(f"astrocyte_passage: no SeSAMe rebuild or series matrix for {GSE}; nothing run", file=sys.stderr)
+    matrix = paths.input / "geo" / gse / f"{gse}_series_matrix.txt.gz"
+    if not (reprocessed.available(paths, gse) and matrix.exists()):
+        print(f"{name}: no SeSAMe rebuild or series matrix for {gse}; nothing run", file=sys.stderr)
         return []
-    out = ctx.out_dir("astrocyte_passage")
+    out = ctx.out_dir(name)
     features, probes, membership = _features(paths, ctx.rng(140_000))
-    qc = reprocessed.read_qc(paths, GSE).filter(pl.col("passed"))
-    cultures = bulk_cultures(_characteristics(matrix)).join(qc.select("sample", "chip"), on="sample")
-    betas = reprocessed.by_accession(paths, GSE, {s: s for s in cultures["sample"].to_list()})
+    qc = reprocessed.read_qc(paths, gse).filter(pl.col("passed"))
+    cultures = select(_characteristics(matrix)).join(qc.select("sample", "chip"), on="sample")
+    betas = reprocessed.by_accession(paths, gse, {s: s for s in cultures["sample"].to_list()})
     x, feats = complete_matrix(betas, features, cultures["sample"].to_list())
     doublings = cultures["doublings"].to_numpy()
     donors, chips = cultures["donor"].to_numpy(), cultures["chip"].to_numpy()
@@ -80,5 +110,5 @@ def run(ctx: Context) -> list[Path]:
         pl.len().alias("cultures"), pl.col("doublings").min().alias("min"), pl.col("doublings").max().alias("max")
     )
     write_table(sizes.with_columns(cpgs=pl.lit(len(feats))), out / "sizes")
-    print(f"astrocyte_passage: {cultures.height} cultures, {len(feats)} CpGs", file=sys.stderr, flush=True)
+    print(f"{name}: {cultures.height} cultures, {len(feats)} CpGs", file=sys.stderr, flush=True)
     return []
