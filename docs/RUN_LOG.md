@@ -29,6 +29,26 @@ commit it ran, its job ids, its scale and seed, and its result or its failure wi
 - Reading: a second immortalised cell type carries the gap per doubling, with chip held, a little below primary
   astrocytes (−0.102, R133) and fibroblasts. Three replicate lines of one source; no arrested control.
 
+## R140 — between-cell drift in single muscle stem cells (GSE121437), 2026-11-23
+
+- Commit after 304388a (plain between-cell variance, promoters matched on island status, young level and coverage
+  fifth); `figures musc_single_cell --scale paper --seed 42`; job 6592905. scBS-seq of 275 cells (136 young from
+  mice Y2, Y7, Y8; 139 old from O1, O5, O8); 26,144 promoters with at least 4 reads in at least 20 cells per age;
+  16,200 with expression from the count table of the same cells. 200 resamples of cells within mouse.
+- **Divergence (old minus young between-cell variance), set minus matched, SD.** Housekeeping −0.056 (−0.072 to
+  −0.020), each mouse left out −0.024 to −0.085; core-essential −0.074 (−0.109 to −0.008), left out −0.033 to
+  −0.076; non-essential +0.055 (−0.016 to +0.105). With the expression decile matched: housekeeping −0.031 (−0.047
+  to +0.004), core-essential −0.058 (−0.085 to +0.011).
+- **Between-cell variance in young cells.** Higher at essential promoters than matched (housekeeping +0.113,
+  core-essential +0.088), +0.047 and +0.037 with expression matched; not interpreted: read sampling within one cell
+  differs between CpG-dense and CpG-poor promoters.
+- **Shift of the mean.** No difference (housekeeping −0.013, −0.015 to +0.017).
+- Caveats: three mice per age; old cells carry about 19 more reads per promoter per cell than young (mean 60),
+  which lowers their measured variance; promoters are matched on mean coverage, not on that difference. Not in the
+  paper until the coverage difference is controlled (downsample old cells to the young depth).
+- Reading: suggestive that age adds less cell-to-cell variation at essential promoters within one sorted cell
+  type, about half of it explained by expression.
+
 ## R139 — cortex accessibility with a measure free of counting noise (RM19), 2026-11-23
 
 - Commit 16492c1; `figures atac_cortex --scale paper --seed 42` on the cached pseudobulk; job 6592847. Seven cell

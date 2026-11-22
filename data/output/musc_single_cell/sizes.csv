@@ -1,0 +1,2 @@
+cells_young,cells_old,mice,promoters_with_reads,promoters_used,used_with_expression,median_divergence,mean_reads_per_cell,mean_reads_old_minus_young,median_heterogeneity_young
+136,139,6,38152,26144,16200,-0.0038669477329002456,59.93091084694409,18.888547679988452,0.04032978348840688
