@@ -1,0 +1,11 @@
+# Sorted cortical neurons, third series (R134b).
+accession = "GSE112179"
+age = "age"
+sex = "Sex"
+donor = "tissuebank.id"
+hold = ["dist.dx"]
+
+[groups."neurons, every donor"]
+"cell.type" = "NeuN+"
+[groups."neurons, controls"]
+"dist.dx" = "Control"

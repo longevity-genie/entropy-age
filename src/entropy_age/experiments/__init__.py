@@ -86,6 +86,7 @@ from entropy_age.experiments import (
     score_confounders,
     senescence_donors,
     senescence_modes,
+    series,
     sex_drift,
     shield_clocks,
     sjlife_deaths,
@@ -222,5 +223,8 @@ FIGURES: dict[str, Callable[[Context], list[Path]]] = {
     "stochastic_component": stochastic_component.run,
     "probe_robustness": probe_robustness.run,
 }
+
+for _name in series.specs():  # every description file in config/series is a figure named series_<name>
+    FIGURES[f"series_{_name}"] = lambda ctx, _n=_name: series.run_series(ctx, _n)
 
 __all__ = ["FIGURES", "Context", "Scale", "ScaleName"]

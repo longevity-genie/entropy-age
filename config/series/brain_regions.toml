@@ -1,0 +1,23 @@
+# Three brain regions of about 300 donors (R137); the same decisions as every array age series.
+accession = "GSE349373"
+age = "age at death"
+sex = "Sex"
+donor = "title:^([^_]+)_"
+hold = ["primary dx"]
+exclude_jaffe_donors = true
+
+[groups."prefrontal cortex, controls"]
+"brain region" = "PFC"
+"primary dx" = "Control"
+[groups."prefrontal cortex, every donor"]
+"brain region" = "PFC"
+[groups."amygdala, controls"]
+"brain region" = "AMG"
+"primary dx" = "Control"
+[groups."amygdala, every donor"]
+"brain region" = "AMG"
+[groups."hippocampus, controls"]
+"brain region" = "HPC"
+"primary dx" = "Control"
+[groups."hippocampus, every donor"]
+"brain region" = "HPC"
