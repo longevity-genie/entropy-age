@@ -9,27 +9,26 @@ Age-related DNA methylation drift is often modelled as uniform noise, although e
 housekeeping and highly connected genes are spared. We measured this protection, which we call the shield, by
 comparing CpGs in promoters of essential and housekeeping genes with CpGs of the same CpG-island status and starting
 methylation level (look-alikes), using relative entropy from the young state as the drift measure. Essential
-promoters drift less than look-alikes in human blood (−0.15 SD for housekeeping genes; −0.08 among CpGs that start
-between 10 and 90 % methylation), cortex (−0.06 SD), most GTEx
+promoters drift less than look-alikes in human blood (−0.15 SD for housekeeping genes; −0.10 among CpGs that start between 10 and 90 % methylation, and none among
+those between 20 and 80 %), cortex (−0.06 SD), most GTEx
 tissues, mouse tissues and 89 % of 139 species-tissue groups of 65 mammals. Placebo gene sets, blood-cell
 composition, probe design and reprocessing from raw array files do not produce the gap.
 
 Most of the shield is accounted for by promoter activity, not by essentiality as such. Reference chromatin states account for
-83-91 % of the gap in blood and a quarter to a half in cortex. Where expression was measured in the same samples
+83-91 % of the gap in blood and about 44 % in cortex. Where expression was measured in the same samples
 (sorted monocytes, epidermis, cultured fibroblasts), the gene's own expression decile removes 71 to 82 % of the
 housekeeping gap, and genes outside every set are shielded in step with their expression.
 
 The shield also goes with cell division. In one mouse cohort sequenced on shared flowcells, the gap was more than
 twice as large in colon as in hippocampus (−0.19 against −0.08 SD). In one sorted series it is larger in one glial fraction than in the same donors' neurons (p 0.025; not resolved
 in a second series), it accrues per population doubling in fibroblasts, in a telomerase-immortalised line and in astrocytes, and
-cultures of two donors kept from
-dividing for six months show no measurable drift, so no shield can be measured in them. Selection among dividing cells and
+in cultures of two donors kept from dividing for six months no drift was detected, so no shield can be measured in them. Selection among dividing cells and
 replication-coupled maintenance both fit, and the data cannot separate them. Kinetically, essential island promoters
 gain methylation no faster than look-alikes but, in pooled fits, lose it faster and rest lower. In mouse brain at one age, essential promoters of Tet3 heterozygous mice carried more methylation relative to
 look-alikes than same-chip wild types; in a separate study on another array, Tet1 knockout showed the opposite
 shift.
 
-The shield is not tuned to species lifespan, persists through transient reprogramming and has no clear RNA
+No relation of the shield to species lifespan was resolved, it persists through transient reprogramming and it has no clear RNA
 counterpart. Effects of this size are sensitive to array batch and preprocessing: an association between drift at
 look-alike promoters and later breast cancer (adjusted odds ratio 1.76 per SD in a matched analysis of the deposited data) was 1.11 (0.69-2.18) in the same
 analysis of arrays processed from raw files, an interval that includes both no effect and the earlier estimate.
@@ -87,10 +86,11 @@ housekeeping gap was larger in blood than in cortex by 0.09 SD (95 % interval �
 genes the difference was not resolved (−0.02, −0.09 to +0.04; Fig. 1b). These are two studies, processed by different
 pipelines, over different age ranges (19-101 and 21-85 years), with neuron fraction held in cortex but no cell fractions
 in blood; the difference is therefore descriptive. Restricted to the ages both cohorts cover and with blood-cell
-fractions held, it is −0.07 (−0.13 to −0.01); with the cortex arrays rebuilt from raw files, −0.07 (−0.15 to +0.01). Essential promoters start near 0 % methylation, where there is little room to drift. Among CpGs starting between
-10 and 90 %, the blood housekeeping gap was −0.08 SD (−0.15 to −0.03), and between 20 and 80 % it was 0.00 (−0.05
-to +0.04); in cortex the gap kept its size off the floor (−0.07, −0.11 to +0.00, between 10 and 90 %). Much of the blood gap therefore lies at CpGs near the
-floor. Other drift measures gave the same signs: the absolute
+fractions held, it is −0.07 (−0.13 to −0.01); with the cortex arrays rebuilt from raw files, −0.07 (−0.15 to +0.01). Essential promoters start near 0 % methylation, where there is little room to drift. On one common scale (the
+SD over all CpGs), the blood housekeeping gap among CpGs starting between 10 and 90 % was −0.10 SD (−0.20 to −0.04),
+and between 20 and 80 % it was 0.00 (−0.08 to +0.07). In cortex the same bands gave −0.08 (−0.14 to +0.00) and −0.06
+(−0.14 to +0.07): the estimate keeps its size, but neither interval excludes zero. The blood gap therefore does not
+extend to CpGs of intermediate methylation, and the cortex gap off the floor is not resolved. Other drift measures gave the same signs: the absolute
 age slope of the mean (blood housekeeping −0.16 SD, cortex −0.05) and between-person dispersion (−0.29, −0.07).
 A second cortex series (GSE252501; dorsolateral prefrontal cortex of 52 donors on the EPIC array, processed from
 raw files, depression diagnosis held) gave −0.005 SD (−0.017 to +0.006), and −0.013 (−0.024 to −0.003) with chip
@@ -345,7 +345,8 @@ were not processed alike; the effects do not change when the index is held (Supp
 
 ### Chromatin accounts for most of the shield in blood and less in cortex
 
-**Matching on a reference chromatin state removes 83-91 % of the blood gap and a quarter to a half of the cortex gap;
+**Matching on a reference chromatin state removes 83-91 % of the blood gap and 25 to 44 % of the cortex gap
+(deposited values and arrays processed from raw files);
 in cortex the reference acts as a generic label of promoter activity.** We added each promoter CpG's 15-state chromHMM state (Roadmap Epigenomics Consortium 2015) to the matching. In blood,
 80-85 % of essential and housekeeping CpGs sit in active TSS states against 38 % of background CpGs. On relative
 entropy, blood's own state (E062 mononuclear cells, or E030 neutrophils) removed 83-91 % of the housekeeping gap;
@@ -437,7 +438,7 @@ settled; its direction agrees with every cross-sectional cohort.
 
 ### What the shield is not
 
-**The shield is not tuned to species lifespan, is not reset by transient reprogramming, has no clear counterpart in
+**No relation of the shield to species lifespan is resolved, it is not reset by transient reprogramming, has no clear counterpart in
 RNA and is not what epigenetic clocks read; the tests of selection among cells in this section are inconclusive.**
 
 *Selection among cells.* Selection among cells should accumulate with divisions, so the shield's share of drift
@@ -536,7 +537,7 @@ with intervals that can be compared across tissues and species and checked again
 follow two things: how strongly a promoter is used, and whether the cells divide.
 
 **The shield belongs to active promoters, not to essential genes as such.** Reference chromatin states account for
-most of the gap in blood and a quarter to a half in cortex, and with expression and sorted-nuclei accessibility also
+most of the gap in blood and 25 to 44 % in cortex, and with expression and sorted-nuclei accessibility also
 held about a quarter of the cortex gap is left. The sharper test uses expression measured in the samples whose methylation is
 measured. In sorted monocytes, in epidermis and in cultured fibroblasts, three systems from different laboratories
 and on different measures of time (age in two, population doublings in one), matching on the decile of the gene's
@@ -573,7 +574,8 @@ promoters in bulk brain tissue. Faster removal that needs replication to dilute 
 replication-coupled maintenance, and would make the shield larger where cells divide without any selection; we have
 not tested this.
 
-**What the shield is not.** It is not tuned to species lifespan once the 0 % floor is accounted for, in line with
+**What the shield is not.** Off the 0 % floor no relation to species lifespan is resolved (a change as large as
+the gap itself across the range of species is not excluded), in line with
 Crofts et al. (2026); it persists through transient reprogramming; and it has no clear RNA counterpart.
 
 **The association with breast cancer depends on preprocessing.** In EPIC-Italy, drift at unprotected look-alike promoters, not the shield

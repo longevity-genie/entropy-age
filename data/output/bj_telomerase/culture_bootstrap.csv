@@ -1,0 +1,10 @@
+cells,group,metric,resamples,ci_low,ci_high
+hTERT,core_essential,kl_slope,200,-0.0755936567065279,-0.03383216211341418
+hTERT,housekeeping,kl_slope,200,-0.16035426397700675,-0.07228081300136041
+hTERT,non_essential,kl_slope,200,0.04269481552538744,0.1757424796549797
+"mortal, chips shared with hTERT",core_essential,kl_slope,200,-0.03585988805087854,-0.007969116272686032
+"mortal, chips shared with hTERT",housekeeping,kl_slope,200,-0.03564236678625303,-0.011495872574584044
+"mortal, chips shared with hTERT",non_essential,kl_slope,200,-0.060317586000561335,0.015903908880097913
+"mortal, earlier batch",core_essential,kl_slope,200,0.0016102128688779273,0.10067604031750924
+"mortal, earlier batch",housekeeping,kl_slope,200,-0.0017939675799381587,0.158474618449414
+"mortal, earlier batch",non_essential,kl_slope,200,-0.2352775635619964,-0.0028282684155947887
