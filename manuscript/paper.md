@@ -270,9 +270,10 @@ months), and no gap exceeded 0.02 SD. The approach to senescence is not needed. 
 cells of the telomerase line, (−0.102 SD; see the section on expression): −0.136 SD (95 % interval −0.143 to −0.129) in a foreskin fibroblast line
 immortalised with telomerase (GSE268145, 20 cultures), which divides without approaching senescence (the line's
 mortal cells on the same chips gave −0.026, −0.036 to −0.018, and an earlier batch on other chips +0.087), and −0.102
-(−0.111 to −0.094) in fetal astrocytes (GSE202554, 45 cultures of two donors, 37 from one, over 15 doublings); chip intercepts left
-both unchanged (−0.138 and −0.101). Astrocytes immortalised with telomerase (GSE226079; 43 cultures in three
-replicate lines, 29 to 72 doublings) gave −0.083 (−0.092 to −0.074), and −0.084 with chip intercepts; 81 % of the
+(−0.111 to −0.094) in fetal astrocytes (GSE202554, 45 cultures of two donors, 37 from one, over 15 doublings); chip intercepts left both unchanged (−0.138 and −0.101). Those intervals resample genes with the cultures held fixed; resampling cultures within each line
+gives −0.139 to −0.097 for the telomerase line and −0.106 to −0.082 for the astrocytes. Astrocytes immortalised with telomerase (GSE226079; 43 cultures in three
+replicate lines, 29 to 72 doublings) gave −0.083 (−0.092 to −0.074; −0.088 to −0.080 resampling cultures), and −0.084 with chip
+intercepts; 81 % of the
 spread in doublings lies within line and chip. None of the three series has an arrested control, and each is one cell line, three replicate lines of one immortalisation, or two donors (Supplementary Note 3).
 
 *Renewing tissues of the same adults.* Among tissues that all renew, no ordering was resolved. Buccal swabs, dried
@@ -673,7 +674,7 @@ young-reference methylation decile, the matched control CpGs ("look-alikes"). Wi
 c_k the controls there, n_k = |s_k| and v̄ a mean of the per-CpG measure v (an age slope), the gap is
 G = Σ_k n_k (v̄(s_k) − v̄(c_k)) / (Σ_k n_k · SD(v)), SD(v) taken over all CpGs analysed. Significance came from 1,000 permutations of set labels within
 strata, permuting CpGs (two-sided; smallest p 0.001). CpGs of one promoter are correlated, but these p-values treat CpGs as independent units; the placebo gene sets below give the corresponding test at the level of genes. Intervals came from 200 donor bootstraps, each resample divided by the full sample's
-spread (an earlier version divided by each resample's own spread and drew intervals toward zero). For the series added from the repository search (orbitofrontal cortex, sorted nuclei per fraction, the cultured series and the expression-matched analyses), intervals instead resample the set's genes 200 times with the samples held fixed; they show stability over genes, not the sampling of donors or cultures. Donors are resampled, both arrays of a donor together, in the glia-neuron and tissue-pair contrasts (400 resamples), and mice in colon and hippocampus (200 per tissue, independently). For blood minus
+spread (an earlier version divided by each resample's own spread and drew intervals toward zero). For the series added from the repository search (orbitofrontal cortex, sorted nuclei per fraction, the cultured series and the expression-matched analyses), intervals instead resample the set's genes 200 times with the samples held fixed; they show stability over genes, not the sampling of donors or cultures. For the three per-doubling series without expression data, a second interval resamples cultures within each line (200 resamples). Donors are resampled, both arrays of a donor together, in the glia-neuron and tissue-pair contrasts (400 resamples), and mice in colon and hippocampus (200 per tissue, independently). For blood minus
 brain, the two lifespan cohorts were resampled independently and Lunnon's tissues with the same resampled donors.
 Probe design (type I/II), reference chromatin state, or cell-type accessibility quartiles were added to the strata
 where stated. Effects across tissues and species were compared only on size-matched resamples where group sizes

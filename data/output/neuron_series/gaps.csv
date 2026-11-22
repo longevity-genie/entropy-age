@@ -1,0 +1,73 @@
+cohort,covariates,band,metric,cpgs,group,matching,gap_sd,ci_low,ci_high,share_removed,share_ci_low,share_ci_high,n_set
+"neurons (NeuN+), every donor (diagnosis held)",sex,all,kl_slope,88190,core_essential,island x level,-0.04317114706798119,-0.06032233443232283,-0.026838738320627668,0.0,0.0,0.0,5833
+"neurons (NeuN+), every donor (diagnosis held)",sex,all,kl_slope,88190,housekeeping,island x level,-0.05139426139477472,-0.06007254524656349,-0.041726394689581885,0.0,0.0,0.0,35135
+"neurons (NeuN+), every donor (diagnosis held)",sex,all,kl_slope,88190,non_essential,island x level,-0.06885324927046031,-0.10899435647665028,-0.031488743855878285,0.0,0.0,0.0,3687
+"neurons (NeuN+), every donor (diagnosis held)",sex,all,dispersion_slope,88190,core_essential,island x level,-0.04448520559189139,-0.061700154005353995,-0.023691626225265994,0.0,0.0,0.0,5833
+"neurons (NeuN+), every donor (diagnosis held)",sex,all,dispersion_slope,88190,housekeeping,island x level,-0.04801715703097145,-0.05923333686164721,-0.038837675092634576,0.0,0.0,0.0,35135
+"neurons (NeuN+), every donor (diagnosis held)",sex,all,dispersion_slope,88190,non_essential,island x level,-0.08057779851749775,-0.1318566329126297,-0.030485136789513444,0.0,0.0,0.0,3687
+"neurons (NeuN+), every donor (diagnosis held)",sex,all,entropy_slope,88190,core_essential,island x level,-0.05696739141481979,-0.07789785818358569,-0.03153220720631381,0.0,0.0,0.0,5833
+"neurons (NeuN+), every donor (diagnosis held)",sex,all,entropy_slope,88190,housekeeping,island x level,-0.04569576246908455,-0.055351477361786,-0.03555612622676886,0.0,0.0,0.0,35135
+"neurons (NeuN+), every donor (diagnosis held)",sex,all,entropy_slope,88190,non_essential,island x level,0.10177981386517229,0.045382132436240834,0.159372387211406,0.0,0.0,0.0,3687
+"neurons (NeuN+), every donor (diagnosis held)",sex,10-90 %,kl_slope,28721,core_essential,island x level,-0.08688556835463851,-0.11671343769302049,-0.05535275164949312,0.0,0.0,0.0,1410
+"neurons (NeuN+), every donor (diagnosis held)",sex,10-90 %,kl_slope,28721,housekeeping,island x level,-0.07828745635473036,-0.09691349293873004,-0.057342670113764344,0.0,0.0,0.0,9337
+"neurons (NeuN+), every donor (diagnosis held)",sex,10-90 %,kl_slope,28721,non_essential,island x level,-0.0806550075463794,-0.14702205633228013,-0.011332190900402602,0.0,0.0,0.0,1110
+"neurons (NeuN+), every donor (diagnosis held)",sex,10-90 %,dispersion_slope,28721,core_essential,island x level,-0.08194605192187765,-0.12881267959075812,-0.03619314177830488,0.0,0.0,0.0,1410
+"neurons (NeuN+), every donor (diagnosis held)",sex,10-90 %,dispersion_slope,28721,housekeeping,island x level,-0.08223808400406621,-0.10325244730239587,-0.06305356024058387,0.0,0.0,0.0,9337
+"neurons (NeuN+), every donor (diagnosis held)",sex,10-90 %,dispersion_slope,28721,non_essential,island x level,-0.0721415638142403,-0.16157423479826685,0.0029279502829526434,0.0,0.0,0.0,1110
+"neurons (NeuN+), every donor (diagnosis held)",sex,10-90 %,entropy_slope,28721,core_essential,island x level,-0.026311909785558054,-0.06723886197917038,0.017908450687474455,0.0,0.0,0.0,1410
+"neurons (NeuN+), every donor (diagnosis held)",sex,10-90 %,entropy_slope,28721,housekeeping,island x level,-0.0008806324671696335,-0.021019138520834285,0.02301441853669876,0.0,0.0,0.0,9337
+"neurons (NeuN+), every donor (diagnosis held)",sex,10-90 %,entropy_slope,28721,non_essential,island x level,0.18484127092075758,0.09181614517332327,0.2720686883225999,0.0,0.0,0.0,1110
+"neurons (NeuN+), every donor (diagnosis held)",sex + chip,all,kl_slope,88190,core_essential,island x level,-0.009292328756083226,-0.028142733136506105,0.014241613125237761,0.0,0.0,0.0,5833
+"neurons (NeuN+), every donor (diagnosis held)",sex + chip,all,kl_slope,88190,housekeeping,island x level,-0.029815346251703397,-0.040432423492864016,-0.019933202088576255,0.0,0.0,0.0,35135
+"neurons (NeuN+), every donor (diagnosis held)",sex + chip,all,kl_slope,88190,non_essential,island x level,-0.06576874309504831,-0.1033544457532995,-0.022149530609232807,0.0,0.0,0.0,3687
+"neurons (NeuN+), every donor (diagnosis held)",sex + chip,all,dispersion_slope,88190,core_essential,island x level,0.04168562397180371,0.022684971925721994,0.06600153949613297,0.0,0.0,0.0,5833
+"neurons (NeuN+), every donor (diagnosis held)",sex + chip,all,dispersion_slope,88190,housekeeping,island x level,0.03227878453023748,0.022178335288775632,0.04191108470543587,0.0,0.0,0.0,35135
+"neurons (NeuN+), every donor (diagnosis held)",sex + chip,all,dispersion_slope,88190,non_essential,island x level,-0.08883138890383212,-0.13085310973357153,-0.042356942344834995,0.0,0.0,0.0,3687
+"neurons (NeuN+), every donor (diagnosis held)",sex + chip,all,entropy_slope,88190,core_essential,island x level,-0.007386206826305637,-0.030545946553861454,0.012904544356422423,0.0,0.0,0.0,5833
+"neurons (NeuN+), every donor (diagnosis held)",sex + chip,all,entropy_slope,88190,housekeeping,island x level,-0.0075528169995521385,-0.017587140654165903,0.0028956998298923053,0.0,0.0,0.0,35135
+"neurons (NeuN+), every donor (diagnosis held)",sex + chip,all,entropy_slope,88190,non_essential,island x level,0.07646086011672967,0.006674617491743286,0.13974118400855748,0.0,0.0,0.0,3687
+"neurons (NeuN+), every donor (diagnosis held)",sex + chip,10-90 %,kl_slope,28721,core_essential,island x level,-0.04291094757478067,-0.07154633266353135,-0.018187451125359844,0.0,0.0,0.0,1410
+"neurons (NeuN+), every donor (diagnosis held)",sex + chip,10-90 %,kl_slope,28721,housekeeping,island x level,-0.04292012128492954,-0.06863114036921555,-0.01763016602489432,0.0,0.0,0.0,9337
+"neurons (NeuN+), every donor (diagnosis held)",sex + chip,10-90 %,kl_slope,28721,non_essential,island x level,-0.062463894473971215,-0.14388498679154327,0.02436484655382018,0.0,0.0,0.0,1110
+"neurons (NeuN+), every donor (diagnosis held)",sex + chip,10-90 %,dispersion_slope,28721,core_essential,island x level,0.022263939651876515,-0.025301061711636687,0.06250471793502074,0.0,0.0,0.0,1410
+"neurons (NeuN+), every donor (diagnosis held)",sex + chip,10-90 %,dispersion_slope,28721,housekeeping,island x level,0.03490638939019215,0.013328211103435008,0.0575324389042029,0.0,0.0,0.0,9337
+"neurons (NeuN+), every donor (diagnosis held)",sex + chip,10-90 %,dispersion_slope,28721,non_essential,island x level,-0.10615331910095296,-0.19030761372501312,-0.03136851984666053,0.0,0.0,0.0,1110
+"neurons (NeuN+), every donor (diagnosis held)",sex + chip,10-90 %,entropy_slope,28721,core_essential,island x level,-0.016055158215128925,-0.05647846321421838,0.03218070076896472,0.0,0.0,0.0,1410
+"neurons (NeuN+), every donor (diagnosis held)",sex + chip,10-90 %,entropy_slope,28721,housekeeping,island x level,0.0050425900424375236,-0.013407019740484145,0.02714605777450581,0.0,0.0,0.0,9337
+"neurons (NeuN+), every donor (diagnosis held)",sex + chip,10-90 %,entropy_slope,28721,non_essential,island x level,0.20059893487276503,0.08866628074754541,0.31113197242233354,0.0,0.0,0.0,1110
+"neurons (NeuN+), controls",sex,all,kl_slope,88992,core_essential,island x level,-0.046452389785873946,-0.05528010163467404,-0.03728063483213195,0.0,0.0,0.0,5878
+"neurons (NeuN+), controls",sex,all,kl_slope,88992,housekeeping,island x level,-0.02976783463951244,-0.04141072229874058,-0.01752332330875075,0.0,0.0,0.0,35389
+"neurons (NeuN+), controls",sex,all,kl_slope,88992,non_essential,island x level,-0.019113795932819085,-0.06681002181549997,0.025031077872653754,0.0,0.0,0.0,3726
+"neurons (NeuN+), controls",sex,all,dispersion_slope,88992,core_essential,island x level,-0.08526718211612933,-0.10476713096216558,-0.06409116441444591,0.0,0.0,0.0,5878
+"neurons (NeuN+), controls",sex,all,dispersion_slope,88992,housekeeping,island x level,-0.05976713641244029,-0.0698770520931198,-0.04902063369797814,0.0,0.0,0.0,35389
+"neurons (NeuN+), controls",sex,all,dispersion_slope,88992,non_essential,island x level,-0.02780921052569735,-0.07717531634272683,0.0203498576526111,0.0,0.0,0.0,3726
+"neurons (NeuN+), controls",sex,all,entropy_slope,88992,core_essential,island x level,-0.07388475572181696,-0.09892607795693037,-0.049833976520155636,0.0,0.0,0.0,5878
+"neurons (NeuN+), controls",sex,all,entropy_slope,88992,housekeeping,island x level,-0.05221065169631881,-0.06437144783413873,-0.04047589978471474,0.0,0.0,0.0,35389
+"neurons (NeuN+), controls",sex,all,entropy_slope,88992,non_essential,island x level,0.07939719490469303,0.03328321813054579,0.13959976685663722,0.0,0.0,0.0,3726
+"neurons (NeuN+), controls",sex,10-90 %,kl_slope,27541,core_essential,island x level,-0.08943781665276754,-0.1216880040472346,-0.05569801295203393,0.0,0.0,0.0,1269
+"neurons (NeuN+), controls",sex,10-90 %,kl_slope,27541,housekeeping,island x level,-0.07572765780700812,-0.09407090667190124,-0.05544766001023291,0.0,0.0,0.0,8594
+"neurons (NeuN+), controls",sex,10-90 %,kl_slope,27541,non_essential,island x level,-0.06735853872074932,-0.14743561847034656,0.014289373351163743,0.0,0.0,0.0,1099
+"neurons (NeuN+), controls",sex,10-90 %,dispersion_slope,27541,core_essential,island x level,-0.14807071887260723,-0.19466325682775493,-0.0916252783716692,0.0,0.0,0.0,1269
+"neurons (NeuN+), controls",sex,10-90 %,dispersion_slope,27541,housekeeping,island x level,-0.11695444787823947,-0.1402449684670571,-0.09069863600187543,0.0,0.0,0.0,8594
+"neurons (NeuN+), controls",sex,10-90 %,dispersion_slope,27541,non_essential,island x level,-0.020293497852008187,-0.11131534559461191,0.0752702454476007,0.0,0.0,0.0,1099
+"neurons (NeuN+), controls",sex,10-90 %,entropy_slope,27541,core_essential,island x level,-0.05151444509417767,-0.10366172656325215,-0.004141247809178327,0.0,0.0,0.0,1269
+"neurons (NeuN+), controls",sex,10-90 %,entropy_slope,27541,housekeeping,island x level,-0.027044525688545325,-0.050885265610688506,-0.0030324501357765054,0.0,0.0,0.0,8594
+"neurons (NeuN+), controls",sex,10-90 %,entropy_slope,27541,non_essential,island x level,0.1208660085400025,0.039213720748993125,0.2256518749638357,0.0,0.0,0.0,1099
+"neurons (NeuN+), controls",sex + chip,all,kl_slope,88992,core_essential,island x level,0.01796281061130068,0.0068485171399046045,0.030465347850005133,0.0,0.0,0.0,5878
+"neurons (NeuN+), controls",sex + chip,all,kl_slope,88992,housekeeping,island x level,0.024006526031957052,0.016681707854051396,0.03210289268719741,0.0,0.0,0.0,35389
+"neurons (NeuN+), controls",sex + chip,all,kl_slope,88992,non_essential,island x level,-0.0009128153328618026,-0.05590189662861484,0.04365552342401783,0.0,0.0,0.0,3726
+"neurons (NeuN+), controls",sex + chip,all,dispersion_slope,88992,core_essential,island x level,0.030386375589481353,0.012706109840067575,0.04837121533735813,0.0,0.0,0.0,5878
+"neurons (NeuN+), controls",sex + chip,all,dispersion_slope,88992,housekeeping,island x level,0.033401524596783624,0.0248988457572219,0.04228258402524156,0.0,0.0,0.0,35389
+"neurons (NeuN+), controls",sex + chip,all,dispersion_slope,88992,non_essential,island x level,0.0397752353471685,-0.009143467673514259,0.0928453496893594,0.0,0.0,0.0,3726
+"neurons (NeuN+), controls",sex + chip,all,entropy_slope,88992,core_essential,island x level,0.03008011650870118,0.009929474226391823,0.04892612149819448,0.0,0.0,0.0,5878
+"neurons (NeuN+), controls",sex + chip,all,entropy_slope,88992,housekeeping,island x level,0.050390782569638824,0.03904337681855777,0.058766294624773265,0.0,0.0,0.0,35389
+"neurons (NeuN+), controls",sex + chip,all,entropy_slope,88992,non_essential,island x level,-0.08240714866725735,-0.1410403820507985,-0.021690778447666606,0.0,0.0,0.0,3726
+"neurons (NeuN+), controls",sex + chip,10-90 %,kl_slope,27541,core_essential,island x level,0.02324214826543437,-0.01373355086209963,0.055562795410436246,0.0,0.0,0.0,1269
+"neurons (NeuN+), controls",sex + chip,10-90 %,kl_slope,27541,housekeeping,island x level,0.031227133945792847,0.010961353967194084,0.051155563825953695,0.0,0.0,0.0,8594
+"neurons (NeuN+), controls",sex + chip,10-90 %,kl_slope,27541,non_essential,island x level,-0.07386566230057194,-0.13788201054877017,-0.022568409553112064,0.0,0.0,0.0,1099
+"neurons (NeuN+), controls",sex + chip,10-90 %,dispersion_slope,27541,core_essential,island x level,-0.004845206658935054,-0.05691986478351161,0.040636543472255156,0.0,0.0,0.0,1269
+"neurons (NeuN+), controls",sex + chip,10-90 %,dispersion_slope,27541,housekeeping,island x level,-0.004480539818236881,-0.030828158018198003,0.015119663928456293,0.0,0.0,0.0,8594
+"neurons (NeuN+), controls",sex + chip,10-90 %,dispersion_slope,27541,non_essential,island x level,0.019039491718566455,-0.05988572229924473,0.09611394979185542,0.0,0.0,0.0,1099
+"neurons (NeuN+), controls",sex + chip,10-90 %,entropy_slope,27541,core_essential,island x level,0.008589504163395203,-0.040133929057329494,0.051249627684940596,0.0,0.0,0.0,1269
+"neurons (NeuN+), controls",sex + chip,10-90 %,entropy_slope,27541,housekeeping,island x level,0.017899645420407076,-0.005573077967374318,0.03662395135787892,0.0,0.0,0.0,8594
+"neurons (NeuN+), controls",sex + chip,10-90 %,entropy_slope,27541,non_essential,island x level,-0.04174574896899476,-0.1493505732157449,0.050620016604320375,0.0,0.0,0.0,1099

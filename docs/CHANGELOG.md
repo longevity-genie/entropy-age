@@ -4,6 +4,7 @@ Newest first.
 
 ## Unreleased
 
+- 2026-11-23: R138: culture-bootstrap intervals for the per-doubling gaps stated in the paper beside the gene-resampling ones (telomerase fibroblasts, astrocytes, astrocytes with telomerase).
 - 2026-11-23: culture bootstrap (cultures resampled within line, 200 resamples) written beside the gene-resampling interval for the per-doubling gaps of astrocyte_passage, astrocyte_htert and bj_telomerase (table culture_bootstrap; a referee point: the gene interval holds the cultures fixed) (R138).
 - 2026-11-23: figures brain_regions: prefrontal cortex, amygdala and hippocampus of about 300 donors (GSE349373, EPIC, rebuilt from IDATs), controls and every donor with diagnosis held, Jaffe donors left out, with and without chip intercepts (RM40, R137).
 - 2026-11-22: simulated referees (three, all major revision) answered in the text: the blood gap off the 0 % floor is stated (−0.08 at 10-90 %, 0.00 at 20-80 %) in Results and Abstract; arrested cultures show no measurable drift, so no shield can be measured; glia against neurons, Tet3 and Tet1, and the breast-cancer association narrowed to their evidence in the Abstract; expression stated as a correlate, not a cause; tissue sizes do not order by turnover; 5-hydroxymethylcytosine added to Limits. R134b: neurons with one array per donor (82 donors, 28 controls): housekeeping −0.051, −0.030 with chip held.
