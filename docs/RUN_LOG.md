@@ -29,6 +29,17 @@ commit it ran, its job ids, its scale and seed, and its result or its failure wi
 - Reading: a second immortalised cell type carries the gap per doubling, with chip held, a little below primary
   astrocytes (−0.102, R133) and fibroblasts. Three replicate lines of one source; no arrested control.
 
+## R134b — sorted neurons, one array per donor (GSE112179), 2026-11-22
+
+- Commit after 54ca722 (neuron_series keeps one array per donor); job 6592267. The series holds 100 arrays of 83
+  donors (9 donors with replicates); R134 below counted arrays as donors and is superseded by this run.
+- **82 donors (28 controls), sex and diagnosis held.** Housekeeping −0.051 (−0.060 to −0.042); with chip −0.030
+  (−0.040 to −0.020). Core-essential −0.043 (−0.060 to −0.027); with chip −0.009 (−0.028 to +0.014). 10-90 %:
+  housekeeping −0.078, with chip −0.043. 0.62 of the variance of age left within diagnosis and chip.
+- **Controls alone (28).** Housekeeping −0.030 (−0.041 to −0.018); with chip +0.024 with 0.18 of the variance of age
+  left: not estimable with chip held.
+- Reading unchanged: neurons carry a small housekeeping gap that survives chip intercepts.
+
 ## R134 — sorted cortical neurons, third series (RM40, GSE112179), 2026-11-22
 
 - Commit d0abc68; `figures neuron_series --scale paper --seed 42`; job 6592157 after the SeSAMe rebuild of 100 EPIC

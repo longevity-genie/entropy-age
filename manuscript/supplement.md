@@ -180,14 +180,15 @@ within line and chip. Housekeeping gap per doubling −0.083 SD on relative entr
 chip intercepts; core-essential −0.041 (−0.060 to −0.023); non-essential +0.141 (+0.089 to +0.197). The series'
 primary astrocytes (five passages) are not used.
 
-**Sorted cortical neurons, third series (R134).** GSE112179: NeuN+ nuclei of frontal cortex, 99 donors aged 23 to 77
-after the detection cut (33 controls, the others with schizophrenia or bipolar disorder), EPIC, rebuilt; age slopes
-with sex and diagnosis held, on the 88,079 promoter CpGs measured in every array. Housekeeping gap −0.054 SD on
-relative entropy (−0.063 to −0.046), −0.034 (−0.043 to −0.024) with chip intercepts; core-essential −0.046 (−0.062
-to −0.030), −0.017 (−0.036 to +0.004) with chip. Off the 0 % floor (10-90 %): housekeeping −0.090, −0.051 with chip.
-On the dispersion slope the housekeeping gap is −0.036 and turns positive with chip intercepts (+0.032). With
-diagnosis and chip held, 61 % of the variance of age is left. In the 33 controls alone 18 % is left within chips;
-without chip their housekeeping gap is −0.028 (−0.040 to −0.016), and with chip it is not estimable (+0.023).
+**Sorted cortical neurons, third series (R134).** GSE112179: NeuN+ nuclei of frontal cortex, 100 arrays of 83
+donors, EPIC, rebuilt; one array per donor is used (the first by accession among those passing detection), giving 82
+donors aged 23 to 77 (28 controls, the others with schizophrenia or bipolar disorder); age slopes with sex and
+diagnosis held, on the 88,190 promoter CpGs measured in every array. Housekeeping gap −0.051 SD on relative entropy
+(−0.060 to −0.042), −0.030 (−0.040 to −0.020) with chip intercepts; core-essential −0.043 (−0.060 to −0.027), −0.009
+(−0.028 to +0.014) with chip. Off the 0 % floor (10-90 %): housekeeping −0.078, −0.043 with chip. On the dispersion
+slope the housekeeping gap is -0.048 without and +0.032 with chip intercepts. With diagnosis and chip held, 62 %
+of the variance of age is left. In the 28 controls alone 18 % is left within chips; without chip their housekeeping
+gap is −0.030 (−0.041 to −0.018), and with chip it is not estimable (+0.024).
 
 **Senescence by division and by damage in six donors (R136).** GSE227160: skin fibroblasts of two donors and
 mesenchymal stromal cells of four (bone marrow and adipose), each as a young culture, a middle-passage culture, two
@@ -205,7 +206,7 @@ not interpretable. The gap of the absolute coefficient is negative in every trea
 shield.
 
 **Arrays passing the 90 % detection cut (passing of rebuilt).** GSE279509 524 of 749; GSE252501 232 of 232; GSE66351
-189 of 190; GSE197723 313 of 316; E-MTAB-15859 79 of 79; GSE283951 85 of 87; GSE112179 99 of 100; GSE227160 47 of
+189 of 190; GSE197723 313 of 316; E-MTAB-15859 79 of 79; GSE283951 85 of 87; GSE112179 99 of 100 (82 donors used); GSE227160 47 of
 48; E-MTAB-8993 61 of 65; GSE280465 saliva 21 of 37; Jaffe adult controls 208 of 213; EPIC-Italy 839 of 845; BXD
 liver 288 of 338; Browder mouse tissues 155 of 166; Tet1 19 of 24; Dnmt3a 72 of 72; Huang
 mouse tissues 581 of 583.
@@ -445,7 +446,7 @@ type. Generated from `docs/provenance.csv` by `scripts/provenance_table.py`.
 | Third cortex series | R132 | C1 | human orbitofrontal cortex (bulk) | GSE254293 | EPIC | rebuilt (R SeSAMe) | none |  | one study; age spread over 12 chips; holds with chip intercepts | none | n.a. | 90 people; diagnosis held; cell mix not held |
 | Passaged astrocytes | R133 | C2 | human fetal astrocytes in culture | GSE202554 | EPIC | rebuilt (R SeSAMe) | none |  | one study; doublings spread over 8 chips; holds with chip intercepts | none | n.a. | 45 cultures of 2 donors (37 from one); 15 doublings; no arrested control |
 | Astrocytes with telomerase | R135 | C2 | human fetal astrocytes immortalised with hTERT | GSE226079 | EPIC | rebuilt (R SeSAMe) | none |  | one study; doublings spread over 12 chips; holds with chip intercepts | none | n.a. | 43 cultures in 3 replicate lines; 29 to 72 doublings; no arrested control |
-| Sorted neurons third series | R134 | C1 | human frontal cortex NeuN+ nuclei | GSE112179 | EPIC | rebuilt (R SeSAMe) | none |  | one study; age spread over 13 chips; smaller with chip intercepts | none | n.a. | 99 donors (33 controls); diagnosis held; neurons only |
+| Sorted neurons third series | R134 | C1 | human frontal cortex NeuN+ nuclei | GSE112179 | EPIC | rebuilt (R SeSAMe) | none |  | one study; age spread over 13 chips; smaller with chip intercepts | none | n.a. | 82 donors, one array each (28 controls); diagnosis held; neurons only |
 | Senescence modes in six donors | R136 | C2 | human skin fibroblasts and mesenchymal stromal cells | GSE227160 | EPIC | rebuilt (R SeSAMe) | none |  | one study; every donor on each of 8 chips; donor and chip held | none | n.a. | 6 donors, 47 cultures; one young culture per donor; doublings not deposited |
 | Monocytes and T cells with own expression | R122 R123 | C2 | human CD14+ monocytes / CD4+ T cells | MESA, GSE56046 GSE56581 | 450k | deposited | expression (HT-12 array) | MESA, GSE56045 GSE56580 | one study | same samples | same | 1,202 and 214 samples joined one to one; expression deposited normalised values |
 | Sorted monocytes and T cells | R44 R68b | C1 | human CD14+ monocytes / CD4+ T cells | MESA, GSE56046 GSE56581 | 450k | deposited | none |  | one study | none | n.a. | text sets them beside Hannum (other study) |
