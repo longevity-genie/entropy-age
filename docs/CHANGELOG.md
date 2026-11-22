@@ -4,6 +4,7 @@ Newest first.
 
 ## Unreleased
 
+- 2026-11-23: figures mouse_atlas_rrbs: liver, heart, cortex and lung of the same mice at 3, 15 and 24 months by RRBS (GSE225166), sex and sequencing lane held, lanes mixing the ages; smaller tissues listed when they reach the minimum (R141).
 - 2026-11-23: R139: with counting noise removed, between-donor variation of promoter accessibility shows no difference between essential and matched promoters in any of seven cortical cell types; the earlier opposite sign came from the log-count measure. Stated in the paper and run log.
 - 2026-11-23: figures musc_single_cell: single muscle stem cells of young and old mice with RNA from the same cells (GSE121437): between-cell variance of promoter methylation beyond read sampling, its gain with age and the shift of the mean, set promoters against promoters matched on island status and young level, and with the expression decile added; cell bootstrap within mouse and each mouse left out (R140).
 - 2026-11-23: figures atac_cortex: a second measure, the age slope of between-donor variation in excess of counting noise (squared coefficient of variation beyond Poisson), beside the spread of log counts, whose expectation depends on read depth; table gaps gains a measure column (Anton asked for a cleaner accessibility test, R139).
