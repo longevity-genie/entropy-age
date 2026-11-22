@@ -476,7 +476,10 @@ young shield is untested.
 expression-matched genes outside brain in a large mouse atlas, but the rat signal was weak, GTEx showed no turnover
 effect, and in Tabula Muris Senis bulk RNA the gap's interval included zero in 15 of 17 organs. In the same GTEx
 donors, unusual promoter methylation was barely reflected in expression (mean |r| above a permutation null by
-0.015-0.022). Chromatin accessibility gave no clean readout either (Supplementary Note 3).
+0.015-0.022). Chromatin accessibility gave no counterpart either. In single-nucleus data of human prefrontal cortex (121 to 348
+donors per cell type), the spread of log counts rose faster with age at essential promoters than at matched ones,
+but that measure depends on read depth; between-donor variation in excess of counting noise showed no difference in
+any of seven cell types (gaps within ±0.012 SD; Supplementary Note 3).
 
 *What clocks read.* Clocks read directed change and are largely blind to the shield: retrained on simulated change,
 they keep 70-80 % of their accuracy from each CpG's direction alone and 0-10 % from undirected noise

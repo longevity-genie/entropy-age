@@ -29,6 +29,18 @@ commit it ran, its job ids, its scale and seed, and its result or its failure wi
 - Reading: a second immortalised cell type carries the gap per doubling, with chip held, a little below primary
   astrocytes (−0.102, R133) and fibroblasts. Three replicate lines of one source; no arrested control.
 
+## R139 — cortex accessibility with a measure free of counting noise (RM19), 2026-11-23
+
+- Commit 16492c1; `figures atac_cortex --scale paper --seed 42` on the cached pseudobulk; job 6592847. Seven cell
+  types, 121 to 348 donors each; table `gaps` now carries `measure`.
+- **Spread of log counts** (as R23, R24): essential promoters spread more with age (core-essential +0.07 to +0.23 SD
+  with both adjustments; housekeeping −0.02 to +0.16).
+- **Excess over counting noise** (age slope of the squared coefficient of variation beyond Poisson): core-essential
+  −0.011 to +0.012, housekeeping −0.008 to +0.012 across cell types and adjustments; three of 14 with p < 0.05
+  (excitatory neurons −0.004, inhibitory neurons −0.011, vascular cells +0.012), no common sign.
+- Reading: the earlier "essential promoters spread more" was a property of the log-count measure, whose noise
+  depends on read depth. With counting noise removed, accessibility shows no gap in either direction.
+
 ## R137 — three brain regions of about 300 donors (RM40, GSE349373), 2026-11-23
 
 - Commit 90f59f5; `figures brain_regions --scale paper --seed 42`; job 6592740 after the SeSAMe rebuild of 904 EPIC
