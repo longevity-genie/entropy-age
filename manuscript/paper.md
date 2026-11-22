@@ -246,7 +246,13 @@ estimated with chip held.
 cultures made senescent by replication, by X-rays and by oncogenic RAS, replicative senescence moved matched CpGs far
 from the untreated state, and essential and housekeeping promoters carried less than half of that squared drift
 (share −0.58, −0.60 to −0.55, on 12 of 12 chips, after subtracting a noise floor estimated from each chip's untreated
-pair). The X-ray and RAS cultures showed no drift beyond that floor, so no shield could be measured in them. In a
+pair). The X-ray and RAS cultures showed no drift beyond that floor, so no shield could be measured in them. A second
+series repeats this in other cells: skin fibroblasts of two donors and mesenchymal stromal cells of four, each as a
+young culture, in replicative senescence and made senescent early by irradiation or doxorubicin, with every donor
+on each of 8 chips (GSE227160; one model per CpG with donor and chip held). Squared drift from the young state,
+with array noise removed, was 0.014 in replicative senescence against 0.0006 after irradiation and none after
+doxorubicin, and in replicative senescence housekeeping promoters carried 39 % less of it than matched CpGs (share
+−0.39; −0.36 to −0.46 with each donor left out in turn). In a
 separate series, fibroblasts held confluent and non-dividing were sampled monthly for six months: the two donors
 whose arrays were not ordered by time along the chip showed no drift (0.88 and 0.86 of the value under reordered
 months), and no gap exceeded 0.02 SD. The approach to senescence is not needed. Two further cultured series gave a housekeeping gap per doubling of the same sign and size as untreated
@@ -564,8 +570,8 @@ four brain regions (GSE59685), GTEx nine tissues (GSE213478, EPIC), SATSA (E-MTA
 SJLIFE (GSE314261); read-level WGBS is from GSE186458. Series added from the repository search, all rebuilt from
 raw files, are epidermis with RNA-seq of the same women (E-MTAB-8993, E-MTAB-8992, E-MTAB-8995), fibroblasts with
 and without telomerase (GSE268145), four tissues of the same adults (GSE280465), orbitofrontal cortex (GSE254293),
-passaged astrocytes (GSE202554), astrocytes immortalised with telomerase (GSE226079) and sorted cortical neurons
-(GSE112179). Mouse and mammal data are the Mammalian Methylation Consortium
+passaged astrocytes (GSE202554), astrocytes immortalised with telomerase (GSE226079), sorted cortical neurons
+(GSE112179) and senescent fibroblasts and stromal cells (GSE227160). Mouse and mammal data are the Mammalian Methylation Consortium
 (GSE223748), Huang et al. 2025 (GSE279437), RRBS series GSE80672, GSE120132 and GSE121141, and BXD liver on the mammalian array
 (GSE199979; Mozhui et al. 2022); Tet1 mutants are
 GSE271375. Chromatin references are Roadmap 15-state chromHMM (E062, E030, E073) and sorted neuron and glia ATAC

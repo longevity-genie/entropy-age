@@ -3,6 +3,21 @@
 Owned by the runner seat (`docs/seats/RUNNER.md`): one entry per run, newest first, with its inputs, the
 commit it ran, its job ids, its scale and seed, and its result or its failure with the cause.
 
+## R136 — senescence by division and by damage in six donors (RM40, GSE227160), 2026-11-22
+
+- Commit 287ec10; `figures senescence_donors --scale paper --seed 42`; job 6592188 after the SeSAMe rebuild of 48
+  EPIC arrays (47 pass). Two fibroblast donors and four stromal-cell donors, each with young, middle-passage, two
+  replicative-senescent, two irradiated and two doxorubicin cultures; every donor has one array on each of 8 chips.
+  One model per CpG: methylation on donor, chip and treatment. 89,960 promoter CpGs.
+- **Squared drift from young, noise removed (matched CpGs of the housekeeping set).** Replicative senescence 0.0141
+  (0.0139 to 0.0165 leaving one donor out); irradiation 0.0006; doxorubicin −0.0015; middle passage −0.0003.
+- **Share of squared drift in replicative senescence.** Housekeeping −0.39 (leave-one-donor-out −0.36 to −0.46);
+  core-essential −0.35; non-essential +0.51. In the other arms the share divides two near-zero values.
+- **Not read.** The gap of |coefficient| is negative in all four arms (housekeeping −0.064 to −0.117 SD), drift or
+  not: lower array noise at these promoters, not a shield.
+- Reading: repeats R111 (share −0.58, one cell type, chip as unit) in six donors of two cell types with donor and
+  chip held: drift and the shield come with division to senescence; arrest by damage shows no drift.
+
 ## R135 — astrocytes immortalised with telomerase (RM40, GSE226079), 2026-11-22
 
 - Commit d0abc68 plus the module commit after it; `figures astrocyte_htert --scale paper --seed 42`, then with

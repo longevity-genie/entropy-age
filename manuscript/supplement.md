@@ -189,6 +189,21 @@ On the dispersion slope the housekeeping gap is −0.036 and turns positive with
 diagnosis and chip held, 61 % of the variance of age is left. In the 33 controls alone 18 % is left within chips;
 without chip their housekeeping gap is −0.028 (−0.040 to −0.016), and with chip it is not estimable (+0.023).
 
+**Senescence by division and by damage in six donors (R136).** GSE227160: skin fibroblasts of two donors and
+mesenchymal stromal cells of four (bone marrow and adipose), each as a young culture, a middle-passage culture, two
+cultures in replicative senescence and two each made senescent by irradiation and by doxorubicin; EPIC, rebuilt, 47
+of 48 arrays passing detection, 89,960 promoter CpGs measured in all. Every donor has one array on each of the 8
+chips. Per CpG, methylation was regressed on donor, chip and treatment (young as reference); for each treatment the
+squared coefficient minus its squared standard error estimates the squared change without array noise, scaled by
+m(1 − m) of the young level. Mean over CpGs matched to housekeeping promoters: 0.0141 in replicative senescence,
+0.0006 after irradiation, −0.0015 after doxorubicin and −0.0003 at middle passage, so only replicative senescence
+shows drift beyond noise. There the share of squared drift is −0.39 for housekeeping promoters (−0.36 to −0.46
+across the six fits that leave one donor out) and −0.35 for core-essential ones; non-essential promoters carry more
+than their matched CpGs (+0.51). In the other three treatments the share is a ratio of two values near zero and is
+not interpretable. The gap of the absolute coefficient is negative in every treatment (housekeeping −0.06 to
+−0.12 SD), including those without drift; it reflects lower array noise at these promoters and is not read as a
+shield.
+
 **Blood with the neutrophil chromatin map (R121).** Whole blood has no reference map of its own; the analyses use
 mononuclear cells (Roadmap E062). With neutrophils (E030) in its place: loss per decade at active-TSS island
 promoters, set minus matched, core-essential +0.0053 (+0.0026 to +0.0081; E062 +0.0063), housekeeping +0.0041
@@ -425,6 +440,7 @@ type. Generated from `docs/provenance.csv` by `scripts/provenance_table.py`.
 | Passaged astrocytes | R133 | C2 | human fetal astrocytes in culture | GSE202554 | EPIC | rebuilt (R SeSAMe) | none |  | one study; doublings spread over 8 chips; holds with chip intercepts | none | n.a. | 45 cultures of 2 donors (37 from one); 15 doublings; no arrested control |
 | Astrocytes with telomerase | R135 | C2 | human fetal astrocytes immortalised with hTERT | GSE226079 | EPIC | rebuilt (R SeSAMe) | none |  | one study; doublings spread over 12 chips; holds with chip intercepts | none | n.a. | 43 cultures in 3 replicate lines; 29 to 72 doublings; no arrested control |
 | Sorted neurons third series | R134 | C1 | human frontal cortex NeuN+ nuclei | GSE112179 | EPIC | rebuilt (R SeSAMe) | none |  | one study; age spread over 13 chips; smaller with chip intercepts | none | n.a. | 99 donors (33 controls); diagnosis held; neurons only |
+| Senescence modes in six donors | R136 | C2 | human skin fibroblasts and mesenchymal stromal cells | GSE227160 | EPIC | rebuilt (R SeSAMe) | none |  | one study; every donor on each of 8 chips; donor and chip held | none | n.a. | 6 donors, 47 cultures; one young culture per donor; doublings not deposited |
 | Monocytes and T cells with own expression | R122 R123 | C2 | human CD14+ monocytes / CD4+ T cells | MESA, GSE56046 GSE56581 | 450k | deposited | expression (HT-12 array) | MESA, GSE56045 GSE56580 | one study | same samples | same | 1,202 and 214 samples joined one to one; expression deposited normalised values |
 | Sorted monocytes and T cells | R44 R68b | C1 | human CD14+ monocytes / CD4+ T cells | MESA, GSE56046 GSE56581 | 450k | deposited | none |  | one study | none | n.a. | text sets them beside Hannum (other study) |
 | Read-level blood | R50 | C1 | human white blood cells | Loyfer, GSE186458 | WGBS | authors' reads | Hannum array means (check) | GSE40279 | across studies | other study | same | cross-platform used only as a validation (r 0.963) |
