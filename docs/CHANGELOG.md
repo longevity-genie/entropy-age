@@ -4,6 +4,7 @@ Newest first.
 
 ## Unreleased
 
+- 2026-11-23: figures musc_single_cell: single muscle stem cells of young and old mice with RNA from the same cells (GSE121437): between-cell variance of promoter methylation beyond read sampling, its gain with age and the shift of the mean, set promoters against promoters matched on island status and young level, and with the expression decile added; cell bootstrap within mouse and each mouse left out (R140).
 - 2026-11-23: figures atac_cortex: a second measure, the age slope of between-donor variation in excess of counting noise (squared coefficient of variation beyond Poisson), beside the spread of log counts, whose expectation depends on read depth; table gaps gains a measure column (Anton asked for a cleaner accessibility test, R139).
 - 2026-11-23: R137 written up: three brain regions of about 300 donors (GSE349373): housekeeping gap with chip held −0.081 (prefrontal cortex), −0.070 (amygdala), −0.069 (hippocampus); controls −0.043, −0.036, −0.078; holds off the 0 % floor.
 - 2026-11-23: R138: culture-bootstrap intervals for the per-doubling gaps stated in the paper beside the gene-resampling ones (telomerase fibroblasts, astrocytes, astrocytes with telomerase).
