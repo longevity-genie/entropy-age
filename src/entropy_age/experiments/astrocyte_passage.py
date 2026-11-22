@@ -33,10 +33,41 @@ from entropy_age.experiments.common import Context, chip_terms, dummies, write_t
 from entropy_age.experiments.per_person import _sets
 from entropy_age.experiments.sturm_expression import chip_overlap
 from entropy_age.experiments.tissue_contrast import Prepared, _features, _lifespan_metrics
+from entropy_age.protection import matched_scores
 from entropy_age.stochasticity import baseline_strata
 
 GSE = "GSE202554"
 GSE_HTERT = "GSE226079"
+N_BOOT = {"paper": 200, "quick": 10}
+
+
+def culture_bootstrap(prepared: Prepared, lines: np.ndarray, sets: dict, strata: np.ndarray, n: int, rng) -> list[dict]:
+    """The gap on the relative-entropy slope with cultures resampled within each line: per set, the 2.5th and 97.5th
+    percentiles over ``n`` resamples. The gene-resampling interval of ``matched_gaps`` holds the cultures fixed; this
+    one carries the sampling of cultures. Strata are those of the full sample."""
+    index = [np.flatnonzero(lines == line) for line in np.unique(lines)]
+    draws: dict[str, list[float]] = {group: [] for group in sets}
+    for _ in range(n):
+        rows = np.concatenate([rng.choice(i, i.size, replace=True) for i in index])
+        values = _lifespan_metrics(prepared, rows)["kl_slope"].to_numpy()
+        if not np.isfinite(values).all():
+            continue
+        sd = float(values.std())
+        for group, (in_set, _) in sets.items():
+            draws[group].append(float(matched_scores(values[None, :], in_set, strata)[0][0]) / sd)
+    return [
+        {
+            "group": group,
+            "metric": "kl_slope",
+            "resamples": len(v),
+            "ci_low": float(np.quantile(v, 0.025)),
+            "ci_high": float(np.quantile(v, 0.975)),
+        }
+        for group, v in draws.items()
+        if v
+    ]
+
+
 METRICS = ("kl_slope", "entropy_slope", "dispersion_slope")
 
 
@@ -94,7 +125,8 @@ def _run(ctx: Context, gse: str, name: str, select) -> list[Path]:
     cov = dummies(donors)
     if chip_terms():
         cov = np.column_stack([cov, dummies(chips)])
-    metrics = _lifespan_metrics(Prepared("astrocytes", x, doublings, cov, feats, donors, cov))
+    prepared = Prepared("astrocytes", x, doublings, cov, feats, donors, cov)
+    metrics = _lifespan_metrics(prepared)
     island_of = dict(probes.select("cpg", "cpg_island").iter_rows())
     island = np.array([bool(island_of.get(f, False)) for f in feats])
     levels = baseline_strata(metrics["baseline"].to_numpy(), 10).astype(str)
@@ -106,6 +138,10 @@ def _run(ctx: Context, gse: str, name: str, select) -> list[Path]:
         rows = matched_gaps(values, sets, variants, N_RESAMPLES[str(ctx.scale.name)], ctx.seed)
         gaps += [{"metric": metric, **r} for r in rows]
     write_table(pl.DataFrame(gaps), out / "matched_gaps")
+    boot = culture_bootstrap(
+        prepared, donors, sets, variants["island x level"], N_BOOT[str(ctx.scale.name)], ctx.rng(150_000)
+    )
+    write_table(pl.DataFrame(boot), out / "culture_bootstrap")
     sizes = cultures.group_by("donor", maintain_order=True).agg(
         pl.len().alias("cultures"), pl.col("doublings").min().alias("min"), pl.col("doublings").max().alias("max")
     )

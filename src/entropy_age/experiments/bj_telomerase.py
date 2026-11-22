@@ -28,6 +28,7 @@ import numpy as np
 import polars as pl
 
 from entropy_age.data import reprocessed
+from entropy_age.experiments.astrocyte_passage import N_BOOT, culture_bootstrap
 from entropy_age.experiments.brain_replication import complete_matrix
 from entropy_age.experiments.chromatin_match import N_RESAMPLES, matched_gaps
 from entropy_age.experiments.common import Context, chip_terms, dummies, write_table
@@ -100,7 +101,7 @@ def run(ctx: Context) -> list[Path]:
     cultures = read_cultures(matrix).filter(pl.col("sample").is_in(passed))
     betas = reprocessed.by_accession(paths, GSE, {s: s for s in cultures["sample"].to_list()})
     island_of = dict(probes.select("cpg", "cpg_island").iter_rows())
-    gaps, overlap, sizes, drift = [], [], [], []
+    gaps, overlap, sizes, drift, boot = [], [], [], [], []
     for name, group in groups(cultures).items():
         group = group.sort("trajectory", "doublings")
         if group.height < MIN_ARRAYS:
@@ -113,7 +114,8 @@ def run(ctx: Context) -> list[Path]:
         cov = dummies(trajectory)
         if chip_terms():
             cov = np.column_stack([cov, dummies(chips)])
-        metrics = _lifespan_metrics(Prepared(name, x, doublings, cov, feats, trajectory, cov))
+        prepared = Prepared(name, x, doublings, cov, feats, trajectory, cov)
+        metrics = _lifespan_metrics(prepared)
         island = np.array([bool(island_of.get(f, False)) for f in feats])
         levels = baseline_strata(metrics["baseline"].to_numpy(), 10).astype(str)
         variants = {"island x level": np.char.add(np.char.add(island.astype(str), "|"), levels)}
@@ -125,6 +127,12 @@ def run(ctx: Context) -> list[Path]:
                 for r in matched_gaps(values, sets, variants, N_RESAMPLES[scale], ctx.seed)
             ]
             drift.append({"cells": name, "metric": metric, "mean": float(values.mean()), "sd": float(values.std())})
+        boot += [
+            {"cells": name, **r}
+            for r in culture_bootstrap(
+                prepared, trajectory, sets, variants["island x level"], N_BOOT[scale], ctx.rng(150_000)
+            )
+        ]
         sizes.append(
             {
                 "cells": name,
@@ -136,7 +144,13 @@ def run(ctx: Context) -> list[Path]:
             }
         )
         print(f"bj_telomerase: {name}: {group.height} arrays, {len(feats)} CpGs", file=sys.stderr, flush=True)
-    for name, rows in (("matched_gaps", gaps), ("chip_overlap", overlap), ("sizes", sizes), ("drift", drift)):
+    for name, rows in (
+        ("matched_gaps", gaps),
+        ("chip_overlap", overlap),
+        ("sizes", sizes),
+        ("drift", drift),
+        ("culture_bootstrap", boot),
+    ):
         if rows:
             write_table(pl.DataFrame(rows), out / name)
     return []
