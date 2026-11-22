@@ -1,10 +1,4 @@
-<!--
-DECISION FOR THE AUTHORS (title): the title below names chromatin and faster demethylation. The results now centre on
-promoter activity and cell division; proposed: "Promoters of essential genes drift less with age, in step with their
-expression and with cell division". The change is the authors' to make.
--->
-
-# Essential gene promoters are shielded from age-related DNA methylation drift by chromatin and faster demethylation
+# Promoters of essential genes drift less with age, in step with their expression and with cell division
 
 <!-- Author list and affiliations are for the authors to fill. -->
 Anton Kulaga, …
