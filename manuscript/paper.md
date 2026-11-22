@@ -17,14 +17,15 @@ composition, probe design and reprocessing from raw array files do not produce t
 Most of the shield is accounted for by promoter activity, not by essentiality as such. Reference chromatin states account for
 83-91 % of the gap in blood and about 44 % in cortex. Where expression was measured in the same samples
 (sorted monocytes, epidermis, cultured fibroblasts), the gene's own expression decile removes 71 to 82 % of the
-housekeeping gap, and genes outside every set are shielded in step with their expression.
+housekeeping gap, and genes outside every set are shielded in step with their expression; sorted CD4+ T cells,
+which have almost no gap on this measure, do not show the pattern.
 
-The shield also goes with cell division. In one mouse cohort sequenced on shared flowcells, the gap was more than
+The shield is larger in some dividing cells and tissues, but tissues do not follow a consistent turnover ranking. In one mouse cohort sequenced on shared flowcells, the gap was more than
 twice as large in colon as in hippocampus (−0.19 against −0.08 SD). In one sorted series it is larger in one glial fraction than in the same donors' neurons (p 0.025; not resolved
 in a second series), it accrues per population doubling in fibroblasts, in a telomerase-immortalised line and in astrocytes, and
 in cultures of two donors kept from dividing for six months no drift was detected, so no shield can be measured in them. Selection among dividing cells and
 replication-coupled maintenance both fit, and the data cannot separate them. Kinetically, essential island promoters
-gain methylation no faster than look-alikes but, in pooled fits, lose it faster and rest lower. In mouse brain at one age, essential promoters of Tet3 heterozygous mice carried more methylation relative to
+lose methylation faster than look-alikes in pooled fits, a result not seen per CpG in cortex. In mouse brain at one age, essential promoters of Tet3 heterozygous mice carried more methylation relative to
 look-alikes than same-chip wild types; in a separate study on another array, Tet1 knockout showed the opposite
 shift.
 
@@ -202,8 +203,8 @@ coefficient (+0.032, p 0.04) vanishes off the 0 % floor (+0.004, p 0.84; Supplem
 
 ### Essential promoters lose methylation faster and rest lower
 
-**Essential island promoters gain methylation no faster than look-alikes but lose it faster, so they rest at a lower
-level.** Binary entropy assumes every site drifts toward 50 %. To read direction, we fitted the two-state model in which a
+**In pooled fits essential island promoters lose methylation faster than look-alikes, and per CpG their fitted
+resting level is lower; the faster loss is not seen per CpG in cortex.** Binary entropy assumes every site drifts toward 50 %. To read direction, we fitted the two-state model in which a
 site gains methylation at rate k_gain and loses it at rate k_loss, relaxing toward its own resting level
 z = k_gain / (k_gain + k_loss) (Methods). Pooled per gene set in island promoters, the gain rate of core-essential and
 housekeeping CpGs in blood was 0.0012 per decade lower than look-alikes' (95 % −0.0017 to −0.0008), and their loss
@@ -233,8 +234,9 @@ donor resamples.
 
 ### The shield goes with cell division
 
-**In series where batch cannot explain the contrast, the shield is larger where cells divide; in neurons it is
-small and not resolved once chip is held, and cultures kept from dividing show no measurable drift, so no shield can be measured in them (Fig. 5).** The series in this section provide raw data, use one platform per contrast and spread the contrast
+**The housekeeping gap is larger in colon than in hippocampus of one mouse cohort and in one glial fraction than in
+paired neurons of one human cohort, and a gap per doubling recurs in cultured cells; across tissues the measured
+gaps do not follow a consistent turnover ranking (Fig. 5).** The series in this section provide raw data, use one platform per contrast and spread the contrast
 across chips or flowcells (Supplementary Table S4); the array series were processed from raw files, except the
 mammalian consortium's, which has none.
 
@@ -551,7 +553,10 @@ age-hypermethylated programme (Teschendorff et al. 2010; Rakyan et al. 2010; Sli
 drift "stochastic" is therefore accurate only for the part outside that programme; in cortex rising spread is close
 to uniform.
 
-**The shield goes with cell division.** In series where batch cannot make the contrast, the gap is more than twice as
+**The shield is larger in some dividing cells and tissues.** This is supported in part. Against a general rule:
+human testis, which renews fastest, shows no gap; in Huang's 11 mouse tissues the ordering vanishes within chip;
+muscle equals blood in one mouse series; one cultured series lost its shield on arrays processed from raw files;
+and the mortal cells of the telomerase line show little or none. In series where batch cannot make the contrast, the gap is more than twice as
 large in colon as in hippocampus of the same mouse cohort, larger in glia than in the same donors' neurons, large in
 fibroblasts driven to replicative senescence, and absent, with drift itself, in cultures kept from dividing for six
 months. It accrues per doubling in fibroblasts immortalised with telomerase, so the approach to senescence is not
@@ -607,7 +612,7 @@ Tet1 and Tet3 shifts, the loss rates in cortex and the neuron-glia difference ca
 In sum, promoters of essential and housekeeping genes drift less with age than matched CpGs by a modest,
 reproducible margin. Most of that margin is what the promoter's own activity predicts, it is larger where cells divide, small and unresolved in neurons and absent, with drift itself, in cultures kept
 from dividing,
-and in brain it depends in part on Tet3. Whether selection among dividing cells or maintenance
+and in one study of bulk mouse brain it was weaker in Tet3 heterozygous animals. Whether selection among dividing cells or maintenance
 coupled to replication produces it is the question the next experiment should answer, with lineage-tracked or
 clonal cultures in which promoter activity is measured in the same cells.
 
