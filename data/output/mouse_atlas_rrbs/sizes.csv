@@ -1,0 +1,15 @@
+tissue,mice,used,ages,cpgs,lanes,lanes_with_2_or_more_ages
+Liver,32,true,"3x12,15x9,24x11",32524,8,7
+Heart,30,true,"3x10,15x9,24x11",86787,8,5
+Cortex,31,true,"3x11,15x9,24x11",73648,8,8
+Lung,30,true,"3x10,15x9,24x11",101665,8,6
+Hind_Muscle,10,false,,,,
+Kidney,10,false,,,,
+Intestinal_Stem_Cells,10,false,,,,
+Lung_Macrophages,10,false,,,,
+CD8_T_Cells,10,false,,,,
+Skin,10,false,,,,
+CD4_T_Cells,10,false,,,,
+Cerebellum,10,false,,,,
+B_cells,10,false,,,,
+Testes,5,false,,,,

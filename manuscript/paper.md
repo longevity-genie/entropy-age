@@ -181,7 +181,10 @@ promoters still shifted their mean less (|mean change| −0.05 to −0.09 SD) bu
 reduced-representation bisulfite sequencing (RRBS), which covers far more promoter CpGs, cortex kept a small shield (−0.06 SD, interval excluding zero) and heart
 −0.07, against −0.22 in liver and −0.14 in lung (Meer et al. 2018; about 20 mice; the heart, liver and lung intervals
 include zero). Other RRBS series gave −0.03 (adipose) to −0.21 SD (lung) in six tissues (Thompson et al. 2018) and −0.30
-in whole blood (Petkovich et al. 2017), and the mammalian array gave −0.32 in BXD liver (Mozhui et al. 2022; −0.28, −0.45 to −0.14, re-processed from the IDATs). These are different platforms and CpG sets, so they are reported side by side and not ranked against one another; within Meer's four tissues the shield is smaller in cortex and heart, and in Thompson's six tissues muscle (−0.08) matched blood (−0.08). Meer's RRBS and the array disagree on whether post-mitotic tissue keeps a little of
+in whole blood (Petkovich et al. 2017), and the mammalian array gave −0.32 in BXD liver (Mozhui et al. 2022; −0.28, −0.45 to −0.14, re-processed from the IDATs). In a further RRBS series of the same mice at 3, 15 and 24 months, with sex and sequencing lane held and every
+lane mixing the ages (GSE225166; 30 to 32 mice per tissue), the housekeeping gap was −0.10 SD in liver (−0.22 to
+−0.05), −0.10 in lung (−0.15 to −0.01), −0.08 in heart (−0.18 to −0.01) and −0.05 in cortex (−0.14 to +0.03;
+intervals from resampling mice). These are different platforms and CpG sets, so they are reported side by side and not ranked against one another; within Meer's four tissues the shield is smaller in cortex and heart, and in Thompson's six tissues muscle (−0.08) matched blood (−0.08). Meer's RRBS and the array disagree on whether post-mitotic tissue keeps a little of
 the shield or none.
 
 Across mammals (Mammalian Methylation Consortium, GSE223748; Lu et al. 2023; Haghani et al. 2023), 139
@@ -230,8 +233,8 @@ donor resamples.
 
 ### The shield goes with cell division
 
-**In series where batch cannot explain the contrast, the shield is larger where cells divide; neurons carry a
-small gap, and cultures kept from dividing show no measurable drift, so no shield can be measured in them (Fig. 5).** The series in this section provide raw data, use one platform per contrast and spread the contrast
+**In series where batch cannot explain the contrast, the shield is larger where cells divide; in neurons it is
+small and not resolved once chip is held, and cultures kept from dividing show no measurable drift, so no shield can be measured in them (Fig. 5).** The series in this section provide raw data, use one platform per contrast and spread the contrast
 across chips or flowcells (Supplementary Table S4); the array series were processed from raw files, except the
 mammalian consortium's, which has none.
 
@@ -254,8 +257,9 @@ donors, only two under 60) gave −0.044 (−0.108 to +0.015). A third series ho
 frontal cortex of 82 donors aged 23 to 77 (GSE112179; EPIC; one array per donor; 28 controls, the others with
 schizophrenia or bipolar disorder, diagnosis held). Their housekeeping gap was −0.051 SD (−0.060 to −0.042), and
 −0.030 (−0.040 to −0.020) with chip intercepts; the core-essential gap, −0.043, was not distinguishable from zero
-with chip held (−0.009, −0.028 to +0.014). Neurons therefore carry a gap; with chip held it is smaller than that of
-unsorted nuclei and of glia in the first series. In the 28 controls alone, age is largely fixed by chip (18 % of
+with chip held (−0.009, −0.028 to +0.014). Those intervals resample genes. Resampling donors, the gap without chip intercepts stays below zero (−0.060 to
+−0.007), but with chip intercepts it is not resolved (−0.047 to +0.022). Neurons therefore show a small gap that
+cannot be separated from chip in this series. In the 28 controls alone, age is largely fixed by chip (18 % of
 its variance is left within chips), so their gap cannot be estimated with chip held.
 
 *Division against arrest in culture.* In fibroblasts laid out so that each of 12 chips held untreated cultures and
@@ -599,7 +603,8 @@ Tet1 and Tet3 shifts, the loss rates in cortex and the neuron-glia difference ca
 5-methylcytosine alone.
 
 In sum, promoters of essential and housekeeping genes drift less with age than matched CpGs by a modest,
-reproducible margin. Most of that margin is what the promoter's own activity predicts, it is larger where cells divide, small in neurons and absent, with drift itself, in cultures kept from dividing,
+reproducible margin. Most of that margin is what the promoter's own activity predicts, it is larger where cells divide, small and unresolved in neurons and absent, with drift itself, in cultures kept
+from dividing,
 and in brain it depends in part on Tet3. Whether selection among dividing cells or maintenance
 coupled to replication produces it is the question the next experiment should answer, with lineage-tracked or
 clonal cultures in which promoter activity is measured in the same cells.

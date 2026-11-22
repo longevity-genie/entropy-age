@@ -29,6 +29,27 @@ commit it ran, its job ids, its scale and seed, and its result or its failure wi
 - Reading: a second immortalised cell type carries the gap per doubling, with chip held, a little below primary
   astrocytes (−0.102, R133) and fibroblasts. Three replicate lines of one source; no arrested control.
 
+## R142 — the shared array age-series runner, regression on two series, 2026-11-23
+
+- Commit 6a3bc03; `figures series_neurons`, `figures series_brain_regions` (description files in `config/series`);
+  job 6593085. Gaps equal those of `neuron_series` to three decimals (housekeeping −0.051, −0.030 with chip;
+  controls −0.030, +0.024).
+- **New: donor-resampling intervals.** Neurons, every donor: −0.060 to −0.007 without chip; −0.047 to +0.022 with
+  chip. The gene-resampling interval (−0.040 to −0.020 with chip) had made the chip-held neuronal gap look resolved;
+  it is not. Paper corrected.
+
+## R141 — tissues of the same mice at three ages by RRBS (GSE225166), 2026-11-23
+
+- Commit after 83d0444; `figures mouse_atlas_rrbs --scale paper --seed 42`; job 6593084. Liver 32 mice (3x12, 15x9,
+  24x11; 32,524 promoter CpGs), heart 30 (86,787), cortex 31 (73,648), lung 30 (101,665); 8 lanes, 5 to 8 of them
+  holding two or more ages; sex and lane held; 200 resamples of mice. The ten other tissues have 5 to 10 mice and
+  are not analysed.
+- **Housekeeping, relative entropy.** Liver −0.104 (−0.218 to −0.048); lung −0.104 (−0.154 to −0.009); heart −0.079
+  (−0.182 to −0.009); cortex −0.051 (−0.139 to +0.025). Core-essential −0.105, −0.105, −0.083, −0.077 (cortex
+  interval to +0.006). Non-essential +0.10 in heart and lung.
+- Reading: with lane held, heart carries a gap of the size seen in dividing tissues' lower range; cortex is the
+  smallest and unresolved. The order liver = lung > heart > cortex is the one of the consortium array (R118).
+
 ## R140 — between-cell drift in single muscle stem cells (GSE121437), 2026-11-23
 
 - Commit after 304388a (plain between-cell variance, promoters matched on island status, young level and coverage
