@@ -133,7 +133,7 @@ core-essential −0.053 and −0.002, non-essential +0.164 and +0.056.
 
 **Expression in the same epidermis (R129).** Holzscheck et al. 2020: suction-blister epidermis of healthy women
 aged 21 to 79, on the EPIC array (E-MTAB-8993; 65 women, 61 after the detection cut) or the 450k array (E-MTAB-8992;
-56 other women), rebuilt from IDATs, with RNA-seq of every woman (E-MTAB-8995; the depositors' TPM table,
+56 women on 450k; up to 31 of the EPIC women are women of the 450k group measured again three years later), rebuilt from IDATs, with RNA-seq of every woman (E-MTAB-8995; the depositors' TPM table,
 batch-corrected by them, values below zero set to zero). The two array groups are analysed apart. Age slopes hold the
 depositors' processing batch. Relative entropy, EPIC then 450k, island x level against the expression decile added:
 housekeeping −0.106 and −0.031, −0.105 and −0.031; core-essential −0.058 and −0.003, −0.054 and −0.001;

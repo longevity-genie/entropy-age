@@ -381,8 +381,9 @@ doubling showed the monocyte pattern: the housekeeping gap of −0.102 SD fell t
 in the matching (72 % removed), the core-essential gap from −0.055 to −0.006, and outside the gene sets drift
 relative to matched CpGs fell with expression (rank correlation −0.06, p 1·10⁻⁹). With chip intercepts in the
 slopes the numbers were the same (−0.102 to −0.024; a third of the spread in doublings is left within line and chip).
-In epidermis of 117 healthy women aged 21 to 79 (Holzscheck et al. 2020; arrays rebuilt from raw files, RNA-seq of
-the same women), analysed as two groups by array type (61 on EPIC, 56 on 450k), the housekeeping gap was −0.106 and
+In epidermis of healthy women aged 21 to 79 (Holzscheck et al. 2020; 117 arrays rebuilt from raw files, RNA-seq of
+the same samples), analysed as two groups by array type (56 women on 450k; 61 on EPIC three years later, up to 31
+of them women of the first group measured again, so the two groups are not independent), the housekeeping gap was −0.106 and
 −0.105 SD and fell to −0.031 in both with the expression decile in the matching (71 % removed); the core-essential
 gap went from −0.058 and −0.054 to zero, and outside the gene sets drift fell with expression (rank correlation
 −0.07 and −0.09). The chromatin state of keratinocytes removed about half of the gap (51 % and 47 %), expression and
@@ -426,7 +427,7 @@ RNA and is not what epigenetic clocks read; the tests of selection among cells i
 should grow along a culture. In seven primary human cell lines passaged to senescence (Endicott et al. 2022), with the
 replicate-culture noise floor removed, set CpGs drifted about half as much as matched CpGs once drift was well above the floor. The change of this
 share with population doublings was −0.14 per 10 doublings (95 % interval −0.33 to +0.06, seven lines; negative means stronger protection; one line reached 136 doublings),
-and −0.055 (−0.21 to +0.10, five lines) in a second study (Sturm et al. 2023; Supplementary Fig. S14). Neither differs detectably from zero, but the intervals also admit changes of the size selection could produce, so they do not show the share to be constant. With batch intercepts the first estimate is −0.14 (−0.34 to +0.05). In the second study, plate adjustment is possible in four lines, which give −0.003 unadjusted and +0.003 adjusted (intervals about ±0.08); all five of its baseline lines used a pooled noise floor. Rebuilt from raw IDATs and scored on the same
+and −0.055 (−0.21 to +0.10, five lines) in a second study (Sturm et al. 2022, 2023; Supplementary Fig. S14). Neither differs detectably from zero, but the intervals also admit changes of the size selection could produce, so they do not show the share to be constant. With batch intercepts the first estimate is −0.14 (−0.34 to +0.05). In the second study, plate adjustment is possible in four lines, which give −0.003 unadjusted and +0.003 adjusted (intervals about ±0.08); all five of its baseline lines used a pooled noise floor. Rebuilt from raw IDATs and scored on the same
 samples, Endicott's lines lose their shield at the reference (housekeeping coupling −0.20 deposited, −0.00
 rebuilt) and the change per 10 doublings becomes −0.18 (−0.39 to +0.04), the direction selection predicts; Sturm's
 four lines with enough samples keep their shield (−0.37) and show no change (−0.025, −0.08 to +0.03). The culture
@@ -446,7 +447,7 @@ chip was held (section on tissues, platforms and species). None of the observati
 contrasts in which the shield goes with division are those of the section on cell division.
 
 *Tuning to lifespan.* Long-lived species drift less at unprotected CpGs, as found for epigenetic disorder and methylation rates
-(Bertucci-Richter et al. 2023; Crofts et al. 2024): the look-alikes' dispersion rate fell as
+(Bertucci-Richter and Parrott 2023; Crofts et al. 2024): the look-alikes' dispersion rate fell as
 about lifespan^−1.15 (weight and tissue held). But the gap itself did not track lifespan off the 0 % floor (relative
 entropy +0.004 per log-unit, 95 % interval −0.036 to +0.044, p 0.84). A phylogenetic generalised least-squares fit, run on the binary-entropy and dispersion slopes, gave no lifespan relation
 either. The shield's share of drift does not grow with lifespan on relative entropy either (+1.43, p 0.23). This agrees with Crofts et al. (2026),
@@ -508,7 +509,8 @@ This study measures the protection of essential genes from age-related methylati
 and species tested, by a modest margin (about 0.15 SD in blood, 0.06 SD in cortex, near zero in some tissues and cell
 types) that the matching, cell composition, probe design and normalisation do not produce.
 
-The qualitative claim belongs to Teschendorff, West and Beck (2013) and West et al. (2013), and Day et al. (2013)
+The qualitative suggestion belongs to Teschendorff, West and Beck (2013), who drew on the finding of West et al.
+(2013) that drift falls on genes of low network connectivity, and Day et al. (2013)
 already linked age-related methylation change with tissue-specific expression and chromatin state. Our contribution
 is a size, two things the shield follows, and a kinetic and a genetic observation. The matched design gives a gap
 with intervals that can be compared across tissues and species and checked against a null. The gap then turns out to
@@ -536,7 +538,7 @@ needed, and at the same rate in passaged astrocytes as in fibroblasts. Vaidya et
 to stem-cell division across mouse tissues, which points the same way. Two readings fit. Cells whose active
 promoters have drifted may be lost from a dividing population (selection), or maintenance at active promoters may be
 coupled to replication, so that each division both creates errors elsewhere and corrects them here. Nothing in hand
-separates the two: long-term cultures lose clonal diversity (Hollmann et al. 2020), steady selection per doubling
+separates the two: long-term cultures of mesenchymal stromal cells and iPSCs lose clonal diversity (Hollmann et al. 2020), steady selection per doubling
 and replication-coupled maintenance both predict a constant gap per doubling, and the series that track lineages
 or clone sizes are under controlled access. The two readings are not exclusive of the first finding: expression may
 mark the promoters at which either process acts. Among tissues that all renew (buccal epithelium and two blood
@@ -591,15 +593,15 @@ All data are public; Supplementary Table S1 lists every dataset with its accessi
 or rebuilt values were used, and the analyses that read it. The main human cohorts are Hannum blood (GSE40279, 450k,
 656 donors aged 19-101), Jaffe prefrontal cortex (GSE74193, 450k, 213 adult controls aged 21-85), Lunnon blood and
 four brain regions (GSE59685), GTEx nine tissues (GSE213478, EPIC), SATSA (E-MTAB-7309), EPIC-Italy (GSE51032) and
-SJLIFE (GSE314261); read-level WGBS is from GSE186458. Series added from the repository search, all rebuilt from
+SJLIFE (GSE314261; Eulalio et al. 2026); read-level WGBS is from GSE186458. Series added from the repository search, all rebuilt from
 raw files, are epidermis with RNA-seq of the same women (E-MTAB-8993, E-MTAB-8992, E-MTAB-8995), fibroblasts with
-and without telomerase (GSE268145), four tissues of the same adults (GSE280465), orbitofrontal cortex (GSE254293),
-passaged astrocytes (GSE202554), astrocytes immortalised with telomerase (GSE226079), sorted cortical neurons
-(GSE112179) and senescent fibroblasts and stromal cells (GSE227160). Further series are sorted cortical nuclei
-(GSE279509, GSE66351), a second cortex series (GSE252501), fibroblasts made senescent in three ways (GSE197723),
-arrested fibroblasts (E-MTAB-15859), mouse colon and hippocampus by RRBS (GSE233734, GSE304754), MESA monocytes and
+and without telomerase (GSE268145), four tissues of the same adults (GSE280465; Apsley et al. 2025), orbitofrontal cortex (GSE254293; Fröhlich et al. 2024),
+passaged astrocytes (GSE202554; Higgins-Chen et al. 2022), astrocytes immortalised with telomerase (GSE226079; Minteer et al. 2023), sorted cortical neurons
+(GSE112179; Pai et al. 2019) and senescent fibroblasts and stromal cells (GSE227160; Kwiatkowska et al. 2023). Further series are sorted cortical nuclei
+(GSE279509, Walker et al. 2025; GSE66351, Gasparoni et al. 2018), a second cortex series (GSE252501; White et al. 2024), fibroblasts made senescent in three ways (GSE197723),
+arrested fibroblasts (E-MTAB-15859), mouse colon and hippocampus by RRBS (GSE233734, Olecka et al. 2024; GSE304754), MESA monocytes and
 T cells with expression (GSE56046, GSE56045, GSE56581, GSE56580), fibroblast cultures with RNA-seq (GSE179847,
-GSE179848) and a breast case-control series (GSE283951). Mouse and mammal data are the Mammalian Methylation Consortium
+GSE179848; Sturm et al. 2022) and a breast case-control series (GSE283951; Sokolowska et al. 2025). Mouse and mammal data are the Mammalian Methylation Consortium
 (GSE223748), Huang et al. 2025 (GSE279437), RRBS series GSE80672, GSE120132 and GSE121141, and BXD liver on the mammalian array
 (GSE199979; Mozhui et al. 2022); Tet1 mutants are
 GSE271375. Chromatin references are Roadmap 15-state chromHMM (E062, E030, E073) and sorted neuron and glia ATAC
@@ -755,6 +757,8 @@ MIT-licensed code keep their attribution).
 
 ## References
 
+Apsley AT, et al. 2025. Cross-tissue comparison of epigenetic aging clocks in humans. Aging Cell 24:e14451. doi:10.1111/acel.14451.
+
 Basrai S, et al. 2026. Blood-based epigenetic instability linked to human aging and disease. Nat Commun 17:2754. doi:10.1038/s41467-026-69430-z.
 
 Belsky DW, et al. 2022. DunedinPACE, a DNA methylation biomarker of the pace of aging. eLife 11:e73420. doi:10.7554/eLife.73420.
@@ -779,7 +783,13 @@ Eisenberg E, Levanon EY. 2013. Human housekeeping genes, revisited. Trends Genet
 
 Endicott JL, et al. 2022. Cell division drives DNA methylation loss in late-replicating domains in primary human cells. Nat Commun 13:6659. doi:10.1038/s41467-022-34268-8.
 
+Eulalio T, et al. 2026. Epigenome-wide analysis identifies DNA methylation mediators of treatment-related cardiometabolic risk in survivors of childhood cancer. Nat Commun 17:1979. doi:10.1038/s41467-026-68689-6.
+
 Foong YH, et al. 2024. TET1 displays catalytic and non-catalytic functions in the adult mouse cortex. Epigenetics 19:2374979. doi:10.1080/15592294.2024.2374979.
+
+Fröhlich AS, et al. 2024. Single-nucleus transcriptomic profiling of human orbitofrontal cortex reveals convergent effects of aging and psychiatric disease. Nat Neurosci 27:2021-2032. doi:10.1038/s41593-024-01742-z.
+
+Gasparoni G, et al. 2018. DNA methylation analysis on purified neurons and glia dissects age and Alzheimer's disease-specific changes in the human cortex. Epigenetics Chromatin 11:41. doi:10.1186/s13072-018-0211-3.
 
 Gill D, et al. 2022. Multi-omic rejuvenation of human cells by maturation phase transient reprogramming. eLife 11:e71624. doi:10.7554/eLife.71624.
 
@@ -793,11 +803,13 @@ Hart T, et al. 2017. Evaluation and design of genome-wide CRISPR/SpCas9 knockout
 
 Heyn P, et al. 2019. Gain-of-function DNMT3A mutations cause microcephalic dwarfism and hypermethylation of Polycomb-regulated regions. Nat Genet 51:96-105. doi:10.1038/s41588-018-0274-x.
 
+Higgins-Chen AT, et al. 2022. A computational solution for bolstering reliability of epigenetic clocks: implications for clinical trials and longitudinal tracking. Nat Aging 2:644-661. doi:10.1038/s43587-022-00248-2.
+
 Holland P. 2024. DNA methylation data of hematopoietic transplantation patients. Mendeley Data, version 1. doi:10.17632/j5krtjfj6y.1.
 
 Hollmann J, et al. 2020. Genetic barcoding reveals clonal dominance in iPSC-derived mesenchymal stromal cells. Stem Cell Res Ther 11:105. doi:10.1186/s13287-020-01619-5.
 
-Holzscheck N, et al. 2020. Multi-omics network analysis reveals distinct stages in the human aging progression in epidermal tissue. Aging (Albany NY) 12. doi:10.18632/aging.103499.
+Holzscheck N, et al. 2020. Multi-omics network analysis reveals distinct stages in the human aging progression in epidermal tissue. Aging (Albany NY) 12:12393-12409. doi:10.18632/aging.103499.
 
 Horvath S. 2013. DNA methylation age of human tissues and cell types. Genome Biol 14:R115. doi:10.1186/gb-2013-14-10-r115.
 
@@ -813,6 +825,8 @@ Jin SG, et al. 2016. Tet3 reads 5-carboxylcytosine through its CXXC domain and i
 
 Krepelova A, et al. 2025. Iron homeostasis and cell clonality drive cancer-associated intestinal DNA methylation drift in aging. Nat Aging 5:2432-2448. doi:10.1038/s43587-025-01021-x.
 
+Kwiatkowska KM, et al. 2023. Heterogeneity of cellular senescence: cell type-specific and senescence stimulus-dependent epigenetic alterations. Cells 12:927. doi:10.3390/cells12060927.
+
 Levine ME, et al. 2018. An epigenetic biomarker of aging for lifespan and healthspan. Aging 10:573-591. doi:10.18632/aging.101414.
 
 Loyfer N, et al. 2023. A DNA methylation atlas of normal human cell types. Nature 613:355-364. doi:10.1038/s41586-022-05580-6.
@@ -827,11 +841,17 @@ Meer MV, et al. 2018. A whole lifespan mouse multi-tissue DNA methylation clock.
 
 Meyer DH, Schumacher B. 2024. Aging clocks based on accumulating stochastic variation. Nat Aging 4:871-885. doi:10.1038/s43587-024-00619-x.
 
+Minteer CJ, et al. 2023. More than bad luck: cancer and aging are linked to replication-driven changes to the epigenome. Sci Adv 9:eadf4163. doi:10.1126/sciadv.adf4163.
+
 Morandini F, et al. 2024. ATAC-clock: an aging clock based on chromatin accessibility. GeroScience 46:1789-1806. doi:10.1007/s11357-023-00986-0.
 
 Mozhui K, et al. 2022. Genetic loci and metabolic states associated with murine epigenetic aging. eLife 11:e75244. doi:10.7554/eLife.75244.
 
+Olecka M, et al. 2024. Nonlinear DNA methylation trajectories in aging male mice. Nat Commun 15:3074. doi:10.1038/s41467-024-47316-2.
+
 Oliva M, et al. 2023. DNA methylation QTL mapping across diverse human tissues provides molecular links between genetic variation and complex traits. Nat Genet 55:112-122. doi:10.1038/s41588-022-01248-z.
+
+Pai S, et al. 2019. Differential methylation of enhancer at IGF2 is associated with abnormal dopamine synthesis in major psychosis. Nat Commun 10:2046. doi:10.1038/s41467-019-09786-7.
 
 Petkovich DA, et al. 2017. Using DNA methylation profiling to evaluate biological age and longevity interventions. Cell Metab 25:954-960.e6. doi:10.1016/j.cmet.2017.03.016.
 
@@ -848,6 +868,10 @@ Sarni D, et al. 2026. A progeria syndrome links DNA hypermethylation to age-rela
 Seeboth A, et al. 2020. DNA methylation outlier burden, health, and ageing in Generation Scotland and the Lothian Birth Cohorts of 1921 and 1936. Clin Epigenetics 12:49. doi:10.1186/s13148-020-00838-0.
 
 Slieker RC, et al. 2016. Age-related accrual of methylomic variability is linked to fundamental ageing mechanisms. Genome Biol 17:191. doi:10.1186/s13059-016-1053-6.
+
+Sokolowska KE, et al. 2025. Synergic effect of arsenic exposure related methylation changes in three cohorts exposed to levels of this toxicant. Int Arch Occup Environ Health 98:515-523. doi:10.1007/s00420-025-02147-6.
+
+Sturm G, et al. 2022. A multi-omics longitudinal aging dataset in primary human fibroblasts with mitochondrial perturbations. Sci Data 9:751. doi:10.1038/s41597-022-01852-y.
 
 Sturm G, et al. 2023. OxPhos defects cause hypermetabolism and reduce lifespan in cells and in patients with mitochondrial diseases. Commun Biol 6:22. doi:10.1038/s42003-022-04303-x.
 
@@ -867,9 +891,13 @@ Vaidya H, et al. 2023. DNA methylation entropy as a measure of stem cell replica
 
 van Veldhoven K, et al. 2015. Epigenome-wide association study reveals decreased average methylation levels years before breast cancer diagnosis. Clin Epigenetics 7:67. doi:10.1186/s13148-015-0104-2.
 
+Walker EM, et al. 2025. Guidance for the design and analysis of cell-type-specific DNA methylation epidemiology studies. Brief Bioinform 26:bbaf427. doi:10.1093/bib/bbaf427.
+
 Wang Y, et al. 2018. Epigenetic influences on aging: a longitudinal genome-wide methylation study in old Swedish twins. Epigenetics 13:975-987. doi:10.1080/15592294.2018.1526028.
 
 West J, Widschwendter M, Teschendorff AE. 2013. Distinctive topology of age-associated epigenetic drift in the human interactome. Proc Natl Acad Sci USA 110:14138-14143. doi:10.1073/pnas.1307242110.
+
+White JD, et al. 2024. Alcohol use disorder-associated DNA methylation in the nucleus accumbens and dorsolateral prefrontal cortex. Biol Psychiatry Glob Open Sci 4:100375. doi:10.1016/j.bpsgos.2024.100375.
 
 Ying K, et al. 2024. Causality-enriched epigenetic age uncouples damage and adaptation. Nat Aging 4:231-246. doi:10.1038/s43587-023-00557-0.
 
