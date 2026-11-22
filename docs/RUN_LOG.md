@@ -29,6 +29,16 @@ commit it ran, its job ids, its scale and seed, and its result or its failure wi
 - Reading: a second immortalised cell type carries the gap per doubling, with chip held, a little below primary
   astrocytes (−0.102, R133) and fibroblasts. Three replicate lines of one source; no arrested control.
 
+## R141b — mouse tissues with complete CpGs only (review item), 2026-11-23
+
+- Commit 3ec7b03; job 6593358. R141 had kept CpGs present in 90 % of libraries and filled the rest; this run uses
+  CpGs covered at least 10 times in every library. CpGs left: lung 28,727, heart 30,312, cortex 12,335, liver 518.
+- Housekeeping, relative entropy: lung −0.086 (−0.139 to −0.015); heart −0.046 (−0.126 to +0.008); cortex −0.011
+  (−0.083 to +0.132); liver +0.099 (−0.125 to +0.316) on 518 CpGs, not an estimate.
+- Reading: R141's heart and liver gaps do not survive the nothing-filled rule; only lung is resolved. Complete
+  coverage in every library is a harsh filter for RRBS; slopes that tolerate missing libraries without filling would
+  keep more CpGs and are the proper next step. R141's numbers are superseded.
+
 ## Reruns after the interval fix (991f93d), 2026-11-23
 
 - A code review found that the donor and culture resampling intervals of R138, R140 and R142 divided each resample

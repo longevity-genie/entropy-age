@@ -182,9 +182,9 @@ reduced-representation bisulfite sequencing (RRBS), which covers far more promot
 −0.07, against −0.22 in liver and −0.14 in lung (Meer et al. 2018; about 20 mice; the heart, liver and lung intervals
 include zero). Other RRBS series gave −0.03 (adipose) to −0.21 SD (lung) in six tissues (Thompson et al. 2018) and −0.30
 in whole blood (Petkovich et al. 2017), and the mammalian array gave −0.32 in BXD liver (Mozhui et al. 2022; −0.28, −0.45 to −0.14, re-processed from the IDATs). In a further RRBS series of the same mice at 3, 15 and 24 months, with sex and sequencing lane held and every
-lane mixing the ages (GSE225166; 30 to 32 mice per tissue), the housekeeping gap was −0.10 SD in liver (−0.22 to
-−0.05), −0.10 in lung (−0.15 to −0.01), −0.08 in heart (−0.18 to −0.01) and −0.05 in cortex (−0.14 to +0.03;
-intervals from resampling mice). These are different platforms and CpG sets, so they are reported side by side and not ranked against one another; within Meer's four tissues the shield is smaller in cortex and heart, and in Thompson's six tissues muscle (−0.08) matched blood (−0.08). Meer's RRBS and the array disagree on whether post-mitotic tissue keeps a little of
+lane mixing the ages (GSE225166; 30 to 32 mice per tissue), on the CpGs covered at least 10 times in every library, the housekeeping gap was −0.09 SD in lung (−0.14 to −0.02;
+28,727 CpGs), −0.05 in heart (−0.13 to +0.01; 30,312) and −0.01 in cortex (−0.08 to +0.13; 12,335; intervals from
+resampling mice); liver kept only 518 such CpGs and gives no estimate. These are different platforms and CpG sets, so they are reported side by side and not ranked against one another; within Meer's four tissues the shield is smaller in cortex and heart, and in Thompson's six tissues muscle (−0.08) matched blood (−0.08). Meer's RRBS and the array disagree on whether post-mitotic tissue keeps a little of
 the shield or none.
 
 Across mammals (Mammalian Methylation Consortium, GSE223748; Lu et al. 2023; Haghani et al. 2023), 139
