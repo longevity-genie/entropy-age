@@ -8,7 +8,9 @@ age and are reported only when they reach ``MIN_MICE``.
 
 CpGs in promoters (``data/rrbs.py``) covered at least 10 times in every library of the tissue are used; nothing is
 filled. The two strands of a CpG are separate rows of the coverage files and stay separate features here (the files
-carry no strand, and both strands of a CpG fall in the same promoter and stratum). Per tissue: the matched gap of each gene set on the age slopes of relative entropy,
+carry no strand, and both strands of a CpG fall in the same promoter and stratum).
+
+Per tissue: the matched gap of each gene set on the age slopes of relative entropy,
 entropy and dispersion (sex and lane held; strata of island status x young-level decile, young = the youngest age
 of the tissue), with a mouse bootstrap.
 
