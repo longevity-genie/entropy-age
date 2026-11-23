@@ -111,11 +111,17 @@ def _rebuilt(matrix: Path):
 
 
 def usable(matrix: Path, samples: list[str]) -> list[str]:
-    """``samples`` that have betas in the source in use: all of them for deposited betas, those passing SeSAMe QC for a
-    rebuild. Callers filter their people with it, so a failed array never becomes a row of NaN."""
+    """``samples`` that have betas in the source in use: for deposited betas all but the arrays with failed signal in
+    the rebuild's QC (when the series was rebuilt), for a rebuild those passing SeSAMe QC. Callers filter their people with it, so a failed array never becomes a row of NaN."""
     rebuilt = _rebuilt(matrix)
     if rebuilt is None:
-        return samples
+        # deposited betas: an array whose raw signal failed (protocol change 4) is left out here too, since the fault
+        # is the array's, not the preprocessing's; read from the rebuild's QC when the series was rebuilt
+        paths, gse = ProjectPaths(matrix.parents[4]), matrix.parent.name
+        if not reprocessed.available(paths, gse):
+            return samples
+        low = set(reprocessed.read_qc(paths, gse).filter(pl.col("low_intensity"))["sample"].to_list())
+        return [s for s in samples if s not in low]
     passed = set(reprocessed.read_qc(*rebuilt).filter(pl.col("passed"))["sample"].to_list())
     return [s for s in samples if s in passed]
 

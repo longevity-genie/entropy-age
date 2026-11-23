@@ -111,7 +111,8 @@ series' median signal; they sit on 15-16 chips and carry 31 % of breast cases ag
 chip matching they produced a drift (B) odds ratio of 4.5 per SD that vanished on chips with normal signal
 (docs/reviews/2026-11-24-exact-chip-B.md). From now on an array also fails QC when its mean intensity is below a
 quarter of the median of the arrays passing detection in its series (`reprocessed.MIN_INTENSITY_SHARE`; flagged
-`low_intensity`). Across every rebuilt series this removes the 127 EPIC-Italy arrays and no other. Every result on
+`low_intensity`). Across every rebuilt series this removes the 127 EPIC-Italy arrays and no other. The same arrays leave the analyses of deposited betas (the fault is the array's, not
+the preprocessing's). Every result on
 the rebuilt EPIC-Italy arrays is recomputed (incident and matched cancer models, the clock models).
 
 *Clock track.* SeSAMe's design-flag mask (Q) removes 20 % of GrimAge's weight on every array. Clocks are scored on a
