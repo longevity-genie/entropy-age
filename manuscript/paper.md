@@ -192,7 +192,7 @@ promoters still shifted their mean less (|mean change| −0.05 to −0.09 SD) bu
 reduced-representation bisulfite sequencing (RRBS), which covers far more promoter CpGs, cortex kept a small shield (−0.06 SD, interval excluding zero) and heart
 −0.07, against −0.22 in liver and −0.14 in lung (Meer et al. 2018; about 20 mice; the heart, liver and lung intervals
 include zero). Other RRBS series gave −0.03 (adipose) to −0.21 SD (lung) in six tissues (Thompson et al. 2018) and −0.30
-in whole blood (Petkovich et al. 2017), and the mammalian array gave −0.32 in BXD liver (Mozhui et al. 2022; −0.28, −0.45 to −0.14, re-processed from the IDATs). In a further RRBS series of the same mice at 3, 15 and 24 months, with sex and sequencing lane held and every
+in whole blood (Petkovich et al. 2017), and the mammalian array gave −0.30 in BXD liver (Mozhui et al. 2022; −0.28, −0.45 to −0.14, re-processed from the IDATs). In a further RRBS series of the same mice at 3, 15 and 24 months, with sex and sequencing lane held and every
 lane mixing the ages (GSE225166; 30 to 32 mice per tissue), on the CpGs covered at least 10 times in every library, the housekeeping gap was −0.09 SD in lung (−0.14 to −0.02;
 28,727 CpGs), −0.05 in heart (−0.13 to +0.01; 30,312) and −0.01 in cortex (−0.08 to +0.13; 12,335; intervals from
 resampling mice); liver kept only 518 such CpGs and gives no estimate. Off the floor (10-90 %, all-CpG scale) none of the four was
@@ -458,7 +458,7 @@ series from its 1,072 raw arrays (444 people, 628 consecutive within-person pair
 draws was split into the change everyone makes and the person's own departure from it (Methods). Housekeeping CpGs
 changed less in direction than look-alikes (−0.14 SD, p 0.001; deposited betas −0.002, p 0.67), sat closer to the
 measurement floor (−0.073) and diverged slightly more slowly (−0.014, p 0.016; Fig. 8). Across people, the rebuilt
-series showed a cross-sectional shield like other blood cohorts (relative entropy −0.23 SD, dispersion −0.36,
+series showed a cross-sectional shield like other blood cohorts (relative entropy −0.22 SD, dispersion −0.36,
 |mean| −0.11). On the deposited betas, the per-person shield share F fell by 0.14 per decade within a person
 (−0.23 to −0.05), matching the between-person slope (−0.13). On the rebuilt betas it fell by 0.08 (−0.18 to +0.02), against
 −0.26 between people. On the deposited series, which pools the 450k and EPIC waves with a chip-change term, the within-person slope matches the between-person one; on the rebuilt series it is smaller (−0.08 against −0.26)

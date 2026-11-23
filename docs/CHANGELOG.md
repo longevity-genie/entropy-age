@@ -4,6 +4,7 @@ Newest first.
 
 ## Unreleased
 
+- 2026-11-24: R150 (first eight of the fifteen analyses computed before the 2026-11-18 relative-entropy fix) rerun: gaps move by at most 0.015 SD; BXD liver −0.32 → −0.30, SATSA cross-sectional −0.23 → −0.22 in the text; hotspot enrichment in blood bivalent promoters 1.42 → 1.36 (z 10.1 → 8.6).
 - 2026-11-24: `write_table` deletes a CSV it no longer writes (a table grown past 1,000 rows), so no stale copy is read as current; the stale `species_gaps.csv` (12 Nov, no relative-entropy rows) and `mmc_interventions/animal_scores.csv` removed (review item 11). Figure 3 plots the relative-entropy slope with marked species in place of overlapping labels; R149 reruns the species analysis, whose tables predated the relative-entropy fix of 2026-11-18.
 - 2026-11-24: Figure 6 redrawn on relative entropy (it showed the dispersion slope), one colour and legend entry per matching (blood's neutrophil map had shared "+ own state" with the tissue's own map), shared legend, statement title; caption rewritten.
 - 2026-11-24: R147 myometrium written up (no housekeeping gap in 62 women 29-52 y; EPIC v2 unresolved); R148 rerun of every series, results unchanged; coverage table S5 gains myometrium.
