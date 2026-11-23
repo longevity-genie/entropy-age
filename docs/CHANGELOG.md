@@ -4,6 +4,7 @@ Newest first.
 
 ## Unreleased
 
+- 2026-11-24 (protocol P4): clocks scored with biolearn itself at the pinned commit and its documented imputation (scripts/clocks_biolearn.py, own environment), with the measured share of each clock's weight per sample; PhenoAge primary (biolearn's DunedinPACE lacks the authors' normalisation). R160 scores the rebuilt EPIC-Italy arrays. P1 donor intervals: share removed by expression matching 68-76 % (fibroblasts, cultures resampled), 60-84 % / 64-80 % (epidermis EPIC / 450k, donors resampled).
 - 2026-11-24 (protocol P3): forest plot and table of every series (scripts/forest_series.py; 42 cohort-tissue series, 31 negative, 20 resolved below zero, 1 above: tumour-adjacent lung); Supplementary Fig. S22.
 - 2026-11-24 (protocol P2): division contrasts checked for donor/animal resampling; off-floor colon/hippocampus numbers updated to the current table; muscle stem-cell interval labelled conditional on six mice with its leave-one-mouse-out range.
 - 2026-11-24 (protocol P1): donor resampling for the expression-matched gaps (`sample_resampled_gaps`: per resample the slopes refitted, strata and SD from the full sample; intervals for each matching and for the share removed); MESA monocytes and epidermis resample people, Sturm fibroblasts cultures within line.
