@@ -400,10 +400,13 @@ programme and kept out of active chromatin, of which the shield is the essential
 
 ![Figure 6](../docs/figures/chromatin_match.png)
 
-**Figure 6. Chromatin matching.** Housekeeping, core-essential and non-essential gaps (SD) matched on island × young
-level, then with the tissue's own Roadmap chromHMM state, another tissue's state, and (cortex) sorted neuron and glia
-accessibility. (a) State
-composition of set and background promoter CpGs in blood (E062). (b) Hannum blood and Jaffe cortex, dispersion slope; (c) Lunnon's tissues, between-person dispersion; (d) share of the housekeeping dispersion-slope gap removed. 95 % intervals resample the set's genes. Panels b-d show the dispersion measures; the relative-entropy shares in the text (blood 83-91 %, cortex 25 % and 56 %) differ from them and are listed in Supplementary Table S2.
+**Figure 6. Chromatin state accounts for most of the gap in blood and less in cortex.** Housekeeping and
+core-essential gaps (SD) matched on island × young level, then with the tissue's own Roadmap chromHMM state, the
+other tissue's state, blood's second map (neutrophils, E030) and, in cortex, sorted neuron and glia accessibility.
+(a) State composition of set and background promoter CpGs in blood (E062). (b) Hannum blood and Jaffe cortex,
+relative-entropy slope. (c) Lunnon's tissues of the same donors, between-person dispersion (no age slope).
+(d) Share of the housekeeping relative-entropy gap removed by the own state, sorted accessibility and both. 95 %
+intervals resample the set's genes; all shares are listed in Supplementary Table S2.
 
 ### The shield follows promoter expression measured in the same samples
 

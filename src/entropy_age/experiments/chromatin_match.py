@@ -84,7 +84,30 @@ KINDS = (
     "+ sorted ATAC",
     "+ own state + sorted ATAC",
     "+ both blood states",
+    "+ neutrophil state",
 )
+
+
+KIND_LABELS = {
+    "island x level": "island × young level",
+    "+ own state": "+ the tissue's own chromatin state",
+    "+ other state": "+ the other tissue's state",
+    "+ sorted ATAC": "+ sorted neuron and glia accessibility",
+    "+ own state + sorted ATAC": "+ own state and sorted accessibility",
+    "+ both blood states": "+ both blood maps (E062, E030)",
+    "+ neutrophil state": "+ neutrophil state (E030)",
+}
+
+
+#: one distinct colour per matching (the shared palette repeats an orange for two of them)
+KIND_COLOURS = dict(zip(KINDS, ("#1f77b4", "#d62728", "#2ca02c", "#9467bd", "#8c564b", "#e377c2", "#ff7f0e"), strict=True))
+
+
+def kind_of(matching: str) -> str:
+    """The colour group of a matching; blood's second own-tissue map (neutrophils, E030) gets its own."""
+    if matching.startswith("+ own state (E030"):
+        return "+ neutrophil state"
+    return matching.split(" (")[0]
 
 
 def strata_variants(island: np.ndarray, baseline: np.ndarray, states: dict[str, np.ndarray], tissue: str) -> dict:
@@ -251,34 +274,36 @@ def _figure(ctx: Context, gaps: pl.DataFrame, composition: pl.DataFrame) -> Path
     ax.legend(fontsize=6, loc="center left", bbox_to_anchor=(1.0, 0.5))
     plots.label_panel(ax, "a")
 
-    for i, metric in enumerate(("dispersion_slope", "dispersion")):
+    for i, metric in enumerate(("kl_slope", "dispersion")):
         ax = axes[1 + i]
         sel = gaps.filter((pl.col("metric") == metric) & pl.col("group").is_in(["housekeeping", "core_essential"]))
         tissues = sel["tissue"].unique(maintain_order=True).to_list()
-        y, ticks, labels = 0.0, [], []
+        y, ticks, labels, seen = 0.0, [], [], set()
         for tissue in tissues:
             for group in ("housekeeping", "core_essential"):
                 sub = sel.filter((pl.col("tissue") == tissue) & (pl.col("group") == group))
                 for j, r in enumerate(sub.iter_rows(named=True)):
-                    kind = r["matching"].split(" (")[0]
+                    kind = kind_of(r["matching"])
                     ax.errorbar(
                         r["gap_sd"],
                         y + 0.18 * j,
                         xerr=[[r["gap_sd"] - r["ci_low"]], [r["ci_high"] - r["gap_sd"]]],
                         fmt="o",
                         ms=3,
-                        color=plots.PALETTE[KINDS.index(kind)],
-                        label=kind if (tissue, group, j) == (tissues[0], "housekeeping", j) else None,
+                        color=KIND_COLOURS[kind],
+                        label=KIND_LABELS[kind] if kind not in seen else None,
                     )
+                    seen.add(kind)
                 ticks.append(y + 0.25)
                 labels.append(f"{SET_LABELS[group]} · {tissue}")
                 y += 1
         ax.axvline(0, color=plots.MUTED, lw=0.8)
         ax.set_yticks(ticks, labels, fontsize=6)
         ax.invert_yaxis()
-        ax.legend(fontsize=6)
-        title = "Lifespan cohorts: dispersion slope" if metric == "dispersion_slope" else "Lunnon, same donors"
-        ax.set(xlabel="Set minus matched CpGs (SD), 95 % gene-resampling CI", title=title)
+        if i == 0:
+            handles, names = ax.get_legend_handles_labels()
+        title = "Relative entropy" if metric == "kl_slope" else "Same donors: dispersion"
+        ax.set(xlabel="Set − matched (SD), 95 % CI", title=title)
         plots.label_panel(ax, "bc"[i])
 
     ax = axes[3]
@@ -287,12 +312,12 @@ def _figure(ctx: Context, gaps: pl.DataFrame, composition: pl.DataFrame) -> Path
         "+ sorted ATAC": lambda m: m.str.starts_with("+ sorted ATAC"),
         "+ own state + sorted ATAC": lambda m: m == "+ own state + sorted ATAC",
     }
-    house = gaps.filter((pl.col("group") == "housekeeping") & (pl.col("metric") == "dispersion_slope"))
+    house = gaps.filter((pl.col("group") == "housekeeping") & (pl.col("metric") == "kl_slope"))
     ticks = house["tissue"].unique(maintain_order=True).to_list()
     for j, (kind, match) in enumerate(shown.items()):
         sub = house.filter(match(pl.col("matching")))
         xs = np.array([ticks.index(t) for t in sub["tissue"]]) + (j - 1) * 0.27
-        ax.bar(xs, sub["share_removed"], width=0.27, color=plots.PALETTE[KINDS.index(kind)], label=kind)
+        ax.bar(xs, sub["share_removed"], width=0.27, color=KIND_COLOURS[kind], label=kind)
         ax.errorbar(
             xs,
             sub["share_removed"],
@@ -304,16 +329,17 @@ def _figure(ctx: Context, gaps: pl.DataFrame, composition: pl.DataFrame) -> Path
     ax.set_xticks(range(len(ticks)), [t.replace(" (", "\n(") for t in ticks], fontsize=6, rotation=30, ha="right")
     ax.axhline(0.5, color=plots.MUTED, lw=0.8, ls=":")
     ax.axhline(0, color=plots.MUTED, lw=0.8)
-    ax.set(ylabel="Share of the housekeeping gap removed", title="How much of the gap is chromatin?")
+    ax.set(ylabel="Share of the housekeeping gap removed", title="Share of the gap removed")
     ax.legend(fontsize=6)
     plots.label_panel(ax, "d")
 
     fig.suptitle(
-        "Does chromatin state account for the essential-gene protection? (450k promoters, Roadmap chromHMM)",
+        "Chromatin state accounts for most of the gap in blood and less in cortex (450k promoters)",
         x=0.02,
         ha="left",
         fontsize=11,
         fontweight="bold",
     )
-    fig.tight_layout()
+    fig.tight_layout(rect=(0, 0.06, 1, 1))
+    fig.legend(handles, names, loc="lower center", ncol=3, fontsize=7, frameon=False)
     return plots.save(fig, ctx.figure_path("chromatin_match"))
