@@ -4,6 +4,7 @@ Newest first.
 
 ## Unreleased
 
+- 2026-11-24: research plan gains a ranked list of ideas to pivot to (clock atlas over every rebuilt series, what each clock generation reads, shield as a mitotic clock, clock disagreement, preprocessing moves clocks, tissue-invalid clocks as controls); R165 scores the clock panel on 47 rebuilt series.
 - 2026-11-24: new figure `clock_panel` (figures review section 2): clocks clustered by agreement of their accelerations with a generation strip, each clock against B, F and P, odds ratios of each clock and of F given it, and per-woman clock disagreement against drift.
 - 2026-11-24: figures name cohorts by tissue and accession (plots.save relabels "Hannum blood" to "blood (GSE40279)", Jaffe to GSE74193, Lunnon to GSE59685): "Hannum" on Figures 1, 2, 4 and 6 was the blood cohort and read as the only clock (Anton; figures review).
 - 2026-11-24: clock_increment labels every clock by generation (1st chronological, 2nd phenotypic and mortality, 3rd pace, mitotic and stochastic) and writes best_per_generation; the disagreement panel keeps only clocks with r > 0.5 with age (Bocklandt ran against age); per-woman accelerations and disagreement saved. Fable figures review in docs/reviews/2026-11-24-figures-fable.md.

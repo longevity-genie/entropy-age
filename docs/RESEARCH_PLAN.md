@@ -77,6 +77,29 @@ means for clocks (RM8). An intervention test (RM3) is the one result that could 
   further ground; the maintenance machinery becomes the lead to follow (Tet3 controls, then the chromatin-writer
   syndromes of RM14).
 
+## Ideas to pivot to (2026-11-24; Anton: "having so many samples and not computing all possible and legit clocks on them is a crime")
+
+A standing duty from here on: this list is kept current, and each new result is read for what it opens, not only
+for whether it confirms the shield. Ranked by what could make the paper more interesting, cheapest first.
+
+1. **Clock atlas over every rebuilt series** (running, R165: 47 series, ~11,000 arrays from raw IDATs). Every
+   gallery clock that passes coverage, used where it is valid (pan-tissue clocks everywhere, blood clocks in blood).
+   Per tissue: error against age, which clocks agree, which disagree. Cheap, and no one has it on uniformly
+   reprocessed raw data across this many tissues.
+2. **What each clock generation reads.** In EPIC-Italy women, first-generation clocks go with a stronger shield
+   (F) and not with drift, PhenoAge goes with drift (B), and EpiTOC1 is nearly the signed shift (r −0.84) (figures
+   review, residual on age only). If that holds tissue by tissue, it becomes a headline: clock generations read
+   different parts of stochastic drift, and the shield is what first-generation clocks measure.
+3. **Is the shield a mitotic clock?** EpiTOC1 ≈ S. Compare with epiTOC2, RepliTali and the Teschendorff
+   stem-cell-division estimates: if the shield gap tracks lifetime divisions across tissues (blood vs brain,
+   cultures by passage), the paper's mechanism becomes division-coupled drift, with a known biological clock.
+4. **Clock disagreement as a signal.** Per person, the spread between valid clocks: does it carry risk beyond the
+   mean (EPIC-Italy cancer now; SJLIFE deaths, cohorts with mortality next), and does it rise where drift is high?
+5. **Preprocessing moves clocks.** The SeSAMe design mask removes 20 % of GrimAge's weight. Masked vs unmasked vs
+   deposited betas, clock by clock, on the same arrays: a methods result readers can use, and a guard on ours.
+6. **Tissue-invalid clocks as negative controls.** Blood clocks in brain, gestational clocks in adults: their
+   behaviour bounds how much any clock-drift link is generic methylation level.
+
 ## The arms, in order, each with its rule
 
 ### A. RM7: does chromatin state account for the protection? (new, first)
