@@ -4,6 +4,7 @@ Newest first.
 
 ## Unreleased
 
+- 2026-11-24: R150 complete: GTEx tissues rerun after the relative-entropy fix (whole blood −0.14 → −0.13, colon −0.19 → −0.18, lung and kidney −0.09 → −0.08); all 15 analyses computed before the fix are now rerun and their numbers rewritten in paper, supplement and artifact.
 - 2026-11-24: R149 species rerun after the relative-entropy fix: 88 % of 139 groups negative (mean −0.12; was 89 %, −0.13), lifespan coefficient +0.031 (p 0.04); Figure 3 redrawn on relative entropy; R151 deposited SATSA gene-level p 0.68. Paper, supplement and artifact rewritten.
 - 2026-11-24: SATSA within-person p-values now gene-level (rebuilt series: direction p < 10⁻¹⁰, divergence p 0.03); deposited tables rerun (R151) for the same.
 - 2026-11-24: R150 part 3: Meer mouse tissues rerun (lung −0.14 → −0.15 in the text), species floor unchanged.
