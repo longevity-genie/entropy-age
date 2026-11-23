@@ -17,7 +17,7 @@ matched sets; failed fits are left out and counted), and the likelihood-ratio te
 every other kept clock is exploratory. Disagreement: per woman, the SD across an explicit adult-blood panel of
 chronological and phenotypic clocks of their accelerations (residual on age, cell fractions, mean beta and chip,
 standardised); it enters a model beside the panel mean (exploratory) and its correlations with B and F are reported.
-``entropy-age figures clock_increment`` (needs data/interim/clocks/GSE51032_clocks.csv).
+``entropy-age figures clock_increment`` (needs data/interim/clocks/GSE51032_clocks_unmasked.csv).
 """
 
 from __future__ import annotations
@@ -35,7 +35,9 @@ from entropy_age.experiments.common import Context, dummies, write_table
 PRIMARY = "PhenoAge"
 MIN_AGE_R = 0.5
 LAG = 2.0
-CLOCKS = Path("data/interim/clocks/GSE51032_clocks.csv")
+#: the clock track (protocol change 4): SeSAMe without the design-flag mask, where 44 clocks pass coverage against 35
+#: masked (DunedinPACE, GrimAge, DunedinPoAm38 and DNAmTL among the gain); clocks passing both agree at r >= 0.997
+CLOCKS = Path("data/interim/clocks/GSE51032_clocks_unmasked.csv")
 B, F, P = "B housekeeping", "F housekeeping", "P housekeeping"
 #: adult blood chronological and phenotypic clocks for the disagreement score (gestational, paediatric, placental,
 #: cortical and trait predictors are left out)
@@ -46,6 +48,8 @@ ADULT_BLOOD = (
     "Lin",
     "PhenoAge",
     "HRSInCHPhenoAge",
+    "GrimAgeV1",
+    "GrimAgeV2",
     "YingCausAge",
     "YingDamAge",
     "YingAdaptAge",

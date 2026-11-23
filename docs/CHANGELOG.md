@@ -4,6 +4,7 @@ Newest first.
 
 ## Unreleased
 
+- 2026-11-24: R163 clock track (EPIC-Italy without the design-flag mask, low-intensity arrays out): 44 clocks pass coverage against 35 masked, now with DunedinPACE (100 % of arrays), GrimAge v1/v2, DunedinPoAm38, DNAmTL; clocks passing both agree at r >= 0.997 (Hannum +1.1 y). clock_increment reads the clock track; GrimAge joins the disagreement panel.
 - 2026-11-24: shield_clocks redrawn with cohorts by accession; its correlations table (now with Zhang 2019, other numbers unchanged) stays a tracked CSV (`write_table(csv_max_rows=...)`).
 - 2026-11-24 (protocol change 4): QC drops arrays below a quarter of the series' median intensity (127 EPIC-Italy arrays, none elsewhere), after the exact-chip review traced a drift odds ratio of 4.5 to them; unmasked clock track recorded. Exact-chip review in docs/reviews/2026-11-24-exact-chip-B.md.
 - 2026-11-24: R162 nested clock models at paper scale (35 clocks + panel): same chip first, F given B and clock 0.67-0.80 (LR p < 0.05 in 35 of 36); same chip only, F 0.70-0.80 unresolved and B 3.9-5.9 per SD given any clock. The exact-chip B result is under independent review before the paper changes.
