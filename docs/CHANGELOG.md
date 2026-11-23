@@ -4,6 +4,7 @@ Newest first.
 
 ## Unreleased
 
+- 2026-11-24: Figures 1, 2, 4 and 6 redrawn with cohorts named by accession (R164); tables identical up to floating-point noise and row order.
 - 2026-11-24 (protocol change 4): deposited-beta analyses also leave out arrays whose raw signal failed in the rebuild's QC (the fault is the array's); R166 rebuilt EPIC-Italy cancer tables without them: breast > 2 y, B adjusted 1.01 (0.75-1.36), F 0.79 (0.60-1.05), matched 109 sets B 1.07, F 0.78 (0.52-1.13).
 - 2026-11-24: R163 clock track (EPIC-Italy without the design-flag mask, low-intensity arrays out): 44 clocks pass coverage against 35 masked, now with DunedinPACE (100 % of arrays), GrimAge v1/v2, DunedinPoAm38, DNAmTL; clocks passing both agree at r >= 0.997 (Hannum +1.1 y). clock_increment reads the clock track; GrimAge joins the disagreement panel.
 - 2026-11-24: shield_clocks redrawn with cohorts by accession; its correlations table (now with Zhang 2019, other numbers unchanged) stays a tracked CSV (`write_table(csv_max_rows=...)`).
