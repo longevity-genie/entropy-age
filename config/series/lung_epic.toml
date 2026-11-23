@@ -1,0 +1,10 @@
+# Non-smokers' lung next to adenocarcinoma (GSE314841), the epic part; a replication of the 450k result within the
+# same study on another platform (never pooled with it).
+accession = "GSE314841"
+matrix = "GSE314841-GPL21145_series_matrix.txt.gz"
+age = "age"
+sex = "gender"
+donor = "sample"
+
+[groups.lung]
+tissue = "lung"
