@@ -49,7 +49,8 @@ def test_donor_interval_brackets_the_point_estimate():
     island = np.zeros(cpgs, bool)
     cov = np.empty((donors, 0))
     out = donor_intervals(x, ages, cov, feats, island, {"set": (in_set, None)}, 60, rng)
-    lo, hi = out[("all", "dispersion_slope", "set")]
+    lo, hi, kept = out[("all", "dispersion_slope", "set")]
+    assert kept == 60
     full = drift_metrics(x, ages, feats, covariates=None, spearman=False)
     values = full["dispersion_slope"].to_numpy()
     strata = np.char.add(
