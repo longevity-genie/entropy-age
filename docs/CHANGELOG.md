@@ -4,6 +4,7 @@ Newest first.
 
 ## Unreleased
 
+- 2026-11-24: R145: exercise training barely moves promoter methylation beyond array noise (about a hundredth of replicative senescence); the share essential promoters carry after 4 weeks (−0.22) resembles that over a period without training (−0.15); loading and unloading too small to read. Paper, run log, Table S5.
 - 2026-11-24: figures muscle_training: vastus lateralis before and after 4, 8 and 12 weeks of interval training and across a control period without training (GSE171140), and after one bout, loading, unloading and reloading (GSE114763); per CpG methylation on condition with person and chip held; noise-removed squared change from baseline and the share essential promoters carry (as senescence_donors, whose estimator now takes its arms as a parameter); each person left out in turn (R145). Anton asked about trainable tissues.
 - 2026-11-24: R144: by WGBS of the same 41 brains, neurons and the oligodendrocyte lineage both carry the housekeeping gap and do not differ (+0.027, −0.081 to +0.116); the glia-over-neuron result rests on one fraction of one array series. R140b: the single-cell gap holds with old cells thinned to the young depth (−0.085); both in the paper, run log and Table S5.
 - 2026-11-24: musc_single_cell also writes gaps_depth_matched: the point estimates with old cells' reads thinned per promoter to the young depth (old cells were sequenced deeper, which lowers their measured variation; review item, R140b).

@@ -508,6 +508,13 @@ donors per cell type), the spread of log counts rose faster with age at essentia
 but that measure depends on read depth; between-donor variation in excess of counting noise showed no difference in
 any of seven cell types (gaps within ±0.012 SD; Supplementary Note 3).
 
+*Exercise training.* In thigh muscle of 67 young adults before and after 4 weeks of interval training (GSE171140;
+person and chip held), the squared change from baseline beyond array noise was about a hundredth of that in replicative
+senescence (0.0001 against 0.014). Within it, housekeeping promoters carried a fifth less than matched CpGs (share
+−0.22; −0.29 to −0.16 leaving one person out), but a control period without training gave a similar share (−0.15),
+so the pattern is not specific to training. In eight men after loading, unloading and reloading (GSE114763), the
+change was too small to give a share.
+
 *What clocks read.* Clocks read directed change and are largely blind to the shield: retrained on simulated change,
 they keep 70-80 % of their accuracy from each CpG's direction alone and 0-10 % from undirected noise
 (Supplementary Note 3).

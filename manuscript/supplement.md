@@ -555,6 +555,8 @@ itself. Runs are described in the run log of the repository.
 | Lung next to cancer | human | normal lung of non-smokers | GSE314841 | 450k | rebuilt | 114 people | R143 | R143 | chip and batch (R143) | not run | not run | not run | not run | genes; donors |
 | Human tissues on the mammalian array | human | heart, muscle, liver, kidney, lung, spleen, fat, blood | GSE184211 | mammalian array | rebuilt | 32-112 per tissue (about 1400 promoter CpGs) | R143 | R143 | chip (R143) | not run | not run | not run | not run | genes; donors |
 | Neurons and oligodendrocytes by WGBS | human | NeuN+ and OLIG2+ nuclei | GSE107729 | WGBS | deposited counts | 41 paired donors | R144 | not run | not applicable (sequencing) | not run | not run | not run | not run | donors (paired) |
+| Muscle training (Gene SMART) | human | vastus lateralis before and after training | GSE171140 | EPIC | rebuilt | 67 person-blocks | R145 (change from baseline) | not run | person and chip (R145) | not run | not run | not run | not run | leave one person out |
+| Muscle loading and unloading | human | vastus lateralis | GSE114763 | EPIC | rebuilt | 8 men x 5 conditions | R145 (change from baseline) | not run | person and chip (R145) | not run | not run | not run | not run | leave one person out |
 
 <!-- coverage:end -->
 

@@ -29,6 +29,19 @@ commit it ran, its job ids, its scale and seed, and its result or its failure wi
 - Reading: a second immortalised cell type carries the gap per doubling, with chip held, a little below primary
   astrocytes (−0.102, R133) and fibroblasts. Three replicate lines of one source; no arrested control.
 
+## R145 — exercise training and unloading in human muscle, 2026-11-24
+
+- Commits d9a634e and after (titles by named groups; second intervention its own block; design check refuses only
+  treatments not separable from person and chip); job 6594897. GSE171140: 177 arrays, 67 person-blocks, 28 chips;
+  GSE114763: 39 arrays, 8 men, 5 chips. Per CpG, methylation on condition with person and chip held.
+- **Squared change from baseline, noise removed, matched CpGs (B2).** GSE171140 0.00004 to 0.0001 at 4, 8, 12 weeks and
+  over the control period; replicative senescence gave 0.014 (R136). GSE114763 −0.0008 to +0.0008.
+- **Share carried by housekeeping promoters (F2).** 4 weeks (67): −0.22, leave-one-out −0.29 to −0.16; 8 weeks (16)
+  +0.10; 12 weeks (15) −0.21; control period without training (12) −0.15, leave-one-out up to +57 (B2 near zero).
+  GSE114763: not interpretable (B2 at or below zero).
+- Reading: training barely moves promoter methylation beyond noise; where a share is measurable it resembles the one
+  over a period without training.
+
 ## R144 — neurons against oligodendrocytes by WGBS (GSE107729), 2026-11-24
 
 - Commit 5b1d6c4; `figures wgbs_nuclei --scale paper --seed 42`; job 6594292 (about 1.5 h). NeuN+ and OLIG2+ nuclei of
