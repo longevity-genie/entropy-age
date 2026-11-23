@@ -136,7 +136,7 @@ def run(ctx: Context) -> list[Path]:
                         )
             print(f"shield_clocks: {cohort}, {k} components done", file=sys.stderr, flush=True)
     table = pl.DataFrame(rows)
-    write_table(table, out / "correlations")
+    write_table(table, out / "correlations", csv_max_rows=5_000)  # a supplementary table: kept in git
     return [_figure(ctx, table)]
 
 

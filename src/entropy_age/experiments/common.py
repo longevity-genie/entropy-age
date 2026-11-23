@@ -245,11 +245,11 @@ def ground_state(paths: ProjectPaths, rng: np.random.Generator, n_random: int = 
 CSV_MAX_ROWS = 1_000
 
 
-def write_table(frame: pl.DataFrame, path: Path) -> Path:
+def write_table(frame: pl.DataFrame, path: Path, csv_max_rows: int = CSV_MAX_ROWS) -> Path:
     """Parquet always (gitignored); a CSV copy for summaries small enough to keep in git."""
     path.parent.mkdir(parents=True, exist_ok=True)
     frame.write_parquet(path.with_suffix(".parquet"))
-    if frame.height <= CSV_MAX_ROWS:
+    if frame.height <= csv_max_rows:
         frame.write_csv(path.with_suffix(".csv"))
     else:  # an older, smaller run's CSV would stay behind and be read as current (species_gaps.csv, 2026-11-24)
         path.with_suffix(".csv").unlink(missing_ok=True)
