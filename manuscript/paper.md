@@ -318,12 +318,16 @@ not recorded; one immortalised line and two astrocyte donors), and none separate
 
 ![Figure 5](../docs/figures/division_shield.png)
 
-**Figure 5. The shield goes with cell division.** Housekeeping promoter CpGs minus matched CpGs (SD of the
-relative-entropy slope; 95 % intervals), in series where the compared groups share chips or flowcells. Blue: cells
-that divide; orange: cells that do not. Mouse colon and hippocampus of one cohort; glia and neurons sorted from the same human cortices, and
-neurons of a second series with chip intercepts; human cells in culture; confluent fibroblasts kept from dividing
-(the two donors whose arrays are not ordered by time along the chip). Slopes are on age in tissues and nuclei, on
-population doublings in culture and on months in confluent cultures, so sizes are compared within a block.
+**Figure 5. The housekeeping gap in dividing and non-dividing cells.** Housekeeping promoter CpGs minus matched CpGs
+(SD of the relative-entropy slope; 95 % intervals), in series where the compared groups share chips or flowcells.
+Blue: cells that divide; orange: cells that do not. Mouse colon and hippocampus of one cohort (mice resampled);
+NeuN−/SOX10− glia and neurons sorted from the same human cortices (donors resampled together) and neurons of a
+second series with chip intercepts (donors resampled); the oligodendrocyte lineage and neurons of the same cortices
+by whole-genome bisulfite sequencing (donors resampled together); cells in culture (cultures resampled within line,
+except untreated fibroblasts, whose interval resamples genes); confluent fibroblasts kept from dividing (the two
+donors whose arrays are not ordered by time along the chip; genes resampled). Slopes are on age in tissues and
+nuclei, on population doublings in culture and on months in confluent cultures, so sizes are compared within a
+block. The glial excess is not seen in the oligodendrocyte lineage by either platform.
 
 ### Tet3 loss weakens the shield in mouse brain; Tet1 loss, in another study, does not
 

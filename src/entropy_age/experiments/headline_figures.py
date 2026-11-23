@@ -63,6 +63,8 @@ def division_rows(ctx: Context) -> list[dict]:
     rows: list[dict] = []
 
     def add(block: str, label: str, gap: float, low: float, high: float, divides: bool) -> None:
+        # intervals resample animals, donors or cultures; untreated fibroblasts and the confluent cultures keep the
+        # gene-resampling interval (no culture bootstrap was run for them), as the caption says
         rows.append({"block": block, "label": label, "gap": gap, "low": low, "high": high, "divides": divides})
 
     jena = _read(ctx, "jena_rrbs", "gaps")
@@ -73,7 +75,7 @@ def division_rows(ctx: Context) -> list[dict]:
     paired = _read(ctx, "nuclei_paired", "paired")
     if paired is not None:
         r = _housekeeping(paired, "glia", "other glia (NeuN-/SOX10-)").row(0, named=True)
-        add("Human cortex, sorted nuclei", "Glia", r["gap_glia"], r["gap_glia_low"], r["gap_glia_high"], True)
+        add("Human cortex, sorted nuclei", "Other glia (NeuN-/SOX10-)", r["gap_glia"], r["gap_glia_low"], r["gap_glia_high"], True)
         add(
             "Human cortex, sorted nuclei",
             "Neurons, same donors",
@@ -82,16 +84,30 @@ def division_rows(ctx: Context) -> list[dict]:
             r["gap_neurons_high"],
             False,
         )
-    neurons = _read(ctx, "neuron_series", "gaps")
+    neurons = _read(ctx, "series_neurons", "gaps")  # the shared runner: donor-resampling interval
     if neurons is not None:
         r = neurons.filter(
             (pl.col("metric") == "kl_slope")
             & (pl.col("group") == "housekeeping")
             & (pl.col("band") == "all")
-            & (pl.col("covariates") == "sex + chip")
-            & pl.col("cohort").str.contains("every donor")
+            & (pl.col("covariates") == "held + chip")
+            & (pl.col("cohort") == "neurons, every donor")
         ).row(0, named=True)
-        add("Human cortex, sorted nuclei", "Neurons, second series", r["gap_sd"], r["ci_low"], r["ci_high"], False)
+        add(
+            "Human cortex, sorted nuclei",
+            "Neurons, second series",
+            r["gap_sd"],
+            r["donor_ci_low"],
+            r["donor_ci_high"],
+            False,
+        )
+    wgbs = _read(ctx, "wgbs_nuclei", "paired")
+    if wgbs is not None:
+        r = _housekeeping(wgbs, "donors_used", "every donor (diagnosis held)").row(0, named=True)
+        block = "Human cortex, sorted nuclei, by sequencing"
+        add(block, "Oligodendrocyte lineage", r["gap_oligodendrocytes"], r["gap_oligodendrocytes_low"],
+            r["gap_oligodendrocytes_high"], True)  # fmt: skip
+        add(block, "Neurons, same donors", r["gap_neurons"], r["gap_neurons_low"], r["gap_neurons_high"], False)
     culture = "Human cells in culture, per doubling"
     for label, folder, column, value in (
         ("Fibroblasts", "sturm_expression_rsesame", "matching", BEFORE),
@@ -102,7 +118,12 @@ def division_rows(ctx: Context) -> list[dict]:
         table = _read(ctx, folder, "matched_gaps")
         if table is not None:
             r = _housekeeping(table, column, value).row(0, named=True)
-            add(culture, label, r["gap_sd"], r["ci_low"], r["ci_high"], True)
+            low, high = r["ci_low"], r["ci_high"]
+            boot = _read(ctx, folder, "culture_bootstrap")  # cultures resampled within line, where it was run
+            if boot is not None:
+                b = _housekeeping(boot, column if column == "cells" else None, value).row(0, named=True)
+                low, high = b["ci_low"], b["ci_high"]
+            add(culture, label, r["gap_sd"], low, high, True)
     arrest = _read(ctx, "arrest_timecourse", "gaps")
     if arrest is not None:
         for donor in ("Donor #1", "Donor #4"):  # the two donors whose arrays are not ordered by time along the chip
