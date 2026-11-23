@@ -33,3 +33,4 @@ Human tissues on the mammalian array,human,"heart, muscle, liver, kidney, lung, 
 Neurons and oligodendrocytes by WGBS,human,NeuN+ and OLIG2+ nuclei,GSE107729,WGBS,deposited counts,41 paired donors,R144,not run,not applicable (sequencing),not run,not run,not run,not run,donors (paired)
 Muscle training (Gene SMART),human,vastus lateralis before and after training,GSE171140,EPIC,rebuilt,67 person-blocks,R145 (change from baseline),not run,person and chip (R145),not run,not run,not run,not run,leave one person out
 Muscle loading and unloading,human,vastus lateralis,GSE114763,EPIC,rebuilt,8 men x 5 conditions,R145 (change from baseline),not run,person and chip (R145),not run,not run,not run,not run,leave one person out
+Myometrium,human,myometrium (fibroid-free and fibroid-associated),GSE296589,EPIC; EPIC v2 (separate),rebuilt,62 + 30 women,R147,R147,chip and condition (R147),not run,not run,not run,not run,genes; donors

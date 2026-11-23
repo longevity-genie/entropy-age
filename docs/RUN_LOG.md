@@ -60,6 +60,18 @@ commit it ran, its job ids, its scale and seed, and its result or its failure wi
   Divergence, housekeeping −0.085, core-essential −0.096; with expression matched −0.043 and −0.068 (point estimates;
   intervals as in R140). The gap does not come from the deeper sequencing of old cells.
 
+## R147, R148 — myometrium; every series rerun with a resample count, 2026-11-24
+
+- Commits cbaaf37 (title columns, GSE296589 configs), 54f22cb and c4aaaf5 (donor intervals need half the
+  resamples usable). Jobs 6594999/6595000 (R147) and 6595061-70 (R148), `--scale paper --seed 42`, 4 cores, 48 GB;
+  6-26 min each.
+- R147 myometrium (GSE296589, rebuilt; 102 of 103 arrays, one lost to a read error in the rebuild): EPIC 62 women
+  29-52 y on 23 chips, housekeeping gap +0.002 SD (donors −0.019 to +0.015), chip held +0.005 (−0.011 to +0.022);
+  fibroid-free 30 women +0.012 (−0.005 to +0.027). EPIC v2 30 women: −0.009 (−0.081 to +0.053); chip held, 2 of
+  200 donor resamples usable, no interval (the first run had reported a 0.01 SD interval from those few).
+- R148: all other series unchanged; "neurons, controls" with chip intercepts now has no interval (11 of 200
+  usable; the paper never cited it). lung_epicv2 and obese_four_tissues write no output (too few arrays).
+
 ## R143 — new human tissue series through the shared runner, 2026-11-24
 
 - Rebuilds of GSE184211, GSE314841, GSE101764, GSE61454 (jobs 6594037-6594068); runner jobs entropy-series-*.

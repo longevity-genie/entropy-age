@@ -178,7 +178,11 @@ than matched CpGs, against −0.09 in GTEx lung on deposited values. The same st
 gave the same sign without resolving it (+0.06, −0.32 to +0.76). Whether the lung result reflects tissue next to a
 tumour, East Asian donors or the 450k array is not known; it is the one resolved reversal in a human tissue. Human
 post-mortem tissues on the mammalian array (GSE184211; heart, muscle, liver, kidney, lung, spleen, fat, blood; 32 to
-112 per tissue) cover only about 1,400 promoter CpGs and resolve no tissue.
+112 per tissue) cover only about 1,400 promoter CpGs and resolve no tissue. Myometrium, a smooth muscle that renews slowly,
+showed no gap: in 62 women aged 29 to 52 on the EPIC array (GSE296589; fibroid-free and fibroid-associated specimens,
+condition held) the housekeeping gap was +0.00 SD (−0.02 to +0.02), and +0.01 (−0.01 to +0.03) in the 30 fibroid-free
+women alone; this narrow and young age range gives slopes over 23 years only. The study's 30 women on EPIC v2 did not
+resolve the gap (−0.01, −0.08 to +0.05).
 
 On the mammalian array, relative entropy separated 11 tissues of the same male C57BL/6 mice sharply (GSE279437;
 Huang et al. 2025). The mice were the untreated young and aged controls of an exenatide and rapamycin study, compared as aged minus young because GEO gives no numeric ages. The housekeeping gap was negative in the three renewing tissues and in kidney and liver (−0.05 to −0.19 SD) and
