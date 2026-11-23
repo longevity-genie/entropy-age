@@ -96,6 +96,15 @@ switch: it is detectable because thousands of CpGs are averaged. Gaps from relat
 "drifts less"; on binary entropy a negative gap can also come from CpGs pinned at 0 %, which is why we test CpGs
 starting between 10 and 90 % separately ("off the floor").
 
+![Box 1 figure](../docs/figures/box1_schematic.png)
+
+**Box 1 figure. From one CpG to a gap (illustrative, simulated values).** (a) The methylation level of one CpG in
+people of three ages; the dashed line is its young level. (b) Relative entropy of each sample's level from the young
+level, against age; the slope is the CpG's drift rate, smaller for a CpG in an essential promoter (blue) than for a
+matched CpG (orange). (c) Drift rates of all CpGs of a gene set and of matched CpGs, in SD over all CpGs; the gap is
+the difference of their means, here drawn larger than the real gaps (−0.06 to −0.26 SD) for clarity. Below zero, the
+set drifts less than comparable CpGs.
+
 ### Essential promoters drift less than matched CpGs in human blood and cortex
 
 **In blood and cortex, CpGs in essential and housekeeping promoters drift less with age than CpGs of the same island
