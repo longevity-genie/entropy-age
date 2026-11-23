@@ -80,9 +80,9 @@ measure across CpGs (Methods). The drift measure is the age slope of each CpG's 
 which counts a move up or down alike.
 
 In 656 blood donors aged 19-101 (Hannum et al. 2013), housekeeping promoter CpGs drifted 0.15 SD less than matched
-CpGs and core-essential CpGs 0.09 SD less; non-essential CpGs drifted 0.13 SD more (all permutation p ≤ 0.001;
+CpGs and core-essential CpGs 0.09 SD less; non-essential CpGs drifted 0.13 SD more (gene-level p < 10⁻⁵ for each, genes as units;
 Fig. 1a). In prefrontal cortex of 213 adult controls (Jaffe et al. 2016), the housekeeping and core-essential gaps
-were −0.06 and −0.07 SD, and non-essential CpGs did not differ from their look-alikes (−0.00, p 0.94). The
+were −0.06 and −0.07 SD, and non-essential CpGs did not differ from their look-alikes (−0.00, p 0.91). The
 housekeeping gap was larger in blood than in cortex by 0.09 SD (95 % interval −0.19 to −0.02); for core-essential
 genes the difference was not resolved (−0.02, −0.09 to +0.04; Fig. 1b). These are two studies, processed by different
 pipelines, over different age ranges (19-101 and 21-85 years), with neuron fraction held in cortex but no cell fractions
@@ -191,12 +191,12 @@ aged controls, was the exception (−0.08; values per tissue in Supplementary No
 promoters still shifted their mean less (|mean change| −0.05 to −0.09 SD) but scattered more between animals. By
 reduced-representation bisulfite sequencing (RRBS), which covers far more promoter CpGs, cortex kept a small shield (−0.06 SD, interval excluding zero) and heart
 −0.07, against −0.22 in liver and −0.14 in lung (Meer et al. 2018; about 20 mice; the heart, liver and lung intervals
-include zero). Other RRBS series gave −0.03 (adipose) to −0.21 SD (lung) in six tissues (Thompson et al. 2018) and −0.30
+include zero). Other RRBS series gave −0.08 (adipose, blood) to −0.24 SD (lung) in six tissues (Thompson et al. 2018) and −0.30
 in whole blood (Petkovich et al. 2017), and the mammalian array gave −0.30 in BXD liver (Mozhui et al. 2022; −0.28, −0.45 to −0.14, re-processed from the IDATs). In a further RRBS series of the same mice at 3, 15 and 24 months, with sex and sequencing lane held and every
 lane mixing the ages (GSE225166; 30 to 32 mice per tissue), on the CpGs covered at least 10 times in every library, the housekeeping gap was −0.09 SD in lung (−0.14 to −0.02;
 28,727 CpGs), −0.05 in heart (−0.13 to +0.01; 30,312) and −0.01 in cortex (−0.08 to +0.13; 12,335; intervals from
 resampling mice); liver kept only 518 such CpGs and gives no estimate. Off the floor (10-90 %, all-CpG scale) none of the four was
-resolved: lung −0.08 (−0.19 to +0.00), heart +0.05 (−0.04 to +0.12), cortex +0.02 (−0.24 to +0.16). These are different platforms and CpG sets, so they are reported side by side and not ranked against one another; within Meer's four tissues the shield is smaller in cortex and heart, and in Thompson's six tissues muscle (−0.08) matched blood (−0.08). Meer's RRBS and the array disagree on whether post-mitotic tissue keeps a little of
+resolved: lung −0.08 (−0.19 to +0.00), heart +0.05 (−0.04 to +0.12), cortex +0.02 (−0.24 to +0.16). These are different platforms and CpG sets, so they are reported side by side and not ranked against one another; within Meer's four tissues the shield is smaller in cortex and heart, and in Thompson's six tissues muscle (−0.10) matched blood (−0.08). Meer's RRBS and the array disagree on whether post-mitotic tissue keeps a little of
 the shield or none.
 
 Across mammals (Mammalian Methylation Consortium, GSE223748; Lu et al. 2023; Haghani et al. 2023), 139
@@ -733,8 +733,10 @@ on the same seeds.
 Each set's CpGs were compared with all other CpGs in the same stratum of CpG-island status (fixed by sequence) and
 young-reference methylation decile, the matched control CpGs ("look-alikes"). With s_k the set's CpGs in stratum k,
 c_k the controls there, n_k = |s_k| and v̄ a mean of the per-CpG measure v (an age slope), the gap is
-G = Σ_k n_k (v̄(s_k) − v̄(c_k)) / (Σ_k n_k · SD(v)), SD(v) taken over all CpGs analysed. Significance came from 1,000 permutations of set labels within
-strata, permuting CpGs (two-sided; smallest p 0.001). CpGs of one promoter are correlated, but these p-values treat CpGs as independent units; the placebo gene sets below give the corresponding test at the level of genes. Intervals came from 200 donor bootstraps, each resample divided by the full sample's
+G = Σ_k n_k (v̄(s_k) − v̄(c_k)) / (Σ_k n_k · SD(v)), SD(v) taken over all CpGs analysed. P-values take genes, not CpGs, as the units, since CpGs of one promoter move together: each set
+CpG's value minus its stratum's control mean is summed per gene, and the gap is tested against its cluster-robust
+standard error over genes (t with genes − 1 degrees of freedom; calibrated in simulation with correlated CpGs). They
+measure stability over genes with the samples fixed; sampling of donors is carried by the donor intervals. Intervals came from 200 donor bootstraps, each resample divided by the full sample's
 spread (an earlier version divided by each resample's own spread and drew intervals toward zero). For the series added from the repository search (orbitofrontal cortex, sorted nuclei per fraction, the cultured series and the expression-matched analyses), intervals instead resample the set's genes 200 times with the samples held fixed; they show stability over genes, not the sampling of donors or cultures. For the three per-doubling series without expression data, a second interval resamples cultures within each line (200 resamples). Donors are resampled, both arrays of a donor together, in the glia-neuron and tissue-pair contrasts (400 resamples), and mice in colon and hippocampus (200 per tissue, independently). For blood minus
 brain, the two lifespan cohorts were resampled independently and Lunnon's tissues with the same resampled donors.
 Probe design (type I/II), reference chromatin state, or cell-type accessibility quartiles were added to the strata
