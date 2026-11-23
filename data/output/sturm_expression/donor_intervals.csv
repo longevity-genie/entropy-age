@@ -1,0 +1,7 @@
+group,matching,metric,resamples,donor_ci_low,donor_ci_high,share_donor_ci_low,share_donor_ci_high
+core_essential,island x level,kl_slope,200,-0.06846057526975284,-0.04363523194361845,0.0,0.0
+core_essential,+ own expression decile,kl_slope,200,-0.012078165700759822,-0.001446418259322979,0.8161537068594252,0.9675781564110413
+housekeeping,island x level,kl_slope,200,-0.12155046594786044,-0.08392830792285881,0.0,0.0
+housekeeping,+ own expression decile,kl_slope,200,-0.03595222139035761,-0.0205143444406709,0.6813350699705922,0.7638905175413676
+non_essential,island x level,kl_slope,200,0.027116695143905713,0.2786981029401506,0.0,0.0
+non_essential,+ own expression decile,kl_slope,200,-0.023813777903650288,0.10779652418748323,0.5922608036966684,1.8503162798274153

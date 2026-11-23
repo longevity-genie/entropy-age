@@ -447,13 +447,14 @@ the gene is essential. CD4+ T cells of 214 of the same people, which have almost
 such gradient (Supplementary Note 3). In fibroblasts grown for up to 79 population doublings (Sturm et al. 2022;
 89 untreated cultures of six healthy lines, arrays rebuilt from raw files, RNA-seq of the same cultures), drift per
 doubling showed the monocyte pattern: the housekeeping gap of −0.102 SD fell to −0.028 with the expression decile
-in the matching (72 % removed), the core-essential gap from −0.055 to −0.006, and outside the gene sets drift
+in the matching (72 % removed; 68 to 76 % resampling cultures within line), the core-essential gap from −0.055 to −0.006, and outside the gene sets drift
 relative to matched CpGs fell with expression (rank correlation −0.06 over genes; no resampling interval computed). With chip intercepts in the
 slopes the numbers were the same (−0.102 to −0.024; a third of the spread in doublings is left within line and chip).
 In epidermis of healthy women aged 21 to 79 (Holzscheck et al. 2020; 117 arrays rebuilt from raw files, RNA-seq of
 the same samples), analysed as two groups by array type (56 women on 450k; 61 on EPIC three years later, up to 31
 of them women of the first group measured again, so the two groups are not independent), the housekeeping gap was −0.106 and
-−0.105 SD and fell to −0.031 in both with the expression decile in the matching (71 % removed); the core-essential
+−0.105 SD and fell to −0.031 in both with the expression decile in the matching (71 % removed; 64 to 80 % on 450k and
+60 to 84 % on EPIC resampling women); the core-essential
 gap went from −0.058 and −0.054 to zero, and outside the gene sets drift fell with expression (rank correlation
 −0.07 and −0.09). The chromatin state of keratinocytes removed about half of the gap (51 % and 47 %), expression and
 state together 82 % and 80 %. Chip intercepts changed nothing (−0.102 to −0.028; −0.110 to −0.034).
