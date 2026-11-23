@@ -4,6 +4,7 @@ Newest first.
 
 ## Unreleased
 
+- 2026-11-24 (protocol P4): clock_increment module (nested conditional logistic models per kept clock: clock, + B, + F given B; panel mean + disagreement). Quick run: B adds nothing to PhenoAge (LR p 0.82, primary); F given B OR 0.70 (p 0.02), alike across the panel; disagreement correlates with B (r 0.37). R162 at paper scale.
 - 2026-11-24: R161 fibroblast clones written up (gap inside single-cell clones −0.08, −0.06); after Codex's review the clone endpoint is reported as not separating maintenance from selection (protocol change 3).
 - 2026-11-24 (protocol P5): fibroblast_clones module (Flunkert clones, rebuilt): per-clone relative entropy from the starting culture; quick run: housekeeping gap inside clones −0.08 and −0.06 (clone resampling), technical floor (parent array vs array) ~0. Caveat for review: a clone inherits its founder cell's own difference from the parent.
 - 2026-11-24: the analysis protocol is living, not frozen (Anton): docs/ANALYSIS_PROTOCOL.md; a method change recomputes every result it affects and is recorded with its reason. Clock panel: every biolearn gallery clock with at least 90 % of its weight measured in 90 % of arrays, plus a per-person disagreement score (change 2).
