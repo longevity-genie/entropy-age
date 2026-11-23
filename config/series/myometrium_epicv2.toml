@@ -3,7 +3,7 @@
 accession = "GSE296589"
 matrix = "GSE296589-GPL33022_series_matrix.txt.gz"
 age = "age"
-donor = "title:patient (\\S+)"
+donor = "title:, patient (\\S+)$"
 hold = ["condition", "race/ethnicity"]
 
 [derive]
