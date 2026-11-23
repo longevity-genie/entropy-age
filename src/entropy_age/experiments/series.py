@@ -21,6 +21,8 @@ Description file::
     sex = "Sex"
     donor = "title:^([^_]+)_"      # a column, or "title:<regex with one group>" applied to the sample title
     hold = ["primary dx"]         # further covariates, held where they vary
+    [derive]                      # optional: columns read from the title, "title:<regex with one group>"
+    condition = "title:\\((Myo[NFT])\\)"
     exclude_jaffe_donors = true   # donors of the discovery cortex cohort (same brain bank) left out
     [groups."prefrontal cortex, controls"]
     "brain region" = "PFC"
@@ -71,18 +73,28 @@ def titles(matrix: Path, row: str = "!Sample_title") -> list[str]:
     return []
 
 
+def from_title(sample_titles: list[str], column: str, rule: str) -> pl.Series:
+    """``column`` read from every sample title by ``rule``, ``"title:<regex with one group>"``; every title must match."""
+    if not rule.startswith("title:"):
+        raise ValueError(f"series: {column} must be read as 'title:<regex>', not {rule!r}")
+    pattern = re.compile(rule.removeprefix("title:"))
+    found = [pattern.search(t) for t in sample_titles]
+    missed = [t for m, t in zip(found, sample_titles, strict=True) if m is None]
+    if missed:
+        raise ValueError(f"series: {len(missed)} sample titles do not match the {column} pattern, e.g. {missed[0]!r}")
+    return pl.Series(column, [m.group(1) for m in found])
+
+
 def sample_table(chars: pl.DataFrame, sample_titles: list[str], spec: dict) -> pl.DataFrame:
     """``sample``, ``donor``, ``age``, ``sex``, the held columns and the columns the groups filter on."""
     if "donor" not in spec:
         raise ValueError("series: the description file must name the donor (a column or 'title:<regex>')")
     donor = spec["donor"]
+    derived = [from_title(sample_titles, column, rule) for column, rule in spec.get("derive", {}).items()]
+    if derived:
+        chars = chars.with_columns(derived)
     if donor.startswith("title:"):
-        pattern = re.compile(donor.removeprefix("title:"))
-        found = [pattern.search(t) for t in sample_titles]
-        missed = [t for m, t in zip(found, sample_titles, strict=True) if m is None]
-        if missed:
-            raise ValueError(f"series: {len(missed)} sample titles do not match the donor pattern, e.g. {missed[0]!r}")
-        donors = pl.Series("donor", [m.group(1) for m in found])
+        donors = from_title(sample_titles, "donor", donor)
     else:
         donors = chars[donor].cast(pl.String).alias("donor")
     extra = sorted({*spec.get("hold", []), *(c for g in spec["groups"].values() for c in g)})

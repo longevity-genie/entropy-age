@@ -1,0 +1,13 @@
+# Myometrium of women 21-52 years (GSE296589), the EPIC v2 part; fibroid-free
+# (MyoN), fibroid-associated (MyoF) and testosterone-treated (MyoT) specimens, one per patient. Platforms never pooled.
+accession = "GSE296589"
+matrix = "GSE296589-GPL33022_series_matrix.txt.gz"
+age = "age"
+donor = "title:patient (\\S+)"
+hold = ["condition", "race/ethnicity"]
+
+[derive]
+condition = "title:\\((Myo[NFT])\\)"
+
+[groups."myometrium, all conditions"]
+tissue = "myometrium"

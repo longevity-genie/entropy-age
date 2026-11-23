@@ -425,8 +425,8 @@ def _characteristics(matrix: Path) -> pl.DataFrame:
         for row in rows:
             key, sep, value = row[i].partition(": ")
             if sep:
-                if key in record:
-                    raise ValueError(f"{matrix.name}: {sample} gives {key!r} twice")
+                if key in record and record[key] != value:  # GSE296589 repeats "batch" with the same value
+                    raise ValueError(f"{matrix.name}: {sample} gives {key!r} twice, {record[key]!r} and {value!r}")
                 record[key] = value
         records.append(record)
     return pl.DataFrame(records, infer_schema_length=None)
