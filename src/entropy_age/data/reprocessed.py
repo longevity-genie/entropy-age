@@ -16,6 +16,10 @@ import polars as pl
 from entropy_age.paths import ProjectPaths
 
 MIN_DETECTED = 0.90  # samples with fewer probes passing pOOBAH are dropped (SeSAMe's usual cut)
+#: an array whose mean intensity is below this share of the median of the arrays passing detection is dropped too
+#: (protocol change 4, 2026-11-24): in EPIC-Italy 127 arrays at about a tenth of the median signal passed detection,
+#: carried breast cases twice as often as controls, and drove a spurious drift association (exact-chip review)
+MIN_INTENSITY_SHARE = 0.25
 
 
 def series_dir(paths: ProjectPaths, gse: str) -> Path:
@@ -57,8 +61,10 @@ def read_qc(paths: ProjectPaths, gse: str) -> pl.DataFrame:
     # detection and chip then describe the same array; a sample whose kept array fails detection is left out
     qc = qc.unique(subset="sample", keep="first", maintain_order=True)
     if "frac_dt_species" in qc.columns:  # SeSAMe's species mask decided the expected probes (RM43): not circular
-        return qc.with_columns(
-            passed=pl.col("frac_dt_species").cast(pl.Float64) >= MIN_DETECTED, chip=pl.col("chip").cast(pl.String)
+        return _intensity(
+            qc.with_columns(
+                passed=pl.col("frac_dt_species").cast(pl.Float64) >= MIN_DETECTED, chip=pl.col("chip").cast(pl.String)
+            )
         )
     if "platform" in qc.columns and set(qc["platform"].unique().to_list()) <= set(MULTI_SPECIES):
         qc = qc.join(species_detection(paths, gse), on="sample", how="left")
@@ -67,7 +73,20 @@ def read_qc(paths: ProjectPaths, gse: str) -> pl.DataFrame:
         if "frac_dt" not in qc.columns:  # never let every array pass for want of a detection column
             raise ValueError(f"{gse}: the QC file has no detection column (frac_dt); the 90 % cut cannot be applied")
         passed = pl.col("frac_dt") >= MIN_DETECTED
-    return qc.with_columns(passed=passed, chip=pl.col("chip").cast(pl.String))
+    return _intensity(qc.with_columns(passed=passed, chip=pl.col("chip").cast(pl.String)))
+
+
+def _intensity(qc: pl.DataFrame) -> pl.DataFrame:
+    """``passed`` also requires a mean intensity of at least ``MIN_INTENSITY_SHARE`` of the passing arrays' median;
+    ``low_intensity`` says which arrays this rule removed."""
+    if "mean_intensity" not in qc.columns:
+        return qc.with_columns(low_intensity=pl.lit(False))
+    level = pl.col("mean_intensity").cast(pl.Float64, strict=False)
+    median = qc.filter(pl.col("passed")).select(level.median()).item()
+    low = level < MIN_INTENSITY_SHARE * median if median is not None else pl.lit(False)
+    return qc.with_columns(low_intensity=pl.col("passed") & low.fill_null(False)).with_columns(
+        passed=pl.col("passed") & ~pl.col("low_intensity")
+    )
 
 
 def collapse_probes(frame: pl.DataFrame) -> pl.DataFrame:

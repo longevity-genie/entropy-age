@@ -4,6 +4,7 @@ Newest first.
 
 ## Unreleased
 
+- 2026-11-24 (protocol change 4): QC drops arrays below a quarter of the series' median intensity (127 EPIC-Italy arrays, none elsewhere), after the exact-chip review traced a drift odds ratio of 4.5 to them; unmasked clock track recorded. Exact-chip review in docs/reviews/2026-11-24-exact-chip-B.md.
 - 2026-11-24: R162 nested clock models at paper scale (35 clocks + panel): same chip first, F given B and clock 0.67-0.80 (LR p < 0.05 in 35 of 36); same chip only, F 0.70-0.80 unresolved and B 3.9-5.9 per SD given any clock. The exact-chip B result is under independent review before the paper changes.
 - 2026-11-24: new analysis `clock_atlas`: every scored clock in every rebuilt human series group (r with age, median error, valid in the tissue or kept as a negative control) and the agreement between valid clocks' accelerations; heatmap figure. Checked on the kidney series.
 - 2026-11-24: R158 brain regions at paper scale (200 donor resamples): estimates unchanged; supplement now gives donor intervals, and the off-floor gap with chip is resolved in the amygdala only (prefrontal cortex and hippocampus reach zero).
