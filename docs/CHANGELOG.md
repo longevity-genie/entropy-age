@@ -4,6 +4,7 @@ Newest first.
 
 ## Unreleased
 
+- 2026-11-24: R149 species rerun after the relative-entropy fix: 88 % of 139 groups negative (mean −0.12; was 89 %, −0.13), lifespan coefficient +0.031 (p 0.04); Figure 3 redrawn on relative entropy; R151 deposited SATSA gene-level p 0.68. Paper, supplement and artifact rewritten.
 - 2026-11-24: SATSA within-person p-values now gene-level (rebuilt series: direction p < 10⁻¹⁰, divergence p 0.03); deposited tables rerun (R151) for the same.
 - 2026-11-24: R150 part 3: Meer mouse tissues rerun (lung −0.14 → −0.15 in the text), species floor unchanged.
 - 2026-11-24: R146 headline rerun: blood housekeeping −0.147 SD, gene-level p 5·10⁻²⁴⁴ over 3,647 genes; Methods now describe gene-level p. R150 part 2: interventions, sorted cells, probe robustness unchanged; Thompson mouse RRBS tissues moved after the relative-entropy fix (adipose −0.03 → −0.08, kidney −0.18 → −0.23, muscle −0.08 → −0.10); text rewritten.

@@ -11,7 +11,7 @@ comparing CpGs in promoters of essential and housekeeping genes with CpGs of the
 methylation level (look-alikes), using relative entropy from the young state as the drift measure. Essential
 promoters drift less than look-alikes in human blood (−0.15 SD for housekeeping genes; −0.10 among CpGs that start between 10 and 90 % methylation, and none among
 those between 20 and 80 %), cortex (−0.06 SD), most GTEx
-tissues, mouse tissues and 89 % of 139 species-tissue groups of 65 mammals. Placebo gene sets, blood-cell
+tissues, mouse tissues and 88 % of 139 species-tissue groups of 65 mammals. Placebo gene sets, blood-cell
 composition, probe design and reprocessing from raw array files do not produce the gap.
 
 Most of the shield is accounted for by promoter activity, not by essentiality as such. Reference chromatin states account for
@@ -201,16 +201,17 @@ the shield or none.
 
 Across mammals (Mammalian Methylation Consortium, GSE223748; Lu et al. 2023; Haghani et al. 2023), 139
 species-tissue groups of 65 species had at least 15 animals spanning 15 % of the species' maximum lifespan. The
-housekeeping gap was negative in 89 % of groups (mean −0.13 SD; Fig. 3 draws the same groups on binary entropy and dispersion). Conserved array CpGs at essential promoters
+housekeeping gap was negative in 88 % of groups (mean −0.12 SD; Fig. 3a). Conserved array CpGs at essential promoters
 sit near 0 %, where drift is floored; with only CpGs whose young level lies between 10 and 90 %, the gap stayed
 negative in 73 % of groups (−0.10 SD).
 
 ![Figure 3](../docs/figures/species_shield.png)
 
-**Figure 3. The shield across 65 mammals.** (a, b) Housekeeping minus look-alike gap per species-tissue group against
-log10 maximum lifespan, on the binary-entropy and dispersion slopes (139 groups; Mammalian Methylation Consortium array); the relative-entropy share quoted in the text (89 % of groups negative) is not drawn. Below zero, housekeeping CpGs drift less than look-alikes.
-(c) Change of the gap per log lifespan, weight and tissue held (95 % interval). The all-CpG relative-entropy
-coefficient (+0.032, p 0.04) vanishes off the 0 % floor (+0.004, p 0.84; Supplementary Fig. S7).
+**Figure 3. The shield across 65 mammals.** (a, b) Housekeeping minus matched gap per species-tissue group against
+log10 maximum lifespan, on the relative-entropy and dispersion slopes (139 groups; Mammalian Methylation Consortium
+array); human, naked mole-rat and mouse groups are marked. Below zero, housekeeping CpGs drift less than matched CpGs.
+(c) Change of the gap per log10 lifespan, weight and tissue held (95 % interval). The all-CpG relative-entropy
+coefficient (+0.031, p 0.04) vanishes off the 0 % floor (+0.004, p 0.83; Supplementary Fig. S7).
 
 ### Essential promoters lose methylation faster and rest lower
 
@@ -456,7 +457,7 @@ SATSA (E-MTAB-7309; Wang et al. 2018) drew blood from the same Swedish twins up 
 batch regressed out, and on them the cross-sectional shield almost vanished (|mean change| +0.00 SD). We therefore rebuilt the
 series from its 1,072 raw arrays (444 people, 628 consecutive within-person pairs). Each person's change between two
 draws was split into the change everyone makes and the person's own departure from it (Methods). Housekeeping CpGs
-changed less in direction than look-alikes (−0.14 SD, gene-level p < 10⁻¹⁰; deposited betas −0.002, p 0.67), sat closer to the
+changed less in direction than look-alikes (−0.14 SD, gene-level p < 10⁻¹⁰; deposited betas −0.002, p 0.68), sat closer to the
 measurement floor (−0.073) and diverged slightly more slowly (−0.014, p 0.03; Fig. 8). Across people, the rebuilt
 series showed a cross-sectional shield like other blood cohorts (relative entropy −0.22 SD, dispersion −0.36,
 |mean| −0.11). On the deposited betas, the per-person shield share F fell by 0.14 per decade within a person

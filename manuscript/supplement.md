@@ -30,7 +30,7 @@ Table S2. Results that rested on binary entropy, old against corrected (housekee
 | GTEx whole blood / lung / muscle | −0.29 / −0.27 / −0.07 | −0.14 / −0.09 / −0.00 | kept, about halved |
 | mouse array, renewing tissues | −0.12 to −0.31 | −0.05 to −0.19 | kept |
 | mouse array, post-mitotic and adipose | −0.22 to +0.10 | +0.03 to +0.09, all p ≤ 0.002 | reframed (hypothalamus −0.08) |
-| species, share of 139 groups negative | 96 % (−0.30) | 89 % (−0.13) | kept, resized |
+| species, share of 139 groups negative | 96 % (−0.30) | 88 % (−0.12) | kept, resized |
 | species, with chip intercepts (122 groups that can be fitted) | n.a. | 86 % (−0.11) | kept |
 | species, 13 human groups, human annotation instead of mouse | n.a. | 9 of 13 negative under both (−0.05 against −0.02) | kept |
 | same donors, blood minus brain region (Lunnon), tissues normalised together | n.a. | −0.08 to −0.10 against −0.07 to −0.10 on the deposited values | kept; still confounded with slide |
@@ -408,7 +408,7 @@ Source: `docs/PROVENANCE.md`, `docs/extension.md`.
 | Mouse array 11 tissues, renewing − post-mitotic −0.19 | C1, C2 | R68a | `data/output/mouse_tissues/point_estimates.csv`, `contrasts.csv` |
 | RRBS and BXD gaps | C1 | R73 | `data/output/meer_tissues/aging_gaps.csv`, `mouse_rrbs_tissues/aging_gaps.csv`, `interventions/aging_gaps.csv`, `bxd_liver/aging_gaps.csv` |
 | Culture, share against doublings | C3 | Endicott and Sturm runs (pre-R-numbering), R1 | `data/output/passaged_cells/coupling_across_lines`, `data/output/passaged_cells_sturm/` |
-| Species 89 % / 73 % off floor; lifespan +0.004 | C6 | R12, R59, R68c | `data/output/species_floor/species_gaps.parquet`, `data/output/species_floor/lifespan_fits.csv`, `share_off_floor.csv` |
+| Species 88 % / 73 % off floor; lifespan +0.004 | C6 | R12, R59, R68c | `data/output/species_floor/species_gaps.parquet`, `data/output/species_floor/lifespan_fits.csv`, `share_off_floor.csv` |
 | Phylogenetic GLS | C6 | species_phylo | `data/output/species_phylo/lifespan_fits` |
 | Gain and loss rates; resting level | C2, C4 | R67 | `data/output/equilibrium_drift/pooled_rates.csv`, `per_cpg_gaps.csv`, `identified.csv` |
 | Faster loss within active TSS | C2 | R74 | `data/output/equilibrium_drift/pooled_rates.csv`, `per_cpg_gaps.csv` |
