@@ -59,14 +59,21 @@ and act on a fixed share of the errors. A third possibility concerns removal: Kr
 al. (2025) showed that age-related drift in the mouse intestine is driven by impaired TET activity, arises
 cell-intrinsically in stem cells and spreads through crypt clonality. That finding points to the removal side of methylation turnover.
 
-Here we measure the shield with a matched design across human and mouse tissues, cultured cells, read-level
-bisulfite data and 65 mammal species, and test it against placebo gene sets, cell composition, probe design,
-preprocessing and multiple testing. As the drift measure we use relative entropy from the young state, which counts a
-move up or down alike. Binary entropy, the usual measure, counts a loss of methylation at a
-low-methylated site as a gain in order; because essential promoters lose methylation faster than matched CpGs, it
-roughly doubles the gap, and all sizes reported here are on relative entropy. We
-then ask how the shield is produced, whether it is visible within one person over time, what it is not, and whether
-drift outside it carries health information.
+Here we measure how far each CpG drifts with age and ask whether CpGs in essential promoters drift less than
+comparable CpGs. Drift at a CpG is measured as relative entropy from the young state: in every sample, how far the
+methylation level has moved from its level in young people, counting a move up or down alike and weighting a move
+away from 0 % or 100 % more, because chance variation is smallest there. Its slope on age is the drift rate of that
+CpG. For a gene set we compare these drift rates with those of matched CpGs, the CpGs outside the set that have the
+same CpG-island status and the same young level, so that a set made of unmethylated islands is compared with other
+unmethylated islands. The difference, in standard deviations of the drift rate over all CpGs, is the gap; a gap below
+zero means the set drifts less than comparable CpGs, and throughout the paper "shield" means a negative gap (Box 1
+lists the measures and how to read them). Binary entropy, the usual measure, instead counts how close a level is to
+50 %, so a loss of methylation at a low-methylated site reads as a gain in order; because essential promoters lose
+methylation faster than matched CpGs, it roughly doubles the gap, and all sizes reported here are on relative
+entropy. We measure the gap across human and mouse tissues, cultured cells, read-level bisulfite data and 65 mammal
+species, test it against placebo gene sets, cell composition, probe design and preprocessing, and then ask how the
+shield is produced, whether it is visible within one person over time, what it is not, and whether drift outside it
+carries health information.
 
 ## Results
 
@@ -142,7 +149,7 @@ dispersion, |mean change| and relative entropy, each as an age slope), Hannum bl
 (213 adult controls); 95 % donor-bootstrap intervals. (b) Blood minus cortex for each set and measure; grey marks a
 difference whose interval includes zero. (c) Same donors (Lunnon): between-person dispersion gap in blood and four
 brain regions. (d) Blood minus each brain region. Sizes in the text are the relative-entropy rows; binary entropy
-overstates the gap.
+overstates the gap. How to read: each point is a gene set's gap, its CpGs' drift rate (age slope of relative entropy unless the panel says otherwise) minus that of matched CpGs of the same island status and young level, in SD of the drift rate over all CpGs; below zero = the set drifts less than comparable CpGs (Box 1).
 
 ### The gap is not made by the matching, the cell mix, the array or its preprocessing
 
@@ -183,7 +190,7 @@ instead on intervals that resample donors, animals or cultures, and on the place
 
 **Figure 2. Placebo gene sets do not produce a shield.** For each gene set, 200 random gene sets of the same size,
 drawn from genes outside all three sets, were passed through the same
-island × young-level matching in (a) Hannum blood and (b) Jaffe cortex. Grey: mean and central 95 % of the 200 placebo gaps; blue: the real set's gap, for core-essential, housekeeping and non-essential genes on four drift measures.
+island × young-level matching in (a) Hannum blood and (b) Jaffe cortex. Grey: mean and central 95 % of the 200 placebo gaps; blue: the real set's gap, for core-essential, housekeeping and non-essential genes on four drift measures. How to read: each point is a gene set's gap, its CpGs' drift rate (age slope of relative entropy unless the panel says otherwise) minus that of matched CpGs of the same island status and young level, in SD of the drift rate over all CpGs; below zero = the set drifts less than comparable CpGs (Box 1).
 
 ### The shield across tissues, platforms and species
 
@@ -253,7 +260,7 @@ negative in 73 % of groups (−0.10 SD).
 log10 maximum lifespan, on the relative-entropy and dispersion slopes (139 groups; Mammalian Methylation Consortium
 array); human, naked mole-rat and mouse groups are marked. Below zero, housekeeping CpGs drift less than matched CpGs.
 (c) Change of the gap per natural-log unit of maximum lifespan, weight and tissue held (95 % interval). The
-all-CpG relative-entropy coefficient (+0.031, or +0.071 per tenfold lifespan; p 0.04) vanishes off the 0 % floor (+0.004, p 0.83; Supplementary Fig. S7).
+all-CpG relative-entropy coefficient (+0.031, or +0.071 per tenfold lifespan; p 0.04) vanishes off the 0 % floor (+0.004, p 0.83; Supplementary Fig. S7). How to read: each point is a gene set's gap, its CpGs' drift rate (age slope of relative entropy unless the panel says otherwise) minus that of matched CpGs of the same island status and young level, in SD of the drift rate over all CpGs; below zero = the set drifts less than comparable CpGs (Box 1).
 
 ### Essential promoters lose methylation faster and rest lower
 
@@ -284,7 +291,7 @@ it by about four fifths in blood (housekeeping −0.335 → −0.060 SD; core-es
 **Figure 4. Gain and loss rates by gene set.** Pooled two-state model fits in Hannum blood (a, b) and Jaffe cortex
 (c, d): age slope regressed on young level per set, giving the gain rate (intercept) and loss rate, for CpG-island
 (blue) and non-island (orange) promoter CpGs of each set and of look-alikes. Rates are fitted estimates and can fall below zero; the text compares each set with its look-alikes. Per decade; 95 % intervals from 200
-donor resamples.
+donor resamples. How to read: a gain rate is how fast unmethylated copies of a CpG become methylated, a loss rate the reverse, per decade from the fitted two-state model; a set is compared with its matched CpGs, and a higher loss rate with a lower gain rate keeps a promoter nearer 0 % (Box 1).
 
 ### The shield goes with cell division
 
@@ -374,7 +381,7 @@ by whole-genome bisulfite sequencing (donors resampled together); cells in cultu
 except untreated fibroblasts, whose interval resamples genes); confluent fibroblasts kept from dividing (the two
 donors whose arrays are not ordered by time along the chip; genes resampled). Slopes are on age in tissues and
 nuclei, on population doublings in culture and on months in confluent cultures, so sizes are compared within a
-block. The glial excess is not seen in the oligodendrocyte lineage by either platform.
+block. The glial excess is not seen in the oligodendrocyte lineage by either platform. How to read: each point is a gene set's gap, its CpGs' drift rate (age slope of relative entropy unless the panel says otherwise) minus that of matched CpGs of the same island status and young level, in SD of the drift rate over all CpGs; below zero = the set drifts less than comparable CpGs (Box 1).
 
 ### Tet3 loss weakens the shield in mouse brain; Tet1 loss, in another study, does not
 
@@ -449,7 +456,7 @@ other tissue's state, blood's second map (neutrophils, E030) and, in cortex, sor
 (a) State composition of set and background promoter CpGs in blood (E062). (b) Hannum blood and Jaffe cortex,
 relative-entropy slope. (c) Lunnon's tissues of the same donors, between-person dispersion (no age slope).
 (d) Share of the housekeeping relative-entropy gap removed by the own state, sorted accessibility and both. 95 %
-intervals resample the set's genes; all shares are listed in Supplementary Table S2.
+intervals resample the set's genes; all shares are listed in Supplementary Table S2. How to read: each point is a gene set's gap, its CpGs' drift rate (age slope of relative entropy unless the panel says otherwise) minus that of matched CpGs of the same island status and young level, in SD of the drift rate over all CpGs; below zero = the set drifts less than comparable CpGs (Box 1).
 
 ### The shield follows promoter expression measured in the same samples
 
@@ -486,7 +493,7 @@ matched CpGs (SD of the relative-entropy slope; 95 % intervals from resampling t
 on island status and starting level (grey) and with the decile of the gene's own expression in the same samples
 added (orange); the share of the gap removed is printed. Slopes are on age in monocytes and epidermis and on
 population doublings in fibroblasts. (b) Genes outside every gene set: drift of their promoter CpGs relative to
-matched CpGs, by decile of the gene's expression in the same samples (mean and 95 % interval).
+matched CpGs, by decile of the gene's expression in the same samples (mean and 95 % interval). How to read: each point is a gene set's gap, its CpGs' drift rate (age slope of relative entropy unless the panel says otherwise) minus that of matched CpGs of the same island status and young level, in SD of the drift rate over all CpGs; below zero = the set drifts less than comparable CpGs (Box 1).
 
 Between single cells the pattern repeats. In muscle stem cells of three young and three old mice, with methylation
 and RNA from the same cells (GSE121437), age added less cell-to-cell variation at housekeeping promoters than at
@@ -512,7 +519,7 @@ settled; its direction agrees with every cross-sectional cohort.
 
 ![Figure 8](../docs/figures/satsa_idats.png)
 
-**Figure 8. Change within one person in SATSA.** (a) Within-person gaps in the series rebuilt from raw arrays: core-essential, housekeeping and non-essential CpGs minus look-alikes (SD) for directed change, divergence per year and the measurement floor. (b) Per-person drift B, shield share F and signed shift S per decade of age, within a person (circles, 95 % interval) and between people (squares), rebuilt series.
+**Figure 8. Change within one person in SATSA.** (a) Within-person gaps in the series rebuilt from raw arrays: core-essential, housekeeping and non-essential CpGs minus look-alikes (SD) for directed change, divergence per year and the measurement floor. (b) Per-person drift B, shield share F and signed shift S per decade of age, within a person (circles, 95 % interval) and between people (squares), rebuilt series. How to read: each point is a gene set's gap, its CpGs' drift rate (age slope of relative entropy unless the panel says otherwise) minus that of matched CpGs of the same island status and young level, in SD of the drift rate over all CpGs; below zero = the set drifts less than comparable CpGs (Box 1).
 
 ### What the shield is not
 
@@ -615,7 +622,7 @@ refute the first (Supplementary Table S4).
 **Figure 9. Incident cancer in EPIC-Italy.** Odds ratio per SD of the shield share F, look-alike drift B and the
 signed shift S (core-essential and housekeeping sets) and of published clocks, for any cancer (421 cases), breast
 (235) and colorectal cancer (166). Blue circles: all cases, age and sex held. Orange squares: cases diagnosed over 2 years after
-the draw (331, 169 and 146 cases), with mean methylation, 11 blood-cell fractions and chip held. 95 % intervals; log scale.
+the draw (331, 169 and 146 cases), with mean methylation, 11 blood-cell fractions and chip held. 95 % intervals; log scale. How to read: an odds ratio above 1 means people with a higher value of the measure (per SD) were more often later diagnosed with cancer; B is drift at comparable promoters, F the share of it that essential promoters avoid (more negative = stronger shield), S their signed shift (Box 1).
 
 ## Discussion
 
