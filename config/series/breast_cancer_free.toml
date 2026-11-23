@@ -1,0 +1,12 @@
+# Normal breast of cancer-free women 17 to 76 (GSE101961; 450k), a second cohort with no arrays shared with GSE88883.
+# Rebuilt from IDATs; race held.
+accession = "GSE101961"
+age = "age"
+donor = "sample"
+hold = ["race"]
+
+[derive]
+tissue = "title:(breast tissue)"
+
+[groups."breast, cancer-free women"]
+tissue = "breast tissue"

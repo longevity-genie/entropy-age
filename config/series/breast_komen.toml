@@ -1,0 +1,8 @@
+# Healthy breast biopsies of women 18 to 82 (GSE88883, Komen Tissue Bank donors; 450k). Rebuilt from IDATs; a raw-array
+# check on GTEx breast. Race not given; BMI not held.
+accession = "GSE88883"
+age = "subject age"
+donor = "sample"
+
+[groups."breast, healthy donors"]
+tissue = "breast biopsy"
