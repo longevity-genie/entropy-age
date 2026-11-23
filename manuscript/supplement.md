@@ -588,3 +588,12 @@ itself. Runs are described in the run log of the repository.
 - Joint models with DunedinPACE/PhenoAge (EPIC-Italy, SJLIFE) and the clock-composition shares (R38 addendum) were run
   ad hoc from per-person tables and are not yet in the pipeline.
 - The culture runs (GSE197512) predate the R-numbered run log; their run identifiers are not recorded there.
+
+![Supplementary Figure S23](../docs/figures/clock_atlas.png)
+
+**Supplementary Figure S23. Every clock in every rebuilt tissue group.** Correlation of each clock's prediction with
+donor age (colour; red positive) in each tissue group with donor ages rebuilt from raw arrays; ×, the clock was trained
+on another tissue (kept as a negative control); blank, the clock fails the coverage rule on that array (less than 90 %
+of its weight measured in 90 % of arrays). Clocks ordered by generation (chronological, phenotypic and mortality, pace,
+mitotic and stochastic, other predictors). How to read: a dark red column is a clock that tracks age wherever it can be
+scored; a clock that is red only outside its tissue ranks donors by age without being calibrated there.

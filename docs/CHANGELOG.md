@@ -4,6 +4,7 @@ Newest first.
 
 ## Unreleased
 
+- 2026-11-24: paper: clock atlas paragraph (Results, 'What clocks read'); Supplementary Figure S23 (clock atlas heatmap).
 - 2026-11-24: R168 deposited EPIC-Italy cancer models without failed-signal arrays (718 people; breast > 2 y: B 1.29 age and sex, 1.14 (0.91-1.44) adjusted, matched 1.49 (1.04-2.69)). Paper rewritten: no robust association of drift with breast cancer (abstract, results, discussion, limits, methods, Figure 9 caption); Supplementary Note 4 on arrays with failed signal.
 - 2026-11-24: R165 clock panel on the 47 rebuilt series; clock_atlas first run: 330 clock-by-group rows over 24 human groups with ages. Valid clocks agree on accelerations at median r 0.36-0.84 per group (liver 0.04). EPIC lung and myometrium keep only 2-3 clocks on the masked rebuild: to be rescored on the unmasked track.
 - 2026-11-24: Figures 1, 2, 4 and 6 redrawn with cohorts named by accession (R164); tables identical up to floating-point noise and row order.

@@ -601,6 +601,14 @@ change was too small to give a share.
 they keep 70-80 % of their accuracy from each CpG's direction alone and 0-10 % from undirected noise
 (Supplementary Note 3).
 
+*Every clock on every rebuilt series.* We scored every clock in the biolearn gallery that keeps at least 90 % of its
+weight measured on every rebuilt series with donor ages (23 tissue groups, 38 clocks; clocks taken outside the tissue
+they were trained on kept as negative controls; Supplementary Fig. S23). The pan-tissue clock of Horvath tracked age in
+every group (median r 0.81, 0.61 to 0.94; median error 5.6 years). Blood clocks taken into solid tissues still ranked
+donors by age (PhenoAge median r 0.60, Hannum 0.73) but missed their age by 9 to 21 years. Once age was removed, the
+valid clocks of a group agreed only partly on who was ageing fast: the median correlation between their accelerations
+was 0.58 (0.36 in sorted neurons to 0.84 in heart; 0.04 in liver).
+
 ### Drift at unprotected promoters and incident breast cancer: no robust association
 
 **In one prospective cohort, drift at look-alike promoters in blood was not robustly associated with breast cancer
