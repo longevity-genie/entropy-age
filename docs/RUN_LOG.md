@@ -60,6 +60,18 @@ commit it ran, its job ids, its scale and seed, and its result or its failure wi
   Divergence, housekeeping −0.085, core-essential −0.096; with expression matched −0.043 and −0.068 (point estimates;
   intervals as in R140). The gap does not come from the deeper sequencing of old cells.
 
+## R152, R153 — mouse hearts and livers; the lung reversal without the tumour field, 2026-11-24
+
+- Commits 1832274 (runner: mouse arrays, age labels), bcb2fe5 (runner: CpG exclusion list), 3ad99d8 (TCGA lists and
+  lung configs). Jobs 6596001/2 (R152), 6596007/8 (R153); `--scale paper --seed 42`, 4 cores, 48 GB; 7-27 min.
+- R152 hearts (GSE280472, rebuilt, 36 mice young/old, sex and treatment held): housekeeping −0.045 (mice −0.115 to
+  +0.059); chip held −0.027. Livers (GSE269932, rebuilt, 90 of 93 mice, 26-532 days, sex and environment held):
+  −0.028 (−0.085 to +0.025), chip held −0.004 (−0.044 to +0.030); field mice alone (72, to 302 days) −0.005;
+  laboratory mice (18) too few.
+- R153: TCGA-LUAD open betas, 32 normal and 80 tumour arrays; 86,809 CpGs with |Δβ| ≥ 0.1, 24,287 with ≥ 0.2
+  (`scripts/tcga_tumour_cpgs.py`). Tumour-adjacent lung, chip held: +0.138 (+0.046 to +0.251) with all CpGs, +0.111
+  (+0.025 to +0.218) without the 0.2 list, +0.084 (−0.000 to +0.190) without the 0.1 list.
+
 ## R147, R148 — myometrium; every series rerun with a resample count, 2026-11-24
 
 - Commits cbaaf37 (title columns, GSE296589 configs), 54f22cb and c4aaaf5 (donor intervals need half the

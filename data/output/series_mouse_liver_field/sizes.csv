@@ -1,0 +1,3 @@
+group,donors,age_min,age_max,cpgs,chips
+"liver, all",90,26.0,532.0,64404,25
+"liver, field",72,26.0,302.0,64660,10

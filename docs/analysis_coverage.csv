@@ -34,3 +34,6 @@ Neurons and oligodendrocytes by WGBS,human,NeuN+ and OLIG2+ nuclei,GSE107729,WGB
 Muscle training (Gene SMART),human,vastus lateralis before and after training,GSE171140,EPIC,rebuilt,67 person-blocks,R145 (change from baseline),not run,person and chip (R145),not run,not run,not run,not run,leave one person out
 Muscle loading and unloading,human,vastus lateralis,GSE114763,EPIC,rebuilt,8 men x 5 conditions,R145 (change from baseline),not run,person and chip (R145),not run,not run,not run,not run,leave one person out
 Myometrium,human,myometrium (fibroid-free and fibroid-associated),GSE296589,EPIC; EPIC v2 (separate),rebuilt,62 + 30 women,R147,R147,chip and condition (R147),not run,not run,not run,not run,genes; donors
+Mouse hearts,mouse,heart,GSE280472,mammalian array,rebuilt,36 mice,R152,R152,chip (R152),not run,not run,not run,not run,genes; animals
+Mouse liver (field and laboratory),mouse,liver,GSE269932,MM285,rebuilt,90 mice,R152,R152,chip and environment (R152),not run,not run,not run,not run,genes; animals
+Lung without tumour-field CpGs,human,normal lung next to adenocarcinoma,GSE314841 + TCGA-LUAD,450k,rebuilt,114 people,R153,R153,chip and batch (R153),not run,not run,not run,not run,genes; donors

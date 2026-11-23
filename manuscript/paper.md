@@ -177,8 +177,12 @@ In normal colon mucosa of 146 colorectal-cancer patients aged 22 to 89 (GSE10176
 carried the gap (−0.08), but tissue resected next to adenocarcinoma in 114 non-smokers aged 39 to 82 (GSE314841,
 450k part) reversed it: +0.14 (+0.05 to +0.25), housekeeping promoters drifting more than matched CpGs. The same
 study's 31 lungs on the EPIC array gave the same sign without resolving it (+0.06, −0.32 to +0.76). Tissue next to a
-tumour can carry the tumour's methylation changes, and the donors were East Asian and arrayed on the 450k; which of
-these produces the reversal is being tested. No healthy lung series with raw arrays is in hand yet. Human
+tumour can carry the tumour's methylation changes. Leaving out the CpGs whose methylation differs between 80 lung
+adenocarcinomas and 32 normal lungs of TCGA shrank the reversal without removing it: +0.11 (+0.03 to +0.22) without
+the 24,287 CpGs that differ by at least 0.2 in beta, +0.08 (−0.00 to +0.19) without the 86,809 that differ by at
+least 0.1 (chip intercepts held throughout). The tumour field therefore accounts for part of the reversal; the rest
+may come from changes in tissue next to a tumour that tumours themselves do not share, from the East Asian donors or
+from the 450k array. A series of healthy donor lungs with raw arrays (GSE175458) is being processed. Human
 post-mortem tissues on the mammalian array (GSE184211; heart, muscle, liver, kidney, lung, spleen, fat, blood; 32 to
 112 per tissue) cover only about 1,400 promoter CpGs and resolve no tissue. Myometrium, a smooth muscle that renews slowly,
 showed no gap: in 62 women aged 29 to 52 on the EPIC array (GSE296589; fibroid-free and fibroid-associated specimens,
@@ -199,7 +203,11 @@ lane mixing the ages (GSE225166; 30 to 32 mice per tissue), on the CpGs covered 
 28,727 CpGs), −0.05 in heart (−0.13 to +0.01; 30,312) and −0.01 in cortex (−0.08 to +0.13; 12,335; intervals from
 resampling mice); liver kept only 518 such CpGs and gives no estimate. Off the floor (10-90 %, all-CpG scale) none of the four was
 resolved: lung −0.08 (−0.19 to +0.00), heart +0.05 (−0.04 to +0.12), cortex +0.02 (−0.24 to +0.16). These are different platforms and CpG sets, so they are reported side by side and not ranked against one another; within Meer's four tissues the shield is smaller in cortex and heart, and in Thompson's six tissues muscle (−0.10) matched blood (−0.08). Meer's RRBS and the array disagree on whether post-mitotic tissue keeps a little of
-the shield or none.
+the shield or none. Two further mouse series on mouse arrays, rebuilt from raw files with sex held, gave no resolved gap:
+hearts of 36 young and old mice (GSE280472; treatment held) −0.05 (−0.12 to +0.06), and livers of 90 mice aged 26 to
+532 days, most kept in an outdoor enclosure (GSE269932), −0.03 (−0.09 to +0.03), −0.00 with chip intercepts. The
+liver null is narrow and differs from the BXD liver (−0.30) and the RRBS livers (−0.15 to −0.22); the field mice
+were at most 302 days old, so most of this series covers young adults.
 
 Across mammals (Mammalian Methylation Consortium, GSE223748; Lu et al. 2023; Haghani et al. 2023), 139
 species-tissue groups of 65 species had at least 15 animals spanning 15 % of the species' maximum lifespan. The
