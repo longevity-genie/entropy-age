@@ -29,6 +29,19 @@ commit it ran, its job ids, its scale and seed, and its result or its failure wi
 - Reading: a second immortalised cell type carries the gap per doubling, with chip held, a little below primary
   astrocytes (−0.102, R133) and fibroblasts. Three replicate lines of one source; no arrested control.
 
+## R114c and R141c — mouse tissues off the 0 % floor (review item; Anton asked for the follow-up analyses outside blood and brain), 2026-11-24
+
+- Commit 3060c3f; `figures jena_rrbs` and `figures mouse_atlas_rrbs`, tables `gaps_off_floor` (CpGs with young level
+  10-90 %, own strata, mouse bootstrap). Gaps below are rescaled to the all-CpG SD of each tissue, as the review
+  required for comparing bands.
+- **Colon and hippocampus (R114c).** Housekeeping: colon −0.247 (−0.514 to −0.189; 35,349 CpGs), hippocampus +0.006
+  (−0.098 to +0.096; 40,712). Core-essential −0.267 (−0.623 to −0.186) and −0.076 (−0.302 to +0.122).
+- **Four tissues of GSE225166 (R141c).** Housekeeping: lung −0.078 (−0.191 to +0.003; 10,316), heart +0.053 (−0.035
+  to +0.123; 11,262), cortex +0.017 (−0.235 to +0.163; 5,062), liver 290 CpGs (no estimate).
+- Reading: in colon the gap is not a floor effect; in hippocampus all of it sits at CpGs near 0 %. The colon-over-
+  hippocampus contrast is therefore stronger off the floor. In the four-tissue series no tissue has a resolved gap
+  off the floor, so it adds little either way.
+
 ## R141b — mouse tissues with complete CpGs only (review item), 2026-11-23
 
 - Commit 3ec7b03; job 6593358. R141 had kept CpGs present in 90 % of libraries and filled the rest; this run uses

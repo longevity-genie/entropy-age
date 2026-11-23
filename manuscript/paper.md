@@ -185,7 +185,8 @@ include zero). Other RRBS series gave −0.03 (adipose) to −0.21 SD (lung) in 
 in whole blood (Petkovich et al. 2017), and the mammalian array gave −0.32 in BXD liver (Mozhui et al. 2022; −0.28, −0.45 to −0.14, re-processed from the IDATs). In a further RRBS series of the same mice at 3, 15 and 24 months, with sex and sequencing lane held and every
 lane mixing the ages (GSE225166; 30 to 32 mice per tissue), on the CpGs covered at least 10 times in every library, the housekeeping gap was −0.09 SD in lung (−0.14 to −0.02;
 28,727 CpGs), −0.05 in heart (−0.13 to +0.01; 30,312) and −0.01 in cortex (−0.08 to +0.13; 12,335; intervals from
-resampling mice); liver kept only 518 such CpGs and gives no estimate. These are different platforms and CpG sets, so they are reported side by side and not ranked against one another; within Meer's four tissues the shield is smaller in cortex and heart, and in Thompson's six tissues muscle (−0.08) matched blood (−0.08). Meer's RRBS and the array disagree on whether post-mitotic tissue keeps a little of
+resampling mice); liver kept only 518 such CpGs and gives no estimate. Off the floor (10-90 %, all-CpG scale) none of the four was
+resolved: lung −0.08 (−0.19 to +0.00), heart +0.05 (−0.04 to +0.12), cortex +0.02 (−0.24 to +0.16). These are different platforms and CpG sets, so they are reported side by side and not ranked against one another; within Meer's four tissues the shield is smaller in cortex and heart, and in Thompson's six tissues muscle (−0.08) matched blood (−0.08). Meer's RRBS and the array disagree on whether post-mitotic tissue keeps a little of
 the shield or none.
 
 Across mammals (Mammalian Methylation Consortium, GSE223748; Lu et al. 2023; Haghani et al. 2023), 139
@@ -244,7 +245,10 @@ mammalian consortium's, which has none.
 (82 and 83 animals; RRBS) ran on the same four flowcells, each holding every age (a fifth held colon only). The housekeeping gap was −0.19 SD
 in colon (−0.29 to −0.17) and −0.08 in hippocampus (−0.09 to −0.07): a difference of −0.11 (−0.22 to −0.09). The
 core-essential gap differed likewise (−0.17 against −0.07), and non-essential promoters drifted more than their
-matched CpGs in both, most in colon (+0.54 against +0.16). On the mammalian consortium's array, a different series from the 11 tissues above, with chip
+matched CpGs in both, most in colon (+0.54 against +0.16). Off the 0 % floor the two tissues part further: among
+CpGs starting between 10 and 90 % (on the all-CpG scale, mice resampled), the housekeeping gap was −0.25 in colon
+(−0.51 to −0.19; 35,349 CpGs) and +0.01 in hippocampus (−0.10 to +0.10; 40,712). The hippocampal gap lies entirely
+at CpGs near the floor; the colon gap does not. On the mammalian consortium's array, a different series from the 11 tissues above, with chip
 intercepts in every age slope, mouse tissues separated brain from the other tissues, though not by turnover class: lung −0.49, spleen −0.45, liver −0.35, blood −0.32
 and skin −0.22, against cortex −0.06, heart −0.04, kidney −0.04, hippocampus +0.03, cerebellum +0.04 and striatum
 +0.10 (19 to 903 animals per tissue).
