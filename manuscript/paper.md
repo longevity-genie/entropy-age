@@ -265,11 +265,12 @@ negative in 73 % of groups (−0.10 SD).
 
 ![Figure 3](../docs/figures/species_shield.png)
 
-**Figure 3. The shield across 65 mammals.** (a, b) Housekeeping minus matched gap per species-tissue group against
-log10 maximum lifespan, on the relative-entropy and dispersion slopes (139 groups; Mammalian Methylation Consortium
-array); human, naked mole-rat and mouse groups are marked. Below zero, housekeeping CpGs drift less than matched CpGs.
-(c) Change of the gap per natural-log unit of maximum lifespan, weight and tissue held (95 % interval). The
-all-CpG relative-entropy coefficient (+0.031, or +0.071 per tenfold lifespan; p 0.04) vanishes off the 0 % floor (+0.004, p 0.83; Supplementary Fig. S7). How to read: each point is a gene set's gap, its CpGs' drift rate (age slope of relative entropy unless the panel says otherwise) minus that of matched CpGs of the same island status and young level, in SD of the drift rate over all CpGs; below zero = the set drifts less than comparable CpGs (Box 1).
+**Figure 3. The shield across 65 mammals.** (a) The housekeeping gap (relative-entropy slope) of each species
+within each tissue, tissues with at least four species shown separately and the rest pooled; black bars are tissue
+medians, labels give the number of species and the share below zero (Mammalian Methylation Consortium array). (b)
+All 139 species-tissue groups: 88 % lie below zero. (c) Change of the gap per natural-log unit of maximum lifespan,
+weight and tissue held (95 % interval); the housekeeping coefficient (+0.031, or +0.071 per tenfold lifespan; p 0.04)
+vanishes off the 0 % floor (+0.004, p 0.83; Supplementary Fig. S7). How to read: each point is a gene set's gap, its CpGs' drift rate (age slope of relative entropy unless the panel says otherwise) minus that of matched CpGs of the same island status and young level, in SD of the drift rate over all CpGs; below zero = the set drifts less than comparable CpGs (Box 1).
 
 ### Essential promoters lose methylation faster and rest lower
 

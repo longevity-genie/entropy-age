@@ -299,61 +299,60 @@ MARKED = {"Human": "*", "Naked mole rat": "D", "Mouse": "s"}
 
 
 def _figure(ctx: Context, gaps: pl.DataFrame, fits: pl.DataFrame) -> Path:
+    """(a) the housekeeping gap per species within each tissue, (b) all groups, (c) the lifespan coefficients."""
     fig, axes = plots.panels(3, ncols=3, size=4.2)
-    for i, metric in enumerate(("kl_slope", "dispersion_slope")):
-        ax = axes[i]
-        sel = gaps.filter((pl.col("metric") == metric) & (pl.col("group") == "housekeeping"))
-        tissues = sel.group_by("tissue").len().sort("len", descending=True)["tissue"].to_list()[:6]
-        for j, t in enumerate(tissues):
-            sub = sel.filter(pl.col("tissue") == t)
-            ax.scatter(
-                np.log10(sub["max_lifespan"]),
-                sub["gap_sd"],
-                s=14,
-                color=plots.PALETTE[j % len(plots.PALETTE)],
-                label=t,
-                alpha=0.8,
-            )
-        other = sel.filter(~pl.col("tissue").is_in(tissues))
-        ax.scatter(
-            np.log10(other["max_lifespan"]), other["gap_sd"], s=8, color=plots.MUTED, label="other tissues", alpha=0.5
-        )
-        for name, marker in MARKED.items():
-            hit = sel.filter(pl.col("species").str.to_lowercase() == name.lower())
-            ax.scatter(
-                np.log10(hit["max_lifespan"]),
-                hit["gap_sd"],
-                s=40,
-                marker=marker,
-                facecolors="none",
-                edgecolors="black",
-                linewidths=0.8,
-                label=name,
-            )
-        ax.axhline(0, color=plots.MUTED, lw=0.8)
-        ax.set(
-            xlabel="Maximum lifespan (years, log10)",
-            ylabel="Housekeeping minus matched CpGs (SD)",
-            title=f"{METRIC_NAMES[metric].capitalize()} slope",
-        )
-        ax.legend(fontsize=5, loc="lower left", ncol=2)
-        plots.label_panel(ax, "ab"[i])
-    ax = axes[2]
-    sel = fits.filter((pl.col("term") == "log max lifespan") & (pl.col("outcome") == "gap_sd"))
-    labels = []
-    for k, r in enumerate(sel.iter_rows(named=True)):
-        ax.errorbar(r["coef"], k, xerr=1.96 * r["se"], fmt="o", color=plots.PALETTE[SETS.index(r["group"])])
-        labels.append(f"{SET_LABELS[r['group']]} · {METRIC_NAMES[r['metric']]}")
-    ax.axvline(0, color=plots.MUTED, lw=0.8)
-    ax.set_yticks(range(len(labels)), labels, fontsize=7)
-    ax.invert_yaxis()
-    ax.set(
-        xlabel="Gap change per ln(max lifespan) (SD), 95 % CI",
-        title="Gap against lifespan",
+    sel = gaps.filter((pl.col("metric") == "kl_slope") & (pl.col("group") == "housekeeping"))
+    counts = sel.group_by("tissue").len()
+    major = counts.filter(pl.col("len") >= 4)["tissue"].to_list()
+    sel = sel.with_columns(
+        panel_tissue=pl.when(pl.col("tissue").is_in(major)).then(pl.col("tissue")).otherwise(pl.lit("other tissues"))
     )
+    order = (
+        sel.group_by("panel_tissue")
+        .agg(pl.col("gap_sd").median().alias("median"), pl.len().alias("n"), (pl.col("gap_sd") < 0).mean().alias("neg"))
+        .sort("median")
+    )
+    ax = axes[0]
+    rng = np.random.default_rng(0)
+    for k, r in enumerate(order.iter_rows(named=True)):
+        v = sel.filter(pl.col("panel_tissue") == r["panel_tissue"])["gap_sd"].to_numpy()
+        ax.scatter(v, k + rng.uniform(-0.18, 0.18, v.size), s=10, color=plots.PALETTE[0], alpha=0.7)
+        ax.plot([r["median"]] * 2, [k - 0.3, k + 0.3], color="black", lw=1.6)
+    ax.axvline(0, color=plots.MUTED, lw=0.8)
+    ax.set_yticks(
+        range(order.height),
+        [f"{t}  (n {n}, {100 * s:.0f} % < 0)" for t, n, s in order.select("panel_tissue", "n", "neg").iter_rows()],
+        fontsize=7,
+    )
+    ax.set(xlabel="Housekeeping gap (SD); each dot one species", title="Within each tissue")
+    plots.label_panel(ax, "a")
+
+    ax = axes[1]
+    v = sel["gap_sd"].to_numpy()
+    ax.hist(v, bins=30, color=plots.PALETTE[0], alpha=0.8)
+    ax.axvline(0, color="black", lw=1)
+    ax.set(
+        xlabel="Housekeeping gap (SD)",
+        ylabel="Species-tissue groups",
+        title=f"All {v.size} groups: {100 * (v < 0).mean():.0f} % below zero",
+    )
+    plots.label_panel(ax, "b")
+
+    ax = axes[2]
+    fsel = fits.filter(
+        (pl.col("term") == "log max lifespan") & (pl.col("outcome") == "gap_sd") & (pl.col("metric") == "kl_slope")
+    )
+    labels = []
+    for k, r in enumerate(fsel.iter_rows(named=True)):
+        ax.errorbar(r["coef"], k, xerr=1.96 * r["se"], fmt="o", color=plots.PALETTE[SETS.index(r["group"])])
+        labels.append(SET_LABELS[r["group"]])
+    ax.axvline(0, color=plots.MUTED, lw=0.8)
+    ax.set_yticks(range(len(labels)), labels, fontsize=8)
+    ax.invert_yaxis()
+    ax.set(xlabel="Gap change per ln(max lifespan) (SD), 95 % CI", title="Longer-lived species")
     plots.label_panel(ax, "c")
     fig.suptitle(
-        "Shielding across mammals (GSE223748, mammalian array)", x=0.02, ha="left", fontsize=11, fontweight="bold"
+        "The housekeeping gap across 65 mammals (mammalian array)", x=0.02, ha="left", fontsize=11, fontweight="bold"
     )
     fig.tight_layout()
     return plots.save(fig, ctx.figure_path("species_shield"))
