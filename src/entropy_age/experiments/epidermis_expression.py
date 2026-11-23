@@ -31,7 +31,7 @@ from entropy_age.data import reprocessed
 from entropy_age.data.annotation import AnnotationLayout
 from entropy_age.data.chromatin import ChromatinLayout, cpg_states, read_segmentation
 from entropy_age.experiments.brain_replication import complete_matrix
-from entropy_age.experiments.chromatin_match import N_RESAMPLES, matched_gaps
+from entropy_age.experiments.chromatin_match import N_RESAMPLES, matched_gaps, sample_resampled_gaps
 from entropy_age.experiments.common import Context, chip_terms, dummies, write_table
 from entropy_age.experiments.mesa_expression import (
     BINS,
@@ -52,6 +52,7 @@ RNA = "E-MTAB-8995"
 TPM = "SIT_gene_TPMs.tsv"
 KERATINOCYTES = "E057"
 NO_STATE = "none"
+DONOR_BOOT = {"paper": 200, "quick": 10}
 
 
 def read_women(sdrf: Path) -> pl.DataFrame:
@@ -166,6 +167,11 @@ def one_arm(ctx: Context, arm: str, accession: str, features, probes, membership
         gaps += [{"metric": metric, **r} for r in matched_gaps(values, sets, variants, N_RESAMPLES[scale], ctx.seed)]
         grad += [{"metric": metric, **r} for r in gradient(values, base, bins, gene, ~in_any)]
     tables["matched_gaps"], tables["gradient"] = gaps, grad
+    # donor resampling (protocol P1): gaps and the share each matching removes
+    prepared = Prepared(f"epidermis ({arm})", x, ages, cov, feats, np.array(ids), cov)
+    tables["donor_intervals"] = sample_resampled_gaps(
+        prepared, np.zeros(len(ids)), sets, variants, DONOR_BOOT[scale], ctx.rng(144_000)
+    )
     tables["set_expression"] = [
         {"group": g, "bin": b, "cpgs": int(((bins == b) & s).sum()), "share": float(((bins == b) & s).sum() / s.sum())}
         for g, (s, _) in {**sets, "outside the sets": (~in_any, [])}.items()

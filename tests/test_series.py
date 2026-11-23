@@ -104,3 +104,28 @@ def test_age_identifiable_uses_rank():
     ages_mixed = ages + np.tile(np.arange(10.0), 4)
     assert age_identifiable(ages_mixed, cov)
     assert age_identifiable(ages_mixed, np.column_stack([cov, cov]))  # duplicated columns change nothing
+
+
+def test_sample_resampled_gaps_gives_paired_share():
+    """Donor resampling returns a gap interval per matching and a share interval paired against island x level."""
+    import numpy as np
+
+    from entropy_age.experiments.chromatin_match import sample_resampled_gaps
+    from entropy_age.experiments.tissue_contrast import Prepared
+
+    rng = np.random.default_rng(5)
+    donors, cpgs = 60, 300
+    ages = rng.uniform(20, 80, donors)
+    in_set = np.arange(cpgs) < 60
+    drift = np.where(in_set, 0.0005, 0.0015)
+    x = np.clip(0.2 + rng.normal(0, 1, (donors, cpgs)) * (0.02 + drift * (ages[:, None] - 20)), 0.01, 0.99)
+    feats = [f"c{i}" for i in range(cpgs)]
+    cov = np.empty((donors, 0))
+    prepared = Prepared("t", x, ages, cov, feats, np.arange(donors).astype(str), cov)
+    strata = np.repeat("a", cpgs)
+    variants = {"island x level": strata, "+ other": np.where(np.arange(cpgs) % 2 == 0, "b", "c")}
+    rows = sample_resampled_gaps(prepared, np.zeros(donors), {"set": (in_set, None)}, variants, 20, rng)
+    by = {r["matching"]: r for r in rows}
+    assert set(by) == {"island x level", "+ other"}
+    assert by["island x level"]["donor_ci_high"] < 0  # the set drifts less
+    assert by["island x level"]["resamples"] == 20

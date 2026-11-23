@@ -29,7 +29,7 @@ from entropy_age.data.annotation import AnnotationLayout
 from entropy_age.data.cohorts import _characteristics
 from entropy_age.data.cohorts import layout as cohort_layout
 from entropy_age.experiments.brain_replication import complete_matrix
-from entropy_age.experiments.chromatin_match import N_RESAMPLES, matched_gaps
+from entropy_age.experiments.chromatin_match import N_RESAMPLES, matched_gaps, sample_resampled_gaps
 from entropy_age.experiments.common import Context, chip_terms, dummies, write_table
 from entropy_age.experiments.mesa_expression import BINS, METRICS, NO_PROBE, cpg_expression, expression_bins, gradient
 from entropy_age.experiments.per_person import _sets
@@ -39,6 +39,7 @@ from entropy_age.stochasticity import baseline_strata
 METHYLATION, EXPRESSION = "GSE179847", "GSE179848"
 TPM = "GSE179848_txi_gene_abundance.csv.gz"
 MIN_PER_LINE = 5
+DONOR_BOOT = {"paper": 200, "quick": 10}
 
 
 def control_cultures(samples: pl.DataFrame) -> pl.DataFrame:
@@ -140,6 +141,10 @@ def run(ctx: Context) -> list[Path]:
         gaps += [{"metric": metric, **r} for r in matched_gaps(values, sets, variants, N_RESAMPLES[scale], ctx.seed)]
         grad += [{"metric": metric, **r} for r in gradient(values, base, bins, gene, ~in_any)]
     write_table(pl.DataFrame(gaps), out / "matched_gaps")
+    # culture resampling within line (protocol P1): gaps and the share the expression matching removes
+    prepared = Prepared("fibroblasts (Sturm)", x, doublings, lines, feats, donors, lines)
+    boot = sample_resampled_gaps(prepared, donors, sets, variants, DONOR_BOOT[scale], ctx.rng(143_000))
+    write_table(pl.DataFrame(boot), out / "donor_intervals")
     write_table(pl.DataFrame(grad), out / "gradient")
     where = [
         {"group": g, "bin": b, "cpgs": int(((bins == b) & s).sum()), "share": float(((bins == b) & s).sum() / s.sum())}

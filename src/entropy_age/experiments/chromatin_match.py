@@ -100,7 +100,9 @@ KIND_LABELS = {
 
 
 #: one distinct colour per matching (the shared palette repeats an orange for two of them)
-KIND_COLOURS = dict(zip(KINDS, ("#1f77b4", "#d62728", "#2ca02c", "#9467bd", "#8c564b", "#e377c2", "#ff7f0e"), strict=True))
+KIND_COLOURS = dict(
+    zip(KINDS, ("#1f77b4", "#d62728", "#2ca02c", "#9467bd", "#8c564b", "#e377c2", "#ff7f0e"), strict=True)
+)
 
 
 def kind_of(matching: str) -> str:
@@ -169,6 +171,48 @@ def matched_gaps(
                 }
             )
     return rows
+
+
+def sample_resampled_gaps(
+    prepared, units: np.ndarray, sets: dict, variants: dict[str, np.ndarray], n: int, rng, metric: str = "kl_slope"
+) -> list[dict]:
+    """Intervals that carry the sampling of donors (or of cultures within a line, or animals): per resample the
+    samples are drawn with replacement within each value of ``units`` (one value for everyone: plain donor
+    resampling), the per-CpG slopes refitted, and every matching's gap taken with the strata and the scaling SD of
+    the full sample. Per set and matching: the gap's 2.5th and 97.5th percentiles, and those of the share of the
+    "island x level" gap that the matching removes (paired within each resample). Resamples whose fit fails are
+    left out; an interval needs at least half of ``n``."""
+    index = [np.flatnonzero(units == u) for u in np.unique(units)]
+    full_sd = float(_lifespan_metrics(prepared)[metric].to_numpy().std())
+    draws: dict[tuple[str, str], list[float]] = {}
+    for _ in range(n):
+        rows = np.concatenate([rng.choice(i, i.size, replace=True) for i in index])
+        values = _lifespan_metrics(prepared, rows)[metric].to_numpy()
+        if not np.isfinite(values).all():
+            continue
+        for group, (in_set, _) in sets.items():
+            for variant, strata in variants.items():
+                gap = float(matched_scores(values[None, :], in_set, strata)[0][0]) / full_sd
+                draws.setdefault((group, variant), []).append(gap)
+    rows_out = []
+    for (group, variant), v in draws.items():
+        base = np.array(draws[(group, "island x level")])
+        arr = np.array(v)
+        ok = len(v) >= n / 2
+        share = 1 - arr / base
+        rows_out.append(
+            {
+                "group": group,
+                "matching": variant,
+                "metric": metric,
+                "resamples": len(v),
+                "donor_ci_low": float(np.quantile(arr, 0.025)) if ok else float("nan"),
+                "donor_ci_high": float(np.quantile(arr, 0.975)) if ok else float("nan"),
+                "share_donor_ci_low": float(np.quantile(share, 0.025)) if ok else float("nan"),
+                "share_donor_ci_high": float(np.quantile(share, 0.975)) if ok else float("nan"),
+            }
+        )
+    return rows_out
 
 
 def state_composition(states: np.ndarray, sets: dict) -> list[dict]:

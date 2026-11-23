@@ -33,7 +33,7 @@ import polars as pl
 from scipy import stats
 
 from entropy_age.data.annotation import AnnotationLayout
-from entropy_age.experiments.chromatin_match import N_RESAMPLES, matched_gaps
+from entropy_age.experiments.chromatin_match import N_RESAMPLES, matched_gaps, sample_resampled_gaps
 from entropy_age.experiments.chromatin_match import _states as chromatin_states
 from entropy_age.experiments.common import Context, write_table
 from entropy_age.experiments.per_person import _sets
@@ -52,6 +52,7 @@ METRICS = ("kl_slope", "entropy_slope", "dispersion_slope")
 NO_PROBE = "none"
 BINS = 10
 PERMUTATIONS = {"paper": 200, "quick": 20}
+DONOR_BOOT = {"paper": 200, "quick": 10}
 
 
 def read_expression(matrix: Path) -> tuple[list[str], list[str], np.ndarray]:
@@ -185,7 +186,13 @@ def run(ctx: Context) -> list[Path]:
     out = ctx.out_dir("mesa_expression")
     features, probes, membership = _features(paths, ctx.rng(140_000))
     links = pl.read_parquet(AnnotationLayout(paths).links_450k)
-    tables: dict[str, list[dict]] = {"matched_gaps": [], "gradient": [], "set_expression": [], "coupling": []}
+    tables: dict[str, list[dict]] = {
+        "matched_gaps": [],
+        "gradient": [],
+        "set_expression": [],
+        "coupling": [],
+        "donor_intervals": [],
+    }
     for cell, (methylation, expression) in SERIES.items():
         needed = [normalized_path(paths, methylation), matrix_path(paths, expression), platform]
         if not all(p.exists() for p in needed):
@@ -257,4 +264,13 @@ def one_cell(ctx, cell, methylation, expression, platform, features, probes, mem
     design = np.column_stack([np.ones(len(ids)), ages, cov[:, np.ptp(cov, axis=0) > 1e-12]])
     row = coupling(meth, expr[[row_of[g] for g in used]], design, PERMUTATIONS[scale], ctx.rng(141_000))
     control = [{**row, "people": len(ids), "cpgs": len(feats)}]
-    return [("matched_gaps", gaps), ("gradient", grad), ("set_expression", where), ("coupling", control)]
+    # donor resampling (protocol P1): the gaps and the share each matching removes, carrying the sampling of people
+    prepared = Prepared(cell, x, ages, cov, feats, np.array(ids), cov)
+    donors = sample_resampled_gaps(prepared, np.zeros(len(ids)), sets, variants, DONOR_BOOT[scale], ctx.rng(142_000))
+    return [
+        ("matched_gaps", gaps),
+        ("gradient", grad),
+        ("set_expression", where),
+        ("coupling", control),
+        ("donor_intervals", donors),
+    ]
