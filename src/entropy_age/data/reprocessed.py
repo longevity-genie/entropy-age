@@ -78,7 +78,9 @@ def read_betas(paths: ProjectPaths, gse: str, *, passed_only: bool = True, colla
     chunks = sorted(series_dir(paths, gse).glob(f"{gse}.betas.chunk*.parquet"))
     frame = pl.read_parquet(chunks[0])
     for c in chunks[1:]:
-        frame = frame.join(pl.read_parquet(c), on="probe", how="full", coalesce=True)
+        more = pl.read_parquet(c)
+        more = more.select("probe", *(n for n in more.columns[1:] if n not in frame.columns))  # one array per sample
+        frame = frame.join(more, on="probe", how="full", coalesce=True)
     if passed_only:
         keep = set(read_qc(paths, gse).filter(pl.col("passed"))["sample"].to_list())
         frame = frame.select("probe", *(c for c in frame.columns[1:] if c in keep))

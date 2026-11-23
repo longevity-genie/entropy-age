@@ -89,6 +89,11 @@ for (i in seq_along(groups)) {
   betas <- do.call(cbind, lapply(res, `[[`, "beta"))
   meta <- do.call(rbind, lapply(res, `[[`, "qc"))
   colnames(betas) <- meta$sample
+  # one array per sample: a sample arrayed more than once under one GSM (GSE79100: three arrays per kidney) keeps its
+  # first array here; the QC table still lists every array
+  repeated <- duplicated(colnames(betas))
+  if (any(repeated)) message(sprintf("chunk %d: %d repeated arrays of a sample left out (first kept)", i, sum(repeated)))
+  betas <- betas[, !repeated, drop = FALSE]
   frame <- data.frame(probe = rownames(betas), betas, check.names = FALSE)
   write_parquet(frame, paste0(betas_file, ".part"))  # renamed only when whole, so a stop leaves no half file
   file.rename(paste0(betas_file, ".part"), betas_file)
