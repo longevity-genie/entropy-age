@@ -261,6 +261,18 @@ def _adjustments(ctx, matrix: Path, people: pl.DataFrame, x_all: np.ndarray, wan
     return np.column_stack([mean, fractions[:, :-1]])
 
 
+#: plain names for the per-person measures (shield share F, look-alike drift B, set drift S)
+MEASURE_NAMES = {"core_essential": "core-essential", "housekeeping": "housekeeping"}
+
+
+def _measure_label(m: str) -> str:
+    """``F housekeeping`` -> ``housekeeping share F``; clocks keep their names."""
+    head, _, rest = m.partition(" ")
+    if head in ("F", "B", "S") and rest in MEASURE_NAMES:
+        return f"{MEASURE_NAMES[rest]} {head}"
+    return m
+
+
 def _figure(ctx: Context, table: pl.DataFrame) -> Path:
     outcomes = table["outcome"].unique(maintain_order=True).to_list()
     fig, axes = plots.panels(len(outcomes), ncols=len(outcomes), size=4.0)
@@ -283,20 +295,27 @@ def _figure(ctx: Context, table: pl.DataFrame) -> Path:
                         fmt="os"[j],
                         ms=3.5,
                         color=plots.PALETTE[j],
+                        label=("all cases", "diagnosed > 2 y later, adjusted")[j] if (i, y) == (0, 0) else None,
                     )
         ax.axvline(1.0, color=plots.MUTED, lw=0.8)
         ax.set_xscale("log")
-        ax.set_yticks(range(len(measures)), measures if i == 0 else [""] * len(measures), fontsize=7.5)
+        ax.xaxis.set_major_locator(plots.plt.FixedLocator([0.5, 0.7, 1.0, 1.4, 2.0]))
+        ax.xaxis.set_minor_locator(plots.plt.NullLocator())
+        ax.xaxis.set_major_formatter(plots.plt.FuncFormatter(lambda v, _: f"{v:g}"))
+        labels = [_measure_label(m) for m in measures]
+        ax.set_yticks(range(len(measures)), labels if i == 0 else [""] * len(measures), fontsize=7.5)
         ax.invert_yaxis()
         n = table.filter(pl.col("outcome") == outcome)["cases"].max()
         ax.set(xlabel="odds ratio per SD (95 % CI)", title=f"{outcome} ({n} cases)")
         plots.label_panel(ax, "abc"[i])
     fig.suptitle(
-        "EPIC-Italy: circles all cases; squares diagnosed over 2 years later, mean beta, cell mix and chip held",
+        "Incident cancer in EPIC-Italy: odds ratio per SD of each measure",
         x=0.02,
-        y=1.04,
         ha="left",
         fontsize=11,
         fontweight="bold",
     )
+    handles, names = axes[0].get_legend_handles_labels()
+    fig.tight_layout(rect=(0, 0.07, 1, 1))
+    fig.legend(handles, names, loc="lower center", ncols=2, fontsize=8, frameon=False)
     return plots.save(fig, ctx.figure_path("incident_cancer"))

@@ -562,7 +562,7 @@ refute the first (Supplementary Table S4).
 
 **Figure 9. Incident cancer in EPIC-Italy.** Odds ratio per SD of the shield share F, look-alike drift B and the
 signed shift S (core-essential and housekeeping sets) and of published clocks, for any cancer (421 cases), breast
-(235) and colorectal cancer (166). Circles: all cases, age and sex held. Squares: cases diagnosed over 2 years after
+(235) and colorectal cancer (166). Blue circles: all cases, age and sex held. Orange squares: cases diagnosed over 2 years after
 the draw (331, 169 and 146 cases), with mean methylation, 11 blood-cell fractions and chip held. 95 % intervals; log scale.
 
 ## Discussion

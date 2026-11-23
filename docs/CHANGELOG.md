@@ -4,6 +4,7 @@ Newest first.
 
 ## Unreleased
 
+- 2026-11-24: Figure 9 relabelled: plain odds-ratio ticks (the log axis printed overlapping 8×10⁻¹ labels), readable measure names, a legend in place of the long title; caption names the colours.
 - 2026-11-24: Figure 1 relabelled: plain measure names (relative entropy, not "kl slope"), statement title, panel titles without "Prediction 2", legends off the data; caption rewritten.
 - 2026-11-24: R150 complete: GTEx tissues rerun after the relative-entropy fix (whole blood −0.14 → −0.13, colon −0.19 → −0.18, lung and kidney −0.09 → −0.08); all 15 analyses computed before the fix are now rerun and their numbers rewritten in paper, supplement and artifact.
 - 2026-11-24: R149 species rerun after the relative-entropy fix: 88 % of 139 groups negative (mean −0.12; was 89 %, −0.13), lifespan coefficient +0.031 (p 0.04); Figure 3 redrawn on relative entropy; R151 deposited SATSA gene-level p 0.68. Paper, supplement and artifact rewritten.
