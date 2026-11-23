@@ -70,8 +70,11 @@ def arm_effects(
     design = design[:, np.concatenate([np.ones(len(present), bool), np.ptp(nuisance, axis=0) > 1e-12])]
     design = np.column_stack([design, np.ones(arm.size)])
     rank = np.linalg.matrix_rank(design)
-    if rank < design.shape[1]:  # a treatment fixed by donor and chip is unidentifiable, not to be adjusted
-        raise ValueError(f"senescence_donors: design of {design.shape[1]} columns has rank {rank}")
+    nuisance_rank = np.linalg.matrix_rank(design[:, len(present) :])
+    # every treatment must be estimable beyond donor and chip; collinearity among the nuisance terms alone (a chip
+    # holding one donor's arrays only) leaves the treatment coefficients unique and is allowed
+    if rank - nuisance_rank < len(present):
+        raise ValueError(f"senescence_donors: treatments not separable from donor and chip (rank {rank})")
     pinv = np.linalg.pinv(design)
     coef = pinv @ x
     resid = x - design @ coef

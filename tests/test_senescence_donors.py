@@ -35,3 +35,13 @@ def test_squared_share_is_minus_half_when_the_set_moves_by_a_factor_of_root_two_
     b = np.array([1.0, 1.0, np.sqrt(2.0), np.sqrt(2.0)])
     out = squared_share(b, np.zeros(4), np.ones(4), in_set, strata)
     assert abs(out["F2"] + 0.5) < 1e-9 and abs(out["B2"] - 2.0) < 1e-9
+
+
+def test_arm_effects_refuses_a_treatment_fixed_by_chip():
+    import pytest
+
+    arm = np.array(["Young", RS, "Young", RS])
+    donor = np.array(["a", "a", "b", "b"])
+    chip = np.array(["c1", "c2", "c1", "c2"])  # treatment equals chip
+    with pytest.raises(ValueError, match="not separable"):
+        arm_effects(np.random.default_rng(0).random((4, 3)), arm, donor, chip)
