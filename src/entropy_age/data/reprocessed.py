@@ -59,8 +59,9 @@ def read_qc(paths: ProjectPaths, gse: str) -> pl.DataFrame:
         qc = qc.join(species_detection(paths, gse), on="sample", how="left")
         passed = pl.col("frac_dt_species") >= MIN_DETECTED
     else:
-        detected = "frac_dt" if "frac_dt" in qc.columns else None
-        passed = pl.col(detected) >= MIN_DETECTED if detected else pl.lit(True)
+        if "frac_dt" not in qc.columns:  # never let every array pass for want of a detection column
+            raise ValueError(f"{gse}: the QC file has no detection column (frac_dt); the 90 % cut cannot be applied")
+        passed = pl.col("frac_dt") >= MIN_DETECTED
     return qc.with_columns(passed=passed, chip=pl.col("chip").cast(pl.String))
 
 

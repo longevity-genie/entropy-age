@@ -57,6 +57,9 @@ ARMS = {
 def arm_effects(x: np.ndarray, arm: np.ndarray, donor: np.ndarray, chip: np.ndarray) -> dict[str, tuple]:
     """Per treatment, (coefficient, standard error) per CpG of methylation on treatment (young as reference) with
     donor and chip intercepts held. Treatments absent from ``arm`` are left out."""
+    unknown = set(arm.tolist()) - set(ARMS) - {YOUNG}
+    if unknown:  # a label outside the known arms would silently join the young reference
+        raise ValueError(f"senescence_donors: unknown treatment labels {sorted(unknown)}")
     present = [a for a in ARMS if (arm == a).any()]
     indicators = np.column_stack([(arm == a).astype(float) for a in present])
     nuisance = np.column_stack([np.ones(arm.size), dummies(donor), dummies(chip)])
@@ -64,6 +67,8 @@ def arm_effects(x: np.ndarray, arm: np.ndarray, donor: np.ndarray, chip: np.ndar
     design = design[:, np.concatenate([np.ones(len(present), bool), np.ptp(nuisance, axis=0) > 1e-12])]
     design = np.column_stack([design, np.ones(arm.size)])
     rank = np.linalg.matrix_rank(design)
+    if rank < design.shape[1]:  # a treatment fixed by donor and chip is unidentifiable, not to be adjusted
+        raise ValueError(f"senescence_donors: design of {design.shape[1]} columns has rank {rank}")
     pinv = np.linalg.pinv(design)
     coef = pinv @ x
     resid = x - design @ coef
