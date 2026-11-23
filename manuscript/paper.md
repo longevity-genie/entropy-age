@@ -139,7 +139,7 @@ Holding 11 of 12 reference-based blood-cell fractions (EpiDISH; Houseman project
 slope left the blood housekeeping gap unchanged on relative entropy (−0.152 → −0.152 SD) and on the absolute age
 slope (−0.159 → −0.177). Only the dispersion gap shrank, by a third (−0.29 → −0.20), as expected when people differ
 in cell mix (Supplementary Fig. S5). In sorted CD14+ monocytes of 1,202 people (MESA; Reynolds et al. 2014), the housekeeping gap was −0.10 SD; in CD4+ T cells of
-214 people it was small (−0.015 SD, p 0.005; Supplementary Fig. S10). The shield is therefore present inside a single cell type, but its
+214 people it was small (−0.015 SD, −0.024 to −0.006 over genes; no donor resampling interval computed; Supplementary Fig. S10). The shield is therefore present inside a single cell type, but its
 size varies between cell types. Whether its size follows promoter activity is tested below with expression from the same samples.
 
 Adding probe design to the matching changed no sign, masking unreliable probes moved no essential-set gap by more
@@ -153,7 +153,7 @@ deposited data.
 
 In whole-genome bisulfite reads (Loyfer et al. 2023), the share of discordant reads rose more slowly with age at
 housekeeping and core-essential promoters than at look-alikes, in white blood cells of 23 donors (−0.059, −0.034 SD)
-and within 27 purified cell-type groups (−0.060, −0.029; all p ≤ 0.002; Supplementary Fig. S11). The shield is therefore not an averaging artefact of
+and within 27 purified cell-type groups (−0.060, −0.029; no resampling interval computed; Supplementary Fig. S11). The shield is therefore not an averaging artefact of
 arrays.
 
 The p-values in the result tables are mostly set-label tests computed with the samples fixed, which do not test an
@@ -231,8 +231,7 @@ negative in 73 % of groups (−0.10 SD).
 log10 maximum lifespan, on the relative-entropy and dispersion slopes (139 groups; Mammalian Methylation Consortium
 array); human, naked mole-rat and mouse groups are marked. Below zero, housekeeping CpGs drift less than matched CpGs.
 (c) Change of the gap per natural-log unit of maximum lifespan, weight and tissue held (95 % interval). The
-all-CpG relative-entropy coefficient (+0.031, or +0.071 per tenfold lifespan; p 0.04, 0.05 with groups clustered by
-species) vanishes off the 0 % floor (+0.004, p 0.83; Supplementary Fig. S7).
+all-CpG relative-entropy coefficient (+0.031, or +0.071 per tenfold lifespan; p 0.04) vanishes off the 0 % floor (+0.004, p 0.83; Supplementary Fig. S7).
 
 ### Essential promoters lose methylation faster and rest lower
 
@@ -247,7 +246,7 @@ to +0.0060). Non-essential island promoters showed the opposite: faster gain (bl
 
 Per CpG, matched on island status and young level, the fitted resting level was lower at essential promoters (blood
 −0.24 SD core-essential, −0.33 housekeeping; cortex −0.08, −0.15) and closer to where the site started (blood −0.28,
-−0.42; cortex −0.03, −0.11; p ≤ 0.02). Per CpG, the loss rate was higher at essential promoters in blood (+0.07 core-essential, +0.11 housekeeping SD) but not in cortex (−0.02 and −0.02; p 0.24 and 0.02), where only the pooled fit shows faster loss. The fits identified a resting level for
+−0.42; cortex −0.03, −0.11; 95 % donor intervals blood −0.31 to −0.12 and −0.47 to −0.17, cortex −0.11 to −0.02 and −0.16 to −0.07). Per CpG, the loss rate was higher at essential promoters in blood (+0.07 core-essential, +0.11 housekeeping SD; +0.02 to +0.10 and +0.05 to +0.15) but not in cortex (−0.02 and −0.02; 95 % donor intervals −0.05 to +0.05 and −0.03 to +0.04), where only the pooled fit shows faster loss. The fits identified a resting level for
 76-84 % of CpGs.
 
 To ask whether this is only a property of active chromatin, we refitted the rates on CpGs in the active-TSS state
@@ -369,7 +368,7 @@ change cannot be assigned to neurons: glia, some of which divide, and a shift in
 
 Tet1 knockout and Tet1 catalytic-dead cortex (Foong et al. 2024; eight per genotype) did the opposite. Both drifted
 more overall (look-alike drift +0.03 to +0.04), but essential promoters kept or strengthened their shield (F −0.11 to
-−0.17, p ≤ 0.014) and lost methylation against look-alikes (S −0.021 and −0.018, p < 10⁻⁷). The remover at essential
+−0.17, p ≤ 3·10⁻⁵) and lost methylation against look-alikes (S −0.021 and −0.018, p < 10⁻⁷). The remover at essential
 promoters in brain tissue is therefore consistent with Tet3, whose full-length CXXC isoform binds unmethylated CpGs and sits at transcription start sites in neuronal cells (Jin
 et al. 2016); the Tet1 study, on another array and with homozygous mutants, does not exclude Tet1. These are single studies on different arrays (Tet3 heterozygous on the mammalian array, Tet1 homozygous on
 the mouse array), each with eight mutants per tissue, and knockouts show a state, not a rate. The result agrees with
@@ -409,7 +408,7 @@ in blood and 22-46 % in cortex.
 
 To test for a remainder beyond chromatin, we regressed each promoter CpG's drift on its gene's DepMap essentiality among broadly
 expressed genes, holding chromatin state, expression in the tissue and expression breadth. On relative entropy no
-remainder was left in blood (−0.007 SD per unit, −0.021 to +0.008, p 0.33); in cortex a small one was (+0.022,
+remainder was left in blood (−0.007 SD per unit, −0.021 to +0.008 over genes; no donor resampling interval computed); in cortex a small one was (+0.022,
 +0.009 to +0.040; Supplementary Fig. S15). Matching on chromatin may be partly circular, because active chromatin and an unmethylated
 promoter can both be outcomes of the same protection, and the reference epigenomes come from other people.
 
@@ -440,13 +439,13 @@ expression arrays of the same samples. Adding the decile of each gene's own expr
 removed 82 % of the monocyte housekeeping gap (−0.099 → −0.017 SD; 75 to 92 %) and all of the core-essential one
 (−0.035 → +0.020, interval including zero). Among the 11,678 genes outside every gene set, drift relative to
 matched CpGs fell step by step with expression, from +0.07 SD in the lowest decile to −0.20 in the highest (rank
-correlation −0.12, p 5·10⁻³⁷). In these cells the shield follows how strongly a promoter is used, whether or not
+correlation −0.12 over genes; no resampling interval computed). In these cells the shield follows how strongly a promoter is used, whether or not
 the gene is essential. CD4+ T cells of 214 of the same people, which have almost no gap on this measure (−0.015 SD), show no
 such gradient (Supplementary Note 3). In fibroblasts grown for up to 79 population doublings (Sturm et al. 2022;
 89 untreated cultures of six healthy lines, arrays rebuilt from raw files, RNA-seq of the same cultures), drift per
 doubling showed the monocyte pattern: the housekeeping gap of −0.102 SD fell to −0.028 with the expression decile
 in the matching (72 % removed), the core-essential gap from −0.055 to −0.006, and outside the gene sets drift
-relative to matched CpGs fell with expression (rank correlation −0.06, p 1·10⁻⁹). With chip intercepts in the
+relative to matched CpGs fell with expression (rank correlation −0.06 over genes; no resampling interval computed). With chip intercepts in the
 slopes the numbers were the same (−0.102 to −0.024; a third of the spread in doublings is left within line and chip).
 In epidermis of healthy women aged 21 to 79 (Holzscheck et al. 2020; 117 arrays rebuilt from raw files, RNA-seq of
 the same samples), analysed as two groups by array type (56 women on 450k; 61 on EPIC three years later, up to 31
@@ -523,7 +522,7 @@ contrasts in which the shield goes with division are those of the section on cel
 (Bertucci-Richter and Parrott 2023; Crofts et al. 2024): the look-alikes' dispersion rate fell as
 about lifespan^−1.15 (weight and tissue held). But a relation of the gap itself to lifespan was not resolved off the 0 % floor (relative
 entropy +0.004 per log-unit, 95 % interval −0.036 to +0.044, p 0.84). A phylogenetic generalised least-squares fit, run on the binary-entropy and dispersion slopes, gave no lifespan relation
-either. The shield's share of drift does not grow with lifespan on relative entropy either (+1.43, p 0.23). This agrees with Crofts et al. (2026),
+either. The shield's share of drift does not grow with lifespan on relative entropy either (+0.59, p 0.29). This agrees with Crofts et al. (2026),
 who explain lifespan scaling of methylation rates by stem-cell dynamics rather than maintenance efficiency.
 
 *Restoration by reprogramming.* Transient OSKM reprogramming of fibroblasts from three donors (Gill et al. 2022;
