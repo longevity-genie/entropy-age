@@ -456,8 +456,8 @@ SATSA (E-MTAB-7309; Wang et al. 2018) drew blood from the same Swedish twins up 
 batch regressed out, and on them the cross-sectional shield almost vanished (|mean change| +0.00 SD). We therefore rebuilt the
 series from its 1,072 raw arrays (444 people, 628 consecutive within-person pairs). Each person's change between two
 draws was split into the change everyone makes and the person's own departure from it (Methods). Housekeeping CpGs
-changed less in direction than look-alikes (−0.14 SD, p 0.001; deposited betas −0.002, p 0.67), sat closer to the
-measurement floor (−0.073) and diverged slightly more slowly (−0.014, p 0.016; Fig. 8). Across people, the rebuilt
+changed less in direction than look-alikes (−0.14 SD, gene-level p < 10⁻¹⁰; deposited betas −0.002, p 0.67), sat closer to the
+measurement floor (−0.073) and diverged slightly more slowly (−0.014, p 0.03; Fig. 8). Across people, the rebuilt
 series showed a cross-sectional shield like other blood cohorts (relative entropy −0.22 SD, dispersion −0.36,
 |mean| −0.11). On the deposited betas, the per-person shield share F fell by 0.14 per decade within a person
 (−0.23 to −0.05), matching the between-person slope (−0.13). On the rebuilt betas it fell by 0.08 (−0.18 to +0.02), against
@@ -755,7 +755,7 @@ resampling the set's genes. Group differences in per-sample scores (consortium i
 noise floor were used, and the gap was regressed on drift and drift × population doublings. Within SATSA, each
 person's change between consecutive draws was split into the cohort-wide directed change and the person's departure
 from it, whose square was regressed on the interval between draws (slope: divergence per year; intercept: measurement
-floor). Within-person slopes of B, F and S carry intervals from 1,000 bootstraps that resample people. The within-person gaps' p-values come from 1,000 permutations of set labels among CpGs, and neither resamples twin pairs together.
+floor). Within-person slopes of B, F and S carry intervals from 1,000 bootstraps that resample people. The within-person gaps' p-values take genes as units, as for the cross-sectional gaps, and neither they nor the bootstraps resample twin pairs together.
 
 ### Gain and loss rates
 
