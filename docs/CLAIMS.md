@@ -13,7 +13,7 @@ a test with little power), **refuted**.
   (island status, starting level, probe design); present per person, not only on average.
 - **We should not see:** the gap vanish or flip once CpGs are matched more finely, or in an independent cohort.
 - **Observed:** negative in human blood, brain and GTEx tissues, most of 11 mouse tissues (on Huang's mouse array not ordered by turnover once
-  chip is held, R92; on the consortium's array ordered by turnover within chips, R118), 89 % of 139 species-tissue
+  chip is held, R92; on the consortium's array ordered by turnover within chips, R118), 88 % of 139 species-tissue
   groups of 65 mammals (R68c; 86 % of 122 with chip intercepts, R118), and inside sorted monocytes (R44, R68b;
   the CD4+ T-cell size was withdrawn in R68); culture's shield vanished on rebuilt arrays (R94);
   molecule by molecule in read-level WGBS (entropy -0.05 to -0.075 SD, R50; cfDNA -0.03 to -0.06, R51; within 27 sorted cell types -0.04 to -0.08, R53); within one person over
@@ -140,7 +140,7 @@ a test with little power), **refuted**.
 - **Alternatives:** conserved array CpGs at essential promoters sit near 0 % (floor); taxonomy covariance is
   coarse.
 - **Separating test:** a dated phylogeny; species with WGBS.
-- **Status:** holds for presence, open for lifespan (2026-11-24). The gap is negative in 89 % of 139 species-tissue groups on relative entropy (73 % off the floor). Off the floor the lifespan coefficient is +0.004 per log unit (−0.036 to +0.044), which does not exclude a change across species as large as the gap itself; the committed species table predates the relative-entropy fix and is to be regenerated.
+- **Status:** holds for presence, open for lifespan (2026-11-24). The gap is negative in 88 % of 139 species-tissue groups on relative entropy (73 % off the floor). Off the floor the lifespan coefficient is +0.004 per log unit (−0.036 to +0.044), which does not exclude a change across species as large as the gap itself; the committed species table predates the relative-entropy fix and is to be regenerated.
 
 ## C7 — Part of age drift is directed, mitotic loss (H3)
 
