@@ -38,3 +38,14 @@ PubMed (2026-11-13); DOIs are given.
 2. Rerun from IDATs any result that is small (under 0.1 in F or 0.1 SD) or that a claim rests on: next SATSA
    (E-MTAB-7309, RM28) and Gill 2022's fibroblasts (GSE165179, RM17).
 3. Report each headline gap with its deposited and reprocessed value where both exist.
+
+## Epigenetic clocks need a lighter path than the drift analyses (colleagues' practice, via Anton, 2026-11-24)
+
+- Raw IDATs, one preprocessing for every series, platforms never pooled, batch effects checked: as for every analysis.
+- Clocks are scored on a separate, light preprocessing of the same IDATs (normalisation and dye-bias correction, no
+  detection masking), so that every clock CpG keeps a measured value. Masking or dropping CpGs forces the clock to
+  impute them, and imputed clock CpGs give inaccurate ages. The drift analyses keep their strict path (detection
+  masking, complete CpGs only), which is right for them and wrong for clocks.
+- Each clock reports, per array, the share of its weight that is measured. On EPIC v2 the clocks are used in their
+  shared-probe form (450K/EPIC v2 compatibility work, bioRxiv 10.1101/2024.10.17.618672), not with imputed CpGs.
+- Clock ages are compared as acceleration within a series, never as absolute ages across platforms.
