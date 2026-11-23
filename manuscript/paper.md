@@ -672,6 +672,37 @@ clonal cultures in which promoter activity is measured in the same cells.
 
 ## Methods
 
+### Analysis practices
+
+The same rules apply to every series; the subsections below give the details.
+
+- **Raw data, one preprocessing.** Every array series with public raw (IDAT) files is rebuilt from them with one
+  pinned SeSAMe recipe; deposited beta values are used only where no raw files are public (GTEx, whose raw arrays are
+  under controlled access, and the older cohorts listed under Preprocessing), and such results are labelled as
+  deposited wherever they appear.
+- **One platform per estimate.** Arrays of different platforms (450k, EPIC, EPIC v2, mouse and mammalian arrays) are
+  never pooled; a study measured on several platforms is analysed as separate series. EPIC v2 replicate probes are
+  averaged per CpG.
+- **Sample and CpG quality.** Arrays detected below 90 % are excluded; one array per donor and group (the first when a
+  donor was arrayed more than once); only CpGs measured in every array of a group are used, so nothing is imputed and
+  the set and its controls share one quality-passing universe.
+- **Batch and chip.** Batch, centre and other technical variables are held where given; every age slope is fitted a
+  second time with chip intercepts, and how far age is confounded with chip is tabulated for every series. A contrast
+  that chip fully determines is reported as unidentifiable.
+- **Matching and scale.** Each gene set is compared with CpGs of the same island status and young-level decile, in SD
+  of the drift measure over all CpGs; results are also given off the measurement floor (CpGs starting between 10 and
+  90 %), on the all-CpG scale.
+- **Uncertainty.** Intervals resample donors (or animals, or cultures), each resample scaled by the full sample's
+  spread; an interval is not given when fewer than half the resamples leave enough degrees of freedom. A second interval
+  resamples genes. P-values treat genes, not CpGs, as independent units.
+- **One analysis for all series.** The age-slope series run through one shared program driven by a description file
+  per dataset (sample fields, covariates, groups), so no series is processed its own way.
+- **Controls and review.** Random gene sets of the same size go through the same matching (placebo sets); code and
+  claims were reviewed by independent agents of two model families before results were relied on.
+- **Epigenetic clocks.** Clocks are scored on a lighter preprocessing of the same raw files, without detection masking,
+  so that no clock CpG is dropped and imputed; the share of each clock's weight that is measured is reported, EPIC v2
+  uses shared-probe clocks, and clock ages are compared as acceleration within a series, never across platforms.
+
 ### Datasets
 
 All data are public; Supplementary Table S1 lists every dataset with its accession, platform, whether deposited
@@ -750,7 +781,7 @@ G = Σ_k n_k (v̄(s_k) − v̄(c_k)) / (Σ_k n_k · SD(v)), SD(v) taken over all
 CpG's value minus its stratum's control mean is summed per gene, and the gap is tested against its cluster-robust
 standard error over genes (t with genes − 1 degrees of freedom; calibrated in simulation with correlated CpGs). They
 measure stability over genes with the samples fixed; sampling of donors is carried by the donor intervals. Intervals came from 200 donor bootstraps, each resample divided by the full sample's
-spread (an earlier version divided by each resample's own spread and drew intervals toward zero). For the series added from the repository search (orbitofrontal cortex, sorted nuclei per fraction, the cultured series and the expression-matched analyses), intervals instead resample the set's genes 200 times with the samples held fixed; they show stability over genes, not the sampling of donors or cultures. For the three per-doubling series without expression data, a second interval resamples cultures within each line (200 resamples). Donors are resampled, both arrays of a donor together, in the glia-neuron and tissue-pair contrasts (400 resamples), and mice in colon and hippocampus (200 per tissue, independently). For blood minus
+spread (an earlier version divided by each resample's own spread and drew intervals toward zero). Series run through the shared program carry both a donor (or animal) interval and a gene-resampling interval; the expression-matched analyses resample the set's genes 200 times with the samples held fixed, which shows stability over genes, not the sampling of donors. For the three per-doubling series without expression data, a second interval resamples cultures within each line (200 resamples). Donors are resampled, both arrays of a donor together, in the glia-neuron and tissue-pair contrasts (400 resamples), and mice in colon and hippocampus (200 per tissue, independently). For blood minus
 brain, the two lifespan cohorts were resampled independently and Lunnon's tissues with the same resampled donors.
 Probe design (type I/II), reference chromatin state, or cell-type accessibility quartiles were added to the strata
 where stated. Effects across tissues and species were compared only on size-matched resamples where group sizes

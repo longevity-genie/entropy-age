@@ -4,6 +4,7 @@ Newest first.
 
 ## Unreleased
 
+- 2026-11-24: Methods open with an "Analysis practices" subsection (raw IDATs, one recipe, one platform per estimate, one array per donor, complete CpGs, chip second fit, resampling rules, gene-level p, shared program, placebo sets, independent review, light clock path); outdated interval sentence corrected (Anton).
 - 2026-11-24: rebuild keeps one array per sample when a GSM holds several (GSE79100: three per kidney); the reader skips a sample already read from an earlier chunk.
 - 2026-11-24: R154 two healthy breast cohorts from raw arrays: little gap (−0.04 and +0.00), in line with GTEx breast.
 - 2026-11-24: R152 mouse hearts and field/lab livers show no resolved gap (liver −0.03, −0.09 to +0.03); R153 the lung reversal shrinks without TCGA tumour-changed CpGs (+0.14 → +0.11 → +0.08) but does not vanish. Paper, run log and S5 updated.
