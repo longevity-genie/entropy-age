@@ -117,11 +117,12 @@ so the contrast stays confounded with batch.
 ![Figure 1](../docs/figures/tissue_contrast.png)
 
 **Figure 1. Essential and housekeeping promoters drift less than matched CpGs in human blood and cortex.** (a) Set
-minus matched CpGs (same island status and young-level decile), in SD of four drift measures (entropy slope,
-dispersion slope, absolute age slope, relative-entropy slope "kl slope"), Hannum blood (656 donors) and Jaffe cortex
-(213 adult controls); 95 % donor-bootstrap intervals. (b) Blood minus cortex for each set and measure. (c) Same
-donors (Lunnon): between-person dispersion gap in blood and four brain regions. (d) Blood minus each brain region.
-Sizes in the text are the relative-entropy rows ("kl slope"); binary entropy overstates the gap. In (b), grey marks a difference whose interval includes zero.
+minus matched CpGs (same island status and young-level decile), in SD of four drift measures (binary entropy,
+dispersion, |mean change| and relative entropy, each as an age slope), Hannum blood (656 donors) and Jaffe cortex
+(213 adult controls); 95 % donor-bootstrap intervals. (b) Blood minus cortex for each set and measure; grey marks a
+difference whose interval includes zero. (c) Same donors (Lunnon): between-person dispersion gap in blood and four
+brain regions. (d) Blood minus each brain region. Sizes in the text are the relative-entropy rows; binary entropy
+overstates the gap.
 
 ### The gap is not made by the matching, the cell mix, the array or its preprocessing
 

@@ -485,7 +485,7 @@ def _figure_cells(ctx: Context, gaps: pl.DataFrame) -> Path:
         ax.set_yticks(range(len(keys)), labels, fontsize=6.5)
         ax.invert_yaxis()
         ax.axvline(0, color=plots.MUTED, lw=0.8)
-        ax.set(xlabel="Blood minus brain (SD); < 0 = more protection in blood", title=title)
+        ax.set(xlabel="Blood − brain (SD), 95 % CI", title=title)
         ax.title.set_fontsize(10)
     handles, names_shown = axes[0].get_legend_handles_labels()
     fig.legend(handles, names_shown, fontsize=8, title="adjustment", loc="lower center", ncols=len(names))
@@ -496,6 +496,16 @@ def _figure_cells(ctx: Context, gaps: pl.DataFrame) -> Path:
     )
     fig.tight_layout(rect=(0, 0.08, 1, 1))
     return plots.save(fig, ctx.figure_path("tissue_contrast_cells"))
+
+
+#: plain names of the drift measures for figure labels
+MEASURES = {
+    "kl_slope": "relative entropy",
+    "entropy_slope": "binary entropy",
+    "dispersion_slope": "dispersion",
+    "abs_slope": "|mean change|",
+    "dispersion": "dispersion",
+}
 
 
 def _figure(ctx: Context, point, boot_life, boot_same, contrasts) -> Path:
@@ -531,13 +541,13 @@ def _figure(ctx: Context, point, boot_life, boot_same, contrasts) -> Path:
                     label=cohort if (group, metric) == (SETS[0], LIFESPAN_METRICS[0]) else None,
                 )
             ticks.append(y)
-            labels.append(f"{SET_LABELS[group]} · {metric.replace('_', ' ')}")
+            labels.append(f"{SET_LABELS[group]} · {MEASURES[metric]}")
             y += 1
         y += 0.5
     ax.axvline(0, color=plots.MUTED, lw=0.8)
     ax.set_yticks(ticks, labels, fontsize=7)
     ax.invert_yaxis()
-    ax.legend(fontsize=7, loc="lower right")
+    ax.legend(fontsize=7, loc="upper right")
     ax.set(xlabel="Set minus matched CpGs (SD), 95 % bootstrap", title="Lifespan cohorts: blood vs cortex")
     plots.label_panel(ax, "a")
 
@@ -549,16 +559,16 @@ def _figure(ctx: Context, point, boot_life, boot_same, contrasts) -> Path:
             ax.scatter([row["difference"]], [y], color=color, s=18)
             ticks.append(y)
             labels.append(
-                f"{SET_LABELS[row['group']]} · {row['metric'].replace('_', ' ')}"
+                f"{SET_LABELS[row['group']]} · {MEASURES[row['metric']]}"
                 + ("" if row["part"] == "lifespan" else f" · {row['comparison'].split(' - ')[1]}")
             )
             y += 1
         ax.axvline(0, color=plots.MUTED, lw=0.8)
         ax.set_yticks(ticks, labels, fontsize=6.5)
         ax.invert_yaxis()
-        ax.set(xlabel="Blood minus brain (SD); < 0 = more protection in blood", title=title)
+        ax.set(xlabel="Blood − brain (SD), 95 % CI", title=title)
 
-    diff_panel(axes[1], contrasts.filter(pl.col("part") == "lifespan"), "Prediction 2, lifespan cohorts")
+    diff_panel(axes[1], contrasts.filter(pl.col("part") == "lifespan"), "Blood minus cortex")
     plots.label_panel(axes[1], "b")
 
     ax, y, ticks, labels = axes[2], 0.0, [], []
@@ -579,14 +589,14 @@ def _figure(ctx: Context, point, boot_life, boot_same, contrasts) -> Path:
     ax.axvline(0, color=plots.MUTED, lw=0.8)
     ax.set_yticks(ticks, labels)
     ax.invert_yaxis()
-    ax.legend(fontsize=6.5, loc="lower right")
+    ax.legend(fontsize=6.5, loc="upper center", bbox_to_anchor=(0.5, -0.14), ncols=3, frameon=False)
     ax.set(xlabel="Set minus matched CpGs, between-person dispersion (SD)", title="Same donors (Lunnon)")
     plots.label_panel(ax, "c")
 
-    diff_panel(axes[3], contrasts.filter(pl.col("part") == "same donors"), "Prediction 2, same donors")
+    diff_panel(axes[3], contrasts.filter(pl.col("part") == "same donors"), "Blood minus each region")
     plots.label_panel(axes[3], "d")
     fig.suptitle(
-        "Is essential-gene protection larger in blood than in brain?", x=0.02, ha="left", fontsize=12, fontweight="bold"
+        "Essential promoters drift less than matched CpGs, more so in blood than in brain", x=0.02, ha="left", fontsize=12, fontweight="bold"
     )
     fig.tight_layout()
     return plots.save(fig, ctx.figure_path("tissue_contrast"))
