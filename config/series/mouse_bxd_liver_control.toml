@@ -1,0 +1,12 @@
+# Positive control for the shared runner's mouse path: BXD liver (GSE199979, mammalian array, rebuilt from IDATs),
+# chow-fed females with strain held, the design of the bxd_liver module (housekeeping gap -0.30 there).
+accession = "GSE199979"
+annotation = "mouse"
+age = "age (days)"
+sex = "Sex"
+donor = "sample"
+hold = ["strain"]
+
+[groups."liver, chow females"]
+diet = "CD"
+Sex = "F"
