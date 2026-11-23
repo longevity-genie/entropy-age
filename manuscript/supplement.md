@@ -259,7 +259,7 @@ and adipose tissue drop out. Renewing minus post-mitotic +0.02 (−0.06 to +0.19
 +0.03 (−0.04 to +0.18). Within-chip dispersion slopes are not reported: in the hypothalamus each shared chip holds one
 aged and one young animal, so with chip intercepts its dispersion slope is zero by construction.
 
-**Health states and outcomes.** Cross-sectional (R39): 19 of 522 effects pass FDR; schizophrenia cortex F +0.57 SD
+**Health states and outcomes.** Cross-sectional (R39): 19 of 522 effects pass a within-analysis FDR (models across people); schizophrenia cortex F +0.57 SD
 (5 components); smoking lung S −0.67 raw; Alzheimer's none. Vitality 90+ (R42): positive-control clocks fail, so
 uninformative. MESA monocytes (R44): plaque and calcium track DunedinPACE (+0.37 per SD), not the shield. Per-person
 scores against confounders (R60): slide explains 36 % of B, 23 % of F, 20 % of S (13 % by chance); smoking moves S only.
@@ -321,7 +321,6 @@ items still open).
 
 | figure | file | content |
 |---|---|---|
-| S1 | `docs/figures/global_fdr.png` | one BH correction over 13,955 tests |
 | S2 | `docs/figures/drift_hotspots.png` | region classes of the fastest-rising spread (R72) |
 | S3 | `docs/figures/mmc_interventions.png` | consortium interventions incl. Tet3 (R13, R15, R16) |
 | S4 | `docs/figures/tet1_cortex.png` | Tet1 knockout and catalytic-dead cortex (R35) |
@@ -403,7 +402,6 @@ Source: `docs/PROVENANCE.md`, `docs/extension.md`.
 | Probe design and mask | C1 | R20, R68b | `data/output/probe_robustness/gaps.csv` |
 | Jaffe from IDATs | C1 | R61, R68b | `data/output/reprocessed_jaffe/gaps.csv`, `per_cpg_agreement.csv` |
 | Read-level discordance | C1 | R50, R51, R53 | `data/output/read_level/` |
-| Global FDR, 13,955 tests | all | R71 | `data/output/global_fdr/by_folder.csv` |
 | GTEx tissues | C1 | R68d | `data/output/gtex_tissues/point_estimates.csv` |
 | Mouse array 11 tissues, renewing − post-mitotic −0.19 | C1, C2 | R68a | `data/output/mouse_tissues/point_estimates.csv`, `contrasts.csv` |
 | RRBS and BXD gaps | C1 | R73 | `data/output/meer_tissues/aging_gaps.csv`, `mouse_rrbs_tissues/aging_gaps.csv`, `interventions/aging_gaps.csv`, `bxd_liver/aging_gaps.csv` |

@@ -565,7 +565,7 @@ chip held, the odds ratio for cases diagnosed over 2 years later was 1.44 (1.17-
 over the 72 chips. B kept 1.44 with DunedinPACE (Belsky et al. 2022) and PhenoAge (Levine et al. 2018) in the model, and was uncorrelated with DunedinPACE
 (r 0.02). The clocks' own signals did not survive adjustment (DunedinPACE for breast 1.21 → 1.04), and B had no
 colorectal signal once adjusted. The shield share F did not predict cancer (0.95-1.11). Of 168 effects in this
-analysis, only the eight breast-cancer B variants passed a 5 % false discovery rate, and they passed the correction over all tests of the study. Rebuilt from the raw arrays with one SeSAMe recipe and analysed as a matched case-control
+analysis, only the eight breast-cancer B variants passed a 5 % false discovery rate within it. Rebuilt from the raw arrays with one SeSAMe recipe and analysed as a matched case-control
 (women, age within 3 years, same chip first; 163 sets for cases over 2 years), B kept its age-adjusted association
 (1.84, 1.37-3.48) but lost the adjusted one (1.11, 0.69-2.18), while the shield share F became protective (0.69,
 0.49-0.95). On the authors' processed data the matched estimates were 1.71 and 1.76. Which preprocessing is right for this question is open, so the association depends on a choice that cannot yet be
@@ -661,7 +661,7 @@ replicative and arrested cultures from different experiments; one immortalised l
 may both be outcomes of the same protection, the reference epigenomes come from other individuals, and expression in
 epidermis is the depositors' table. That expression explains the gap does not say that transcription causes the
 protection. (v) The Tet3 result is one study of 16 mice per tissue on one array; the Tet1 comparison uses another
-array and homozygous mutants; and some weaker Tet3 contrasts did not pass the correction over all tests of the study. (vi)
+array and homozygous mutants; and some weaker Tet3 contrasts are small against their intervals. (vi)
 Seeboth et al. (2020) found cell mix, body mass index, smoking and batch to confound per-person methylation outlier
 burdens; our within-sample contrast removes about half of the slide-batch excess and leaves the rest, so batch must be held in
 every per-person use. (vii) Read-level epiallele entropy was not analysed with relative entropy. (viii) The follow-up analyses were not run everywhere: chromatin state was matched in blood, cortex and

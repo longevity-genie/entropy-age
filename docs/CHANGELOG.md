@@ -4,6 +4,7 @@ Newest first.
 
 ## Unreleased
 
+- 2026-11-24: analysis protocol frozen (docs/PROTOCOL_2026-11-24.md) before the Aging Cell analyses; remaining study-wide FDR wording removed from paper and supplement.
 - 2026-11-24: R158 written up: healthy lung −0.26 (−0.45 to −0.13), kidney −0.10 (unresolved, 30 people), mouse hearts −0.10 (−0.16 to −0.07) once MM285 islands are annotated, mouse field liver ~0 (young ages), BXD control through the program −0.28 as its own analysis.
 - 2026-11-24: p-value audit of the Results (docs/reviews/2026-11-24-p-value-audit.md): 33 p-values, 25 valid (donor, animal or culture resampling; models across samples), 8 set-label tests replaced by donor intervals or marked "over genes, no donor interval"; stale species value (+1.43) replaced by the current table (+0.59, p 0.29); Tet1 F bound updated.
 - 2026-11-24: shared runner tests identifiability by design rank (age must raise the rank of the nuisance design; residual df from rank and distinct donors), in the full fit and every resample, replacing column counts (Codex review).
