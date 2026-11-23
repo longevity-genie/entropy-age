@@ -1,7 +1,10 @@
-# Analysis protocol, frozen 2026-11-24 (before the Aging Cell analyses)
+# Analysis protocol (living; started 2026-11-24)
 
-Written before the analyses below are run; every analysis listed here is reported whatever its result. Changes
-after this date are added as dated amendments with their reason, never edited in place.
+The protocol says how each analysis is done. It is not frozen: when a method changes, every result it affects is
+recomputed with the new method and the text follows the new numbers (Anton, 2026-11-24: "Do not freeze the protocol,
+just recompute old results if we decide to change it and they can be affected"). Two rules keep this honest: every
+analysis listed here is reported whatever its result, and a change of method is recorded below with its date, its
+reason and the results it moved, so no method is chosen after seeing which one gives a better number.
 
 ## Results already inspected (not confirmatory)
 
@@ -66,7 +69,7 @@ hippocampus +0.00, −0.05 to +0.05); R136 division vs damage holds leaving out 
 unresolved); muscle stem cells: −0.056 conditional on six mice, −0.03 to −0.09 leaving out one mouse. Text updated to
 the current tables; no new runs needed.
 
-## Amendment 1 (2026-11-24, before any data were downloaded): P5, maintenance vs selection in single-cell clones
+## Change 1 (2026-11-24, before any data were downloaded): P5, maintenance vs selection in single-cell clones
 
 Data: Flunkert et al. 2018 (GSE112812, GSE112873): two human fetal fibroblast strains, single-cell clones grown about
 20 doublings, and their parental cultures; 450k IDATs, rebuilt with the shared recipe. Only non-irradiated clones in
@@ -78,3 +81,15 @@ Prediction: replication-coupled maintenance keeps the gap inside a lineage, so c
 size seen per doubling in cultures; selection among lineages cannot act inside one clone, so a clone's drift shows
 no gap. Decision: "maintenance supported" if the clone interval lies below zero; "selection not excluded" if it
 covers zero. The parental bulk cultures' own drift (where several passages exist) is reported beside it.
+
+## Change 2 (2026-11-24, Anton; before any clock was scored): a clock panel and clock disagreement
+
+Every clock in biolearn's gallery at the pinned commit is scored on each rebuilt series, with biolearn's own
+implementation and its documented missing-CpG policy. A clock enters the panel of a series only without quality
+loss: at least 90 % of its absolute weight measured (not imputed) in at least 90 % of the arrays, and it runs on
+that platform without error. Per sample: each clock's age acceleration (residual on age, sex, cell fractions and chip
+in each series); the panel's disagreement = the SD across the panel's chronological and phenotypic clocks of their
+standardised accelerations.
+Primary analyses stay as in P4 (PhenoAge, EPIC-Italy breast > 2 y). Added, exploratory and labelled so: (i) each panel
+clock in the same nested models; (ii) disagreement as a predictor beside the mean acceleration; (iii) whether the
+shield share F and look-alike drift B correlate with disagreement. All panel clocks are reported, none selected.

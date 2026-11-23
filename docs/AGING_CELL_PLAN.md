@@ -79,7 +79,7 @@ cell-type bootstrap. That is weaker than an animal-level test and is reported as
 
 ## Revised after Codex's review (docs/reviews/2026-11-24-codex-aging-cell-plan.md): execute with changes
 
-1. **Freeze claims and a protocol.** A dated protocol (docs/PROTOCOL_2026-11-24.md) listing every result already
+1. **Freeze claims and a protocol.** A dated protocol (docs/ANALYSIS_PROTOCOL.md) listing every result already
    inspected and fixing, for each remaining analysis, eligibility, endpoint, lag, clock, score, preprocessing,
    covariates, contrasts, multiplicity and the decision threshold; every locked analysis is reported. Reconcile the
    text: remaining study-wide FDR passages, preprocessing descriptions, interval labels (gene vs donor), S4 and S5.
