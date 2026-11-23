@@ -170,7 +170,9 @@ island × young-level matching in (a) Hannum blood and (b) Jaffe cortex. Grey: m
 **The shield is present in most tissues and species tested; an apparent ordering by cell turnover in mouse cannot be
 separated from array chip.** In nine GTEx tissues on the EPIC array (Oliva et al. 2023; 47-224 donors per tissue, ages in decade bins; deposited values, since the raw arrays are under controlled access), the housekeeping gap was −0.13 SD
 in whole blood, −0.18 in colon, −0.08 in lung and kidney, about 0 in skeletal muscle (−0.003) and testis (+0.001; Supplementary Fig. S8). On
-binary entropy, breast and ovary were as weakly protected as muscle. Which tissues lack the gap does not follow turnover in humans: testis renews fastest. Two further human tissue series,
+binary entropy, breast and ovary were as weakly protected as muscle. Two breast cohorts rebuilt from raw arrays agree
+that breast carries little of the gap: −0.04 SD (−0.11 to −0.01) in 100 healthy donors aged 18 to 82 (GSE88883) and
++0.00 (−0.05 to +0.04) in 119 cancer-free women aged 17 to 76 (GSE101961), chip intercepts held. Which tissues lack the gap does not follow turnover in humans: testis renews fastest. Two further human tissue series,
 processed from raw files with chip intercepts and intervals from resampling donors, came from tissue next to a tumour.
 In normal colon mucosa of 146 colorectal-cancer patients aged 22 to 89 (GSE101764) the housekeeping gap was −0.13 SD
 (−0.25 to −0.01), and −0.17 (−0.32 to −0.00) off the floor. Lung behaved differently by source. Lung of post-mortem GTEx donors

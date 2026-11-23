@@ -561,6 +561,8 @@ itself. Runs are described in the run log of the repository.
 | Mouse hearts | mouse | heart | GSE280472 | mammalian array | rebuilt | 36 mice | R152 | R152 | chip (R152) | not run | not run | not run | not run | genes; animals |
 | Mouse liver (field and laboratory) | mouse | liver | GSE269932 | MM285 | rebuilt | 90 mice | R152 | R152 | chip and environment (R152) | not run | not run | not run | not run | genes; animals |
 | Lung without tumour-field CpGs | human | normal lung next to adenocarcinoma | GSE314841 + TCGA-LUAD | 450k | rebuilt | 114 people | R153 | R153 | chip and batch (R153) | not run | not run | not run | not run | genes; donors |
+| Breast (healthy donors) | human | breast | GSE88883 | 450k | rebuilt | 100 women | R154 | R154 | chip (R154) | not run | not run | not run | not run | genes; donors |
+| Breast (cancer-free women) | human | breast | GSE101961 | 450k | rebuilt | 119 women | R154 | R154 | chip and race (R154) | not run | not run | not run | not run | genes; donors |
 
 <!-- coverage:end -->
 

@@ -60,6 +60,12 @@ commit it ran, its job ids, its scale and seed, and its result or its failure wi
   Divergence, housekeeping −0.085, core-essential −0.096; with expression matched −0.043 and −0.068 (point estimates;
   intervals as in R140). The gap does not come from the deeper sequencing of old cells.
 
+## R154 — two healthy breast cohorts from raw arrays, 2026-11-24
+
+- Configs breast_komen, breast_cancer_free; jobs 6596095/6, `--scale paper --seed 42`, 4 cores, 48 GB, 22-24 min.
+- GSE88883 (100 donors 18-82, 9 chips): housekeeping −0.036 (donors −0.089 to −0.009), chip held −0.038 (−0.111 to
+  −0.005). GSE101961 (119 women 17-76, 28 chips, race held): +0.007 (−0.047 to +0.034), chip held +0.001.
+
 ## R152, R153 — mouse hearts and livers; the lung reversal without the tumour field, 2026-11-24
 
 - Commits 1832274 (runner: mouse arrays, age labels), bcb2fe5 (runner: CpG exclusion list), 3ad99d8 (TCGA lists and

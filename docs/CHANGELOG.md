@@ -4,6 +4,7 @@ Newest first.
 
 ## Unreleased
 
+- 2026-11-24: R154 two healthy breast cohorts from raw arrays: little gap (−0.04 and +0.00), in line with GTEx breast.
 - 2026-11-24: R152 mouse hearts and field/lab livers show no resolved gap (liver −0.03, −0.09 to +0.03); R153 the lung reversal shrinks without TCGA tumour-changed CpGs (+0.14 → +0.11 → +0.08) but does not vanish. Paper, run log and S5 updated.
 - 2026-11-24: tumour-field test for the lung reversal: CpGs that differ between 80 TCGA lung adenocarcinomas and 32 normal lungs (open GDC betas; 86,809 at |Δβ| ≥ 0.1, 24,287 at ≥ 0.2) left out of the tumour-adjacent lung series (R153). Mouse hearts and field/lab livers through the shared runner (R152).
 - 2026-11-24: shared runner takes mouse and mammalian arrays (`annotation = "mouse"`) and age-group labels (`age_values`); first mouse series: GSE280472 hearts (young/old, both sexes, saline or elamipretide; treatment held), waiting for its rebuild.
