@@ -173,7 +173,9 @@ separated from array chip.** In nine GTEx tissues on the EPIC array (Oliva et al
 in whole blood, −0.18 in colon, −0.08 in lung and kidney, about 0 in skeletal muscle (−0.003) and testis (+0.001; Supplementary Fig. S8). On
 binary entropy, breast and ovary were as weakly protected as muscle. Two breast cohorts rebuilt from raw arrays agree
 that breast carries little of the gap: −0.04 SD (−0.11 to −0.01) in 100 healthy donors aged 18 to 82 (GSE88883) and
-+0.00 (−0.05 to +0.04) in 119 cancer-free women aged 17 to 76 (GSE101961), chip intercepts held. Which tissues lack the gap does not follow turnover in humans: testis renews fastest. Two further human tissue series,
++0.00 (−0.05 to +0.04) in 119 cancer-free women aged 17 to 76 (GSE101961), chip intercepts held. Normal kidney of 30 adults aged
+18 to 78 (GSE79100, one array per kidney of three) gave −0.10 (−0.26 to +0.07), the size GTEx kidney shows (−0.08) but
+not resolved at this sample size. Which tissues lack the gap does not follow turnover in humans: testis renews fastest. Two further human tissue series,
 processed from raw files with chip intercepts and intervals from resampling donors, came from tissue next to a tumour.
 In normal colon mucosa of 146 colorectal-cancer patients aged 22 to 89 (GSE101764) the housekeeping gap was −0.13 SD
 (−0.25 to −0.01), and −0.17 (−0.32 to −0.00) off the floor. Lung behaved differently by source. Lung of post-mortem GTEx donors
@@ -186,7 +188,7 @@ without the 24,287 CpGs that differ by at least 0.2 in beta, and to +0.08 (−0.
 differ by at least 0.1 (chip intercepts held). This does not test a field effect: TCGA's normal lung is itself taken
 next to tumours, the lists remove five times more control CpGs than housekeeping CpGs, and a field effect concerns age
 slopes, not mean levels. The direct comparison is lung without any tumour: in 143 donor and other non-diseased
-lungs aged 14 to 88 (GSE175458, EPIC, rebuilt), the housekeeping gap was −0.26 (−0.43 to −0.15, chip held), a strong
+lungs aged 14 to 88 (GSE175458, EPIC, rebuilt), the housekeeping gap was −0.26 (−0.45 to −0.13, chip held), a strong
 gap of the usual sign. The reversal is therefore specific to tissue resected next to adenocarcinoma in this study,
 whatever its mechanism. Human
 post-mortem tissues on the mammalian array (GSE184211; heart, muscle, liver, kidney, lung, spleen, fat, blood; 32 to
@@ -209,15 +211,14 @@ lane mixing the ages (GSE225166; 30 to 32 mice per tissue), on the CpGs covered 
 28,727 CpGs), −0.05 in heart (−0.13 to +0.01; 30,312) and −0.01 in cortex (−0.08 to +0.13; 12,335; intervals from
 resampling mice); liver kept only 518 such CpGs and gives no estimate. Off the floor (10-90 %, all-CpG scale) none of the four was
 resolved: lung −0.08 (−0.19 to +0.00), heart +0.05 (−0.04 to +0.12), cortex +0.02 (−0.24 to +0.16). These are different platforms and CpG sets, so they are reported side by side and not ranked against one another; within Meer's four tissues the shield is smaller in cortex and heart, and in Thompson's six tissues muscle (−0.10) matched blood (−0.08). Meer's RRBS and the array disagree on whether post-mitotic tissue keeps a little of
-the shield or none. Two further mouse series on mouse arrays, rebuilt from raw files with sex held, gave no resolved gap:
-hearts of 36 young and old mice (GSE280472; treatment held) −0.05 (−0.12 to +0.06), and livers of 90 mice aged 26 to
-532 days, most kept in an outdoor enclosure (GSE269932), −0.03 (−0.09 to +0.03), −0.00 with chip intercepts. The
-liver null reflects its ages: the median mouse was 135 days old and only 7 of 90 were older than 302 days, so the
-slopes mostly cover maturation. Restricted to mice up to 10 months, BXD liver also shows no gap (−0.01, against
-−0.30 over 6 to 33 months), and the BXD gap does not depend on island matching, strain or the young reference.
-The MM285 array also measures other CpG positions than the conserved 40k probes that carry the BXD result (42 in
-common). Heart is near zero on every platform (−0.01 to −0.07), and in GSE280472 the age slopes barely exceed
-those with ages shuffled.
+the shield or none. Two further mouse series on the MM285 mouse array, rebuilt from raw files with sex held and islands taken
+from the genome's island map, differed. Hearts of 36 young and old mice (GSE280472; treatment held) carried the gap:
+−0.10 (−0.16 to −0.07), −0.09 (−0.14 to −0.05) with chip intercepts. Livers of 90 mice aged 26 to 532 days, most
+kept in an outdoor enclosure (GSE269932), did not: −0.01 (−0.07 to +0.04), +0.01 (−0.01 to +0.03) with chip
+intercepts. The liver null reflects its ages: the median mouse was 135 days old and only 7 of 90 were older than
+302 days, so the slopes mostly cover maturation; restricted to mice up to 10 months, BXD liver also shows no gap
+(−0.01, against −0.30 over 6 to 33 months). Run through the same program, BXD liver gave −0.28 (−0.44 to −0.13),
+matching its own analysis (−0.28), so the program reproduces a known mouse result.
 
 Across mammals (Mammalian Methylation Consortium, GSE223748; Lu et al. 2023; Haghani et al. 2023), 139
 species-tissue groups of 65 species had at least 15 animals spanning 15 % of the species' maximum lifespan. The

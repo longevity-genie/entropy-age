@@ -1,0 +1,6 @@
+group,chip,cultures,lines,doublings_min,doublings_max,variance_left_within_line_and_chip
+"kidney, normal",9406922032,8,2,22.0,78.0,0.7957663121436331
+"kidney, normal",9406922120,7,2,18.0,75.0,0.7957663121436331
+"kidney, normal",9407201041,6,2,23.0,71.0,0.7957663121436331
+"kidney, normal",9407201095,5,1,20.0,65.0,0.7957663121436331
+"kidney, normal",9407201102,4,1,60.0,78.0,0.7957663121436331

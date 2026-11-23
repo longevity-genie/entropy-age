@@ -39,3 +39,6 @@ Mouse liver (field and laboratory),mouse,liver,GSE269932,MM285,rebuilt,90 mice,R
 Lung without tumour-field CpGs,human,normal lung next to adenocarcinoma,GSE314841 + TCGA-LUAD,450k,rebuilt,114 people,R153,R153,chip and batch (R153),not run,not run,not run,not run,genes; donors
 Breast (healthy donors),human,breast,GSE88883,450k,rebuilt,100 women,R154,R154,chip (R154),not run,not run,not run,not run,genes; donors
 Breast (cancer-free women),human,breast,GSE101961,450k,rebuilt,119 women,R154,R154,chip and race (R154),not run,not run,not run,not run,genes; donors
+Healthy lung,human,lung without lung disease,GSE175458,EPIC,rebuilt,143 people,R155 R158,R158,chip and centre (R158),not run,not run,not run,not run,genes; donors
+Kidney (normal),human,normal kidney,GSE79100,450k,rebuilt,30 people,R158,R158,chip and ancestry (R158),not run,not run,not run,not run,genes; donors
+BXD liver through the shared program (control),mouse,liver,GSE199979,mammalian array,rebuilt,160 mice,R158,R158,chip and strain (R158),not run,not run,not run,not run,genes; animals

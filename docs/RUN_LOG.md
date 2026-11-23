@@ -60,6 +60,16 @@ commit it ran, its job ids, its scale and seed, and its result or its failure wi
   Divergence, housekeeping −0.085, core-essential −0.096; with expression matched −0.043 and −0.068 (point estimates;
   intervals as in R140). The gap does not come from the deeper sequencing of old cells.
 
+## R155-R158 — healthy lung, kidney, review fixes, every series rerun on the final code, 2026-11-24
+
+- Commits bba31bd (MM285 annotation from Zhou's manifest and UCSC islands; 40k probe ids; zero-CpG error; QC on the
+  kept array), 8ec4f4d (identifiability by design rank). R158 jobs 6596289-6596307: all 19 series on 8ec4f4d.
+- Healthy lung (GSE175458, 143 donors 14-88, centre held): −0.253 (−0.406 to −0.136); chip held −0.263 (−0.453 to
+  −0.125). Kidney (GSE79100, 30 of 31 kidneys, first array each): −0.098 (−0.229 to +0.013); chip held −0.098 (−0.255
+  to +0.068). Mouse hearts with MM285 islands: −0.105 (−0.162 to −0.066); chip held −0.091 (−0.136 to −0.047) (before
+  the island fix −0.045, unresolved). Mouse field liver: −0.008 (−0.070 to +0.039); chip held +0.009. BXD positive
+  control through the runner: −0.279 (−0.437 to −0.126), the module's own −0.279. Other series unchanged.
+
 ## R154 — two healthy breast cohorts from raw arrays, 2026-11-24
 
 - Configs breast_komen, breast_cancer_free; jobs 6596095/6, `--scale paper --seed 42`, 4 cores, 48 GB, 22-24 min.
