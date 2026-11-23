@@ -33,6 +33,7 @@ from entropy_age.experiments.cancer_matched import N_BOOT, _score, clogit, match
 from entropy_age.experiments.common import Context, dummies, write_table
 
 PRIMARY = "PhenoAge"
+MIN_AGE_R = 0.5
 LAG = 2.0
 CLOCKS = Path("data/interim/clocks/GSE51032_clocks.csv")
 B, F, P = "B housekeeping", "F housekeeping", "P housekeeping"
@@ -53,6 +54,17 @@ ADULT_BLOOD = (
     "Garagnani",
     "Bocklandt",
 )
+#: clock generations (Anton, 2026-11-24): 1st trained on chronological age; 2nd on phenotypic age, mortality or
+#: causal/damage components; 3rd on the pace of ageing; plus mitotic and stochastic clocks; any other kept model
+#: (traits, gestational, cortical) is "other"
+GENERATION = {
+    **dict.fromkeys(("Horvathv1", "Horvathv2", "Hannum", "Lin", "VidalBralo", "Weidner", "Garagnani", "Bocklandt"),
+                    "1st: chronological"),
+    **dict.fromkeys(("PhenoAge", "HRSInCHPhenoAge", "Zhang_10", "GrimAgeV1", "GrimAgeV2", "YingCausAge", "YingDamAge",
+                     "YingAdaptAge"), "2nd: phenotypic and mortality"),
+    **dict.fromkeys(("DunedinPACE", "DunedinPoAm38"), "3rd: pace of ageing"),
+    **dict.fromkeys(("EpiTOC1", "StocH", "StocZ", "StocP"), "mitotic and stochastic"),
+}
 META = ["sample", "female", "age", "icd", "years_to_diagnosis", "chip", "mean_beta", B, F]
 
 
@@ -153,11 +165,19 @@ def run(ctx: Context) -> list[Path]:
             pl.Series(f"acc {c}", z(residual(women[f"clock {c}"].to_numpy(), age[:, None]))),
             pl.Series(f"accd {c}", z(residual(women[f"clock {c}"].to_numpy(), tech))),
         )
-    panel_clocks = [c for c in ADULT_BLOOD if c in clocks]
+    # a clock enters the disagreement panel only when it tracks age here (r > 0.5): a single-CpG clock such as
+    # Bocklandt runs against age on these arrays and would inflate the spread (figures review 2026-11-24)
+    panel_clocks = [
+        c for c in ADULT_BLOOD if c in clocks and np.corrcoef(women[f"clock {c}"].to_numpy(), age)[0, 1] > MIN_AGE_R
+    ]
     accd = np.column_stack([women[f"accd {c}"].to_numpy() for c in panel_clocks])
     women = women.with_columns(disagreement=pl.Series(z(accd.std(axis=1))), panel_mean=pl.Series(z(accd.mean(axis=1))))
     for name in (B, F, P):
         women = women.with_columns(pl.Series(name, z(women[name].to_numpy())))
+    write_table(
+        women.select("sample", "age", "chip", B, F, P, "disagreement", "panel_mean", *[f"acc {c}" for c in clocks]),
+        out / "per_woman",
+    )
     breast = pl.col("icd").fill_null("").str.starts_with("C50")
     cases = women.filter(breast & (pl.col("years_to_diagnosis") > LAG))
     controls = women.filter(pl.col("icd").is_null())
@@ -179,6 +199,7 @@ def run(ctx: Context) -> list[Path]:
                 {
                     "design": design,
                     "clock": name,
+                    "generation": GENERATION.get(name, "panel" if name.startswith("panel") else "other"),
                     "role": "primary" if (name == PRIMARY and not same_chip) else "exploratory",
                     "sets": len(sets),
                     "controls_on_case_chip": shared,
@@ -186,7 +207,20 @@ def run(ctx: Context) -> list[Path]:
                 }
             )
         print(f"clock_increment: {design}: {len(sets)} sets, {len(entries)} models", file=sys.stderr, flush=True)
-    write_table(pl.DataFrame(rows), out / "nested_models")
+    table = pl.DataFrame(rows)
+    write_table(table, out / "nested_models")
+    # best clock per generation and design: the strongest clock odds ratio away from 1 (exploratory)
+    if "clock_or" in table.columns:
+        best = (
+            table.filter(pl.col("generation").str.contains(r"^\d"))
+            .with_columns(strength=pl.col("clock_or").log().abs())
+            .sort("strength", descending=True)
+            .group_by("design", "generation", maintain_order=True)
+            .first()
+            .drop("strength")
+            .sort("design", "generation")
+        )
+        write_table(best, out / "best_per_generation")
     corr = [
         {
             "pair": f"disagreement ~ {m}",
@@ -194,6 +228,6 @@ def run(ctx: Context) -> list[Path]:
         }
         for m in (B, F, P)
     ]
-    corr.append({"pair": "disagreement panel", "r": float(len(panel_clocks))})
+    corr.append({"pair": "disagreement panel: " + ", ".join(panel_clocks), "r": float(len(panel_clocks))})
     write_table(pl.DataFrame(corr), out / "disagreement_correlations")
     return []

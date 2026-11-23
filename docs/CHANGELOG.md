@@ -4,6 +4,7 @@ Newest first.
 
 ## Unreleased
 
+- 2026-11-24: clock_increment labels every clock by generation (1st chronological, 2nd phenotypic and mortality, 3rd pace, mitotic and stochastic) and writes best_per_generation; the disagreement panel keeps only clocks with r > 0.5 with age (Bocklandt ran against age); per-woman accelerations and disagreement saved. Fable figures review in docs/reviews/2026-11-24-figures-fable.md.
 - 2026-11-24: clock panel takes GrimAge v1/v2 (age and sex from the records; a missing value filled with the CpG's cohort mean, since biolearn's GrimAge counts it as 0) and a CLOCKS_ONLY filter; a clock track rebuild (`ENTROPY_AGE_SESAME_DIR=sesame_clock`, SeSAMe CDPB without the design-flag mask), because the mask removes 20 % of GrimAge's weight on every array.
 - 2026-11-24: Figure 3 redrawn around its message (Anton: the scatter read as "messy between tissues"): gap per species within each tissue with share below zero, all groups as a histogram (88 % below zero), lifespan coefficients; caption rewritten.
 - 2026-11-24 (pipeline plan step 1): shared runner writes a guards table per series (arrays selected, passing detection, kept per donor, repeats dropped, platforms, complete CpGs, chips, unknown chips, age variance on chip, identifiability with chip).
