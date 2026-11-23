@@ -1,0 +1,23 @@
+# Human post-mortem tissues on the mammalian array (GSE184211; 661 arrays; no donor id is deposited, so each array
+# counts as one donor within a tissue). Tissue is recorded only in the source name.
+accession = "GSE184211"
+age = "age"
+sex = "Sex"
+donor = "sample"
+
+[groups.heart]
+source_name = "Heart"
+[groups.skeletal_muscle]
+source_name = "Muscle"
+[groups.liver]
+source_name = "Liver"
+[groups.kidney]
+source_name = "Kidney"
+[groups.lung]
+source_name = "Lung"
+[groups.spleen]
+source_name = "Spleen"
+[groups.adipose]
+source_name = "Adipose"
+[groups.blood]
+source_name = "Blood"

@@ -1,0 +1,11 @@
+# Non-smokers' lung tissue (GSE314841, the 450k part only: 114 people; the EPIC parts are other platforms and are
+# never pooled with it). Two processing batches, held.
+accession = "GSE314841"
+matrix = "GSE314841-GPL13534_series_matrix.txt.gz"
+age = "age"
+sex = "gender"
+donor = "sample"
+hold = ["batch"]
+
+[groups.lung]
+tissue = "lung"

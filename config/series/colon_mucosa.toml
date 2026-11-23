@@ -1,0 +1,8 @@
+# Normal colon mucosa of colorectal-cancer patients (GSE101764; the tumour arrays are left out).
+accession = "GSE101764"
+age = "age"
+sex = "gender"
+donor = "patientid"
+
+[groups.colon_mucosa]
+tissue = "mucosa"

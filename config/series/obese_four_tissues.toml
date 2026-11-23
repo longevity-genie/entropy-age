@@ -1,0 +1,14 @@
+# Muscle, liver and two fat depots of the same severely obese people (GSE61454; 450k; ages 26 to 67).
+accession = "GSE61454"
+age = "subject age"
+sex = "gender"
+donor = "title:_(\\d+)$"
+
+[groups.skeletal_muscle]
+tissue = "muscle"
+[groups.liver]
+tissue = "liver"
+[groups.subcutaneous_fat]
+tissue = "Subqutaneous adipose tissue"
+[groups.visceral_fat]
+tissue = "visceral adipose tissue"

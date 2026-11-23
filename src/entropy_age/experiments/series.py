@@ -16,7 +16,8 @@ every analytic decision, so that no series is processed its own way:
 Description file::
 
     accession = "GSE349373"
-    age = "age at death"          # column of the sample characteristics
+    matrix = "GSE349373_series_matrix.txt.gz"   # optional; for series split by platform
+    age = "age at death"          # column of the sample characteristics (or "source_name")
     sex = "Sex"
     donor = "title:^([^_]+)_"      # a column, or "title:<regex with one group>" applied to the sample title
     hold = ["primary dx"]         # further covariates, held where they vary
@@ -61,10 +62,11 @@ def specs() -> dict[str, dict]:
     return {p.stem: tomllib.loads(p.read_text()) for p in sorted(CONFIG.glob("*.toml"))}
 
 
-def titles(matrix: Path) -> list[str]:
+def titles(matrix: Path, row: str = "!Sample_title") -> list[str]:
+    """One sample row of the series matrix (titles by default; ``!Sample_source_name_ch1`` for source names)."""
     with gzip.open(matrix, "rt") as handle:
         for line in handle:
-            if line.startswith("!Sample_title"):
+            if line.startswith(row):
                 return [c.strip().strip('"') for c in line.rstrip("\n").split("\t")[1:]]
     return []
 
@@ -139,7 +141,7 @@ def donor_intervals(x, ages, cov, feats, island, sets, n: int, rng) -> dict[tupl
 def run_series(ctx: Context, name: str) -> list[Path]:
     spec = specs()[name]
     gse = spec["accession"]
-    matrix = ctx.paths.input / "geo" / gse / f"{gse}_series_matrix.txt.gz"
+    matrix = ctx.paths.input / "geo" / gse / spec.get("matrix", f"{gse}_series_matrix.txt.gz")
     if not (reprocessed.available(ctx.paths, gse) and matrix.exists()):
         print(f"series {name}: no SeSAMe rebuild or series matrix for {gse}; nothing run", file=sys.stderr)
         return []
@@ -153,7 +155,10 @@ def run_series(ctx: Context, name: str) -> list[Path]:
     if spec.get("exclude_jaffe_donors"):
         jaffe = pl.read_parquet(cohort_layout("jaffe", ctx.paths).samples)
         exclude = set(jaffe.filter((pl.col("group") == "Control") & (pl.col("age") >= 20))["donor"].to_list())
-    table = sample_table(_characteristics(matrix), titles(matrix), spec)
+    chars = _characteristics(matrix).with_columns(
+        source_name=pl.Series(titles(matrix, "!Sample_source_name_ch1"))  # for series that keep tissue only there
+    )
+    table = sample_table(chars, titles(matrix), spec)
     hold = spec.get("hold", [])
     rows, sizes, overlap = [], [], []
     platform_of = dict(qc.select("sample", "platform").iter_rows()) if "platform" in qc.columns else {}
