@@ -4,6 +4,7 @@ Newest first.
 
 ## Unreleased
 
+- 2026-11-24: shared runner gives no donor interval when fewer than half the donor resamples leave enough degrees of freedom, and reports how many were kept (`donor_resamples`): EPIC v2 myometrium (30 women, 10 chips) had produced chip-held intervals 0.01 SD wide from the few surviving draws. Every series rerun (R148).
 - 2026-11-24: shared runner reads columns from sample titles (`[derive]`); repeated identical characteristics accepted (GSE296589 lists `batch` twice). R147: myometrium (GSE296589), EPIC and EPIC v2 parts as two series, condition and ancestry held, fibroid-free specimens also alone.
 - 2026-11-24: gene-level p (review item 9): `compare_groups` adds `p_gene`, the matched difference tested with genes as units (set residuals summed per gene, cluster-robust SE, t on genes - 1 df), wherever the membership carries genes; the global FDR uses it in place of the CpG-label permutation p. R146 reruns the headline blood and cortex comparison.
 - 2026-11-24: Figure 5 redrawn: neurons of the second series with their donor-resampling interval, the sequencing rows (oligodendrocyte lineage and neurons of the same brains), culture rows with culture-resampling intervals, the glial row labelled as the NeuN−/SOX10− fraction; caption names each interval type (review item).

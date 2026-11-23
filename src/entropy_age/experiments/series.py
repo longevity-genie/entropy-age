@@ -147,7 +147,15 @@ def donor_intervals(x, ages, cov, feats, island, sets, n: int, rng) -> dict[tupl
                     # pull every resampled gap toward zero (see common.scaled_intervals)
                     gap = float(matched_scores(values[None, :], in_set[keep], strata)[0][0]) / full_sd[metric]
                     draws.setdefault((band, metric, group), []).append(gap)
-    return {k: (float(np.quantile(v, 0.025)), float(np.quantile(v, 0.975))) for k, v in draws.items() if v}
+    # fewer than half the resamples usable: the survivors are the donor draws that happen to be most diverse, and
+    # their spread understates the sampling error (EPIC v2 myometrium, 30 donors on 10 chips, gave intervals of
+    # 0.01 SD); no interval then
+    return {
+        k: (float(np.quantile(v, 0.025)), float(np.quantile(v, 0.975)), len(v))
+        if len(v) >= n / 2
+        else (float("nan"), float("nan"), len(v))
+        for k, v in draws.items()
+    }
 
 
 def run_series(ctx: Context, name: str) -> list[Path]:
@@ -211,8 +219,17 @@ def run_series(ctx: Context, name: str) -> list[Path]:
                 continue
             by_donor = donor_intervals(x, ages, cov, feats, island, sets, N_DONOR_BOOT[str(ctx.scale.name)], rng)
             for r in group_gaps(x, ages, cov, feats, island_of, membership, N_RESAMPLES[str(ctx.scale.name)], ctx.seed):
-                lo, hi = by_donor.get((r["band"], r["metric"], r["group"]), (float("nan"), float("nan")))
-                rows.append({"cohort": label, "covariates": design, **r, "donor_ci_low": lo, "donor_ci_high": hi})
+                lo, hi, kept = by_donor.get((r["band"], r["metric"], r["group"]), (float("nan"), float("nan"), 0))
+                rows.append(
+                    {
+                        "cohort": label,
+                        "covariates": design,
+                        **r,
+                        "donor_ci_low": lo,
+                        "donor_ci_high": hi,
+                        "donor_resamples": kept,
+                    }
+                )
         print(f"series {name}: {label}: {s.height} donors, {len(feats)} CpGs", file=sys.stderr, flush=True)
     for table_name, data in (("sizes", sizes), ("gaps", rows), ("chip_overlap", overlap)):
         if data:
