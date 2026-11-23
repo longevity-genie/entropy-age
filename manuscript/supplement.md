@@ -184,12 +184,14 @@ primary astrocytes (five passages) are not used.
 300 donors aged 16 to 80 (per region about 100 controls, 100 with major depression and 100 with post-traumatic
 stress disorder), EPIC, rebuilt; one array per donor and region; donors among the adult controls of Jaffe's cohort
 (same brain bank) left out; age slopes with sex and diagnosis held. Housekeeping gap on relative entropy, without
-and with chip intercepts: prefrontal cortex −0.086 and −0.081 (−0.089 to −0.069; 294 donors, 62 chips), amygdala
-−0.065 and −0.070 (−0.081 to −0.058; 297, 56 chips), hippocampus −0.079 and −0.069 (−0.081 to −0.056; 300, 57
-chips). Core-essential with chip: −0.059, −0.043, −0.053. Controls alone with chip: housekeeping −0.043 (−0.052 to
-−0.034; 100), −0.036 (−0.046 to −0.025; 99), −0.078 (−0.089 to −0.069; 98). Off the 0 % floor (10-90 %), every
-donor, with chip: −0.061, −0.055, −0.045, each interval excluding zero; in the amygdala controls alone the off-floor
-gap is not resolved (−0.012, −0.040 to +0.016). With diagnosis and chip held, 73 to 79 % of the variance of age is
+and with chip intercepts, with 95 % intervals over 200 donor resamples (chip held): prefrontal cortex −0.086 and
+−0.081 (−0.119 to −0.052; 294 donors, 62 chips), amygdala −0.065 and −0.070 (−0.098 to −0.047; 297, 56 chips),
+hippocampus −0.079 and −0.069 (−0.094 to −0.043; 300, 57 chips). Core-essential with chip: −0.059 (−0.096 to
+−0.026), −0.043 (−0.068 to −0.015), −0.053 (−0.082 to −0.032). Controls alone with chip: housekeeping −0.043 (−0.085
+to −0.005; 100), −0.036 (−0.072 to −0.008; 99), −0.078 (−0.124 to −0.029; 98). Off the 0 % floor (10-90 %), every
+donor, with chip: −0.061 (−0.130 to +0.004), −0.055 (−0.116 to −0.012), −0.045 (−0.095 to +0.004): resolved in the
+amygdala, not in the prefrontal cortex or hippocampus, where the interval reaches zero; in the amygdala controls
+alone the off-floor gap is not resolved (−0.010). With diagnosis and chip held, 73 to 79 % of the variance of age is
 left (36 to 49 % in the controls alone).
 
 **Sorted cortical neurons, third series (R134).** GSE112179: NeuN+ nuclei of frontal cortex, 100 arrays of 83
