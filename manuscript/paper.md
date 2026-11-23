@@ -30,9 +30,9 @@ look-alikes than same-chip wild types; in a separate study on another array, Tet
 shift.
 
 No relation of the shield to species lifespan was resolved, it persists through transient reprogramming and it has no clear RNA
-counterpart. Effects of this size are sensitive to array batch and preprocessing: an association between drift at
-look-alike promoters and later breast cancer (adjusted odds ratio 1.76 per SD in a matched analysis of the deposited data) was 1.11 (0.69-2.18) in the same
-analysis of arrays processed from raw files, an interval that includes both no effect and the earlier estimate.
+counterpart. Effects of this size are sensitive to array quality and preprocessing: an apparent association between drift at
+look-alike promoters and later breast cancer came largely from 127 arrays whose raw signal had failed, and without them
+it was not robust (odds ratio 1.14, 0.91-1.44, on the deposited data; 1.01, 0.75-1.36, on arrays rebuilt from raw files).
 
 ## Introduction
 
@@ -601,24 +601,29 @@ change was too small to give a share.
 they keep 70-80 % of their accuracy from each CpG's direction alone and 0-10 % from undirected noise
 (Supplementary Note 3).
 
-### Drift at unprotected promoters and incident breast cancer: an association that depends on preprocessing
+### Drift at unprotected promoters and incident breast cancer: no robust association
 
-**In one prospective cohort, drift at look-alike promoters in blood was associated with breast cancer diagnosed
-years later on the deposited data, but not after adjustment on arrays processed from raw files.**
-EPIC-Italy (GSE51032; Durso et al. 2017) holds blood drawn at enrolment from 845 people, 421 later diagnosed with cancer (235 breast,
-166 colorectal) and 424 without a cancer diagnosis (340 women, 84 men). Cases were diagnosed a median 5.4 years after the draw (range 0.02-14.4), and 169 and 115 of the 235 breast cancers more than 2 and 5 years after it. Per person we scored drift B at look-alike promoter CpGs (each person against everyone else), the
-shield share F and eight published clocks. With age and sex held, B predicted breast cancer (odds ratio per SD 1.43,
-1.19-1.71, p 10⁻⁴), and more strongly for cases diagnosed over 2 years after the draw (1.59, 1.31-1.93), the
-opposite of what a tumour present at the draw would produce. In a women-only model with B centred within chip, the odds ratios were 1.62 over 2 and 1.66 over 5 years. With mean methylation, 11 cell fractions and
-chip held, the odds ratio for cases diagnosed over 2 years later was 1.44 (1.17-1.76, p 6·10⁻⁴; Fig. 9); cases were balanced
-over the 72 chips. B kept 1.44 with DunedinPACE (Belsky et al. 2022) and PhenoAge (Levine et al. 2018) in the model, and was uncorrelated with DunedinPACE
-(r 0.02). The clocks' own signals did not survive adjustment (DunedinPACE for breast 1.21 → 1.04), and B had no
-colorectal signal once adjusted. The shield share F did not predict cancer (0.95-1.11). Of 168 effects in this
-analysis, only the eight breast-cancer B variants passed a 5 % false discovery rate within it. Rebuilt from the raw arrays with one SeSAMe recipe and analysed as a matched case-control
-(women, age within 3 years, same chip first; 163 sets for cases over 2 years), B kept its age-adjusted association
-(1.84, 1.37-3.48) but lost the adjusted one (1.11, 0.69-2.18), while the shield share F became protective (0.69,
-0.49-0.95). On the authors' processed data the matched estimates were 1.71 and 1.76. Which preprocessing is right for this question is open, so the association depends on a choice that cannot yet be
-made.
+**In one prospective cohort, drift at look-alike promoters in blood was not robustly associated with breast cancer
+diagnosed years later: an apparent association came largely from arrays whose raw signal had failed, and what remains
+depends on preprocessing.**
+EPIC-Italy (GSE51032; Durso et al. 2017) holds blood drawn at enrolment from 845 people. In the raw files, 127 arrays
+read at about a tenth of the series' median signal yet passed the usual detection check; all 127 belong to the breast
+part of the study (61 women later diagnosed with breast cancer, 64 without cancer, on 15-16 chips), so breast cases
+carry a failed array twice as often as controls (Methods, "Analysis practices"; Supplementary Note 4).
+These arrays drove an odds ratio of 4.5 per SD for drift B when cases were matched to controls on the same chip, and
+none of it remained on chips with normal signal. We leave them out of every analysis. That leaves 718 people: 358
+later diagnosed with cancer (174 breast, 166 colorectal; median 5.2 years after the draw) and 360 without a cancer
+diagnosis, 113 of the breast cancers more than 2 years after the draw. Per person we scored drift B at look-alike
+promoter CpGs (each person against everyone else), the shield share F and published clocks.
+
+On the authors' processed data, B for breast cancer over 2 years after the draw had an odds ratio of 1.29 per SD
+(1.04-1.60) with age and sex held, and 1.14 (0.91-1.44) with mean methylation, 11 cell fractions and chip held. In
+women matched on age (within 3 years, same chip first; 113 sets) the adjusted odds ratio was 1.49 (1.04-2.69). On the
+same arrays rebuilt from the raw files with one SeSAMe recipe, B gave 1.01 (0.75-1.36) adjusted, and the shield share F
+0.79 (0.60-1.05). DunedinPACE (1.01) and PhenoAge (1.19, 0.93-1.53) did not predict breast cancer either, and B had no
+colorectal signal (0.92). An association of drift with later breast cancer is therefore not supported by this cohort
+once failed arrays are removed; the small residual estimate on the processed data is not robust to how the arrays are
+processed.
 
 In childhood-cancer survivors (SJLIFE, 277 deaths among 4,518), B added nothing to DunedinPACE for death (1.01; Supplementary Fig. S20), so in this cohort it adds nothing to DunedinPACE for death. Genome-wide hypomethylation before breast cancer reported in EPIC-Italy (van
 Veldhoven et al. 2015) did not replicate in NOWAC; B survives adjustment for mean methylation, but a cohort-specific
@@ -629,10 +634,10 @@ refute the first (Supplementary Table S4).
 
 ![Figure 9](../docs/figures/incident_cancer.png)
 
-**Figure 9. Incident cancer in EPIC-Italy.** Odds ratio per SD of the shield share F, look-alike drift B and the
-signed shift S (core-essential and housekeeping sets) and of published clocks, for any cancer (421 cases), breast
-(235) and colorectal cancer (166). Blue circles: all cases, age and sex held. Orange squares: cases diagnosed over 2 years after
-the draw (331, 169 and 146 cases), with mean methylation, 11 blood-cell fractions and chip held. 95 % intervals; log scale. How to read: an odds ratio above 1 means people with a higher value of the measure (per SD) were more often later diagnosed with cancer; B is drift at comparable promoters, F the share of it that essential promoters avoid (more negative = stronger shield), S their signed shift (Box 1).
+**Figure 9. Incident cancer in EPIC-Italy, arrays with failed signal left out.** Odds ratio per SD of the shield share F, look-alike drift B and the
+signed shift S (core-essential and housekeeping sets) and of published clocks, for any cancer (358 cases), breast
+(174) and colorectal cancer (166). Blue circles: all cases, age and sex held. Orange squares: cases diagnosed over 2 years after
+the draw (274, 113 and 146 cases), with mean methylation, 11 blood-cell fractions and chip held. 95 % intervals; log scale. How to read: an odds ratio above 1 means people with a higher value of the measure (per SD) were more often later diagnosed with cancer; B is drift at comparable promoters, F the share of it that essential promoters avoid (more negative = stronger shield), S their signed shift (Box 1).
 
 ## Discussion
 
@@ -692,14 +697,16 @@ not tested this.
 the gap itself across the range of species is not excluded), in line with
 Crofts et al. (2026); it persists through transient reprogramming; and it has no clear RNA counterpart.
 
-**The association with breast cancer depends on preprocessing.** In EPIC-Italy, drift at unprotected look-alike promoters, not the shield
-itself, was associated with breast cancer diagnosed years after the blood draw on the authors' processed data. With
-the same arrays rebuilt from raw files the adjusted association was not distinguishable from none (odds ratio 1.11,
-0.69 to 2.18), and a second, small series gave the same point estimate with an interval that includes no effect. We report it as a lead that global methylation and cell mix may explain. It is not a marker.
+**No robust association with breast cancer.** In EPIC-Italy, an association of drift at unprotected look-alike
+promoters with breast cancer diagnosed years after the blood draw came largely from arrays whose raw signal had failed
+and which sat mostly with breast cases. Without them, the adjusted estimate was 1.14 (0.91 to 1.44) on the authors'
+processed data and 1.01 on arrays rebuilt from raw files; only a matched analysis of the processed data kept an
+interval above one (1.49, 1.04 to 2.69). A second, small series gave no association. Drift B is not a marker of
+breast-cancer risk on this evidence.
 
 **Limits.** (i) Processing moves results of this size. Effects of 0.02 to 0.1 in a gap are near the ±0.05 SD
 preprocessing uncertainty, a shield in one cultured series vanished on rebuilt arrays, and the breast-cancer
-association weakened; every array series with public raw IDATs was therefore rebuilt, but the cohorts without them
+association came from arrays with failed signal that the usual detection check passes; every array series with public raw IDATs was therefore rebuilt, but the cohorts without them
 (Hannum, Lunnon, GTEx, MESA, the mammalian consortium) keep the authors' processing, and the mouse array series were rebuilt with SeSAMe's recipes for those platforms (Supplementary Note 4). (ii) Array chip, the slide on which samples are hybridised together, confounds several contrasts. Contrasts that
 chip fully determines are reported as unidentifiable; in Huang's 11 mouse tissues the ordering by turnover vanishes among animals on shared chips, while on the
 consortium's array it is seen with chip intercepts, and the evidence for
@@ -741,7 +748,8 @@ The same rules apply to every series; the subsections below give the details.
 - **One platform per estimate.** Arrays of different platforms (450k, EPIC, EPIC v2, mouse and mammalian arrays) are
   never pooled; a study measured on several platforms is analysed as separate series. EPIC v2 replicate probes are
   averaged per CpG.
-- **Sample and CpG quality.** Arrays detected below 90 % are excluded; one array per donor and group (the first when a
+- **Sample and CpG quality.** Arrays detected below 90 % are excluded, and so are arrays whose mean signal is below a
+  quarter of the series median (a failed hybridisation can still pass detection); one array per donor and group (the first when a
   donor was arrayed more than once); only CpGs measured in every array of a group are used, so nothing is imputed and
   the set and its controls share one quality-passing universe.
 - **Batch and chip.** Batch, centre and other technical variables are held where given; every age slope is fitted a
@@ -913,7 +921,7 @@ fixed (see Matched comparison), and resampling intervals carry the inference.
 
 Incident cancer (EPIC-Italy) and death (SJLIFE) were modelled by logistic regression per SD of each score, with age and
 sex (SJLIFE: diagnosis and four treatment exposures), then with mean methylation over all array CpGs, 11 cell fractions
-and the score centred within chip. Lag analyses restricted cases to diagnoses over 2 or 5 years after the draw. In EPIC-Italy, controls were the participants without a cancer diagnosis. As a check on the breast-cancer result, the models were also fitted in women only.
+and the score centred within chip. Lag analyses restricted cases to diagnoses over 2 or 5 years after the draw. In EPIC-Italy, controls were the participants without a cancer diagnosis. As a check on the breast-cancer result, the models were also fitted in women only. Arrays whose mean intensity was below a quarter of the series median among arrays passing detection were left out of every analysis, deposited or rebuilt (127 EPIC-Italy arrays; none in any other series).
 
 ### Software and reproducibility
 

@@ -274,6 +274,16 @@ draws kept a third of Hannum's dispersion gap (−0.12) and none of its entropy 
 
 ## Supplementary Note 4. Array processing and quality-control practice
 
+**Arrays with failed signal (protocol change 4).** Detection p-values from out-of-band signal pass an array whose
+whole signal is low. In EPIC-Italy 127 of 845 arrays read at about a tenth of the series' median intensity (below a
+quarter of it in every case) and passed 90 % detection. All 127 belong to the breast part of the study (61 later breast
+cases, 64 controls; none of the colorectal cases), on 15-16 chips, so breast cases carried a failed array twice as
+often as controls (31 % against 16 %). On these arrays drift B tracks array quality: with every control on its case's
+chip, B had an odds ratio of 4.5 per SD, entirely from chips with failed arrays (on chips with normal signal 0.61,
+0.07-5.0). An independent review traced it (docs/reviews/2026-11-24-exact-chip-B.md). The rule now applied to every
+series, deposited or rebuilt: an array whose mean intensity is below a quarter of the median of the arrays passing
+detection is left out. Across all 48 rebuilt series it removes these 127 arrays and no other.
+
 The practice the analyses follow, item by item, with where it stands (R numbers are runs; RM numbers are roadmap
 items still open).
 
