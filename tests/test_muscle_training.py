@@ -4,8 +4,13 @@ from entropy_age.experiments.muscle_training import SERIES, design
 
 
 def test_design_reads_condition_and_person_from_titles():
-    gs = design(["a", "b"], ["Muscle_PRE_GS2_Rep1", "Muscle_4WP_GS2_Rep1"], SERIES["GSE171140"]["pattern"])
-    assert gs["condition"].to_list() == ["PRE", "4WP"] and gs["person"].to_list() == ["GS2", "GS2"]
+    gs = design(
+        ["a", "b", "c"],
+        ["Muscle_PRE_GS2_Rep1", "Muscle_4WP_GS2_Rep1", "Muscle_PRE_Inter2_GS22_Rep1"],
+        SERIES["GSE171140"]["pattern"],
+    )
+    assert gs["condition"].to_list() == ["PRE", "4WP", "PRE"]
+    assert gs["person"].to_list() == ["GS2", "GS2", "GS22/Inter2"]
     sb = design(
         ["c", "d"],
         ["SkM_Epi_Mem_1: Muscle_Baseline_Participant_001_Rep1", "SkM_Epi_Mem_27: Muscle_Acute_P006_Rep1"],

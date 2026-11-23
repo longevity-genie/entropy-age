@@ -41,7 +41,7 @@ from entropy_age.stochasticity import baseline_strata
 
 SERIES = {
     "GSE171140": {
-        "pattern": r"Muscle_([^_]+)_(GS\d+)_",
+        "pattern": r"Muscle_(?P<condition>[^_]+)_(?:(?P<block>Inter\d+)_)?(?P<person>GS\d+)_",
         "reference": "PRE",
         "conditions": {
             "4WP": "4 weeks of training",
@@ -51,7 +51,7 @@ SERIES = {
         },
     },
     "GSE114763": {
-        "pattern": r"Muscle_(.+?)_P(?:articipant_)?(\d+)",
+        "pattern": r"Muscle_(?P<condition>.+?)_P(?:articipant_)?(?P<person>\d+)",
         "reference": "Baseline",
         "conditions": {
             "Acute": "one bout",
@@ -74,14 +74,20 @@ def read_titles(matrix: Path) -> tuple[list[str], list[str]]:
 
 
 def design(samples: list[str], titles: list[str], pattern: str) -> pl.DataFrame:
-    """``sample``, ``condition`` and ``person`` read from the titles; titles that do not match raise."""
+    """``sample``, ``condition`` and ``person`` (with the intervention, where a person had two) read from the titles
+    by the named groups of ``pattern``; titles that do not match raise."""
     rx = re.compile(pattern)
     rows = []
     for s, t in zip(samples, titles, strict=True):
         found = rx.search(t)
         if found is None:
             raise ValueError(f"muscle_training: title {t!r} does not match {pattern!r}")
-        rows.append({"sample": s, "condition": found.group(1), "person": found.group(2).lstrip("0")})
+        person = found.group("person").lstrip("0")
+        block = found.groupdict().get("block")
+        # a person's second training intervention has its own baseline: each intervention is its own block
+        rows.append(
+            {"sample": s, "condition": found.group("condition"), "person": f"{person}/{block}" if block else person}
+        )
     return pl.DataFrame(rows)
 
 
