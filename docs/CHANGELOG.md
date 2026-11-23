@@ -4,6 +4,7 @@ Newest first.
 
 ## Unreleased
 
+- 2026-11-24: new analysis `clock_atlas`: every scored clock in every rebuilt human series group (r with age, median error, valid in the tissue or kept as a negative control) and the agreement between valid clocks' accelerations; heatmap figure. Checked on the kidney series.
 - 2026-11-24: R158 brain regions at paper scale (200 donor resamples): estimates unchanged; supplement now gives donor intervals, and the off-floor gap with chip is resolved in the amygdala only (prefrontal cortex and hippocampus reach zero).
 - 2026-11-24: research plan gains a ranked list of ideas to pivot to (clock atlas over every rebuilt series, what each clock generation reads, shield as a mitotic clock, clock disagreement, preprocessing moves clocks, tissue-invalid clocks as controls); R165 scores the clock panel on 47 rebuilt series.
 - 2026-11-24: new figure `clock_panel` (figures review section 2): clocks clustered by agreement of their accelerations with a generation strip, each clock against B, F and P, odds ratios of each clock and of F given it, and per-woman clock disagreement against drift.
