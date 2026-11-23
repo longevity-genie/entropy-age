@@ -1,0 +1,2 @@
+group,arrays_selected,arrays_passing_detection,donors_kept,arrays_dropped_repeat_donor,platforms,cpgs_complete,chips,chips_unknown,age_variance_on_chip,age_identifiable_with_chip
+"myometrium, all conditions",37,30,30,0,EPICv2,86876,10,0,0.5254330638713689,true

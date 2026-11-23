@@ -78,7 +78,7 @@ def titles(matrix: Path, row: str = "!Sample_title") -> list[str]:
 
 
 def from_title(sample_titles: list[str], column: str, rule: str) -> pl.Series:
-    """``column`` read from every sample title by ``rule``, ``"title:<regex with one group>"``; every title must match."""
+    """``column`` read from every sample title by ``rule`` (``"title:<regex with one group>"``); all must match."""
     if not rule.startswith("title:"):
         raise ValueError(f"series: {column} must be read as 'title:<regex>', not {rule!r}")
     pattern = re.compile(rule.removeprefix("title:"))
@@ -112,6 +112,23 @@ def sample_table(chars: pl.DataFrame, sample_titles: list[str], spec: dict) -> p
     if table["donor"].null_count():
         raise ValueError(f"series: {table['donor'].null_count()} arrays have no donor id")
     return table.drop_nulls("age")
+
+
+def group_filter(table: pl.DataFrame, filters: dict) -> pl.DataFrame:
+    """The rows of ``table`` that a group's filters select (before detection, exclusions and one-per-donor)."""
+    for column, value in filters.items():
+        values = value if isinstance(value, list) else [value]
+        table = table.filter(pl.col(column).is_in(values))
+    return table
+
+
+def chip_age_share(ages: np.ndarray, chips: np.ndarray) -> float:
+    """Share of the variance of age explained by chip intercepts (1 = age fully determined by chip)."""
+    design = dummies(chips)
+    design = np.column_stack([np.ones(ages.size), design]) if design.shape[1] else np.ones((ages.size, 1))
+    coef, *_ = np.linalg.lstsq(design, ages, rcond=None)
+    total = float(((ages - ages.mean()) ** 2).sum())
+    return float(1 - ((ages - design @ coef) ** 2).sum() / total) if total > 0 else float("nan")
 
 
 def groups_of(table: pl.DataFrame, spec: dict, usable: list[str], exclude: set[str]) -> dict[str, pl.DataFrame]:
@@ -235,7 +252,7 @@ def run_series(ctx: Context, name: str) -> list[Path]:
     )
     table = sample_table(chars, titles(matrix), spec)
     hold = spec.get("hold", [])
-    rows, sizes, overlap = [], [], []
+    rows, sizes, overlap, guards = [], [], [], []
     platform_of = dict(qc.select("sample", "platform").iter_rows()) if "platform" in qc.columns else {}
     for index, (label, s) in enumerate(groups_of(table, spec, qc["sample"].to_list(), exclude).items()):
         platforms = {platform_of[v] for v in s["sample"].to_list() if v in platform_of}
@@ -261,6 +278,29 @@ def run_series(ctx: Context, name: str) -> list[Path]:
         sets = _sets(feats, membership)
         lines = s[hold[0]].fill_null("NA").to_numpy() if hold else np.repeat("all", s.height)
         overlap += [{"group": label, **r} for r in chip_overlap(ages, lines, chips).to_dicts()]
+        selected = group_filter(table, spec["groups"][label])
+        passing = selected.filter(pl.col("sample").is_in(qc["sample"].to_list()))
+        chip_cov = dummies(chips)
+        guards.append(
+            {
+                "group": label,
+                "arrays_selected": selected.height,
+                "arrays_passing_detection": passing.height,
+                "donors_kept": s.height,
+                "arrays_dropped_repeat_donor": passing.height - passing["donor"].n_unique(),
+                "platforms": ",".join(sorted(platforms)) or "unknown",
+                "cpgs_complete": len(feats),
+                "chips": int(np.unique(chips).size),
+                "chips_unknown": int((chips == "NA").sum()),
+                "age_variance_on_chip": chip_age_share(ages, chips),
+                "age_identifiable_with_chip": bool(
+                    age_identifiable(
+                        ages,
+                        np.column_stack([held, chip_cov])[:, np.ptp(np.column_stack([held, chip_cov]), axis=0) > 1e-12],
+                    )
+                ),
+            }
+        )
         sizes.append(
             {
                 "group": label,
@@ -276,7 +316,10 @@ def run_series(ctx: Context, name: str) -> list[Path]:
             rng = ctx.rng(350_000 + 10 * index + k)
             cov = cov[:, np.ptp(cov, axis=0) > 1e-12] if cov.shape[1] else cov
             if not age_identifiable(ages, cov):
-                print(f"series {name}: {label}: {design}: age not identifiable beside the design; not fitted", file=sys.stderr)
+                print(
+                    f"series {name}: {label}: {design}: age not identifiable beside the design; not fitted",
+                    file=sys.stderr,
+                )
                 continue
             by_donor = donor_intervals(x, ages, cov, feats, island, sets, N_DONOR_BOOT[str(ctx.scale.name)], rng)
             for r in group_gaps(x, ages, cov, feats, island_of, membership, N_RESAMPLES[str(ctx.scale.name)], ctx.seed):
@@ -292,7 +335,7 @@ def run_series(ctx: Context, name: str) -> list[Path]:
                     }
                 )
         print(f"series {name}: {label}: {s.height} donors, {len(feats)} CpGs", file=sys.stderr, flush=True)
-    for table_name, data in (("sizes", sizes), ("gaps", rows), ("chip_overlap", overlap)):
+    for table_name, data in (("sizes", sizes), ("gaps", rows), ("chip_overlap", overlap), ("guards", guards)):
         if data:
             write_table(pl.DataFrame(data), out / table_name)
     return []

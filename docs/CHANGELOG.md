@@ -4,6 +4,7 @@ Newest first.
 
 ## Unreleased
 
+- 2026-11-24 (pipeline plan step 1): shared runner writes a guards table per series (arrays selected, passing detection, kept per donor, repeats dropped, platforms, complete CpGs, chips, unknown chips, age variance on chip, identifiability with chip).
 - 2026-11-24: Box 1 figure: schematic from one CpG to a gap (scripts/box1_schematic.py).
 - 2026-11-24: Introduction now explains the measure, matching, the gap and its sign before any result; every main figure caption ends with a how-to-read line; captioned figures rebuilt (Anton).
 - 2026-11-24 (P1 complete): monocyte expression-matching share 77-91 % over people (gap −0.12 to −0.08); CD4 T-cell gap unresolved over people (−0.05 to +0.02).
