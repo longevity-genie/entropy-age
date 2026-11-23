@@ -23,6 +23,7 @@ Description file::
     hold = ["primary dx"]         # further covariates, held where they vary
     annotation = "human"          # or "mouse" (mammalian and mouse arrays: mouse promoters and gene sets)
     age_values = {Young = 0, Old = 1}   # optional: the age column holds group labels, not numbers
+    exclude_cpgs = "config/series/lists/x.csv"   # optional: CpGs left out (a ``cpg`` column)
     [derive]                      # optional: columns read from the title, "title:<regex with one group>"
     condition = "title:\\((Myo[NFT])\\)"
     exclude_jaffe_donors = true   # donors of the discovery cortex cohort (same brain bank) left out
@@ -173,6 +174,9 @@ def run_series(ctx: Context, name: str) -> list[Path]:
         print(f"series {name}: no SeSAMe rebuild or series matrix for {gse}; nothing run", file=sys.stderr)
         return []
     out = ctx.out_dir(f"series_{name}")
+    dropped: set[str] = set()
+    if "exclude_cpgs" in spec:  # a table with a ``cpg`` column, relative to the repository (e.g. tumour-changed CpGs)
+        dropped = set(pl.read_csv(CONFIG.parents[1] / spec["exclude_cpgs"])["cpg"].to_list())
     if spec.get("annotation", "human") == "mouse":  # mammalian or mouse array: mouse promoters and gene sets
         from entropy_age.experiments.mouse_tissues import _features as mouse_features
 
@@ -181,6 +185,10 @@ def run_series(ctx: Context, name: str) -> list[Path]:
     else:
         features, _, membership = _features(ctx.paths, ctx.rng(120_000))
         probes = pl.read_parquet(AnnotationLayout(ctx.paths).probes_450k).filter(pl.col("cpg").is_in(features))
+    if dropped:
+        features = [f for f in features if f not in dropped]
+        membership = membership.filter(~pl.col("feature").is_in(list(dropped)))
+        print(f"series {name}: {len(dropped)} listed CpGs left out", file=sys.stderr)
     island_of = dict(probes.select("cpg", "cpg_island").iter_rows())
     qc = reprocessed.read_qc(ctx.paths, gse).filter(pl.col("passed"))
     chip_of = dict(qc.select("sample", "chip").iter_rows())
