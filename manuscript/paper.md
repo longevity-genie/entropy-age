@@ -278,8 +278,8 @@ mammalian consortium's, which has none.
 in colon (−0.29 to −0.17) and −0.08 in hippocampus (−0.09 to −0.07): a difference of −0.11 (−0.22 to −0.09). The
 core-essential gap differed likewise (−0.17 against −0.07), and non-essential promoters drifted more than their
 matched CpGs in both, most in colon (+0.54 against +0.16). Off the 0 % floor the two tissues part further: among
-CpGs starting between 10 and 90 % (on the all-CpG scale, mice resampled), the housekeeping gap was −0.25 in colon
-(−0.51 to −0.19; 35,349 CpGs) and +0.01 in hippocampus (−0.10 to +0.10; 40,712). The hippocampal gap lies entirely
+CpGs starting between 10 and 90 % (on the all-CpG scale, mice resampled), the housekeeping gap was −0.30 in colon
+(−0.61 to −0.23; 35,349 CpGs) and +0.00 in hippocampus (−0.05 to +0.05; 40,712). The hippocampal gap lies entirely
 at CpGs near the floor; the colon gap does not. On the mammalian consortium's array, a different series from the 11 tissues above, with chip
 intercepts in every age slope, mouse tissues separated brain from the other tissues, though not by turnover class: lung −0.49, spleen −0.45, liver −0.35, blood −0.32
 and skin −0.22, against cortex −0.06, heart −0.04, kidney −0.04, hippocampus +0.03, cerebellum +0.04 and striatum
@@ -467,8 +467,8 @@ matched CpGs, by decile of the gene's expression in the same samples (mean and 9
 
 Between single cells the pattern repeats. In muscle stem cells of three young and three old mice, with methylation
 and RNA from the same cells (GSE121437), age added less cell-to-cell variation at housekeeping promoters than at
-matched promoters (−0.056 SD, −0.094 to −0.027 resampling cells within mice; −0.085 with old cells' reads thinned to
-the young depth), about half of it accounted for by the gene's expression in those cells (−0.031, −0.062 to +0.005).
+matched promoters (−0.056 SD, −0.094 to −0.027 resampling cells within mice, an interval conditional on these six mice;
+−0.03 to −0.09 leaving out one mouse at a time; −0.085 with old cells' reads thinned to the young depth), about half of it accounted for by the gene's expression in those cells (−0.031, −0.062 to +0.005).
 Three mice per age make this a first indication, not a measurement.
 
 ### The shield within one person over time

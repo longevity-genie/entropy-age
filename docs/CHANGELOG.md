@@ -4,6 +4,7 @@ Newest first.
 
 ## Unreleased
 
+- 2026-11-24 (protocol P2): division contrasts checked for donor/animal resampling; off-floor colon/hippocampus numbers updated to the current table; muscle stem-cell interval labelled conditional on six mice with its leave-one-mouse-out range.
 - 2026-11-24 (protocol P1): donor resampling for the expression-matched gaps (`sample_resampled_gaps`: per resample the slopes refitted, strata and SD from the full sample; intervals for each matching and for the share removed); MESA monocytes and epidermis resample people, Sturm fibroblasts cultures within line.
 - 2026-11-24: analysis protocol frozen (docs/PROTOCOL_2026-11-24.md) before the Aging Cell analyses; remaining study-wide FDR wording removed from paper and supplement.
 - 2026-11-24: R158 written up: healthy lung −0.26 (−0.45 to −0.13), kidney −0.10 (unresolved, 30 people), mouse hearts −0.10 (−0.16 to −0.07) once MM285 islands are annotated, mouse field liver ~0 (young ages), BXD control through the program −0.28 as its own analysis.
