@@ -39,12 +39,15 @@ MEASURES = (
 )
 
 
-def match(cases: pl.DataFrame, controls: pl.DataFrame, k: int = K, caliper: float = AGE_CALIPER) -> list[list[int]]:
+def match(
+    cases: pl.DataFrame, controls: pl.DataFrame, k: int = K, caliper: float = AGE_CALIPER, same_chip_only: bool = False
+) -> list[list[int]]:
     """Matched sets as row lists ``[case, control, ...]`` into ``cases.vstack(controls)``; controls used once.
 
     Controls are dealt in rounds, one per case per round (oldest case first, older controls being scarcer), so a
     short supply of controls spreads over all cases instead of filling the first ones; each takes the unused
-    control within ``caliper`` years, same chip first, then nearest in age. Cases left without a control drop out.
+    control within ``caliper`` years, same chip first (only the same chip with ``same_chip_only``), then nearest in
+    age. Cases left without a control drop out.
     """
     n_case = cases.height
     c_age, c_chip = controls["age"].to_numpy(), controls["chip"].to_list()
@@ -56,6 +59,8 @@ def match(cases: pl.DataFrame, controls: pl.DataFrame, k: int = K, caliper: floa
             age, chip = cases["age"][i], cases["chip"][i]
             d = np.abs(c_age - age)
             ok = np.flatnonzero(~used & (d <= caliper))
+            if same_chip_only:  # exact chip matching: a set's intercept then absorbs chip
+                ok = np.array([j for j in ok.tolist() if c_chip[j] == chip], dtype=int)
             if ok.size == 0:
                 continue
             j = min(ok.tolist(), key=lambda j: (c_chip[j] != chip, d[j]))

@@ -19,7 +19,8 @@ from biolearn.data_library import GeoData
 from biolearn.model_gallery import ModelGallery
 
 MIN_WEIGHT_SHARE = 0.9  # a clock is kept when at least this share of its absolute weight is measured ...
-MIN_ARRAY_SHARE = 0.9  # ... in at least this share of the arrays (protocol amendment 2)
+MIN_ARRAY_SHARE = 0.9  # ... in at least this share of the arrays (protocol change 2)
+HYBRID_ROW_SHARE = 0.8  # biolearn's hybrid imputation replaces rows measured in fewer arrays than this
 
 
 def site_weights(model) -> pd.Series:
@@ -41,7 +42,10 @@ def main(src: str, dst: str) -> None:
     from biolearn.model import model_definitions
 
     for name, entry in model_definitions.items():
-        if entry.get("species") != "Human" or "Methylation" not in entry["model"]["type"]:
+        if entry.get("species") != "Human":
+            continue
+        if "Methylation" not in entry["model"]["type"]:  # listed, not silently skipped
+            summary.append({"clock": name, "status": f"model type {entry['model']['type']} not scored"})
             continue
         try:
             model = gallery.get(name)
@@ -52,7 +56,11 @@ def main(src: str, dst: str) -> None:
         if weight.sum() == 0:
             summary.append({"clock": name, "status": "no weights"})
             continue
-        measured = betas.reindex(weight.index).notna().mul(weight, axis=0).sum(axis=0) / weight.sum()
+        present = betas.reindex(weight.index).notna()
+        # biolearn's hybrid imputation replaces a CpG row wholesale where it is measured in under 80 % of arrays,
+        # observed entries included: such rows do not count as measured
+        kept_rows = present.mean(axis=1) >= HYBRID_ROW_SHARE
+        measured = present.loc[kept_rows].mul(weight[kept_rows], axis=0).sum(axis=0) / weight.sum()
         array_share = float((measured >= MIN_WEIGHT_SHARE).mean())
         if array_share < MIN_ARRAY_SHARE:
             summary.append({"clock": name, "status": "coverage", "arrays_covered": array_share,
