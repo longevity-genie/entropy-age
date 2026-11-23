@@ -93,3 +93,13 @@ standardised accelerations.
 Primary analyses stay as in P4 (PhenoAge, EPIC-Italy breast > 2 y). Added, exploratory and labelled so: (i) each panel
 clock in the same nested models; (ii) disagreement as a predictor beside the mean acceleration; (iii) whether the
 shield share F and look-alike drift B correlate with disagreement. All panel clocks are reported, none selected.
+
+## Change 3 (2026-11-24): P5's decision rule replaced after review (docs/reviews/2026-11-24-codex-fibroblast-clones.md)
+
+The clone endpoint mixes the founder cell's inherited state (which prior selection may have shaped), which founders
+grew out, and change during expansion; the two parental bulk arrays cannot give the parent's cell-to-cell
+distribution. A gap inside clones therefore cannot discriminate maintenance from selection, and the rule "maintenance
+supported if the clone interval lies below zero" is withdrawn. The result is reported as: housekeeping promoters of
+single-cell clones stay closer to their parent than matched CpGs; maintenance and selection before or during
+cloning both remain possible. Discriminating data (sister branches of the same founders over doublings, with lineage
+abundance in pooled cultures) do not exist in open repositories.

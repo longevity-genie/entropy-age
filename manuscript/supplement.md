@@ -565,6 +565,7 @@ itself. Runs are described in the run log of the repository.
 | Healthy lung | human | lung without lung disease | GSE175458 | EPIC | rebuilt | 143 people | R155 R158 | R158 | chip and centre (R158) | not run | not run | not run | not run | genes; donors |
 | Kidney (normal) | human | normal kidney | GSE79100 | 450k | rebuilt | 30 people | R158 | R158 | chip and ancestry (R158) | not run | not run | not run | not run | genes; donors |
 | BXD liver through the shared program (control) | mouse | liver | GSE199979 | mammalian array | rebuilt | 160 mice | R158 | R158 | chip and strain (R158) | not run | not run | not run | not run | genes; animals |
+| Fibroblast single-cell clones | human | fetal fibroblast clones | GSE112812 + GSE112873 | 450k | rebuilt | 32 clones (2 strains) | R161 | not run | not run | not run | not run | not run | not run | clones |
 
 <!-- coverage:end -->
 

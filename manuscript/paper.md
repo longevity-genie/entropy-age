@@ -498,6 +498,15 @@ settled; its direction agrees with every cross-sectional cohort.
 **No relation of the shield to species lifespan is resolved, it is not reset by transient reprogramming, has no clear counterpart in
 RNA and is not what epigenetic clocks read; the tests of selection among cells in this section are inconclusive.**
 
+*Single-cell clones.* In two strains of human fetal fibroblasts cloned from single cells and grown about 20
+doublings each (Flunkert et al. 2018; GSE112812, GSE112873; rebuilt), housekeeping promoter CpGs of the untreated
+clones stayed closer to their starting culture than matched CpGs: −0.08 SD (−0.10 to −0.06; 12 clones) and −0.06
+(−0.07 to −0.06; 20 clones), resampling clones, while the two arrays of each starting culture differed 25 to 30
+times less than the clones did. A clone carries its founder cell's own state, which selection before cloning may
+have shaped, and only clones that grew out were arrayed, so this shows the gap inside lineages without separating
+maintenance from selection; that needs sister branches of the same founders followed over doublings with their
+abundance, which no open dataset provides.
+
 *Selection among cells.* Selection among cells should accumulate with divisions, so the shield's share of drift
 should grow along a culture. In seven primary human cell lines passaged to senescence (Endicott et al. 2022), with the
 replicate-culture noise floor removed, set CpGs drifted about half as much as matched CpGs once drift was well above the floor. The change of this

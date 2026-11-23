@@ -1,0 +1,19 @@
+strain,clones,group,gap_sd,ci_low,ci_high,n
+strain 1,"starting culture, array vs array",core_essential,0.0010198312721469648,NaN,NaN,2
+strain 1,"starting culture, array vs array",housekeeping,0.0073014083494223146,NaN,NaN,2
+strain 1,"starting culture, array vs array",non_essential,-0.015783554970461935,NaN,NaN,2
+strain 1,control clone,core_essential,-0.05449763335605746,-0.061634493748568484,-0.045527927910370636,12
+strain 1,control clone,housekeeping,-0.0818944570619864,-0.09628742822653688,-0.06411749128818135,12
+strain 1,control clone,non_essential,0.16184421661613438,0.09264463658154402,0.2141027449187698,12
+strain 1,irradiated clone,core_essential,-0.05869010609248866,-0.06468536528504608,-0.05412259333508899,34
+strain 1,irradiated clone,housekeeping,-0.09321276158137734,-0.10070092519344646,-0.08733749751093203,34
+strain 1,irradiated clone,non_essential,0.26512343919173814,0.237846131879467,0.29333800895731577,34
+strain 2,"starting culture, array vs array",core_essential,-0.000321627884393256,NaN,NaN,2
+strain 2,"starting culture, array vs array",housekeeping,-0.003815951648111559,NaN,NaN,2
+strain 2,"starting culture, array vs array",non_essential,-0.009972700911134448,NaN,NaN,2
+strain 2,control clone,core_essential,-0.032194048563055064,-0.035745987435943094,-0.029046056141724824,20
+strain 2,control clone,housekeeping,-0.0607564314531128,-0.06541121763450054,-0.05614907731209368,20
+strain 2,control clone,non_essential,0.18398664222497194,0.14770911152694619,0.22392050136472846,20
+strain 2,irradiated clone,core_essential,-0.035304849190591174,-0.03989400560329776,-0.03125117860264923,25
+strain 2,irradiated clone,housekeeping,-0.06689016335642635,-0.07133133101520375,-0.062264049065913256,25
+strain 2,irradiated clone,non_essential,0.21685224544141357,0.18454443900378437,0.25561860990708357,25
