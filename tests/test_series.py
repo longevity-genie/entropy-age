@@ -89,3 +89,18 @@ def test_age_labels_map_to_numbers():
     }
     table = sample_table(chars, ["Young mouse", "Old mouse", "Middle mouse"], spec)
     assert table.sort("sample")["age"].to_list() == [0.0, 1.0]
+
+
+def test_age_identifiable_uses_rank():
+    """Age fully determined by chip is not identifiable; redundant dummy columns do not cost degrees of freedom."""
+    import numpy as np
+
+    from entropy_age.experiments.series import age_identifiable
+
+    chips = np.repeat([0, 1, 2, 3], 10)
+    ages = chips * 10.0  # each chip holds one age
+    cov = np.eye(4)[chips]
+    assert not age_identifiable(ages, cov)
+    ages_mixed = ages + np.tile(np.arange(10.0), 4)
+    assert age_identifiable(ages_mixed, cov)
+    assert age_identifiable(ages_mixed, np.column_stack([cov, cov]))  # duplicated columns change nothing

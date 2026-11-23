@@ -127,6 +127,17 @@ def groups_of(table: pl.DataFrame, spec: dict, usable: list[str], exclude: set[s
     return out
 
 
+def age_identifiable(ages: np.ndarray, cov: np.ndarray, distinct: int | None = None, min_df: int = 10) -> bool:
+    """True when age is estimable beside the nuisance design: adding age raises the design's rank, and the distinct
+    donors leave at least ``min_df`` residual degrees of freedom after the full design (rank, not column counts, so
+    redundant dummies are not counted and age aliased with chip is caught)."""
+    nuisance = np.column_stack([np.ones(ages.size), cov]) if cov.shape[1] else np.ones((ages.size, 1))
+    rank_nuisance = np.linalg.matrix_rank(nuisance)
+    rank_full = np.linalg.matrix_rank(np.column_stack([nuisance, ages]))
+    n = ages.size if distinct is None else distinct
+    return rank_full > rank_nuisance and n - rank_full >= min_df
+
+
 def donor_intervals(x, ages, cov, feats, island, sets, n: int, rng) -> dict[tuple[str, str, str], tuple[float, float]]:
     """(band, metric, group) -> the 2.5th and 97.5th percentiles of the gap over ``n`` resamples of donors, with the
     strata, the band and the SD that scales the gap all taken from the full sample. A resample whose distinct donors
@@ -145,8 +156,8 @@ def donor_intervals(x, ages, cov, feats, island, sets, n: int, rng) -> dict[tupl
         rows = rng.integers(0, ages.size, ages.size)
         c = cov[rows]
         c = c[:, np.ptp(c, axis=0) > 1e-12] if c.shape[1] else c
-        if np.unique(rows).size - c.shape[1] - 2 < 10 or np.ptp(ages[rows]) == 0:
-            continue  # too few distinct donors for the design: repeated donors add no degrees of freedom
+        if not age_identifiable(ages[rows], c, distinct=np.unique(rows).size):
+            continue  # age aliased with the design, or too few distinct donors: repeated donors add no df
         boot = drift_metrics(x[rows], ages[rows], feats, covariates=c if c.shape[1] else None, spearman=False)
         for band, (keep, strata, full_sd) in plan.items():
             for metric in METRICS:
@@ -264,7 +275,8 @@ def run_series(ctx: Context, name: str) -> list[Path]:
         for k, (design, cov) in enumerate(designs.items()):
             rng = ctx.rng(350_000 + 10 * index + k)
             cov = cov[:, np.ptp(cov, axis=0) > 1e-12] if cov.shape[1] else cov
-            if s.height - cov.shape[1] - 2 < 10:
+            if not age_identifiable(ages, cov):
+                print(f"series {name}: {label}: {design}: age not identifiable beside the design; not fitted", file=sys.stderr)
                 continue
             by_donor = donor_intervals(x, ages, cov, feats, island, sets, N_DONOR_BOOT[str(ctx.scale.name)], rng)
             for r in group_gaps(x, ages, cov, feats, island_of, membership, N_RESAMPLES[str(ctx.scale.name)], ctx.seed):
