@@ -4,6 +4,7 @@ Newest first.
 
 ## Unreleased
 
+- 2026-11-24: Box 1 at the start of Results: the four drift measures in plain words (what each counts, what a higher slope means, when to use which) and how to read a gap in every figure (Anton).
 - 2026-11-24: paper: expression-matching shares now carry donor/culture intervals (fibroblasts 68-76 %, epidermis 64-80 % and 60-84 %).
 - 2026-11-24 (Codex review of P4): clock columns come from the biolearn panel only (the join had read older columns); exact-chip matching added as a sensitivity design; failed bootstrap fits left out and counted; ratio F checked against the absolute gap P; disagreement on an explicit adult-blood panel with accelerations residualised on age, cell fractions, mean beta and chip; coverage counts biolearn's wholesale row imputation as unmeasured; skipped model types listed.
 - 2026-11-24 (protocol P4): clock_increment module (nested conditional logistic models per kept clock: clock, + B, + F given B; panel mean + disagreement). Quick run: B adds nothing to PhenoAge (LR p 0.82, primary); F given B OR 0.70 (p 0.02), alike across the panel; disagreement correlates with B (r 0.37). R162 at paper scale.

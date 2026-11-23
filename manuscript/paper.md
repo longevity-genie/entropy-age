@@ -70,6 +70,25 @@ drift outside it carries health information.
 
 ## Results
 
+**Box 1. How to read the drift measures.** At each CpG, a tissue sample gives a methylation level between 0 % (no cell
+methylated) and 100 % (every cell methylated). With age the level moves, and people come to differ from each other.
+We summarise this per CpG as an age slope of one of four measures, then ask whether the CpGs of a gene set change
+less than comparable CpGs (the gap).
+
+| Measure | What it counts | Higher slope means | Use it for |
+|---|---|---|---|
+| Relative entropy (headline) | How far a sample has moved from the young level at that CpG, up or down alike; a move away from 0 % or 100 % counts more, as chance variation is smallest there | The CpG leaves its young state faster | All main comparisons, across tissues and species |
+| Binary entropy | How close the level is to 50 % (most mixed) | The level moves toward 50 % | Comparison with earlier work only: a CpG falling from 2 % to 0 % reads as more ordered, which overstated our gaps |
+| Dispersion | How much people differ from each other at that CpG | People diverge faster | Random, person-to-person drift |
+| Absolute mean change | How much the average level shifts | The shared shift is faster | Directed change, the kind that clocks read |
+
+The gap is the gene set's slope minus that of matched CpGs (same CpG-island status and young level), in standard
+deviations of the slope over all CpGs. In every figure, a gap below zero means the gene set drifts less than
+comparable CpGs (protected), above zero more. A gap of −0.1 SD is a modest shift of the whole distribution, not a
+switch: it is detectable because thousands of CpGs are averaged. Gaps from relative entropy and dispersion read as
+"drifts less"; on binary entropy a negative gap can also come from CpGs pinned at 0 %, which is why we test CpGs
+starting between 10 and 90 % separately ("off the floor").
+
 ### Essential promoters drift less than matched CpGs in human blood and cortex
 
 **In blood and cortex, CpGs in essential and housekeeping promoters drift less with age than CpGs of the same island
