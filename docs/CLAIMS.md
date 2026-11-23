@@ -131,7 +131,7 @@ a test with little power), **refuted**.
 - **We should not see:** a stronger shield in long-lived species.
 - **Observed:** 96 % of 139 groups; lifespan slope +0.025 (p 0.40) with phylogeny; look-alike drift falls as
   lifespan^−1.4 with the relative shield kept or larger; the blood lean rests on human; off the 0 % floor the
-  lifespan slope is −0.014 (p 0.48, R59). Metric audit (R68): relative entropy keeps 89 % of groups negative
+  lifespan slope is −0.014 (p 0.48, R59). Metric audit (R68): relative entropy keeps 88 % of groups negative (R149)
   (−0.13 SD; 73 % off the floor) and no lifespan slope off the floor (+0.004, p 0.84); "the relative shield grows
   with lifespan" (R22) was entropy-only (relative entropy +1.4, p 0.23) and is withdrawn.
   With chip intercepts in every age slope (R118): 86 % of the 122 groups that can be fitted (88.5 % of the same
