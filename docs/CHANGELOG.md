@@ -4,6 +4,7 @@ Newest first.
 
 ## Unreleased
 
+- 2026-11-24 (reviews by Codex and Claude): MM285 annotation rebuilt from Zhou's manifest and UCSC islands (island flags were 4 % of promoter probes in the GPL32543 table; now 25 %); runner normalises 40k probe ids (`strip_probe_suffix`) and stops with an error when a group has no measured CpG (the BXD control had passed silently with none); QC reader keeps the same first array per sample as the betas, so detection and chip describe one physical array.
 - 2026-11-24: Methods open with an "Analysis practices" subsection (raw IDATs, one recipe, one platform per estimate, one array per donor, complete CpGs, chip second fit, resampling rules, gene-level p, shared program, placebo sets, independent review, light clock path); outdated interval sentence corrected (Anton).
 - 2026-11-24: rebuild keeps one array per sample when a GSM holds several (GSE79100: three per kidney); the reader skips a sample already read from an earlier chunk.
 - 2026-11-24: R154 two healthy breast cohorts from raw arrays: little gap (−0.04 and +0.00), in line with GTEx breast.

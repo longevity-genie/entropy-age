@@ -49,6 +49,57 @@ class MouseAnnotationLayout:
     def gene_sets(self) -> Path:
         return self.interim / "gene_sets.parquet"
 
+    @property
+    def probes_mm285(self) -> Path:
+        return self.interim / "mm285_probes.parquet"
+
+
+#: promoter window around a protein-coding transcript start, in bp (as close as the manifest allows to the human
+#: 450k rule TSS1500 / TSS200 / 5'UTR / first exon)
+MM285_PROMOTER_BP = 1500
+
+
+def build_mm285_probes(paths: ProjectPaths) -> Path:
+    """MM285 probe annotation from Zhou's manifests and the UCSC mm10 CpG islands: ``cpg`` (probe id), ``symbol``,
+    ``entrez``, ``chr``, ``promoter``, ``cpg_island``.
+
+    The GPL32543 table flags only 4 % of MM285 promoter probes as islands, far below what promoters carry, so island
+    status is taken from the CpG's position inside a UCSC island instead. Promoter: within ``MM285_PROMOTER_BP`` of a
+    protein-coding transcript start (``distToTSS``). Entrez from the GPL32543 table's symbol-to-Entrez pairs."""
+    lay = MouseAnnotationLayout(paths)
+    zhou = paths.input / "annotation" / "zhou" / "MM285.mm10.manifest.gencode.vM25.tsv.gz"
+    cgi_file = paths.input / "annotation" / "mm10" / "cpgIslandExt.txt.gz"
+    genes = pl.read_csv(zhou, separator="\t", null_values=["NA", ""], infer_schema_length=0).drop_nulls(
+        ["CpG_chrm", "CpG_beg"]
+    )
+    rows = []
+    for probe, chrom, beg, names, types, dists in genes.select(
+        "probeID", "CpG_chrm", "CpG_beg", "geneNames", "transcriptTypes", "distToTSS"
+    ).iter_rows():
+        promoter_genes: list[str] = []
+        if names and types and dists:
+            for name, kind, dist in zip(names.split(";"), types.split(";"), dists.split(";"), strict=False):
+                if kind == "protein_coding" and dist not in ("", "NA") and abs(int(dist)) <= MM285_PROMOTER_BP:
+                    promoter_genes.append(name)
+        first = (promoter_genes or (names.split(";") if names else [None]))[0]
+        rows.append((probe, chrom.removeprefix("chr"), int(beg), first, bool(promoter_genes)))
+    probes = pl.DataFrame(rows, schema=["cpg", "chr", "pos", "symbol", "promoter"], orient="row")
+    cgi = pl.read_csv(cgi_file, separator="\t", has_header=False).select(
+        pl.col("column_1").alias("chr"), pl.col("column_2").alias("start"), pl.col("column_3").alias("end")
+    )
+    cgi = cgi.with_columns(pl.col("chr").str.strip_prefix("chr")).sort("chr", "start")
+    probes = probes.sort("chr", "pos").join_asof(
+        cgi.rename({"start": "pos"}), on="pos", by="chr", strategy="backward"
+    ).with_columns(cpg_island=pl.col("end").is_not_null() & (pl.col("pos") < pl.col("end"))).drop("end")
+    entrez = (
+        pl.read_parquet(lay.probes).select("symbol", "entrez").drop_nulls().unique(subset="symbol", keep="first")
+    )
+    probes = probes.join(entrez, on="symbol", how="left").select(
+        "cpg", "symbol", "entrez", "chr", "promoter", "cpg_island"
+    )
+    probes.write_parquet(lay.probes_mm285)
+    return lay.probes_mm285
+
 
 def fetch_mouse_annotation(paths: ProjectPaths, *, overwrite: bool = False) -> list[Path]:
     lay = MouseAnnotationLayout(paths)

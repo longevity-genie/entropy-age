@@ -2,7 +2,7 @@
 # outdoor field enclosure and 20 in the laboratory. Age in days; sex held; environment held in the pooled group and
 # each environment also alone. Rebuilt from IDATs.
 accession = "GSE269932"
-annotation = "mouse"
+annotation = "mm285"
 age = "age_in_days"
 sex = "Sex"
 donor = "sample"

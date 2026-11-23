@@ -51,6 +51,9 @@ def read_qc(paths: ProjectPaths, gse: str) -> pl.DataFrame:
     multi-species array, over the probes SeSAMe's species mask keeps (``frac_dt_species``, written by the R script
     since RM43); rebuilds made before that fall back to the probes the series measures (circular, kept for them)."""
     qc = pl.read_csv(series_dir(paths, gse) / f"{gse}.qc.csv", infer_schema_length=None)
+    # one physical array per sample, the one the rebuild keeps in the betas (the first in file order): betas, QC,
+    # detection and chip then describe the same array; a sample whose kept array fails detection is left out
+    qc = qc.unique(subset="sample", keep="first", maintain_order=True)
     if "frac_dt_species" in qc.columns:  # SeSAMe's species mask decided the expected probes (RM43): not circular
         return qc.with_columns(
             passed=pl.col("frac_dt_species").cast(pl.Float64) >= MIN_DETECTED, chip=pl.col("chip").cast(pl.String)

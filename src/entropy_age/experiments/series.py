@@ -21,7 +21,8 @@ Description file::
     sex = "Sex"
     donor = "title:^([^_]+)_"      # a column, or "title:<regex with one group>" applied to the sample title
     hold = ["primary dx"]         # further covariates, held where they vary
-    annotation = "human"          # or "mouse" (mammalian and mouse arrays: mouse promoters and gene sets)
+    annotation = "human"          # "mm285" (mouse MM285 ids), or "mouse" (GPL32543 table; sparse island flags)
+    strip_probe_suffix = false    # true for the 40k mammalian array, which writes cg... without _BC21
     age_values = {Young = 0, Old = 1}   # optional: the age column holds group labels, not numbers
     exclude_cpgs = "config/series/lists/x.csv"   # optional: CpGs left out (a ``cpg`` column)
     [derive]                      # optional: columns read from the title, "title:<regex with one group>"
@@ -166,6 +167,30 @@ def donor_intervals(x, ages, cov, feats, island, sets, n: int, rng) -> dict[tupl
     }
 
 
+def mouse_features(paths, rng: np.random.Generator, spec: dict) -> tuple[list[str], pl.DataFrame, pl.DataFrame]:
+    """Mouse promoter CpGs, their annotation and gene-set membership. ``annotation = "mm285"``: the MM285 annotation
+    built from Zhou's manifest and UCSC islands (``build_mm285_probes``); ``"mouse"``: the GPL32543 table, whose
+    island flags are sparse. ``strip_probe_suffix = true`` for arrays that write ``cg...`` without the ``_BC21``
+    suffix (the 40k mammalian array)."""
+    from entropy_age.data.mouse import MouseAnnotationLayout, build_mm285_probes, mouse_membership
+    from entropy_age.experiments.bxd_liver import probes_without_suffix
+    from entropy_age.experiments.mouse_tissues import BACKGROUND, SETS
+
+    lay = MouseAnnotationLayout(paths)
+    if spec["annotation"] == "mm285":
+        path = lay.probes_mm285 if lay.probes_mm285.exists() else build_mm285_probes(paths)
+    else:
+        path = lay.probes
+    probes = pl.read_parquet(path).filter(pl.col("promoter") & ~pl.col("chr").is_in(["X", "Y", "MT"]))
+    if spec.get("strip_probe_suffix"):
+        probes = probes_without_suffix(probes)
+    membership = mouse_membership(probes, pl.read_parquet(lay.gene_sets)).filter(pl.col("group").is_in(SETS))
+    members = set(membership["feature"].to_list())
+    rest = sorted(set(probes["cpg"].to_list()) - members)
+    background = sorted(rng.choice(rest, size=min(BACKGROUND, len(rest)), replace=False).tolist())
+    return sorted(members | set(background)), probes, membership
+
+
 def run_series(ctx: Context, name: str) -> list[Path]:
     spec = specs()[name]
     gse = spec["accession"]
@@ -177,10 +202,8 @@ def run_series(ctx: Context, name: str) -> list[Path]:
     dropped: set[str] = set()
     if "exclude_cpgs" in spec:  # a table with a ``cpg`` column, relative to the repository (e.g. tumour-changed CpGs)
         dropped = set(pl.read_csv(CONFIG.parents[1] / spec["exclude_cpgs"])["cpg"].to_list())
-    if spec.get("annotation", "human") == "mouse":  # mammalian or mouse array: mouse promoters and gene sets
-        from entropy_age.experiments.mouse_tissues import _features as mouse_features
-
-        features, probes, membership = mouse_features(ctx.paths, ctx.rng(120_000))
+    if spec.get("annotation", "human") in ("mouse", "mm285"):
+        features, probes, membership = mouse_features(ctx.paths, ctx.rng(120_000), spec)
         probes = probes.filter(pl.col("cpg").is_in(features))
     else:
         features, _, membership = _features(ctx.paths, ctx.rng(120_000))
@@ -213,6 +236,11 @@ def run_series(ctx: Context, name: str) -> list[Path]:
         betas = reprocessed.by_accession(ctx.paths, gse, {v: v for v in s["sample"].to_list()})
         s = s.filter(pl.col("sample").is_in(betas.columns)).sort("age", "sample")
         x, feats = complete_matrix(betas, features, s["sample"].to_list())
+        if not feats:  # a probe-id mismatch between array and annotation must not pass as an empty result
+            raise ValueError(
+                f"series {name}: {label}: no annotated promoter CpG is measured in every array "
+                f"({len(set(features) & set(betas['cpg'].to_list()))} of {len(features)} annotated CpGs on the array)"
+            )
         ages = s["age"].to_numpy()
         chips = np.array([str(chip_of.get(v) or "NA") for v in s["sample"].to_list()])
         held = np.column_stack(

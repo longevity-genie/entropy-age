@@ -2,6 +2,7 @@
 # chow-fed females with strain held, the design of the bxd_liver module (housekeeping gap -0.30 there).
 accession = "GSE199979"
 annotation = "mouse"
+strip_probe_suffix = true
 age = "age (days)"
 sex = "Sex"
 donor = "sample"
