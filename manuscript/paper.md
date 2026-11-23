@@ -80,9 +80,10 @@ measure across CpGs (Methods). The drift measure is the age slope of each CpG's 
 which counts a move up or down alike.
 
 In 656 blood donors aged 19-101 (Hannum et al. 2013), housekeeping promoter CpGs drifted 0.15 SD less than matched
-CpGs and core-essential CpGs 0.09 SD less; non-essential CpGs drifted 0.13 SD more (gene-level p < 10⁻⁵ for each, genes as units;
+CpGs and core-essential CpGs 0.09 SD less; non-essential CpGs drifted 0.13 SD more (95 % intervals from resampling donors: −0.23 to −0.09, −0.14 to −0.04
+and +0.06 to +0.21;
 Fig. 1a). In prefrontal cortex of 213 adult controls (Jaffe et al. 2016), the housekeeping and core-essential gaps
-were −0.06 and −0.07 SD, and non-essential CpGs did not differ from their look-alikes (−0.00, p 0.91). The
+were −0.06 and −0.07 SD, and non-essential CpGs did not differ from their look-alikes (−0.00; −0.06 to +0.07). The
 housekeeping gap was larger in blood than in cortex by 0.09 SD (95 % interval −0.19 to −0.02); for core-essential
 genes the difference was not resolved (−0.02, −0.09 to +0.04; Fig. 1b). These are two studies, processed by different
 pipelines, over different age ranges (19-101 and 21-85 years), with neuron fraction held in cortex but no cell fractions
@@ -155,9 +156,9 @@ housekeeping and core-essential promoters than at look-alikes, in white blood ce
 and within 27 purified cell-type groups (−0.060, −0.029; all p ≤ 0.002; Supplementary Fig. S11). The shield is therefore not an averaging artefact of
 arrays.
 
-Finally, we applied one Benjamini-Hochberg correction to every raw p-value of the study (13,955 tests). Of these, 6,971 survived; the largest surviving p was 0.025. The
-shield gaps in blood, in cortex and across species survived; the difference between glia and neurons (p 0.025,
-below) sits at that threshold (Supplementary Fig. S1).
+The p-values in the result tables are mostly set-label tests computed with the samples fixed, which do not test an
+association with age (Methods); a false-discovery correction over them would count the wrong tests, so claims rest
+instead on intervals that resample donors, animals or cultures, and on the placebo sets above.
 
 ![Figure 2](../docs/figures/placebo_sets.png)
 
@@ -179,12 +180,15 @@ In normal colon mucosa of 146 colorectal-cancer patients aged 22 to 89 (GSE10176
 carried the gap (−0.08), but tissue resected next to adenocarcinoma in 114 non-smokers aged 39 to 82 (GSE314841,
 450k part) reversed it: +0.14 (+0.05 to +0.25), housekeeping promoters drifting more than matched CpGs. The same
 study's 31 lungs on the EPIC array gave the same sign without resolving it (+0.06, −0.32 to +0.76). Tissue next to a
-tumour can carry the tumour's methylation changes. Leaving out the CpGs whose methylation differs between 80 lung
-adenocarcinomas and 32 normal lungs of TCGA shrank the reversal without removing it: +0.11 (+0.03 to +0.22) without
-the 24,287 CpGs that differ by at least 0.2 in beta, +0.08 (−0.00 to +0.19) without the 86,809 that differ by at
-least 0.1 (chip intercepts held throughout). The tumour field therefore accounts for part of the reversal; the rest
-may come from changes in tissue next to a tumour that tumours themselves do not share, from the East Asian donors or
-from the 450k array. A series of healthy donor lungs with raw arrays (GSE175458) is being processed. Human
+tumour can carry the tumour's methylation changes. As a sensitivity check, CpGs whose mean level differs between
+TCGA lung adenocarcinomas and TCGA normal lung were left out: the reversal fell from +0.14 to +0.11 (+0.03 to +0.22)
+without the 24,287 CpGs that differ by at least 0.2 in beta, and to +0.08 (−0.00 to +0.19) without the 86,809 that
+differ by at least 0.1 (chip intercepts held). This does not test a field effect: TCGA's normal lung is itself taken
+next to tumours, the lists remove five times more control CpGs than housekeeping CpGs, and a field effect concerns age
+slopes, not mean levels. The direct comparison is lung without any tumour: in 143 donor and other non-diseased
+lungs aged 14 to 88 (GSE175458, EPIC, rebuilt), the housekeeping gap was −0.26 (−0.43 to −0.15, chip held), a strong
+gap of the usual sign. The reversal is therefore specific to tissue resected next to adenocarcinoma in this study,
+whatever its mechanism. Human
 post-mortem tissues on the mammalian array (GSE184211; heart, muscle, liver, kidney, lung, spleen, fat, blood; 32 to
 112 per tissue) cover only about 1,400 promoter CpGs and resolve no tissue. Myometrium, a smooth muscle that renews slowly,
 showed no gap: in 62 women aged 29 to 52 on the EPIC array (GSE296589; fibroid-free and fibroid-associated specimens,
@@ -208,8 +212,12 @@ resolved: lung −0.08 (−0.19 to +0.00), heart +0.05 (−0.04 to +0.12), corte
 the shield or none. Two further mouse series on mouse arrays, rebuilt from raw files with sex held, gave no resolved gap:
 hearts of 36 young and old mice (GSE280472; treatment held) −0.05 (−0.12 to +0.06), and livers of 90 mice aged 26 to
 532 days, most kept in an outdoor enclosure (GSE269932), −0.03 (−0.09 to +0.03), −0.00 with chip intercepts. The
-liver null is narrow and differs from the BXD liver (−0.30) and the RRBS livers (−0.15 to −0.22); the field mice
-were at most 302 days old, so most of this series covers young adults.
+liver null reflects its ages: the median mouse was 135 days old and only 7 of 90 were older than 302 days, so the
+slopes mostly cover maturation. Restricted to mice up to 10 months, BXD liver also shows no gap (−0.01, against
+−0.30 over 6 to 33 months), and the BXD gap does not depend on island matching, strain or the young reference.
+The MM285 array also measures other CpG positions than the conserved 40k probes that carry the BXD result (42 in
+common). Heart is near zero on every platform (−0.01 to −0.07), and in GSE280472 the age slopes barely exceed
+those with ages shuffled.
 
 Across mammals (Mammalian Methylation Consortium, GSE223748; Lu et al. 2023; Haghani et al. 2023), 139
 species-tissue groups of 65 species had at least 15 animals spanning 15 % of the species' maximum lifespan. The
@@ -222,8 +230,9 @@ negative in 73 % of groups (−0.10 SD).
 **Figure 3. The shield across 65 mammals.** (a, b) Housekeeping minus matched gap per species-tissue group against
 log10 maximum lifespan, on the relative-entropy and dispersion slopes (139 groups; Mammalian Methylation Consortium
 array); human, naked mole-rat and mouse groups are marked. Below zero, housekeeping CpGs drift less than matched CpGs.
-(c) Change of the gap per log10 lifespan, weight and tissue held (95 % interval). The all-CpG relative-entropy
-coefficient (+0.031, p 0.04) vanishes off the 0 % floor (+0.004, p 0.83; Supplementary Fig. S7).
+(c) Change of the gap per natural-log unit of maximum lifespan, weight and tissue held (95 % interval). The
+all-CpG relative-entropy coefficient (+0.031, or +0.071 per tenfold lifespan; p 0.04, 0.05 with groups clustered by
+species) vanishes off the 0 % floor (+0.004, p 0.83; Supplementary Fig. S7).
 
 ### Essential promoters lose methylation faster and rest lower
 
@@ -469,8 +478,8 @@ SATSA (E-MTAB-7309; Wang et al. 2018) drew blood from the same Swedish twins up 
 batch regressed out, and on them the cross-sectional shield almost vanished (|mean change| +0.00 SD). We therefore rebuilt the
 series from its 1,072 raw arrays (444 people, 628 consecutive within-person pairs). Each person's change between two
 draws was split into the change everyone makes and the person's own departure from it (Methods). Housekeeping CpGs
-changed less in direction than look-alikes (−0.14 SD, gene-level p < 10⁻¹⁰; deposited betas −0.002, p 0.68), sat closer to the
-measurement floor (−0.073) and diverged slightly more slowly (−0.014, p 0.03; Fig. 8). Across people, the rebuilt
+changed less in direction than look-alikes (−0.14 SD; deposited betas −0.002), sat closer to the
+measurement floor (−0.073) and diverged slightly more slowly (−0.014; Fig. 8). Across people, the rebuilt
 series showed a cross-sectional shield like other blood cohorts (relative entropy −0.22 SD, dispersion −0.36,
 |mean| −0.11). On the deposited betas, the per-person shield share F fell by 0.14 per decade within a person
 (−0.23 to −0.05), matching the between-person slope (−0.13). On the rebuilt betas it fell by 0.08 (−0.18 to +0.02), against
@@ -480,7 +489,7 @@ settled; its direction agrees with every cross-sectional cohort.
 
 ![Figure 8](../docs/figures/satsa_idats.png)
 
-**Figure 8. Change within one person in SATSA.** (a) Within-person gaps in the series rebuilt from raw arrays: core-essential, housekeeping and non-essential CpGs minus look-alikes (SD) for directed change, divergence per year and the measurement floor (permutation p in the text). (b) Per-person drift B, shield share F and signed shift S per decade of age, within a person (circles, 95 % interval) and between people (squares), rebuilt series.
+**Figure 8. Change within one person in SATSA.** (a) Within-person gaps in the series rebuilt from raw arrays: core-essential, housekeeping and non-essential CpGs minus look-alikes (SD) for directed change, divergence per year and the measurement floor. (b) Per-person drift B, shield share F and signed shift S per decade of age, within a person (circles, 95 % interval) and between people (squares), rebuilt series.
 
 ### What the shield is not
 
@@ -694,7 +703,9 @@ The same rules apply to every series; the subsections below give the details.
   90 %), on the all-CpG scale.
 - **Uncertainty.** Intervals resample donors (or animals, or cultures), each resample scaled by the full sample's
   spread; an interval is not given when fewer than half the resamples leave enough degrees of freedom. A second interval
-  resamples genes. P-values treat genes, not CpGs, as independent units.
+  resamples genes. Claims rest on the donor intervals. P-values that permute or cluster set labels over CpGs or genes
+  hold the samples fixed; they reached small values with ages shuffled, so they do not test an association with age
+  and are not used as evidence.
 - **One analysis for all series.** The age-slope series run through one shared program driven by a description file
   per dataset (sample fields, covariates, groups), so no series is processed its own way.
 - **Controls and review.** Random gene sets of the same size go through the same matching (placebo sets); code and
@@ -777,10 +788,11 @@ on the same seeds.
 Each set's CpGs were compared with all other CpGs in the same stratum of CpG-island status (fixed by sequence) and
 young-reference methylation decile, the matched control CpGs ("look-alikes"). With s_k the set's CpGs in stratum k,
 c_k the controls there, n_k = |s_k| and v̄ a mean of the per-CpG measure v (an age slope), the gap is
-G = Σ_k n_k (v̄(s_k) − v̄(c_k)) / (Σ_k n_k · SD(v)), SD(v) taken over all CpGs analysed. P-values take genes, not CpGs, as the units, since CpGs of one promoter move together: each set
-CpG's value minus its stratum's control mean is summed per gene, and the gap is tested against its cluster-robust
-standard error over genes (t with genes − 1 degrees of freedom; calibrated in simulation with correlated CpGs). They
-measure stability over genes with the samples fixed; sampling of donors is carried by the donor intervals. Intervals came from 200 donor bootstraps, each resample divided by the full sample's
+G = Σ_k n_k (v̄(s_k) − v̄(c_k)) / (Σ_k n_k · SD(v)), SD(v) taken over all CpGs analysed. P-values computed with the samples fixed, by permuting set labels among CpGs or by summing residuals per gene with a
+cluster-robust error, measure how consistently a set differs from its look-alikes, not whether the difference comes
+with age: with ages randomly shuffled they still reached small values (field mouse liver, five shuffles, p from
+3·10⁻¹⁷ to 0.012). They are therefore not used as evidence; every claim rests on intervals that resample donors,
+animals or cultures. Intervals came from 200 donor bootstraps, each resample divided by the full sample's
 spread (an earlier version divided by each resample's own spread and drew intervals toward zero). Series run through the shared program carry both a donor (or animal) interval and a gene-resampling interval; the expression-matched analyses resample the set's genes 200 times with the samples held fixed, which shows stability over genes, not the sampling of donors. For the three per-doubling series without expression data, a second interval resamples cultures within each line (200 resamples). Donors are resampled, both arrays of a donor together, in the glia-neuron and tissue-pair contrasts (400 resamples), and mice in colon and hippocampus (200 per tissue, independently). For blood minus
 brain, the two lifespan cohorts were resampled independently and Lunnon's tissues with the same resampled donors.
 Probe design (type I/II), reference chromatin state, or cell-type accessibility quartiles were added to the strata
@@ -845,9 +857,8 @@ Placebo sets drew random genes with a promoter CpG on the array and in none of t
 estimated with EpiDISH's cent12CT450k reference (Teschendorff et al. 2017; Luo et al. 2023) by Houseman projection
 (Houseman et al. 2012), and 11 were added to the covariates of every
 age slope. Where no reference exists, leading principal components of background CpGs were used, and only for
-residual-based measures, since components orthogonal to age cannot change an age slope. A single Benjamini-Hochberg correction was applied over every
-raw p-value in every result table (13,955 tests in 114 folders of result tables); tests overlap and are positively dependent, which the
-procedure allows.
+residual-based measures, since components orthogonal to age cannot change an age slope. No study-wide false-discovery correction is reported: most tabulated p-values are set-label tests with the samples
+fixed (see Matched comparison), and resampling intervals carry the inference.
 
 ### Outcome models
 

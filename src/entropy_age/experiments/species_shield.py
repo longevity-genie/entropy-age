@@ -348,7 +348,7 @@ def _figure(ctx: Context, gaps: pl.DataFrame, fits: pl.DataFrame) -> Path:
     ax.set_yticks(range(len(labels)), labels, fontsize=7)
     ax.invert_yaxis()
     ax.set(
-        xlabel="Gap change per log10 lifespan (SD), 95 % CI",
+        xlabel="Gap change per ln(max lifespan) (SD), 95 % CI",
         title="Gap against lifespan",
     )
     plots.label_panel(ax, "c")
