@@ -4,6 +4,7 @@ Newest first.
 
 ## Unreleased
 
+- 2026-11-24: paper: GTEx values named as deposited (raw arrays controlled); the lung reversal placed against healthy GTEx lung and named as tissue next to a tumour, its cause under test (Anton).
 - 2026-11-24: Figures 1, 6, 8 and 9 redrawn with the house style (bounding box and resolution; earlier redraws outside the command line had skipped it); Figure 8 labels in plain words.
 - 2026-11-24: Figure 9 relabelled: plain odds-ratio ticks (the log axis printed overlapping 8×10⁻¹ labels), readable measure names, a legend in place of the long title; caption names the colours.
 - 2026-11-24: Figure 1 relabelled: plain measure names (relative entropy, not "kl slope"), statement title, panel titles without "Prediction 2", legends off the data; caption rewritten.

@@ -168,16 +168,17 @@ island × young-level matching in (a) Hannum blood and (b) Jaffe cortex. Grey: m
 ### The shield across tissues, platforms and species
 
 **The shield is present in most tissues and species tested; an apparent ordering by cell turnover in mouse cannot be
-separated from array chip.** In nine GTEx tissues on the EPIC array (Oliva et al. 2023; 47-224 donors per tissue, ages in decade bins), the housekeeping gap was −0.13 SD
+separated from array chip.** In nine GTEx tissues on the EPIC array (Oliva et al. 2023; 47-224 donors per tissue, ages in decade bins; deposited values, since the raw arrays are under controlled access), the housekeeping gap was −0.13 SD
 in whole blood, −0.18 in colon, −0.08 in lung and kidney, about 0 in skeletal muscle (−0.003) and testis (+0.001; Supplementary Fig. S8). On
 binary entropy, breast and ovary were as weakly protected as muscle. Which tissues lack the gap does not follow turnover in humans: testis renews fastest. Two further human tissue series,
 processed from raw files with chip intercepts and intervals from resampling donors, came from tissue next to a tumour.
 In normal colon mucosa of 146 colorectal-cancer patients aged 22 to 89 (GSE101764) the housekeeping gap was −0.13 SD
-(−0.25 to −0.01), and −0.17 (−0.32 to −0.00) off the floor. In normal lung next to adenocarcinoma in 114 non-smokers
-aged 39 to 82 (GSE314841, 450k part), it was reversed: +0.14 (+0.05 to +0.25), housekeeping promoters drifting more
-than matched CpGs, against −0.08 in GTEx lung on deposited values. The same study's 31 lungs on the EPIC array
-gave the same sign without resolving it (+0.06, −0.32 to +0.76). Whether the lung result reflects tissue next to a
-tumour, East Asian donors or the 450k array is not known; it is the one resolved reversal in a human tissue. Human
+(−0.25 to −0.01), and −0.17 (−0.32 to −0.00) off the floor. Lung behaved differently by source. Lung of post-mortem GTEx donors
+carried the gap (−0.08), but tissue resected next to adenocarcinoma in 114 non-smokers aged 39 to 82 (GSE314841,
+450k part) reversed it: +0.14 (+0.05 to +0.25), housekeeping promoters drifting more than matched CpGs. The same
+study's 31 lungs on the EPIC array gave the same sign without resolving it (+0.06, −0.32 to +0.76). Tissue next to a
+tumour can carry the tumour's methylation changes, and the donors were East Asian and arrayed on the 450k; which of
+these produces the reversal is being tested. No healthy lung series with raw arrays is in hand yet. Human
 post-mortem tissues on the mammalian array (GSE184211; heart, muscle, liver, kidney, lung, spleen, fat, blood; 32 to
 112 per tissue) cover only about 1,400 promoter CpGs and resolve no tissue. Myometrium, a smooth muscle that renews slowly,
 showed no gap: in 62 women aged 29 to 52 on the EPIC array (GSE296589; fibroid-free and fibroid-associated specimens,
