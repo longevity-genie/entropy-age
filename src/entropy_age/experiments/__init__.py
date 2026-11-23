@@ -106,6 +106,7 @@ from entropy_age.experiments import (
     tet_shared,
     tissue_contrast,
     tissue_pace,
+    wgbs_nuclei,
     within_person,
 )
 from entropy_age.experiments.common import Context, Scale, ScaleName
@@ -131,6 +132,7 @@ FIGURES: dict[str, Callable[[Context], list[Path]]] = {
     "senescence_donors": senescence_donors.run,
     "headline": headline_figures.run,
     "musc_single_cell": musc_single_cell.run,
+    "wgbs_nuclei": wgbs_nuclei.run,
     "mouse_atlas_rrbs": mouse_atlas_rrbs.run,
     "arrest_timecourse": arrest_timecourse.run,
     "breast_replication": breast_replication.run,
