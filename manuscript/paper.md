@@ -178,7 +178,9 @@ that breast carries little of the gap: −0.04 SD (−0.11 to −0.01) in 100 he
 not resolved at this sample size. Which tissues lack the gap does not follow turnover in humans: testis renews fastest. Two further human tissue series,
 processed from raw files with chip intercepts and intervals from resampling donors, came from tissue next to a tumour.
 In normal colon mucosa of 146 colorectal-cancer patients aged 22 to 89 (GSE101764) the housekeeping gap was −0.13 SD
-(−0.25 to −0.01), and −0.17 (−0.32 to −0.00) off the floor. Lung behaved differently by source. Lung of post-mortem GTEx donors
+(−0.25 to −0.01), and −0.17 (−0.32 to −0.00) off the floor. Across 42 independent cohort-tissue series on one measure (23 human, 19 mouse; Supplementary Fig. S22), the
+housekeeping gap was negative in 31; 20 intervals over donors or animals lie below zero and one above it, the lung
+next to adenocarcinoma below. Lung behaved differently by source. Lung of post-mortem GTEx donors
 carried the gap (−0.08), but tissue resected next to adenocarcinoma in 114 non-smokers aged 39 to 82 (GSE314841,
 450k part) reversed it: +0.14 (+0.05 to +0.25), housekeeping promoters drifting more than matched CpGs. The same
 study's 31 lungs on the EPIC array gave the same sign without resolving it (+0.06, −0.32 to +0.76). Tissue next to a

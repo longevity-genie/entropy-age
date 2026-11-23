@@ -1,0 +1,43 @@
+series,species,platform,processing,n,age_min,age_max,fit,gap,ci_low,ci_high,interval
+mouse Lung (Thompson RRBS),mouse,RRBS,deposited counts,,,,held,-0.24040953514234126,-0.3544386305265866,-0.15848202497414646,animals
+mouse Kidney (Thompson RRBS),mouse,RRBS,deposited counts,,,,held,-0.23258272189539653,-0.4954077672188139,-0.07553500603518654,animals
+"liver, chow females (GSE199979)",mouse,mammalian 40k,rebuilt,160,174.0,1017.0,held + chip,-0.23161211396419526,-0.3874081228093979,-0.047295195731992354,donors or animals
+mouse Liver (Meer RRBS),mouse,RRBS,deposited counts,20,,,held,-0.21967180702922728,-0.5728165681005604,0.02407975460720938,animals
+mouse colon (Jena RRBS),mouse,RRBS,deposited counts,,,,held,-0.18915526423159057,-0.29382955905781827,-0.17026526507683923,animals
+mouse Liver (Thompson RRBS),mouse,RRBS,deposited counts,,,,held,-0.1531269979360286,-0.4071141864409899,-0.04809102137706978,animals
+mouse Lung (Meer RRBS),mouse,RRBS,deposited counts,20,,,held,-0.1524940704502879,-0.6676059722248895,0.033219979647429,animals
+mouse Muscle (Thompson RRBS),mouse,RRBS,deposited counts,,,,held,-0.10251127283431274,-0.18073973929236303,-0.06634865664239117,animals
+"hearts, all (GSE280472)",mouse,MM285,rebuilt,36,0.0,1.0,held + chip,-0.09056844533206716,-0.13583589736242135,-0.04693929098100062,donors or animals
+mouse Lung (GSE225166),mouse,RRBS,deposited counts,,,,held,-0.08605980015702236,-0.13868921316584448,-0.015049266549201216,animals
+mouse Blood (Thompson RRBS),mouse,RRBS,deposited counts,,,,held,-0.08374739865718014,-0.12521213365539613,-0.04889044817533643,animals
+mouse Adipose (Thompson RRBS),mouse,RRBS,deposited counts,,,,held,-0.07985558049895256,-0.13729443948156847,-0.03894847279390114,animals
+mouse hippocampus (Jena RRBS),mouse,RRBS,deposited counts,,,,held,-0.07798667076048552,-0.09375978058087947,-0.06524142317436128,animals
+mouse Heart (Meer RRBS),mouse,RRBS,deposited counts,21,,,held,-0.07253723486166988,-0.16400363719169864,0.009462641967034151,animals
+mouse Cortex (Meer RRBS),mouse,RRBS,deposited counts,20,,,held,-0.06676544750088267,-0.1814183363244718,-0.006734927378265893,animals
+mouse Heart (GSE225166),mouse,RRBS,deposited counts,,,,held,-0.04627526166332551,-0.1257732589711807,0.007770563602875272,animals
+mouse Cortex (GSE225166),mouse,RRBS,deposited counts,,,,held,-0.01062132066680933,-0.08264770176179038,0.1321607372442753,animals
+"liver, all (GSE269932)",mouse,MM285,rebuilt,90,26.0,532.0,held + chip,0.009204769900549267,-0.009196004071543164,0.02569955883582023,donors or animals
+mouse Liver (GSE225166),mouse,RRBS,deposited counts,,,,held,0.09942498226055224,-0.12481755967405654,0.3157626016211944,animals
+"lung, no lung disease (GSE175458)",human,EPIC,rebuilt,143,14.0,88.0,held + chip,-0.2630025742828511,-0.45308333965459124,-0.12515748666155385,donors or animals
+heart (GSE184211),human,mammalian 40k,rebuilt,96,28.0,91.0,held + chip,-0.15333644006601355,-0.3815434324653547,0.027412708120918502,donors or animals
+"whole blood (Hannum, GSE40279)",human,450k,deposited,656,,,held,-0.1467407665466018,-0.22856838554315478,-0.085385784124378,donors
+colon mucosa (GSE101764),human,450k,rebuilt,146,22.0,89.0,held + chip,-0.1319544155918147,-0.25426041367523844,-0.013087530752269887,donors or animals
+"kidney, normal (GSE79100)",human,450k,rebuilt,30,18.0,78.0,held + chip,-0.09753851972358128,-0.25481711929711537,0.06794340870162059,donors or animals
+"prefrontal cortex, every donor (GSE349373)",human,EPIC,rebuilt,294,15.5155144877937,79.9917864476386,held + chip,-0.08124265018155057,-0.11199219309243735,-0.053511742810302,donors or animals
+"amygdala, every donor (GSE349373)",human,EPIC,rebuilt,297,15.5155144877937,79.9206023271731,held + chip,-0.07006135530894982,-0.10632187100475655,-0.04898478605445934,donors or animals
+"hippocampus, every donor (GSE349373)",human,EPIC,rebuilt,300,15.5155144877937,79.9917864476386,held + chip,-0.06850073810563892,-0.0892882157280397,-0.06312966067546205,donors or animals
+"prefrontal cortex (Jaffe, GSE74193)",human,450k,rebuilt,213,,,held,-0.05779871131446314,-0.08839490890077466,-0.02530360940133907,donors
+"breast, healthy donors (GSE88883)",human,450k,rebuilt,100,18.0,82.0,held + chip,-0.03828216331190737,-0.11052093644062765,-0.005034566805812158,donors or animals
+skeletal muscle (GSE184211),human,mammalian 40k,rebuilt,57,28.0,78.0,held + chip,-0.030382733921143355,-0.20622499176153367,0.1464548429285857,donors or animals
+"neurons, every donor (GSE112179)",human,EPIC,rebuilt,82,23.0,77.0,held + chip,-0.029815346251703387,-0.10234078887956408,0.03738448398428209,donors or animals
+blood (GSE184211),human,mammalian 40k,rebuilt,32,26.0,76.0,held + chip,-0.025642099544519494,-0.2732185837677684,0.10879109732087938,donors or animals
+"myometrium, all conditions (GSE296589)",human,EPIC v2,rebuilt,30,21.0,51.0,held,-0.008853389937487393,-0.08075703887870346,0.05268294383648749,donors or animals
+"breast, cancer-free women (GSE101961)",human,450k,rebuilt,119,17.0,76.0,held + chip,0.0013037936698750933,-0.04575859855733649,0.03734886364722784,donors or animals
+"myometrium, all conditions (GSE296589)",human,EPIC,rebuilt,62,29.0,52.0,held + chip,0.00462943711597824,-0.01133061061141784,0.022048667894035347,donors or animals
+liver (GSE184211),human,mammalian 40k,rebuilt,93,28.0,91.0,held + chip,0.021466904604604094,-0.07191556168321671,0.10451935822651175,donors or animals
+spleen (GSE184211),human,mammalian 40k,rebuilt,61,28.0,85.0,held + chip,0.027643848689845686,-0.13550870707010393,0.1763970839292377,donors or animals
+adipose (GSE184211),human,mammalian 40k,rebuilt,57,28.0,78.0,held + chip,0.05800828868529441,-0.09032668462533201,0.164671475923473,donors or animals
+lung next to adenocarcinoma (GSE314841),human,EPIC,rebuilt,31,32.0,83.0,held + chip,0.05898828126881047,-0.3235645145568139,0.755449109121383,donors or animals
+lung (GSE184211),human,mammalian 40k,rebuilt,112,28.0,85.0,held + chip,0.0858119811693318,-0.04865156922373175,0.22795586937007553,donors or animals
+kidney (GSE184211),human,mammalian 40k,rebuilt,93,28.0,91.0,held + chip,0.11075871549575882,-0.16277961889353593,0.22971628957713555,donors or animals
+lung next to adenocarcinoma (GSE314841),human,450k,rebuilt,114,39.0,82.0,held + chip,0.13763637822914376,0.04646641570329234,0.2513314085494438,donors or animals

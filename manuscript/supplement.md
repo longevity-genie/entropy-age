@@ -341,6 +341,7 @@ items still open).
 | S19 | `docs/figures/rna_tms.png`, `rna_gtex.png`, `rna_rodents.png` | RNA tests (R75 and earlier) |
 | S20 | `docs/figures/sjlife_deaths.png` | SJLIFE deaths (R48) |
 | S21 | `docs/figures/syndromes.png`, `dnmt3a_gain.png` | chromatin writers, DNMT3A W326R (R18, R37) |
+| S22 | `docs/figures/forest_series.png`, `docs/forest_series.csv` | every series on one measure: 42 cohort-tissue series, housekeeping gap with donor or animal intervals, platform and processing (protocol P3) |
 
 ## Supplementary Table S1. Datasets
 

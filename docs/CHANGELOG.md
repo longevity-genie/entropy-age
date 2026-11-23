@@ -4,6 +4,7 @@ Newest first.
 
 ## Unreleased
 
+- 2026-11-24 (protocol P3): forest plot and table of every series (scripts/forest_series.py; 42 cohort-tissue series, 31 negative, 20 resolved below zero, 1 above: tumour-adjacent lung); Supplementary Fig. S22.
 - 2026-11-24 (protocol P2): division contrasts checked for donor/animal resampling; off-floor colon/hippocampus numbers updated to the current table; muscle stem-cell interval labelled conditional on six mice with its leave-one-mouse-out range.
 - 2026-11-24 (protocol P1): donor resampling for the expression-matched gaps (`sample_resampled_gaps`: per resample the slopes refitted, strata and SD from the full sample; intervals for each matching and for the share removed); MESA monocytes and epidermis resample people, Sturm fibroblasts cultures within line.
 - 2026-11-24: analysis protocol frozen (docs/PROTOCOL_2026-11-24.md) before the Aging Cell analyses; remaining study-wide FDR wording removed from paper and supplement.
