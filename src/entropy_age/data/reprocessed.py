@@ -19,7 +19,9 @@ MIN_DETECTED = 0.90  # samples with fewer probes passing pOOBAH are dropped (SeS
 
 
 def series_dir(paths: ProjectPaths, gse: str) -> Path:
-    return paths.interim / "sesame" / gse
+    """``data/interim/sesame/<GSE>``; ``ENTROPY_AGE_SESAME_DIR`` names another rebuild (the clock track,
+    ``sesame_clock``: SeSAMe without the design-flag mask, so clocks keep their CpGs)."""
+    return paths.interim / os.environ.get("ENTROPY_AGE_SESAME_DIR", "sesame") / gse
 
 
 def available(paths: ProjectPaths, gse: str) -> bool:
