@@ -21,3 +21,15 @@ def test_readings_report_divergence_gained_in_old_cells():
     k = rng.binomial(n.astype(int), levels).astype(float)
     out = readings(k, n, old)
     assert np.nanmean(out["divergence"]) > 0.008 and np.nanmean(out["abs_change"]) < 0.1
+
+
+def test_thinning_brings_old_cells_to_the_young_depth():
+    from entropy_age.experiments.musc_single_cell import thin_old_to_young_depth
+
+    rng = np.random.default_rng(2)
+    old = np.arange(200) >= 100
+    n = np.where(old[:, None], 40, 20).astype(float) * np.ones((200, 5))
+    k = rng.binomial(n.astype(int), 0.3).astype(float)
+    k2, n2 = thin_old_to_young_depth(k, n, old, rng)
+    assert np.allclose(n2[~old], n[~old]) and abs(n2[old].mean() - 20) < 1.0
+    assert (k2 <= n2).all() and abs(k2[old].sum() / n2[old].sum() - 0.3) < 0.02

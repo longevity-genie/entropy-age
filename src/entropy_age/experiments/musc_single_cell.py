@@ -80,6 +80,23 @@ def readings(k: np.ndarray, n: np.ndarray, old: np.ndarray) -> dict[str, np.ndar
     return {name: np.where(ok, v, np.nan) for name, v in out.items()}
 
 
+def thin_old_to_young_depth(k: np.ndarray, n: np.ndarray, old: np.ndarray, rng) -> tuple[np.ndarray, np.ndarray]:
+    """Old cells' reads thinned, per promoter, to the young cells' mean reads per cell (binomial thinning of each
+    cell's methylated and unmethylated reads), so that a deeper sequencing of old cells cannot lower their measured
+    variation. Young cells and promoters where old cells are not deeper are left as they are."""
+    use = n >= MIN_READS
+    with np.errstate(invalid="ignore", divide="ignore"):
+        depth_y = np.where(use & ~old[:, None], n, 0).sum(axis=0) / (use & ~old[:, None]).sum(axis=0)
+        depth_o = np.where(use & old[:, None], n, 0).sum(axis=0) / (use & old[:, None]).sum(axis=0)
+        keep_share = np.clip(np.nan_to_num(depth_y / depth_o, nan=1.0), 0.0, 1.0)
+    k2, n2 = k.copy(), n.copy()
+    share = np.broadcast_to(keep_share, k[old].shape)
+    meth = rng.binomial(k[old].astype(np.int64), share)
+    unmeth = rng.binomial((n[old] - k[old]).astype(np.int64), share)
+    k2[old], n2[old] = meth, meth + unmeth
+    return k2, n2
+
+
 def gaps(
     values: dict[str, np.ndarray],
     keep: np.ndarray,
@@ -238,6 +255,21 @@ def run(ctx: Context) -> list[Path]:
                 }
             )
     write_table(pl.DataFrame(table), out / "gaps")
+    # the same point estimates with old cells thinned to the young depth (review item: old cells were deeper)
+    k_thin, n_thin = thin_old_to_young_depth(k, n, old, ctx.rng(161_000))
+    thin = readings(k_thin, n_thin, old)
+    ok = keep & np.isfinite(thin["divergence"]) & np.isfinite(thin["heterogeneity_young"])
+    depth_rows = [
+        {"matching": matching, "reading": name, "group": group, "gap_sd": value}
+        for matching, strata in variants.items()
+        for (name, group), value in gaps(thin, ok, sets, strata).items()
+    ]
+    write_table(
+        pl.DataFrame(depth_rows).with_columns(
+            mean_reads_old_minus_young=pl.lit(float(np.nanmean(thin["reads_old_minus_young"][ok])))
+        ),
+        out / "gaps_depth_matched",
+    )
     write_table(
         pl.DataFrame(
             {
