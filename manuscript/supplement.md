@@ -514,6 +514,46 @@ type. Generated from `docs/provenance.csv` by `scripts/provenance_table.py`.
 
 <!-- provenance:end -->
 
+**Supplementary Table S5. Which analysis was run in which series.** One row per methylation series; each cell names
+the run that did the analysis, or says it was not run. A statement about what explains the gap (chromatin state,
+expression, kinetics) rests only on the rows whose cell for that analysis is filled; most tissues have only the gap
+itself. Runs are described in the run log of the repository.
+
+<!-- coverage:start -->
+
+| series | species | tissue or cells | accession | platform | processing | samples | gap | off the 0 % floor | chip or batch held | chromatin state matched | expression from the same samples | accessibility | gain and loss rates | interval resamples |
+|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
+| Hannum blood | human | whole blood | GSE40279 | 450k | deposited | 656 donors | R68a | R80 | plate (R68a) | R3 R68b R121 | not run | not run | R67 R83 | donors |
+| Jaffe cortex | human | prefrontal cortex | GSE74193 | 450k | rebuilt | 208 donors | R68a R93 | R80 | plate (R68a); chip R93 | R3 R4 R108 | not run (GTEx expression; R108) | sorted reference (R4 R108) | R67 R83 | donors |
+| Lunnon blood and brain | human | blood and four brain regions | GSE59685 | 450k | deposited and jointly normalised | 71-80 donors per tissue | R2 R127 | not run | not separable (slide = tissue) | R104 | not run | not run | not run | donors |
+| Three brain regions | human | prefrontal cortex, amygdala, hippocampus | GSE349373 | EPIC | rebuilt | about 300 donors per region | R137 R142 | R137 | chip (R137) | not run | not run | not run | not run | genes; donors (R142) |
+| Orbitofrontal cortex | human | orbitofrontal cortex | GSE254293 | EPIC | rebuilt | 90 donors | R132 | not recorded | chip (R132) | not run | not run | not run | not run | genes |
+| Second DLPFC series | human | dorsolateral prefrontal cortex | GSE252501 | EPIC | rebuilt | 52 donors | R109b | R109b | chip (R109b) | not run | not run | not run | not run | genes |
+| Sorted cortical nuclei | human | neurons, oligodendrocyte lineage, other glia, unsorted | GSE279509 | EPIC | rebuilt | 89-148 donors per fraction | R109 R110 | R109 | chip (R109) | not run | not run | not run | not run | genes; donors for paired contrast (R110) |
+| Second sorted series | human | neurons and glia | GSE66351 | 450k | rebuilt | 31 donors | R115 | not run | not run | not run | not run | not run | not run | donors (paired) |
+| Sorted neurons | human | NeuN+ nuclei | GSE112179 | EPIC | rebuilt | 82 donors | R134b R142 | R134b | chip (R134b) | not run | not run | not run | not run | genes; donors (R142) |
+| MESA monocytes and T cells | human | CD14+ monocytes and CD4+ T cells | GSE56046 GSE56581 | 450k | deposited | 1202 and 214 people | R44 R122 R123 | not run | not run | E062 (R122) | R122 R123 | not run | not run | genes |
+| Epidermis | human | suction-blister epidermis | E-MTAB-8993 E-MTAB-8992 | EPIC and 450k (not pooled) | rebuilt | 117 arrays (up to 31 women twice) | R129 | not run | chip (R129) | E057 (R129) | R129 | not run | not run | genes |
+| GTEx tissues | human | nine tissues incl. lung, colon, kidney, muscle, testis | GSE213478 | EPIC | deposited | 47-224 donors per tissue | R68d | not run | not run | not run | not run | not run | not run | donors (32 per resample) |
+| Fibroblast cultures | human | primary fibroblasts | GSE179847 | EPIC | rebuilt | 89 cultures of 6 lines | R124 R125 | not run | chip (R125) | not run | R124 R125 | not run | not run | genes |
+| Telomerase fibroblasts | human | BJ fibroblasts with and without hTERT | GSE268145 | EPIC | rebuilt | 20 hTERT cultures | R130 R138 | not run | chip (R130) | not run | not run | not run | not run | genes; cultures (R138) |
+| Passaged astrocytes | human | fetal astrocytes | GSE202554 | EPIC | rebuilt | 45 cultures of 2 donors | R133 R138 | not run | chip (R133) | not run | not run | not run | not run | genes; cultures (R138) |
+| Astrocytes with telomerase | human | fetal astrocytes with hTERT | GSE226079 | EPIC | rebuilt | 43 cultures of 3 lines | R135 R138 | not run | chip (R135) | not run | not run | not run | not run | genes; cultures (R138) |
+| Senescence modes | human | fibroblasts | GSE197723 | EPIC | rebuilt | 12 chips x 4 arms | R111 | not run | within chip (R111) | not run | not run | not run | not run | chips (sign-flip) |
+| Senescence in six donors | human | fibroblasts and stromal cells | GSE227160 | EPIC | rebuilt | 6 donors x 8 cultures | R136 | not run | donor and chip (R136) | not run | not run | not run | not run | leave one donor out |
+| Arrested fibroblasts | human | confluent fibroblasts | E-MTAB-15859 | EPIC | rebuilt | 3 donors (2 usable) | R112 | not run | within chip (R112) | not run | not run | not run | not run | month reorderings |
+| Four tissues of the same adults | human | buccal, saliva, dried blood spot, PBMC | GSE280465 | EPIC v2 | rebuilt | 32-43 donors per pair | R131 | not run | chip (R131) | not run | not run | not run | not run | donors |
+| Read-level blood | human | white blood cells and 27 sorted cell types | GSE186458 | WGBS | deposited reads | 23 donors | R50 | not run | not run | not run | not run | not run | not run | genes |
+| Within one person | human | blood over 20 years | E-MTAB-7309 | 450k | rebuilt | 444 people | R66 | not run | batch (R66) | not run | not run | not run | not run | people |
+| Single muscle stem cells | mouse | muscle stem cells | GSE121437 | scBS-seq | deposited coverage | 275 cells of 6 mice | R140 | not run | not run | not run | R140 (same cells) | not run | not run | cells within mouse |
+| Colon and hippocampus | mouse | colon and hippocampus | GSE233734 GSE304754 | RRBS | deposited coverage | 82 and 83 mice | R114 | R114c | shared flowcells (not modelled) | not run | not run | not run | not run | mice |
+| Four tissues of the same mice | mouse | lung, heart, cortex, liver | GSE225166 | RRBS | deposited coverage | 30-32 mice per tissue | R141b | R141c | lane (R141b) | not run | not run | not run | not run | mice |
+| Huang mouse tissues | mouse | 11 tissues | GSE279437 | mouse array | rebuilt | young and aged controls | R68a R92 R97 | not run | chip (R92 R97; ordering not identifiable) | not run | not run | not run | not run | mice |
+| Mouse RRBS series | mouse | blood; six tissues; four tissues | GSE80672 GSE120132 GSE121141 | RRBS | deposited coverage | about 20 mice per tissue | R63 R10 R11 R7 R73 | not run | not run | not run | not run | not run | not run | mice |
+| Mammals | 65 species | 139 species-tissue groups | GSE223748 | mammalian array | deposited | 15 or more animals per group | R12 R68c | R59 | chip (R118) | not run | not run | not run | not run | groups |
+
+<!-- coverage:end -->
+
 ## Open items for the authors
 
 - Reference metadata marked [verify] in `paper.md` (authors, journals or years not given in the project docs).

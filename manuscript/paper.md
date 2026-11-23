@@ -608,7 +608,10 @@ protection. (v) The Tet3 result is one study of 16 mice per tissue on one array;
 array and homozygous mutants; and some weaker Tet3 contrasts did not pass the correction over all tests of the study. (vi)
 Seeboth et al. (2020) found cell mix, body mass index, smoking and batch to confound per-person methylation outlier
 burdens; our within-sample contrast removes about half of the slide-batch excess and leaves the rest, so batch must be held in
-every per-person use. (vii) Read-level epiallele entropy was not analysed with relative entropy. (viii) Bisulfite arrays and RRBS read
+every per-person use. (vii) Read-level epiallele entropy was not analysed with relative entropy. (viii) The follow-up analyses were not run everywhere: chromatin state was matched in blood, cortex and
+epidermis only, expression from the same samples was available in monocytes, T cells, epidermis, cultured
+fibroblasts and single muscle stem cells, and gain and loss rates were fitted in blood and cortex; most tissues have
+only the gap itself (Supplementary Table S5). (ix) Bisulfite arrays and RRBS read
 5-hydroxymethylcytosine as methylation. It is abundant in neurons and is the product of the TET enzymes, so the
 Tet1 and Tet3 shifts, the loss rates in cortex and the neuron-glia difference cannot be assigned to
 5-methylcytosine alone.
