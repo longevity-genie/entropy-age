@@ -1,0 +1,21 @@
+# Mouse hearts on the mammalian array (GSE280472): young and old C57BL/6J of both sexes, saline or elamipretide.
+# GEO gives young/old only, so age enters as 0/1; sex and treatment held. Rebuilt from IDATs.
+accession = "GSE280472"
+annotation = "mouse"
+age = "age_group"
+age_values = {Young = 0, Old = 1}
+sex = "sex_title"
+donor = "sample"
+hold = ["treatment"]
+
+[derive]
+age_group = "title:^(Young|Old) "
+sex_title = "title:^\\w+ (females|males) "
+treatment = "title:treated with (\\w+)"
+
+[groups."hearts, all"]
+tissue = "Hearts"
+
+[groups."hearts, saline"]
+tissue = "Hearts"
+treatment = "saline"

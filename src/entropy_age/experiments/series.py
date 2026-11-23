@@ -21,6 +21,8 @@ Description file::
     sex = "Sex"
     donor = "title:^([^_]+)_"      # a column, or "title:<regex with one group>" applied to the sample title
     hold = ["primary dx"]         # further covariates, held where they vary
+    annotation = "human"          # or "mouse" (mammalian and mouse arrays: mouse promoters and gene sets)
+    age_values = {Young = 0, Old = 1}   # optional: the age column holds group labels, not numbers
     [derive]                      # optional: columns read from the title, "title:<regex with one group>"
     condition = "title:\\((Myo[NFT])\\)"
     exclude_jaffe_donors = true   # donors of the discovery cortex cohort (same brain bank) left out
@@ -99,7 +101,12 @@ def sample_table(chars: pl.DataFrame, sample_titles: list[str], spec: dict) -> p
         donors = chars[donor].cast(pl.String).alias("donor")
     extra = sorted({*spec.get("hold", []), *(c for g in spec["groups"].values() for c in g)})
     sex = pl.col(spec["sex"]).alias("sex") if spec.get("sex") else pl.lit("NA").alias("sex")
-    table = chars.select("sample", donors, pl.col(spec["age"]).cast(pl.Float64, strict=False).alias("age"), sex, *extra)
+    if "age_values" in spec:  # no numeric ages: a label per age group, e.g. {Young = 0, Old = 1}
+        mapping = {str(k): float(v) for k, v in spec["age_values"].items()}
+        age = pl.col(spec["age"]).cast(pl.String).replace_strict(mapping, default=None, return_dtype=pl.Float64)
+    else:
+        age = pl.col(spec["age"]).cast(pl.Float64, strict=False)
+    table = chars.select("sample", donors, age.alias("age"), sex, *extra)
     if table["donor"].null_count():
         raise ValueError(f"series: {table['donor'].null_count()} arrays have no donor id")
     return table.drop_nulls("age")
@@ -166,8 +173,14 @@ def run_series(ctx: Context, name: str) -> list[Path]:
         print(f"series {name}: no SeSAMe rebuild or series matrix for {gse}; nothing run", file=sys.stderr)
         return []
     out = ctx.out_dir(f"series_{name}")
-    features, _, membership = _features(ctx.paths, ctx.rng(120_000))
-    probes = pl.read_parquet(AnnotationLayout(ctx.paths).probes_450k).filter(pl.col("cpg").is_in(features))
+    if spec.get("annotation", "human") == "mouse":  # mammalian or mouse array: mouse promoters and gene sets
+        from entropy_age.experiments.mouse_tissues import _features as mouse_features
+
+        features, probes, membership = mouse_features(ctx.paths, ctx.rng(120_000))
+        probes = probes.filter(pl.col("cpg").is_in(features))
+    else:
+        features, _, membership = _features(ctx.paths, ctx.rng(120_000))
+        probes = pl.read_parquet(AnnotationLayout(ctx.paths).probes_450k).filter(pl.col("cpg").is_in(features))
     island_of = dict(probes.select("cpg", "cpg_island").iter_rows())
     qc = reprocessed.read_qc(ctx.paths, gse).filter(pl.col("passed"))
     chip_of = dict(qc.select("sample", "chip").iter_rows())

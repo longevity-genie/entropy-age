@@ -71,3 +71,21 @@ def test_sample_table_refuses_titles_without_a_donor():
     spec = {"age": "age", "sex": "Sex", "donor": "title:^(D\\d+)_", "groups": {"all": {}}}
     with pytest.raises(ValueError, match="do not match"):
         sample_table(chars, ["D1_x", "other"], spec)
+
+
+def test_age_labels_map_to_numbers():
+    """A series with young/old labels and no numeric ages enters age as the mapped value; an unmapped label is dropped."""
+    import polars as pl
+
+    from entropy_age.experiments.series import sample_table
+
+    chars = pl.DataFrame({"sample": ["a", "b", "c"], "tissue": ["H", "H", "H"]})
+    spec = {
+        "age": "age_group",
+        "age_values": {"Young": 0, "Old": 1},
+        "donor": "sample",
+        "derive": {"age_group": "title:^(\\w+) "},
+        "groups": {"all": {"tissue": "H"}},
+    }
+    table = sample_table(chars, ["Young mouse", "Old mouse", "Middle mouse"], spec)
+    assert table.sort("sample")["age"].to_list() == [0.0, 1.0]
