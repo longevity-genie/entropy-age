@@ -53,8 +53,44 @@ def panels(n: int, *, ncols: int | None = None, size: float = 3.0) -> tuple[plt.
     return fig, axes.ravel()
 
 
+#: cohorts are named by tissue and accession on figures, never by first author: "Hannum" is also a clock, and
+#: readers took the blood cohort for the only clock drawn (figures review, 2026-11-24)
+COHORT_NAMES = (
+    ("blood (Hannum)", "blood (GSE40279)"),
+    ("Hannum blood", "blood (GSE40279)"),
+    ("cortex (Jaffe)", "cortex (GSE74193)"),
+    ("Jaffe cortex", "cortex (GSE74193)"),
+    ("(Lunnon)", "(GSE59685)"),
+    ("Lunnon ", "GSE59685 "),
+)
+
+
+def cohort_label(text: str) -> str:
+    for old, new in COHORT_NAMES:
+        text = text.replace(old, new)
+    return text
+
+
+def _relabel(fig: plt.Figure) -> None:
+    from matplotlib.text import Text
+    from matplotlib.ticker import FixedFormatter, FuncFormatter
+
+    for ax in fig.axes:
+        for axis in (ax.xaxis, ax.yaxis):
+            fmt = axis.get_major_formatter()
+            if isinstance(fmt, FixedFormatter):
+                fmt.seq = [cohort_label(str(t)) for t in fmt.seq]
+            elif isinstance(fmt, FuncFormatter):  # set_ticklabels with strings
+                axis.set_major_formatter(FuncFormatter(lambda x, pos, f=fmt.func: cohort_label(str(f(x, pos)))))
+    for text in fig.findobj(Text):
+        label = text.get_text()
+        if label and cohort_label(label) != label:
+            text.set_text(cohort_label(label))
+
+
 def save(fig: plt.Figure, path: Path) -> Path:
     path.parent.mkdir(parents=True, exist_ok=True)
+    _relabel(fig)
     fig.savefig(path)
     plt.close(fig)
     return path
