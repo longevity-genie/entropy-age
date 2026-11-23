@@ -1,0 +1,20 @@
+# Mouse liver on the MM285 mouse array (GSE269932, Zipple 2025): C57BL/6J mice aged 56 to 532 days, 73 kept in an
+# outdoor field enclosure and 20 in the laboratory. Age in days; sex held; environment held in the pooled group and
+# each environment also alone. Rebuilt from IDATs.
+accession = "GSE269932"
+annotation = "mouse"
+age = "age_in_days"
+sex = "Sex"
+donor = "sample"
+hold = ["environment"]
+
+[groups."liver, all"]
+tissue = "Liver"
+
+[groups."liver, field"]
+tissue = "Liver"
+environment = "Field"
+
+[groups."liver, lab"]
+tissue = "Liver"
+environment = "Lab"
