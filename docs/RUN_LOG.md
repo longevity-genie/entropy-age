@@ -29,6 +29,24 @@ commit it ran, its job ids, its scale and seed, and its result or its failure wi
 - Reading: a second immortalised cell type carries the gap per doubling, with chip held, a little below primary
   astrocytes (−0.102, R133) and fibroblasts. Three replicate lines of one source; no arrested control.
 
+## R144 — neurons against oligodendrocytes by WGBS (GSE107729), 2026-11-24
+
+- Commit 5b1d6c4; `figures wgbs_nuclei --scale paper --seed 42`; job 6594292 (about 1.5 h). NeuN+ and OLIG2+ nuclei of
+  BA46; 41 donors with both (25-85 y; 20 controls); each library reduced to 450k probe positions (GRCh37, offset 0
+  checked), covered 10 times; 29,242 CpGs complete in every library (48,761 in controls); 400 donor resamples.
+- **Every donor, sex and diagnosis held, housekeeping.** Oligodendrocyte lineage −0.049 (−0.132 to −0.020); neurons
+  −0.076 (−0.183 to −0.012); difference +0.027 (−0.081 to +0.116), p 0.62. Core-essential difference +0.134 (+0.007
+  to +0.242), p 0.04: neurons more shielded, nominal only.
+- **Controls (20).** Housekeeping difference −0.084 (−0.288 to +0.087).
+- Reading: both fractions carry the gap; the oligodendrocyte lineage does not differ from neurons, as on arrays
+  (R110, −0.003). The glia-over-neuron result rests on the NeuN−/SOX10− fraction of GSE279509 alone.
+
+## R140b — single muscle stem cells, depth-matched, 2026-11-24
+
+- Job 6594541. Old cells' reads thinned per promoter to the young depth (remaining difference 0.66 reads per cell).
+  Divergence, housekeeping −0.085, core-essential −0.096; with expression matched −0.043 and −0.068 (point estimates;
+  intervals as in R140). The gap does not come from the deeper sequencing of old cells.
+
 ## R143 — new human tissue series through the shared runner, 2026-11-24
 
 - Rebuilds of GSE184211, GSE314841, GSE101764, GSE61454 (jobs 6594037-6594068); runner jobs entropy-series-*.

@@ -4,6 +4,7 @@ Newest first.
 
 ## Unreleased
 
+- 2026-11-24: R144: by WGBS of the same 41 brains, neurons and the oligodendrocyte lineage both carry the housekeeping gap and do not differ (+0.027, −0.081 to +0.116); the glia-over-neuron result rests on one fraction of one array series. R140b: the single-cell gap holds with old cells thinned to the young depth (−0.085); both in the paper, run log and Table S5.
 - 2026-11-24: musc_single_cell also writes gaps_depth_matched: the point estimates with old cells' reads thinned per promoter to the young depth (old cells were sequenced deeper, which lowers their measured variation; review item, R140b).
 - 2026-11-24: figures wgbs_nuclei: NeuN+ against OLIG2+ nuclei of the same brains by whole-genome bisulfite sequencing (GSE107729, Mendizabal 2019), reduced to the 450k probe positions (GRCh37, offset checked), complete CpGs, donor bootstrap; every donor with diagnosis held, and controls alone (R144).
 - 2026-11-24: R143: colon mucosa next to cancer, 146 patients: housekeeping gap −0.13 (donors −0.25 to −0.01); lung next to adenocarcinoma, 114 non-smokers: reversed, +0.14 (+0.05 to +0.25), the one resolved reversal in a human tissue; human tissues on the mammalian array: too few promoter CpGs, nothing resolved; obese four-tissue series fails the detection cut (47 of 268). Paper, run log and Table S5.

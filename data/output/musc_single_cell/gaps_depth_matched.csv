@@ -1,0 +1,19 @@
+matching,reading,group,gap_sd,mean_reads_old_minus_young
+island x level,heterogeneity_young,core_essential,0.08916572815825412,0.6605576537753547
+island x level,heterogeneity_young,housekeeping,0.11430118799137826,0.6605576537753547
+island x level,heterogeneity_young,non_essential,-0.10985103355489302,0.6605576537753547
+island x level,divergence,core_essential,-0.09611079492662392,0.6605576537753547
+island x level,divergence,housekeeping,-0.08503995254944063,0.6605576537753547
+island x level,divergence,non_essential,0.07184513755452979,0.6605576537753547
+island x level,abs_change,core_essential,0.03531642043822099,0.6605576537753547
+island x level,abs_change,housekeeping,-0.008730726986498308,0.6605576537753547
+island x level,abs_change,non_essential,0.09769385415633264,0.6605576537753547
++ expression decile,heterogeneity_young,core_essential,0.03762047475666521,0.6605576537753547
++ expression decile,heterogeneity_young,housekeeping,0.04782729157652507,0.6605576537753547
++ expression decile,heterogeneity_young,non_essential,-0.041446941359665326,0.6605576537753547
++ expression decile,divergence,core_essential,-0.06776090048875769,0.6605576537753547
++ expression decile,divergence,housekeeping,-0.042906027873835156,0.6605576537753547
++ expression decile,divergence,non_essential,0.028072952890545275,0.6605576537753547
++ expression decile,abs_change,core_essential,0.038774072254280374,0.6605576537753547
++ expression decile,abs_change,housekeeping,-0.013324169637498643,0.6605576537753547
++ expression decile,abs_change,non_essential,0.1606972732355081,0.6605576537753547

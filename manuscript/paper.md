@@ -264,8 +264,12 @@ in unsorted nuclei (housekeeping −0.053 SD, −0.062 to −0.043; 148 donors) 
 (−0.086 to −0.068; 89 donors), −0.034 in the oligodendrocyte lineage (−0.045 to −0.020; 127) and −0.021 in neurons
 (−0.032 to −0.009; 130), where it was not distinguishable from zero once chip was held (−0.008, −0.019 to +0.003). In the
 65 donors with both fractions, glia exceeded neurons by −0.055 (−0.121 to −0.007; donor bootstrap of both fractions
-together, p 0.025); the oligodendrocyte lineage did not (−0.003). A second sorted series on the 450k array (31
-donors, only two under 60) gave −0.044 (−0.108 to +0.015). A third series holds neurons only: NeuN+ nuclei from the
+together, p 0.025); the oligodendrocyte lineage did not (−0.003). A second sorted series on the 450k array (31 donors, only two under 60) gave −0.044 (−0.108 to +0.015). By whole-genome bisulfite
+sequencing of NeuN+ and OLIG2+ nuclei of the same 41 prefrontal cortices (GSE107729; aged 25 to 85; diagnosis held;
+reduced to the 450k probe positions), both fractions carried a housekeeping gap (oligodendrocyte lineage −0.049,
+−0.132 to −0.020; neurons −0.076, −0.183 to −0.012; donors resampled) and they did not differ (+0.027, −0.081 to
++0.116). This agrees with the oligodendrocyte lineage on arrays; the larger glial gap is confined to the NeuN−/SOX10−
+fraction of one series. A third series holds neurons only: NeuN+ nuclei from the
 frontal cortex of 82 donors aged 23 to 77 (GSE112179; EPIC; one array per donor; 28 controls, the others with
 schizophrenia or bipolar disorder, diagnosis held). Their housekeeping gap was −0.051 SD (−0.060 to −0.042), and
 −0.030 (−0.040 to −0.020) with chip intercepts; the core-essential gap, −0.043, was not distinguishable from zero
@@ -427,6 +431,12 @@ on island status and starting level (grey) and with the decile of the gene's own
 added (orange); the share of the gap removed is printed. Slopes are on age in monocytes and epidermis and on
 population doublings in fibroblasts. (b) Genes outside every gene set: drift of their promoter CpGs relative to
 matched CpGs, by decile of the gene's expression in the same samples (mean and 95 % interval).
+
+Between single cells the pattern repeats. In muscle stem cells of three young and three old mice, with methylation
+and RNA from the same cells (GSE121437), age added less cell-to-cell variation at housekeeping promoters than at
+matched promoters (−0.056 SD, −0.094 to −0.027 resampling cells within mice; −0.085 with old cells' reads thinned to
+the young depth), about half of it accounted for by the gene's expression in those cells (−0.031, −0.062 to +0.005).
+Three mice per age make this a first indication, not a measurement.
 
 ### The shield within one person over time
 

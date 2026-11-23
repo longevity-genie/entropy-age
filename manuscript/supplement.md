@@ -545,7 +545,7 @@ itself. Runs are described in the run log of the repository.
 | Four tissues of the same adults | human | buccal, saliva, dried blood spot, PBMC | GSE280465 | EPIC v2 | rebuilt | 32-43 donors per pair | R131 | not run | chip (R131) | not run | not run | not run | not run | donors |
 | Read-level blood | human | white blood cells and 27 sorted cell types | GSE186458 | WGBS | deposited reads | 23 donors | R50 | not run | not run | not run | not run | not run | not run | genes |
 | Within one person | human | blood over 20 years | E-MTAB-7309 | 450k | rebuilt | 444 people | R66 | not run | batch (R66) | not run | not run | not run | not run | people |
-| Single muscle stem cells | mouse | muscle stem cells | GSE121437 | scBS-seq | deposited coverage | 275 cells of 6 mice | R140 | not run | not run | not run | R140 (same cells) | not run | not run | cells within mouse |
+| Single muscle stem cells | mouse | muscle stem cells | GSE121437 | scBS-seq | deposited coverage | 275 cells of 6 mice | R140 | not run | not run | not run | R140 R140b (same cells) | not run | not run | cells within mouse |
 | Colon and hippocampus | mouse | colon and hippocampus | GSE233734 GSE304754 | RRBS | deposited coverage | 82 and 83 mice | R114 | R114c | shared flowcells (not modelled) | not run | not run | not run | not run | mice |
 | Four tissues of the same mice | mouse | lung, heart, cortex, liver | GSE225166 | RRBS | deposited coverage | 30-32 mice per tissue | R141b | R141c | lane (R141b) | not run | not run | not run | not run | mice |
 | Huang mouse tissues | mouse | 11 tissues | GSE279437 | mouse array | rebuilt | young and aged controls | R68a R92 R97 | not run | chip (R92 R97; ordering not identifiable) | not run | not run | not run | not run | mice |
@@ -554,6 +554,7 @@ itself. Runs are described in the run log of the repository.
 | Colon mucosa next to cancer | human | normal colon mucosa | GSE101764 | 450k | rebuilt | 146 patients | R143 | R143 | chip (R143) | not run | not run | not run | not run | genes; donors |
 | Lung next to cancer | human | normal lung of non-smokers | GSE314841 | 450k | rebuilt | 114 people | R143 | R143 | chip and batch (R143) | not run | not run | not run | not run | genes; donors |
 | Human tissues on the mammalian array | human | heart, muscle, liver, kidney, lung, spleen, fat, blood | GSE184211 | mammalian array | rebuilt | 32-112 per tissue (about 1400 promoter CpGs) | R143 | R143 | chip (R143) | not run | not run | not run | not run | genes; donors |
+| Neurons and oligodendrocytes by WGBS | human | NeuN+ and OLIG2+ nuclei | GSE107729 | WGBS | deposited counts | 41 paired donors | R144 | not run | not applicable (sequencing) | not run | not run | not run | not run | donors (paired) |
 
 <!-- coverage:end -->
 
