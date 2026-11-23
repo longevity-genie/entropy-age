@@ -39,6 +39,8 @@ def p_columns(columns: list[str]) -> list[str]:
         if "p" not in parts or any(a in (q.lower() for q in parts) for a in ADJUSTED):
             continue
         out.append(c)
+    if "p_gene" in out and "p_permutation" in out:  # the gene-level test replaces the CpG-label permutation
+        out.remove("p_permutation")
     return out
 
 

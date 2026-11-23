@@ -4,6 +4,7 @@ Newest first.
 
 ## Unreleased
 
+- 2026-11-24: gene-level p (review item 9): `compare_groups` adds `p_gene`, the matched difference tested with genes as units (set residuals summed per gene, cluster-robust SE, t on genes - 1 df), wherever the membership carries genes; the global FDR uses it in place of the CpG-label permutation p. R146 reruns the headline blood and cortex comparison.
 - 2026-11-24: Figure 5 redrawn: neurons of the second series with their donor-resampling interval, the sequencing rows (oligodendrocyte lineage and neurons of the same brains), culture rows with culture-resampling intervals, the glial row labelled as the NeuN−/SOX10− fraction; caption names each interval type (review item).
 - 2026-11-24: R145: exercise training barely moves promoter methylation beyond array noise (about a hundredth of replicative senescence); the share essential promoters carry after 4 weeks (−0.22) resembles that over a period without training (−0.15); loading and unloading too small to read. Paper, run log, Table S5.
 - 2026-11-24: figures muscle_training: vastus lateralis before and after 4, 8 and 12 weeks of interval training and across a control period without training (GSE171140), and after one bout, loading, unloading and reloading (GSE114763); per CpG methylation on condition with person and chip held; noise-removed squared change from baseline and the share essential promoters carry (as senescence_donors, whose estimator now takes its arms as a parameter); each person left out in turn (R145). Anton asked about trainable tissues.

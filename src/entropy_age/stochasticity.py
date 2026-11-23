@@ -333,6 +333,33 @@ def _stratified_permutation(
     return observed, (exceed + 1) / (n_permutations + 1)
 
 
+def gene_clustered_p(values: np.ndarray, labels: np.ndarray, strata: np.ndarray, genes: np.ndarray) -> tuple[float, int]:
+    """Two-sided p of the matched difference with genes, not CpGs, as the independent units.
+
+    The matched difference equals the mean over set CpGs of ``v_i`` minus the control mean of ``i``'s stratum. Those
+    residuals are summed per gene and the ratio estimator's cluster-robust SE is taken over genes (t with genes - 1
+    df), so CpGs of one promoter, which move together, count once. Controls are many and their means are treated as
+    fixed. Returns (p, number of genes); NaN with fewer than three genes.
+    """
+    _, codes = np.unique(strata, return_inverse=True)
+    rest = ~labels
+    control_mean = np.bincount(codes[rest], weights=values[rest], minlength=codes.max() + 1) / np.maximum(
+        np.bincount(codes[rest], minlength=codes.max() + 1), 1
+    )
+    residual = values[labels] - control_mean[codes[labels]]
+    _, gene_codes = np.unique(genes, return_inverse=True)
+    n_genes = int(gene_codes.max()) + 1 if gene_codes.size else 0
+    if n_genes < 3:
+        return float("nan"), n_genes
+    total = np.bincount(gene_codes, weights=residual, minlength=n_genes)
+    count = np.bincount(gene_codes, minlength=n_genes).astype(float)
+    gap = residual.mean()
+    se = np.sqrt(((total - gap * count) ** 2).sum() * n_genes / (n_genes - 1)) / residual.size
+    if se == 0:
+        return float("nan"), n_genes
+    return float(2 * stats.t.sf(abs(gap) / se, n_genes - 1)), n_genes
+
+
 def _permute_within_strata(labels: np.ndarray, codes: np.ndarray, rng: np.random.Generator) -> np.ndarray:
     """Shuffle ``labels`` only among positions that share a stratum code."""
     grouped = np.argsort(codes, kind="stable")  # positions, grouped by stratum
@@ -398,10 +425,16 @@ def compare_groups(
         n_all = np.bincount(strata)
         mixed = np.flatnonzero((n_in > 0) & (n_in < n_all))
         matched = np.isin(strata, mixed)
+        p_gene, n_genes = float("nan"), 0
         if in_group[matched].sum() >= 2 and (~in_group[matched]).sum() >= 2:
             difference, p_value = _stratified_permutation(
                 values[matched], in_group[matched], strata[matched], n_permutations, rng
             )
+            if "gene" in members.columns:
+                gene_of = dict(members.select("feature", "gene").unique("feature", keep="first").iter_rows())
+                feats = base["feature"].to_numpy()[matched][in_group[matched]]
+                genes = np.array([str(gene_of.get(f)) for f in feats])
+                p_gene, n_genes = gene_clustered_p(values[matched], in_group[matched], strata[matched], genes)
         else:
             difference, p_value = float("nan"), float("nan")
         rows.append(
@@ -415,6 +448,8 @@ def compare_groups(
                 "matched_diff": float(difference),
                 "cliffs_delta": cliffs_delta(values[in_group], values[~in_group]),
                 "p_permutation": float(p_value),
+                "n_genes": n_genes,
+                "p_gene": p_gene,
             }
         )
     return pl.DataFrame(rows)
