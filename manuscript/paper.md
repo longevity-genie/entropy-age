@@ -458,11 +458,12 @@ the housekeeping gap, and genes outside every gene set are shielded in step with
 chromatin maps come from other people's cells. Three data sets carry both layers from the same material: sorted
 monocytes, cultured fibroblasts and epidermis. The CD14+ monocytes of 1,202 people (MESA; Reynolds et al. 2014) have
 expression arrays of the same samples. Adding the decile of each gene's own expression to the matching
-removed 82 % of the monocyte housekeeping gap (−0.099 → −0.017 SD; 75 to 92 %) and all of the core-essential one
+removed 82 % of the monocyte housekeeping gap (−0.099 → −0.017 SD; 77 to 91 % resampling people; the gap itself −0.12
+to −0.08) and all of the core-essential one
 (−0.035 → +0.020, interval including zero). Among the 11,678 genes outside every gene set, drift relative to
 matched CpGs fell step by step with expression, from +0.07 SD in the lowest decile to −0.20 in the highest (rank
 correlation −0.12 over genes; no resampling interval computed). In these cells the shield follows how strongly a promoter is used, whether or not
-the gene is essential. CD4+ T cells of 214 of the same people, which have almost no gap on this measure (−0.015 SD), show no
+the gene is essential. CD4+ T cells of 214 of the same people, which have almost no gap on this measure (−0.015 SD; −0.05 to +0.02 resampling people), show no
 such gradient (Supplementary Note 3). In fibroblasts grown for up to 79 population doublings (Sturm et al. 2022;
 89 untreated cultures of six healthy lines, arrays rebuilt from raw files, RNA-seq of the same cultures), drift per
 doubling showed the monocyte pattern: the housekeeping gap of −0.102 SD fell to −0.028 with the expression decile

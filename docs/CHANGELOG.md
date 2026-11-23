@@ -4,6 +4,7 @@ Newest first.
 
 ## Unreleased
 
+- 2026-11-24 (P1 complete): monocyte expression-matching share 77-91 % over people (gap −0.12 to −0.08); CD4 T-cell gap unresolved over people (−0.05 to +0.02).
 - 2026-11-24: Box 1 at the start of Results: the four drift measures in plain words (what each counts, what a higher slope means, when to use which) and how to read a gap in every figure (Anton).
 - 2026-11-24: paper: expression-matching shares now carry donor/culture intervals (fibroblasts 68-76 %, epidermis 64-80 % and 60-84 %).
 - 2026-11-24 (Codex review of P4): clock columns come from the biolearn panel only (the join had read older columns); exact-chip matching added as a sensitivity design; failed bootstrap fits left out and counted; ratio F checked against the absolute gap P; disagreement on an explicit adult-blood panel with accelerations residualised on age, cell fractions, mean beta and chip; coverage counts biolearn's wholesale row imputation as unmeasured; skipped model types listed.
