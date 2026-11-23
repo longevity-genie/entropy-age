@@ -4,6 +4,7 @@ Newest first.
 
 ## Unreleased
 
+- 2026-11-24 (protocol P5): fibroblast_clones module (Flunkert clones, rebuilt): per-clone relative entropy from the starting culture; quick run: housekeeping gap inside clones −0.08 and −0.06 (clone resampling), technical floor (parent array vs array) ~0. Caveat for review: a clone inherits its founder cell's own difference from the parent.
 - 2026-11-24: the analysis protocol is living, not frozen (Anton): docs/ANALYSIS_PROTOCOL.md; a method change recomputes every result it affects and is recorded with its reason. Clock panel: every biolearn gallery clock with at least 90 % of its weight measured in 90 % of arrays, plus a per-person disagreement score (change 2).
 - 2026-11-24 (protocol P4): clocks scored with biolearn itself at the pinned commit and its documented imputation (scripts/clocks_biolearn.py, own environment), with the measured share of each clock's weight per sample; PhenoAge primary (biolearn's DunedinPACE lacks the authors' normalisation). R160 scores the rebuilt EPIC-Italy arrays. P1 donor intervals: share removed by expression matching 68-76 % (fibroblasts, cultures resampled), 60-84 % / 64-80 % (epidermis EPIC / 450k, donors resampled).
 - 2026-11-24 (protocol P3): forest plot and table of every series (scripts/forest_series.py; 42 cohort-tissue series, 31 negative, 20 resolved below zero, 1 above: tumour-adjacent lung); Supplementary Fig. S22.
