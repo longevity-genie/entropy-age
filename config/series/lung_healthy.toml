@@ -1,0 +1,11 @@
+# Lungs without lung disease (GSE175458; EPIC), most from a donor-lung programme, 14 to 88 years; the healthy
+# counterpart to the tumour-adjacent lung series and a raw-array check on GTEx lung. Collection centre held.
+accession = "GSE175458"
+age = "age"
+sex = "Sex"
+donor = "sample"
+hold = ["center"]
+
+[groups."lung, no lung disease"]
+tissue = "lung"
+dx = "normal"

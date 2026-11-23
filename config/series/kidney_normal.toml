@@ -1,0 +1,10 @@
+# Normal kidney of 31 adults 18 to 78 (GSE79100; 450k), the only kidney series with raw arrays and ages; a raw-array
+# check on GTEx kidney. Source of the tissue not stated (probably the normal part of nephrectomies). Ancestry held.
+accession = "GSE79100"
+age = "age"
+sex = "Sex"
+donor = "sample"
+hold = ["ethnicity"]
+
+[groups."kidney, normal"]
+tissue = "normal kidney"
