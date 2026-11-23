@@ -1,0 +1,11 @@
+# Tumour-adjacent lung (GSE314841, 450k) with the CpGs that differ by >= 0.10 beta between TCGA lung adenocarcinomas and normal lung left out: does the reversal survive without the tumour field?
+accession = "GSE314841"
+matrix = "GSE314841-GPL13534_series_matrix.txt.gz"
+age = "age"
+sex = "gender"
+donor = "sample"
+hold = ["batch"]
+exclude_cpgs = "config/series/lists/luad_tumour_cpgs_d10.csv"
+
+[groups.lung]
+tissue = "lung"

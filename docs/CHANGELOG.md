@@ -4,6 +4,7 @@ Newest first.
 
 ## Unreleased
 
+- 2026-11-24: tumour-field test for the lung reversal: CpGs that differ between 80 TCGA lung adenocarcinomas and 32 normal lungs (open GDC betas; 86,809 at |Δβ| ≥ 0.1, 24,287 at ≥ 0.2) left out of the tumour-adjacent lung series (R153). Mouse hearts and field/lab livers through the shared runner (R152).
 - 2026-11-24: shared runner takes mouse and mammalian arrays (`annotation = "mouse"`) and age-group labels (`age_values`); first mouse series: GSE280472 hearts (young/old, both sexes, saline or elamipretide; treatment held), waiting for its rebuild.
 - 2026-11-24: paper: GTEx values named as deposited (raw arrays controlled); the lung reversal placed against healthy GTEx lung and named as tissue next to a tumour, its cause under test (Anton).
 - 2026-11-24: Figures 1, 6, 8 and 9 redrawn with the house style (bounding box and resolution; earlier redraws outside the command line had skipped it); Figure 8 labels in plain words.
