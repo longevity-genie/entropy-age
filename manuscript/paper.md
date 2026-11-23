@@ -174,8 +174,9 @@ processed from raw files with chip intercepts and intervals from resampling dono
 In normal colon mucosa of 146 colorectal-cancer patients aged 22 to 89 (GSE101764) the housekeeping gap was −0.13 SD
 (−0.25 to −0.01), and −0.17 (−0.32 to −0.00) off the floor. In normal lung next to adenocarcinoma in 114 non-smokers
 aged 39 to 82 (GSE314841, 450k part), it was reversed: +0.14 (+0.05 to +0.25), housekeeping promoters drifting more
-than matched CpGs, against −0.09 in GTEx lung on deposited values. Whether the lung result reflects tissue next to a
-tumour, East Asian donors or the array is not known; it is the one resolved reversal in a human tissue. Human
+than matched CpGs, against −0.09 in GTEx lung on deposited values. The same study's 31 lungs on the EPIC array
+gave the same sign without resolving it (+0.06, −0.32 to +0.76). Whether the lung result reflects tissue next to a
+tumour, East Asian donors or the 450k array is not known; it is the one resolved reversal in a human tissue. Human
 post-mortem tissues on the mammalian array (GSE184211; heart, muscle, liver, kidney, lung, spleen, fat, blood; 32 to
 112 per tissue) cover only about 1,400 promoter CpGs and resolve no tissue.
 

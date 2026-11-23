@@ -39,6 +39,8 @@ commit it ran, its job ids, its scale and seed, and its result or its failure wi
   Housekeeping, chip held: +0.138 (donors +0.046 to +0.251); 10-90 %: +0.193 (+0.079 to +0.359). Core-essential
   +0.110 (+0.039 to +0.198). Without chip the donor intervals reach zero (housekeeping +0.113, −0.023 to +0.376).
   A resolved reversal; GTEx lung (deposited, EPIC) gave −0.09.
+- **Replication within the lung study.** EPIC part, 31 women, 32-83 y, 8 chips: housekeeping +0.059 with chip
+  (donors −0.324 to +0.756), same sign, not resolved; EPIC v2 part: 16 arrays, below the runner's minimum.
 - **Human tissues on the mammalian array (GSE184211, 661 arrays, no donor id).** About 1,400 promoter CpGs per tissue;
   no tissue resolved with donor resampling (heart off the floor with chip −0.302, −0.545 to −0.064, the only interval
   excluding zero among 32 rows; not interpreted).
