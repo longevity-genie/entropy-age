@@ -29,6 +29,21 @@ commit it ran, its job ids, its scale and seed, and its result or its failure wi
 - Reading: a second immortalised cell type carries the gap per doubling, with chip held, a little below primary
   astrocytes (−0.102, R133) and fibroblasts. Three replicate lines of one source; no arrested control.
 
+## R143 — new human tissue series through the shared runner, 2026-11-24
+
+- Rebuilds of GSE184211, GSE314841, GSE101764, GSE61454 (jobs 6594037-6594068); runner jobs entropy-series-*.
+- **Colon mucosa next to colorectal cancer (GSE101764, 146 patients, 22-89 y, 25 chips).** Housekeeping, chip held:
+  −0.132 (genes −0.140 to −0.122; donors −0.254 to −0.013); 10-90 %: −0.169 (donors −0.324 to −0.002).
+  Core-essential −0.075 (donors −0.151 to +0.001).
+- **Lung next to adenocarcinoma, non-smokers (GSE314841, 450k part, 114 people, 39-82 y, 10 chips, batch held).**
+  Housekeeping, chip held: +0.138 (donors +0.046 to +0.251); 10-90 %: +0.193 (+0.079 to +0.359). Core-essential
+  +0.110 (+0.039 to +0.198). Without chip the donor intervals reach zero (housekeeping +0.113, −0.023 to +0.376).
+  A resolved reversal; GTEx lung (deposited, EPIC) gave −0.09.
+- **Human tissues on the mammalian array (GSE184211, 661 arrays, no donor id).** About 1,400 promoter CpGs per tissue;
+  no tissue resolved with donor resampling (heart off the floor with chip −0.302, −0.545 to −0.064, the only interval
+  excluding zero among 32 rows; not interpreted).
+- **Obese four tissues (GSE61454).** 47 of 268 arrays pass the 90 % detection cut; 10-13 per tissue; not analysed.
+
 ## R142 (second part) — three brain regions through the shared runner, 2026-11-24
 
 - Job 6593207 after the interval fix. Point estimates equal R137's. Donor-resampling intervals, housekeeping, chip

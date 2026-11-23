@@ -27,3 +27,6 @@ Four tissues of the same mice,mouse,"lung, heart, cortex, liver",GSE225166,RRBS,
 Huang mouse tissues,mouse,11 tissues,GSE279437,mouse array,rebuilt,young and aged controls,R68a R92 R97,not run,chip (R92 R97; ordering not identifiable),not run,not run,not run,not run,mice
 Mouse RRBS series,mouse,"blood; six tissues; four tissues",GSE80672 GSE120132 GSE121141,RRBS,deposited coverage,about 20 mice per tissue,R63 R10 R11 R7 R73,not run,not run,not run,not run,not run,not run,mice
 Mammals,65 species,"139 species-tissue groups",GSE223748,mammalian array,deposited,15 or more animals per group,R12 R68c,R59,chip (R118),not run,not run,not run,not run,groups
+Colon mucosa next to cancer,human,normal colon mucosa,GSE101764,450k,rebuilt,146 patients,R143,R143,chip (R143),not run,not run,not run,not run,genes; donors
+Lung next to cancer,human,normal lung of non-smokers,GSE314841,450k,rebuilt,114 people,R143,R143,chip and batch (R143),not run,not run,not run,not run,genes; donors
+Human tissues on the mammalian array,human,"heart, muscle, liver, kidney, lung, spleen, fat, blood",GSE184211,mammalian array,rebuilt,32-112 per tissue (about 1400 promoter CpGs),R143,R143,chip (R143),not run,not run,not run,not run,genes; donors

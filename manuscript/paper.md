@@ -169,8 +169,15 @@ island × young-level matching in (a) Hannum blood and (b) Jaffe cortex. Grey: m
 **The shield is present in most tissues and species tested; an apparent ordering by cell turnover in mouse cannot be
 separated from array chip.** In nine GTEx tissues on the EPIC array (Oliva et al. 2023; 47-224 donors per tissue, ages in decade bins), the housekeeping gap was −0.14 SD
 in whole blood, −0.19 in colon, −0.09 in lung and kidney, about 0 in skeletal muscle (−0.005) and testis (−0.002; Supplementary Fig. S8). On
-binary entropy, breast and ovary were as weakly protected as muscle. Which tissues lack the gap does not
-follow turnover in humans: testis renews fastest.
+binary entropy, breast and ovary were as weakly protected as muscle. Which tissues lack the gap does not follow turnover in humans: testis renews fastest. Two further human tissue series,
+processed from raw files with chip intercepts and intervals from resampling donors, came from tissue next to a tumour.
+In normal colon mucosa of 146 colorectal-cancer patients aged 22 to 89 (GSE101764) the housekeeping gap was −0.13 SD
+(−0.25 to −0.01), and −0.17 (−0.32 to −0.00) off the floor. In normal lung next to adenocarcinoma in 114 non-smokers
+aged 39 to 82 (GSE314841, 450k part), it was reversed: +0.14 (+0.05 to +0.25), housekeeping promoters drifting more
+than matched CpGs, against −0.09 in GTEx lung on deposited values. Whether the lung result reflects tissue next to a
+tumour, East Asian donors or the array is not known; it is the one resolved reversal in a human tissue. Human
+post-mortem tissues on the mammalian array (GSE184211; heart, muscle, liver, kidney, lung, spleen, fat, blood; 32 to
+112 per tissue) cover only about 1,400 promoter CpGs and resolve no tissue.
 
 On the mammalian array, relative entropy separated 11 tissues of the same male C57BL/6 mice sharply (GSE279437;
 Huang et al. 2025). The mice were the untreated young and aged controls of an exenatide and rapamycin study, compared as aged minus young because GEO gives no numeric ages. The housekeeping gap was negative in the three renewing tissues and in kidney and liver (−0.05 to −0.19 SD) and

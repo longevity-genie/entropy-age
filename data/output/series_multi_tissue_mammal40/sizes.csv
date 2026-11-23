@@ -1,0 +1,9 @@
+group,donors,age_min,age_max,cpgs,chips
+heart,96,28.0,91.0,1423,9
+skeletal_muscle,57,28.0,78.0,1393,5
+liver,93,28.0,91.0,1405,9
+kidney,93,28.0,91.0,1398,10
+lung,112,28.0,85.0,1394,18
+spleen,61,28.0,85.0,1403,6
+adipose,57,28.0,78.0,1438,10
+blood,32,26.0,76.0,1448,8
