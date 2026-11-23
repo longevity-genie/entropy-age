@@ -293,9 +293,14 @@ def run(ctx: Context) -> list[Path]:
     return [_figure(ctx, gaps, fits)]
 
 
+METRIC_NAMES = {"kl_slope": "relative entropy", "entropy_slope": "binary entropy", "dispersion_slope": "dispersion"}
+#: species marked in panels a and b, each by its own marker rather than a text label per point
+MARKED = {"Human": "*", "Naked mole rat": "D", "Mouse": "s"}
+
+
 def _figure(ctx: Context, gaps: pl.DataFrame, fits: pl.DataFrame) -> Path:
     fig, axes = plots.panels(3, ncols=3, size=4.2)
-    for i, metric in enumerate(("entropy_slope", "dispersion_slope")):
+    for i, metric in enumerate(("kl_slope", "dispersion_slope")):
         ax = axes[i]
         sel = gaps.filter((pl.col("metric") == metric) & (pl.col("group") == "housekeeping"))
         tissues = sel.group_by("tissue").len().sort("len", descending=True)["tissue"].to_list()[:6]
@@ -313,29 +318,38 @@ def _figure(ctx: Context, gaps: pl.DataFrame, fits: pl.DataFrame) -> Path:
         ax.scatter(
             np.log10(other["max_lifespan"]), other["gap_sd"], s=8, color=plots.MUTED, label="other tissues", alpha=0.5
         )
-        for name in ("Naked mole rat", "Human", "Mouse"):
-            for r in sel.filter(pl.col("species").str.to_lowercase() == name.lower()).iter_rows(named=True):
-                ax.annotate(name, (np.log10(r["max_lifespan"]), r["gap_sd"]), fontsize=6)
+        for name, marker in MARKED.items():
+            hit = sel.filter(pl.col("species").str.to_lowercase() == name.lower())
+            ax.scatter(
+                np.log10(hit["max_lifespan"]),
+                hit["gap_sd"],
+                s=40,
+                marker=marker,
+                facecolors="none",
+                edgecolors="black",
+                linewidths=0.8,
+                label=name,
+            )
         ax.axhline(0, color=plots.MUTED, lw=0.8)
         ax.set(
             xlabel="Maximum lifespan (years, log10)",
-            ylabel="Housekeeping minus look-alikes (SD)",
-            title=f"{metric.replace('_', ' ').capitalize()}, per species and tissue",
+            ylabel="Housekeeping minus matched CpGs (SD)",
+            title=f"{METRIC_NAMES[metric].capitalize()} slope",
         )
-        ax.legend(fontsize=5, loc="best")
+        ax.legend(fontsize=5, loc="lower left", ncol=2)
         plots.label_panel(ax, "ab"[i])
     ax = axes[2]
     sel = fits.filter((pl.col("term") == "log max lifespan") & (pl.col("outcome") == "gap_sd"))
     labels = []
     for k, r in enumerate(sel.iter_rows(named=True)):
         ax.errorbar(r["coef"], k, xerr=1.96 * r["se"], fmt="o", color=plots.PALETTE[SETS.index(r["group"])])
-        labels.append(f"{SET_LABELS[r['group']]} · {r['metric'].split('_')[0]}")
+        labels.append(f"{SET_LABELS[r['group']]} · {METRIC_NAMES[r['metric']]}")
     ax.axvline(0, color=plots.MUTED, lw=0.8)
     ax.set_yticks(range(len(labels)), labels, fontsize=7)
     ax.invert_yaxis()
     ax.set(
-        xlabel="Change in gap per log lifespan, weight and tissue held fixed (95 % CI)",
-        title="Longer-lived species: stronger shield if < 0",
+        xlabel="Gap change per log10 lifespan (SD), 95 % CI",
+        title="Gap against lifespan",
     )
     plots.label_panel(ax, "c")
     fig.suptitle(
