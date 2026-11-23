@@ -4,6 +4,7 @@ Newest first.
 
 ## Unreleased
 
+- 2026-11-24: claims ledger rewritten for C2, C3, C4, C6, C11 and C12 (headings and status) to what the evidence now supports, after the independent reviews; the old wording ("chromatin maintenance", "Tet3 guards", "not tuned to lifespan", "has the shield in blood") is gone.
 - 2026-11-24: shared runner reads the source name (for series that record tissue only there) and a named series matrix (for series split by platform); description files for human tissues on the mammalian array (GSE184211: heart, muscle, liver, kidney, lung, spleen, fat, blood), muscle, liver and two fat depots of the same people (GSE61454), lung (GSE314841, 450k part) and colon mucosa (GSE101764).
 - 2026-11-24: mouse tissues off the 0 % floor: colon keeps its gap (−0.25, −0.51 to −0.19), hippocampus has none (+0.01, −0.10 to +0.10); in the four-tissue series no tissue is resolved off the floor. Paper and run log.
 - 2026-11-24: two independent reviews (Claude and Codex) agree that the division claim, the kinetics lead and the Tet3 conclusion were stronger than the evidence: the division lead and Abstract now name the specific contrasts and say tissues do not follow a turnover ranking; the Discussion lists the contrary evidence; kinetics stated as a pooled-fit result not seen per CpG in cortex; Tet3 as one bulk-tissue study; the CD4+ exception to the expression result is in the Abstract.

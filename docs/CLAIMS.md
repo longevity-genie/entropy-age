@@ -45,7 +45,7 @@ a test with little power), **refuted**.
 - **Status:** holds, at about half the size first reported; (a) answered for the species array: off the floor (CpGs at 10-90 %) the gap holds in 93 % of
   139 groups (R59).
 
-## C2 — The shield is chromatin maintenance (H1)
+## C2 — Promoter activity, read as chromatin state, expression or accessibility, accounts for much of the gap
 
 - **If true, we should see:** matching on the tissue's own chromatin removes most of the gap, another tissue's
   much less; a fixed share of drift as cells divide; no dependence on turnover; loss of a promoter-maintaining
@@ -71,19 +71,9 @@ a test with little power), **refuted**.
 - **Beyond the state map (R74):** within active-TSS chromatin, essential island promoters still lose methylation
   faster than other active promoters (blood core +0.006, cortex +0.006-0.007 per decade); the state explains most
   of their lower resting level.
-- **Status:** weakened, 2026-11-19. Chromatin state, expression and accessibility together account for most of the gap
-  in cortex as in blood (R108), so the shield is a property of active promoters; in MESA monocytes, expression measured
-  in the same samples removes 82 % of the housekeeping gap and all of the core-essential one, and genes outside every
-  set are shielded in step with their expression (R122); the same per doubling in cultured fibroblasts with RNA-seq of
-  the same cultures (72 % of the housekeeping gap removed, R124; 77 % with chip held, R125), and with age in epidermis of
-  117 women with RNA-seq of the same women (71 % removed in each of two array groups, 82 % with keratinocyte chromatin
-  state added, R129); it is present per doubling in hTERT fibroblasts, which divide without approaching senescence
-  (−0.136 SD, R130; the mortal arms of that series give no clear reading); but it is larger where cells
-  divide (colon over hippocampus by RRBS on shared flowcells, R114; glia over neurons, R110, R115; replicative
-  senescence, R111) and absent where nothing divides (R112). A division-independent chromatin shield does not predict
-  that ordering. The mouse-array ordering withdrawn in R92 is now seen on clean data.
+- **Status:** holds in part (2026-11-24). Reference chromatin state removes 83-91 % of the housekeeping gap in blood (96 % with both blood maps) and 25 % (deposited) to 44 % (rebuilt arrays) in cortex, where another tissue's map does as well as cortex's own; expression in the same samples removes 70-82 % in monocytes, epidermis and cultured fibroblasts, but not in CD4+ T cells; in rebuilt cortex state, expression and sorted accessibility together remove 77 %. Chromatin matching was run in blood, cortex and epidermis only. Whether activity causes the protection is untested, and the matching may be circular (an active, unmethylated promoter and its state may be outcomes of the same protection).
 
-## C3 — The shield goes with cell division; selection or replication-coupled maintenance (H2, H3 open)
+## C3 — The gap is larger in some dividing cells and tissues; whether selection or replication-coupled maintenance makes it is open
 
 - **If selection, we should see:** the shield grow with divisions; stronger in renewing tissues; absent in
   non-dividing neurons; weaker when proliferation slows (CR); changed in clonal expansions.
@@ -102,17 +92,9 @@ a test with little power), **refuted**.
   selection per doubling also gives a constant share; clonal haematopoiesis clones were diluted (no allele
   fractions).
 - **Separating test:** sorted stem cells young against old; a cohort with clone sizes (controlled access).
-- **Status:** reopened, 2026-11-19. The earlier "no evidence" rested on designs confounded with chip (culture, CR,
-  mouse array). On clean data the shield goes with division: colon −0.189 against hippocampus −0.078 (R114); other
-  glia more than the same donors' neurons (−0.055, p 0.025, R110; −0.044, p 0.11 in a second series, R115);
-  replicative senescence −0.58 of squared drift on 12 of 12 chips, arrested cultures no drift (R111, R112); hTERT
-  fibroblasts, dividing without senescence, carry it per doubling (R130), as do passaged astrocytes (−0.102, R133). Among renewing tissues of the same adults on
-  shared chips (buccal, blood) no difference holds with chip in the model (R131, 32 to 43 donors). This
-  fits selection among dividing cells and equally a replication-coupled maintenance at active promoters; the data in
-  hand cannot separate the two. Separating test: lineage-tracked or clonal cultures (found only under controlled
-  access).
+- **Status:** supported in part (2026-11-24). For: colon over hippocampus in one mouse cohort (−0.19 against −0.08; off the floor −0.25 against +0.01); one glial fraction over paired neurons (−0.055, p 0.025, at the study-wide threshold); a gap per doubling in telomerase fibroblasts, primary and immortalised astrocytes; replicative senescence carries a share of drift in two series; no drift detected in two arrested donors. Against a general rule: testis near zero; Huang's 11 mouse tissues lose their ordering within chip; muscle equals blood in one mouse series; Endicott's lines lose the shield on rebuilt arrays; the second sorted series (−0.044) and the oligodendrocyte lineage (−0.003) do not separate from neurons; neurons alone −0.030 with chip held, donors −0.102 to +0.037. Tissues do not order by turnover. Selection and replication-coupled maintenance are not separated by any data in hand.
 
-## C4 — Tet3 guards essential promoters in brain tissue (H4)
+## C4 — In one study of bulk mouse brain, Tet3 heterozygous animals had a weaker shield
 
 - **If true, we should see:** in Tet3-deficient brain, essential CpGs gain methylation and lose the shield
   against littermates, in neurons that do not divide; specific to Tet3, not every TET.
@@ -128,8 +110,7 @@ a test with little power), **refuted**.
 - **Gain and loss (R67, R74):** essential island promoters lose methylation faster than other active promoters;
   Tet3 loss makes them gain (S +0.012-0.014) and Tet1 loss makes them lose (S −0.02), so the faster removal fits
   Tet3, not Tet1.
-- **Status:** weak (one study); (a) excluded. Dnmt3a W326R (R37) retargets methylation to Polycomb-type look-alikes:
-  writers are aimed by chromatin (C2).
+- **Status:** weak (one study, 8 heterozygous mice per tissue, bulk tissue at one age, no raw files). Against same-chip wild types F rose +0.17 and +0.25; the signed shift S of +0.012 and +0.014 is the core-essential set (housekeeping +0.002, p 0.14, without compression held). Tet1 knockout, another study on another array, shifted the other way. The result does not identify a removal rate, a neuronal effect or Tet3 specificity; 5-hydroxymethylcytosine is read as methylation on these arrays.
 
 ## C5 — Broken chromatin writers add noise but keep the shield
 
@@ -143,7 +124,7 @@ a test with little power), **refuted**.
 - **Separating test:** ages for GSE74432; signatures removed before scoring.
 - **Status:** weak.
 
-## C6 — The shield is universal across mammals and not tuned to lifespan
+## C6 — The shield is present across mammals; a relation to lifespan is not resolved
 
 - **If true, we should see:** a negative gap in nearly every species; no lifespan slope with relatedness held
   fixed; long-lived species drift slower at unprotected CpGs with the shield's share kept.
@@ -159,7 +140,7 @@ a test with little power), **refuted**.
 - **Alternatives:** conserved array CpGs at essential promoters sit near 0 % (floor); taxonomy covariance is
   coarse.
 - **Separating test:** a dated phylogeny; species with WGBS.
-- **Status:** holds.
+- **Status:** holds for presence, open for lifespan (2026-11-24). The gap is negative in 89 % of 139 species-tissue groups on relative entropy (73 % off the floor). Off the floor the lifespan coefficient is +0.004 per log unit (−0.036 to +0.044), which does not exclude a change across species as large as the gap itself; the committed species table predates the relative-entropy fix and is to be regenerated.
 
 ## C7 — Part of age drift is directed, mitotic loss (H3)
 
@@ -213,15 +194,15 @@ a test with little power), **refuted**.
   so restoration toward youth stays untested.
 - **Status:** weak (restoration untested; the shield's persistence under reprogramming supported).
 
-## C11 — Chromatin accessibility has the shield in blood but not in brain
+## C11 — Chromatin accessibility gives no readout of the shield
 
 - **If true, we should see:** essential promoters spread less with age in blood ATAC; consistent in brain cohorts.
 - **Observed:** blood weak (−0.05 SD after cell mix); cortex reverses; hippocampus flips with adjustment.
 - **Alternatives:** sample quality (promoter read share) dominates single-nucleus pseudobulk at these sizes.
 - **Separating test:** a cohort with per-sample quality metrics; sorted bulk ATAC.
-- **Status:** refuted as a clean readout for brain; weak in blood.
+- **Status:** uninformative (2026-11-24). Blood −0.05 SD after cell mix; in cortex the spread of log counts rose faster at essential promoters, but with counting noise removed no cell type shows a gap (within ±0.012 SD); that second test lacks the first stage's covariates and has little power.
 
-## C12 — Drift at unprotected promoters in blood marks breast-cancer risk years ahead
+## C12 — Drift at unprotected promoters in blood and later breast cancer: an association that depends on preprocessing
 
 - **If true, we should see:** higher B in women later diagnosed with breast cancer, not weaker with more years
   before diagnosis; robust to chip, cell mix and global methylation; replicated in a second cohort.
