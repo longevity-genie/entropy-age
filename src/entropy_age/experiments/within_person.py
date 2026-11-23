@@ -208,7 +208,7 @@ def run_idats(ctx: Context) -> list[Path]:
         pl.scan_parquet(path).select("cpg", *people["sample"].to_list()).filter(pl.col("cpg").is_in(features)).collect()
     )
     x = frame.drop("cpg").to_numpy().T.astype(float)
-    return analyse(ctx, people, frame["cpg"].to_list(), x, probes, membership, "satsa_idats", "SATSA from IDATs")
+    return analyse(ctx, people, frame["cpg"].to_list(), x, probes, membership, "satsa_idats", "SATSA rebuilt from raw arrays")
 
 
 def run_450k(ctx: Context) -> list[Path]:
@@ -285,7 +285,8 @@ def _figure(ctx: Context, table: pl.DataFrame, slopes: pl.DataFrame, name: str, 
             label=group.replace("_", " "),
         )
     names = table.filter(pl.col("group") == groups[0])["metric"].to_list()
-    ax.set_yticks(np.arange(len(names)) + 0.27, [n.replace("_", " ") for n in names])
+    plain = {"abs_directed": "directed change", "divergence": "divergence per year", "floor": "measurement floor"}
+    ax.set_yticks(np.arange(len(names)) + 0.27, [plain.get(n, n.replace("_", " ")) for n in names])
     ax.axvline(0, color=plots.MUTED, lw=0.8)
     ax.invert_yaxis()
     ax.legend(fontsize=7, loc="upper right")
