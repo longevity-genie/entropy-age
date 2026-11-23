@@ -99,10 +99,8 @@ intercepts. A third cortex series, bulk orbitofrontal cortex of 90 people aged 2
 from raw files, diagnosis held), gave a small housekeeping gap of the same sign: −0.017 SD (−0.030 to −0.008), and
 −0.010 (−0.022 to −0.001) with chip intercepts, a separate term for each array slide (chip) on which samples were hybridised together, which removes differences between slides (Supplementary Note 3). The largest replication is a fourth series of three brain
 regions from about 300 donors aged 16 to 80 (GSE349373; EPIC, processed from raw files; controls and donors with
-depression or post-traumatic stress disorder, diagnosis held; donors of the first cortex cohort left out). With chip
-intercepts the housekeeping gap was −0.081 SD in prefrontal cortex (−0.089 to −0.069; 294 donors), −0.070 in
-amygdala (−0.081 to −0.058; 297) and −0.069 in hippocampus (−0.081 to −0.056; 300); in the about 100 controls of
-each region it was −0.043, −0.036 and −0.078. Between 10 and 90 % starting methylation the three gaps were −0.061,
+depression or post-traumatic stress disorder, diagnosis held; donors of the first cortex cohort left out). With chip intercepts the housekeeping gap was −0.081 SD in prefrontal cortex (−0.119 to −0.052 resampling
+donors; 294 donors), −0.070 in amygdala (−0.098 to −0.047; 297) and −0.069 in hippocampus (−0.094 to −0.043; 300); in the about 100 controls of each region it was −0.043, −0.036 and −0.078, each donor interval excluding zero. Between 10 and 90 % starting methylation the three gaps were −0.061,
 −0.055 and −0.045, each interval excluding zero.
 
 In blood and four brain regions from the same donors (Lunnon et al. 2014; 71-80 donors per tissue), between-person

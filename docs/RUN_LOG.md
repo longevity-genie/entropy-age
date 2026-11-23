@@ -29,6 +29,13 @@ commit it ran, its job ids, its scale and seed, and its result or its failure wi
 - Reading: a second immortalised cell type carries the gap per doubling, with chip held, a little below primary
   astrocytes (−0.102, R133) and fibroblasts. Three replicate lines of one source; no arrested control.
 
+## R142 (second part) — three brain regions through the shared runner, 2026-11-24
+
+- Job 6593207 after the interval fix. Point estimates equal R137's. Donor-resampling intervals, housekeeping, chip
+  held: prefrontal cortex −0.081 (−0.119 to −0.052), amygdala −0.070 (−0.098 to −0.047), hippocampus −0.069 (−0.094
+  to −0.043); controls −0.043 (−0.085 to −0.005), −0.036 (−0.072 to −0.008), −0.078 (−0.124 to −0.029). Every
+  interval excludes zero: the four-region replication holds under donor resampling.
+
 ## R114c and R141c — mouse tissues off the 0 % floor (review item; Anton asked for the follow-up analyses outside blood and brain), 2026-11-24
 
 - Commit 3060c3f; `figures jena_rrbs` and `figures mouse_atlas_rrbs`, tables `gaps_off_floor` (CpGs with young level
