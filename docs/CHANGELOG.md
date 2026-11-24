@@ -4,6 +4,7 @@ Newest first.
 
 ## Unreleased
 
+- 2026-11-24: R173 lung smoking control: disease-free lung -0.26 never-smokers, -0.19 ever-smokers, fibrotic lung -0.08 (same series). Paper: new paragraph, the shield weakens in diseased lung (tumour-adjacent TCGA, fibrosis), not in smokers; adjacent breast, colon and kidney keep their healthy gap.
 - 2026-11-24: R172 TCGA-KIRC normal-adjacent kidney (160 arrays): housekeeping gap -0.13 (-0.23 to -0.06) against -0.10 in normal kidney; Horvath's shielded part r 0.38 against 0.65.
 - 2026-11-24: config lung_smoking: healthy lung by ever (58) and never (83) smoking, and 345 fibrotic lungs, the smoking control for the weaker shield next to lung tumours.
 - 2026-11-24: R170 TCGA normal-adjacent tissues (seven of eight; kidney in R172): housekeeping gap next to lung tumours -0.07 (LUSC, -0.17 to -0.01) and -0.09 (LUAD, -0.19 to -0.02) against -0.25 in healthy lung, so the weakening near lung tumours replicates; breast -0.01, colon -0.08 as in healthy; thyroid -0.18, liver -0.01, prostate +0.08. Horvath's shielded part keeps its age signal next to TCGA lung tumours (r 0.71, 0.58 against 0.78 healthy), not replicating the GEO drop (0.20); lower next to breast tumours (0.13 against 0.30-0.38). Clock panel, clock parts and atlas include the TCGA tissues.

@@ -224,8 +224,18 @@ differ by at least 0.1 (chip intercepts held). This does not test a field effect
 next to tumours, the lists remove five times more control CpGs than housekeeping CpGs, and a field effect concerns age
 slopes, not mean levels. The direct comparison is lung without any tumour: in 143 donor and other non-diseased
 lungs aged 14 to 88 (GSE175458, EPIC, rebuilt), the housekeeping gap was −0.26 (−0.45 to −0.13, chip held), a strong
-gap of the usual sign. The reversal is therefore specific to tissue resected next to adenocarcinoma in this study,
-whatever its mechanism.
+gap of the usual sign.
+
+**The shield weakens in diseased lung, not in smokers' lungs.** Normal tissue resected next to lung tumours in TCGA,
+rebuilt from the raw arrays with ages from the GDC, carried a weaker gap than lung without disease: −0.07 (−0.17 to
+−0.01) next to squamous carcinomas (42 donors) and −0.09 (−0.19 to −0.02) next to adenocarcinomas (32), against −0.26.
+Smoking does not account for it. Within the disease-free lungs of GSE175458 the gap was −0.26 (−0.42 to −0.12) in 83
+never-smokers and −0.19 (−0.32 to −0.10) in 56 ever-smokers, and the reversal above came from non-smokers. The same
+series' 344 lungs with idiopathic pulmonary fibrosis, from the same centres, carried a gap of −0.08 (−0.22 to +0.05),
+as weak as tissue next to a tumour. Elsewhere the tissue next to a tumour kept the gap of its healthy counterpart:
+breast −0.01 (96 donors; healthy −0.04 and +0.00), colon −0.08 (38; mucosa −0.13) and kidney −0.13 (160; normal
+kidney −0.10). In lung, disease rather than smoking goes with the loss of the shield; whether fibrosis and the tumour
+field share a cause is not tested here.
 
 Human post-mortem tissues on the mammalian array (GSE184211; heart, muscle, liver, kidney, lung, spleen, fat, blood; 32 to
 112 per tissue) cover only about 1,400 promoter CpGs and resolve no tissue. Myometrium, a smooth muscle that renews slowly,

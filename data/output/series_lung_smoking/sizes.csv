@@ -1,0 +1,4 @@
+group,donors,age_min,age_max,cpgs,chips
+"lung, no disease, never smoked",83,14.0,88.0,88868,47
+"lung, no disease, ever smoked",56,19.0,88.0,89337,41
+"lung, pulmonary fibrosis",344,29.0,81.0,87770,86
