@@ -5,34 +5,22 @@ Anton Kulaga, …
 
 ## Abstract
 
-Age-related DNA methylation drift is often modelled as uniform noise, although earlier work suggested that
-housekeeping and highly connected genes are spared. We measured this protection, which we call the shield, by
-comparing CpGs in promoters of essential and housekeeping genes with CpGs of the same CpG-island status and starting
-methylation level (look-alikes), using relative entropy from the young state as the drift measure. Essential
-promoters drift less than look-alikes in human blood (−0.15 SD for housekeeping genes; −0.10 among CpGs that start between 10 and 90 % methylation, and none among
-those between 20 and 80 %), cortex (−0.06 SD), most GTEx
-tissues, mouse tissues and 88 % of 139 species-tissue groups of 65 mammals. Placebo gene sets, blood-cell
-composition, probe design and reprocessing from raw array files do not produce the gap.
+DNA methylation drifts with age, and epigenetic clocks read that drift. Whether drift strikes every CpG alike has
+been suspected but never measured with a fair comparison: promoters of essential genes sit at unmethylated CpG
+islands, which move differently from other sites whatever genes they serve. We matched each promoter CpG of essential
+and housekeeping genes with CpGs of the same island status and starting level, and measured drift as the distance of
+methylation from its young state. In most human tissues, in mouse organs and in 88 % of species-tissue groups of 65 mammals, essential promoters
+drift less than their matches: they are shielded. The shield follows how strongly a promoter is used and accrues with
+cell division in culture, and no control we built (placebo gene sets, cell composition, probe design, raw-data reprocessing)
+produces it. Clocks of different generations read it differently: chronological and mitotic clocks track the
+shield, whereas mortality and pace-of-ageing clocks such as GrimAge and DunedinPACE are blind to it. Stochastic
+ageing therefore has a structure that clocks capture unevenly, which may explain why clocks built on the same arrays
+disagree about who is ageing fast.
 
-Most of the shield is accounted for by promoter activity, not by essentiality as such. Reference chromatin states account for
-83-91 % of the gap in blood and about 44 % in cortex. Where expression was measured in the same samples
-(sorted monocytes, epidermis, cultured fibroblasts), the gene's own expression decile removes 71 to 82 % of the
-housekeeping gap, and genes outside every set are shielded in step with their expression; sorted CD4+ T cells,
-which have almost no gap on this measure, do not show the pattern.
+![Graphical abstract](../docs/figures/forest_series.png)
 
-The shield is larger in some dividing cells and tissues, but tissues do not follow a consistent turnover ranking. In one mouse cohort sequenced on shared flowcells, the gap was more than
-twice as large in colon as in hippocampus (−0.19 against −0.08 SD). In one sorted series it is larger in one glial fraction than in the same donors' neurons (p 0.025; not resolved
-in a second series), it accrues per population doubling in fibroblasts, in a telomerase-immortalised line and in astrocytes, and
-in cultures of two donors kept from dividing for six months no drift was detected, so no shield can be measured in them. Selection among dividing cells and
-replication-coupled maintenance both fit, and the data cannot separate them. Kinetically, essential island promoters
-lose methylation faster than look-alikes in pooled fits, a result not seen per CpG in cortex. In mouse brain at one age, essential promoters of Tet3 heterozygous mice carried more methylation relative to
-look-alikes than same-chip wild types; in a separate study on another array, Tet1 knockout showed the opposite
-shift.
-
-No relation of the shield to species lifespan was resolved, it persists through transient reprogramming and it has no clear RNA
-counterpart. Effects of this size are sensitive to array quality and preprocessing: an apparent association between drift at
-look-alike promoters and later breast cancer came largely from 127 arrays whose raw signal had failed, and without them
-it was not robust (odds ratio 1.14, 0.91-1.44, on the deposited data; 1.01, 0.75-1.36, on arrays rebuilt from raw files).
+**Graphical abstract.** The shield in 42 independent series: housekeeping promoters minus matched CpGs, in SD of the
+drift rate; below zero, the promoters drift less (Box 1 shows how the measure is built).
 
 ## Introduction
 
@@ -682,10 +670,12 @@ types) that the matching, cell composition, probe design and normalisation do no
 
 The qualitative suggestion belongs to Teschendorff, West and Beck (2013), who drew on the finding of West et al.
 (2013) that drift falls on genes of low network connectivity, and Day et al. (2013)
-already linked age-related methylation change with tissue-specific expression and chromatin state. Our contribution
-is a size, two things the shield follows, and a kinetic and a genetic observation. The matched design gives a gap
-with intervals that can be compared across tissues and species and checked against a null. The gap then turns out to
-follow two things: how strongly a promoter is used, and whether the cells divide.
+already linked age-related methylation change with tissue-specific expression and chromatin state. What was missing
+was a fair comparison, and with it three findings. Matched on island status and starting level, the protection
+becomes a size that can be compared across tissues and species and tested against a null. That size follows how
+strongly a promoter is used and whether the cells divide. And it separates the clocks: chronological and mitotic
+clocks call people with a stronger shield older for their age, while mortality and pace-of-ageing clocks do not
+see it, so part of what makes clocks disagree is which part of stochastic drift each one reads.
 
 **The shield belongs to active promoters, not to essential genes as such.** Reference chromatin states account for
 most of the gap in blood and 25 to 44 % in cortex, and with expression and sorted-nuclei accessibility also

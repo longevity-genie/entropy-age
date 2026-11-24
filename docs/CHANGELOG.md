@@ -4,6 +4,7 @@ Newest first.
 
 ## Unreleased
 
+- 2026-11-24: abstract rewritten as a summary (question, measure, finding, clocks; numbers left to the body) with a graphical abstract (the 42-series forest); Discussion's contribution paragraph reframed around the clock generations (Anton).
 - 2026-11-24: R167 clock models on the unmasked track without failed arrays (44 clocks, 109 / 93 sets): F given any clock 0.77-0.83, none resolved; clocks alone mostly unresolved (epiTOC1, Hannum, Ying adaptation above one, exploratory). Figure 10 (clock_panel, age clocks only, tidied) and its Results paragraph.
 - 2026-11-24: paper: clock atlas paragraph (Results, 'What clocks read'); Supplementary Figure S23 (clock atlas heatmap).
 - 2026-11-24: R168 deposited EPIC-Italy cancer models without failed-signal arrays (718 people; breast > 2 y: B 1.29 age and sex, 1.14 (0.91-1.44) adjusted, matched 1.49 (1.04-2.69)). Paper rewritten: no robust association of drift with breast cancer (abstract, results, discussion, limits, methods, Figure 9 caption); Supplementary Note 4 on arrays with failed signal.
