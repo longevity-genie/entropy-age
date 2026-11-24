@@ -633,6 +633,33 @@ colorectal signal (0.92). An association of drift with later breast cancer is th
 once failed arrays are removed; the small residual estimate on the processed data is not robust to how the arrays are
 processed.
 
+*Clocks by generation in the same women.* On arrays rebuilt without the design-flag probe mask (which removes a
+fifth of GrimAge's weight; clocks scored both ways agree at r ≥ 0.997), 44 published clocks kept at least 90 % of their
+weight measured; 22 are age clocks of four kinds (Fig. 10): chronological (first generation: Horvath, Hannum, Lin,
+Weidner and others), phenotypic and mortality (second: PhenoAge, GrimAge v1 and v2, Zhang, the Ying causal clocks),
+pace of ageing (third: DunedinPACE, DunedinPoAm38), and mitotic and stochastic clocks. Their accelerations agreed
+only within generation: the first-generation clocks formed one block, GrimAge, DunedinPACE and Zhang another (Fig.
+10a). What each generation read of drift differed (Fig. 10b): first-generation accelerations went with a stronger
+shield share (r −0.23 to −0.36 for Horvath, Hannum, Lin and Weidner), the mitotic clock epiTOC1 almost was the shield
+(r −0.63), while GrimAge and DunedinPACE were unrelated to it (|r| ≤ 0.09). How far the clocks disagreed in a woman
+was unrelated to her drift (r 0.07 with B, −0.03 with F; Fig. 10d). For breast cancer over 2 years after the draw,
+no clock and no generation added the shield: given any clock and B, F had odds ratios of 0.77 to 0.83, none resolved
+(Fig. 10c). Of 45 clocks and scores, three had intervals above one on their own (epiTOC1 2.51, 1.41-6.02; Hannum 1.53,
+1.04-2.42; Ying adaptation 1.85, 1.03-3.71), as expected by chance among this many exploratory tests; the
+pre-specified PhenoAge did not (1.12, 0.81-1.59).
+
+![Figure 10](../docs/figures/clock_panel.png)
+
+**Figure 10. Clocks of four generations in the same women (EPIC-Italy, arrays rebuilt without the design-flag
+mask, failed arrays left out).** a, correlation between clocks' accelerations (prediction minus the age trend), clocks
+ordered by clustering, generation in the side strip. b, each clock's acceleration against drift at look-alike
+promoters (B), the shield share (F) and the absolute gap (P). c, odds ratio per SD for breast cancer diagnosed over 2
+years after the draw: circles, the clock alone (coloured by generation); squares, the shield share F once that clock
+and B are in the model (filled for the pre-specified PhenoAge); 109 matched sets, 95 % intervals over matched sets.
+d, per woman, how far the adult clocks disagree (SD of their standardised accelerations) against B and F. How to read:
+a red block in a is a group of clocks that call the same women old for their age; a blue cell in b means the clock
+calls women with a stronger shield old for their age.
+
 In childhood-cancer survivors (SJLIFE, 277 deaths among 4,518), B added nothing to DunedinPACE for death (1.01; Supplementary Fig. S20), so in this cohort it adds nothing to DunedinPACE for death. Genome-wide hypomethylation before breast cancer reported in EPIC-Italy (van
 Veldhoven et al. 2015) did not replicate in NOWAC; B survives adjustment for mean methylation, but a cohort-specific
 finding remains possible until a second prospective cohort is tested. A second series, not prospective (GSE283951; 32 cases
