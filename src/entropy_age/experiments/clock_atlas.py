@@ -23,10 +23,9 @@ import polars as pl
 
 from entropy_age import plots
 from entropy_age.data import reprocessed
-from entropy_age.data.cohorts import _characteristics
 from entropy_age.experiments.clock_increment import GENERATION
 from entropy_age.experiments.common import Context, write_table
-from entropy_age.experiments.series import groups_of, sample_table, specs, titles
+from entropy_age.experiments.series import groups_of, series_table, specs
 
 CLOCKS = Path("data/interim/clocks/series")
 MIN_ARRAYS = 15
@@ -77,13 +76,11 @@ def run(ctx: Context) -> list[Path]:
             continue
         gse = spec["accession"]
         path = ctx.paths.root / CLOCKS / f"{gse}_clocks.csv"
-        matrix = ctx.paths.input / "geo" / gse / spec.get("matrix", f"{gse}_series_matrix.txt.gz")
-        if not (path.exists() and matrix.exists() and reprocessed.available(ctx.paths, gse)):
+        table = series_table(ctx.paths, spec)
+        if not (path.exists() and table is not None and reprocessed.available(ctx.paths, gse)):
             print(f"clock_atlas: {name}: no clock scores or matrix for {gse}", file=sys.stderr)
             continue
         scores = pl.read_csv(path)
-        chars = _characteristics(matrix).with_columns(source_name=pl.Series(titles(matrix, "!Sample_source_name_ch1")))
-        table = sample_table(chars, titles(matrix), spec)
         usable = reprocessed.read_qc(ctx.paths, gse).filter(pl.col("passed"))["sample"].to_list()
         for label, s in groups_of(table, spec, usable, set()).items():
             wide = (

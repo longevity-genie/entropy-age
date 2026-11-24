@@ -4,6 +4,7 @@ Newest first.
 
 ## Unreleased
 
+- 2026-11-24: series runner, clock_atlas and clock_parts read a series' samples from `samples_csv` when its arrays are outside GEO (`series_table`); configs for eight TCGA normal-adjacent tissues.
 - 2026-11-24: scripts/fetch_tcga_normals.py: TCGA normal-adjacent 450k IDATs (open) with age and sex from GDC, md5-checked, for the field-cancerisation test; R169 fetches and rebuilds kidney, breast, colon, lung (2), thyroid, liver and prostate.
 - 2026-11-24: new analysis `clock_parts` (Anton): Horvath 2013, StocH, StocP, Lin and PhenoAge split into shielded and other CpGs in every rebuilt series group. Shielded parts track age (median r 0.12-0.38; Horvath up to 0.78 in healthy lung, 0.6-0.76 in brain) but less than the rest (0.36-0.76), carry 8-16 % of the age signal, and their accelerations are nearly independent of the rest's (median r -0.14 to 0.07).
 - 2026-11-24: manuscript-skills story and deslop pass (Anton's request): one headline per Results section, caveats moved within sections, a final Results section on clocks by generation, Discussion paragraph on clocks; abstract's disagreement clause rescoped to Fig. 10a-b; simulation sentence reconciled with Fig. 10b.

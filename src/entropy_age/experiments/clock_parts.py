@@ -25,11 +25,10 @@ import polars as pl
 from entropy_age import plots
 from entropy_age.data import reprocessed
 from entropy_age.data.annotation import AnnotationLayout, link_membership
-from entropy_age.data.cohorts import _characteristics
 from entropy_age.experiments.clock_cpgs import clock_table
 from entropy_age.experiments.clock_weights import PROTECTED
 from entropy_age.experiments.common import Context, write_table
-from entropy_age.experiments.series import groups_of, sample_table, specs, titles
+from entropy_age.experiments.series import groups_of, series_table, specs
 
 CLOCKS = ("Horvath 2013", "StocH", "StocP", "Lin", "PhenoAge")
 BETAS = Path("data/interim/clocks/series")
@@ -51,13 +50,11 @@ def run(ctx: Context) -> list[Path]:
             continue
         gse = spec["accession"]
         path = ctx.paths.root / BETAS / f"{gse}_cpgs.parquet"
-        matrix = ctx.paths.input / "geo" / gse / spec.get("matrix", f"{gse}_series_matrix.txt.gz")
-        if not (path.exists() and matrix.exists() and reprocessed.available(ctx.paths, gse)):
+        table = series_table(ctx.paths, spec)
+        if not (path.exists() and table is not None and reprocessed.available(ctx.paths, gse)):
             continue
         cpgs = sorted(set(weights["cpg"].to_list()))
         betas = pl.read_parquet(path).filter(pl.col("cpg").is_in(cpgs))
-        chars = _characteristics(matrix).with_columns(source_name=pl.Series(titles(matrix, "!Sample_source_name_ch1")))
-        table = sample_table(chars, titles(matrix), spec)
         usable = reprocessed.read_qc(ctx.paths, gse).filter(pl.col("passed"))["sample"].to_list()
         for label, s in groups_of(table, spec, usable, set()).items():
             s = s.drop_nulls("age").filter(pl.col("sample").is_in(betas.columns))

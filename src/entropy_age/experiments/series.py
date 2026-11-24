@@ -114,6 +114,27 @@ def sample_table(chars: pl.DataFrame, sample_titles: list[str], spec: dict) -> p
     return table.drop_nulls("age")
 
 
+def series_table(paths, spec: dict) -> pl.DataFrame | None:
+    """The series' sample table (``sample_table``), from its GEO series matrix or, for arrays outside GEO (TCGA), from
+    ``samples_csv``: a CSV relative to the repository whose ``basename`` is the array's name in the rebuild (renamed to
+    ``sample``; a ``sample`` column there is kept as ``barcode``). None when the source file is missing."""
+    if "samples_csv" in spec:
+        csv = CONFIG.parents[1] / spec["samples_csv"]
+        if not csv.exists():
+            return None
+        chars = pl.read_csv(csv, infer_schema_length=None)
+        if "sample" in chars.columns:
+            chars = chars.rename({"sample": "barcode"})
+        chars = chars.rename({"basename": "sample"})
+        return sample_table(chars, chars["sample"].to_list(), spec)
+    gse = spec["accession"]
+    matrix = paths.input / "geo" / gse / spec.get("matrix", f"{gse}_series_matrix.txt.gz")
+    if not matrix.exists():
+        return None
+    chars = _characteristics(matrix).with_columns(source_name=pl.Series(titles(matrix, "!Sample_source_name_ch1")))
+    return sample_table(chars, titles(matrix), spec)
+
+
 def group_filter(table: pl.DataFrame, filters: dict) -> pl.DataFrame:
     """The rows of ``table`` that a group's filters select (before detection, exclusions and one-per-donor)."""
     for column, value in filters.items():
@@ -222,9 +243,9 @@ def mouse_features(paths, rng: np.random.Generator, spec: dict) -> tuple[list[st
 def run_series(ctx: Context, name: str) -> list[Path]:
     spec = specs()[name]
     gse = spec["accession"]
-    matrix = ctx.paths.input / "geo" / gse / spec.get("matrix", f"{gse}_series_matrix.txt.gz")
-    if not (reprocessed.available(ctx.paths, gse) and matrix.exists()):
-        print(f"series {name}: no SeSAMe rebuild or series matrix for {gse}; nothing run", file=sys.stderr)
+    table = series_table(ctx.paths, spec)
+    if not (reprocessed.available(ctx.paths, gse) and table is not None):
+        print(f"series {name}: no SeSAMe rebuild or sample table for {gse}; nothing run", file=sys.stderr)
         return []
     out = ctx.out_dir(f"series_{name}")
     dropped: set[str] = set()
@@ -247,10 +268,6 @@ def run_series(ctx: Context, name: str) -> list[Path]:
     if spec.get("exclude_jaffe_donors"):
         jaffe = pl.read_parquet(cohort_layout("jaffe", ctx.paths).samples)
         exclude = set(jaffe.filter((pl.col("group") == "Control") & (pl.col("age") >= 20))["donor"].to_list())
-    chars = _characteristics(matrix).with_columns(
-        source_name=pl.Series(titles(matrix, "!Sample_source_name_ch1"))  # for series that keep tissue only there
-    )
-    table = sample_table(chars, titles(matrix), spec)
     hold = spec.get("hold", [])
     rows, sizes, overlap, guards = [], [], [], []
     platform_of = dict(qc.select("sample", "platform").iter_rows()) if "platform" in qc.columns else {}

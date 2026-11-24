@@ -1,0 +1,10 @@
+# TCGA-PRAD normal tissue next to a tumour (450k, open IDATs from GDC, rebuilt with SeSAMe), ages at diagnosis from
+# GDC. Field-cancerisation test (2026-11-24): does the shield or its clock part break down next to a tumour, against
+# healthy prostate series? scripts/fetch_tcga_normals.py writes the sample table.
+accession = "TCGA-PRAD"
+samples_csv = "data/input/tcga/TCGA-PRAD/samples.csv"
+age = "age"
+sex = "sex"
+donor = "case_id"
+
+[groups."prostate, next to a tumour (TCGA-PRAD)"]
