@@ -371,6 +371,99 @@ lung_healthy,GSE175458,"lung, no lung disease",StocH,mitotic and stochastic,true
 lung_healthy,GSE175458,"lung, no lung disease",Weidner,1st: chronological,false,143,14.0,88.0,0.757081333259649,9.000270401368606
 lung_healthy,GSE175458,"lung, no lung disease",Garagnani,1st: chronological,false,143,14.0,88.0,0.8444062667104537,52.26326649339207
 lung_healthy,GSE175458,"lung, no lung disease",Bocklandt,1st: chronological,false,143,14.0,88.0,-0.3035017279667753,
+lung_smoking,GSE175458,"lung, no disease, never smoked",Horvathv1,1st: chronological,true,83,14.0,88.0,0.9001477704988401,5.160842892000147
+lung_smoking,GSE175458,"lung, no disease, never smoked",Lin,1st: chronological,false,83,14.0,88.0,0.9006879853079494,20.335508955496813
+lung_smoking,GSE175458,"lung, no disease, never smoked",PhenoAge,2nd: phenotypic and mortality,false,83,14.0,88.0,0.8191856127955424,22.245692379710434
+lung_smoking,GSE175458,"lung, no disease, never smoked",YingDamAge,2nd: phenotypic and mortality,false,83,14.0,88.0,0.7370207236281785,10.214875940983575
+lung_smoking,GSE175458,"lung, no disease, never smoked",YingAdaptAge,2nd: phenotypic and mortality,false,83,14.0,88.0,0.699688753773181,15.722358934087708
+lung_smoking,GSE175458,"lung, no disease, never smoked",Horvathv2,1st: chronological,true,83,14.0,88.0,0.9191314867539623,5.87785039123537
+lung_smoking,GSE175458,"lung, no disease, never smoked",PEDBE,other,false,83,14.0,88.0,0.8578913668390195,42.55948821055311
+lung_smoking,GSE175458,"lung, no disease, never smoked",DunedinPACE,3rd: pace of ageing,false,83,14.0,88.0,0.1510419977740116,
+lung_smoking,GSE175458,"lung, no disease, never smoked",DNAmClockCortical,other,false,83,14.0,88.0,0.8855102264976409,
+lung_smoking,GSE175458,"lung, no disease, never smoked",VidalBralo,1st: chronological,false,83,14.0,88.0,0.7918231965290812,12.209484476525688
+lung_smoking,GSE175458,"lung, no disease, never smoked",AlcoholMcCartney,other,false,83,14.0,88.0,0.015822594402730882,
+lung_smoking,GSE175458,"lung, no disease, never smoked",HRSInCHPhenoAge,2nd: phenotypic and mortality,false,83,14.0,88.0,0.8519363069907376,37.229086789208
+lung_smoking,GSE175458,"lung, no disease, never smoked",Knight,other,false,83,14.0,88.0,-0.07445616829691636,
+lung_smoking,GSE175458,"lung, no disease, never smoked",LeeControl,other,false,83,14.0,88.0,0.08097043394635979,
+lung_smoking,GSE175458,"lung, no disease, never smoked",LeeRefinedRobust,other,false,83,14.0,88.0,0.32637913132613583,
+lung_smoking,GSE175458,"lung, no disease, never smoked",LeeRobust,other,false,83,14.0,88.0,0.10565435339018285,
+lung_smoking,GSE175458,"lung, no disease, never smoked",SmokingMcCartney,other,false,83,14.0,88.0,-0.17639115151412824,
+lung_smoking,GSE175458,"lung, no disease, never smoked",DownSyndrome,other,false,83,14.0,88.0,0.34320621065126333,
+lung_smoking,GSE175458,"lung, no disease, never smoked",StocZ,mitotic and stochastic,false,83,14.0,88.0,0.9066573189413921,
+lung_smoking,GSE175458,"lung, no disease, never smoked",BMI_McCartney,other,false,83,14.0,88.0,-0.04885057349251637,
+lung_smoking,GSE175458,"lung, no disease, never smoked",EducationMcCartney,other,false,83,14.0,88.0,-0.006794640145842408,
+lung_smoking,GSE175458,"lung, no disease, never smoked",TotalCholesterolMcCartney,other,false,83,14.0,88.0,0.06014380738517672,
+lung_smoking,GSE175458,"lung, no disease, never smoked",HDLCholesterolMcCartney,other,false,83,14.0,88.0,-0.1930730869462465,
+lung_smoking,GSE175458,"lung, no disease, never smoked",LDLCholesterolMcCartney,other,false,83,14.0,88.0,0.06964061867848238,
+lung_smoking,GSE175458,"lung, no disease, never smoked",BodyFatMcCartney,other,false,83,14.0,88.0,0.09168466395984134,
+lung_smoking,GSE175458,"lung, no disease, never smoked",StocP,mitotic and stochastic,false,83,14.0,88.0,0.7829210882866624,10.799436675752247
+lung_smoking,GSE175458,"lung, no disease, never smoked",Mayne,other,false,83,14.0,88.0,0.15944508726378115,
+lung_smoking,GSE175458,"lung, no disease, never smoked",StocH,mitotic and stochastic,true,83,14.0,88.0,0.8697435102366438,9.523074120837386
+lung_smoking,GSE175458,"lung, no disease, never smoked",Weidner,1st: chronological,false,83,14.0,88.0,0.789270951553874,9.924874574573195
+lung_smoking,GSE175458,"lung, no disease, never smoked",Garagnani,1st: chronological,false,83,14.0,88.0,0.84506289940674,52.30679798605821
+lung_smoking,GSE175458,"lung, no disease, never smoked",Bocklandt,1st: chronological,false,83,14.0,88.0,-0.3347550037057709,
+lung_smoking,GSE175458,"lung, no disease, ever smoked",Horvathv1,1st: chronological,true,56,19.0,88.0,0.8778701827647716,5.483329741561349
+lung_smoking,GSE175458,"lung, no disease, ever smoked",Lin,1st: chronological,false,56,19.0,88.0,0.8684479808983929,20.310980241674716
+lung_smoking,GSE175458,"lung, no disease, ever smoked",PhenoAge,2nd: phenotypic and mortality,false,56,19.0,88.0,0.8241644943061729,23.08955792930996
+lung_smoking,GSE175458,"lung, no disease, ever smoked",YingDamAge,2nd: phenotypic and mortality,false,56,19.0,88.0,0.599451689430394,10.210707127519242
+lung_smoking,GSE175458,"lung, no disease, ever smoked",YingAdaptAge,2nd: phenotypic and mortality,false,56,19.0,88.0,0.6125344654997655,15.50956994330214
+lung_smoking,GSE175458,"lung, no disease, ever smoked",Horvathv2,1st: chronological,true,56,19.0,88.0,0.9071492645588243,8.488226861420813
+lung_smoking,GSE175458,"lung, no disease, ever smoked",PEDBE,other,false,56,19.0,88.0,0.8578574898831647,40.7336187019086
+lung_smoking,GSE175458,"lung, no disease, ever smoked",DunedinPACE,3rd: pace of ageing,false,56,19.0,88.0,0.18769824333304194,
+lung_smoking,GSE175458,"lung, no disease, ever smoked",DNAmClockCortical,other,false,56,19.0,88.0,0.8780622645692605,
+lung_smoking,GSE175458,"lung, no disease, ever smoked",VidalBralo,1st: chronological,false,56,19.0,88.0,0.7224206631429217,12.314350260269112
+lung_smoking,GSE175458,"lung, no disease, ever smoked",AlcoholMcCartney,other,false,56,19.0,88.0,-0.07494073048497561,
+lung_smoking,GSE175458,"lung, no disease, ever smoked",HRSInCHPhenoAge,2nd: phenotypic and mortality,false,56,19.0,88.0,0.8073287380436357,38.687077408692915
+lung_smoking,GSE175458,"lung, no disease, ever smoked",Knight,other,false,56,19.0,88.0,-0.17102006437998632,
+lung_smoking,GSE175458,"lung, no disease, ever smoked",LeeControl,other,false,56,19.0,88.0,0.1108756837546506,
+lung_smoking,GSE175458,"lung, no disease, ever smoked",LeeRefinedRobust,other,false,56,19.0,88.0,0.39047504244661324,
+lung_smoking,GSE175458,"lung, no disease, ever smoked",LeeRobust,other,false,56,19.0,88.0,0.1386915772250571,
+lung_smoking,GSE175458,"lung, no disease, ever smoked",SmokingMcCartney,other,false,56,19.0,88.0,-0.20447287349051532,
+lung_smoking,GSE175458,"lung, no disease, ever smoked",DownSyndrome,other,false,56,19.0,88.0,0.3949475342610145,
+lung_smoking,GSE175458,"lung, no disease, ever smoked",StocZ,mitotic and stochastic,false,56,19.0,88.0,0.8942354576176386,
+lung_smoking,GSE175458,"lung, no disease, ever smoked",BMI_McCartney,other,false,56,19.0,88.0,0.026252311370243246,
+lung_smoking,GSE175458,"lung, no disease, ever smoked",EducationMcCartney,other,false,56,19.0,88.0,0.26608957107637987,
+lung_smoking,GSE175458,"lung, no disease, ever smoked",TotalCholesterolMcCartney,other,false,56,19.0,88.0,0.07340595248795158,
+lung_smoking,GSE175458,"lung, no disease, ever smoked",HDLCholesterolMcCartney,other,false,56,19.0,88.0,-0.06127492593720934,
+lung_smoking,GSE175458,"lung, no disease, ever smoked",LDLCholesterolMcCartney,other,false,56,19.0,88.0,0.033072671060704883,
+lung_smoking,GSE175458,"lung, no disease, ever smoked",BodyFatMcCartney,other,false,56,19.0,88.0,0.06155640202380911,
+lung_smoking,GSE175458,"lung, no disease, ever smoked",StocP,mitotic and stochastic,false,56,19.0,88.0,0.6536957495265014,8.156110171469077
+lung_smoking,GSE175458,"lung, no disease, ever smoked",Mayne,other,false,56,19.0,88.0,0.09659216253116776,
+lung_smoking,GSE175458,"lung, no disease, ever smoked",StocH,mitotic and stochastic,true,56,19.0,88.0,0.8065227088133571,8.499466524319296
+lung_smoking,GSE175458,"lung, no disease, ever smoked",Weidner,1st: chronological,false,56,19.0,88.0,0.6704262133560359,7.267876638886062
+lung_smoking,GSE175458,"lung, no disease, ever smoked",Garagnani,1st: chronological,false,56,19.0,88.0,0.84582280249875,50.80216228239037
+lung_smoking,GSE175458,"lung, no disease, ever smoked",Bocklandt,1st: chronological,false,56,19.0,88.0,-0.23328623153893058,
+lung_smoking,GSE175458,"lung, pulmonary fibrosis",Horvathv1,1st: chronological,true,344,29.0,81.0,0.7354820211494891,3.595795477856555
+lung_smoking,GSE175458,"lung, pulmonary fibrosis",Lin,1st: chronological,false,344,29.0,81.0,0.6158632490844133,16.449546697808103
+lung_smoking,GSE175458,"lung, pulmonary fibrosis",PhenoAge,2nd: phenotypic and mortality,false,344,29.0,81.0,0.5325434291122101,21.106395565335095
+lung_smoking,GSE175458,"lung, pulmonary fibrosis",YingDamAge,2nd: phenotypic and mortality,false,344,29.0,81.0,0.4177303872861641,10.480308068253265
+lung_smoking,GSE175458,"lung, pulmonary fibrosis",YingAdaptAge,2nd: phenotypic and mortality,false,344,29.0,81.0,0.1338919684041006,9.523166277421979
+lung_smoking,GSE175458,"lung, pulmonary fibrosis",Horvathv2,1st: chronological,true,344,29.0,81.0,0.774104653508697,4.293698813055833
+lung_smoking,GSE175458,"lung, pulmonary fibrosis",PEDBE,other,false,344,29.0,81.0,0.5484884802506733,49.69931438824094
+lung_smoking,GSE175458,"lung, pulmonary fibrosis",DunedinPACE,3rd: pace of ageing,false,344,29.0,81.0,0.026990837515832,
+lung_smoking,GSE175458,"lung, pulmonary fibrosis",DNAmClockCortical,other,false,344,29.0,81.0,0.5292182720536139,
+lung_smoking,GSE175458,"lung, pulmonary fibrosis",VidalBralo,1st: chronological,false,344,29.0,81.0,0.29330889286074346,5.369564499008909
+lung_smoking,GSE175458,"lung, pulmonary fibrosis",AlcoholMcCartney,other,false,344,29.0,81.0,0.009096488027126991,
+lung_smoking,GSE175458,"lung, pulmonary fibrosis",HRSInCHPhenoAge,2nd: phenotypic and mortality,false,344,29.0,81.0,0.43468912960122963,36.57408012454856
+lung_smoking,GSE175458,"lung, pulmonary fibrosis",Knight,other,false,344,29.0,81.0,0.021668699814820412,
+lung_smoking,GSE175458,"lung, pulmonary fibrosis",LeeControl,other,false,344,29.0,81.0,-0.04616916512589398,
+lung_smoking,GSE175458,"lung, pulmonary fibrosis",LeeRefinedRobust,other,false,344,29.0,81.0,-0.011383804613117715,
+lung_smoking,GSE175458,"lung, pulmonary fibrosis",LeeRobust,other,false,344,29.0,81.0,-0.008254652488806238,
+lung_smoking,GSE175458,"lung, pulmonary fibrosis",SmokingMcCartney,other,false,344,29.0,81.0,0.02532993007512629,
+lung_smoking,GSE175458,"lung, pulmonary fibrosis",DownSyndrome,other,false,344,29.0,81.0,0.10744946404617292,
+lung_smoking,GSE175458,"lung, pulmonary fibrosis",StocZ,mitotic and stochastic,false,344,29.0,81.0,0.6878305264625226,
+lung_smoking,GSE175458,"lung, pulmonary fibrosis",BMI_McCartney,other,false,344,29.0,81.0,0.06006439270105582,
+lung_smoking,GSE175458,"lung, pulmonary fibrosis",EducationMcCartney,other,false,344,29.0,81.0,0.17267090418898098,
+lung_smoking,GSE175458,"lung, pulmonary fibrosis",TotalCholesterolMcCartney,other,false,344,29.0,81.0,0.1264446504738327,
+lung_smoking,GSE175458,"lung, pulmonary fibrosis",HDLCholesterolMcCartney,other,false,344,29.0,81.0,-0.17764436096795005,
+lung_smoking,GSE175458,"lung, pulmonary fibrosis",LDLCholesterolMcCartney,other,false,344,29.0,81.0,0.16220653812341604,
+lung_smoking,GSE175458,"lung, pulmonary fibrosis",BodyFatMcCartney,other,false,344,29.0,81.0,0.06949323171927442,
+lung_smoking,GSE175458,"lung, pulmonary fibrosis",StocP,mitotic and stochastic,false,344,29.0,81.0,0.4536862618424923,5.264102804861199
+lung_smoking,GSE175458,"lung, pulmonary fibrosis",Mayne,other,false,344,29.0,81.0,0.01833907489661989,
+lung_smoking,GSE175458,"lung, pulmonary fibrosis",StocH,mitotic and stochastic,true,344,29.0,81.0,0.4756230773235184,7.107842091129733
+lung_smoking,GSE175458,"lung, pulmonary fibrosis",Weidner,1st: chronological,false,344,29.0,81.0,0.34225655311334885,7.105724557741254
+lung_smoking,GSE175458,"lung, pulmonary fibrosis",Garagnani,1st: chronological,false,344,29.0,81.0,0.6330745528648605,61.769103151433
+lung_smoking,GSE175458,"lung, pulmonary fibrosis",Bocklandt,1st: chronological,false,344,29.0,81.0,-0.13348104985327708,
 multi_tissue_mammal40,GSE184211,heart,Horvathv1,1st: chronological,true,96,28.0,91.0,0.6781380348922251,10.032870009579888
 multi_tissue_mammal40,GSE184211,heart,Hannum,1st: chronological,false,96,28.0,91.0,0.78720915237611,6.4423495138894395
 multi_tissue_mammal40,GSE184211,heart,PhenoAge,2nd: phenotypic and mortality,false,96,28.0,91.0,0.4274417238774489,47.220540910195375
@@ -585,6 +678,42 @@ tcga_coad_adjacent,TCGA-COAD,"colon, next to a tumour (TCGA-COAD)",Weidner,1st: 
 tcga_coad_adjacent,TCGA-COAD,"colon, next to a tumour (TCGA-COAD)",Garagnani,1st: chronological,false,38,40.4,90.0,0.6846319606232047,72.10439490475738
 tcga_coad_adjacent,TCGA-COAD,"colon, next to a tumour (TCGA-COAD)",Bohlin,other,false,38,40.4,90.0,0.05396637218254323,
 tcga_coad_adjacent,TCGA-COAD,"colon, next to a tumour (TCGA-COAD)",Bocklandt,1st: chronological,false,38,40.4,90.0,-0.20407787641420888,
+tcga_kirc_adjacent,TCGA-KIRC,"kidney, next to a tumour (TCGA-KIRC)",Horvathv1,1st: chronological,true,160,38.95,90.0,0.870607968877563,3.6893133471273245
+tcga_kirc_adjacent,TCGA-KIRC,"kidney, next to a tumour (TCGA-KIRC)",Hannum,1st: chronological,false,160,38.95,90.0,0.7341827557833015,11.601208790401124
+tcga_kirc_adjacent,TCGA-KIRC,"kidney, next to a tumour (TCGA-KIRC)",Lin,1st: chronological,false,160,38.95,90.0,0.7695900255702791,4.708649464997318
+tcga_kirc_adjacent,TCGA-KIRC,"kidney, next to a tumour (TCGA-KIRC)",PhenoAge,2nd: phenotypic and mortality,false,160,38.95,90.0,0.7351276761991525,31.449174729013674
+tcga_kirc_adjacent,TCGA-KIRC,"kidney, next to a tumour (TCGA-KIRC)",YingCausAge,2nd: phenotypic and mortality,false,160,38.95,90.0,0.6979384269698271,23.080551408330955
+tcga_kirc_adjacent,TCGA-KIRC,"kidney, next to a tumour (TCGA-KIRC)",YingDamAge,2nd: phenotypic and mortality,false,160,38.95,90.0,0.13603897188563097,10.229640930019386
+tcga_kirc_adjacent,TCGA-KIRC,"kidney, next to a tumour (TCGA-KIRC)",YingAdaptAge,2nd: phenotypic and mortality,false,160,38.95,90.0,0.6343777465735675,25.358637052822125
+tcga_kirc_adjacent,TCGA-KIRC,"kidney, next to a tumour (TCGA-KIRC)",Horvathv2,1st: chronological,true,160,38.95,90.0,0.8925966924414951,3.174950915538382
+tcga_kirc_adjacent,TCGA-KIRC,"kidney, next to a tumour (TCGA-KIRC)",PEDBE,other,false,160,38.95,90.0,0.7630595259041314,55.80493266015236
+tcga_kirc_adjacent,TCGA-KIRC,"kidney, next to a tumour (TCGA-KIRC)",Zhang_10,2nd: phenotypic and mortality,false,160,38.95,90.0,0.2898688964184978,
+tcga_kirc_adjacent,TCGA-KIRC,"kidney, next to a tumour (TCGA-KIRC)",DNAmClockCortical,other,false,160,38.95,90.0,0.86004762008593,
+tcga_kirc_adjacent,TCGA-KIRC,"kidney, next to a tumour (TCGA-KIRC)",VidalBralo,1st: chronological,false,160,38.95,90.0,0.24355492198360493,7.987055886832081
+tcga_kirc_adjacent,TCGA-KIRC,"kidney, next to a tumour (TCGA-KIRC)",AlcoholMcCartney,other,false,160,38.95,90.0,-0.1539523135164534,
+tcga_kirc_adjacent,TCGA-KIRC,"kidney, next to a tumour (TCGA-KIRC)",HRSInCHPhenoAge,2nd: phenotypic and mortality,false,160,38.95,90.0,0.8131367892262298,29.517252616344898
+tcga_kirc_adjacent,TCGA-KIRC,"kidney, next to a tumour (TCGA-KIRC)",Knight,other,false,160,38.95,90.0,0.23395514058161926,
+tcga_kirc_adjacent,TCGA-KIRC,"kidney, next to a tumour (TCGA-KIRC)",LeeControl,other,false,160,38.95,90.0,0.5481384724269004,
+tcga_kirc_adjacent,TCGA-KIRC,"kidney, next to a tumour (TCGA-KIRC)",EpiTOC1,mitotic and stochastic,true,160,38.95,90.0,0.4714007128922731,
+tcga_kirc_adjacent,TCGA-KIRC,"kidney, next to a tumour (TCGA-KIRC)",LeeRefinedRobust,other,false,160,38.95,90.0,0.453636076101199,
+tcga_kirc_adjacent,TCGA-KIRC,"kidney, next to a tumour (TCGA-KIRC)",LeeRobust,other,false,160,38.95,90.0,0.5153201975563312,
+tcga_kirc_adjacent,TCGA-KIRC,"kidney, next to a tumour (TCGA-KIRC)",SmokingMcCartney,other,false,160,38.95,90.0,-0.19013667304322077,
+tcga_kirc_adjacent,TCGA-KIRC,"kidney, next to a tumour (TCGA-KIRC)",StocZ,mitotic and stochastic,false,160,38.95,90.0,0.6808797373217818,
+tcga_kirc_adjacent,TCGA-KIRC,"kidney, next to a tumour (TCGA-KIRC)",BMI_McCartney,other,false,160,38.95,90.0,0.13639226635738433,
+tcga_kirc_adjacent,TCGA-KIRC,"kidney, next to a tumour (TCGA-KIRC)",EducationMcCartney,other,false,160,38.95,90.0,-0.2595052025546284,
+tcga_kirc_adjacent,TCGA-KIRC,"kidney, next to a tumour (TCGA-KIRC)",TotalCholesterolMcCartney,other,false,160,38.95,90.0,0.08605524737913936,
+tcga_kirc_adjacent,TCGA-KIRC,"kidney, next to a tumour (TCGA-KIRC)",HDLCholesterolMcCartney,other,false,160,38.95,90.0,0.09117665578633159,
+tcga_kirc_adjacent,TCGA-KIRC,"kidney, next to a tumour (TCGA-KIRC)",LDLCholesterolMcCartney,other,false,160,38.95,90.0,0.08072237484220406,
+tcga_kirc_adjacent,TCGA-KIRC,"kidney, next to a tumour (TCGA-KIRC)",BodyFatMcCartney,other,false,160,38.95,90.0,-0.07974273159116958,
+tcga_kirc_adjacent,TCGA-KIRC,"kidney, next to a tumour (TCGA-KIRC)",BMI_Reed,other,false,160,38.95,90.0,0.23795450009866606,
+tcga_kirc_adjacent,TCGA-KIRC,"kidney, next to a tumour (TCGA-KIRC)",StocP,mitotic and stochastic,false,160,38.95,90.0,0.5259034663612712,9.267898846324051
+tcga_kirc_adjacent,TCGA-KIRC,"kidney, next to a tumour (TCGA-KIRC)",Mayne,other,false,160,38.95,90.0,0.16295327340395685,
+tcga_kirc_adjacent,TCGA-KIRC,"kidney, next to a tumour (TCGA-KIRC)",CVD_Westerman,other,false,160,38.95,90.0,0.20854261116064893,
+tcga_kirc_adjacent,TCGA-KIRC,"kidney, next to a tumour (TCGA-KIRC)",StocH,mitotic and stochastic,true,160,38.95,90.0,0.6064033328832631,24.621023550398007
+tcga_kirc_adjacent,TCGA-KIRC,"kidney, next to a tumour (TCGA-KIRC)",Weidner,1st: chronological,false,160,38.95,90.0,0.644081590111599,33.06076958560907
+tcga_kirc_adjacent,TCGA-KIRC,"kidney, next to a tumour (TCGA-KIRC)",Garagnani,1st: chronological,false,160,38.95,90.0,0.7680814311758976,62.3989959449761
+tcga_kirc_adjacent,TCGA-KIRC,"kidney, next to a tumour (TCGA-KIRC)",Bohlin,other,false,160,38.95,90.0,0.2922064422799256,
+tcga_kirc_adjacent,TCGA-KIRC,"kidney, next to a tumour (TCGA-KIRC)",Bocklandt,1st: chronological,false,160,38.95,90.0,-0.20992236497215938,
 tcga_lihc_adjacent,TCGA-LIHC,"liver, next to a tumour (TCGA-LIHC)",Horvathv1,1st: chronological,true,49,20.16,81.7,0.8802247244830586,6.400505065244914
 tcga_lihc_adjacent,TCGA-LIHC,"liver, next to a tumour (TCGA-LIHC)",Hannum,1st: chronological,false,49,20.16,81.7,0.8475554277125983,8.314981193433745
 tcga_lihc_adjacent,TCGA-LIHC,"liver, next to a tumour (TCGA-LIHC)",Lin,1st: chronological,false,49,20.16,81.7,0.6511458541408874,47.56677059087826

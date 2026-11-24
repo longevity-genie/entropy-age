@@ -1,0 +1,2 @@
+group,arrays_selected,arrays_passing_detection,donors_kept,arrays_dropped_repeat_donor,platforms,cpgs_complete,chips,chips_unknown,age_variance_on_chip,age_identifiable_with_chip
+"kidney, next to a tumour (TCGA-KIRC)",160,160,160,0,HM450,90979,1,160,-2.220446049250313e-16,true
