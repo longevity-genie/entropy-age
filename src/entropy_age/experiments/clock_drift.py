@@ -125,7 +125,7 @@ def draw(table: pl.DataFrame, path: Path) -> Path:
                 )
                 ax.plot([i - 0.25, i + 0.25], [np.median(v)] * 2, color=plots.INK, lw=2)
         ax.axhline(0, color=plots.MUTED, lw=0.8, ls="--")
-        ax.set_xticks(range(len(GENS)), [g.split(":")[0] + "\n" + g.split(": ")[1] for g in GENS], fontsize=7)
+        ax.set_xticks(range(len(GENS)), [g.replace(": ", "\n") for g in GENS], fontsize=7)
         ax.set_title(title, loc="left", fontsize=9)
     axes[0].set_ylabel("r, clock acceleration with the drift measure\n(each dot: one clock in one tissue group)")
     fig.tight_layout()

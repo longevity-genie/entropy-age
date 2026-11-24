@@ -4,6 +4,7 @@ Newest first.
 
 ## Unreleased
 
+- 2026-11-24: R174 clock_drift in 34 tissue groups: epiTOC1 acceleration goes with a stronger shield in all 12 groups where it is scored (median r -0.49); Hannum -0.21, PhenoAge -0.17; Horvath -0.03 and DunedinPACE -0.02 not; generation medians alike (-0.09 to -0.12, pace -0.02). Paper: the generation claim (one cohort) rewritten as 'a clock of cell division reads the shield in every tissue'; Figure 11; Yang et al. 2016 cited. Figure label bug fixed.
 - 2026-11-24: new analysis `clock_drift`: per-person B and F (leave-one-out reference) in every rebuilt series group with ages, and each scored clock's acceleration against them, by generation (Figure 10b tested beyond EPIC-Italy).
 - 2026-11-24: R173 lung smoking control: disease-free lung -0.26 never-smokers, -0.19 ever-smokers, fibrotic lung -0.08 (same series). Paper: new paragraph, the shield weakens in diseased lung (tumour-adjacent TCGA, fibrosis), not in smokers; adjacent breast, colon and kidney keep their healthy gap.
 - 2026-11-24: R172 TCGA-KIRC normal-adjacent kidney (160 arrays): housekeeping gap -0.13 (-0.23 to -0.06) against -0.10 in normal kidney; Horvath's shielded part r 0.38 against 0.65.

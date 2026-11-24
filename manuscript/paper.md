@@ -12,10 +12,11 @@ housekeeping genes with CpGs of the same island status and starting level, and m
 methylation from its young state. In most human tissues, in most mouse organs and in 88 % of species-tissue groups of
 65 mammals, essential promoters drift less than their matches: they are shielded. No control we built (placebo gene
 sets, cell composition, probe design, raw-data reprocessing) produces the shield. It follows how strongly a promoter
-is used, and in culture it accrues with cell division. Clocks of different generations read it differently:
-chronological and mitotic clocks track the shield, whereas mortality and pace-of-ageing clocks such as GrimAge and
-DunedinPACE are blind to it. Stochastic ageing therefore has a structure that clocks capture unevenly, and clocks of different
-generations rank the same people by different parts of it.
+is used, and in culture it accrues with cell division. Clocks read it unevenly: a clock that counts
+cell divisions, epiTOC1, calls people with a stronger shield older for their age in every tissue where it can be
+scored, some chronological and phenotypic clocks do so more weakly, and pace-of-ageing clocks such as DunedinPACE do
+not see it. Stochastic ageing therefore has a structure that clocks capture unevenly, and the part of it tied to
+cell division is the part clocks of cell division read best.
 
 ![Graphical abstract](../docs/figures/forest_series.png)
 
@@ -66,7 +67,7 @@ We measure the gap across human and mouse tissues, cultured cells, read-level bi
 species, and test it against placebo gene sets, cell composition, probe design and preprocessing. We then ask how the
 shield is produced, whether it is visible within one person over time, what it is not, whether drift outside it
 carries health information, and which clocks read it. The shield turns out to follow promoter activity, to accrue
-with division where batch cannot make the contrast, and to separate clocks of different generations (Fig. 10).
+with division where batch cannot make the contrast, and to be read most strongly by a clock of cell division (Fig. 10, Fig. 11).
 
 ## Results
 
@@ -644,10 +645,10 @@ signed shift S (core-essential and housekeeping sets) and of published clocks, f
 (174) and colorectal cancer (166). Blue circles: all cases, age and sex held. Orange squares: cases diagnosed over 2 years after
 the draw (274, 113 and 146 cases), with mean methylation, 11 blood-cell fractions and chip held. 95 % intervals; log scale. How to read: an odds ratio above 1 means people with a higher value of the measure (per SD) were more often later diagnosed with cancer; B is drift at comparable promoters, F the share of it that essential promoters avoid (more negative = stronger shield), S their signed shift (Box 1).
 
-### Clocks of different generations read the shield differently
+### Clocks read the shield unevenly, and a clock of cell division reads it in every tissue
 
-**In the blood of the same women, first-generation and mitotic clocks track the shield, whereas GrimAge and
-DunedinPACE do not (Fig. 10).**
+**A clock that counts cell divisions, epiTOC1, calls people with a stronger shield older for their age in every
+tissue where it can be scored; pace-of-ageing clocks do not see the shield (Fig. 10, Fig. 11).**
 
 *Every clock on every rebuilt series.* We scored every clock in the biolearn gallery that keeps at least 90 % of its
 weight measured on every rebuilt series with donor ages (23 tissue groups, 38 clocks; clocks taken outside the tissue
@@ -671,6 +672,25 @@ no clock and no generation added the shield: given any clock and B, F had odds r
 (Fig. 10c). Of 45 clocks and scores, three had intervals above one on their own (epiTOC1 2.51, 1.41-6.02; Hannum 1.53,
 1.04-2.42; Ying adaptation 1.85, 1.03-3.71), as expected by chance among this many exploratory tests; the
 pre-specified PhenoAge did not (1.12, 0.81-1.59).
+
+*Across tissues.* In 34 rebuilt tissue groups with ages (the series above, the TCGA tissues next to tumours and the
+mammalian-array human tissues), we scored each person's drift at look-alike promoters (B) and shield share (F)
+against everyone else in the group and correlated them with each clock's acceleration. The mitotic clock epiTOC1,
+which estimates how many times a tissue's stem cells have divided (Yang et al. 2016), passed the coverage rule in 12
+groups, and in all 12 its acceleration went with a stronger shield (median r −0.49; −0.12 in 30 normal kidneys to
+−0.87 in prostate next to a tumour). Hannum (median −0.21, negative in 85 % of 20 groups) and PhenoAge (−0.17, 84 % of
+32) went the same way more weakly; Horvath's pan-tissue clock (−0.03, 53 % of 32) and DunedinPACE (−0.02, 17 groups)
+did not. Grouped by generation the medians were alike (−0.09 to −0.12 for chronological, phenotypic and mitotic
+clocks; −0.02 for pace), so the division between clocks is not by generation but by what a clock measures (Fig. 11).
+
+![Figure 11](../docs/figures/clock_drift.png)
+
+**Figure 11. What clocks read of drift, tissue by tissue.** Each dot is one clock in one rebuilt tissue group (34
+groups): the correlation of the clock's acceleration (prediction minus the age trend in the group) with each person's
+shield share F (a) and drift at look-alike promoters B (b), both scored against everyone else in the group; clocks
+coloured by generation, bars at the median. How to read: a dot below zero in a means the clock calls people with a
+stronger shield older for their age in that tissue. Correlations of ±1 come from clocks that are constant or nearly
+so in small groups.
 
 *What clocks read in simulation.* Retrained on simulated change, clocks read directed change and are largely blind
 to a shield simulated as damped undirected noise, which suggests that the first-generation clocks' link to the shield
@@ -700,9 +720,9 @@ The qualitative suggestion belongs to Teschendorff, West and Beck (2013), who dr
 already linked age-related methylation change with tissue-specific expression and chromatin state. What was missing
 was a fair comparison, and with it three findings. Matched on island status and starting level, the protection
 becomes a size that can be compared across tissues and species and tested against a null. That size follows how
-strongly a promoter is used and whether the cells divide. And it separates the clocks: chronological and mitotic
-clocks call people with a stronger shield older for their age, while mortality and pace-of-ageing clocks do not
-see it, so part of what makes clocks disagree is which part of stochastic drift each one reads.
+strongly a promoter is used and whether the cells divide. And clocks read it unevenly: a clock of cell division,
+epiTOC1, calls people with a stronger shield older for their age in every tissue tested, while pace-of-ageing clocks
+do not see it, so part of what makes clocks disagree is which part of stochastic drift each one reads.
 
 **The shield belongs to active promoters, not to essential genes as such.** Reference chromatin states account for
 most of the gap in blood and 25 to 44 % in cortex, and with expression and sorted-nuclei accessibility also
@@ -757,14 +777,15 @@ processed data and 1.01 on arrays rebuilt from raw files; only a matched analysi
 interval above one (1.49, 1.04 to 2.69). A second, small series gave no association. Drift B is not a marker of
 breast-cancer risk on this evidence.
 
-**Clocks read the shield by generation.** In the same women, the first-generation clocks and the mitotic clock
-epiTOC1 called those with a stronger shield older for their age, GrimAge and DunedinPACE were unrelated to it, and
-accelerations agreed only within generation (Fig. 10). Across the rebuilt series, too, the valid clocks of a tissue
+**A clock of cell division reads the shield.** Across 34 tissue groups, the mitotic clock epiTOC1 called people with
+a stronger shield older for their age in every group where it could be scored, Hannum and PhenoAge did so more
+weakly, and Horvath's clock and DunedinPACE did not (Fig. 11); in the blood of one cohort, GrimAge was unrelated to
+it as well and accelerations agreed only within generation (Fig. 10). Since the shield grows with division, a clock
+that counts divisions is the one expected to read it. Across the rebuilt series, too, the valid clocks of a tissue
 agreed only partly on who was ageing fast. Which part of drift a clock reads is therefore one source of that
-disagreement. It does not set how far one woman's clocks disagree, which was unrelated to her drift. The
-generation result comes from one cohort's blood, and clocks retrained on simulated change drew little of their
-accuracy from undirected noise (Supplementary Note 3), so how first-generation clocks come to track the shield is
-open.
+disagreement. It does not set how far one woman's clocks disagree, which was unrelated to her drift. Clocks
+retrained on simulated change drew little of their accuracy from undirected noise (Supplementary Note 3), so how
+chronological clocks come to track the shield where they do is open.
 
 **Limits.** (i) Processing moves results of this size. Effects of 0.02 to 0.1 in a gap are near the ±0.05 SD
 preprocessing uncertainty, a shield in one cultured series vanished on rebuilt arrays, and the breast-cancer
@@ -793,8 +814,7 @@ Tet1 and Tet3 shifts, the loss rates in cortex and the neuron-glia difference ca
 In sum, promoters of essential and housekeeping genes drift less with age than matched CpGs by a modest,
 reproducible margin. Most of that margin is what the promoter's own activity predicts. It is larger where cells
 divide, small and unresolved in neurons and absent, with drift itself, in cultures kept from dividing; in one study
-of bulk mouse brain it was weaker in Tet3 heterozygous animals. Clocks of different generations read it
-differently: first-generation and mitotic clocks track it, GrimAge and DunedinPACE do not. Whether selection among dividing cells or maintenance
+of bulk mouse brain it was weaker in Tet3 heterozygous animals. A clock of cell division reads it in every tissue tested; pace-of-ageing clocks do not. Whether selection among dividing cells or maintenance
 coupled to replication produces it is the question the next experiment should answer, with lineage-tracked or
 clonal cultures in which promoter activity is measured in the same cells.
 
@@ -1147,6 +1167,8 @@ Wang Y, et al. 2018. Epigenetic influences on aging: a longitudinal genome-wide 
 West J, Widschwendter M, Teschendorff AE. 2013. Distinctive topology of age-associated epigenetic drift in the human interactome. Proc Natl Acad Sci USA 110:14138-14143. doi:10.1073/pnas.1307242110.
 
 White JD, et al. 2024. Alcohol use disorder-associated DNA methylation in the nucleus accumbens and dorsolateral prefrontal cortex. Biol Psychiatry Glob Open Sci 4:100375. doi:10.1016/j.bpsgos.2024.100375.
+
+Yang Z, et al. 2016. Correlation of an epigenetic mitotic clock with cancer risk. Genome Biol 17:205. doi:10.1186/s13059-016-1064-3.
 
 Ying K, et al. 2024. Causality-enriched epigenetic age uncouples damage and adaptation. Nat Aging 4:231-246. doi:10.1038/s43587-023-00557-0.
 
