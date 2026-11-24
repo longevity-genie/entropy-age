@@ -1,0 +1,22 @@
+# Smoking control for the weaker shield next to lung tumours (2026-11-24): GSE175458 (EPIC, rebuilt) lungs without lung
+# disease split by ever and never smoking, and the series' idiopathic pulmonary fibrosis lungs as a disease contrast.
+# Collection centre held.
+accession = "GSE175458"
+age = "age"
+sex = "Sex"
+donor = "sample"
+hold = ["center"]
+
+[groups."lung, no disease, never smoked"]
+tissue = "lung"
+dx = "normal"
+smoking_ever_never = "N"
+
+[groups."lung, no disease, ever smoked"]
+tissue = "lung"
+dx = "normal"
+smoking_ever_never = "Y"
+
+[groups."lung, pulmonary fibrosis"]
+tissue = "lung"
+dx = "ipf"
