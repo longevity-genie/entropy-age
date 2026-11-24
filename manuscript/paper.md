@@ -6,16 +6,16 @@ Anton Kulaga, …
 ## Abstract
 
 DNA methylation drifts with age, and epigenetic clocks read that drift. Whether drift strikes every CpG alike has
-been suspected but never measured with a fair comparison: promoters of essential genes sit at unmethylated CpG
-islands, which move differently from other sites whatever genes they serve. We matched each promoter CpG of essential
-and housekeeping genes with CpGs of the same island status and starting level, and measured drift as the distance of
-methylation from its young state. In most human tissues, in mouse organs and in 88 % of species-tissue groups of 65 mammals, essential promoters
-drift less than their matches: they are shielded. The shield follows how strongly a promoter is used and accrues with
-cell division in culture, and no control we built (placebo gene sets, cell composition, probe design, raw-data reprocessing)
-produces it. Clocks of different generations read it differently: chronological and mitotic clocks track the
-shield, whereas mortality and pace-of-ageing clocks such as GrimAge and DunedinPACE are blind to it. Stochastic
-ageing therefore has a structure that clocks capture unevenly, which may explain why clocks built on the same arrays
-disagree about who is ageing fast.
+been suspected but never measured with a fair comparison: promoters of essential genes sit at unmethylated CpG islands, which
+move differently from other sites whatever genes they serve. We matched each promoter CpG of essential and
+housekeeping genes with CpGs of the same island status and starting level, and measured drift as the distance of
+methylation from its young state. In most human tissues, in most mouse organs and in 88 % of species-tissue groups of
+65 mammals, essential promoters drift less than their matches: they are shielded. No control we built (placebo gene
+sets, cell composition, probe design, raw-data reprocessing) produces the shield. It follows how strongly a promoter
+is used, and in culture it accrues with cell division. Clocks of different generations read it differently:
+chronological and mitotic clocks track the shield, whereas mortality and pace-of-ageing clocks such as GrimAge and
+DunedinPACE are blind to it. Stochastic ageing therefore has a structure that clocks capture unevenly, and clocks of different
+generations rank the same people by different parts of it.
 
 ![Graphical abstract](../docs/figures/forest_series.png)
 
@@ -25,7 +25,9 @@ drift rate; below zero, the promoters drift less (Box 1 shows how the measure is
 ## Introduction
 
 DNA methylation changes with age across mammalian tissues (Lu et al. 2023), and clocks built from a few hundred CpGs predict
-chronological age closely (Horvath 2013; Hannum et al. 2013). Meyer and Schumacher (2024) showed that random
+chronological age closely (Horvath 2013; Hannum et al. 2013). Later clocks were trained on phenotypic age
+(Levine et al. 2018) or on the pace of ageing (Belsky et al. 2022), and clocks built on the same arrays
+need not agree about who is ageing fast. What they read is drift, and Meyer and Schumacher (2024) showed that random
 maintenance errors at sites bounded between 0 and 100 % methylation are enough to produce an age predictor. Their
 basic model gives every CpG the same maintenance efficiency, although they also fitted site-specific rates estimated from data. Whether drift is the same at every CpG is an old question.
 Teschendorff, West and Beck (2013) suggested that genes doing core housekeeping functions are more protected from drift.
@@ -58,10 +60,13 @@ zero means the set drifts less than comparable CpGs, and throughout the paper "s
 lists the measures and how to read them). Binary entropy, the usual measure, instead counts how close a level is to
 50 %, so a loss of methylation at a low-methylated site reads as a gain in order; because essential promoters lose
 methylation faster than matched CpGs, it roughly doubles the gap, and all sizes reported here are on relative
-entropy. We measure the gap across human and mouse tissues, cultured cells, read-level bisulfite data and 65 mammal
-species, test it against placebo gene sets, cell composition, probe design and preprocessing, and then ask how the
-shield is produced, whether it is visible within one person over time, what it is not, and whether drift outside it
-carries health information.
+entropy.
+
+We measure the gap across human and mouse tissues, cultured cells, read-level bisulfite data and 65 mammal
+species, and test it against placebo gene sets, cell composition, probe design and preprocessing. We then ask how the
+shield is produced, whether it is visible within one person over time, what it is not, whether drift outside it
+carries health information, and which clocks read it. The shield turns out to follow promoter activity, to accrue
+with division where batch cannot make the contrast, and to separate clocks of different generations (Fig. 10).
 
 ## Results
 
@@ -117,7 +122,8 @@ and between 20 and 80 % it was 0.00 (−0.08 to +0.07). In cortex the same bands
 (−0.14 to +0.07): the estimate keeps its size, but neither interval excludes zero. The blood gap therefore does not
 extend to CpGs of intermediate methylation, and the cortex gap off the floor is not resolved. Other drift measures gave the same signs: the absolute
 age slope of the mean (blood housekeeping −0.16 SD, cortex −0.05) and between-person dispersion (−0.29, −0.07).
-A second cortex series (GSE252501; dorsolateral prefrontal cortex of 52 donors on the EPIC array, processed from
+
+Further cortex series gave housekeeping gaps of the same sign. A second cortex series (GSE252501; dorsolateral prefrontal cortex of 52 donors on the EPIC array, processed from
 raw files, depression diagnosis held) gave −0.005 SD (−0.017 to +0.006), and −0.013 (−0.024 to −0.003) with chip
 intercepts. A third cortex series, bulk orbitofrontal cortex of 90 people aged 24 to 84 on the EPIC array (GSE254293, rebuilt
 from raw files, diagnosis held), gave a small housekeeping gap of the same sign: −0.017 SD (−0.030 to −0.008), and
@@ -191,8 +197,12 @@ island × young-level matching in (a) Hannum blood and (b) Jaffe cortex. Grey: m
 
 ### The shield across tissues, platforms and species
 
-**The shield is present in most tissues and species tested; an apparent ordering by cell turnover in mouse cannot be
-separated from array chip.** In nine GTEx tissues on the EPIC array (Oliva et al. 2023; 47-224 donors per tissue, ages in decade bins; deposited values, since the raw arrays are under controlled access), the housekeeping gap was −0.13 SD
+**The shield is present in most tissues and species tested.** Across 42 independent cohort-tissue series on one
+measure (23 human, 19 mouse; Supplementary Fig. S22), the housekeeping gap was negative in 31; 20 intervals over
+donors or animals lie below zero and one above it, the lung next to adenocarcinoma described below. An apparent
+ordering by cell turnover in mouse cannot be separated from array chip.
+
+In nine GTEx tissues on the EPIC array (Oliva et al. 2023; 47-224 donors per tissue, ages in decade bins; deposited values, since the raw arrays are under controlled access), the housekeeping gap was −0.13 SD
 in whole blood, −0.18 in colon, −0.08 in lung and kidney, about 0 in skeletal muscle (−0.003) and testis (+0.001; Supplementary Fig. S8). On
 binary entropy, breast and ovary were as weakly protected as muscle. Two breast cohorts rebuilt from raw arrays agree
 that breast carries little of the gap: −0.04 SD (−0.11 to −0.01) in 100 healthy donors aged 18 to 82 (GSE88883) and
@@ -201,9 +211,9 @@ that breast carries little of the gap: −0.04 SD (−0.11 to −0.01) in 100 he
 not resolved at this sample size. Which tissues lack the gap does not follow turnover in humans: testis renews fastest. Two further human tissue series,
 processed from raw files with chip intercepts and intervals from resampling donors, came from tissue next to a tumour.
 In normal colon mucosa of 146 colorectal-cancer patients aged 22 to 89 (GSE101764) the housekeeping gap was −0.13 SD
-(−0.25 to −0.01), and −0.17 (−0.32 to −0.00) off the floor. Across 42 independent cohort-tissue series on one measure (23 human, 19 mouse; Supplementary Fig. S22), the
-housekeeping gap was negative in 31; 20 intervals over donors or animals lie below zero and one above it, the lung
-next to adenocarcinoma below. Lung behaved differently by source. Lung of post-mortem GTEx donors
+(−0.25 to −0.01), and −0.17 (−0.32 to −0.00) off the floor.
+
+Lung behaved differently by source. Lung of post-mortem GTEx donors
 carried the gap (−0.08), but tissue resected next to adenocarcinoma in 114 non-smokers aged 39 to 82 (GSE314841,
 450k part) reversed it: +0.14 (+0.05 to +0.25), housekeeping promoters drifting more than matched CpGs. The same
 study's 31 lungs on the EPIC array gave the same sign without resolving it (+0.06, −0.32 to +0.76). Tissue next to a
@@ -215,8 +225,9 @@ next to tumours, the lists remove five times more control CpGs than housekeeping
 slopes, not mean levels. The direct comparison is lung without any tumour: in 143 donor and other non-diseased
 lungs aged 14 to 88 (GSE175458, EPIC, rebuilt), the housekeeping gap was −0.26 (−0.45 to −0.13, chip held), a strong
 gap of the usual sign. The reversal is therefore specific to tissue resected next to adenocarcinoma in this study,
-whatever its mechanism. Human
-post-mortem tissues on the mammalian array (GSE184211; heart, muscle, liver, kidney, lung, spleen, fat, blood; 32 to
+whatever its mechanism.
+
+Human post-mortem tissues on the mammalian array (GSE184211; heart, muscle, liver, kidney, lung, spleen, fat, blood; 32 to
 112 per tissue) cover only about 1,400 promoter CpGs and resolve no tissue. Myometrium, a smooth muscle that renews slowly,
 showed no gap: in 62 women aged 29 to 52 on the EPIC array (GSE296589; fibroid-free and fibroid-associated specimens,
 condition held) the housekeeping gap was +0.00 SD (−0.02 to +0.02), and +0.01 (−0.01 to +0.03) in the 30 fibroid-free
@@ -262,8 +273,8 @@ vanishes off the 0 % floor (+0.004, p 0.83; Supplementary Fig. S7). How to read:
 
 ### Essential promoters lose methylation faster and rest lower
 
-**In pooled fits essential island promoters lose methylation faster than look-alikes, and per CpG their fitted
-resting level is lower; the faster loss is not seen per CpG in cortex.** Binary entropy assumes every site drifts toward 50 %. To read direction, we fitted the two-state model in which a
+**Essential island promoters rest at a lower methylation level than look-alikes, and in pooled fits they lose
+methylation faster.** Binary entropy assumes every site drifts toward 50 %. To read direction, we fitted the two-state model in which a
 site gains methylation at rate k_gain and loses it at rate k_loss, relaxing toward its own resting level
 z = k_gain / (k_gain + k_loss) (Methods). Pooled per gene set in island promoters, the gain rate of core-essential and
 housekeeping CpGs in blood was 0.0012 per decade lower than look-alikes' (95 % −0.0017 to −0.0008), and their loss
@@ -293,9 +304,9 @@ donor resamples. How to read: a gain rate is how fast unmethylated copies of a C
 
 ### The shield goes with cell division
 
-**The housekeeping gap is larger in colon than in hippocampus of one mouse cohort and in one glial fraction than in
-paired neurons of one human cohort, and a gap per doubling recurs in cultured cells; across tissues the measured
-gaps do not follow a consistent turnover ranking (Fig. 5).** The series in this section provide raw data, use one platform per contrast and spread the contrast
+**Where batch cannot make the contrast, the shield goes with division: the housekeeping gap is larger in colon than
+in hippocampus of one mouse cohort and in one glial fraction than in paired neurons of one human cohort, and a gap
+per doubling recurs in cultured cells (Fig. 5).** The series in this section provide raw data, use one platform per contrast and spread the contrast
 across chips or flowcells (Supplementary Table S4); the array series were processed from raw files, except the
 mammalian consortium's, which has none.
 
@@ -309,7 +320,7 @@ CpGs starting between 10 and 90 % (on the all-CpG scale, mice resampled), the ho
 at CpGs near the floor; the colon gap does not. On the mammalian consortium's array, a different series from the 11 tissues above, with chip
 intercepts in every age slope, mouse tissues separated brain from the other tissues, though not by turnover class: lung −0.49, spleen −0.45, liver −0.35, blood −0.32
 and skin −0.22, against cortex −0.06, heart −0.04, kidney −0.04, hippocampus +0.03, cerebellum +0.04 and striatum
-+0.10 (19 to 903 animals per tissue).
++0.10 (19 to 903 animals per tissue). Across tissues, the measured gaps do not follow a consistent turnover ranking.
 
 *Glia and neurons of the same brains.* In nuclei sorted from human cortex (EPIC; ages 18-95), the shield replicated
 in unsorted nuclei (housekeeping −0.053 SD, −0.062 to −0.043; 148 donors) and was −0.077 in NeuN−/SOX10− glia
@@ -417,9 +428,9 @@ were not processed alike; the effects do not change when the index is held (Supp
 
 ### Chromatin accounts for most of the shield in blood and less in cortex
 
-**Matching on a reference chromatin state removes 83-91 % of the blood gap and 25 to 44 % of the cortex gap
-(deposited values and arrays processed from raw files);
-in cortex the reference acts as a generic label of promoter activity.** We added each promoter CpG's 15-state chromHMM state (Roadmap Epigenomics Consortium 2015) to the matching. In blood,
+**Matching on a reference chromatin state removes 83-91 % of the gap in blood and 25 to 44 % in cortex
+(deposited values and arrays processed from raw files), where the reference acts as a generic label of promoter
+activity.** We added each promoter CpG's 15-state chromHMM state (Roadmap Epigenomics Consortium 2015) to the matching. In blood,
 80-85 % of essential and housekeeping CpGs sit in active TSS states against 38 % of background CpGs. On relative
 entropy, blood's own state (E062 mononuclear cells, or E030 neutrophils) removed 83-91 % of the housekeeping gap;
 cortex's state removed only 28 % of blood's gap (Fig. 6). The reverse did not hold: blood's state removed as much of the cortex gap as cortex's own (29 % against 25 %). In Lunnon's brain regions, each matched with its nearest Roadmap brain map (frontal cortex E073, superior temporal
@@ -521,8 +532,8 @@ settled; its direction agrees with every cross-sectional cohort.
 
 ### What the shield is not
 
-**No relation of the shield to species lifespan is resolved, it is not reset by transient reprogramming, has no clear counterpart in
-RNA and is not what epigenetic clocks read; the tests of selection among cells in this section are inconclusive.**
+**The shield is not reset by transient reprogramming, has no clear counterpart in RNA and shows no resolved relation
+to species lifespan; the tests of selection among cells in this section are inconclusive.**
 
 *Single-cell clones.* In two strains of human fetal fibroblasts cloned from single cells and grown about 20
 doublings each (Flunkert et al. 2018; GSE112812, GSE112873; rebuilt), housekeeping promoter CpGs of the untreated
@@ -585,18 +596,6 @@ senescence (0.0001 against 0.014). Within it, housekeeping promoters carried a f
 so the pattern is not specific to training. In eight men after loading, unloading and reloading (GSE114763), the
 change was too small to give a share.
 
-*What clocks read.* Clocks read directed change and are largely blind to the shield: retrained on simulated change,
-they keep 70-80 % of their accuracy from each CpG's direction alone and 0-10 % from undirected noise
-(Supplementary Note 3).
-
-*Every clock on every rebuilt series.* We scored every clock in the biolearn gallery that keeps at least 90 % of its
-weight measured on every rebuilt series with donor ages (23 tissue groups, 38 clocks; clocks taken outside the tissue
-they were trained on kept as negative controls; Supplementary Fig. S23). The pan-tissue clock of Horvath tracked age in
-every group (median r 0.81, 0.61 to 0.94; median error 5.6 years). Blood clocks taken into solid tissues still ranked
-donors by age (PhenoAge median r 0.60, Hannum 0.73) but missed their age by 9 to 21 years. Once age was removed, the
-valid clocks of a group agreed only partly on who was ageing fast: the median correlation between their accelerations
-was 0.58 (0.36 in sorted neurons to 0.84 in heart; 0.04 in liver).
-
 ### Drift at unprotected promoters and incident breast cancer: no robust association
 
 **In one prospective cohort, drift at look-alike promoters in blood was not robustly associated with breast cancer
@@ -621,6 +620,33 @@ colorectal signal (0.92). An association of drift with later breast cancer is th
 once failed arrays are removed; the small residual estimate on the processed data is not robust to how the arrays are
 processed.
 
+In childhood-cancer survivors (SJLIFE, 277 deaths among 4,518), B added nothing to DunedinPACE for death (1.01; Supplementary Fig. S20), so in this cohort it adds nothing to DunedinPACE for death. Genome-wide hypomethylation before breast cancer reported in EPIC-Italy (van
+Veldhoven et al. 2015) did not replicate in NOWAC; B survives adjustment for mean methylation, but a cohort-specific
+finding remains possible until a second prospective cohort is tested. A second series, not prospective (GSE283951; 32 cases
+and 53 controls on the EPIC array, rebuilt from raw files, scores centred within chip; blood not shown to precede
+diagnosis), gave an odds ratio of 1.11 per SD of B (0.71 to 1.73): no association, with an interval too wide to
+refute the first (Supplementary Table S4).
+
+![Figure 9](../docs/figures/incident_cancer.png)
+
+**Figure 9. Incident cancer in EPIC-Italy, arrays with failed signal left out.** Odds ratio per SD of the shield share F, look-alike drift B and the
+signed shift S (core-essential and housekeeping sets) and of published clocks, for any cancer (358 cases), breast
+(174) and colorectal cancer (166). Blue circles: all cases, age and sex held. Orange squares: cases diagnosed over 2 years after
+the draw (274, 113 and 146 cases), with mean methylation, 11 blood-cell fractions and chip held. 95 % intervals; log scale. How to read: an odds ratio above 1 means people with a higher value of the measure (per SD) were more often later diagnosed with cancer; B is drift at comparable promoters, F the share of it that essential promoters avoid (more negative = stronger shield), S their signed shift (Box 1).
+
+### Clocks of different generations read the shield differently
+
+**In the blood of the same women, first-generation and mitotic clocks track the shield, whereas GrimAge and
+DunedinPACE do not (Fig. 10).**
+
+*Every clock on every rebuilt series.* We scored every clock in the biolearn gallery that keeps at least 90 % of its
+weight measured on every rebuilt series with donor ages (23 tissue groups, 38 clocks; clocks taken outside the tissue
+they were trained on kept as negative controls; Supplementary Fig. S23). The pan-tissue clock of Horvath tracked age in
+every group (median r 0.81, 0.61 to 0.94; median error 5.6 years). Blood clocks taken into solid tissues still ranked
+donors by age (PhenoAge median r 0.60, Hannum 0.73) but missed their age by 9 to 21 years. Once age was removed, the
+valid clocks of a group agreed only partly on who was ageing fast: the median correlation between their accelerations
+was 0.58 (0.36 in sorted neurons to 0.84 in heart; 0.04 in liver).
+
 *Clocks by generation in the same women.* On arrays rebuilt without the design-flag probe mask (which removes a
 fifth of GrimAge's weight; clocks scored both ways agree at r ≥ 0.997), 44 published clocks kept at least 90 % of their
 weight measured; 22 are age clocks of four kinds (Fig. 10): chronological (first generation: Horvath, Hannum, Lin,
@@ -636,6 +662,11 @@ no clock and no generation added the shield: given any clock and B, F had odds r
 1.04-2.42; Ying adaptation 1.85, 1.03-3.71), as expected by chance among this many exploratory tests; the
 pre-specified PhenoAge did not (1.12, 0.81-1.59).
 
+*What clocks read in simulation.* Retrained on simulated change, clocks read directed change and are largely blind
+to a shield simulated as damped undirected noise, which suggests that the first-generation clocks' link to the shield
+in people (Fig. 10b) comes from directed change at shielded promoters, not from their noise: they keep 70-80 % of their accuracy from each CpG's direction alone and 0-10 % from undirected noise
+(Supplementary Note 3).
+
 ![Figure 10](../docs/figures/clock_panel.png)
 
 **Figure 10. Clocks of four generations in the same women (EPIC-Italy, arrays rebuilt without the design-flag
@@ -648,24 +679,10 @@ d, per woman, how far the adult clocks disagree (SD of their standardised accele
 a red block in a is a group of clocks that call the same women old for their age; a blue cell in b means the clock
 calls women with a stronger shield old for their age.
 
-In childhood-cancer survivors (SJLIFE, 277 deaths among 4,518), B added nothing to DunedinPACE for death (1.01; Supplementary Fig. S20), so in this cohort it adds nothing to DunedinPACE for death. Genome-wide hypomethylation before breast cancer reported in EPIC-Italy (van
-Veldhoven et al. 2015) did not replicate in NOWAC; B survives adjustment for mean methylation, but a cohort-specific
-finding remains possible until a second prospective cohort is tested. A second series, not prospective (GSE283951; 32 cases
-and 53 controls on the EPIC array, rebuilt from raw files, scores centred within chip; blood not shown to precede
-diagnosis), gave an odds ratio of 1.11 per SD of B (0.71 to 1.73): no association, with an interval too wide to
-refute the first (Supplementary Table S4).
-
-![Figure 9](../docs/figures/incident_cancer.png)
-
-**Figure 9. Incident cancer in EPIC-Italy, arrays with failed signal left out.** Odds ratio per SD of the shield share F, look-alike drift B and the
-signed shift S (core-essential and housekeeping sets) and of published clocks, for any cancer (358 cases), breast
-(174) and colorectal cancer (166). Blue circles: all cases, age and sex held. Orange squares: cases diagnosed over 2 years after
-the draw (274, 113 and 146 cases), with mean methylation, 11 blood-cell fractions and chip held. 95 % intervals; log scale. How to read: an odds ratio above 1 means people with a higher value of the measure (per SD) were more often later diagnosed with cancer; B is drift at comparable promoters, F the share of it that essential promoters avoid (more negative = stronger shield), S their signed shift (Box 1).
-
 ## Discussion
 
-This study measures the protection of essential genes from age-related methylation drift. With island status and starting level matched, essential promoters drift less than look-alike CpGs in most tissues
-and species tested, by a modest margin (about 0.15 SD in blood, 0.06 SD in cortex, near zero in some tissues and cell
+Age-related methylation drift is not uniform. With island status and starting level matched, essential promoters
+drift less than look-alike CpGs in most tissues and species tested, by a modest margin (about 0.15 SD in blood, 0.06 SD in cortex, near zero in some tissues and cell
 types) that the matching, cell composition, probe design and normalisation do not produce.
 
 The qualitative suggestion belongs to Teschendorff, West and Beck (2013), who drew on the finding of West et al.
@@ -692,15 +709,16 @@ age-hypermethylated programme (Teschendorff et al. 2010; Rakyan et al. 2010; Sli
 drift "stochastic" is therefore accurate only for the part outside that programme; in cortex rising spread is close
 to uniform.
 
-**The shield is larger in some dividing cells and tissues.** This is supported in part. Against a general rule:
-human testis, which renews fastest, shows no gap; in Huang's 11 mouse tissues the ordering vanishes within chip;
-muscle equals blood in one mouse series; one cultured series lost its shield on arrays processed from raw files;
-and the mortal cells of the telomerase line show little or none. In series where batch cannot make the contrast, the gap is more than twice as
-large in colon as in hippocampus of the same mouse cohort, larger in glia than in the same donors' neurons, large in
-fibroblasts driven to replicative senescence, and absent, with drift itself, in cultures kept from dividing for six
-months. It accrues per doubling in fibroblasts immortalised with telomerase, so the approach to senescence is not
-needed, and at the same rate in passaged astrocytes as in fibroblasts. Vaidya et al. (2023) tie methylation entropy
-to stem-cell division across mouse tissues, which points the same way. Two readings fit. Cells whose active
+**The shield is larger in some dividing cells and tissues.** In series where batch cannot make the contrast, the gap
+is more than twice as large in colon as in hippocampus of the same mouse cohort, larger in glia than in the same
+donors' neurons, large in fibroblasts driven to replicative senescence, and absent, with drift itself, in cultures
+kept from dividing for six months. It accrues per doubling in fibroblasts immortalised with telomerase, so the
+approach to senescence is not needed, and at the same rate in passaged astrocytes as in fibroblasts. Vaidya et al.
+(2023) tie methylation entropy to stem-cell division across mouse tissues, which points the same way. The support is
+partial, and division is not a general rule: human testis, which renews fastest, shows no gap; in Huang's 11 mouse
+tissues the ordering vanishes within chip; muscle equals blood in one mouse series; one cultured series lost its
+shield on arrays processed from raw files; and the mortal cells of the telomerase line show little or none. Two
+readings fit the contrasts that hold. Cells whose active
 promoters have drifted may be lost from a dividing population (selection), or maintenance at active promoters may be
 coupled to replication, so that each division both creates errors elsewhere and corrects them here. Nothing in hand
 separates the two: long-term cultures of mesenchymal stromal cells and iPSCs lose clonal diversity (Hollmann et al. 2020), steady selection per doubling
@@ -729,6 +747,15 @@ processed data and 1.01 on arrays rebuilt from raw files; only a matched analysi
 interval above one (1.49, 1.04 to 2.69). A second, small series gave no association. Drift B is not a marker of
 breast-cancer risk on this evidence.
 
+**Clocks read the shield by generation.** In the same women, the first-generation clocks and the mitotic clock
+epiTOC1 called those with a stronger shield older for their age, GrimAge and DunedinPACE were unrelated to it, and
+accelerations agreed only within generation (Fig. 10). Across the rebuilt series, too, the valid clocks of a tissue
+agreed only partly on who was ageing fast. Which part of drift a clock reads is therefore one source of that
+disagreement. It does not set how far one woman's clocks disagree, which was unrelated to her drift. The
+generation result comes from one cohort's blood, and clocks retrained on simulated change drew little of their
+accuracy from undirected noise (Supplementary Note 3), so how first-generation clocks come to track the shield is
+open.
+
 **Limits.** (i) Processing moves results of this size. Effects of 0.02 to 0.1 in a gap are near the ±0.05 SD
 preprocessing uncertainty, a shield in one cultured series vanished on rebuilt arrays, and the breast-cancer
 association came from arrays with failed signal that the usual detection check passes; every array series with public raw IDATs was therefore rebuilt, but the cohorts without them
@@ -754,9 +781,10 @@ Tet1 and Tet3 shifts, the loss rates in cortex and the neuron-glia difference ca
 5-methylcytosine alone.
 
 In sum, promoters of essential and housekeeping genes drift less with age than matched CpGs by a modest,
-reproducible margin. Most of that margin is what the promoter's own activity predicts, it is larger where cells divide, small and unresolved in neurons and absent, with drift itself, in cultures kept
-from dividing,
-and in one study of bulk mouse brain it was weaker in Tet3 heterozygous animals. Whether selection among dividing cells or maintenance
+reproducible margin. Most of that margin is what the promoter's own activity predicts. It is larger where cells
+divide, small and unresolved in neurons and absent, with drift itself, in cultures kept from dividing; in one study
+of bulk mouse brain it was weaker in Tet3 heterozygous animals. Clocks of different generations read it
+differently: first-generation and mitotic clocks track it, GrimAge and DunedinPACE do not. Whether selection among dividing cells or maintenance
 coupled to replication produces it is the question the next experiment should answer, with lineage-tracked or
 clonal cultures in which promoter activity is measured in the same cells.
 
