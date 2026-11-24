@@ -4,6 +4,7 @@ Newest first.
 
 ## Unreleased
 
+- 2026-11-24: new analysis `clock_drift`: per-person B and F (leave-one-out reference) in every rebuilt series group with ages, and each scored clock's acceleration against them, by generation (Figure 10b tested beyond EPIC-Italy).
 - 2026-11-24: R173 lung smoking control: disease-free lung -0.26 never-smokers, -0.19 ever-smokers, fibrotic lung -0.08 (same series). Paper: new paragraph, the shield weakens in diseased lung (tumour-adjacent TCGA, fibrosis), not in smokers; adjacent breast, colon and kidney keep their healthy gap.
 - 2026-11-24: R172 TCGA-KIRC normal-adjacent kidney (160 arrays): housekeeping gap -0.13 (-0.23 to -0.06) against -0.10 in normal kidney; Horvath's shielded part r 0.38 against 0.65.
 - 2026-11-24: config lung_smoking: healthy lung by ever (58) and never (83) smoking, and 345 fibrotic lungs, the smoking control for the weaker shield next to lung tumours.
