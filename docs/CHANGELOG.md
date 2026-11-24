@@ -4,6 +4,7 @@ Newest first.
 
 ## Unreleased
 
+- 2026-11-24: R170 TCGA normal-adjacent tissues (seven of eight; kidney in R172): housekeeping gap next to lung tumours -0.07 (LUSC, -0.17 to -0.01) and -0.09 (LUAD, -0.19 to -0.02) against -0.25 in healthy lung, so the weakening near lung tumours replicates; breast -0.01, colon -0.08 as in healthy; thyroid -0.18, liver -0.01, prostate +0.08. Horvath's shielded part keeps its age signal next to TCGA lung tumours (r 0.71, 0.58 against 0.78 healthy), not replicating the GEO drop (0.20); lower next to breast tumours (0.13 against 0.30-0.38). Clock panel, clock parts and atlas include the TCGA tissues.
 - 2026-11-24: series runner, clock_atlas and clock_parts read a series' samples from `samples_csv` when its arrays are outside GEO (`series_table`); configs for eight TCGA normal-adjacent tissues.
 - 2026-11-24: scripts/fetch_tcga_normals.py: TCGA normal-adjacent 450k IDATs (open) with age and sex from GDC, md5-checked, for the field-cancerisation test; R169 fetches and rebuilds kidney, breast, colon, lung (2), thyroid, liver and prostate.
 - 2026-11-24: new analysis `clock_parts` (Anton): Horvath 2013, StocH, StocP, Lin and PhenoAge split into shielded and other CpGs in every rebuilt series group. Shielded parts track age (median r 0.12-0.38; Horvath up to 0.78 in healthy lung, 0.6-0.76 in brain) but less than the rest (0.36-0.76), carry 8-16 % of the age signal, and their accelerations are nearly independent of the rest's (median r -0.14 to 0.07).

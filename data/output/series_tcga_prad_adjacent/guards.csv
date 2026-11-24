@@ -1,0 +1,2 @@
+group,arrays_selected,arrays_passing_detection,donors_kept,arrays_dropped_repeat_donor,platforms,cpgs_complete,chips,chips_unknown,age_variance_on_chip,age_identifiable_with_chip
+"prostate, next to a tumour (TCGA-PRAD)",50,50,50,0,HM450,96787,1,50,0.0,true

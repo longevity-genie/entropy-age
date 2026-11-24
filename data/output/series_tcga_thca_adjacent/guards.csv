@@ -1,0 +1,2 @@
+group,arrays_selected,arrays_passing_detection,donors_kept,arrays_dropped_repeat_donor,platforms,cpgs_complete,chips,chips_unknown,age_variance_on_chip,age_identifiable_with_chip
+"thyroid, next to a tumour (TCGA-THCA)",56,56,56,0,HM450,95173,1,56,0.0,true

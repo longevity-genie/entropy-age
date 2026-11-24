@@ -1,4 +1,190 @@
 series,accession,group,clock,generation,valid,arrays,age_min,age_max,r_age,median_abs_error
+brain_regions,GSE349373,"prefrontal cortex, controls",Horvathv1,1st: chronological,true,100,17.47,79.9917864476386,0.9570458390326723,4.603011113374414
+brain_regions,GSE349373,"prefrontal cortex, controls",Lin,1st: chronological,false,100,17.47,79.9917864476386,0.6098092049972732,13.77166176020544
+brain_regions,GSE349373,"prefrontal cortex, controls",PhenoAge,2nd: phenotypic and mortality,false,100,17.47,79.9917864476386,0.800867623414266,64.63317979233568
+brain_regions,GSE349373,"prefrontal cortex, controls",YingDamAge,2nd: phenotypic and mortality,false,100,17.47,79.9917864476386,0.3270815787478397,10.87942170090171
+brain_regions,GSE349373,"prefrontal cortex, controls",YingAdaptAge,2nd: phenotypic and mortality,false,100,17.47,79.9917864476386,0.7500833166679896,8.9599789133959
+brain_regions,GSE349373,"prefrontal cortex, controls",Horvathv2,1st: chronological,true,100,17.47,79.9917864476386,0.8374512575469821,21.246668756644866
+brain_regions,GSE349373,"prefrontal cortex, controls",PEDBE,other,false,100,17.47,79.9917864476386,0.9329700321079494,43.17782868580002
+brain_regions,GSE349373,"prefrontal cortex, controls",DunedinPACE,3rd: pace of ageing,false,100,17.47,79.9917864476386,0.09458128130098659,
+brain_regions,GSE349373,"prefrontal cortex, controls",DNAmClockCortical,other,true,100,17.47,79.9917864476386,0.9819018572797019,
+brain_regions,GSE349373,"prefrontal cortex, controls",VidalBralo,1st: chronological,false,100,17.47,79.9917864476386,0.34542087835434443,10.262460162187681
+brain_regions,GSE349373,"prefrontal cortex, controls",AlcoholMcCartney,other,false,100,17.47,79.9917864476386,-0.16758415147439965,
+brain_regions,GSE349373,"prefrontal cortex, controls",HRSInCHPhenoAge,2nd: phenotypic and mortality,false,100,17.47,79.9917864476386,0.7405100102012165,51.69245328265122
+brain_regions,GSE349373,"prefrontal cortex, controls",Knight,other,false,100,17.47,79.9917864476386,0.393441791546966,
+brain_regions,GSE349373,"prefrontal cortex, controls",LeeControl,other,false,100,17.47,79.9917864476386,0.5524779165859698,
+brain_regions,GSE349373,"prefrontal cortex, controls",LeeRefinedRobust,other,false,100,17.47,79.9917864476386,0.6056962869157219,
+brain_regions,GSE349373,"prefrontal cortex, controls",LeeRobust,other,false,100,17.47,79.9917864476386,0.6697513223789574,
+brain_regions,GSE349373,"prefrontal cortex, controls",SmokingMcCartney,other,false,100,17.47,79.9917864476386,-0.04867052893671296,
+brain_regions,GSE349373,"prefrontal cortex, controls",DownSyndrome,other,false,100,17.47,79.9917864476386,0.31432836941853076,
+brain_regions,GSE349373,"prefrontal cortex, controls",StocZ,mitotic and stochastic,false,100,17.47,79.9917864476386,0.9383372571676472,
+brain_regions,GSE349373,"prefrontal cortex, controls",BMI_McCartney,other,false,100,17.47,79.9917864476386,0.030215023142264756,
+brain_regions,GSE349373,"prefrontal cortex, controls",EducationMcCartney,other,false,100,17.47,79.9917864476386,0.09049282981186069,
+brain_regions,GSE349373,"prefrontal cortex, controls",TotalCholesterolMcCartney,other,false,100,17.47,79.9917864476386,0.36520482296306256,
+brain_regions,GSE349373,"prefrontal cortex, controls",HDLCholesterolMcCartney,other,false,100,17.47,79.9917864476386,-0.27875253137550066,
+brain_regions,GSE349373,"prefrontal cortex, controls",LDLCholesterolMcCartney,other,false,100,17.47,79.9917864476386,0.2845698741745912,
+brain_regions,GSE349373,"prefrontal cortex, controls",BodyFatMcCartney,other,false,100,17.47,79.9917864476386,-0.1464383668652117,
+brain_regions,GSE349373,"prefrontal cortex, controls",StocP,mitotic and stochastic,false,100,17.47,79.9917864476386,0.6241309175332018,7.568448255378325
+brain_regions,GSE349373,"prefrontal cortex, controls",Mayne,other,false,100,17.47,79.9917864476386,0.07697582602452609,
+brain_regions,GSE349373,"prefrontal cortex, controls",StocH,mitotic and stochastic,true,100,17.47,79.9917864476386,0.8034914143786651,14.308432978981724
+brain_regions,GSE349373,"prefrontal cortex, controls",Weidner,1st: chronological,false,100,17.47,79.9917864476386,0.6080115317651077,38.579309416333345
+brain_regions,GSE349373,"prefrontal cortex, controls",Garagnani,1st: chronological,false,100,17.47,79.9917864476386,0.7339075846598623,47.1073067022843
+brain_regions,GSE349373,"prefrontal cortex, controls",Bocklandt,1st: chronological,false,100,17.47,79.9917864476386,-0.22488015261928246,
+brain_regions,GSE349373,"prefrontal cortex, every donor",Horvathv1,1st: chronological,true,294,15.5155144877937,79.9917864476386,0.952043292555014,4.321067957051206
+brain_regions,GSE349373,"prefrontal cortex, every donor",Lin,1st: chronological,false,294,15.5155144877937,79.9917864476386,0.6067286596110091,13.051580392547843
+brain_regions,GSE349373,"prefrontal cortex, every donor",PhenoAge,2nd: phenotypic and mortality,false,294,15.5155144877937,79.9917864476386,0.7579259997474201,63.066191869388646
+brain_regions,GSE349373,"prefrontal cortex, every donor",YingDamAge,2nd: phenotypic and mortality,false,294,15.5155144877937,79.9917864476386,0.25446720119556343,10.186755045469662
+brain_regions,GSE349373,"prefrontal cortex, every donor",YingAdaptAge,2nd: phenotypic and mortality,false,294,15.5155144877937,79.9917864476386,0.7483026199660128,8.354967060727288
+brain_regions,GSE349373,"prefrontal cortex, every donor",Horvathv2,1st: chronological,true,294,15.5155144877937,79.9917864476386,0.8512336551345794,21.165704126529096
+brain_regions,GSE349373,"prefrontal cortex, every donor",PEDBE,other,false,294,15.5155144877937,79.9917864476386,0.9355179094043561,42.55349239028378
+brain_regions,GSE349373,"prefrontal cortex, every donor",DunedinPACE,3rd: pace of ageing,false,294,15.5155144877937,79.9917864476386,0.09002379026017611,
+brain_regions,GSE349373,"prefrontal cortex, every donor",DNAmClockCortical,other,true,294,15.5155144877937,79.9917864476386,0.980766275443975,
+brain_regions,GSE349373,"prefrontal cortex, every donor",VidalBralo,1st: chronological,false,294,15.5155144877937,79.9917864476386,0.3361260191024664,10.584433119223522
+brain_regions,GSE349373,"prefrontal cortex, every donor",AlcoholMcCartney,other,false,294,15.5155144877937,79.9917864476386,-0.10177075885916269,
+brain_regions,GSE349373,"prefrontal cortex, every donor",HRSInCHPhenoAge,2nd: phenotypic and mortality,false,294,15.5155144877937,79.9917864476386,0.7548153258250885,51.32051952981182
+brain_regions,GSE349373,"prefrontal cortex, every donor",Knight,other,false,294,15.5155144877937,79.9917864476386,0.35648620740537706,
+brain_regions,GSE349373,"prefrontal cortex, every donor",LeeControl,other,false,294,15.5155144877937,79.9917864476386,0.4700803877496281,
+brain_regions,GSE349373,"prefrontal cortex, every donor",LeeRefinedRobust,other,false,294,15.5155144877937,79.9917864476386,0.5281948336621481,
+brain_regions,GSE349373,"prefrontal cortex, every donor",LeeRobust,other,false,294,15.5155144877937,79.9917864476386,0.5818313097605512,
+brain_regions,GSE349373,"prefrontal cortex, every donor",SmokingMcCartney,other,false,294,15.5155144877937,79.9917864476386,0.08165054964269322,
+brain_regions,GSE349373,"prefrontal cortex, every donor",DownSyndrome,other,false,294,15.5155144877937,79.9917864476386,0.2630661621285121,
+brain_regions,GSE349373,"prefrontal cortex, every donor",StocZ,mitotic and stochastic,false,294,15.5155144877937,79.9917864476386,0.914345198342407,
+brain_regions,GSE349373,"prefrontal cortex, every donor",BMI_McCartney,other,false,294,15.5155144877937,79.9917864476386,0.016486424223431412,
+brain_regions,GSE349373,"prefrontal cortex, every donor",EducationMcCartney,other,false,294,15.5155144877937,79.9917864476386,0.034527989041023575,
+brain_regions,GSE349373,"prefrontal cortex, every donor",TotalCholesterolMcCartney,other,false,294,15.5155144877937,79.9917864476386,0.20900404942006662,
+brain_regions,GSE349373,"prefrontal cortex, every donor",HDLCholesterolMcCartney,other,false,294,15.5155144877937,79.9917864476386,-0.26846866179661966,
+brain_regions,GSE349373,"prefrontal cortex, every donor",LDLCholesterolMcCartney,other,false,294,15.5155144877937,79.9917864476386,0.13166721855033314,
+brain_regions,GSE349373,"prefrontal cortex, every donor",BodyFatMcCartney,other,false,294,15.5155144877937,79.9917864476386,-0.02521773789965792,
+brain_regions,GSE349373,"prefrontal cortex, every donor",StocP,mitotic and stochastic,false,294,15.5155144877937,79.9917864476386,0.537894983978006,9.055856907800134
+brain_regions,GSE349373,"prefrontal cortex, every donor",Mayne,other,false,294,15.5155144877937,79.9917864476386,0.020273198335901313,
+brain_regions,GSE349373,"prefrontal cortex, every donor",StocH,mitotic and stochastic,true,294,15.5155144877937,79.9917864476386,0.7987483755933372,14.191701115644626
+brain_regions,GSE349373,"prefrontal cortex, every donor",Weidner,1st: chronological,false,294,15.5155144877937,79.9917864476386,0.5601244968070982,37.94339383822232
+brain_regions,GSE349373,"prefrontal cortex, every donor",Garagnani,1st: chronological,false,294,15.5155144877937,79.9917864476386,0.7681913023729406,46.315035541420656
+brain_regions,GSE349373,"prefrontal cortex, every donor",Bocklandt,1st: chronological,false,294,15.5155144877937,79.9917864476386,-0.20785661067567354,
+brain_regions,GSE349373,"amygdala, controls",Horvathv1,1st: chronological,true,99,17.47,78.63,0.9611486436094091,2.692085696078493
+brain_regions,GSE349373,"amygdala, controls",Lin,1st: chronological,false,99,17.47,78.63,0.7033898625762921,6.845970718917258
+brain_regions,GSE349373,"amygdala, controls",PhenoAge,2nd: phenotypic and mortality,false,99,17.47,78.63,0.8164658024488315,54.41010576262807
+brain_regions,GSE349373,"amygdala, controls",YingDamAge,2nd: phenotypic and mortality,false,99,17.47,78.63,0.43345593340296246,8.997869660793626
+brain_regions,GSE349373,"amygdala, controls",YingAdaptAge,2nd: phenotypic and mortality,false,99,17.47,78.63,0.6883356318714928,11.26103121514258
+brain_regions,GSE349373,"amygdala, controls",Horvathv2,1st: chronological,true,99,17.47,78.63,0.9245122085598593,11.485960882065363
+brain_regions,GSE349373,"amygdala, controls",PEDBE,other,false,99,17.47,78.63,0.9571320148013264,42.53597934084228
+brain_regions,GSE349373,"amygdala, controls",DunedinPACE,3rd: pace of ageing,false,99,17.47,78.63,-0.13064809254672227,
+brain_regions,GSE349373,"amygdala, controls",DNAmClockCortical,other,true,99,17.47,78.63,0.975366131470098,
+brain_regions,GSE349373,"amygdala, controls",VidalBralo,1st: chronological,false,99,17.47,78.63,0.3020129581126357,9.649063424964218
+brain_regions,GSE349373,"amygdala, controls",AlcoholMcCartney,other,false,99,17.47,78.63,-0.2564903206251896,
+brain_regions,GSE349373,"amygdala, controls",HRSInCHPhenoAge,2nd: phenotypic and mortality,false,99,17.47,78.63,0.7834460137398962,57.410829068408475
+brain_regions,GSE349373,"amygdala, controls",Knight,other,false,99,17.47,78.63,0.5801918323869688,
+brain_regions,GSE349373,"amygdala, controls",LeeControl,other,false,99,17.47,78.63,0.46333716622092996,
+brain_regions,GSE349373,"amygdala, controls",LeeRefinedRobust,other,false,99,17.47,78.63,0.5939296660686157,
+brain_regions,GSE349373,"amygdala, controls",LeeRobust,other,false,99,17.47,78.63,0.7263786795802865,
+brain_regions,GSE349373,"amygdala, controls",SmokingMcCartney,other,false,99,17.47,78.63,-0.022588276551297262,
+brain_regions,GSE349373,"amygdala, controls",DownSyndrome,other,false,99,17.47,78.63,0.2585128242533829,
+brain_regions,GSE349373,"amygdala, controls",StocZ,mitotic and stochastic,false,99,17.47,78.63,0.9511055032557095,
+brain_regions,GSE349373,"amygdala, controls",BMI_McCartney,other,false,99,17.47,78.63,0.0650496031341742,
+brain_regions,GSE349373,"amygdala, controls",EducationMcCartney,other,false,99,17.47,78.63,0.019661827552727114,
+brain_regions,GSE349373,"amygdala, controls",TotalCholesterolMcCartney,other,false,99,17.47,78.63,0.14151896463461344,
+brain_regions,GSE349373,"amygdala, controls",HDLCholesterolMcCartney,other,false,99,17.47,78.63,-0.2192938168575714,
+brain_regions,GSE349373,"amygdala, controls",LDLCholesterolMcCartney,other,false,99,17.47,78.63,0.10578288531809005,
+brain_regions,GSE349373,"amygdala, controls",BodyFatMcCartney,other,false,99,17.47,78.63,-0.03549535630777028,
+brain_regions,GSE349373,"amygdala, controls",StocP,mitotic and stochastic,false,99,17.47,78.63,0.6813879836473001,8.070906907267151
+brain_regions,GSE349373,"amygdala, controls",Mayne,other,false,99,17.47,78.63,0.16584901534254853,
+brain_regions,GSE349373,"amygdala, controls",StocH,mitotic and stochastic,true,99,17.47,78.63,0.8031769893249041,9.576726073798035
+brain_regions,GSE349373,"amygdala, controls",Weidner,1st: chronological,false,99,17.47,78.63,0.6185366425941883,32.564696557273855
+brain_regions,GSE349373,"amygdala, controls",Garagnani,1st: chronological,false,99,17.47,78.63,0.844146052336154,47.023682889234124
+brain_regions,GSE349373,"amygdala, controls",Bocklandt,1st: chronological,false,99,17.47,78.63,-0.35420433892308356,
+brain_regions,GSE349373,"amygdala, every donor",Horvathv1,1st: chronological,true,297,15.5155144877937,79.9206023271731,0.9509971189230848,3.2432293458947328
+brain_regions,GSE349373,"amygdala, every donor",Lin,1st: chronological,false,297,15.5155144877937,79.9206023271731,0.7066215855925465,6.952603975729602
+brain_regions,GSE349373,"amygdala, every donor",PhenoAge,2nd: phenotypic and mortality,false,297,15.5155144877937,79.9206023271731,0.7834879456270096,54.28958243757675
+brain_regions,GSE349373,"amygdala, every donor",YingDamAge,2nd: phenotypic and mortality,false,297,15.5155144877937,79.9206023271731,0.39135722391446187,9.220055841417945
+brain_regions,GSE349373,"amygdala, every donor",YingAdaptAge,2nd: phenotypic and mortality,false,297,15.5155144877937,79.9206023271731,0.7106048957570542,10.17078721545434
+brain_regions,GSE349373,"amygdala, every donor",Horvathv2,1st: chronological,true,297,15.5155144877937,79.9206023271731,0.9361499145596004,12.163384301975146
+brain_regions,GSE349373,"amygdala, every donor",PEDBE,other,false,297,15.5155144877937,79.9206023271731,0.95426641004008,41.828783692229905
+brain_regions,GSE349373,"amygdala, every donor",DunedinPACE,3rd: pace of ageing,false,297,15.5155144877937,79.9206023271731,0.07888171687212053,
+brain_regions,GSE349373,"amygdala, every donor",DNAmClockCortical,other,true,297,15.5155144877937,79.9206023271731,0.9735788493022421,
+brain_regions,GSE349373,"amygdala, every donor",VidalBralo,1st: chronological,false,297,15.5155144877937,79.9206023271731,0.34854768391233665,10.379680987378208
+brain_regions,GSE349373,"amygdala, every donor",AlcoholMcCartney,other,false,297,15.5155144877937,79.9206023271731,-0.23933486048745461,
+brain_regions,GSE349373,"amygdala, every donor",HRSInCHPhenoAge,2nd: phenotypic and mortality,false,297,15.5155144877937,79.9206023271731,0.8339947318780768,57.410829068408475
+brain_regions,GSE349373,"amygdala, every donor",Knight,other,false,297,15.5155144877937,79.9206023271731,0.5291318619724471,
+brain_regions,GSE349373,"amygdala, every donor",LeeControl,other,false,297,15.5155144877937,79.9206023271731,0.47639720415575515,
+brain_regions,GSE349373,"amygdala, every donor",LeeRefinedRobust,other,false,297,15.5155144877937,79.9206023271731,0.5810878813581071,
+brain_regions,GSE349373,"amygdala, every donor",LeeRobust,other,false,297,15.5155144877937,79.9206023271731,0.734807670113678,
+brain_regions,GSE349373,"amygdala, every donor",SmokingMcCartney,other,false,297,15.5155144877937,79.9206023271731,0.09299599397727663,
+brain_regions,GSE349373,"amygdala, every donor",DownSyndrome,other,false,297,15.5155144877937,79.9206023271731,0.28251586411024054,
+brain_regions,GSE349373,"amygdala, every donor",StocZ,mitotic and stochastic,false,297,15.5155144877937,79.9206023271731,0.9309247546816122,
+brain_regions,GSE349373,"amygdala, every donor",BMI_McCartney,other,false,297,15.5155144877937,79.9206023271731,0.08085227380169864,
+brain_regions,GSE349373,"amygdala, every donor",EducationMcCartney,other,false,297,15.5155144877937,79.9206023271731,-0.03663651499048087,
+brain_regions,GSE349373,"amygdala, every donor",TotalCholesterolMcCartney,other,false,297,15.5155144877937,79.9206023271731,0.2376552056513708,
+brain_regions,GSE349373,"amygdala, every donor",HDLCholesterolMcCartney,other,false,297,15.5155144877937,79.9206023271731,-0.28863582869536625,
+brain_regions,GSE349373,"amygdala, every donor",LDLCholesterolMcCartney,other,false,297,15.5155144877937,79.9206023271731,0.11478354754274502,
+brain_regions,GSE349373,"amygdala, every donor",BodyFatMcCartney,other,false,297,15.5155144877937,79.9206023271731,-0.014135965709601668,
+brain_regions,GSE349373,"amygdala, every donor",StocP,mitotic and stochastic,false,297,15.5155144877937,79.9206023271731,0.6249307205156617,8.902767062216014
+brain_regions,GSE349373,"amygdala, every donor",Mayne,other,false,297,15.5155144877937,79.9206023271731,0.23733515421253373,
+brain_regions,GSE349373,"amygdala, every donor",StocH,mitotic and stochastic,true,297,15.5155144877937,79.9206023271731,0.7966939523341877,8.636821239676713
+brain_regions,GSE349373,"amygdala, every donor",Weidner,1st: chronological,false,297,15.5155144877937,79.9206023271731,0.6264324826776466,31.72406785842477
+brain_regions,GSE349373,"amygdala, every donor",Garagnani,1st: chronological,false,297,15.5155144877937,79.9206023271731,0.868662217716512,46.32824750447316
+brain_regions,GSE349373,"amygdala, every donor",Bocklandt,1st: chronological,false,297,15.5155144877937,79.9206023271731,-0.295316567323849,
+brain_regions,GSE349373,"hippocampus, controls",Horvathv1,1st: chronological,true,98,17.47,79.9917864476386,0.9421198719727245,3.6117039855841284
+brain_regions,GSE349373,"hippocampus, controls",Lin,1st: chronological,false,98,17.47,79.9917864476386,0.6619363047046176,6.102420322902844
+brain_regions,GSE349373,"hippocampus, controls",PhenoAge,2nd: phenotypic and mortality,false,98,17.47,79.9917864476386,0.7690065392777895,55.855419137180995
+brain_regions,GSE349373,"hippocampus, controls",YingDamAge,2nd: phenotypic and mortality,false,98,17.47,79.9917864476386,0.31755711944477627,9.048116148483167
+brain_regions,GSE349373,"hippocampus, controls",YingAdaptAge,2nd: phenotypic and mortality,false,98,17.47,79.9917864476386,0.6971563399435978,11.448497927247587
+brain_regions,GSE349373,"hippocampus, controls",Horvathv2,1st: chronological,true,98,17.47,79.9917864476386,0.9321673654417015,13.249466658606575
+brain_regions,GSE349373,"hippocampus, controls",PEDBE,other,false,98,17.47,79.9917864476386,0.920928177802457,42.195822317215644
+brain_regions,GSE349373,"hippocampus, controls",DunedinPACE,3rd: pace of ageing,false,98,17.47,79.9917864476386,0.020051839305630672,
+brain_regions,GSE349373,"hippocampus, controls",DNAmClockCortical,other,true,98,17.47,79.9917864476386,0.9537913208705774,
+brain_regions,GSE349373,"hippocampus, controls",VidalBralo,1st: chronological,false,98,17.47,79.9917864476386,0.43108049688273836,9.019439892100781
+brain_regions,GSE349373,"hippocampus, controls",AlcoholMcCartney,other,false,98,17.47,79.9917864476386,-0.3072258663765564,
+brain_regions,GSE349373,"hippocampus, controls",HRSInCHPhenoAge,2nd: phenotypic and mortality,false,98,17.47,79.9917864476386,0.778791236649487,56.21991942482476
+brain_regions,GSE349373,"hippocampus, controls",Knight,other,false,98,17.47,79.9917864476386,0.4843202108087522,
+brain_regions,GSE349373,"hippocampus, controls",LeeControl,other,false,98,17.47,79.9917864476386,0.2962309527314478,
+brain_regions,GSE349373,"hippocampus, controls",LeeRefinedRobust,other,false,98,17.47,79.9917864476386,0.5780877279960855,
+brain_regions,GSE349373,"hippocampus, controls",LeeRobust,other,false,98,17.47,79.9917864476386,0.6931159526132604,
+brain_regions,GSE349373,"hippocampus, controls",SmokingMcCartney,other,false,98,17.47,79.9917864476386,0.029985021821190356,
+brain_regions,GSE349373,"hippocampus, controls",DownSyndrome,other,false,98,17.47,79.9917864476386,0.20065505708088813,
+brain_regions,GSE349373,"hippocampus, controls",StocZ,mitotic and stochastic,false,98,17.47,79.9917864476386,0.9094316734044385,
+brain_regions,GSE349373,"hippocampus, controls",BMI_McCartney,other,false,98,17.47,79.9917864476386,-0.07210782518644722,
+brain_regions,GSE349373,"hippocampus, controls",EducationMcCartney,other,false,98,17.47,79.9917864476386,-0.017937117163892177,
+brain_regions,GSE349373,"hippocampus, controls",TotalCholesterolMcCartney,other,false,98,17.47,79.9917864476386,0.24607716455539694,
+brain_regions,GSE349373,"hippocampus, controls",HDLCholesterolMcCartney,other,false,98,17.47,79.9917864476386,-0.054223962778739705,
+brain_regions,GSE349373,"hippocampus, controls",LDLCholesterolMcCartney,other,false,98,17.47,79.9917864476386,0.058725003079437094,
+brain_regions,GSE349373,"hippocampus, controls",BodyFatMcCartney,other,false,98,17.47,79.9917864476386,0.1453524900264755,
+brain_regions,GSE349373,"hippocampus, controls",StocP,mitotic and stochastic,false,98,17.47,79.9917864476386,0.5609518315862396,7.854379684431951
+brain_regions,GSE349373,"hippocampus, controls",Mayne,other,false,98,17.47,79.9917864476386,0.147389551245258,
+brain_regions,GSE349373,"hippocampus, controls",StocH,mitotic and stochastic,true,98,17.47,79.9917864476386,0.8314866338287974,10.54740772666381
+brain_regions,GSE349373,"hippocampus, controls",Weidner,1st: chronological,false,98,17.47,79.9917864476386,0.6554828389871091,33.12894224140409
+brain_regions,GSE349373,"hippocampus, controls",Garagnani,1st: chronological,false,98,17.47,79.9917864476386,0.829768878242574,46.928931450343406
+brain_regions,GSE349373,"hippocampus, controls",Bocklandt,1st: chronological,false,98,17.47,79.9917864476386,-0.45922757168865375,
+brain_regions,GSE349373,"hippocampus, every donor",Horvathv1,1st: chronological,true,300,15.5155144877937,79.9917864476386,0.9438778469368706,3.392523501994697
+brain_regions,GSE349373,"hippocampus, every donor",Lin,1st: chronological,false,300,15.5155144877937,79.9917864476386,0.7011838501095531,6.448896981875286
+brain_regions,GSE349373,"hippocampus, every donor",PhenoAge,2nd: phenotypic and mortality,false,300,15.5155144877937,79.9917864476386,0.7682708023745654,56.01275842077208
+brain_regions,GSE349373,"hippocampus, every donor",YingDamAge,2nd: phenotypic and mortality,false,300,15.5155144877937,79.9917864476386,0.19659088699671537,10.489132719872506
+brain_regions,GSE349373,"hippocampus, every donor",YingAdaptAge,2nd: phenotypic and mortality,false,300,15.5155144877937,79.9917864476386,0.7324141704009133,10.274697805346847
+brain_regions,GSE349373,"hippocampus, every donor",Horvathv2,1st: chronological,true,300,15.5155144877937,79.9917864476386,0.939819122258541,13.819222145308434
+brain_regions,GSE349373,"hippocampus, every donor",PEDBE,other,false,300,15.5155144877937,79.9917864476386,0.9404668216247115,41.35498066997582
+brain_regions,GSE349373,"hippocampus, every donor",DunedinPACE,3rd: pace of ageing,false,300,15.5155144877937,79.9917864476386,0.12030594454518477,
+brain_regions,GSE349373,"hippocampus, every donor",DNAmClockCortical,other,true,300,15.5155144877937,79.9917864476386,0.9607046432406215,
+brain_regions,GSE349373,"hippocampus, every donor",VidalBralo,1st: chronological,false,300,15.5155144877937,79.9917864476386,0.47161300425531155,9.581692561153606
+brain_regions,GSE349373,"hippocampus, every donor",AlcoholMcCartney,other,false,300,15.5155144877937,79.9917864476386,-0.15458204177227028,
+brain_regions,GSE349373,"hippocampus, every donor",HRSInCHPhenoAge,2nd: phenotypic and mortality,false,300,15.5155144877937,79.9917864476386,0.8144412939375613,56.329189143036636
+brain_regions,GSE349373,"hippocampus, every donor",Knight,other,false,300,15.5155144877937,79.9917864476386,0.36254378894853473,
+brain_regions,GSE349373,"hippocampus, every donor",LeeControl,other,false,300,15.5155144877937,79.9917864476386,0.3019530541325897,
+brain_regions,GSE349373,"hippocampus, every donor",LeeRefinedRobust,other,false,300,15.5155144877937,79.9917864476386,0.5068928515468205,
+brain_regions,GSE349373,"hippocampus, every donor",LeeRobust,other,false,300,15.5155144877937,79.9917864476386,0.6666481448155699,
+brain_regions,GSE349373,"hippocampus, every donor",SmokingMcCartney,other,false,300,15.5155144877937,79.9917864476386,0.13060058996815177,
+brain_regions,GSE349373,"hippocampus, every donor",DownSyndrome,other,false,300,15.5155144877937,79.9917864476386,0.18583359842777752,
+brain_regions,GSE349373,"hippocampus, every donor",StocZ,mitotic and stochastic,false,300,15.5155144877937,79.9917864476386,0.9194539621531428,
+brain_regions,GSE349373,"hippocampus, every donor",BMI_McCartney,other,false,300,15.5155144877937,79.9917864476386,-0.10821897535782575,
+brain_regions,GSE349373,"hippocampus, every donor",EducationMcCartney,other,false,300,15.5155144877937,79.9917864476386,-0.04051146051355442,
+brain_regions,GSE349373,"hippocampus, every donor",TotalCholesterolMcCartney,other,false,300,15.5155144877937,79.9917864476386,0.24963133906579488,
+brain_regions,GSE349373,"hippocampus, every donor",HDLCholesterolMcCartney,other,false,300,15.5155144877937,79.9917864476386,-0.044646295407362604,
+brain_regions,GSE349373,"hippocampus, every donor",LDLCholesterolMcCartney,other,false,300,15.5155144877937,79.9917864476386,0.09161587372813787,
+brain_regions,GSE349373,"hippocampus, every donor",BodyFatMcCartney,other,false,300,15.5155144877937,79.9917864476386,0.07631192098516301,
+brain_regions,GSE349373,"hippocampus, every donor",StocP,mitotic and stochastic,false,300,15.5155144877937,79.9917864476386,0.501986608458639,9.230754737747422
+brain_regions,GSE349373,"hippocampus, every donor",Mayne,other,false,300,15.5155144877937,79.9917864476386,0.09164074409766054,
+brain_regions,GSE349373,"hippocampus, every donor",StocH,mitotic and stochastic,true,300,15.5155144877937,79.9917864476386,0.8338502829417812,10.829494489891431
+brain_regions,GSE349373,"hippocampus, every donor",Weidner,1st: chronological,false,300,15.5155144877937,79.9917864476386,0.6870578689277161,33.20255574859094
+brain_regions,GSE349373,"hippocampus, every donor",Garagnani,1st: chronological,false,300,15.5155144877937,79.9917864476386,0.8617511039265582,45.96828663082248
+brain_regions,GSE349373,"hippocampus, every donor",Bocklandt,1st: chronological,false,300,15.5155144877937,79.9917864476386,-0.4286265565589158,
 breast_cancer_free,GSE101961,"breast, cancer-free women",Horvathv1,1st: chronological,true,119,17.0,76.0,0.8742100034941623,11.158973960949787
 breast_cancer_free,GSE101961,"breast, cancer-free women",Hannum,1st: chronological,false,119,17.0,76.0,0.7387737233051764,8.906971007444035
 breast_cancer_free,GSE101961,"breast, cancer-free women",Lin,1st: chronological,false,119,17.0,76.0,0.7031851710756442,7.063259578407582
@@ -329,3 +515,257 @@ neurons,GSE112179,"neurons, controls",StocH,mitotic and stochastic,true,28,31.0,
 neurons,GSE112179,"neurons, controls",Weidner,1st: chronological,false,28,31.0,68.0,0.19231154602366993,54.18490200779608
 neurons,GSE112179,"neurons, controls",Garagnani,1st: chronological,false,28,31.0,68.0,0.7237113271692427,48.78379556443822
 neurons,GSE112179,"neurons, controls",Bocklandt,1st: chronological,false,28,31.0,68.0,-0.11781307088141967,
+tcga_brca_adjacent,TCGA-BRCA,"breast, next to a tumour (TCGA-BRCA)",Horvathv1,1st: chronological,true,96,28.92,90.0,0.8452058120593895,8.004251907735267
+tcga_brca_adjacent,TCGA-BRCA,"breast, next to a tumour (TCGA-BRCA)",Hannum,1st: chronological,false,96,28.92,90.0,0.7318497035775052,14.328716607533927
+tcga_brca_adjacent,TCGA-BRCA,"breast, next to a tumour (TCGA-BRCA)",Lin,1st: chronological,false,96,28.92,90.0,0.7305625283496099,8.035945612151025
+tcga_brca_adjacent,TCGA-BRCA,"breast, next to a tumour (TCGA-BRCA)",PhenoAge,2nd: phenotypic and mortality,false,96,28.92,90.0,0.38053622747555294,15.74086986599962
+tcga_brca_adjacent,TCGA-BRCA,"breast, next to a tumour (TCGA-BRCA)",YingCausAge,2nd: phenotypic and mortality,false,96,28.92,90.0,0.391450649819818,16.1124756051687
+tcga_brca_adjacent,TCGA-BRCA,"breast, next to a tumour (TCGA-BRCA)",YingDamAge,2nd: phenotypic and mortality,false,96,28.92,90.0,-0.0022035137874821514,33.099504289503265
+tcga_brca_adjacent,TCGA-BRCA,"breast, next to a tumour (TCGA-BRCA)",YingAdaptAge,2nd: phenotypic and mortality,false,96,28.92,90.0,0.2716801918195143,15.825260340863835
+tcga_brca_adjacent,TCGA-BRCA,"breast, next to a tumour (TCGA-BRCA)",Horvathv2,1st: chronological,true,96,28.92,90.0,0.7745358084875152,8.652063567164308
+tcga_brca_adjacent,TCGA-BRCA,"breast, next to a tumour (TCGA-BRCA)",PEDBE,other,false,96,28.92,90.0,0.7992681000592224,47.04449568521603
+tcga_brca_adjacent,TCGA-BRCA,"breast, next to a tumour (TCGA-BRCA)",Zhang_10,2nd: phenotypic and mortality,false,96,28.92,90.0,-0.06634767948274066,
+tcga_brca_adjacent,TCGA-BRCA,"breast, next to a tumour (TCGA-BRCA)",DNAmClockCortical,other,false,96,28.92,90.0,0.5544546548619081,
+tcga_brca_adjacent,TCGA-BRCA,"breast, next to a tumour (TCGA-BRCA)",VidalBralo,1st: chronological,false,96,28.92,90.0,0.19642576191043773,19.130624976303952
+tcga_brca_adjacent,TCGA-BRCA,"breast, next to a tumour (TCGA-BRCA)",AlcoholMcCartney,other,false,96,28.92,90.0,0.08707890241992759,
+tcga_brca_adjacent,TCGA-BRCA,"breast, next to a tumour (TCGA-BRCA)",HRSInCHPhenoAge,2nd: phenotypic and mortality,false,96,28.92,90.0,0.47638416420001023,45.222751436658285
+tcga_brca_adjacent,TCGA-BRCA,"breast, next to a tumour (TCGA-BRCA)",Knight,other,false,96,28.92,90.0,-0.0566102619081791,
+tcga_brca_adjacent,TCGA-BRCA,"breast, next to a tumour (TCGA-BRCA)",LeeControl,other,false,96,28.92,90.0,0.21267243842267292,
+tcga_brca_adjacent,TCGA-BRCA,"breast, next to a tumour (TCGA-BRCA)",EpiTOC1,mitotic and stochastic,true,96,28.92,90.0,0.1268561692981116,
+tcga_brca_adjacent,TCGA-BRCA,"breast, next to a tumour (TCGA-BRCA)",LeeRefinedRobust,other,false,96,28.92,90.0,0.1074277250826436,
+tcga_brca_adjacent,TCGA-BRCA,"breast, next to a tumour (TCGA-BRCA)",LeeRobust,other,false,96,28.92,90.0,0.015019901015962268,
+tcga_brca_adjacent,TCGA-BRCA,"breast, next to a tumour (TCGA-BRCA)",SmokingMcCartney,other,false,96,28.92,90.0,-0.059552784719677544,
+tcga_brca_adjacent,TCGA-BRCA,"breast, next to a tumour (TCGA-BRCA)",StocZ,mitotic and stochastic,false,96,28.92,90.0,0.7302324660012232,
+tcga_brca_adjacent,TCGA-BRCA,"breast, next to a tumour (TCGA-BRCA)",BMI_McCartney,other,false,96,28.92,90.0,0.3142253090485083,
+tcga_brca_adjacent,TCGA-BRCA,"breast, next to a tumour (TCGA-BRCA)",EducationMcCartney,other,false,96,28.92,90.0,0.20062377543322016,
+tcga_brca_adjacent,TCGA-BRCA,"breast, next to a tumour (TCGA-BRCA)",TotalCholesterolMcCartney,other,false,96,28.92,90.0,-0.046469094756030345,
+tcga_brca_adjacent,TCGA-BRCA,"breast, next to a tumour (TCGA-BRCA)",HDLCholesterolMcCartney,other,false,96,28.92,90.0,-0.11450888365532168,
+tcga_brca_adjacent,TCGA-BRCA,"breast, next to a tumour (TCGA-BRCA)",LDLCholesterolMcCartney,other,false,96,28.92,90.0,0.23191030280148295,
+tcga_brca_adjacent,TCGA-BRCA,"breast, next to a tumour (TCGA-BRCA)",BodyFatMcCartney,other,false,96,28.92,90.0,0.4297673107969322,
+tcga_brca_adjacent,TCGA-BRCA,"breast, next to a tumour (TCGA-BRCA)",BMI_Reed,other,false,96,28.92,90.0,0.3417437766534508,
+tcga_brca_adjacent,TCGA-BRCA,"breast, next to a tumour (TCGA-BRCA)",StocP,mitotic and stochastic,false,96,28.92,90.0,0.2682455825271548,22.474974826460166
+tcga_brca_adjacent,TCGA-BRCA,"breast, next to a tumour (TCGA-BRCA)",StocH,mitotic and stochastic,true,96,28.92,90.0,0.4452908871369554,8.626733468068252
+tcga_brca_adjacent,TCGA-BRCA,"breast, next to a tumour (TCGA-BRCA)",Weidner,1st: chronological,false,96,28.92,90.0,0.2493454726416294,22.97749505764023
+tcga_brca_adjacent,TCGA-BRCA,"breast, next to a tumour (TCGA-BRCA)",Garagnani,1st: chronological,false,96,28.92,90.0,0.6042223259995562,56.64413097249269
+tcga_brca_adjacent,TCGA-BRCA,"breast, next to a tumour (TCGA-BRCA)",Bocklandt,1st: chronological,false,96,28.92,90.0,0.025048671480173233,
+tcga_coad_adjacent,TCGA-COAD,"colon, next to a tumour (TCGA-COAD)",Horvathv1,1st: chronological,true,38,40.4,90.0,0.8946263248903429,9.611047907975102
+tcga_coad_adjacent,TCGA-COAD,"colon, next to a tumour (TCGA-COAD)",Hannum,1st: chronological,false,38,40.4,90.0,0.55710284412516,5.4390278157370915
+tcga_coad_adjacent,TCGA-COAD,"colon, next to a tumour (TCGA-COAD)",Lin,1st: chronological,false,38,40.4,90.0,0.7447684555257985,9.785269093124839
+tcga_coad_adjacent,TCGA-COAD,"colon, next to a tumour (TCGA-COAD)",PhenoAge,2nd: phenotypic and mortality,false,38,40.4,90.0,0.6896787805698112,5.2698175138718995
+tcga_coad_adjacent,TCGA-COAD,"colon, next to a tumour (TCGA-COAD)",YingCausAge,2nd: phenotypic and mortality,false,38,40.4,90.0,0.8035912213248213,16.62819796847475
+tcga_coad_adjacent,TCGA-COAD,"colon, next to a tumour (TCGA-COAD)",YingDamAge,2nd: phenotypic and mortality,false,38,40.4,90.0,0.4904791782754842,18.00856573417176
+tcga_coad_adjacent,TCGA-COAD,"colon, next to a tumour (TCGA-COAD)",YingAdaptAge,2nd: phenotypic and mortality,false,38,40.4,90.0,0.650070558086159,11.257307542535756
+tcga_coad_adjacent,TCGA-COAD,"colon, next to a tumour (TCGA-COAD)",Horvathv2,1st: chronological,true,38,40.4,90.0,0.8600481626338995,4.580085731027594
+tcga_coad_adjacent,TCGA-COAD,"colon, next to a tumour (TCGA-COAD)",PEDBE,other,false,38,40.4,90.0,0.7138030502613019,62.042714570820024
+tcga_coad_adjacent,TCGA-COAD,"colon, next to a tumour (TCGA-COAD)",Zhang_10,2nd: phenotypic and mortality,false,38,40.4,90.0,0.5028055182521141,
+tcga_coad_adjacent,TCGA-COAD,"colon, next to a tumour (TCGA-COAD)",DunedinPACE,3rd: pace of ageing,false,38,40.4,90.0,-0.127817777643713,
+tcga_coad_adjacent,TCGA-COAD,"colon, next to a tumour (TCGA-COAD)",DNAmClockCortical,other,false,38,40.4,90.0,0.8258109571067939,
+tcga_coad_adjacent,TCGA-COAD,"colon, next to a tumour (TCGA-COAD)",VidalBralo,1st: chronological,false,38,40.4,90.0,0.4448636796353005,14.730258890997185
+tcga_coad_adjacent,TCGA-COAD,"colon, next to a tumour (TCGA-COAD)",AlcoholMcCartney,other,false,38,40.4,90.0,-0.25914102501707476,
+tcga_coad_adjacent,TCGA-COAD,"colon, next to a tumour (TCGA-COAD)",HRSInCHPhenoAge,2nd: phenotypic and mortality,false,38,40.4,90.0,0.7319176830350491,38.40865973044046
+tcga_coad_adjacent,TCGA-COAD,"colon, next to a tumour (TCGA-COAD)",Knight,other,false,38,40.4,90.0,0.03718858305345001,
+tcga_coad_adjacent,TCGA-COAD,"colon, next to a tumour (TCGA-COAD)",LeeControl,other,false,38,40.4,90.0,-0.23015812098335514,
+tcga_coad_adjacent,TCGA-COAD,"colon, next to a tumour (TCGA-COAD)",EpiTOC1,mitotic and stochastic,true,38,40.4,90.0,0.7740615152840586,
+tcga_coad_adjacent,TCGA-COAD,"colon, next to a tumour (TCGA-COAD)",LeeRefinedRobust,other,false,38,40.4,90.0,0.11844120544702609,
+tcga_coad_adjacent,TCGA-COAD,"colon, next to a tumour (TCGA-COAD)",LeeRobust,other,false,38,40.4,90.0,0.18056936147798067,
+tcga_coad_adjacent,TCGA-COAD,"colon, next to a tumour (TCGA-COAD)",SmokingMcCartney,other,false,38,40.4,90.0,-0.34068236844255206,
+tcga_coad_adjacent,TCGA-COAD,"colon, next to a tumour (TCGA-COAD)",StocZ,mitotic and stochastic,false,38,40.4,90.0,0.5543718630341355,
+tcga_coad_adjacent,TCGA-COAD,"colon, next to a tumour (TCGA-COAD)",BMI_McCartney,other,false,38,40.4,90.0,-0.19122567187382464,
+tcga_coad_adjacent,TCGA-COAD,"colon, next to a tumour (TCGA-COAD)",EducationMcCartney,other,false,38,40.4,90.0,-0.14868319719780432,
+tcga_coad_adjacent,TCGA-COAD,"colon, next to a tumour (TCGA-COAD)",TotalCholesterolMcCartney,other,false,38,40.4,90.0,0.1925603320295763,
+tcga_coad_adjacent,TCGA-COAD,"colon, next to a tumour (TCGA-COAD)",HDLCholesterolMcCartney,other,false,38,40.4,90.0,-0.38697269715135785,
+tcga_coad_adjacent,TCGA-COAD,"colon, next to a tumour (TCGA-COAD)",LDLCholesterolMcCartney,other,false,38,40.4,90.0,0.23563118703091238,
+tcga_coad_adjacent,TCGA-COAD,"colon, next to a tumour (TCGA-COAD)",BodyFatMcCartney,other,false,38,40.4,90.0,-0.26353217322747485,
+tcga_coad_adjacent,TCGA-COAD,"colon, next to a tumour (TCGA-COAD)",BMI_Reed,other,false,38,40.4,90.0,0.017637268515983438,
+tcga_coad_adjacent,TCGA-COAD,"colon, next to a tumour (TCGA-COAD)",StocP,mitotic and stochastic,false,38,40.4,90.0,0.5463427352993968,14.984888306500636
+tcga_coad_adjacent,TCGA-COAD,"colon, next to a tumour (TCGA-COAD)",Mayne,other,false,38,40.4,90.0,0.08142993143159011,
+tcga_coad_adjacent,TCGA-COAD,"colon, next to a tumour (TCGA-COAD)",CVD_Westerman,other,false,38,40.4,90.0,0.45233713444585055,
+tcga_coad_adjacent,TCGA-COAD,"colon, next to a tumour (TCGA-COAD)",StocH,mitotic and stochastic,true,38,40.4,90.0,0.7998117797974703,11.51968834365416
+tcga_coad_adjacent,TCGA-COAD,"colon, next to a tumour (TCGA-COAD)",Weidner,1st: chronological,false,38,40.4,90.0,0.7214240836876501,35.89716596150519
+tcga_coad_adjacent,TCGA-COAD,"colon, next to a tumour (TCGA-COAD)",Garagnani,1st: chronological,false,38,40.4,90.0,0.6846319606232047,72.10439490475738
+tcga_coad_adjacent,TCGA-COAD,"colon, next to a tumour (TCGA-COAD)",Bohlin,other,false,38,40.4,90.0,0.05396637218254323,
+tcga_coad_adjacent,TCGA-COAD,"colon, next to a tumour (TCGA-COAD)",Bocklandt,1st: chronological,false,38,40.4,90.0,-0.20407787641420888,
+tcga_lihc_adjacent,TCGA-LIHC,"liver, next to a tumour (TCGA-LIHC)",Horvathv1,1st: chronological,true,49,20.16,81.7,0.8802247244830586,6.400505065244914
+tcga_lihc_adjacent,TCGA-LIHC,"liver, next to a tumour (TCGA-LIHC)",Hannum,1st: chronological,false,49,20.16,81.7,0.8475554277125983,8.314981193433745
+tcga_lihc_adjacent,TCGA-LIHC,"liver, next to a tumour (TCGA-LIHC)",Lin,1st: chronological,false,49,20.16,81.7,0.6511458541408874,47.56677059087826
+tcga_lihc_adjacent,TCGA-LIHC,"liver, next to a tumour (TCGA-LIHC)",PhenoAge,2nd: phenotypic and mortality,false,49,20.16,81.7,0.8059830571027286,23.813674743120345
+tcga_lihc_adjacent,TCGA-LIHC,"liver, next to a tumour (TCGA-LIHC)",YingCausAge,2nd: phenotypic and mortality,false,49,20.16,81.7,0.7810791159452302,20.291192223936264
+tcga_lihc_adjacent,TCGA-LIHC,"liver, next to a tumour (TCGA-LIHC)",YingDamAge,2nd: phenotypic and mortality,false,49,20.16,81.7,0.36143247010781365,12.210986771696575
+tcga_lihc_adjacent,TCGA-LIHC,"liver, next to a tumour (TCGA-LIHC)",YingAdaptAge,2nd: phenotypic and mortality,false,49,20.16,81.7,0.6779048944168039,31.89216089264348
+tcga_lihc_adjacent,TCGA-LIHC,"liver, next to a tumour (TCGA-LIHC)",Horvathv2,1st: chronological,true,49,20.16,81.7,0.8025355856709723,27.322145722468775
+tcga_lihc_adjacent,TCGA-LIHC,"liver, next to a tumour (TCGA-LIHC)",PEDBE,other,false,49,20.16,81.7,0.7943732571286906,55.75465738710717
+tcga_lihc_adjacent,TCGA-LIHC,"liver, next to a tumour (TCGA-LIHC)",Zhang_10,2nd: phenotypic and mortality,false,49,20.16,81.7,0.11588005325856623,
+tcga_lihc_adjacent,TCGA-LIHC,"liver, next to a tumour (TCGA-LIHC)",DunedinPACE,3rd: pace of ageing,false,49,20.16,81.7,-0.02031593299702875,
+tcga_lihc_adjacent,TCGA-LIHC,"liver, next to a tumour (TCGA-LIHC)",DNAmClockCortical,other,false,49,20.16,81.7,0.8009512615562824,
+tcga_lihc_adjacent,TCGA-LIHC,"liver, next to a tumour (TCGA-LIHC)",VidalBralo,1st: chronological,false,49,20.16,81.7,0.3835265004857129,11.757632254613831
+tcga_lihc_adjacent,TCGA-LIHC,"liver, next to a tumour (TCGA-LIHC)",AlcoholMcCartney,other,false,49,20.16,81.7,0.12517345453318293,
+tcga_lihc_adjacent,TCGA-LIHC,"liver, next to a tumour (TCGA-LIHC)",HRSInCHPhenoAge,2nd: phenotypic and mortality,false,49,20.16,81.7,0.7538554936179882,32.7741963832389
+tcga_lihc_adjacent,TCGA-LIHC,"liver, next to a tumour (TCGA-LIHC)",Knight,other,false,49,20.16,81.7,0.23988520502171032,
+tcga_lihc_adjacent,TCGA-LIHC,"liver, next to a tumour (TCGA-LIHC)",LeeControl,other,false,49,20.16,81.7,0.3708559791516482,
+tcga_lihc_adjacent,TCGA-LIHC,"liver, next to a tumour (TCGA-LIHC)",EpiTOC1,mitotic and stochastic,true,49,20.16,81.7,0.44510283562359354,
+tcga_lihc_adjacent,TCGA-LIHC,"liver, next to a tumour (TCGA-LIHC)",LeeRefinedRobust,other,false,49,20.16,81.7,0.3713352795589152,
+tcga_lihc_adjacent,TCGA-LIHC,"liver, next to a tumour (TCGA-LIHC)",LeeRobust,other,false,49,20.16,81.7,0.16086634705957992,
+tcga_lihc_adjacent,TCGA-LIHC,"liver, next to a tumour (TCGA-LIHC)",SmokingMcCartney,other,false,49,20.16,81.7,-0.2494532476254562,
+tcga_lihc_adjacent,TCGA-LIHC,"liver, next to a tumour (TCGA-LIHC)",StocZ,mitotic and stochastic,false,49,20.16,81.7,0.8076126585765236,
+tcga_lihc_adjacent,TCGA-LIHC,"liver, next to a tumour (TCGA-LIHC)",BMI_McCartney,other,false,49,20.16,81.7,-0.03720336403719277,
+tcga_lihc_adjacent,TCGA-LIHC,"liver, next to a tumour (TCGA-LIHC)",EducationMcCartney,other,false,49,20.16,81.7,-0.10034638826974837,
+tcga_lihc_adjacent,TCGA-LIHC,"liver, next to a tumour (TCGA-LIHC)",TotalCholesterolMcCartney,other,false,49,20.16,81.7,0.09801444330070785,
+tcga_lihc_adjacent,TCGA-LIHC,"liver, next to a tumour (TCGA-LIHC)",HDLCholesterolMcCartney,other,false,49,20.16,81.7,-0.15651146588328455,
+tcga_lihc_adjacent,TCGA-LIHC,"liver, next to a tumour (TCGA-LIHC)",LDLCholesterolMcCartney,other,false,49,20.16,81.7,0.37384581972424435,
+tcga_lihc_adjacent,TCGA-LIHC,"liver, next to a tumour (TCGA-LIHC)",BodyFatMcCartney,other,false,49,20.16,81.7,0.1458878627672617,
+tcga_lihc_adjacent,TCGA-LIHC,"liver, next to a tumour (TCGA-LIHC)",BMI_Reed,other,false,49,20.16,81.7,0.052543022326902264,
+tcga_lihc_adjacent,TCGA-LIHC,"liver, next to a tumour (TCGA-LIHC)",StocP,mitotic and stochastic,false,49,20.16,81.7,0.40064945142983877,17.534913028066697
+tcga_lihc_adjacent,TCGA-LIHC,"liver, next to a tumour (TCGA-LIHC)",Mayne,other,false,49,20.16,81.7,-0.003296331812440305,
+tcga_lihc_adjacent,TCGA-LIHC,"liver, next to a tumour (TCGA-LIHC)",CVD_Westerman,other,false,49,20.16,81.7,0.2574979511776748,
+tcga_lihc_adjacent,TCGA-LIHC,"liver, next to a tumour (TCGA-LIHC)",StocH,mitotic and stochastic,true,49,20.16,81.7,0.5949796534666917,19.530417390151335
+tcga_lihc_adjacent,TCGA-LIHC,"liver, next to a tumour (TCGA-LIHC)",Weidner,1st: chronological,false,49,20.16,81.7,0.5894552342488604,11.451709091424306
+tcga_lihc_adjacent,TCGA-LIHC,"liver, next to a tumour (TCGA-LIHC)",Garagnani,1st: chronological,false,49,20.16,81.7,0.8869272891958256,68.42218754356287
+tcga_lihc_adjacent,TCGA-LIHC,"liver, next to a tumour (TCGA-LIHC)",Bohlin,other,false,49,20.16,81.7,0.2828235492808813,
+tcga_lihc_adjacent,TCGA-LIHC,"liver, next to a tumour (TCGA-LIHC)",Bocklandt,1st: chronological,false,49,20.16,81.7,-0.2025654260376366,
+tcga_luad_adjacent,TCGA-LUAD,"lung, next to a tumour (TCGA-LUAD)",Horvathv1,1st: chronological,true,32,44.07,86.54,0.865385454868771,4.406964516532717
+tcga_luad_adjacent,TCGA-LUAD,"lung, next to a tumour (TCGA-LUAD)",Hannum,1st: chronological,false,32,44.07,86.54,0.5668619544993212,8.68993854242514
+tcga_luad_adjacent,TCGA-LUAD,"lung, next to a tumour (TCGA-LUAD)",Lin,1st: chronological,false,32,44.07,86.54,0.7306938188650587,11.800882197410939
+tcga_luad_adjacent,TCGA-LUAD,"lung, next to a tumour (TCGA-LUAD)",PhenoAge,2nd: phenotypic and mortality,false,32,44.07,86.54,0.6690771920537121,25.090662759209874
+tcga_luad_adjacent,TCGA-LUAD,"lung, next to a tumour (TCGA-LUAD)",YingCausAge,2nd: phenotypic and mortality,false,32,44.07,86.54,0.8748495796832404,9.008921003006883
+tcga_luad_adjacent,TCGA-LUAD,"lung, next to a tumour (TCGA-LUAD)",YingDamAge,2nd: phenotypic and mortality,false,32,44.07,86.54,0.5440641699121659,8.12181463967977
+tcga_luad_adjacent,TCGA-LUAD,"lung, next to a tumour (TCGA-LUAD)",YingAdaptAge,2nd: phenotypic and mortality,false,32,44.07,86.54,0.6272228904826641,16.563579232465006
+tcga_luad_adjacent,TCGA-LUAD,"lung, next to a tumour (TCGA-LUAD)",Horvathv2,1st: chronological,true,32,44.07,86.54,0.9052762274242068,7.5248998355723415
+tcga_luad_adjacent,TCGA-LUAD,"lung, next to a tumour (TCGA-LUAD)",PEDBE,other,false,32,44.07,86.54,0.7504069887953909,54.19032995104126
+tcga_luad_adjacent,TCGA-LUAD,"lung, next to a tumour (TCGA-LUAD)",Zhang_10,2nd: phenotypic and mortality,false,32,44.07,86.54,-0.46972525938788834,
+tcga_luad_adjacent,TCGA-LUAD,"lung, next to a tumour (TCGA-LUAD)",DNAmClockCortical,other,false,32,44.07,86.54,0.8526790488989587,
+tcga_luad_adjacent,TCGA-LUAD,"lung, next to a tumour (TCGA-LUAD)",VidalBralo,1st: chronological,false,32,44.07,86.54,0.4652946791139158,9.767996619643103
+tcga_luad_adjacent,TCGA-LUAD,"lung, next to a tumour (TCGA-LUAD)",AlcoholMcCartney,other,false,32,44.07,86.54,-0.2249996943370027,
+tcga_luad_adjacent,TCGA-LUAD,"lung, next to a tumour (TCGA-LUAD)",HRSInCHPhenoAge,2nd: phenotypic and mortality,false,32,44.07,86.54,0.6623624824199095,33.30587480130915
+tcga_luad_adjacent,TCGA-LUAD,"lung, next to a tumour (TCGA-LUAD)",Knight,other,false,32,44.07,86.54,-0.34150107262638185,
+tcga_luad_adjacent,TCGA-LUAD,"lung, next to a tumour (TCGA-LUAD)",LeeControl,other,false,32,44.07,86.54,-0.027955400412812043,
+tcga_luad_adjacent,TCGA-LUAD,"lung, next to a tumour (TCGA-LUAD)",EpiTOC1,mitotic and stochastic,true,32,44.07,86.54,0.49439652689185515,
+tcga_luad_adjacent,TCGA-LUAD,"lung, next to a tumour (TCGA-LUAD)",LeeRefinedRobust,other,false,32,44.07,86.54,0.40115087841523706,
+tcga_luad_adjacent,TCGA-LUAD,"lung, next to a tumour (TCGA-LUAD)",LeeRobust,other,false,32,44.07,86.54,0.2650771452095186,
+tcga_luad_adjacent,TCGA-LUAD,"lung, next to a tumour (TCGA-LUAD)",SmokingMcCartney,other,false,32,44.07,86.54,-0.5817226225268681,
+tcga_luad_adjacent,TCGA-LUAD,"lung, next to a tumour (TCGA-LUAD)",StocZ,mitotic and stochastic,false,32,44.07,86.54,0.7933296563381488,
+tcga_luad_adjacent,TCGA-LUAD,"lung, next to a tumour (TCGA-LUAD)",BMI_McCartney,other,false,32,44.07,86.54,0.21807134716867382,
+tcga_luad_adjacent,TCGA-LUAD,"lung, next to a tumour (TCGA-LUAD)",EducationMcCartney,other,false,32,44.07,86.54,0.1303942819694244,
+tcga_luad_adjacent,TCGA-LUAD,"lung, next to a tumour (TCGA-LUAD)",TotalCholesterolMcCartney,other,false,32,44.07,86.54,0.36830621587963247,
+tcga_luad_adjacent,TCGA-LUAD,"lung, next to a tumour (TCGA-LUAD)",HDLCholesterolMcCartney,other,false,32,44.07,86.54,-0.543551099507752,
+tcga_luad_adjacent,TCGA-LUAD,"lung, next to a tumour (TCGA-LUAD)",LDLCholesterolMcCartney,other,false,32,44.07,86.54,0.3962833739666275,
+tcga_luad_adjacent,TCGA-LUAD,"lung, next to a tumour (TCGA-LUAD)",BodyFatMcCartney,other,false,32,44.07,86.54,0.1990708239488229,
+tcga_luad_adjacent,TCGA-LUAD,"lung, next to a tumour (TCGA-LUAD)",BMI_Reed,other,false,32,44.07,86.54,0.12670474194073814,
+tcga_luad_adjacent,TCGA-LUAD,"lung, next to a tumour (TCGA-LUAD)",StocP,mitotic and stochastic,false,32,44.07,86.54,0.5588320343401927,7.51844553881665
+tcga_luad_adjacent,TCGA-LUAD,"lung, next to a tumour (TCGA-LUAD)",Mayne,other,false,32,44.07,86.54,-0.3641476915640472,
+tcga_luad_adjacent,TCGA-LUAD,"lung, next to a tumour (TCGA-LUAD)",CVD_Westerman,other,false,32,44.07,86.54,0.21856922456887973,
+tcga_luad_adjacent,TCGA-LUAD,"lung, next to a tumour (TCGA-LUAD)",StocH,mitotic and stochastic,true,32,44.07,86.54,0.6860235014170304,16.177183715268143
+tcga_luad_adjacent,TCGA-LUAD,"lung, next to a tumour (TCGA-LUAD)",Weidner,1st: chronological,false,32,44.07,86.54,0.5104338090665197,19.55630796914901
+tcga_luad_adjacent,TCGA-LUAD,"lung, next to a tumour (TCGA-LUAD)",Garagnani,1st: chronological,false,32,44.07,86.54,0.7530894939420681,64.45431897744369
+tcga_luad_adjacent,TCGA-LUAD,"lung, next to a tumour (TCGA-LUAD)",Bohlin,other,false,32,44.07,86.54,-0.5441099823166735,
+tcga_luad_adjacent,TCGA-LUAD,"lung, next to a tumour (TCGA-LUAD)",Bocklandt,1st: chronological,false,32,44.07,86.54,0.002629953827808315,
+tcga_lusc_adjacent,TCGA-LUSC,"lung, next to a tumour (TCGA-LUSC)",Horvathv1,1st: chronological,true,42,40.09,85.02,0.8705989224484576,2.6068211244081105
+tcga_lusc_adjacent,TCGA-LUSC,"lung, next to a tumour (TCGA-LUSC)",Hannum,1st: chronological,false,42,40.09,85.02,0.698666023200577,4.198141910362644
+tcga_lusc_adjacent,TCGA-LUSC,"lung, next to a tumour (TCGA-LUSC)",Lin,1st: chronological,false,42,40.09,85.02,0.7636316419237286,7.036736476336301
+tcga_lusc_adjacent,TCGA-LUSC,"lung, next to a tumour (TCGA-LUSC)",PhenoAge,2nd: phenotypic and mortality,false,42,40.09,85.02,0.7363167900008281,26.460688212734617
+tcga_lusc_adjacent,TCGA-LUSC,"lung, next to a tumour (TCGA-LUSC)",YingCausAge,2nd: phenotypic and mortality,false,42,40.09,85.02,0.8123804869594266,11.405310109770799
+tcga_lusc_adjacent,TCGA-LUSC,"lung, next to a tumour (TCGA-LUSC)",YingDamAge,2nd: phenotypic and mortality,false,42,40.09,85.02,0.4949473419075135,6.60814166006849
+tcga_lusc_adjacent,TCGA-LUSC,"lung, next to a tumour (TCGA-LUSC)",YingAdaptAge,2nd: phenotypic and mortality,false,42,40.09,85.02,0.45136953383142125,20.323097750958283
+tcga_lusc_adjacent,TCGA-LUSC,"lung, next to a tumour (TCGA-LUSC)",Horvathv2,1st: chronological,true,42,40.09,85.02,0.8492736532175685,7.016795221827987
+tcga_lusc_adjacent,TCGA-LUSC,"lung, next to a tumour (TCGA-LUSC)",PEDBE,other,false,42,40.09,85.02,0.7658516162663991,59.85104178883318
+tcga_lusc_adjacent,TCGA-LUSC,"lung, next to a tumour (TCGA-LUSC)",Zhang_10,2nd: phenotypic and mortality,false,42,40.09,85.02,-0.02081416920828018,
+tcga_lusc_adjacent,TCGA-LUSC,"lung, next to a tumour (TCGA-LUSC)",DunedinPACE,3rd: pace of ageing,false,42,40.09,85.02,0.0023579042889998575,
+tcga_lusc_adjacent,TCGA-LUSC,"lung, next to a tumour (TCGA-LUSC)",DNAmClockCortical,other,false,42,40.09,85.02,0.8147452269252541,
+tcga_lusc_adjacent,TCGA-LUSC,"lung, next to a tumour (TCGA-LUSC)",VidalBralo,1st: chronological,false,42,40.09,85.02,0.619647030836754,7.592131347160276
+tcga_lusc_adjacent,TCGA-LUSC,"lung, next to a tumour (TCGA-LUSC)",AlcoholMcCartney,other,false,42,40.09,85.02,-0.06933731774725452,
+tcga_lusc_adjacent,TCGA-LUSC,"lung, next to a tumour (TCGA-LUSC)",HRSInCHPhenoAge,2nd: phenotypic and mortality,false,42,40.09,85.02,0.773959613823995,33.31272374737826
+tcga_lusc_adjacent,TCGA-LUSC,"lung, next to a tumour (TCGA-LUSC)",Knight,other,false,42,40.09,85.02,-0.04755744401390286,
+tcga_lusc_adjacent,TCGA-LUSC,"lung, next to a tumour (TCGA-LUSC)",LeeControl,other,false,42,40.09,85.02,-0.18884861028799552,
+tcga_lusc_adjacent,TCGA-LUSC,"lung, next to a tumour (TCGA-LUSC)",EpiTOC1,mitotic and stochastic,true,42,40.09,85.02,0.4640322248796523,
+tcga_lusc_adjacent,TCGA-LUSC,"lung, next to a tumour (TCGA-LUSC)",LeeRefinedRobust,other,false,42,40.09,85.02,0.07599245478720197,
+tcga_lusc_adjacent,TCGA-LUSC,"lung, next to a tumour (TCGA-LUSC)",LeeRobust,other,false,42,40.09,85.02,0.07040693700285076,
+tcga_lusc_adjacent,TCGA-LUSC,"lung, next to a tumour (TCGA-LUSC)",SmokingMcCartney,other,false,42,40.09,85.02,-0.2969966983639282,
+tcga_lusc_adjacent,TCGA-LUSC,"lung, next to a tumour (TCGA-LUSC)",StocZ,mitotic and stochastic,false,42,40.09,85.02,0.8094702796693631,
+tcga_lusc_adjacent,TCGA-LUSC,"lung, next to a tumour (TCGA-LUSC)",BMI_McCartney,other,false,42,40.09,85.02,-0.03918203258861479,
+tcga_lusc_adjacent,TCGA-LUSC,"lung, next to a tumour (TCGA-LUSC)",EducationMcCartney,other,false,42,40.09,85.02,-0.01233710372874526,
+tcga_lusc_adjacent,TCGA-LUSC,"lung, next to a tumour (TCGA-LUSC)",TotalCholesterolMcCartney,other,false,42,40.09,85.02,0.02473511461819477,
+tcga_lusc_adjacent,TCGA-LUSC,"lung, next to a tumour (TCGA-LUSC)",HDLCholesterolMcCartney,other,false,42,40.09,85.02,-0.09860819004308806,
+tcga_lusc_adjacent,TCGA-LUSC,"lung, next to a tumour (TCGA-LUSC)",LDLCholesterolMcCartney,other,false,42,40.09,85.02,0.05568335860783379,
+tcga_lusc_adjacent,TCGA-LUSC,"lung, next to a tumour (TCGA-LUSC)",BodyFatMcCartney,other,false,42,40.09,85.02,0.014844589714418682,
+tcga_lusc_adjacent,TCGA-LUSC,"lung, next to a tumour (TCGA-LUSC)",BMI_Reed,other,false,42,40.09,85.02,0.039000489142221456,
+tcga_lusc_adjacent,TCGA-LUSC,"lung, next to a tumour (TCGA-LUSC)",StocP,mitotic and stochastic,false,42,40.09,85.02,0.6420114217962264,7.5229427618271
+tcga_lusc_adjacent,TCGA-LUSC,"lung, next to a tumour (TCGA-LUSC)",Mayne,other,false,42,40.09,85.02,0.031150271101359865,
+tcga_lusc_adjacent,TCGA-LUSC,"lung, next to a tumour (TCGA-LUSC)",CVD_Westerman,other,false,42,40.09,85.02,0.1451457712205466,
+tcga_lusc_adjacent,TCGA-LUSC,"lung, next to a tumour (TCGA-LUSC)",StocH,mitotic and stochastic,true,42,40.09,85.02,0.7056881354787289,19.331364668338125
+tcga_lusc_adjacent,TCGA-LUSC,"lung, next to a tumour (TCGA-LUSC)",Weidner,1st: chronological,false,42,40.09,85.02,0.6056556464086527,25.016395420920315
+tcga_lusc_adjacent,TCGA-LUSC,"lung, next to a tumour (TCGA-LUSC)",Garagnani,1st: chronological,false,42,40.09,85.02,0.7890013443791863,72.47092557005291
+tcga_lusc_adjacent,TCGA-LUSC,"lung, next to a tumour (TCGA-LUSC)",Bohlin,other,false,42,40.09,85.02,-0.13813240129242602,
+tcga_lusc_adjacent,TCGA-LUSC,"lung, next to a tumour (TCGA-LUSC)",Bocklandt,1st: chronological,false,42,40.09,85.02,-0.20876306021553367,
+tcga_prad_adjacent,TCGA-PRAD,"prostate, next to a tumour (TCGA-PRAD)",Horvathv1,1st: chronological,true,50,44.97,72.84,0.5060206577527948,6.645418930147944
+tcga_prad_adjacent,TCGA-PRAD,"prostate, next to a tumour (TCGA-PRAD)",Hannum,1st: chronological,false,50,44.97,72.84,0.22159885066760585,6.256615031943088
+tcga_prad_adjacent,TCGA-PRAD,"prostate, next to a tumour (TCGA-PRAD)",Lin,1st: chronological,false,50,44.97,72.84,0.33703305259867,5.4953431602908935
+tcga_prad_adjacent,TCGA-PRAD,"prostate, next to a tumour (TCGA-PRAD)",PhenoAge,2nd: phenotypic and mortality,false,50,44.97,72.84,0.15660906717324313,27.665932874566824
+tcga_prad_adjacent,TCGA-PRAD,"prostate, next to a tumour (TCGA-PRAD)",YingCausAge,2nd: phenotypic and mortality,false,50,44.97,72.84,0.04560353907999082,9.753433278706193
+tcga_prad_adjacent,TCGA-PRAD,"prostate, next to a tumour (TCGA-PRAD)",YingDamAge,2nd: phenotypic and mortality,false,50,44.97,72.84,0.10532737535042071,8.70680182383878
+tcga_prad_adjacent,TCGA-PRAD,"prostate, next to a tumour (TCGA-PRAD)",YingAdaptAge,2nd: phenotypic and mortality,false,50,44.97,72.84,0.008816410544200081,28.04205896452342
+tcga_prad_adjacent,TCGA-PRAD,"prostate, next to a tumour (TCGA-PRAD)",Horvathv2,1st: chronological,true,50,44.97,72.84,0.33049153546760407,17.632583370179702
+tcga_prad_adjacent,TCGA-PRAD,"prostate, next to a tumour (TCGA-PRAD)",PEDBE,other,false,50,44.97,72.84,0.37883130573890395,52.56220424172761
+tcga_prad_adjacent,TCGA-PRAD,"prostate, next to a tumour (TCGA-PRAD)",Zhang_10,2nd: phenotypic and mortality,false,50,44.97,72.84,0.14891793360930705,
+tcga_prad_adjacent,TCGA-PRAD,"prostate, next to a tumour (TCGA-PRAD)",DunedinPACE,3rd: pace of ageing,false,50,44.97,72.84,0.09118033250006694,
+tcga_prad_adjacent,TCGA-PRAD,"prostate, next to a tumour (TCGA-PRAD)",DNAmClockCortical,other,false,50,44.97,72.84,0.2499075473344672,
+tcga_prad_adjacent,TCGA-PRAD,"prostate, next to a tumour (TCGA-PRAD)",VidalBralo,1st: chronological,false,50,44.97,72.84,0.06024322723552395,9.311025898176666
+tcga_prad_adjacent,TCGA-PRAD,"prostate, next to a tumour (TCGA-PRAD)",AlcoholMcCartney,other,false,50,44.97,72.84,-0.0025485284006665416,
+tcga_prad_adjacent,TCGA-PRAD,"prostate, next to a tumour (TCGA-PRAD)",HRSInCHPhenoAge,2nd: phenotypic and mortality,false,50,44.97,72.84,0.29165749402787644,38.4630364553884
+tcga_prad_adjacent,TCGA-PRAD,"prostate, next to a tumour (TCGA-PRAD)",Knight,other,false,50,44.97,72.84,0.1287641360882609,
+tcga_prad_adjacent,TCGA-PRAD,"prostate, next to a tumour (TCGA-PRAD)",LeeControl,other,false,50,44.97,72.84,-0.03978321628461382,
+tcga_prad_adjacent,TCGA-PRAD,"prostate, next to a tumour (TCGA-PRAD)",EpiTOC1,mitotic and stochastic,true,50,44.97,72.84,-0.04308564874926668,
+tcga_prad_adjacent,TCGA-PRAD,"prostate, next to a tumour (TCGA-PRAD)",LeeRefinedRobust,other,false,50,44.97,72.84,0.064324104723003,
+tcga_prad_adjacent,TCGA-PRAD,"prostate, next to a tumour (TCGA-PRAD)",LeeRobust,other,false,50,44.97,72.84,0.11122109376748207,
+tcga_prad_adjacent,TCGA-PRAD,"prostate, next to a tumour (TCGA-PRAD)",SmokingMcCartney,other,false,50,44.97,72.84,0.06708106256603771,
+tcga_prad_adjacent,TCGA-PRAD,"prostate, next to a tumour (TCGA-PRAD)",StocZ,mitotic and stochastic,false,50,44.97,72.84,0.3785686757176559,
+tcga_prad_adjacent,TCGA-PRAD,"prostate, next to a tumour (TCGA-PRAD)",BMI_McCartney,other,false,50,44.97,72.84,-0.0506390370971188,
+tcga_prad_adjacent,TCGA-PRAD,"prostate, next to a tumour (TCGA-PRAD)",EducationMcCartney,other,false,50,44.97,72.84,0.08558016914993528,
+tcga_prad_adjacent,TCGA-PRAD,"prostate, next to a tumour (TCGA-PRAD)",TotalCholesterolMcCartney,other,false,50,44.97,72.84,0.07509224735880757,
+tcga_prad_adjacent,TCGA-PRAD,"prostate, next to a tumour (TCGA-PRAD)",HDLCholesterolMcCartney,other,false,50,44.97,72.84,-0.06184637716482099,
+tcga_prad_adjacent,TCGA-PRAD,"prostate, next to a tumour (TCGA-PRAD)",LDLCholesterolMcCartney,other,false,50,44.97,72.84,0.10320475504801505,
+tcga_prad_adjacent,TCGA-PRAD,"prostate, next to a tumour (TCGA-PRAD)",BodyFatMcCartney,other,false,50,44.97,72.84,0.12896814294908968,
+tcga_prad_adjacent,TCGA-PRAD,"prostate, next to a tumour (TCGA-PRAD)",BMI_Reed,other,false,50,44.97,72.84,-0.04035199706967092,
+tcga_prad_adjacent,TCGA-PRAD,"prostate, next to a tumour (TCGA-PRAD)",StocP,mitotic and stochastic,false,50,44.97,72.84,0.04289668200057054,13.357052213497393
+tcga_prad_adjacent,TCGA-PRAD,"prostate, next to a tumour (TCGA-PRAD)",Mayne,other,false,50,44.97,72.84,0.015525567475991162,
+tcga_prad_adjacent,TCGA-PRAD,"prostate, next to a tumour (TCGA-PRAD)",CVD_Westerman,other,false,50,44.97,72.84,0.01215276029314136,
+tcga_prad_adjacent,TCGA-PRAD,"prostate, next to a tumour (TCGA-PRAD)",StocH,mitotic and stochastic,true,50,44.97,72.84,-0.026879450454492016,12.142946145190063
+tcga_prad_adjacent,TCGA-PRAD,"prostate, next to a tumour (TCGA-PRAD)",Weidner,1st: chronological,false,50,44.97,72.84,0.04906192577436574,33.20807825881917
+tcga_prad_adjacent,TCGA-PRAD,"prostate, next to a tumour (TCGA-PRAD)",Garagnani,1st: chronological,false,50,44.97,72.84,0.2848521441638135,62.17905955043288
+tcga_prad_adjacent,TCGA-PRAD,"prostate, next to a tumour (TCGA-PRAD)",Bohlin,other,false,50,44.97,72.84,0.08074999612895675,
+tcga_prad_adjacent,TCGA-PRAD,"prostate, next to a tumour (TCGA-PRAD)",Bocklandt,1st: chronological,false,50,44.97,72.84,-0.13821700817865643,
+tcga_thca_adjacent,TCGA-THCA,"thyroid, next to a tumour (TCGA-THCA)",Horvathv1,1st: chronological,true,56,15.36,81.33,0.9343811378143668,5.738017665990974
+tcga_thca_adjacent,TCGA-THCA,"thyroid, next to a tumour (TCGA-THCA)",Hannum,1st: chronological,false,56,15.36,81.33,0.8726775207114259,5.887549749946004
+tcga_thca_adjacent,TCGA-THCA,"thyroid, next to a tumour (TCGA-THCA)",Lin,1st: chronological,false,56,15.36,81.33,0.8529421055625387,9.126610518460563
+tcga_thca_adjacent,TCGA-THCA,"thyroid, next to a tumour (TCGA-THCA)",PhenoAge,2nd: phenotypic and mortality,false,56,15.36,81.33,0.5425294689829295,70.89330044650526
+tcga_thca_adjacent,TCGA-THCA,"thyroid, next to a tumour (TCGA-THCA)",YingCausAge,2nd: phenotypic and mortality,false,56,15.36,81.33,0.5954872955893293,28.38246468929053
+tcga_thca_adjacent,TCGA-THCA,"thyroid, next to a tumour (TCGA-THCA)",YingDamAge,2nd: phenotypic and mortality,false,56,15.36,81.33,0.473484503827233,17.368128079773257
+tcga_thca_adjacent,TCGA-THCA,"thyroid, next to a tumour (TCGA-THCA)",YingAdaptAge,2nd: phenotypic and mortality,false,56,15.36,81.33,0.3556443304365848,20.417682408847284
+tcga_thca_adjacent,TCGA-THCA,"thyroid, next to a tumour (TCGA-THCA)",Horvathv2,1st: chronological,true,56,15.36,81.33,0.9043872627964473,18.78077231240846
+tcga_thca_adjacent,TCGA-THCA,"thyroid, next to a tumour (TCGA-THCA)",PEDBE,other,false,56,15.36,81.33,0.6579296707610619,38.59814027596903
+tcga_thca_adjacent,TCGA-THCA,"thyroid, next to a tumour (TCGA-THCA)",Zhang_10,2nd: phenotypic and mortality,false,56,15.36,81.33,0.31164865881897147,
+tcga_thca_adjacent,TCGA-THCA,"thyroid, next to a tumour (TCGA-THCA)",DunedinPACE,3rd: pace of ageing,false,56,15.36,81.33,-0.030230339073477643,
+tcga_thca_adjacent,TCGA-THCA,"thyroid, next to a tumour (TCGA-THCA)",DNAmClockCortical,other,false,56,15.36,81.33,0.8705230469382164,
+tcga_thca_adjacent,TCGA-THCA,"thyroid, next to a tumour (TCGA-THCA)",VidalBralo,1st: chronological,false,56,15.36,81.33,0.594560385978684,15.839483922061582
+tcga_thca_adjacent,TCGA-THCA,"thyroid, next to a tumour (TCGA-THCA)",AlcoholMcCartney,other,false,56,15.36,81.33,0.02667709080860575,
+tcga_thca_adjacent,TCGA-THCA,"thyroid, next to a tumour (TCGA-THCA)",HRSInCHPhenoAge,2nd: phenotypic and mortality,false,56,15.36,81.33,0.8555390046507015,14.86965923506655
+tcga_thca_adjacent,TCGA-THCA,"thyroid, next to a tumour (TCGA-THCA)",Knight,other,false,56,15.36,81.33,-0.2571172318749617,
+tcga_thca_adjacent,TCGA-THCA,"thyroid, next to a tumour (TCGA-THCA)",LeeControl,other,false,56,15.36,81.33,0.4338128454531984,
+tcga_thca_adjacent,TCGA-THCA,"thyroid, next to a tumour (TCGA-THCA)",EpiTOC1,mitotic and stochastic,true,56,15.36,81.33,0.14002851868339627,
+tcga_thca_adjacent,TCGA-THCA,"thyroid, next to a tumour (TCGA-THCA)",LeeRefinedRobust,other,false,56,15.36,81.33,0.3247099028321967,
+tcga_thca_adjacent,TCGA-THCA,"thyroid, next to a tumour (TCGA-THCA)",LeeRobust,other,false,56,15.36,81.33,0.6108938972499388,
+tcga_thca_adjacent,TCGA-THCA,"thyroid, next to a tumour (TCGA-THCA)",SmokingMcCartney,other,false,56,15.36,81.33,0.046135298410125924,
+tcga_thca_adjacent,TCGA-THCA,"thyroid, next to a tumour (TCGA-THCA)",StocZ,mitotic and stochastic,false,56,15.36,81.33,0.8186738138707456,
+tcga_thca_adjacent,TCGA-THCA,"thyroid, next to a tumour (TCGA-THCA)",BMI_McCartney,other,false,56,15.36,81.33,-0.2778540021710674,
+tcga_thca_adjacent,TCGA-THCA,"thyroid, next to a tumour (TCGA-THCA)",EducationMcCartney,other,false,56,15.36,81.33,-0.5481394597016954,
+tcga_thca_adjacent,TCGA-THCA,"thyroid, next to a tumour (TCGA-THCA)",TotalCholesterolMcCartney,other,false,56,15.36,81.33,-0.11456758967059003,
+tcga_thca_adjacent,TCGA-THCA,"thyroid, next to a tumour (TCGA-THCA)",HDLCholesterolMcCartney,other,false,56,15.36,81.33,-0.17283447490690093,
+tcga_thca_adjacent,TCGA-THCA,"thyroid, next to a tumour (TCGA-THCA)",LDLCholesterolMcCartney,other,false,56,15.36,81.33,-0.24463227671410429,
+tcga_thca_adjacent,TCGA-THCA,"thyroid, next to a tumour (TCGA-THCA)",BodyFatMcCartney,other,false,56,15.36,81.33,-0.1337185071846485,
+tcga_thca_adjacent,TCGA-THCA,"thyroid, next to a tumour (TCGA-THCA)",BMI_Reed,other,false,56,15.36,81.33,-0.008317494324019143,
+tcga_thca_adjacent,TCGA-THCA,"thyroid, next to a tumour (TCGA-THCA)",StocP,mitotic and stochastic,false,56,15.36,81.33,0.3862366480768107,12.73717708746469
+tcga_thca_adjacent,TCGA-THCA,"thyroid, next to a tumour (TCGA-THCA)",Mayne,other,false,56,15.36,81.33,-0.07544515888107081,
+tcga_thca_adjacent,TCGA-THCA,"thyroid, next to a tumour (TCGA-THCA)",CVD_Westerman,other,false,56,15.36,81.33,0.4799515122997754,
+tcga_thca_adjacent,TCGA-THCA,"thyroid, next to a tumour (TCGA-THCA)",StocH,mitotic and stochastic,true,56,15.36,81.33,0.3848080363216583,12.992801701514079
+tcga_thca_adjacent,TCGA-THCA,"thyroid, next to a tumour (TCGA-THCA)",Weidner,1st: chronological,false,56,15.36,81.33,0.23680406240189006,30.54336282353633
+tcga_thca_adjacent,TCGA-THCA,"thyroid, next to a tumour (TCGA-THCA)",Garagnani,1st: chronological,false,56,15.36,81.33,0.9085233692639634,41.90097374147509
+tcga_thca_adjacent,TCGA-THCA,"thyroid, next to a tumour (TCGA-THCA)",Bohlin,other,false,56,15.36,81.33,-0.21315685485751446,
+tcga_thca_adjacent,TCGA-THCA,"thyroid, next to a tumour (TCGA-THCA)",Bocklandt,1st: chronological,false,56,15.36,81.33,0.19219525223498482,
