@@ -4,6 +4,7 @@ Newest first.
 
 ## Unreleased
 
+- 2026-11-24: new analysis `clock_parts` (Anton): Horvath 2013, StocH, StocP, Lin and PhenoAge split into shielded and other CpGs in every rebuilt series group. Shielded parts track age (median r 0.12-0.38; Horvath up to 0.78 in healthy lung, 0.6-0.76 in brain) but less than the rest (0.36-0.76), carry 8-16 % of the age signal, and their accelerations are nearly independent of the rest's (median r -0.14 to 0.07).
 - 2026-11-24: manuscript-skills story and deslop pass (Anton's request): one headline per Results section, caveats moved within sections, a final Results section on clocks by generation, Discussion paragraph on clocks; abstract's disagreement clause rescoped to Fig. 10a-b; simulation sentence reconciled with Fig. 10b.
 - 2026-11-24: abstract rewritten as a summary (question, measure, finding, clocks; numbers left to the body) with a graphical abstract (the 42-series forest); Discussion's contribution paragraph reframed around the clock generations (Anton).
 - 2026-11-24: R167 clock models on the unmasked track without failed arrays (44 clocks, 109 / 93 sets): F given any clock 0.77-0.83, none resolved; clocks alone mostly unresolved (epiTOC1, Hannum, Ying adaptation above one, exploratory). Figure 10 (clock_panel, age clocks only, tidied) and its Results paragraph.
