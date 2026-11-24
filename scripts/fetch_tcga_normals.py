@@ -91,13 +91,22 @@ def main(out_dir: str, projects: list[str]) -> None:
         print(f"{project}: {len(hits)} IDATs ({len(rows)} arrays), {len(todo)} to fetch", flush=True)
         for i in range(0, len(todo), BATCH):
             chunk = todo[i : i + BATCH]
-            blob = post("data", {"ids": [h["file_id"] for h in chunk]})
             md5 = {h["file_name"]: h["md5sum"] for h in chunk}
-            if len(chunk) == 1:
-                members = [(chunk[0]["file_name"], blob)]
+            for attempt in range(4):  # a batch archive can arrive truncated; fetch it again
+                blob = post("data", {"ids": [h["file_id"] for h in chunk]})
+                try:
+                    if len(chunk) == 1:
+                        members = [(chunk[0]["file_name"], blob)]
+                    else:
+                        with tarfile.open(fileobj=io.BytesIO(blob), mode="r:gz") as tar:
+                            members = [
+                                (Path(m.name).name, tar.extractfile(m).read()) for m in tar.getmembers() if m.isfile()
+                            ]
+                    break
+                except (EOFError, tarfile.TarError) as err:
+                    print(f"{project}: batch {i // BATCH + 1} truncated ({err}); attempt {attempt + 2}", flush=True)
             else:
-                with tarfile.open(fileobj=io.BytesIO(blob), mode="r:gz") as tar:
-                    members = [(Path(m.name).name, tar.extractfile(m).read()) for m in tar.getmembers() if m.isfile()]
+                raise RuntimeError(f"{project}: batch {i // BATCH + 1} truncated four times")
             for name, data in members:
                 if name not in md5:
                     continue  # the archive's MANIFEST
