@@ -691,15 +691,19 @@ Hannum (median −0.14, negative in 74 % of 34 groups) and PhenoAge (−0.18, 81
 (−0.01, 54 % of 37) and DunedinPACE (−0.05, 62 % of 26) showed no consistent link, and trait predictors used as
 negative controls (body-mass index, smoking and the like) sat at −0.01. These are within-group associations of
 age-adjusted scores; where a series has a pooled and a stratified group, both are shown. Two checks address whether a
-shared array effect could move a clock and F together. First, with clock, B and F all adjusted alike for age, chip,
-log intensity, detection and two global measures taken on 20,000 CpGs that neither the clocks nor B and F use (mean
-level and compression of betas toward the middle), the links held or grew (median over the largest group of each
-series outside the brain: epiTOC2 −0.50 raw, −0.58 adjusted; epiTOC1 −0.49 and −0.56; HypoClock +0.31 and +0.32), and the
-clocks predicted housekeeping drift at a given look-alike drift (epiTOC2 −0.52), so the link does not come from F's
-denominator alone. Second, against 20 placebo promoter sets per group matched on island status and baseline level and
-scored the same way, part of the link is common to any promoter set (placebo median −0.18 for the epiTOC clocks, +0.22
-for HypoClock), and housekeeping promoters exceeded the 95th placebo percentile in 85 to 89 % of groups for the
-promoter clocks and in 56 % for HypoClock. Clocks were scored on the
+shared array effect could move a clock and F together. Both use the largest group of each series outside the brain
+(15 to 18 groups per clock; RepliTali 4). First, with clock, B and F all adjusted alike for age, log intensity,
+detection, chip where it is recorded (not in the TCGA groups) and two global measures taken on about 20,000 CpGs that
+the mitotic clocks and B and F do not use (mean level and compression of betas toward the middle), the links held or
+grew: epiTOC2 −0.50 raw and −0.58 adjusted (−0.57 in the 10 groups with chip), epiTOC1 −0.49 and −0.56, HypoClock
++0.31 and +0.32. The clocks also predicted housekeeping drift at a given look-alike drift (epiTOC2 −0.52), so the
+link does not come from F's denominator alone. Cell composition was not measured in these tissues and remains a
+possible shared source. Second, 20 placebo promoter sets per group, matched on island status and baseline level and
+scored the same way, carry part of the link (median −0.18 for epiTOC2, +0.23 for HypoClock): some of it is common to
+promoters in general. After adjustment, housekeeping promoters exceeded the 95th placebo percentile in 18 of 18
+groups for epiTOC2 and 16 of 16 for epiTOC1, and in 8 of 15 for HypoClock. The placebo sets are matched less finely
+than the housekeeping set's own look-alikes (no matching on variability or probe chemistry), so this comparison is a
+first bound on how specific the link is to housekeeping promoters. Clocks were scored on the
 clock track (protocol change 4); drift on the standard rebuild.
 
 ![Figure 11](../docs/figures/clock_drift.png)
