@@ -106,7 +106,7 @@ def main(src: str, dst: str, meta_path: str | None = None) -> None:
         summary.append({"clock": name, "status": "kept", "arrays_covered": array_share,
                         "median_weight_share": float(measured.median()), "output": entry.get("output", "")})
     pd.DataFrame(rows).to_csv(dst, index=False)
-    pd.DataFrame(summary).to_csv(dst.replace(".csv", "_panel.csv"), index=False)
+    pd.DataFrame(summary).to_csv(dst.removesuffix(".tmp").replace(".csv", "_panel.csv"), index=False)
     kept = [s["clock"] for s in summary if s["status"] == "kept"]
     print(f"{len(kept)} clocks kept of {len(summary)}: {', '.join(kept)}")
 
