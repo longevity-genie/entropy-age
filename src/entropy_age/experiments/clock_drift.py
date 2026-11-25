@@ -30,7 +30,9 @@ from entropy_age.experiments.per_person import _islands, _sets
 from entropy_age.experiments.series import groups_of, series_table, specs
 from entropy_age.experiments.tissue_contrast import _features
 
+#: drift (B, F) on the standard rebuild; clock scores on the clock track (protocol change 4)
 SERIES = Path("data/interim/clocks/series")
+CLOCK_SCORES = Path("data/interim/clocks/series_unmasked")
 GROUP = "housekeeping"
 MIN_ARRAYS = 25
 GENS = ("1st: chronological", "2nd: phenotypic and mortality", "3rd: pace of ageing", "mitotic and stochastic")
@@ -49,7 +51,7 @@ def run(ctx: Context) -> list[Path]:
             continue
         gse = spec["accession"]
         betas_path = ctx.paths.root / SERIES / f"{gse}_cpgs.parquet"
-        clocks_path = ctx.paths.root / SERIES / f"{gse}_clocks.csv"
+        clocks_path = ctx.paths.root / CLOCK_SCORES / f"{gse}_clocks.csv"
         table = series_table(ctx.paths, spec)
         if not (betas_path.exists() and clocks_path.exists() and table is not None):
             continue

@@ -27,7 +27,8 @@ from entropy_age.experiments.clock_increment import GENERATION
 from entropy_age.experiments.common import Context, write_table
 from entropy_age.experiments.series import groups_of, series_table, specs
 
-CLOCKS = Path("data/interim/clocks/series")
+#: clock scores from the clock track (protocol change 4: SeSAMe without the design-flag mask)
+CLOCKS = Path("data/interim/clocks/series_unmasked")
 MIN_ARRAYS = 15
 #: clocks trained on blood (or saliva) only; any other kept clock is treated as valid everywhere except where
 #: TISSUE_ONLY names its tissue

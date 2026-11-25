@@ -31,7 +31,8 @@ from entropy_age.experiments.common import Context, write_table
 from entropy_age.experiments.series import groups_of, series_table, specs
 
 CLOCKS = ("Horvath 2013", "StocH", "StocP", "Lin", "PhenoAge")
-BETAS = Path("data/interim/clocks/series")
+#: partial clock scores are clock computations: the clock track (protocol change 4)
+BETAS = Path("data/interim/clocks/series_unmasked")
 MIN_ARRAYS = 15
 
 
