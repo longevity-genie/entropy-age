@@ -1,0 +1,196 @@
+series,group,clock,passed,median_weight_share,cpgs_used
+brain_regions,"prefrontal cortex, controls",epiTOC2,true,0.9140940303008879,151
+brain_regions,"prefrontal cortex, controls",epiTOC3,true,1.0,170
+brain_regions,"prefrontal cortex, controls",HypoClock,true,0.9528023598820059,648
+brain_regions,"prefrontal cortex, controls",RepliTali,true,1.0,87
+brain_regions,"prefrontal cortex, controls",epiCMIT,true,0.936426116838488,1264
+brain_regions,"prefrontal cortex, every donor",epiTOC2,true,0.9140940303008879,151
+brain_regions,"prefrontal cortex, every donor",epiTOC3,true,1.0,170
+brain_regions,"prefrontal cortex, every donor",HypoClock,true,0.9528023598820059,648
+brain_regions,"prefrontal cortex, every donor",RepliTali,true,1.0,87
+brain_regions,"prefrontal cortex, every donor",epiCMIT,true,0.936426116838488,1264
+brain_regions,"amygdala, controls",epiTOC2,true,0.9140940303008879,151
+brain_regions,"amygdala, controls",epiTOC3,true,1.0,170
+brain_regions,"amygdala, controls",HypoClock,true,0.9528023598820059,648
+brain_regions,"amygdala, controls",RepliTali,true,1.0,87
+brain_regions,"amygdala, controls",epiCMIT,true,0.936426116838488,1264
+brain_regions,"amygdala, every donor",epiTOC2,true,0.9197552848797493,151
+brain_regions,"amygdala, every donor",epiTOC3,true,1.0,170
+brain_regions,"amygdala, every donor",HypoClock,true,0.9542772861356932,648
+brain_regions,"amygdala, every donor",RepliTali,true,1.0,87
+brain_regions,"amygdala, every donor",epiCMIT,true,0.936426116838488,1264
+brain_regions,"hippocampus, controls",epiTOC2,true,0.9140940303008879,151
+brain_regions,"hippocampus, controls",epiTOC3,true,1.0,170
+brain_regions,"hippocampus, controls",HypoClock,true,0.9528023598820059,648
+brain_regions,"hippocampus, controls",RepliTali,true,1.0,87
+brain_regions,"hippocampus, controls",epiCMIT,true,0.936426116838488,1264
+brain_regions,"hippocampus, every donor",epiTOC2,true,0.9140940303008879,151
+brain_regions,"hippocampus, every donor",epiTOC3,true,1.0,170
+brain_regions,"hippocampus, every donor",HypoClock,true,0.9528023598820059,648
+brain_regions,"hippocampus, every donor",RepliTali,true,1.0,87
+brain_regions,"hippocampus, every donor",epiCMIT,true,0.936426116838488,1264
+breast_cancer_free,"breast, cancer-free women",epiTOC2,true,0.9972560245663682,163
+breast_cancer_free,"breast, cancer-free women",epiTOC3,true,1.0,170
+breast_cancer_free,"breast, cancer-free women",HypoClock,true,1.0,678
+breast_cancer_free,"breast, cancer-free women",RepliTali,false,0.46135898072542114,30
+breast_cancer_free,"breast, cancer-free women",epiCMIT,true,1.0,1348
+breast_komen,"breast, healthy donors",epiTOC2,true,0.9943387454211385,163
+breast_komen,"breast, healthy donors",epiTOC3,true,1.0,170
+breast_komen,"breast, healthy donors",HypoClock,true,1.0,678
+breast_komen,"breast, healthy donors",RepliTali,false,0.46135898072542114,30
+breast_komen,"breast, healthy donors",epiCMIT,true,1.0,1348
+colon_mucosa,colon_mucosa,epiTOC2,true,1.0,163
+colon_mucosa,colon_mucosa,epiTOC3,true,1.0,170
+colon_mucosa,colon_mucosa,HypoClock,false,0.995575221238938,678
+colon_mucosa,colon_mucosa,RepliTali,false,0.46135898072542114,30
+colon_mucosa,colon_mucosa,epiCMIT,true,0.9991408934707904,1348
+kidney_normal,"kidney, normal",epiTOC2,true,1.0,163
+kidney_normal,"kidney, normal",epiTOC3,true,1.0,170
+kidney_normal,"kidney, normal",HypoClock,true,1.0,678
+kidney_normal,"kidney, normal",RepliTali,false,0.46135898072542114,30
+kidney_normal,"kidney, normal",epiCMIT,true,1.0,1348
+lung_450k,lung,epiTOC2,true,1.0,163
+lung_450k,lung,epiTOC3,true,1.0,170
+lung_450k,lung,HypoClock,true,0.9985250737463127,678
+lung_450k,lung,RepliTali,false,0.46135898072542114,87
+lung_450k,lung,epiCMIT,true,0.9991408934707904,1348
+lung_450k_no_field_d10,lung,epiTOC2,true,1.0,163
+lung_450k_no_field_d10,lung,epiTOC3,true,1.0,170
+lung_450k_no_field_d10,lung,HypoClock,true,0.9985250737463127,678
+lung_450k_no_field_d10,lung,RepliTali,false,0.46135898072542114,87
+lung_450k_no_field_d10,lung,epiCMIT,true,0.9991408934707904,1348
+lung_450k_no_field_d20,lung,epiTOC2,true,1.0,163
+lung_450k_no_field_d20,lung,epiTOC3,true,1.0,170
+lung_450k_no_field_d20,lung,HypoClock,true,0.9985250737463127,678
+lung_450k_no_field_d20,lung,RepliTali,false,0.46135898072542114,87
+lung_450k_no_field_d20,lung,epiCMIT,true,0.9991408934707904,1348
+lung_epic,lung,epiTOC2,true,0.9684151553802621,161
+lung_epic,lung,epiTOC3,false,0.9038440991413138,170
+lung_epic,lung,HypoClock,false,0.8407079646017699,672
+lung_epic,lung,RepliTali,false,0.8934537051114901,87
+lung_epic,lung,epiCMIT,false,0.8634020618556701,1329
+lung_healthy,"lung, no lung disease",epiTOC2,true,0.9084327757220263,151
+lung_healthy,"lung, no lung disease",epiTOC3,true,0.9986654594524211,170
+lung_healthy,"lung, no lung disease",HypoClock,true,0.9557522123893806,648
+lung_healthy,"lung, no lung disease",RepliTali,true,1.0,87
+lung_healthy,"lung, no lung disease",epiCMIT,true,0.936426116838488,1264
+lung_smoking,"lung, no disease, never smoked",epiTOC2,true,0.9084327757220263,151
+lung_smoking,"lung, no disease, never smoked",epiTOC3,true,0.9966292532561151,170
+lung_smoking,"lung, no disease, never smoked",HypoClock,true,0.9557522123893806,648
+lung_smoking,"lung, no disease, never smoked",RepliTali,true,1.0,87
+lung_smoking,"lung, no disease, never smoked",epiCMIT,true,0.936426116838488,1264
+lung_smoking,"lung, no disease, ever smoked",epiTOC2,true,0.9084327757220263,151
+lung_smoking,"lung, no disease, ever smoked",epiTOC3,true,0.9993327297262106,170
+lung_smoking,"lung, no disease, ever smoked",HypoClock,true,0.9557522123893806,648
+lung_smoking,"lung, no disease, ever smoked",RepliTali,true,1.0,87
+lung_smoking,"lung, no disease, ever smoked",epiCMIT,true,0.936426116838488,1264
+lung_smoking,"lung, pulmonary fibrosis",epiTOC2,true,0.9084327757220263,151
+lung_smoking,"lung, pulmonary fibrosis",epiTOC3,true,1.0,170
+lung_smoking,"lung, pulmonary fibrosis",HypoClock,true,0.9557522123893806,648
+lung_smoking,"lung, pulmonary fibrosis",RepliTali,true,1.0,87
+lung_smoking,"lung, pulmonary fibrosis",epiCMIT,true,0.936426116838488,1264
+multi_tissue_mammal40,heart,epiTOC2,false,0.05267947936800893,6
+multi_tissue_mammal40,heart,epiTOC3,false,0.021125667346058814,5
+multi_tissue_mammal40,heart,HypoClock,false,0.0014749262536873156,1
+multi_tissue_mammal40,heart,RepliTali,false,0.0,0
+multi_tissue_mammal40,heart,epiCMIT,false,0.001718213058419244,10
+multi_tissue_mammal40,skeletal_muscle,epiTOC2,false,0.05267947936800893,6
+multi_tissue_mammal40,skeletal_muscle,epiTOC3,false,0.021125667346058814,5
+multi_tissue_mammal40,skeletal_muscle,HypoClock,false,0.0014749262536873156,1
+multi_tissue_mammal40,skeletal_muscle,RepliTali,false,0.0,0
+multi_tissue_mammal40,skeletal_muscle,epiCMIT,false,0.001718213058419244,10
+multi_tissue_mammal40,liver,epiTOC2,false,0.05267947936800893,6
+multi_tissue_mammal40,liver,epiTOC3,false,0.021125667346058814,5
+multi_tissue_mammal40,liver,HypoClock,false,0.0014749262536873156,1
+multi_tissue_mammal40,liver,RepliTali,false,0.0,0
+multi_tissue_mammal40,liver,epiCMIT,false,0.001718213058419244,10
+multi_tissue_mammal40,kidney,epiTOC2,false,0.05267947936800893,6
+multi_tissue_mammal40,kidney,epiTOC3,false,0.021125667346058814,5
+multi_tissue_mammal40,kidney,HypoClock,false,0.0014749262536873156,1
+multi_tissue_mammal40,kidney,RepliTali,false,0.0,0
+multi_tissue_mammal40,kidney,epiCMIT,false,0.001718213058419244,10
+multi_tissue_mammal40,lung,epiTOC2,false,0.05267947936800893,6
+multi_tissue_mammal40,lung,epiTOC3,false,0.021125667346058814,5
+multi_tissue_mammal40,lung,HypoClock,false,0.0014749262536873156,1
+multi_tissue_mammal40,lung,RepliTali,false,0.0,0
+multi_tissue_mammal40,lung,epiCMIT,false,0.001718213058419244,10
+multi_tissue_mammal40,spleen,epiTOC2,false,0.05267947936800893,6
+multi_tissue_mammal40,spleen,epiTOC3,false,0.021125667346058814,5
+multi_tissue_mammal40,spleen,HypoClock,false,0.0014749262536873156,1
+multi_tissue_mammal40,spleen,RepliTali,false,0.0,0
+multi_tissue_mammal40,spleen,epiCMIT,false,0.001718213058419244,10
+multi_tissue_mammal40,adipose,epiTOC2,false,0.05267947936800893,6
+multi_tissue_mammal40,adipose,epiTOC3,false,0.021125667346058814,5
+multi_tissue_mammal40,adipose,HypoClock,false,0.0014749262536873156,1
+multi_tissue_mammal40,adipose,RepliTali,false,0.0,0
+multi_tissue_mammal40,adipose,epiCMIT,false,0.001718213058419244,10
+multi_tissue_mammal40,blood,epiTOC2,false,0.05267947936800893,6
+multi_tissue_mammal40,blood,epiTOC3,false,0.021125667346058814,5
+multi_tissue_mammal40,blood,HypoClock,false,0.0014749262536873156,1
+multi_tissue_mammal40,blood,RepliTali,false,0.0,0
+multi_tissue_mammal40,blood,epiCMIT,false,0.001718213058419244,10
+myometrium_epic,"myometrium, all conditions",epiTOC2,false,0.9518924221747229,157
+myometrium_epic,"myometrium, all conditions",epiTOC3,false,0.8901489620965871,151
+myometrium_epic,"myometrium, all conditions",HypoClock,false,0.8185840707964602,571
+myometrium_epic,"myometrium, all conditions",RepliTali,false,0.8931693715212272,84
+myometrium_epic,"myometrium, all conditions",epiCMIT,false,0.8513745704467354,1177
+myometrium_epic,"myometrium, fibroid-free",epiTOC2,false,0.9271111708517942,157
+myometrium_epic,"myometrium, fibroid-free",epiTOC3,false,0.8868463112465181,151
+myometrium_epic,"myometrium, fibroid-free",HypoClock,false,0.8126843657817109,571
+myometrium_epic,"myometrium, fibroid-free",RepliTali,false,0.8931693715212272,84
+myometrium_epic,"myometrium, fibroid-free",epiCMIT,false,0.8470790378006873,1177
+myometrium_epicv2,"myometrium, all conditions",epiTOC2,true,0.9768203853927555,158
+myometrium_epicv2,"myometrium, all conditions",epiTOC3,true,0.910655816519581,152
+myometrium_epicv2,"myometrium, all conditions",HypoClock,false,0.8451327433628318,573
+myometrium_epicv2,"myometrium, all conditions",RepliTali,false,0.8934537051114901,84
+myometrium_epicv2,"myometrium, all conditions",epiCMIT,false,0.8711340206185567,1181
+neurons,"neurons, every donor",epiTOC2,true,0.9140940303008879,151
+neurons,"neurons, every donor",epiTOC3,true,1.0,170
+neurons,"neurons, every donor",HypoClock,true,0.9269911504424779,643
+neurons,"neurons, every donor",RepliTali,true,0.973609371155129,87
+neurons,"neurons, every donor",epiCMIT,true,0.9347079037800687,1264
+neurons,"neurons, controls",epiTOC2,true,0.9140940303008879,151
+neurons,"neurons, controls",epiTOC3,true,1.0,170
+neurons,"neurons, controls",HypoClock,false,0.9269911504424779,643
+neurons,"neurons, controls",RepliTali,true,0.973609371155129,87
+neurons,"neurons, controls",epiCMIT,true,0.9347079037800687,1264
+tcga_brca_adjacent,"breast, next to a tumour (TCGA-BRCA)",epiTOC2,true,0.9943387454211385,163
+tcga_brca_adjacent,"breast, next to a tumour (TCGA-BRCA)",epiTOC3,true,1.0,170
+tcga_brca_adjacent,"breast, next to a tumour (TCGA-BRCA)",HypoClock,false,0.9734513274336283,678
+tcga_brca_adjacent,"breast, next to a tumour (TCGA-BRCA)",RepliTali,false,0.46135898072542114,30
+tcga_brca_adjacent,"breast, next to a tumour (TCGA-BRCA)",epiCMIT,true,0.9961340206185567,1348
+tcga_coad_adjacent,"colon, next to a tumour (TCGA-COAD)",epiTOC2,true,1.0,163
+tcga_coad_adjacent,"colon, next to a tumour (TCGA-COAD)",epiTOC3,true,1.0,170
+tcga_coad_adjacent,"colon, next to a tumour (TCGA-COAD)",HypoClock,true,0.9970501474926253,678
+tcga_coad_adjacent,"colon, next to a tumour (TCGA-COAD)",RepliTali,false,0.46135898072542114,30
+tcga_coad_adjacent,"colon, next to a tumour (TCGA-COAD)",epiCMIT,true,1.0,1348
+tcga_kirc_adjacent,"kidney, next to a tumour (TCGA-KIRC)",epiTOC2,true,0.9943387454211385,163
+tcga_kirc_adjacent,"kidney, next to a tumour (TCGA-KIRC)",epiTOC3,true,1.0,170
+tcga_kirc_adjacent,"kidney, next to a tumour (TCGA-KIRC)",HypoClock,true,0.9830383480825959,678
+tcga_kirc_adjacent,"kidney, next to a tumour (TCGA-KIRC)",RepliTali,false,0.46135898072542114,30
+tcga_kirc_adjacent,"kidney, next to a tumour (TCGA-KIRC)",epiCMIT,true,0.9982817869415808,1348
+tcga_lihc_adjacent,"liver, next to a tumour (TCGA-LIHC)",epiTOC2,true,1.0,163
+tcga_lihc_adjacent,"liver, next to a tumour (TCGA-LIHC)",epiTOC3,true,1.0,170
+tcga_lihc_adjacent,"liver, next to a tumour (TCGA-LIHC)",HypoClock,true,0.9970501474926253,678
+tcga_lihc_adjacent,"liver, next to a tumour (TCGA-LIHC)",RepliTali,false,0.46135898072542114,30
+tcga_lihc_adjacent,"liver, next to a tumour (TCGA-LIHC)",epiCMIT,true,1.0,1348
+tcga_luad_adjacent,"lung, next to a tumour (TCGA-LUAD)",epiTOC2,true,1.0,163
+tcga_luad_adjacent,"lung, next to a tumour (TCGA-LUAD)",epiTOC3,true,1.0,170
+tcga_luad_adjacent,"lung, next to a tumour (TCGA-LUAD)",HypoClock,true,0.9970501474926253,678
+tcga_luad_adjacent,"lung, next to a tumour (TCGA-LUAD)",RepliTali,false,0.46135898072542114,30
+tcga_luad_adjacent,"lung, next to a tumour (TCGA-LUAD)",epiCMIT,true,1.0,1348
+tcga_lusc_adjacent,"lung, next to a tumour (TCGA-LUSC)",epiTOC2,true,0.9943387454211385,163
+tcga_lusc_adjacent,"lung, next to a tumour (TCGA-LUSC)",epiTOC3,true,1.0,170
+tcga_lusc_adjacent,"lung, next to a tumour (TCGA-LUSC)",HypoClock,true,0.995575221238938,678
+tcga_lusc_adjacent,"lung, next to a tumour (TCGA-LUSC)",RepliTali,false,0.46135898072542114,30
+tcga_lusc_adjacent,"lung, next to a tumour (TCGA-LUSC)",epiCMIT,true,0.9991408934707904,1348
+tcga_prad_adjacent,"prostate, next to a tumour (TCGA-PRAD)",epiTOC2,true,1.0,163
+tcga_prad_adjacent,"prostate, next to a tumour (TCGA-PRAD)",epiTOC3,true,1.0,170
+tcga_prad_adjacent,"prostate, next to a tumour (TCGA-PRAD)",HypoClock,true,0.9985250737463127,678
+tcga_prad_adjacent,"prostate, next to a tumour (TCGA-PRAD)",RepliTali,false,0.46135898072542114,30
+tcga_prad_adjacent,"prostate, next to a tumour (TCGA-PRAD)",epiCMIT,true,1.0,1348
+tcga_thca_adjacent,"thyroid, next to a tumour (TCGA-THCA)",epiTOC2,true,1.0,163
+tcga_thca_adjacent,"thyroid, next to a tumour (TCGA-THCA)",epiTOC3,true,1.0,170
+tcga_thca_adjacent,"thyroid, next to a tumour (TCGA-THCA)",HypoClock,true,0.9985250737463127,678
+tcga_thca_adjacent,"thyroid, next to a tumour (TCGA-THCA)",RepliTali,false,0.46135898072542114,30
+tcga_thca_adjacent,"thyroid, next to a tumour (TCGA-THCA)",epiCMIT,true,1.0,1348
