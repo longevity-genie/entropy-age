@@ -645,7 +645,7 @@ signed shift S (core-essential and housekeeping sets) and of published clocks, f
 (174) and colorectal cancer (166). Blue circles: all cases, age and sex held. Orange squares: cases diagnosed over 2 years after
 the draw (274, 113 and 146 cases), with mean methylation, 11 blood-cell fractions and chip held. 95 % intervals; log scale. How to read: an odds ratio above 1 means people with a higher value of the measure (per SD) were more often later diagnosed with cancer; B is drift at comparable promoters, F the share of it that essential promoters avoid (more negative = stronger shield), S their signed shift (Box 1).
 
-### Clocks read the shield unevenly, and a clock of cell division reads it in every dividing tissue
+### A clock of cell division reads the shield
 
 **A clock that counts cell divisions, epiTOC1, calls people with a stronger shield older for their age in every
 dividing tissue where it can be scored, and not in neurons; pace-of-ageing clocks do not see the shield (Fig. 10,
