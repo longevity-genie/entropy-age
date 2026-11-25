@@ -3,7 +3,7 @@
 import numpy as np
 import polars as pl
 
-from entropy_age.experiments.clock_preprocessing import compare, read_scores, summarise
+from entropy_age.experiments.clock_preprocessing import compare, read_scores, read_status, summarise
 
 
 def _long(samples, clock, output, values):
@@ -83,3 +83,51 @@ def test_read_scores_empty(tmp_path):
     empty.write_text("")
     assert read_scores(empty) is None
     assert read_scores(tmp_path / "missing_clocks.csv") is None
+
+
+def test_coverage_on_common_arrays_replaces_each_tracks_own_panel():
+    masked, unmasked, ages, _ = _tracks()
+    own = {"GrimAgeV1": "coverage", "Pace": "kept"}
+    rows = {
+        r["clock"]: r
+        for r in compare(
+            masked,
+            unmasked,
+            ages,
+            own,
+            {"Horvathv1": "kept"},
+            arrays={f"s{i}" for i in range(20)},
+            common_masked={"GrimAgeV1": "kept", "Horvathv1": "kept", "Pace": "kept"},
+            common_unmasked={"GrimAgeV1": "kept", "Horvathv1": "kept", "Pace": "coverage"},
+        )
+    }
+    g = rows["GrimAgeV1"]  # one track only on the panels' own arrays, kept on both on the common arrays
+    assert g["one_track_only_own_arrays"] and not g["one_track_only"]
+    assert (g["status_masked"], g["status_masked_own_arrays"]) == ("kept", "coverage")
+    assert rows["Pace"]["one_track_only"] and not rows["Pace"]["one_track_only_own_arrays"]
+    assert rows["Horvathv1"]["arrays"] == 20 and rows["Horvathv1"]["status_basis"] == "common arrays"
+
+
+def test_not_scored_reason_survives_common_coverage():
+    masked, unmasked, ages, _ = _tracks()
+    rows = {
+        r["clock"]: r
+        for r in compare(
+            masked,
+            unmasked,
+            ages,
+            {"GrimAgeV1": "GrimageModel needs META"},
+            {},
+            common_masked={"GrimAgeV1": "coverage"},
+            common_unmasked={"GrimAgeV1": "kept"},
+        )
+    }
+    assert rows["GrimAgeV1"]["status_masked"] == "GrimageModel needs META"
+    assert not rows["GrimAgeV1"]["one_track_only"]
+
+
+def test_read_status_finds_the_panel_beside_any_scores_name(tmp_path):
+    for name in ("GSE1_clocks.csv", "GSE1_clocks_unmasked.csv", "GSE1_qc712_clocks.csv"):
+        panel = tmp_path / name.replace(".csv", "_panel.csv")
+        pl.DataFrame({"clock": ["Horvathv1"], "status": ["kept"]}).write_csv(panel)
+        assert read_status(tmp_path / name) == {"Horvathv1": "kept"}
