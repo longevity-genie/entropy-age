@@ -665,7 +665,9 @@ only within generation: the first-generation clocks formed one block, GrimAge, D
 10a). What each generation read of drift differed (Fig. 10b): first-generation accelerations went with a stronger
 shield share (r −0.23 to −0.36 for Horvath, Hannum, Lin and Weidner), the mitotic clock epiTOC1 almost was the shield
 (r −0.63), while GrimAge and DunedinPACE were unrelated to it (|r| ≤ 0.09). How far the clocks disagreed in a woman
-was unrelated to her drift (r 0.07 with B, −0.03 with F; Fig. 10d). For breast cancer over 2 years after the draw,
+went with her look-alike drift B when accelerations were adjusted for age alone (r 0.44) or also for chip, signal
+intensity, detection and cell mix (0.28), and was unrelated to it once her mean methylation level was held as well
+(r 0.07 with B, −0.03 with F; Fig. 10d); across 33 non-overlapping tissue groups the median was 0.16. For breast cancer over 2 years after the draw,
 no clock and no generation added the shield: given any clock and B, F had odds ratios of 0.77 to 0.83, none resolved
 (Fig. 10c). Of 45 clocks and scores, three had intervals above one on their own (epiTOC1 2.51, 1.41-6.02; Hannum 1.53,
 1.04-2.42; Ying adaptation 1.85, 1.03-3.71), as expected by chance among this many exploratory tests; the
@@ -807,7 +809,8 @@ Hannum and PhenoAge did so more weakly, and Horvath's clock and DunedinPACE did 
 it as well and accelerations agreed only within generation (Fig. 10). Since the shield grows with division, a clock
 that counts divisions is the one expected to read it, and in cells that no longer divide it does not. Across the rebuilt series, too, the valid clocks of a tissue
 agreed only partly on who was ageing fast. Which part of drift a clock reads is therefore one source of that
-disagreement. It does not set how far one woman's clocks disagree, which was unrelated to her drift. Clocks
+disagreement. How far one woman's clocks disagree tracked her drift only while her mean methylation level was free to
+vary, so that link may run through global level. Clocks
 retrained on simulated change drew little of their accuracy from undirected noise (Supplementary Note 3), so how
 chronological clocks come to track the shield where they do is open.
 
