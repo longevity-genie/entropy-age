@@ -40,6 +40,9 @@ brain_regions,"prefrontal cortex, controls",100,Weidner,1st: chronological,false
 brain_regions,"prefrontal cortex, controls",100,Garagnani,1st: chronological,false,0.23129823650420242,-0.10322363394617766
 brain_regions,"prefrontal cortex, controls",100,Bohlin,other,false,-0.0518682900604649,-0.1323855623629844
 brain_regions,"prefrontal cortex, controls",100,Bocklandt,1st: chronological,false,-0.15577138271267302,0.2752672115814097
+brain_regions,"prefrontal cortex, controls",100,epiTOC2,mitotic and stochastic,false,-0.09015087798516239,-0.1521837530798303
+brain_regions,"prefrontal cortex, controls",100,RepliTali,mitotic and stochastic,false,0.14020407634314208,-0.18163469606645974
+brain_regions,"prefrontal cortex, controls",100,epiCMIT,mitotic and stochastic,false,0.07250911932784236,-0.0025346650213454117
 brain_regions,"prefrontal cortex, every donor",294,Horvathv1,1st: chronological,true,-0.04379496312876934,0.08787993301222445
 brain_regions,"prefrontal cortex, every donor",294,Hannum,1st: chronological,false,-0.09431084859648627,0.01376795856502583
 brain_regions,"prefrontal cortex, every donor",294,Lin,1st: chronological,false,0.22697269748051718,-0.16337037872063181
@@ -81,6 +84,9 @@ brain_regions,"prefrontal cortex, every donor",294,Weidner,1st: chronological,fa
 brain_regions,"prefrontal cortex, every donor",294,Garagnani,1st: chronological,false,0.25033281494707854,-0.18713635838877032
 brain_regions,"prefrontal cortex, every donor",294,Bohlin,other,false,-0.1444743086386923,0.0423530742393413
 brain_regions,"prefrontal cortex, every donor",294,Bocklandt,1st: chronological,false,-0.06924894199587722,0.17818237495681583
+brain_regions,"prefrontal cortex, every donor",294,epiTOC2,mitotic and stochastic,false,-0.17651507427919647,-0.12628777732401808
+brain_regions,"prefrontal cortex, every donor",294,RepliTali,mitotic and stochastic,false,0.15890926921588364,-0.22680867650397596
+brain_regions,"prefrontal cortex, every donor",294,epiCMIT,mitotic and stochastic,false,0.07123476648971665,-0.11926274434877812
 brain_regions,"amygdala, controls",99,Horvathv1,1st: chronological,true,-0.3896280405111326,0.2707776074498035
 brain_regions,"amygdala, controls",99,Hannum,1st: chronological,false,-0.27864040459694234,0.20208309947873307
 brain_regions,"amygdala, controls",99,Lin,1st: chronological,false,-0.02849808610287749,0.0680935649796398
@@ -122,6 +128,9 @@ brain_regions,"amygdala, controls",99,Weidner,1st: chronological,false,0.1281881
 brain_regions,"amygdala, controls",99,Garagnani,1st: chronological,false,-0.08030310588112843,0.06679390559597462
 brain_regions,"amygdala, controls",99,Bohlin,other,false,0.0360776405943939,-0.03732404500487571
 brain_regions,"amygdala, controls",99,Bocklandt,1st: chronological,false,-0.05251144477372509,0.18539756555444828
+brain_regions,"amygdala, controls",99,epiTOC2,mitotic and stochastic,false,0.21162967116329937,-0.1004382718140701
+brain_regions,"amygdala, controls",99,RepliTali,mitotic and stochastic,false,-0.005191436937954557,0.0018066431181267962
+brain_regions,"amygdala, controls",99,epiCMIT,mitotic and stochastic,false,-0.3832835890265574,0.16658718033999823
 brain_regions,"amygdala, every donor",297,Horvathv1,1st: chronological,true,-0.2240790378280488,0.11132469076980069
 brain_regions,"amygdala, every donor",297,Hannum,1st: chronological,false,-0.18983317235529762,0.03647810949857446
 brain_regions,"amygdala, every donor",297,Lin,1st: chronological,false,0.03403511739415619,-0.1377597936418175
@@ -163,6 +172,9 @@ brain_regions,"amygdala, every donor",297,Weidner,1st: chronological,false,0.091
 brain_regions,"amygdala, every donor",297,Garagnani,1st: chronological,false,-0.053340305822025494,0.029434977162717306
 brain_regions,"amygdala, every donor",297,Bohlin,other,false,0.024198632238368104,0.004327663614945775
 brain_regions,"amygdala, every donor",297,Bocklandt,1st: chronological,false,-0.06027553059059588,0.1397777908987806
+brain_regions,"amygdala, every donor",297,epiTOC2,mitotic and stochastic,false,0.034267839772415265,-0.07643150105107983
+brain_regions,"amygdala, every donor",297,RepliTali,mitotic and stochastic,false,-0.08901995968393245,-0.060573076297397624
+brain_regions,"amygdala, every donor",297,epiCMIT,mitotic and stochastic,false,-0.29350285411403665,0.04684899231091899
 brain_regions,"hippocampus, controls",98,Horvathv1,1st: chronological,true,-0.30099010009689103,0.2603895094644244
 brain_regions,"hippocampus, controls",98,Hannum,1st: chronological,false,-0.4196251674516973,0.08136725714925806
 brain_regions,"hippocampus, controls",98,Lin,1st: chronological,false,-0.29925879569206604,0.16923793641381704
@@ -204,6 +216,9 @@ brain_regions,"hippocampus, controls",98,Weidner,1st: chronological,false,-0.023
 brain_regions,"hippocampus, controls",98,Garagnani,1st: chronological,false,-0.45888429475875475,0.2877205758636145
 brain_regions,"hippocampus, controls",98,Bohlin,other,false,0.2035299528929288,0.14781684030025316
 brain_regions,"hippocampus, controls",98,Bocklandt,1st: chronological,false,-0.10340436905865152,-0.08750387858948928
+brain_regions,"hippocampus, controls",98,epiTOC2,mitotic and stochastic,false,0.12283216901791888,-0.12405213962929625
+brain_regions,"hippocampus, controls",98,RepliTali,mitotic and stochastic,false,-0.013021885917607178,0.059759686461716935
+brain_regions,"hippocampus, controls",98,epiCMIT,mitotic and stochastic,false,-0.3089510721851004,0.04512413347716822
 brain_regions,"hippocampus, every donor",300,Horvathv1,1st: chronological,true,-0.20374615307276006,0.21049277229820984
 brain_regions,"hippocampus, every donor",300,Hannum,1st: chronological,false,-0.2627460462080926,-0.03420217798506183
 brain_regions,"hippocampus, every donor",300,Lin,1st: chronological,false,-0.17488510910593882,0.1587686799322532
@@ -245,6 +260,9 @@ brain_regions,"hippocampus, every donor",300,Weidner,1st: chronological,false,-0
 brain_regions,"hippocampus, every donor",300,Garagnani,1st: chronological,false,-0.1998184574113687,0.20487260073480584
 brain_regions,"hippocampus, every donor",300,Bohlin,other,false,0.030805710743886303,0.07357436727909662
 brain_regions,"hippocampus, every donor",300,Bocklandt,1st: chronological,false,-0.030087477120651168,-0.013091460008284806
+brain_regions,"hippocampus, every donor",300,epiTOC2,mitotic and stochastic,false,-0.055750431137599,-0.08720972726260975
+brain_regions,"hippocampus, every donor",300,RepliTali,mitotic and stochastic,false,-0.062377522303003835,0.1411009177160608
+brain_regions,"hippocampus, every donor",300,epiCMIT,mitotic and stochastic,false,-0.1572159998494268,0.07605797205078807
 breast_cancer_free,"breast, cancer-free women",118,Horvathv1,1st: chronological,true,-0.047691480075582646,-0.02449656540558332
 breast_cancer_free,"breast, cancer-free women",118,Hannum,1st: chronological,false,0.0310170762039076,0.012579415605928972
 breast_cancer_free,"breast, cancer-free women",118,Lin,1st: chronological,false,-0.05505814608275751,-0.11782301119460167
@@ -287,6 +305,8 @@ breast_cancer_free,"breast, cancer-free women",118,Weidner,1st: chronological,fa
 breast_cancer_free,"breast, cancer-free women",118,Garagnani,1st: chronological,false,0.09413964259560739,0.21879061243181974
 breast_cancer_free,"breast, cancer-free women",118,Bohlin,other,false,-0.037289616947943444,-0.0597991515029489
 breast_cancer_free,"breast, cancer-free women",118,Bocklandt,1st: chronological,false,0.12509161139688113,-0.023688751704415142
+breast_cancer_free,"breast, cancer-free women",118,epiTOC2,mitotic and stochastic,false,-0.15967313244773237,-0.15298575254226532
+breast_cancer_free,"breast, cancer-free women",118,epiCMIT,mitotic and stochastic,false,-0.023255990897309307,0.1858498911500271
 breast_komen,"breast, healthy donors",98,Horvathv1,1st: chronological,true,-0.11883859063794265,-0.17079474374435702
 breast_komen,"breast, healthy donors",98,Hannum,1st: chronological,false,0.17137785386762108,-0.2698150803263845
 breast_komen,"breast, healthy donors",98,Lin,1st: chronological,false,0.5547996816762676,-0.13185849938129227
@@ -329,6 +349,8 @@ breast_komen,"breast, healthy donors",98,Weidner,1st: chronological,false,-0.156
 breast_komen,"breast, healthy donors",98,Garagnani,1st: chronological,false,-0.17041277354832848,-0.13431139653111282
 breast_komen,"breast, healthy donors",98,Bohlin,other,false,0.30197278253648546,0.09292176985687273
 breast_komen,"breast, healthy donors",98,Bocklandt,1st: chronological,false,0.5337539648425539,-0.07700240156998926
+breast_komen,"breast, healthy donors",98,epiTOC2,mitotic and stochastic,false,-0.2606555533016012,-0.367733430875988
+breast_komen,"breast, healthy donors",98,epiCMIT,mitotic and stochastic,false,-0.36989845241171043,-0.3938326909772228
 colon_mucosa,colon_mucosa,146,Horvathv1,1st: chronological,true,0.049830716732493716,-0.15052798924309055
 colon_mucosa,colon_mucosa,146,Hannum,1st: chronological,false,-0.2372468935107712,-0.048273693654676084
 colon_mucosa,colon_mucosa,146,Lin,1st: chronological,false,-0.09147425700866614,-0.23071444227637314
@@ -369,6 +391,8 @@ colon_mucosa,colon_mucosa,146,Weidner,1st: chronological,false,-0.16230982823123
 colon_mucosa,colon_mucosa,146,Garagnani,1st: chronological,false,-0.1703865182288611,0.034577780521013686
 colon_mucosa,colon_mucosa,146,Bohlin,other,false,-0.1520126172612988,0.05108113388463354
 colon_mucosa,colon_mucosa,146,Bocklandt,1st: chronological,false,0.028717566061221673,0.006730626273332336
+colon_mucosa,colon_mucosa,146,epiTOC2,mitotic and stochastic,false,0.08067142323100675,-0.5441872201372082
+colon_mucosa,colon_mucosa,146,epiCMIT,mitotic and stochastic,false,0.010377818617274841,-0.43317635493775447
 kidney_normal,"kidney, normal",30,Horvathv1,1st: chronological,true,-0.17130685636773335,0.37980628330818833
 kidney_normal,"kidney, normal",30,Hannum,1st: chronological,false,0.3282966800272682,0.12775926950057995
 kidney_normal,"kidney, normal",30,Lin,1st: chronological,false,0.041886125810265906,0.2521494256341647
@@ -411,6 +435,8 @@ kidney_normal,"kidney, normal",30,Weidner,1st: chronological,false,0.30460540211
 kidney_normal,"kidney, normal",30,Garagnani,1st: chronological,false,-0.03718640873545741,0.3206471355343179
 kidney_normal,"kidney, normal",30,Bohlin,other,false,0.36644749786573616,-0.2749718049530391
 kidney_normal,"kidney, normal",30,Bocklandt,1st: chronological,false,-0.3736446133108863,0.15981659420321379
+kidney_normal,"kidney, normal",30,epiTOC2,mitotic and stochastic,false,0.6025781022811534,-0.1309971892890611
+kidney_normal,"kidney, normal",30,epiCMIT,mitotic and stochastic,false,0.2828358845336099,-0.3248379672313447
 lung_450k,lung,113,Lin,1st: chronological,false,0.975880755546613,0.6858877627855748
 lung_450k,lung,113,PhenoAge,2nd: phenotypic and mortality,false,-0.4579984353541282,-0.2664551379527248
 lung_450k,lung,113,YingDamAge,2nd: phenotypic and mortality,false,-0.9902717791966864,-0.6648344465942841
@@ -432,6 +458,9 @@ lung_450k,lung,113,Mayne,other,false,-0.9855960730517465,-0.6889664284118543
 lung_450k,lung,113,Weidner,1st: chronological,false,-0.7001621206223286,-0.3004246048796025
 lung_450k,lung,113,Garagnani,1st: chronological,false,0.9653912855950747,0.661854467601187
 lung_450k,lung,113,Bocklandt,1st: chronological,false,-0.9847831016465846,-0.6836360626459556
+lung_450k,lung,113,epiTOC2,mitotic and stochastic,false,0.9938082568078562,0.6883882138962722
+lung_450k,lung,113,RepliTali,mitotic and stochastic,false,0.98625278469768,0.686598164215852
+lung_450k,lung,113,epiCMIT,mitotic and stochastic,false,0.9856821635559255,0.7214845797217404
 lung_450k_no_field_d10,lung,113,Lin,1st: chronological,false,0.975880755546613,0.6858877627855748
 lung_450k_no_field_d10,lung,113,PhenoAge,2nd: phenotypic and mortality,false,-0.4579984353541282,-0.2664551379527248
 lung_450k_no_field_d10,lung,113,YingDamAge,2nd: phenotypic and mortality,false,-0.9902717791966864,-0.6648344465942841
@@ -453,6 +482,9 @@ lung_450k_no_field_d10,lung,113,Mayne,other,false,-0.9855960730517465,-0.6889664
 lung_450k_no_field_d10,lung,113,Weidner,1st: chronological,false,-0.7001621206223286,-0.3004246048796025
 lung_450k_no_field_d10,lung,113,Garagnani,1st: chronological,false,0.9653912855950747,0.661854467601187
 lung_450k_no_field_d10,lung,113,Bocklandt,1st: chronological,false,-0.9847831016465846,-0.6836360626459556
+lung_450k_no_field_d10,lung,113,epiTOC2,mitotic and stochastic,false,0.9938082568078562,0.6883882138962722
+lung_450k_no_field_d10,lung,113,RepliTali,mitotic and stochastic,false,0.98625278469768,0.686598164215852
+lung_450k_no_field_d10,lung,113,epiCMIT,mitotic and stochastic,false,0.9856821635559255,0.7214845797217404
 lung_450k_no_field_d20,lung,113,Lin,1st: chronological,false,0.975880755546613,0.6858877627855748
 lung_450k_no_field_d20,lung,113,PhenoAge,2nd: phenotypic and mortality,false,-0.4579984353541282,-0.2664551379527248
 lung_450k_no_field_d20,lung,113,YingDamAge,2nd: phenotypic and mortality,false,-0.9902717791966864,-0.6648344465942841
@@ -474,6 +506,9 @@ lung_450k_no_field_d20,lung,113,Mayne,other,false,-0.9855960730517465,-0.6889664
 lung_450k_no_field_d20,lung,113,Weidner,1st: chronological,false,-0.7001621206223286,-0.3004246048796025
 lung_450k_no_field_d20,lung,113,Garagnani,1st: chronological,false,0.9653912855950747,0.661854467601187
 lung_450k_no_field_d20,lung,113,Bocklandt,1st: chronological,false,-0.9847831016465846,-0.6836360626459556
+lung_450k_no_field_d20,lung,113,epiTOC2,mitotic and stochastic,false,0.9938082568078562,0.6883882138962722
+lung_450k_no_field_d20,lung,113,RepliTali,mitotic and stochastic,false,0.98625278469768,0.686598164215852
+lung_450k_no_field_d20,lung,113,epiCMIT,mitotic and stochastic,false,0.9856821635559255,0.7214845797217404
 lung_epic,lung,31,Lin,1st: chronological,false,0.8433914795787174,-0.07784024395750666
 lung_epic,lung,31,PhenoAge,2nd: phenotypic and mortality,false,0.6167576201585098,-0.05201901184273622
 lung_epic,lung,31,YingDamAge,2nd: phenotypic and mortality,false,0.9845725650319007,-0.17225993348863253
@@ -495,6 +530,9 @@ lung_epic,lung,31,Mayne,other,false,0.9912499165225854,-0.16527490802748918
 lung_epic,lung,31,Weidner,1st: chronological,false,0.8913051251905992,0.016858879143015683
 lung_epic,lung,31,Garagnani,1st: chronological,false,-0.619138863839118,0.20412131579203394
 lung_epic,lung,31,Bocklandt,1st: chronological,false,-0.8045140408537472,0.3470470265539444
+lung_epic,lung,31,epiTOC2,mitotic and stochastic,false,-0.992875834132303,0.19371166866594616
+lung_epic,lung,31,RepliTali,mitotic and stochastic,false,-0.9920810586739349,0.238949191531103
+lung_epic,lung,31,epiCMIT,mitotic and stochastic,false,-0.9918416077295469,0.2151475164467277
 lung_healthy,"lung, no lung disease",143,Horvathv1,1st: chronological,true,-0.22040556780047676,0.030002698251207906
 lung_healthy,"lung, no lung disease",143,Hannum,1st: chronological,false,0.10107545732595687,-0.1586881365158758
 lung_healthy,"lung, no lung disease",143,Lin,1st: chronological,false,-0.26960146820312964,0.07780672570190753
@@ -537,6 +575,9 @@ lung_healthy,"lung, no lung disease",143,Weidner,1st: chronological,false,0.0429
 lung_healthy,"lung, no lung disease",143,Garagnani,1st: chronological,false,0.030268102750657812,-0.08537739556802496
 lung_healthy,"lung, no lung disease",143,Bohlin,other,false,0.21497757055691766,-0.060438743167901446
 lung_healthy,"lung, no lung disease",143,Bocklandt,1st: chronological,false,-0.27373938119853347,0.18064990831513644
+lung_healthy,"lung, no lung disease",143,epiTOC2,mitotic and stochastic,false,0.35751115588740273,-0.6387067179021215
+lung_healthy,"lung, no lung disease",143,RepliTali,mitotic and stochastic,false,0.33826854615284224,-0.47499936630302564
+lung_healthy,"lung, no lung disease",143,epiCMIT,mitotic and stochastic,false,0.30495068707645223,-0.5007350209801372
 lung_smoking,"lung, no disease, never smoked",83,Horvathv1,1st: chronological,true,-0.16480763359899783,0.11954124947609776
 lung_smoking,"lung, no disease, never smoked",83,Hannum,1st: chronological,false,0.16041230495009332,-0.12592499447314912
 lung_smoking,"lung, no disease, never smoked",83,Lin,1st: chronological,false,-0.2827500176165589,0.24090004740437193
@@ -579,6 +620,9 @@ lung_smoking,"lung, no disease, never smoked",83,Weidner,1st: chronological,fals
 lung_smoking,"lung, no disease, never smoked",83,Garagnani,1st: chronological,false,0.07327888897136706,0.01390764058545976
 lung_smoking,"lung, no disease, never smoked",83,Bohlin,other,false,0.09103745070497173,-0.1785999235580723
 lung_smoking,"lung, no disease, never smoked",83,Bocklandt,1st: chronological,false,-0.19844028878846162,0.2683790983904973
+lung_smoking,"lung, no disease, never smoked",83,epiTOC2,mitotic and stochastic,false,0.4244042932251957,-0.6432239353343234
+lung_smoking,"lung, no disease, never smoked",83,RepliTali,mitotic and stochastic,false,0.5010724517196324,-0.4824487991690871
+lung_smoking,"lung, no disease, never smoked",83,epiCMIT,mitotic and stochastic,false,0.4859065303336415,-0.481777174811148
 lung_smoking,"lung, no disease, ever smoked",56,Horvathv1,1st: chronological,true,-0.3358971421508126,-0.1097298373975124
 lung_smoking,"lung, no disease, ever smoked",56,Hannum,1st: chronological,false,0.004923432676421531,-0.2550367723632639
 lung_smoking,"lung, no disease, ever smoked",56,Lin,1st: chronological,false,-0.225502605184204,-0.15844135446461588
@@ -621,6 +665,9 @@ lung_smoking,"lung, no disease, ever smoked",56,Weidner,1st: chronological,false
 lung_smoking,"lung, no disease, ever smoked",56,Garagnani,1st: chronological,false,0.05779817998350734,-0.28854254910833316
 lung_smoking,"lung, no disease, ever smoked",56,Bohlin,other,false,0.1284938585137946,-0.04497794021065603
 lung_smoking,"lung, no disease, ever smoked",56,Bocklandt,1st: chronological,false,-0.18737669150875427,0.23150992647171584
+lung_smoking,"lung, no disease, ever smoked",56,epiTOC2,mitotic and stochastic,false,0.346773724397128,-0.7107070591368647
+lung_smoking,"lung, no disease, ever smoked",56,RepliTali,mitotic and stochastic,false,0.22327642135720235,-0.5453882415047611
+lung_smoking,"lung, no disease, ever smoked",56,epiCMIT,mitotic and stochastic,false,0.24354988657383472,-0.5678789686048108
 lung_smoking,"lung, pulmonary fibrosis",344,Horvathv1,1st: chronological,true,-0.061185474482133004,0.050865968476167756
 lung_smoking,"lung, pulmonary fibrosis",344,Hannum,1st: chronological,false,0.26043702941665803,-0.35226469047408415
 lung_smoking,"lung, pulmonary fibrosis",344,Lin,1st: chronological,false,-0.06376136467742988,-0.004192565309920412
@@ -663,6 +710,9 @@ lung_smoking,"lung, pulmonary fibrosis",344,Weidner,1st: chronological,false,0.0
 lung_smoking,"lung, pulmonary fibrosis",344,Garagnani,1st: chronological,false,0.20770806694516916,-0.18503552246214555
 lung_smoking,"lung, pulmonary fibrosis",344,Bohlin,other,false,0.14901785086395364,-0.13673534049134614
 lung_smoking,"lung, pulmonary fibrosis",344,Bocklandt,1st: chronological,false,-0.059943376711072326,0.15335616478629951
+lung_smoking,"lung, pulmonary fibrosis",344,epiTOC2,mitotic and stochastic,false,0.2493716122308616,-0.5011653091301072
+lung_smoking,"lung, pulmonary fibrosis",344,RepliTali,mitotic and stochastic,false,0.2911678091030426,-0.4046555485551413
+lung_smoking,"lung, pulmonary fibrosis",344,epiCMIT,mitotic and stochastic,false,0.27692576214673525,-0.4474074802342612
 multi_tissue_mammal40,heart,96,Horvathv1,1st: chronological,true,0.07121238519973327,-0.11799228442068706
 multi_tissue_mammal40,heart,96,Hannum,1st: chronological,false,0.34019955878150687,-0.37868142354993134
 multi_tissue_mammal40,heart,96,PhenoAge,2nd: phenotypic and mortality,false,0.3769037838216034,-0.28268250105107917
@@ -814,6 +864,9 @@ neurons,"neurons, every donor",82,DepressionBarbu,other,false,0.2026011530801124
 neurons,"neurons, every donor",82,Weidner,1st: chronological,false,0.3658724297477628,-0.2967193927702707
 neurons,"neurons, every donor",82,Garagnani,1st: chronological,false,0.26196134306564184,-0.30059133332261295
 neurons,"neurons, every donor",82,Bocklandt,1st: chronological,false,0.10837188890524282,-0.2161696682503998
+neurons,"neurons, every donor",82,epiTOC2,mitotic and stochastic,false,0.3420091583851685,0.5019154103379638
+neurons,"neurons, every donor",82,RepliTali,mitotic and stochastic,false,0.2780759590589703,-0.20432562778908303
+neurons,"neurons, every donor",82,epiCMIT,mitotic and stochastic,false,0.25855191648669434,0.25542818960864927
 neurons,"neurons, controls",28,Horvathv1,1st: chronological,true,-0.32530636235740223,0.12025299147352007
 neurons,"neurons, controls",28,Hannum,1st: chronological,false,-0.03824650454034643,-0.22125341838602625
 neurons,"neurons, controls",28,Lin,1st: chronological,false,0.37199603774763257,-0.26937274996683813
@@ -854,6 +907,9 @@ neurons,"neurons, controls",28,DepressionBarbu,other,false,0.20110828169438047,-
 neurons,"neurons, controls",28,Weidner,1st: chronological,false,0.29337680661101856,-0.47072636287619307
 neurons,"neurons, controls",28,Garagnani,1st: chronological,false,0.222350345739508,-0.6354041812460379
 neurons,"neurons, controls",28,Bocklandt,1st: chronological,false,0.014517153081462895,-0.1966017120426674
+neurons,"neurons, controls",28,epiTOC2,mitotic and stochastic,false,-0.15660681286863998,0.30879198579848877
+neurons,"neurons, controls",28,RepliTali,mitotic and stochastic,false,0.284060058839106,-0.4293865476953289
+neurons,"neurons, controls",28,epiCMIT,mitotic and stochastic,false,-0.33175121033025023,-0.026335392655839507
 tcga_brca_adjacent,"breast, next to a tumour (TCGA-BRCA)",96,Horvathv1,1st: chronological,true,-0.3097170541447658,-0.17158912716517447
 tcga_brca_adjacent,"breast, next to a tumour (TCGA-BRCA)",96,Hannum,1st: chronological,false,0.082681184813802,-0.2829854978579061
 tcga_brca_adjacent,"breast, next to a tumour (TCGA-BRCA)",96,Lin,1st: chronological,false,-0.07895896971714078,-0.43280560859445116
@@ -894,6 +950,8 @@ tcga_brca_adjacent,"breast, next to a tumour (TCGA-BRCA)",96,Weidner,1st: chrono
 tcga_brca_adjacent,"breast, next to a tumour (TCGA-BRCA)",96,Garagnani,1st: chronological,false,0.15105780220932358,-0.16599547213036137
 tcga_brca_adjacent,"breast, next to a tumour (TCGA-BRCA)",96,Bohlin,other,false,-0.10339546341488597,0.006081653107957166
 tcga_brca_adjacent,"breast, next to a tumour (TCGA-BRCA)",96,Bocklandt,1st: chronological,false,0.3431768027480438,0.10171657726272526
+tcga_brca_adjacent,"breast, next to a tumour (TCGA-BRCA)",96,epiTOC2,mitotic and stochastic,false,0.3873736963366811,-0.4434434868754012
+tcga_brca_adjacent,"breast, next to a tumour (TCGA-BRCA)",96,epiCMIT,mitotic and stochastic,false,0.25550817821013694,-0.5632634281995761
 tcga_coad_adjacent,"colon, next to a tumour (TCGA-COAD)",37,Horvathv1,1st: chronological,true,0.040702947662777135,0.3472440432095301
 tcga_coad_adjacent,"colon, next to a tumour (TCGA-COAD)",37,Hannum,1st: chronological,false,-0.18788200103284533,-0.2607831438872675
 tcga_coad_adjacent,"colon, next to a tumour (TCGA-COAD)",37,Lin,1st: chronological,false,-0.0804504685348068,-0.1425293676499861
@@ -936,6 +994,8 @@ tcga_coad_adjacent,"colon, next to a tumour (TCGA-COAD)",37,Weidner,1st: chronol
 tcga_coad_adjacent,"colon, next to a tumour (TCGA-COAD)",37,Garagnani,1st: chronological,false,-0.07612451551561035,-0.2075413417634916
 tcga_coad_adjacent,"colon, next to a tumour (TCGA-COAD)",37,Bohlin,other,false,-0.39583716185554774,-0.1572666975976638
 tcga_coad_adjacent,"colon, next to a tumour (TCGA-COAD)",37,Bocklandt,1st: chronological,false,-0.24181607264932875,0.059568328673928146
+tcga_coad_adjacent,"colon, next to a tumour (TCGA-COAD)",37,epiTOC2,mitotic and stochastic,false,0.10565008939630613,-0.41986651006408343
+tcga_coad_adjacent,"colon, next to a tumour (TCGA-COAD)",37,epiCMIT,mitotic and stochastic,false,-0.12975888936298294,-0.46305427616049233
 tcga_kirc_adjacent,"kidney, next to a tumour (TCGA-KIRC)",160,Horvathv1,1st: chronological,true,0.06513648523850418,-0.09500974825541197
 tcga_kirc_adjacent,"kidney, next to a tumour (TCGA-KIRC)",160,Hannum,1st: chronological,false,0.0003264098189862317,-0.0376760148522904
 tcga_kirc_adjacent,"kidney, next to a tumour (TCGA-KIRC)",160,Lin,1st: chronological,false,0.30690166883623254,-0.2401407932678459
@@ -977,6 +1037,8 @@ tcga_kirc_adjacent,"kidney, next to a tumour (TCGA-KIRC)",160,Weidner,1st: chron
 tcga_kirc_adjacent,"kidney, next to a tumour (TCGA-KIRC)",160,Garagnani,1st: chronological,false,0.19680795554369143,-0.36377574262761814
 tcga_kirc_adjacent,"kidney, next to a tumour (TCGA-KIRC)",160,Bohlin,other,false,0.45892024698332023,-0.3829048118533316
 tcga_kirc_adjacent,"kidney, next to a tumour (TCGA-KIRC)",160,Bocklandt,1st: chronological,false,-0.3043829389649944,0.36602760345418994
+tcga_kirc_adjacent,"kidney, next to a tumour (TCGA-KIRC)",160,epiTOC2,mitotic and stochastic,false,0.5136900647214676,-0.5301281551169694
+tcga_kirc_adjacent,"kidney, next to a tumour (TCGA-KIRC)",160,epiCMIT,mitotic and stochastic,false,0.24508121115395262,-0.4613089021559857
 tcga_lihc_adjacent,"liver, next to a tumour (TCGA-LIHC)",49,Horvathv1,1st: chronological,true,0.060866497489427566,-0.2565668277460188
 tcga_lihc_adjacent,"liver, next to a tumour (TCGA-LIHC)",49,Hannum,1st: chronological,false,-0.08133432117216025,-0.20840158215616011
 tcga_lihc_adjacent,"liver, next to a tumour (TCGA-LIHC)",49,Lin,1st: chronological,false,-0.009113880061629394,-0.08763874436284572
@@ -1019,6 +1081,8 @@ tcga_lihc_adjacent,"liver, next to a tumour (TCGA-LIHC)",49,Weidner,1st: chronol
 tcga_lihc_adjacent,"liver, next to a tumour (TCGA-LIHC)",49,Garagnani,1st: chronological,false,-0.2939651231373542,-0.14565695454776975
 tcga_lihc_adjacent,"liver, next to a tumour (TCGA-LIHC)",49,Bohlin,other,false,0.14608954938426066,-0.2943881986328866
 tcga_lihc_adjacent,"liver, next to a tumour (TCGA-LIHC)",49,Bocklandt,1st: chronological,false,0.05196494623045808,0.2232418743633273
+tcga_lihc_adjacent,"liver, next to a tumour (TCGA-LIHC)",49,epiTOC2,mitotic and stochastic,false,0.4787324202380607,-0.3986741133283219
+tcga_lihc_adjacent,"liver, next to a tumour (TCGA-LIHC)",49,epiCMIT,mitotic and stochastic,false,0.060920195229889305,-0.23104143328168164
 tcga_luad_adjacent,"lung, next to a tumour (TCGA-LUAD)",32,Horvathv1,1st: chronological,true,0.0012087122862879092,-0.347829060517269
 tcga_luad_adjacent,"lung, next to a tumour (TCGA-LUAD)",32,Hannum,1st: chronological,false,0.41395056478668574,0.17002778772793445
 tcga_luad_adjacent,"lung, next to a tumour (TCGA-LUAD)",32,Lin,1st: chronological,false,-0.1586808686547749,0.0970108821659817
@@ -1061,6 +1125,8 @@ tcga_luad_adjacent,"lung, next to a tumour (TCGA-LUAD)",32,Weidner,1st: chronolo
 tcga_luad_adjacent,"lung, next to a tumour (TCGA-LUAD)",32,Garagnani,1st: chronological,false,0.26995080485122563,-0.007711903480608915
 tcga_luad_adjacent,"lung, next to a tumour (TCGA-LUAD)",32,Bohlin,other,false,0.14718366765401247,-0.21430486794157153
 tcga_luad_adjacent,"lung, next to a tumour (TCGA-LUAD)",32,Bocklandt,1st: chronological,false,0.3590039817007937,0.36000241039541514
+tcga_luad_adjacent,"lung, next to a tumour (TCGA-LUAD)",32,epiTOC2,mitotic and stochastic,false,0.07980328187803529,-0.7063789471492701
+tcga_luad_adjacent,"lung, next to a tumour (TCGA-LUAD)",32,epiCMIT,mitotic and stochastic,false,-0.43110841516691645,-0.5172213257945812
 tcga_lusc_adjacent,"lung, next to a tumour (TCGA-LUSC)",42,Horvathv1,1st: chronological,true,-0.21813059855579606,-0.004403521035830183
 tcga_lusc_adjacent,"lung, next to a tumour (TCGA-LUSC)",42,Hannum,1st: chronological,false,0.05478269837048973,-0.12156503932270096
 tcga_lusc_adjacent,"lung, next to a tumour (TCGA-LUSC)",42,Lin,1st: chronological,false,-0.16696548839285863,-0.08851594271710746
@@ -1103,6 +1169,8 @@ tcga_lusc_adjacent,"lung, next to a tumour (TCGA-LUSC)",42,Weidner,1st: chronolo
 tcga_lusc_adjacent,"lung, next to a tumour (TCGA-LUSC)",42,Garagnani,1st: chronological,false,-0.17381878991182714,0.09492743441932767
 tcga_lusc_adjacent,"lung, next to a tumour (TCGA-LUSC)",42,Bohlin,other,false,0.5477075788869358,-0.07615241800483277
 tcga_lusc_adjacent,"lung, next to a tumour (TCGA-LUSC)",42,Bocklandt,1st: chronological,false,-0.3086048682372882,0.3396350826241842
+tcga_lusc_adjacent,"lung, next to a tumour (TCGA-LUSC)",42,epiTOC2,mitotic and stochastic,false,0.2989931361965965,-0.4442058305994478
+tcga_lusc_adjacent,"lung, next to a tumour (TCGA-LUSC)",42,epiCMIT,mitotic and stochastic,false,-0.05553662777545701,-0.5745984361519448
 tcga_prad_adjacent,"prostate, next to a tumour (TCGA-PRAD)",49,Horvathv1,1st: chronological,true,0.18602790470688813,-0.11484840583238254
 tcga_prad_adjacent,"prostate, next to a tumour (TCGA-PRAD)",49,Hannum,1st: chronological,false,0.23381376167865683,-0.17742555560999437
 tcga_prad_adjacent,"prostate, next to a tumour (TCGA-PRAD)",49,Lin,1st: chronological,false,0.43244031709362635,-0.3110875792370701
@@ -1145,6 +1213,8 @@ tcga_prad_adjacent,"prostate, next to a tumour (TCGA-PRAD)",49,Weidner,1st: chro
 tcga_prad_adjacent,"prostate, next to a tumour (TCGA-PRAD)",49,Garagnani,1st: chronological,false,-0.24828189566344153,0.2669520956646473
 tcga_prad_adjacent,"prostate, next to a tumour (TCGA-PRAD)",49,Bohlin,other,false,-0.07869095073470124,0.0775689265796508
 tcga_prad_adjacent,"prostate, next to a tumour (TCGA-PRAD)",49,Bocklandt,1st: chronological,false,-0.16768367326372,-0.05316014960094513
+tcga_prad_adjacent,"prostate, next to a tumour (TCGA-PRAD)",49,epiTOC2,mitotic and stochastic,false,0.8292862806314437,-0.8966678684906226
+tcga_prad_adjacent,"prostate, next to a tumour (TCGA-PRAD)",49,epiCMIT,mitotic and stochastic,false,0.7594770040345116,-0.8597863547304925
 tcga_thca_adjacent,"thyroid, next to a tumour (TCGA-THCA)",54,Horvathv1,1st: chronological,true,0.31046681088830735,-0.28428276161176436
 tcga_thca_adjacent,"thyroid, next to a tumour (TCGA-THCA)",54,Hannum,1st: chronological,false,0.5122838229585364,-0.42744123802545664
 tcga_thca_adjacent,"thyroid, next to a tumour (TCGA-THCA)",54,Lin,1st: chronological,false,0.41845017109286337,-0.296632210361121
@@ -1187,3 +1257,5 @@ tcga_thca_adjacent,"thyroid, next to a tumour (TCGA-THCA)",54,Weidner,1st: chron
 tcga_thca_adjacent,"thyroid, next to a tumour (TCGA-THCA)",54,Garagnani,1st: chronological,false,0.08458757807679498,-0.21044203545107698
 tcga_thca_adjacent,"thyroid, next to a tumour (TCGA-THCA)",54,Bohlin,other,false,0.4780729244801501,-0.4863301226137839
 tcga_thca_adjacent,"thyroid, next to a tumour (TCGA-THCA)",54,Bocklandt,1st: chronological,false,-0.4285695057883166,0.46984758047634395
+tcga_thca_adjacent,"thyroid, next to a tumour (TCGA-THCA)",54,epiTOC2,mitotic and stochastic,false,0.8360350795269729,-0.7457395680120154
+tcga_thca_adjacent,"thyroid, next to a tumour (TCGA-THCA)",54,epiCMIT,mitotic and stochastic,false,0.6619724345758333,-0.7306939200054066
