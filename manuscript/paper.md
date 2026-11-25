@@ -12,12 +12,14 @@ housekeeping genes with CpGs of the same island status and starting level, and m
 methylation from its young state. In most human tissues, in most mouse organs and in 88 % of species-tissue groups of
 65 mammals, essential promoters drift less than their matches: they are shielded. No control we built (placebo gene
 sets, cell composition, probe design, raw-data reprocessing) produces the shield. It follows how strongly a promoter
-is used, and in culture it accrues with cell division. Clocks read it unevenly: a clock that counts
-cell divisions call people with a stronger shield older for their age in dividing tissues: six mitotic clocks, among
-them one built on CpGs in partially methylated domains that share none with the others, did so in nearly every dividing
-tissue where they could be scored, and the promoter-based ones reversed in sorted neurons, which do not divide; some
-chronological and phenotypic clocks do so more weakly, and pace-of-ageing clocks such as DunedinPACE do not see it. Stochastic ageing therefore has a structure that clocks capture unevenly, and the part of it tied to
-cell division is the part clocks of cell division read best.
+is used, and in culture it accrues with cell division. Clocks read it unevenly. Six clocks that count
+cell divisions, among them one built on CpGs in partially methylated domains that share none with the others, call
+people whose promoters are better protected from drift older for their age in nearly every dividing tissue where they
+could be scored, and the promoter-based ones reverse in sorted neurons, which do not divide. Other promoters matched to
+the housekeeping ones carry nearly the same link, so these clocks read how well a person's promoters as a class are
+protected, which the housekeeping shield shares. Some chronological and phenotypic clocks do so more weakly, and
+pace-of-ageing clocks such as DunedinPACE do not see it. Stochastic ageing therefore has a structure that clocks
+capture unevenly, and the part of it tied to cell division is the part clocks of cell division read best.
 
 ![Graphical abstract](../docs/figures/forest_series.png)
 
@@ -642,10 +644,11 @@ signed shift S (core-essential and housekeeping sets) and of published clocks, f
 (174) and colorectal cancer (166). Blue circles: all cases, age and sex held. Orange squares: cases diagnosed over 2 years after
 the draw (274, 113 and 146 cases), with mean methylation, 11 blood-cell fractions and chip held. 95 % intervals; log scale. How to read: an odds ratio above 1 means people with a higher value of the measure (per SD) were more often later diagnosed with cancer; B is drift at comparable promoters, F the share of it that essential promoters avoid (more negative = stronger shield), S their signed shift (Box 1).
 
-### A clock of cell division reads the shield
+### Clocks of cell division read promoter protection
 
-**Clocks that count cell divisions call people with a stronger shield older for their age in dividing tissues, and
-the promoter-based ones reverse in neurons; pace-of-ageing clocks do not see the shield (Fig. 10, Fig. 11).**
+**Clocks that count cell divisions call people whose promoters are better protected from drift older for their age in
+dividing tissues, and the promoter-based ones reverse in neurons; the link is shared by housekeeping and other matched
+promoters, and pace-of-ageing clocks do not see it (Fig. 10, Fig. 11).**
 
 *Every clock on every rebuilt series.* We scored every clock in the biolearn gallery that keeps at least 90 % of its
 weight measured on every rebuilt series with donor ages (40 tissue groups, 44 clocks; scored on the clock track, without the design-flag mask; clocks taken outside the tissue
@@ -663,7 +666,7 @@ Weidner and others), phenotypic and mortality (second: PhenoAge, GrimAge v1 and 
 pace of ageing (third: DunedinPACE, DunedinPoAm38), and mitotic and stochastic clocks. Their accelerations agreed
 only within generation: the first-generation clocks formed one block, GrimAge, DunedinPACE and Zhang another (Fig.
 10a). What each generation read of drift differed (Fig. 10b): first-generation accelerations went with a stronger
-shield share (r −0.23 to −0.36 for Horvath, Hannum, Lin and Weidner), the mitotic clock epiTOC1 almost was the shield
+shield share (r −0.23 to −0.36 for Horvath, Hannum, Lin and Weidner), the mitotic clock epiTOC1 tracked it closely
 (r −0.63), while GrimAge and DunedinPACE were unrelated to it (|r| ≤ 0.09). How far the clocks disagreed in a woman
 went with her look-alike drift B when accelerations were adjusted for age alone (r 0.44) or also for chip, signal
 intensity, detection and cell mix (0.28), and was unrelated to it once her mean methylation level was held as well
@@ -700,12 +703,15 @@ the mitotic clocks and B and F do not use (mean level and compression of betas t
 grew: epiTOC2 −0.50 raw and −0.58 adjusted (−0.57 in the 10 groups with chip), epiTOC1 −0.49 and −0.56, HypoClock
 +0.31 and +0.32. The clocks also predicted housekeeping drift at a given look-alike drift (epiTOC2 −0.52), so the
 link does not come from F's denominator alone. Cell composition was not measured in these tissues and remains a
-possible shared source. Second, 20 placebo promoter sets per group, matched on island status and baseline level and
-scored the same way, carry part of the link (median −0.18 for epiTOC2, +0.23 for HypoClock): some of it is common to
-promoters in general. After adjustment, housekeeping promoters exceeded the 95th placebo percentile in 18 of 18
-groups for epiTOC2 and 16 of 16 for epiTOC1, and in 8 of 15 for HypoClock. The placebo sets are matched less finely
-than the housekeeping set's own look-alikes (no matching on variability or probe chemistry), so this comparison is a
-first bound on how specific the link is to housekeeping promoters. Clocks were scored on the
+possible shared source. Second, placebo sets of non-housekeeping promoters, matched to housekeeping promoters on island status, baseline
+level, variability across people and probe chemistry, were each scored against the same background and with the same
+stratum weights as a housekeeping subset filled to the same quotas (20 draws per group; one primary group per study).
+They carried nearly the same link: for epiTOC2 the matched housekeeping subsets gave −0.61 against a placebo median
+of −0.58 (95th percentile −0.62), for epiTOC1 −0.57 against −0.56, for HypoClock +0.35 against +0.33. Within a draw
+the housekeeping subset was usually the stronger of the pair (the placebo reached it in 2 to 10 % of draws for
+epiTOC1, epiTOC2 and HypoClock), but it exceeded the placebos' 95th percentile in only 5 of 15 groups for epiTOC2 and 4 of 13 for
+HypoClock. The mitotic clocks therefore read how well a person's promoters as a class are protected from drift relative
+to the rest of the array; the housekeeping shield shares that protection with a small additional margin. Clocks were scored on the
 clock track (protocol change 4); drift on the standard rebuild.
 
 ![Figure 11](../docs/figures/clock_drift.png)
@@ -746,8 +752,8 @@ already linked age-related methylation change with tissue-specific expression an
 was a fair comparison, and with it three findings. Matched on island status and starting level, the protection
 becomes a size that can be compared across tissues and species and tested against a null. That size follows how
 strongly a promoter is used and whether the cells divide. And clocks read it unevenly: clocks of cell division call
-people with a stronger shield older for their age in nearly every dividing tissue tested, while pace-of-ageing clocks
-do not see it, so part of what makes clocks disagree is which part of stochastic drift each one reads.
+people whose promoters are better protected from drift older for their age in nearly every dividing tissue tested, a
+link that housekeeping promoters share with other matched promoters, while pace-of-ageing clocks do not see it, so part of what makes clocks disagree is which part of stochastic drift each one reads.
 
 **The shield belongs to active promoters.** Reference chromatin states account for
 most of the gap in blood and 25 to 44 % in cortex, and with expression and sorted-nuclei accessibility also
@@ -802,11 +808,13 @@ processed data and 1.01 on arrays rebuilt from raw files; only a matched analysi
 interval above one (1.49, 1.04 to 2.69). A second, small series gave no association. Drift B is not a marker of
 breast-cancer risk on this evidence.
 
-**Clocks of cell division read the shield.** Across 37 tissue groups, six mitotic clocks called people with a stronger
-shield older for their age in nearly every dividing tissue where they could be scored, including HypoClock, whose
-CpGs lie outside promoters in partially methylated domains; the promoter-based ones reversed in sorted neurons.
+**Clocks of cell division read promoter protection.** Across 37 tissue groups, six mitotic clocks called people whose
+promoters were better protected from drift older for their age in nearly every dividing tissue where they could be
+scored, including HypoClock, whose CpGs lie outside promoters in partially methylated domains; the promoter-based ones
+reversed in sorted neurons. Matched non-housekeeping promoters carried nearly the same link, so what these clocks read
+is protection of promoters as a class, of which the housekeeping shield is one part.
 Hannum and PhenoAge did so more weakly, and Horvath's clock and DunedinPACE did not (Fig. 11); in the blood of one cohort, GrimAge was unrelated to
-it as well and accelerations agreed only within generation (Fig. 10). Since the shield grows with division, a clock
+it as well and accelerations agreed only within generation (Fig. 10). Since protection from drift accrues with division in culture, a clock
 that counts divisions is the one expected to read it, and in cells that no longer divide it does not. Across the rebuilt series, too, the valid clocks of a tissue
 agreed only partly on who was ageing fast. Which part of drift a clock reads is therefore one source of that
 disagreement. How far one woman's clocks disagree tracked her drift only while her mean methylation level was free to
