@@ -690,7 +690,16 @@ HypoClock in the 82-donor group (−0.31; it failed coverage in the 28 controls)
 Hannum (median −0.14, negative in 74 % of 34 groups) and PhenoAge (−0.18, 81 % of 37). Horvath's pan-tissue clock
 (−0.01, 54 % of 37) and DunedinPACE (−0.05, 62 % of 26) showed no consistent link, and trait predictors used as
 negative controls (body-mass index, smoking and the like) sat at −0.01. These are within-group associations of
-age-adjusted scores; where a series has a pooled and a stratified group, both are shown. Clocks were scored on the
+age-adjusted scores; where a series has a pooled and a stratified group, both are shown. Two checks address whether a
+shared array effect could move a clock and F together. First, with clock, B and F all adjusted alike for age, chip,
+log intensity, detection and two global measures taken on 20,000 CpGs that neither the clocks nor B and F use (mean
+level and compression of betas toward the middle), the links held or grew (median over the largest group of each
+series outside the brain: epiTOC2 −0.50 raw, −0.58 adjusted; epiTOC1 −0.49 and −0.56; HypoClock +0.31 and +0.32), and the
+clocks predicted housekeeping drift at a given look-alike drift (epiTOC2 −0.52), so the link does not come from F's
+denominator alone. Second, against 20 placebo promoter sets per group matched on island status and baseline level and
+scored the same way, part of the link is common to any promoter set (placebo median −0.18 for the epiTOC clocks, +0.22
+for HypoClock), and housekeeping promoters exceeded the 95th placebo percentile in 85 to 89 % of groups for the
+promoter clocks and in 56 % for HypoClock. Clocks were scored on the
 clock track (protocol change 4); drift on the standard rebuild.
 
 ![Figure 11](../docs/figures/clock_drift.png)
