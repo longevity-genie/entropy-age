@@ -69,10 +69,9 @@ def _matrix(betas: pl.DataFrame, wanted: list[str], samples: list[str]) -> tuple
     return x, ~np.isnan(x)
 
 
-def _covered(present: np.ndarray, w: np.ndarray) -> tuple[bool, float]:
-    """Whether the weights ``w`` (one per row) are measured well enough, and the median per-array measured share."""
-    share = (np.abs(w)[:, None] * present).sum(axis=0) / np.abs(w).sum()
-    return bool((share >= MIN_SHARE).mean() >= MIN_ARRAYS), float(np.median(share))
+def _shares(present: np.ndarray, w: np.ndarray) -> np.ndarray:
+    """Each array's measured share of the weights ``w`` (one weight per row)."""
+    return (np.abs(w)[:, None] * present).sum(axis=0) / np.abs(w).sum()
 
 
 def _filled(x: np.ndarray, present: np.ndarray) -> tuple[np.ndarray, np.ndarray]:
@@ -85,47 +84,64 @@ def _filled(x: np.ndarray, present: np.ndarray) -> tuple[np.ndarray, np.ndarray]
 
 def score(betas: pl.DataFrame, samples: list[str], coef: dict[str, pl.DataFrame]) -> tuple[pl.DataFrame, pl.DataFrame]:
     """Score every mitotic clock on these arrays (one analysed group). Returns (long frame sample, clock, prediction
-    for the clocks that pass coverage; coverage frame clock, passed, median measured weight share, CpGs used)."""
+    for the clocks that pass coverage, NaN for an array that itself measures under MIN_SHARE of the weight; coverage
+    frame per clock: passed, share of arrays meeting MIN_SHARE (both arms at once for epiCMIT), median measured share,
+    CpGs measured in any array, and for epiCMIT the share of arrays whose score comes from the hyper arm)."""
     out, cover = [], []
 
-    def note(name: str, ok: bool, share: float, used: int) -> None:
-        cover.append({"clock": name, "passed": ok, "median_weight_share": share, "cpgs_used": used})
+    def keep(name: str, ok_arrays: np.ndarray, share: np.ndarray, used: int, values, **extra) -> None:
+        passed = bool(ok_arrays.mean() >= MIN_ARRAYS)
+        cover.append(
+            {
+                "clock": name,
+                "passed": passed,
+                "arrays_meeting": float(ok_arrays.mean()),
+                "median_weight_share": float(np.median(share)),
+                "cpgs_used": used,
+                "hyper_arm_share": extra.get("hyper", float("nan")),
+            }
+        )
+        if passed:
+            out.append((name, np.where(ok_arrays, values, np.nan)))
 
     for name in ("epiTOC2", "epiTOC3"):
         e = coef[name]
         x, present = _matrix(betas, e["cpg"].to_list(), samples)
         d, b0 = e["delta"].to_numpy(), e["beta0"].to_numpy()
-        ok, share = _covered(present, 1 / (d * (1 - b0)))
+        share = _shares(present, 1 / (d * (1 - b0)))
         have, x = _filled(x, present)
-        note(name, ok, share, int(have.sum()))
-        if ok:
-            out.append((name, 2 * ((x[have] - b0[have, None]) / (d[have] * (1 - b0[have]))[:, None]).mean(axis=0)))
+        tnsc = 2 * ((x[have] - b0[have, None]) / (d[have] * (1 - b0[have]))[:, None]).mean(axis=0)
+        keep(name, share >= MIN_SHARE, share, int(have.sum()), tnsc)
     h = coef["HypoClock"]
     x, present = _matrix(betas, h["cpg"].to_list(), samples)
-    ok, share = _covered(present, np.ones(h.height))
+    share = _shares(present, np.ones(h.height))
     have, x = _filled(x, present)
-    note("HypoClock", ok, share, int(have.sum()))
-    if ok:
-        out.append(("HypoClock", x[have].mean(axis=0)))
+    keep("HypoClock", share >= MIN_SHARE, share, int(have.sum()), x[have].mean(axis=0))
     r = coef["RepliTali"]
     intercept = float(r.filter(pl.col("term") == "(Intercept)")["coefficient"][0])
     r = r.filter(pl.col("term") != "(Intercept)")
     x, present = _matrix(betas, r["term"].to_list(), samples)
     w = r["coefficient"].to_numpy()
-    ok, share = _covered(present, w)
+    share = _shares(present, w)
     have, x = _filled(x, present)
-    note("RepliTali", ok, share, int(have.sum()))
-    if ok:
-        out.append(("RepliTali", intercept + w[have] @ x[have]))
+    keep("RepliTali", share >= MIN_SHARE, share, int(have.sum()), intercept + w[have] @ x[have])
     c = coef["epiCMIT"]
     hyper = (c["class"] == "hyper").to_numpy()
     x, present = _matrix(betas, c["cpg"].to_list(), samples)
-    ok_hyper, share_hyper = _covered(present[hyper], np.ones(int(hyper.sum())))
-    ok_hypo, share_hypo = _covered(present[~hyper], np.ones(int((~hyper).sum())))
+    s_hyper = _shares(present[hyper], np.ones(int(hyper.sum())))
+    s_hypo = _shares(present[~hyper], np.ones(int((~hyper).sum())))
     have, x = _filled(x, present)
-    note("epiCMIT", ok_hyper and ok_hypo, min(share_hyper, share_hypo), int(have.sum()))
-    if ok_hyper and ok_hypo:
-        out.append(("epiCMIT", np.maximum(x[have & hyper].mean(axis=0), 1 - x[have & ~hyper].mean(axis=0))))
+    arm_hyper = x[have & hyper].mean(axis=0)
+    arm_hypo = 1 - x[have & ~hyper].mean(axis=0)
+    ok = (s_hyper >= MIN_SHARE) & (s_hypo >= MIN_SHARE)
+    keep(
+        "epiCMIT",
+        ok,
+        np.minimum(s_hyper, s_hypo),
+        int(have.sum()),
+        np.maximum(arm_hyper, arm_hypo),
+        hyper=float((arm_hyper >= arm_hypo).mean()),
+    )
     scores = pl.DataFrame(
         [
             {"sample": s, "clock": name, "prediction": float(v)}

@@ -22,10 +22,10 @@ MIN_DETECTED = 0.90  # samples with fewer probes passing pOOBAH are dropped (SeS
 MIN_INTENSITY_SHARE = 0.25
 
 
-def series_dir(paths: ProjectPaths, gse: str) -> Path:
-    """``data/interim/sesame/<GSE>``; ``ENTROPY_AGE_SESAME_DIR`` names another rebuild (the clock track,
-    ``sesame_clock``: SeSAMe without the design-flag mask, so clocks keep their CpGs)."""
-    return paths.interim / os.environ.get("ENTROPY_AGE_SESAME_DIR", "sesame") / gse
+def series_dir(paths: ProjectPaths, gse: str, sesame_dir: str | None = None) -> Path:
+    """``data/interim/sesame/<GSE>``; ``ENTROPY_AGE_SESAME_DIR`` (or ``sesame_dir``) names another rebuild (the clock
+    track, ``sesame_clock``: SeSAMe without the design-flag mask, so clocks keep their CpGs)."""
+    return paths.interim / (sesame_dir or os.environ.get("ENTROPY_AGE_SESAME_DIR", "sesame")) / gse
 
 
 def available(paths: ProjectPaths, gse: str) -> bool:
@@ -52,11 +52,11 @@ def species_detection(paths: ProjectPaths, gse: str) -> pl.DataFrame:
     return pl.DataFrame(rows)
 
 
-def read_qc(paths: ProjectPaths, gse: str) -> pl.DataFrame:
+def read_qc(paths: ProjectPaths, gse: str, sesame_dir: str | None = None) -> pl.DataFrame:
     """Per-sample QC with ``passed``: detection at or above ``MIN_DETECTED`` over the whole array, or, on a
     multi-species array, over the probes SeSAMe's species mask keeps (``frac_dt_species``, written by the R script
     since RM43); rebuilds made before that fall back to the probes the series measures (circular, kept for them)."""
-    qc = pl.read_csv(series_dir(paths, gse) / f"{gse}.qc.csv", infer_schema_length=None)
+    qc = pl.read_csv(series_dir(paths, gse, sesame_dir) / f"{gse}.qc.csv", infer_schema_length=None)
     # one physical array per sample, the one the rebuild keeps in the betas (the first in file order): betas, QC,
     # detection and chip then describe the same array; a sample whose kept array fails detection is left out
     qc = qc.unique(subset="sample", keep="first", maintain_order=True)

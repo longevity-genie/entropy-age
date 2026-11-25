@@ -25,6 +25,7 @@ import numpy as np
 import polars as pl
 
 from entropy_age import plots
+from entropy_age.data import reprocessed
 from entropy_age.data.annotation import AnnotationLayout
 from entropy_age.experiments import mitotic_clocks
 from entropy_age.experiments.clock_atlas import valid
@@ -38,6 +39,7 @@ from entropy_age.experiments.tissue_contrast import _features
 #: drift (B, F) on the standard rebuild; clock scores on the clock track (protocol change 4)
 SERIES = Path("data/interim/clocks/series")
 CLOCK_SCORES = Path("data/interim/clocks/series_unmasked")
+CLOCK_TRACK = "sesame_clock"  # the rebuild the clock scores come from
 GROUP = "housekeeping"
 MIN_ARRAYS = 25
 GENS = ("1st: chronological", "2nd: phenotypic and mortality", "3rd: pace of ageing", "mitotic and stochastic")
@@ -51,6 +53,10 @@ def run(ctx: Context) -> list[Path]:
     features, _, membership = _features(ctx.paths, ctx.rng(120_000))
     probes = pl.read_parquet(AnnotationLayout(ctx.paths).probes_450k).filter(pl.col("cpg").is_in(features))
     mitotic = mitotic_clocks.load(ctx.paths.root)  # epiTOC2/3, HypoClock, RepliTali, epiCMIT, scored per group here
+    if mitotic is None:  # without the coefficient cache the clock CpGs could not be kept out of B and F
+        raise FileNotFoundError(
+            f"clock_drift: no mitotic coefficients in {mitotic_clocks.DIR}; run scripts/fetch_mitotic_clocks.py"
+        )
     # every CpG a mitotic clock reads (EpiTOC1's included) stays out of B and F, so a clock and the drift measures
     # never share a probe (Codex review 2026-11-25: epiTOC and epiCMIT CpGs sat in the matched background)
     clock_cpgs = mitotic_clocks.cpgs(mitotic) if mitotic is not None else set()
@@ -71,6 +77,10 @@ def run(ctx: Context) -> list[Path]:
         if mitotic is not None and unmasked.exists():
             mb = pl.scan_parquet(unmasked).filter(pl.col("cpg").is_in(clock_cpgs)).collect()
             available &= set(mb.columns)
+            # the clock track's own QC as well as the rebuild's (selection applies the latter)
+            available &= set(
+                reprocessed.read_qc(ctx.paths, gse, sesame_dir=CLOCK_TRACK).filter(pl.col("passed"))["sample"]
+            )
         chosen = selection(ctx.paths, name, spec, available)
         if chosen is None:
             continue
@@ -111,21 +121,24 @@ def run(ctx: Context) -> list[Path]:
                 raise ValueError(f"clock_drift: {name} / {label}: clock scores out of the arrays' order")
             for clock in [c for c in clk.columns if c != "sample"]:
                 v = clk[clock].to_numpy().astype(float)
-                if not np.isfinite(v).all() or np.std(v) == 0:
+                use = np.isfinite(v)  # an array below a clock's own coverage carries no score for that clock
+                if use.sum() < MIN_ARRAYS or np.std(v[use]) == 0:
                     continue
-                acc = residual(v, age)
+                acc = residual(v[use], age[use])
+                bu, fu = b[use], f[use]
                 rows.append(
                     {
                         "series": name,
                         "group": label,
                         "sensitivity": bool(SENSITIVITY.search(name)),
                         "arrays": len(samples),
+                        "scored": int(use.sum()),
                         "cpgs": len(kept),
                         "clock": clock,
                         "generation": GENERATION.get(clock, "other"),
                         "valid": valid(clock, label),
-                        "r_B": float(np.corrcoef(acc, b)[0, 1]) if np.std(b) > 0 else float("nan"),
-                        "r_F": float(np.corrcoef(acc, f)[0, 1]) if np.std(f) > 0 else float("nan"),
+                        "r_B": float(np.corrcoef(acc, bu)[0, 1]) if np.std(bu) > 0 else float("nan"),
+                        "r_F": float(np.corrcoef(acc, fu)[0, 1]) if np.std(fu) > 0 else float("nan"),
                     }
                 )
     if not rows:

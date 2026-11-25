@@ -52,3 +52,15 @@ def test_coverage_is_judged_per_array():
 
 def test_cpgs_include_epitoc1():
     assert {"a", "b", "c", "z"} == mitotic_clocks.cpgs(_coef())
+
+
+def test_array_below_its_share_gets_no_score():
+    # eleven arrays measure everything; one misses b, half of epiTOC2's weight: the group passes, that array is NaN
+    cols = {f"s{i}": [0.1, 0.6, 0.5] for i in range(11)}
+    cols["bad"] = [0.1, None, 0.5]
+    betas = pl.DataFrame({"cpg": ["a", "b", "c"], **cols})
+    scores, cover = mitotic_clocks.score(betas, list(cols), _coef())
+    toc = scores.filter(pl.col("clock") == "epiTOC2")
+    assert np.isnan(toc.filter(pl.col("sample") == "bad")["prediction"][0])
+    assert np.isfinite(toc.filter(pl.col("sample") == "s0")["prediction"][0])
+    assert cover.filter(pl.col("clock") == "epiTOC2")["passed"][0]
