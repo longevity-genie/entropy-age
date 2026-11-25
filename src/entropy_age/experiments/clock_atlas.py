@@ -50,7 +50,7 @@ BLOOD = {
     "YingAdaptAge",
 }
 TISSUE_ONLY = {"DNAmClockCortical": "cortex|brain|amygdala|hippocamp|neuron", "PEDBE": "buccal|cheek"}
-PAN = {"Horvathv1", "Horvathv2", "EpiTOC1", "StocH"}
+PAN = {"Horvathv1", "Horvathv2", "EpiTOC1", "StocH", "epiTOC2", "epiTOC3", "HypoClock", "RepliTali", "epiCMIT"}
 BLOOD_WORDS = re.compile(r"blood|pbmc|leukocyte|monocyte|lymphocyte|cd4|cd8|neutrophil", re.I)
 YEARS = "Age (Years)"
 

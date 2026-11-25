@@ -7,6 +7,11 @@ promoters (B) and shield share (F), scored against a reference fitted on everyon
 prediction's residual on age within the group. Per group and clock: the correlation of the acceleration with B and
 with F, and the clock's generation. Clocks outside their tissue are kept, labelled by ``clock_atlas.valid``.
 
+Arrays are chosen by ``series.selection`` as the gap runner chooses them (QC, configured donor and CpG exclusions,
+one array per donor), among arrays present in every input. The mitotic clocks of ``mitotic_clocks`` are scored on
+each group's own arrays from the clock track, with coverage judged there; their CpGs and EpiTOC1's are kept out of B
+and F. Rows from sensitivity configs (``series.SENSITIVITY``) are flagged and left out of the figure.
+
 Writes ``clock_drift/correlations`` and a figure (per generation, the spread of r with F and with B across tissue
 groups). ``entropy-age figures clock_drift`` after the clock panel per series (data/interim/clocks/series/).
 """
@@ -20,7 +25,6 @@ import numpy as np
 import polars as pl
 
 from entropy_age import plots
-from entropy_age.data import reprocessed
 from entropy_age.data.annotation import AnnotationLayout
 from entropy_age.experiments import mitotic_clocks
 from entropy_age.experiments.clock_atlas import valid
@@ -28,7 +32,7 @@ from entropy_age.experiments.clock_increment import GENERATION
 from entropy_age.experiments.common import Context, write_table
 from entropy_age.experiments.health_states import loo_scores
 from entropy_age.experiments.per_person import _islands, _sets
-from entropy_age.experiments.series import groups_of, series_table, specs
+from entropy_age.experiments.series import SENSITIVITY, selection, specs
 from entropy_age.experiments.tissue_contrast import _features
 
 #: drift (B, F) on the standard rebuild; clock scores on the clock track (protocol change 4)
@@ -46,36 +50,49 @@ def residual(y: np.ndarray, x: np.ndarray) -> np.ndarray:
 def run(ctx: Context) -> list[Path]:
     features, _, membership = _features(ctx.paths, ctx.rng(120_000))
     probes = pl.read_parquet(AnnotationLayout(ctx.paths).probes_450k).filter(pl.col("cpg").is_in(features))
-    mitotic = mitotic_clocks.load(ctx.paths.root)  # epiTOC2, RepliTali, epiCMIT scored here from the clock track
-    rows = []
+    mitotic = mitotic_clocks.load(ctx.paths.root)  # epiTOC2/3, HypoClock, RepliTali, epiCMIT, scored per group here
+    # every CpG a mitotic clock reads (EpiTOC1's included) stays out of B and F, so a clock and the drift measures
+    # never share a probe (Codex review 2026-11-25: epiTOC and epiCMIT CpGs sat in the matched background)
+    clock_cpgs = mitotic_clocks.cpgs(mitotic) if mitotic is not None else set()
+    rows, coverage = [], []
     for name, spec in specs().items():
         if spec.get("annotation", "human") != "human":
             continue
         gse = spec["accession"]
         betas_path = ctx.paths.root / SERIES / f"{gse}_cpgs.parquet"
         clocks_path = ctx.paths.root / CLOCK_SCORES / f"{gse}_clocks.csv"
-        table = series_table(ctx.paths, spec)
-        if not (betas_path.exists() and clocks_path.exists() and table is not None):
+        unmasked = ctx.paths.root / CLOCK_SCORES / f"{gse}_cpgs.parquet"
+        if not (betas_path.exists() and clocks_path.exists()):
             continue
-        if not reprocessed.available(ctx.paths, gse):
+        long = pl.read_csv(clocks_path, schema_overrides={"sample": pl.String}).select("sample", "clock", "prediction")
+        betas = pl.read_parquet(betas_path).filter(pl.col("cpg").is_in(features) & ~pl.col("cpg").is_in(clock_cpgs))
+        mb = None
+        available = set(betas.columns) & set(long["sample"].to_list())
+        if mitotic is not None and unmasked.exists():
+            mb = pl.scan_parquet(unmasked).filter(pl.col("cpg").is_in(clock_cpgs)).collect()
+            available &= set(mb.columns)
+        chosen = selection(ctx.paths, name, spec, available)
+        if chosen is None:
             continue
-        betas = pl.read_parquet(betas_path).filter(pl.col("cpg").is_in(features))
-        long = pl.read_csv(clocks_path).select("sample", "clock", "prediction")
-        if mitotic is not None:
-            unmasked = ctx.paths.root / CLOCK_SCORES / f"{gse}_cpgs.parquet"
-            if unmasked.exists():
-                mb = pl.scan_parquet(unmasked).filter(pl.col("cpg").is_in(mitotic_clocks.cpgs(mitotic))).collect()
-                arrays = [c for c in mb.columns if c != "cpg"]
-                long = pl.concat([long.cast({"prediction": pl.Float64}), mitotic_clocks.score(mb, arrays, mitotic)])
-        scores = long.pivot(on="clock", index="sample", values="prediction")
-        usable = reprocessed.read_qc(ctx.paths, gse).filter(pl.col("passed"))["sample"].to_list()
-        for label, s in groups_of(table, spec, usable, set()).items():
-            s = s.drop_nulls("age").filter(
-                pl.col("sample").is_in(betas.columns) & pl.col("sample").is_in(scores["sample"])
-            )
+        groups, dropped = chosen
+        if dropped:
+            betas = betas.filter(~pl.col("cpg").is_in(dropped))
+        base = long.cast({"prediction": pl.Float64}).pivot(on="clock", index="sample", values="prediction")
+        if base.height != long["sample"].n_unique():
+            raise ValueError(f"clock_drift: {name}: duplicate sample ids in {clocks_path.name}")
+        for label, s in groups.items():
+            s = s.drop_nulls("age")
             if s.height < MIN_ARRAYS:
                 continue
             samples = s["sample"].to_list()
+            scores = base
+            if mb is not None:
+                extra, cover = mitotic_clocks.score(mb, samples, mitotic)
+                coverage += [{"series": name, "group": label, **r} for r in cover.to_dicts()]
+                if extra.height:
+                    scores = base.join(
+                        extra.pivot(on="clock", index="sample", values="prediction"), on="sample", how="left"
+                    )
             sub = betas.select("cpg", *samples)
             x = sub.select(samples).to_numpy().T.astype(float)
             ok = ~np.isnan(x).any(axis=0)
@@ -89,7 +106,9 @@ def run(ctx: Context) -> list[Path]:
             per = loo_scores(x[:, ok], _islands(kept, probes), sets)
             b, f = per[f"B_{GROUP}"], per[f"F_{GROUP}"]
             age = s["age"].to_numpy().astype(float)
-            clk = s.select("sample").join(scores, on="sample", how="left")
+            clk = s.select("sample").join(scores, on="sample", how="left", validate="1:1")
+            if clk["sample"].to_list() != samples:
+                raise ValueError(f"clock_drift: {name} / {label}: clock scores out of the arrays' order")
             for clock in [c for c in clk.columns if c != "sample"]:
                 v = clk[clock].to_numpy().astype(float)
                 if not np.isfinite(v).all() or np.std(v) == 0:
@@ -99,7 +118,9 @@ def run(ctx: Context) -> list[Path]:
                     {
                         "series": name,
                         "group": label,
+                        "sensitivity": bool(SENSITIVITY.search(name)),
                         "arrays": len(samples),
+                        "cpgs": len(kept),
                         "clock": clock,
                         "generation": GENERATION.get(clock, "other"),
                         "valid": valid(clock, label),
@@ -113,7 +134,9 @@ def run(ctx: Context) -> list[Path]:
     out = ctx.out_dir("clock_drift")
     table = pl.DataFrame(rows)
     write_table(table, out / "correlations", csv_max_rows=10_000)
-    return [draw(table, ctx.figure_path("clock_drift"))]
+    if coverage:
+        write_table(pl.DataFrame(coverage), out / "mitotic_coverage", csv_max_rows=10_000)
+    return [draw(table.filter(~pl.col("sensitivity")), ctx.figure_path("clock_drift"))]
 
 
 def draw(table: pl.DataFrame, path: Path) -> Path:

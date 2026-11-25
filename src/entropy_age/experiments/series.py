@@ -165,6 +165,43 @@ def groups_of(table: pl.DataFrame, spec: dict, usable: list[str], exclude: set[s
     return out
 
 
+#: configs that rerun another config's groups with something left out; their rows are sensitivity analyses and never
+#: count as independent groups in a summary across series
+SENSITIVITY = re.compile(r"_no_field_d\d+$")
+
+
+def selection(
+    paths, name: str, spec: dict, available: set[str] | None = None
+) -> tuple[dict[str, pl.DataFrame], set[str]] | None:
+    """The arrays each group of a series description analyses, chosen as ``run_series`` chooses them, for analyses
+    beside the gap runner (the clock analyses): arrays passing QC (detection and intensity), the description's donor
+    exclusions (``exclude_jaffe_donors``), and, when given, only arrays present in every input the caller needs
+    (``available``: sample ids found in its betas and its clock scores), all applied before one array per donor is
+    taken, so a donor whose first array lacks an input keeps another one. A group mixing array platforms raises, as in
+    the runner. Also returns the CpGs the description leaves out (``exclude_cpgs``). None when the series has no
+    rebuild or sample table."""
+    gse = spec["accession"]
+    table = series_table(paths, spec)
+    if table is None or not reprocessed.available(paths, gse):
+        return None
+    dropped: set[str] = set()
+    if "exclude_cpgs" in spec:
+        dropped = set(pl.read_csv(CONFIG.parents[1] / spec["exclude_cpgs"])["cpg"].to_list())
+    qc = reprocessed.read_qc(paths, gse).filter(pl.col("passed"))
+    usable = [v for v in qc["sample"].to_list() if available is None or v in available]
+    exclude: set[str] = set()
+    if spec.get("exclude_jaffe_donors"):
+        jaffe = pl.read_parquet(cohort_layout("jaffe", paths).samples)
+        exclude = set(jaffe.filter((pl.col("group") == "Control") & (pl.col("age") >= 20))["donor"].to_list())
+    platform_of = dict(qc.select("sample", "platform").iter_rows()) if "platform" in qc.columns else {}
+    groups = groups_of(table, spec, usable, exclude)
+    for label, s in groups.items():
+        platforms = {platform_of[v] for v in s["sample"].to_list() if v in platform_of}
+        if len(platforms) > 1:
+            raise ValueError(f"series {name}: {label} mixes array platforms {sorted(platforms)}; they are never pooled")
+    return groups, dropped
+
+
 def age_identifiable(ages: np.ndarray, cov: np.ndarray, distinct: int | None = None, min_df: int = 10) -> bool:
     """True when age is estimable beside the nuisance design: adding age raises the design's rank, and the distinct
     donors leave at least ``min_df`` residual degrees of freedom after the full design (rank, not column counts, so

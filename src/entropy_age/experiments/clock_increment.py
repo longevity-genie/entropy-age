@@ -67,7 +67,7 @@ GENERATION = {
     **dict.fromkeys(("PhenoAge", "HRSInCHPhenoAge", "Zhang_10", "GrimAgeV1", "GrimAgeV2", "YingCausAge", "YingDamAge",
                      "YingAdaptAge"), "2nd: phenotypic and mortality"),
     **dict.fromkeys(("DunedinPACE", "DunedinPoAm38"), "3rd: pace of ageing"),
-    **dict.fromkeys(("EpiTOC1", "epiTOC2", "RepliTali", "epiCMIT", "StocH", "StocZ", "StocP"), "mitotic and stochastic"),
+    **dict.fromkeys(("EpiTOC1", "epiTOC2", "epiTOC3", "HypoClock", "RepliTali", "epiCMIT", "StocH", "StocZ", "StocP"), "mitotic and stochastic"),
 }
 META = ["sample", "female", "age", "icd", "years_to_diagnosis", "chip", "mean_beta", B, F]
 

@@ -8,4 +8,5 @@ hold = ["dist.dx"]
 [groups."neurons, every donor"]
 "cell.type" = "NeuN+"
 [groups."neurons, controls"]
+"cell.type" = "NeuN+"
 "dist.dx" = "Control"
