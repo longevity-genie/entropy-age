@@ -131,3 +131,68 @@ def test_read_status_finds_the_panel_beside_any_scores_name(tmp_path):
         panel = tmp_path / name.replace(".csv", "_panel.csv")
         pl.DataFrame({"clock": ["Horvathv1"], "status": ["kept"]}).write_csv(panel)
         assert read_status(tmp_path / name) == {"Horvathv1": "kept"}
+
+
+def test_age_unit_check_ignores_case_and_accepts_named_ages():
+    from entropy_age.experiments.clock_preprocessing import is_age_years
+
+    for unit in ("Age (Years)", "Age (years)", "Human Cortex Age (Years)", " age  (YEARS) "):
+        assert is_age_years(unit), unit
+    for unit in ("Mortality Adjusted Age (Years)", "Age (days)", "Aging Rate (Years/Year)", None, ""):
+        assert not is_age_years(unit), unit
+    masked, unmasked, ages, (age, hm, hu, _) = _tracks()
+    relabel = {"Age (Years)": "Age (years)"}
+    rows = {
+        r["clock"]: r
+        for r in compare(
+            masked.with_columns(pl.col("output").replace(relabel)),
+            unmasked.with_columns(pl.col("output").replace(relabel)),
+            ages,
+        )
+    }
+    assert np.isclose(rows["Horvathv1"]["mae_masked"], np.mean(np.abs(hm[:-5] - age[:-5])))
+    assert rows["GrimAgeV1"]["mae_masked"] is None  # mortality-adjusted age: no MAE against age
+
+
+def test_common_coverage_is_reused_only_for_the_same_arrays_and_exports(tmp_path):
+    import os
+
+    from entropy_age.experiments.clock_preprocessing import fingerprint, samples_digest, series_common
+
+    mbetas, ubetas = tmp_path / "m.parquet", tmp_path / "u.parquet"
+    arrays = {"a", "b", "c"}
+    for path in (mbetas, ubetas):
+        pl.DataFrame({"cpg": ["cg1"], **{s: [0.5] for s in sorted(arrays)}}).write_parquet(path)
+
+    def record(betas, samples, status="kept"):
+        return {
+            "status": {"Horvathv1": status},
+            "arrays": len(samples),
+            "samples_sha256": samples_digest(samples),
+            "parquet": str(betas),
+            "parquet_fingerprint": fingerprint(betas),
+        }
+
+    coverage = {("G", "masked"): record(mbetas, arrays), ("G", "unmasked"): record(ubetas, arrays, "coverage")}
+    cm, cu, why = series_common(coverage, "G", arrays, mbetas, ubetas)
+    assert why is None and cm == {"Horvathv1": "kept"} and cu == {"Horvathv1": "coverage"}
+    # the same number of arrays, other ids: stale
+    _, _, why = series_common(coverage, "G", {"a", "b", "d"}, mbetas, ubetas)
+    assert why is not None and "other arrays" in why
+    # the export rewritten with the same ids (a rebuild): stale
+    st = mbetas.stat()
+    os.utime(mbetas, ns=(st.st_atime_ns, st.st_mtime_ns + 10**9))
+    cm, cu, why = series_common(coverage, "G", arrays, mbetas, ubetas)
+    assert cm is None and cu is None and "masked: betas export changed" in why
+    # a result without ids or fingerprint (an old coverage file): not reused
+    old = {k: {"status": v["status"], "arrays": 3} for k, v in coverage.items()}
+    assert series_common(old, "G", arrays, mbetas, ubetas)[2] is not None
+    # unknown coverage: no one-track-only call and no count
+    masked, unmasked, ages, _ = _tracks()
+    rows = compare(masked, unmasked, ages, {"GrimAgeV1": "coverage"}, {}, unknown="masked: betas export changed")
+    g = {r["clock"]: r for r in rows}["GrimAgeV1"]
+    assert (g["status_masked"], g["status_unmasked"]) == ("unknown", "unknown") and g["one_track_only"] is None
+    assert g["one_track_only_own_arrays"] and g["status_basis"].startswith("unknown")
+    pairs = pl.DataFrame([{"series": "G"} | r for r in rows], infer_schema_length=None)
+    clocks = {r["clock"]: r for r in summarise(pairs).iter_rows(named=True)}
+    assert clocks["GrimAgeV1"]["unmasked_only"] == 0 and clocks["GrimAgeV1"]["series_coverage_unknown"] == 1

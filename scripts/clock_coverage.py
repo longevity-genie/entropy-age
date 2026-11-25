@@ -11,11 +11,15 @@
 samples`` (``samples``: the array ids joined by ``;``), written by ``clock_preprocessing.write_manifest`` with the
 arrays both tracks exported that pass the current QC, so the two tracks' coverage is judged on the same arrays. OUT
 gets one row per series, track and clock: the arrays, the share of them with at least 90 % of the clock's absolute
-weight measured, the median measured share, and ``kept`` or ``coverage``. The weights and the measured-row rule are
+weight measured, the median measured share, ``kept`` or ``coverage``, and what the result stands for: the parquet
+read, its fingerprint (size and modification time, read before the betas) and a SHA-256 of the sorted array ids, which
+clock_preprocessing checks against the current arrays and exports before it reuses the result. The weights and the
+measured-row rule are
 those of clocks_biolearn.py (imported from beside this file); clocks it does not score (other model types) are not
 listed, their status stays the one the clock track's panel gives.
 """
 
+import hashlib
 import sys
 from pathlib import Path
 
@@ -47,6 +51,17 @@ def clock_weights() -> dict[str, tuple[pd.Series, bool]]:
     return out
 
 
+def samples_digest(samples) -> str:
+    """SHA-256 of the sorted array ids joined by ``;`` (clock_preprocessing.samples_digest)."""
+    return hashlib.sha256(";".join(sorted(str(s) for s in samples)).encode()).hexdigest()
+
+
+def fingerprint(path: str) -> str:
+    """Size and modification time of a betas export (clock_preprocessing.fingerprint)."""
+    st = Path(path).stat()
+    return f"{st.st_size}:{st.st_mtime_ns}"
+
+
 def main(manifest: str, dst: str) -> None:
     jobs = pd.read_csv(manifest, dtype=str)
     weights = clock_weights()
@@ -54,6 +69,8 @@ def main(manifest: str, dst: str) -> None:
     rows = []
     for job in jobs.itertuples():
         samples = [s for s in str(job.samples).split(";") if s]
+        stamp = fingerprint(job.parquet)
+        digest = samples_digest(samples)
         betas = pd.read_parquet(job.parquet, columns=["cpg", *samples], filters=[("cpg", "in", needed)])
         betas = betas.set_index("cpg")
         for name, (weight, grim) in weights.items():
@@ -70,8 +87,15 @@ def main(manifest: str, dst: str) -> None:
                     "arrays_covered": share,
                     "median_weight_share": float(measured.median()) if len(samples) else float("nan"),
                     "status": "kept" if share >= MIN_ARRAY_SHARE else "coverage",
+                    "parquet": job.parquet,
+                    "parquet_fingerprint": stamp,
+                    "samples_sha256": digest,
                 }
             )
+        if fingerprint(job.parquet) != stamp:  # rewritten while read: the result stands for neither version
+            for row in rows:
+                if row["series"] == job.series and row["track"] == job.track:
+                    row["parquet_fingerprint"] = "changed while read"
         print(f"{job.series} {job.track}: {len(samples)} arrays", flush=True)
     pd.DataFrame(rows).to_csv(dst, index=False)
 

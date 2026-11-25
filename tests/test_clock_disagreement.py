@@ -8,8 +8,10 @@ from entropy_age.experiments.clock_disagreement import (
     aligned,
     breast_rows,
     disagreement,
+    drift_rows,
     fit_clogit,
     fit_logit,
+    headline,
     partial_r,
     quality_terms,
     read_clock_scores,
@@ -239,6 +241,8 @@ def test_breast_rows_report_every_model_with_retention():
 def test_summary_leaves_out_sensitivity_and_subset_rows():
     drift = pl.DataFrame(
         {
+            "series": ["S1", "S2", "S2 sensitivity", "S1"],
+            "group": ["blood", "lung", "lung", "blood, women"],
             "panel": ["valid"] * 4,
             "independent": [True, True, False, False],
             "r_dis_B": [0.1, 0.3, 0.9, 0.9],
@@ -253,3 +257,92 @@ def test_summary_leaves_out_sensitivity_and_subset_rows():
     assert row["groups"] == 2 and np.isclose(row["median_r_dis_B"], 0.2)
     assert row["groups_with_quality"] == 1 and np.isclose(row["median_partial_r_dis_B_quality"], 0.05)
     assert np.isclose(row["median_partial_r_dis_B_age_same_groups"], 0.1)
+
+
+def test_fits_on_empty_or_non_finite_designs_report_why():
+    rng = np.random.default_rng(11)
+    beta, se, status = fit_logit(np.zeros(0), np.zeros((0, 3)))
+    assert status == "no rows" and np.isnan(beta).all() and beta.size == 3
+    x = np.column_stack([np.ones(50), rng.normal(size=50)])
+    y = (rng.uniform(size=50) < 0.5).astype(float)
+    x[3, 1] = np.nan
+    assert fit_logit(y, x)[2] == "non-finite value in the design or outcome"
+    assert fit_logit(y[:2], x[:2])[2].startswith("too few rows")
+    sets = [[3 * i, 3 * i + 1, 3 * i + 2] for i in range(10)]
+    xc = rng.normal(size=(30, 1))
+    xc[4, 0] = np.inf
+    assert fit_clogit(xc, sets)[2] == "non-finite value in the design or outcome"
+
+
+def test_breast_rows_without_cases_or_intensity_are_unavailable_with_counts():
+    rng = np.random.default_rng(12)
+    women = _women(rng).drop("mean_intensity").with_columns(icd=pl.lit(None, dtype=pl.String))
+    rows = pl.DataFrame(breast_rows(women, ["fraction_1", "fraction_2"], ["Horvathv1", "Hannum"]))
+    assert rows["odds_ratio"].is_nan().all() and (rows["fit"] != "ok").all()
+    chip = rows.filter(pl.col("model") == "covariates, chip effects")
+    assert (chip["fit"] == "no rows").all() and (chip["cases"] == 0).all() and (chip["controls"] == 0).all()
+    q = rows.filter(pl.col("model") == "covariates + quality")["quality_terms"].to_list()
+    assert all("intensity unknown" in t and "detection fraction" in t for t in q)
+    # with cases and no intensity column the quality model still fits, on detection alone
+    rows = pl.DataFrame(breast_rows(_women(rng).drop("mean_intensity"), ["fraction_1"], ["Horvathv1", "Hannum"]))
+    q = rows.filter(pl.col("model") == "covariates + quality")
+    assert (q["fit"] == "ok").all() and q["quality_terms"][0] == "detection fraction, intensity unknown"
+
+
+def test_headline_takes_the_pooled_group_over_groups_nested_in_it():
+    groups = [
+        ("brain_regions", "amygdala, controls", True, 0.9),
+        ("brain_regions", "amygdala, every donor", True, 0.1),
+        ("brain_regions", "hippocampus, controls", True, 0.9),
+        ("brain_regions", "hippocampus, every donor", True, 0.3),
+        ("neurons", "neurons, controls", True, 0.9),
+        ("neurons", "neurons, every donor", True, 0.2),
+        ("myometrium_epic", "myometrium, fibroid-free", True, 0.9),
+        ("myometrium_epic", "myometrium, all conditions", True, 0.4),
+        ("lung_smoking", "lung, no disease, never smoked", True, 0.5),
+        ("lung_smoking", "lung, pulmonary fibrosis", True, 0.6),
+        ("EPIC-Italy (GSE51032)", "blood, everyone", True, 0.7),
+        ("EPIC-Italy (GSE51032)", "blood, women", False, 0.9),
+    ]
+    drift = pl.DataFrame(
+        {
+            "series": [g[0] for g in groups],
+            "group": [g[1] for g in groups],
+            "panel": ["valid"] * len(groups),
+            "independent": [g[2] for g in groups],
+            "r_dis_B": [g[3] for g in groups],
+        }
+    ).with_columns(
+        r_dis_F=pl.lit(0.0),
+        partial_r_dis_B=pl.col("r_dis_B"),
+        partial_r_dis_B_age=pl.col("r_dis_B"),
+        partial_r_dis_B_quality=pl.col("r_dis_B"),
+        partial_r_dis_F_quality=pl.lit(0.0),
+    )
+    flags = dict(zip(drift["group"], headline(drift), strict=True))
+    assert not any(flags[g] for g in groups_named(groups, ("controls", "fibroid-free", "women")))
+    assert all(flags[g] for g in groups_named(groups, ("every donor", "all conditions", "everyone", "lung")))
+    row = summarise(drift).row(0, named=True)
+    assert row["groups"] == 7 and np.isclose(row["median_r_dis_B"], 0.4)
+
+
+def groups_named(groups, words):
+    return [g[1] for g in groups if any(w in g[1] for w in words)]
+
+
+def test_own_share_enters_only_its_clocks_residual():
+    rng = np.random.default_rng(13)
+    age, preds = _clocks(rng)
+    share = np.column_stack([rng.uniform(0.8, 1.0, age.size) for _ in range(4)])
+    moved = preds.copy()
+    moved[:, 1] += 40 * share[:, 1]  # clock 1 moved by its own missing weight
+    plain, _, _ = disagreement(preds, age)
+    adjusted, _, _ = disagreement(moved, age, clock_covariates=share)
+    unadjusted, _, _ = disagreement(moved, age)
+    assert np.corrcoef(adjusted, plain)[0, 1] > 0.95 > np.corrcoef(unadjusted, plain)[0, 1]
+    people = pl.DataFrame({"sample": [f"s{i}" for i in range(age.size)]})
+    clocks = ["A", "B", "C", "D"]
+    row, _ = drift_rows(
+        "S", "blood", people, preds[:, 0], preds[:, 1], moved, clocks, age, PANELS[0], 0.5, shares=share
+    )
+    assert row["clock_names_quality"] == "A, B, C, D" and "own measured weight share" in row["quality_terms"]
