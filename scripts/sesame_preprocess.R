@@ -86,7 +86,14 @@ for (i in seq_along(groups)) {
       sprintf("%s.failed.chunk%03d.csv", out, i), row.names = FALSE)
     res <- res[!failed]
   }
-  betas <- do.call(cbind, lapply(res, `[[`, "beta"))
+  # bind by probe name: a chunk can hold arrays of different platforms (HM450 beside EPIC), whose beta vectors differ
+  # in length and order; binding by position put one platform's values under the other's probe ids (Codex review
+  # 2026-11-25, GSE314841 and GSE296589)
+  if (any(vapply(res, function(r) is.null(names(r$beta)), logical(1)))) stop("a beta vector without probe names")
+  probes <- unique(unlist(lapply(res, function(r) names(r$beta))))
+  betas <- vapply(res, function(r) unname(r$beta[probes]), numeric(length(probes)))
+  if (!is.matrix(betas)) betas <- matrix(betas, ncol = length(res))
+  rownames(betas) <- probes
   meta <- do.call(rbind, lapply(res, `[[`, "qc"))
   colnames(betas) <- meta$sample
   # one array per sample: a sample arrayed more than once under one GSM (GSE79100: three arrays per kidney) keeps its
