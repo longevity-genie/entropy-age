@@ -1,0 +1,3 @@
+group,donors,age_min,age_max,cpgs,chips
+"normal colon, every donor",103,31.0,81.0,97037,20
+"normal colon, low CRC risk",48,31.0,76.0,97992,9

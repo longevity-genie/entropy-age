@@ -1,0 +1,3 @@
+group,arrays_selected,arrays_passing_detection,donors_kept,arrays_dropped_repeat_donor,platforms,cpgs_complete,chips,chips_unknown,age_variance_on_chip,age_identifiable_with_chip
+"airway, every donor",115,115,115,0,HM450,97180,11,0,0.09833909463740853,true
+"airway, controls",41,41,41,0,HM450,97628,11,0,0.34033781756746107,true

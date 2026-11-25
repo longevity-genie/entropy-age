@@ -1,0 +1,3 @@
+group,donors,age_min,age_max,cpgs,chips
+"airway, every donor",115,18.0,62.0,97180,11
+"airway, controls",41,19.0,60.0,97628,11

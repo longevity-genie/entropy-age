@@ -1,0 +1,3 @@
+group,donors,age_min,age_max,cpgs,chips
+"colon, healthy",68,31.0,77.0,87499,18
+"colon, next to a tumour",75,30.0,76.0,88970,21

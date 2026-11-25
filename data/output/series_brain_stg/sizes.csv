@@ -1,0 +1,3 @@
+group,donors,age_min,age_max,cpgs,chips
+"superior temporal gyrus, every donor",88,17.0,83.0,86251,1
+"superior temporal gyrus, controls",44,17.0,82.0,87244,1

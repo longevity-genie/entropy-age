@@ -1,0 +1,3 @@
+group,arrays_selected,arrays_passing_detection,donors_kept,arrays_dropped_repeat_donor,platforms,cpgs_complete,chips,chips_unknown,age_variance_on_chip,age_identifiable_with_chip
+"neurons (parietal), every donor",100,84,84,0,EPIC,84046,13,0,0.07463732065917439,true
+"neurons (parietal), controls",50,38,38,0,EPIC,85741,12,0,0.12481327059540614,true

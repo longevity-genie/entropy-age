@@ -1,0 +1,3 @@
+group,donors,age_min,age_max,cpgs,chips
+"neurons (parietal), every donor",84,53.0,95.0,84046,13
+"neurons (parietal), controls",38,53.0,95.0,85741,12

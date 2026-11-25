@@ -1,0 +1,3 @@
+group,chip,cultures,lines,doublings_min,doublings_max,variance_left_within_line_and_chip
+"superior temporal gyrus, every donor",NA,88,2,17.0,83.0,0.9992044528617675
+"superior temporal gyrus, controls",NA,44,1,17.0,82.0,1.0000000000000002

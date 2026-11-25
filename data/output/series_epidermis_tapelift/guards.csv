@@ -1,0 +1,2 @@
+group,arrays_selected,arrays_passing_detection,donors_kept,arrays_dropped_repeat_donor,platforms,cpgs_complete,chips,chips_unknown,age_variance_on_chip,age_identifiable_with_chip
+epidermis (tape-lift),119,40,40,0,EPICv2,85174,24,0,0.7295007906031172,true
