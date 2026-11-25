@@ -1,0 +1,14 @@
+# Freshly isolated airway epithelial cells of asthmatics and non-asthmatics (GSE85566, 450k, rebuilt). Asthma status
+# and ancestry (African, European American, other) held.
+accession = "GSE85566"
+age = "age"
+sex = "gender"
+donor = "title:data_(\\S+)$"
+hold = ["disease status", "ethnicity"]
+
+[groups."airway, every donor"]
+"cell type" = "airway epithelial cells"
+
+[groups."airway, controls"]
+"cell type" = "airway epithelial cells"
+"disease status" = "Control"

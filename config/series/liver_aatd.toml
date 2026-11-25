@@ -1,0 +1,10 @@
+# Liver biopsies of alpha-1 antitrypsin deficiency (PiZZ) patients (GSE119100, EPIC, rebuilt). Fibrosis stage ("fib",
+# 0-3) held. The 14 cirrhotic livers ("fib" NA) have no visit age and drop out of the sample table.
+accession = "GSE119100"
+age = "visit_age"
+sex = "gender"
+donor = "title:patient (\\d+)$"
+hold = ["fib"]
+
+[groups."liver (AATD), every donor"]
+"sample type" = "liver biopsy"

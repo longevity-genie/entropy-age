@@ -1,0 +1,15 @@
+# Colon mucosa biopsies (GSE199057, EPIC): normal colon of people without colorectal cancer and normal colon of
+# colorectal-cancer patients, as two groups; the tumour arrays are left out. Plate-control replicates (donors 929 and
+# 1019702, four and three arrays) count once: the donor is the number in the title brackets. Race (African and
+# European American) held.
+accession = "GSE199057"
+age = "age"
+sex = "Sex"
+donor = "title:\\[\\D*(\\d+)"
+hold = ["race"]
+
+[groups."colon, healthy"]
+"disease state" = "Healthy"
+
+[groups."colon, next to a tumour"]
+"disease state" = "Cancer"

@@ -1,0 +1,15 @@
+# Colon (GSE166427 SuperSeries, the 450k part; the GPL13667 part is expression): mucosa of healthy donors and
+# adjacent normal colon of stage II colorectal-cancer patients, as two groups; the tumour arrays are left out. Side
+# of the colon (left, right) held.
+accession = "GSE166427"
+matrix = "GSE166427-GPL13534_series_matrix.txt.gz"
+age = "age"
+sex = "gender"
+donor = "title:from (\\S+)_[NTM] "
+hold = ["location"]
+
+[groups."colon, healthy"]
+tissue = "Mucosa"
+
+[groups."colon, next to a tumour"]
+tissue = "Normal"

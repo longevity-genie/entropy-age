@@ -1,0 +1,13 @@
+# Breast tissue of a US neighbourhood-deprivation study (GSE225845, EPIC): normal breast of cancer-free women and
+# tumour-adjacent normal breast of patients, as two groups; the tumour arrays are left out. Race held.
+accession = "GSE225845"
+age = "age_at_surgery"
+sex = "Sex"
+donor = "title:breast tissue (\\S+) "
+hold = ["race"]
+
+[groups."breast, cancer-free"]
+"sample type" = "normal"
+
+[groups."breast, next to a tumour"]
+"sample type" = "adj_norm"

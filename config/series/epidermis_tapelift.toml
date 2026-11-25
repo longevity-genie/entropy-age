@@ -1,0 +1,10 @@
+# Epidermis sampled by tape-lift from the skin of healthy volunteers (GSE304036, EPIC v2, rebuilt). Sex is written
+# "Female"/"Male" for 95 arrays and "F"/"M" for a second submission batch of 24; the four codes are held as given
+# (sex within batch).
+accession = "GSE304036"
+age = "age"
+sex = "Sex"
+donor = "title:^TapeLift_(\\d+)_"
+
+[groups."epidermis (tape-lift)"]
+tissue = "Epidermis"

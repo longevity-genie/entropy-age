@@ -1,0 +1,18 @@
+# NeuN+ sorted nuclei of parietal cortex, Parkinson's disease and controls (GSE267937, EPIC, rebuilt). Each donor has a
+# standard bisulfite (BS) and an oxidative bisulfite (oxBS, 5mC only) array; the oxBS arrays are left out (the title
+# marks them, Neuron_oxBS_<n>; Neuron_BS_<n> / Neuron_bs_<n> are kept), so one BS array per donor. Diagnosis held.
+accession = "GSE267937"
+age = "age at death"
+sex = "Sex"
+donor = "title:_(\\d+)$"
+hold = ["disease state"]
+
+[derive]
+chemistry = "title:^Neuron_(oxBS|BS|bs)_"
+
+[groups."neurons (parietal), every donor"]
+chemistry = ["BS", "bs"]
+
+[groups."neurons (parietal), controls"]
+chemistry = ["BS", "bs"]
+"disease state" = "Control"

@@ -1,0 +1,14 @@
+# Post-mortem retina of 160 donors, controls and age-related macular degeneration (GSE231536, EPIC, rebuilt).
+# Minnesota Grading System grade: 1 = no AMD, 3 = intermediate, 4 = advanced AMD; held. Donor 65 has a repeat array
+# (huRetina_ID_65R), counted once.
+accession = "GSE231536"
+age = "age"
+sex = "gender"
+donor = "title:ID_(\\d+)"
+hold = ["mgs grade"]
+
+[groups."retina, every donor"]
+source_name = "retina"
+
+[groups."retina, no AMD"]
+"mgs grade" = "1"

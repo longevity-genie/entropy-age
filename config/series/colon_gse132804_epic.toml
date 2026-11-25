@@ -1,0 +1,15 @@
+# Normal colon of people at low, medium or high colorectal-cancer risk (GSE132804, Grady/Wang), the EPIC part (one
+# array per person). The 450k part is colon_gse132804_450k; platforms never pooled. CRC risk held.
+accession = "GSE132804"
+matrix = "GSE132804-GPL21145_series_matrix.txt.gz"
+age = "age"
+sex = "gender"
+donor = "sample"
+hold = ["crc risk"]
+
+[groups."normal colon, every donor"]
+"array platform_id" = "EPIC"
+
+[groups."normal colon, low CRC risk"]
+"array platform_id" = "EPIC"
+"crc risk" = "Low"

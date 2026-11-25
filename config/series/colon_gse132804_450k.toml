@@ -1,0 +1,20 @@
+# Normal colon of people at low, medium or high colorectal-cancer risk (GSE132804, Grady/Wang), the 450k part (one
+# array per person); the EPIC part is colon_gse132804_epic. CRC risk held.
+# Overlap with GSE101764 (colon_mucosa): the 25 arrays of run date 20150103 (all "High" risk) are the same physical
+# arrays (same chip and position, same age and sex, genotype concordance 1.0 on the rs probes) as GSE101764 ColoCare
+# mucosa arrays; that run is left out by listing the other four run dates. 103 of 128 arrays remain.
+accession = "GSE132804"
+matrix = "GSE132804-GPL13534_series_matrix.txt.gz"
+age = "age"
+sex = "gender"
+donor = "sample"
+hold = ["crc risk"]
+
+[groups."normal colon, every donor"]
+"array platform_id" = "HM450"
+"run date" = ["20120412", "20150710", "20160328", "20161108"]
+
+[groups."normal colon, low CRC risk"]
+"array platform_id" = "HM450"
+"run date" = ["20120412", "20150710", "20160328", "20161108"]
+"crc risk" = "Low"

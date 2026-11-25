@@ -1,0 +1,14 @@
+# Post-mortem superior temporal gyrus, schizophrenia and controls (GSE144910, EPIC, rebuilt; IDATs renamed
+# GSM..._rep1/_rep2, the rebuild keeps the rep1 array of the 8 donors with two). Diagnosis held.
+accession = "GSE144910"
+age = "age (years)"
+sex = "Sex"
+donor = "title:subject(\\d+)_"
+hold = ["group2"]
+
+[groups."superior temporal gyrus, every donor"]
+tissue = "postmortem superior temporal gyrus (STG)"
+
+[groups."superior temporal gyrus, controls"]
+tissue = "postmortem superior temporal gyrus (STG)"
+group2 = "Control"
