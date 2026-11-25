@@ -14,7 +14,7 @@ methylation from its young state. In most human tissues, in most mouse organs an
 sets, cell composition, probe design, raw-data reprocessing) produces the shield. It follows how strongly a promoter
 is used, and in culture it accrues with cell division. Clocks read it unevenly: a clock that counts
 cell divisions, epiTOC1, calls people with a stronger shield older for their age in every dividing tissue where it can be
-scored, but not in neurons, some chronological and phenotypic clocks do so more weakly, and pace-of-ageing clocks such as DunedinPACE do
+scored and reverses in neurons, which do not divide; some chronological and phenotypic clocks do so more weakly, and pace-of-ageing clocks such as DunedinPACE do
 not see it. Stochastic ageing therefore has a structure that clocks capture unevenly, and the part of it tied to
 cell division is the part clocks of cell division read best.
 
@@ -85,8 +85,8 @@ less than comparable CpGs (the gap).
 
 The gap is the gene set's slope minus that of matched CpGs (same CpG-island status and young level), in standard
 deviations of the slope over all CpGs. In every figure, a gap below zero means the gene set drifts less than
-comparable CpGs (protected), above zero more. A gap of −0.1 SD is a modest shift of the whole distribution, not a
-switch: it is detectable because thousands of CpGs are averaged. Gaps from relative entropy and dispersion read as
+comparable CpGs (protected), above zero more. A gap of −0.1 SD is a modest shift of the whole distribution,
+detectable because thousands of CpGs are averaged. Gaps from relative entropy and dispersion read as
 "drifts less"; on binary entropy a negative gap can also come from CpGs pinned at 0 %, which is why we test CpGs
 starting between 10 and 90 % separately ("off the floor").
 
@@ -223,11 +223,11 @@ TCGA lung adenocarcinomas and TCGA normal lung were left out: the reversal fell 
 without the 24,287 CpGs that differ by at least 0.2 in beta, and to +0.08 (−0.00 to +0.19) without the 86,809 that
 differ by at least 0.1 (chip intercepts held). This does not test a field effect: TCGA's normal lung is itself taken
 next to tumours, the lists remove five times more control CpGs than housekeeping CpGs, and a field effect concerns age
-slopes, not mean levels. The direct comparison is lung without any tumour: in 143 donor and other non-diseased
+slopes, which these lists do not touch. The direct comparison is lung without any tumour: in 143 donor and other non-diseased
 lungs aged 14 to 88 (GSE175458, EPIC, rebuilt), the housekeeping gap was −0.26 (−0.45 to −0.13, chip held), a strong
 gap of the usual sign.
 
-**The shield weakens in diseased lung, not in smokers' lungs.** Normal tissue resected next to lung tumours in TCGA,
+**The shield weakens in diseased lung.** Normal tissue resected next to lung tumours in TCGA,
 rebuilt from the raw arrays with ages from the GDC, carried a weaker gap than lung without disease: −0.07 (−0.17 to
 −0.01) next to squamous carcinomas (42 donors) and −0.09 (−0.19 to −0.02) next to adenocarcinomas (32), against −0.26.
 Smoking does not account for it. Within the disease-free lungs of GSE175458 the gap was −0.26 (−0.42 to −0.12) in 83
@@ -235,7 +235,7 @@ never-smokers and −0.19 (−0.32 to −0.10) in 56 ever-smokers, and the rever
 series' 344 lungs with idiopathic pulmonary fibrosis, from the same centres, carried a gap of −0.08 (−0.22 to +0.05),
 as weak as tissue next to a tumour. Elsewhere the tissue next to a tumour kept the gap of its healthy counterpart:
 breast −0.01 (96 donors; healthy −0.04 and +0.00), colon −0.08 (38; mucosa −0.13) and kidney −0.13 (160; normal
-kidney −0.10). In lung, disease rather than smoking goes with the loss of the shield; whether fibrosis and the tumour
+kidney −0.10). In lung, disease goes with the loss of the shield and smoking does not; whether fibrosis and the tumour
 field share a cause is not tested here.
 
 Human post-mortem tissues on the mammalian array (GSE184211; heart, muscle, liver, kidney, lung, spleen, fat, blood; 32 to
@@ -420,7 +420,7 @@ more overall (look-alike drift +0.03 to +0.04), but essential promoters kept or 
 −0.17, p ≤ 3·10⁻⁵) and lost methylation against look-alikes (S −0.021 and −0.018, p < 10⁻⁷). The remover at essential
 promoters in brain tissue is therefore consistent with Tet3, whose full-length CXXC isoform binds unmethylated CpGs and sits at transcription start sites in neuronal cells (Jin
 et al. 2016); the Tet1 study, on another array and with homozygous mutants, does not exclude Tet1. These are single studies on different arrays (Tet3 heterozygous on the mammalian array, Tet1 homozygous on
-the mouse array), each with eight mutants per tissue, and knockouts show a state, not a rate. The result agrees with
+the mouse array), each with eight mutants per tissue, and a knockout shows a state, which says nothing of a rate. The result agrees with
 Krepelova et al. (2025), who found impaired TET activity driving drift in the mouse intestine; our data add
 that the effect falls on essential promoters specifically, against same-chip wild types (Supplementary Figs. S3, S4).
 Re-processed from the raw IDATs, five of the 24 Tet1 arrays fail detection; on the remaining six or seven animals
@@ -519,7 +519,7 @@ Between single cells the pattern repeats. In muscle stem cells of three young an
 and RNA from the same cells (GSE121437), age added less cell-to-cell variation at housekeeping promoters than at
 matched promoters (−0.056 SD, −0.094 to −0.027 resampling cells within mice, an interval conditional on these six mice;
 −0.03 to −0.09 leaving out one mouse at a time; −0.085 with old cells' reads thinned to the young depth), about half of it accounted for by the gene's expression in those cells (−0.031, −0.062 to +0.005).
-Three mice per age make this a first indication, not a measurement.
+With three mice per age this is a first indication.
 
 ### The shield within one person over time
 
@@ -648,7 +648,7 @@ the draw (274, 113 and 146 cases), with mean methylation, 11 blood-cell fraction
 ### A clock of cell division reads the shield
 
 **A clock that counts cell divisions, epiTOC1, calls people with a stronger shield older for their age in every
-dividing tissue where it can be scored, and not in neurons; pace-of-ageing clocks do not see the shield (Fig. 10,
+dividing tissue where it can be scored and reverses in neurons; pace-of-ageing clocks do not see the shield (Fig. 10,
 Fig. 11).**
 
 *Every clock on every rebuilt series.* We scored every clock in the biolearn gallery that keeps at least 90 % of its
@@ -684,8 +684,8 @@ normal kidneys to −0.88 in prostate next to a tumour). In bulk brain regions t
 sorted neurons, which do not divide, it reversed (+0.28 and +0.47). Hannum (median −0.15, negative in 75 % of 32
 groups) and PhenoAge (−0.18, 82 % of 39) went the same way more weakly; Horvath's pan-tissue clock (−0.02, 54 % of 35)
 and DunedinPACE (−0.08, 62 % of 24) did not show a consistent link. Grouped by generation the medians were alike
-(−0.09 to −0.11 for chronological, phenotypic and mitotic clocks; +0.02 for pace), so the division between clocks is
-not by generation but by what a clock measures (Fig. 11). Clocks were scored on the clock track (protocol change 4);
+(−0.09 to −0.11 for chronological, phenotypic and mitotic clocks; +0.02 for pace), so what separates clocks is what
+they measure (Fig. 11). Clocks were scored on the clock track (protocol change 4);
 drift on the standard rebuild.
 
 ![Figure 11](../docs/figures/clock_drift.png)
@@ -699,7 +699,7 @@ so in small groups.
 
 *What clocks read in simulation.* Retrained on simulated change, clocks read directed change and are largely blind
 to a shield simulated as damped undirected noise, which suggests that the first-generation clocks' link to the shield
-in people (Fig. 10b) comes from directed change at shielded promoters, not from their noise: they keep 70-80 % of their accuracy from each CpG's direction alone and 0-10 % from undirected noise
+in people (Fig. 10b) comes from directed change at shielded promoters: they keep 70-80 % of their accuracy from each CpG's direction alone and 0-10 % from undirected noise
 (Supplementary Note 3).
 
 ![Figure 10](../docs/figures/clock_panel.png)
@@ -729,7 +729,7 @@ strongly a promoter is used and whether the cells divide. And clocks read it une
 epiTOC1, calls people with a stronger shield older for their age in every dividing tissue tested, while pace-of-ageing clocks
 do not see it, so part of what makes clocks disagree is which part of stochastic drift each one reads.
 
-**The shield belongs to active promoters, not to essential genes as such.** Reference chromatin states account for
+**The shield belongs to active promoters.** Reference chromatin states account for
 most of the gap in blood and 25 to 44 % in cortex, and with expression and sorted-nuclei accessibility also
 held about a quarter of the cortex gap is left. The sharper test uses expression measured in the samples whose methylation is
 measured. In sorted monocytes, in epidermis and in cultured fibroblasts, three systems from different laboratories
@@ -783,7 +783,7 @@ interval above one (1.49, 1.04 to 2.69). A second, small series gave no associat
 breast-cancer risk on this evidence.
 
 **A clock of cell division reads the shield.** Across 34 tissue groups, the mitotic clock epiTOC1 called people with
-a stronger shield older for their age in every dividing tissue where it could be scored but not in sorted neurons,
+a stronger shield older for their age in every dividing tissue where it could be scored and the reverse in sorted neurons,
 Hannum and PhenoAge did so more weakly, and Horvath's clock and DunedinPACE did not (Fig. 11); in the blood of one cohort, GrimAge was unrelated to
 it as well and accelerations agreed only within generation (Fig. 10). Since the shield grows with division, a clock
 that counts divisions is the one expected to read it, and in cells that no longer divide it does not. Across the rebuilt series, too, the valid clocks of a tissue
@@ -819,7 +819,7 @@ Tet1 and Tet3 shifts, the loss rates in cortex and the neuron-glia difference ca
 In sum, promoters of essential and housekeeping genes drift less with age than matched CpGs by a modest,
 reproducible margin. Most of that margin is what the promoter's own activity predicts. It is larger where cells
 divide, small and unresolved in neurons and absent, with drift itself, in cultures kept from dividing; in one study
-of bulk mouse brain it was weaker in Tet3 heterozygous animals. A clock of cell division reads it in every dividing tissue tested, not in neurons; pace-of-ageing clocks do not. Whether selection among dividing cells or maintenance
+of bulk mouse brain it was weaker in Tet3 heterozygous animals. A clock of cell division reads it in every dividing tissue tested and loses it in neurons; pace-of-ageing clocks do not. Whether selection among dividing cells or maintenance
 coupled to replication produces it is the question the next experiment should answer, with lineage-tracked or
 clonal cultures in which promoter activity is measured in the same cells.
 
