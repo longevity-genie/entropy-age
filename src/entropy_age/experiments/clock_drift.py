@@ -22,6 +22,7 @@ import polars as pl
 from entropy_age import plots
 from entropy_age.data import reprocessed
 from entropy_age.data.annotation import AnnotationLayout
+from entropy_age.experiments import mitotic_clocks
 from entropy_age.experiments.clock_atlas import valid
 from entropy_age.experiments.clock_increment import GENERATION
 from entropy_age.experiments.common import Context, write_table
@@ -45,6 +46,7 @@ def residual(y: np.ndarray, x: np.ndarray) -> np.ndarray:
 def run(ctx: Context) -> list[Path]:
     features, _, membership = _features(ctx.paths, ctx.rng(120_000))
     probes = pl.read_parquet(AnnotationLayout(ctx.paths).probes_450k).filter(pl.col("cpg").is_in(features))
+    mitotic = mitotic_clocks.load(ctx.paths.root)  # epiTOC2, RepliTali, epiCMIT scored here from the clock track
     rows = []
     for name, spec in specs().items():
         if spec.get("annotation", "human") != "human":
@@ -58,7 +60,14 @@ def run(ctx: Context) -> list[Path]:
         if not reprocessed.available(ctx.paths, gse):
             continue
         betas = pl.read_parquet(betas_path).filter(pl.col("cpg").is_in(features))
-        scores = pl.read_csv(clocks_path).pivot(on="clock", index="sample", values="prediction")
+        long = pl.read_csv(clocks_path).select("sample", "clock", "prediction")
+        if mitotic is not None:
+            unmasked = ctx.paths.root / CLOCK_SCORES / f"{gse}_cpgs.parquet"
+            if unmasked.exists():
+                mb = pl.scan_parquet(unmasked).filter(pl.col("cpg").is_in(mitotic_clocks.cpgs(mitotic))).collect()
+                arrays = [c for c in mb.columns if c != "cpg"]
+                long = pl.concat([long.cast({"prediction": pl.Float64}), mitotic_clocks.score(mb, arrays, mitotic)])
+        scores = long.pivot(on="clock", index="sample", values="prediction")
         usable = reprocessed.read_qc(ctx.paths, gse).filter(pl.col("passed"))["sample"].to_list()
         for label, s in groups_of(table, spec, usable, set()).items():
             s = s.drop_nulls("age").filter(
