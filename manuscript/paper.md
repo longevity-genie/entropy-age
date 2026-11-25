@@ -13,8 +13,8 @@ methylation from its young state. In most human tissues, in most mouse organs an
 65 mammals, essential promoters drift less than their matches: they are shielded. No control we built (placebo gene
 sets, cell composition, probe design, raw-data reprocessing) produces the shield. It follows how strongly a promoter
 is used, and in culture it accrues with cell division. Clocks read it unevenly: a clock that counts
-cell divisions, epiTOC1, calls people with a stronger shield older for their age in every tissue where it can be
-scored, some chronological and phenotypic clocks do so more weakly, and pace-of-ageing clocks such as DunedinPACE do
+cell divisions, epiTOC1, calls people with a stronger shield older for their age in every dividing tissue where it can be
+scored, but not in neurons, some chronological and phenotypic clocks do so more weakly, and pace-of-ageing clocks such as DunedinPACE do
 not see it. Stochastic ageing therefore has a structure that clocks capture unevenly, and the part of it tied to
 cell division is the part clocks of cell division read best.
 
@@ -645,18 +645,20 @@ signed shift S (core-essential and housekeeping sets) and of published clocks, f
 (174) and colorectal cancer (166). Blue circles: all cases, age and sex held. Orange squares: cases diagnosed over 2 years after
 the draw (274, 113 and 146 cases), with mean methylation, 11 blood-cell fractions and chip held. 95 % intervals; log scale. How to read: an odds ratio above 1 means people with a higher value of the measure (per SD) were more often later diagnosed with cancer; B is drift at comparable promoters, F the share of it that essential promoters avoid (more negative = stronger shield), S their signed shift (Box 1).
 
-### Clocks read the shield unevenly, and a clock of cell division reads it in every tissue
+### Clocks read the shield unevenly, and a clock of cell division reads it in every dividing tissue
 
 **A clock that counts cell divisions, epiTOC1, calls people with a stronger shield older for their age in every
-tissue where it can be scored; pace-of-ageing clocks do not see the shield (Fig. 10, Fig. 11).**
+dividing tissue where it can be scored, and not in neurons; pace-of-ageing clocks do not see the shield (Fig. 10,
+Fig. 11).**
 
 *Every clock on every rebuilt series.* We scored every clock in the biolearn gallery that keeps at least 90 % of its
-weight measured on every rebuilt series with donor ages (23 tissue groups, 38 clocks; clocks taken outside the tissue
+weight measured on every rebuilt series with donor ages (40 tissue groups, 44 clocks; scored on the clock track, without the design-flag mask; clocks taken outside the tissue
 they were trained on kept as negative controls; Supplementary Fig. S23). The pan-tissue clock of Horvath tracked age in
-every group (median r 0.81, 0.61 to 0.94; median error 5.6 years). Blood clocks taken into solid tissues still ranked
-donors by age (PhenoAge median r 0.60, Hannum 0.73) but missed their age by 9 to 21 years. Once age was removed, the
+nearly every group (median r 0.87, up to 0.96; median error 5.3 years), failing only in myometrium of women aged 29 to
+47 (r −0.05). Blood clocks taken into solid tissues still ranked
+donors by age (PhenoAge median r 0.63, Hannum 0.76) but missed their age by 11 to 25 years. Once age was removed, the
 valid clocks of a group agreed only partly on who was ageing fast: the median correlation between their accelerations
-was 0.58 (0.36 in sorted neurons to 0.84 in heart; 0.04 in liver).
+was 0.49 (0.84 in heart; 0.01 to 0.04 in myometrium and liver).
 
 *Clocks by generation in the same women.* On arrays rebuilt without the design-flag probe mask (which removes a
 fifth of GrimAge's weight; clocks scored both ways agree at r ≥ 0.997), 44 published clocks kept at least 90 % of their
@@ -676,12 +678,15 @@ pre-specified PhenoAge did not (1.12, 0.81-1.59).
 *Across tissues.* In 34 rebuilt tissue groups with ages (the series above, the TCGA tissues next to tumours and the
 mammalian-array human tissues), we scored each person's drift at look-alike promoters (B) and shield share (F)
 against everyone else in the group and correlated them with each clock's acceleration. The mitotic clock epiTOC1,
-which estimates how many times a tissue's stem cells have divided (Yang et al. 2016), passed the coverage rule in 12
-groups, and in all 12 its acceleration went with a stronger shield (median r −0.49; −0.12 in 30 normal kidneys to
-−0.87 in prostate next to a tumour). Hannum (median −0.21, negative in 85 % of 20 groups) and PhenoAge (−0.17, 84 % of
-32) went the same way more weakly; Horvath's pan-tissue clock (−0.03, 53 % of 32) and DunedinPACE (−0.02, 17 groups)
-did not. Grouped by generation the medians were alike (−0.09 to −0.12 for chronological, phenotypic and mitotic
-clocks; −0.02 for pace), so the division between clocks is not by generation but by what a clock measures (Fig. 11).
+which estimates how many times a tissue's stem cells have divided (Yang et al. 2016), passed the coverage rule in 24
+groups. In all 16 groups outside the brain its acceleration went with a stronger shield (median r −0.51; −0.11 in 30
+normal kidneys to −0.88 in prostate next to a tumour). In bulk brain regions the link was weak (−0.05 to −0.15), and in
+sorted neurons, which do not divide, it reversed (+0.28 and +0.47). Hannum (median −0.15, negative in 75 % of 32
+groups) and PhenoAge (−0.18, 82 % of 39) went the same way more weakly; Horvath's pan-tissue clock (−0.02, 54 % of 35)
+and DunedinPACE (−0.08, 62 % of 24) did not show a consistent link. Grouped by generation the medians were alike
+(−0.09 to −0.11 for chronological, phenotypic and mitotic clocks; +0.02 for pace), so the division between clocks is
+not by generation but by what a clock measures (Fig. 11). Clocks were scored on the clock track (protocol change 4);
+drift on the standard rebuild.
 
 ![Figure 11](../docs/figures/clock_drift.png)
 
@@ -721,7 +726,7 @@ already linked age-related methylation change with tissue-specific expression an
 was a fair comparison, and with it three findings. Matched on island status and starting level, the protection
 becomes a size that can be compared across tissues and species and tested against a null. That size follows how
 strongly a promoter is used and whether the cells divide. And clocks read it unevenly: a clock of cell division,
-epiTOC1, calls people with a stronger shield older for their age in every tissue tested, while pace-of-ageing clocks
+epiTOC1, calls people with a stronger shield older for their age in every dividing tissue tested, while pace-of-ageing clocks
 do not see it, so part of what makes clocks disagree is which part of stochastic drift each one reads.
 
 **The shield belongs to active promoters, not to essential genes as such.** Reference chromatin states account for
@@ -778,10 +783,10 @@ interval above one (1.49, 1.04 to 2.69). A second, small series gave no associat
 breast-cancer risk on this evidence.
 
 **A clock of cell division reads the shield.** Across 34 tissue groups, the mitotic clock epiTOC1 called people with
-a stronger shield older for their age in every group where it could be scored, Hannum and PhenoAge did so more
-weakly, and Horvath's clock and DunedinPACE did not (Fig. 11); in the blood of one cohort, GrimAge was unrelated to
+a stronger shield older for their age in every dividing tissue where it could be scored but not in sorted neurons,
+Hannum and PhenoAge did so more weakly, and Horvath's clock and DunedinPACE did not (Fig. 11); in the blood of one cohort, GrimAge was unrelated to
 it as well and accelerations agreed only within generation (Fig. 10). Since the shield grows with division, a clock
-that counts divisions is the one expected to read it. Across the rebuilt series, too, the valid clocks of a tissue
+that counts divisions is the one expected to read it, and in cells that no longer divide it does not. Across the rebuilt series, too, the valid clocks of a tissue
 agreed only partly on who was ageing fast. Which part of drift a clock reads is therefore one source of that
 disagreement. It does not set how far one woman's clocks disagree, which was unrelated to her drift. Clocks
 retrained on simulated change drew little of their accuracy from undirected noise (Supplementary Note 3), so how
@@ -814,7 +819,7 @@ Tet1 and Tet3 shifts, the loss rates in cortex and the neuron-glia difference ca
 In sum, promoters of essential and housekeeping genes drift less with age than matched CpGs by a modest,
 reproducible margin. Most of that margin is what the promoter's own activity predicts. It is larger where cells
 divide, small and unresolved in neurons and absent, with drift itself, in cultures kept from dividing; in one study
-of bulk mouse brain it was weaker in Tet3 heterozygous animals. A clock of cell division reads it in every tissue tested; pace-of-ageing clocks do not. Whether selection among dividing cells or maintenance
+of bulk mouse brain it was weaker in Tet3 heterozygous animals. A clock of cell division reads it in every dividing tissue tested, not in neurons; pace-of-ageing clocks do not. Whether selection among dividing cells or maintenance
 coupled to replication produces it is the question the next experiment should answer, with lineage-tracked or
 clonal cultures in which promoter activity is measured in the same cells.
 

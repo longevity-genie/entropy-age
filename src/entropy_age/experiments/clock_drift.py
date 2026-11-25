@@ -103,7 +103,7 @@ def run(ctx: Context) -> list[Path]:
         return []
     out = ctx.out_dir("clock_drift")
     table = pl.DataFrame(rows)
-    write_table(table, out / "correlations")
+    write_table(table, out / "correlations", csv_max_rows=10_000)
     return [draw(table, ctx.figure_path("clock_drift"))]
 
 

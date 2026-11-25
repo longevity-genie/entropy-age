@@ -137,7 +137,7 @@ def run(ctx: Context) -> list[Path]:
         return []
     out = ctx.out_dir("clock_atlas")
     table = pl.DataFrame(rows)
-    write_table(table, out / "clocks")
+    write_table(table, out / "clocks", csv_max_rows=10_000)
     write_table(pl.DataFrame(agreement), out / "agreement")
     return [draw(table, ctx.figure_path("clock_atlas"))]
 
