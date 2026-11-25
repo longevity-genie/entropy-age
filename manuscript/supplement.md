@@ -148,11 +148,10 @@ methylation and expression of the same gene correlate weakly (mean r −0.003 an
 laboratory, women only, cell composition not held.
 
 **One line with and without telomerase (R130).** GSE268145: BJ fibroblasts passaged as mortal cells and with hTERT,
-EPIC, rebuilt; slopes on doublings with a trajectory intercept. hTERT cells (20 arrays, doublings 2 to 38):
-housekeeping −0.136 SD on relative entropy (−0.143 to −0.129), −0.138 with chip intercepts; core-essential −0.064.
-Mortal cells on the same chips (12 arrays): −0.026 (−0.036 to −0.018); core-essential −0.025. Mortal cells of an
-earlier batch (23 arrays, other chips): +0.087 on relative entropy and −0.164 on the entropy slope, so that group
-gives no reading. One cell line; no arrested control; hTERT and mortal cells are not compared.
+EPIC, rebuilt; slopes on doublings with a trajectory intercept. hTERT cells (21 arrays, doublings 2 to 38):
+housekeeping −0.134 SD on relative entropy (−0.141 to −0.127); core-essential −0.062. Mortal cells on the same chips
+(14 arrays): −0.029 (−0.038 to −0.020); core-essential −0.025. Mortal cells of an earlier batch (other chips): −0.029
+(−0.038 to −0.020); core-essential −0.019. One cell line; no arrested control; hTERT and mortal cells are not compared.
 
 **Tissues of the same adults on shared chips (R131).** GSE280465 (Apsley et al. 2025): buccal swab, saliva, dried
 blood spot and blood mononuclear cells of adults aged 19 to 70 on EPIC v2, rebuilt; 17 of 27 chips carry all four

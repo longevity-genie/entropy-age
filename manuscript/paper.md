@@ -13,9 +13,10 @@ methylation from its young state. In most human tissues, in most mouse organs an
 65 mammals, essential promoters drift less than their matches: they are shielded. No control we built (placebo gene
 sets, cell composition, probe design, raw-data reprocessing) produces the shield. It follows how strongly a promoter
 is used, and in culture it accrues with cell division. Clocks read it unevenly: a clock that counts
-cell divisions, epiTOC1, calls people with a stronger shield older for their age in every dividing tissue where it can be
-scored and reverses in neurons, which do not divide; some chronological and phenotypic clocks do so more weakly, and pace-of-ageing clocks such as DunedinPACE do
-not see it. Stochastic ageing therefore has a structure that clocks capture unevenly, and the part of it tied to
+cell divisions call people with a stronger shield older for their age in dividing tissues: six mitotic clocks, among
+them one built on CpGs in partially methylated domains that share none with the others, did so in nearly every dividing
+tissue where they could be scored, and the promoter-based ones reversed in sorted neurons, which do not divide; some
+chronological and phenotypic clocks do so more weakly, and pace-of-ageing clocks such as DunedinPACE do not see it. Stochastic ageing therefore has a structure that clocks capture unevenly, and the part of it tied to
 cell division is the part clocks of cell division read best.
 
 ![Graphical abstract](../docs/figures/forest_series.png)
@@ -199,8 +200,8 @@ island × young-level matching in (a) Hannum blood and (b) Jaffe cortex. Grey: m
 ### The shield across tissues, platforms and species
 
 **The shield is present in most tissues and species tested.** Across 42 independent cohort-tissue series on one
-measure (23 human, 19 mouse; Supplementary Fig. S22), the housekeeping gap was negative in 31; 20 intervals over
-donors or animals lie below zero and one above it, the lung next to adenocarcinoma described below. An apparent
+measure (23 human, 19 mouse; Supplementary Fig. S22), the housekeeping gap was negative in 33; 22 intervals over
+donors or animals lie below zero and none above it. An apparent
 ordering by cell turnover in mouse cannot be separated from array chip.
 
 In nine GTEx tissues on the EPIC array (Oliva et al. 2023; 47-224 donors per tissue, ages in decade bins; deposited values, since the raw arrays are under controlled access), the housekeeping gap was −0.13 SD
@@ -214,24 +215,20 @@ processed from raw files with chip intercepts and intervals from resampling dono
 In normal colon mucosa of 146 colorectal-cancer patients aged 22 to 89 (GSE101764) the housekeeping gap was −0.13 SD
 (−0.25 to −0.01), and −0.17 (−0.32 to −0.00) off the floor.
 
-Lung behaved differently by source. Lung of post-mortem GTEx donors
-carried the gap (−0.08), but tissue resected next to adenocarcinoma in 114 non-smokers aged 39 to 82 (GSE314841,
-450k part) reversed it: +0.14 (+0.05 to +0.25), housekeeping promoters drifting more than matched CpGs. The same
-study's 31 lungs on the EPIC array gave the same sign without resolving it (+0.06, −0.32 to +0.76). Tissue next to a
-tumour can carry the tumour's methylation changes. As a sensitivity check, CpGs whose mean level differs between
-TCGA lung adenocarcinomas and TCGA normal lung were left out: the reversal fell from +0.14 to +0.11 (+0.03 to +0.22)
-without the 24,287 CpGs that differ by at least 0.2 in beta, and to +0.08 (−0.00 to +0.19) without the 86,809 that
-differ by at least 0.1 (chip intercepts held). This does not test a field effect: TCGA's normal lung is itself taken
-next to tumours, the lists remove five times more control CpGs than housekeeping CpGs, and a field effect concerns age
-slopes, which these lists do not touch. The direct comparison is lung without any tumour: in 143 donor and other non-diseased
-lungs aged 14 to 88 (GSE175458, EPIC, rebuilt), the housekeeping gap was −0.26 (−0.45 to −0.13, chip held), a strong
-gap of the usual sign.
+Lung carried the gap in every source. Lung of post-mortem GTEx donors gave −0.08, and 143 donor and other
+non-diseased lungs aged 14 to 88 (GSE175458, EPIC, rebuilt) gave −0.26 (−0.45 to −0.13, chip held), a strong gap of
+the usual sign. Tissue resected next to adenocarcinoma in 114 non-smokers aged 39 to 82 (GSE314841, 450k part) gave
+−0.11 (−0.24 to −0.02, chip held), and the same study's 31 lungs on the EPIC array −0.05 (−0.11 to −0.00). Tissue
+next to a tumour can carry the tumour's methylation changes; leaving out the CpGs whose mean level differs between
+TCGA lung adenocarcinomas and TCGA normal lung kept the gap: −0.07 (−0.16 to −0.01) without the 24,287 CpGs that
+differ by at least 0.2 in beta, and −0.05 (−0.13 to −0.01) without the 86,809 that differ by at least 0.1.
 
-**The shield weakens in diseased lung.** Normal tissue resected next to lung tumours in TCGA,
-rebuilt from the raw arrays with ages from the GDC, carried a weaker gap than lung without disease: −0.07 (−0.17 to
-−0.01) next to squamous carcinomas (42 donors) and −0.09 (−0.19 to −0.02) next to adenocarcinomas (32), against −0.26.
-Smoking does not account for it. Within the disease-free lungs of GSE175458 the gap was −0.26 (−0.42 to −0.12) in 83
-never-smokers and −0.19 (−0.32 to −0.10) in 56 ever-smokers, and the reversal above came from non-smokers. The same
+**The shield weakens in diseased lung.** Normal tissue resected next to lung tumours carried a weaker gap than lung
+without disease: in TCGA, rebuilt from the raw arrays with ages from the GDC, −0.07 (−0.17 to −0.01) next to squamous
+carcinomas (42 donors) and −0.09 (−0.19 to −0.02) next to adenocarcinomas (32), and −0.11 in GSE314841, against
+−0.26. Smoking does not account for it. Within the disease-free lungs of GSE175458 the gap was −0.26 (−0.42 to −0.12)
+in 83 never-smokers and −0.19 (−0.32 to −0.10) in 56 ever-smokers, and the GSE314841 donors next to a tumour had never
+smoked. The same
 series' 344 lungs with idiopathic pulmonary fibrosis, from the same centres, carried a gap of −0.08 (−0.22 to +0.05),
 as weak as tissue next to a tumour. Elsewhere the tissue next to a tumour kept the gap of its healthy counterpart:
 breast −0.01 (96 donors; healthy −0.04 and +0.00), colon −0.08 (38; mucosa −0.13) and kidney −0.13 (160; normal
@@ -241,9 +238,9 @@ field share a cause is not tested here.
 Human post-mortem tissues on the mammalian array (GSE184211; heart, muscle, liver, kidney, lung, spleen, fat, blood; 32 to
 112 per tissue) cover only about 1,400 promoter CpGs and resolve no tissue. Myometrium, a smooth muscle that renews slowly,
 showed no gap: in 62 women aged 29 to 52 on the EPIC array (GSE296589; fibroid-free and fibroid-associated specimens,
-condition held) the housekeeping gap was +0.00 SD (−0.02 to +0.02), and +0.01 (−0.01 to +0.03) in the 30 fibroid-free
+condition held) the housekeeping gap was +0.00 SD (−0.05 to +0.03), and +0.03 (−0.02 to +0.05) in the 30 fibroid-free
 women alone; this narrow and young age range gives slopes over 23 years only. The study's 30 women on EPIC v2 did not
-resolve the gap (−0.01, −0.08 to +0.05).
+resolve the gap (−0.01, −0.08 to +0.07).
 
 On the mammalian array, relative entropy separated 11 tissues of the same male C57BL/6 mice sharply (GSE279437;
 Huang et al. 2025). The mice were the untreated young and aged controls of an exenatide and rapamycin study, compared as aged minus young because GEO gives no numeric ages. The housekeeping gap was negative in the three renewing tissues and in kidney and liver (−0.05 to −0.19 SD) and
@@ -366,11 +363,11 @@ doxorubicin, and in replicative senescence housekeeping promoters carried 39 % l
 separate series, fibroblasts held confluent and non-dividing were sampled monthly for six months: the two donors
 whose arrays were not ordered by time along the chip showed no drift (0.88 and 0.86 of the value under reordered
 months), and no gap exceeded 0.02 SD. The approach to senescence is not needed. Two further cultured series gave a housekeeping gap per doubling of the same sign as untreated fibroblasts and of similar size, with one exception we cannot explain, the mortal
-cells of the telomerase line, (−0.102 SD; see the section on expression): −0.136 SD (95 % interval −0.143 to −0.129) in a foreskin fibroblast line
-immortalised with telomerase (GSE268145, 20 cultures), which divides without approaching senescence (the line's
-mortal cells on the same chips gave −0.026, −0.036 to −0.018, and an earlier batch on other chips +0.087), and −0.102
-(−0.111 to −0.094) in fetal astrocytes (GSE202554, 45 cultures of two donors, 37 from one, over 15 doublings); chip intercepts left both unchanged (−0.138 and −0.101). Those intervals resample genes with the cultures held fixed; resampling cultures within each line
-gives −0.160 to −0.072 for the telomerase line and −0.128 to −0.052 for the astrocytes. Astrocytes immortalised with telomerase (GSE226079; 43 cultures in three
+cells of the telomerase line, (−0.102 SD; see the section on expression): −0.134 SD (95 % interval −0.141 to −0.127) in a foreskin fibroblast line
+immortalised with telomerase (GSE268145, 21 cultures), which divides without approaching senescence (the line's
+mortal cells, 14 cultures on the same chips and an earlier batch on other chips, both gave −0.029, −0.038 to −0.020), and −0.102
+(−0.111 to −0.094) in fetal astrocytes (GSE202554, 45 cultures of two donors, 37 from one, over 15 doublings); chip intercepts left the astrocytes' gap unchanged (−0.101). Those intervals resample genes with the cultures held fixed; resampling cultures within each line
+gives −0.150 to −0.079 for the telomerase line and −0.128 to −0.052 for the astrocytes. Astrocytes immortalised with telomerase (GSE226079; 43 cultures in three
 replicate lines, 29 to 72 doublings) gave −0.083 (−0.092 to −0.074; −0.089 to −0.080 resampling cultures), and −0.084 with chip
 intercepts; 81 % of the
 spread in doublings lies within line and chip. None of the three series has an arrested control, and each is one cell line, three replicate lines of one immortalisation, or two donors (Supplementary Note 3).
@@ -647,18 +644,17 @@ the draw (274, 113 and 146 cases), with mean methylation, 11 blood-cell fraction
 
 ### A clock of cell division reads the shield
 
-**A clock that counts cell divisions, epiTOC1, calls people with a stronger shield older for their age in every
-dividing tissue where it can be scored and reverses in neurons; pace-of-ageing clocks do not see the shield (Fig. 10,
-Fig. 11).**
+**Clocks that count cell divisions call people with a stronger shield older for their age in dividing tissues, and
+the promoter-based ones reverse in neurons; pace-of-ageing clocks do not see the shield (Fig. 10, Fig. 11).**
 
 *Every clock on every rebuilt series.* We scored every clock in the biolearn gallery that keeps at least 90 % of its
 weight measured on every rebuilt series with donor ages (40 tissue groups, 44 clocks; scored on the clock track, without the design-flag mask; clocks taken outside the tissue
 they were trained on kept as negative controls; Supplementary Fig. S23). The pan-tissue clock of Horvath tracked age in
-nearly every group (median r 0.87, up to 0.96; median error 5.3 years), failing only in myometrium of women aged 29 to
-47 (r −0.05). Blood clocks taken into solid tissues still ranked
-donors by age (PhenoAge median r 0.63, Hannum 0.76) but missed their age by 11 to 25 years. Once age was removed, the
-valid clocks of a group agreed only partly on who was ageing fast: the median correlation between their accelerations
-was 0.49 (0.84 in heart; 0.01 to 0.04 in myometrium and liver).
+every group (median r 0.86, up to 0.96; median error 5.2 years; lowest 0.50 in prostate next to a tumour and 0.56 in
+myometrium of women aged 29 to 52). Blood clocks taken into solid tissues still ranked donors by age (PhenoAge median r
+0.68, Hannum 0.80) but missed their age by a median 24 and 8 years. Once age was removed, the valid clocks of a group
+agreed only partly on who was ageing fast: the median correlation between their accelerations was 0.48 (0.84 in heart;
+0.04 in liver).
 
 *Clocks by generation in the same women.* On arrays rebuilt without the design-flag probe mask (which removes a
 fifth of GrimAge's weight; clocks scored both ways agree at r ≥ 0.997), 44 published clocks kept at least 90 % of their
@@ -675,22 +671,31 @@ no clock and no generation added the shield: given any clock and B, F had odds r
 1.04-2.42; Ying adaptation 1.85, 1.03-3.71), as expected by chance among this many exploratory tests; the
 pre-specified PhenoAge did not (1.12, 0.81-1.59).
 
-*Across tissues.* In 34 rebuilt tissue groups with ages (the series above, the TCGA tissues next to tumours and the
+*Across tissues.* In 37 rebuilt tissue groups with ages (the series above, the TCGA tissues next to tumours and the
 mammalian-array human tissues), we scored each person's drift at look-alike promoters (B) and shield share (F)
-against everyone else in the group and correlated them with each clock's acceleration. The mitotic clock epiTOC1,
-which estimates how many times a tissue's stem cells have divided (Yang et al. 2016), passed the coverage rule in 24
-groups. In all 16 groups outside the brain its acceleration went with a stronger shield (median r −0.51; −0.11 in 30
-normal kidneys to −0.88 in prostate next to a tumour). In bulk brain regions the link was weak (−0.05 to −0.15), and in
-sorted neurons, which do not divide, it reversed (+0.28 and +0.47). Hannum (median −0.15, negative in 75 % of 32
-groups) and PhenoAge (−0.18, 82 % of 39) went the same way more weakly; Horvath's pan-tissue clock (−0.02, 54 % of 35)
-and DunedinPACE (−0.08, 62 % of 24) did not show a consistent link. Grouped by generation the medians were alike
-(−0.09 to −0.11 for chronological, phenotypic and mitotic clocks; +0.02 for pace), so what separates clocks is what
-they measure (Fig. 11). Clocks were scored on the clock track (protocol change 4);
-drift on the standard rebuild.
+against everyone else in the group, with every CpG any mitotic clock reads left out of both, and correlated them,
+within each group, with each clock's acceleration (its prediction minus the group's age trend). Six mitotic clocks were
+scored: epiTOC1 (Yang et al. 2016), epiTOC2 and its successor epiTOC3 (Teschendorff 2020), which estimate cumulative
+stem-cell divisions from promoter CpGs that gain methylation; epiCMIT (Duran-Ferrer et al. 2020); RepliTali (Endicott
+et al. 2022), a replicative-age model measured only on the EPIC array; and HypoClock (Zhou, Dinh et al. 2018), the mean
+methylation of 678 solo-WCGW CpGs in partially methylated domains, which falls with division and shares no CpG with
+the epiTOC clocks. Outside the brain every one went with a stronger shield: epiTOC1 in all 18 groups where it passed
+coverage (14 studies; median r −0.50, from −0.10 in normal kidney to −0.88 in prostate next to a tumour), epiTOC2 in
+20 of 21 (−0.50), epiTOC3 in 20 of 21 (−0.44), epiCMIT in 19 of 20 (−0.45), RepliTali in all 7 (−0.48; lung and
+myometrium from three studies), and HypoClock, read in its own direction, in 15 of 18 (+0.31). Medians taken per study
+were the same (−0.44 to −0.50; HypoClock +0.29). In bulk brain regions the links were weak (−0.18 to +0.03 for the
+epiTOC clocks). In sorted cortical neurons, which do not divide, the epiTOC clocks reversed (+0.25 to +0.50) and so did
+HypoClock in the 82-donor group (−0.31; it failed coverage in the 28 controls); RepliTali did not reverse (−0.21 and
+−0.43), and epiCMIT reversed in one group only (+0.26 and −0.02). Clocks of other kinds went the same way more weakly:
+Hannum (median −0.14, negative in 74 % of 34 groups) and PhenoAge (−0.18, 81 % of 37). Horvath's pan-tissue clock
+(−0.01, 54 % of 37) and DunedinPACE (−0.05, 62 % of 26) showed no consistent link, and trait predictors used as
+negative controls (body-mass index, smoking and the like) sat at −0.01. These are within-group associations of
+age-adjusted scores; where a series has a pooled and a stratified group, both are shown. Clocks were scored on the
+clock track (protocol change 4); drift on the standard rebuild.
 
 ![Figure 11](../docs/figures/clock_drift.png)
 
-**Figure 11. What clocks read of drift, tissue by tissue.** Each dot is one clock in one rebuilt tissue group (34
+**Figure 11. What clocks read of drift, tissue by tissue.** Each dot is one clock in one rebuilt tissue group (37
 groups): the correlation of the clock's acceleration (prediction minus the age trend in the group) with each person's
 shield share F (a) and drift at look-alike promoters B (b), both scored against everyone else in the group; clocks
 coloured by generation, bars at the median. How to read: a dot below zero in a means the clock calls people with a
@@ -725,8 +730,8 @@ The qualitative suggestion belongs to Teschendorff, West and Beck (2013), who dr
 already linked age-related methylation change with tissue-specific expression and chromatin state. What was missing
 was a fair comparison, and with it three findings. Matched on island status and starting level, the protection
 becomes a size that can be compared across tissues and species and tested against a null. That size follows how
-strongly a promoter is used and whether the cells divide. And clocks read it unevenly: a clock of cell division,
-epiTOC1, calls people with a stronger shield older for their age in every dividing tissue tested, while pace-of-ageing clocks
+strongly a promoter is used and whether the cells divide. And clocks read it unevenly: clocks of cell division call
+people with a stronger shield older for their age in nearly every dividing tissue tested, while pace-of-ageing clocks
 do not see it, so part of what makes clocks disagree is which part of stochastic drift each one reads.
 
 **The shield belongs to active promoters.** Reference chromatin states account for
@@ -782,8 +787,9 @@ processed data and 1.01 on arrays rebuilt from raw files; only a matched analysi
 interval above one (1.49, 1.04 to 2.69). A second, small series gave no association. Drift B is not a marker of
 breast-cancer risk on this evidence.
 
-**A clock of cell division reads the shield.** Across 34 tissue groups, the mitotic clock epiTOC1 called people with
-a stronger shield older for their age in every dividing tissue where it could be scored and the reverse in sorted neurons,
+**Clocks of cell division read the shield.** Across 37 tissue groups, six mitotic clocks called people with a stronger
+shield older for their age in nearly every dividing tissue where they could be scored, including HypoClock, whose
+CpGs lie outside promoters in partially methylated domains; the promoter-based ones reversed in sorted neurons.
 Hannum and PhenoAge did so more weakly, and Horvath's clock and DunedinPACE did not (Fig. 11); in the blood of one cohort, GrimAge was unrelated to
 it as well and accelerations agreed only within generation (Fig. 10). Since the shield grows with division, a clock
 that counts divisions is the one expected to read it, and in cells that no longer divide it does not. Across the rebuilt series, too, the valid clocks of a tissue
@@ -911,7 +917,7 @@ samples to IDAT pairs, QC and model rows; arrays are excluded on detection, with
 intensities and each sample's beta distribution recorded beside it; set and background CpGs share one quality-passing
 universe fixed before any group comparison, so missingness cannot differ between them; within each series the leading
 principal components are decomposed by chip, row and position, and each design variable's confounding with chip is
-measured; a contrast that chip fully determines is reported as unidentifiable, not adjusted. Technical covariates were removed in every age slope (blood: plate, site, sex, ancestry; cortex: plate,
+measured; a contrast that chip fully determines is reported as unidentifiable and left unadjusted. Technical covariates were removed in every age slope (blood: plate, site, sex, ancestry; cortex: plate,
 sex, ancestry, neuron fraction; other cohorts as available). RRBS CpGs were kept when covered at least 10 times in 90 %
 of a tissue's samples.
 
@@ -934,8 +940,8 @@ Each set's CpGs were compared with all other CpGs in the same stratum of CpG-isl
 young-reference methylation decile, the matched control CpGs ("look-alikes"). With s_k the set's CpGs in stratum k,
 c_k the controls there, n_k = |s_k| and v̄ a mean of the per-CpG measure v (an age slope), the gap is
 G = Σ_k n_k (v̄(s_k) − v̄(c_k)) / (Σ_k n_k · SD(v)), SD(v) taken over all CpGs analysed. P-values computed with the samples fixed, by permuting set labels among CpGs or by summing residuals per gene with a
-cluster-robust error, measure how consistently a set differs from its look-alikes, not whether the difference comes
-with age: with ages randomly shuffled they still reached small values (field mouse liver, five shuffles, p from
+cluster-robust error, measure how consistently a set differs from its look-alikes and say nothing on whether the
+difference comes with age: with ages randomly shuffled they still reached small values (field mouse liver, five shuffles, p from
 3·10⁻¹⁷ to 0.012). They are therefore not used as evidence; every claim rests on intervals that resample donors,
 animals or cultures. Intervals came from 200 donor bootstraps, each resample divided by the full sample's
 spread (an earlier version divided by each resample's own spread and drew intervals toward zero). Series run through the shared program carry both a donor (or animal) interval and a gene-resampling interval; the expression-matched analyses resample the set's genes 200 times with the samples held fixed, which shows stability over genes, not the sampling of donors. For the three per-doubling series without expression data, a second interval resamples cultures within each line (200 resamples). Donors are resampled, both arrays of a donor together, in the glia-neuron and tissue-pair contrasts (400 resamples), and mice in colon and hippocampus (200 per tissue, independently). For blood minus
@@ -1055,6 +1061,8 @@ Durso DF, et al. 2017. Acceleration of leukocytes' epigenetic age as an early tu
 
 Eisenberg E, Levanon EY. 2013. Human housekeeping genes, revisited. Trends Genet 29:569-574. doi:10.1016/j.tig.2013.05.010.
 
+Duran-Ferrer M, et al. 2020. The proliferative history shapes the DNA methylome of B-cell tumors and predicts clinical outcome. Nat Cancer 1:1066-1081. doi:10.1038/s43018-020-00131-2.
+
 Endicott JL, et al. 2022. Cell division drives DNA methylation loss in late-replicating domains in primary human cells. Nat Commun 13:6659. doi:10.1038/s41467-022-34268-8.
 
 Eulalio T, et al. 2026. Epigenome-wide analysis identifies DNA methylation mediators of treatment-related cardiometabolic risk in survivors of childhood cancer. Nat Commun 17:1979. doi:10.1038/s41467-026-68689-6.
@@ -1149,6 +1157,8 @@ Sturm G, et al. 2022. A multi-omics longitudinal aging dataset in primary human 
 
 Sturm G, et al. 2023. OxPhos defects cause hypermetabolism and reduce lifespan in cells and in patients with mitochondrial diseases. Commun Biol 6:22. doi:10.1038/s42003-022-04303-x.
 
+Teschendorff AE. 2020. A comparison of epigenetic mitotic-like clocks for cancer risk prediction. Genome Med 12:56. doi:10.1186/s13073-020-00752-3.
+
 Teschendorff AE, et al. 2010. Age-dependent DNA methylation of genes that are suppressed in stem cells is a hallmark of cancer. Genome Res 20:440-446. doi:10.1101/gr.103606.109.
 
 Teschendorff AE, West J, Beck S. 2013. Age-associated epigenetic drift: implications, and a case of epigenetic thrift? Hum Mol Genet 22:R7-R15. doi:10.1093/hmg/ddt375.
@@ -1180,5 +1190,7 @@ Ying K, et al. 2024. Causality-enriched epigenetic age uncouples damage and adap
 Zhang Q, et al. 2019. Improved precision of epigenetic clock estimates across tissues and its implication for biological ageing. Genome Med 11:54. doi:10.1186/s13073-019-0667-1.
 
 Zhou W, Laird PW, Shen H. 2017. Comprehensive characterization, annotation and innovative use of Infinium DNA methylation BeadChip probes. Nucleic Acids Res 45:e22. doi:10.1093/nar/gkw967.
+
+Zhou W, Dinh HQ, Ramjan Z, et al. 2018. DNA methylation loss in late-replicating domains is linked to mitotic cell division. Nat Genet 50:591-602. doi:10.1038/s41588-018-0073-4.
 
 Zhou W, et al. 2018. SeSAMe: reducing artifactual detection of DNA methylation by Infinium BeadChips in genomic deletions. Nucleic Acids Res 46:e123. doi:10.1093/nar/gky691.
