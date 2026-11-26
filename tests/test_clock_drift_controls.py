@@ -5,6 +5,7 @@ from entropy_age.experiments.clock_drift_controls import (
     clock_stats,
     corr,
     export_check,
+    export_identity,
     flag_primary,
     gallery_cpgs,
     gallery_inputs,
@@ -23,6 +24,7 @@ from entropy_age.experiments.clock_drift_controls import (
     placebo_pair,
     placebo_pool,
     primary_groups,
+    promoter_links,
     seeded_panel,
     summarise,
 )
@@ -452,7 +454,7 @@ def test_export_check_flags_an_export_older_than_the_rebuild():
     kw = dict(export_samples=ids, clock_samples=ids, passing=ids)
     assert export_check(qc_mtime=10, export_mtime=20, clocks_mtime=30, **kw) == (
         set(),
-        "no manifest; times and ids agree",
+        "predictions carry no export identity; no manifest; times and ids agree",
         False,
     )
     drop, note, stale = export_check(qc_mtime=25, export_mtime=20, clocks_mtime=30, **kw)
@@ -469,7 +471,7 @@ def test_export_check_drops_samples_whose_exported_array_is_not_the_current_one(
     )
     manifest = pl.DataFrame({"sample": ["a", "b"], "array": ["100_R01C01", "200_R07C01"]})  # b: an earlier repeat
     drop, note, stale = export_check(
-        qc_mtime=99,
+        qc_mtime=0,
         export_mtime=1,
         clocks_mtime=2,
         export_samples={"a", "b"},
@@ -478,4 +480,82 @@ def test_export_check_drops_samples_whose_exported_array_is_not_the_current_one(
         manifest=manifest,
         current=current,
     )
-    assert drop == {"b"} and not stale and note.startswith("manifest: 1 arrays differ")
+    assert drop == {"b"} and not stale and "manifest: 1 arrays differ" in note
+
+
+def test_export_check_validates_the_identity_carried_in_the_predictions():
+    current = pl.DataFrame({"sample": ["a", "b", "c"], "chip": ["1", "1", "1"], "position": ["R1", "R2", "R3"]})
+    manifest = pl.DataFrame({"sample": ["a", "b", "c"], "array": ["1_R1", "1_R2", "1_R3"]})
+    ids = {"a", "b", "c"}
+    kw = dict(export_samples=ids, clock_samples=ids, passing=ids, manifest=manifest, current=current)
+    scored = pl.DataFrame(
+        {"sample": ["a", "b", "c"], "array": ["1_R1", "9_R9", "1_R3"], "export_id": ["e1", "e1", "e1"]}
+    )  # b was scored on an earlier repeat: same sample id, another physical array
+    drop, note, stale = export_check(qc_mtime=1, export_mtime=2, clocks_mtime=3, scored=scored, manifest_id="e1", **kw)
+    assert drop == {"b"} and not stale and note.startswith("identity: 1 scored arrays differ")
+    # predictions from an earlier export of the same samples: flagged even though the arrays agree
+    ok = scored.with_columns(array=pl.Series(["1_R1", "1_R2", "1_R3"]))
+    drop, note, stale = export_check(qc_mtime=1, export_mtime=2, clocks_mtime=3, scored=ok, manifest_id="e2", **kw)
+    assert stale and not drop and "predictions from export e1, current e2" in note
+
+
+def test_export_check_keeps_freshness_and_sample_checks_beside_a_manifest():
+    current = pl.DataFrame({"sample": ["a", "b"], "chip": ["1", "1"], "position": ["R1", "R2"]})
+    manifest = pl.DataFrame({"sample": ["a", "b"], "array": ["1_R1", "1_R2"]})
+    ids = {"a", "b"}
+    kw = dict(export_samples=ids, passing=ids, manifest=manifest, current=current)
+    drop, note, stale = export_check(qc_mtime=1, export_mtime=2, clocks_mtime=3, clock_samples=ids, **kw)
+    assert not stale and not drop and NO_IDENTITY_TEXT in note
+    _, note, stale = export_check(qc_mtime=1, export_mtime=5, clocks_mtime=3, clock_samples=ids, **kw)
+    assert stale and "clock scores older than the export" in note  # predictions predate the beta export
+    _, note, stale = export_check(qc_mtime=1, export_mtime=2, clocks_mtime=3, clock_samples={"a"}, **kw)
+    assert stale and "differ in 1 sample ids" in note
+
+
+NO_IDENTITY_TEXT = "predictions carry no export identity"
+
+
+def test_biolearn_script_writes_the_identity_the_join_checks(tmp_path):
+    import ast
+    import hashlib
+    from pathlib import Path
+
+    import pandas as pd
+
+    src = Path(__file__).resolve().parents[1] / "scripts" / "clocks_biolearn.py"
+    tree = ast.parse(src.read_text())
+    fn = next(n for n in tree.body if isinstance(n, ast.FunctionDef) and n.name == "export_identity")
+    scope = {"Path": Path, "pd": pd, "hashlib": hashlib}
+    exec(compile(ast.Module([fn], []), str(src), "exec"), scope)
+    export = tmp_path / "GSE1_cpgs.parquet"
+    man = tmp_path / "GSE1_cpgs.manifest.csv"
+    pl.DataFrame({"sample": ["s1", "s2"], "array": ["1_R1", "1_R2"]}).write_csv(man)
+    eid, arrays = scope["export_identity"](str(export))
+    assert eid == export_identity(man) and arrays == {"s1": "1_R1", "s2": "1_R2"}
+    man.unlink()
+    assert scope["export_identity"](str(export)) == ("", {})
+
+
+# ----------------------------------------------------------------------------- review 6, finding 3: shared CpGs
+def _shared_links(n_genes: int, per: int, offset: int = 0) -> pl.DataFrame:
+    """Genes whose promoters overlap: gene k links CpGs [3k, 3k + per), so neighbouring genes share CpGs."""
+    rows = [(f"cg{offset + 3 * k + j:06d}", f"G{offset}_{k}") for k in range(n_genes) for j in range(per)]
+    return pl.DataFrame({"cpg": [r[0] for r in rows], "symbol": [r[1] for r in rows], "promoter": True})
+
+
+def test_gene_cap_holds_over_every_linked_gene_on_both_sides():
+    hk_links = _shared_links(40, 6)  # CpGs 0..122, each hk CpG in up to two hk promoters
+    pool_links = _shared_links(150, 6, offset=200)  # CpGs 200..652, shared between neighbouring pool genes
+    links = pl.concat([hk_links, pool_links])
+    kept = sorted(set(links["cpg"].to_list()))
+    linked, gene_cpgs = promoter_links(kept, links)
+    index = {c: j for j, c in enumerate(kept)}
+    # housekeeping membership assigns each CpG to one gene (link_membership keeps the first link)
+    first = hk_links.unique("cpg", keep="first", maintain_order=True)
+    hk_genes = [np.array([index[c] for c in g["cpg"]]) for _, g in first.group_by("symbol", maintain_order=True)]
+    pool = [np.array(sorted(index[c] for c in g["cpg"])) for _, g in pool_links.group_by("symbol", maintain_order=True)]
+    strata = np.random.default_rng(0).choice(np.array(["a", "b"]), len(kept))
+    for seed in range(5):
+        sub, placebo, _, _ = gene_balanced_pair(strata, hk_genes, pool, np.random.default_rng(seed), 1, linked)
+        assert per_gene_counts(sub, gene_cpgs).max() == 1 and per_gene_counts(placebo, gene_cpgs).max() == 1
+        assert sub.sum() == placebo.sum() > 0

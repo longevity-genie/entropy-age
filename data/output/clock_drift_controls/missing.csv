@@ -13,6 +13,15 @@ GSE144910,brain_stg,"superior temporal gyrus, every donor",true,Zhang_10,no esti
 GSE101961,breast_cancer_free,"breast, cancer-free women",false,AD_Bahado-Singh,no estimate
 GSE101961,breast_cancer_free,"breast, cancer-free women",false,DownSyndrome,no estimate
 GSE101961,breast_cancer_free,"breast, cancer-free women",false,RepliTali,"not scored here (coverage rule, or absent from the clock scores)"
+GSE225845,breast_gse225845,"breast, cancer-free",false,AD_Bahado-Singh,no estimate
+GSE225845,breast_gse225845,"breast, cancer-free",false,BMI_Reed,no estimate
+GSE225845,breast_gse225845,"breast, cancer-free",false,Bohlin,no estimate
+GSE225845,breast_gse225845,"breast, cancer-free",false,CVD_Westerman,no estimate
+GSE225845,breast_gse225845,"breast, cancer-free",false,Hannum,no estimate
+GSE225845,breast_gse225845,"breast, cancer-free",false,HepatoXu,no estimate
+GSE225845,breast_gse225845,"breast, cancer-free",false,Weidner,no estimate
+GSE225845,breast_gse225845,"breast, cancer-free",false,YingCausAge,no estimate
+GSE225845,breast_gse225845,"breast, cancer-free",false,Zhang_10,no estimate
 GSE88883,breast_komen,"breast, healthy donors",false,AD_Bahado-Singh,no estimate
 GSE88883,breast_komen,"breast, healthy donors",false,DownSyndrome,no estimate
 GSE88883,breast_komen,"breast, healthy donors",false,RepliTali,"not scored here (coverage rule, or absent from the clock scores)"
@@ -119,6 +128,9 @@ GSE184211,multi_tissue_mammal40,lung,false,Zhang_10,no estimate
 GSE184211,multi_tissue_mammal40,lung,false,epiCMIT,"not scored here (coverage rule, or absent from the clock scores)"
 GSE184211,multi_tissue_mammal40,lung,false,epiTOC2,"not scored here (coverage rule, or absent from the clock scores)"
 GSE184211,multi_tissue_mammal40,lung,false,epiTOC3,"not scored here (coverage rule, or absent from the clock scores)"
+GSE154980,muscle_hertfordshire_epic,"skeletal muscle (Hertfordshire, EPIC)",false,HepatoXu,no estimate
+GSE154980,muscle_hertfordshire_epic,"skeletal muscle (Hertfordshire, EPIC)",false,YingCausAge,no estimate
+GSE154980,muscle_hertfordshire_epic,"skeletal muscle (Hertfordshire, EPIC)",false,Zhang_10,no estimate
 GSE296589,myometrium_epic,"myometrium, all conditions",false,AD_Bahado-Singh,no estimate
 GSE296589,myometrium_epic,"myometrium, all conditions",false,AlcoholMcCartney,no estimate
 GSE296589,myometrium_epic,"myometrium, all conditions",false,BMI_Reed,no estimate

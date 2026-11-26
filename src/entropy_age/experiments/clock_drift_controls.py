@@ -9,7 +9,8 @@ low-beta promoter clock CpGs and lowers high-beta HypoClock CpGs at once). Codex
 the check built here; its fourth review (findings 1, 3, 5, 6 and 7) shaped the placebo comparison, the panel, the
 primary groups, the guards on partial correlations and the array checks; its fifth review (findings 3 to 7) added the
 gene-balanced placebo pairs, the exclusion of preprocessing probes, the group registry, one scaled design for fit and
-rank, and the export check.
+rank, and the export check; its sixth (findings 3 and 6) the gene cap over every linked gene and the export identity
+carried into the predictions.
 
 Per series group, with the arrays, CpGs and clock scores of ``clock_drift`` (``series.selection``, the same
 availability rule, every mitotic and EpiTOC1 CpG kept out of the drift CpGs, sensitivity configs flagged):
@@ -18,12 +19,15 @@ availability rule, every mitotic and EpiTOC1 CpG kept out of the drift CpGs, sen
    with a logged reason, and only arrays passing it enter. For every sample id in both rebuilds, the physical array
    (chip and position from each track's ``qc.csv``, the file prefix where either is missing) must be the same; a
    sample whose two exports read different arrays is dropped, logged and counted (``array_mismatch_dropped``).
-   The clock scores are then checked against the current rebuild (``export_check``): where the beta export carries
-   a manifest of physical arrays (``scripts/export_clock_cpgs.py`` writes ``<GSE>_cpgs.manifest.csv`` since review
-   5), a sample whose exported array is not the one the current clock-track QC keeps is dropped
-   (``export_dropped``); without one, the export is flagged stale (``export_stale``, ``export_check``) when it is
-   older than the clock-track QC, the scores are older than the export, the scores and the export hold different
-   sample ids, or a passing array is missing from the export.
+   The clock scores are then checked against the current rebuild (``export_check``). Where the predictions carry
+   the export identity (``array`` and ``export_id``, written by ``scripts/clocks_biolearn.py`` since review 6), a
+   sample whose scored array is not the one the current clock-track QC keeps is dropped and predictions from another
+   export than the current manifest's are flagged stale. Where the beta export carries a manifest of physical arrays
+   (``<GSE>_cpgs.manifest.csv``, since review 5), a sample whose exported array differs is dropped
+   (``export_dropped``). With or without either, the export is flagged stale (``export_stale``, ``export_check``)
+   when it is older than the clock-track QC, the scores are older than the export, the scores and the export hold
+   different sample ids, or a passing array is missing from the export. ``export_identity`` says whether the
+   predictions carried the identity; prediction files written before review 6 do not, and rely on the other checks.
 1. **Drift measures.** ``loo_scores`` per person: ``P_housekeeping`` (the matched gap), ``B_housekeeping`` and
    ``F_housekeeping``; ``A = P + B`` is the housekeeping CpGs' own stratum-weighted deviation.
 2. **A third, disjoint probe panel.** CpGs of the same rebuild drawn in a seeded order, kept when measured in every
@@ -71,9 +75,12 @@ availability rule, every mitotic and EpiTOC1 CpG kept out of the drift CpGs, sen
    **Gene-balanced pairs** (``scheme`` ``gene``, columns ending ``_gb``): the same K draws with both targets sampled
    by gene (``gene_balanced_pair``): one CpG of each housekeeping gene at random, a placebo filled to that draw's
    stratum counts with at most one CpG per pool gene, and the housekeeping draw thinned to the placebo's attained
-   counts. Both sets then hold one CpG per gene and the same number of genes, so equal probe counts mean equal numbers
-   of promoters. Reported for both schemes: the housekeeping margin on this common support (``margin_raw``,
-   ``margin_adj``: median over draws of ``sign(hk r) * (hk r - placebo r)``), the genes per set and the fill.
+   counts. Both sides keep one rule for CpGs annotated to several genes (review 6, finding 3): the cap counts every
+   gene a CpG's 450k promoter links name (``promoter_links``), so a CpG enters only while each of its genes holds no
+   drawn CpG yet, and the check (``hk_max_per_linked_gene``, ``placebo_max_per_linked_gene`` per draw) reads the
+   original links. Both sets then hold one CpG per annotated gene and the same number of CpGs. Reported for both
+   schemes: the housekeeping margin on this common support (``margin_raw``, ``margin_adj``: median over draws of
+   ``sign(hk r) * (hk r - placebo r)``), the genes per set and the fill.
    Expression and chromatin state are not matched (no per-group data here).
 6. **Primary groups.** A registry of every group (``group_registry``, written as ``groups``) is built from arrays
    that pass the clock track's QC, read the same physical array in both rebuilds and are held by the drift betas,
@@ -232,15 +239,21 @@ def matched_placebo(
     pool_genes: list[np.ndarray],
     rng: np.random.Generator,
     per_gene: int | None = None,
+    linked: list[np.ndarray] | None = None,
 ) -> tuple[np.ndarray, list[np.ndarray], float]:
     """A placebo set with ``real``'s count of CpGs in every stratum, filled gene by gene from ``pool_genes`` (index
     arrays of candidate CpGs, one per gene) in random order; a gene adds those of its CpGs whose stratum still has
-    room, at most ``per_gene`` of them (taken in random order) when given. Returns (membership mask, the genes' index
-    arrays as used, share of the quota filled)."""
+    room, at most ``per_gene`` of them (taken in random order) when given. With ``linked`` (per CpG, the ids of every
+    gene its promoter links name, ``promoter_links``) a CpG enters only while each of its linked genes holds fewer
+    than ``per_gene`` placebo CpGs, so the cap holds for every annotated gene, a CpG shared by two genes counting for
+    both (review 6, finding 3). Returns (membership mask, the genes' index arrays as used, share of the quota
+    filled)."""
     levels, codes = np.unique(strata, return_inverse=True)
     quota = np.bincount(codes[real], minlength=levels.size)
     want = int(quota.sum())
     taken = np.zeros(strata.size, dtype=bool)
+    held = _gene_counter(linked)
+    cap = per_gene if per_gene is not None else np.inf
     genes = []
     for g in rng.permutation(len(pool_genes)):
         if quota.sum() == 0:
@@ -251,23 +264,76 @@ def matched_placebo(
             if per_gene is not None and len(use) >= per_gene:
                 break
             if not taken[j] and not real[j] and quota[codes[j]] > 0:
+                if held is not None and (held[linked[j]] >= cap).any():
+                    continue
                 quota[codes[j]] -= 1
                 taken[j] = True
                 use.append(j)
+                if held is not None:
+                    held[linked[j]] += 1
         if use:
             genes.append(np.array(use, dtype=int))
     return taken, genes, float(taken.sum() / want) if want else float("nan")
 
 
-def gene_balanced(genes: list[np.ndarray], n: int, rng: np.random.Generator, per_gene: int = 1) -> np.ndarray:
+def _gene_counter(linked: list[np.ndarray] | None) -> np.ndarray | None:
+    if linked is None:
+        return None
+    top = max((int(a.max()) for a in linked if a.size), default=-1)
+    return np.zeros(top + 1, dtype=int)
+
+
+def gene_balanced(
+    genes: list[np.ndarray],
+    n: int,
+    rng: np.random.Generator,
+    per_gene: int = 1,
+    linked: list[np.ndarray] | None = None,
+) -> np.ndarray:
     """A mask over ``n`` CpGs with at most ``per_gene`` CpGs of every gene (index arrays), drawn at random; a CpG
-    shared by two genes is taken once."""
+    shared by two genes is taken once. With ``linked`` (as ``matched_placebo``) the genes are visited in random order
+    and a CpG enters only while each of its linked genes holds fewer than ``per_gene`` drawn CpGs: the same cap over
+    every annotated gene that the placebo side keeps (review 6, finding 3)."""
     out = np.zeros(n, dtype=bool)
-    for g in genes:
-        free = np.setdiff1d(np.asarray(g, dtype=int), np.flatnonzero(out))
-        if free.size:
-            out[rng.choice(free, min(per_gene, free.size), replace=False)] = True
+    if linked is None:
+        for g in genes:
+            free = np.setdiff1d(np.asarray(g, dtype=int), np.flatnonzero(out))
+            if free.size:
+                out[rng.choice(free, min(per_gene, free.size), replace=False)] = True
+        return out
+    held = _gene_counter(linked)
+    for gi in rng.permutation(len(genes)):
+        took = 0
+        for j in rng.permutation(np.asarray(genes[gi], dtype=int)):
+            if took >= per_gene:
+                break
+            if out[j] or (held[linked[j]] >= per_gene).any():
+                continue
+            out[j] = True
+            held[linked[j]] += 1
+            took += 1
     return out
+
+
+def promoter_links(kept: list[str], links: pl.DataFrame) -> tuple[list[np.ndarray], list[np.ndarray]]:
+    """The 450k promoter links of ``kept`` as they stand in the annotation: per CpG the ids of every gene (symbol) its
+    promoter links name, and per gene the indices of its linked CpGs. The cap of the gene-sampled draws and its check
+    read these, so a CpG shared by two promoters counts for both."""
+    index = {c: j for j, c in enumerate(kept)}
+    rows = (
+        links.filter(pl.col("promoter") & pl.col("cpg").is_in(kept))
+        .select("cpg", "symbol")
+        .unique()
+        .sort("symbol", "cpg")
+    )
+    symbols = sorted(set(rows["symbol"].to_list()))
+    gid = {g: i for i, g in enumerate(symbols)}
+    per_cpg: list[list[int]] = [[] for _ in kept]
+    per_gene: list[list[int]] = [[] for _ in symbols]
+    for c, g in rows.iter_rows():
+        per_cpg[index[c]].append(gid[g])
+        per_gene[gid[g]].append(index[c])
+    return [np.array(v, dtype=int) for v in per_cpg], [np.array(v, dtype=int) for v in per_gene]
 
 
 def per_gene_counts(mask: np.ndarray, genes: list[np.ndarray]) -> np.ndarray:
@@ -282,18 +348,21 @@ def gene_balanced_pair(
     pool_genes: list[np.ndarray],
     rng: np.random.Generator,
     per_gene: int = 1,
+    linked: list[np.ndarray] | None = None,
 ) -> tuple[np.ndarray, np.ndarray, np.ndarray, float]:
     """Both targets sampled by gene (review 5, finding 3): a housekeeping draw with at most ``per_gene`` CpGs per
     housekeeping gene (``gene_balanced``), a placebo filled to its stratum counts with at most ``per_gene`` CpGs per
     pool gene, and the housekeeping draw thinned to the placebo's attained counts (the common support,
-    ``matched_subset``). With ``per_gene`` 1 both sets hold one CpG per gene and as many genes as CpGs. The background
-    leaves out every housekeeping CpG and the placebo. Returns ``(subset, placebo, background, fill)``."""
+    ``matched_subset``). With ``linked`` both sides keep one rule: at most ``per_gene`` CpGs per gene over every gene
+    a CpG's promoter links name (review 6, finding 3). With ``per_gene`` 1 both sets hold one CpG per gene and as many
+    genes as CpGs. The background leaves out every housekeeping CpG and the placebo. Returns ``(subset, placebo,
+    background, fill)``."""
     n = strata.size
     hk_all = np.zeros(n, dtype=bool)
     for g in hk_genes:
         hk_all[np.asarray(g, dtype=int)] = True
-    hk = gene_balanced(hk_genes, n, rng, per_gene)
-    placebo, _, fill = matched_placebo(strata, hk, pool_genes, rng, per_gene)
+    hk = gene_balanced(hk_genes, n, rng, per_gene, linked)
+    placebo, _, fill = matched_placebo(strata, hk, pool_genes, rng, per_gene, linked)
     return matched_subset(strata, hk, placebo, rng), placebo, ~(hk_all | placebo), fill
 
 
@@ -457,6 +526,18 @@ def manifest_path(export: Path) -> Path:
     return export.with_name(export.name.removesuffix(".parquet") + ".manifest.csv")
 
 
+def export_identity(manifest: Path) -> str:
+    """The beta export's identity: the first 16 hex digits of the SHA-256 of its manifest file's bytes (sample and
+    physical array per exported column). ``scripts/clocks_biolearn.py`` computes the same digest of the manifest beside
+    its input and writes it, with each sample's array, into every prediction row (review 6, finding 6)."""
+    import hashlib
+
+    return hashlib.sha256(Path(manifest).read_bytes()).hexdigest()[:16]
+
+
+NO_IDENTITY = "predictions carry no export identity"
+
+
 def export_check(
     *,
     qc_mtime: float,
@@ -467,23 +548,48 @@ def export_check(
     passing: set[str],
     manifest: pl.DataFrame | None = None,
     current: pl.DataFrame | None = None,
+    scored: pl.DataFrame | None = None,
+    manifest_id: str | None = None,
 ) -> tuple[set[str], str, bool]:
-    """Is the clock-score export the current rebuild's (review 5, finding 7)? With a ``manifest`` (``sample`` and
-    ``array``, written at export) and the ``current`` clock-track QC: the samples whose exported array differs from the
-    current one are returned to be dropped, and the export counts as current. Without one: the export is flagged stale
-    when it is older than the clock-track QC, when the clock scores are older than the export, when the scores and
-    the export hold different sample ids, or when a passing array of the current QC is missing from the export.
-    Returns ``(drop, note, stale)``."""
+    """Is the clock-score export the current rebuild's (review 5, finding 7; review 6, finding 6)?
+
+    Three checks, each applied whenever its inputs exist. (1) **Prediction identity**: ``scored`` (``sample``,
+    ``array``, ``export_id`` as ``scripts/clocks_biolearn.py`` writes them) is joined to the ``current`` clock-track
+    QC; a sample whose scored array is not the current one is dropped, and predictions whose ``export_id`` is not the
+    current manifest's (``manifest_id``) are flagged stale. Predictions without these columns (every file written
+    before review 6) fall back to the next two checks, and the note says so (``NO_IDENTITY``). (2) **Manifest**: a
+    sample whose exported array differs from the current one, or a scored passing sample the manifest does not list,
+    is dropped. (3) **Freshness and sample sets**, with or without a manifest: stale when the export is older than the
+    clock-track QC, the scores are older than the export, the scores and the export hold different sample ids, or a
+    passing array of the current QC is missing from the export. Returns ``(drop, note, stale)``."""
+    drop: set[str] = set()
+    parts, flags = [], []
+    has_identity = scored is not None and {"array", "export_id"} <= set(scored.columns)
+    if has_identity and current is not None:
+        ids = scored.select(pl.col("sample").cast(pl.String), pl.col("array").cast(pl.String), "export_id").unique()
+        j = array_ids(current).join(ids, on="sample", how="right", suffix="_scored")
+        bad = j.filter(~(pl.col("array") == pl.col("array_scored")).fill_null(False))["sample"].to_list()
+        drop |= set(bad) & passing
+        exports = set(ids["export_id"].cast(pl.String).to_list())
+        parts.append(f"identity: {len(set(bad) & passing)} scored arrays differ from the current QC")
+        if manifest_id is None:
+            flags.append("no manifest to check the predictions' export id against")
+        elif exports != {manifest_id}:
+            flags.append(f"predictions from export {', '.join(sorted(map(str, exports)))}, current {manifest_id}")
+    else:
+        parts.append(NO_IDENTITY)
     if manifest is not None and current is not None:
         j = array_ids(current).join(
             manifest.select(pl.col("sample").cast(pl.String), "array"), on="sample", how="inner", suffix="_export"
         )
         bad = j.filter(~(pl.col("array") == pl.col("array_export")).fill_null(False))["sample"].to_list()
         unlisted = clock_samples - set(manifest["sample"].cast(pl.String).to_list())
-        drop = set(bad) | (unlisted & passing)
-        note = f"manifest: {len(bad)} arrays differ, {len(unlisted & passing)} scored samples not in the manifest"
-        return drop, note, False
-    flags = []
+        drop |= set(bad) | (unlisted & passing)
+        parts.append(
+            f"manifest: {len(bad)} arrays differ, {len(unlisted & passing)} scored samples not in the manifest"
+        )
+    else:
+        parts.append("no manifest")
     if export_mtime is not None and export_mtime < qc_mtime:
         flags.append("export older than the clock-track QC")
     if export_mtime is not None and clocks_mtime < export_mtime:
@@ -496,8 +602,8 @@ def export_check(
     if absent:
         flags.append(f"{len(absent)} passing arrays absent from the export")
     if flags:
-        return set(), "stale: " + "; ".join(flags), True
-    return set(), "no manifest; times and ids agree", False
+        return drop, "; ".join(parts) + "; stale: " + "; ".join(flags), True
+    return drop, "; ".join(parts) + "; times and ids agree", False
 
 
 def primary_groups(groups: pl.DataFrame) -> pl.DataFrame:
@@ -776,12 +882,15 @@ class SeriesScores:
     note: str
     stale: bool
     dropped: set[str]
+    identity: bool = False  # the predictions carry the export identity (review 6, finding 6)
 
 
 def series_scores(inp: SeriesInput, clock_cpgs: set[str]) -> SeriesScores:
     if not inp.clocks_path.exists():
         return SeriesScores(None, None, "no clock scores", False, set())
-    long = pl.read_csv(inp.clocks_path, schema_overrides={"sample": pl.String}).select("sample", "clock", "prediction")
+    full = pl.read_csv(inp.clocks_path, schema_overrides={"sample": pl.String, "array": pl.String})
+    long = full.select("sample", "clock", "prediction")
+    identity = full.select("sample", "array", "export_id") if {"array", "export_id"} <= set(full.columns) else None
     export_samples, export_mtime, mb = None, None, None
     if inp.unmasked.exists():
         export_samples = set(pl.read_parquet_schema(inp.unmasked).names()) - {"cpg"}
@@ -797,14 +906,16 @@ def series_scores(inp: SeriesInput, clock_cpgs: set[str]) -> SeriesScores:
         passing=set(inp.clock_qc["sample"].cast(pl.String).to_list()),
         manifest=pl.read_csv(man, schema_overrides={"sample": pl.String, "array": pl.String}) if man.exists() else None,
         current=inp.clock_qc,
+        scored=identity,
+        manifest_id=export_identity(man) if man.exists() else None,
     )
-    if stale or drop:
+    if stale or drop or identity is None:
         print(f"clock scores {inp.name}: {note}", file=sys.stderr)
     long = long.filter(~pl.col("sample").is_in(list(drop)))
     if mb is not None and drop:
         mb = mb.drop([c for c in drop if c in mb.columns])
     base = long.cast({"prediction": pl.Float64}).pivot(on="clock", index="sample", values="prediction")
-    return SeriesScores(base, mb, note, stale, drop)
+    return SeriesScores(base, mb, note, stale, drop, identity is not None)
 
 
 def group_clock_scores(samples: list[str], sc: SeriesScores, mitotic: dict) -> pl.DataFrame:
@@ -899,6 +1010,7 @@ def run(ctx: Context) -> list[Path]:
         match = match_strata(x, island, np.array([chemistry.get(c, "NA") for c in kept]))
         rng = ctx.rng(130_000 + 100 * inp.gi + e.li)
         pool = placebo_pool(kept, member, links, set_genes)
+        linked, gene_cpgs = promoter_links(kept, links)
         fills, pairs, filled, gb = [], {}, [], []
         for k in range(n_placebo):
             sub_k, mask, background, fill = placebo_pair(match, hk, pool, rng)
@@ -907,7 +1019,7 @@ def run(ctx: Context) -> list[Path]:
             filled.append(mask)
         gb_rng = ctx.rng(140_000 + 100 * inp.gi + e.li)
         for k in range(n_placebo):
-            sub_k, mask, background, fill = gene_balanced_pair(match, hk_genes, pool, gb_rng, GENE_CAP)
+            sub_k, mask, background, fill = gene_balanced_pair(match, hk_genes, pool, gb_rng, GENE_CAP, linked)
             pairs[f"genebal{k}"] = (sub_k, mask, background)
             gb.append(
                 {
@@ -917,6 +1029,8 @@ def run(ctx: Context) -> list[Path]:
                     "placebo_genes": int(per_gene_counts(mask, pool).size),
                     "hk_max_per_gene": int(per_gene_counts(sub_k, hk_genes).max(initial=0)),
                     "placebo_max_per_gene": int(per_gene_counts(mask, pool).max(initial=0)),
+                    "hk_max_per_linked_gene": int(per_gene_counts(sub_k, gene_cpgs).max(initial=0)),
+                    "placebo_max_per_linked_gene": int(per_gene_counts(mask, gene_cpgs).max(initial=0)),
                 }
             )
         levels, codes = np.unique(match, return_inverse=True)
@@ -972,6 +1086,7 @@ def run(ctx: Context) -> list[Path]:
                     "export_check": sc.note,
                     "export_stale": sc.stale,
                     "export_dropped": len(sc.dropped),
+                    "export_identity": sc.identity,
                     "covariates": qdesc + (", batch/center" if held.shape[1] else ""),
                     "clock": clock,
                     "mitotic": clock in MITOTIC,
@@ -1000,6 +1115,10 @@ def run(ctx: Context) -> list[Path]:
                             "placebo_genes": None if meta is None else meta[k]["placebo_genes"],
                             "hk_max_per_gene": None if meta is None else meta[k]["hk_max_per_gene"],
                             "placebo_max_per_gene": None if meta is None else meta[k]["placebo_max_per_gene"],
+                            "hk_max_per_linked_gene": None if meta is None else meta[k]["hk_max_per_linked_gene"],
+                            "placebo_max_per_linked_gene": (
+                                None if meta is None else meta[k]["placebo_max_per_linked_gene"]
+                            ),
                             "balance_tvd": float(per[f"tvd_{g}"].mean()),
                             "balance_unusable": float(per[f"unusable_{g}"].mean()),
                             "hk_r_raw": corr(acc, fh),

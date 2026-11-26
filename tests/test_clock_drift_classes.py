@@ -1,18 +1,29 @@
 import numpy as np
+import polars as pl
 
 from entropy_age.experiments.clock_drift_classes import (
     class_draw,
+    class_draws,
     class_scores,
     clusters,
     contrasts,
+    draw_rs,
+    hartung_knapp,
     loo_codes,
+    nonpromoter_universe,
     partial_rs,
     random_effects,
     shared_weights,
+    support_gap,
     thin,
     units,
 )
-from entropy_age.experiments.clock_drift_controls import paired_weights, partial_r_checked, per_gene_counts
+from entropy_age.experiments.clock_drift_controls import (
+    paired_weights,
+    partial_r_checked,
+    per_gene_counts,
+    promoter_links,
+)
 from entropy_age.protection import fit_reference
 
 
@@ -137,3 +148,121 @@ def test_random_effects_pools_and_widens_with_heterogeneity():
     assert np.isclose(mu, 0.1) and tau2 == 0 and np.isclose(se, 0.05 / np.sqrt(3))
     mu, se2, tau2 = random_effects(np.array([-0.3, 0.0, 0.3]), np.array([0.05, 0.05, 0.05]))
     assert np.isclose(mu, 0.0) and tau2 > 0 and se2 > se
+
+
+# ----------------------------------------------------------------------------- review 6
+def _three_pools(n: int = 3000, seed: int = 1):
+    rng = np.random.default_rng(seed)
+    strata = rng.choice(np.array(["a", "b", "c", "d"]), n)
+    hk_genes = [np.arange(j, j + 5) for j in range(0, 300, 5)]
+    op_genes = [np.arange(j, j + 4) for j in range(300, 1500, 4)]
+    np_units = [np.arange(j, j + 3) for j in range(1500, 3000, 3)]
+    member = np.zeros(n, dtype=bool)
+    member[:300] = True
+    member[2900:] = True  # members of another gene set: never a target, never background
+    return strata, hk_genes, op_genes, np_units, member
+
+
+def test_pooled_background_is_disjoint_from_every_draws_targets():
+    strata, hk, op, np_units, member = _three_pools()
+    np_units = [u for u in np_units if u[0] < 2900]
+    draws, pooled = class_draws(strata, hk, op, np_units, member, np.random.default_rng(3), 6)
+    union = np.zeros(strata.size, dtype=bool)
+    for sets, background in draws:
+        targets = np.any(sets, axis=0)
+        assert not (background & (targets | member)).any() and (background | targets | member).all()
+        union |= targets
+    assert not (pooled & (union | member)).any() and (pooled | union | member).all()
+    # some draw's targets sit in another draw's background: that is why the pooled background exists
+    assert any((draws[0][1] & np.any(sets, axis=0)).any() for sets, _ in draws[1:])
+    assert support_gap(strata, draws, pooled) == 0
+    starved = pooled & (strata != "a")  # a background without stratum a lacks support where every class has CpGs
+    assert support_gap(strata, draws, starved) == 1
+
+
+def test_draw_rs_fit_each_draw_against_its_own_background():
+    rng = np.random.default_rng(9)
+    n = 70
+    fixed = rng.normal(size=(n, 3))
+    b = rng.normal(size=(4, n))
+    a = rng.normal(size=(4, n, 3)) + b[:, :, None]
+    v = fixed @ rng.normal(size=3) + a[:, :, 0].mean(axis=0) + rng.normal(size=n)
+    r = draw_rs(v, a, b, fixed)
+    for j in range(4):
+        assert np.allclose(r[j], partial_rs(v, a[j], np.column_stack([fixed, b[j]]))[0])
+
+
+def test_class_scores_leave_every_copy_of_a_donor_out():
+    rng = np.random.default_rng(10)
+    x = rng.beta(2, 5, (6, 200))
+    island = rng.random(200) < 0.5
+    s1 = np.zeros(200, dtype=bool)
+    s1[:20] = True
+    bg = ~s1
+    counts = np.array([2, 1, 0, 3, 1, 1])
+    a, b, _ = class_scores(x, island, [([s1], bg)], counts)
+    assert np.isnan(a[0, 2, 0]) and np.isnan(b[0, 2])
+    from entropy_age.protection import deviations
+
+    others = np.array([0, 1, 3, 4, 5])
+    w = counts[others].astype(float)
+    level = (w[1:, None] * x[others[1:]]).sum(axis=0) / w[1:].sum()  # donor 0's reference: neither of its copies
+    (w1,), bw, _ = shared_weights([s1], bg, loo_codes(level, island))
+    d = deviations(x[0], level)
+    assert np.isclose(a[0, 0, 0], d @ w1) and np.isclose(b[0, 0], d @ bw)
+
+
+def test_nonpromoter_clusters_built_on_the_eligible_annotation_before_sampling():
+    probes = pl.DataFrame(
+        {
+            "cpg": ["cg01", "cg02", "cg03", "cg04", "cg05", "cg06", "cg07"],
+            "chr": ["1", "1", "1", "1", "1", "1", "2"],
+            "pos": [0, 700, 1400, 5000, 5600, 6200, 100],
+            "promoter": [False, True, False, False, False, False, False],
+        }
+    )
+    pick, cluster_of = nonpromoter_universe(probes, set(), {"cg05"}, np.random.default_rng(0), size=10)
+    assert "cg02" not in cluster_of and "cg05" not in pick
+    assert cluster_of["cg01"] != cluster_of["cg03"]  # the promoter CpG between them does not bridge 1.4 kb
+    assert cluster_of["cg04"] == cluster_of["cg05"] == cluster_of["cg06"]  # leaving cg05 out does not split them
+    _, linked_out = nonpromoter_universe(probes, {"cg07"}, set(), np.random.default_rng(0), size=10)
+    assert "cg07" not in linked_out  # a promoter link makes a CpG ineligible
+
+
+def test_class_draw_caps_both_promoter_classes_over_every_linked_gene():
+    n = 1200
+    rows = [(f"cg{3 * k + j:05d}", f"H{k}") for k in range(40) for j in range(6)]  # hk promoters overlap in pairs
+    rows += [(f"cg{300 + 3 * k + j:05d}", f"P{k}") for k in range(200) for j in range(6)]
+    links = pl.DataFrame({"cpg": [r[0] for r in rows], "symbol": [r[1] for r in rows], "promoter": True})
+    kept = [f"cg{i:05d}" for i in range(n)]
+    linked, gene_cpgs = promoter_links(kept, links)
+    index = {c: j for j, c in enumerate(kept)}
+    first = pl.DataFrame(rows[:240], schema=["cpg", "symbol"], orient="row").unique(
+        "cpg", keep="first", maintain_order=True
+    )
+    hk = [np.array([index[c] for c in g["cpg"]]) for _, g in first.group_by("symbol", maintain_order=True)]
+    pool = [
+        np.array(sorted(index[c] for c in g["cpg"]))
+        for _, g in links.filter(pl.col("symbol").str.starts_with("P")).group_by("symbol", maintain_order=True)
+    ]
+    units_np = [np.arange(j, j + 3) for j in range(1000, 1197, 3)]
+    strata = np.random.default_rng(0).choice(np.array(["a", "b"]), n)
+    for seed in range(5):
+        m = class_draw(strata, hk, pool, units_np, np.random.default_rng(seed), linked=linked)
+        assert per_gene_counts(m["hk"], gene_cpgs).max() == 1 and per_gene_counts(m["op"], gene_cpgs).max() == 1
+        assert m["hk"].sum() == m["op"].sum() == m["np"].sum() > 0
+
+
+def test_hartung_knapp_interval():
+    from scipy.stats import t as student
+
+    est = np.array([-0.1, 0.05, 0.02, -0.03, 0.08])
+    se = np.array([0.04, 0.05, 0.03, 0.06, 0.05])
+    mu, lo, hi = hartung_knapp(est, se)
+    dl, _, tau2 = random_effects(est, se)
+    w = 1 / (se**2 + tau2)
+    q = (w * (est - dl) ** 2).sum() / (4 * w.sum())
+    assert (
+        np.isclose(mu, dl) and np.isclose(hi - mu, student.ppf(0.975, 4) * np.sqrt(q)) and np.isclose(mu - lo, hi - mu)
+    )
+    assert np.isnan(hartung_knapp(est[:1], se[:1])[0])

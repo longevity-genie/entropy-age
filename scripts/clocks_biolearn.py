@@ -12,10 +12,17 @@ biolearn's GrimAge sums each component over the CpGs present and skips missing v
 here a missing value is filled with that CpG's cohort mean first, and the coverage rule applies as for every clock.
 biolearn's gallery wraps PhenoAge in its imputation; clocks without a wrapper refuse missing CpGs and are skipped for
 samples that lack any.
+
+Export identity (Codex review 6, finding 6): where ``<IN stem>.manifest.csv`` (scripts/export_clock_cpgs.py) sits
+beside IN, every output row also carries the sample's physical ``array`` from it and ``export_id``, the first 16 hex
+digits of the SHA-256 of the manifest's bytes (``clock_drift_controls.export_identity``), so the clock analyses can
+check at their join that the scores come from the export, and the arrays, the current rebuild keeps.
 """
 
+import hashlib
 import os
 import sys
+from pathlib import Path
 
 import numpy as np
 import pandas as pd
@@ -44,8 +51,21 @@ def grimage_weights(model) -> pd.Series:
     return cpg.groupby("var")["beta"].apply(lambda b: b.abs().sum())
 
 
+def export_identity(src: str) -> tuple[str, dict[str, str]]:
+    """The beta export's id (SHA-256 of its manifest's bytes, 16 hex digits) and each sample's physical array, from
+    the manifest beside ``src``; ``("", {})`` when there is none."""
+    man = Path(src).with_name(Path(src).name.removesuffix(".parquet") + ".manifest.csv")
+    if not man.exists():
+        return "", {}
+    arrays = pd.read_csv(man, dtype=str)
+    return hashlib.sha256(man.read_bytes()).hexdigest()[:16], dict(zip(arrays["sample"], arrays["array"], strict=True))
+
+
 def main(src: str, dst: str, meta_path: str | None = None) -> None:
     betas = pd.read_parquet(src).set_index("cpg")
+    export_id, arrays = export_identity(src)
+    if not export_id:
+        print(f"{src}: no export manifest beside it; predictions carry no export identity", file=sys.stderr)
     meta = None
     if meta_path:
         meta = pd.read_csv(meta_path).set_index("sample").reindex(betas.columns)
@@ -102,7 +122,8 @@ def main(src: str, dst: str, meta_path: str | None = None) -> None:
         for sample in betas.columns:
             rows.append({"sample": sample, "clock": name, "output": entry.get("output", ""),
                          "prediction": float(values.loc[sample]),
-                         "measured_weight_share": float(measured.loc[sample])})
+                         "measured_weight_share": float(measured.loc[sample]),
+                         **({"array": arrays.get(str(sample)), "export_id": export_id} if export_id else {})})
         summary.append({"clock": name, "status": "kept", "arrays_covered": array_share,
                         "median_weight_share": float(measured.median()), "output": entry.get("output", "")})
     pd.DataFrame(rows).to_csv(dst, index=False)

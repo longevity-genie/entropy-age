@@ -10,6 +10,8 @@ GSE349373,brain_regions,"hippocampus, every donor",300,true,false,true,0,true
 GSE144910,brain_stg,"superior temporal gyrus, every donor",88,true,false,true,0,true
 GSE144910,brain_stg,"superior temporal gyrus, controls",44,true,false,true,0,false
 GSE101961,breast_cancer_free,"breast, cancer-free women",118,true,false,false,0,true
+GSE225845,breast_gse225845,"breast, cancer-free",223,true,false,false,0,true
+GSE225845,breast_gse225845,"breast, next to a tumour",119,true,false,false,0,false
 GSE88883,breast_komen,"breast, healthy donors",98,true,false,false,0,true
 GSE132804,colon_gse132804_450k,"normal colon, every donor",103,true,false,false,0,false
 GSE132804,colon_gse132804_450k,"normal colon, low CRC risk",48,true,false,false,0,false
@@ -40,6 +42,10 @@ GSE184211,multi_tissue_mammal40,lung,112,true,false,false,0,true
 GSE184211,multi_tissue_mammal40,spleen,61,true,false,false,0,false
 GSE184211,multi_tissue_mammal40,adipose,57,true,false,false,0,false
 GSE184211,multi_tissue_mammal40,blood,32,true,false,false,0,false
+GSE154946,muscle_hertfordshire_450k,"skeletal muscle (Hertfordshire, 450k)",18,false,false,false,0,false
+GSE154946,muscle_hertfordshire_450k,"cultured myoblasts (Hertfordshire, 450k)",19,false,false,false,0,false
+GSE154980,muscle_hertfordshire_epic,"skeletal muscle (Hertfordshire, EPIC)",78,true,false,false,0,true
+GSE244995,muscle_postmortem_korean,"skeletal muscle (post-mortem, GSE244995)",20,false,false,false,0,false
 GSE296589,myometrium_epic,"myometrium, all conditions",62,true,false,false,0,true
 GSE296589,myometrium_epic,"myometrium, fibroid-free",30,true,false,false,0,false
 GSE296589,myometrium_epicv2,"myometrium, all conditions",31,true,false,false,0,false
