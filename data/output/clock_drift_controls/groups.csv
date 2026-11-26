@@ -1,0 +1,63 @@
+accession,series,group,donors,eligible,sensitivity,brain,array_mismatch_dropped,primary
+GSE85566,airway_asthma,"airway, every donor",115,true,false,false,0,true
+GSE85566,airway_asthma,"airway, controls",41,true,false,false,0,false
+GSE349373,brain_regions,"prefrontal cortex, controls",100,true,false,true,0,false
+GSE349373,brain_regions,"prefrontal cortex, every donor",294,true,false,true,0,false
+GSE349373,brain_regions,"amygdala, controls",99,true,false,true,0,false
+GSE349373,brain_regions,"amygdala, every donor",297,true,false,true,0,false
+GSE349373,brain_regions,"hippocampus, controls",98,true,false,true,0,false
+GSE349373,brain_regions,"hippocampus, every donor",300,true,false,true,0,true
+GSE144910,brain_stg,"superior temporal gyrus, every donor",88,true,false,true,0,true
+GSE144910,brain_stg,"superior temporal gyrus, controls",44,true,false,true,0,false
+GSE101961,breast_cancer_free,"breast, cancer-free women",118,true,false,false,0,true
+GSE88883,breast_komen,"breast, healthy donors",98,true,false,false,0,true
+GSE132804,colon_gse132804_450k,"normal colon, every donor",103,true,false,false,0,false
+GSE132804,colon_gse132804_450k,"normal colon, low CRC risk",48,true,false,false,0,false
+GSE132804,colon_gse132804_epic,"normal colon, every donor",206,true,false,false,0,true
+GSE132804,colon_gse132804_epic,"normal colon, low CRC risk",57,true,false,false,0,false
+GSE166427,colon_gse166427,"colon, healthy",48,true,false,false,0,false
+GSE166427,colon_gse166427,"colon, next to a tumour",95,true,false,false,0,true
+GSE199057,colon_gse199057,"colon, healthy",68,true,false,false,0,false
+GSE199057,colon_gse199057,"colon, next to a tumour",75,true,false,false,0,true
+GSE101764,colon_mucosa,colon_mucosa,146,true,false,false,0,true
+GSE304036,epidermis_tapelift,epidermis (tape-lift),40,true,false,false,0,true
+GSE79100,kidney_normal,"kidney, normal",30,true,false,false,0,true
+GSE119100,liver_aatd,"liver (AATD), every donor",86,true,false,false,0,true
+GSE314841,lung_450k,lung,114,true,false,false,0,true
+GSE314841,lung_450k_no_field_d10,lung,114,true,true,false,0,false
+GSE314841,lung_450k_no_field_d20,lung,114,true,true,false,0,false
+GSE314841,lung_epic,lung,31,true,false,false,0,false
+GSE314841,lung_epicv2,lung,16,false,false,false,0,false
+GSE175458,lung_healthy,"lung, no lung disease",143,true,false,false,0,false
+GSE175458,lung_smoking,"lung, no disease, never smoked",83,true,false,false,0,false
+GSE175458,lung_smoking,"lung, no disease, ever smoked",56,true,false,false,0,false
+GSE175458,lung_smoking,"lung, pulmonary fibrosis",344,true,false,false,0,true
+GSE184211,multi_tissue_mammal40,heart,96,true,false,false,0,false
+GSE184211,multi_tissue_mammal40,skeletal_muscle,57,true,false,false,0,false
+GSE184211,multi_tissue_mammal40,liver,93,true,false,false,0,false
+GSE184211,multi_tissue_mammal40,kidney,93,true,false,false,0,false
+GSE184211,multi_tissue_mammal40,lung,112,true,false,false,0,true
+GSE184211,multi_tissue_mammal40,spleen,61,true,false,false,0,false
+GSE184211,multi_tissue_mammal40,adipose,57,true,false,false,0,false
+GSE184211,multi_tissue_mammal40,blood,32,true,false,false,0,false
+GSE296589,myometrium_epic,"myometrium, all conditions",62,true,false,false,0,true
+GSE296589,myometrium_epic,"myometrium, fibroid-free",30,true,false,false,0,false
+GSE296589,myometrium_epicv2,"myometrium, all conditions",31,true,false,false,0,false
+GSE112179,neurons,"neurons, every donor",82,true,false,true,0,true
+GSE112179,neurons,"neurons, controls",28,true,false,true,0,false
+GSE267937,neurons_parietal,"neurons (parietal), every donor",84,true,false,true,0,true
+GSE267937,neurons_parietal,"neurons (parietal), controls",38,true,false,true,0,false
+GSE61454,obese_four_tissues,skeletal_muscle,13,false,false,false,0,false
+GSE61454,obese_four_tissues,liver,13,false,false,false,0,false
+GSE61454,obese_four_tissues,subcutaneous_fat,11,false,false,false,0,false
+GSE61454,obese_four_tissues,visceral_fat,10,false,false,false,0,false
+GSE231536,retina_amd,"retina, every donor",106,true,false,false,0,true
+GSE231536,retina_amd,"retina, no AMD",50,true,false,false,0,false
+TCGA-BRCA,tcga_brca_adjacent,"breast, next to a tumour (TCGA-BRCA)",96,true,false,false,0,true
+TCGA-COAD,tcga_coad_adjacent,"colon, next to a tumour (TCGA-COAD)",37,true,false,false,0,true
+TCGA-KIRC,tcga_kirc_adjacent,"kidney, next to a tumour (TCGA-KIRC)",160,true,false,false,0,true
+TCGA-LIHC,tcga_lihc_adjacent,"liver, next to a tumour (TCGA-LIHC)",49,true,false,false,0,true
+TCGA-LUAD,tcga_luad_adjacent,"lung, next to a tumour (TCGA-LUAD)",32,true,false,false,0,true
+TCGA-LUSC,tcga_lusc_adjacent,"lung, next to a tumour (TCGA-LUSC)",42,true,false,false,0,true
+TCGA-PRAD,tcga_prad_adjacent,"prostate, next to a tumour (TCGA-PRAD)",49,true,false,false,0,true
+TCGA-THCA,tcga_thca_adjacent,"thyroid, next to a tumour (TCGA-THCA)",54,true,false,false,0,true

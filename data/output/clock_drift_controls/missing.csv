@@ -1,0 +1,184 @@
+accession,series,group,brain,clock,reason
+GSE85566,airway_asthma,"airway, every donor",false,AD_Bahado-Singh,no estimate
+GSE85566,airway_asthma,"airway, every donor",false,DownSyndrome,no estimate
+GSE85566,airway_asthma,"airway, every donor",false,RepliTali,"not scored here (coverage rule, or absent from the clock scores)"
+GSE349373,brain_regions,"hippocampus, every donor",true,HepatoXu,no estimate
+GSE349373,brain_regions,"hippocampus, every donor",true,YingCausAge,no estimate
+GSE349373,brain_regions,"hippocampus, every donor",true,Zhang_10,no estimate
+GSE144910,brain_stg,"superior temporal gyrus, every donor",true,AD_Bahado-Singh,no estimate
+GSE144910,brain_stg,"superior temporal gyrus, every donor",true,Bohlin,no estimate
+GSE144910,brain_stg,"superior temporal gyrus, every donor",true,HepatoXu,no estimate
+GSE144910,brain_stg,"superior temporal gyrus, every donor",true,YingCausAge,no estimate
+GSE144910,brain_stg,"superior temporal gyrus, every donor",true,Zhang_10,no estimate
+GSE101961,breast_cancer_free,"breast, cancer-free women",false,AD_Bahado-Singh,no estimate
+GSE101961,breast_cancer_free,"breast, cancer-free women",false,DownSyndrome,no estimate
+GSE101961,breast_cancer_free,"breast, cancer-free women",false,RepliTali,"not scored here (coverage rule, or absent from the clock scores)"
+GSE88883,breast_komen,"breast, healthy donors",false,AD_Bahado-Singh,no estimate
+GSE88883,breast_komen,"breast, healthy donors",false,DownSyndrome,no estimate
+GSE88883,breast_komen,"breast, healthy donors",false,RepliTali,"not scored here (coverage rule, or absent from the clock scores)"
+GSE132804,colon_gse132804_epic,"normal colon, every donor",false,AD_Bahado-Singh,no estimate
+GSE132804,colon_gse132804_epic,"normal colon, every donor",false,DownSyndrome,no estimate
+GSE132804,colon_gse132804_epic,"normal colon, every donor",false,YingCausAge,no estimate
+GSE132804,colon_gse132804_epic,"normal colon, every donor",false,Zhang_10,no estimate
+GSE166427,colon_gse166427,"colon, next to a tumour",false,AD_Bahado-Singh,no estimate
+GSE166427,colon_gse166427,"colon, next to a tumour",false,DownSyndrome,no estimate
+GSE166427,colon_gse166427,"colon, next to a tumour",false,HepatoXu,no estimate
+GSE166427,colon_gse166427,"colon, next to a tumour",false,HypoClock,"not scored here (coverage rule, or absent from the clock scores)"
+GSE166427,colon_gse166427,"colon, next to a tumour",false,RepliTali,"not scored here (coverage rule, or absent from the clock scores)"
+GSE199057,colon_gse199057,"colon, next to a tumour",false,Bohlin,no estimate
+GSE199057,colon_gse199057,"colon, next to a tumour",false,YingCausAge,no estimate
+GSE199057,colon_gse199057,"colon, next to a tumour",false,Zhang_10,no estimate
+GSE101764,colon_mucosa,colon_mucosa,false,AD_Bahado-Singh,no estimate
+GSE101764,colon_mucosa,colon_mucosa,false,DownSyndrome,no estimate
+GSE101764,colon_mucosa,colon_mucosa,false,HepatoXu,no estimate
+GSE101764,colon_mucosa,colon_mucosa,false,HypoClock,"not scored here (coverage rule, or absent from the clock scores)"
+GSE101764,colon_mucosa,colon_mucosa,false,RepliTali,"not scored here (coverage rule, or absent from the clock scores)"
+GSE101764,colon_mucosa,colon_mucosa,false,Zhang_10,no estimate
+GSE304036,epidermis_tapelift,epidermis (tape-lift),false,AD_Bahado-Singh,no estimate
+GSE304036,epidermis_tapelift,epidermis (tape-lift),false,AlcoholMcCartney,no estimate
+GSE304036,epidermis_tapelift,epidermis (tape-lift),false,BMI_Reed,no estimate
+GSE304036,epidermis_tapelift,epidermis (tape-lift),false,Bohlin,no estimate
+GSE304036,epidermis_tapelift,epidermis (tape-lift),false,CVD_Westerman,no estimate
+GSE304036,epidermis_tapelift,epidermis (tape-lift),false,DNAmTL,no estimate
+GSE304036,epidermis_tapelift,epidermis (tape-lift),false,DepressionBarbu,no estimate
+GSE304036,epidermis_tapelift,epidermis (tape-lift),false,DownSyndrome,no estimate
+GSE304036,epidermis_tapelift,epidermis (tape-lift),false,DunedinPACE,no estimate
+GSE304036,epidermis_tapelift,epidermis (tape-lift),false,DunedinPoAm38,no estimate
+GSE304036,epidermis_tapelift,epidermis (tape-lift),false,EducationMcCartney,no estimate
+GSE304036,epidermis_tapelift,epidermis (tape-lift),false,HDLCholesterolMcCartney,no estimate
+GSE304036,epidermis_tapelift,epidermis (tape-lift),false,Hannum,no estimate
+GSE304036,epidermis_tapelift,epidermis (tape-lift),false,HepatoXu,no estimate
+GSE304036,epidermis_tapelift,epidermis (tape-lift),false,HypoClock,"not scored here (coverage rule, or absent from the clock scores)"
+GSE304036,epidermis_tapelift,epidermis (tape-lift),false,LeeControl,no estimate
+GSE304036,epidermis_tapelift,epidermis (tape-lift),false,LeeRobust,no estimate
+GSE304036,epidermis_tapelift,epidermis (tape-lift),false,ProstateCancerKirby,no estimate
+GSE304036,epidermis_tapelift,epidermis (tape-lift),false,RepliTali,"not scored here (coverage rule, or absent from the clock scores)"
+GSE304036,epidermis_tapelift,epidermis (tape-lift),false,Weidner,no estimate
+GSE304036,epidermis_tapelift,epidermis (tape-lift),false,YingCausAge,no estimate
+GSE304036,epidermis_tapelift,epidermis (tape-lift),false,YingDamAge,no estimate
+GSE304036,epidermis_tapelift,epidermis (tape-lift),false,Zhang_10,no estimate
+GSE304036,epidermis_tapelift,epidermis (tape-lift),false,epiCMIT,"not scored here (coverage rule, or absent from the clock scores)"
+GSE79100,kidney_normal,"kidney, normal",false,AD_Bahado-Singh,no estimate
+GSE79100,kidney_normal,"kidney, normal",false,DownSyndrome,no estimate
+GSE79100,kidney_normal,"kidney, normal",false,RepliTali,"not scored here (coverage rule, or absent from the clock scores)"
+GSE119100,liver_aatd,"liver (AATD), every donor",false,Bohlin,no estimate
+GSE119100,liver_aatd,"liver (AATD), every donor",false,CVD_Westerman,no estimate
+GSE119100,liver_aatd,"liver (AATD), every donor",false,EpiTOC1,"not scored here (coverage rule, or absent from the clock scores)"
+GSE119100,liver_aatd,"liver (AATD), every donor",false,HepatoXu,no estimate
+GSE119100,liver_aatd,"liver (AATD), every donor",false,HypoClock,"not scored here (coverage rule, or absent from the clock scores)"
+GSE119100,liver_aatd,"liver (AATD), every donor",false,Knight,no estimate
+GSE119100,liver_aatd,"liver (AATD), every donor",false,YingCausAge,no estimate
+GSE119100,liver_aatd,"liver (AATD), every donor",false,Zhang_10,no estimate
+GSE119100,liver_aatd,"liver (AATD), every donor",false,epiCMIT,"not scored here (coverage rule, or absent from the clock scores)"
+GSE119100,liver_aatd,"liver (AATD), every donor",false,epiTOC2,"not scored here (coverage rule, or absent from the clock scores)"
+GSE314841,lung_450k,lung,false,AD_Bahado-Singh,no estimate
+GSE314841,lung_450k,lung,false,Bohlin,no estimate
+GSE314841,lung_450k,lung,false,DownSyndrome,no estimate
+GSE314841,lung_450k,lung,false,RepliTali,"not scored here (coverage rule, or absent from the clock scores)"
+GSE314841,lung_450k,lung,false,YingCausAge,no estimate
+GSE314841,lung_450k,lung,false,Zhang_10,no estimate
+GSE175458,lung_smoking,"lung, pulmonary fibrosis",false,YingCausAge,no estimate
+GSE175458,lung_smoking,"lung, pulmonary fibrosis",false,Zhang_10,no estimate
+GSE184211,multi_tissue_mammal40,lung,false,AD_Bahado-Singh,no estimate
+GSE184211,multi_tissue_mammal40,lung,false,AlcoholMcCartney,no estimate
+GSE184211,multi_tissue_mammal40,lung,false,BMI_McCartney,no estimate
+GSE184211,multi_tissue_mammal40,lung,false,BMI_Reed,no estimate
+GSE184211,multi_tissue_mammal40,lung,false,BodyFatMcCartney,no estimate
+GSE184211,multi_tissue_mammal40,lung,false,Bohlin,no estimate
+GSE184211,multi_tissue_mammal40,lung,false,CVD_Westerman,no estimate
+GSE184211,multi_tissue_mammal40,lung,false,DNAmClockCortical,no estimate
+GSE184211,multi_tissue_mammal40,lung,false,DNAmTL,no estimate
+GSE184211,multi_tissue_mammal40,lung,false,DepressionBarbu,no estimate
+GSE184211,multi_tissue_mammal40,lung,false,DownSyndrome,no estimate
+GSE184211,multi_tissue_mammal40,lung,false,DunedinPACE,no estimate
+GSE184211,multi_tissue_mammal40,lung,false,DunedinPoAm38,no estimate
+GSE184211,multi_tissue_mammal40,lung,false,EducationMcCartney,no estimate
+GSE184211,multi_tissue_mammal40,lung,false,EpiTOC1,"not scored here (coverage rule, or absent from the clock scores)"
+GSE184211,multi_tissue_mammal40,lung,false,HDLCholesterolMcCartney,no estimate
+GSE184211,multi_tissue_mammal40,lung,false,HRSInCHPhenoAge,no estimate
+GSE184211,multi_tissue_mammal40,lung,false,HepatoXu,no estimate
+GSE184211,multi_tissue_mammal40,lung,false,HypoClock,"not scored here (coverage rule, or absent from the clock scores)"
+GSE184211,multi_tissue_mammal40,lung,false,Knight,no estimate
+GSE184211,multi_tissue_mammal40,lung,false,LDLCholesterolMcCartney,no estimate
+GSE184211,multi_tissue_mammal40,lung,false,LeeControl,no estimate
+GSE184211,multi_tissue_mammal40,lung,false,LeeRefinedRobust,no estimate
+GSE184211,multi_tissue_mammal40,lung,false,LeeRobust,no estimate
+GSE184211,multi_tissue_mammal40,lung,false,Lin,no estimate
+GSE184211,multi_tissue_mammal40,lung,false,Mayne,no estimate
+GSE184211,multi_tissue_mammal40,lung,false,PEDBE,no estimate
+GSE184211,multi_tissue_mammal40,lung,false,ProstateCancerKirby,no estimate
+GSE184211,multi_tissue_mammal40,lung,false,RepliTali,"not scored here (coverage rule, or absent from the clock scores)"
+GSE184211,multi_tissue_mammal40,lung,false,SmokingMcCartney,no estimate
+GSE184211,multi_tissue_mammal40,lung,false,StocZ,no estimate
+GSE184211,multi_tissue_mammal40,lung,false,TotalCholesterolMcCartney,no estimate
+GSE184211,multi_tissue_mammal40,lung,false,VidalBralo,no estimate
+GSE184211,multi_tissue_mammal40,lung,false,YingAdaptAge,no estimate
+GSE184211,multi_tissue_mammal40,lung,false,YingCausAge,no estimate
+GSE184211,multi_tissue_mammal40,lung,false,YingDamAge,no estimate
+GSE184211,multi_tissue_mammal40,lung,false,Zhang_10,no estimate
+GSE184211,multi_tissue_mammal40,lung,false,epiCMIT,"not scored here (coverage rule, or absent from the clock scores)"
+GSE184211,multi_tissue_mammal40,lung,false,epiTOC2,"not scored here (coverage rule, or absent from the clock scores)"
+GSE184211,multi_tissue_mammal40,lung,false,epiTOC3,"not scored here (coverage rule, or absent from the clock scores)"
+GSE296589,myometrium_epic,"myometrium, all conditions",false,AD_Bahado-Singh,no estimate
+GSE296589,myometrium_epic,"myometrium, all conditions",false,AlcoholMcCartney,no estimate
+GSE296589,myometrium_epic,"myometrium, all conditions",false,BMI_Reed,no estimate
+GSE296589,myometrium_epic,"myometrium, all conditions",false,Bohlin,no estimate
+GSE296589,myometrium_epic,"myometrium, all conditions",false,CVD_Westerman,no estimate
+GSE296589,myometrium_epic,"myometrium, all conditions",false,DNAmTL,no estimate
+GSE296589,myometrium_epic,"myometrium, all conditions",false,DepressionBarbu,no estimate
+GSE296589,myometrium_epic,"myometrium, all conditions",false,DunedinPACE,no estimate
+GSE296589,myometrium_epic,"myometrium, all conditions",false,DunedinPoAm38,no estimate
+GSE296589,myometrium_epic,"myometrium, all conditions",false,EducationMcCartney,no estimate
+GSE296589,myometrium_epic,"myometrium, all conditions",false,EpiTOC1,"not scored here (coverage rule, or absent from the clock scores)"
+GSE296589,myometrium_epic,"myometrium, all conditions",false,HDLCholesterolMcCartney,no estimate
+GSE296589,myometrium_epic,"myometrium, all conditions",false,Hannum,no estimate
+GSE296589,myometrium_epic,"myometrium, all conditions",false,HepatoXu,no estimate
+GSE296589,myometrium_epic,"myometrium, all conditions",false,LeeControl,no estimate
+GSE296589,myometrium_epic,"myometrium, all conditions",false,LeeRobust,no estimate
+GSE296589,myometrium_epic,"myometrium, all conditions",false,ProstateCancerKirby,no estimate
+GSE296589,myometrium_epic,"myometrium, all conditions",false,Weidner,no estimate
+GSE296589,myometrium_epic,"myometrium, all conditions",false,YingCausAge,no estimate
+GSE296589,myometrium_epic,"myometrium, all conditions",false,YingDamAge,no estimate
+GSE296589,myometrium_epic,"myometrium, all conditions",false,Zhang_10,no estimate
+GSE112179,neurons,"neurons, every donor",true,Bohlin,no estimate
+GSE112179,neurons,"neurons, every donor",true,HepatoXu,no estimate
+GSE112179,neurons,"neurons, every donor",true,YingCausAge,no estimate
+GSE112179,neurons,"neurons, every donor",true,Zhang_10,no estimate
+GSE267937,neurons_parietal,"neurons (parietal), every donor",true,AD_Bahado-Singh,no estimate
+GSE267937,neurons_parietal,"neurons (parietal), every donor",true,BMI_Reed,no estimate
+GSE267937,neurons_parietal,"neurons (parietal), every donor",true,Bohlin,no estimate
+GSE267937,neurons_parietal,"neurons (parietal), every donor",true,CVD_Westerman,no estimate
+GSE267937,neurons_parietal,"neurons (parietal), every donor",true,HepatoXu,no estimate
+GSE267937,neurons_parietal,"neurons (parietal), every donor",true,HypoClock,"not scored here (coverage rule, or absent from the clock scores)"
+GSE267937,neurons_parietal,"neurons (parietal), every donor",true,YingCausAge,no estimate
+GSE267937,neurons_parietal,"neurons (parietal), every donor",true,Zhang_10,no estimate
+GSE231536,retina_amd,"retina, every donor",false,YingCausAge,no estimate
+GSE231536,retina_amd,"retina, every donor",false,Zhang_10,no estimate
+TCGA-BRCA,tcga_brca_adjacent,"breast, next to a tumour (TCGA-BRCA)",false,AD_Bahado-Singh,no estimate
+TCGA-BRCA,tcga_brca_adjacent,"breast, next to a tumour (TCGA-BRCA)",false,DownSyndrome,no estimate
+TCGA-BRCA,tcga_brca_adjacent,"breast, next to a tumour (TCGA-BRCA)",false,HepatoXu,no estimate
+TCGA-BRCA,tcga_brca_adjacent,"breast, next to a tumour (TCGA-BRCA)",false,HypoClock,"not scored here (coverage rule, or absent from the clock scores)"
+TCGA-BRCA,tcga_brca_adjacent,"breast, next to a tumour (TCGA-BRCA)",false,Mayne,no estimate
+TCGA-BRCA,tcga_brca_adjacent,"breast, next to a tumour (TCGA-BRCA)",false,RepliTali,"not scored here (coverage rule, or absent from the clock scores)"
+TCGA-COAD,tcga_coad_adjacent,"colon, next to a tumour (TCGA-COAD)",false,AD_Bahado-Singh,no estimate
+TCGA-COAD,tcga_coad_adjacent,"colon, next to a tumour (TCGA-COAD)",false,DownSyndrome,no estimate
+TCGA-COAD,tcga_coad_adjacent,"colon, next to a tumour (TCGA-COAD)",false,RepliTali,"not scored here (coverage rule, or absent from the clock scores)"
+TCGA-KIRC,tcga_kirc_adjacent,"kidney, next to a tumour (TCGA-KIRC)",false,AD_Bahado-Singh,no estimate
+TCGA-KIRC,tcga_kirc_adjacent,"kidney, next to a tumour (TCGA-KIRC)",false,DownSyndrome,no estimate
+TCGA-KIRC,tcga_kirc_adjacent,"kidney, next to a tumour (TCGA-KIRC)",false,HepatoXu,no estimate
+TCGA-KIRC,tcga_kirc_adjacent,"kidney, next to a tumour (TCGA-KIRC)",false,RepliTali,"not scored here (coverage rule, or absent from the clock scores)"
+TCGA-LIHC,tcga_lihc_adjacent,"liver, next to a tumour (TCGA-LIHC)",false,AD_Bahado-Singh,no estimate
+TCGA-LIHC,tcga_lihc_adjacent,"liver, next to a tumour (TCGA-LIHC)",false,DownSyndrome,no estimate
+TCGA-LIHC,tcga_lihc_adjacent,"liver, next to a tumour (TCGA-LIHC)",false,RepliTali,"not scored here (coverage rule, or absent from the clock scores)"
+TCGA-LUAD,tcga_luad_adjacent,"lung, next to a tumour (TCGA-LUAD)",false,AD_Bahado-Singh,no estimate
+TCGA-LUAD,tcga_luad_adjacent,"lung, next to a tumour (TCGA-LUAD)",false,DownSyndrome,no estimate
+TCGA-LUAD,tcga_luad_adjacent,"lung, next to a tumour (TCGA-LUAD)",false,RepliTali,"not scored here (coverage rule, or absent from the clock scores)"
+TCGA-LUSC,tcga_lusc_adjacent,"lung, next to a tumour (TCGA-LUSC)",false,AD_Bahado-Singh,no estimate
+TCGA-LUSC,tcga_lusc_adjacent,"lung, next to a tumour (TCGA-LUSC)",false,DownSyndrome,no estimate
+TCGA-LUSC,tcga_lusc_adjacent,"lung, next to a tumour (TCGA-LUSC)",false,RepliTali,"not scored here (coverage rule, or absent from the clock scores)"
+TCGA-PRAD,tcga_prad_adjacent,"prostate, next to a tumour (TCGA-PRAD)",false,AD_Bahado-Singh,no estimate
+TCGA-PRAD,tcga_prad_adjacent,"prostate, next to a tumour (TCGA-PRAD)",false,DownSyndrome,no estimate
+TCGA-PRAD,tcga_prad_adjacent,"prostate, next to a tumour (TCGA-PRAD)",false,RepliTali,"not scored here (coverage rule, or absent from the clock scores)"
+TCGA-THCA,tcga_thca_adjacent,"thyroid, next to a tumour (TCGA-THCA)",false,AD_Bahado-Singh,no estimate
+TCGA-THCA,tcga_thca_adjacent,"thyroid, next to a tumour (TCGA-THCA)",false,DownSyndrome,no estimate
+TCGA-THCA,tcga_thca_adjacent,"thyroid, next to a tumour (TCGA-THCA)",false,RepliTali,"not scored here (coverage rule, or absent from the clock scores)"

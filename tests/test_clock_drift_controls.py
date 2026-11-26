@@ -2,15 +2,24 @@ import numpy as np
 import polars as pl
 
 from entropy_age.experiments.clock_drift_controls import (
+    clock_stats,
     corr,
+    export_check,
     flag_primary,
+    gallery_cpgs,
+    gallery_inputs,
+    gene_balanced_pair,
     matched_arrays,
     matched_placebo,
     matched_subset,
+    missing_estimates,
     paired_weights,
     panel_indices,
+    panel_overlap,
     partial_r,
     partial_r_checked,
+    per_gene_counts,
+    placebo_band,
     placebo_pair,
     placebo_pool,
     primary_groups,
@@ -303,3 +312,170 @@ def test_matched_arrays_drops_samples_read_from_another_array():
     same, reasons = matched_arrays(series_qc, clock_qc)
     assert same == {"GSM1", "u3_noid"}  # GSM4 has no clock-track QC row, so it is unavailable too
     assert len(reasons) == 1 and reasons[0].startswith("GSM2: drift array 100_R02C01, clock array 200_R05C01")
+
+
+# ============================================================================= review 5
+# ----------------------------------------------------------------------------- finding 3: both targets by gene
+def _genes(start: int, sizes: list[int]) -> list[np.ndarray]:
+    out, j = [], start
+    for k in sizes:
+        out.append(np.arange(j, j + k))
+        j += k
+    return out
+
+
+def test_gene_balanced_pair_takes_one_cpg_per_gene_on_both_sides():
+    rng = np.random.default_rng(20)
+    hk_genes = _genes(0, [6] * 40)  # 240 housekeeping CpGs in 40 clustered genes
+    pool = _genes(240, [5] * 200)  # 1000 placebo candidates in 200 genes
+    strata = rng.choice(np.array(["a", "b", "c"]), 1240)
+    sub, placebo, background, fill = gene_balanced_pair(strata, hk_genes, pool, np.random.default_rng(1))
+    assert per_gene_counts(sub, hk_genes).max() == 1 and per_gene_counts(placebo, pool).max() == 1
+    assert per_gene_counts(sub, hk_genes).size == sub.sum() == placebo.sum() == per_gene_counts(placebo, pool).size
+    for s_ in "abc":  # the common support: equal counts in every stratum
+        assert (sub & (strata == s_)).sum() == (placebo & (strata == s_)).sum()
+    assert sub.sum() <= 40 and 0 < fill <= 1
+    hk_all = np.zeros(1240, dtype=bool)
+    hk_all[:240] = True
+    assert not (background & (hk_all | placebo)).any() and (background | hk_all | placebo).all()
+
+
+def test_placebo_band_reports_the_margin_on_common_support_per_scheme():
+    p = pl.DataFrame(
+        {
+            "series": ["s"] * 4,
+            "group": ["g"] * 4,
+            "clock": ["epiTOC2"] * 4,
+            "hk_r_raw": [-0.5, -0.6, -0.4, float("nan")],
+            "hk_r_adj": [-0.5, -0.6, -0.4, -0.5],
+            "r_raw": [-0.4, -0.5, -0.5, -0.3],
+            "r_adj": [-0.4, -0.5, -0.5, float("nan")],
+            "balance_tvd": [0.0] * 4,
+            "balance_unusable": [0.0] * 4,
+            "adj_note": ["", "", "", "x"],
+        }
+    )
+    band = placebo_band(p, suffix="_gb").row(0, named=True)
+    assert np.isclose(band["margin_adj_gb"], 0.1)  # median of 0.1, 0.1, -0.1: housekeeping ahead by 0.1
+    assert "hk_matched_adj_gb" in band and "margin_adj" not in band
+
+
+# ----------------------------------------------------------------------------- finding 4: preprocessing inputs
+def _fake_biolearn(tmp_path):
+    pkg = tmp_path / "biolearn"
+    (pkg / "data").mkdir(parents=True)
+    (pkg / "model.py").write_text(
+        "from biolearn.norm import normalise\n"
+        "model_definitions = {\n"
+        '    "Plain": {\n        "model": {"type": "LinearMethylationModel", "file": "Plain.csv"},\n    },\n'
+        '    "Paced": {\n        "model": {\n            "type": "LinearMethylationModel",\n'
+        '            "file": "Paced.csv",\n            "preprocess": normalise,\n        },\n    },\n'
+        "}\n"
+    )
+    (pkg / "norm.py").write_text(
+        "from biolearn.util import get_data_file\n"
+        "def normalise(df):\n    return _gold(df)\n"
+        "def _gold(df):\n    return get_data_file('Gold.csv')\n"
+    )
+    (pkg / "data" / "Plain.csv").write_text("CpGmarker,CoefficientTraining\ncg001,1\nintercept,2\n")
+    (pkg / "data" / "Paced.csv").write_text("CpGmarker,CoefficientTraining\ncg002,1\n")
+    (pkg / "data" / "Gold.csv").write_text('CpGmarker,mean\n"cg100",0.5\n"cg101",0.4\n')
+    return pkg
+
+
+def test_gallery_exclusion_holds_preprocessing_probe_lists(tmp_path, monkeypatch):
+    pkg = _fake_biolearn(tmp_path)
+    monkeypatch.setenv("ENTROPY_AGE_BIOLEARN_SRC", str(pkg))
+    assert gallery_inputs(pkg)["Paced"] == ["Gold.csv", "Paced.csv"]
+    assert gallery_cpgs(tmp_path, {"Plain", "Paced"}) == {"cg001", "cg002", "cg100", "cg101"}
+    panel = pl.DataFrame({"series": ["s"] * 3, "group": ["g"] * 3, "rank": [0, 1, 2], "cpg": ["cg100", "cg5", "cg6"]})
+    assert panel_overlap(panel, gallery_cpgs(tmp_path, {"Paced"})) == 1
+
+
+# ----------------------------------------------------------------------------- finding 5: registry before predictions
+def test_primary_group_fixed_by_the_registry_and_missing_clocks_reported():
+    registry = pl.DataFrame(
+        {
+            "accession": ["G1", "G1", "G2"],
+            "series": ["s1", "s1", "s2"],
+            "group": ["all", "sub", "x"],
+            "donors": [100, 50, 20],
+            "eligible": [True, True, False],
+            "sensitivity": [False, False, False],
+            "brain": [False, False, False],
+        }
+    )
+    table = pl.DataFrame(  # the largest group emitted no clock row
+        {
+            "accession": ["G1"],
+            "series": ["s1"],
+            "group": ["sub"],
+            "donors": [50],
+            "sensitivity": [False],
+            "clock": ["epiTOC2"],
+        }
+    )
+    assert flag_primary(table, registry)["primary"].to_list() == [False]
+    missing = missing_estimates(registry, table, ["epiTOC2", "HypoClock"], {("s1", "all", "*"): "no clock scores"})
+    assert missing.select("series", "group", "clock", "reason").rows() == [
+        ("s1", "all", "epiTOC2", "no clock scores"),
+        ("s1", "all", "HypoClock", "no clock scores"),
+    ]  # G2 is not eligible, so it has no primary group
+
+
+# ----------------------------------------------------------------------------- finding 6: one scaled design
+def test_partial_r_fits_with_the_scaled_design_it_ranks():
+    rng = np.random.default_rng(21)
+    t = rng.normal(size=80)
+    given = np.column_stack([rng.normal(size=80), 1e-16 * t])  # a tiny column the scaled rank counts
+    r, why = partial_r_checked(t, -3 * t + 1e-3 * rng.normal(size=80) * 1e-14, given)
+    assert np.isnan(r) and "explained by the design" in why
+
+
+def test_clock_linear_in_age_gives_no_correlation():
+    rng = np.random.default_rng(22)
+    age = rng.uniform(20, 80, 60)
+    v = 0.7 * age + 3.0  # a clock that is age, exactly
+    f = rng.normal(size=60)
+    design = np.column_stack([age, rng.normal(size=(60, 2))])
+    ind = {k: rng.normal(size=60) for k in ("level", "compression", "sd")}
+    st = clock_stats(v, age, design, f, rng.normal(size=60), rng.normal(size=60), ind)
+    assert st["age_note"] == "clock explained by age" and np.isnan(st["r_F_raw"])
+    assert np.isnan(st["r_F_adj"]) and "clock explained" in st["r_F_adj_note"]
+    noisy = clock_stats(v + rng.normal(0, 1, 60), age, design, f, f, rng.normal(size=60), ind)
+    assert noisy["age_note"] == "" and np.isfinite(noisy["r_F_adj"]) and np.isfinite(noisy["r_F_raw"])
+
+
+# ----------------------------------------------------------------------------- finding 7: stale exports
+def test_export_check_flags_an_export_older_than_the_rebuild():
+    ids = {"a", "b", "c"}
+    kw = dict(export_samples=ids, clock_samples=ids, passing=ids)
+    assert export_check(qc_mtime=10, export_mtime=20, clocks_mtime=30, **kw) == (
+        set(),
+        "no manifest; times and ids agree",
+        False,
+    )
+    drop, note, stale = export_check(qc_mtime=25, export_mtime=20, clocks_mtime=30, **kw)
+    assert stale and "older than the clock-track QC" in note and not drop
+    _, note, stale = export_check(
+        qc_mtime=10, export_mtime=20, clocks_mtime=30, export_samples=ids, clock_samples=ids, passing=ids | {"d"}
+    )
+    assert stale and "1 passing arrays absent" in note
+
+
+def test_export_check_drops_samples_whose_exported_array_is_not_the_current_one():
+    current = pl.DataFrame(
+        {"sample": ["a", "b"], "chip": ["100", "100"], "position": ["R01C01", "R02C01"], "prefix": ["pa", "pb"]}
+    )
+    manifest = pl.DataFrame({"sample": ["a", "b"], "array": ["100_R01C01", "200_R07C01"]})  # b: an earlier repeat
+    drop, note, stale = export_check(
+        qc_mtime=99,
+        export_mtime=1,
+        clocks_mtime=2,
+        export_samples={"a", "b"},
+        clock_samples={"a", "b"},
+        passing={"a", "b"},
+        manifest=manifest,
+        current=current,
+    )
+    assert drop == {"b"} and not stale and note.startswith("manifest: 1 arrays differ")
