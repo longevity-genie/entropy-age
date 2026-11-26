@@ -10,6 +10,8 @@ brain_regions,"hippocampus, every donor",300,3,0.41698058807177013,0.32108442044
 brain_stg,"superior temporal gyrus, every donor",88,3,0.418202293855689,0.21486067843940843,"Horvathv1, Horvathv2, StocH"
 brain_stg,"superior temporal gyrus, controls",44,3,0.2923810904816435,0.06303584461397141,"Horvathv1, Horvathv2, StocH"
 breast_cancer_free,"breast, cancer-free women",118,3,0.5456208737413166,0.361281822429374,"Horvathv1, Horvathv2, StocH"
+breast_gse225845,"breast, cancer-free",223,3,0.49482600590557496,0.3038016803846079,"Horvathv1, Horvathv2, StocH"
+breast_gse225845,"breast, next to a tumour",119,3,0.539611534131752,0.39965020067218565,"Horvathv1, Horvathv2, StocH"
 breast_komen,"breast, healthy donors",98,3,0.43840802212285473,0.40824751649509505,"Horvathv1, Horvathv2, StocH"
 colon_gse132804_450k,"normal colon, every donor",103,3,0.6253957119237684,0.5638292722013782,"Horvathv1, Horvathv2, StocH"
 colon_gse132804_450k,"normal colon, low CRC risk",48,3,0.7862941482162564,0.721462315476012,"Horvathv1, Horvathv2, StocH"

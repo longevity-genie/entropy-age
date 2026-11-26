@@ -200,8 +200,8 @@ island × young-level matching in (a) Hannum blood and (b) Jaffe cortex. Grey: m
 
 ### The shield across tissues, platforms and species
 
-**The shield is present in most tissues and species tested.** Across 42 independent cohort-tissue series on one
-measure (23 human, 19 mouse; Supplementary Fig. S22), the housekeeping gap was negative in 33; 22 intervals over
+**The shield is present in most tissues and species tested.** Across 56 independent cohort-tissue series on one
+measure (37 human, 19 mouse; Supplementary Fig. S22), the housekeeping gap was negative in 45; 27 intervals over
 donors or animals lie below zero and none above it. An apparent
 ordering by cell turnover in mouse cannot be separated from array chip.
 
@@ -242,6 +242,18 @@ showed no gap: in 62 women aged 29 to 52 on the EPIC array (GSE296589; fibroid-f
 condition held) the housekeeping gap was +0.00 SD (−0.05 to +0.03), and +0.03 (−0.02 to +0.05) in the 30 fibroid-free
 women alone; this narrow and young age range gives slopes over 23 years only. The study's 30 women on EPIC v2 did not
 resolve the gap (−0.01, −0.08 to +0.07).
+
+Ten further human series, found by a repository search and rebuilt from raw files, extend the comparison. Dividing
+tissues carried the gap: normal colon of 206 and 103 people (GSE132804, EPIC and 450k parts, after leaving out 25
+arrays that are the same physical arrays as GSE101764's) gave −0.17 (−0.27 to −0.09) and −0.14 (−0.33 to −0.05),
+epidermis sampled by tape-lift −0.13 (−0.26 to −0.03; 40 of 119 arrays passed detection) and liver biopsies of 86
+adults with alpha-1 antitrypsin deficiency −0.07 (−0.13 to −0.03, fibrosis stage held). Two smaller colon series leaned
+the same way without resolving it (GSE199057, −0.09 in healthy colon and next to a tumour; GSE166427, −0.06 healthy and
+−0.01 next to a tumour), and cancer-free breast of 231 women gave −0.05 (−0.17 to +0.03), as weak as the other breast
+cohorts; breast next to a tumour did not resolve, with chip and age entangled in that series. Tissues of slow or no
+turnover showed no gap: parietal NeuN+ nuclei of 84 donors −0.00 (−0.06 to +0.05), superior temporal gyrus of 88
+donors −0.03 (−0.06 to −0.00), retina of 106 donors +0.01 (−0.04 to +0.05) and airway epithelium of 115 adults −0.00
+(−0.05 to +0.03).
 
 On the mammalian array, relative entropy separated 11 tissues of the same male C57BL/6 mice sharply (GSE279437;
 Huang et al. 2025). The mice were the untreated young and aged controls of an exenatide and rapamycin study, compared as aged minus young because GEO gives no numeric ages. The housekeeping gap was negative in the three renewing tissues and in kidney and liver (−0.05 to −0.19 SD) and
@@ -650,10 +662,9 @@ for their age in non-brain tissues; matched non-housekeeping promoters and match
 association, the links in neurons are inconsistent, and pace-of-ageing clocks do not show it (Fig. 10, Fig. 11).**
 
 *Every clock on every rebuilt series.* We scored every clock in the biolearn gallery that keeps at least 90 % of its
-weight measured on every rebuilt series with donor ages (40 tissue groups, 44 clocks; scored on the clock track, without the design-flag mask; clocks taken outside the tissue
+weight measured on every rebuilt series with donor ages (60 tissue groups, 44 clocks; scored on the clock track, without the design-flag mask; clocks taken outside the tissue
 they were trained on kept as negative controls; Supplementary Fig. S23). The pan-tissue clock of Horvath tracked age in
-every group (median r 0.86, up to 0.96; median error 5.2 years; lowest 0.50 in prostate next to a tumour and 0.56 in
-myometrium of women aged 29 to 52). Blood clocks taken into solid tissues still ranked donors by age (PhenoAge median r
+nearly every group (median r 0.86, up to 0.96; median error 5.2 years) and failed only in retina (r −0.07 and +0.03). Blood clocks taken into solid tissues still ranked donors by age (PhenoAge median r
 0.68, Hannum 0.80) but missed their age by a median 24 and 8 years. Once age was removed, the valid clocks of a group
 agreed only partly on who was ageing fast: the median correlation between their accelerations was 0.48 (0.84 in heart;
 0.04 in liver).
@@ -675,7 +686,7 @@ no clock and no generation added the shield: given any clock and B, F had odds r
 1.04-2.42; Ying adaptation 1.85, 1.03-3.71), as expected by chance among this many exploratory tests; the
 pre-specified PhenoAge did not (1.12, 0.81-1.59).
 
-*Across tissues.* In 37 rebuilt tissue groups with ages (the series above, the TCGA tissues next to tumours and the
+*Across tissues.* In 57 rebuilt tissue groups with ages from 28 studies (the series above, the TCGA tissues next to tumours and the
 mammalian-array human tissues), we scored each person's drift at look-alike promoters (B) and shield share (F)
 against everyone else in the group, with every CpG any mitotic clock reads left out of both, and correlated them,
 within each group, with each clock's acceleration (its prediction minus the group's age trend). Six mitotic clocks were
@@ -683,18 +694,18 @@ scored: epiTOC1 (Yang et al. 2016), epiTOC2 and its successor epiTOC3 (Teschendo
 stem-cell divisions from promoter CpGs that gain methylation; epiCMIT (Duran-Ferrer et al. 2020); RepliTali (Endicott
 et al. 2022), a replicative-age model measured only on the EPIC array; and HypoClock (Zhou, Dinh et al. 2018), the mean
 methylation of 678 solo-WCGW CpGs in partially methylated domains, which falls with division and shares no CpG with
-the epiTOC clocks. Outside the brain every one went with a stronger shield: epiTOC1 in all 18 groups where it passed
-coverage (14 studies; median r −0.50, from −0.10 in normal kidney to −0.88 in prostate next to a tumour), epiTOC2 in
-20 of 21 (−0.50), epiTOC3 in 20 of 21 (−0.44), epiCMIT in 19 of 20 (−0.45), RepliTali in all 7 (−0.48; lung and
-myometrium from three studies), and HypoClock, read in its own direction, in 15 of 18 (+0.31). Medians taken per study
-were the same (−0.44 to −0.50; HypoClock +0.29). In bulk brain regions the links were weak (−0.18 to +0.03 for the
-epiTOC clocks). Sorted cortical neurons, which do not divide, gave opposite answers in the two series available. In
+the epiTOC clocks. Outside neural tissue every one went with a stronger shield: epiTOC1 in all 31 groups where it passed
+coverage (20 studies; median r −0.50, from −0.10 in normal kidney to −0.88 in prostate next to a tumour), epiTOC2 in
+33 of 34 (−0.51), epiTOC3 in 34 of 35 (−0.44), epiCMIT in 31 of 32 (−0.45), RepliTali in all 14 (−0.42; seven
+studies), and HypoClock, read in its own direction, in 24 of 27 (+0.31). Medians taken per study were similar (−0.42 to
+−0.50; RepliTali −0.33; HypoClock +0.29). In bulk brain regions and retina the links were weaker and mixed (−0.38 to
++0.16 for the epiTOC clocks). Sorted cortical neurons, which do not divide, gave opposite answers in the two series available. In
 frontal-cortex NeuN+ nuclei (GSE112179) the epiTOC clocks reversed (+0.25 to +0.50) and so did HypoClock in the 82-donor
 group (−0.31); RepliTali did not (−0.21 and −0.43), and epiCMIT reversed in one group only (+0.26 and −0.02). In
 parietal NeuN+ nuclei of 84 older donors (GSE267937, aged 53 to 95, half with Parkinson's disease) none reversed:
 epiTOC1 −0.33 (−0.17 in the 38 controls), epiCMIT −0.44, RepliTali −0.40. Neurons therefore show no consistent link. Clocks of other kinds went the same way more weakly:
-Hannum (median −0.14, negative in 74 % of 34 groups) and PhenoAge (−0.18, 81 % of 37). Horvath's pan-tissue clock
-(−0.01, 54 % of 37) and DunedinPACE (−0.05, 62 % of 26) showed no consistent link, and trait predictors used as
+Hannum (median −0.20 outside neural tissue, negative in 75 % of 51 groups) and PhenoAge (−0.21, 82 % of 57). Horvath's
+pan-tissue clock (−0.10, 65 % of 57) and DunedinPACE (−0.07, 76 % of 45) showed weaker links, and trait predictors used as
 negative controls (body-mass index, smoking and the like) sat at −0.01. These are within-group associations of
 age-adjusted scores; where a series has a pooled and a stratified group, both are shown. Three checks address whether a
 shared array effect, or drift in general, could move a clock and F together. All use one primary group per study
@@ -720,7 +731,7 @@ clock track (protocol change 4); drift on the standard rebuild.
 
 ![Figure 11](../docs/figures/clock_drift.png)
 
-**Figure 11. What clocks read of drift, tissue by tissue.** Each dot is one clock in one rebuilt tissue group (37
+**Figure 11. What clocks read of drift, tissue by tissue.** Each dot is one clock in one rebuilt tissue group (57
 groups): the correlation of the clock's acceleration (prediction minus the age trend in the group) with each person's
 shield share F (a) and drift at look-alike promoters B (b), both scored against everyone else in the group; clocks
 coloured by generation, bars at the median. How to read: a dot below zero in a means the clock calls people with a

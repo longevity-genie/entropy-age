@@ -54,6 +54,16 @@ breast_cancer_free,"breast, cancer-free women",epiTOC3,true,1.0,1.0,170,NaN
 breast_cancer_free,"breast, cancer-free women",HypoClock,true,1.0,1.0,678,NaN
 breast_cancer_free,"breast, cancer-free women",RepliTali,false,0.0,0.46135898072542114,30,NaN
 breast_cancer_free,"breast, cancer-free women",epiCMIT,true,1.0,1.0,1348,0.00847457627118644
+breast_gse225845,"breast, cancer-free",epiTOC2,true,0.9641255605381166,0.9084327757220263,151,NaN
+breast_gse225845,"breast, cancer-free",epiTOC3,true,1.0,1.0,170,NaN
+breast_gse225845,"breast, cancer-free",HypoClock,true,0.9282511210762332,0.9528023598820059,648,NaN
+breast_gse225845,"breast, cancer-free",RepliTali,true,1.0,1.0,87,NaN
+breast_gse225845,"breast, cancer-free",epiCMIT,true,1.0,0.9355670103092784,1264,0.04484304932735426
+breast_gse225845,"breast, next to a tumour",epiTOC2,true,1.0,0.9084327757220263,151,NaN
+breast_gse225845,"breast, next to a tumour",epiTOC3,true,1.0,0.9966292532561151,170,NaN
+breast_gse225845,"breast, next to a tumour",HypoClock,false,0.8319327731092437,0.9380530973451328,648,NaN
+breast_gse225845,"breast, next to a tumour",RepliTali,true,1.0,1.0,87,NaN
+breast_gse225845,"breast, next to a tumour",epiCMIT,true,1.0,0.9321305841924399,1264,0.2857142857142857
 breast_komen,"breast, healthy donors",epiTOC2,true,1.0,0.9943387454211385,163,NaN
 breast_komen,"breast, healthy donors",epiTOC3,true,1.0,1.0,170,NaN
 breast_komen,"breast, healthy donors",HypoClock,true,1.0,1.0,678,NaN

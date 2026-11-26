@@ -449,6 +449,76 @@ breast_cancer_free,GSE101961,"breast, cancer-free women",Weidner,1st: chronologi
 breast_cancer_free,GSE101961,"breast, cancer-free women",Garagnani,1st: chronological,false,118,17.0,76.0,0.6337958211450663,37.48508689175838
 breast_cancer_free,GSE101961,"breast, cancer-free women",Bohlin,other,false,118,17.0,76.0,-0.029415858646859954,
 breast_cancer_free,GSE101961,"breast, cancer-free women",Bocklandt,1st: chronological,false,118,17.0,76.0,0.058150318288333364,
+breast_gse225845,GSE225845,"breast, cancer-free",Horvathv1,1st: chronological,true,223,15.0,84.0,0.8715657824774645,15.679368600628237
+breast_gse225845,GSE225845,"breast, cancer-free",Lin,1st: chronological,false,223,15.0,84.0,0.6463566859586747,5.824872012926235
+breast_gse225845,GSE225845,"breast, cancer-free",PhenoAge,2nd: phenotypic and mortality,false,223,15.0,84.0,0.5308224021676908,23.970475624096636
+breast_gse225845,GSE225845,"breast, cancer-free",YingDamAge,2nd: phenotypic and mortality,false,223,15.0,84.0,0.108647352844766,55.67189698744363
+breast_gse225845,GSE225845,"breast, cancer-free",YingAdaptAge,2nd: phenotypic and mortality,false,223,15.0,84.0,0.37700746183879785,14.886314404283866
+breast_gse225845,GSE225845,"breast, cancer-free",Horvathv2,1st: chronological,true,223,15.0,84.0,0.7283821998804615,10.934883128609112
+breast_gse225845,GSE225845,"breast, cancer-free",PEDBE,other,false,223,15.0,84.0,0.8211208596957147,28.612829712696794
+breast_gse225845,GSE225845,"breast, cancer-free",DunedinPoAm38,3rd: pace of ageing,false,223,15.0,84.0,0.1858041557557941,
+breast_gse225845,GSE225845,"breast, cancer-free",DunedinPACE,3rd: pace of ageing,false,223,15.0,84.0,0.29228488233288114,
+breast_gse225845,GSE225845,"breast, cancer-free",DNAmClockCortical,other,false,223,15.0,84.0,0.6126401294369427,
+breast_gse225845,GSE225845,"breast, cancer-free",VidalBralo,1st: chronological,false,223,15.0,84.0,0.2475832690755791,26.143260796609965
+breast_gse225845,GSE225845,"breast, cancer-free",AlcoholMcCartney,other,false,223,15.0,84.0,0.009870208722640593,
+breast_gse225845,GSE225845,"breast, cancer-free",DNAmTL,other,false,223,15.0,84.0,-0.45063140596971196,
+breast_gse225845,GSE225845,"breast, cancer-free",HRSInCHPhenoAge,2nd: phenotypic and mortality,false,223,15.0,84.0,0.7146100031058185,53.51564500530358
+breast_gse225845,GSE225845,"breast, cancer-free",Knight,other,false,223,15.0,84.0,0.2273202106932918,
+breast_gse225845,GSE225845,"breast, cancer-free",LeeControl,other,false,223,15.0,84.0,0.45944792849191285,
+breast_gse225845,GSE225845,"breast, cancer-free",EpiTOC1,mitotic and stochastic,true,223,15.0,84.0,-0.0501887361535029,
+breast_gse225845,GSE225845,"breast, cancer-free",LeeRefinedRobust,other,false,223,15.0,84.0,0.29146312572173294,
+breast_gse225845,GSE225845,"breast, cancer-free",LeeRobust,other,false,223,15.0,84.0,0.22298244003927736,
+breast_gse225845,GSE225845,"breast, cancer-free",SmokingMcCartney,other,false,223,15.0,84.0,0.006007997138336264,
+breast_gse225845,GSE225845,"breast, cancer-free",DownSyndrome,other,false,223,15.0,84.0,-0.14018848096722794,
+breast_gse225845,GSE225845,"breast, cancer-free",StocZ,mitotic and stochastic,false,223,15.0,84.0,0.7340765245615656,
+breast_gse225845,GSE225845,"breast, cancer-free",BMI_McCartney,other,false,223,15.0,84.0,0.1275176782343149,
+breast_gse225845,GSE225845,"breast, cancer-free",EducationMcCartney,other,false,223,15.0,84.0,-0.05954405201655318,
+breast_gse225845,GSE225845,"breast, cancer-free",TotalCholesterolMcCartney,other,false,223,15.0,84.0,0.023092800677415985,
+breast_gse225845,GSE225845,"breast, cancer-free",HDLCholesterolMcCartney,other,false,223,15.0,84.0,0.060714875586501946,
+breast_gse225845,GSE225845,"breast, cancer-free",LDLCholesterolMcCartney,other,false,223,15.0,84.0,0.13725210800937498,
+breast_gse225845,GSE225845,"breast, cancer-free",BodyFatMcCartney,other,false,223,15.0,84.0,0.2188313168579792,
+breast_gse225845,GSE225845,"breast, cancer-free",StocP,mitotic and stochastic,false,223,15.0,84.0,0.4299559526925376,20.13231693671227
+breast_gse225845,GSE225845,"breast, cancer-free",Mayne,other,false,223,15.0,84.0,0.20573963500691972,
+breast_gse225845,GSE225845,"breast, cancer-free",ProstateCancerKirby,other,false,223,15.0,84.0,-0.11220990212029922,
+breast_gse225845,GSE225845,"breast, cancer-free",StocH,mitotic and stochastic,true,223,15.0,84.0,0.3954022113515144,13.08298955512705
+breast_gse225845,GSE225845,"breast, cancer-free",DepressionBarbu,other,false,223,15.0,84.0,-0.15472249582241845,
+breast_gse225845,GSE225845,"breast, cancer-free",Garagnani,1st: chronological,false,223,15.0,84.0,0.6994846021254133,38.53010192180846
+breast_gse225845,GSE225845,"breast, cancer-free",Bocklandt,1st: chronological,false,223,15.0,84.0,-0.04515832256967994,
+breast_gse225845,GSE225845,"breast, next to a tumour",Horvathv1,1st: chronological,true,119,30.0,87.0,0.6873348429550987,9.578875172710838
+breast_gse225845,GSE225845,"breast, next to a tumour",Lin,1st: chronological,false,119,30.0,87.0,0.506389718666543,7.948842491302344
+breast_gse225845,GSE225845,"breast, next to a tumour",PhenoAge,2nd: phenotypic and mortality,false,119,30.0,87.0,0.34435403162958295,28.787245484987857
+breast_gse225845,GSE225845,"breast, next to a tumour",YingDamAge,2nd: phenotypic and mortality,false,119,30.0,87.0,-0.017455041491388167,34.104202942139125
+breast_gse225845,GSE225845,"breast, next to a tumour",YingAdaptAge,2nd: phenotypic and mortality,false,119,30.0,87.0,0.37203746090266343,18.53432559456195
+breast_gse225845,GSE225845,"breast, next to a tumour",Horvathv2,1st: chronological,true,119,30.0,87.0,0.6445132997799131,7.66652844269678
+breast_gse225845,GSE225845,"breast, next to a tumour",PEDBE,other,false,119,30.0,87.0,0.5106829054297536,43.649010917060345
+breast_gse225845,GSE225845,"breast, next to a tumour",DunedinPoAm38,3rd: pace of ageing,false,119,30.0,87.0,-0.10241119726829971,
+breast_gse225845,GSE225845,"breast, next to a tumour",DunedinPACE,3rd: pace of ageing,false,119,30.0,87.0,0.3107498666037835,
+breast_gse225845,GSE225845,"breast, next to a tumour",DNAmClockCortical,other,false,119,30.0,87.0,0.4243902449396266,
+breast_gse225845,GSE225845,"breast, next to a tumour",VidalBralo,1st: chronological,false,119,30.0,87.0,0.16860686778355033,11.370859300420634
+breast_gse225845,GSE225845,"breast, next to a tumour",AlcoholMcCartney,other,false,119,30.0,87.0,0.023367430958076123,
+breast_gse225845,GSE225845,"breast, next to a tumour",DNAmTL,other,false,119,30.0,87.0,-0.3136777524341558,
+breast_gse225845,GSE225845,"breast, next to a tumour",HRSInCHPhenoAge,2nd: phenotypic and mortality,false,119,30.0,87.0,0.3498755791217069,44.643286017137996
+breast_gse225845,GSE225845,"breast, next to a tumour",Knight,other,false,119,30.0,87.0,0.20526237938652434,
+breast_gse225845,GSE225845,"breast, next to a tumour",LeeControl,other,false,119,30.0,87.0,0.36364714819162547,
+breast_gse225845,GSE225845,"breast, next to a tumour",EpiTOC1,mitotic and stochastic,true,119,30.0,87.0,0.17787584074682414,
+breast_gse225845,GSE225845,"breast, next to a tumour",LeeRefinedRobust,other,false,119,30.0,87.0,0.15718483496439167,
+breast_gse225845,GSE225845,"breast, next to a tumour",LeeRobust,other,false,119,30.0,87.0,-0.037295275871923564,
+breast_gse225845,GSE225845,"breast, next to a tumour",SmokingMcCartney,other,false,119,30.0,87.0,-0.12840174412504113,
+breast_gse225845,GSE225845,"breast, next to a tumour",DownSyndrome,other,false,119,30.0,87.0,0.03893326828160505,
+breast_gse225845,GSE225845,"breast, next to a tumour",StocZ,mitotic and stochastic,false,119,30.0,87.0,0.5388724326715268,
+breast_gse225845,GSE225845,"breast, next to a tumour",BMI_McCartney,other,false,119,30.0,87.0,0.0016020603871243263,
+breast_gse225845,GSE225845,"breast, next to a tumour",EducationMcCartney,other,false,119,30.0,87.0,-0.061215908513001904,
+breast_gse225845,GSE225845,"breast, next to a tumour",TotalCholesterolMcCartney,other,false,119,30.0,87.0,-0.09183820030864498,
+breast_gse225845,GSE225845,"breast, next to a tumour",HDLCholesterolMcCartney,other,false,119,30.0,87.0,0.22320706515039954,
+breast_gse225845,GSE225845,"breast, next to a tumour",LDLCholesterolMcCartney,other,false,119,30.0,87.0,0.012892313546078851,
+breast_gse225845,GSE225845,"breast, next to a tumour",BodyFatMcCartney,other,false,119,30.0,87.0,-0.12916104242678855,
+breast_gse225845,GSE225845,"breast, next to a tumour",StocP,mitotic and stochastic,false,119,30.0,87.0,0.24842074355610866,10.59240506784252
+breast_gse225845,GSE225845,"breast, next to a tumour",Mayne,other,false,119,30.0,87.0,0.1719914314723911,
+breast_gse225845,GSE225845,"breast, next to a tumour",ProstateCancerKirby,other,false,119,30.0,87.0,0.14333057122245274,
+breast_gse225845,GSE225845,"breast, next to a tumour",StocH,mitotic and stochastic,true,119,30.0,87.0,0.34336988837556687,10.073906055848006
+breast_gse225845,GSE225845,"breast, next to a tumour",DepressionBarbu,other,false,119,30.0,87.0,-0.19834535037622614,
+breast_gse225845,GSE225845,"breast, next to a tumour",Garagnani,1st: chronological,false,119,30.0,87.0,0.4972466961725345,57.26714406341057
+breast_gse225845,GSE225845,"breast, next to a tumour",Bocklandt,1st: chronological,false,119,30.0,87.0,0.03391541180788836,
 breast_komen,GSE88883,"breast, healthy donors",Horvathv1,1st: chronological,true,98,18.0,82.0,0.9464875209213036,14.769155399449517
 breast_komen,GSE88883,"breast, healthy donors",Hannum,1st: chronological,false,98,18.0,82.0,0.8379819355102833,5.642588835667707
 breast_komen,GSE88883,"breast, healthy donors",Lin,1st: chronological,false,98,18.0,82.0,0.8432478269596112,7.718103369261637
