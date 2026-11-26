@@ -209,6 +209,11 @@ multi_tissue_mammal40,blood,epiTOC3,false,0.0,0.021125667346058814,5,NaN
 multi_tissue_mammal40,blood,HypoClock,false,0.0,0.0014749262536873156,1,NaN
 multi_tissue_mammal40,blood,RepliTali,false,0.0,0.0,0,NaN
 multi_tissue_mammal40,blood,epiCMIT,false,0.0,0.001718213058419244,10,0.0
+muscle_hertfordshire_epic,"skeletal muscle (Hertfordshire, EPIC)",epiTOC2,true,1.0,0.9140940303008879,150,NaN
+muscle_hertfordshire_epic,"skeletal muscle (Hertfordshire, EPIC)",epiTOC3,true,1.0,1.0,170,NaN
+muscle_hertfordshire_epic,"skeletal muscle (Hertfordshire, EPIC)",HypoClock,true,1.0,0.9542772861356932,648,NaN
+muscle_hertfordshire_epic,"skeletal muscle (Hertfordshire, EPIC)",RepliTali,true,1.0,1.0,87,NaN
+muscle_hertfordshire_epic,"skeletal muscle (Hertfordshire, EPIC)",epiCMIT,true,1.0,0.9355670103092784,1264,0.0
 myometrium_epic,"myometrium, all conditions",epiTOC2,true,1.0,0.9140940303008879,151,NaN
 myometrium_epic,"myometrium, all conditions",epiTOC3,true,1.0,1.0,170,NaN
 myometrium_epic,"myometrium, all conditions",HypoClock,true,0.9516129032258065,0.9498525073746312,648,NaN

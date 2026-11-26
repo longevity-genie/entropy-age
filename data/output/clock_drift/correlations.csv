@@ -1570,6 +1570,52 @@ multi_tissue_mammal40,blood,false,32,32,1438,StocH,mitotic and stochastic,true,-
 multi_tissue_mammal40,blood,false,32,32,1438,Weidner,1st: chronological,true,0.09534569187586435,-0.46378428762855234
 multi_tissue_mammal40,blood,false,32,32,1438,Garagnani,1st: chronological,true,0.0735640645619499,-0.15859041282472183
 multi_tissue_mammal40,blood,false,32,32,1438,Bocklandt,1st: chronological,true,0.03476428808293305,-0.20034144887680763
+muscle_hertfordshire_epic,"skeletal muscle (Hertfordshire, EPIC)",false,78,78,87475,Horvathv1,1st: chronological,true,0.13223170537556556,-0.11127048356774047
+muscle_hertfordshire_epic,"skeletal muscle (Hertfordshire, EPIC)",false,78,78,87475,Hannum,1st: chronological,false,0.07066698987170439,-0.16181884184694223
+muscle_hertfordshire_epic,"skeletal muscle (Hertfordshire, EPIC)",false,78,78,87475,Lin,1st: chronological,false,0.1514855602900134,-0.33569024253925006
+muscle_hertfordshire_epic,"skeletal muscle (Hertfordshire, EPIC)",false,78,78,87475,PhenoAge,2nd: phenotypic and mortality,false,0.2426035669289527,-0.21480438122542161
+muscle_hertfordshire_epic,"skeletal muscle (Hertfordshire, EPIC)",false,78,78,87475,YingDamAge,2nd: phenotypic and mortality,false,0.17013446987934183,0.2833283736821647
+muscle_hertfordshire_epic,"skeletal muscle (Hertfordshire, EPIC)",false,78,78,87475,YingAdaptAge,2nd: phenotypic and mortality,false,-0.07956860980381238,-0.19723963026527358
+muscle_hertfordshire_epic,"skeletal muscle (Hertfordshire, EPIC)",false,78,78,87475,Horvathv2,1st: chronological,true,0.06327798136836235,-0.12188668214368172
+muscle_hertfordshire_epic,"skeletal muscle (Hertfordshire, EPIC)",false,78,78,87475,PEDBE,other,false,0.24270681584394752,-0.18675758050396427
+muscle_hertfordshire_epic,"skeletal muscle (Hertfordshire, EPIC)",false,78,78,87475,DunedinPoAm38,3rd: pace of ageing,false,0.33091352554429443,-0.20159641177762744
+muscle_hertfordshire_epic,"skeletal muscle (Hertfordshire, EPIC)",false,78,78,87475,DunedinPACE,3rd: pace of ageing,false,0.06981890880917659,-0.17628883493929365
+muscle_hertfordshire_epic,"skeletal muscle (Hertfordshire, EPIC)",false,78,78,87475,DNAmClockCortical,other,false,-0.19450879259090928,0.10061988186067486
+muscle_hertfordshire_epic,"skeletal muscle (Hertfordshire, EPIC)",false,78,78,87475,VidalBralo,1st: chronological,false,-0.09544394604625857,0.047014566757297246
+muscle_hertfordshire_epic,"skeletal muscle (Hertfordshire, EPIC)",false,78,78,87475,AlcoholMcCartney,other,false,-0.08324333365282321,0.17440361177599104
+muscle_hertfordshire_epic,"skeletal muscle (Hertfordshire, EPIC)",false,78,78,87475,DNAmTL,other,false,-0.15432693640324793,-0.03956081023250113
+muscle_hertfordshire_epic,"skeletal muscle (Hertfordshire, EPIC)",false,78,78,87475,HRSInCHPhenoAge,2nd: phenotypic and mortality,false,-0.17619073246725997,0.1366026420825731
+muscle_hertfordshire_epic,"skeletal muscle (Hertfordshire, EPIC)",false,78,78,87475,Knight,other,false,0.25081784520800854,-0.1725460595631775
+muscle_hertfordshire_epic,"skeletal muscle (Hertfordshire, EPIC)",false,78,78,87475,LeeControl,other,false,-0.0936400431725635,0.012077674757661963
+muscle_hertfordshire_epic,"skeletal muscle (Hertfordshire, EPIC)",false,78,78,87475,EpiTOC1,mitotic and stochastic,true,-0.11190452427586578,-0.08448613514717239
+muscle_hertfordshire_epic,"skeletal muscle (Hertfordshire, EPIC)",false,78,78,87475,LeeRefinedRobust,other,false,0.02234721977672589,0.08148405046156756
+muscle_hertfordshire_epic,"skeletal muscle (Hertfordshire, EPIC)",false,78,78,87475,LeeRobust,other,false,0.013420371768540728,-0.02242029204906142
+muscle_hertfordshire_epic,"skeletal muscle (Hertfordshire, EPIC)",false,78,78,87475,SmokingMcCartney,other,false,-0.007163507230514517,0.21893930299233252
+muscle_hertfordshire_epic,"skeletal muscle (Hertfordshire, EPIC)",false,78,78,87475,DownSyndrome,other,false,-0.2391631515323506,-0.0754768677362268
+muscle_hertfordshire_epic,"skeletal muscle (Hertfordshire, EPIC)",false,78,78,87475,StocZ,mitotic and stochastic,false,0.20479966360770605,-0.22277244498496807
+muscle_hertfordshire_epic,"skeletal muscle (Hertfordshire, EPIC)",false,78,78,87475,BMI_McCartney,other,false,0.11425479888091498,0.1676875974152397
+muscle_hertfordshire_epic,"skeletal muscle (Hertfordshire, EPIC)",false,78,78,87475,EducationMcCartney,other,false,0.11176210093302011,-0.09306422381893262
+muscle_hertfordshire_epic,"skeletal muscle (Hertfordshire, EPIC)",false,78,78,87475,TotalCholesterolMcCartney,other,false,-0.1409138338924155,0.11427545984726313
+muscle_hertfordshire_epic,"skeletal muscle (Hertfordshire, EPIC)",false,78,78,87475,HDLCholesterolMcCartney,other,false,-0.06309362287165488,-0.10802098025693525
+muscle_hertfordshire_epic,"skeletal muscle (Hertfordshire, EPIC)",false,78,78,87475,LDLCholesterolMcCartney,other,false,0.13067736232448615,-0.010806978715785053
+muscle_hertfordshire_epic,"skeletal muscle (Hertfordshire, EPIC)",false,78,78,87475,BodyFatMcCartney,other,false,-0.18143885893142303,0.4180815052728971
+muscle_hertfordshire_epic,"skeletal muscle (Hertfordshire, EPIC)",false,78,78,87475,BMI_Reed,other,false,0.15147637679249257,-0.07220025780120384
+muscle_hertfordshire_epic,"skeletal muscle (Hertfordshire, EPIC)",false,78,78,87475,StocP,mitotic and stochastic,false,0.07713372283870985,0.020881381593043383
+muscle_hertfordshire_epic,"skeletal muscle (Hertfordshire, EPIC)",false,78,78,87475,Mayne,other,false,0.08352098180547597,-0.15081390467032427
+muscle_hertfordshire_epic,"skeletal muscle (Hertfordshire, EPIC)",false,78,78,87475,ProstateCancerKirby,other,false,0.08857960958630723,-0.015084937947037014
+muscle_hertfordshire_epic,"skeletal muscle (Hertfordshire, EPIC)",false,78,78,87475,CVD_Westerman,other,false,-0.27545733558158403,0.3365182053963499
+muscle_hertfordshire_epic,"skeletal muscle (Hertfordshire, EPIC)",false,78,78,87475,StocH,mitotic and stochastic,true,0.16245140284370077,-0.11693972995560357
+muscle_hertfordshire_epic,"skeletal muscle (Hertfordshire, EPIC)",false,78,78,87475,AD_Bahado-Singh,other,false,0.08730139458929896,0.06298269669757393
+muscle_hertfordshire_epic,"skeletal muscle (Hertfordshire, EPIC)",false,78,78,87475,DepressionBarbu,other,false,-0.015437781517221087,0.2952849876111216
+muscle_hertfordshire_epic,"skeletal muscle (Hertfordshire, EPIC)",false,78,78,87475,Weidner,1st: chronological,false,0.01719011888505923,-0.17478368202260874
+muscle_hertfordshire_epic,"skeletal muscle (Hertfordshire, EPIC)",false,78,78,87475,Garagnani,1st: chronological,false,0.13507270359152368,-0.19294120375312615
+muscle_hertfordshire_epic,"skeletal muscle (Hertfordshire, EPIC)",false,78,78,87475,Bohlin,other,false,0.25140582606716017,-0.1767223584377284
+muscle_hertfordshire_epic,"skeletal muscle (Hertfordshire, EPIC)",false,78,78,87475,Bocklandt,1st: chronological,false,-0.23861522635324625,0.2512696911784437
+muscle_hertfordshire_epic,"skeletal muscle (Hertfordshire, EPIC)",false,78,78,87475,epiTOC2,mitotic and stochastic,true,-0.08399268525114346,-0.10714979293499612
+muscle_hertfordshire_epic,"skeletal muscle (Hertfordshire, EPIC)",false,78,78,87475,epiTOC3,mitotic and stochastic,true,-0.10369016271195663,-0.04308335124307396
+muscle_hertfordshire_epic,"skeletal muscle (Hertfordshire, EPIC)",false,78,78,87475,HypoClock,mitotic and stochastic,true,-0.12244240711638157,-0.2471359780673099
+muscle_hertfordshire_epic,"skeletal muscle (Hertfordshire, EPIC)",false,78,78,87475,RepliTali,mitotic and stochastic,true,0.008007212788604197,0.22397219568714083
+muscle_hertfordshire_epic,"skeletal muscle (Hertfordshire, EPIC)",false,78,78,87475,epiCMIT,mitotic and stochastic,true,-0.36506250172955534,0.42528033312415264
 myometrium_epic,"myometrium, all conditions",false,62,62,84837,Horvathv1,1st: chronological,true,-0.21154266105782463,0.5077543083038377
 myometrium_epic,"myometrium, all conditions",false,62,62,84837,Lin,1st: chronological,false,0.3503448795045629,-0.22300988625499055
 myometrium_epic,"myometrium, all conditions",false,62,62,84837,PhenoAge,2nd: phenotypic and mortality,false,0.5193261547788677,-0.2476628925528362
