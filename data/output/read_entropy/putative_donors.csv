@@ -1,0 +1,102 @@
+sample,title,group,putative_donor
+GSM5652231,Cerebellum-Neuron-Z000000TB,Neuronal|Brain,19.0|false|KI|brain
+GSM5652232,Cortex-Neuron-Z000000TD,Neuronal|Brain,19.0|false|KI|brain
+GSM5652240,Pancreas-Duct-Z0000043U,Duct|Pancreas,19.0|false|UA|pancreas
+GSM5652245,Pancreas-Acinar-Z0000043X,Acinar|Pancreas,19.0|false|UA|pancreas
+GSM5652324,Tonsil-Palatine-Epithelium-Z000000RR,Epithelium|Tonsil palatine,20.0|false|Had-HU|tonsil
+GSM5652241,Pancreas-Duct-Z0000043V,Duct|Pancreas,23.0|false|UA|pancreas
+GSM5652246,Pancreas-Acinar-Z0000043Y,Acinar|Pancreas,23.0|false|UA|pancreas
+GSM5652233,Liver-Hepatocytes-Z000000R3,Hepatocyte|Liver,24.0|false|OHSU|liver
+GSM5652221,Oligodendrocytes-Z0000042L,Oligodendrocytes|Brain,25.0|false|KI|brain
+GSM5652227,Cortex-Neuron-Z0000042J,Neuronal|Brain,25.0|false|KI|brain
+GSM5652228,Cortex-Neuron-Z0000042M,Neuronal|Brain,25.0|false|KI|brain
+GSM5652230,Cortex-Neuron-Z0000042K,Neuronal|Brain,25.0|false|KI|brain
+GSM5652239,Pancreas-Duct-Z0000043T,Duct|Pancreas,26.0|true|UA|pancreas
+GSM5652244,Pancreas-Acinar-Z0000043W,Acinar|Pancreas,26.0|true|UA|pancreas
+GSM5652322,Tonsil-Palatine-Epithelium-Z000000QF,Epithelium|Tonsil palatine,27.0|false|Had-HU|tonsil
+GSM5652353,Breast-Basal-Epithelium-Z0000043E,Basal epithelial|Breast,27.0|true|Had-HU|breast
+GSM5652359,Gastric-fundus-Epithelium-Z000000RX,Epithelium|Gastric fundus,27.0|true|Had-HU|gastric
+GSM5652191,Lung-Alveolar-Endothelium-Z000000Q1,Endothelium|Lung alveolar,28.0|true|Had-HU|lung
+GSM5652360,Gastric-fundus-Epithelium-Z000000SK,Epithelium|Gastric fundus,28.0|true|Had-HU|gastric
+GSM5652363,Gastric-body-Epithelium-Z000000SM,Epithelium|Gastric body,28.0|true|Had-HU|gastric
+GSM5652366,Gastric-antrum-Epithelium-Z000000SP,Epithelium|Gastric antrum,28.0|true|Had-HU|gastric
+GSM5652286,Blood-T-CenMem-CD4-Z0000041D,T central memory CD4|Blood,29.0|true|Had-HU|blood
+GSM5652289,Blood-T-Eff-CD8-Z0000041F,T effector cell CD8|Blood,29.0|true|Had-HU|blood
+GSM5652292,Blood-T-EffMem-CD4-Z0000041C,T effector memory CD4|Blood,29.0|true|Had-HU|blood
+GSM5652362,Gastric-body-Epithelium-Z000000SD,Epithelium|Gastric body,29.0|true|Had-HU|gastric
+GSM5652365,Gastric-antrum-Epithelium-Z000000SF,Epithelium|Gastric antrum,29.0|true|Had-HU|gastric
+GSM5652285,Blood-T-CenMem-CD4-Z00000417,T central memory CD4|Blood,30.0|true|Had-HU|blood
+GSM5652288,Blood-T-Eff-CD8-Z00000419,T effector cell CD8|Blood,30.0|true|Had-HU|blood
+GSM5652291,Blood-T-EffMem-CD4-Z00000416,T effector memory CD4|Blood,30.0|true|Had-HU|blood
+GSM5652219,Oligodendrocytes-Z000000TK,Oligodendrocytes|Brain,31.0|false|KI|brain
+GSM5652224,Neuron-Z000000TH,Neuronal|Brain,31.0|false|KI|brain
+GSM5652183,Saphenous-Vein-Endothelium-Z000000SB,Endothelium|Vascular saphenous,34.0|false|Had-HU|vascular
+GSM5652177,Adipocytes-Z000000T9,Adipocytes|Abdominal Subcut.,35.0|true|KI|abdominal
+GSM5652202,Heart-Fibroblasts-Z0000041W,Fibroblast|Heart,35.0|true|Lonza|heart
+GSM5652323,Tonsil-Palatine-Epithelium-Z000000RP,Epithelium|Tonsil palatine,36.0|true|Had-HU|tonsil
+GSM5652178,Adipocytes-Z000000T5,Adipocytes|Abdominal Subcut.,37.0|true|KI|abdominal
+GSM5652355,Lung-Alveolar-Epithelium-Z000000VC,Epithelium|Lung alveolar,37.0|false|Had-HU|lung
+GSM5652223,Cortex-Neuron-Z000000TF,Neuronal|Brain,38.0|false|KI|brain
+GSM5652222,Oligodendrocytes-Z0000042N,Oligodendrocytes|Brain,39.0|false|KI|brain
+GSM5652229,Cortex-Neuron-Z0000042P,Neuronal|Brain,39.0|false|KI|brain
+GSM5652350,Breast-Basal-Epithelium-Z000000V6,Basal epithelial|Breast,41.0|true|Had-HU|breast
+GSM5652248,Pancreas-Delta-Z00000454,Delta|Pancreas,43.0|true|UA|pancreas
+GSM5652251,Pancreas-Beta-Z00000455,Beta|Pancreas,43.0|true|UA|pancreas
+GSM5652254,Pancreas-Alpha-Z00000456,Alpha|Pancreas,43.0|true|UA|pancreas
+GSM5652361,Gastric-fundus-Epithelium-Z000000SV,Epithelium|Gastric fundus,44.0|true|Had-HU|gastric
+GSM5652364,Gastric-body-Epithelium-Z000000ST,Epithelium|Gastric body,44.0|true|Had-HU|gastric
+GSM5652367,Gastric-antrum-Epithelium-Z000000SR,Epithelium|Gastric antrum,44.0|true|Had-HU|gastric
+GSM5652238,Liver-Hepatocytes-Z00000431,Hepatocyte|Liver,45.0|true|Lonza|liver
+GSM5652242,Pancreas-Duct-Z000000QZ,Duct|Pancreas,45.0|false|OHSU|pancreas
+GSM5652243,Pancreas-Acinar-Z000000QX,Acinar|Pancreas,45.0|false|OHSU|pancreas
+GSM5652186,Kidney-Glomerular-Endothelium-Z0000045J,Endothelium|Kidney glomerular,47.0|false|Had-HU|kidney
+GSM5652374,Colon-Left-Endocrine-Z0000044J,Endocrine|Colon,48.0|true|Had-HU|colon
+GSM5652201,Heart-Fibroblasts-Z0000041V,Fibroblast|Heart,50.0|true|Lonza|heart
+GSM5652349,Breast-Luminal-Epithelium-Z000000VN,Luminal epithelial|Breast,50.0|true|Had-HU|breast
+GSM5652352,Breast-Basal-Epithelium-Z000000VL,Basal epithelial|Breast,50.0|true|Had-HU|breast
+GSM5652373,Colon-Left-Epithelium-Z000000VA,Epithelium|Colon,51.0|false|Had-HU|colon
+GSM5652182,Saphenous-Vein-Endothelium-Z000000S7,Endothelium|Vascular saphenous,52.0|true|Had-HU|vascular
+GSM5652176,Adipocytes-Z000000T7,Adipocytes|Abdominal Subcut.,53.0|true|KI|abdominal
+GSM5652348,Breast-Luminal-Epithelium-Z000000VJ,Luminal epithelial|Breast,53.0|true|Had-HU|breast
+GSM5652351,Breast-Basal-Epithelium-Z000000VG,Basal epithelial|Breast,53.0|true|Had-HU|breast
+GSM5652181,Saphenous-Vein-Endothelium-Z000000RM,Endothelium|Vascular saphenous,54.0|true|Had-HU|vascular
+GSM5652213,Heart-Cardiomyocyte-Z0000044K,Cardiomyocyte|Heart,54.0|false|Had-HU|heart
+GSM5652338,Prostate-Epithelium-Z000000RV,Epithelium|Prostate,54.0|false|Had-HU|prostate
+GSM5652200,Heart-Fibroblasts-Z0000043R,Fibroblast|Heart,55.0|false|Lonza|heart
+GSM5652236,Liver-Hepatocytes-Z0000044H,Hepatocyte|Liver,55.0|false|Had-HU|liver
+GSM5652220,Oligodendrocytes-Z0000042E,Oligodendrocytes|Brain,56.0|false|KI|brain
+GSM5652225,Cortex-Neuron-Z0000042F,Neuronal|Brain,56.0|false|KI|brain
+GSM5652235,Liver-Hepatocytes-Z0000043Q,Hepatocyte|Liver,56.0|true|Lonza|liver
+GSM5652376,Colon-Left-Epithelium-Z0000043B,Epithelium|Colon,56.0|false|Had-HU|colon
+GSM5652377,Colon-Left-Epithelium-Z0000043C,Epithelium|Colon,56.0|true|Had-HU|colon
+GSM5652247,Pancreas-Delta-Z00000451,Delta|Pancreas,58.0|true|UA|pancreas
+GSM5652249,Pancreas-Delta-Z00000457,Delta|Pancreas,58.0|true|IIDP|pancreas
+GSM5652250,Pancreas-Beta-Z00000452,Beta|Pancreas,58.0|true|UA|pancreas
+GSM5652252,Pancreas-Beta-Z00000458,Beta|Pancreas,58.0|true|IIDP|pancreas
+GSM5652253,Pancreas-Alpha-Z00000453,Alpha|Pancreas,58.0|true|UA|pancreas
+GSM5652255,Pancreas-Alpha-Z00000459,Alpha|Pancreas,58.0|true|IIDP|pancreas
+GSM5652214,Heart-Cardiomyocyte-Z0000044N,Cardiomyocyte|Heart,59.0|false|Had-HU|heart
+GSM5652185,Kidney-Glomerular-Endothelium-Z00000443,Endothelium|Kidney glomerular,60.0|false|Had-HU|kidney
+GSM5652203,Heart-Fibroblasts-Z0000041X,Fibroblast|Heart,61.0|false|Lonza|heart
+GSM5652226,Cortex-Neuron-Z0000042H,Neuronal|Brain,65.0|true|KI|brain
+GSM5652237,Liver-Hepatocytes-Z0000044M,Hepatocyte|Liver,66.0|false|Had-HU|liver
+GSM5652184,Kidney-Glomerular-Endothelium-Z000000Q5,Endothelium|Kidney glomerular,67.0|false|Had-HU|kidney
+GSM5652375,Colon-Left-Endocrine-Z0000044T,Endocrine|Colon,67.0|true|Had-HU|colon
+GSM5652356,Lung-Alveolar-Epithelium-Z000000VE,Epithelium|Lung alveolar,68.0|false|Had-HU|lung
+GSM5652287,Blood-T-CenMem-CD4-Z0000041N,T central memory CD4|Blood,69.0|false|Had-HU|blood
+GSM5652290,Blood-T-Eff-CD8-Z0000041Q,T effector cell CD8|Blood,69.0|false|Had-HU|blood
+GSM5652293,Blood-T-EffMem-CD4-Z0000041M,T effector memory CD4|Blood,69.0|false|Had-HU|blood
+GSM5652217,Heart-Cardiomyocyte-Z0000044R,Cardiomyocyte|Heart,70.0|false|Had-HU|heart
+GSM5652215,Heart-Cardiomyocyte-Z0000044P,Cardiomyocyte|Heart,71.0|true|Had-HU|heart
+GSM5652347,Breast-Luminal-Epithelium-Z000000V2,Luminal epithelial|Breast,71.0|true|Had-HU|breast
+GSM5652354,Lung-Alveolar-Epithelium-Z000000T1,Epithelium|Lung alveolar,71.0|false|Had-HU|lung
+GSM5652371,Colon-Right-Epithelium-Z000000V8,Epithelium|Colon,72.0|true|Had-HU|colon
+GSM5652339,Prostate-Epithelium-Z000000S3,Epithelium|Prostate,75.0|false|Had-HU|prostate
+GSM5652192,Lung-Alveolar-Endothelium-Z000000QK,Endothelium|Lung alveolar,76.0|true|Had-HU|lung
+GSM5652341,Prostate-Epithelium-Z0000045G,Epithelium|Prostate,76.0|false|Had-HU|prostate
+GSM5652370,Colon-Right-Epithelium-Z000000V0,Epithelium|Colon,78.0|true|Had-HU|colon
+GSM5652372,Colon-Right-Endocrine-Z0000044S,Endocrine|Colon,79.0|true|Had-HU|colon
+GSM5652193,Lung-Alveolar-Endothelium-Z0000045H,Endothelium|Lung alveolar,81.0|true|Had-HU|lung
+GSM5652216,Heart-Cardiomyocyte-Z0000044Q,Cardiomyocyte|Heart,81.0|false|Had-HU|heart
+GSM5652212,Heart-Cardiomyocyte-Z0000044G,Cardiomyocyte|Heart,83.0|false|Had-HU|heart
+GSM5652340,Prostate-Epithelium-Z0000045F,Epithelium|Prostate,83.0|false|Had-HU|prostate

@@ -1,9 +1,9 @@
-cohort,source,donors,age_min,age_max,cpgs_complete,chips_known
-"skeletal muscle (Hertfordshire, EPIC)","SeSAMe rebuild, 90 % detection",78,68.4,83.2,357965,0
-"skeletal muscle (Hertfordshire, 450k)","SeSAMe rebuild, 90 % detection",18,73.5,82.6,405594,0
-"cultured myoblasts (Hertfordshire, 450k)","SeSAMe rebuild, 90 % detection",19,73.5,82.6,406150,0
-"skeletal muscle (post-mortem, GSE244995)","SeSAMe rebuild, 90 % detection",20,18.0,78.0,374574,8
-skeletal_muscle,"SeSAMe rebuild, 90 % detection",13,26.0,59.0,353623,7
-"skeletal_muscle (80 % detection, sensitivity)","SeSAMe rebuild, 80 % detection (sensitivity)",45,26.0,67.0,307642,20
-"skeletal muscle (Gene SMART, baseline)","SeSAMe rebuild, 90 % detection",52,18.2614647501711,47.0,365082,25
-"skeletal muscle (GTEx, deposited BMIQ)","deposited BMIQ, decade midpoints",47,35.0,75.0,389801,9
+cohort,source,donors,age_min,age_max,cpgs_complete,platform,chips_known,chip_age_r2,age_identifiable_with_chip
+"skeletal muscle (Hertfordshire, EPIC)","SeSAMe rebuild, 90 % detection",78,68.4,83.2,357965,EPIC,0,NaN,unknown
+"skeletal muscle (Hertfordshire, 450k)","SeSAMe rebuild, 90 % detection",18,73.5,82.6,405594,450k,0,NaN,unknown
+"cultured myoblasts (Hertfordshire, 450k)","SeSAMe rebuild, 90 % detection",19,73.5,82.6,406150,450k,0,NaN,unknown
+"skeletal muscle (post-mortem, GSE244995)","SeSAMe rebuild, 90 % detection",20,18.0,78.0,374574,EPIC,8,0.48063040722984507,yes
+skeletal_muscle,"SeSAMe rebuild, 90 % detection, CpGs shared with the 80 % set",13,26.0,59.0,307642,450k,7,0.7670984455958549,no
+"skeletal_muscle (80 % detection, sensitivity)","SeSAMe rebuild, 80 % detection and the intensity rule (sensitivity), CpGs shared with the 90 % set",45,26.0,67.0,307642,450k,20,0.46967879033190707,yes
+"skeletal muscle (Gene SMART, baseline)","SeSAMe rebuild, 90 % detection",52,18.2614647501711,47.0,365082,EPIC,25,0.30306760752177553,yes
+"skeletal muscle (GTEx, deposited BMIQ)","deposited BMIQ, decade midpoints",47,35.0,75.0,389801,EPIC,9,0.11104156286331146,yes

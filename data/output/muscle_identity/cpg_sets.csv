@@ -3,4 +3,6 @@ identity genes (promoter + muscle enhancer),416,318,98,37,,,
 myofibre vs adipocyte > 0.3 (sorted references),15492,,,,,,
 muscle-vs-adipocyte CpGs (confirmed in GSE48472),13946,,,,8023,5923,88
 myofibre vs myoblast > 0.3,11330,,,,,,
+identity genes by regulatory class (promoter / enhancer / other),416,322,94,37,,,
 type I vs type II fibre > 0.2,925,,,,,,
+"shared adipocyte-axis panel (450k and EPIC adipocytes, confirmed, complete in every cohort)",7108,,,,3860,3248,52

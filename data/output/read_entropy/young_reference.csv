@@ -1,0 +1,30 @@
+source,group,samples,young_samples,young_donors,young_ages,scorable_samples,ref_reads_median_older,ref_reads_median_young_left_out,windows
+white blood cells,all,23,5,5,"21, 25, 37, 39, 42",23,214.0,171.0,73885
+cfDNA,all,23,5,5,"21, 25, 37, 39, 42",23,165.0,131.0,51902
+sorted cells,Acinar|Pancreas,4,1,1,19,3,47.0,0.0,63138
+sorted cells,Adipocytes|Abdominal Subcut.,3,1,1,35,2,32.0,0.0,63138
+sorted cells,Alpha|Pancreas,3,1,1,43,2,22.0,0.0,63138
+sorted cells,Basal epithelial|Breast,4,1,1,27,3,19.0,0.0,63138
+sorted cells,Beta|Pancreas,3,1,1,43,2,21.0,0.0,63138
+sorted cells,Cardiomyocyte|Heart,6,2,2,"54, 59",6,37.0,16.0,63138
+sorted cells,Delta|Pancreas,3,1,1,43,2,25.0,0.0,63138
+sorted cells,Duct|Pancreas,4,1,1,19,3,25.0,0.0,63138
+sorted cells,Endocrine|Colon,3,1,1,48,2,13.0,0.0,63138
+sorted cells,Endothelium|Kidney glomerular,3,1,1,47,2,26.0,0.0,63138
+sorted cells,Endothelium|Lung alveolar,3,1,1,28,2,24.0,0.0,63138
+sorted cells,Endothelium|Vascular saphenous,3,1,1,34,2,30.0,0.0,63138
+sorted cells,Epithelium|Colon,5,1,1,51,4,21.0,0.0,63138
+sorted cells,Epithelium|Gastric antrum,3,1,1,28,2,31.0,0.0,63138
+sorted cells,Epithelium|Gastric body,3,1,1,28,2,24.0,0.0,63138
+sorted cells,Epithelium|Gastric fundus,3,1,1,27,2,28.0,0.0,63138
+sorted cells,Epithelium|Lung alveolar,3,1,1,37,2,29.0,0.0,63138
+sorted cells,Epithelium|Prostate,4,1,1,54,3,28.0,0.0,63138
+sorted cells,Epithelium|Tonsil palatine,3,1,1,20,2,30.0,0.0,63138
+sorted cells,Fibroblast|Heart,4,1,1,35,3,21.0,0.0,63138
+sorted cells,Hepatocyte|Liver,5,1,1,24,4,31.0,0.0,63138
+sorted cells,Luminal epithelial|Breast,3,1,1,50,2,27.0,0.0,63138
+sorted cells,Neuronal|Brain,10,2,1,"19, 19",10,55.0,27.0,63138
+sorted cells,Oligodendrocytes|Brain,4,1,1,25,3,24.0,0.0,63138
+sorted cells,T central memory CD4|Blood,3,1,1,29,2,19.0,0.0,63138
+sorted cells,T effector cell CD8|Blood,3,1,1,29,2,20.0,0.0,63138
+sorted cells,T effector memory CD4|Blood,3,1,1,29,2,20.0,0.0,63138
