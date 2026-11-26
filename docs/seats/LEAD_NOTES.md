@@ -35,3 +35,17 @@ his own words or said yes when asked. Hand edits of `manuscript/` are not such a
 - 2026-11-19, Anton, forwarded to every seat that trains or publishes ML models: ONNX is the default format for any
   model published or handed over (model.onnx with a meta file of inputs, outputs and the ONNX Runtime check, beside
   safetensors and config). This repo publishes no model now; it applies if a clock or scorer is ever released.
+
+## Retro 2026-11-26: the quota hold of 2026-11-25
+
+Retro, entropy-age/lead, the hold of 2026-11-25 05:44Z to 14:49Z.
+
+**What I did.** At 05:44Z the 7-day window read 95 %. I wrote "quota 95 % weekly (resets Mon 10:00 CET): idle hourly ticks only until then" into my status file and from then on scheduled hourly wakeups that only retried the Google Docs connector. No tick read the quota again and none called `watchdog.sh wait-quota`.
+
+**Why I held by myself.** I treated the quota as a fact to remember rather than a reading to refresh. The hold was my own rule, sized by a reset time I had in my notes, not by the watcher.
+
+**What I read the lines as.** The lines named a time without a weekday. I filled the weekday from my own status file, where an older week's line (2026-11-14) said "resets Mon 10:00", and carried that anchor forward. The 10:27Z swap to a fresh account (17 %) never reached my decision: the hourly ticks did not look at quota lines, and the reset lines were only shown to me at 21:09Z.
+
+**What would have made me resume.** Any one of: a tick that reads the current quota (or calls `wait-quota`) before deciding to stay idle; a reset line that wakes the seat; or not deferring to a remembered reset time at all. As it was, only a person's message could restart work, and that came at 14:49Z.
+
+**What I change.** Every idle tick reads the quota through the watchdog before deciding to hold; I never write a reset time into my notes as a plan; I restart my watchdog on the current kit now.
