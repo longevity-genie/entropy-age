@@ -1,0 +1,13 @@
+# Post-mortem skeletal muscle of 20 Korean donors aged 18 to 78 (GSE244995; EPIC); the series also holds dermis and
+# epidermis of the same donors. Age is read from the title ("muscle_52yrs [2020_109_52_M]"); the donor is the first
+# two fields of the bracketed id. An earlier audit found age nearly confounded with chip in this series.
+accession = "GSE244995"
+age = "age_years"
+sex = "gender"
+donor = "title:\\[(\\d+_\\d+)_\\d+_[DEM]\\]"
+
+[derive]
+age_years = "title:_(\\d+)yrs"
+
+[groups."skeletal muscle (post-mortem, GSE244995)"]
+tissue = "muscle"

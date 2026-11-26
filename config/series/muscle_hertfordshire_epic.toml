@@ -1,0 +1,11 @@
+# Vastus lateralis of 78 older men of the Hertfordshire Sarcopenia Study (HSS) and its extension (HSSe), GSE154980;
+# EPIC; ages 68 to 83 (Antoun et al. 2022). Sarcopenia phenotypes are not on GEO. The cohort label is held: it is
+# also the DNA extraction method (HSS QIAamp, HSSe high salt). The IDAT names carry no chip ids.
+accession = "GSE154980"
+age = "age (yr)"
+sex = "gender"
+donor = "title:muscle sample (\\d+)$"
+hold = ["cohort"]
+
+[groups."skeletal muscle (Hertfordshire, EPIC)"]
+"sample type" = "Muscle tissue"

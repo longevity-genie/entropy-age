@@ -1,0 +1,217 @@
+cohort,covariates,band,metric,set,cpgs_in_set,gap_sd,donor_ci_low,donor_ci_high,donor_resamples
+"skeletal muscle (Hertfordshire, EPIC)",held,all,kl_slope,identity genes,347,0.2387648632919284,0.0171902985417396,0.6014384347725202,200
+"skeletal muscle (Hertfordshire, EPIC)",held,all,kl_slope,muscle-vs-adipocyte CpGs,12193,-0.0583261669787078,-0.47248188723482176,0.577310941695871,200
+"skeletal muscle (Hertfordshire, EPIC)",held,all,kl_slope,adipocyte-higher CpGs,6869,-0.051434184721585965,-0.5405483108282011,0.6908594123628866,200
+"skeletal muscle (Hertfordshire, EPIC)",held,all,kl_slope,adipocyte-lower CpGs,5324,-0.0732179112634377,-0.5799818671030252,0.4140358861779452,200
+"skeletal muscle (Hertfordshire, EPIC)",held,all,dispersion_slope,identity genes,347,0.30897614890850816,-0.052226975301755914,0.7241963226774603,200
+"skeletal muscle (Hertfordshire, EPIC)",held,all,dispersion_slope,muscle-vs-adipocyte CpGs,12193,-0.17723201839851896,-0.7536117192223052,0.6601673584174426,200
+"skeletal muscle (Hertfordshire, EPIC)",held,all,dispersion_slope,adipocyte-higher CpGs,6869,-0.20837539254543042,-0.8803057844931125,0.8160433323528093,200
+"skeletal muscle (Hertfordshire, EPIC)",held,all,dispersion_slope,adipocyte-lower CpGs,5324,-0.11205422990685664,-0.7275284123272308,0.5493407679368102,200
+"skeletal muscle (Hertfordshire, EPIC)",held,all,entropy_slope,identity genes,347,-0.06153842082312317,-0.42201267195737313,0.19027943457535676,200
+"skeletal muscle (Hertfordshire, EPIC)",held,all,entropy_slope,muscle-vs-adipocyte CpGs,12193,-0.08952949259160785,-0.9155592992819362,0.987574699925708,200
+"skeletal muscle (Hertfordshire, EPIC)",held,all,entropy_slope,adipocyte-higher CpGs,6869,-0.10908786147729302,-0.8404938367741162,0.6785447579030902,200
+"skeletal muscle (Hertfordshire, EPIC)",held,all,entropy_slope,adipocyte-lower CpGs,5324,-0.07115490155166528,-1.0322388512900262,1.3244840398208921,200
+"skeletal muscle (Hertfordshire, EPIC)",held,10-90 %,kl_slope,identity genes,260,0.2789366215778406,0.02101219638855663,0.6796870495728183,200
+"skeletal muscle (Hertfordshire, EPIC)",held,10-90 %,kl_slope,muscle-vs-adipocyte CpGs,11725,-0.0554626124375501,-0.425636406781123,0.4989508271633521,200
+"skeletal muscle (Hertfordshire, EPIC)",held,10-90 %,kl_slope,adipocyte-higher CpGs,6817,-0.053741077880848254,-0.49046119801922355,0.5991380276861821,200
+"skeletal muscle (Hertfordshire, EPIC)",held,10-90 %,kl_slope,adipocyte-lower CpGs,4908,-0.07050305014344287,-0.5312093853712441,0.36045733801310104,200
+"skeletal muscle (Hertfordshire, EPIC)",held,10-90 %,dispersion_slope,identity genes,260,0.349801255111731,-0.06959857878656858,0.8150690605065768,200
+"skeletal muscle (Hertfordshire, EPIC)",held,10-90 %,dispersion_slope,muscle-vs-adipocyte CpGs,11725,-0.16836731052273404,-0.6721977197207897,0.5794725896487185,200
+"skeletal muscle (Hertfordshire, EPIC)",held,10-90 %,dispersion_slope,adipocyte-higher CpGs,6817,-0.19426931146221665,-0.7858922041868994,0.7128354207981781,200
+"skeletal muscle (Hertfordshire, EPIC)",held,10-90 %,dispersion_slope,adipocyte-lower CpGs,4908,-0.11568873152578388,-0.6751228390087421,0.46959530369762625,200
+"skeletal muscle (Hertfordshire, EPIC)",held,10-90 %,entropy_slope,identity genes,260,-0.06206146472568893,-0.4522969410970179,0.2226544605190664,200
+"skeletal muscle (Hertfordshire, EPIC)",held,10-90 %,entropy_slope,muscle-vs-adipocyte CpGs,11725,-0.09866271804445868,-0.8508891876081328,0.8579522056602354,200
+"skeletal muscle (Hertfordshire, EPIC)",held,10-90 %,entropy_slope,adipocyte-higher CpGs,6817,-0.10555604514148256,-0.774585203532159,0.6158620575034902,200
+"skeletal muscle (Hertfordshire, EPIC)",held,10-90 %,entropy_slope,adipocyte-lower CpGs,4908,-0.09685037407270036,-0.9889410839849727,1.1759499872377306,200
+"skeletal muscle (post-mortem, GSE244995)",held,all,kl_slope,identity genes,370,-0.027235370840173908,-0.23703203034661438,0.3733114704979235,126
+"skeletal muscle (post-mortem, GSE244995)",held,all,kl_slope,muscle-vs-adipocyte CpGs,12990,0.135058586517861,-0.4319863659195579,0.7723223820875188,126
+"skeletal muscle (post-mortem, GSE244995)",held,all,kl_slope,adipocyte-higher CpGs,7525,-0.520614884788488,-0.9540842540617451,0.22767866470220813,126
+"skeletal muscle (post-mortem, GSE244995)",held,all,kl_slope,adipocyte-lower CpGs,5465,0.6704225769804448,-0.09075650898196817,1.1579385243365632,126
+"skeletal muscle (post-mortem, GSE244995)",held,all,dispersion_slope,identity genes,370,-0.11766449912050368,-0.44647779522154163,0.25822363921629676,126
+"skeletal muscle (post-mortem, GSE244995)",held,all,dispersion_slope,muscle-vs-adipocyte CpGs,12990,-0.5502930268632525,-0.899620748331021,-0.06227360354147955,126
+"skeletal muscle (post-mortem, GSE244995)",held,all,dispersion_slope,adipocyte-higher CpGs,7525,-0.9681933445946204,-1.4121565671881557,-0.1588042093037526,126
+"skeletal muscle (post-mortem, GSE244995)",held,all,dispersion_slope,adipocyte-lower CpGs,5465,0.21047674785084478,-0.19630889234503154,0.5492696540462183,126
+"skeletal muscle (post-mortem, GSE244995)",held,all,entropy_slope,identity genes,370,0.2682512100630198,0.14153765400360555,0.37522009809545576,126
+"skeletal muscle (post-mortem, GSE244995)",held,all,entropy_slope,muscle-vs-adipocyte CpGs,12990,-0.3006395526735266,-0.464187465305417,-0.12407179392818639,126
+"skeletal muscle (post-mortem, GSE244995)",held,all,entropy_slope,adipocyte-higher CpGs,7525,-0.10404412780039064,-0.2252088438932729,0.060394506447302106,126
+"skeletal muscle (post-mortem, GSE244995)",held,all,entropy_slope,adipocyte-lower CpGs,5465,-0.6158458052194057,-0.9184349062584986,-0.3318520355611702,126
+"skeletal muscle (post-mortem, GSE244995)",held,10-90 %,kl_slope,identity genes,276,-0.06754786203099025,-0.27672266756589636,0.3674551681059029,126
+"skeletal muscle (post-mortem, GSE244995)",held,10-90 %,kl_slope,muscle-vs-adipocyte CpGs,12762,0.11284673632804576,-0.36913840073072557,0.6605502210286458,126
+"skeletal muscle (post-mortem, GSE244995)",held,10-90 %,kl_slope,adipocyte-higher CpGs,7484,-0.454811484291889,-0.8309390818919866,0.1858646936057171,126
+"skeletal muscle (post-mortem, GSE244995)",held,10-90 %,kl_slope,adipocyte-lower CpGs,5278,0.584566623463781,-0.0688826318086788,0.9980254197196425,126
+"skeletal muscle (post-mortem, GSE244995)",held,10-90 %,dispersion_slope,identity genes,276,-0.11637292092988008,-0.4530327994601033,0.31130170108300226,126
+"skeletal muscle (post-mortem, GSE244995)",held,10-90 %,dispersion_slope,muscle-vs-adipocyte CpGs,12762,-0.4859310812038472,-0.7920836175723832,-0.0586627253084209,126
+"skeletal muscle (post-mortem, GSE244995)",held,10-90 %,dispersion_slope,adipocyte-higher CpGs,7484,-0.847584969078526,-1.2356971025907824,-0.14096089288727723,126
+"skeletal muscle (post-mortem, GSE244995)",held,10-90 %,dispersion_slope,adipocyte-lower CpGs,5278,0.19746734923118223,-0.1768819970068803,0.500046159700774,126
+"skeletal muscle (post-mortem, GSE244995)",held,10-90 %,entropy_slope,identity genes,276,0.25489607023321137,0.12206730884690233,0.37632200978138075,126
+"skeletal muscle (post-mortem, GSE244995)",held,10-90 %,entropy_slope,muscle-vs-adipocyte CpGs,12762,-0.2721399633526234,-0.4169262496382952,-0.11110011148526061,126
+"skeletal muscle (post-mortem, GSE244995)",held,10-90 %,entropy_slope,adipocyte-higher CpGs,7484,-0.09915705890400743,-0.20739553962171786,0.04724666758216613,126
+"skeletal muscle (post-mortem, GSE244995)",held,10-90 %,entropy_slope,adipocyte-lower CpGs,5278,-0.5673798510114431,-0.8370278069930022,-0.32098868893640053,126
+"skeletal muscle (post-mortem, GSE244995)",held + chip,all,kl_slope,identity genes,370,0.06918730992585327,NaN,NaN,0
+"skeletal muscle (post-mortem, GSE244995)",held + chip,all,kl_slope,muscle-vs-adipocyte CpGs,12990,0.06853723964388474,NaN,NaN,0
+"skeletal muscle (post-mortem, GSE244995)",held + chip,all,kl_slope,adipocyte-higher CpGs,7525,-0.5162447488282621,NaN,NaN,0
+"skeletal muscle (post-mortem, GSE244995)",held + chip,all,kl_slope,adipocyte-lower CpGs,5465,0.5696119082292842,NaN,NaN,0
+"skeletal muscle (post-mortem, GSE244995)",held + chip,all,dispersion_slope,identity genes,370,-0.2593505463831148,NaN,NaN,0
+"skeletal muscle (post-mortem, GSE244995)",held + chip,all,dispersion_slope,muscle-vs-adipocyte CpGs,12990,-0.5809087759379481,NaN,NaN,0
+"skeletal muscle (post-mortem, GSE244995)",held + chip,all,dispersion_slope,adipocyte-higher CpGs,7525,-0.7765757037761088,NaN,NaN,0
+"skeletal muscle (post-mortem, GSE244995)",held + chip,all,dispersion_slope,adipocyte-lower CpGs,5465,0.002441367205319896,NaN,NaN,0
+"skeletal muscle (post-mortem, GSE244995)",held + chip,all,entropy_slope,identity genes,370,0.21129636478508804,NaN,NaN,0
+"skeletal muscle (post-mortem, GSE244995)",held + chip,all,entropy_slope,muscle-vs-adipocyte CpGs,12990,-0.36258751637669995,NaN,NaN,0
+"skeletal muscle (post-mortem, GSE244995)",held + chip,all,entropy_slope,adipocyte-higher CpGs,7525,-0.09428064220201152,NaN,NaN,0
+"skeletal muscle (post-mortem, GSE244995)",held + chip,all,entropy_slope,adipocyte-lower CpGs,5465,-0.7566295275073593,NaN,NaN,0
+"skeletal muscle (post-mortem, GSE244995)",held + chip,10-90 %,kl_slope,identity genes,276,0.04682043158940919,NaN,NaN,0
+"skeletal muscle (post-mortem, GSE244995)",held + chip,10-90 %,kl_slope,muscle-vs-adipocyte CpGs,12762,0.06237995701849964,NaN,NaN,0
+"skeletal muscle (post-mortem, GSE244995)",held + chip,10-90 %,kl_slope,adipocyte-higher CpGs,7484,-0.4492602718651111,NaN,NaN,0
+"skeletal muscle (post-mortem, GSE244995)",held + chip,10-90 %,kl_slope,adipocyte-lower CpGs,5278,0.5097801767969095,NaN,NaN,0
+"skeletal muscle (post-mortem, GSE244995)",held + chip,10-90 %,dispersion_slope,identity genes,276,-0.29487188851975116,NaN,NaN,0
+"skeletal muscle (post-mortem, GSE244995)",held + chip,10-90 %,dispersion_slope,muscle-vs-adipocyte CpGs,12762,-0.5172653834537387,NaN,NaN,0
+"skeletal muscle (post-mortem, GSE244995)",held + chip,10-90 %,dispersion_slope,adipocyte-higher CpGs,7484,-0.6869232449064442,NaN,NaN,0
+"skeletal muscle (post-mortem, GSE244995)",held + chip,10-90 %,dispersion_slope,adipocyte-lower CpGs,5278,0.016813568833715743,NaN,NaN,0
+"skeletal muscle (post-mortem, GSE244995)",held + chip,10-90 %,entropy_slope,identity genes,276,0.22316268758245386,NaN,NaN,0
+"skeletal muscle (post-mortem, GSE244995)",held + chip,10-90 %,entropy_slope,muscle-vs-adipocyte CpGs,12762,-0.3224736605830691,NaN,NaN,0
+"skeletal muscle (post-mortem, GSE244995)",held + chip,10-90 %,entropy_slope,adipocyte-higher CpGs,7484,-0.08919708459548588,NaN,NaN,0
+"skeletal muscle (post-mortem, GSE244995)",held + chip,10-90 %,entropy_slope,adipocyte-lower CpGs,5278,-0.6868444760100728,NaN,NaN,0
+"skeletal_muscle (80 % detection, sensitivity)",held,all,kl_slope,identity genes,306,0.2144575306636911,-0.025496063582633396,0.5653113071813055,200
+"skeletal_muscle (80 % detection, sensitivity)",held,all,kl_slope,muscle-vs-adipocyte CpGs,9157,0.7995906948170713,-0.42419898644047876,2.5520681664211016,200
+"skeletal_muscle (80 % detection, sensitivity)",held,all,kl_slope,adipocyte-higher CpGs,4892,1.284120316194977,-0.47776445790942296,3.749788950347544,200
+"skeletal_muscle (80 % detection, sensitivity)",held,all,kl_slope,adipocyte-lower CpGs,4265,-0.23656335459629915,-0.4650721192933791,0.08038178822869228,200
+"skeletal_muscle (80 % detection, sensitivity)",held,all,dispersion_slope,identity genes,306,0.3525723409502124,0.01693975204105693,0.6217933874352277,200
+"skeletal_muscle (80 % detection, sensitivity)",held,all,dispersion_slope,muscle-vs-adipocyte CpGs,9157,0.5525279875981548,-0.4784066697868995,1.4410435805647475,200
+"skeletal_muscle (80 % detection, sensitivity)",held,all,dispersion_slope,adipocyte-higher CpGs,4892,0.9880701718080073,-0.4294731155302533,2.1738144636851304,200
+"skeletal_muscle (80 % detection, sensitivity)",held,all,dispersion_slope,adipocyte-lower CpGs,4265,-0.2640106994051109,-0.48830575693465406,0.011575410154844432,200
+"skeletal_muscle (80 % detection, sensitivity)",held,all,entropy_slope,identity genes,306,0.01720729904105621,-0.16315082842343157,0.30461063824815326,200
+"skeletal_muscle (80 % detection, sensitivity)",held,all,entropy_slope,muscle-vs-adipocyte CpGs,9157,-0.3142498869361458,-1.566083858499261,0.6364362081320665,200
+"skeletal_muscle (80 % detection, sensitivity)",held,all,entropy_slope,adipocyte-higher CpGs,4892,-0.6220818541886292,-2.3546190140877417,0.7606089801389582,200
+"skeletal_muscle (80 % detection, sensitivity)",held,all,entropy_slope,adipocyte-lower CpGs,4265,0.26711435359090013,0.016539499634588367,0.5637994250436064,200
+"skeletal_muscle (80 % detection, sensitivity)",held,10-90 %,kl_slope,identity genes,222,0.22655753347163723,-0.05814462529828578,0.6156695515680137,200
+"skeletal_muscle (80 % detection, sensitivity)",held,10-90 %,kl_slope,muscle-vs-adipocyte CpGs,8952,0.6808866501353537,-0.37967364941108245,2.1973567100541014,200
+"skeletal_muscle (80 % detection, sensitivity)",held,10-90 %,kl_slope,adipocyte-higher CpGs,4838,1.0990104352826056,-0.40992190297019443,3.210053449297232,200
+"skeletal_muscle (80 % detection, sensitivity)",held,10-90 %,kl_slope,adipocyte-lower CpGs,4114,-0.2409839535718751,-0.49124448602877663,0.042513197108081255,200
+"skeletal_muscle (80 % detection, sensitivity)",held,10-90 %,dispersion_slope,identity genes,222,0.34904556091973377,0.003401489078096296,0.6476127731765419,200
+"skeletal_muscle (80 % detection, sensitivity)",held,10-90 %,dispersion_slope,muscle-vs-adipocyte CpGs,8952,0.4818207360394166,-0.4328310102210113,1.2683498431863056,200
+"skeletal_muscle (80 % detection, sensitivity)",held,10-90 %,dispersion_slope,adipocyte-higher CpGs,4838,0.8749474408151465,-0.3840812447787721,1.930088039807782,200
+"skeletal_muscle (80 % detection, sensitivity)",held,10-90 %,dispersion_slope,adipocyte-lower CpGs,4114,-0.27395103052938413,-0.48400263528267784,0.00241706949861117,200
+"skeletal_muscle (80 % detection, sensitivity)",held,10-90 %,entropy_slope,identity genes,222,-0.029568586249215545,-0.2831046719730043,0.23301774063895844,200
+"skeletal_muscle (80 % detection, sensitivity)",held,10-90 %,entropy_slope,muscle-vs-adipocyte CpGs,8952,-0.2945879404827863,-1.4393179008743253,0.5726756353928864,200
+"skeletal_muscle (80 % detection, sensitivity)",held,10-90 %,entropy_slope,adipocyte-higher CpGs,4838,-0.5636437964997659,-2.1142311791564046,0.6664600744313574,200
+"skeletal_muscle (80 % detection, sensitivity)",held,10-90 %,entropy_slope,adipocyte-lower CpGs,4114,0.23940466781544142,0.04433458604148724,0.5098947543555112,200
+"skeletal_muscle (80 % detection, sensitivity)",held + chip,all,kl_slope,identity genes,306,0.012881987467539395,-0.34714333287493315,0.653998467844878,139
+"skeletal_muscle (80 % detection, sensitivity)",held + chip,all,kl_slope,muscle-vs-adipocyte CpGs,9157,0.1031729543326872,-1.2456007743506021,3.159352982668174,139
+"skeletal_muscle (80 % detection, sensitivity)",held + chip,all,kl_slope,adipocyte-higher CpGs,4892,0.20269494320339038,-1.9807388982990541,4.234315327494057,139
+"skeletal_muscle (80 % detection, sensitivity)",held + chip,all,kl_slope,adipocyte-lower CpGs,4265,-0.03872747480656823,-0.6021338704030148,0.3501846617370491,139
+"skeletal_muscle (80 % detection, sensitivity)",held + chip,all,dispersion_slope,identity genes,306,0.24486030001339493,-0.2662625246192627,0.7882183611450196,139
+"skeletal_muscle (80 % detection, sensitivity)",held + chip,all,dispersion_slope,muscle-vs-adipocyte CpGs,9157,-0.07569392542284714,-1.4581705998105263,1.6323983831054136,139
+"skeletal_muscle (80 % detection, sensitivity)",held + chip,all,dispersion_slope,adipocyte-higher CpGs,4892,0.23875921453131252,-1.619781920261686,2.8087904011367097,139
+"skeletal_muscle (80 % detection, sensitivity)",held + chip,all,dispersion_slope,adipocyte-lower CpGs,4265,-0.3159001763598603,-1.3455605599402305,0.402774594120721,139
+"skeletal_muscle (80 % detection, sensitivity)",held + chip,all,entropy_slope,identity genes,306,0.0460533710451041,-0.11040812733278238,0.19949915015967482,139
+"skeletal_muscle (80 % detection, sensitivity)",held + chip,all,entropy_slope,muscle-vs-adipocyte CpGs,9157,0.19526091741737991,-0.8351657588297017,0.7402205537362514,139
+"skeletal_muscle (80 % detection, sensitivity)",held + chip,all,entropy_slope,adipocyte-higher CpGs,4892,0.1811929353034492,-1.3200989829814354,0.9709834619816771,139
+"skeletal_muscle (80 % detection, sensitivity)",held + chip,all,entropy_slope,adipocyte-lower CpGs,4265,0.10223943103974037,-0.14920294603796364,0.39624250071076844,139
+"skeletal_muscle (80 % detection, sensitivity)",held + chip,10-90 %,kl_slope,identity genes,222,-0.002354941481366841,-0.3858291237971635,0.6723673063953906,139
+"skeletal_muscle (80 % detection, sensitivity)",held + chip,10-90 %,kl_slope,muscle-vs-adipocyte CpGs,8952,0.07083399101375437,-1.0227698415281608,2.5637438087797513,139
+"skeletal_muscle (80 % detection, sensitivity)",held + chip,10-90 %,kl_slope,adipocyte-higher CpGs,4838,0.16075509633776536,-1.6101682774747361,3.4146702552551624,139
+"skeletal_muscle (80 % detection, sensitivity)",held + chip,10-90 %,kl_slope,adipocyte-lower CpGs,4114,-0.059655543764921826,-0.5506164677874001,0.2737603502988226,139
+"skeletal_muscle (80 % detection, sensitivity)",held + chip,10-90 %,dispersion_slope,identity genes,222,0.22848800574884737,-0.296320346299949,0.8210763779357071,139
+"skeletal_muscle (80 % detection, sensitivity)",held + chip,10-90 %,dispersion_slope,muscle-vs-adipocyte CpGs,8952,-0.07543904963606388,-1.2147962664449263,1.3431738074040311,139
+"skeletal_muscle (80 % detection, sensitivity)",held + chip,10-90 %,dispersion_slope,adipocyte-higher CpGs,4838,0.19143225206502243,-1.3314168975912875,2.321058601116016,139
+"skeletal_muscle (80 % detection, sensitivity)",held + chip,10-90 %,dispersion_slope,adipocyte-lower CpGs,4114,-0.2860930674541942,-1.14625927174412,0.28178268030296744,139
+"skeletal_muscle (80 % detection, sensitivity)",held + chip,10-90 %,entropy_slope,identity genes,222,0.05026802760939313,-0.11838230387745227,0.20303258769029806,139
+"skeletal_muscle (80 % detection, sensitivity)",held + chip,10-90 %,entropy_slope,muscle-vs-adipocyte CpGs,8952,0.16257044227010023,-0.7125664167366927,0.6220369374981363,139
+"skeletal_muscle (80 % detection, sensitivity)",held + chip,10-90 %,entropy_slope,adipocyte-higher CpGs,4838,0.1476172777123544,-1.0987498752714544,0.7981781969737128,139
+"skeletal_muscle (80 % detection, sensitivity)",held + chip,10-90 %,entropy_slope,adipocyte-lower CpGs,4114,0.09170614565569697,-0.11204931709573754,0.3228860670095864,139
+"skeletal muscle (Gene SMART, baseline)",held,all,kl_slope,identity genes,354,0.4472916803161691,0.19825555823289806,0.7468692189462707,200
+"skeletal muscle (Gene SMART, baseline)",held,all,kl_slope,muscle-vs-adipocyte CpGs,12588,0.08968799580753246,-0.09767263942412299,0.29851839456239965,200
+"skeletal muscle (Gene SMART, baseline)",held,all,kl_slope,adipocyte-higher CpGs,7223,0.19693363510194184,-0.10250966924109096,0.4452510231786857,200
+"skeletal muscle (Gene SMART, baseline)",held,all,kl_slope,adipocyte-lower CpGs,5365,-0.15977982360759538,-0.3347848332861032,0.053559388365524964,200
+"skeletal muscle (Gene SMART, baseline)",held,all,dispersion_slope,identity genes,354,0.20453239028438353,-0.07610341401687858,0.47318932769667815,200
+"skeletal muscle (Gene SMART, baseline)",held,all,dispersion_slope,muscle-vs-adipocyte CpGs,12588,0.06907790593099622,-0.314855062747522,0.4310149526567171,200
+"skeletal muscle (Gene SMART, baseline)",held,all,dispersion_slope,adipocyte-higher CpGs,7223,0.11146417504941872,-0.47961679134163293,0.6172176989333156,200
+"skeletal muscle (Gene SMART, baseline)",held,all,dispersion_slope,adipocyte-lower CpGs,5365,-0.030366443620744754,-0.38138746256484707,0.35452817835515216,200
+"skeletal muscle (Gene SMART, baseline)",held,all,entropy_slope,identity genes,354,0.5400152919168926,0.3328140443669921,0.7097600067840609,200
+"skeletal muscle (Gene SMART, baseline)",held,all,entropy_slope,muscle-vs-adipocyte CpGs,12588,0.07195164275811107,-0.14394524252656798,0.43305668606995257,200
+"skeletal muscle (Gene SMART, baseline)",held,all,entropy_slope,adipocyte-higher CpGs,7223,0.1663066140316712,-0.0018268272434998135,0.44487701031875226,200
+"skeletal muscle (Gene SMART, baseline)",held,all,entropy_slope,adipocyte-lower CpGs,5365,-0.11354872851466981,-0.48442118279569124,0.4206486655263992,200
+"skeletal muscle (Gene SMART, baseline)",held,10-90 %,kl_slope,identity genes,245,0.44554208994939204,0.18332966592196487,0.7858141384480165,200
+"skeletal muscle (Gene SMART, baseline)",held,10-90 %,kl_slope,muscle-vs-adipocyte CpGs,11975,0.0764245884430114,-0.07947674269325741,0.25250651215148817,200
+"skeletal muscle (Gene SMART, baseline)",held,10-90 %,kl_slope,adipocyte-higher CpGs,7154,0.1602865697093989,-0.08262250009481481,0.3673771229614308,200
+"skeletal muscle (Gene SMART, baseline)",held,10-90 %,kl_slope,adipocyte-lower CpGs,4821,-0.148836480116769,-0.3094925391887684,0.03939206129003265,200
+"skeletal muscle (Gene SMART, baseline)",held,10-90 %,dispersion_slope,identity genes,245,0.2104487985007793,-0.1228921022001661,0.5472630853597155,200
+"skeletal muscle (Gene SMART, baseline)",held,10-90 %,dispersion_slope,muscle-vs-adipocyte CpGs,11975,0.06353069181296606,-0.27579799443507247,0.383611015099884,200
+"skeletal muscle (Gene SMART, baseline)",held,10-90 %,dispersion_slope,adipocyte-higher CpGs,7154,0.09415652148288847,-0.4061642751601592,0.5301167083239131,200
+"skeletal muscle (Gene SMART, baseline)",held,10-90 %,dispersion_slope,adipocyte-lower CpGs,4821,-0.020880085201041215,-0.3219365824674602,0.33512622770676403,200
+"skeletal muscle (Gene SMART, baseline)",held,10-90 %,entropy_slope,identity genes,245,0.482209080401841,0.27018514086724044,0.6624738122669509,200
+"skeletal muscle (Gene SMART, baseline)",held,10-90 %,entropy_slope,muscle-vs-adipocyte CpGs,11975,0.08011180486590058,-0.11216506071736944,0.396855041753741,200
+"skeletal muscle (Gene SMART, baseline)",held,10-90 %,entropy_slope,adipocyte-higher CpGs,7154,0.1535332747723612,-0.00652970251365863,0.411632764129481,200
+"skeletal muscle (Gene SMART, baseline)",held,10-90 %,entropy_slope,adipocyte-lower CpGs,4821,-0.09113981105937802,-0.4479542163132067,0.41327707773128625,200
+"skeletal muscle (Gene SMART, baseline)",held + chip,all,kl_slope,identity genes,354,0.49252066480587,0.26707017263149013,0.8605201922608671,146
+"skeletal muscle (Gene SMART, baseline)",held + chip,all,kl_slope,muscle-vs-adipocyte CpGs,12588,0.11132848861193245,-0.2543568184856743,0.426948910503291,146
+"skeletal muscle (Gene SMART, baseline)",held + chip,all,kl_slope,adipocyte-higher CpGs,7223,0.29829323959936777,-0.14761150547476729,0.7702853524510832,146
+"skeletal muscle (Gene SMART, baseline)",held + chip,all,kl_slope,adipocyte-lower CpGs,5365,-0.24278154363094534,-0.4436092885873475,0.030476563492622573,146
+"skeletal muscle (Gene SMART, baseline)",held + chip,all,dispersion_slope,identity genes,354,0.37281118292100823,-0.26619846052166546,0.6649729826190259,146
+"skeletal muscle (Gene SMART, baseline)",held + chip,all,dispersion_slope,muscle-vs-adipocyte CpGs,12588,0.15315675022492276,-0.612056843151882,0.8559046170047032,146
+"skeletal muscle (Gene SMART, baseline)",held + chip,all,dispersion_slope,adipocyte-higher CpGs,7223,0.2552568899645951,-0.630468170499882,1.100594769773955,146
+"skeletal muscle (Gene SMART, baseline)",held + chip,all,dispersion_slope,adipocyte-lower CpGs,5365,-0.05732085369317263,-0.4806798328834434,0.6832146003470436,146
+"skeletal muscle (Gene SMART, baseline)",held + chip,all,entropy_slope,identity genes,354,0.4910758867891561,0.24768223762448366,0.826509131102835,146
+"skeletal muscle (Gene SMART, baseline)",held + chip,all,entropy_slope,muscle-vs-adipocyte CpGs,12588,0.04421304990564032,-0.38500544035298223,0.4736633172531089,146
+"skeletal muscle (Gene SMART, baseline)",held + chip,all,entropy_slope,adipocyte-higher CpGs,7223,0.08526807684585822,-0.138773631238104,0.36457384151134636,146
+"skeletal muscle (Gene SMART, baseline)",held + chip,all,entropy_slope,adipocyte-lower CpGs,5365,-0.05625479565790091,-0.841835988839876,0.6421848128099986,146
+"skeletal muscle (Gene SMART, baseline)",held + chip,10-90 %,kl_slope,identity genes,245,0.5017173097474515,0.20674690162328807,0.8950738595175843,146
+"skeletal muscle (Gene SMART, baseline)",held + chip,10-90 %,kl_slope,muscle-vs-adipocyte CpGs,11975,0.09453591424308638,-0.20787509572702867,0.36296751529545623,146
+"skeletal muscle (Gene SMART, baseline)",held + chip,10-90 %,kl_slope,adipocyte-higher CpGs,7154,0.24598115688162087,-0.12402085543115729,0.6325202797891996,146
+"skeletal muscle (Gene SMART, baseline)",held + chip,10-90 %,kl_slope,adipocyte-lower CpGs,4821,-0.22899654983411444,-0.4062434196362201,0.015782863206572316,146
+"skeletal muscle (Gene SMART, baseline)",held + chip,10-90 %,dispersion_slope,identity genes,245,0.37896389972618283,-0.2853748725583301,0.6906197299466106,146
+"skeletal muscle (Gene SMART, baseline)",held + chip,10-90 %,dispersion_slope,muscle-vs-adipocyte CpGs,11975,0.13141859089515112,-0.5395728734746119,0.7484894781736409,146
+"skeletal muscle (Gene SMART, baseline)",held + chip,10-90 %,dispersion_slope,adipocyte-higher CpGs,7154,0.21138895573631664,-0.5287964575379192,0.9332913107355134,146
+"skeletal muscle (Gene SMART, baseline)",held + chip,10-90 %,dispersion_slope,adipocyte-lower CpGs,4821,-0.060131422444372445,-0.42740687265024074,0.6053348416782032,146
+"skeletal muscle (Gene SMART, baseline)",held + chip,10-90 %,entropy_slope,identity genes,245,0.40205916735963243,0.14544192872333264,0.7542301326486122,146
+"skeletal muscle (Gene SMART, baseline)",held + chip,10-90 %,entropy_slope,muscle-vs-adipocyte CpGs,11975,0.04757478539806158,-0.3276079679890476,0.420453832701862,146
+"skeletal muscle (Gene SMART, baseline)",held + chip,10-90 %,entropy_slope,adipocyte-higher CpGs,7154,0.07616305426898626,-0.1292811900815439,0.3387960763314657,146
+"skeletal muscle (Gene SMART, baseline)",held + chip,10-90 %,entropy_slope,adipocyte-lower CpGs,4821,-0.04614157701485097,-0.7721225468659618,0.6398284930414161,146
+"skeletal muscle (GTEx, deposited BMIQ)",held,all,kl_slope,identity genes,374,0.02037774753148453,-0.26869105810813154,0.4354394327249648,200
+"skeletal muscle (GTEx, deposited BMIQ)",held,all,kl_slope,muscle-vs-adipocyte CpGs,12929,0.20653477853593502,-0.18267463781041185,0.9923532656767028,200
+"skeletal muscle (GTEx, deposited BMIQ)",held,all,kl_slope,adipocyte-higher CpGs,7518,0.28864192792364357,-0.33800914914476615,1.2332721979913657,200
+"skeletal muscle (GTEx, deposited BMIQ)",held,all,kl_slope,adipocyte-lower CpGs,5411,-0.02646949588393789,-0.38176213738826736,0.4428632379255179,200
+"skeletal muscle (GTEx, deposited BMIQ)",held,all,dispersion_slope,identity genes,374,-0.17330954966540907,-0.512296680055609,0.22775385678997068,200
+"skeletal muscle (GTEx, deposited BMIQ)",held,all,dispersion_slope,muscle-vs-adipocyte CpGs,12929,-0.14949839095395,-0.6996541728962861,0.5651645080259907,200
+"skeletal muscle (GTEx, deposited BMIQ)",held,all,dispersion_slope,adipocyte-higher CpGs,7518,-0.0946095405800117,-0.9485119763250346,0.7664169742027784,200
+"skeletal muscle (GTEx, deposited BMIQ)",held,all,dispersion_slope,adipocyte-lower CpGs,5411,-0.13164598183770604,-0.5316731473359293,0.38634607281920913,200
+"skeletal muscle (GTEx, deposited BMIQ)",held,all,entropy_slope,identity genes,374,0.1146843871030928,-0.08293819133893858,0.3055000695102657,200
+"skeletal muscle (GTEx, deposited BMIQ)",held,all,entropy_slope,muscle-vs-adipocyte CpGs,12929,-0.3330716581352269,-0.790730242571116,0.05961086114336993,200
+"skeletal muscle (GTEx, deposited BMIQ)",held,all,entropy_slope,adipocyte-higher CpGs,7518,-0.3374414093630537,-0.6854883838705442,-0.03679397281153152,200
+"skeletal muscle (GTEx, deposited BMIQ)",held,all,entropy_slope,adipocyte-lower CpGs,5411,-0.3711044253064026,-1.058124067377563,0.28510665283479647,200
+"skeletal muscle (GTEx, deposited BMIQ)",held,10-90 %,kl_slope,identity genes,246,0.01678035167417308,-0.328738902574203,0.5364515907453427,200
+"skeletal muscle (GTEx, deposited BMIQ)",held,10-90 %,kl_slope,muscle-vs-adipocyte CpGs,12376,0.18356307913470518,-0.1460235125843904,0.8592600158978095,200
+"skeletal muscle (GTEx, deposited BMIQ)",held,10-90 %,kl_slope,adipocyte-higher CpGs,7415,0.24976921648409184,-0.2884502074398425,1.0524158168922138,200
+"skeletal muscle (GTEx, deposited BMIQ)",held,10-90 %,kl_slope,adipocyte-lower CpGs,4961,-0.025414913452900492,-0.35777008783039715,0.4042630565360591,200
+"skeletal muscle (GTEx, deposited BMIQ)",held,10-90 %,dispersion_slope,identity genes,246,-0.2580112005685894,-0.6957921137520614,0.22483760846199896,200
+"skeletal muscle (GTEx, deposited BMIQ)",held,10-90 %,dispersion_slope,muscle-vs-adipocyte CpGs,12376,-0.1414775600794816,-0.6482066007630288,0.5129521461540776,200
+"skeletal muscle (GTEx, deposited BMIQ)",held,10-90 %,dispersion_slope,adipocyte-higher CpGs,7415,-0.08119766571129738,-0.8567043733622737,0.7007077229998467,200
+"skeletal muscle (GTEx, deposited BMIQ)",held,10-90 %,dispersion_slope,adipocyte-lower CpGs,4961,-0.12990793480954194,-0.5233510572514982,0.34742219652782175,200
+"skeletal muscle (GTEx, deposited BMIQ)",held,10-90 %,entropy_slope,identity genes,246,0.13254782312201263,-0.07676818528808997,0.34232796315305164,200
+"skeletal muscle (GTEx, deposited BMIQ)",held,10-90 %,entropy_slope,muscle-vs-adipocyte CpGs,12376,-0.29574582261325266,-0.6793395319462419,0.03190215633960644,200
+"skeletal muscle (GTEx, deposited BMIQ)",held,10-90 %,entropy_slope,adipocyte-higher CpGs,7415,-0.2978727727785592,-0.6006275403585029,-0.04212127688803491,200
+"skeletal muscle (GTEx, deposited BMIQ)",held,10-90 %,entropy_slope,adipocyte-lower CpGs,4961,-0.34837749734747786,-0.9475938022915067,0.17494599953297596,200
+"skeletal muscle (GTEx, deposited BMIQ)",held + chip,all,kl_slope,identity genes,374,-0.037516513940956016,-0.3307789515081451,0.5004531288579632,200
+"skeletal muscle (GTEx, deposited BMIQ)",held + chip,all,kl_slope,muscle-vs-adipocyte CpGs,12929,0.07465010426791646,-0.315536220340509,0.9305424211825403,200
+"skeletal muscle (GTEx, deposited BMIQ)",held + chip,all,kl_slope,adipocyte-higher CpGs,7518,0.09757029605609706,-0.5838711590222999,1.2512230788912557,200
+"skeletal muscle (GTEx, deposited BMIQ)",held + chip,all,kl_slope,adipocyte-lower CpGs,5411,0.005902486685600379,-0.4343835998518362,0.656542320129588,200
+"skeletal muscle (GTEx, deposited BMIQ)",held + chip,all,dispersion_slope,identity genes,374,-0.030738929682996668,-0.371478930436514,0.4185380194523878,200
+"skeletal muscle (GTEx, deposited BMIQ)",held + chip,all,dispersion_slope,muscle-vs-adipocyte CpGs,12929,-0.03376602787558712,-0.636296213854204,0.6225861441001864,200
+"skeletal muscle (GTEx, deposited BMIQ)",held + chip,all,dispersion_slope,adipocyte-higher CpGs,7518,0.23941795549869282,-0.6186876860678823,0.8760518498960982,200
+"skeletal muscle (GTEx, deposited BMIQ)",held + chip,all,dispersion_slope,adipocyte-lower CpGs,5411,-0.31914434116382806,-0.7481686077972859,0.25208818668076954,200
+"skeletal muscle (GTEx, deposited BMIQ)",held + chip,all,entropy_slope,identity genes,374,0.1544706533433266,-0.00773751986269867,0.3435629641154247,200
+"skeletal muscle (GTEx, deposited BMIQ)",held + chip,all,entropy_slope,muscle-vs-adipocyte CpGs,12929,-0.304405060073893,-0.8159807540158319,0.10310702279443956,200
+"skeletal muscle (GTEx, deposited BMIQ)",held + chip,all,entropy_slope,adipocyte-higher CpGs,7518,-0.2816915874157367,-0.6822226980832102,0.038967128542947344,200
+"skeletal muscle (GTEx, deposited BMIQ)",held + chip,all,entropy_slope,adipocyte-lower CpGs,5411,-0.3977624364233994,-1.1733285869424948,0.2563895796606664,200
+"skeletal muscle (GTEx, deposited BMIQ)",held + chip,10-90 %,kl_slope,identity genes,246,-0.051035175471643074,-0.3990495283457374,0.6062737425909367,200
+"skeletal muscle (GTEx, deposited BMIQ)",held + chip,10-90 %,kl_slope,muscle-vs-adipocyte CpGs,12376,0.06833403194225693,-0.2657619762923064,0.8109339047558425,200
+"skeletal muscle (GTEx, deposited BMIQ)",held + chip,10-90 %,kl_slope,adipocyte-higher CpGs,7415,0.08872657073868502,-0.49617335998354867,1.057620600490227,200
+"skeletal muscle (GTEx, deposited BMIQ)",held + chip,10-90 %,kl_slope,adipocyte-lower CpGs,4961,0.0073685176237292555,-0.4081566041530142,0.6139028921401164,200
+"skeletal muscle (GTEx, deposited BMIQ)",held + chip,10-90 %,dispersion_slope,identity genes,246,-0.074499788265182,-0.5002837453289587,0.5107874485186799,200
+"skeletal muscle (GTEx, deposited BMIQ)",held + chip,10-90 %,dispersion_slope,muscle-vs-adipocyte CpGs,12376,-0.026528659927428547,-0.557262576063167,0.5562603265961161,200
+"skeletal muscle (GTEx, deposited BMIQ)",held + chip,10-90 %,dispersion_slope,adipocyte-higher CpGs,7415,0.21693111051744102,-0.5274243910356543,0.7626018102747729,200
+"skeletal muscle (GTEx, deposited BMIQ)",held + chip,10-90 %,dispersion_slope,adipocyte-lower CpGs,4961,-0.2937235017094608,-0.6545714988099196,0.23178529697017586,200
+"skeletal muscle (GTEx, deposited BMIQ)",held + chip,10-90 %,entropy_slope,identity genes,246,0.1866316848100104,0.008005540751084816,0.40065748585949096,200
+"skeletal muscle (GTEx, deposited BMIQ)",held + chip,10-90 %,entropy_slope,muscle-vs-adipocyte CpGs,12376,-0.26749261687979353,-0.6940610855270662,0.07727812200321818,200
+"skeletal muscle (GTEx, deposited BMIQ)",held + chip,10-90 %,entropy_slope,adipocyte-higher CpGs,7415,-0.2522120574848862,-0.5931321592597543,0.030591144266387787,200
+"skeletal muscle (GTEx, deposited BMIQ)",held + chip,10-90 %,entropy_slope,adipocyte-lower CpGs,4961,-0.3636728116929375,-1.0117297184226866,0.1884278086387087,200

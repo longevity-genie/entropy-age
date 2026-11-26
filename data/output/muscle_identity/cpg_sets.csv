@@ -1,0 +1,6 @@
+set,cpgs,promoter,enhancer,genes,higher_in_adipocyte,lower_in_adipocyte,overlap_identity_genes
+identity genes (promoter + muscle enhancer),416,318,98,37,,,
+myofibre vs adipocyte > 0.3 (sorted references),15492,,,,,,
+muscle-vs-adipocyte CpGs (confirmed in GSE48472),13946,,,,8023,5923,88
+myofibre vs myoblast > 0.3,11330,,,,,,
+type I vs type II fibre > 0.2,925,,,,,,

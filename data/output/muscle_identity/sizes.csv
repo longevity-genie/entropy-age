@@ -1,0 +1,9 @@
+cohort,source,donors,age_min,age_max,cpgs_complete,chips_known
+"skeletal muscle (Hertfordshire, EPIC)","SeSAMe rebuild, 90 % detection",78,68.4,83.2,357965,0
+"skeletal muscle (Hertfordshire, 450k)","SeSAMe rebuild, 90 % detection",18,73.5,82.6,405594,0
+"cultured myoblasts (Hertfordshire, 450k)","SeSAMe rebuild, 90 % detection",19,73.5,82.6,406150,0
+"skeletal muscle (post-mortem, GSE244995)","SeSAMe rebuild, 90 % detection",20,18.0,78.0,374574,8
+skeletal_muscle,"SeSAMe rebuild, 90 % detection",13,26.0,59.0,353623,7
+"skeletal_muscle (80 % detection, sensitivity)","SeSAMe rebuild, 80 % detection (sensitivity)",45,26.0,67.0,307642,20
+"skeletal muscle (Gene SMART, baseline)","SeSAMe rebuild, 90 % detection",52,18.2614647501711,47.0,365082,25
+"skeletal muscle (GTEx, deposited BMIQ)","deposited BMIQ, decade midpoints",47,35.0,75.0,389801,9

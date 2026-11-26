@@ -1,0 +1,29 @@
+profile,axis,position
+whole muscle (GSE304045),adipocyte axis,-0.00972471097354552
+whole muscle (GSE304045),"adipocyte axis, identity genes",-0.025615775314201637
+whole muscle (GSE304045),myoblast axis,0.0014431302966442898
+whole muscle (GSE304045),fibre type axis (I to II),0.5334472521476795
+muscle (GSE48472),adipocyte axis,0.09511368777748483
+muscle (GSE48472),"adipocyte axis, identity genes",0.07613150983753474
+muscle (GSE48472),myoblast axis,0.025590301102238353
+muscle (GSE48472),fibre type axis (I to II),0.42894764955787146
+subcutaneous fat (GSE48472),adipocyte axis,0.913554878058258
+subcutaneous fat (GSE48472),"adipocyte axis, identity genes",1.016026773306645
+subcutaneous fat (GSE48472),myoblast axis,0.1731748732005155
+subcutaneous fat (GSE48472),fibre type axis (I to II),0.09989236539609538
+omentum (GSE48472),adipocyte axis,0.8622310347036886
+omentum (GSE48472),"adipocyte axis, identity genes",1.0795265598777917
+omentum (GSE48472),myoblast axis,0.1468654629697718
+omentum (GSE48472),fibre type axis (I to II),0.05715923704691704
+myoblast,adipocyte axis,0.07218033745651486
+myoblast,"adipocyte axis, identity genes",0.5133174084919392
+myoblast,myoblast axis,1.0
+myoblast,fibre type axis (I to II),0.6817354671177112
+adipocyte,adipocyte axis,1.0
+adipocyte,"adipocyte axis, identity genes",1.0
+adipocyte,myoblast axis,0.23995080412116743
+adipocyte,fibre type axis (I to II),0.23128695235800623
+myofibre,adipocyte axis,0.0
+myofibre,"adipocyte axis, identity genes",0.0
+myofibre,myoblast axis,0.0
+myofibre,fibre type axis (I to II),0.5

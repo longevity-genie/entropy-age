@@ -1,0 +1,12 @@
+# HSSe men on the 450k array, GSE154946: vastus lateralis and primary myoblasts cultured from it, 16 of them paired by
+# participant; ages 73 to 83. Probably the same men as part of GSE154980 (no shared id on GEO). No chip ids.
+accession = "GSE154946"
+age = "age (yr)"
+sex = "gender"
+donor = "participant id"
+
+[groups."skeletal muscle (Hertfordshire, 450k)"]
+"sample type" = "Muscle tissue"
+
+[groups."cultured myoblasts (Hertfordshire, 450k)"]
+"sample type" = "Cultured Myoblasts"
