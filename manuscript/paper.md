@@ -602,6 +602,19 @@ rebuilt from IDATs) about doubled promoter drift against cells that failed to re
 reset of the methylome respected the shield, as aging does; the series has no young donors, so restoration toward a
 young shield is untested.
 
+*Within single molecules.* Whole-genome bisulfite reads give the methylation pattern of each DNA fragment across
+four neighbouring CpGs (GSE186458; white blood cells and plasma cell-free DNA of 23 donors aged 21 to 75, and 101 sorted
+samples of 27 cell types aged 19 to 83). The Shannon entropy of these epialleles had a lower age slope in housekeeping
+promoter windows than in windows matched on island status and young level: −0.20 SD (95 % interval −0.25 to −0.10) in
+white blood cells, −0.16 (−0.21 to −0.06) in cell-free DNA and −0.17 (−0.20 to −0.08) in sorted cells, where age was
+fitted within each cell type. In blood and plasma, housekeeping entropy fell with age while matched windows' rose; in
+sorted cells both rose, housekeeping less. The gap was larger than the same windows' gap in mean methylation (−0.12,
+−0.11, −0.09), was the same when every window was rarefied to 10 or 20 fragments (−0.13 to −0.20), and in sorted cells
+held when samples were resampled in putative donor clusters (−0.23 to −0.07) and when any one cell type was left out
+(−0.18 to −0.12). In white blood cells, a change in leukocyte composition alone could produce about 60 % of the gap, so
+the sorted cells carry this result. Core-essential promoters showed the same pattern more weakly (−0.13, −0.12, −0.09),
+and non-essential promoters the reverse.
+
 *A transcriptional counterpart.* Housekeeping genes gained less between-individual expression spread with age than
 expression-matched genes outside brain in a large mouse atlas, but the rat signal was weak, GTEx showed no turnover
 effect, and in Tabula Muris Senis bulk RNA the gap's interval included zero in 15 of 17 organs. In the same GTEx
@@ -610,6 +623,14 @@ donors, unusual promoter methylation was barely reflected in expression (mean |r
 donors per cell type), the spread of log counts rose faster with age at essential promoters than at matched ones,
 but that measure depends on read depth; between-donor variation in excess of counting noise showed no difference in
 any of seven cell types (gaps within ±0.012 SD; Supplementary Note 3).
+
+*Muscle identity.* Skeletal muscle has little shield (GTEx −0.003). Asked whether ageing muscle instead loses its
+identity toward fat, we placed each person's muscle methylome on an axis from myofibre to isolated adipocyte (7,108 CpGs
+scored with each platform's own adipocyte reference; muscle and fat of the same six bodies sit at 0.09 to 0.11 and 0.91
+to 0.94). No cohort moved toward fat with age: 78 men aged 68 to 83 (GSE154980) −0.012 per decade (−0.068 to +0.051),
+Gene SMART +0.002, GTEx −0.023 and post-mortem muscle −0.022; only 13 obese donors whose age is fixed by chip showed a
+positive slope. Relative entropy at muscle-identity genes rose faster than at matched CpGs in one cohort (Gene SMART,
++0.26 SD, 0.01 to 0.51) and in no other. Sarcopenia measures for the Hertfordshire men are not public.
 
 *Exercise training.* In thigh muscle of 67 young adults before and after 4 weeks of interval training (GSE171140;
 person and chip held), the squared change from baseline beyond array noise was about a hundredth of that in replicative
@@ -856,7 +877,7 @@ protection. (v) The Tet3 result is one study of 16 mice per tissue on one array;
 array and homozygous mutants; and some weaker Tet3 contrasts are small against their intervals. (vi)
 Seeboth et al. (2020) found cell mix, body mass index, smoking and batch to confound per-person methylation outlier
 burdens; our within-sample contrast removes about half of the slide-batch excess and leaves the rest, so batch must be held in
-every per-person use. (vii) Read-level epiallele entropy was not analysed with relative entropy. (viii) The follow-up analyses were not run everywhere: chromatin state was matched in blood, cortex and
+every per-person use. (vii) Read-level epiallele entropy was measured in one whole-genome atlas; its blood estimate is open to composition and its sorted-cell intervals rest on putative donor clusters. (viii) The follow-up analyses were not run everywhere: chromatin state was matched in blood, cortex and
 epidermis only, expression from the same samples was available in monocytes, T cells, epidermis, cultured
 fibroblasts and single muscle stem cells, and gain and loss rates were fitted in blood and cortex; most tissues have
 only the gap itself (Supplementary Table S5). (ix) Bisulfite arrays and RRBS read
