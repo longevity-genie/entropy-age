@@ -1,0 +1,3 @@
+group,arrays_selected,arrays_passing_detection,donors_kept,arrays_dropped_repeat_donor,platforms,cpgs_complete,chips,chips_unknown,age_variance_on_chip,age_identifiable_with_chip
+"breast, cancer-free",231,223,223,0,EPIC,81357,35,0,0.23696689220181322,true
+"breast, next to a tumour",140,119,119,0,EPIC,83377,42,0,0.4494545592427702,true
