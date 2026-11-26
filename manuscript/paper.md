@@ -14,10 +14,11 @@ methylation from its young state. In most human tissues, in most mouse organs an
 sets, cell composition, probe design, raw-data reprocessing) produces the shield. It follows how strongly a promoter
 is used, and in culture it accrues with cell division. Six clocks that count cell divisions, among them one built on CpGs in partially methylated domains that shares none
 with the epiTOC clocks, call people whose housekeeping promoters drift less than their look-alikes older for their age
-in nearly every non-brain tissue where they could be scored. Matched promoters outside the housekeeping set and matched
-CpGs outside promoters carry the same association (epiTOC2: median partial r −0.49 at housekeeping promoters and at
-non-promoter CpGs, at a given background deviation), so these clocks track how far a person's methylome as a whole
-deviates from their peers, and the shield adds at most a small, uncertain margin to it. In sorted neurons, which do not
+in nearly every non-brain tissue where they could be scored. The association extends to matched promoters outside the
+housekeeping set and to matched CpGs outside promoters, and it is strongest at housekeeping promoters (epiTOC2: median
+partial r −0.49 at housekeeping promoters, −0.34 at other promoters and −0.42 at non-promoter CpGs, at a given background
+deviation), so these clocks track how far a person's methylome as a whole deviates from their peers, with a modest
+additional share at the shield. In sorted neurons, which do not
 divide, the two available series disagree, and pace-of-ageing clocks such as DunedinPACE show no link.
 
 ![Graphical abstract](../docs/figures/forest_series.png)
@@ -655,11 +656,11 @@ signed shift S (core-essential and housekeeping sets) and of published clocks, f
 (174) and colorectal cancer (166). Blue circles: all cases, age and sex held. Orange squares: cases diagnosed over 2 years after
 the draw (274, 113 and 146 cases), with mean methylation, 11 blood-cell fractions and chip held. 95 % intervals; log scale. How to read: an odds ratio above 1 means people with a higher value of the measure (per SD) were more often later diagnosed with cancer; B is drift at comparable promoters, F the share of it that essential promoters avoid (more negative = stronger shield), S their signed shift (Box 1).
 
-### Mitotic clock scores are associated with methylation deviation at promoters and non-promoter CpGs
+### Mitotic clock scores are associated with methylation deviation across the methylome, most at housekeeping promoters
 
 **Clocks that count cell divisions call people whose housekeeping promoters drift less than their look-alikes older
-for their age in non-brain tissues; matched non-housekeeping promoters and matched non-promoter CpGs carry the same
-association, the links in neurons are inconsistent, and pace-of-ageing clocks do not show it (Fig. 10, Fig. 11).**
+for their age in non-brain tissues; matched non-housekeeping promoters and matched non-promoter CpGs carry the association
+more weakly, the links in neurons are inconsistent, and pace-of-ageing clocks do not show it (Fig. 10, Fig. 11).**
 
 *Every clock on every rebuilt series.* We scored every clock in the biolearn gallery that keeps at least 90 % of its
 weight measured on every rebuilt series with donor ages (60 tissue groups, 44 clocks; scored on the clock track, without the design-flag mask; clocks taken outside the tissue
@@ -709,24 +710,25 @@ pan-tissue clock (−0.10, 65 % of 57) and DunedinPACE (−0.07, 76 % of 45) sho
 negative controls (body-mass index, smoking and the like) sat at −0.01. These are within-group associations of
 age-adjusted scores; where a series has a pooled and a stratified group, both are shown. Three checks address whether a
 shared array effect, or drift in general, could move a clock and F together. All use one primary group per study
-outside the brain, chosen by donor count before any clock was read (17 to 22 groups per clock; RepliTali 6). First,
+outside the brain, chosen by donor count before any clock was read (19 to 24 groups per clock). First,
 with clock, B and F all adjusted alike for age, log intensity, detection, chip where it is recorded and estimable (not
 in the TCGA groups) and two global measures taken on 20,000 CpGs that no scored clock reads, including the probes
 DunedinPACE uses to normalise (mean level and compression of betas toward the middle), the links held: median adjusted
-r with F −0.52 to −0.54 for the three epiTOC clocks and +0.32 for HypoClock, whose score falls with division. The clocks
-also predicted housekeeping deviation at a given look-alike deviation (epiTOC2 −0.52). Cell composition was not
+r with F −0.52 to −0.53 for the three epiTOC clocks and +0.30 for HypoClock, whose score falls with division. The clocks
+also predicted housekeeping deviation at a given look-alike deviation (epiTOC2 −0.50). Cell composition was not
 measured in these tissues and remains a possible shared source. Second, against placebo sets of non-housekeeping
 promoters sampled one CpG per gene and matched on island status, baseline level, variability across people and probe
 chemistry, each scored with the same background and stratum weights as a gene-balanced housekeeping subset, the median
-housekeeping advantage in r was 0.09 for epiTOC1 and epiTOC2 and 0.04 for HypoClock; it was positive in 14 to 15 of
-about 20 groups, and beyond the placebos' 95th percentile in 9 to 11 groups for the epiTOC clocks and 6 of 17 for
+housekeeping advantage in r was 0.08 to 0.09 for the epiTOC clocks and 0.04 for HypoClock; it was positive in 16 to 17
+of 22 to 24 groups for the epiTOC clocks, and beyond the placebos' 95th percentile in 8 to 10 of them and in 2 of 19 for
 HypoClock. Third, the absolute deviation of three matched classes, housekeeping promoter CpGs, other promoter CpGs and
-non-promoter CpGs, was related to the clock at a given background deviation. For epiTOC2 the median partial r was
-−0.49, −0.42 and −0.49 across 21 groups; other promoters minus non-promoters was +0.045 (nominal 95 % interval 0.017 to
-0.072), the non-promoter CpGs carrying the stronger association, and housekeeping minus other promoters was −0.019
-(−0.052 to +0.013). These intervals hold the constructed scores fixed. In these cross-sectional data, a person whom a
-mitotic clock calls older for their age deviates less from their peers at housekeeping promoters, at other promoters
-and at CpGs outside promoters alike; the shield's own share of that association is small and uncertain. Clocks were scored on the
+non-promoter CpGs, at most one CpG per linked gene and each draw scored against its own disjoint background, was related
+to the clock at a given background deviation. For epiTOC2 the median partial r was −0.49, −0.34 and −0.42 across 23
+groups; housekeeping minus other promoters was −0.071 (95 % interval −0.113 to −0.029; −0.123 to −0.019 with a
+small-study correction; −0.055, −0.103 to −0.006, when donors were resampled and every score rebuilt), and other
+promoters minus non-promoters +0.050 (0.026 to 0.074). EpiTOC1 and epiTOC3 gave the same pattern; HypoClock showed no
+housekeeping margin (+0.022, −0.010 to +0.055). In these cross-sectional data, a person whom an epiTOC clock calls older
+for their age deviates less from their peers across the methylome, and most of all at housekeeping promoters. Clocks were scored on the
 clock track (protocol change 4); drift on the standard rebuild.
 
 ![Figure 11](../docs/figures/clock_drift.png)
@@ -767,7 +769,7 @@ already linked age-related methylation change with tissue-specific expression an
 was a fair comparison, and with it three findings. Matched on island status and starting level, the protection
 becomes a size that can be compared across tissues and species and tested against a null. That size follows how
 strongly a promoter is used and whether the cells divide. Clocks of cell division, for their part, track how far a
-person's methylome as a whole deviates from their peers, at the shield's promoters and elsewhere alike, while
+person's methylome as a whole deviates from their peers, most of all at the shield's promoters, while
 pace-of-ageing clocks show no such link.
 
 **The shield belongs to active promoters.** Reference chromatin states account for
@@ -823,12 +825,12 @@ processed data and 1.01 on arrays rebuilt from raw files; only a matched analysi
 interval above one (1.49, 1.04 to 2.69). A second, small series gave no association. Drift B is not a marker of
 breast-cancer risk on this evidence.
 
-**Mitotic clocks track overall deviation.** Across the rebuilt tissue groups, six mitotic clocks called people whose
-housekeeping promoters drifted less than their look-alikes older for their age in nearly every non-brain tissue where
-they could be scored, including HypoClock, whose CpGs lie in partially methylated domains and share none with the epiTOC
-clocks; in sorted neurons the two series disagreed. Matched non-housekeeping promoters and matched CpGs outside
-promoters carried the same association, so these clocks follow how far a person's methylome deviates from their peers
-as a whole, and the shield adds at most a small, uncertain margin. Hannum and PhenoAge did so more weakly, and Horvath's clock and DunedinPACE did not (Fig. 11); in the blood of one cohort, GrimAge was unrelated to
+**Mitotic clocks track overall deviation, most at the shield.** Across the rebuilt tissue groups, six mitotic clocks
+called people whose housekeeping promoters drifted less than their look-alikes older for their age in nearly every
+non-brain tissue where they could be scored, including HypoClock, whose CpGs lie in partially methylated domains and
+share none with the epiTOC clocks; in sorted neurons the two series disagreed. Matched non-housekeeping promoters and
+matched CpGs outside promoters carried the association more weakly, so these clocks follow how far a person's methylome
+deviates from their peers as a whole, with a modest additional share at housekeeping promoters for the epiTOC clocks. Hannum and PhenoAge did so more weakly, and Horvath's clock and DunedinPACE did not (Fig. 11); in the blood of one cohort, GrimAge was unrelated to
 it as well and accelerations agreed only within generation (Fig. 10). Since protection from drift accrues with division in culture, a clock
 that counts divisions is the one expected to read it; whether it fails to in cells that no longer divide is unsettled,
 since the two sorted-neuron series disagree. Across the rebuilt series, too, the valid clocks of a tissue
