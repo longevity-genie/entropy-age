@@ -4,6 +4,7 @@ Newest first.
 
 ## Unreleased
 
+- 2026-11-26: Codex review 8 of tms_cell_noise: paper sentence narrowed to residual read-count variability (a descriptive null; amplification noise included). Open (not run, quota): mouse-ID-based resampling support and leave-one-mouse-out, planted-effect power, 3 vs 18 m and same-sex contrasts, all-read depth sensitivity, one-to-one MGI orthology, young-reference matching, NaN handling for groups without non-essential genes.
 - 2026-11-26: tms_cell_noise full run (job 6658965): no per-cell noise shield; housekeeping +0.02 SD (-0.03 to +0.05) over 93 cell types, core-essential +0.02 (-0.05 to +0.06); pseudobulk flat. Paper sentence added to 'A transcriptional counterpart'.
 - 2026-11-26: new analysis `tms_cell_noise` (Anton: entropy in other layers): Tabula Muris Senis FACS Smart-seq2, 93 tissue x cell-type groups, cells thinned to a common depth, age change in mean-corrected cell-to-cell noise, housekeeping and core-essential genes vs genes matched on mean and dropout; pseudobulk between-mouse version beside it. Process pool uses spawn (a fork after polars' thread pool deadlocked the first job). Full run 6658965.
 - 2026-11-26: Paper: new paragraphs 'Within single molecules' (read-level epiallele entropy gap -0.20/-0.16/-0.17, depth-robust, sorted cells carry it) and 'Muscle identity' (no shift toward fat; identity-gene KL excess in one cohort only); limitation (vii) updated.

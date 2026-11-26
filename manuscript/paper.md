@@ -622,10 +622,13 @@ donors, unusual promoter methylation was barely reflected in expression (mean |r
 0.015-0.022). Chromatin accessibility gave no counterpart either. In single-nucleus data of human prefrontal cortex (121 to 348
 donors per cell type), the spread of log counts rose faster with age at essential promoters than at matched ones,
 but that measure depends on read depth; between-donor variation in excess of counting noise showed no difference in
-any of seven cell types (gaps within ±0.012 SD; Supplementary Note 3). In single cells of 93 mouse cell types (Tabula
-Muris Senis, full-length sequencing, 8 young and 11 old mice, cells thinned to a common depth), housekeeping genes gained
-cell-to-cell noise with age as fast as genes matched on expression and dropout (mean gap +0.02 SD, −0.03 to +0.05, mice
-resampled; core-essential +0.02), and between mice no gap appeared either.
+any of seven cell types (gaps within ±0.012 SD; Supplementary Note 3). Across 93 Tabula Muris Senis FACS tissue and cell-type
+groups (full-length sequencing, cells thinned to a common read depth), the mean difference in age-related change in
+residual read-count variability between housekeeping genes and genes matched on expression and dropout was +0.02 SD
+(mouse-resampling interval −0.03 to +0.05) for 3 months against pooled 18 to 24 months; core-essential genes gave +0.02
+(−0.05 to +0.06), and between-mouse estimates were near zero. Read-count variability in these data includes
+amplification noise, so this bounds a counterpart in measured expression variability without testing intrinsic
+transcriptional noise.
 
 *Muscle identity.* Skeletal muscle has little shield (GTEx −0.003). Asked whether ageing muscle instead loses its
 identity toward fat, we placed each person's muscle methylome on an axis from myofibre to isolated adipocyte (7,108 CpGs
