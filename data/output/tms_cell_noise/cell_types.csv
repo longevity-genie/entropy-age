@@ -1,0 +1,94 @@
+tissue,cell_type,depth,cells_young,cells_old,mice_young,mice_old,genes,mouse_resamples,n_core_essential,n_housekeeping,n_non_essential
+Aorta,aortic endothelial cell,91841,152,152,4,8,3826,97,353,1770,1
+BAT,B cell,23434,195,195,7,7,2703,100,340,1369,0
+BAT,T cell,36479,62,62,7,7,2781,100,340,1405,1
+BAT,endothelial cell,31729,145,145,7,6,2654,100,268,1219,1
+BAT,mesenchymal stem cell of adipose,159649,76,76,7,6,4913,97,425,2228,1
+BAT,myeloid cell,35133,148,148,7,8,3625,100,336,1694,2
+Bladder,bladder cell,274893,321,321,6,7,7176,100,539,2865,6
+Bladder,bladder urothelial cell,246929,632,632,6,7,7216,100,585,3025,5
+Brain_Myeloid,microglial cell,148100,2000,2000,6,8,4186,100,379,2005,2
+Brain_Non-Myeloid,astrocyte,70152,136,136,7,5,3779,98,336,1733,8
+Brain_Non-Myeloid,brain pericyte,107452,160,160,7,5,5383,98,465,2452,5
+Brain_Non-Myeloid,endothelial cell,111460,621,621,7,5,5043,98,453,2347,4
+Brain_Non-Myeloid,interneuron,22067,59,59,6,5,1325,95,150,553,4
+Brain_Non-Myeloid,neuron,69096,139,139,7,7,5445,100,444,2301,15
+Brain_Non-Myeloid,oligodendrocyte,250448,669,669,7,5,5448,98,494,2608,4
+Brain_Non-Myeloid,oligodendrocyte precursor cell,178838,104,104,7,5,7070,98,533,2890,23
+Diaphragm,endothelial cell,15388,92,92,4,4,2080,94,216,914,1
+Diaphragm,mesenchymal stem cell,100895,217,217,4,4,3880,95,362,1774,1
+Diaphragm,skeletal muscle satellite cell,68009,389,389,4,4,2426,95,308,1249,1
+GAT,endothelial cell,95265,146,146,7,7,3757,100,353,1758,1
+GAT,mesenchymal stem cell of adipose,365199,604,604,7,7,7561,100,576,3036,4
+GAT,myeloid cell,114592,241,241,7,7,5588,100,502,2539,4
+Heart,atrial myocyte,12209,75,75,7,7,2373,99,244,1146,2
+Heart,endocardial cell,177147,153,153,7,7,5323,99,459,2398,2
+Heart,endothelial cell of coronary artery,113356,1086,1086,7,7,3953,99,370,1835,1
+Heart,fibroblast of cardiac tissue,263092,1319,1319,7,7,6620,99,530,2814,3
+Heart,monocyte,62837,459,459,7,7,5286,99,478,2460,2
+Heart,valve cell,180327,141,141,7,7,5108,99,437,2298,3
+Kidney,fenestrated cell,186543,96,96,6,8,4149,100,371,1890,2
+Kidney,kidney collecting duct epithelial cell,133280,91,91,6,8,3097,100,322,1560,13
+Kidney,kidney collecting duct principal cell,38587,49,49,6,8,2054,99,246,1117,5
+Large_Intestine,enterocyte of epithelium of large intestine,47914,993,993,7,8,6286,100,500,2786,17
+Large_Intestine,epithelial cell of large intestine,30424,743,743,7,8,4652,100,500,2189,7
+Large_Intestine,intestinal crypt stem cell,401274,665,665,7,8,8454,100,656,3252,15
+Large_Intestine,large intestine goblet cell,89266,623,623,7,8,7436,100,584,3109,18
+Large_Intestine,secretory cell,400937,208,208,6,6,8825,100,654,3308,25
+Limb_Muscle,B cell,10640,70,70,6,8,2437,100,345,1327,0
+Limb_Muscle,endothelial cell,70111,133,133,6,8,2861,100,280,1259,1
+Limb_Muscle,mesenchymal stem cell,344885,237,237,6,8,5124,100,453,2280,1
+Limb_Muscle,skeletal muscle satellite cell,262852,472,472,6,8,3410,100,385,1706,1
+Liver,hepatocyte,111798,375,375,4,5,6362,96,543,2919,27
+Lung,adventitial cell,265198,126,126,6,8,6498,100,521,2759,3
+Lung,bronchial smooth muscle cell,212040,341,341,6,8,4921,100,437,2254,1
+Lung,classical monocyte,405921,56,56,6,8,5494,100,489,2534,4
+Lung,fibroblast of lung,159302,102,102,6,8,5156,100,439,2305,2
+Lung,non-classical monocyte,138944,52,52,6,6,3721,99,352,1727,2
+Lung,type II pneumocyte,127584,66,66,6,8,5516,100,482,2513,7
+MAT,B cell,119067,110,110,6,7,4212,100,477,2142,1
+MAT,"CD4-positive, alpha-beta T cell",159850,61,61,4,7,3764,95,418,1857,2
+MAT,endothelial cell,68900,111,111,6,7,4020,100,377,1866,1
+MAT,macrophage,118430,98,98,6,7,5846,100,537,2658,4
+MAT,mesenchymal stem cell of adipose,417612,523,523,6,7,7224,100,557,2948,3
+MAT,myeloid cell,97082,71,71,5,6,3948,95,356,1802,2
+Mammary_Gland,basal cell,250591,828,828,4,5,6914,98,569,2888,4
+Mammary_Gland,luminal epithelial cell of mammary gland,218218,279,279,4,5,7593,98,602,3127,5
+Mammary_Gland,stromal cell,220935,70,70,4,5,6657,97,520,2720,3
+Marrow,NK cell,115909,147,147,5,8,5007,100,497,2397,2
+Marrow,granulocyte,104093,660,660,5,8,3116,100,261,1359,1
+Marrow,granulocyte monocyte progenitor cell,487323,68,68,5,8,8255,99,658,3276,5
+Marrow,granulocytopoietic cell,337246,181,181,5,8,6216,100,572,2740,6
+Marrow,hematopoietic stem cell,283725,1251,1251,5,8,7924,100,654,3220,11
+Marrow,immature B cell,148337,194,194,5,8,4868,100,527,2418,2
+Marrow,late pro-B cell,256562,115,115,5,8,6808,100,646,3057,6
+Marrow,macrophage,93625,170,170,5,8,5616,100,545,2639,3
+Marrow,mature alpha-beta T cell,88503,91,91,5,7,4903,100,507,2372,3
+Marrow,naive B cell,93803,622,622,5,8,3932,100,450,1990,3
+Marrow,precursor B cell,72134,303,303,5,8,3702,100,414,1891,3
+Marrow,promonocyte,109470,329,329,5,8,6012,100,561,2757,4
+Pancreas,endothelial cell,5519,86,86,4,4,3421,89,334,1614,7
+Pancreas,leukocyte,88876,52,52,4,4,5607,89,502,2552,11
+Pancreas,pancreatic A cell,357658,139,139,4,4,7899,89,597,3168,17
+Pancreas,pancreatic B cell,119580,495,495,4,4,7996,89,595,3191,27
+Pancreas,pancreatic D cell,309968,60,60,4,4,8130,89,582,3160,29
+Pancreas,pancreatic acinar cell,21272,182,182,4,4,1802,89,162,783,13
+Pancreas,pancreatic ductal cell,211396,137,137,4,4,7629,89,585,3090,15
+SCAT,B cell,52688,135,135,7,8,3857,100,431,1972,1
+SCAT,endothelial cell,88051,215,215,7,8,4106,100,378,1888,1
+SCAT,mesenchymal stem cell of adipose,117816,691,691,7,8,7129,100,556,2937,6
+SCAT,myeloid cell,73260,330,330,7,8,5509,100,484,2500,4
+Skin,basal cell of epidermis,238632,542,542,6,8,6950,100,589,2997,9
+Skin,bulge keratinocyte,150539,1127,1127,6,8,5683,100,513,2580,5
+Skin,epidermal cell,201915,220,220,6,8,7286,100,599,3102,12
+Spleen,B cell,135660,1070,1070,6,7,4217,100,484,2145,3
+Spleen,"CD4-positive, alpha-beta T cell",153265,167,167,6,6,4072,100,442,2023,3
+Spleen,"CD8-positive, alpha-beta T cell",111796,145,145,6,7,4325,100,491,2163,2
+Thymus,DN4 thymocyte,168674,518,518,5,8,4593,100,506,2327,3
+Thymus,thymocyte,85769,700,700,5,8,4303,100,522,2180,3
+Tongue,basal cell of epidermis,198597,1043,1043,5,8,7652,100,636,3115,8
+Tongue,keratinocyte,299019,333,333,5,8,7498,100,602,3097,25
+Trachea,basal epithelial cell of tracheobronchial tree,10642,68,68,5,8,2187,100,270,1070,4
+Trachea,endothelial cell,167129,107,107,5,7,4366,100,389,1953,1
+Trachea,fibroblast,401196,506,506,5,8,6371,100,509,2655,3
+Trachea,macrophage,300871,118,118,5,7,5582,100,488,2506,3

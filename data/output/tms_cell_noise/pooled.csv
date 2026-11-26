@@ -1,0 +1,7 @@
+version,set,cell_types,mean_gap_sd,cell_types_below_zero,ci_low,ci_high,complete_resamples
+pseudobulk,core_essential,84,-0.023844655722130632,48,,,
+pseudobulk,housekeeping,84,0.0006909081468752833,41,,,
+pseudobulk,non_essential,84,NaN,27,,,
+single_cell,core_essential,93,0.01620011751733757,40,-0.04630757241409177,0.06004855156139414,69
+single_cell,housekeeping,93,0.02148929420356755,40,-0.028150167261158043,0.050424345057775766,69
+single_cell,non_essential,93,NaN,56,NaN,NaN,69
