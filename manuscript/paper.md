@@ -15,7 +15,7 @@ sets, cell composition, probe design, raw-data reprocessing) produces the shield
 is used, and in culture it accrues with cell division. Clocks read it unevenly. Six clocks that count
 cell divisions, among them one built on CpGs in partially methylated domains that shares none with the epiTOC clocks,
 call people whose housekeeping promoters drift less than their look-alikes older for their age in nearly every dividing
-tissue where they could be scored, and the epiTOC clocks reverse in sorted neurons, which do not divide. Non-housekeeping
+tissue where they could be scored; in sorted neurons, which do not divide, the two available series disagree. Non-housekeeping
 promoters matched to the housekeeping ones carry nearly the same link, with a small and variable extra association for
 housekeeping promoters. Some chronological and phenotypic clocks do so more weakly, and
 pace-of-ageing clocks such as DunedinPACE do not see it. Stochastic ageing therefore has a structure that clocks
@@ -647,7 +647,7 @@ the draw (274, 113 and 146 cases), with mean methylation, 11 blood-cell fraction
 ### Clocks of cell division track drift at housekeeping and matched promoters
 
 **Clocks that count cell divisions call people whose housekeeping promoters drift less than their look-alikes older
-for their age in dividing tissues, and the epiTOC clocks reverse in neurons; matched non-housekeeping promoters share
+for their age in dividing tissues, with weaker and inconsistent links in neurons; matched non-housekeeping promoters share
 the link, and pace-of-ageing clocks do not see it (Fig. 10, Fig. 11).**
 
 *Every clock on every rebuilt series.* We scored every clock in the biolearn gallery that keeps at least 90 % of its
@@ -689,9 +689,11 @@ coverage (14 studies; median r −0.50, from −0.10 in normal kidney to −0.88
 20 of 21 (−0.50), epiTOC3 in 20 of 21 (−0.44), epiCMIT in 19 of 20 (−0.45), RepliTali in all 7 (−0.48; lung and
 myometrium from three studies), and HypoClock, read in its own direction, in 15 of 18 (+0.31). Medians taken per study
 were the same (−0.44 to −0.50; HypoClock +0.29). In bulk brain regions the links were weak (−0.18 to +0.03 for the
-epiTOC clocks). In sorted cortical neurons, which do not divide, the epiTOC clocks reversed (+0.25 to +0.50) and so did
-HypoClock in the 82-donor group (−0.31; it failed coverage in the 28 controls); RepliTali did not reverse (−0.21 and
-−0.43), and epiCMIT reversed in one group only (+0.26 and −0.02). Clocks of other kinds went the same way more weakly:
+epiTOC clocks). Sorted cortical neurons, which do not divide, gave opposite answers in the two series available. In
+frontal-cortex NeuN+ nuclei (GSE112179) the epiTOC clocks reversed (+0.25 to +0.50) and so did HypoClock in the 82-donor
+group (−0.31); RepliTali did not (−0.21 and −0.43), and epiCMIT reversed in one group only (+0.26 and −0.02). In
+parietal NeuN+ nuclei of 84 older donors (GSE267937, aged 53 to 95, half with Parkinson's disease) none reversed:
+epiTOC1 −0.33 (−0.17 in the 38 controls), epiCMIT −0.44, RepliTali −0.40. Neurons therefore show no consistent link. Clocks of other kinds went the same way more weakly:
 Hannum (median −0.14, negative in 74 % of 34 groups) and PhenoAge (−0.18, 81 % of 37). Horvath's pan-tissue clock
 (−0.01, 54 % of 37) and DunedinPACE (−0.05, 62 % of 26) showed no consistent link, and trait predictors used as
 negative controls (body-mass index, smoking and the like) sat at −0.01. These are within-group associations of
@@ -813,12 +815,13 @@ breast-cancer risk on this evidence.
 **Clocks of cell division track drift at housekeeping and matched promoters.** Across 37 tissue groups, six mitotic clocks called people whose
 housekeeping promoters drifted less than their look-alikes older for their age in nearly every dividing tissue where
 they could be scored, including HypoClock, whose CpGs lie in partially methylated domains and share none with the
-epiTOC clocks; the epiTOC clocks reversed in sorted neurons. Matched non-housekeeping promoters carried nearly the same
+epiTOC clocks; in sorted neurons the two series disagreed. Matched non-housekeeping promoters carried nearly the same
 link, with a small and variable extra association for housekeeping promoters, so these clocks read a property that the
 shield shares with promoters like it.
 Hannum and PhenoAge did so more weakly, and Horvath's clock and DunedinPACE did not (Fig. 11); in the blood of one cohort, GrimAge was unrelated to
 it as well and accelerations agreed only within generation (Fig. 10). Since protection from drift accrues with division in culture, a clock
-that counts divisions is the one expected to read it, and in cells that no longer divide it does not. Across the rebuilt series, too, the valid clocks of a tissue
+that counts divisions is the one expected to read it; whether it fails to in cells that no longer divide is unsettled,
+since the two sorted-neuron series disagree. Across the rebuilt series, too, the valid clocks of a tissue
 agreed only partly on who was ageing fast. Which part of drift a clock reads is therefore one source of that
 disagreement. How far one woman's clocks disagree tracked her drift only while her mean methylation level was free to
 vary, so that link may run through global level. Clocks

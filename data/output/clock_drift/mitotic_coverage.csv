@@ -1,4 +1,14 @@
 series,group,clock,passed,arrays_meeting,median_weight_share,cpgs_used,hyper_arm_share
+airway_asthma,"airway, every donor",epiTOC2,true,1.0,1.0,163,NaN
+airway_asthma,"airway, every donor",epiTOC3,true,1.0,1.0,170,NaN
+airway_asthma,"airway, every donor",HypoClock,true,1.0,1.0,678,NaN
+airway_asthma,"airway, every donor",RepliTali,false,0.0,0.46135898072542114,30,NaN
+airway_asthma,"airway, every donor",epiCMIT,true,1.0,1.0,1348,0.0
+airway_asthma,"airway, controls",epiTOC2,true,1.0,1.0,163,NaN
+airway_asthma,"airway, controls",epiTOC3,true,1.0,1.0,170,NaN
+airway_asthma,"airway, controls",HypoClock,true,1.0,1.0,678,NaN
+airway_asthma,"airway, controls",RepliTali,false,0.0,0.46135898072542114,30,NaN
+airway_asthma,"airway, controls",epiCMIT,true,1.0,1.0,1348,0.0
 brain_regions,"prefrontal cortex, controls",epiTOC2,true,1.0,0.9140940303008879,151,NaN
 brain_regions,"prefrontal cortex, controls",epiTOC3,true,1.0,1.0,170,NaN
 brain_regions,"prefrontal cortex, controls",HypoClock,true,0.99,0.9528023598820059,648,NaN
@@ -29,6 +39,16 @@ brain_regions,"hippocampus, every donor",epiTOC3,true,1.0,1.0,170,NaN
 brain_regions,"hippocampus, every donor",HypoClock,true,0.9766666666666667,0.9528023598820059,648,NaN
 brain_regions,"hippocampus, every donor",RepliTali,true,1.0,1.0,87,NaN
 brain_regions,"hippocampus, every donor",epiCMIT,true,1.0,0.936426116838488,1264,0.0
+brain_stg,"superior temporal gyrus, every donor",epiTOC2,true,0.9431818181818182,0.9140940303008879,151,NaN
+brain_stg,"superior temporal gyrus, every donor",epiTOC3,true,1.0,1.0,170,NaN
+brain_stg,"superior temporal gyrus, every donor",HypoClock,true,0.9886363636363636,0.946165191740413,648,NaN
+brain_stg,"superior temporal gyrus, every donor",RepliTali,true,1.0,1.0,87,NaN
+brain_stg,"superior temporal gyrus, every donor",epiCMIT,true,1.0,0.9355670103092784,1264,0.0
+brain_stg,"superior temporal gyrus, controls",epiTOC2,true,0.9772727272727273,0.9140940303008879,151,NaN
+brain_stg,"superior temporal gyrus, controls",epiTOC3,true,1.0,1.0,170,NaN
+brain_stg,"superior temporal gyrus, controls",HypoClock,true,1.0,0.9454277286135693,648,NaN
+brain_stg,"superior temporal gyrus, controls",RepliTali,true,1.0,1.0,87,NaN
+brain_stg,"superior temporal gyrus, controls",epiCMIT,true,1.0,0.9355670103092784,1264,0.0
 breast_cancer_free,"breast, cancer-free women",epiTOC2,true,1.0,0.9972560245663682,163,NaN
 breast_cancer_free,"breast, cancer-free women",epiTOC3,true,1.0,1.0,170,NaN
 breast_cancer_free,"breast, cancer-free women",HypoClock,true,1.0,1.0,678,NaN
@@ -39,16 +59,66 @@ breast_komen,"breast, healthy donors",epiTOC3,true,1.0,1.0,170,NaN
 breast_komen,"breast, healthy donors",HypoClock,true,1.0,1.0,678,NaN
 breast_komen,"breast, healthy donors",RepliTali,false,0.0,0.46135898072542114,30,NaN
 breast_komen,"breast, healthy donors",epiCMIT,true,1.0,1.0,1348,0.02040816326530612
+colon_gse132804_450k,"normal colon, every donor",epiTOC2,true,1.0,1.0,163,NaN
+colon_gse132804_450k,"normal colon, every donor",epiTOC3,true,1.0,1.0,170,NaN
+colon_gse132804_450k,"normal colon, every donor",HypoClock,true,1.0,0.9985250737463127,678,NaN
+colon_gse132804_450k,"normal colon, every donor",RepliTali,false,0.0,0.46135898072542114,30,NaN
+colon_gse132804_450k,"normal colon, every donor",epiCMIT,true,1.0,1.0,1348,0.7281553398058253
+colon_gse132804_450k,"normal colon, low CRC risk",epiTOC2,true,1.0,1.0,163,NaN
+colon_gse132804_450k,"normal colon, low CRC risk",epiTOC3,true,1.0,1.0,170,NaN
+colon_gse132804_450k,"normal colon, low CRC risk",HypoClock,true,1.0,0.9985250737463127,678,NaN
+colon_gse132804_450k,"normal colon, low CRC risk",RepliTali,false,0.0,0.46135898072542114,30,NaN
+colon_gse132804_450k,"normal colon, low CRC risk",epiCMIT,true,1.0,1.0,1348,0.7916666666666666
+colon_gse132804_epic,"normal colon, every donor",epiTOC2,true,1.0,0.9140940303008879,151,NaN
+colon_gse132804_epic,"normal colon, every donor",epiTOC3,true,1.0,1.0,170,NaN
+colon_gse132804_epic,"normal colon, every donor",HypoClock,true,1.0,0.9557522123893806,648,NaN
+colon_gse132804_epic,"normal colon, every donor",RepliTali,true,1.0,1.0,87,NaN
+colon_gse132804_epic,"normal colon, every donor",epiCMIT,true,1.0,0.936426116838488,1264,0.6116504854368932
+colon_gse132804_epic,"normal colon, low CRC risk",epiTOC2,true,1.0,0.9140940303008879,151,NaN
+colon_gse132804_epic,"normal colon, low CRC risk",epiTOC3,true,1.0,1.0,170,NaN
+colon_gse132804_epic,"normal colon, low CRC risk",HypoClock,true,1.0,0.9557522123893806,648,NaN
+colon_gse132804_epic,"normal colon, low CRC risk",RepliTali,true,1.0,1.0,87,NaN
+colon_gse132804_epic,"normal colon, low CRC risk",epiCMIT,true,1.0,0.936426116838488,1264,0.5789473684210527
+colon_gse166427,"colon, healthy",epiTOC2,true,1.0,1.0,163,NaN
+colon_gse166427,"colon, healthy",epiTOC3,true,1.0,1.0,170,NaN
+colon_gse166427,"colon, healthy",HypoClock,false,0.8333333333333334,0.9668141592920354,678,NaN
+colon_gse166427,"colon, healthy",RepliTali,false,0.0,0.46135898072542114,30,NaN
+colon_gse166427,"colon, healthy",epiCMIT,true,1.0,0.9957044673539519,1348,0.9583333333333334
+colon_gse166427,"colon, next to a tumour",epiTOC2,true,1.0,1.0,163,NaN
+colon_gse166427,"colon, next to a tumour",epiTOC3,true,1.0,1.0,170,NaN
+colon_gse166427,"colon, next to a tumour",HypoClock,false,0.8526315789473684,0.9896755162241888,678,NaN
+colon_gse166427,"colon, next to a tumour",RepliTali,false,0.0,0.46135898072542114,30,NaN
+colon_gse166427,"colon, next to a tumour",epiCMIT,true,1.0,0.9991408934707904,1348,0.9789473684210527
+colon_gse199057,"colon, healthy",epiTOC2,true,1.0,0.9197552848797493,151,NaN
+colon_gse199057,"colon, healthy",epiTOC3,true,1.0,1.0,170,NaN
+colon_gse199057,"colon, healthy",HypoClock,true,1.0,0.9542772861356932,648,NaN
+colon_gse199057,"colon, healthy",RepliTali,true,1.0,1.0,87,NaN
+colon_gse199057,"colon, healthy",epiCMIT,true,1.0,0.936426116838488,1264,0.3088235294117647
+colon_gse199057,"colon, next to a tumour",epiTOC2,true,1.0,0.9197552848797493,151,NaN
+colon_gse199057,"colon, next to a tumour",epiTOC3,true,1.0,1.0,170,NaN
+colon_gse199057,"colon, next to a tumour",HypoClock,true,1.0,0.9542772861356932,648,NaN
+colon_gse199057,"colon, next to a tumour",RepliTali,true,1.0,1.0,87,NaN
+colon_gse199057,"colon, next to a tumour",epiCMIT,true,1.0,0.936426116838488,1264,0.26666666666666666
 colon_mucosa,colon_mucosa,epiTOC2,true,1.0,1.0,163,NaN
 colon_mucosa,colon_mucosa,epiTOC3,true,1.0,1.0,170,NaN
 colon_mucosa,colon_mucosa,HypoClock,false,0.8767123287671232,0.995575221238938,678,NaN
 colon_mucosa,colon_mucosa,RepliTali,false,0.0,0.46135898072542114,30,NaN
 colon_mucosa,colon_mucosa,epiCMIT,true,0.952054794520548,0.9991408934707904,1348,0.8287671232876712
+epidermis_tapelift,epidermis (tape-lift),epiTOC2,true,1.0,0.9768203853927555,158,NaN
+epidermis_tapelift,epidermis (tape-lift),epiTOC3,true,0.975,0.910655816519581,152,NaN
+epidermis_tapelift,epidermis (tape-lift),HypoClock,false,0.0,0.8259587020648967,573,NaN
+epidermis_tapelift,epidermis (tape-lift),RepliTali,false,0.0,0.8934537051114901,84,NaN
+epidermis_tapelift,epidermis (tape-lift),epiCMIT,false,0.0,0.8694158075601375,1181,0.0
 kidney_normal,"kidney, normal",epiTOC2,true,1.0,1.0,163,NaN
 kidney_normal,"kidney, normal",epiTOC3,true,1.0,1.0,170,NaN
 kidney_normal,"kidney, normal",HypoClock,true,0.9333333333333333,1.0,678,NaN
 kidney_normal,"kidney, normal",RepliTali,false,0.0,0.46135898072542114,30,NaN
 kidney_normal,"kidney, normal",epiCMIT,true,1.0,1.0,1348,0.03333333333333333
+liver_aatd,"liver (AATD), every donor",epiTOC2,false,0.7674418604651163,0.9084327757220263,151,NaN
+liver_aatd,"liver (AATD), every donor",epiTOC3,true,1.0,0.9931165803335404,170,NaN
+liver_aatd,"liver (AATD), every donor",HypoClock,false,0.7325581395348837,0.9306784660766961,648,NaN
+liver_aatd,"liver (AATD), every donor",RepliTali,true,1.0,1.0,87,NaN
+liver_aatd,"liver (AATD), every donor",epiCMIT,false,0.7558139534883721,0.9294505453458838,1263,0.0
 lung_450k,lung,epiTOC2,true,1.0,1.0,163,NaN
 lung_450k,lung,epiTOC3,true,1.0,1.0,170,NaN
 lung_450k,lung,HypoClock,true,1.0,1.0,678,NaN
@@ -154,6 +224,26 @@ neurons,"neurons, controls",epiTOC3,true,1.0,1.0,170,NaN
 neurons,"neurons, controls",HypoClock,false,0.8928571428571429,0.9269911504424779,643,NaN
 neurons,"neurons, controls",RepliTali,true,1.0,0.973609371155129,87,NaN
 neurons,"neurons, controls",epiCMIT,true,1.0,0.9347079037800687,1264,1.0
+neurons_parietal,"neurons (parietal), every donor",epiTOC2,true,1.0,0.9084327757220263,151,NaN
+neurons_parietal,"neurons (parietal), every donor",epiTOC3,true,1.0,0.9966292532561151,170,NaN
+neurons_parietal,"neurons (parietal), every donor",HypoClock,false,0.6190476190476191,0.9166666666666666,647,NaN
+neurons_parietal,"neurons (parietal), every donor",RepliTali,true,1.0,0.973609371155129,87,NaN
+neurons_parietal,"neurons (parietal), every donor",epiCMIT,true,1.0,0.9347079037800687,1264,0.23809523809523808
+neurons_parietal,"neurons (parietal), controls",epiTOC2,true,1.0,0.911263403011457,151,NaN
+neurons_parietal,"neurons (parietal), controls",epiTOC3,true,1.0,0.9966292532561151,170,NaN
+neurons_parietal,"neurons (parietal), controls",HypoClock,false,0.6842105263157895,0.9188790560471977,646,NaN
+neurons_parietal,"neurons (parietal), controls",RepliTali,true,1.0,0.973609371155129,87,NaN
+neurons_parietal,"neurons (parietal), controls",epiCMIT,true,1.0,0.9347079037800687,1264,0.2631578947368421
+retina_amd,"retina, every donor",epiTOC2,true,0.9622641509433962,0.9197552848797493,151,NaN
+retina_amd,"retina, every donor",epiTOC3,true,1.0,1.0,170,NaN
+retina_amd,"retina, every donor",HypoClock,true,0.9433962264150944,0.9557522123893806,648,NaN
+retina_amd,"retina, every donor",RepliTali,true,1.0,1.0,87,NaN
+retina_amd,"retina, every donor",epiCMIT,true,1.0,0.936426116838488,1264,0.9339622641509434
+retina_amd,"retina, no AMD",epiTOC2,true,0.92,0.9197552848797493,151,NaN
+retina_amd,"retina, no AMD",epiTOC3,true,1.0,1.0,170,NaN
+retina_amd,"retina, no AMD",HypoClock,false,0.88,0.9557522123893806,648,NaN
+retina_amd,"retina, no AMD",RepliTali,true,1.0,1.0,87,NaN
+retina_amd,"retina, no AMD",epiCMIT,true,1.0,0.936426116838488,1264,0.86
 tcga_brca_adjacent,"breast, next to a tumour (TCGA-BRCA)",epiTOC2,true,1.0,0.9943387454211385,163,NaN
 tcga_brca_adjacent,"breast, next to a tumour (TCGA-BRCA)",epiTOC3,true,1.0,1.0,170,NaN
 tcga_brca_adjacent,"breast, next to a tumour (TCGA-BRCA)",HypoClock,false,0.8125,0.9734513274336283,678,NaN

@@ -1,0 +1,3 @@
+group,arrays_selected,arrays_passing_detection,donors_kept,arrays_dropped_repeat_donor,platforms,cpgs_complete,chips,chips_unknown,age_variance_on_chip,age_identifiable_with_chip
+"normal colon, every donor",206,206,206,0,EPIC,89389,27,0,0.1409611800915962,true
+"normal colon, low CRC risk",57,57,57,0,EPIC,90566,25,0,0.39633750663659584,true

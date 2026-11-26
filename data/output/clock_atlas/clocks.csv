@@ -1,4 +1,88 @@
 series,accession,group,clock,generation,valid,arrays,age_min,age_max,r_age,median_abs_error
+airway_asthma,GSE85566,"airway, every donor",Horvathv1,1st: chronological,true,115,18.0,62.0,0.8808452157033027,4.3101236561020215
+airway_asthma,GSE85566,"airway, every donor",Hannum,1st: chronological,false,115,18.0,62.0,0.8131518542337695,20.945159304832522
+airway_asthma,GSE85566,"airway, every donor",Lin,1st: chronological,false,115,18.0,62.0,0.7897126795248463,10.035403603749849
+airway_asthma,GSE85566,"airway, every donor",PhenoAge,2nd: phenotypic and mortality,false,115,18.0,62.0,0.8229543560676335,5.565712863815577
+airway_asthma,GSE85566,"airway, every donor",YingCausAge,2nd: phenotypic and mortality,false,115,18.0,62.0,0.8248935026950897,20.494308797665227
+airway_asthma,GSE85566,"airway, every donor",YingDamAge,2nd: phenotypic and mortality,false,115,18.0,62.0,0.7185510642413432,43.758505372513014
+airway_asthma,GSE85566,"airway, every donor",YingAdaptAge,2nd: phenotypic and mortality,false,115,18.0,62.0,0.38466733017589355,28.19643089564329
+airway_asthma,GSE85566,"airway, every donor",Horvathv2,1st: chronological,true,115,18.0,62.0,0.8647041367766912,4.6910931019312585
+airway_asthma,GSE85566,"airway, every donor",PEDBE,other,false,115,18.0,62.0,0.8080154187457285,28.97355959873054
+airway_asthma,GSE85566,"airway, every donor",Zhang_10,2nd: phenotypic and mortality,false,115,18.0,62.0,0.36336664562515064,
+airway_asthma,GSE85566,"airway, every donor",DunedinPoAm38,3rd: pace of ageing,false,115,18.0,62.0,0.067371415680428,
+airway_asthma,GSE85566,"airway, every donor",DunedinPACE,3rd: pace of ageing,false,115,18.0,62.0,0.06443363082356103,
+airway_asthma,GSE85566,"airway, every donor",DNAmClockCortical,other,false,115,18.0,62.0,0.830951152979193,
+airway_asthma,GSE85566,"airway, every donor",VidalBralo,1st: chronological,false,115,18.0,62.0,0.7190039786644923,42.97672346295977
+airway_asthma,GSE85566,"airway, every donor",AlcoholMcCartney,other,false,115,18.0,62.0,-0.3399359471243852,
+airway_asthma,GSE85566,"airway, every donor",DNAmTL,other,false,115,18.0,62.0,-0.564446440313221,
+airway_asthma,GSE85566,"airway, every donor",HRSInCHPhenoAge,2nd: phenotypic and mortality,false,115,18.0,62.0,0.7934095786409983,60.199971568393664
+airway_asthma,GSE85566,"airway, every donor",Knight,other,false,115,18.0,62.0,0.325624899465591,
+airway_asthma,GSE85566,"airway, every donor",LeeControl,other,false,115,18.0,62.0,0.2149196013166059,
+airway_asthma,GSE85566,"airway, every donor",EpiTOC1,mitotic and stochastic,true,115,18.0,62.0,0.13989745481552973,
+airway_asthma,GSE85566,"airway, every donor",LeeRefinedRobust,other,false,115,18.0,62.0,0.5604696409998092,
+airway_asthma,GSE85566,"airway, every donor",LeeRobust,other,false,115,18.0,62.0,0.4728727174507063,
+airway_asthma,GSE85566,"airway, every donor",SmokingMcCartney,other,false,115,18.0,62.0,0.17191152112940264,
+airway_asthma,GSE85566,"airway, every donor",StocZ,mitotic and stochastic,false,115,18.0,62.0,0.7606488968360104,
+airway_asthma,GSE85566,"airway, every donor",BMI_McCartney,other,false,115,18.0,62.0,0.059529736212016085,
+airway_asthma,GSE85566,"airway, every donor",EducationMcCartney,other,false,115,18.0,62.0,-0.4542745585515454,
+airway_asthma,GSE85566,"airway, every donor",TotalCholesterolMcCartney,other,false,115,18.0,62.0,0.41164553845282154,
+airway_asthma,GSE85566,"airway, every donor",HDLCholesterolMcCartney,other,false,115,18.0,62.0,-0.25979882287313755,
+airway_asthma,GSE85566,"airway, every donor",LDLCholesterolMcCartney,other,false,115,18.0,62.0,0.3592462100997254,
+airway_asthma,GSE85566,"airway, every donor",BodyFatMcCartney,other,false,115,18.0,62.0,-0.021776403267756383,
+airway_asthma,GSE85566,"airway, every donor",BMI_Reed,other,false,115,18.0,62.0,-0.00011416837288162312,
+airway_asthma,GSE85566,"airway, every donor",StocP,mitotic and stochastic,false,115,18.0,62.0,0.6982937862062415,23.618075368083353
+airway_asthma,GSE85566,"airway, every donor",Mayne,other,false,115,18.0,62.0,0.3211263075050854,
+airway_asthma,GSE85566,"airway, every donor",ProstateCancerKirby,other,false,115,18.0,62.0,0.18238077724704835,
+airway_asthma,GSE85566,"airway, every donor",HepatoXu,other,false,115,18.0,62.0,0.12700057523911099,
+airway_asthma,GSE85566,"airway, every donor",CVD_Westerman,other,false,115,18.0,62.0,0.5459543852673038,
+airway_asthma,GSE85566,"airway, every donor",StocH,mitotic and stochastic,true,115,18.0,62.0,0.700854130205809,6.132251067440272
+airway_asthma,GSE85566,"airway, every donor",DepressionBarbu,other,false,115,18.0,62.0,-0.009496201339318285,
+airway_asthma,GSE85566,"airway, every donor",Weidner,1st: chronological,false,115,18.0,62.0,0.6138681343340863,10.29816574877293
+airway_asthma,GSE85566,"airway, every donor",Garagnani,1st: chronological,false,115,18.0,62.0,0.7686592081465699,37.44137644268152
+airway_asthma,GSE85566,"airway, every donor",Bohlin,other,false,115,18.0,62.0,0.2741169853814006,
+airway_asthma,GSE85566,"airway, every donor",Bocklandt,1st: chronological,false,115,18.0,62.0,-0.5334155536110979,
+airway_asthma,GSE85566,"airway, controls",Horvathv1,1st: chronological,true,41,19.0,60.0,0.9153011156782368,3.5712015082396817
+airway_asthma,GSE85566,"airway, controls",Hannum,1st: chronological,false,41,19.0,60.0,0.8485657015853674,19.124785787450527
+airway_asthma,GSE85566,"airway, controls",Lin,1st: chronological,false,41,19.0,60.0,0.7726148557633383,7.542155745753938
+airway_asthma,GSE85566,"airway, controls",PhenoAge,2nd: phenotypic and mortality,false,41,19.0,60.0,0.8237818739274257,5.824546808911094
+airway_asthma,GSE85566,"airway, controls",YingCausAge,2nd: phenotypic and mortality,false,41,19.0,60.0,0.8823088521545238,18.919072700022475
+airway_asthma,GSE85566,"airway, controls",YingDamAge,2nd: phenotypic and mortality,false,41,19.0,60.0,0.719476953521085,44.09155605006089
+airway_asthma,GSE85566,"airway, controls",YingAdaptAge,2nd: phenotypic and mortality,false,41,19.0,60.0,0.4941504726547815,34.86204484023523
+airway_asthma,GSE85566,"airway, controls",Horvathv2,1st: chronological,true,41,19.0,60.0,0.8944244480765808,4.228867038764726
+airway_asthma,GSE85566,"airway, controls",PEDBE,other,false,41,19.0,60.0,0.8782566164871506,28.390562077629724
+airway_asthma,GSE85566,"airway, controls",Zhang_10,2nd: phenotypic and mortality,false,41,19.0,60.0,0.3357917615115723,
+airway_asthma,GSE85566,"airway, controls",DunedinPoAm38,3rd: pace of ageing,false,41,19.0,60.0,-0.07398733763250873,
+airway_asthma,GSE85566,"airway, controls",DunedinPACE,3rd: pace of ageing,false,41,19.0,60.0,0.14118289039250406,
+airway_asthma,GSE85566,"airway, controls",DNAmClockCortical,other,false,41,19.0,60.0,0.8879355135089988,
+airway_asthma,GSE85566,"airway, controls",VidalBralo,1st: chronological,false,41,19.0,60.0,0.7226746658252868,43.71775144376552
+airway_asthma,GSE85566,"airway, controls",AlcoholMcCartney,other,false,41,19.0,60.0,-0.32193123896755416,
+airway_asthma,GSE85566,"airway, controls",DNAmTL,other,false,41,19.0,60.0,-0.5966611032476943,
+airway_asthma,GSE85566,"airway, controls",HRSInCHPhenoAge,2nd: phenotypic and mortality,false,41,19.0,60.0,0.8542864081381148,56.194834154440144
+airway_asthma,GSE85566,"airway, controls",Knight,other,false,41,19.0,60.0,0.30558978616486776,
+airway_asthma,GSE85566,"airway, controls",LeeControl,other,false,41,19.0,60.0,0.33243000427095054,
+airway_asthma,GSE85566,"airway, controls",EpiTOC1,mitotic and stochastic,true,41,19.0,60.0,0.2604882689986335,
+airway_asthma,GSE85566,"airway, controls",LeeRefinedRobust,other,false,41,19.0,60.0,0.45186153834274667,
+airway_asthma,GSE85566,"airway, controls",LeeRobust,other,false,41,19.0,60.0,0.3063586791684319,
+airway_asthma,GSE85566,"airway, controls",SmokingMcCartney,other,false,41,19.0,60.0,0.3403488817224676,
+airway_asthma,GSE85566,"airway, controls",StocZ,mitotic and stochastic,false,41,19.0,60.0,0.7624883617894818,
+airway_asthma,GSE85566,"airway, controls",BMI_McCartney,other,false,41,19.0,60.0,-0.039292332113361826,
+airway_asthma,GSE85566,"airway, controls",EducationMcCartney,other,false,41,19.0,60.0,-0.697684889272257,
+airway_asthma,GSE85566,"airway, controls",TotalCholesterolMcCartney,other,false,41,19.0,60.0,0.3673059091546916,
+airway_asthma,GSE85566,"airway, controls",HDLCholesterolMcCartney,other,false,41,19.0,60.0,-0.1447316103805158,
+airway_asthma,GSE85566,"airway, controls",LDLCholesterolMcCartney,other,false,41,19.0,60.0,0.3031346188083651,
+airway_asthma,GSE85566,"airway, controls",BodyFatMcCartney,other,false,41,19.0,60.0,-0.28689915111570286,
+airway_asthma,GSE85566,"airway, controls",BMI_Reed,other,false,41,19.0,60.0,-0.004303676299325849,
+airway_asthma,GSE85566,"airway, controls",StocP,mitotic and stochastic,false,41,19.0,60.0,0.619507246527119,24.20885612639941
+airway_asthma,GSE85566,"airway, controls",Mayne,other,false,41,19.0,60.0,0.3803912019138571,
+airway_asthma,GSE85566,"airway, controls",ProstateCancerKirby,other,false,41,19.0,60.0,0.32549987202373254,
+airway_asthma,GSE85566,"airway, controls",HepatoXu,other,false,41,19.0,60.0,0.12201546758355679,
+airway_asthma,GSE85566,"airway, controls",CVD_Westerman,other,false,41,19.0,60.0,0.43037091924618964,
+airway_asthma,GSE85566,"airway, controls",StocH,mitotic and stochastic,true,41,19.0,60.0,0.7006441578750572,6.0310991103820655
+airway_asthma,GSE85566,"airway, controls",DepressionBarbu,other,false,41,19.0,60.0,0.06535343358744639,
+airway_asthma,GSE85566,"airway, controls",Weidner,1st: chronological,false,41,19.0,60.0,0.6467234738870408,12.201593800428629
+airway_asthma,GSE85566,"airway, controls",Garagnani,1st: chronological,false,41,19.0,60.0,0.8335310490266725,36.3878414081627
+airway_asthma,GSE85566,"airway, controls",Bohlin,other,false,41,19.0,60.0,0.45816584897614604,
+airway_asthma,GSE85566,"airway, controls",Bocklandt,1st: chronological,false,41,19.0,60.0,-0.5552740821402621,
 brain_regions,GSE349373,"prefrontal cortex, controls",Horvathv1,1st: chronological,true,100,17.47,79.9917864476386,0.9574500021398473,3.455441434595521
 brain_regions,GSE349373,"prefrontal cortex, controls",Hannum,1st: chronological,false,100,17.47,79.9917864476386,0.8871775390263759,19.373583562584493
 brain_regions,GSE349373,"prefrontal cortex, controls",Lin,1st: chronological,false,100,17.47,79.9917864476386,0.6098092049972732,13.77166176020544
@@ -245,6 +329,84 @@ brain_regions,GSE349373,"hippocampus, every donor",Weidner,1st: chronological,fa
 brain_regions,GSE349373,"hippocampus, every donor",Garagnani,1st: chronological,false,300,15.5155144877937,79.9917864476386,0.8617511039265582,45.96828663082248
 brain_regions,GSE349373,"hippocampus, every donor",Bohlin,other,false,300,15.5155144877937,79.9917864476386,0.2945688516604292,
 brain_regions,GSE349373,"hippocampus, every donor",Bocklandt,1st: chronological,false,300,15.5155144877937,79.9917864476386,-0.4286265565589158,
+brain_stg,GSE144910,"superior temporal gyrus, every donor",Horvathv1,1st: chronological,true,88,17.0,83.0,0.9335018957113856,4.223159826738502
+brain_stg,GSE144910,"superior temporal gyrus, every donor",Hannum,1st: chronological,false,88,17.0,83.0,0.9099795070532202,20.267212917973946
+brain_stg,GSE144910,"superior temporal gyrus, every donor",Lin,1st: chronological,false,88,17.0,83.0,0.7639990614355407,18.694051085116154
+brain_stg,GSE144910,"superior temporal gyrus, every donor",PhenoAge,2nd: phenotypic and mortality,false,88,17.0,83.0,0.7598324403584066,71.32697003680116
+brain_stg,GSE144910,"superior temporal gyrus, every donor",YingDamAge,2nd: phenotypic and mortality,false,88,17.0,83.0,0.4238058571967752,8.424063463237047
+brain_stg,GSE144910,"superior temporal gyrus, every donor",YingAdaptAge,2nd: phenotypic and mortality,false,88,17.0,83.0,0.6905760369030975,8.881661572587689
+brain_stg,GSE144910,"superior temporal gyrus, every donor",Horvathv2,1st: chronological,true,88,17.0,83.0,0.9400824298410694,21.75157110194066
+brain_stg,GSE144910,"superior temporal gyrus, every donor",PEDBE,other,false,88,17.0,83.0,0.9186392353997482,43.24521640953532
+brain_stg,GSE144910,"superior temporal gyrus, every donor",DunedinPoAm38,3rd: pace of ageing,false,88,17.0,83.0,0.3179292108596619,
+brain_stg,GSE144910,"superior temporal gyrus, every donor",DunedinPACE,3rd: pace of ageing,false,88,17.0,83.0,0.2844936807105882,
+brain_stg,GSE144910,"superior temporal gyrus, every donor",DNAmClockCortical,other,false,88,17.0,83.0,0.9793917884387348,
+brain_stg,GSE144910,"superior temporal gyrus, every donor",VidalBralo,1st: chronological,false,88,17.0,83.0,0.3795006090934877,10.71265235958857
+brain_stg,GSE144910,"superior temporal gyrus, every donor",AlcoholMcCartney,other,false,88,17.0,83.0,-0.14250017943280316,
+brain_stg,GSE144910,"superior temporal gyrus, every donor",DNAmTL,other,false,88,17.0,83.0,-0.29782874335601905,
+brain_stg,GSE144910,"superior temporal gyrus, every donor",HRSInCHPhenoAge,2nd: phenotypic and mortality,false,88,17.0,83.0,0.8614897345150087,46.508579290393165
+brain_stg,GSE144910,"superior temporal gyrus, every donor",Knight,other,false,88,17.0,83.0,0.4997640075901659,
+brain_stg,GSE144910,"superior temporal gyrus, every donor",LeeControl,other,false,88,17.0,83.0,0.32014436667084434,
+brain_stg,GSE144910,"superior temporal gyrus, every donor",EpiTOC1,mitotic and stochastic,true,88,17.0,83.0,0.4487967873349086,
+brain_stg,GSE144910,"superior temporal gyrus, every donor",LeeRefinedRobust,other,false,88,17.0,83.0,0.5043434549386256,
+brain_stg,GSE144910,"superior temporal gyrus, every donor",LeeRobust,other,false,88,17.0,83.0,0.5358676238212053,
+brain_stg,GSE144910,"superior temporal gyrus, every donor",SmokingMcCartney,other,false,88,17.0,83.0,0.14674748410271196,
+brain_stg,GSE144910,"superior temporal gyrus, every donor",DownSyndrome,other,false,88,17.0,83.0,0.2984384885948868,
+brain_stg,GSE144910,"superior temporal gyrus, every donor",StocZ,mitotic and stochastic,false,88,17.0,83.0,0.9157146052164988,
+brain_stg,GSE144910,"superior temporal gyrus, every donor",BMI_McCartney,other,false,88,17.0,83.0,0.1867385587570247,
+brain_stg,GSE144910,"superior temporal gyrus, every donor",EducationMcCartney,other,false,88,17.0,83.0,0.02241731561009688,
+brain_stg,GSE144910,"superior temporal gyrus, every donor",TotalCholesterolMcCartney,other,false,88,17.0,83.0,0.11731839253698276,
+brain_stg,GSE144910,"superior temporal gyrus, every donor",HDLCholesterolMcCartney,other,false,88,17.0,83.0,-0.2762441071877362,
+brain_stg,GSE144910,"superior temporal gyrus, every donor",LDLCholesterolMcCartney,other,false,88,17.0,83.0,0.0697575406718622,
+brain_stg,GSE144910,"superior temporal gyrus, every donor",BodyFatMcCartney,other,false,88,17.0,83.0,0.04541206226699584,
+brain_stg,GSE144910,"superior temporal gyrus, every donor",BMI_Reed,other,false,88,17.0,83.0,0.11682292679166814,
+brain_stg,GSE144910,"superior temporal gyrus, every donor",StocP,mitotic and stochastic,false,88,17.0,83.0,0.5011540766658513,9.78057863604807
+brain_stg,GSE144910,"superior temporal gyrus, every donor",Mayne,other,false,88,17.0,83.0,0.048055843069107554,
+brain_stg,GSE144910,"superior temporal gyrus, every donor",ProstateCancerKirby,other,false,88,17.0,83.0,-0.3028175285951621,
+brain_stg,GSE144910,"superior temporal gyrus, every donor",CVD_Westerman,other,false,88,17.0,83.0,0.5399425119243133,
+brain_stg,GSE144910,"superior temporal gyrus, every donor",StocH,mitotic and stochastic,true,88,17.0,83.0,0.7974126292744292,12.907684517298364
+brain_stg,GSE144910,"superior temporal gyrus, every donor",DepressionBarbu,other,false,88,17.0,83.0,0.1895645601826487,
+brain_stg,GSE144910,"superior temporal gyrus, every donor",Weidner,1st: chronological,false,88,17.0,83.0,0.5575498668957705,45.26269480594944
+brain_stg,GSE144910,"superior temporal gyrus, every donor",Garagnani,1st: chronological,false,88,17.0,83.0,0.8390997146674245,47.61780025603895
+brain_stg,GSE144910,"superior temporal gyrus, every donor",Bocklandt,1st: chronological,false,88,17.0,83.0,-0.25295197286772364,
+brain_stg,GSE144910,"superior temporal gyrus, controls",Horvathv1,1st: chronological,true,44,17.0,82.0,0.9218739880317112,5.124892883702593
+brain_stg,GSE144910,"superior temporal gyrus, controls",Hannum,1st: chronological,false,44,17.0,82.0,0.9103439602129523,21.496535810387464
+brain_stg,GSE144910,"superior temporal gyrus, controls",Lin,1st: chronological,false,44,17.0,82.0,0.7825845265888633,20.313432217597978
+brain_stg,GSE144910,"superior temporal gyrus, controls",PhenoAge,2nd: phenotypic and mortality,false,44,17.0,82.0,0.7400727865275539,71.1650513782457
+brain_stg,GSE144910,"superior temporal gyrus, controls",YingDamAge,2nd: phenotypic and mortality,false,44,17.0,82.0,0.3544743103891135,8.108965819769509
+brain_stg,GSE144910,"superior temporal gyrus, controls",YingAdaptAge,2nd: phenotypic and mortality,false,44,17.0,82.0,0.7512732567108462,9.678605427123486
+brain_stg,GSE144910,"superior temporal gyrus, controls",Horvathv2,1st: chronological,true,44,17.0,82.0,0.938012893819442,21.515293472494918
+brain_stg,GSE144910,"superior temporal gyrus, controls",PEDBE,other,false,44,17.0,82.0,0.913407603057985,45.01099559734175
+brain_stg,GSE144910,"superior temporal gyrus, controls",DunedinPoAm38,3rd: pace of ageing,false,44,17.0,82.0,0.44254810941092865,
+brain_stg,GSE144910,"superior temporal gyrus, controls",DunedinPACE,3rd: pace of ageing,false,44,17.0,82.0,0.18523571863525784,
+brain_stg,GSE144910,"superior temporal gyrus, controls",DNAmClockCortical,other,false,44,17.0,82.0,0.9818675836587603,
+brain_stg,GSE144910,"superior temporal gyrus, controls",VidalBralo,1st: chronological,false,44,17.0,82.0,0.33990222942045467,11.239593130034017
+brain_stg,GSE144910,"superior temporal gyrus, controls",AlcoholMcCartney,other,false,44,17.0,82.0,-0.23717924988766081,
+brain_stg,GSE144910,"superior temporal gyrus, controls",DNAmTL,other,false,44,17.0,82.0,-0.35509211621645786,
+brain_stg,GSE144910,"superior temporal gyrus, controls",HRSInCHPhenoAge,2nd: phenotypic and mortality,false,44,17.0,82.0,0.8870527236280781,45.32196663610693
+brain_stg,GSE144910,"superior temporal gyrus, controls",Knight,other,false,44,17.0,82.0,0.6220359208833169,
+brain_stg,GSE144910,"superior temporal gyrus, controls",LeeControl,other,false,44,17.0,82.0,0.2543559540868017,
+brain_stg,GSE144910,"superior temporal gyrus, controls",EpiTOC1,mitotic and stochastic,true,44,17.0,82.0,0.578187856720901,
+brain_stg,GSE144910,"superior temporal gyrus, controls",LeeRefinedRobust,other,false,44,17.0,82.0,0.5121040112965678,
+brain_stg,GSE144910,"superior temporal gyrus, controls",LeeRobust,other,false,44,17.0,82.0,0.5500158376534781,
+brain_stg,GSE144910,"superior temporal gyrus, controls",SmokingMcCartney,other,false,44,17.0,82.0,0.23929917802168588,
+brain_stg,GSE144910,"superior temporal gyrus, controls",DownSyndrome,other,false,44,17.0,82.0,0.32062934149655065,
+brain_stg,GSE144910,"superior temporal gyrus, controls",StocZ,mitotic and stochastic,false,44,17.0,82.0,0.9095983948313949,
+brain_stg,GSE144910,"superior temporal gyrus, controls",BMI_McCartney,other,false,44,17.0,82.0,0.20878873896011108,
+brain_stg,GSE144910,"superior temporal gyrus, controls",EducationMcCartney,other,false,44,17.0,82.0,-0.030752319268546525,
+brain_stg,GSE144910,"superior temporal gyrus, controls",TotalCholesterolMcCartney,other,false,44,17.0,82.0,0.18469665122376497,
+brain_stg,GSE144910,"superior temporal gyrus, controls",HDLCholesterolMcCartney,other,false,44,17.0,82.0,-0.2926266521477552,
+brain_stg,GSE144910,"superior temporal gyrus, controls",LDLCholesterolMcCartney,other,false,44,17.0,82.0,0.12023870922192294,
+brain_stg,GSE144910,"superior temporal gyrus, controls",BodyFatMcCartney,other,false,44,17.0,82.0,0.2058990112223223,
+brain_stg,GSE144910,"superior temporal gyrus, controls",BMI_Reed,other,false,44,17.0,82.0,0.1506934170352495,
+brain_stg,GSE144910,"superior temporal gyrus, controls",StocP,mitotic and stochastic,false,44,17.0,82.0,0.6725846959958709,9.883569495766555
+brain_stg,GSE144910,"superior temporal gyrus, controls",Mayne,other,false,44,17.0,82.0,0.11501855053161944,
+brain_stg,GSE144910,"superior temporal gyrus, controls",ProstateCancerKirby,other,false,44,17.0,82.0,-0.32882055944874794,
+brain_stg,GSE144910,"superior temporal gyrus, controls",CVD_Westerman,other,false,44,17.0,82.0,0.44824944623055124,
+brain_stg,GSE144910,"superior temporal gyrus, controls",StocH,mitotic and stochastic,true,44,17.0,82.0,0.7879974012509698,13.449138819001298
+brain_stg,GSE144910,"superior temporal gyrus, controls",DepressionBarbu,other,false,44,17.0,82.0,0.1322833621815236,
+brain_stg,GSE144910,"superior temporal gyrus, controls",Weidner,1st: chronological,false,44,17.0,82.0,0.599702598868876,45.860904888826056
+brain_stg,GSE144910,"superior temporal gyrus, controls",Garagnani,1st: chronological,false,44,17.0,82.0,0.8364827773652804,49.59752634658849
+brain_stg,GSE144910,"superior temporal gyrus, controls",Bocklandt,1st: chronological,false,44,17.0,82.0,-0.2934097592187213,
 breast_cancer_free,GSE101961,"breast, cancer-free women",Horvathv1,1st: chronological,true,118,17.0,76.0,0.885084272092033,14.467876653453743
 breast_cancer_free,GSE101961,"breast, cancer-free women",Hannum,1st: chronological,false,118,17.0,76.0,0.7499315325710975,8.72878045549917
 breast_cancer_free,GSE101961,"breast, cancer-free women",Lin,1st: chronological,false,118,17.0,76.0,0.6977241359181392,7.041784552523721
@@ -329,6 +491,330 @@ breast_komen,GSE88883,"breast, healthy donors",Weidner,1st: chronological,false,
 breast_komen,GSE88883,"breast, healthy donors",Garagnani,1st: chronological,false,98,18.0,82.0,0.610227217319865,36.43310624843815
 breast_komen,GSE88883,"breast, healthy donors",Bohlin,other,false,98,18.0,82.0,-0.05084169631558262,
 breast_komen,GSE88883,"breast, healthy donors",Bocklandt,1st: chronological,false,98,18.0,82.0,-0.12681842580793473,
+colon_gse132804_450k,GSE132804,"normal colon, every donor",Horvathv1,1st: chronological,true,103,31.0,81.0,0.8661010693118986,3.801670677493803
+colon_gse132804_450k,GSE132804,"normal colon, every donor",Hannum,1st: chronological,false,103,31.0,81.0,0.36718564970489354,17.772692339756503
+colon_gse132804_450k,GSE132804,"normal colon, every donor",Lin,1st: chronological,false,103,31.0,81.0,0.5258495640040123,27.54108507443169
+colon_gse132804_450k,GSE132804,"normal colon, every donor",PhenoAge,2nd: phenotypic and mortality,false,103,31.0,81.0,0.4686282261903918,9.261019097727626
+colon_gse132804_450k,GSE132804,"normal colon, every donor",YingDamAge,2nd: phenotypic and mortality,false,103,31.0,81.0,0.40251127460346825,20.90854309987907
+colon_gse132804_450k,GSE132804,"normal colon, every donor",YingAdaptAge,2nd: phenotypic and mortality,false,103,31.0,81.0,0.3702546073221939,32.445295223287246
+colon_gse132804_450k,GSE132804,"normal colon, every donor",Horvathv2,1st: chronological,true,103,31.0,81.0,0.7319987151005395,12.519774166486883
+colon_gse132804_450k,GSE132804,"normal colon, every donor",PEDBE,other,false,103,31.0,81.0,0.7016785544320213,45.8910421648391
+colon_gse132804_450k,GSE132804,"normal colon, every donor",DunedinPoAm38,3rd: pace of ageing,false,103,31.0,81.0,-0.27248623585822485,
+colon_gse132804_450k,GSE132804,"normal colon, every donor",DunedinPACE,3rd: pace of ageing,false,103,31.0,81.0,0.14268736456208814,
+colon_gse132804_450k,GSE132804,"normal colon, every donor",DNAmClockCortical,other,false,103,31.0,81.0,0.5381492208847061,
+colon_gse132804_450k,GSE132804,"normal colon, every donor",VidalBralo,1st: chronological,false,103,31.0,81.0,0.12859499222674148,22.445977443477076
+colon_gse132804_450k,GSE132804,"normal colon, every donor",AlcoholMcCartney,other,false,103,31.0,81.0,-0.14532531198340293,
+colon_gse132804_450k,GSE132804,"normal colon, every donor",DNAmTL,other,false,103,31.0,81.0,-0.4122665465969944,
+colon_gse132804_450k,GSE132804,"normal colon, every donor",HRSInCHPhenoAge,2nd: phenotypic and mortality,false,103,31.0,81.0,0.5627596160835553,46.339953306474
+colon_gse132804_450k,GSE132804,"normal colon, every donor",Knight,other,false,103,31.0,81.0,0.17371882103552536,
+colon_gse132804_450k,GSE132804,"normal colon, every donor",LeeControl,other,false,103,31.0,81.0,0.06922415831283182,
+colon_gse132804_450k,GSE132804,"normal colon, every donor",EpiTOC1,mitotic and stochastic,true,103,31.0,81.0,0.3979166437923189,
+colon_gse132804_450k,GSE132804,"normal colon, every donor",LeeRefinedRobust,other,false,103,31.0,81.0,0.2496801771535046,
+colon_gse132804_450k,GSE132804,"normal colon, every donor",LeeRobust,other,false,103,31.0,81.0,0.2755725320973925,
+colon_gse132804_450k,GSE132804,"normal colon, every donor",SmokingMcCartney,other,false,103,31.0,81.0,-0.16815061778786192,
+colon_gse132804_450k,GSE132804,"normal colon, every donor",StocZ,mitotic and stochastic,false,103,31.0,81.0,0.41808515966260995,
+colon_gse132804_450k,GSE132804,"normal colon, every donor",BMI_McCartney,other,false,103,31.0,81.0,-0.0498543791421344,
+colon_gse132804_450k,GSE132804,"normal colon, every donor",EducationMcCartney,other,false,103,31.0,81.0,-0.05548086801538123,
+colon_gse132804_450k,GSE132804,"normal colon, every donor",TotalCholesterolMcCartney,other,false,103,31.0,81.0,0.002909114487893506,
+colon_gse132804_450k,GSE132804,"normal colon, every donor",HDLCholesterolMcCartney,other,false,103,31.0,81.0,-0.15901562145396314,
+colon_gse132804_450k,GSE132804,"normal colon, every donor",LDLCholesterolMcCartney,other,false,103,31.0,81.0,0.10181807915560175,
+colon_gse132804_450k,GSE132804,"normal colon, every donor",BodyFatMcCartney,other,false,103,31.0,81.0,-0.046635145578614624,
+colon_gse132804_450k,GSE132804,"normal colon, every donor",BMI_Reed,other,false,103,31.0,81.0,0.07115828102378086,
+colon_gse132804_450k,GSE132804,"normal colon, every donor",StocP,mitotic and stochastic,false,103,31.0,81.0,0.46272415014971324,10.929869298060595
+colon_gse132804_450k,GSE132804,"normal colon, every donor",Mayne,other,false,103,31.0,81.0,-0.11798201753185072,
+colon_gse132804_450k,GSE132804,"normal colon, every donor",ProstateCancerKirby,other,false,103,31.0,81.0,0.1015950193488948,
+colon_gse132804_450k,GSE132804,"normal colon, every donor",HepatoXu,other,false,103,31.0,81.0,-0.06938106097132145,
+colon_gse132804_450k,GSE132804,"normal colon, every donor",CVD_Westerman,other,false,103,31.0,81.0,0.1796444078398145,
+colon_gse132804_450k,GSE132804,"normal colon, every donor",StocH,mitotic and stochastic,true,103,31.0,81.0,0.5970484686030341,21.048143161075785
+colon_gse132804_450k,GSE132804,"normal colon, every donor",DepressionBarbu,other,false,103,31.0,81.0,0.12078838350337005,
+colon_gse132804_450k,GSE132804,"normal colon, every donor",Weidner,1st: chronological,false,103,31.0,81.0,0.34698475815574326,39.52774525403672
+colon_gse132804_450k,GSE132804,"normal colon, every donor",Garagnani,1st: chronological,false,103,31.0,81.0,0.47091221446121295,60.1863234345623
+colon_gse132804_450k,GSE132804,"normal colon, every donor",Bohlin,other,false,103,31.0,81.0,0.06067823542595458,
+colon_gse132804_450k,GSE132804,"normal colon, every donor",Bocklandt,1st: chronological,false,103,31.0,81.0,-0.1897108938046049,
+colon_gse132804_450k,GSE132804,"normal colon, low CRC risk",Horvathv1,1st: chronological,true,48,31.0,76.0,0.8446190497245891,4.5561849266041925
+colon_gse132804_450k,GSE132804,"normal colon, low CRC risk",Hannum,1st: chronological,false,48,31.0,76.0,0.6377600412247966,18.693115662113357
+colon_gse132804_450k,GSE132804,"normal colon, low CRC risk",Lin,1st: chronological,false,48,31.0,76.0,0.7038477684379012,28.202437751718286
+colon_gse132804_450k,GSE132804,"normal colon, low CRC risk",PhenoAge,2nd: phenotypic and mortality,false,48,31.0,76.0,0.7183577162949999,11.835339047333473
+colon_gse132804_450k,GSE132804,"normal colon, low CRC risk",YingDamAge,2nd: phenotypic and mortality,false,48,31.0,76.0,0.33592028844340704,25.035194389379654
+colon_gse132804_450k,GSE132804,"normal colon, low CRC risk",YingAdaptAge,2nd: phenotypic and mortality,false,48,31.0,76.0,0.5481852385480465,36.185026137882375
+colon_gse132804_450k,GSE132804,"normal colon, low CRC risk",Horvathv2,1st: chronological,true,48,31.0,76.0,0.8290579153075404,14.392046618590207
+colon_gse132804_450k,GSE132804,"normal colon, low CRC risk",PEDBE,other,false,48,31.0,76.0,0.7926435063962197,44.127668097599496
+colon_gse132804_450k,GSE132804,"normal colon, low CRC risk",DunedinPoAm38,3rd: pace of ageing,false,48,31.0,76.0,-0.3735857079035218,
+colon_gse132804_450k,GSE132804,"normal colon, low CRC risk",DunedinPACE,3rd: pace of ageing,false,48,31.0,76.0,0.23416475590671373,
+colon_gse132804_450k,GSE132804,"normal colon, low CRC risk",DNAmClockCortical,other,false,48,31.0,76.0,0.6243670043414606,
+colon_gse132804_450k,GSE132804,"normal colon, low CRC risk",VidalBralo,1st: chronological,false,48,31.0,76.0,0.25413882492500506,24.369700850537626
+colon_gse132804_450k,GSE132804,"normal colon, low CRC risk",AlcoholMcCartney,other,false,48,31.0,76.0,-0.10510457473844277,
+colon_gse132804_450k,GSE132804,"normal colon, low CRC risk",DNAmTL,other,false,48,31.0,76.0,-0.5468570962928982,
+colon_gse132804_450k,GSE132804,"normal colon, low CRC risk",HRSInCHPhenoAge,2nd: phenotypic and mortality,false,48,31.0,76.0,0.6262035801451582,48.388738852279225
+colon_gse132804_450k,GSE132804,"normal colon, low CRC risk",Knight,other,false,48,31.0,76.0,0.30130501695524103,
+colon_gse132804_450k,GSE132804,"normal colon, low CRC risk",LeeControl,other,false,48,31.0,76.0,0.037885834383397786,
+colon_gse132804_450k,GSE132804,"normal colon, low CRC risk",EpiTOC1,mitotic and stochastic,true,48,31.0,76.0,0.4291054346102953,
+colon_gse132804_450k,GSE132804,"normal colon, low CRC risk",LeeRefinedRobust,other,false,48,31.0,76.0,0.40496169627998924,
+colon_gse132804_450k,GSE132804,"normal colon, low CRC risk",LeeRobust,other,false,48,31.0,76.0,0.30741271336693876,
+colon_gse132804_450k,GSE132804,"normal colon, low CRC risk",SmokingMcCartney,other,false,48,31.0,76.0,-0.3812621539084791,
+colon_gse132804_450k,GSE132804,"normal colon, low CRC risk",StocZ,mitotic and stochastic,false,48,31.0,76.0,0.6938709024866355,
+colon_gse132804_450k,GSE132804,"normal colon, low CRC risk",BMI_McCartney,other,false,48,31.0,76.0,0.010810854677975141,
+colon_gse132804_450k,GSE132804,"normal colon, low CRC risk",EducationMcCartney,other,false,48,31.0,76.0,-0.16862053434932386,
+colon_gse132804_450k,GSE132804,"normal colon, low CRC risk",TotalCholesterolMcCartney,other,false,48,31.0,76.0,0.09183434189105613,
+colon_gse132804_450k,GSE132804,"normal colon, low CRC risk",HDLCholesterolMcCartney,other,false,48,31.0,76.0,-0.27630005495380566,
+colon_gse132804_450k,GSE132804,"normal colon, low CRC risk",LDLCholesterolMcCartney,other,false,48,31.0,76.0,0.23531643310666245,
+colon_gse132804_450k,GSE132804,"normal colon, low CRC risk",BodyFatMcCartney,other,false,48,31.0,76.0,-0.016075283492497736,
+colon_gse132804_450k,GSE132804,"normal colon, low CRC risk",BMI_Reed,other,false,48,31.0,76.0,0.21135554488616898,
+colon_gse132804_450k,GSE132804,"normal colon, low CRC risk",StocP,mitotic and stochastic,false,48,31.0,76.0,0.545826389513634,13.323411575388917
+colon_gse132804_450k,GSE132804,"normal colon, low CRC risk",Mayne,other,false,48,31.0,76.0,-0.05517230845496302,
+colon_gse132804_450k,GSE132804,"normal colon, low CRC risk",ProstateCancerKirby,other,false,48,31.0,76.0,0.021918965535539164,
+colon_gse132804_450k,GSE132804,"normal colon, low CRC risk",HepatoXu,other,false,48,31.0,76.0,-0.046970041386408666,
+colon_gse132804_450k,GSE132804,"normal colon, low CRC risk",CVD_Westerman,other,false,48,31.0,76.0,0.21912728236855336,
+colon_gse132804_450k,GSE132804,"normal colon, low CRC risk",StocH,mitotic and stochastic,true,48,31.0,76.0,0.616310406180895,23.27182462007877
+colon_gse132804_450k,GSE132804,"normal colon, low CRC risk",DepressionBarbu,other,false,48,31.0,76.0,-0.03885058753722371,
+colon_gse132804_450k,GSE132804,"normal colon, low CRC risk",Weidner,1st: chronological,false,48,31.0,76.0,0.581089603236046,41.33221245066246
+colon_gse132804_450k,GSE132804,"normal colon, low CRC risk",Garagnani,1st: chronological,false,48,31.0,76.0,0.7996743819797455,57.691752589661164
+colon_gse132804_450k,GSE132804,"normal colon, low CRC risk",Bohlin,other,false,48,31.0,76.0,0.09695708174872944,
+colon_gse132804_450k,GSE132804,"normal colon, low CRC risk",Bocklandt,1st: chronological,false,48,31.0,76.0,-0.13897936839000266,
+colon_gse132804_epic,GSE132804,"normal colon, every donor",Horvathv1,1st: chronological,true,206,19.0,85.0,0.8717138523538633,5.951658107795652
+colon_gse132804_epic,GSE132804,"normal colon, every donor",Hannum,1st: chronological,false,206,19.0,85.0,0.543282826605425,18.526548437097823
+colon_gse132804_epic,GSE132804,"normal colon, every donor",Lin,1st: chronological,false,206,19.0,85.0,0.6541013486964485,23.42757767472169
+colon_gse132804_epic,GSE132804,"normal colon, every donor",PhenoAge,2nd: phenotypic and mortality,false,206,19.0,85.0,0.6325436175690483,6.208974804709555
+colon_gse132804_epic,GSE132804,"normal colon, every donor",YingDamAge,2nd: phenotypic and mortality,false,206,19.0,85.0,0.49231653211115517,24.615944503316825
+colon_gse132804_epic,GSE132804,"normal colon, every donor",YingAdaptAge,2nd: phenotypic and mortality,false,206,19.0,85.0,0.5459625410048807,31.80192614177662
+colon_gse132804_epic,GSE132804,"normal colon, every donor",Horvathv2,1st: chronological,true,206,19.0,85.0,0.8236933462936195,7.6018309448778965
+colon_gse132804_epic,GSE132804,"normal colon, every donor",PEDBE,other,false,206,19.0,85.0,0.7662314966589949,45.57834642643144
+colon_gse132804_epic,GSE132804,"normal colon, every donor",DunedinPoAm38,3rd: pace of ageing,false,206,19.0,85.0,-0.33696107363516387,
+colon_gse132804_epic,GSE132804,"normal colon, every donor",DunedinPACE,3rd: pace of ageing,false,206,19.0,85.0,-0.07566569788542828,
+colon_gse132804_epic,GSE132804,"normal colon, every donor",DNAmClockCortical,other,false,206,19.0,85.0,0.7014294852580559,
+colon_gse132804_epic,GSE132804,"normal colon, every donor",VidalBralo,1st: chronological,false,206,19.0,85.0,0.2924649756719286,26.226089211448368
+colon_gse132804_epic,GSE132804,"normal colon, every donor",AlcoholMcCartney,other,false,206,19.0,85.0,-0.21884996477213214,
+colon_gse132804_epic,GSE132804,"normal colon, every donor",DNAmTL,other,false,206,19.0,85.0,-0.4583808706671675,
+colon_gse132804_epic,GSE132804,"normal colon, every donor",HRSInCHPhenoAge,2nd: phenotypic and mortality,false,206,19.0,85.0,0.7102126561888548,49.940437781543295
+colon_gse132804_epic,GSE132804,"normal colon, every donor",Knight,other,false,206,19.0,85.0,0.23997223691154584,
+colon_gse132804_epic,GSE132804,"normal colon, every donor",LeeControl,other,false,206,19.0,85.0,0.09774376423026007,
+colon_gse132804_epic,GSE132804,"normal colon, every donor",EpiTOC1,mitotic and stochastic,true,206,19.0,85.0,0.4745120302385975,
+colon_gse132804_epic,GSE132804,"normal colon, every donor",LeeRefinedRobust,other,false,206,19.0,85.0,0.2333430804204747,
+colon_gse132804_epic,GSE132804,"normal colon, every donor",LeeRobust,other,false,206,19.0,85.0,0.2334210401961081,
+colon_gse132804_epic,GSE132804,"normal colon, every donor",SmokingMcCartney,other,false,206,19.0,85.0,-0.2517187598122189,
+colon_gse132804_epic,GSE132804,"normal colon, every donor",StocZ,mitotic and stochastic,false,206,19.0,85.0,0.5904844401574251,
+colon_gse132804_epic,GSE132804,"normal colon, every donor",BMI_McCartney,other,false,206,19.0,85.0,0.0961163628602439,
+colon_gse132804_epic,GSE132804,"normal colon, every donor",EducationMcCartney,other,false,206,19.0,85.0,-0.12874663878016518,
+colon_gse132804_epic,GSE132804,"normal colon, every donor",TotalCholesterolMcCartney,other,false,206,19.0,85.0,0.09399414175788198,
+colon_gse132804_epic,GSE132804,"normal colon, every donor",HDLCholesterolMcCartney,other,false,206,19.0,85.0,-0.10540319381954995,
+colon_gse132804_epic,GSE132804,"normal colon, every donor",LDLCholesterolMcCartney,other,false,206,19.0,85.0,0.18634361450858986,
+colon_gse132804_epic,GSE132804,"normal colon, every donor",BodyFatMcCartney,other,false,206,19.0,85.0,-0.07705896461386383,
+colon_gse132804_epic,GSE132804,"normal colon, every donor",BMI_Reed,other,false,206,19.0,85.0,-0.005003980213227148,
+colon_gse132804_epic,GSE132804,"normal colon, every donor",StocP,mitotic and stochastic,false,206,19.0,85.0,0.5386668305533484,11.512824150622038
+colon_gse132804_epic,GSE132804,"normal colon, every donor",Mayne,other,false,206,19.0,85.0,-0.03545899837840008,
+colon_gse132804_epic,GSE132804,"normal colon, every donor",ProstateCancerKirby,other,false,206,19.0,85.0,0.06039185017935541,
+colon_gse132804_epic,GSE132804,"normal colon, every donor",HepatoXu,other,false,206,19.0,85.0,0.05725915877337825,
+colon_gse132804_epic,GSE132804,"normal colon, every donor",CVD_Westerman,other,false,206,19.0,85.0,0.3330617341869252,
+colon_gse132804_epic,GSE132804,"normal colon, every donor",StocH,mitotic and stochastic,true,206,19.0,85.0,0.711693250227433,19.723083173224936
+colon_gse132804_epic,GSE132804,"normal colon, every donor",DepressionBarbu,other,false,206,19.0,85.0,-0.06009589070002772,
+colon_gse132804_epic,GSE132804,"normal colon, every donor",Weidner,1st: chronological,false,206,19.0,85.0,0.5186673422264171,43.99042093030066
+colon_gse132804_epic,GSE132804,"normal colon, every donor",Garagnani,1st: chronological,false,206,19.0,85.0,0.5950320004743408,59.15167919849493
+colon_gse132804_epic,GSE132804,"normal colon, every donor",Bohlin,other,false,206,19.0,85.0,-0.007068068343882706,
+colon_gse132804_epic,GSE132804,"normal colon, every donor",Bocklandt,1st: chronological,false,206,19.0,85.0,-0.1976332672875234,
+colon_gse132804_epic,GSE132804,"normal colon, low CRC risk",Horvathv1,1st: chronological,true,57,19.0,81.0,0.9317899224658911,5.409300973867943
+colon_gse132804_epic,GSE132804,"normal colon, low CRC risk",Hannum,1st: chronological,false,57,19.0,81.0,0.7883843525666085,19.24353746762077
+colon_gse132804_epic,GSE132804,"normal colon, low CRC risk",Lin,1st: chronological,false,57,19.0,81.0,0.732747977461302,23.064389876025274
+colon_gse132804_epic,GSE132804,"normal colon, low CRC risk",PhenoAge,2nd: phenotypic and mortality,false,57,19.0,81.0,0.8716285956234984,7.013527207255187
+colon_gse132804_epic,GSE132804,"normal colon, low CRC risk",YingDamAge,2nd: phenotypic and mortality,false,57,19.0,81.0,0.6166628209960908,26.385145560926276
+colon_gse132804_epic,GSE132804,"normal colon, low CRC risk",YingAdaptAge,2nd: phenotypic and mortality,false,57,19.0,81.0,0.7413366235285423,31.418806000767972
+colon_gse132804_epic,GSE132804,"normal colon, low CRC risk",Horvathv2,1st: chronological,true,57,19.0,81.0,0.8902652056107094,7.927823307178215
+colon_gse132804_epic,GSE132804,"normal colon, low CRC risk",PEDBE,other,false,57,19.0,81.0,0.8056330557904102,44.47705054183214
+colon_gse132804_epic,GSE132804,"normal colon, low CRC risk",DunedinPoAm38,3rd: pace of ageing,false,57,19.0,81.0,-0.48332916002304244,
+colon_gse132804_epic,GSE132804,"normal colon, low CRC risk",DunedinPACE,3rd: pace of ageing,false,57,19.0,81.0,-0.14379908795238186,
+colon_gse132804_epic,GSE132804,"normal colon, low CRC risk",DNAmClockCortical,other,false,57,19.0,81.0,0.7766959835346157,
+colon_gse132804_epic,GSE132804,"normal colon, low CRC risk",VidalBralo,1st: chronological,false,57,19.0,81.0,0.4505977502002863,27.741980004457787
+colon_gse132804_epic,GSE132804,"normal colon, low CRC risk",AlcoholMcCartney,other,false,57,19.0,81.0,-0.25538865858426435,
+colon_gse132804_epic,GSE132804,"normal colon, low CRC risk",DNAmTL,other,false,57,19.0,81.0,-0.5081218115363706,
+colon_gse132804_epic,GSE132804,"normal colon, low CRC risk",HRSInCHPhenoAge,2nd: phenotypic and mortality,false,57,19.0,81.0,0.7881200983041129,51.5125541994003
+colon_gse132804_epic,GSE132804,"normal colon, low CRC risk",Knight,other,false,57,19.0,81.0,0.2974780637410311,
+colon_gse132804_epic,GSE132804,"normal colon, low CRC risk",LeeControl,other,false,57,19.0,81.0,0.17473694810151313,
+colon_gse132804_epic,GSE132804,"normal colon, low CRC risk",EpiTOC1,mitotic and stochastic,true,57,19.0,81.0,0.6073949983895569,
+colon_gse132804_epic,GSE132804,"normal colon, low CRC risk",LeeRefinedRobust,other,false,57,19.0,81.0,0.45715055259136744,
+colon_gse132804_epic,GSE132804,"normal colon, low CRC risk",LeeRobust,other,false,57,19.0,81.0,0.4525668712404324,
+colon_gse132804_epic,GSE132804,"normal colon, low CRC risk",SmokingMcCartney,other,false,57,19.0,81.0,-0.2795486248755558,
+colon_gse132804_epic,GSE132804,"normal colon, low CRC risk",StocZ,mitotic and stochastic,false,57,19.0,81.0,0.8164249502259754,
+colon_gse132804_epic,GSE132804,"normal colon, low CRC risk",BMI_McCartney,other,false,57,19.0,81.0,0.15554873598140084,
+colon_gse132804_epic,GSE132804,"normal colon, low CRC risk",EducationMcCartney,other,false,57,19.0,81.0,-0.278203429970052,
+colon_gse132804_epic,GSE132804,"normal colon, low CRC risk",TotalCholesterolMcCartney,other,false,57,19.0,81.0,0.1749204910553731,
+colon_gse132804_epic,GSE132804,"normal colon, low CRC risk",HDLCholesterolMcCartney,other,false,57,19.0,81.0,-0.1771317095595199,
+colon_gse132804_epic,GSE132804,"normal colon, low CRC risk",LDLCholesterolMcCartney,other,false,57,19.0,81.0,0.20572023932041758,
+colon_gse132804_epic,GSE132804,"normal colon, low CRC risk",BodyFatMcCartney,other,false,57,19.0,81.0,-0.009444595917905611,
+colon_gse132804_epic,GSE132804,"normal colon, low CRC risk",BMI_Reed,other,false,57,19.0,81.0,-0.16293546771722475,
+colon_gse132804_epic,GSE132804,"normal colon, low CRC risk",StocP,mitotic and stochastic,false,57,19.0,81.0,0.7304682307969772,12.631394186235738
+colon_gse132804_epic,GSE132804,"normal colon, low CRC risk",Mayne,other,false,57,19.0,81.0,-0.14900424872864762,
+colon_gse132804_epic,GSE132804,"normal colon, low CRC risk",ProstateCancerKirby,other,false,57,19.0,81.0,0.14988745770222364,
+colon_gse132804_epic,GSE132804,"normal colon, low CRC risk",HepatoXu,other,false,57,19.0,81.0,0.1016217649729854,
+colon_gse132804_epic,GSE132804,"normal colon, low CRC risk",CVD_Westerman,other,false,57,19.0,81.0,0.4759198597276034,
+colon_gse132804_epic,GSE132804,"normal colon, low CRC risk",StocH,mitotic and stochastic,true,57,19.0,81.0,0.846003098794193,19.959992819081577
+colon_gse132804_epic,GSE132804,"normal colon, low CRC risk",DepressionBarbu,other,false,57,19.0,81.0,0.03371352159087456,
+colon_gse132804_epic,GSE132804,"normal colon, low CRC risk",Weidner,1st: chronological,false,57,19.0,81.0,0.7684821307449172,44.15535817383113
+colon_gse132804_epic,GSE132804,"normal colon, low CRC risk",Garagnani,1st: chronological,false,57,19.0,81.0,0.8565456275394819,59.16424394222336
+colon_gse132804_epic,GSE132804,"normal colon, low CRC risk",Bohlin,other,false,57,19.0,81.0,-0.13268684369227657,
+colon_gse132804_epic,GSE132804,"normal colon, low CRC risk",Bocklandt,1st: chronological,false,57,19.0,81.0,-0.07766471816105018,
+colon_gse166427,GSE166427,"colon, healthy",Horvathv1,1st: chronological,true,48,35.0,88.0,0.885379766859267,3.6110333528083736
+colon_gse166427,GSE166427,"colon, healthy",Hannum,1st: chronological,false,48,35.0,88.0,0.7358147134040292,19.616444904715088
+colon_gse166427,GSE166427,"colon, healthy",Lin,1st: chronological,false,48,35.0,88.0,0.6703442870847794,24.87025155485987
+colon_gse166427,GSE166427,"colon, healthy",PhenoAge,2nd: phenotypic and mortality,false,48,35.0,88.0,0.7366398190060451,6.05875430334418
+colon_gse166427,GSE166427,"colon, healthy",YingCausAge,2nd: phenotypic and mortality,false,48,35.0,88.0,0.7484875975917984,24.05201599865419
+colon_gse166427,GSE166427,"colon, healthy",YingDamAge,2nd: phenotypic and mortality,false,48,35.0,88.0,0.46830055451182784,21.59384704111241
+colon_gse166427,GSE166427,"colon, healthy",YingAdaptAge,2nd: phenotypic and mortality,false,48,35.0,88.0,0.5299836608627538,33.896690895872126
+colon_gse166427,GSE166427,"colon, healthy",Horvathv2,1st: chronological,true,48,35.0,88.0,0.793007578381256,9.82474015947837
+colon_gse166427,GSE166427,"colon, healthy",PEDBE,other,false,48,35.0,88.0,0.7107111340288875,47.253124118192105
+colon_gse166427,GSE166427,"colon, healthy",Zhang_10,2nd: phenotypic and mortality,false,48,35.0,88.0,0.16223014861630777,
+colon_gse166427,GSE166427,"colon, healthy",DunedinPoAm38,3rd: pace of ageing,false,48,35.0,88.0,-0.23966142803332363,
+colon_gse166427,GSE166427,"colon, healthy",DunedinPACE,3rd: pace of ageing,false,48,35.0,88.0,-0.121843941079074,
+colon_gse166427,GSE166427,"colon, healthy",DNAmClockCortical,other,false,48,35.0,88.0,0.6477352062175605,
+colon_gse166427,GSE166427,"colon, healthy",VidalBralo,1st: chronological,false,48,35.0,88.0,0.5693877953179626,18.20284570519236
+colon_gse166427,GSE166427,"colon, healthy",AlcoholMcCartney,other,false,48,35.0,88.0,-0.1254032500321805,
+colon_gse166427,GSE166427,"colon, healthy",DNAmTL,other,false,48,35.0,88.0,-0.6554140414688217,
+colon_gse166427,GSE166427,"colon, healthy",HRSInCHPhenoAge,2nd: phenotypic and mortality,false,48,35.0,88.0,0.7172573808189847,46.94965204343572
+colon_gse166427,GSE166427,"colon, healthy",Knight,other,false,48,35.0,88.0,0.11203315042714813,
+colon_gse166427,GSE166427,"colon, healthy",LeeControl,other,false,48,35.0,88.0,0.12462244446793538,
+colon_gse166427,GSE166427,"colon, healthy",EpiTOC1,mitotic and stochastic,true,48,35.0,88.0,0.30150428463973994,
+colon_gse166427,GSE166427,"colon, healthy",LeeRefinedRobust,other,false,48,35.0,88.0,0.4029356343788103,
+colon_gse166427,GSE166427,"colon, healthy",LeeRobust,other,false,48,35.0,88.0,0.24255516547985406,
+colon_gse166427,GSE166427,"colon, healthy",SmokingMcCartney,other,false,48,35.0,88.0,-0.29363610370964155,
+colon_gse166427,GSE166427,"colon, healthy",StocZ,mitotic and stochastic,false,48,35.0,88.0,0.6441595412194264,
+colon_gse166427,GSE166427,"colon, healthy",BMI_McCartney,other,false,48,35.0,88.0,0.19798632594098314,
+colon_gse166427,GSE166427,"colon, healthy",EducationMcCartney,other,false,48,35.0,88.0,-0.3287095049806915,
+colon_gse166427,GSE166427,"colon, healthy",TotalCholesterolMcCartney,other,false,48,35.0,88.0,-0.10644107432194876,
+colon_gse166427,GSE166427,"colon, healthy",HDLCholesterolMcCartney,other,false,48,35.0,88.0,-0.2981642139797445,
+colon_gse166427,GSE166427,"colon, healthy",LDLCholesterolMcCartney,other,false,48,35.0,88.0,-0.07679579666728376,
+colon_gse166427,GSE166427,"colon, healthy",BodyFatMcCartney,other,false,48,35.0,88.0,0.031498425531877254,
+colon_gse166427,GSE166427,"colon, healthy",BMI_Reed,other,false,48,35.0,88.0,-0.32399292797523294,
+colon_gse166427,GSE166427,"colon, healthy",StocP,mitotic and stochastic,false,48,35.0,88.0,0.6339636580315015,13.42642337803374
+colon_gse166427,GSE166427,"colon, healthy",Mayne,other,false,48,35.0,88.0,-0.005815221260653437,
+colon_gse166427,GSE166427,"colon, healthy",ProstateCancerKirby,other,false,48,35.0,88.0,0.29729450434308313,
+colon_gse166427,GSE166427,"colon, healthy",CVD_Westerman,other,false,48,35.0,88.0,0.5123722859408972,
+colon_gse166427,GSE166427,"colon, healthy",StocH,mitotic and stochastic,true,48,35.0,88.0,0.7028798318753323,22.319561537362304
+colon_gse166427,GSE166427,"colon, healthy",DepressionBarbu,other,false,48,35.0,88.0,0.2697346243693419,
+colon_gse166427,GSE166427,"colon, healthy",Weidner,1st: chronological,false,48,35.0,88.0,0.7198549743928191,41.6389765144801
+colon_gse166427,GSE166427,"colon, healthy",Garagnani,1st: chronological,false,48,35.0,88.0,0.7860413647377482,62.20186526253002
+colon_gse166427,GSE166427,"colon, healthy",Bohlin,other,false,48,35.0,88.0,-0.06633279980474538,
+colon_gse166427,GSE166427,"colon, healthy",Bocklandt,1st: chronological,false,48,35.0,88.0,-0.08579596999851175,
+colon_gse166427,GSE166427,"colon, next to a tumour",Horvathv1,1st: chronological,true,95,43.0,87.0,0.7177880631171052,4.802055654802643
+colon_gse166427,GSE166427,"colon, next to a tumour",Hannum,1st: chronological,false,95,43.0,87.0,0.41893495854710333,15.46242107572111
+colon_gse166427,GSE166427,"colon, next to a tumour",Lin,1st: chronological,false,95,43.0,87.0,0.5616147030895928,20.81981749779085
+colon_gse166427,GSE166427,"colon, next to a tumour",PhenoAge,2nd: phenotypic and mortality,false,95,43.0,87.0,0.40316832036198147,5.26444199840455
+colon_gse166427,GSE166427,"colon, next to a tumour",YingCausAge,2nd: phenotypic and mortality,false,95,43.0,87.0,0.6131830840667518,20.79039875221099
+colon_gse166427,GSE166427,"colon, next to a tumour",YingDamAge,2nd: phenotypic and mortality,false,95,43.0,87.0,0.43990198854449175,12.617886259873387
+colon_gse166427,GSE166427,"colon, next to a tumour",YingAdaptAge,2nd: phenotypic and mortality,false,95,43.0,87.0,0.22625303827406587,32.34306048888135
+colon_gse166427,GSE166427,"colon, next to a tumour",Horvathv2,1st: chronological,true,95,43.0,87.0,0.7234688647887053,8.462042679068759
+colon_gse166427,GSE166427,"colon, next to a tumour",PEDBE,other,false,95,43.0,87.0,0.6560079982754982,54.90677692584312
+colon_gse166427,GSE166427,"colon, next to a tumour",Zhang_10,2nd: phenotypic and mortality,false,95,43.0,87.0,0.16045268793123812,
+colon_gse166427,GSE166427,"colon, next to a tumour",DunedinPoAm38,3rd: pace of ageing,false,95,43.0,87.0,-0.24669382969835824,
+colon_gse166427,GSE166427,"colon, next to a tumour",DunedinPACE,3rd: pace of ageing,false,95,43.0,87.0,-0.03987727606661891,
+colon_gse166427,GSE166427,"colon, next to a tumour",DNAmClockCortical,other,false,95,43.0,87.0,0.5549898583743471,
+colon_gse166427,GSE166427,"colon, next to a tumour",VidalBralo,1st: chronological,false,95,43.0,87.0,0.29318686177455566,11.752287060373405
+colon_gse166427,GSE166427,"colon, next to a tumour",AlcoholMcCartney,other,false,95,43.0,87.0,-0.2815072908482279,
+colon_gse166427,GSE166427,"colon, next to a tumour",DNAmTL,other,false,95,43.0,87.0,-0.3182094887126355,
+colon_gse166427,GSE166427,"colon, next to a tumour",HRSInCHPhenoAge,2nd: phenotypic and mortality,false,95,43.0,87.0,0.583910764222679,43.287868365858
+colon_gse166427,GSE166427,"colon, next to a tumour",Knight,other,false,95,43.0,87.0,-0.1107484612296715,
+colon_gse166427,GSE166427,"colon, next to a tumour",LeeControl,other,false,95,43.0,87.0,-0.08608519327099454,
+colon_gse166427,GSE166427,"colon, next to a tumour",EpiTOC1,mitotic and stochastic,true,95,43.0,87.0,0.25705950318237286,
+colon_gse166427,GSE166427,"colon, next to a tumour",LeeRefinedRobust,other,false,95,43.0,87.0,0.09590351606809801,
+colon_gse166427,GSE166427,"colon, next to a tumour",LeeRobust,other,false,95,43.0,87.0,0.16326417192801065,
+colon_gse166427,GSE166427,"colon, next to a tumour",SmokingMcCartney,other,false,95,43.0,87.0,-0.07742121587400166,
+colon_gse166427,GSE166427,"colon, next to a tumour",StocZ,mitotic and stochastic,false,95,43.0,87.0,0.46359554872834047,
+colon_gse166427,GSE166427,"colon, next to a tumour",BMI_McCartney,other,false,95,43.0,87.0,0.1324376325419882,
+colon_gse166427,GSE166427,"colon, next to a tumour",EducationMcCartney,other,false,95,43.0,87.0,-0.07973362472697738,
+colon_gse166427,GSE166427,"colon, next to a tumour",TotalCholesterolMcCartney,other,false,95,43.0,87.0,0.05409610618263851,
+colon_gse166427,GSE166427,"colon, next to a tumour",HDLCholesterolMcCartney,other,false,95,43.0,87.0,-0.3020093679197275,
+colon_gse166427,GSE166427,"colon, next to a tumour",LDLCholesterolMcCartney,other,false,95,43.0,87.0,0.09496813595809038,
+colon_gse166427,GSE166427,"colon, next to a tumour",BodyFatMcCartney,other,false,95,43.0,87.0,-0.00004808617007116291,
+colon_gse166427,GSE166427,"colon, next to a tumour",BMI_Reed,other,false,95,43.0,87.0,-0.19705551356884007,
+colon_gse166427,GSE166427,"colon, next to a tumour",StocP,mitotic and stochastic,false,95,43.0,87.0,0.4838235114780132,4.862835812237918
+colon_gse166427,GSE166427,"colon, next to a tumour",Mayne,other,false,95,43.0,87.0,-0.03934118442151752,
+colon_gse166427,GSE166427,"colon, next to a tumour",ProstateCancerKirby,other,false,95,43.0,87.0,0.09447200956540612,
+colon_gse166427,GSE166427,"colon, next to a tumour",CVD_Westerman,other,false,95,43.0,87.0,0.26929105077900817,
+colon_gse166427,GSE166427,"colon, next to a tumour",StocH,mitotic and stochastic,true,95,43.0,87.0,0.5933889822575714,16.66115220928208
+colon_gse166427,GSE166427,"colon, next to a tumour",DepressionBarbu,other,false,95,43.0,87.0,0.08546042925190143,
+colon_gse166427,GSE166427,"colon, next to a tumour",Weidner,1st: chronological,false,95,43.0,87.0,0.2505650520776448,36.16954104641118
+colon_gse166427,GSE166427,"colon, next to a tumour",Garagnani,1st: chronological,false,95,43.0,87.0,0.4584828238308639,70.21436948229429
+colon_gse166427,GSE166427,"colon, next to a tumour",Bohlin,other,false,95,43.0,87.0,-0.04282540304484056,
+colon_gse166427,GSE166427,"colon, next to a tumour",Bocklandt,1st: chronological,false,95,43.0,87.0,-0.09966507009574536,
+colon_gse199057,GSE199057,"colon, healthy",Horvathv1,1st: chronological,true,68,31.0,77.0,0.7277311508225918,3.0833069889819917
+colon_gse199057,GSE199057,"colon, healthy",Hannum,1st: chronological,false,68,31.0,77.0,0.5735734702258434,15.97852677376249
+colon_gse199057,GSE199057,"colon, healthy",Lin,1st: chronological,false,68,31.0,77.0,0.5628518789196869,18.366151231090974
+colon_gse199057,GSE199057,"colon, healthy",PhenoAge,2nd: phenotypic and mortality,false,68,31.0,77.0,0.6438739003497599,5.064523229712666
+colon_gse199057,GSE199057,"colon, healthy",YingDamAge,2nd: phenotypic and mortality,false,68,31.0,77.0,0.328382642406166,28.893876188024507
+colon_gse199057,GSE199057,"colon, healthy",YingAdaptAge,2nd: phenotypic and mortality,false,68,31.0,77.0,0.4591112106756023,27.080971976215395
+colon_gse199057,GSE199057,"colon, healthy",Horvathv2,1st: chronological,true,68,31.0,77.0,0.764762161383629,5.081638846604839
+colon_gse199057,GSE199057,"colon, healthy",PEDBE,other,false,68,31.0,77.0,0.741810555139075,42.820064609791515
+colon_gse199057,GSE199057,"colon, healthy",DunedinPoAm38,3rd: pace of ageing,false,68,31.0,77.0,0.011483588163815358,
+colon_gse199057,GSE199057,"colon, healthy",DunedinPACE,3rd: pace of ageing,false,68,31.0,77.0,-0.022355668300285556,
+colon_gse199057,GSE199057,"colon, healthy",DNAmClockCortical,other,false,68,31.0,77.0,0.5482808044058942,
+colon_gse199057,GSE199057,"colon, healthy",VidalBralo,1st: chronological,false,68,31.0,77.0,0.2500554330270121,26.180797498542894
+colon_gse199057,GSE199057,"colon, healthy",AlcoholMcCartney,other,false,68,31.0,77.0,-0.43082861776263603,
+colon_gse199057,GSE199057,"colon, healthy",DNAmTL,other,false,68,31.0,77.0,-0.42843064795029673,
+colon_gse199057,GSE199057,"colon, healthy",HRSInCHPhenoAge,2nd: phenotypic and mortality,false,68,31.0,77.0,0.6128412052240079,51.09454050152536
+colon_gse199057,GSE199057,"colon, healthy",Knight,other,false,68,31.0,77.0,0.3790028677318691,
+colon_gse199057,GSE199057,"colon, healthy",LeeControl,other,false,68,31.0,77.0,-0.0036686536248527655,
+colon_gse199057,GSE199057,"colon, healthy",EpiTOC1,mitotic and stochastic,true,68,31.0,77.0,0.4443502639664901,
+colon_gse199057,GSE199057,"colon, healthy",LeeRefinedRobust,other,false,68,31.0,77.0,0.12548751630204602,
+colon_gse199057,GSE199057,"colon, healthy",LeeRobust,other,false,68,31.0,77.0,0.15208760413286954,
+colon_gse199057,GSE199057,"colon, healthy",SmokingMcCartney,other,false,68,31.0,77.0,-0.26015845868218085,
+colon_gse199057,GSE199057,"colon, healthy",DownSyndrome,other,false,68,31.0,77.0,0.24274783331827327,
+colon_gse199057,GSE199057,"colon, healthy",StocZ,mitotic and stochastic,false,68,31.0,77.0,0.6065682482188927,
+colon_gse199057,GSE199057,"colon, healthy",BMI_McCartney,other,false,68,31.0,77.0,-0.024818944067208724,
+colon_gse199057,GSE199057,"colon, healthy",EducationMcCartney,other,false,68,31.0,77.0,-0.06722618625874775,
+colon_gse199057,GSE199057,"colon, healthy",TotalCholesterolMcCartney,other,false,68,31.0,77.0,0.2884953958013377,
+colon_gse199057,GSE199057,"colon, healthy",HDLCholesterolMcCartney,other,false,68,31.0,77.0,-0.3032018806437307,
+colon_gse199057,GSE199057,"colon, healthy",LDLCholesterolMcCartney,other,false,68,31.0,77.0,0.2043015691057084,
+colon_gse199057,GSE199057,"colon, healthy",BodyFatMcCartney,other,false,68,31.0,77.0,-0.20461092234936332,
+colon_gse199057,GSE199057,"colon, healthy",BMI_Reed,other,false,68,31.0,77.0,0.08845129692219526,
+colon_gse199057,GSE199057,"colon, healthy",StocP,mitotic and stochastic,false,68,31.0,77.0,0.4342525163119458,11.212912175108812
+colon_gse199057,GSE199057,"colon, healthy",Mayne,other,false,68,31.0,77.0,0.10088833956818789,
+colon_gse199057,GSE199057,"colon, healthy",ProstateCancerKirby,other,false,68,31.0,77.0,0.14590942309610241,
+colon_gse199057,GSE199057,"colon, healthy",HepatoXu,other,false,68,31.0,77.0,-0.03496575115785475,
+colon_gse199057,GSE199057,"colon, healthy",CVD_Westerman,other,false,68,31.0,77.0,0.09328111183214183,
+colon_gse199057,GSE199057,"colon, healthy",StocH,mitotic and stochastic,true,68,31.0,77.0,0.6368639729223079,18.23833219230859
+colon_gse199057,GSE199057,"colon, healthy",AD_Bahado-Singh,other,false,68,31.0,77.0,0.21841238603756885,
+colon_gse199057,GSE199057,"colon, healthy",DepressionBarbu,other,false,68,31.0,77.0,-0.08292567819317737,
+colon_gse199057,GSE199057,"colon, healthy",Weidner,1st: chronological,false,68,31.0,77.0,0.5597877968009656,37.64986040397708
+colon_gse199057,GSE199057,"colon, healthy",Garagnani,1st: chronological,false,68,31.0,77.0,0.5777208616905178,54.20470111833728
+colon_gse199057,GSE199057,"colon, healthy",Bocklandt,1st: chronological,false,68,31.0,77.0,-0.12953574948385174,
+colon_gse199057,GSE199057,"colon, next to a tumour",Horvathv1,1st: chronological,true,75,30.0,76.0,0.8095643483676123,3.5856048315703006
+colon_gse199057,GSE199057,"colon, next to a tumour",Hannum,1st: chronological,false,75,30.0,76.0,0.3768007697255213,10.563316280354286
+colon_gse199057,GSE199057,"colon, next to a tumour",Lin,1st: chronological,false,75,30.0,76.0,0.4618877533004338,14.394984504535202
+colon_gse199057,GSE199057,"colon, next to a tumour",PhenoAge,2nd: phenotypic and mortality,false,75,30.0,76.0,0.4678044141870809,5.481694293959734
+colon_gse199057,GSE199057,"colon, next to a tumour",YingDamAge,2nd: phenotypic and mortality,false,75,30.0,76.0,0.4485647029339839,28.275568684473797
+colon_gse199057,GSE199057,"colon, next to a tumour",YingAdaptAge,2nd: phenotypic and mortality,false,75,30.0,76.0,0.32123810954924326,17.80590012505317
+colon_gse199057,GSE199057,"colon, next to a tumour",Horvathv2,1st: chronological,true,75,30.0,76.0,0.7400640140495418,3.6722089122444004
+colon_gse199057,GSE199057,"colon, next to a tumour",PEDBE,other,false,75,30.0,76.0,0.7232493251838,45.58509532802171
+colon_gse199057,GSE199057,"colon, next to a tumour",DunedinPoAm38,3rd: pace of ageing,false,75,30.0,76.0,-0.1588704535473054,
+colon_gse199057,GSE199057,"colon, next to a tumour",DunedinPACE,3rd: pace of ageing,false,75,30.0,76.0,-0.07612192527998833,
+colon_gse199057,GSE199057,"colon, next to a tumour",DNAmClockCortical,other,false,75,30.0,76.0,0.5321282939108004,
+colon_gse199057,GSE199057,"colon, next to a tumour",VidalBralo,1st: chronological,false,75,30.0,76.0,0.277214215559802,22.695188953186886
+colon_gse199057,GSE199057,"colon, next to a tumour",AlcoholMcCartney,other,false,75,30.0,76.0,-0.18757589485074463,
+colon_gse199057,GSE199057,"colon, next to a tumour",DNAmTL,other,false,75,30.0,76.0,-0.5203405663630313,
+colon_gse199057,GSE199057,"colon, next to a tumour",HRSInCHPhenoAge,2nd: phenotypic and mortality,false,75,30.0,76.0,0.6602473961514631,46.646956759392054
+colon_gse199057,GSE199057,"colon, next to a tumour",Knight,other,false,75,30.0,76.0,0.12574978166514725,
+colon_gse199057,GSE199057,"colon, next to a tumour",LeeControl,other,false,75,30.0,76.0,0.14815280806660186,
+colon_gse199057,GSE199057,"colon, next to a tumour",EpiTOC1,mitotic and stochastic,true,75,30.0,76.0,0.26159606229254306,
+colon_gse199057,GSE199057,"colon, next to a tumour",LeeRefinedRobust,other,false,75,30.0,76.0,0.3148390318440981,
+colon_gse199057,GSE199057,"colon, next to a tumour",LeeRobust,other,false,75,30.0,76.0,0.36770112955913853,
+colon_gse199057,GSE199057,"colon, next to a tumour",SmokingMcCartney,other,false,75,30.0,76.0,-0.13500605079041483,
+colon_gse199057,GSE199057,"colon, next to a tumour",DownSyndrome,other,false,75,30.0,76.0,0.0018149100650973415,
+colon_gse199057,GSE199057,"colon, next to a tumour",StocZ,mitotic and stochastic,false,75,30.0,76.0,0.46585314565560487,
+colon_gse199057,GSE199057,"colon, next to a tumour",BMI_McCartney,other,false,75,30.0,76.0,0.3376424613219078,
+colon_gse199057,GSE199057,"colon, next to a tumour",EducationMcCartney,other,false,75,30.0,76.0,-0.10236459495888925,
+colon_gse199057,GSE199057,"colon, next to a tumour",TotalCholesterolMcCartney,other,false,75,30.0,76.0,0.06846894163934672,
+colon_gse199057,GSE199057,"colon, next to a tumour",HDLCholesterolMcCartney,other,false,75,30.0,76.0,-0.23252884648694727,
+colon_gse199057,GSE199057,"colon, next to a tumour",LDLCholesterolMcCartney,other,false,75,30.0,76.0,0.13407618204975133,
+colon_gse199057,GSE199057,"colon, next to a tumour",BodyFatMcCartney,other,false,75,30.0,76.0,0.25726447134032404,
+colon_gse199057,GSE199057,"colon, next to a tumour",BMI_Reed,other,false,75,30.0,76.0,0.23844519832779174,
+colon_gse199057,GSE199057,"colon, next to a tumour",StocP,mitotic and stochastic,false,75,30.0,76.0,0.41829783017212546,8.709648106474873
+colon_gse199057,GSE199057,"colon, next to a tumour",Mayne,other,false,75,30.0,76.0,0.09947870595725207,
+colon_gse199057,GSE199057,"colon, next to a tumour",ProstateCancerKirby,other,false,75,30.0,76.0,0.060729864039405175,
+colon_gse199057,GSE199057,"colon, next to a tumour",HepatoXu,other,false,75,30.0,76.0,0.03437468958312285,
+colon_gse199057,GSE199057,"colon, next to a tumour",CVD_Westerman,other,false,75,30.0,76.0,0.23999549941243356,
+colon_gse199057,GSE199057,"colon, next to a tumour",StocH,mitotic and stochastic,true,75,30.0,76.0,0.43091875940480456,13.75051153914086
+colon_gse199057,GSE199057,"colon, next to a tumour",AD_Bahado-Singh,other,false,75,30.0,76.0,0.12404328561404758,
+colon_gse199057,GSE199057,"colon, next to a tumour",DepressionBarbu,other,false,75,30.0,76.0,0.030530607669965158,
+colon_gse199057,GSE199057,"colon, next to a tumour",Weidner,1st: chronological,false,75,30.0,76.0,0.3255418065812238,31.9017681770015
+colon_gse199057,GSE199057,"colon, next to a tumour",Garagnani,1st: chronological,false,75,30.0,76.0,0.45838839689594785,56.379483455265365
+colon_gse199057,GSE199057,"colon, next to a tumour",Bocklandt,1st: chronological,false,75,30.0,76.0,0.0276303628290763,
 colon_mucosa,GSE101764,colon_mucosa,Horvathv1,1st: chronological,true,146,22.0,89.0,0.8661682225416467,3.4072855336196426
 colon_mucosa,GSE101764,colon_mucosa,Hannum,1st: chronological,false,146,22.0,89.0,0.5976068573948873,11.852939568661146
 colon_mucosa,GSE101764,colon_mucosa,Lin,1st: chronological,false,146,22.0,89.0,0.6509696321690398,16.763581308154663
@@ -369,6 +855,29 @@ colon_mucosa,GSE101764,colon_mucosa,Weidner,1st: chronological,false,146,22.0,89
 colon_mucosa,GSE101764,colon_mucosa,Garagnani,1st: chronological,false,146,22.0,89.0,0.604468853060668,63.24367715476396
 colon_mucosa,GSE101764,colon_mucosa,Bohlin,other,false,146,22.0,89.0,0.18192440204469226,
 colon_mucosa,GSE101764,colon_mucosa,Bocklandt,1st: chronological,false,146,22.0,89.0,-0.12471860204128978,
+epidermis_tapelift,GSE304036,epidermis (tape-lift),Horvathv1,1st: chronological,true,40,21.0,85.0,0.9194863227557796,6.458209222175073
+epidermis_tapelift,GSE304036,epidermis (tape-lift),Lin,1st: chronological,false,40,21.0,85.0,0.7116635979540603,12.488241849641309
+epidermis_tapelift,GSE304036,epidermis (tape-lift),PhenoAge,2nd: phenotypic and mortality,false,40,21.0,85.0,0.7687382188927063,14.115224315291105
+epidermis_tapelift,GSE304036,epidermis (tape-lift),YingAdaptAge,2nd: phenotypic and mortality,false,40,21.0,85.0,0.36665080345341144,63.8564763358587
+epidermis_tapelift,GSE304036,epidermis (tape-lift),Horvathv2,1st: chronological,true,40,21.0,85.0,0.8737737785265763,7.22373688041254
+epidermis_tapelift,GSE304036,epidermis (tape-lift),PEDBE,other,false,40,21.0,85.0,0.6074293591615504,35.71849927675487
+epidermis_tapelift,GSE304036,epidermis (tape-lift),DNAmClockCortical,other,false,40,21.0,85.0,0.8742013598920796,
+epidermis_tapelift,GSE304036,epidermis (tape-lift),VidalBralo,1st: chronological,false,40,21.0,85.0,0.437644258694591,29.186293480536854
+epidermis_tapelift,GSE304036,epidermis (tape-lift),HRSInCHPhenoAge,2nd: phenotypic and mortality,false,40,21.0,85.0,0.7157287523426078,42.69389832973636
+epidermis_tapelift,GSE304036,epidermis (tape-lift),Knight,other,false,40,21.0,85.0,0.34396289043002204,
+epidermis_tapelift,GSE304036,epidermis (tape-lift),EpiTOC1,mitotic and stochastic,true,40,21.0,85.0,0.5353740810265629,
+epidermis_tapelift,GSE304036,epidermis (tape-lift),LeeRefinedRobust,other,false,40,21.0,85.0,0.3524231209772076,
+epidermis_tapelift,GSE304036,epidermis (tape-lift),SmokingMcCartney,other,false,40,21.0,85.0,-0.2959377385767245,
+epidermis_tapelift,GSE304036,epidermis (tape-lift),StocZ,mitotic and stochastic,false,40,21.0,85.0,0.9401424308631783,
+epidermis_tapelift,GSE304036,epidermis (tape-lift),BMI_McCartney,other,false,40,21.0,85.0,-0.1909262322437813,
+epidermis_tapelift,GSE304036,epidermis (tape-lift),TotalCholesterolMcCartney,other,false,40,21.0,85.0,0.06266664622648198,
+epidermis_tapelift,GSE304036,epidermis (tape-lift),LDLCholesterolMcCartney,other,false,40,21.0,85.0,0.16562322085332,
+epidermis_tapelift,GSE304036,epidermis (tape-lift),BodyFatMcCartney,other,false,40,21.0,85.0,0.0648379828803126,
+epidermis_tapelift,GSE304036,epidermis (tape-lift),StocP,mitotic and stochastic,false,40,21.0,85.0,0.6255332863128948,18.669739553146883
+epidermis_tapelift,GSE304036,epidermis (tape-lift),Mayne,other,false,40,21.0,85.0,0.32690873172089135,
+epidermis_tapelift,GSE304036,epidermis (tape-lift),StocH,mitotic and stochastic,true,40,21.0,85.0,0.7770014640831729,15.495314217972577
+epidermis_tapelift,GSE304036,epidermis (tape-lift),Garagnani,1st: chronological,false,40,21.0,85.0,0.7946866497656404,48.260646613704125
+epidermis_tapelift,GSE304036,epidermis (tape-lift),Bocklandt,1st: chronological,false,40,21.0,85.0,-0.2956871651743637,
 kidney_normal,GSE79100,"kidney, normal",Horvathv1,1st: chronological,true,30,18.0,78.0,0.7486717216439669,5.59003403959251
 kidney_normal,GSE79100,"kidney, normal",Hannum,1st: chronological,false,30,18.0,78.0,0.7309673466600551,8.349690585073468
 kidney_normal,GSE79100,"kidney, normal",Lin,1st: chronological,false,30,18.0,78.0,0.7339113902950293,7.757998075497348
@@ -411,6 +920,43 @@ kidney_normal,GSE79100,"kidney, normal",Weidner,1st: chronological,false,30,18.0
 kidney_normal,GSE79100,"kidney, normal",Garagnani,1st: chronological,false,30,18.0,78.0,0.7164956923045424,57.314858566348924
 kidney_normal,GSE79100,"kidney, normal",Bohlin,other,false,30,18.0,78.0,0.16636049700080144,
 kidney_normal,GSE79100,"kidney, normal",Bocklandt,1st: chronological,false,30,18.0,78.0,-0.2449108048968465,
+liver_aatd,GSE119100,"liver (AATD), every donor",Horvathv1,1st: chronological,true,86,25.0,70.0,0.8337749538268924,3.8622021602984127
+liver_aatd,GSE119100,"liver (AATD), every donor",Hannum,1st: chronological,false,86,25.0,70.0,0.40112830435395797,17.663343414537152
+liver_aatd,GSE119100,"liver (AATD), every donor",Lin,1st: chronological,false,86,25.0,70.0,0.22917605614415992,55.25501178035075
+liver_aatd,GSE119100,"liver (AATD), every donor",PhenoAge,2nd: phenotypic and mortality,false,86,25.0,70.0,0.569236332058045,26.905524295721296
+liver_aatd,GSE119100,"liver (AATD), every donor",YingDamAge,2nd: phenotypic and mortality,false,86,25.0,70.0,0.195932109622435,7.852318695982916
+liver_aatd,GSE119100,"liver (AATD), every donor",YingAdaptAge,2nd: phenotypic and mortality,false,86,25.0,70.0,0.26233320968269686,45.85053150948583
+liver_aatd,GSE119100,"liver (AATD), every donor",Horvathv2,1st: chronological,true,86,25.0,70.0,0.43236710841252673,41.54731358700644
+liver_aatd,GSE119100,"liver (AATD), every donor",PEDBE,other,false,86,25.0,70.0,0.5327464402007226,43.345971280863864
+liver_aatd,GSE119100,"liver (AATD), every donor",DunedinPoAm38,3rd: pace of ageing,false,86,25.0,70.0,-0.14495251089288988,
+liver_aatd,GSE119100,"liver (AATD), every donor",DunedinPACE,3rd: pace of ageing,false,86,25.0,70.0,0.3055749820874231,
+liver_aatd,GSE119100,"liver (AATD), every donor",DNAmClockCortical,other,false,86,25.0,70.0,0.519854036326079,
+liver_aatd,GSE119100,"liver (AATD), every donor",VidalBralo,1st: chronological,false,86,25.0,70.0,0.04485639333046649,26.06850955870931
+liver_aatd,GSE119100,"liver (AATD), every donor",AlcoholMcCartney,other,false,86,25.0,70.0,-0.002753876170982215,
+liver_aatd,GSE119100,"liver (AATD), every donor",DNAmTL,other,false,86,25.0,70.0,-0.4954449916951806,
+liver_aatd,GSE119100,"liver (AATD), every donor",HRSInCHPhenoAge,2nd: phenotypic and mortality,false,86,25.0,70.0,0.5177853859463831,55.07697831452075
+liver_aatd,GSE119100,"liver (AATD), every donor",LeeControl,other,false,86,25.0,70.0,0.29984277970025464,
+liver_aatd,GSE119100,"liver (AATD), every donor",LeeRefinedRobust,other,false,86,25.0,70.0,0.27515558985817506,
+liver_aatd,GSE119100,"liver (AATD), every donor",LeeRobust,other,false,86,25.0,70.0,0.08316031776754836,
+liver_aatd,GSE119100,"liver (AATD), every donor",SmokingMcCartney,other,false,86,25.0,70.0,-0.11226927303469583,
+liver_aatd,GSE119100,"liver (AATD), every donor",DownSyndrome,other,false,86,25.0,70.0,-0.025650476367807533,
+liver_aatd,GSE119100,"liver (AATD), every donor",StocZ,mitotic and stochastic,false,86,25.0,70.0,0.4277952398570884,
+liver_aatd,GSE119100,"liver (AATD), every donor",BMI_McCartney,other,false,86,25.0,70.0,-0.007300062230420602,
+liver_aatd,GSE119100,"liver (AATD), every donor",EducationMcCartney,other,false,86,25.0,70.0,-0.10838756306660531,
+liver_aatd,GSE119100,"liver (AATD), every donor",TotalCholesterolMcCartney,other,false,86,25.0,70.0,0.07346597726447972,
+liver_aatd,GSE119100,"liver (AATD), every donor",HDLCholesterolMcCartney,other,false,86,25.0,70.0,-0.0025052789534541786,
+liver_aatd,GSE119100,"liver (AATD), every donor",LDLCholesterolMcCartney,other,false,86,25.0,70.0,0.088556769706427,
+liver_aatd,GSE119100,"liver (AATD), every donor",BodyFatMcCartney,other,false,86,25.0,70.0,-0.005701543153019923,
+liver_aatd,GSE119100,"liver (AATD), every donor",BMI_Reed,other,false,86,25.0,70.0,0.15791647858573912,
+liver_aatd,GSE119100,"liver (AATD), every donor",StocP,mitotic and stochastic,false,86,25.0,70.0,0.19423731571911113,20.196105496828277
+liver_aatd,GSE119100,"liver (AATD), every donor",Mayne,other,false,86,25.0,70.0,0.058575357007898426,
+liver_aatd,GSE119100,"liver (AATD), every donor",ProstateCancerKirby,other,false,86,25.0,70.0,0.10150575642182205,
+liver_aatd,GSE119100,"liver (AATD), every donor",StocH,mitotic and stochastic,true,86,25.0,70.0,0.4179838342544633,14.80760684880184
+liver_aatd,GSE119100,"liver (AATD), every donor",AD_Bahado-Singh,other,false,86,25.0,70.0,-0.0665945713568275,
+liver_aatd,GSE119100,"liver (AATD), every donor",DepressionBarbu,other,false,86,25.0,70.0,0.1186086796745291,
+liver_aatd,GSE119100,"liver (AATD), every donor",Weidner,1st: chronological,false,86,25.0,70.0,0.4635675685343589,9.042722489001804
+liver_aatd,GSE119100,"liver (AATD), every donor",Garagnani,1st: chronological,false,86,25.0,70.0,0.37837572384888696,55.27337292151135
+liver_aatd,GSE119100,"liver (AATD), every donor",Bocklandt,1st: chronological,false,86,25.0,70.0,-0.31158007476113014,
 lung_450k,GSE314841,lung,Horvathv1,1st: chronological,true,114,39.0,82.0,0.8542000368230506,4.445902620124986
 lung_450k,GSE314841,lung,Hannum,1st: chronological,false,114,39.0,82.0,0.8357052101434257,3.8913690094211546
 lung_450k,GSE314841,lung,Lin,1st: chronological,false,114,39.0,82.0,0.8693191198120227,10.204160084923267
@@ -995,6 +1541,164 @@ neurons,GSE112179,"neurons, controls",DepressionBarbu,other,false,28,31.0,68.0,0
 neurons,GSE112179,"neurons, controls",Weidner,1st: chronological,false,28,31.0,68.0,0.19231154602366993,54.18490200779608
 neurons,GSE112179,"neurons, controls",Garagnani,1st: chronological,false,28,31.0,68.0,0.7237113271692427,48.78379556443822
 neurons,GSE112179,"neurons, controls",Bocklandt,1st: chronological,false,28,31.0,68.0,-0.11781307088141967,
+neurons_parietal,GSE267937,"neurons (parietal), every donor",Horvathv1,1st: chronological,true,84,53.0,95.0,0.6469033413353571,13.974873204530894
+neurons_parietal,GSE267937,"neurons (parietal), every donor",Hannum,1st: chronological,false,84,53.0,95.0,0.2732233245675209,46.0073633234653
+neurons_parietal,GSE267937,"neurons (parietal), every donor",Lin,1st: chronological,false,84,53.0,95.0,0.18834756788774895,53.24287596212119
+neurons_parietal,GSE267937,"neurons (parietal), every donor",PhenoAge,2nd: phenotypic and mortality,false,84,53.0,95.0,0.29276359359230497,101.8493977448856
+neurons_parietal,GSE267937,"neurons (parietal), every donor",YingDamAge,2nd: phenotypic and mortality,false,84,53.0,95.0,0.01591297473291279,49.07975532377341
+neurons_parietal,GSE267937,"neurons (parietal), every donor",YingAdaptAge,2nd: phenotypic and mortality,false,84,53.0,95.0,0.27504062247592187,20.037888938932824
+neurons_parietal,GSE267937,"neurons (parietal), every donor",Horvathv2,1st: chronological,true,84,53.0,95.0,0.2457320725054818,50.71933181767328
+neurons_parietal,GSE267937,"neurons (parietal), every donor",PEDBE,other,false,84,53.0,95.0,0.2887794973330705,75.76539008435536
+neurons_parietal,GSE267937,"neurons (parietal), every donor",DunedinPoAm38,3rd: pace of ageing,false,84,53.0,95.0,-0.03738077160410586,
+neurons_parietal,GSE267937,"neurons (parietal), every donor",DunedinPACE,3rd: pace of ageing,false,84,53.0,95.0,-0.04743187758107643,
+neurons_parietal,GSE267937,"neurons (parietal), every donor",DNAmClockCortical,other,true,84,53.0,95.0,0.6924928729518871,
+neurons_parietal,GSE267937,"neurons (parietal), every donor",VidalBralo,1st: chronological,false,84,53.0,95.0,-0.07948548534126715,38.70474419097057
+neurons_parietal,GSE267937,"neurons (parietal), every donor",AlcoholMcCartney,other,false,84,53.0,95.0,-0.1628570531484168,
+neurons_parietal,GSE267937,"neurons (parietal), every donor",DNAmTL,other,false,84,53.0,95.0,-0.027610583035019523,
+neurons_parietal,GSE267937,"neurons (parietal), every donor",HRSInCHPhenoAge,2nd: phenotypic and mortality,false,84,53.0,95.0,0.16740156474723883,11.61524299598618
+neurons_parietal,GSE267937,"neurons (parietal), every donor",Knight,other,false,84,53.0,95.0,0.16332793556389916,
+neurons_parietal,GSE267937,"neurons (parietal), every donor",LeeControl,other,false,84,53.0,95.0,0.09487216332142429,
+neurons_parietal,GSE267937,"neurons (parietal), every donor",EpiTOC1,mitotic and stochastic,true,84,53.0,95.0,0.1552147113482758,
+neurons_parietal,GSE267937,"neurons (parietal), every donor",LeeRefinedRobust,other,false,84,53.0,95.0,-0.10343792101985877,
+neurons_parietal,GSE267937,"neurons (parietal), every donor",LeeRobust,other,false,84,53.0,95.0,-0.04862062672706042,
+neurons_parietal,GSE267937,"neurons (parietal), every donor",SmokingMcCartney,other,false,84,53.0,95.0,-0.014187995574213423,
+neurons_parietal,GSE267937,"neurons (parietal), every donor",DownSyndrome,other,false,84,53.0,95.0,0.08795194455079287,
+neurons_parietal,GSE267937,"neurons (parietal), every donor",StocZ,mitotic and stochastic,false,84,53.0,95.0,0.21322671063040508,
+neurons_parietal,GSE267937,"neurons (parietal), every donor",BMI_McCartney,other,false,84,53.0,95.0,-0.10424106656344514,
+neurons_parietal,GSE267937,"neurons (parietal), every donor",EducationMcCartney,other,false,84,53.0,95.0,-0.08586156284899422,
+neurons_parietal,GSE267937,"neurons (parietal), every donor",TotalCholesterolMcCartney,other,false,84,53.0,95.0,-0.19412724334279077,
+neurons_parietal,GSE267937,"neurons (parietal), every donor",HDLCholesterolMcCartney,other,false,84,53.0,95.0,0.13614309996903948,
+neurons_parietal,GSE267937,"neurons (parietal), every donor",LDLCholesterolMcCartney,other,false,84,53.0,95.0,-0.31423028251538193,
+neurons_parietal,GSE267937,"neurons (parietal), every donor",BodyFatMcCartney,other,false,84,53.0,95.0,0.14104010187662216,
+neurons_parietal,GSE267937,"neurons (parietal), every donor",StocP,mitotic and stochastic,false,84,53.0,95.0,0.321316917481906,48.26336211908764
+neurons_parietal,GSE267937,"neurons (parietal), every donor",Mayne,other,false,84,53.0,95.0,-0.02278248002235253,
+neurons_parietal,GSE267937,"neurons (parietal), every donor",ProstateCancerKirby,other,false,84,53.0,95.0,-0.12679596917606287,
+neurons_parietal,GSE267937,"neurons (parietal), every donor",StocH,mitotic and stochastic,true,84,53.0,95.0,0.3894357719349271,33.167345855772275
+neurons_parietal,GSE267937,"neurons (parietal), every donor",DepressionBarbu,other,false,84,53.0,95.0,0.012588443111155609,
+neurons_parietal,GSE267937,"neurons (parietal), every donor",Weidner,1st: chronological,false,84,53.0,95.0,0.14424822801292606,77.17806977406013
+neurons_parietal,GSE267937,"neurons (parietal), every donor",Garagnani,1st: chronological,false,84,53.0,95.0,0.16679453930962693,80.64304625235658
+neurons_parietal,GSE267937,"neurons (parietal), every donor",Bocklandt,1st: chronological,false,84,53.0,95.0,-0.15596557493004704,
+neurons_parietal,GSE267937,"neurons (parietal), controls",Horvathv1,1st: chronological,true,38,53.0,95.0,0.7088252896438808,14.99854066115087
+neurons_parietal,GSE267937,"neurons (parietal), controls",Hannum,1st: chronological,false,38,53.0,95.0,0.26031127131108744,46.86169237422297
+neurons_parietal,GSE267937,"neurons (parietal), controls",Lin,1st: chronological,false,38,53.0,95.0,0.2833889595790654,53.24287596212119
+neurons_parietal,GSE267937,"neurons (parietal), controls",PhenoAge,2nd: phenotypic and mortality,false,38,53.0,95.0,0.37099347373854613,102.84311686122953
+neurons_parietal,GSE267937,"neurons (parietal), controls",YingDamAge,2nd: phenotypic and mortality,false,38,53.0,95.0,0.01347323685665822,50.71968033203228
+neurons_parietal,GSE267937,"neurons (parietal), controls",YingAdaptAge,2nd: phenotypic and mortality,false,38,53.0,95.0,0.31059017604074984,20.644961164837994
+neurons_parietal,GSE267937,"neurons (parietal), controls",Horvathv2,1st: chronological,true,38,53.0,95.0,0.3390523627415883,50.65363603750552
+neurons_parietal,GSE267937,"neurons (parietal), controls",PEDBE,other,false,38,53.0,95.0,0.4175640221362359,76.05249704224781
+neurons_parietal,GSE267937,"neurons (parietal), controls",DunedinPoAm38,3rd: pace of ageing,false,38,53.0,95.0,0.0010028847768657491,
+neurons_parietal,GSE267937,"neurons (parietal), controls",DunedinPACE,3rd: pace of ageing,false,38,53.0,95.0,0.0902189624730713,
+neurons_parietal,GSE267937,"neurons (parietal), controls",DNAmClockCortical,other,true,38,53.0,95.0,0.7881111435318763,
+neurons_parietal,GSE267937,"neurons (parietal), controls",VidalBralo,1st: chronological,false,38,53.0,95.0,0.1466173406016985,39.60210705304466
+neurons_parietal,GSE267937,"neurons (parietal), controls",AlcoholMcCartney,other,false,38,53.0,95.0,-0.20173789423182462,
+neurons_parietal,GSE267937,"neurons (parietal), controls",DNAmTL,other,false,38,53.0,95.0,-0.15034854837331446,
+neurons_parietal,GSE267937,"neurons (parietal), controls",HRSInCHPhenoAge,2nd: phenotypic and mortality,false,38,53.0,95.0,0.257328191397028,11.858800404042846
+neurons_parietal,GSE267937,"neurons (parietal), controls",Knight,other,false,38,53.0,95.0,0.15338685792783954,
+neurons_parietal,GSE267937,"neurons (parietal), controls",LeeControl,other,false,38,53.0,95.0,0.10762426843804197,
+neurons_parietal,GSE267937,"neurons (parietal), controls",EpiTOC1,mitotic and stochastic,true,38,53.0,95.0,0.30653234400694984,
+neurons_parietal,GSE267937,"neurons (parietal), controls",LeeRefinedRobust,other,false,38,53.0,95.0,-0.02427689333299915,
+neurons_parietal,GSE267937,"neurons (parietal), controls",LeeRobust,other,false,38,53.0,95.0,-0.13160815846875273,
+neurons_parietal,GSE267937,"neurons (parietal), controls",SmokingMcCartney,other,false,38,53.0,95.0,0.07892054041674923,
+neurons_parietal,GSE267937,"neurons (parietal), controls",DownSyndrome,other,false,38,53.0,95.0,0.006201603883087284,
+neurons_parietal,GSE267937,"neurons (parietal), controls",StocZ,mitotic and stochastic,false,38,53.0,95.0,0.25543480308765615,
+neurons_parietal,GSE267937,"neurons (parietal), controls",BMI_McCartney,other,false,38,53.0,95.0,-0.22670970261558793,
+neurons_parietal,GSE267937,"neurons (parietal), controls",EducationMcCartney,other,false,38,53.0,95.0,-0.057282476457345056,
+neurons_parietal,GSE267937,"neurons (parietal), controls",TotalCholesterolMcCartney,other,false,38,53.0,95.0,-0.18051416106953305,
+neurons_parietal,GSE267937,"neurons (parietal), controls",HDLCholesterolMcCartney,other,false,38,53.0,95.0,0.21632565452463826,
+neurons_parietal,GSE267937,"neurons (parietal), controls",LDLCholesterolMcCartney,other,false,38,53.0,95.0,-0.32044028947927855,
+neurons_parietal,GSE267937,"neurons (parietal), controls",BodyFatMcCartney,other,false,38,53.0,95.0,-0.045016372533069164,
+neurons_parietal,GSE267937,"neurons (parietal), controls",StocP,mitotic and stochastic,false,38,53.0,95.0,0.5387343195636146,48.75940668874054
+neurons_parietal,GSE267937,"neurons (parietal), controls",Mayne,other,false,38,53.0,95.0,-0.04851230075726135,
+neurons_parietal,GSE267937,"neurons (parietal), controls",ProstateCancerKirby,other,false,38,53.0,95.0,-0.36276456020372233,
+neurons_parietal,GSE267937,"neurons (parietal), controls",StocH,mitotic and stochastic,true,38,53.0,95.0,0.39698894827370657,33.64391159253842
+neurons_parietal,GSE267937,"neurons (parietal), controls",DepressionBarbu,other,false,38,53.0,95.0,0.13873073880455633,
+neurons_parietal,GSE267937,"neurons (parietal), controls",Weidner,1st: chronological,false,38,53.0,95.0,0.28960631308043433,77.94256920058407
+neurons_parietal,GSE267937,"neurons (parietal), controls",Garagnani,1st: chronological,false,38,53.0,95.0,0.3028539170689258,81.62246894044556
+neurons_parietal,GSE267937,"neurons (parietal), controls",Bocklandt,1st: chronological,false,38,53.0,95.0,-0.2830568695605819,
+retina_amd,GSE231536,"retina, every donor",Horvathv1,1st: chronological,true,106,36.0,102.0,0.033168223450856814,57.73995702386473
+retina_amd,GSE231536,"retina, every donor",Hannum,1st: chronological,false,106,36.0,102.0,0.22045744113696614,67.11108453704588
+retina_amd,GSE231536,"retina, every donor",Lin,1st: chronological,false,106,36.0,102.0,-0.31491771913561784,82.48330048652826
+retina_amd,GSE231536,"retina, every donor",PhenoAge,2nd: phenotypic and mortality,false,106,36.0,102.0,-0.2894039149382129,161.99098141751628
+retina_amd,GSE231536,"retina, every donor",YingDamAge,2nd: phenotypic and mortality,false,106,36.0,102.0,-0.3590675442741076,135.4177633144171
+retina_amd,GSE231536,"retina, every donor",YingAdaptAge,2nd: phenotypic and mortality,false,106,36.0,102.0,0.4402089346106424,40.316727174326715
+retina_amd,GSE231536,"retina, every donor",Horvathv2,1st: chronological,true,106,36.0,102.0,-0.34198790443008215,80.38607172399392
+retina_amd,GSE231536,"retina, every donor",PEDBE,other,false,106,36.0,102.0,-0.33939049681647365,80.10580094708996
+retina_amd,GSE231536,"retina, every donor",DunedinPoAm38,3rd: pace of ageing,false,106,36.0,102.0,-0.24419164290929582,
+retina_amd,GSE231536,"retina, every donor",DunedinPACE,3rd: pace of ageing,false,106,36.0,102.0,-0.2671357864822063,
+retina_amd,GSE231536,"retina, every donor",DNAmClockCortical,other,false,106,36.0,102.0,-0.04682039330558159,
+retina_amd,GSE231536,"retina, every donor",VidalBralo,1st: chronological,false,106,36.0,102.0,-0.486047346148984,61.128933806109366
+retina_amd,GSE231536,"retina, every donor",AlcoholMcCartney,other,false,106,36.0,102.0,0.3353883255834932,
+retina_amd,GSE231536,"retina, every donor",DNAmTL,other,false,106,36.0,102.0,0.37171566587114,
+retina_amd,GSE231536,"retina, every donor",HRSInCHPhenoAge,2nd: phenotypic and mortality,false,106,36.0,102.0,-0.211467413161173,28.912806957742077
+retina_amd,GSE231536,"retina, every donor",Knight,other,false,106,36.0,102.0,-0.29274618752363135,
+retina_amd,GSE231536,"retina, every donor",LeeControl,other,false,106,36.0,102.0,-0.406808840390536,
+retina_amd,GSE231536,"retina, every donor",EpiTOC1,mitotic and stochastic,true,106,36.0,102.0,0.05824403394369989,
+retina_amd,GSE231536,"retina, every donor",LeeRefinedRobust,other,false,106,36.0,102.0,-0.4454052636168788,
+retina_amd,GSE231536,"retina, every donor",LeeRobust,other,false,106,36.0,102.0,-0.44195967915251005,
+retina_amd,GSE231536,"retina, every donor",SmokingMcCartney,other,false,106,36.0,102.0,-0.34682713817393945,
+retina_amd,GSE231536,"retina, every donor",DownSyndrome,other,false,106,36.0,102.0,0.4096896199863635,
+retina_amd,GSE231536,"retina, every donor",StocZ,mitotic and stochastic,false,106,36.0,102.0,-0.21234805040168306,
+retina_amd,GSE231536,"retina, every donor",BMI_McCartney,other,false,106,36.0,102.0,-0.38942403065849485,
+retina_amd,GSE231536,"retina, every donor",EducationMcCartney,other,false,106,36.0,102.0,-0.4847770881132782,
+retina_amd,GSE231536,"retina, every donor",TotalCholesterolMcCartney,other,false,106,36.0,102.0,0.018823035321628163,
+retina_amd,GSE231536,"retina, every donor",HDLCholesterolMcCartney,other,false,106,36.0,102.0,0.36241136223268444,
+retina_amd,GSE231536,"retina, every donor",LDLCholesterolMcCartney,other,false,106,36.0,102.0,-0.4727374398518162,
+retina_amd,GSE231536,"retina, every donor",BodyFatMcCartney,other,false,106,36.0,102.0,-0.45659444405527033,
+retina_amd,GSE231536,"retina, every donor",BMI_Reed,other,false,106,36.0,102.0,-0.4196189019235644,
+retina_amd,GSE231536,"retina, every donor",StocP,mitotic and stochastic,false,106,36.0,102.0,-0.3617051992735027,86.77967812220645
+retina_amd,GSE231536,"retina, every donor",Mayne,other,false,106,36.0,102.0,-0.4018623494315236,
+retina_amd,GSE231536,"retina, every donor",ProstateCancerKirby,other,false,106,36.0,102.0,-0.3025495252026502,
+retina_amd,GSE231536,"retina, every donor",HepatoXu,other,false,106,36.0,102.0,-0.2194065177180646,
+retina_amd,GSE231536,"retina, every donor",CVD_Westerman,other,false,106,36.0,102.0,-0.1639476906160927,
+retina_amd,GSE231536,"retina, every donor",StocH,mitotic and stochastic,true,106,36.0,102.0,-0.2603572804764316,94.39315516985617
+retina_amd,GSE231536,"retina, every donor",AD_Bahado-Singh,other,false,106,36.0,102.0,-0.25036889375572835,
+retina_amd,GSE231536,"retina, every donor",DepressionBarbu,other,false,106,36.0,102.0,-0.39523670073336575,
+retina_amd,GSE231536,"retina, every donor",Weidner,1st: chronological,false,106,36.0,102.0,-0.3772308376108156,84.10282614650797
+retina_amd,GSE231536,"retina, every donor",Garagnani,1st: chronological,false,106,36.0,102.0,-0.03462842230968847,80.80035800749044
+retina_amd,GSE231536,"retina, every donor",Bohlin,other,false,106,36.0,102.0,-0.38374763718136545,
+retina_amd,GSE231536,"retina, every donor",Bocklandt,1st: chronological,false,106,36.0,102.0,0.36465550924487955,
+retina_amd,GSE231536,"retina, no AMD",Horvathv1,1st: chronological,true,50,36.0,94.0,-0.07420805070129019,49.81426008377677
+retina_amd,GSE231536,"retina, no AMD",Hannum,1st: chronological,false,50,36.0,94.0,0.02932234704295425,58.69032862644716
+retina_amd,GSE231536,"retina, no AMD",Lin,1st: chronological,false,50,36.0,94.0,-0.36829703208733594,73.5976904489186
+retina_amd,GSE231536,"retina, no AMD",PhenoAge,2nd: phenotypic and mortality,false,50,36.0,94.0,-0.3896668977357489,155.01975631712807
+retina_amd,GSE231536,"retina, no AMD",YingDamAge,2nd: phenotypic and mortality,false,50,36.0,94.0,-0.3887602955671514,126.16564615853866
+retina_amd,GSE231536,"retina, no AMD",YingAdaptAge,2nd: phenotypic and mortality,false,50,36.0,94.0,0.4560050083326828,46.89180787750635
+retina_amd,GSE231536,"retina, no AMD",Horvathv2,1st: chronological,true,50,36.0,94.0,-0.334088704561336,69.82379307005738
+retina_amd,GSE231536,"retina, no AMD",PEDBE,other,false,50,36.0,94.0,-0.36665868396785695,69.67557688695453
+retina_amd,GSE231536,"retina, no AMD",DunedinPoAm38,3rd: pace of ageing,false,50,36.0,94.0,-0.2857085848032359,
+retina_amd,GSE231536,"retina, no AMD",DunedinPACE,3rd: pace of ageing,false,50,36.0,94.0,-0.3217573133123293,
+retina_amd,GSE231536,"retina, no AMD",DNAmClockCortical,other,false,50,36.0,94.0,-0.203225406061093,
+retina_amd,GSE231536,"retina, no AMD",VidalBralo,1st: chronological,false,50,36.0,94.0,-0.4780172818704903,50.02506995959121
+retina_amd,GSE231536,"retina, no AMD",AlcoholMcCartney,other,false,50,36.0,94.0,0.36445186679730784,
+retina_amd,GSE231536,"retina, no AMD",DNAmTL,other,false,50,36.0,94.0,0.40838166941301796,
+retina_amd,GSE231536,"retina, no AMD",HRSInCHPhenoAge,2nd: phenotypic and mortality,false,50,36.0,94.0,-0.32939279527899684,22.343771440728908
+retina_amd,GSE231536,"retina, no AMD",Knight,other,false,50,36.0,94.0,-0.3569155008764534,
+retina_amd,GSE231536,"retina, no AMD",LeeControl,other,false,50,36.0,94.0,-0.43528743601898173,
+retina_amd,GSE231536,"retina, no AMD",EpiTOC1,mitotic and stochastic,true,50,36.0,94.0,-0.0017297127316460742,
+retina_amd,GSE231536,"retina, no AMD",LeeRefinedRobust,other,false,50,36.0,94.0,-0.49091516448789035,
+retina_amd,GSE231536,"retina, no AMD",LeeRobust,other,false,50,36.0,94.0,-0.4760208539447654,
+retina_amd,GSE231536,"retina, no AMD",SmokingMcCartney,other,false,50,36.0,94.0,-0.3368373559531327,
+retina_amd,GSE231536,"retina, no AMD",DownSyndrome,other,false,50,36.0,94.0,0.442386495706258,
+retina_amd,GSE231536,"retina, no AMD",StocZ,mitotic and stochastic,false,50,36.0,94.0,-0.30338959539539134,
+retina_amd,GSE231536,"retina, no AMD",BMI_McCartney,other,false,50,36.0,94.0,-0.34929484028364544,
+retina_amd,GSE231536,"retina, no AMD",EducationMcCartney,other,false,50,36.0,94.0,-0.5036410796657944,
+retina_amd,GSE231536,"retina, no AMD",TotalCholesterolMcCartney,other,false,50,36.0,94.0,0.22854932976681722,
+retina_amd,GSE231536,"retina, no AMD",HDLCholesterolMcCartney,other,false,50,36.0,94.0,0.4081158982751547,
+retina_amd,GSE231536,"retina, no AMD",LDLCholesterolMcCartney,other,false,50,36.0,94.0,-0.4385016184970401,
+retina_amd,GSE231536,"retina, no AMD",BodyFatMcCartney,other,false,50,36.0,94.0,-0.45745264090704335,
+retina_amd,GSE231536,"retina, no AMD",BMI_Reed,other,false,50,36.0,94.0,-0.4044825449988962,
+retina_amd,GSE231536,"retina, no AMD",StocP,mitotic and stochastic,false,50,36.0,94.0,-0.4169472522849175,78.50120138578217
+retina_amd,GSE231536,"retina, no AMD",Mayne,other,false,50,36.0,94.0,-0.47542958845671907,
+retina_amd,GSE231536,"retina, no AMD",ProstateCancerKirby,other,false,50,36.0,94.0,-0.33184764112415027,
+retina_amd,GSE231536,"retina, no AMD",HepatoXu,other,false,50,36.0,94.0,-0.3679518728906795,
+retina_amd,GSE231536,"retina, no AMD",CVD_Westerman,other,false,50,36.0,94.0,-0.23079052322710045,
+retina_amd,GSE231536,"retina, no AMD",StocH,mitotic and stochastic,true,50,36.0,94.0,-0.3292580726409155,84.87427956095499
+retina_amd,GSE231536,"retina, no AMD",AD_Bahado-Singh,other,false,50,36.0,94.0,-0.40691226588577534,
+retina_amd,GSE231536,"retina, no AMD",DepressionBarbu,other,false,50,36.0,94.0,-0.43891153644323877,
+retina_amd,GSE231536,"retina, no AMD",Weidner,1st: chronological,false,50,36.0,94.0,-0.384978087853201,73.49049333550272
+retina_amd,GSE231536,"retina, no AMD",Garagnani,1st: chronological,false,50,36.0,94.0,-0.171567563919865,70.33558087300895
+retina_amd,GSE231536,"retina, no AMD",Bohlin,other,false,50,36.0,94.0,-0.44087963998599816,
+retina_amd,GSE231536,"retina, no AMD",Bocklandt,1st: chronological,false,50,36.0,94.0,0.3703751954313368,
 tcga_brca_adjacent,TCGA-BRCA,"breast, next to a tumour (TCGA-BRCA)",Horvathv1,1st: chronological,true,96,28.92,90.0,0.8475678033743899,10.610498810259354
 tcga_brca_adjacent,TCGA-BRCA,"breast, next to a tumour (TCGA-BRCA)",Hannum,1st: chronological,false,96,28.92,90.0,0.7616432318473592,13.038686120570441
 tcga_brca_adjacent,TCGA-BRCA,"breast, next to a tumour (TCGA-BRCA)",Lin,1st: chronological,false,96,28.92,90.0,0.7305625283496099,8.035945612151025
