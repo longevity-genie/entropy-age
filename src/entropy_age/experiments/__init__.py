@@ -119,6 +119,7 @@ from entropy_age.experiments import (
     tet_shared,
     tissue_contrast,
     tissue_pace,
+    tms_cell_noise,
     wgbs_nuclei,
     within_person,
 )
@@ -214,6 +215,7 @@ FIGURES: dict[str, Callable[[Context], list[Path]]] = {
     "global_fdr": global_fdr.run,
     "satsa_idats": within_person.run_idats,
     "tissue_pace": tissue_pace.run,
+    "tms_cell_noise": tms_cell_noise.run,
     "organ_coupling": organ_coupling.run,
     "survival": survival_shield.run,
     "meth_expr_spread": meth_expr_spread.run,
