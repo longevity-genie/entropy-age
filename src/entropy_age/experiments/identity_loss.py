@@ -32,8 +32,24 @@ regression (C = ``C_REG``) predicts the marker type (Endocrine colon cells, with
 Leave-one-sample-out, and a split that trains on the samples younger than their class's median age and tests the
 rest. The log-odds of the true class's probability is then regressed on age and on entropy as above.
 
-Caveats: the markers were selected on these very samples (with others), so fidelity starts near its ceiling and the
-classifier is near perfect; slopes are within-type and small groups (3-10 samples) hold most types.
+Held-out markers (``heldout_*`` tables). The published markers were selected on these very samples (with others), so
+their fidelity starts near its ceiling. Markers are chosen again from Loyfer's genome-wide blocks (``BLOCKS``; at least
+5 CpGs and at most 1,500 bp, as the published markers) by ``select_u_markers``: every training sample of the type
+covers the block, and the type's lower-quartile UXM U share beats the highest other-group mean by ``SEL_DELTA``; the
+250 widest margins are kept. Scored on the strict U share of samples left out of the choice:
+leave-donor-out (every other donor, all ages), and younger-only (samples below their type's median age choose, the
+older rest are scored; donors of scored samples leave the background as well). An in-sample choice under the same rule
+shows the ceiling for comparison. Limits: the blocks themselves come from Loyfer's unsupervised segmentation of these
+and 106 other samples (no labels or ages used, but the held-out samples shaped the boundaries); only the 26 groups
+deposited here form the background (Loyfer had 39 types); bootstrap and leave-one-out intervals hold the scores fixed,
+so a donor's part in other samples' marker choice is not resampled.
+
+Purity (``purity``, ``loso``, ``loso_summary``): Table S1's estimated purity held as a covariate, samples below 0.90
+and 0.95 dropped, and every slope refitted without each sample in turn. ``entropy_sides``: the fidelity-on-entropy
+coefficient and the entropy age slope for housekeeping and matched windows, and their difference from the same
+resamples.
+
+Caveats: slopes are within-type and small groups (3-10 samples) hold most types; the classifier is near perfect.
 
 ``entropy-age figures identity_loss`` would need registration; run as ``uv run python -c 'from
 entropy_age.experiments import identity_loss; ...'`` in a Slurm job (reads about 33 GB of PAT files once, cached).
@@ -66,6 +82,18 @@ RAREFY = 10
 C_REG = 1.0
 N_BOOT = 1000
 CACHE = "identity_loss_markers"
+#: Loyfer's genome-wide segmentation of these and 106 other samples (GEO supplementary of GSE186458), the candidate
+#: pool for markers chosen again on held-out donors
+BLOCKS = "geo/GSE186458/blocks/GSE186458_blocks.s207.hg38.bed.gz"
+BLOCK_CACHE = "identity_loss_blocks"
+BLOCK_MIN_CPGS = 5  # the published U250 markers span 5-77 CpGs and at most 1,500 bp
+BLOCK_MAX_BP = 1500
+SEL_TOP = 250
+SEL_DELTA = 0.4
+SEL_TG_QUANT = 0.25
+SEL_BG_COVER = 0.8
+READ_CHUNK = 5_000_000
+PURITY_CUTS = (0.9, 0.95)
 #: atlas group (cell type | tissue) -> UXM marker type
 TYPE_OF = {
     "Acinar|Pancreas": "Pancreas-Acinar",
@@ -108,12 +136,19 @@ def overlap_pieces(
     read_end = read_start + read_len
     last = np.searchsorted(m_start, read_end, side="left") - 1  # the last marker starting before the read ends
     rows, marks = [], []
-    for back in range(3):
+    back = 0
+    while True:  # step back one marker at a time; disjoint sorted regions end in order, so a miss ends the read
         j = last - back
         ok = j >= 0
         ok[ok] = m_end[j[ok]] > read_start[ok]
+        if not ok.any():
+            break
         rows.append(np.flatnonzero(ok))
         marks.append(j[ok])
+        back += 1
+    if not rows:
+        empty = np.zeros(0, dtype=np.int64)
+        return empty, empty, empty, empty
     rows, marks = np.concatenate(rows), np.concatenate(marks)
     lo = np.maximum(m_start[marks], read_start[rows])
     hi = np.minimum(m_end[marks], read_end[rows])
@@ -198,6 +233,52 @@ def young_old_split(label: np.ndarray, age: np.ndarray) -> np.ndarray:
     return train
 
 
+def u_shares(u: np.ndarray, frags: np.ndarray, min_frags: int = MIN_FRAGS) -> np.ndarray:
+    """Per sample and region, the share of informative fragments with the U pattern; NaN below ``min_frags``."""
+    u, frags = np.asarray(u, dtype=np.float32), np.asarray(frags, dtype=np.float32)
+    with np.errstate(divide="ignore", invalid="ignore"):
+        return np.where(frags >= min_frags, u / np.maximum(frags, 1), np.nan).astype(np.float32)
+
+
+def select_u_markers(
+    share: np.ndarray,
+    train: np.ndarray,
+    type_of: np.ndarray,
+    group_of: np.ndarray,
+    target: str,
+    n_top: int = SEL_TOP,
+    min_delta: float = SEL_DELTA,
+    tg_quant: float = SEL_TG_QUANT,
+    bg_cover: float = SEL_BG_COVER,
+) -> np.ndarray:
+    """U markers of ``target`` chosen on the ``train`` rows of ``share`` (samples x regions U shares, NaN where thin).
+
+    A region qualifies when every training sample of the target type covers it, at least ``bg_cover`` of the other
+    groups (every atlas group whose type differs, unlabelled groups included) cover it, and the target's
+    ``tg_quant`` quantile of U share exceeds the highest other-group mean by at least ``min_delta``. The ``n_top``
+    regions with the largest margin are returned (indices into the columns, best first). This mirrors the rule of
+    Loyfer's markers (target unmethylated, every background group methylated, ranked by the margin) on UXM U shares."""
+    type_of, group_of = np.asarray(type_of, dtype=object), np.asarray(group_of, dtype=object)
+    tg_rows = np.flatnonzero(train & (type_of == target))
+    if tg_rows.size == 0:
+        return np.zeros(0, dtype=np.int64)
+    tg = share[tg_rows]
+    covered = np.isfinite(tg).all(axis=0)
+    tg_low = np.quantile(np.where(covered, tg, 0.0), tg_quant, axis=0)
+    bg_groups = [g for g in np.unique(group_of[train]) if not np.any((group_of == g) & (type_of == target))]
+    means = np.full((len(bg_groups), share.shape[1]), np.nan, dtype=np.float32)
+    for k, g in enumerate(bg_groups):
+        rows = share[train & (group_of == g)]
+        n = np.isfinite(rows).sum(axis=0)
+        with np.errstate(invalid="ignore", divide="ignore"):
+            means[k] = np.where(n > 0, np.nansum(rows, axis=0) / np.maximum(n, 1), np.nan)
+    cover = np.isfinite(means).mean(axis=0) >= bg_cover if bg_groups else np.zeros(share.shape[1], dtype=bool)
+    bg_max = np.max(np.where(np.isfinite(means), means, -np.inf), axis=0) if bg_groups else np.zeros(share.shape[1])
+    delta = np.where(covered & cover, tg_low - bg_max, -np.inf)
+    ok = np.flatnonzero(delta >= min_delta)
+    return ok[np.argsort(-delta[ok], kind="stable")][:n_top]
+
+
 def logit(p: np.ndarray, eps: float = 1e-6) -> np.ndarray:
     p = np.clip(np.asarray(p, dtype=float), eps, 1 - eps)
     return np.log(p / (1 - p))
@@ -213,13 +294,16 @@ def read_markers(path: Path) -> pl.DataFrame:
 def _cache_key(regions: np.ndarray, pat: Path) -> str:
     st = pat.stat()
     h = hashlib.sha1(np.ascontiguousarray(regions, dtype=np.int64).tobytes())
-    h.update(f"{MIN_CPGS}|{U_MAX}|{pat.name}|{st.st_size}|{int(st.st_mtime)}".encode())
+    # "walk=all": overlap_pieces follows a read over any number of regions (caches before 2026-11-28 stopped at 3)
+    h.update(f"{MIN_CPGS}|{U_MAX}|{pat.name}|{st.st_size}|{int(st.st_mtime)}|walk=all".encode())
     return h.hexdigest()[:16]
 
 
-def marker_counts(pat: Path, m_start: np.ndarray, m_end: np.ndarray) -> pl.DataFrame:
+def marker_counts(pat: Path, m_start: np.ndarray, m_end: np.ndarray, light: bool = False) -> pl.DataFrame:
     """Per marker region (row of ``m_start``/``m_end``): weighted fragment counts of each class of
-    ``classify_fragments`` and the methylated and total calls of all overlapping reads."""
+    ``classify_fragments`` and the methylated and total calls of all overlapping reads. ``light`` keeps only the
+    informative, strict-U and UXM-U counts (as uint32), for the genome-wide blocks. Reads are cut in slices of
+    ``READ_CHUNK`` so the pieces of a deep sample against 1.6 M blocks fit in memory."""
     reads = pl.read_csv(
         pat,
         separator="\t",
@@ -229,29 +313,38 @@ def marker_counts(pat: Path, m_start: np.ndarray, m_end: np.ndarray) -> pl.DataF
         schema_overrides={"column_2": pl.Int64, "column_3": pl.String, "column_4": pl.Int64},
         quote_char=None,
     )
-    rows, marks, offset, length = overlap_pieces(
-        reads["start"].to_numpy(), reads["calls"].str.len_bytes().to_numpy(), m_start, m_end
-    )
-    piece = pl.DataFrame(
-        {"calls": reads["calls"].gather(rows), "offset": offset, "length": length, "n": reads["n"].gather(rows)}
-    ).select(pl.col("calls").str.slice(pl.col("offset"), pl.col("length")).alias("p"), "n")
-    del reads
-    n_meth = piece["p"].str.count_matches("C").to_numpy()
-    n_unmeth = piece["p"].str.count_matches("T").to_numpy()
-    w = piece["n"].to_numpy()
     k = m_start.size
+    names = ("informative", "u_full", "u_uxm") if light else ("informative", "u_full", "m_full", "u_uxm", "m_uxm")
+    acc = {name: np.zeros(k) for name in (*names, *(() if light else ("meth_calls", "calls")))}
+    for lo in range(0, reads.height, READ_CHUNK):
+        chunk = reads.slice(lo, READ_CHUNK)
+        rows, marks, offset, length = overlap_pieces(
+            chunk["start"].to_numpy(), chunk["calls"].str.len_bytes().to_numpy(), m_start, m_end
+        )
+        piece = pl.DataFrame(
+            {"calls": chunk["calls"].gather(rows), "offset": offset, "length": length, "n": chunk["n"].gather(rows)}
+        ).select(pl.col("calls").str.slice(pl.col("offset"), pl.col("length")).alias("p"), "n")
+        n_meth = piece["p"].str.count_matches("C").to_numpy()
+        n_unmeth = piece["p"].str.count_matches("T").to_numpy()
+        w = piece["n"].to_numpy()
+        flags = classify_fragments(n_meth, n_unmeth)
+        for name in names:
+            acc[name] += np.bincount(marks, weights=w * flags[name], minlength=k)
+        if not light:
+            acc["meth_calls"] += np.bincount(marks, weights=w * n_meth, minlength=k)
+            acc["calls"] += np.bincount(marks, weights=w * (n_meth + n_unmeth), minlength=k)
+    del reads
     out = {"marker": np.arange(k)}
-    for name, flag in classify_fragments(n_meth, n_unmeth).items():
-        out[name] = np.bincount(marks, weights=w * flag, minlength=k)
-    out["meth_calls"] = np.bincount(marks, weights=w * n_meth, minlength=k)
-    out["calls"] = np.bincount(marks, weights=w * (n_meth + n_unmeth), minlength=k)
+    out.update({c: (v.astype(np.uint32) if light else v) for c, v in acc.items()})
     return pl.DataFrame(out)
 
 
-def _count_job(job: tuple[str, np.ndarray, np.ndarray, str]) -> str:
-    pat, m_start, m_end, cache = job
+def _count_job(job: tuple[str, np.ndarray, np.ndarray, str, bool]) -> str:
+    pat, m_start, m_end, cache, light = job
     if not Path(cache).exists():
-        marker_counts(Path(pat), m_start, m_end).write_parquet(cache)
+        tmp = Path(cache).with_suffix(".tmp")
+        marker_counts(Path(pat), m_start, m_end, light).write_parquet(tmp)
+        tmp.rename(cache)
     return cache
 
 
@@ -271,24 +364,34 @@ def _samples(ctx: Context, folder: Path) -> pl.DataFrame:
     )
 
 
-def _load_marker_counts(ctx: Context, samples: pl.DataFrame, regions: pl.DataFrame) -> dict[str, np.ndarray]:
+def _load_marker_counts(
+    ctx: Context, samples: pl.DataFrame, regions: pl.DataFrame, cache: str = CACHE, light: bool = False
+) -> dict[str, np.ndarray]:
     m_start, m_end = regions["start"].to_numpy(), regions["end"].to_numpy()
     key_arr = np.concatenate([m_start, m_end])
-    cache_dir = ctx.paths.interim / CACHE
+    cache_dir = ctx.paths.interim / cache
     cache_dir.mkdir(parents=True, exist_ok=True)
     jobs = [
-        (p, m_start, m_end, str(cache_dir / f"{s}_{_cache_key(key_arr, Path(p))}.parquet"))
+        (p, m_start, m_end, str(cache_dir / f"{s}_{_cache_key(key_arr, Path(p))}.parquet"), light)
         for s, p in samples.select("sample", "pat").iter_rows()
     ]
     missing = [j for j in jobs if not Path(j[3]).exists()]
     if missing:
-        print(f"identity_loss: reading {len(missing)} PAT files", file=sys.stderr, flush=True)
+        print(f"identity_loss: reading {len(missing)} PAT files into {cache}", file=sys.stderr, flush=True)
         os.environ["POLARS_MAX_THREADS"] = "1"  # inherited by the spawned workers only
         workers = int(os.environ.get("SLURM_CPUS_PER_TASK", "2"))
         with ProcessPoolExecutor(workers, mp_context=multiprocessing.get_context("spawn")) as pool:
             for i, _ in enumerate(pool.map(_count_job, missing), 1):
                 if i % 10 == 0:
                     print(f"identity_loss: {i}/{len(missing)} PAT files", file=sys.stderr, flush=True)
+    if light:
+        cols = ("informative", "u_full", "u_uxm")
+        out = {c: np.zeros((len(jobs), m_start.size), dtype=np.float32) for c in cols}
+        for i, j in enumerate(jobs):
+            f = pl.read_parquet(j[3]).sort("marker")
+            for c in cols:
+                out[c][i] = f[c].to_numpy()
+        return out
     frames = [pl.read_parquet(j[3]).sort("marker") for j in jobs]
     cols = ("informative", "u_full", "m_full", "u_uxm", "m_uxm", "meth_calls", "calls")
     return {c: np.vstack([f[c].to_numpy() for f in frames]) for c in cols}
@@ -351,9 +454,36 @@ def _boot(stat, n: int, draws: list[np.ndarray] | None, rng, n_boot: int, cluste
     return float(np.quantile(v, 0.025)), float(np.quantile(v, 0.975)), int(v.size)
 
 
-def _pooled_rows(frame: pl.DataFrame, outcomes: list[str], ctx: Context, extra: str = "") -> list[dict]:
-    """Pooled within-group age slopes and entropy links of each outcome, with both bootstrap intervals."""
-    age, female = frame["age"].to_numpy(), frame["female"].to_numpy().astype(float)
+ENTROPY_TERMS = ("entropy_housekeeping", "entropy_matched", "entropy_all")
+
+
+def _finite(frame: pl.DataFrame, cols) -> pl.DataFrame:
+    """Rows where every named column present in ``frame`` is finite."""
+    cols = [c for c in cols if c in frame.columns]
+    return frame.filter(pl.all_horizontal([pl.col(c).cast(pl.Float64).is_finite() for c in cols])) if cols else frame
+
+
+def _pooled_rows(
+    frame: pl.DataFrame, outcomes: list[str], ctx: Context, extra: str = "", controls: tuple[str, ...] = ()
+) -> list[dict]:
+    """Pooled within-group age slopes and entropy links of each outcome, with both bootstrap intervals; ``controls``
+    are further columns held in every model (purity). Each outcome is fitted on its own finite rows; an outcome with
+    fewer than 10 such rows is skipped."""
+    rows = []
+    for y_name in outcomes:
+        sub = _finite(frame, [y_name, "age", *ENTROPY_TERMS, *controls])
+        if sub.height >= 10:
+            rows += _pooled_rows_one(sub, [y_name], ctx, extra, controls)
+    return rows
+
+
+def _pooled_rows_one(
+    frame: pl.DataFrame, outcomes: list[str], ctx: Context, extra: str = "", controls: tuple[str, ...] = ()
+) -> list[dict]:
+    age = frame["age"].to_numpy()
+    female = np.column_stack([frame["female"].to_numpy().astype(float)] + [frame[c].to_numpy() for c in controls])
+    if controls:
+        extra = f" + {' + '.join(controls)}{extra}"
     group, patient = frame["group"].to_numpy(), frame["patient"].to_numpy()
     draws = [np.flatnonzero(group == g) for g in np.unique(group)]
     rows = []
@@ -432,6 +562,251 @@ def _per_type(frame: pl.DataFrame, outcome: str) -> list[dict]:
             }
         )
     return rows
+
+
+def _boot_vec(stat, draws: list[np.ndarray] | None, rng, n_boot: int, cluster: np.ndarray | None):
+    """``_boot`` for a statistic returning a vector: per-element 2.5 and 97.5 % quantiles over usable draws."""
+    if cluster is not None:
+        members = [np.flatnonzero(cluster == c) for c in np.unique(cluster)]
+    vals = []
+    for _ in range(n_boot):
+        if cluster is None:
+            rows = np.concatenate([rng.choice(r, r.size, replace=True) for r in draws])
+        else:
+            rows = np.concatenate([members[i] for i in rng.integers(0, len(members), len(members))])
+        with np.errstate(all="ignore"):
+            vals.append(np.asarray(stat(rows), dtype=float))
+    v = np.asarray(vals)
+    v = v[np.isfinite(v).all(axis=1)]
+    if v.shape[0] < 10:
+        nan = np.full(v.shape[1], np.nan)
+        return nan, nan, int(v.shape[0])
+    return np.quantile(v, 0.025, axis=0), np.quantile(v, 0.975, axis=0), int(v.shape[0])
+
+
+def _side_rows(frame: pl.DataFrame, outcome: str, ctx: Context) -> list[dict]:
+    """Housekeeping and matched windows side by side, with their difference from the same resamples: (a) the
+    fidelity-on-entropy coefficient (per within-group SD of each side's entropy; age, sex and group held), and (b) each
+    side's entropy age slope (per decade, in within-group SD of that side's entropy; sex and group held)."""
+    frame = _finite(frame, [outcome, "age", "entropy_housekeeping", "entropy_matched"])  # one mask for both sides
+    if frame.height < 10:
+        return []
+    age, female = frame["age"].to_numpy(), frame["female"].to_numpy().astype(float)
+    group, patient = frame["group"].to_numpy(), frame["patient"].to_numpy()
+    y = frame[outcome].to_numpy()
+    z = {side: frame[f"entropy_{side}"].to_numpy() for side in ("housekeeping", "matched")}
+    sd = {side: float(np.std(within(v[:, None], group)[:, 0], ddof=1)) for side, v in z.items()}
+
+    def link(r):
+        b = [fe_ols(y[r], np.column_stack([z[k][r] / sd[k], age[r], female[r]]), group[r])[0][0] for k in z]
+        return [b[0], b[1], b[0] - b[1]]
+
+    def drift(r):
+        b = [10 * fe_ols(z[k][r] / sd[k], np.column_stack([age[r], female[r]]), group[r])[0][0] for k in z]
+        return [b[0], b[1], b[0] - b[1]]
+
+    draws = [np.flatnonzero(group == g) for g in np.unique(group)]
+    rows = []
+    for quantity, stat, unit in (
+        ("fidelity on entropy", link, "per within-group SD of entropy"),
+        ("entropy on age", drift, "within-group SD of entropy per decade"),
+    ):
+        est = stat(np.arange(len(y)))
+        lo_s, hi_s, n_s = _boot_vec(stat, draws, ctx.rng(7011), N_BOOT, None)
+        lo_d, hi_d, n_d = _boot_vec(stat, None, ctx.rng(7012), N_BOOT, patient)
+        for k, side in enumerate(("housekeeping", "matched", "housekeeping minus matched")):
+            rows.append(
+                {
+                    "outcome": outcome,
+                    "quantity": quantity,
+                    "windows": side,
+                    "unit": unit,
+                    "estimate": float(est[k]),
+                    "lo_samples": float(lo_s[k]),
+                    "hi_samples": float(hi_s[k]),
+                    "lo_donors": float(lo_d[k]),
+                    "hi_donors": float(hi_d[k]),
+                    "boots_usable": min(n_s, n_d),
+                    "samples": len(y),
+                    "donors": int(np.unique(patient).size),
+                }
+            )
+    return rows
+
+
+def _loso_rows(frame: pl.DataFrame, outcome: str) -> list[dict]:
+    """Leave-one-sample-out: the age slope (per decade) and the entropy coefficients (per within-group SD) without
+    each sample in turn. The entropy SD stays that of all samples, so a change is a change of the coefficient alone.
+    Scores are held fixed: for held-out fidelity, the dropped sample's part in other samples' marker choice stays."""
+    frame = _finite(frame, [outcome, "age", *ENTROPY_TERMS])
+    age, female, group = frame["age"].to_numpy(), frame["female"].to_numpy().astype(float), frame["group"].to_numpy()
+    y = frame[outcome].to_numpy()
+    sds = {
+        t: float(np.std(within(frame[t].to_numpy()[:, None], group)[:, 0], ddof=1))
+        for t in ENTROPY_TERMS
+        if t in frame.columns
+    }
+
+    def est(term, r):
+        if term == "age":
+            return 10 * fe_ols(y[r], np.column_stack([age[r], female[r]]), group[r])[0][0]
+        z = frame[term].to_numpy()[r]
+        return fe_ols(y[r], np.column_stack([z / sds[term], age[r], female[r]]), group[r])[0][0]
+
+    n, rows = len(y), []
+    for term in ("age", *sds):
+        full = est(term, np.arange(n))
+        for i in range(n):
+            without = est(term, np.flatnonzero(np.arange(n) != i))
+            rows.append(
+                {
+                    "outcome": outcome,
+                    "term": term,
+                    "sample": frame["sample"][i],
+                    "title": frame["title"][i],
+                    "group": group[i],
+                    "age": float(age[i]),
+                    "purity": frame["purity"][i],
+                    "outcome_value": float(y[i]),
+                    "estimate_full": float(full),
+                    "estimate_without": float(without),
+                    "change": float(without - full),
+                }
+            )
+    return rows
+
+
+def _loso_summary(loso: pl.DataFrame) -> pl.DataFrame:
+    """Per outcome and term: the leave-one-sample-out range and the three samples that move the estimate most."""
+    rows = []
+    for (outcome, term), sub in loso.group_by(["outcome", "term"], maintain_order=True):
+        top = sub.with_columns(pl.col("change").abs().alias("a")).sort("a", descending=True).head(3)
+        rows.append(
+            {
+                "outcome": outcome,
+                "term": term,
+                "estimate_full": sub["estimate_full"][0],
+                "min_without_one": sub["estimate_without"].min(),
+                "max_without_one": sub["estimate_without"].max(),
+                "most_influential": "; ".join(
+                    f"{t} (purity {pu if pu is not None else 'NA'}, {c:+.4f})"
+                    for t, pu, c in top.select("title", "purity", "change").iter_rows()
+                ),
+            }
+        )
+    return pl.DataFrame(rows)
+
+
+def _heldout_fidelity(ctx: Context, samples: pl.DataFrame) -> tuple[pl.DataFrame, pl.DataFrame]:
+    """Own-marker fidelity on markers chosen without the scored sample (``select_u_markers`` on Loyfer's
+    genome-wide blocks):
+
+    - ``fidelity_ldo``: leave-donor-out, markers chosen on every other donor's samples (all ages);
+    - ``fidelity_young_sel``: markers chosen on the samples younger than their type's median age, scored on the rest
+      (NaN for the training samples), so drift-resistant regions cannot be favoured by old samples;
+    - ``fidelity_insample``: the same rule on all samples (the circular version, for comparison).
+
+    Selection uses UXM U shares; scoring uses the strict all-unmethylated share (``_uxm`` columns: UXM shares)."""
+    b = pl.read_csv(
+        ctx.paths.input / BLOCKS,
+        separator="\t",
+        has_header=False,
+        new_columns=["chr", "bp_start", "bp_end", "start", "end"],
+        schema_overrides={"column_4": pl.Int64, "column_5": pl.Int64},
+    )
+    blocks = (
+        b.filter(
+            (pl.col("end") - pl.col("start") >= BLOCK_MIN_CPGS)
+            & (pl.col("bp_end") - pl.col("bp_start") <= BLOCK_MAX_BP)
+        )
+        .select("start", "end")
+        .unique()
+        .sort("start")
+    )
+    print(f"identity_loss: {blocks.height} candidate blocks", file=sys.stderr, flush=True)
+    counts = _load_marker_counts(ctx, samples, blocks, cache=BLOCK_CACHE, light=True)
+    frags = counts["informative"]
+    share = u_shares(counts["u_uxm"], frags)
+    type_of = samples["type"].to_numpy().astype(object)
+    group_of, patient = samples["group"].to_numpy().astype(object), samples["patient"].to_numpy()
+    age = samples["age"].to_numpy()
+    n = samples.height
+    typed = np.array([t is not None for t in type_of])
+
+    def score(i, sel, u):
+        use = np.zeros(frags.shape[1], dtype=bool)
+        use[sel] = True
+        return float(fidelity(u[i : i + 1], frags[i : i + 1], use)[0]) if sel.size else float("nan")
+
+    def scored(i, sel):
+        return float((frags[i, sel] >= MIN_FRAGS).sum())
+
+    out = {
+        c: np.full(n, np.nan)
+        for c in (
+            "fidelity_ldo",
+            "fidelity_ldo_uxm",
+            "ldo_markers",
+            "ldo_markers_scored",
+            "young_sel_markers_scored",
+            "fidelity_young_sel",
+            "fidelity_young_sel_uxm",
+            "fidelity_insample",
+        )
+    }
+    everyone = np.ones(n, dtype=bool)
+    insample = {t: select_u_markers(share, everyone, type_of, group_of, t) for t in sorted(set(type_of[typed]))}
+    for i in np.flatnonzero(typed):
+        out["fidelity_insample"][i] = score(i, insample[type_of[i]], counts["u_full"])
+    for d in np.unique(patient[typed]):
+        train = patient != d
+        for t in sorted(set(type_of[typed & ~train])):
+            sel = select_u_markers(share, train, type_of, group_of, t)
+            for i in np.flatnonzero(~train & (type_of == t)):
+                out["fidelity_ldo"][i] = score(i, sel, counts["u_full"])
+                out["fidelity_ldo_uxm"][i] = score(i, sel, counts["u_uxm"])
+                out["ldo_markers"][i] = sel.size
+                out["ldo_markers_scored"][i] = scored(i, sel)
+    label = np.where(typed, type_of, "").astype(str)
+    young = young_old_split(label, age) & typed
+    young_train = young | ~typed  # unlabelled groups (endocrine colon) stay in the background
+    young_sel = {}
+    for t in sorted(set(type_of[typed])):
+        scored_donors = np.unique(patient[typed & ~young & (type_of == t)])
+        # a scored donor's samples of other types stay out of the background too
+        young_sel[t] = select_u_markers(share, young_train & ~np.isin(patient, scored_donors), type_of, group_of, t)
+    for i in np.flatnonzero(typed & ~young):
+        out["fidelity_young_sel"][i] = score(i, young_sel[type_of[i]], counts["u_full"])
+        out["fidelity_young_sel_uxm"][i] = score(i, young_sel[type_of[i]], counts["u_uxm"])
+        out["young_sel_markers_scored"][i] = scored(i, young_sel[type_of[i]])
+    print("identity_loss: held-out marker selection done", file=sys.stderr, flush=True)
+
+    published = read_markers(ctx.paths.input / MARKERS)
+    pub_key = {t: set(zip(sub["start"], sub["end"], strict=True)) for (t,), sub in published.group_by(["type"])}
+    bs, be = blocks["start"].to_numpy(), blocks["end"].to_numpy()
+    summary = []
+    for t, sel in insample.items():
+        keys = set(zip(bs[sel].tolist(), be[sel].tolist(), strict=True))
+        ysel = young_sel[t]
+        ykeys = set(zip(bs[ysel].tolist(), be[ysel].tolist(), strict=True))
+        rows_t = typed & (type_of == t)
+        summary.append(
+            {
+                "type": t,
+                "samples": int(rows_t.sum()),
+                "young_training_samples": int((young & rows_t).sum()),
+                "insample_markers": len(keys),
+                "insample_in_published": len(keys & pub_key.get(t, set())),
+                "published_markers": len(pub_key.get(t, set())),
+                "young_markers": len(ykeys),
+                "young_shared_with_insample": len(ykeys & keys),
+                "ldo_markers_median": float(np.nanmedian(out["ldo_markers"][rows_t])) if rows_t.any() else np.nan,
+            }
+        )
+    frame = samples.select("sample").with_columns(
+        **{k: pl.Series(v) for k, v in out.items()}, young_training=pl.Series(young)
+    )
+    return frame, pl.DataFrame(summary)
 
 
 def _classifier(x: np.ndarray, label: np.ndarray, age: np.ndarray) -> tuple[np.ndarray, np.ndarray, np.ndarray]:
@@ -517,25 +892,44 @@ def run(ctx: Context) -> list[Path]:
     split_frame = frame.filter(pl.col("p_true_young_to_old").is_finite())
     if split_frame.height >= 10:
         slope_rows += _pooled_rows(split_frame, ["logit_p_true_young_to_old"], ctx)
-    pur = typed.filter(pl.col("purity").is_finite())
-    if pur.height >= 20:
-        y, g = pur["fidelity_own"].to_numpy(), pur["group"].to_numpy()
-        x = np.column_stack([pur["age"], pur["female"].cast(float), pur["purity"]])
-        c, se, df = fe_ols(y, x, g)
-        slope_rows.append(
-            {
-                "outcome": "fidelity_own",
-                "term": "age (purity held)",
-                "unit": "per decade",
-                "estimate": 10 * c[0],
-                "se_ols": 10 * se[0],
-                "p_ols": float(2 * stats.t.sf(abs(c[0] / se[0]), df)),
-                "samples": pur.height,
-                "model": "y ~ age + sex + purity + group FE",
-            }
-        )
     slopes = pl.DataFrame(slope_rows, infer_schema_length=None)
     write_table(slopes, out / "slopes")
+
+    # held-out markers (selection without the scored donor, or on younger donors only)
+    held, selection = _heldout_fidelity(ctx, samples)
+    write_table(selection, out / "heldout_markers")
+    typed = typed.join(held, on="sample", how="left")
+    write_table(
+        typed.select("sample", "title", "group", "type", "age", "patient", "purity", *held.columns[1:]),
+        out / "heldout_samples",
+    )
+    held_outcomes = ["fidelity_ldo", "fidelity_ldo_uxm", "fidelity_insample"]
+    held_rows = [r | {"rows": "all scored"} for r in _pooled_rows(typed, held_outcomes, ctx)]
+    old_rows = typed.filter(pl.col("fidelity_young_sel").is_finite())
+    held_rows += [
+        r | {"rows": "older than type median (young-selection test rows)"}
+        for r in _pooled_rows(old_rows, ["fidelity_young_sel", "fidelity_young_sel_uxm", "fidelity_ldo"], ctx)
+    ]
+    write_table(pl.DataFrame(held_rows, infer_schema_length=None), out / "heldout_slopes")
+
+    # purity: held as a covariate, and low-purity samples dropped
+    main = ["fidelity_own", "fidelity_ldo"]
+    pur = typed.filter(pl.col("purity").is_finite())
+    pur_rows = [r | {"subset": "purity known"} for r in _pooled_rows(pur, main, ctx)]
+    pur_rows += [
+        r | {"subset": "purity known, purity held"} for r in _pooled_rows(pur, main, ctx, controls=("purity",))
+    ]
+    for cut in PURITY_CUTS:
+        sub = pur.filter(pl.col("purity") >= cut)
+        pur_rows += [r | {"subset": f"purity >= {cut}"} for r in _pooled_rows(sub, main, ctx)]
+    write_table(pl.DataFrame(pur_rows, infer_schema_length=None), out / "purity")
+    loso = pl.DataFrame(_loso_rows(typed, "fidelity_own") + _loso_rows(typed, "fidelity_ldo"))
+    write_table(loso, out / "loso")
+    write_table(_loso_summary(loso), out / "loso_summary")
+
+    # housekeeping vs matched windows, and their difference
+    side_rows = _side_rows(typed, "fidelity_own", ctx) + _side_rows(typed, "fidelity_ldo", ctx)
+    write_table(pl.DataFrame(side_rows), out / "entropy_sides")
     per_type = pl.DataFrame(
         _per_type(typed, "fidelity_own") + _per_type(typed, "u_share_other") + _per_type(frame, "logit_p_true_loso")
     )
