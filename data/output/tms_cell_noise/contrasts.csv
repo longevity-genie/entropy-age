@@ -1,0 +1,9 @@
+contrast,young,old,sex,mice_young,mice_old,cell_types
+main,3m,"18m,21m,24m",both,8,11,93
+3m_vs_18m,3m,18m,both,8,4,65
+male_3m_vs_24m,3m,24m,male,4,4,52
+female_3m_vs_21m,3m,21m,female,4,3,2
+male_3m_vs_18m,3m,18m,male,4,2,0
+female_3m_vs_18m,3m,18m,female,4,2,0
+male_3m_vs_18-24m,3m,"18m,24m",male,4,6,60
+female_3m_vs_18-21m,3m,"18m,21m",female,4,5,3

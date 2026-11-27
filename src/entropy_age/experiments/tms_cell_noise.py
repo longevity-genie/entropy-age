@@ -43,6 +43,20 @@ from the group mean, times sqrt(n / (n - 1)); the age change is old minus young,
 of the bulk modules for two age groups. Gap and strata as above; with 3-6 mice per age a mouse resample would put
 duplicate mice into a spread measure, so this version takes its interval from genes resampled within strata.
 
+**Sensitivities (Codex review 8; ``run_sensitivity``, tables ``sensitivity_*``, ``lomo``, ``planted``,
+``contrasts``, ``orthology``).** Every one reports the single-cell gap pooled over its estimable cell types (finite
+point gap), with an interval from shared Bayesian-bootstrap mouse weights (Dirichlet within age group, every mouse
+kept, so no cell type drops out of a resample). (a) The main multinomial mouse draws re-gated on distinct original
+mouse IDs (a mouse drawn twice no longer counts as two). (b) Leave one mouse out, each of the cohort's mice in turn.
+(c) Planted effects: in old cells, housekeeping and core-essential genes get multiplicative Gamma noise raising their
+within-mouse log CV2 by 0.05-0.5 SD of the age change, cells and mice as observed; the recovered gap and its
+interval calibrate what the estimator can see. (d) 3 vs 18 months, and same-sex contrasts where three mice per age
+allow it. (e) Depth matched on all endogenous reads (thinning rate from all genes). (f) Gene sets through MGI
+one-to-one orthologs (human Entrez to HGNC), and the subset where both routes name the same human gene. (g) Young
+reference: genes kept on young detection and matched on young mean and dropout, ties kept in one bin; matched set
+sizes and covariate balance reported. Main estimates keep their definition; pooling now excludes cell types with no
+finite gap (no retained non-essential genes) instead of returning NaN.
+
 ``uv run python -c`` with a ``Context`` (as ``entropy-age figures``) as a Slurm job; ``ENTROPY_AGE_BOOT`` sets the
 resamples, ``ENTROPY_AGE_WORKERS`` the processes.
 """
@@ -60,6 +74,7 @@ import h5py
 import numpy as np
 import polars as pl
 from scipy import sparse
+from scipy.stats import rankdata
 
 from entropy_age import plots
 from entropy_age.data.annotation import AnnotationLayout, gene_set_ensembl, symbol_ensembl
@@ -82,12 +97,17 @@ DROPOUT_BINS = 3
 
 
 # ----------------------------------------------------------------------------- pure helpers
-def thin_rows(x: sparse.csr_matrix, depth: int, rng: np.random.Generator) -> sparse.csr_matrix:
+def thin_rows(
+    x: sparse.csr_matrix, depth: int, rng: np.random.Generator, totals: np.ndarray | None = None
+) -> sparse.csr_matrix:
     """Each row binomially thinned to ``depth`` total counts in expectation; rows must hold at least ``depth``.
 
     A read kept with probability ``depth / total`` is what a shallower run of the same library would give.
+    ``totals`` (per row) defaults to the row sums of ``x``; given, it is the depth over a wider gene set (all
+    endogenous reads) of which ``x`` holds some columns, and the columns are thinned at that set's rate.
     """
-    totals = np.asarray(x.sum(axis=1)).ravel()
+    if totals is None:
+        totals = np.asarray(x.sum(axis=1)).ravel()
     if np.any(totals < depth):
         raise ValueError("thin_rows: a row holds fewer counts than the target depth")
     x = x.tocsr(copy=True)
@@ -97,16 +117,33 @@ def thin_rows(x: sparse.csr_matrix, depth: int, rng: np.random.Generator) -> spa
     return x
 
 
-def within_moments(x: np.ndarray, mouse: np.ndarray) -> tuple[np.ndarray, np.ndarray, np.ndarray]:
+def within_moments(
+    x: np.ndarray, mouse: np.ndarray, weights: dict[str, float] | None = None
+) -> tuple[np.ndarray, np.ndarray, np.ndarray]:
     """Per column: mean over rows, variance pooled within ``mouse`` groups, and the fraction of zero rows.
 
     The pooled variance is the sum of squared deviations from each mouse's own mean over ``n - k`` (k mice);
-    a mouse with one row adds no deviation and no degree of freedom.
+    a mouse with one row adds no deviation and no degree of freedom. ``weights`` (mouse -> weight, a shared
+    mouse-weight resample) weight each mouse's cells, sums of squares and degrees of freedom.
     """
     labels, codes = np.unique(mouse, return_inverse=True)
     n, k = x.shape[0], labels.size
     if n - k < 1:
         raise ValueError("within_moments: no degrees of freedom left within mice")
+    if weights is not None:
+        total, ss, zeros = np.zeros(x.shape[1]), np.zeros(x.shape[1]), np.zeros(x.shape[1])
+        n_w = df_w = 0.0
+        for m, label in enumerate(labels):
+            w = float(weights.get(str(label), 0.0))
+            rows = x[codes == m]
+            total += w * rows.sum(axis=0)
+            ss += w * ((rows - rows.mean(axis=0)) ** 2).sum(axis=0)
+            zeros += w * (rows == 0).sum(axis=0)
+            n_w += w * rows.shape[0]
+            df_w += w * (rows.shape[0] - 1)
+        if df_w <= 0:
+            raise ValueError("within_moments: no weighted degrees of freedom")
+        return total / n_w, ss / df_w, zeros / n_w
     ss = np.zeros(x.shape[1])
     for m in range(k):
         rows = x[codes == m]
@@ -135,23 +172,44 @@ def trend_residual(log_mean: np.ndarray, log_cv2: np.ndarray, n_bins: int = TREN
     return out
 
 
-def noise_residual(x: np.ndarray, mouse: np.ndarray) -> tuple[np.ndarray, np.ndarray, np.ndarray]:
+def noise_residual(
+    x: np.ndarray, mouse: np.ndarray, weights: dict[str, float] | None = None
+) -> tuple[np.ndarray, np.ndarray, np.ndarray]:
     """Residual log CV2 (pooled within mice) on its mean trend, with the mean and dropout rate per gene."""
-    mean, var, dropout = within_moments(x, mouse)
+    mean, var, dropout = within_moments(x, mouse, weights)
     with np.errstate(divide="ignore", invalid="ignore"):
         log_mean = np.log(mean)
         log_cv2 = np.log(var / mean**2)
     return trend_residual(log_mean, log_cv2), mean, dropout
 
 
-def strata(mean: np.ndarray, dropout: np.ndarray, n_mean: int = MEAN_BINS, n_dropout: int = DROPOUT_BINS) -> np.ndarray:
-    """Stratum per gene: decile of mean expression crossed with tertile of dropout rate inside the decile."""
-    rank = np.argsort(np.argsort(mean, kind="stable"), kind="stable")
+def strata(
+    mean: np.ndarray,
+    dropout: np.ndarray,
+    n_mean: int = MEAN_BINS,
+    n_dropout: int = DROPOUT_BINS,
+    *,
+    ties: bool = False,
+) -> np.ndarray:
+    """Stratum per gene: decile of mean expression crossed with tertile of dropout rate inside the decile.
+
+    By default tied values are ranked in input order; with ``ties`` tied values share their lowest rank, so
+    genes with equal mean or dropout always fall into the same bin.
+    """
+
+    def ranks(v: np.ndarray) -> np.ndarray:
+        if ties:
+            return rankdata(v, method="min").astype(np.int64) - 1
+        return np.argsort(np.argsort(v, kind="stable"), kind="stable")
+
+    rank = ranks(mean)
     decile = rank * n_mean // mean.size
     out = np.empty(mean.size, dtype=np.int64)
     for d in range(n_mean):
         sel = np.flatnonzero(decile == d)
-        r = np.argsort(np.argsort(dropout[sel], kind="stable"), kind="stable")
+        if not sel.size:
+            continue
+        r = ranks(dropout[sel])
         out[sel] = d * n_dropout + r * n_dropout // max(sel.size, 1)
     return out
 
@@ -206,6 +264,105 @@ def between_spread(logcpm: np.ndarray) -> np.ndarray:
 def mouse_draw(mice: dict[str, list[str]], rng: np.random.Generator) -> dict[str, list[str]]:
     """Mice of each age group drawn with replacement, as many as the group has."""
     return {age: list(rng.choice(ids, size=len(ids), replace=True)) for age, ids in mice.items()}
+
+
+def mouse_weights(mice: dict[str, list[str]], rng: np.random.Generator) -> dict[str, float]:
+    """Bayesian-bootstrap weights per mouse: Dirichlet(1, ..., 1) within each age group, scaled to mean 1.
+
+    Every mouse keeps a positive weight, so no cell type loses its support in a resample; drawn once per resample
+    and shared by every cell type, as the same mice gave most tissues.
+    """
+    out = {}
+    for ids in mice.values():
+        w = rng.dirichlet(np.ones(len(ids))) * len(ids)
+        out |= {str(m): float(v) for m, v in zip(ids, w, strict=True)}
+    return out
+
+
+def distinct_mice_ok(draw_ids: list[str], present: set[str], minimum: int = 2) -> bool:
+    """Whether a multinomial draw of one age group holds ``minimum`` distinct original mice present in a cell type.
+
+    A mouse drawn twice counts once: duplicate labels must not stand in for a second mouse.
+    """
+    return len(set(draw_ids) & present) >= minimum
+
+
+def plant_noise(
+    x: np.ndarray, rows: np.ndarray, cols: np.ndarray, shift: float, mouse: np.ndarray, rng: np.random.Generator
+) -> np.ndarray:
+    """A copy of ``x`` whose ``rows`` x ``cols`` block carries extra cell-to-cell noise of known size.
+
+    Each entry is multiplied by Gamma noise of mean 1 and variance phi per column, chosen so that the column's
+    within-mouse variance grows by ``var * (exp(shift) - 1)``: log CV2 (pooled within mice) rises by ``shift`` in
+    expectation while the mean, the zeros and the cells and mice stay as they were.
+    """
+    out = x.astype(np.float64, copy=True)
+    if shift <= 0 or not rows.any() or not cols.any():
+        return out
+    ri, ci = np.flatnonzero(rows), np.flatnonzero(cols)
+    sub = out[np.ix_(ri, ci)]
+    _, var, _ = within_moments(sub, mouse[ri])
+    mean_sq = (sub**2).mean(axis=0)
+    with np.errstate(divide="ignore", invalid="ignore"):
+        phi = np.where(mean_sq > 0, var * np.expm1(shift) / mean_sq, 0.0)
+    ok = phi > 0
+    g = np.ones_like(sub)
+    shape = np.broadcast_to(1 / phi[ok], (sub.shape[0], int(ok.sum())))
+    g[:, ok] = rng.gamma(shape, 1 / shape)
+    out[np.ix_(ri, ci)] = sub * g
+    return out
+
+
+def one_to_one_orthologs(orthologs: pl.DataFrame) -> pl.DataFrame:
+    """``mouse_symbol, human_entrez, human_symbol`` for MGI homology classes with one mouse and one human gene."""
+    counts = orthologs.group_by("class_key").agg(
+        (pl.col("organism") == "mouse").sum().alias("n_mouse"), (pl.col("organism") == "human").sum().alias("n_human")
+    )
+    single = counts.filter((pl.col("n_mouse") == 1) & (pl.col("n_human") == 1)).select("class_key")
+    mouse = orthologs.filter(pl.col("organism") == "mouse").join(single, on="class_key")
+    human = orthologs.filter(pl.col("organism") == "human").join(single, on="class_key")
+    out = mouse.select("class_key", pl.col("symbol").alias("mouse_symbol")).join(
+        human.select("class_key", pl.col("entrez").alias("human_entrez"), pl.col("symbol").alias("human_symbol")),
+        on="class_key",
+    )
+    dup = out.group_by("mouse_symbol").len().filter(pl.col("len") > 1)["mouse_symbol"]
+    return out.filter(~pl.col("mouse_symbol").is_in(dup.implode())).drop("class_key").sort("mouse_symbol")
+
+
+def pool_gaps(gaps: pl.DataFrame, boot: pl.DataFrame | None, keys: list[str]) -> pl.DataFrame:
+    """Mean ``gap_sd`` over cell types per ``keys``, with a resampling interval when ``boot`` has rows for the key.
+
+    The cell types that enter are those with a finite point gap (the estimable set of the contrast); the others are
+    counted as excluded. A resample enters the interval only when it gives a finite gap for every one of them.
+    """
+    rows = []
+    for key, sel in gaps.group_by(keys, maintain_order=True):
+        est = sel.filter(pl.col("gap_sd").is_finite())
+        row = dict(zip(keys, key, strict=True)) | {
+            "cell_types": est.height,
+            "cell_types_excluded": sel.height - est.height,
+            "mean_gap_sd": float(est["gap_sd"].mean()) if est.height else float("nan"),
+            "cell_types_below_zero": int((est["gap_sd"] < 0).sum()),
+        }
+        if boot is not None and boot.height:
+            mine = boot.join(sel.select(keys).unique(), on=keys)
+            if mine.height:
+                b = (
+                    mine.join(est.select(*keys, "tissue", "cell_type", "sd"), on=[*keys, "tissue", "cell_type"])
+                    .with_columns(g=pl.col("matched_diff") / pl.col("sd"))
+                    .filter(pl.col("g").is_finite())
+                    .group_by("boot")
+                    .agg(pl.col("g").mean(), pl.len().alias("n"))
+                    .filter(pl.col("n") == est.height)
+                )
+                row |= {
+                    "ci_low": float(b["g"].quantile(0.025)) if b.height else float("nan"),
+                    "ci_high": float(b["g"].quantile(0.975)) if b.height else float("nan"),
+                    "complete_resamples": b.height,
+                    "resamples": mine["boot"].n_unique(),
+                }
+        rows.append(row)
+    return pl.DataFrame(rows, infer_schema_length=None)
 
 
 # ----------------------------------------------------------------------------- reading the h5ad
@@ -285,28 +442,30 @@ class Task:
     seed: int
 
 
-def _sc_delta(x, cells) -> np.ndarray:
+def _sc_delta(x, cells, weights: dict[str, float] | None = None) -> np.ndarray:
     """Old minus young residual log CV2 per gene (columns of ``x``)."""
     young = (cells["age_group"] == "young").to_numpy()
-    r_y, _, _ = noise_residual(x[young], cells["mouse"].to_numpy()[young])
-    r_o, _, _ = noise_residual(x[~young], cells["mouse"].to_numpy()[~young])
+    r_y, _, _ = noise_residual(x[young], cells["mouse"].to_numpy()[young], weights)
+    r_o, _, _ = noise_residual(x[~young], cells["mouse"].to_numpy()[~young], weights)
     return r_o - r_y
 
 
-def analyse(task: Task) -> tuple[list[dict], list[dict], dict]:
-    """Point gaps (both versions), mouse-resample gaps and a cell-type summary row."""
-    print(
-        f"[tms_cell_noise] start {task.tissue} / {task.cell_type}: {task.cells.height} cells",
-        file=sys.stderr,
-        flush=True,
-    )
-    rng = np.random.default_rng(task.seed)
-    rows = task.cells["row"].to_numpy()
+def _prepare(
+    path: Path, cells: pl.DataFrame, gene_index: np.ndarray, rng: np.random.Generator, depth_index=None
+) -> tuple[sparse.csr_matrix, pl.DataFrame, np.ndarray, int]:
+    """Raw counts of the kept genes, cells, depth-matched counts (dense) and the depth, for one cell type.
+
+    Depth is the ``DEPTH_QUANTILE`` quantile of read totals over ``gene_index`` (the mapped genes), or over
+    ``depth_index`` (e.g. all endogenous genes) when given; shallower cells are dropped, the larger age group is
+    subsampled to the smaller (at most ``MAX_CELLS``), and the kept genes are thinned at the depth's rate.
+    """
+    rows = cells["row"].to_numpy()
     order = np.argsort(rows)
-    cells = task.cells[order.tolist()]
-    raw = read_rows(task.path, rows[order], _n_genes(task.path))
-    raw = raw[:, task.gene_index].tocsr()
-    totals = np.asarray(raw.sum(axis=1)).ravel()
+    cells = cells[order.tolist()]
+    raw_all = read_rows(path, rows[order], _n_genes(path))
+    raw = raw_all[:, gene_index].tocsr()
+    totals = np.asarray((raw if depth_index is None else raw_all[:, depth_index]).sum(axis=1)).ravel()
+    del raw_all
     depth = int(np.quantile(totals, DEPTH_QUANTILE))
     ok = totals >= depth
     raw, cells, totals = raw[ok], cells.filter(pl.Series(ok)), totals[ok]
@@ -321,8 +480,20 @@ def analyse(task: Task) -> tuple[list[dict], list[dict], dict]:
             ]
         )
     )
-    raw, cells = raw[pick], cells[pick.tolist()]
-    thinned = thin_rows(raw, depth, rng).toarray()
+    raw, cells, totals = raw[pick], cells[pick.tolist()], totals[pick]
+    thinned = thin_rows(raw, depth, rng, None if depth_index is None else totals).toarray()
+    return raw, cells, thinned, depth
+
+
+def analyse(task: Task) -> tuple[list[dict], list[dict], dict]:
+    """Point gaps (both versions), mouse-resample gaps and a cell-type summary row."""
+    print(
+        f"[tms_cell_noise] start {task.tissue} / {task.cell_type}: {task.cells.height} cells",
+        file=sys.stderr,
+        flush=True,
+    )
+    rng = np.random.default_rng(task.seed)
+    raw, cells, thinned, depth = _prepare(task.path, task.cells, task.gene_index, rng)
     young = (cells["age_group"] == "young").to_numpy()
     detected = np.minimum((thinned[young] > 0).mean(axis=0), (thinned[~young] > 0).mean(axis=0))
     keep = detected >= MIN_DETECTED
@@ -466,16 +637,29 @@ def _settings() -> tuple[int, int]:
     return int(os.environ.get("ENTROPY_AGE_WORKERS", "1")), int(os.environ.get("ENTROPY_AGE_BOOT", "200"))
 
 
-def run(ctx: Context) -> list[Path]:
+@dataclass
+class Loaded:
+    path: Path
+    obs: pl.DataFrame  # every usable cell of every age: row, age, mouse, tissue, cell_type, sex
+    symbols: np.ndarray
+    hgnc: pl.DataFrame
+    set_genes: pl.DataFrame  # feature (human Ensembl), group
+    ensembl: dict[str, str]  # mouse symbol -> human Ensembl, upper-case symbol route
+    protein: set[str]
+    gene_index: np.ndarray
+    genes: np.ndarray
+    sets: dict[str, np.ndarray]
+
+
+def _inputs(ctx: Context) -> tuple[Path, list[Path]]:
     path = ctx.paths.input / "tms_facs" / H5AD
     annotation = AnnotationLayout(ctx.paths)
-    needed = [path, annotation.gene_sets, annotation.hgnc]
-    if any(not p.exists() for p in needed):
-        print(f"tms_cell_noise: inputs missing ({', '.join(str(p) for p in needed if not p.exists())}); {URL}")
-        return []
-    plots.apply_style()
-    out = ctx.out_dir("tms_cell_noise")
-    workers, n_boot = _settings()
+    return path, [path, annotation.gene_sets, annotation.hgnc]
+
+
+def _load(ctx: Context) -> Loaded:
+    path, _ = _inputs(ctx)
+    annotation = AnnotationLayout(ctx.paths)
     obs, symbols = read_obs(path)
     # cells of two pooled mice ("3_10_M/3_11_M") belong to neither mouse and are left out
     obs = obs.filter(
@@ -483,7 +667,6 @@ def run(ctx: Context) -> list[Path]:
         & ~pl.col("cell_type").is_in(["nan", "", "None"])
         & ~pl.col("mouse").str.contains("/", literal=True)
     )
-    obs = obs.with_columns(age_group=pl.when(pl.col("age").is_in(YOUNG)).then(pl.lit("young")).otherwise(pl.lit("old")))
     hgnc, gene_sets = pl.read_parquet(annotation.hgnc), pl.read_parquet(annotation.gene_sets)
     mapping = symbol_ensembl([str(s) for s in symbols], hgnc)
     protein = set(hgnc.filter(pl.col("protein_coding") & pl.col("ensembl").is_not_null())["ensembl"].to_list())
@@ -491,12 +674,34 @@ def run(ctx: Context) -> list[Path]:
     coding = np.array([ensembl.get(str(g)) in protein and not str(g).startswith("ERCC-") for g in symbols])
     gene_index = np.flatnonzero(coding)
     genes = symbols[gene_index]
-    membership = (
-        gene_set_ensembl(gene_sets, hgnc)
-        .filter(pl.col("group").is_in(SETS))
-        .join(mapping.select(pl.col("ensembl").alias("feature"), pl.col("symbol").alias("mouse")), on="feature")
+    set_genes = gene_set_ensembl(gene_sets, hgnc).filter(pl.col("group").is_in(SETS))
+    membership = set_genes.join(
+        mapping.select(pl.col("ensembl").alias("feature"), pl.col("symbol").alias("mouse")), on="feature"
     )
     sets = {s: np.isin(genes, membership.filter(pl.col("group") == s)["mouse"].to_list()) for s in SETS}
+    return Loaded(path, obs, symbols, hgnc, set_genes, ensembl, protein, gene_index, genes, sets)
+
+
+def _age_groups(obs: pl.DataFrame, young: tuple[str, ...], old: tuple[str, ...], sex: str | None = None):
+    sel = obs.filter(pl.col("age").is_in(young + old))
+    if sex is not None:
+        sel = sel.filter(pl.col("sex") == sex)
+    return sel.with_columns(
+        age_group=pl.when(pl.col("age").is_in(young)).then(pl.lit("young")).otherwise(pl.lit("old"))
+    )
+
+
+def run(ctx: Context) -> list[Path]:
+    path, needed = _inputs(ctx)
+    if any(not p.exists() for p in needed):
+        print(f"tms_cell_noise: inputs missing ({', '.join(str(p) for p in needed if not p.exists())}); {URL}")
+        return []
+    plots.apply_style()
+    out = ctx.out_dir("tms_cell_noise")
+    workers, n_boot = _settings()
+    data = _load(ctx)
+    obs = _age_groups(data.obs, YOUNG, OLD)
+    symbols, gene_index, genes, sets = data.symbols, data.gene_index, data.genes, data.sets
     groups = eligible(obs)
     if limit := int(os.environ.get("ENTROPY_AGE_TMS_CELL_TYPES", "0")):  # smoke tests
         groups = groups.head(limit)
@@ -562,33 +767,12 @@ def _intervals(point: pl.DataFrame, boot: pl.DataFrame) -> pl.DataFrame:
 
 
 def _pooled(gaps: pl.DataFrame, boot: pl.DataFrame) -> pl.DataFrame:
-    """Mean gap over cell types; single-cell interval from the shared mouse resamples (complete resamples only)."""
-    rows = []
-    for (version, s), sel in gaps.group_by("version", "set", maintain_order=True):
-        row = {
-            "version": version,
-            "set": s,
-            "cell_types": sel.height,
-            "mean_gap_sd": float(sel["gap_sd"].mean()),
-            "cell_types_below_zero": int((sel["gap_sd"] < 0).sum()),
-        }
-        if version == "single_cell":
-            b = (
-                boot.filter(pl.col("set") == s)
-                .join(sel.select("tissue", "cell_type", "sd"), on=["tissue", "cell_type"])
-                .with_columns(g=pl.col("matched_diff") / pl.col("sd"))
-                .group_by("boot")
-                .agg(pl.col("g").mean(), pl.len().alias("n"))
-                .filter(pl.col("n") == sel.height)
-            )
-            if b.height:
-                row |= {
-                    "ci_low": float(b["g"].quantile(0.025)),
-                    "ci_high": float(b["g"].quantile(0.975)),
-                    "complete_resamples": b.height,
-                }
-        rows.append(row)
-    return pl.DataFrame(rows, infer_schema_length=None)
+    """Mean gap over the estimable cell types; single-cell interval from the shared mouse resamples.
+
+    A cell type without a finite gap (no retained non-essential genes) is excluded and counted; a resample enters
+    only when it gives a finite gap for every estimable cell type (``pool_gaps``).
+    """
+    return pool_gaps(gaps, boot, ["version", "set"])
 
 
 def _figure(ctx: Context, gaps: pl.DataFrame, pooled: pl.DataFrame) -> Path:
@@ -621,3 +805,402 @@ def _figure(ctx: Context, gaps: pl.DataFrame, pooled: pl.DataFrame) -> Path:
     fig.set_size_inches(12, max(4, 0.2 * len(names) + 1.5))
     fig.suptitle("Tabula Muris Senis FACS: essential-gene shield in per-cell noise (3 m vs 18-24 m)", x=0.02, ha="left")
     return plots.save(fig, ctx.figure_path("tms_cell_noise"))
+
+
+# ----------------------------------------------------------------------------- sensitivities (Codex review 8)
+#: contrasts beside the main 3 m vs pooled 18-24 m; the 24 m mice are all male and the 21 m mice all female, so
+#: same-sex contrasts take exact ages where three mice allow it (male 3 vs 18 m and female 3 vs 18 m have two old
+#: mice and are listed as not estimable)
+CONTRASTS: tuple[tuple[str, tuple[str, ...], tuple[str, ...], str | None], ...] = (
+    ("3m_vs_18m", ("3m",), ("18m",), None),
+    ("male_3m_vs_24m", ("3m",), ("24m",), "male"),
+    ("female_3m_vs_21m", ("3m",), ("21m",), "female"),
+    ("male_3m_vs_18m", ("3m",), ("18m",), "male"),
+    ("female_3m_vs_18m", ("3m",), ("18m",), "female"),
+    ("male_3m_vs_18-24m", ("3m",), ("18m", "24m"), "male"),
+    ("female_3m_vs_18-21m", ("3m",), ("18m", "21m"), "female"),
+)
+#: planted rises of log CV2 at housekeeping and core-essential genes in old cells, in SDs of the age change
+PLANTED = (0.05, 0.1, 0.2, 0.3, 0.5)
+
+
+@dataclass
+class SensTask:
+    variant: str
+    path: Path
+    tissue: str
+    cell_type: str
+    cells: pl.DataFrame  # row, age_group, mouse
+    gene_index: np.ndarray
+    depth_index: np.ndarray | None
+    sets: dict[str, tuple[np.ndarray, np.ndarray]]  # name -> (member, background) over gene_index
+    weights: list[dict[str, float]]
+    seed: int
+    draws: list[dict[str, list[str]]]  # multinomial mouse draws, gated on distinct original mouse IDs
+    mice: list[str]  # leave-one-mouse-out over these; empty for none
+    planted: tuple[float, ...]
+    plant_sets: tuple[str, ...]
+    n_plant_weights: int
+    young_reference: bool
+
+
+def matched_count(values: np.ndarray, member: np.ndarray, background: np.ndarray, stratum: np.ndarray) -> int:
+    """Members with a finite value in a stratum that holds finite background values (those ``matched_diff`` uses)."""
+    ok = np.isfinite(values)
+    have = np.unique(stratum[background & ok])
+    return int((member & ok & np.isin(stratum, have)).sum())
+
+
+def _gate(sub_cells: pl.DataFrame) -> bool:
+    yb = (sub_cells["age_group"] == "young").to_numpy()
+    n_mice = [sub_cells.filter(pl.Series(g))["mouse"].n_unique() for g in (yb, ~yb)]
+    return min(n_mice) >= 2 and min(yb.sum(), (~yb).sum()) - max(n_mice) >= 5
+
+
+def analyse_sensitivity(task: SensTask) -> tuple[list[dict], list[dict], dict]:
+    """Point gaps per matching, resampled gaps (mouse weights, ID-gated mouse draws, left-out mice, planted)."""
+    print(f"[tms_cell_noise:{task.variant}] start {task.tissue} / {task.cell_type}", file=sys.stderr, flush=True)
+    rng = np.random.default_rng(task.seed)
+    _, cells, thinned, depth = _prepare(task.path, task.cells, task.gene_index, rng, task.depth_index)
+    young = (cells["age_group"] == "young").to_numpy()
+    mouse = cells["mouse"].to_numpy()
+    point, boot = [], []
+    modes = ["pooled"] + (["young_reference"] if task.young_reference else [])
+    for mode in modes:
+        if mode == "pooled":
+            detected = np.minimum((thinned[young] > 0).mean(axis=0), (thinned[~young] > 0).mean(axis=0))
+            keep = detected >= MIN_DETECTED
+            x = thinned[:, keep]
+            ref = x
+            stratum = strata(x.mean(axis=0), (x == 0).mean(axis=0))
+        else:  # eligibility and matching on the young cells only, ties kept together
+            keep = (thinned[young] > 0).mean(axis=0) >= MIN_DETECTED
+            x = thinned[:, keep]
+            ref = x[young]
+            stratum = strata(ref.mean(axis=0), (ref == 0).mean(axis=0), ties=True)
+        sets = {s: (m[keep], b[keep]) for s, (m, b) in task.sets.items()}
+        ref_log_mean = np.log(ref.mean(axis=0))
+        ref_dropout = (ref == 0).mean(axis=0)
+        with np.errstate(invalid="ignore", divide="ignore"):
+            delta = _sc_delta(x, cells)
+        sd = float(np.nanstd(delta))
+        key = {"variant": task.variant, "matching": mode, "tissue": task.tissue, "cell_type": task.cell_type}
+        for s, (m, b) in sets.items():
+            point.append(
+                key
+                | {
+                    "set": s,
+                    "n_set": int(m.sum()),
+                    "n_matched": matched_count(delta, m, b, stratum),
+                    "matched_diff": matched_diff(delta, m, b, stratum),
+                    "sd": sd,
+                    "balance_log_mean": matched_diff(ref_log_mean, m, b, stratum),
+                    "balance_dropout": matched_diff(ref_dropout, m, b, stratum),
+                }
+            )
+
+        def emit(kind, b, dlt, extra=None, sets=sets, key=key, stratum=stratum) -> None:
+            for s, (m, bg) in sets.items():
+                boot.append(
+                    key
+                    | {"kind": kind, "boot": str(b), "set": s, "matched_diff": matched_diff(dlt, m, bg, stratum)}
+                    | (extra or {})
+                )
+
+        for b, w in enumerate(task.weights):
+            with np.errstate(invalid="ignore", divide="ignore"):
+                emit("weights", b, _sc_delta(x, cells, w))
+        if mode != "pooled":
+            continue
+        for b, draw in enumerate(task.draws):
+            present = set(mouse.tolist())
+            if not all(distinct_mice_ok(ids, present) for ids in draw.values()):
+                continue
+            idx, labels = [], []
+            for age, ids in draw.items():
+                for j, m in enumerate(ids):
+                    sel = np.flatnonzero(mouse == m)
+                    idx.append(sel)
+                    labels.append(np.full(sel.size, f"{age}:{j}"))
+            idx = np.concatenate(idx)
+            sub = cells[idx.tolist()].with_columns(mouse=pl.Series(np.concatenate(labels)))
+            if not _gate(sub):
+                continue
+            with np.errstate(invalid="ignore", divide="ignore"):
+                emit("mouse_id", b, _sc_delta(x[idx], sub))
+        for m in task.mice:
+            if m not in mouse:
+                emit("lomo", m, delta)
+                continue
+            keep_rows = mouse != m
+            sub = cells.filter(pl.Series(keep_rows))
+            if not _gate(sub):
+                emit("lomo", m, np.full(delta.shape, np.nan))
+                continue
+            with np.errstate(invalid="ignore", divide="ignore"):
+                emit("lomo", m, _sc_delta(x[keep_rows], sub))
+        if task.planted:
+            union = np.any(np.column_stack([sets[s][0] for s in task.plant_sets]), axis=1)
+            for k, target in enumerate(task.planted):
+                xp = plant_noise(
+                    x, ~young, union, target * sd, mouse, np.random.default_rng(task.seed + 7919 * (k + 1))
+                )
+                with np.errstate(invalid="ignore", divide="ignore"):
+                    emit("planted_point", f"{target}", _sc_delta(xp, cells), {"target": target})
+                    for b, w in enumerate(task.weights[: task.n_plant_weights]):
+                        emit("planted", b, _sc_delta(xp, cells, w), {"target": target})
+    cy, co = cells.filter(pl.Series(young)), cells.filter(pl.Series(~young))
+    summary = {
+        "variant": task.variant,
+        "tissue": task.tissue,
+        "cell_type": task.cell_type,
+        "depth": depth,
+        "cells_young": cy.height,
+        "cells_old": co.height,
+        "mice_young": cy["mouse"].n_unique(),
+        "mice_old": co["mouse"].n_unique(),
+    }
+    return point, boot, summary
+
+
+def _mgi_sets(ctx: Context, data: Loaded) -> tuple[np.ndarray, dict[str, tuple[np.ndarray, np.ndarray]], pl.DataFrame]:
+    """Gene columns and sets by MGI one-to-one orthology; the agreeing subset; a coverage table."""
+    from entropy_age.data.mouse import ORTHOLOG_FILE, MouseAnnotationLayout, read_orthologs
+
+    report = MouseAnnotationLayout(ctx.paths).input / ORTHOLOG_FILE
+    pairs = one_to_one_orthologs(read_orthologs(report))
+    hgnc = data.hgnc.filter(pl.col("entrez").is_not_null() & pl.col("ensembl").is_not_null())
+    by_entrez = pairs.join(hgnc.select(pl.col("entrez").alias("human_entrez"), "ensembl"), on="human_entrez")
+    mgi = {m: e for m, e in by_entrez.select("mouse_symbol", "ensembl").iter_rows() if e in data.protein}
+    symbols = [str(g) for g in data.symbols]
+    index = np.array([i for i, g in enumerate(symbols) if g in mgi and not g.startswith("ERCC-")])
+    genes = [symbols[i] for i in index]
+    ens = np.array([mgi[g] for g in genes])
+    sym_route = np.array([data.ensembl.get(g) if data.ensembl.get(g) in data.protein else None for g in genes])
+    agree = sym_route == ens
+    in_set = {s: np.isin(ens, data.set_genes.filter(pl.col("group") == s)["feature"].to_list()) for s in SETS}
+    background = ~np.any(np.column_stack(list(in_set.values())), axis=1)
+    sets = {s: (m, background) for s, m in in_set.items()}
+    sets |= {f"{s}|agree": (m & agree, background & agree) for s, m in in_set.items()}
+    # coverage of each route over the TMS symbols
+    sym_member = {s: set(np.asarray(data.genes)[data.sets[s]].tolist()) for s in SETS}
+    mgi_member = {s: set(np.asarray(genes)[in_set[s]].tolist()) for s in SETS}
+    rows = [
+        {
+            "set": "all_protein_coding",
+            "symbol_route": len(data.genes),
+            "mgi_one_to_one": len(genes),
+            "both_same_gene": int(agree.sum()),
+        }
+    ] + [
+        {
+            "set": s,
+            "symbol_route": len(sym_member[s]),
+            "mgi_one_to_one": len(mgi_member[s]),
+            "both_same_gene": int((in_set[s] & agree).sum()),
+            "symbol_route_only": len(sym_member[s] - mgi_member[s]),
+            "mgi_only": len(mgi_member[s] - sym_member[s]),
+        }
+        for s in SETS
+    ]
+    coverage = pl.DataFrame(rows, infer_schema_length=None).with_columns(
+        one_to_one_pairs=pl.lit(pairs.height), tms_symbols=pl.lit(len(symbols))
+    )
+    return index, sets, coverage
+
+
+def run_sensitivity(ctx: Context) -> list[Path]:
+    """Codex review 8 sensitivities beside the main tables (``sensitivity_*``, ``lomo``, ``planted``, ...)."""
+    path, needed = _inputs(ctx)
+    if any(not p.exists() for p in needed):
+        print("tms_cell_noise sensitivities: inputs missing")
+        return []
+    out = ctx.out_dir("tms_cell_noise")
+    workers, n_boot = _settings()
+    n_weights = int(os.environ.get("ENTROPY_AGE_SENS_BOOT", "200"))
+    n_plant = int(os.environ.get("ENTROPY_AGE_PLANT_BOOT", "50"))
+    limit = int(os.environ.get("ENTROPY_AGE_TMS_CELL_TYPES", "0"))
+    data = _load(ctx)
+    symbol_sets = {s: (m, ~np.any(np.column_stack(list(data.sets.values())), axis=1)) for s, m in data.sets.items()}
+    endogenous = np.array([i for i, g in enumerate(data.symbols) if not str(g).startswith("ERCC-")])
+    mgi_index, mgi_sets, coverage = _mgi_sets(ctx, data)
+    write_table(coverage, out / "orthology")
+
+    def mice_of(obs: pl.DataFrame) -> dict[str, list[str]]:
+        return {g: sorted(obs.filter(pl.col("age_group") == g)["mouse"].unique().to_list()) for g in ("young", "old")}
+
+    tasks, contrast_rows = [], []
+    main_obs = _age_groups(data.obs, YOUNG, OLD)
+    main_mice = mice_of(main_obs)
+    rng = ctx.rng(4242)  # the main run's multinomial draws, re-gated here on distinct original mouse IDs
+    draws = [mouse_draw(main_mice, rng) for _ in range(n_boot)]
+    wrng = ctx.rng(4343)
+    main_weights = [mouse_weights(main_mice, wrng) for _ in range(n_weights)]
+    all_mice = main_mice["young"] + main_mice["old"]
+    main_groups = eligible(main_obs)
+    if limit:
+        main_groups = main_groups.head(limit)
+    for i, (tissue, cell_type) in enumerate(main_groups.iter_rows()):
+        cells = main_obs.filter((pl.col("tissue") == tissue) & (pl.col("cell_type") == cell_type)).select(
+            "row", "age_group", "mouse"
+        )
+        common = {"path": path, "tissue": tissue, "cell_type": cell_type, "cells": cells, "seed": 1000 + i}
+        tasks.append(
+            SensTask(
+                "main",
+                gene_index=data.gene_index,
+                depth_index=None,
+                sets=symbol_sets,
+                weights=main_weights,
+                draws=draws,
+                mice=all_mice,
+                planted=PLANTED,
+                plant_sets=("housekeeping", "core_essential"),
+                n_plant_weights=n_plant,
+                young_reference=True,
+                **common,
+            )
+        )
+        tasks.append(
+            SensTask(
+                "all_reads_depth",
+                gene_index=data.gene_index,
+                depth_index=endogenous,
+                sets=symbol_sets,
+                weights=main_weights,
+                draws=[],
+                mice=[],
+                planted=(),
+                plant_sets=(),
+                n_plant_weights=0,
+                young_reference=False,
+                **common,
+            )
+        )
+        tasks.append(
+            SensTask(
+                "mgi_one_to_one",
+                gene_index=mgi_index,
+                depth_index=None,
+                sets=mgi_sets,
+                weights=main_weights,
+                draws=[],
+                mice=[],
+                planted=(),
+                plant_sets=(),
+                n_plant_weights=0,
+                young_reference=False,
+                **common,
+            )
+        )
+    contrast_rows.append(
+        {
+            "contrast": "main",
+            "young": "3m",
+            "old": "18m,21m,24m",
+            "sex": "both",
+            "mice_young": len(main_mice["young"]),
+            "mice_old": len(main_mice["old"]),
+            "cell_types": main_groups.height,
+        }
+    )
+    for j, (name, y_ages, o_ages, sex) in enumerate(CONTRASTS):
+        obs = _age_groups(data.obs, y_ages, o_ages, sex)
+        mice = mice_of(obs)
+        groups = eligible(obs) if min(len(v) for v in mice.values()) >= MIN_MICE else eligible(obs).head(0)
+        if limit:
+            groups = groups.head(limit)
+        contrast_rows.append(
+            {
+                "contrast": name,
+                "young": ",".join(y_ages),
+                "old": ",".join(o_ages),
+                "sex": sex or "both",
+                "mice_young": len(mice["young"]),
+                "mice_old": len(mice["old"]),
+                "cell_types": groups.height,
+            }
+        )
+        if not groups.height:
+            continue
+        crng = ctx.rng(4400 + j)
+        weights = [mouse_weights(mice, crng) for _ in range(n_weights)]
+        for i, (tissue, cell_type) in enumerate(groups.iter_rows()):
+            cells = obs.filter((pl.col("tissue") == tissue) & (pl.col("cell_type") == cell_type)).select(
+                "row", "age_group", "mouse"
+            )
+            tasks.append(
+                SensTask(
+                    name,
+                    path,
+                    tissue,
+                    cell_type,
+                    cells,
+                    data.gene_index,
+                    None,
+                    symbol_sets,
+                    weights,
+                    2000 + 100 * j + i,
+                    [],
+                    [],
+                    (),
+                    (),
+                    0,
+                    False,
+                )
+            )
+    write_table(pl.DataFrame(contrast_rows), out / "contrasts")
+    print(f"[tms_cell_noise] sensitivities: {len(tasks)} tasks, {n_weights} mouse-weight resamples", file=sys.stderr)
+    if workers > 1:
+        # spawn: a forked child inherits polars' locked thread pool and hangs (smoke job 6657459, 2026-11-26)
+        with ProcessPoolExecutor(workers, mp_context=multiprocessing.get_context("spawn")) as pool:
+            results = list(pool.map(analyse_sensitivity, tasks))
+    else:
+        results = [analyse_sensitivity(t) for t in tasks]
+    point = pl.DataFrame([r for p, _, _ in results for r in p], infer_schema_length=None)
+    boot = pl.DataFrame([r for _, b, _ in results for r in b], infer_schema_length=None)
+    summary = pl.DataFrame([s for _, _, s in results], infer_schema_length=None)
+    point = point.with_columns(gap_sd=pl.col("matched_diff") / pl.col("sd"))
+    boot.write_parquet(out / "sensitivity_resamples.parquet")
+    keys = ["variant", "matching", "set"]
+    weights_b = boot.filter(pl.col("kind") == "weights").select(*keys, "tissue", "cell_type", "boot", "matched_diff")
+    pooled = pool_gaps(point, weights_b.with_columns(pl.col("boot").cast(pl.Int64)), keys)
+    id_b = boot.filter(pl.col("kind") == "mouse_id").select(*keys, "tissue", "cell_type", "boot", "matched_diff")
+    id_pooled = pool_gaps(
+        point.filter((pl.col("variant") == "main") & (pl.col("matching") == "pooled")),
+        id_b.with_columns(pl.col("boot").cast(pl.Int64)),
+        keys,
+    ).select(
+        *keys,
+        pl.col("ci_low").alias("id_ci_low"),
+        pl.col("ci_high").alias("id_ci_high"),
+        pl.col("complete_resamples").alias("id_complete_resamples"),
+        pl.col("resamples").alias("id_resamples"),
+    )
+    pooled = pooled.join(id_pooled, on=keys, how="left")
+    # leave one mouse out: the pooled gap over the main estimable cell types with each mouse left out
+    lomo = (
+        boot.filter(pl.col("kind") == "lomo")
+        .join(point.select(*keys, "tissue", "cell_type", "sd"), on=[*keys, "tissue", "cell_type"])
+        .with_columns(g=pl.col("matched_diff") / pl.col("sd"))
+        .filter(pl.col("g").is_finite())
+        .group_by("set", pl.col("boot").alias("mouse_left_out"))
+        .agg(pl.col("g").mean().alias("mean_gap_sd"), pl.len().alias("cell_types"))
+        .sort("set", "mouse_left_out")
+    )
+    # planted effects: recovered pooled gap with its mouse-weight interval
+    pp = (
+        boot.filter(pl.col("kind") == "planted_point")
+        .join(point.select(*keys, "tissue", "cell_type", "sd"), on=[*keys, "tissue", "cell_type"])
+        .with_columns(gap_sd=pl.col("matched_diff") / pl.col("sd"))
+    )
+    pb = boot.filter(pl.col("kind") == "planted").select(
+        "target", *keys, "tissue", "cell_type", pl.col("boot").cast(pl.Int64), "matched_diff"
+    )
+    planted = pool_gaps(pp.select("target", *keys, "tissue", "cell_type", "sd", "gap_sd"), pb, ["target", *keys])
+    write_table(point.sort(*keys, "tissue", "cell_type"), out / "sensitivity_gaps", csv_max_rows=20_000)
+    write_table(pooled.sort(*keys), out / "sensitivity_pooled")
+    write_table(summary, out / "sensitivity_cell_types", csv_max_rows=5_000)
+    write_table(lomo, out / "lomo")
+    write_table(planted.sort("set", "target"), out / "planted")
+    return [out / "sensitivity_pooled.csv"]

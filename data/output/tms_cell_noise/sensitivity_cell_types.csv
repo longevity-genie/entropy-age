@@ -1,0 +1,462 @@
+variant,tissue,cell_type,depth,cells_young,cells_old,mice_young,mice_old
+main,Aorta,aortic endothelial cell,91841,152,152,4,8
+all_reads_depth,Aorta,aortic endothelial cell,134571,152,152,4,8
+mgi_one_to_one,Aorta,aortic endothelial cell,83550,152,152,4,8
+main,BAT,B cell,23434,195,195,7,7
+all_reads_depth,BAT,B cell,41343,194,194,7,7
+mgi_one_to_one,BAT,B cell,21548,195,195,7,7
+main,BAT,T cell,36479,62,62,7,7
+all_reads_depth,BAT,T cell,58198,62,62,7,7
+mgi_one_to_one,BAT,T cell,32071,62,62,7,7
+main,BAT,endothelial cell,31729,145,145,7,6
+all_reads_depth,BAT,endothelial cell,46876,145,145,7,6
+mgi_one_to_one,BAT,endothelial cell,28374,145,145,7,6
+main,BAT,mesenchymal stem cell of adipose,159649,76,76,7,6
+all_reads_depth,BAT,mesenchymal stem cell of adipose,244731,77,77,7,6
+mgi_one_to_one,BAT,mesenchymal stem cell of adipose,144682,76,76,7,6
+main,BAT,myeloid cell,35133,148,148,7,8
+all_reads_depth,BAT,myeloid cell,58107,145,145,7,8
+mgi_one_to_one,BAT,myeloid cell,33723,147,147,7,8
+main,Bladder,bladder cell,274893,321,321,6,7
+all_reads_depth,Bladder,bladder cell,363526,318,318,6,7
+mgi_one_to_one,Bladder,bladder cell,254240,320,320,6,7
+main,Bladder,bladder urothelial cell,246929,632,632,6,7
+all_reads_depth,Bladder,bladder urothelial cell,303931,629,629,6,7
+mgi_one_to_one,Bladder,bladder urothelial cell,209779,633,633,6,7
+main,Brain_Myeloid,microglial cell,148100,2000,2000,6,8
+all_reads_depth,Brain_Myeloid,microglial cell,189908,2000,2000,6,8
+mgi_one_to_one,Brain_Myeloid,microglial cell,140678,2000,2000,6,8
+main,Brain_Non-Myeloid,astrocyte,70152,136,136,7,5
+all_reads_depth,Brain_Non-Myeloid,astrocyte,111308,136,136,7,5
+mgi_one_to_one,Brain_Non-Myeloid,astrocyte,66358,136,136,7,5
+main,Brain_Non-Myeloid,brain pericyte,107452,160,160,7,5
+all_reads_depth,Brain_Non-Myeloid,brain pericyte,129832,158,158,7,5
+mgi_one_to_one,Brain_Non-Myeloid,brain pericyte,99268,160,160,7,5
+main,Brain_Non-Myeloid,endothelial cell,111460,621,621,7,5
+all_reads_depth,Brain_Non-Myeloid,endothelial cell,151319,617,617,7,5
+mgi_one_to_one,Brain_Non-Myeloid,endothelial cell,103724,622,622,7,5
+main,Brain_Non-Myeloid,interneuron,22067,59,59,6,5
+all_reads_depth,Brain_Non-Myeloid,interneuron,29690,59,59,6,5
+mgi_one_to_one,Brain_Non-Myeloid,interneuron,20278,59,59,6,5
+main,Brain_Non-Myeloid,neuron,69096,139,139,7,7
+all_reads_depth,Brain_Non-Myeloid,neuron,122939,139,139,7,7
+mgi_one_to_one,Brain_Non-Myeloid,neuron,63409,139,139,7,7
+main,Brain_Non-Myeloid,oligodendrocyte,250448,669,669,7,5
+all_reads_depth,Brain_Non-Myeloid,oligodendrocyte,337663,666,666,7,5
+mgi_one_to_one,Brain_Non-Myeloid,oligodendrocyte,242616,668,668,7,5
+main,Brain_Non-Myeloid,oligodendrocyte precursor cell,178838,104,104,7,5
+all_reads_depth,Brain_Non-Myeloid,oligodendrocyte precursor cell,257637,104,104,7,5
+mgi_one_to_one,Brain_Non-Myeloid,oligodendrocyte precursor cell,164790,104,104,7,5
+main,Diaphragm,endothelial cell,15388,92,92,4,4
+all_reads_depth,Diaphragm,endothelial cell,22901,91,91,4,4
+mgi_one_to_one,Diaphragm,endothelial cell,13826,92,92,4,4
+main,Diaphragm,mesenchymal stem cell,100895,217,217,4,4
+all_reads_depth,Diaphragm,mesenchymal stem cell,146327,216,216,4,4
+mgi_one_to_one,Diaphragm,mesenchymal stem cell,89068,218,218,4,4
+main,Diaphragm,skeletal muscle satellite cell,68009,389,389,4,4
+all_reads_depth,Diaphragm,skeletal muscle satellite cell,97132,392,392,4,4
+mgi_one_to_one,Diaphragm,skeletal muscle satellite cell,57683,388,388,4,4
+main,GAT,endothelial cell,95265,146,146,7,7
+all_reads_depth,GAT,endothelial cell,142716,144,144,7,7
+mgi_one_to_one,GAT,endothelial cell,86653,146,146,7,7
+main,GAT,mesenchymal stem cell of adipose,365199,604,604,7,7
+all_reads_depth,GAT,mesenchymal stem cell of adipose,497589,604,604,7,7
+mgi_one_to_one,GAT,mesenchymal stem cell of adipose,335878,604,604,7,7
+main,GAT,myeloid cell,114592,241,241,7,7
+all_reads_depth,GAT,myeloid cell,213496,239,239,7,7
+mgi_one_to_one,GAT,myeloid cell,117441,239,239,7,7
+main,Heart,atrial myocyte,12209,75,75,7,7
+all_reads_depth,Heart,atrial myocyte,26456,75,75,7,7
+mgi_one_to_one,Heart,atrial myocyte,11306,75,75,7,7
+main,Heart,endocardial cell,177147,153,153,7,7
+all_reads_depth,Heart,endocardial cell,231496,153,153,7,7
+mgi_one_to_one,Heart,endocardial cell,162595,153,153,7,7
+main,Heart,endothelial cell of coronary artery,113356,1086,1086,7,7
+all_reads_depth,Heart,endothelial cell of coronary artery,153496,1082,1082,7,7
+mgi_one_to_one,Heart,endothelial cell of coronary artery,102733,1087,1087,7,7
+main,Heart,fibroblast of cardiac tissue,263092,1319,1319,7,7
+all_reads_depth,Heart,fibroblast of cardiac tissue,332556,1323,1323,7,7
+mgi_one_to_one,Heart,fibroblast of cardiac tissue,244993,1316,1316,7,7
+main,Heart,monocyte,62837,459,459,7,7
+all_reads_depth,Heart,monocyte,107003,460,460,7,7
+mgi_one_to_one,Heart,monocyte,58563,459,459,7,7
+main,Heart,valve cell,180327,141,141,7,7
+all_reads_depth,Heart,valve cell,241865,141,141,7,7
+mgi_one_to_one,Heart,valve cell,165590,141,141,7,7
+main,Kidney,fenestrated cell,186543,96,96,6,8
+all_reads_depth,Kidney,fenestrated cell,241291,96,96,6,8
+mgi_one_to_one,Kidney,fenestrated cell,166973,96,96,6,8
+main,Kidney,kidney collecting duct epithelial cell,133280,91,91,6,8
+all_reads_depth,Kidney,kidney collecting duct epithelial cell,209250,90,90,6,8
+mgi_one_to_one,Kidney,kidney collecting duct epithelial cell,121574,91,91,6,8
+main,Kidney,kidney collecting duct principal cell,38587,49,49,6,8
+all_reads_depth,Kidney,kidney collecting duct principal cell,65378,47,47,6,7
+mgi_one_to_one,Kidney,kidney collecting duct principal cell,33614,49,49,6,8
+main,Large_Intestine,enterocyte of epithelium of large intestine,47914,993,993,7,8
+all_reads_depth,Large_Intestine,enterocyte of epithelium of large intestine,129389,1021,1021,7,8
+mgi_one_to_one,Large_Intestine,enterocyte of epithelium of large intestine,45787,996,996,7,8
+main,Large_Intestine,epithelial cell of large intestine,30424,743,743,7,8
+all_reads_depth,Large_Intestine,epithelial cell of large intestine,165620,715,715,7,8
+mgi_one_to_one,Large_Intestine,epithelial cell of large intestine,27033,742,742,7,8
+main,Large_Intestine,intestinal crypt stem cell,401274,665,665,7,8
+all_reads_depth,Large_Intestine,intestinal crypt stem cell,535931,663,663,7,8
+mgi_one_to_one,Large_Intestine,intestinal crypt stem cell,359873,666,666,7,8
+main,Large_Intestine,large intestine goblet cell,89266,623,623,7,8
+all_reads_depth,Large_Intestine,large intestine goblet cell,311878,621,621,7,8
+mgi_one_to_one,Large_Intestine,large intestine goblet cell,82169,621,621,7,8
+main,Large_Intestine,secretory cell,400937,208,208,6,6
+all_reads_depth,Large_Intestine,secretory cell,566637,207,207,6,6
+mgi_one_to_one,Large_Intestine,secretory cell,361222,207,207,6,6
+main,Limb_Muscle,B cell,10640,70,70,6,8
+all_reads_depth,Limb_Muscle,B cell,14726,70,70,6,8
+mgi_one_to_one,Limb_Muscle,B cell,9452,70,70,6,8
+main,Limb_Muscle,endothelial cell,70111,133,133,6,8
+all_reads_depth,Limb_Muscle,endothelial cell,106000,134,134,6,8
+mgi_one_to_one,Limb_Muscle,endothelial cell,65137,133,133,6,8
+main,Limb_Muscle,mesenchymal stem cell,344885,237,237,6,8
+all_reads_depth,Limb_Muscle,mesenchymal stem cell,468654,238,238,6,8
+mgi_one_to_one,Limb_Muscle,mesenchymal stem cell,300190,240,240,6,8
+main,Limb_Muscle,skeletal muscle satellite cell,262852,472,472,6,8
+all_reads_depth,Limb_Muscle,skeletal muscle satellite cell,350935,474,474,6,8
+mgi_one_to_one,Limb_Muscle,skeletal muscle satellite cell,225383,474,474,6,8
+main,Liver,hepatocyte,111798,375,375,4,5
+all_reads_depth,Liver,hepatocyte,231404,374,374,4,5
+mgi_one_to_one,Liver,hepatocyte,109848,376,376,4,5
+main,Lung,adventitial cell,265198,126,126,6,8
+all_reads_depth,Lung,adventitial cell,347302,126,126,6,8
+mgi_one_to_one,Lung,adventitial cell,249717,126,126,6,8
+main,Lung,bronchial smooth muscle cell,212040,341,341,6,8
+all_reads_depth,Lung,bronchial smooth muscle cell,287229,329,329,6,8
+mgi_one_to_one,Lung,bronchial smooth muscle cell,192837,341,341,6,8
+main,Lung,classical monocyte,405921,56,56,6,8
+all_reads_depth,Lung,classical monocyte,573630,56,56,6,8
+mgi_one_to_one,Lung,classical monocyte,433325,56,56,6,8
+main,Lung,fibroblast of lung,159302,102,102,6,8
+all_reads_depth,Lung,fibroblast of lung,209578,101,101,6,8
+mgi_one_to_one,Lung,fibroblast of lung,145503,101,101,6,8
+main,Lung,non-classical monocyte,138944,52,52,6,6
+all_reads_depth,Lung,non-classical monocyte,232453,51,51,6,8
+mgi_one_to_one,Lung,non-classical monocyte,134517,52,52,6,6
+main,Lung,type II pneumocyte,127584,66,66,6,8
+all_reads_depth,Lung,type II pneumocyte,203598,66,66,6,8
+mgi_one_to_one,Lung,type II pneumocyte,119296,66,66,6,8
+main,MAT,B cell,119067,110,110,6,7
+all_reads_depth,MAT,B cell,164651,109,109,6,7
+mgi_one_to_one,MAT,B cell,108731,110,110,6,7
+main,MAT,"CD4-positive, alpha-beta T cell",159850,61,61,4,7
+all_reads_depth,MAT,"CD4-positive, alpha-beta T cell",229817,61,61,4,7
+mgi_one_to_one,MAT,"CD4-positive, alpha-beta T cell",143042,61,61,4,7
+main,MAT,endothelial cell,68900,111,111,6,7
+all_reads_depth,MAT,endothelial cell,101493,111,111,6,7
+mgi_one_to_one,MAT,endothelial cell,62062,111,111,6,7
+main,MAT,macrophage,118430,98,98,6,7
+all_reads_depth,MAT,macrophage,246936,97,97,6,7
+mgi_one_to_one,MAT,macrophage,114861,96,96,6,7
+main,MAT,mesenchymal stem cell of adipose,417612,523,523,6,7
+all_reads_depth,MAT,mesenchymal stem cell of adipose,586858,524,524,6,7
+mgi_one_to_one,MAT,mesenchymal stem cell of adipose,385949,523,523,6,7
+main,MAT,myeloid cell,97082,71,71,5,6
+all_reads_depth,MAT,myeloid cell,135627,73,73,5,6
+mgi_one_to_one,MAT,myeloid cell,95440,72,72,5,6
+main,Mammary_Gland,basal cell,250591,828,828,4,5
+all_reads_depth,Mammary_Gland,basal cell,322649,828,828,4,5
+mgi_one_to_one,Mammary_Gland,basal cell,228066,829,829,4,5
+main,Mammary_Gland,luminal epithelial cell of mammary gland,218218,279,279,4,5
+all_reads_depth,Mammary_Gland,luminal epithelial cell of mammary gland,287161,279,279,4,5
+mgi_one_to_one,Mammary_Gland,luminal epithelial cell of mammary gland,197594,281,281,4,5
+main,Mammary_Gland,stromal cell,220935,70,70,4,5
+all_reads_depth,Mammary_Gland,stromal cell,294043,70,70,4,5
+mgi_one_to_one,Mammary_Gland,stromal cell,203554,70,70,4,5
+main,Marrow,NK cell,115909,147,147,5,8
+all_reads_depth,Marrow,NK cell,187447,149,149,5,8
+mgi_one_to_one,Marrow,NK cell,107045,147,147,5,8
+main,Marrow,granulocyte,104093,660,660,5,8
+all_reads_depth,Marrow,granulocyte,167403,660,660,5,8
+mgi_one_to_one,Marrow,granulocyte,108519,662,662,5,8
+main,Marrow,granulocyte monocyte progenitor cell,487323,68,68,5,8
+all_reads_depth,Marrow,granulocyte monocyte progenitor cell,647889,68,68,5,7
+mgi_one_to_one,Marrow,granulocyte monocyte progenitor cell,449330,68,68,5,8
+main,Marrow,granulocytopoietic cell,337246,181,181,5,8
+all_reads_depth,Marrow,granulocytopoietic cell,528045,183,183,5,8
+mgi_one_to_one,Marrow,granulocytopoietic cell,333048,180,180,5,8
+main,Marrow,hematopoietic stem cell,283725,1251,1251,5,8
+all_reads_depth,Marrow,hematopoietic stem cell,416155,1246,1246,5,8
+mgi_one_to_one,Marrow,hematopoietic stem cell,252284,1253,1253,5,8
+main,Marrow,immature B cell,148337,194,194,5,8
+all_reads_depth,Marrow,immature B cell,211961,194,194,5,8
+mgi_one_to_one,Marrow,immature B cell,136695,194,194,5,8
+main,Marrow,late pro-B cell,256562,115,115,5,8
+all_reads_depth,Marrow,late pro-B cell,362298,117,117,5,8
+mgi_one_to_one,Marrow,late pro-B cell,226443,114,114,5,8
+main,Marrow,macrophage,93625,170,170,5,8
+all_reads_depth,Marrow,macrophage,147104,171,171,5,8
+mgi_one_to_one,Marrow,macrophage,86858,170,170,5,8
+main,Marrow,mature alpha-beta T cell,88503,91,91,5,7
+all_reads_depth,Marrow,mature alpha-beta T cell,141220,92,92,5,7
+mgi_one_to_one,Marrow,mature alpha-beta T cell,81359,91,91,5,7
+main,Marrow,naive B cell,93803,622,622,5,8
+all_reads_depth,Marrow,naive B cell,147376,620,620,5,8
+mgi_one_to_one,Marrow,naive B cell,85529,622,622,5,8
+main,Marrow,precursor B cell,72134,303,303,5,8
+all_reads_depth,Marrow,precursor B cell,108786,300,300,5,8
+mgi_one_to_one,Marrow,precursor B cell,66157,302,302,5,8
+main,Marrow,promonocyte,109470,329,329,5,8
+all_reads_depth,Marrow,promonocyte,187111,331,331,5,8
+mgi_one_to_one,Marrow,promonocyte,110082,330,330,5,8
+main,Pancreas,endothelial cell,5519,86,86,4,4
+all_reads_depth,Pancreas,endothelial cell,10074,86,86,4,4
+mgi_one_to_one,Pancreas,endothelial cell,5734,86,86,4,4
+main,Pancreas,leukocyte,88876,52,52,4,4
+all_reads_depth,Pancreas,leukocyte,134857,52,52,4,4
+mgi_one_to_one,Pancreas,leukocyte,82005,52,52,4,4
+main,Pancreas,pancreatic A cell,357658,139,139,4,4
+all_reads_depth,Pancreas,pancreatic A cell,504702,137,137,4,4
+mgi_one_to_one,Pancreas,pancreatic A cell,327978,139,139,4,4
+main,Pancreas,pancreatic B cell,119580,495,495,4,4
+all_reads_depth,Pancreas,pancreatic B cell,192881,497,497,4,4
+mgi_one_to_one,Pancreas,pancreatic B cell,148939,496,496,4,4
+main,Pancreas,pancreatic D cell,309968,60,60,4,4
+all_reads_depth,Pancreas,pancreatic D cell,456321,61,61,4,4
+mgi_one_to_one,Pancreas,pancreatic D cell,277804,59,59,4,4
+main,Pancreas,pancreatic acinar cell,21272,182,182,4,4
+all_reads_depth,Pancreas,pancreatic acinar cell,55066,174,174,4,4
+mgi_one_to_one,Pancreas,pancreatic acinar cell,13786,182,182,4,4
+main,Pancreas,pancreatic ductal cell,211396,137,137,4,4
+all_reads_depth,Pancreas,pancreatic ductal cell,282821,136,136,4,4
+mgi_one_to_one,Pancreas,pancreatic ductal cell,193551,137,137,4,4
+main,SCAT,B cell,52688,135,135,7,8
+all_reads_depth,SCAT,B cell,78313,135,135,7,8
+mgi_one_to_one,SCAT,B cell,48515,135,135,7,8
+main,SCAT,endothelial cell,88051,215,215,7,8
+all_reads_depth,SCAT,endothelial cell,123917,218,218,7,8
+mgi_one_to_one,SCAT,endothelial cell,80054,216,216,7,8
+main,SCAT,mesenchymal stem cell of adipose,117816,691,691,7,8
+all_reads_depth,SCAT,mesenchymal stem cell of adipose,160162,692,692,7,8
+mgi_one_to_one,SCAT,mesenchymal stem cell of adipose,106528,691,691,7,8
+main,SCAT,myeloid cell,73260,330,330,7,8
+all_reads_depth,SCAT,myeloid cell,115522,329,329,7,8
+mgi_one_to_one,SCAT,myeloid cell,71417,331,331,7,8
+main,Skin,basal cell of epidermis,238632,542,542,6,8
+all_reads_depth,Skin,basal cell of epidermis,353720,540,540,6,8
+mgi_one_to_one,Skin,basal cell of epidermis,214926,542,542,6,8
+main,Skin,bulge keratinocyte,150539,1127,1127,6,8
+all_reads_depth,Skin,bulge keratinocyte,218497,1135,1135,6,8
+mgi_one_to_one,Skin,bulge keratinocyte,138576,1127,1127,6,8
+main,Skin,epidermal cell,201915,220,220,6,8
+all_reads_depth,Skin,epidermal cell,318563,220,220,6,8
+mgi_one_to_one,Skin,epidermal cell,180636,220,220,6,8
+main,Spleen,B cell,135660,1070,1070,6,7
+all_reads_depth,Spleen,B cell,199417,1071,1071,6,7
+mgi_one_to_one,Spleen,B cell,125801,1075,1075,6,7
+main,Spleen,"CD4-positive, alpha-beta T cell",153265,167,167,6,6
+all_reads_depth,Spleen,"CD4-positive, alpha-beta T cell",236937,168,168,6,7
+mgi_one_to_one,Spleen,"CD4-positive, alpha-beta T cell",140390,167,167,6,6
+main,Spleen,"CD8-positive, alpha-beta T cell",111796,145,145,6,7
+all_reads_depth,Spleen,"CD8-positive, alpha-beta T cell",165410,147,147,6,7
+mgi_one_to_one,Spleen,"CD8-positive, alpha-beta T cell",101288,145,145,6,7
+main,Thymus,DN4 thymocyte,168674,518,518,5,8
+all_reads_depth,Thymus,DN4 thymocyte,229371,511,511,5,8
+mgi_one_to_one,Thymus,DN4 thymocyte,153306,519,519,5,8
+main,Thymus,thymocyte,85769,700,700,5,8
+all_reads_depth,Thymus,thymocyte,118841,699,699,5,8
+mgi_one_to_one,Thymus,thymocyte,77901,700,700,5,8
+main,Tongue,basal cell of epidermis,198597,1043,1043,5,8
+all_reads_depth,Tongue,basal cell of epidermis,287756,1036,1036,5,8
+mgi_one_to_one,Tongue,basal cell of epidermis,174434,1043,1043,5,8
+main,Tongue,keratinocyte,299019,333,333,5,8
+all_reads_depth,Tongue,keratinocyte,430586,330,330,5,8
+mgi_one_to_one,Tongue,keratinocyte,261975,334,334,5,8
+main,Trachea,basal epithelial cell of tracheobronchial tree,10642,68,68,5,8
+all_reads_depth,Trachea,basal epithelial cell of tracheobronchial tree,60357,80,80,5,8
+mgi_one_to_one,Trachea,basal epithelial cell of tracheobronchial tree,10373,68,68,5,8
+main,Trachea,endothelial cell,167129,107,107,5,7
+all_reads_depth,Trachea,endothelial cell,254242,106,106,5,7
+mgi_one_to_one,Trachea,endothelial cell,149149,108,108,5,7
+main,Trachea,fibroblast,401196,506,506,5,8
+all_reads_depth,Trachea,fibroblast,552246,500,500,5,8
+mgi_one_to_one,Trachea,fibroblast,374497,506,506,5,8
+main,Trachea,macrophage,300871,118,118,5,7
+all_reads_depth,Trachea,macrophage,470639,116,116,5,7
+mgi_one_to_one,Trachea,macrophage,289758,118,118,5,7
+3m_vs_18m,Aorta,aortic endothelial cell,79996,113,113,4,4
+3m_vs_18m,BAT,B cell,94664,159,159,7,4
+3m_vs_18m,BAT,endothelial cell,60320,134,134,7,4
+3m_vs_18m,BAT,myeloid cell,47731,137,137,7,4
+3m_vs_18m,Bladder,bladder cell,271755,243,243,6,3
+3m_vs_18m,Bladder,bladder urothelial cell,205104,312,312,6,3
+3m_vs_18m,Brain_Myeloid,microglial cell,166084,2000,2000,6,4
+3m_vs_18m,Brain_Non-Myeloid,astrocyte,69485,106,106,7,4
+3m_vs_18m,Brain_Non-Myeloid,brain pericyte,114453,158,158,7,4
+3m_vs_18m,Brain_Non-Myeloid,endothelial cell,104981,627,627,7,4
+3m_vs_18m,Brain_Non-Myeloid,interneuron,18403,65,65,6,3
+3m_vs_18m,Brain_Non-Myeloid,neuron,56191,108,108,7,4
+3m_vs_18m,Brain_Non-Myeloid,oligodendrocyte,241603,541,541,7,4
+3m_vs_18m,Brain_Non-Myeloid,oligodendrocyte precursor cell,173597,92,92,7,4
+3m_vs_18m,GAT,mesenchymal stem cell of adipose,392351,408,408,7,3
+3m_vs_18m,GAT,myeloid cell,109562,86,86,7,3
+3m_vs_18m,Heart,atrial myocyte,36032,68,68,7,3
+3m_vs_18m,Heart,endothelial cell of coronary artery,122467,403,403,7,3
+3m_vs_18m,Heart,fibroblast of cardiac tissue,324956,633,633,7,3
+3m_vs_18m,Heart,monocyte,48862,284,284,7,3
+3m_vs_18m,Kidney,kidney collecting duct epithelial cell,124680,92,92,6,4
+3m_vs_18m,Large_Intestine,enterocyte of epithelium of large intestine,45996,781,781,7,4
+3m_vs_18m,Large_Intestine,epithelial cell of large intestine,36902,522,522,7,4
+3m_vs_18m,Large_Intestine,intestinal crypt stem cell,421216,342,342,7,4
+3m_vs_18m,Large_Intestine,large intestine goblet cell,93236,355,355,7,4
+3m_vs_18m,Large_Intestine,secretory cell,373205,166,166,6,3
+3m_vs_18m,Limb_Muscle,B cell,9220,56,56,6,4
+3m_vs_18m,Limb_Muscle,endothelial cell,60983,134,134,6,4
+3m_vs_18m,Limb_Muscle,mesenchymal stem cell,353527,236,236,6,4
+3m_vs_18m,Limb_Muscle,skeletal muscle satellite cell,279425,463,463,6,4
+3m_vs_18m,Liver,hepatocyte,223146,349,349,4,3
+3m_vs_18m,Lung,adventitial cell,300609,91,91,6,4
+3m_vs_18m,Lung,bronchial smooth muscle cell,242324,322,322,6,4
+3m_vs_18m,Lung,classical monocyte,396538,57,57,6,4
+3m_vs_18m,Lung,fibroblast of lung,159586,102,102,6,4
+3m_vs_18m,MAT,B cell,136839,105,105,6,4
+3m_vs_18m,MAT,endothelial cell,62755,63,63,6,4
+3m_vs_18m,MAT,macrophage,112231,59,59,6,4
+3m_vs_18m,MAT,mesenchymal stem cell of adipose,435246,447,447,6,4
+3m_vs_18m,Marrow,NK cell,149679,139,139,5,4
+3m_vs_18m,Marrow,granulocyte,101936,661,661,5,4
+3m_vs_18m,Marrow,granulocyte monocyte progenitor cell,477941,68,68,5,4
+3m_vs_18m,Marrow,granulocytopoietic cell,326459,147,147,5,4
+3m_vs_18m,Marrow,hematopoietic stem cell,298347,698,698,5,4
+3m_vs_18m,Marrow,immature B cell,151068,160,160,5,4
+3m_vs_18m,Marrow,late pro-B cell,302051,80,80,5,4
+3m_vs_18m,Marrow,macrophage,104540,145,145,5,4
+3m_vs_18m,Marrow,mature alpha-beta T cell,148345,81,81,5,3
+3m_vs_18m,Marrow,naive B cell,125162,569,569,5,4
+3m_vs_18m,Marrow,precursor B cell,99469,192,192,5,4
+3m_vs_18m,Marrow,promonocyte,203686,219,219,5,4
+3m_vs_18m,SCAT,endothelial cell,85402,128,128,7,4
+3m_vs_18m,SCAT,mesenchymal stem cell of adipose,321877,388,388,7,4
+3m_vs_18m,SCAT,myeloid cell,90233,222,222,7,4
+3m_vs_18m,Skin,basal cell of epidermis,206151,549,549,6,4
+3m_vs_18m,Skin,bulge keratinocyte,143942,618,618,6,4
+3m_vs_18m,Spleen,B cell,136717,777,777,6,3
+3m_vs_18m,Spleen,"CD4-positive, alpha-beta T cell",149524,96,96,6,3
+3m_vs_18m,Thymus,DN4 thymocyte,188761,497,497,5,4
+3m_vs_18m,Thymus,thymocyte,76204,449,449,5,4
+3m_vs_18m,Tongue,basal cell of epidermis,313674,596,596,5,4
+3m_vs_18m,Tongue,keratinocyte,417770,286,286,5,4
+3m_vs_18m,Trachea,basal epithelial cell of tracheobronchial tree,8312,73,73,5,4
+3m_vs_18m,Trachea,fibroblast,408335,247,247,5,4
+3m_vs_18m,Trachea,macrophage,283470,96,96,5,3
+male_3m_vs_24m,BAT,B cell,11193,91,91,4,3
+male_3m_vs_24m,BAT,endothelial cell,15364,66,66,3,3
+male_3m_vs_24m,BAT,myeloid cell,29155,96,96,4,4
+male_3m_vs_24m,Bladder,bladder cell,273010,79,79,3,4
+male_3m_vs_24m,Bladder,bladder urothelial cell,397573,331,331,3,4
+male_3m_vs_24m,Brain_Myeloid,microglial cell,105874,2000,2000,3,4
+male_3m_vs_24m,Brain_Non-Myeloid,neuron,78810,123,123,4,3
+male_3m_vs_24m,GAT,endothelial cell,85029,119,119,4,4
+male_3m_vs_24m,GAT,mesenchymal stem cell of adipose,294409,379,379,4,4
+male_3m_vs_24m,GAT,myeloid cell,92569,156,156,4,4
+male_3m_vs_24m,Heart,endothelial cell of coronary artery,97584,480,480,4,4
+male_3m_vs_24m,Heart,fibroblast of cardiac tissue,223774,698,698,4,4
+male_3m_vs_24m,Heart,monocyte,113801,290,290,4,4
+male_3m_vs_24m,Heart,valve cell,169205,104,104,4,4
+male_3m_vs_24m,Kidney,kidney collecting duct epithelial cell,66930,69,69,4,4
+male_3m_vs_24m,Large_Intestine,enterocyte of epithelium of large intestine,35362,527,527,4,4
+male_3m_vs_24m,Large_Intestine,epithelial cell of large intestine,23551,232,232,4,4
+male_3m_vs_24m,Large_Intestine,intestinal crypt stem cell,345161,337,337,4,4
+male_3m_vs_24m,Large_Intestine,large intestine goblet cell,55058,151,151,4,4
+male_3m_vs_24m,Limb_Muscle,endothelial cell,82570,70,70,4,4
+male_3m_vs_24m,Limb_Muscle,mesenchymal stem cell,321204,121,121,4,4
+male_3m_vs_24m,Limb_Muscle,skeletal muscle satellite cell,228663,230,230,4,4
+male_3m_vs_24m,Lung,bronchial smooth muscle cell,96600,129,129,4,4
+male_3m_vs_24m,MAT,endothelial cell,90028,51,51,3,3
+male_3m_vs_24m,MAT,mesenchymal stem cell of adipose,346107,298,298,3,3
+male_3m_vs_24m,Marrow,NK cell,63970,99,99,3,4
+male_3m_vs_24m,Marrow,granulocyte,99193,469,469,3,4
+male_3m_vs_24m,Marrow,granulocytopoietic cell,358281,107,107,3,4
+male_3m_vs_24m,Marrow,hematopoietic stem cell,278474,889,889,3,4
+male_3m_vs_24m,Marrow,late pro-B cell,233616,37,37,3,4
+male_3m_vs_24m,Marrow,macrophage,78351,77,77,3,4
+male_3m_vs_24m,Marrow,mature alpha-beta T cell,47674,66,66,3,4
+male_3m_vs_24m,Marrow,naive B cell,61372,388,388,3,4
+male_3m_vs_24m,Marrow,precursor B cell,47715,121,121,3,4
+male_3m_vs_24m,Marrow,promonocyte,91665,167,167,3,4
+male_3m_vs_24m,SCAT,B cell,41975,92,92,4,4
+male_3m_vs_24m,SCAT,endothelial cell,85438,89,89,4,4
+male_3m_vs_24m,SCAT,mesenchymal stem cell of adipose,78192,311,311,4,4
+male_3m_vs_24m,SCAT,myeloid cell,48673,155,155,4,4
+male_3m_vs_24m,Skin,basal cell of epidermis,176390,372,372,4,4
+male_3m_vs_24m,Skin,bulge keratinocyte,142465,514,514,4,4
+male_3m_vs_24m,Skin,epidermal cell,172796,119,119,4,4
+male_3m_vs_24m,Spleen,B cell,112493,695,695,4,4
+male_3m_vs_24m,Spleen,"CD4-positive, alpha-beta T cell",130799,110,110,4,4
+male_3m_vs_24m,Spleen,"CD8-positive, alpha-beta T cell",74941,84,84,4,4
+male_3m_vs_24m,Thymus,DN4 thymocyte,119137,233,233,3,4
+male_3m_vs_24m,Thymus,thymocyte,94254,314,314,3,4
+male_3m_vs_24m,Tongue,basal cell of epidermis,146971,660,660,3,4
+male_3m_vs_24m,Tongue,keratinocyte,217557,259,259,3,4
+male_3m_vs_24m,Trachea,endothelial cell,191865,63,63,3,4
+male_3m_vs_24m,Trachea,fibroblast,422866,303,303,3,4
+male_3m_vs_24m,Trachea,macrophage,330077,69,69,3,4
+female_3m_vs_21m,Mammary_Gland,basal cell,248073,441,441,4,3
+female_3m_vs_21m,Mammary_Gland,luminal epithelial cell of mammary gland,208410,141,141,4,3
+male_3m_vs_18-24m,BAT,B cell,14140,91,91,4,5
+male_3m_vs_18-24m,BAT,endothelial cell,17908,108,108,4,5
+male_3m_vs_18-24m,BAT,myeloid cell,33006,95,95,4,6
+male_3m_vs_18-24m,Bladder,bladder cell,266489,237,237,3,6
+male_3m_vs_18-24m,Bladder,bladder urothelial cell,373854,406,406,3,6
+male_3m_vs_18-24m,Brain_Myeloid,microglial cell,121981,1946,1946,3,6
+male_3m_vs_18-24m,Brain_Non-Myeloid,astrocyte,84143,54,54,4,3
+male_3m_vs_18-24m,Brain_Non-Myeloid,brain pericyte,225204,135,135,4,3
+male_3m_vs_18-24m,Brain_Non-Myeloid,endothelial cell,167578,409,409,4,3
+male_3m_vs_18-24m,Brain_Non-Myeloid,neuron,69405,123,123,4,5
+male_3m_vs_18-24m,Brain_Non-Myeloid,oligodendrocyte,234525,298,298,4,3
+male_3m_vs_18-24m,Brain_Non-Myeloid,oligodendrocyte precursor cell,181334,51,51,4,3
+male_3m_vs_18-24m,GAT,endothelial cell,89914,119,119,4,5
+male_3m_vs_18-24m,GAT,mesenchymal stem cell of adipose,313204,373,373,4,5
+male_3m_vs_18-24m,GAT,myeloid cell,101580,192,192,4,5
+male_3m_vs_18-24m,Heart,endothelial cell of coronary artery,101564,477,477,4,5
+male_3m_vs_18-24m,Heart,fibroblast of cardiac tissue,158443,734,734,4,5
+male_3m_vs_18-24m,Heart,monocyte,119667,288,288,4,5
+male_3m_vs_18-24m,Heart,valve cell,175623,110,110,4,5
+male_3m_vs_18-24m,Kidney,kidney collecting duct epithelial cell,73608,67,67,4,6
+male_3m_vs_18-24m,Large_Intestine,enterocyte of epithelium of large intestine,41438,510,510,4,6
+male_3m_vs_18-24m,Large_Intestine,epithelial cell of large intestine,26478,468,468,4,6
+male_3m_vs_18-24m,Large_Intestine,intestinal crypt stem cell,374382,352,352,4,6
+male_3m_vs_18-24m,Large_Intestine,large intestine goblet cell,66061,147,147,4,6
+male_3m_vs_18-24m,Large_Intestine,secretory cell,374967,177,177,4,5
+male_3m_vs_18-24m,Limb_Muscle,endothelial cell,72149,70,70,4,6
+male_3m_vs_18-24m,Limb_Muscle,mesenchymal stem cell,315192,121,121,4,6
+male_3m_vs_18-24m,Limb_Muscle,skeletal muscle satellite cell,236270,229,229,4,6
+male_3m_vs_18-24m,Lung,adventitial cell,252568,109,109,4,6
+male_3m_vs_18-24m,Lung,bronchial smooth muscle cell,185540,120,120,4,6
+male_3m_vs_18-24m,MAT,endothelial cell,98438,74,74,3,5
+male_3m_vs_18-24m,MAT,mesenchymal stem cell of adipose,369608,311,311,3,5
+male_3m_vs_18-24m,Marrow,NK cell,75194,99,99,3,6
+male_3m_vs_18-24m,Marrow,granulocyte,93352,473,473,3,6
+male_3m_vs_18-24m,Marrow,granulocytopoietic cell,320980,153,153,3,6
+male_3m_vs_18-24m,Marrow,hematopoietic stem cell,278499,889,889,3,6
+male_3m_vs_18-24m,Marrow,immature B cell,127629,59,59,3,6
+male_3m_vs_18-24m,Marrow,late pro-B cell,220689,51,51,3,6
+male_3m_vs_18-24m,Marrow,macrophage,74846,98,98,3,6
+male_3m_vs_18-24m,Marrow,mature alpha-beta T cell,49786,73,73,3,5
+male_3m_vs_18-24m,Marrow,naive B cell,76319,380,380,3,6
+male_3m_vs_18-24m,Marrow,precursor B cell,46920,141,141,3,6
+male_3m_vs_18-24m,Marrow,promonocyte,93279,167,167,3,6
+male_3m_vs_18-24m,SCAT,B cell,41992,99,99,4,6
+male_3m_vs_18-24m,SCAT,endothelial cell,70399,130,130,4,6
+male_3m_vs_18-24m,SCAT,mesenchymal stem cell of adipose,81391,375,375,4,6
+male_3m_vs_18-24m,SCAT,myeloid cell,59517,155,155,4,6
+male_3m_vs_18-24m,Skin,basal cell of epidermis,192390,359,359,4,6
+male_3m_vs_18-24m,Skin,bulge keratinocyte,147381,770,770,4,6
+male_3m_vs_18-24m,Skin,epidermal cell,173231,125,125,4,6
+male_3m_vs_18-24m,Spleen,B cell,124298,664,664,4,6
+male_3m_vs_18-24m,Spleen,"CD4-positive, alpha-beta T cell",142135,107,107,4,6
+male_3m_vs_18-24m,Spleen,"CD8-positive, alpha-beta T cell",90172,83,83,4,6
+male_3m_vs_18-24m,Thymus,DN4 thymocyte,119740,231,231,3,6
+male_3m_vs_18-24m,Thymus,thymocyte,112417,334,334,3,5
+male_3m_vs_18-24m,Tongue,basal cell of epidermis,160487,746,746,3,6
+male_3m_vs_18-24m,Tongue,keratinocyte,256402,256,256,3,6
+male_3m_vs_18-24m,Trachea,endothelial cell,183881,75,75,3,5
+male_3m_vs_18-24m,Trachea,fibroblast,403790,305,305,3,6
+male_3m_vs_18-24m,Trachea,macrophage,328869,70,70,3,5
+female_3m_vs_18-21m,Mammary_Gland,basal cell,250591,828,828,4,5
+female_3m_vs_18-21m,Mammary_Gland,luminal epithelial cell of mammary gland,218218,279,279,4,5
+female_3m_vs_18-21m,Mammary_Gland,stromal cell,220935,70,70,4,5

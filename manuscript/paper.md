@@ -626,7 +626,12 @@ any of seven cell types (gaps within ±0.012 SD; Supplementary Note 3). Across 9
 groups (full-length sequencing, cells thinned to a common read depth), the mean difference in age-related change in
 residual read-count variability between housekeeping genes and genes matched on expression and dropout was +0.02 SD
 (mouse-resampling interval −0.03 to +0.05) for 3 months against pooled 18 to 24 months; core-essential genes gave +0.02
-(−0.05 to +0.06), and between-mouse estimates were near zero. Read-count variability in these data includes
+(−0.05 to +0.06), and between-mouse estimates were near zero (positive values mean more added variability at the
+essential genes). A planted increase of 0.1 SD at housekeeping genes came back as +0.09 (+0.05 to +0.11), so the design
+detects an effect of that size. The estimate held with one-to-one MGI orthologs (+0.02), with depth matched on all
+reads (+0.02), and with each of the 19 mice left out in turn (+0.006 to +0.042). The age contrasts split: 3 against 18
+months gave −0.02 (−0.05 to +0.01), and males at 3 against 24 months, four mice per age, gave +0.07 (+0.04 to +0.10),
+more added variability at housekeeping genes, the opposite of the methylation pattern. Read-count variability in these data includes
 amplification noise, so this bounds a counterpart in measured expression variability without testing intrinsic
 transcriptional noise.
 

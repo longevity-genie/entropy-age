@@ -1,0 +1,5 @@
+set,symbol_route,mgi_one_to_one,both_same_gene,symbol_route_only,mgi_only,one_to_one_pairs,tms_symbols
+all_protein_coding,15201,14706,13733,,,18782,22966
+core_essential,659,599,593,66,6,18782,22966
+housekeeping,3374,3229,3084,289,144,18782,22966
+non_essential,557,562,479,78,83,18782,22966
