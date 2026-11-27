@@ -1,0 +1,9 @@
+level,units,set,mice,spearman,mouse_boot_low,mouse_boot_high,perm_p_within_age,direction
+cell type,valid,housekeeping,0,,,,,
+cell type,valid,core_essential,0,,,,,
+cell type,all,housekeeping,19,-0.056140350877192984,-0.5320751750475874,0.477943337815441,0.8343,older-looking mice have the smaller gap
+cell type,all,core_essential,19,-0.15263157894736842,-0.6203377452566274,0.38887639835650417,0.5469,older-looking mice have the smaller gap
+tissue,valid,housekeeping,15,0.24285714285714283,-0.2840410042037528,0.7078651685393259,0.3433,older-looking mice have the larger gap
+tissue,valid,core_essential,15,0.22142857142857136,-0.31038994521430874,0.6788613138686128,0.3849,older-looking mice have the larger gap
+tissue,all,housekeeping,19,-0.14385964912280702,-0.6017863837312112,0.35113864306784637,0.6064,older-looking mice have the smaller gap
+tissue,all,core_essential,19,-0.13859649122807016,-0.5939454617507562,0.3788801664876892,0.6195,older-looking mice have the smaller gap

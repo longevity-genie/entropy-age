@@ -1,0 +1,23 @@
+clock,set,n,r,perm_p,permutations,direction
+meer,housekeeping,0,NaN,NaN,0,not estimable
+meer,core_essential,0,NaN,NaN,0,not estimable
+meer_reads1,housekeeping,5,0.40744594296317277,0.6666666666666666,12,older-looking mice have the larger gap
+meer_reads1,core_essential,5,0.029551934391743525,1.0,12,older-looking mice have the larger gap
+petkovich,housekeeping,0,NaN,NaN,0,not estimable
+petkovich,core_essential,0,NaN,NaN,0,not estimable
+petkovich_reads1,housekeeping,4,0.5393733207519814,1.0,4,older-looking mice have the larger gap
+petkovich_reads1,core_essential,4,0.13420489880752032,1.0,4,older-looking mice have the larger gap
+scage_top1000,housekeeping,5,0.02158786020121299,1.0,12,older-looking mice have the larger gap
+scage_top1000,core_essential,5,0.3107176367753943,0.5833333333333334,12,older-looking mice have the larger gap
+scage_top250,housekeeping,5,0.07286409537723236,0.75,12,older-looking mice have the larger gap
+scage_top250,core_essential,5,0.32797822352030553,0.5833333333333334,12,older-looking mice have the larger gap
+scage_top500,housekeeping,5,0.014823219174695356,1.0,12,older-looking mice have the larger gap
+scage_top500,core_essential,5,0.3427935028861078,0.5833333333333334,12,older-looking mice have the larger gap
+stubbs,housekeeping,0,NaN,NaN,0,not estimable
+stubbs,core_essential,0,NaN,NaN,0,not estimable
+stubbs_reads1,housekeeping,4,0.9695405354037241,0.5,4,older-looking mice have the larger gap
+stubbs_reads1,core_essential,4,0.9611339077041537,0.5,4,older-looking mice have the larger gap
+thompson,housekeeping,4,-0.9887889807330428,0.5,4,older-looking mice have the smaller gap
+thompson,core_essential,4,-0.9930915994232713,0.5,4,older-looking mice have the smaller gap
+thompson_reads1,housekeeping,5,-0.7902134467660882,0.3333333333333333,12,older-looking mice have the smaller gap
+thompson_reads1,core_essential,5,-0.9689741986674129,0.16666666666666666,12,older-looking mice have the smaller gap

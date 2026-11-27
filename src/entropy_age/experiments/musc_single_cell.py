@@ -25,6 +25,7 @@ from __future__ import annotations
 
 import re
 import sys
+from dataclasses import dataclass
 from pathlib import Path
 
 import numpy as np
@@ -162,13 +163,29 @@ def expression_deciles(table: Path, symbols: dict[str, int]) -> dict[int, int]:
     return dict(zip(frame["entrez"].to_list(), [int(d) for d in deciles], strict=True))
 
 
-def run(ctx: Context) -> list[Path]:
-    folder = ctx.paths.input / "geo" / GSE / f"{GSE}_RAW"
+@dataclass
+class Promoters:
+    """Cells x promoters of methylated (``k``) and total (``n``) reads, with what the readings are matched on."""
+
+    names: list[str]  # cells
+    genes: np.ndarray  # Entrez ids, the columns
+    k: np.ndarray
+    n: np.ndarray
+    island_share: np.ndarray
+    mouse: np.ndarray  # per cell
+    old: np.ndarray  # per cell
+    sets: dict[str, np.ndarray]  # set -> boolean over genes
+    expressed: np.ndarray  # expression decile per gene, -1 without counts
+
+
+def folder_of(ctx: Context) -> Path:
+    return ctx.paths.input / "geo" / GSE / f"{GSE}_RAW"
+
+
+def load_promoters(ctx: Context) -> Promoters:
+    """Every cell's promoter reads (``read_cells``) pooled per promoter, the gene sets and expression deciles."""
+    folder = folder_of(ctx)
     rr = RrbsLayout(ctx.paths)
-    if not folder.exists() or any(not rr.track(t).exists() for t in TRACKS):
-        print(f"musc_single_cell: {folder} or the mm10 tracks are missing; nothing run", file=sys.stderr)
-        return []
-    out = ctx.out_dir("musc_single_cell")
     prom = promoters(rr.track(TRACKS[0]), rr.track(TRACKS[1]))
     isl = islands(rr.track(TRACKS[2]))
     cpgs, names = read_cells(folder, prom)
@@ -206,8 +223,13 @@ def run(ctx: Context) -> list[Path]:
     symbols = dict(link.drop_nulls().unique(subset="symbol").iter_rows())
     decile_of = expression_deciles(ctx.paths.input / "geo" / GSE / RNA_TABLE, symbols)
     expressed = np.array([decile_of.get(int(g), -1) for g in genes])
+    return Promoters(names, genes, k, n, island_share, mouse, old, sets, expressed)
 
-    point = readings(k, n, old)
+
+def strata_of(point: dict[str, np.ndarray], data: Promoters) -> tuple[np.ndarray, dict[str, np.ndarray]]:
+    """Promoters with both readings, and their strata: island x young-level decile x coverage fifth, and the same
+    with the expression decile added."""
+    genes, island_share, expressed = data.genes, data.island_share, data.expressed
     keep = np.isfinite(point["divergence"]) & np.isfinite(point["heterogeneity_young"])
     level = np.full(genes.size, "", dtype=object)
     level[keep] = baseline_strata(point["young"][keep], 10).astype(str)
@@ -221,6 +243,22 @@ def run(ctx: Context) -> list[Path]:
         "island x level": base,
         "+ expression decile": np.char.add(np.char.add(base, "|"), expressed.astype(str)),
     }
+    return keep, variants
+
+
+def run(ctx: Context) -> list[Path]:
+    folder = folder_of(ctx)
+    rr = RrbsLayout(ctx.paths)
+    if not folder.exists() or any(not rr.track(t).exists() for t in TRACKS):
+        print(f"musc_single_cell: {folder} or the mm10 tracks are missing; nothing run", file=sys.stderr)
+        return []
+    out = ctx.out_dir("musc_single_cell")
+    data = load_promoters(ctx)
+    names, genes, k, n, mouse, old, sets = data.names, data.genes, data.k, data.n, data.mouse, data.old, data.sets
+    expressed = data.expressed
+
+    point = readings(k, n, old)
+    keep, variants = strata_of(point, data)
     rng = ctx.rng(160_000)
     index = [np.flatnonzero(mouse == m) for m in np.unique(mouse)]
     table = []
