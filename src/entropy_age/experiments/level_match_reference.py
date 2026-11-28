@@ -277,38 +277,55 @@ def one_per_family(people: pl.DataFrame, rng: np.random.Generator, usable: list[
 
 def erisk_parts(paths) -> Path:
     """E-Risk's betas as parquet parts (``cpg`` plus one Float32 column per sample number), written once by streaming
-    the gzip CSV in blocks of ``ERISK_ROWS_PER_PART`` CpGs. Each writer fills its own temporary folder, renamed into
-    place only when complete and non-empty; a writer that loses the race to another drops its copy."""
+    the gzip CSV in blocks of ``ERISK_ROWS_PER_PART`` CpGs; rows without a CpG id (blank lines) are dropped. Each
+    writer fills its own temporary folder, removed on any failure and renamed into place only when it holds at least
+    one CpG; a writer that loses the race to another drops its copy. A cache is reused only when it holds parts."""
     source = paths.input / "geo" / ERISK / ERISK_CSV
     done = paths.interim / "cohorts" / "erisk_betas"
-    if done.exists():
+    if _has_parts(done):
         return done
     done.parent.mkdir(parents=True, exist_ok=True)
     partial = Path(tempfile.mkdtemp(prefix="erisk_betas.partial.", dir=done.parent))
+    try:
+        rows = _write_parts(source, partial)
+        if rows == 0:
+            raise ValueError(f"{source.name}: no CpG rows")
+        try:
+            partial.rename(done)
+        except OSError:  # another writer finished first
+            if not _has_parts(done):
+                raise
+    finally:
+        if partial.exists():
+            shutil.rmtree(partial)
+    return done
+
+
+def _has_parts(folder: Path) -> bool:
+    return folder.is_dir() and any(folder.glob("part-*.parquet"))
+
+
+def _write_parts(source: Path, folder: Path) -> int:
+    """Stream ``source`` into ``folder`` as parquet parts; the number of CpG rows written."""
+    rows = part = 0
     with gzip.open(source, "rb") as handle:
         header = handle.readline()
         names = [c.strip().strip('"') for c in header.decode().rstrip("\r\n").split(",")]
         schema = {names[0]: pl.String} | {n: pl.Float32 for n in names[1:]}
-        part = 0
         while True:
             block = list(itertools.islice(handle, ERISK_ROWS_PER_PART))
             if not block:
                 break
-            frame = pl.read_csv(
-                io.BytesIO(header + b"".join(block)), schema=schema, null_values=["", "NA", "NaN"]
-            ).rename({names[0]: "cpg"})
-            frame.write_parquet(partial / f"part-{part:04d}.parquet")
-            part += 1
-    if part == 0:
-        shutil.rmtree(partial)
-        raise ValueError(f"{source.name}: no CpG rows")
-    try:
-        partial.rename(done)
-    except OSError:  # another writer finished first
-        shutil.rmtree(partial)
-        if not done.exists():
-            raise
-    return done
+            frame = (
+                pl.read_csv(io.BytesIO(header + b"".join(block)), schema=schema, null_values=["", "NA", "NaN"])
+                .rename({names[0]: "cpg"})
+                .filter(pl.col("cpg").is_not_null() & (pl.col("cpg") != ""))
+            )
+            if frame.height:
+                frame.write_parquet(folder / f"part-{part:04d}.parquet")
+                part += 1
+                rows += frame.height
+    return rows
 
 
 def read_erisk_betas(parts: Path, features: list[str], columns: list[str]) -> np.ndarray:

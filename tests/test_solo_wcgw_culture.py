@@ -323,3 +323,110 @@ def test_non_essential_design_needs_twenty_cpgs_as_score_unit_does():
     genes = {g: i for i, g in enumerate(g for g in ne_gene if g is not None)}
     assert design_parts(u, ("solo_wcgw", None, False), genes, "non_essential") is None
     assert np.isnan(score_unit(u["loss"], u["reference"], u["table"], 0.0)["gap_non_essential"]).all()
+
+
+def test_sturm_series_end_to_end_from_metadata_qc_and_betas(tmp_path):
+    """Metadata -> QC -> rebuilt betas -> scores -> fits on a tiny Sturm fixture (Codex review 11): shuffled sample
+    and probe order, a drug arm and a SURF1 line left out, a QC failure, an arrested arm on its own reference, a CpG
+    missing in one array, and a chip offset that only the chip-held slope removes."""
+    from entropy_age.data.cohorts import layout
+    from entropy_age.experiments import solo_wcgw_culture as swc
+    from entropy_age.paths import ProjectPaths
+
+    paths = ProjectPaths(tmp_path)
+    rng = np.random.default_rng(11)
+    n = 400
+    cpgs = [f"cg{i:04d}" for i in range(n)]
+    hk = np.arange(n) % 10 == 0  # 40 housekeeping CpGs, in every island class and starting decile
+    table = pl.DataFrame(
+        {
+            "cpg": cpgs,
+            "island": np.array(["OpenSea", "Shore", "Island", "Shelf"])[np.arange(n) % 4],
+            "hk": hk,
+            "hk_gene": [f"g{i // 20}" if h else None for i, h in enumerate(hk)],
+            "promoter": hk | (np.arange(n) % 3 == 0),
+            "non_essential": np.zeros(n, dtype=bool),
+            "pmd": np.zeros(n, dtype=bool),
+        }
+    )
+    base = rng.uniform(0.3, 0.9, n)
+    rate = np.where(hk, 0.25, 0.5)  # points lost per doubling: housekeeping CpGs half as much
+
+    rows, betas, qc = [], {}, []
+
+    def array(sample, donor, sub, agent, doublings, days, chip="A", offset=0.0, passed=True):
+        rows.append(
+            {
+                "sample": sample,
+                "donor": donor,
+                "subexperiment": sub,
+                "oxygen": "Ambient",
+                "agent": agent,
+                "serum": "Full",
+                "vector": "NA",
+                "doublings": doublings,
+                "days": days,
+            }
+        )
+        betas[sample] = base - (rate * doublings + offset) / 100.0
+        qc.append({"sample": sample, "chip": chip, "frac_dt": 0.99 if passed else 0.5, "platform": "EPIC"})
+
+    for donor, chip_b in (("D1", 2.0), ("D2", 6.0)):
+        for k, d in enumerate((0.0, 2.0, 4.0, 6.0, 8.0)):
+            on_b = d == chip_b
+            array(
+                f"GSM{donor}{k}", donor, "Baseline profiling", "control", d, 10 * d, "B" if on_b else "A", float(on_b)
+            )
+    for k, day in enumerate((50.0, 60.0, 70.0, 80.0)):  # arrested: days pass, no doublings, no further loss
+        array(f"GSMCI{k}", "D1", "Study part 3", "Contact_Inhibition", 8.0, day)
+    array("GSMCI9", "D1", "Study part 3", "Contact_Inhibition", 8.0, 90.0, passed=False)  # fails QC
+    array("GSMAZA", "D1", "Baseline profiling", "5-azacytidine", 9.0, 100.0)  # a drug arm: left out
+    array("GSMSURF", "M1", "SURF1 mutation", "control", 4.0, 40.0)  # a genetic disease line: left out
+    betas["GSMD13"][7] = np.nan  # one CpG missing in one array of D1: out of D1's complete matrix
+    samples = pl.DataFrame(rows).sample(fraction=1.0, shuffle=True, seed=3)
+    out = layout("sturm", paths).samples
+    out.parent.mkdir(parents=True)
+    samples.write_parquet(out)
+    folder = tmp_path / "data" / "interim" / "sesame" / swc.STURM
+    folder.mkdir(parents=True)
+    pl.DataFrame(qc).sample(fraction=1.0, shuffle=True, seed=4).write_csv(folder / f"{swc.STURM}.qc.csv")
+    order = rng.permutation(n)
+    names = list(betas)[::-1]
+    chunk = pl.DataFrame({"probe": [cpgs[i] for i in order]} | {s: betas[s][order] for s in names})
+    chunk.write_parquet(folder / f"{swc.STURM}.betas.chunk000.parquet")
+
+    s = swc.cultures(paths)
+    assert set(s["sample"]) == {f"GSMD{d}{k}" for d in (1, 2) for k in range(5)} | {f"GSMCI{k}" for k in range(4)}
+    assert s.filter(pl.col("arrested"))["sample"].sort().to_list() == [f"GSMCI{k}" for k in range(4)]
+    chip = dict(s.select("sample", "chip").iter_rows())
+    assert chip["GSMD11"] == "B" and chip["GSMD23"] == "B" and chip["GSMD10"] == "A"
+
+    units = swc.prepare(paths, s, table)
+    meta = {u["meta"]["unit"][0]: u for u in units}
+    d1 = next(u for name, u in meta.items() if "Baseline profiling | D1" in name)
+    ci = next(u for name, u in meta.items() if "Contact_Inhibition" in name)
+    assert d1["meta"]["cpgs"][0] == n - 1 and "cg0007" not in d1["table"]["cpg"].to_list()
+    assert d1["meta"]["reference_samples"][0] == "GSMD10" and ci["meta"]["reference_samples"][0] == "GSMCI0"
+    # every loss is bound to its own CpG and array: reference minus beta, in points
+    cols = d1["table"]["cpg"].to_list()
+    j = cols.index("cg0010")
+    later = d1["meta"]["sample"].to_list()
+    assert later == ["GSMD11", "GSMD12", "GSMD13", "GSMD14"]
+    assert d1["loss"][later.index("GSMD14"), j] == pytest.approx(0.25 * 8.0)
+    assert d1["loss"][later.index("GSMD11"), j] == pytest.approx(0.25 * 2.0 + 1.0)  # the chip-B offset
+
+    sc = swc.scores(units, 0.0)
+    slopes = swc.unit_slopes(sc)
+    ci_rows = slopes.filter(pl.col("arrested"))
+    assert set(ci_rows["axis"]) == {"days"}  # no doublings in the arrested arm: no slope on them
+    assert ci_rows.filter(pl.col("metric") == "loss_all")["slope_per_10"][0] == pytest.approx(0.0, abs=1e-9)
+
+    fits = swc.series_fits(sc, slopes, 0, np.random.default_rng(0))
+    sturm = {r["metric"]: r for r in fits.filter(pl.col("selection") == "Sturm, 5 lines").iter_rows(named=True)}
+    mean_rate = float(np.mean(rate[np.arange(n) != 7]))  # roughly, D1 lacks one CpG
+    assert sturm["loss_all"]["slope_chip_held"] == pytest.approx(10 * mean_rate, abs=0.01)
+    assert abs(sturm["loss_all"]["slope_per_10_pd"] - sturm["loss_all"]["slope_chip_held"]) > 0.05  # chip bias
+    for pool in ("other", "promoter"):  # the uniform chip offset cancels in the gap
+        assert sturm[f"gap_{pool}"]["slope_per_10_pd"] == pytest.approx(10 * (0.25 - 0.5), abs=1e-6)
+        assert sturm[f"loss_hk_{pool}"]["slope_chip_held"] == pytest.approx(2.5, abs=1e-6)
+    assert sturm["loss_all"]["arrays"] == 8 and sturm["loss_all"]["units"] == 2

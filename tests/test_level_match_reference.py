@@ -462,3 +462,163 @@ def test_subsample_summary_reports_spread_over_draws():
     )
     r = summarise_subsamples(mostly, spread).row(0, named=True)
     assert r["gap_mean"] is None and r["gap_lo"] is None and r["sd_diff_mean"] is not None
+
+
+def test_erisk_reader_end_to_end_binds_sample_numbers_to_accessions(tmp_path, monkeypatch):
+    """The deposited E-Risk path from a tiny fixture: series-matrix titles map the CSV's sample-number columns (in
+    another order than the accessions) to GSMs, CpG rows come shuffled and are read back in the requested order, a
+    failed array is replaced by its co-twin, and the rebuilt-run's deposited twin reads the same cells."""
+    import gzip
+
+    from entropy_age.experiments import level_match_reference as lmr
+    from entropy_age.paths import ProjectPaths
+
+    monkeypatch.delenv("ENTROPY_AGE_BETAS", raising=False)
+    paths = ProjectPaths(tmp_path)
+    geo = paths.input / "geo" / "GSE105018"
+    geo.mkdir(parents=True)
+    # GSM0..GSM5 carry sample numbers 305, 101, 102, 201, 306, 202 (families 3, 1, 1, 2, 3, 2)
+    numbers = ["305", "101", "102", "201", "306", "202"]
+    _erisk_matrix(geo / "GSE105018_series_matrix.txt.gz", numbers, ["3", "1", "1", "2", "3", "2"], list("112212"))
+    value = {num: {f"cg{c}": int(num) / 1000 + c / 100_000 for c in range(8)} for num in numbers}
+    value["201"]["cg4"] = None  # a gap in a read column stays a gap
+    columns = ["202", "101", "306", "201", "305", "102"]  # the CSV's own column order
+    cpg_rows = [5, 2, 7, 0, 3, 6, 1, 4]  # and its own CpG order
+    lines = ['"",' + ",".join(f'"{c}"' for c in columns)]
+    for c in cpg_rows:
+        cells = ["NA" if value[n][f"cg{c}"] is None else repr(value[n][f"cg{c}"]) for n in columns]
+        lines.append(f'"cg{c}",' + ",".join(cells))
+    with gzip.open(geo / lmr.ERISK_CSV, "wt") as handle:
+        handle.write("\n".join(lines) + "\n")
+    monkeypatch.setattr(lmr, "ERISK_ROWS_PER_PART", 3)
+    monkeypatch.setattr(lmr, "matrix_path", lambda paths, gse: geo / f"{gse}_series_matrix.txt.gz")
+    failed = ("GSM1", "GSM5")  # 101 and 202 failed: families 1 and 2 keep 102 (GSM2) and 201 (GSM3) whatever the draw
+    monkeypatch.setattr(lmr, "usable", lambda matrix, samples: [s for s in samples if s not in failed])
+    features = ["cg6", "cg4", "cg0", "cg9", "cg3"]  # not sorted; cg9 absent from the CSV
+    p, raw = lmr._erisk(paths, features, np.random.default_rng(1))
+    gsm_to_number = dict(zip([f"GSM{i}" for i in range(6)], numbers, strict=True))
+    assert len(p.donors) == 3 and {"GSM2", "GSM3"} <= set(p.donors) and not set(failed) & set(p.donors)
+    assert sorted(gsm_to_number[d][0] for d in p.donors) == ["1", "2", "3"]  # one twin per family
+    # the absent CpG and cg4 (missing in a third of the arrays, above MAX_MISSING) dropped, the requested order kept
+    assert p.features == ["cg6", "cg0", "cg3"]
+    for i, donor in enumerate(p.donors):
+        num = gsm_to_number[donor]
+        for j, f in enumerate(p.features):
+            expected = value[num][f]
+            if expected is None:
+                assert np.isnan(raw[i, j])
+            else:
+                assert raw[i, j] == pytest.approx(expected, rel=1e-6)
+    twin = lmr.deposited_twin(paths, "erisk", dataclasses_replace(p, features=["cg3", "cg9", "cg4", "cg6"]))
+    for i, donor in enumerate(p.donors):
+        num = gsm_to_number[donor]
+        assert twin[i, 0] == pytest.approx(value[num]["cg3"], rel=1e-6) and np.isnan(twin[i, 1])
+        assert twin[i, 3] == pytest.approx(value[num]["cg6"], rel=1e-6)
+        gap = value[num]["cg4"] is None  # the gap stays a gap, bound to its own array
+        assert np.isnan(twin[i, 2]) if gap else twin[i, 2] == pytest.approx(value[num]["cg4"], rel=1e-6)
+    assert np.isnan(twin[:, 2]).sum() == 1
+
+
+def dataclasses_replace(p, **kwargs):
+    import dataclasses
+
+    return dataclasses.replace(p, **kwargs)
+
+
+@pytest.mark.parametrize("content", ["", '"","11"\n\n', '"","11"\n,0.5\n'], ids=["empty", "blank", "no-id"])
+def test_erisk_cache_refuses_a_csv_without_cpgs_and_leaves_no_partial_folder(tmp_path, content):
+    import gzip
+
+    from entropy_age.experiments import level_match_reference as lmr
+    from entropy_age.paths import ProjectPaths
+
+    paths = ProjectPaths(tmp_path)
+    geo = paths.input / "geo" / "GSE105018"
+    geo.mkdir(parents=True)
+    with gzip.open(geo / lmr.ERISK_CSV, "wt") as handle:
+        handle.write(content)  # no header at all, a header and a blank line, or a row with no CpG id
+    with pytest.raises(ValueError, match="no CpG rows"):
+        lmr.erisk_parts(paths)
+    assert not list((paths.interim / "cohorts").iterdir())
+
+
+def test_erisk_cache_cleans_up_a_failed_build_and_rebuilds_an_empty_cache(tmp_path):
+    import gzip
+
+    from entropy_age.experiments import level_match_reference as lmr
+    from entropy_age.paths import ProjectPaths
+
+    paths = ProjectPaths(tmp_path)
+    geo = paths.input / "geo" / "GSE105018"
+    geo.mkdir(parents=True)
+    with gzip.open(geo / lmr.ERISK_CSV, "wt") as handle:
+        handle.write('"","11"\n"cg1",0.1\n"cg2",not-a-number\n')
+    with pytest.raises(pl.exceptions.ComputeError):  # a value that is not a number
+        lmr.erisk_parts(paths)
+    assert not list((paths.interim / "cohorts").iterdir())  # the writer's folder removed
+    (paths.interim / "cohorts" / "erisk_betas").mkdir()  # an empty cache left by a killed writer is not reused
+    with gzip.open(geo / lmr.ERISK_CSV, "wt") as handle:
+        handle.write('"","11"\n"cg1",0.1\n"cg2",0.2\n')
+    parts = lmr.erisk_parts(paths)
+    assert lmr.read_erisk_betas(parts, ["cg2", "cg1"], ["11"]).ravel().tolist() == pytest.approx([0.2, 0.1])
+
+
+def test_erisk_reader_refuses_a_cpg_in_two_parts(tmp_path):
+    from entropy_age.experiments.level_match_reference import read_erisk_betas
+
+    for k, v in enumerate((0.1, 0.2)):
+        pl.DataFrame({"cpg": ["cg1"], "11": [v]}).write_parquet(tmp_path / f"part-{k:04d}.parquet")
+    with pytest.raises(ValueError, match="twice"):
+        read_erisk_betas(tmp_path, ["cg1"], ["11"])
+
+
+def _resampling_state():
+    features = [f"c{i}" for i in range(240)]
+    rng = np.random.default_rng(21)
+    drift = _prepared(90, 240, 5, "drift", features)
+    drift = Prepared(
+        "drift",
+        drift.x + (drift.ages[:, None] * rng.uniform(0, 2e-3, 240)).astype(np.float32),
+        drift.ages,
+        None,
+        features,
+        drift.donors,
+        None,
+    )
+    ref = _prepared(40, 240, 6, "ref", features)
+    raw = ref.x.copy()
+    raw[::7, 3] = np.nan  # gaps in the reference's measured matrix
+    membership = pl.concat(
+        [
+            pl.DataFrame({"feature": features[0::6], "group": "housekeeping"}),
+            pl.DataFrame({"feature": features[1::6], "group": "core_essential"}),
+            pl.DataFrame({"feature": features[2::6], "group": "non_essential"}),
+        ]
+    )
+    plan = {"d": {SAME: ("d", True), "other": ("r", False)}}
+    return {
+        "cohorts": {"d": (drift, drift.x), "r": (ref, raw)},
+        "probes": _probes(features),
+        "membership": membership,
+        "plan": plan,
+    }
+
+
+@pytest.mark.parametrize("task", ["_boot", "_subsample"])
+def test_serial_and_spawned_resampling_agree(task):
+    from polars.testing import assert_frame_equal
+
+    from entropy_age.experiments import level_match_reference as lmr
+
+    state = _resampling_state()
+    jobs = [("d", s) for s in (3, 17, 2**30 + 5)]
+    fn = getattr(lmr, task)
+    serial = pl.DataFrame(lmr._parallel(jobs, 1, state, fn))
+    spawned = pl.DataFrame(lmr._parallel(jobs, 2, state, fn))
+    assert serial.height > 0
+    key = "boot" if task == "_boot" else "draw"
+    assert sorted(set(serial[key])) == [3, 17, 2**30 + 5]
+    assert_frame_equal(serial, spawned)
+    again = pl.DataFrame(lmr._parallel(jobs[::-1], 1, state, fn))  # a draw depends on its seed, not its turn
+    cols = ["reference", "scope", "matching", "group", "metric", key]
+    assert_frame_equal(serial.sort(cols), again.sort(cols))

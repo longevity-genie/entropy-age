@@ -112,7 +112,8 @@ def _rebuilt(matrix: Path):
 
 def usable(matrix: Path, samples: list[str]) -> list[str]:
     """``samples`` that have betas in the source in use: for deposited betas all but the arrays with failed signal in
-    the rebuild's QC (when the series was rebuilt), for a rebuild those passing SeSAMe QC. Callers filter their people with it, so a failed array never becomes a row of NaN."""
+    the rebuild's QC (when the series was rebuilt), for a rebuild those passing SeSAMe QC. Callers filter their
+    people with it, so a failed array never becomes a row of NaN."""
     rebuilt = _rebuilt(matrix)
     if rebuilt is None:
         # deposited betas: an array whose raw signal failed (protocol change 4) is left out here too, since the fault
