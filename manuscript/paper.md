@@ -386,7 +386,7 @@ replicate lines, 29 to 72 doublings) gave −0.083 (−0.092 to −0.074; −0.0
 intercepts; 81 % of the
 spread in doublings lies within line and chip. None of the three series has an arrested control, and each is one cell line, three replicate lines of one immortalisation, or two donors (Supplementary Note 3).
 
-*Mitotic loss at solo-WCGW CpGs follows doublings; housekeeping promoters escape it mostly by replicating early.* Solo-WCGW CpGs (A or T on
+*Mitotic loss at solo-WCGW CpGs follows doublings; housekeeping promoters escape it, partly by replicating early.* Solo-WCGW CpGs (A or T on
 both sides, no other CpG within 35 bp) lose methylation with each division, most in partially methylated domains
 (Zhou, Dinh et al. 2018). In six culture series rebuilt from IDATs, loss from each culture's earliest arrays at the
 678 such CpGs of HypoClock rose with population doublings in every series: per 10 doublings, 1.86 percentage
@@ -404,7 +404,7 @@ re-weighted to the solo-WCGWs' island relation, starting level and replication t
 and −0.47, −0.53 to −0.35, for WCGW with a neighbour; −0.67 and −0.50 for SCGS; every leave-one-line-out fit at or below
 −0.43). Solo-WCGWs in housekeeping promoter regions (1,069 CpGs of 841 genes) did not take part: their loss per 10
 doublings stayed between −0.29 and 0.00 points (higher = more loss) in every replication-timing class and domain
-below. Most of their difference from other solo-WCGWs is replication timing (Repli-seq of BJ and IMR-90 fibroblasts):
+below. Part of their difference from other solo-WCGWs is replication timing (Repli-seq of BJ and IMR-90 fibroblasts):
 housekeeping promoters replicate early (wave signal 66.6 against 61.3 for solo-WCGWs matched on island relation and
 starting-level decile), and in early-replicating domains matched solo-WCGWs do not lose either (−0.12 and −0.23
 points per 10 doublings, Endicott and Sturm). With timing quintiles added to the matching, the gap (housekeeping
