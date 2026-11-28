@@ -137,8 +137,20 @@ def read_betas(matrix: Path, features: list[str], samples: list[str]) -> np.ndar
             raise ValueError(
                 f"{rebuilt[1]}: {len(missing)} samples not in the rebuild (filter with usable()): {missing[:5]}"
             )
-        frame = pl.DataFrame({"probe": features}).join(frame.select("probe", *samples), on="probe", how="left")
+        if frame["probe"].n_unique() != frame.height:
+            raise ValueError(f"{rebuilt[1]}: a probe appears twice in the rebuild")
+        frame = pl.DataFrame({"probe": features}).join(
+            frame.select("probe", *samples), on="probe", how="left", maintain_order="left"
+        )
+        if frame["probe"].to_list() != list(features):
+            raise ValueError(f"{rebuilt[1]}: probe order lost in the join")
         return frame.select(samples).to_numpy().T.astype(float)
+    return read_deposited(matrix, features, samples)
+
+
+def read_deposited(matrix: Path, features: list[str], samples: list[str]) -> np.ndarray:
+    """The series matrix's beta table, samples by ``features`` (NaN where a CpG is missing), whatever
+    ``ENTROPY_AGE_BETAS`` says."""
     index = {f: i for i, f in enumerate(features)}
     x = np.full((len(samples), len(features)), np.nan)
     columns = None

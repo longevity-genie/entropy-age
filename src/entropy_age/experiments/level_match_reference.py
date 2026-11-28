@@ -17,7 +17,7 @@ no measurement enters both the matching variables and the drift:
   against Hannum's youngest fifth (19-52 y), the GSE97362 controls, the GSE73103 young adults and E-Risk.
 * ``same donors``: the drift cohort's own youngest fifth, as in the paper, on the same CpGs.
 
-Every estimate is 450k, deposited betas (Hannum has no raw arrays), on the CpGs measured in all five cohorts
+By default every estimate is 450k, deposited betas (Hannum has no raw arrays), on the CpGs measured in all five cohorts
 (``tissue_contrast``'s promoter features; at most 5 % missing per cohort, the rest median-imputed). The gaps are
 ``level_match.gaps`` (pool ``rest``): island x decile (the paper's matching), the finer strata, and the nearest five
 on young level alone and on young level and young SD, in SD of the drift measure over all CpGs of the drift cohort
@@ -31,6 +31,15 @@ cohort a draw uses does not set its spread), the drift cohort kept whole; as man
 draws is the sampling variation of each reference's matching variables, and of the gaps matched on them, at one
 reference size; ``sd_diff`` is the set-minus-matched young SD, a summary of those SDs, and its spread over draws is
 that summary's precision at 100 donors.
+
+**Rebuilt betas** (``ENTROPY_AGE_BETAS=sesame``; output ``level_match_reference_rsesame``): every cohort read from its
+raw IDATs through the one SeSAMe pipeline (``scripts/sesame_preprocess.R``), arrays failing its QC left out. Hannum has
+no raw arrays, so the drift cohort is EPIC-Italy alone, against its own youngest fifth, the GSE97362 controls, the
+GSE73103 young adults and E-Risk; one processing per estimate, and the run refuses to start unless all four series are
+rebuilt. The same run writes ``processing``: the housekeeping-minus-matched young SD (island x decile) of the two
+young-adult cohorts read both ways, deposited and rebuilt, on the same donors (arrays passing the rebuild's QC) and on
+the CpGs every one of the four versions measures, with donor resamples shared by the two versions of a cohort (paired
+rebuilt-minus-deposited) and drawn independently between cohorts (GSE73103 minus E-Risk under each processing).
 
 ``entropy-age figures level_match_reference`` as a Slurm job.
 """
@@ -52,16 +61,26 @@ from pathlib import Path
 import numpy as np
 import polars as pl
 
+from entropy_age.data import reprocessed
 from entropy_age.data.cohorts import _characteristics
 from entropy_age.experiments.common import Context, dummies, write_table
 from entropy_age.experiments.incident_cancer import chips
 from entropy_age.experiments.incident_cancer import read_people as epic_italy_people
-from entropy_age.experiments.level_match import KEYS, MIN_VALID_SHARE, _finite_quantile, gaps, young_rows
-from entropy_age.experiments.syndromes import CONTROL, matrix_path, read_betas, usable
+from entropy_age.experiments.level_match import (
+    KEYS,
+    MIN_VALID_SHARE,
+    _finite_quantile,
+    gaps,
+    strata,
+    stratum_gap,
+    young_rows,
+)
+from entropy_age.experiments.syndromes import CONTROL, matrix_path, read_betas, read_deposited, usable
 from entropy_age.experiments.syndromes import read_people as syndrome_people
 from entropy_age.experiments.tissue_contrast import (
     LIFESPAN_METRICS,
     MAX_MISSING,
+    SETS,
     Prepared,
     _features,
     _hannum,
@@ -97,6 +116,10 @@ PLAN = {
         "E-Risk one twin per family": ("erisk", False),
     },
 }
+#: rebuilt betas: Hannum has no raw arrays, so EPIC-Italy is the only drift cohort
+SESAME_PLAN = {"epic_italy": {k: v for k, v in PLAN["epic_italy"].items() if v[0] != "hannum"}}
+#: the series every cohort of a rebuilt run is read from
+REBUILT = {"epic_italy": EPIC_ITALY, "charge": CHARGE, "young_adults": YOUNG_ADULTS, "erisk": ERISK}
 CSV_ROWS = 5_000
 #: the drift cohort's own young mean and SD, carried as checks: after matching on another cohort's young donors,
 #: how far do the set and its matched CpGs still differ in the drift cohort's own young donors?
@@ -104,10 +127,46 @@ OWN = ("own_level", "own_sd")
 
 
 # ----------------------------------------------------------------------------- cohorts
-def deposited_only() -> None:
-    """Hannum exists only as deposited betas, so every cohort here is read deposited: one processing per estimate."""
-    if os.environ.get("ENTROPY_AGE_BETAS", "deposited") != "deposited":
-        raise RuntimeError("level_match_reference reads deposited betas only (Hannum has no raw arrays)")
+def processing(paths=None) -> str:
+    """``deposited`` or ``sesame`` (``ENTROPY_AGE_BETAS``): one processing per estimate. A rebuilt run needs every one
+    of its cohorts rebuilt (Hannum, which has no raw arrays, is left out of it); any other value is refused."""
+    mode = os.environ.get("ENTROPY_AGE_BETAS", "deposited")
+    if mode not in ("deposited", "sesame"):
+        raise RuntimeError(f"level_match_reference reads deposited or sesame betas, not {mode!r}")
+    if mode == "sesame" and paths is not None:
+        missing = [g for g in REBUILT.values() if not reprocessed.available(paths, g)]
+        if missing:
+            raise RuntimeError(f"level_match_reference: no SeSAMe rebuild of {missing}; a rebuilt run needs all four")
+        for gse in REBUILT.values():
+            recipe(paths, gse)
+    return mode
+
+
+RECIPE, PLATFORM = "QCDPB", "HM450"
+
+
+def recipe(paths, gse: str) -> str:
+    """The SeSAMe recipe of ``gse``'s rebuild, checked to be the one recipe of a rebuilt run: the default rebuild
+    folder, HM450 arrays only, and ``prep`` QCDPB for every array. A QC table without ``prep`` was written before the
+    script chose a recipe per platform (and before ``SESAME_PREP`` existed), every array prepared with QCDPB."""
+    if reprocessed.series_dir(paths, gse).parent.name != "sesame":
+        raise RuntimeError(
+            "level_match_reference: a rebuilt run reads the default rebuild (ENTROPY_AGE_SESAME_DIR unset)"
+        )
+    qc = reprocessed.read_qc(paths, gse)
+    platforms = set(qc["platform"].cast(pl.String).to_list()) if "platform" in qc.columns else set()
+    if platforms != {PLATFORM}:
+        raise RuntimeError(f"level_match_reference: {gse} rebuild platforms {sorted(platforms)}, not {PLATFORM} alone")
+    if "prep" not in qc.columns:
+        return f"{RECIPE} (fixed recipe of the first script)"
+    preps = set(qc["prep"].cast(pl.String).to_list())
+    if preps != {RECIPE}:
+        raise RuntimeError(f"level_match_reference: {gse} rebuilt with {sorted(preps)}, not {RECIPE} alone")
+    return RECIPE
+
+
+def active_plan(mode: str) -> dict:
+    return SESAME_PLAN if mode == "sesame" else PLAN
 
 
 def _series(paths, gse: str, people: pl.DataFrame, features: list[str]):
@@ -202,16 +261,18 @@ def erisk_people(matrix: Path) -> pl.DataFrame:
     )
 
 
-def one_per_family(people: pl.DataFrame, rng: np.random.Generator) -> pl.DataFrame:
-    """One row per ``family``, drawn uniformly at random among its rows (the order of ``people`` does not matter)."""
+def one_per_family(people: pl.DataFrame, rng: np.random.Generator, usable: list[str] | None = None) -> pl.DataFrame:
+    """One row per ``family``, drawn uniformly at random among its rows (the order of ``people`` does not matter).
+
+    With ``usable`` (the arrays with betas in the processing read) the draw is made over every row first and then
+    restricted to the usable ones, so a family keeps the twin drawn without the restriction whenever that array is
+    usable, takes its co-twin when it is not, and drops out only when none of its arrays is usable."""
     people = people.sort("family", "sample")
     draw = pl.Series("draw", rng.random(people.height))
-    return (
-        people.with_columns(draw)
-        .filter(pl.col("draw") == pl.col("draw").min().over("family"))
-        .drop("draw")
-        .sort("sample")
-    )
+    people = people.with_columns(draw)
+    if usable is not None:
+        people = people.filter(pl.col("sample").is_in(usable))
+    return people.filter(pl.col("draw") == pl.col("draw").min().over("family")).drop("draw").sort("sample")
 
 
 def erisk_parts(paths) -> Path:
@@ -262,8 +323,16 @@ def read_erisk_betas(parts: Path, features: list[str], columns: list[str]) -> np
 
 
 def _erisk(paths, features, rng: np.random.Generator) -> Prepared:
-    people = one_per_family(erisk_people(matrix_path(paths, ERISK)), rng)
-    x = read_erisk_betas(erisk_parts(paths), features, people["column"].to_list())
+    """E-Risk, one twin per family among the arrays usable in the processing read (arrays whose raw signal failed are
+    left out of the deposited betas too, as ``usable`` does for every series): deposited betas from the supplementary
+    CSV, rebuilt betas by accession."""
+    matrix = matrix_path(paths, ERISK)
+    people = erisk_people(matrix)
+    people = one_per_family(people, rng, usable(matrix, people["sample"].to_list()))
+    if reprocessed.in_use():
+        x = read_betas(matrix, features, people["sample"].to_list())
+    else:
+        x = read_erisk_betas(erisk_parts(paths), features, people["column"].to_list())
     x, raw, kept = impute(x, features)
     sex = dummies(people["sex"].to_numpy())
     ages = np.full(people.height, ERISK_AGE)
@@ -341,14 +410,15 @@ def sample_rows(
     draws: dict[str, np.ndarray],
     size: int | None = None,
     rng: np.random.Generator | None = None,
+    plan: dict | None = None,
 ):
     """Gaps of every reference for drift cohort ``key``; ``cohorts`` maps a key to (Prepared, matrix with gaps kept)
     and ``draws`` gives each cohort's rows (a resample or all). With ``size`` every reference's rows are cut to that
     many, drawn by ``rng`` with replacement. Also the SD of each drift measure over the drift cohort's CpGs (the
-    divisor, used from the full sample only)."""
+    divisor, used from the full sample only). ``plan`` maps drift cohorts to references (default ``PLAN``)."""
     drift, drift_raw = cohorts[key]
     references = {}
-    for name, (ref_key, youngest) in PLAN[key].items():
+    for name, (ref_key, youngest) in (plan or PLAN)[key].items():
         ref, raw = cohorts[ref_key]
         rows = reference_rows(ref, draws[ref_key], youngest)
         if size is not None:
@@ -389,7 +459,7 @@ def _boot(job: tuple[str, int]) -> list[dict]:
     cohorts = _STATE["cohorts"]
     rng = np.random.default_rng(seed)
     draws = {k: np.sort(rng.choice(p.x.shape[0], size=p.x.shape[0], replace=True)) for k, (p, _) in cohorts.items()}
-    rows, _ = sample_rows(key, cohorts, _STATE["probes"], _STATE["membership"], draws)
+    rows, _ = sample_rows(key, cohorts, _STATE["probes"], _STATE["membership"], draws, plan=_STATE.get("plan"))
     return rows.with_columns(boot=pl.lit(seed)).to_dicts()
 
 
@@ -399,7 +469,8 @@ def _subsample(job: tuple[str, int]) -> list[dict]:
     cohorts = _STATE["cohorts"]
     full = {k: np.arange(p.x.shape[0]) for k, (p, _) in cohorts.items()}
     rng = np.random.default_rng(seed)
-    rows, _ = sample_rows(key, cohorts, _STATE["probes"], _STATE["membership"], full, SUBSAMPLE_SIZE, rng)
+    plan = _STATE.get("plan")
+    rows, _ = sample_rows(key, cohorts, _STATE["probes"], _STATE["membership"], full, SUBSAMPLE_SIZE, rng, plan)
     keep = (pl.col("scope") == "all CpGs") & pl.col("matching").is_in(SUBSAMPLE_MATCHINGS)
     return rows.filter(keep).with_columns(draw=pl.lit(seed)).to_dicts()
 
@@ -458,7 +529,8 @@ def summarise(point: pl.DataFrame, boot: pl.DataFrame, spread: pl.DataFrame) -> 
     return point.join(ci, on=KEYS, how="left").sort(KEYS)
 
 
-#: how each cohort's deposited betas were made (the depositors' processing; none rebuilt here)
+#: how each cohort's betas were made: the depositors' processing, or the one SeSAMe pipeline from raw IDATs
+SESAME = "rebuilt from raw IDATs (SeSAMe prepSesame QCDPB; arrays failing detection or intensity QC left out)"
 PROCESSING = {
     "hannum": "deposited (depositors' processing)",
     "epic_italy": "deposited (depositors' processing)",
@@ -501,7 +573,13 @@ def reference_rule(key: str) -> bool:
     return rules[key]
 
 
-def cohort_summary(cohorts: dict, cpgs: int, own: dict[str, set[str]] | None = None) -> list[dict]:
+def cohort_summary(
+    cohorts: dict,
+    cpgs: int,
+    own: dict[str, set[str]] | None = None,
+    mode: str = "deposited",
+    recipes: dict[str, str] | None = None,
+) -> list[dict]:
     """One row per cohort: arrays and ages, and the rows that give matching variables when it is another cohort's
     reference (the same ``reference_rows`` call the matching uses). With ``own`` (each cohort's CpGs passing its own
     missingness rule, before the intersection) also that count and how many CpGs the intersection of the other
@@ -514,7 +592,11 @@ def cohort_summary(cohorts: dict, cpgs: int, own: dict[str, set[str]] | None = N
             {
                 "cohort": p.label,
                 "key": k,
-                "processing": PROCESSING.get(k, "deposited"),
+                "processing": (
+                    f"{SESAME}; recipe {(recipes or {}).get(k, RECIPE)}"
+                    if mode == "sesame"
+                    else PROCESSING.get(k, "deposited")
+                ),
                 "arrays": p.x.shape[0],
                 "age_min": float(p.ages.min()),
                 "age_max": float(p.ages.max()),
@@ -531,31 +613,186 @@ def cohort_summary(cohorts: dict, cpgs: int, own: dict[str, set[str]] | None = N
     return out
 
 
+# ----------------------------------------------------------------------------- deposited against rebuilt
+#: the two young-adult references read both ways (``processing`` table of a rebuilt run)
+YOUNG_LABELS = {"young_adults": "GSE73103 young adults", "erisk": "E-Risk one twin per family"}
+VERSIONS = ("deposited", "sesame")
+
+
+def deposited_twin(paths, key: str, p: Prepared) -> np.ndarray:
+    """The deposited betas of the donors (accessions) and CpGs of the rebuilt cohort ``p``, gaps kept."""
+    donors, features = p.donors.tolist(), list(p.features)
+    if key == "erisk":
+        column = dict(erisk_people(matrix_path(paths, ERISK)).select("sample", "column").iter_rows())
+        return read_erisk_betas(erisk_parts(paths), features, [column[d] for d in donors])
+    return read_deposited(matrix_path(paths, REBUILT[key]), features, donors).astype(np.float32)
+
+
+def paired_mask(versions: dict[tuple[str, str], np.ndarray]) -> dict[tuple[str, str], np.ndarray]:
+    """Each cohort's versions with a cell kept only where every version of that cohort measures it (finite), so the
+    two processings are compared on the same donor cells."""
+    out = {}
+    for cohort in {c for c, _ in versions}:
+        keys = [k for k in versions if k[0] == cohort]
+        both = np.logical_and.reduce([np.isfinite(versions[k]) for k in keys])
+        out |= {k: np.where(both, versions[k], np.nan).astype(np.float32) for k in keys}
+    return out
+
+
+def shared_columns(versions: dict, features: list[str]) -> np.ndarray:
+    """Columns measured (finite) in all but at most ``MAX_MISSING`` of the rows of every version (on ``features``)."""
+    return np.logical_and.reduce([(~np.isfinite(x)).mean(axis=0) <= MAX_MISSING for x in versions.values()])
+
+
+def young_sd_gaps(
+    versions: dict[tuple[str, str], np.ndarray],
+    rows: dict[str, np.ndarray],
+    features: list[str],
+    probes: pl.DataFrame,
+    membership: pl.DataFrame,
+) -> dict[tuple[str, str, str, str], float]:
+    """Set-minus-matched young SD (island x young-level decile, the paper's matching; beta units) of every
+    (cohort, processing) version over its cohort's ``rows``, per set, on the CpGs every version can describe. Two
+    stratifications: ``own`` (deciles of that version's young level, each version rematched) and ``deposited``
+    (the strata of the cohort's deposited version applied to both versions, so a rebuilt-minus-deposited change holds
+    the matching fixed)."""
+    annotation = probes.select(pl.col("cpg").alias("feature"), "cpg_island").with_columns(
+        pl.col("cpg_island").fill_null(False)
+    )
+    frames = {}
+    for (cohort, version), x in versions.items():
+        mean, sd = reference_stats(x, rows[cohort])
+        frames[(cohort, version)] = pl.DataFrame({"feature": features, "baseline": mean, "young_sd": sd})
+    finite = np.logical_and.reduce(
+        [np.isfinite(f.select("baseline", "young_sd").to_numpy()).all(axis=1) for f in frames.values()]
+    )
+    frames = {
+        k: f.filter(pl.Series(finite))
+        .join(annotation, on="feature", how="left", maintain_order="left")
+        .with_columns(pl.col("cpg_island").fill_null(False))
+        for k, f in frames.items()
+    }
+    own = {k: strata(f, by_type=False) for k, f in frames.items()}
+    out = {}
+    for group in SETS:
+        members = membership.filter(pl.col("group") == group)["feature"].unique().implode()
+        for (cohort, version), f in frames.items():
+            in_group = f["feature"].is_in(members).to_numpy()
+            fixed = own.get((cohort, "deposited"), own[(cohort, version)])
+            for name, codes in (("own", own[(cohort, version)]), ("deposited", fixed)):
+                out[(cohort, version, group, name)] = stratum_gap(f, in_group, codes, ("young_sd",))["young_sd"]
+    return out
+
+
+def _contrasts(g: dict[tuple[str, str, str, str], float]) -> dict[tuple[str, str, str, str], float]:
+    """Each version's value, rebuilt minus deposited per cohort (paired), GSE73103 minus E-Risk per processing, and
+    the change of that cohort difference on rebuilding; under each stratification."""
+    out = dict(g)
+    for group in SETS:
+        for st in ("own", "deposited"):
+            for c in YOUNG_LABELS:
+                out[(c, "rebuilt minus deposited", group, st)] = (
+                    g[(c, "sesame", group, st)] - g[(c, "deposited", group, st)]
+                )
+            for v in VERSIONS:
+                out[("GSE73103 minus E-Risk", v, group, st)] = (
+                    g[("young_adults", v, group, st)] - g[("erisk", v, group, st)]
+                )
+            out[("GSE73103 minus E-Risk", "rebuilt minus deposited", group, st)] = (
+                out[("GSE73103 minus E-Risk", "sesame", group, st)]
+                - out[("GSE73103 minus E-Risk", "deposited", group, st)]
+            )
+    return out
+
+
+def processing_table(
+    versions: dict[tuple[str, str], np.ndarray],
+    features: list[str],
+    probes: pl.DataFrame,
+    membership: pl.DataFrame,
+    n_boot: int,
+    rng: np.random.Generator,
+) -> pl.DataFrame:
+    """``young_sd_gaps`` and their contrasts with 95 % donor-resample intervals: each cohort's donors drawn with
+    replacement, the same draw for its two versions, independently between cohorts. In percentage points (beta x 100;
+    below zero = the set varies less between donors than its matched CpGs)."""
+    versions = paired_mask(versions)
+    keep = shared_columns(versions, features)
+    features = [f for f, k in zip(features, keep, strict=True) if k]
+    versions = {k: np.ascontiguousarray(x[:, keep]) for k, x in versions.items()}
+    n = {c: x.shape[0] for (c, _), x in versions.items()}
+    point = _contrasts(young_sd_gaps(versions, {c: np.arange(m) for c, m in n.items()}, features, probes, membership))
+    boots = []
+    for _ in range(n_boot):
+        rows = {c: np.sort(rng.choice(m, size=m, replace=True)) for c, m in n.items()}
+        boots.append(_contrasts(young_sd_gaps(versions, rows, features, probes, membership)))
+    out = []
+    for key, value in point.items():
+        cohort, version, group, stratification = key
+        b = np.array([d[key] for d in boots], dtype=float)
+        ok = np.isfinite(b)
+        enough = b.size and ok.sum() >= MIN_VALID_SHARE * b.size
+        out.append(
+            {
+                "cohort": YOUNG_LABELS.get(cohort, cohort),
+                "processing": version,
+                "group": group,
+                "strata": stratification,
+                "sd_diff_pp": 100 * value,
+                "lo_pp": 100 * float(np.quantile(b[ok], 0.025)) if enough else None,
+                "hi_pp": 100 * float(np.quantile(b[ok], 0.975)) if enough else None,
+                "n_boot": int(b.size),
+                "n_valid": int(ok.sum()),
+                "donors": n.get(cohort),
+                "cpgs": len(features),
+            }
+        )
+    return pl.DataFrame(out)
+
+
 def run(ctx: Context) -> list[Path]:
-    deposited_only()
+    mode = processing(ctx.paths)
+    plan = active_plan(mode)
     out = ctx.out_dir("level_match_reference")
     workers, n_boot = _settings(ctx)
     features, probes, membership = _features(ctx.paths, ctx.rng(120_000))  # the background draw of `figures tissues`
-    hannum = _hannum(ctx.paths, features)  # deposited Hannum betas have no gaps
-    hannum = dataclasses.replace(hannum, x=hannum.x.astype(np.float32))
-    cohorts = {
-        "hannum": (hannum, hannum.x),
+    cohorts = {}
+    if mode == "deposited":
+        hannum = _hannum(ctx.paths, features)  # deposited Hannum betas have no gaps
+        hannum = dataclasses.replace(hannum, x=hannum.x.astype(np.float32))
+        cohorts["hannum"] = (hannum, hannum.x)
+    cohorts |= {
         "epic_italy": _epic_italy(ctx.paths, features),
         "charge": _charge_controls(ctx.paths, features),
         "young_adults": _young_adults(ctx.paths, features),
         "erisk": _erisk(ctx.paths, features, ctx.rng(60_018)),
     }
+    if mode == "sesame":  # the two young-adult cohorts read both ways, same donors, before the five-cohort cut
+        versions = {}
+        for key in YOUNG_LABELS:
+            p, raw = cohorts[key]
+            idx = {f: j for j, f in enumerate(p.features)}
+            full = np.full((raw.shape[0], len(features)), np.nan, dtype=np.float32)
+            cols = [j for j, f in enumerate(features) if f in idx]
+            full[:, cols] = raw[:, [idx[features[j]] for j in cols]]
+            versions[(key, "sesame")] = full
+            deposited = dataclasses.replace(p, features=list(features))
+            versions[(key, "deposited")] = deposited_twin(ctx.paths, key, deposited)
+        write_table(
+            processing_table(versions, features, probes, membership, n_boot, ctx.rng(60_020)), out / "processing"
+        )
     own = {k: set(p.features) for k, (p, _) in cohorts.items()}
     common = sorted(set.intersection(*own.values()))
     cohorts = {k: restrict(p, common, raw) for k, (p, raw) in cohorts.items()}
     membership = membership.filter(pl.col("feature").is_in(common))
-    summary = cohort_summary(cohorts, len(common), own)
+    recipes = {k: recipe(ctx.paths, REBUILT[k]) for k in cohorts} if mode == "sesame" else None
+    summary = cohort_summary(cohorts, len(common), own, mode, recipes)
     write_table(pl.DataFrame(summary), out / "cohorts")
-    print(f"level_match_reference: {summary}", file=sys.stderr, flush=True)
+    print(f"level_match_reference ({mode}): {summary}", file=sys.stderr, flush=True)
     point, spread = [], []
     full = {k: np.arange(p.x.shape[0]) for k, (p, _) in cohorts.items()}
-    for key in PLAN:
-        rows, sd = sample_rows(key, cohorts, probes, membership, full)
+    for key in plan:
+        rows, sd = sample_rows(key, cohorts, probes, membership, full, plan=plan)
         point.append(rows)
         spread.append(sd)
     point, spread = pl.concat(point), pl.concat(spread)
@@ -563,14 +800,14 @@ def run(ctx: Context) -> list[Path]:
     if bad.height:
         raise ValueError(f"level_match_reference: no spread of a drift measure: {bad.to_dicts()}")
     rng = ctx.rng(60_016)
-    jobs = [(key, int(s)) for key in PLAN for s in rng.integers(0, 2**31 - 1, size=n_boot)]
-    state = {"cohorts": cohorts, "probes": probes, "membership": membership}
+    jobs = [(key, int(s)) for key in plan for s in rng.integers(0, 2**31 - 1, size=n_boot)]
+    state = {"cohorts": cohorts, "probes": probes, "membership": membership, "plan": plan}
     boot = pl.DataFrame(_parallel(jobs, workers, state)) if jobs else pl.DataFrame()
-    table = summarise(point, boot, spread).with_columns(processing=pl.lit("deposited"))
+    table = summarise(point, boot, spread).with_columns(processing=pl.lit(mode))
     write_table(table, out / "gaps", csv_max_rows=CSV_ROWS)
     if boot.height:
         write_table(boot, out / "boot")
-    sub_jobs = [(key, int(s)) for key in PLAN for s in ctx.rng(60_019).integers(0, 2**31 - 1, size=n_boot)]
+    sub_jobs = [(key, int(s)) for key in plan for s in ctx.rng(60_019).integers(0, 2**31 - 1, size=n_boot)]
     if sub_jobs:
         draws = pl.DataFrame(_parallel(sub_jobs, workers, state, _subsample))
         write_table(summarise_subsamples(draws, spread), out / "subsample")

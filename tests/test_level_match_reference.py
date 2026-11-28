@@ -128,12 +128,127 @@ def test_deltas_only_on_the_whole_scope_and_gated_on_their_own_resamples():
     assert low["delta_sd"] is None
 
 
-def test_sesame_mode_is_refused(monkeypatch):
-    from entropy_age.experiments.level_match_reference import deposited_only
+def test_one_processing_per_run_and_rebuilt_runs_need_every_rebuild(monkeypatch, tmp_path):
+    from entropy_age.experiments import level_match_reference as lmr
+    from entropy_age.paths import ProjectPaths
 
+    monkeypatch.setenv("ENTROPY_AGE_BETAS", "methylprep")
+    with pytest.raises(RuntimeError, match="deposited or sesame"):
+        lmr.processing()
     monkeypatch.setenv("ENTROPY_AGE_BETAS", "sesame")
-    with pytest.raises(RuntimeError, match="deposited"):
-        deposited_only()
+    monkeypatch.setattr(lmr.reprocessed, "available", lambda paths, gse: gse != lmr.ERISK)
+    with pytest.raises(RuntimeError, match="GSE105018"):
+        lmr.processing(ProjectPaths(tmp_path))
+    monkeypatch.setattr(lmr.reprocessed, "available", lambda paths, gse: True)
+    monkeypatch.setattr(lmr, "recipe", lambda paths, gse: "QCDPB")
+    assert lmr.processing(ProjectPaths(tmp_path)) == "sesame"
+    monkeypatch.delenv("ENTROPY_AGE_BETAS")
+    assert lmr.processing(ProjectPaths(tmp_path)) == "deposited"
+
+
+def test_rebuilt_runs_take_one_recipe_on_hm450(monkeypatch, tmp_path):
+    from entropy_age.experiments import level_match_reference as lmr
+    from entropy_age.paths import ProjectPaths
+
+    paths = ProjectPaths(tmp_path)
+    folder = tmp_path / "data" / "interim" / "sesame" / "GSE1"
+    folder.mkdir(parents=True)
+    qc = {"sample": ["GSM1", "GSM2"], "chip": ["1", "1"], "frac_dt": [0.99, 0.99], "platform": ["HM450", "HM450"]}
+    pl.DataFrame(qc).write_csv(folder / "GSE1.qc.csv")
+    assert lmr.recipe(paths, "GSE1").startswith("QCDPB")  # no prep column: the first script's fixed recipe
+    pl.DataFrame(qc | {"prep": ["QCDPB", "CDPB"]}).write_csv(folder / "GSE1.qc.csv")
+    with pytest.raises(RuntimeError, match="CDPB"):
+        lmr.recipe(paths, "GSE1")
+    pl.DataFrame(qc | {"prep": ["QCDPB", "QCDPB"]}).write_csv(folder / "GSE1.qc.csv")
+    assert lmr.recipe(paths, "GSE1") == "QCDPB"
+    pl.DataFrame(qc | {"platform": ["HM450", "EPIC"]}).write_csv(folder / "GSE1.qc.csv")
+    with pytest.raises(RuntimeError, match="EPIC"):
+        lmr.recipe(paths, "GSE1")
+    monkeypatch.setenv("ENTROPY_AGE_SESAME_DIR", "sesame_clock")
+    with pytest.raises(RuntimeError, match="default rebuild"):
+        lmr.recipe(paths, "GSE1")
+
+
+def test_paired_mask_keeps_cells_both_versions_measure():
+    from entropy_age.experiments.level_match_reference import paired_mask
+
+    a = np.array([[0.1, np.nan], [0.2, 0.3]], dtype=np.float32)
+    b = np.array([[0.1, 0.4], [np.inf, 0.3]], dtype=np.float32)
+    out = paired_mask({("c", "deposited"): a, ("c", "sesame"): b, ("d", "sesame"): a})
+    assert (
+        np.isnan(out[("c", "deposited")][[0, 1], [1, 0]]).all() and np.isnan(out[("c", "sesame")][[0, 1], [1, 0]]).all()
+    )
+    assert out[("c", "sesame")][1, 1] == pytest.approx(0.3) and np.isnan(out[("d", "sesame")][0, 1])
+
+
+def test_rebuilt_plan_has_no_hannum():
+    from entropy_age.experiments.level_match_reference import PLAN, SESAME_PLAN, active_plan
+
+    assert active_plan("deposited") is PLAN and active_plan("sesame") is SESAME_PLAN
+    assert list(SESAME_PLAN) == ["epic_italy"]
+    refs = {ref for ref, _ in SESAME_PLAN["epic_italy"].values()}
+    assert refs == {"epic_italy", "charge", "young_adults", "erisk"}
+
+
+def test_one_per_family_keeps_the_drawn_twin_when_usable_else_the_co_twin(tmp_path):
+    from entropy_age.experiments.level_match_reference import erisk_people, one_per_family
+
+    matrix = tmp_path / "GSE105018_series_matrix.txt.gz"
+    _erisk_matrix(matrix, ["11", "12", "21", "22", "31"], ["1", "1", "2", "2", "3"], ["1", "2", "1", "2", "1"])
+    people = erisk_people(matrix)
+    for seed in range(20):
+        whole = one_per_family(people, np.random.default_rng(seed))
+        drawn = dict(whole.select("family", "sample").iter_rows())
+        dropped = drawn["1"]  # family 1's drawn twin fails; family 3's only array fails
+        usable = [s for s in people["sample"].to_list() if s not in (dropped, drawn["3"])]
+        cut = one_per_family(people, np.random.default_rng(seed), usable)
+        picked = dict(cut.select("family", "sample").iter_rows())
+        assert set(picked) == {"1", "2"} and picked["2"] == drawn["2"]
+        assert picked["1"] != dropped and picked["1"] in usable
+
+
+def test_young_sd_contrast_pairs_versions_and_separates_cohorts():
+    from entropy_age.experiments.level_match_reference import processing_table
+
+    rng = np.random.default_rng(3)
+    p = 400
+    features = [f"c{i}" for i in range(p)]
+    probes = pl.DataFrame({"cpg": features, "cpg_island": [i % 2 == 0 for i in range(p)]})
+    house = features[::4]
+    membership = pl.DataFrame({"feature": house, "group": "housekeeping"})
+    membership = pl.concat([membership, pl.DataFrame({"feature": features[1::4], "group": "core_essential"})])
+    membership = pl.concat([membership, pl.DataFrame({"feature": features[2::8], "group": "non_essential"})])
+    level = rng.uniform(0.05, 0.9, p)
+    spread = np.where(np.isin(features, house), 0.01, 0.03)  # housekeeping CpGs vary less between donors
+
+    def cohort(n, scale):
+        return (level + rng.normal(0, 1, (n, p)) * spread * scale).astype(np.float32)
+
+    a, b = cohort(60, 1.0), cohort(80, 0.5)
+    b_dep = b.copy()
+    b_dep[:, 5] = np.nan  # a CpG the deposited E-Risk lacks drops out of every version
+    versions = {
+        ("young_adults", "deposited"): a,
+        ("young_adults", "sesame"): a,
+        ("erisk", "deposited"): b_dep,
+        ("erisk", "sesame"): b,
+    }
+    t = processing_table(versions, features, probes, membership, 30, np.random.default_rng(0))
+    assert set(t["cpgs"].to_list()) == {p - 1}
+    assert set(t["strata"].to_list()) == {"own", "deposited"}
+    hk = t.filter((pl.col("group") == "housekeeping") & (pl.col("strata") == "own"))
+    row = {(r["cohort"], r["processing"]): r for r in hk.iter_rows(named=True)}
+    ya, er = row[("GSE73103 young adults", "sesame")], row[("E-Risk one twin per family", "sesame")]
+    assert ya["sd_diff_pp"] < er["sd_diff_pp"] < 0  # half the spread, half the difference
+    assert ya["donors"] == 60 and er["donors"] == 80
+    same = row[("GSE73103 young adults", "rebuilt minus deposited")]
+    assert same["sd_diff_pp"] == pytest.approx(0.0, abs=1e-9) and same["lo_pp"] == pytest.approx(0.0, abs=1e-9)
+    gap = row[("GSE73103 minus E-Risk", "sesame")]
+    assert gap["sd_diff_pp"] == pytest.approx(ya["sd_diff_pp"] - er["sd_diff_pp"])
+    assert gap["lo_pp"] <= gap["sd_diff_pp"] <= gap["hi_pp"] < 0
+    fixed = t.filter((pl.col("group") == "housekeeping") & (pl.col("strata") == "deposited"))
+    row = {(r["cohort"], r["processing"]): r for r in fixed.iter_rows(named=True)}
+    assert row[("GSE73103 young adults", "deposited")]["sd_diff_pp"] == pytest.approx(ya["sd_diff_pp"])
 
 
 def test_every_reference_is_read_on_the_same_cpgs():

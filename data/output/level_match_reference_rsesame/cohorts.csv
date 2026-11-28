@@ -1,0 +1,5 @@
+cohort,key,processing,arrays,age_min,age_max,reference_rule,reference_arrays,reference_age_min,reference_age_max,cpgs,own_cpgs,common_cpgs_without,missing_share
+blood (EPIC-Italy),epic_italy,rebuilt from raw IDATs (SeSAMe prepSesame QCDPB; arrays failing detection or intensity QC left out); recipe QCDPB (fixed recipe of the first script),712,34.686,72.047,youngest fifth,143,34.686,47.42,90965,95127,91009,0.000160776122684549
+blood (GSE97362 controls),charge,rebuilt from raw IDATs (SeSAMe prepSesame QCDPB; arrays failing detection or intensity QC left out); recipe QCDPB (fixed recipe of the first script),124,2.0,19.0,all donors,124,2.0,19.0,90965,98075,91118,0.00020435013112097352
+blood (GSE73103 young adults),young_adults,rebuilt from raw IDATs (SeSAMe prepSesame QCDPB; arrays failing detection or intensity QC left out); recipe QCDPB,185,18.0,30.0,all donors,185,18.0,30.0,90965,91433,93752,0.0006009439329947218
+"blood (E-Risk, one twin per family)",erisk,rebuilt from raw IDATs (SeSAMe prepSesame QCDPB; arrays failing detection or intensity QC left out); recipe QCDPB,923,18.0,18.0,all donors,923,18.0,18.0,90965,94095,91106,0.00030971635001353907
