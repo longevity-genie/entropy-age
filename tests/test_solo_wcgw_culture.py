@@ -283,3 +283,43 @@ def test_outside_hmd_leaves_unknown_domains_out():
 
     t = pl.DataFrame({"domain": ["commonPMD", "commonHMD", "neither", "unknown"]})
     assert restriction(t, "notHMD").tolist() == [True, False, True, False]
+
+
+def test_non_essential_design_repeats_score_unit_and_keeps_both_sets_out_of_the_pool():
+    from entropy_age.experiments.solo_wcgw_culture import design_parts, score_parts
+
+    rng = np.random.default_rng(11)
+    u = _toy_unit(rng)
+    n = u["table"].height
+    ne_gene = [f"n{i // 4}" if 60 <= i < 140 else None for i in range(n)]
+    ne_gene[0] = "n_both"  # a CpG linked to a housekeeping and a non-essential gene stays out of the set
+    u["table"] = u["table"].with_columns(
+        non_essential_gene=pl.Series(ne_gene, dtype=pl.String),
+        non_essential=pl.Series([g is not None for g in ne_gene]),
+        pmd=pl.lit(False),
+    )
+    genes = {g: i for i, g in enumerate(sorted({g for g in ne_gene if g is not None}))}
+    parts = design_parts(u, ("solo_wcgw", None, False), genes, "non_essential")
+    assert parts["hk_loss"].shape[1] == 80  # CpGs 60-139, not CpG 0
+    set_loss, matched, _ = score_parts(parts, "other", np.ones(len(genes)))
+    expected = score_unit(u["loss"], u["reference"], u["table"], 0.0)["gap_non_essential"]
+    assert np.allclose(set_loss - matched, expected)
+    pool = parts["pools"]["other"]["n"].sum()
+    assert pool == n - 60 - 80  # neither housekeeping nor non-essential CpGs are controls
+
+
+def test_non_essential_design_needs_twenty_cpgs_as_score_unit_does():
+    from entropy_age.experiments.solo_wcgw_culture import design_parts
+
+    rng = np.random.default_rng(12)
+    u = _toy_unit(rng)
+    n = u["table"].height
+    ne_gene = [f"n{i}" if 60 <= i < 70 else None for i in range(n)]
+    u["table"] = u["table"].with_columns(
+        non_essential_gene=pl.Series(ne_gene, dtype=pl.String),
+        non_essential=pl.Series([g is not None for g in ne_gene]),
+        pmd=pl.lit(False),
+    )
+    genes = {g: i for i, g in enumerate(g for g in ne_gene if g is not None)}
+    assert design_parts(u, ("solo_wcgw", None, False), genes, "non_essential") is None
+    assert np.isnan(score_unit(u["loss"], u["reference"], u["table"], 0.0)["gap_non_essential"]).all()

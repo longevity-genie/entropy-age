@@ -239,9 +239,10 @@ WITHIN = {  # scope "lowest decile": strata inside the decile
 NN_PLANS = {f"nearest {NN_K} (level)": ("baseline",), f"nearest {NN_K} (level, SD)": LEVEL_COLUMNS}
 
 
-def gaps(frame: pl.DataFrame, membership: pl.DataFrame, pools=POOLS) -> list[dict]:
-    """Unscaled gaps and residual level differences of every pool, scope, set and matching for one sample's table."""
-    columns = (*LIFESPAN_METRICS, *LEVEL_COLUMNS)
+def gaps(frame: pl.DataFrame, membership: pl.DataFrame, pools=POOLS, extra: tuple[str, ...] = ()) -> list[dict]:
+    """Unscaled gaps and residual level differences of every pool, scope, set and matching for one sample's table;
+    ``extra`` columns get the same set-minus-matched difference (never used for matching)."""
+    columns = (*LIFESPAN_METRICS, *LEVEL_COLUMNS, *extra)
     frame = frame.filter(pl.all_horizontal(pl.col(c).is_finite() for c in columns))
     level = frame["baseline"].to_numpy()
     low = lowest_decile(level)

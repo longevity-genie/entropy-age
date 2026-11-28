@@ -1,0 +1,4 @@
+cohort,key,arrays,age_min,age_max,young_fifth_max_age,young_fifth_arrays,cpgs,missing_share
+blood (Hannum),hannum,656,19.0,101.0,52.0,144,87856,0.0
+blood (EPIC-Italy),epic_italy,718,34.686,72.047,47.491,144,87856,0.004208789490424696
+blood (GSE97362 controls),charge,124,2.0,19.0,7.0,29,87856,0.0006427306266559355

@@ -29,7 +29,10 @@ Replication timing (housekeeping promoters replicate early, and solo-WCGW loss i
 taken up in :func:`timing_shield`: Repli-seq timing of BJ and IMR-90 fibroblasts joins the strata, and the gap is
 read within early-, mid- and late-replicating tertiles and within Zhou et al.'s common HMD and PMD bins, with
 leave-one-line-out fits and housekeeping genes resampled as blocks. :func:`context_loss` and the WCGW-with-neighbour
-and SCGS designs ask whether the division effect and the gap are particular to solo-WCGWs.
+and SCGS designs ask whether the division effect and the gap are particular to solo-WCGWs. The non-essential
+contrast (promoter solo-WCGWs of non-essential genes minus matched ones, higher = they lose more) is read through
+the same designs, timing quintiles in the strata and within timing tertiles, non-essential genes resampled as
+blocks (tables ``non_essential_timing_*``, the set's columns ``set_*``).
 
 ``entropy-age figures solo_wcgw_culture`` (needs the SeSAMe rebuilds of the series below).
 """
@@ -826,16 +829,18 @@ def cpg_universe(paths) -> pl.DataFrame:
     membership = link_membership(pl.read_parquet(annotation.links_450k), pl.read_parquet(annotation.gene_sets))
     hk = membership.filter(pl.col("group") == "housekeeping").select(pl.col("feature").alias("cpg"), pl.col("gene"))
     hk = hk.unique(subset="cpg", keep="first", maintain_order=True)
-    ne = membership.filter(pl.col("group") == "non_essential")["feature"].unique()
+    ne = membership.filter(pl.col("group") == "non_essential").select(pl.col("feature").alias("cpg"), pl.col("gene"))
+    ne = ne.sort("cpg", "gene").unique(subset="cpg", keep="first", maintain_order=True)
     hypo_path = paths.input / "mitotic" / "hypoclock.csv"
     hypo = pl.read_csv(hypo_path)["cpg"] if hypo_path.exists() else pl.Series("cpg", [], dtype=pl.String)
     table = (
         probes.select("cpg", "chr", "pos", "island_relation", "promoter", "context")
         .join(hk.rename({"gene": "hk_gene"}), on="cpg", how="left")
+        .join(ne.rename({"gene": "non_essential_gene"}), on="cpg", how="left")
         .with_columns(
             island=pl.col("island_relation").str.strip_prefix("N_").str.strip_prefix("S_"),
             hk=pl.col("hk_gene").is_not_null(),
-            non_essential=pl.col("cpg").is_in(ne.implode()),
+            non_essential=pl.col("non_essential_gene").is_not_null(),
             pmd=pl.col("cpg").is_in(hypo.implode()),
         )
     )
@@ -902,9 +907,28 @@ def restriction(table: pl.DataFrame, rule: str | None) -> np.ndarray:
     return (table["domain"] == rule).to_numpy()
 
 
-def design_parts(u: dict, design: tuple[str, str | None, bool], genes: dict[str, int]) -> dict | None:
-    """What a gene draw needs to score one unit under one design: the housekeeping CpGs' losses, strata and gene
-    indices, and per pool the pool's mean loss in every stratum (arrays x strata) and its size."""
+#: the gene sets whose promoter solo-WCGWs are read against matched ones: column -> its gene column. The set's CpGs
+#: never enter a pool; neither do housekeeping CpGs, and a non-essential CpG that is also housekeeping is left out
+#: of the non-essential set (as in :func:`score_unit`).
+MEMBERS = {"hk": "hk_gene", "non_essential": "non_essential_gene"}
+#: designs read for the non-essential contrast (solo-WCGWs only)
+NON_ESSENTIAL_DESIGNS = (
+    "island x start",
+    "island x start x timing",
+    "early-replicating",
+    "mid-replicating",
+    "late-replicating",
+    "common HMD",
+    "outside common HMD",
+)
+
+
+def design_parts(
+    u: dict, design: tuple[str, str | None, bool], genes: dict[str, int], member: str = "hk"
+) -> dict | None:
+    """What a gene draw needs to score one unit under one design: the set's CpGs' losses, strata and gene indices,
+    and per pool the pool's mean loss in every stratum (arrays x strata) and its size. ``member`` names the set
+    (:data:`MEMBERS`); the output keys keep the ``hk_`` prefix for either set."""
     context, rule, timed = design
     table = u["table"]
     keep = (table["context"] == context).to_numpy() & restriction(table, rule)
@@ -921,10 +945,12 @@ def design_parts(u: dict, design: tuple[str, str | None, bool], genes: dict[str,
         labels = np.char.add(np.char.add(labels, "|"), p)
     _, codes = np.unique(labels, return_inverse=True)
     k = int(codes.max()) + 1
-    hk = keep & table["hk"].to_numpy()
-    if not hk.any():
+    housekeeping = table["hk"].to_numpy()
+    in_set = table[member].to_numpy()
+    hk = keep & in_set & (housekeeping if member == "hk" else ~housekeeping)
+    if not hk.any() or (member != "hk" and hk.sum() < MIN_SET):  # score_unit's rule for the non-essential set
         return None
-    gene_names = table["hk_gene"].to_list()
+    gene_names = table[MEMBERS[member]].to_list()
     out = {
         "hk_loss": u["loss"][:, hk],
         "hk_codes": codes[hk],
@@ -934,7 +960,7 @@ def design_parts(u: dict, design: tuple[str, str | None, bool], genes: dict[str,
         "hk_pmd": (table["domain"] == "commonPMD").to_numpy()[hk],
         "pools": {},
     }
-    eligible = keep & ~table["hk"].to_numpy()
+    eligible = keep & ~housekeeping & ~in_set
     for pool_name, pool in (("other", eligible), ("promoter", eligible & table["promoter"].to_numpy())):
         n = np.bincount(codes[pool], minlength=k).astype(float)
         if not (n > 0).any():
@@ -1074,18 +1100,41 @@ def _interval(values: np.ndarray) -> tuple[float, float]:
     return (float(np.quantile(v, 0.025)), float(np.quantile(v, 0.975))) if v.size >= 20 else (np.nan, np.nan)
 
 
-def timing_shield(units: list[dict], n_genes: int, n_lines: int, rng) -> dict[str, pl.DataFrame]:
-    """The housekeeping gap per 10 doublings under every design of :data:`TIMING_DESIGNS`, per dividing selection:
-    housekeeping and matched loss slopes, the gap, its interval over resampled housekeeping genes (blocks: all CpGs
-    of a gene go together; cultures held), over resampled lines (four or more), leave-one-line-out estimates and the
-    gap with chip intercepts. Also the balance of timing, start and PMD share after matching."""
-    genes_all = sorted({g for u in units for g in u["table"].filter(pl.col("hk"))["hk_gene"].to_list()})
+def timing_shield(
+    units: list[dict], n_genes: int, n_lines: int, rng, member: str = "hk", designs=None
+) -> dict[str, pl.DataFrame]:
+    """The set's gap per 10 doublings under every design of :data:`TIMING_DESIGNS` (or the names ``designs``), per
+    dividing selection: the set's and matched loss slopes, the gap, its interval over resampled genes of the set
+    (blocks: all CpGs of a gene go together; cultures held), over resampled lines (four or more),
+    leave-one-line-out estimates and the gap with chip intercepts. Also the balance of timing, start and PMD share
+    after matching. ``member``: housekeeping (``hk``, columns ``hk_*``) or ``non_essential`` (the same columns, read
+    for the non-essential set)."""
+    gene_col = MEMBERS[member]
+    designs = TIMING_DESIGNS if designs is None else {d: TIMING_DESIGNS[d] for d in designs}
+    genes_all = sorted(
+        {g for u in units for g in u["table"].filter(pl.col(member))[gene_col].to_list() if g is not None}
+    )
     genes = {g: i for i, g in enumerate(genes_all)}
-    parts = {name: [design_parts(u, d, genes) for u in units] for name, d in TIMING_DESIGNS.items()}
+    parts = {name: [design_parts(u, d, genes, member) for u in units] for name, d in designs.items()}
     meta = pl.concat([u["meta"].with_columns(row_unit=pl.lit(i)) for i, u in enumerate(units)], how="vertical_relaxed")
     ones = np.ones(len(genes_all))
     n = len(genes_all)
     gene_draws = [np.bincount(rng.choice(n, n), minlength=n) for _ in range(n_genes)]
+
+    def draws_for(name, pool):
+        """Housekeeping: the shared draws over every housekeeping gene (as published). Other sets: draws over the
+        genes with a CpG in this design whose stratum holds controls of this pool in some unit."""
+        if member == "hk":
+            return gene_draws
+        matched = [
+            p["hk_gene"][p["pools"][pool]["n"][p["hk_codes"]] > 0]
+            for p in parts[name]
+            if p is not None and pool in p["pools"]
+        ]
+        present = np.unique(np.concatenate(matched or [np.zeros(0, int)]))
+        if not present.size:
+            return []
+        return [np.bincount(rng.choice(present, present.size), minlength=n) for _ in range(n_genes)]
 
     def per_array(name, pool, counts):
         hk, matched, used = [], [], []
@@ -1104,12 +1153,12 @@ def timing_shield(units: list[dict], n_genes: int, n_lines: int, rng) -> dict[st
         mask = (meta.select((select(meta) & ~pl.col("arrested")).alias("m"))["m"]).to_numpy()
         if mask.sum() >= 5:
             selections[label] = (mask, SlopeFrame(meta.filter(pl.Series(mask))))
-    for name, (context, rule, timed) in TIMING_DESIGNS.items():
+    for name, (context, rule, timed) in designs.items():
         for pool in ("other", "promoter"):
             hk, matched, used = per_array(name, pool, ones)
             if not np.isfinite(hk).any():
                 continue
-            boots = [per_array(name, pool, c)[:2] for c in gene_draws]
+            boots = [per_array(name, pool, c)[:2] for c in draws_for(name, pool)]
             for label, (mask, frame) in selections.items():
                 scored = mask & np.isfinite(hk) & np.isfinite(matched)
                 dropped = int(np.unique(meta["row_unit"].to_numpy()[mask & ~scored]).size)
@@ -1328,6 +1377,10 @@ def run(ctx: Context) -> list[Path]:
     write_table(gene_bootstrap(units, table, n_boot // 2, ctx.rng(310_002)), out / "shield")
     for name, frame in timing_shield(every, n_boot // 2, n_boot, ctx.rng(310_003)).items():
         write_table(frame, out / name)
+    ne = timing_shield(every, n_boot // 2, n_boot, ctx.rng(310_005), "non_essential", NON_ESSENTIAL_DESIGNS)
+    for name, frame in ne.items():  # the set's columns renamed set_* (hk_* in the housekeeping tables)
+        frame = frame.rename({c: "set_" + c[3:] for c in frame.columns if c.startswith("hk_")})
+        write_table(frame, out / name.replace("timing", "non_essential_timing", 1))
     write_table(context_loss(every, n_boot, ctx.rng(310_004)), out / "context_loss")
     write_table(
         universe.group_by(keys := ["context", "timing_class", "domain", "hk"]).len().sort(keys),
