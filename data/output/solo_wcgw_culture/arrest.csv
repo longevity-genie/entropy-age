@@ -1,0 +1,40 @@
+series,culture,arm,metric,arrays,span,doublings_in_arm,arrested_per_10_days,arrested_se,dividing_arm,dividing_per_10_days
+Endicott fibroblasts and others (GSE197512),Growth arrest: MMC | Adult_skin_fibroblast_1,agent=MMC,loss_all,6,7.0,1.1194119569999996,-0.10520864548167452,0.1216117049984987,agent=control,0.46496702751238805
+Endicott fibroblasts and others (GSE197512),Growth arrest: MMC | Adult_skin_fibroblast_1,agent=MMC,loss_pmd,6,7.0,1.1194119569999996,0.15431721687336275,0.22299754723098825,agent=control,1.7808788589754438
+Endicott fibroblasts and others (GSE197512),Growth arrest: MMC | Adult_skin_fibroblast_1,agent=MMC,gap_other,6,7.0,1.1194119569999996,0.12201611304023736,0.08114755306733439,agent=control,-0.4519420333172105
+Endicott fibroblasts and others (GSE197512),Growth arrest: MMC | Adult_vascular_endothelial_cell_1,agent=MMC,loss_all,6,7.0,0.997625113999999,-0.6746209833037529,0.2239406701389581,agent=control,0.4521836693162121
+Endicott fibroblasts and others (GSE197512),Growth arrest: MMC | Adult_vascular_endothelial_cell_1,agent=MMC,loss_pmd,6,7.0,0.997625113999999,-0.7454837502335098,0.2975283925677824,agent=control,1.4971567385314652
+Endicott fibroblasts and others (GSE197512),Growth arrest: MMC | Adult_vascular_endothelial_cell_1,agent=MMC,gap_other,6,7.0,0.997625113999999,0.045829616147565505,0.10031400433192213,agent=control,-0.516470699437867
+Endicott fibroblasts and others (GSE197512),Growth arrest: MMC | Adult_vascular_smooth_muscle_cell_1,agent=MMC,loss_all,6,7.0,1.1611192800000012,-0.15508894864056638,0.18636852221107966,agent=control,0.8347275506128994
+Endicott fibroblasts and others (GSE197512),Growth arrest: MMC | Adult_vascular_smooth_muscle_cell_1,agent=MMC,loss_pmd,6,7.0,1.1611192800000012,-0.10074848024727295,0.45817503885799415,agent=control,2.115759597832263
+Endicott fibroblasts and others (GSE197512),Growth arrest: MMC | Adult_vascular_smooth_muscle_cell_1,agent=MMC,gap_other,6,7.0,1.1611192800000012,-0.03478830324865394,0.02695941162805205,agent=control,-0.33803449901128696
+Sturm dermal fibroblasts (GSE179847),Study part 2 | HC5,agent=Contact_Inhibition,loss_all,6,103.25000003000001,1.2996583699999995,-0.1993804518426482,0.04521217133830195,,
+Sturm dermal fibroblasts (GSE179847),Study part 2 | HC5,agent=Contact_Inhibition,loss_pmd,6,103.25000003000001,1.2996583699999995,-0.31921117016073164,0.06915364606552739,,
+Sturm dermal fibroblasts (GSE179847),Study part 2 | HC5,agent=Contact_Inhibition,gap_other,6,103.25000003000001,1.2996583699999995,0.09199740110188781,0.014569184541291408,,
+Sturm dermal fibroblasts (GSE179847),Study part 3 | HC1,agent=Contact_Inhibition,loss_all,6,109.41666667,0.9762195299999981,-0.21800834079054263,0.038228655725703956,agent=control,0.4472794458504791
+Sturm dermal fibroblasts (GSE179847),Study part 3 | HC1,agent=Contact_Inhibition,loss_pmd,6,109.41666667,0.9762195299999981,-0.1230633230143469,0.0365456847335444,agent=control,1.2514255868618527
+Sturm dermal fibroblasts (GSE179847),Study part 3 | HC1,agent=Contact_Inhibition,gap_other,6,109.41666667,0.9762195299999981,0.1154527925107599,0.01669494795014329,agent=control,-0.3616961573011988
+Sturm dermal fibroblasts (GSE179847),Study part 3 | HC1,"oxygen=3%, agent=Contact_Inhibition",loss_all,6,109.41666667,1.652455279999998,0.01778595066410081,0.04424117355683135,"oxygen=3%, agent=control",0.22763212100225821
+Sturm dermal fibroblasts (GSE179847),Study part 3 | HC1,"oxygen=3%, agent=Contact_Inhibition",loss_pmd,6,109.41666667,1.652455279999998,0.11477040211400481,0.04931541492447462,"oxygen=3%, agent=control",0.6821067374758761
+Sturm dermal fibroblasts (GSE179847),Study part 3 | HC1,"oxygen=3%, agent=Contact_Inhibition",gap_other,6,109.41666667,1.652455279999998,0.05659245515955189,0.010003957287953566,"oxygen=3%, agent=control",-0.25212606655953607
+Sturm dermal fibroblasts (GSE179847),Study part 3 | HC2,agent=Contact_Inhibition,loss_all,6,109.41666667,0.8582883199999998,-0.05796238988567736,0.040159938043107364,agent=control,0.7896100680251936
+Sturm dermal fibroblasts (GSE179847),Study part 3 | HC2,agent=Contact_Inhibition,loss_pmd,6,109.41666667,0.8582883199999998,0.03988448806112773,0.06139363491527534,agent=control,1.8443054545846405
+Sturm dermal fibroblasts (GSE179847),Study part 3 | HC2,agent=Contact_Inhibition,gap_other,6,109.41666667,0.8582883199999998,0.07302408888020219,0.007015331678662677,agent=control,-0.5390634735938103
+Sturm dermal fibroblasts (GSE179847),Study part 3 | HC2,"oxygen=3%, agent=Contact_Inhibition",loss_all,5,109.41666667,1.1997695099999994,0.008717171928055545,0.030781023334536486,"oxygen=3%, agent=control",0.6446657691673461
+Sturm dermal fibroblasts (GSE179847),Study part 3 | HC2,"oxygen=3%, agent=Contact_Inhibition",loss_pmd,5,109.41666667,1.1997695099999994,0.17609650311453034,0.037961298900963954,"oxygen=3%, agent=control",1.5210533389818004
+Sturm dermal fibroblasts (GSE179847),Study part 3 | HC2,"oxygen=3%, agent=Contact_Inhibition",gap_other,5,109.41666667,1.1997695099999994,0.03430080032174528,0.013768157852569244,"oxygen=3%, agent=control",-0.46089470913058667
+Sturm dermal fibroblasts (GSE179847),Study part 3 | HC4,agent=Contact_Inhibition,loss_all,6,109.41666667,0.5888367799999994,0.005728136574927713,0.01448778366378231,agent=control,0.7715506448307919
+Sturm dermal fibroblasts (GSE179847),Study part 3 | HC4,agent=Contact_Inhibition,loss_pmd,6,109.41666667,0.5888367799999994,0.08319288244925267,0.017880978035496792,agent=control,1.8569011320149156
+Sturm dermal fibroblasts (GSE179847),Study part 3 | HC4,agent=Contact_Inhibition,gap_other,6,109.41666667,0.5888367799999994,0.03817611056893613,0.0063748637950482735,agent=control,-0.36023558630154073
+Sturm dermal fibroblasts (GSE179847),Study part 3 | HC4,"oxygen=3%, agent=Contact_Inhibition",loss_all,6,109.41666667,0.7591848500000005,-0.09380957387318549,0.01695689723014706,"oxygen=3%, agent=control",0.5139765897076534
+Sturm dermal fibroblasts (GSE179847),Study part 3 | HC4,"oxygen=3%, agent=Contact_Inhibition",loss_pmd,6,109.41666667,0.7591848500000005,-0.10224515809306461,0.03449924302320573,"oxygen=3%, agent=control",1.1518514276684504
+Sturm dermal fibroblasts (GSE179847),Study part 3 | HC4,"oxygen=3%, agent=Contact_Inhibition",gap_other,6,109.41666667,0.7591848500000005,0.032994397044513506,0.008444297193885423,"oxygen=3%, agent=control",-0.34992136240579996
+"Confluent fibroblasts, six months (E-MTAB-15859)",Donor #1,"confluent, arrested",loss_all,5,150.0,0.0,0.007928905154233088,0.042574096033966724,,
+"Confluent fibroblasts, six months (E-MTAB-15859)",Donor #1,"confluent, arrested",loss_pmd,5,150.0,0.0,0.019196454860012303,0.04701526059218328,,
+"Confluent fibroblasts, six months (E-MTAB-15859)",Donor #1,"confluent, arrested",gap_other,5,150.0,0.0,0.0034672773753211435,0.02219164545478217,,
+"Confluent fibroblasts, six months (E-MTAB-15859)",Donor #3,"confluent, arrested",loss_all,5,120.0,0.0,-0.08278925653746967,0.015509265448934979,,
+"Confluent fibroblasts, six months (E-MTAB-15859)",Donor #3,"confluent, arrested",loss_pmd,5,120.0,0.0,-0.03244326241364743,0.0537659074137834,,
+"Confluent fibroblasts, six months (E-MTAB-15859)",Donor #3,"confluent, arrested",gap_other,5,120.0,0.0,0.02673616065749103,0.004198545397126622,,
+"Confluent fibroblasts, six months (E-MTAB-15859)",Donor #4,"confluent, arrested",loss_all,5,150.0,0.0,0.05710256245996923,0.04119795910822707,,
+"Confluent fibroblasts, six months (E-MTAB-15859)",Donor #4,"confluent, arrested",loss_pmd,5,150.0,0.0,0.017910579828234487,0.07388866312595244,,
+"Confluent fibroblasts, six months (E-MTAB-15859)",Donor #4,"confluent, arrested",gap_other,5,150.0,0.0,-0.021373995703413255,0.020687018788790725,,

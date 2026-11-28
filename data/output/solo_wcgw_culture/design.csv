@@ -1,0 +1,60 @@
+series,unit,arm,arrested,arrays,doublings_min,doublings_max,days_max,chips
+Endicott fibroblasts and others (GSE197512),Baseline profiling | Fetal_skin_fibroblast_1 | standard,standard,false,30,16.62492091,66.19419589,102.0,4
+Endicott fibroblasts and others (GSE197512),Baseline profiling | Adult_vascular_endothelial_cell_1 | standard,standard,false,31,8.849131023,47.60713404,123.0,5
+Endicott fibroblasts and others (GSE197512),Baseline profiling | Adult_vascular_smooth_muscle_cell_1 | standard,standard,false,19,27.04553459,60.46863077,111.0,5
+Endicott fibroblasts and others (GSE197512),Baseline profiling | Adult_skin_fibroblast_1 | standard,standard,false,16,11.65526068,34.19191008,102.0,4
+Endicott fibroblasts and others (GSE197512),Baseline profiling | Neonatal_foreskin_keratinocyte_1 | standard,standard,false,19,6.965381832,26.27425262,34.0,3
+Endicott fibroblasts and others (GSE197512),Baseline profiling | Neonatal_foreskin_fibroblast_1 | standard,standard,false,27,7.24092391,91.81929305,149.0,4
+Endicott fibroblasts and others (GSE197512),Baseline profiling | Neonatal_foreskin_fibroblast_2 | standard,standard,false,36,12.62907467,55.88728255,72.0,6
+Endicott fibroblasts and others (GSE197512),Growth arrest: MMC | Adult_vascular_endothelial_cell_1 | agent=control,agent=control,false,6,9.667843084,15.08952581,25.0,3
+Endicott fibroblasts and others (GSE197512),Growth arrest: MMC | Adult_vascular_endothelial_cell_1 | agent=MMC,agent=MMC,true,6,7.976691199,8.974316313,25.0,2
+Endicott fibroblasts and others (GSE197512),Growth arrest: MMC | Adult_vascular_endothelial_cell_1 | standard,standard,false,1,7.326017388,7.326017388,8.0,1
+Endicott fibroblasts and others (GSE197512),Growth arrest: MMC | Adult_vascular_smooth_muscle_cell_1 | agent=control,agent=control,false,6,30.39129303,36.27430916,25.0,3
+Endicott fibroblasts and others (GSE197512),Growth arrest: MMC | Adult_vascular_smooth_muscle_cell_1 | agent=MMC,agent=MMC,true,6,30.47800398,31.63912326,25.0,3
+Endicott fibroblasts and others (GSE197512),Growth arrest: MMC | Adult_vascular_smooth_muscle_cell_1 | standard,standard,false,1,28.68773825,28.68773825,8.0,1
+Endicott fibroblasts and others (GSE197512),Growth arrest: MMC | Adult_skin_fibroblast_1 | agent=control,agent=control,false,6,7.649034369,13.3488729,25.0,3
+Endicott fibroblasts and others (GSE197512),Growth arrest: MMC | Adult_skin_fibroblast_1 | agent=MMC,agent=MMC,true,6,7.13459414,8.254006097,25.0,2
+Endicott fibroblasts and others (GSE197512),Growth arrest: MMC | Adult_skin_fibroblast_1 | standard,standard,false,1,4.591335998,4.591335998,8.0,1
+Endicott fibroblasts and others (GSE197512),Growth arrest: Serum withdrawal | Fetal_skin_fibroblast_1 | serum=0.50%,serum=0.50%,false,4,17.89805047,20.50777411,36.0,2
+Endicott fibroblasts and others (GSE197512),Growth arrest: Serum withdrawal | Fetal_skin_fibroblast_1 | serum=1%,serum=1%,false,4,18.48800872,23.50225826,36.0,3
+Endicott fibroblasts and others (GSE197512),Growth arrest: Serum withdrawal | Fetal_skin_fibroblast_1 | serum=5%,serum=5%,false,8,18.65807345,29.02350361,36.0,3
+Endicott fibroblasts and others (GSE197512),Growth arrest: Serum withdrawal | Fetal_skin_fibroblast_1 | serum=15%,serum=15%,false,13,18.44245119,35.50888114,36.0,3
+Endicott fibroblasts and others (GSE197512),Reduced oxygen | Neonatal_foreskin_fibroblast_2 | standard,standard,false,14,11.90209724,52.84328957,83.0,3
+Endicott fibroblasts and others (GSE197512),Reduced oxygen | Neonatal_foreskin_fibroblast_2 | oxygen=Low 3% O2,oxygen=Low 3% O2,false,32,12.21225724,64.43102903,121.0,5
+Endicott fibroblasts and others (GSE197512),TERT immortalization | Fetal_skin_fibroblast_1 | vector=Hygromycin B resistance,vector=Hygromycin B resistance,false,8,15.81,38.38,69.0,4
+Endicott fibroblasts and others (GSE197512),TERT immortalization | Fetal_skin_fibroblast_1 | vector=TERT,vector=TERT,false,33,18.36,154.52,272.0,9
+Sturm dermal fibroblasts (GSE179847),Baseline profiling | HC5 | agent=control,agent=control,false,7,2.824829557,57.22543585,116.9375,7
+Sturm dermal fibroblasts (GSE179847),Baseline profiling | HC6 | agent=control,agent=control,false,5,9.92718812,34.00372931,74.3125,5
+Sturm dermal fibroblasts (GSE179847),Baseline profiling | HC1 | agent=control,agent=control,false,15,0.0,68.44759066,265.0,14
+Sturm dermal fibroblasts (GSE179847),Baseline profiling | HC2 | agent=control,agent=control,false,12,0.0,78.65683644,189.375,12
+Sturm dermal fibroblasts (GSE179847),Baseline profiling | HC3 | agent=control,agent=control,false,10,1.945092631,44.94374805,258.9583333,9
+Sturm dermal fibroblasts (GSE179847),Study part 3 | HC4 | agent=control,agent=control,false,7,8.149500625,34.14461931,62.33333333,7
+Sturm dermal fibroblasts (GSE179847),Study part 3 | HC1 | agent=control,agent=control,false,8,8.020487299,31.57333148,69.25,8
+Sturm dermal fibroblasts (GSE179847),Study part 3 | HC2 | agent=control,agent=control,false,8,9.655412872,44.8364203,70.125,6
+Sturm dermal fibroblasts (GSE179847),"Study part 3 | HC4 | oxygen=3%, agent=control","oxygen=3%, agent=control",false,8,3.706198987,37.86119876,69.375,8
+Sturm dermal fibroblasts (GSE179847),"Study part 3 | HC1 | oxygen=3%, agent=control","oxygen=3%, agent=control",false,7,4.055377199,23.95868225,69.375,7
+Sturm dermal fibroblasts (GSE179847),"Study part 3 | HC2 | oxygen=3%, agent=control","oxygen=3%, agent=control",false,9,4.386529391,40.584598,70.25,8
+Sturm dermal fibroblasts (GSE179847),Study part 2 | HC5 | agent=Contact_Inhibition,agent=Contact_Inhibition,true,7,10.20831348,12.18454225,134.0416667,7
+Sturm dermal fibroblasts (GSE179847),Study part 2 | HC5 | agent=Contact_Inhibition_Regrowth,agent=Contact_Inhibition_Regrowth,false,9,11.31622987,51.66593902,208.8333333,8
+Sturm dermal fibroblasts (GSE179847),Study part 3 | HC4 | agent=Contact_Inhibition,agent=Contact_Inhibition,true,7,14.62856019,16.49622948,134.375,7
+Sturm dermal fibroblasts (GSE179847),Study part 3 | HC1 | agent=Contact_Inhibition,agent=Contact_Inhibition,true,7,18.57685478,20.01864397,141.575,7
+Sturm dermal fibroblasts (GSE179847),Study part 3 | HC2 | agent=Contact_Inhibition,agent=Contact_Inhibition,true,7,19.90649684,21.11244803,142.375,6
+Sturm dermal fibroblasts (GSE179847),"Study part 3 | HC4 | oxygen=3%, agent=Contact_Inhibition","oxygen=3%, agent=Contact_Inhibition",true,7,15.09451844,16.67574097,134.375,7
+Sturm dermal fibroblasts (GSE179847),"Study part 3 | HC1 | oxygen=3%, agent=Contact_Inhibition","oxygen=3%, agent=Contact_Inhibition",true,7,17.78401447,19.90902083,141.575,6
+Sturm dermal fibroblasts (GSE179847),"Study part 3 | HC2 | oxygen=3%, agent=Contact_Inhibition","oxygen=3%, agent=Contact_Inhibition",true,6,18.42088165,20.02280496,142.375,6
+Sturm dermal fibroblasts (GSE179847),Study part 4 | HC1 | agent=control,agent=control,false,8,0.0,28.81868423,50.96388889,7
+Sturm dermal fibroblasts (GSE179847),Study part 4 | HC2 | agent=control,agent=control,false,9,0.0,36.44781424,58.72916667,9
+"BJ fibroblasts, mortal and hTERT (GSE268145)",hTERT | trajectory B,hTERT,false,10,2.0,38.0,,5
+"BJ fibroblasts, mortal and hTERT (GSE268145)",hTERT | trajectory A,hTERT,false,11,4.0,36.0,,7
+"BJ fibroblasts, mortal and hTERT (GSE268145)","mortal, chips shared with hTERT | trajectory B",standard,false,7,4.0,42.0,,5
+"BJ fibroblasts, mortal and hTERT (GSE268145)","mortal, chips shared with hTERT | trajectory A",standard,false,7,4.0,40.0,,5
+"BJ fibroblasts, mortal and hTERT (GSE268145)","mortal, earlier batch | trajectory A",standard,false,13,2.3,47.0,,7
+"BJ fibroblasts, mortal and hTERT (GSE268145)","mortal, earlier batch | trajectory B",standard,false,11,3.0,52.0,,8
+fetal astrocytes (GSE202554),1,standard,false,37,0.0,11.7,73.0,8
+fetal astrocytes (GSE202554),2,standard,false,8,4.19,15.44,73.0,5
+hTERT astrocytes (GSE226079),line 1,standard,false,15,29.46132178,72.21740489,173.5294118,8
+hTERT astrocytes (GSE226079),line 2,standard,false,14,30.62108238,71.58334345,173.5294118,9
+hTERT astrocytes (GSE226079),line 3,standard,false,14,29.87649821,66.91223516,164.5294118,9
+"Confluent fibroblasts, six months (E-MTAB-15859)",Donor #4,"confluent, arrested",true,6,0.0,0.0,180.0,1
+"Confluent fibroblasts, six months (E-MTAB-15859)",Donor #3,"confluent, arrested",true,6,0.0,0.0,180.0,1
+"Confluent fibroblasts, six months (E-MTAB-15859)",Donor #1,"confluent, arrested",true,6,0.0,0.0,180.0,1
