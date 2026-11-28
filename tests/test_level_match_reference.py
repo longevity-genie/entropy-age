@@ -151,3 +151,66 @@ def test_every_reference_is_read_on_the_same_cpgs():
     )
     assert "c7" not in out[SAME]["feature"].to_list()
     assert out[SAME]["feature"].to_list() == out["other"]["feature"].to_list()
+
+
+def test_young_adult_reference_keeps_ages_18_to_30(tmp_path):
+    import gzip
+
+    from entropy_age.experiments.level_match_reference import young_adult_people
+
+    rows = [
+        "!Sample_geo_accession\t" + "\t".join(f'"GSM{i}"' for i in range(5)),
+        "!Sample_characteristics_ch1\t"
+        + "\t".join(f'"Sex: {s}"' for s in ("Male", "Female", "Male", "Female", "Male")),
+        "!Sample_characteristics_ch1\t" + "\t".join('"tissue: blood"' for _ in range(5)),
+        "!Sample_characteristics_ch1\t" + "\t".join(f'"age: {a}"' for a in (15, 18, 25, 30, 31)),
+        "!Sample_characteristics_ch1\t" + "\t".join('"weight category: Normal-weight"' for _ in range(5)),
+    ]
+    matrix = tmp_path / "GSE73103_series_matrix.txt.gz"
+    with gzip.open(matrix, "wt") as handle:
+        handle.write("\n".join(rows) + "\n")
+    people = young_adult_people(matrix)
+    assert people["sample"].to_list() == ["GSM1", "GSM2", "GSM3"]
+    assert people["age"].to_list() == [18.0, 25.0, 30.0] and people["sex"].to_list() == ["Female", "Male", "Female"]
+
+
+def test_young_adult_betas_bind_by_probe_and_sample_name(tmp_path, monkeypatch):
+    import gzip
+
+    from entropy_age.experiments import level_match_reference as lmr
+
+    ages = [15, 30, 18, 25]
+    header = [
+        "!Sample_geo_accession\t" + "\t".join(f'"GSM{i}"' for i in range(4)),
+        "!Sample_characteristics_ch1\t" + "\t".join('"Sex: Male"' for _ in range(4)),
+        "!Sample_characteristics_ch1\t" + "\t".join(f'"age: {a}"' for a in ages),
+        "!Sample_characteristics_ch1\t" + "\t".join('"weight category: Normal-weight"' for _ in range(4)),
+        "!series_matrix_table_begin",
+        '"ID_REF"\t"GSM3"\t"GSM1"\t"GSM0"\t"GSM2"',  # samples out of accession order
+        '"cg2"\t0.23\t0.21\t0.20\t0.22',  # probes out of the requested order; cg9 absent
+        '"cg1"\t0.13\t0.11\t0.10\t0.12',
+        "!series_matrix_table_end",
+    ]
+    geo = tmp_path / "input" / "geo" / "GSE73103"
+    geo.mkdir(parents=True)
+    with gzip.open(geo / "GSE73103_series_matrix.txt.gz", "wt") as handle:
+        handle.write("\n".join(header) + "\n")
+    monkeypatch.setattr(lmr, "matrix_path", lambda paths, gse: geo / f"{gse}_series_matrix.txt.gz")
+    monkeypatch.setattr(lmr, "usable", lambda matrix, samples: samples)
+    p, raw = lmr._young_adults(None, ["cg1", "cg9", "cg2"])
+    assert p.donors.tolist() == ["GSM2", "GSM3", "GSM1"] and p.ages.tolist() == [18.0, 25.0, 30.0]
+    assert p.features == ["cg1", "cg2"]  # the absent CpG is dropped
+    assert np.allclose(p.x, [[0.12, 0.22], [0.13, 0.23], [0.11, 0.21]]) and np.allclose(raw, p.x)
+
+
+def test_cohort_summary_reports_the_rows_each_reference_uses():
+    from entropy_age.experiments.level_match_reference import PLAN, cohort_summary
+
+    features = ["c0", "c1"]
+    cohorts = {k: (p := _prepared(50, 2, i, k, features), p.x) for i, k in enumerate(("hannum", "epic_italy"))}
+    cohorts |= {k: (p := _prepared(30, 2, 9, k, features), p.x) for k in ("charge", "young_adults")}
+    rows = {r["key"]: r for r in cohort_summary(cohorts, 2)}
+    assert set(rows) == {ref for refs in PLAN.values() for ref, _ in refs.values()}
+    assert rows["hannum"]["reference_rule"] == "youngest fifth" and rows["hannum"]["reference_arrays"] == 10
+    assert rows["young_adults"]["reference_rule"] == "all donors" and rows["young_adults"]["reference_arrays"] == 30
+    assert "BMIQ" in rows["young_adults"]["processing"]

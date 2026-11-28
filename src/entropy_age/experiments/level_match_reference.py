@@ -7,13 +7,14 @@ the set's slower drift, and matching on it removes some of the gap it should mea
 no measurement enters both the matching variables and the drift:
 
 * **Drift in Hannum** (GSE40279, whole blood, 656 people aged 19-101; the paper's blood estimate), against
-  references from EPIC-Italy's youngest fifth (GSE51032, buffy coat, 34-47 y) and from the CHARGE/Kabuki series'
-  controls (GSE97362, whole blood, 124 children and adolescents aged 2-19).
+  references from EPIC-Italy's youngest fifth (GSE51032, buffy coat, 34-47 y), from the CHARGE/Kabuki series'
+  controls (GSE97362, whole blood, 124 children and adolescents aged 2-19) and from the young adults of GSE73103
+  (Voisin 2015, whole blood of healthy young Swedes: the 216 aged 18-30, all weight categories).
 * **Drift in EPIC-Italy** (all arrays with intact signal, 34-72 y, covariates sex, later cancer diagnosis and chip),
-  against Hannum's youngest fifth (19-52 y) and the GSE97362 controls.
+  against Hannum's youngest fifth (19-52 y), the GSE97362 controls and the GSE73103 young adults.
 * ``same donors``: the drift cohort's own youngest fifth, as in the paper, on the same CpGs.
 
-Every estimate is 450k, deposited betas (Hannum has no raw arrays), on the CpGs measured in all three cohorts
+Every estimate is 450k, deposited betas (Hannum has no raw arrays), on the CpGs measured in all four cohorts
 (``tissue_contrast``'s promoter features; at most 5 % missing per cohort, the rest median-imputed). The gaps are
 ``level_match.gaps`` (pool ``rest``): island x decile (the paper's matching), the finer strata, and the nearest five
 on young level alone and on young level and young SD, in SD of the drift measure over all CpGs of the drift cohort
@@ -36,6 +37,7 @@ from pathlib import Path
 import numpy as np
 import polars as pl
 
+from entropy_age.data.cohorts import _characteristics
 from entropy_age.experiments.common import Context, dummies, write_table
 from entropy_age.experiments.incident_cancer import chips
 from entropy_age.experiments.incident_cancer import read_people as epic_italy_people
@@ -52,7 +54,9 @@ from entropy_age.experiments.tissue_contrast import (
     _settings,
 )
 
-EPIC_ITALY, CHARGE = "GSE51032", "GSE97362"
+EPIC_ITALY, CHARGE, YOUNG_ADULTS = "GSE51032", "GSE97362", "GSE73103"
+#: the age band of the young-adult reference (GSE73103 also holds 130 adolescents aged 14-16 and ten people aged 31-34)
+ADULT_AGES = (18.0, 30.0)
 POOLS = ("rest",)
 SAME = "same donors"
 #: drift cohort -> references; a reference is a cohort key and whether its youngest fifth (True) or all its
@@ -62,11 +66,13 @@ PLAN = {
         SAME: ("hannum", True),
         "EPIC-Italy youngest fifth": ("epic_italy", True),
         "GSE97362 controls": ("charge", False),
+        "GSE73103 young adults": ("young_adults", False),
     },
     "epic_italy": {
         SAME: ("epic_italy", True),
         "Hannum youngest fifth": ("hannum", True),
         "GSE97362 controls": ("charge", False),
+        "GSE73103 young adults": ("young_adults", False),
     },
 }
 CSV_ROWS = 5_000
@@ -126,6 +132,26 @@ def _charge_controls(paths, features) -> Prepared:
     people, x, raw, kept = _series(paths, CHARGE, people, features)
     sex = dummies(people["sex"].to_numpy())
     label = "blood (GSE97362 controls)"
+    return Prepared(label, x, people["age"].to_numpy(), sex, kept, people["sample"].to_numpy(), sex), raw
+
+
+def young_adult_people(matrix: Path) -> pl.DataFrame:
+    """GSE73103's people aged within ``ADULT_AGES`` (inclusive): accession, sex, age, weight category."""
+    people = _characteristics(matrix).select(
+        "sample",
+        pl.col("Sex").alias("sex"),
+        pl.col("age").cast(pl.Float64, strict=False),
+        pl.col("weight category").alias("weight"),
+    )
+    lo, hi = ADULT_AGES
+    return people.filter(pl.col("age").is_between(lo, hi)).sort("age", "sample")
+
+
+def _young_adults(paths, features) -> Prepared:
+    people = young_adult_people(matrix_path(paths, YOUNG_ADULTS))
+    people, x, raw, kept = _series(paths, YOUNG_ADULTS, people, features)
+    sex = dummies(people["sex"].to_numpy())
+    label = "blood (GSE73103 young adults)"
     return Prepared(label, x, people["age"].to_numpy(), sex, kept, people["sample"].to_numpy(), sex), raw
 
 
@@ -290,6 +316,47 @@ def summarise(point: pl.DataFrame, boot: pl.DataFrame, spread: pl.DataFrame) -> 
     return point.join(ci, on=KEYS, how="left").sort(KEYS)
 
 
+#: how each cohort's deposited betas were made (the depositors' processing; none rebuilt here)
+PROCESSING = {
+    "hannum": "deposited (depositors' processing)",
+    "epic_italy": "deposited (depositors' processing)",
+    "charge": "deposited (depositors' processing)",
+    "young_adults": "deposited (NOOB + BMIQ; SNP, cross-reactive and sex-chromosome probes removed)",
+}
+
+
+def reference_rule(key: str) -> bool:
+    """Whether cohort ``key``, as a reference to another cohort, gives its youngest fifth (True) or all donors."""
+    rules = {ref: youngest for refs in PLAN.values() for name, (ref, youngest) in refs.items() if name != SAME}
+    return rules[key]
+
+
+def cohort_summary(cohorts: dict, cpgs: int) -> list[dict]:
+    """One row per cohort: arrays and ages, and the rows that give matching variables when it is another cohort's
+    reference (the same ``reference_rows`` call the matching uses)."""
+    out = []
+    for k, (p, raw) in cohorts.items():
+        youngest = reference_rule(k)
+        ref = reference_rows(p, np.arange(p.x.shape[0]), youngest)
+        out.append(
+            {
+                "cohort": p.label,
+                "key": k,
+                "processing": PROCESSING.get(k, "deposited"),
+                "arrays": p.x.shape[0],
+                "age_min": float(p.ages.min()),
+                "age_max": float(p.ages.max()),
+                "reference_rule": "youngest fifth" if youngest else "all donors",
+                "reference_arrays": int(ref.size),
+                "reference_age_min": float(p.ages[ref].min()),
+                "reference_age_max": float(p.ages[ref].max()),
+                "cpgs": cpgs,
+                "missing_share": float(np.isnan(raw).mean()),
+            }
+        )
+    return out
+
+
 def run(ctx: Context) -> list[Path]:
     deposited_only()
     out = ctx.out_dir("level_match_reference")
@@ -301,26 +368,13 @@ def run(ctx: Context) -> list[Path]:
         "hannum": (hannum, hannum.x),
         "epic_italy": _epic_italy(ctx.paths, features),
         "charge": _charge_controls(ctx.paths, features),
+        "young_adults": _young_adults(ctx.paths, features),
     }
     common = sorted(set.intersection(*(set(p.features) for p, _ in cohorts.values())))
     cohorts = {k: restrict(p, common, raw) for k, (p, raw) in cohorts.items()}
     membership = membership.filter(pl.col("feature").is_in(common))
-    summary = [
-        {
-            "cohort": p.label,
-            "key": k,
-            "arrays": p.x.shape[0],
-            "age_min": float(p.ages.min()),
-            "age_max": float(p.ages.max()),
-            "young_fifth_max_age": float(p.ages[young_rows(p.ages)].max()),
-            "young_fifth_arrays": int(young_rows(p.ages).size),
-            "cpgs": len(common),
-            "missing_share": float(np.isnan(raw).mean()),
-        }
-        for k, (p, raw) in cohorts.items()
-    ]
-    write_table(pl.DataFrame(summary), out / "cohorts")
-    print(f"level_match_reference: {summary}", file=sys.stderr, flush=True)
+    write_table(pl.DataFrame(cohort_summary(cohorts, len(common))), out / "cohorts")
+    print(f"level_match_reference: {cohort_summary(cohorts, len(common))}", file=sys.stderr, flush=True)
     point, spread = [], []
     full = {k: np.arange(p.x.shape[0]) for k, (p, _) in cohorts.items()}
     for key in PLAN:

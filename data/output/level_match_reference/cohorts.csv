@@ -1,4 +1,5 @@
-cohort,key,arrays,age_min,age_max,young_fifth_max_age,young_fifth_arrays,cpgs,missing_share
-blood (Hannum),hannum,656,19.0,101.0,52.0,144,87856,0.0
-blood (EPIC-Italy),epic_italy,718,34.686,72.047,47.491,144,87856,0.004208789490424696
-blood (GSE97362 controls),charge,124,2.0,19.0,7.0,29,87856,0.0006427306266559355
+cohort,key,processing,arrays,age_min,age_max,reference_rule,reference_arrays,reference_age_min,reference_age_max,cpgs,missing_share
+blood (Hannum),hannum,deposited (depositors' processing),656,19.0,101.0,youngest fifth,144,19.0,52.0,77018,0.0
+blood (EPIC-Italy),epic_italy,deposited (depositors' processing),718,34.686,72.047,youngest fifth,144,34.686,47.491,77018,0.004231366237795151
+blood (GSE97362 controls),charge,deposited (depositors' processing),124,2.0,19.0,all donors,124,2.0,19.0,77018,0.0006464764416194287
+blood (GSE73103 young adults),young_adults,"deposited (NOOB + BMIQ; SNP, cross-reactive and sex-chromosome probes removed)",216,18.0,30.0,all donors,216,18.0,30.0,77018,0.0
