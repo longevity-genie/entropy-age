@@ -180,6 +180,19 @@ ZHOU_MASK_450K = "zhou/HM450.hg38.mask.tsv.gz"
 ZHOU_MASK_URL = "https://github.com/zhou-lab/InfiniumAnnotationV1/raw/main/Anno/HM450/HM450.hg38.mask.tsv.gz"
 SOURCES[ZHOU_MASK_450K] = ZHOU_MASK_URL
 
+#: Replication timing and methylation domains, both on GRCh37 (the 450k manifest's build): Repli-seq wave signal of
+#: two fibroblast lines (ENCODE, University of Washington; higher = earlier S phase), and Zhou et al. 2018's 100 kb
+#: bins labelled common PMD, common HMD or neither across tissues and tumours.
+REPLISEQ_URL = "https://hgdownload.soe.ucsc.edu/goldenPath/hg19/encodeDCC/wgEncodeUwRepliSeq/{name}"
+REPLISEQ_450K = {
+    "BJ": "replication/wgEncodeUwRepliSeqBjWaveSignalRep1.bigWig",
+    "IMR90": "replication/wgEncodeUwRepliSeqImr90WaveSignalRep1.bigWig",
+}
+PMD_BINS = "replication/PMD_coordinates_hg19.bed.gz"
+for _name in REPLISEQ_450K.values():
+    SOURCES[_name] = REPLISEQ_URL.format(name=Path(_name).name)
+SOURCES[PMD_BINS] = "https://zhouserver.research.chop.edu/GenomeAnnotation/hg19/PMD_coordinates_hg19.bed.gz"
+
 
 def read_probe_mask(path: Path) -> pl.DataFrame:
     """``cpg`` and ``masked`` (Zhou et al.'s recommended general mask, ``M_general``) for every listed probe.

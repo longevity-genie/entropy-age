@@ -172,3 +172,114 @@ def test_presplit_reference_only_when_the_culture_starts_in_the_standard_arm():
     assert with_presplit(mmc, culture)["days"].to_list() == [8.0, 18.0, 25.0]
     split = culture.filter(pl.col("arm") != "standard")  # no common start: each arm keeps its own
     assert with_presplit(split.filter(pl.col("arm") == "agent=MMC"), split).height == 2
+
+
+def test_flank_context_sorts_the_three_contexts():
+    from entropy_age.experiments.solo_wcgw_culture import flank_context
+
+    pad = "A" * 40
+    assert flank_context(pad + "[CG]" + pad) == "solo_wcgw"
+    assert flank_context(pad[:-10] + "CG" + "A" * 8 + "[CG]" + pad) == "wcgw"  # a CpG neighbour within 35 bp
+    assert flank_context("A" * 39 + "C[CG]G" + "A" * 39) == "scgs"
+    assert flank_context("A" * 39 + "C[CG]A" + "A" * 39) == "other"
+    assert flank_context("AA[CG]AA") is None
+
+
+def test_timing_classes_and_fixed_strata():
+    from entropy_age.experiments.solo_wcgw_culture import fixed_strata, timing_classes
+
+    t = np.array([10.0, 50.0, 90.0, np.nan])
+    assert timing_classes(t, np.array([30.0, 70.0])).tolist() == ["late", "mid", "early", "unknown"]
+    assert fixed_strata(t, np.array([30.0, 70.0])).tolist() == [0, 1, 2, 3]
+
+
+def _toy_unit(rng, n=600):
+    hk = np.zeros(n, dtype=bool)
+    hk[:60] = True
+    table = pl.DataFrame(
+        {
+            "cpg": [f"cg{i}" for i in range(n)],
+            "context": ["solo_wcgw"] * n,
+            "island": rng.choice(["OpenSea", "Shore"], n),
+            "hk": hk,
+            "hk_gene": [f"g{i // 3}" if i < 60 else None for i in range(n)],
+            "promoter": rng.random(n) < 0.5,
+            "timing": rng.uniform(0, 100, n),
+            "timing_class": rng.choice(["early", "late"], n),
+            "timing_stratum": rng.integers(0, 5, n),
+            "domain": rng.choice(["commonPMD", "commonHMD", "neither"], n),
+        }
+    )
+    return {"loss": rng.normal(0, 1, (4, n)), "reference": rng.uniform(0.2, 0.9, n), "table": table}
+
+
+def test_design_scores_equal_matched_weights_and_drop_undrawn_genes():
+    from entropy_age.experiments.solo_wcgw_culture import design_parts, restriction, score_parts
+
+    rng = np.random.default_rng(3)
+    u = _toy_unit(rng)
+    genes = {f"g{i}": i for i in range(20)}
+    parts = design_parts(u, ("solo_wcgw", "early", True), genes)
+    counts = np.ones(20)
+    counts[0] = 0  # gene g0 not drawn
+    counts[1] = 2  # g1 drawn twice
+    hk_loss, matched, _ = score_parts(parts, "other", counts)
+    t = u["table"]
+    keep = restriction(t, "early")
+    from entropy_age.stochasticity import baseline_strata
+
+    level = np.full(t.height, -1)
+    level[keep] = baseline_strata(u["reference"][keep], 10)
+    strata = np.char.add(
+        np.char.add(np.char.add(np.char.add(t["island"].to_numpy().astype(str), "|"), level.astype(str)), "|"),
+        t["timing_stratum"].to_numpy().astype(str),
+    )
+    gene_index = np.array([genes[g] if g is not None else 0 for g in t["hk_gene"].to_list()])
+    count_in = np.where(t["hk"].to_numpy() & keep, counts[gene_index], 0.0)
+    s, m = matched_weights(count_in, keep & ~t["hk"].to_numpy(), strata)
+    assert np.allclose(hk_loss, u["loss"] @ s) and np.allclose(matched, u["loss"] @ m)
+    assert s[:3].sum() == 0  # g0's CpGs carry no weight
+
+
+def test_slope_frame_matches_within_slope_and_leaves_lines_out():
+    from entropy_age.experiments.solo_wcgw_culture import SlopeFrame
+
+    rng = np.random.default_rng(5)
+    rows = []
+    for line in ("a", "b", "c", "d"):
+        for unit in (1, 2):
+            for d in range(5):
+                rows.append({"donor": line, "unit": f"{line}{unit}", "doublings_gained": float(d * 3 + unit)})
+    meta = pl.DataFrame(rows)
+    y = rng.normal(0, 1, meta.height) + 0.4 * meta["doublings_gained"].to_numpy() / 10
+    frame = SlopeFrame(meta)
+    t, units = meta["doublings_gained"].to_numpy() / 10, meta["unit"].to_numpy()
+    assert frame.slope(y) == pytest.approx(within_slope(y, t, units))
+    keep = meta["donor"].to_numpy() != "b"
+    assert frame.leave_one_out(y)[1] == pytest.approx(within_slope(y[keep], t[keep], units[keep]))
+    assert frame.line_boot(y, np.array([[0, 1, 2, 3]]))[0] == pytest.approx(frame.slope(y))
+
+
+def test_slope_frame_applies_the_identifiability_rule():
+    from entropy_age.experiments.solo_wcgw_culture import SlopeFrame
+
+    # nearly all doubling variance lies between units: within_slope gives no slope, nor may the fast path
+    meta = pl.DataFrame(
+        {
+            "donor": ["a"] * 4 + ["b"] * 4,
+            "unit": ["a1", "a1", "a2", "a2", "b1", "b1", "b2", "b2"],
+            "doublings_gained": [0.0, 0.01, 100.0, 100.01, 200.0, 200.01, 300.0, 300.01],
+        }
+    )
+    y = np.arange(8.0)
+    t, units = meta["doublings_gained"].to_numpy() / 10, meta["unit"].to_numpy()
+    assert np.isnan(within_slope(y, t, units))
+    frame = SlopeFrame(meta)
+    assert np.isnan(frame.slope(y)) and np.isnan(frame.leave_one_out(y)).all()
+
+
+def test_outside_hmd_leaves_unknown_domains_out():
+    from entropy_age.experiments.solo_wcgw_culture import restriction
+
+    t = pl.DataFrame({"domain": ["commonPMD", "commonHMD", "neither", "unknown"]})
+    assert restriction(t, "notHMD").tolist() == [True, False, True, False]

@@ -386,7 +386,7 @@ replicate lines, 29 to 72 doublings) gave −0.083 (−0.092 to −0.074; −0.0
 intercepts; 81 % of the
 spread in doublings lies within line and chip. None of the three series has an arrested control, and each is one cell line, three replicate lines of one immortalisation, or two donors (Supplementary Note 3).
 
-*Mitotic loss at solo-WCGW CpGs follows doublings, and housekeeping promoters escape it.* Solo-WCGW CpGs (A or T on
+*Mitotic loss at solo-WCGW CpGs follows doublings; housekeeping promoters escape it mostly by replicating early.* Solo-WCGW CpGs (A or T on
 both sides, no other CpG within 35 bp) lose methylation with each division, most in partially methylated domains
 (Zhou, Dinh et al. 2018). In six culture series rebuilt from IDATs, loss from each culture's earliest arrays at the
 678 such CpGs of HypoClock rose with population doublings in every series: per 10 doublings, 1.86 percentage
@@ -398,18 +398,34 @@ without division added none. With doublings and days in one model, Sturm's 149 a
 contact-inhibited) lost 2.09 points per 10 doublings (1.60 to 2.37) and −0.13 per 10 days (−0.18 to −0.04). Across
 13 arrested arms (mitomycin C, contact inhibition, six months confluent) the loss was −0.06 points per 10 days
 (−0.21 to 0.09), against 1.52 (1.18 to 1.86) in the nine dividing arms of the same cultures at the same oxygen.
-Solo-WCGWs in housekeeping promoter regions (1,069 CpGs of 841 genes) did not take part. Against solo-WCGWs
-matched on island relation and starting-level decile, their loss per 10 doublings was lower by 0.51 points in
-Endicott's lines (−0.66 to −0.43 resampling lines, −0.61 to −0.41 resampling genes; 7 of 7 lines; −0.58 with chip
-intercepts), by 0.40 in Sturm's (−0.53 to −0.10; 4 of 5), 0.29 in telomerase BJ cells, 0.22 to 0.46 in mortal BJ
-cells and 0.39 in immortalised astrocytes (−0.55 to −0.24 resampling genes); matching to promoter solo-WCGWs of
-other genes gave the same (−0.50, −0.42), and so did keeping only CpGs that started at 60 % or more (−0.62, −0.72).
-The housekeeping solo-WCGWs themselves held their level or gained slightly (−0.23 to +0.01 points of loss per 10
-doublings) while matched ones lost 0.19 to 0.40, and solo-WCGWs at non-essential promoters lost more than matched
-ones (+1.22 and +1.49). In arrested arms the gap did not open (+0.05 per 10 days, +0.02 to +0.07). In Sturm's
-lines, where nearly every array has a chip of its own, the gap is not resolved with chip intercepts (+0.11), and
-replication timing, which separates early-replicating active promoters from the late domains where solo-WCGW loss
-concentrates, was not matched; part of this gap may be that difference in timing.
+The loss is particular to solo-WCGWs: CpGs with a CpG neighbour (WCGW) or C or G on both sides (SCGS),
+re-weighted to the solo-WCGWs' island relation, starting level and replication timing, lost −0.02 to 0.10 points per
+10 doublings against 0.70 and 0.48 for solo-WCGWs (Endicott's and Sturm's lines; difference −0.61, −0.68 to −0.48,
+and −0.47, −0.53 to −0.35, for WCGW with a neighbour; −0.67 and −0.50 for SCGS; every leave-one-line-out fit at or below
+−0.43). Solo-WCGWs in housekeeping promoter regions (1,069 CpGs of 841 genes) did not take part: their loss per 10
+doublings stayed between −0.29 and 0.00 points (higher = more loss) in every replication-timing class and domain
+below. Most of their difference from other solo-WCGWs is replication timing (Repli-seq of BJ and IMR-90 fibroblasts):
+housekeeping promoters replicate early (wave signal 66.6 against 61.3 for solo-WCGWs matched on island relation and
+starting-level decile), and in early-replicating domains matched solo-WCGWs do not lose either (−0.12 and −0.23
+points per 10 doublings, Endicott and Sturm). With timing quintiles added to the matching, the gap (housekeeping
+minus matched loss per 10 doublings; below zero = the housekeeping CpGs lose less) fell from −0.51 to −0.35 in
+Endicott's lines (−0.50 to −0.27 resampling lines, −0.45 to −0.25 resampling genes as blocks; leave-one-line-out
+−0.45 to −0.31; 7 of 7 lines; −0.39 with chip intercepts) and from −0.40 to −0.22 in Sturm's (−0.33 to +0.01;
+leave-one-line-out −0.27 to −0.13; 4 of 5); −0.20 in telomerase BJ cells and −0.38 in immortalised astrocytes.
+Within the early-replicating third of solo-WCGWs the gap was −0.16 in Endicott's lines (−0.29 to −0.11; 6 of 7)
+and −0.03 in Sturm's (−0.10 to +0.12), and within common highly methylated domains (Zhou, Dinh et al. 2018) −0.14
+(−0.26 to −0.10) and −0.09 (−0.14 to +0.09). Where matched solo-WCGWs do lose, the gap stays wide: −0.82 (−0.97 to
+−0.69) and −0.57 (−0.87 to −0.26) in the late-replicating third, where housekeeping solo-WCGWs lost −0.15 and 0.00
+against 0.67 and 0.57, and −0.62 and −0.28 outside common highly methylated domains. Common partially methylated
+domains hold 11 to 16 housekeeping solo-WCGWs per culture, too few to read. In the other contexts the sign turns:
+housekeeping WCGW-with-neighbour and SCGS CpGs gained less methylation per division than matched ones (+0.10 to
++0.17), so the housekeeping difference appears only where division removes methylation. Matching to promoter
+solo-WCGWs of other genes gave the same (−0.36 and −0.29 with timing; −0.19 and −0.09 within early domains). In
+arrested arms the gap did not open (+0.05 per 10 days, +0.02 to +0.07). Solo-WCGWs at non-essential promoters lost
+more than matched ones (+1.22 and +1.49, matched without timing). In Sturm's lines, where nearly every array has a
+chip of its own, no gap is resolved with chip intercepts (+0.24 with timing). Timing was matched on two fibroblast
+lines' Repli-seq; matching on timing quintiles left the common-PMD share unequal (0.02 against 0.14 in Endicott's
+lines), which the domain-restricted fits address.
 
 *Renewing tissues of the same adults.* Among tissues that all renew, no ordering was resolved. Buccal swabs, dried
 blood spots and blood mononuclear cells of the same adults aged 19 to 70 (GSE280465, EPIC v2, rebuilt; tissues of

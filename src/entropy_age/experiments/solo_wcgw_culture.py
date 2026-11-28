@@ -25,8 +25,11 @@ bootstrap over housekeeping genes for the gap and the ratio, conditional on the 
 where the matched loss slope is positive. Every pooled slope is also given with chip intercepts; a slope whose
 exposure the intercepts leave with under 2 % of its variance is not estimated.
 
-Not controlled: replication timing (housekeeping promoters replicate early, and solo-WCGW loss is a
-late-replication signal), which is part of what the shield could be here.
+Replication timing (housekeeping promoters replicate early, and solo-WCGW loss is a late-replication signal) is
+taken up in :func:`timing_shield`: Repli-seq timing of BJ and IMR-90 fibroblasts joins the strata, and the gap is
+read within early-, mid- and late-replicating tertiles and within Zhou et al.'s common HMD and PMD bins, with
+leave-one-line-out fits and housekeeping genes resampled as blocks. :func:`context_loss` and the WCGW-with-neighbour
+and SCGS designs ask whether the division effect and the gap are particular to solo-WCGWs.
 
 ``entropy-age figures solo_wcgw_culture`` (needs the SeSAMe rebuilds of the series below).
 """
@@ -34,14 +37,15 @@ late-replication signal), which is part of what the shield could be here.
 from __future__ import annotations
 
 import sys
+import warnings
 from pathlib import Path
 
 import numpy as np
 import polars as pl
-from scipy import stats
+from scipy import sparse, stats
 
 from entropy_age.data import reprocessed
-from entropy_age.data.annotation import AnnotationLayout, link_membership
+from entropy_age.data.annotation import PMD_BINS, REPLISEQ_450K, AnnotationLayout, link_membership, solo_wcgw
 from entropy_age.data.cohorts import _characteristics
 from entropy_age.data.cohorts import layout as cohort_layout
 from entropy_age.experiments import arrest_timecourse, astrocyte_passage, bj_telomerase
@@ -720,11 +724,556 @@ def gene_bootstrap(units: list[dict], table: pl.DataFrame, n: int, rng) -> pl.Da
     return pl.DataFrame(rows)
 
 
+# ------------------------------------------------------------- replication timing, and a comparator outside solo-WCGW
+
+TIMING_HALF_WINDOW = 25_000  # bp each side of the CpG over which the Repli-seq wave signal is averaged
+TIMING_STRATA = 5  # quintiles of timing, edges from the autosomal solo-WCGWs, in the matching strata
+CONTEXTS = ("solo_wcgw", "wcgw", "scgs")
+MIN_SET = 20  # fewer housekeeping CpGs than this in a design (median over units): reported, flagged ``small``
+
+
+def flank_context(sequence: str, flank: int = 35) -> str | None:
+    """The probed CpG's context from the manifest's ``Forward_Sequence``: ``solo_wcgw`` (A or T on both sides, no
+    other CpG within ``flank`` bp), ``wcgw`` (A or T on both sides with another CpG within ``flank`` bp), ``scgs`` (C or
+    G on both sides) or ``other``; None when the bracket or the context is missing."""
+    i = sequence.find("[CG]")
+    if i < flank + 1 or len(sequence) < i + 4 + flank + 1:
+        return None
+    left, right = sequence[i - 1].upper(), sequence[i + 4].upper()
+    if left in "AT" and right in "AT":
+        return "solo_wcgw" if solo_wcgw(sequence, flank) else "wcgw"
+    if left in "CG" and right in "CG":
+        return "scgs"
+    return "other"
+
+
+def timing_classes(timing: np.ndarray, edges: np.ndarray) -> np.ndarray:
+    """``late``, ``mid`` or ``early`` by the two tertile ``edges`` of the wave signal (higher = earlier); NaN timing
+    is ``unknown``."""
+    out = np.where(timing > edges[1], "early", np.where(timing > edges[0], "mid", "late")).astype(object)
+    out[~np.isfinite(timing)] = "unknown"
+    return out.astype(str)
+
+
+def fixed_strata(values: np.ndarray, edges: np.ndarray) -> np.ndarray:
+    """Bin index of every value by fixed inner ``edges``; NaN gets ``len(edges) + 1``."""
+    out = np.searchsorted(edges, values, side="right")
+    return np.where(np.isfinite(values), out, len(edges) + 1)
+
+
+def replication_annotation(paths, probes: pl.DataFrame) -> pl.DataFrame:
+    """``cpg``, ``timing`` (mean Repli-seq wave signal of BJ and IMR-90 fibroblasts over the CpG's 50 kb; higher =
+    earlier) and ``domain`` (``commonPMD``, ``commonHMD`` or ``neither``, Zhou et al. 2018's 100 kb bins) for every
+    probe of ``probes`` (``cpg``, ``chr``, ``pos`` on GRCh37)."""
+    import pyBigWig
+
+    root = paths.input / "annotation"
+    waves = []
+    for name in REPLISEQ_450K.values():
+        bw = pyBigWig.open(str(root / name))
+        try:
+            chroms = bw.chroms()
+            values = []
+            for c, x in zip(probes["chr"].to_list(), probes["pos"].to_list(), strict=True):
+                chrom = f"chr{c}"
+                if chrom not in chroms or x is None:
+                    values.append(np.nan)
+                    continue
+                at = int(x) - 1  # MAPINFO is 1-based; bigWig intervals are 0-based
+                lo, hi = max(at - TIMING_HALF_WINDOW, 0), min(at + TIMING_HALF_WINDOW + 1, chroms[chrom])
+                v = bw.stats(chrom, lo, hi, type="mean")[0]
+                values.append(np.nan if v is None else v)
+            waves.append(np.array(values, dtype=float))
+        finally:
+            bw.close()
+    stacked = np.vstack(waves)
+    with np.errstate(all="ignore"), warnings.catch_warnings():
+        warnings.simplefilter("ignore", RuntimeWarning)  # a CpG neither track covers: NaN
+        timing = np.nanmean(stacked, axis=0)
+    bins = pl.read_csv(
+        root / PMD_BINS,
+        separator="\t",
+        has_header=False,
+        new_columns=["chrom", "start", "end", "depth", "call", "domain"],
+        schema_overrides={"start": pl.Int64},
+    ).select("chrom", pl.col("start").alias("bin"), "domain")
+    out = probes.select("cpg", "chr", "pos").with_columns(
+        timing=pl.Series(timing),
+        chrom=pl.lit("chr") + pl.col("chr"),
+        bin=((pl.col("pos") - 1) // 100_000) * 100_000,
+    )
+    return out.join(bins, on=["chrom", "bin"], how="left").select(
+        "cpg", "timing", pl.col("domain").fill_null("unknown")
+    )
+
+
+def cpg_universe(paths) -> pl.DataFrame:
+    """Every autosomal 450k CpG of the three contexts (solo-WCGW, WCGW with a CpG neighbour, SCGS) with the columns
+    of :func:`cpg_sets` plus ``context``, ``timing``, ``timing_class``, ``timing_stratum`` and ``domain``. Timing
+    edges (tertiles for the class, quintiles for the strata) come from the autosomal solo-WCGWs and are applied to
+    every context."""
+    from entropy_age.data.annotation import MANIFEST_450K, _assay_block
+
+    annotation = AnnotationLayout(paths)
+    probes = pl.read_parquet(annotation.probes_450k).filter(~pl.col("chr").is_in(["X", "Y"]))
+    sequences = _assay_block(annotation.input / MANIFEST_450K).select(
+        pl.col("Name").alias("cpg"), pl.col("Forward_Sequence").fill_null("").alias("sequence")
+    )
+    probes = probes.join(sequences, on="cpg", how="inner").with_columns(
+        context=pl.col("sequence").map_elements(flank_context, return_dtype=pl.String)
+    )
+    probes = probes.filter(pl.col("context").is_in(CONTEXTS))
+    membership = link_membership(pl.read_parquet(annotation.links_450k), pl.read_parquet(annotation.gene_sets))
+    hk = membership.filter(pl.col("group") == "housekeeping").select(pl.col("feature").alias("cpg"), pl.col("gene"))
+    hk = hk.unique(subset="cpg", keep="first", maintain_order=True)
+    ne = membership.filter(pl.col("group") == "non_essential")["feature"].unique()
+    hypo_path = paths.input / "mitotic" / "hypoclock.csv"
+    hypo = pl.read_csv(hypo_path)["cpg"] if hypo_path.exists() else pl.Series("cpg", [], dtype=pl.String)
+    table = (
+        probes.select("cpg", "chr", "pos", "island_relation", "promoter", "context")
+        .join(hk.rename({"gene": "hk_gene"}), on="cpg", how="left")
+        .with_columns(
+            island=pl.col("island_relation").str.strip_prefix("N_").str.strip_prefix("S_"),
+            hk=pl.col("hk_gene").is_not_null(),
+            non_essential=pl.col("cpg").is_in(ne.implode()),
+            pmd=pl.col("cpg").is_in(hypo.implode()),
+        )
+    )
+    table = table.join(replication_annotation(paths, table), on="cpg", how="left")
+    solo = table.filter(pl.col("context") == "solo_wcgw")["timing"].to_numpy()
+    tertiles = np.nanquantile(solo, [1 / 3, 2 / 3])
+    inner = np.nanquantile(solo, np.linspace(0, 1, TIMING_STRATA + 1)[1:-1])
+    timing = table["timing"].to_numpy().astype(float)
+    return (
+        table.with_columns(
+            timing_class=pl.Series(timing_classes(timing, tertiles)),
+            timing_stratum=pl.Series(fixed_strata(timing, inner)),
+        )
+        .drop("chr", "pos")
+        .sort("cpg")
+    )
+
+
+def subset_units(units: list[dict], context: str) -> list[dict]:
+    """The units restricted to one context's CpGs, with the CpG counts in their metadata recomputed."""
+    out = []
+    for u in units:
+        keep = (u["table"]["context"] == context).to_numpy()
+        table = u["table"].filter(pl.Series(keep))
+        meta = u["meta"].with_columns(
+            cpgs=pl.lit(table.height), hk_cpgs=pl.lit(int(table["hk"].sum())), pmd_cpgs=pl.lit(int(table["pmd"].sum()))
+        )
+        out.append(
+            {
+                "meta": meta,
+                "loss": np.ascontiguousarray(u["loss"][:, keep]),
+                "reference": u["reference"][keep],
+                "table": table,
+            }
+        )
+    return out
+
+
+#: design -> (context, restriction of both set and pool, timing in the strata). The first repeats the main gap.
+TIMING_DESIGNS: dict[str, tuple[str, str | None, bool]] = {
+    "island x start": ("solo_wcgw", None, False),
+    "island x start x timing": ("solo_wcgw", None, True),
+    "early-replicating": ("solo_wcgw", "early", True),
+    "mid-replicating": ("solo_wcgw", "mid", True),
+    "late-replicating": ("solo_wcgw", "late", True),
+    "common HMD": ("solo_wcgw", "commonHMD", True),
+    "outside common HMD": ("solo_wcgw", "notHMD", True),
+    "common PMD": ("solo_wcgw", "commonPMD", True),
+    "WCGW with a CpG neighbour": ("wcgw", None, True),
+    "WCGW with a CpG neighbour, early": ("wcgw", "early", True),
+    "SCGS": ("scgs", None, True),
+    "SCGS, early": ("scgs", "early", True),
+}
+
+
+def restriction(table: pl.DataFrame, rule: str | None) -> np.ndarray:
+    """CpGs a design keeps: all, a timing class, a domain, or outside common HMDs (``notHMD``)."""
+    if rule is None:
+        return np.ones(table.height, dtype=bool)
+    if rule in ("early", "mid", "late"):
+        return (table["timing_class"] == rule).to_numpy()
+    if rule == "notHMD":
+        return table["domain"].is_in(["commonPMD", "neither"]).to_numpy()
+    return (table["domain"] == rule).to_numpy()
+
+
+def design_parts(u: dict, design: tuple[str, str | None, bool], genes: dict[str, int]) -> dict | None:
+    """What a gene draw needs to score one unit under one design: the housekeeping CpGs' losses, strata and gene
+    indices, and per pool the pool's mean loss in every stratum (arrays x strata) and its size."""
+    context, rule, timed = design
+    table = u["table"]
+    keep = (table["context"] == context).to_numpy() & restriction(table, rule)
+    if keep.sum() < 2 * MIN_SET:
+        return None
+    reference = u["reference"]
+    level = np.full(table.height, -1)
+    level[keep] = baseline_strata(reference[keep], 10)
+    parts = [table["island"].to_numpy().astype(str), level.astype(str)]
+    if timed:
+        parts.append(table["timing_stratum"].to_numpy().astype(str))
+    labels = parts[0]
+    for p in parts[1:]:
+        labels = np.char.add(np.char.add(labels, "|"), p)
+    _, codes = np.unique(labels, return_inverse=True)
+    k = int(codes.max()) + 1
+    hk = keep & table["hk"].to_numpy()
+    if not hk.any():
+        return None
+    gene_names = table["hk_gene"].to_list()
+    out = {
+        "hk_loss": u["loss"][:, hk],
+        "hk_codes": codes[hk],
+        "hk_gene": np.array([genes[gene_names[i]] for i in np.flatnonzero(hk)]),
+        "hk_timing": table["timing"].to_numpy()[hk],
+        "hk_start": reference[hk],
+        "hk_pmd": (table["domain"] == "commonPMD").to_numpy()[hk],
+        "pools": {},
+    }
+    eligible = keep & ~table["hk"].to_numpy()
+    for pool_name, pool in (("other", eligible), ("promoter", eligible & table["promoter"].to_numpy())):
+        n = np.bincount(codes[pool], minlength=k).astype(float)
+        if not (n > 0).any():
+            continue
+        size = int(pool.sum())
+        indicator = sparse.csr_matrix((np.ones(size), (np.arange(size), codes[pool])), shape=(size, k))
+        sums = np.asarray((indicator.T @ u["loss"][:, pool].T).T)
+        with np.errstate(divide="ignore", invalid="ignore"):
+            mean = np.where(n > 0, sums / n, 0.0)
+        idx = np.flatnonzero(pool)
+
+        def stratum_mean(values, idx=idx, k=k):
+            v = values[idx]
+            ok = np.isfinite(v)
+            with np.errstate(divide="ignore", invalid="ignore"):
+                num = np.bincount(codes[idx][ok], weights=v[ok], minlength=k)
+                return num / np.bincount(codes[idx][ok], minlength=k)  # NaN where no annotated pool CpG
+
+        out["pools"][pool_name] = {
+            "mean": mean,
+            "n": n,
+            "timing": stratum_mean(table["timing"].to_numpy().astype(float)),
+            "start": stratum_mean(reference),
+            "pmd": stratum_mean((table["domain"] == "commonPMD").to_numpy().astype(float)),
+        }
+    return out
+
+
+def score_parts(parts: dict, pool: str, gene_counts: np.ndarray) -> tuple[np.ndarray, np.ndarray, int] | None:
+    """Per array: housekeeping loss and matched loss under ``gene_counts`` (multiplicity of every housekeeping gene),
+    and the weighted count of housekeeping CpGs used. Same weights as :func:`matched_weights`."""
+    p = parts["pools"].get(pool)
+    if p is None:
+        return None
+    c = gene_counts[parts["hk_gene"]].astype(float) * (p["n"][parts["hk_codes"]] > 0)
+    total = c.sum()
+    if total <= 0:
+        return None
+    w = c / total
+    share = np.bincount(parts["hk_codes"], weights=w, minlength=p["n"].size)
+    return parts["hk_loss"] @ w, p["mean"] @ share, int((c > 0).sum())
+
+
+def balance(parts: dict, pool: str) -> dict | None:
+    """Housekeeping against matched means of timing, starting level and common-PMD share (all genes once)."""
+    p = parts["pools"].get(pool)
+    if p is None:
+        return None
+    use = p["n"][parts["hk_codes"]] > 0
+    if not use.any():
+        return None
+    w = use / use.sum()
+    share = np.bincount(parts["hk_codes"], weights=w, minlength=p["n"].size)
+
+    def mean(values, weights):  # weighted mean over annotated entries, weights renormalised
+        ok = np.isfinite(values) & (weights > 0)
+        return float(values[ok] @ weights[ok] / weights[ok].sum()) if ok.any() else np.nan
+
+    return {
+        "hk_timing": mean(parts["hk_timing"], w),
+        "matched_timing": mean(p["timing"], share),
+        "hk_start": mean(parts["hk_start"], w),
+        "matched_start": mean(p["start"], share),
+        "hk_pmd_share": mean(parts["hk_pmd"].astype(float), w),
+        "matched_pmd_share": mean(p["pmd"], share),
+    }
+
+
+class SlopeFrame:
+    """Within-unit slopes on doublings for one dividing selection, by sums per line so that line resamples and
+    leave-one-line-out fits are sums of per-line parts (a line drawn twice counts as two units, as in
+    :func:`cluster_boot`)."""
+
+    def __init__(self, meta: pl.DataFrame):
+        self.meta = meta
+        t = meta["doublings_gained"].to_numpy().astype(float) / 10.0
+        units = meta["unit"].to_numpy()
+        centred = t.copy()
+        for u in np.unique(units):
+            sel = units == u
+            centred[sel] = t[sel] - t[sel].mean()
+        self.centred = centred
+        self.lines = meta["donor"].unique(maintain_order=True).to_list()
+        donor = meta["donor"].to_numpy()
+        self.line_index = np.array([self.lines.index(d) for d in donor])
+        self.den = np.bincount(self.line_index, weights=centred**2, minlength=len(self.lines))
+        self.sum_t = np.bincount(self.line_index, weights=t, minlength=len(self.lines))
+        self.sum_t2 = np.bincount(self.line_index, weights=t**2, minlength=len(self.lines))
+        self.count = np.bincount(self.line_index, minlength=len(self.lines)).astype(float)
+
+    def _guard(self, num, den, sum_t, sum_t2, count):
+        """``num / den``, NaN where unit intercepts leave under ``MIN_LEFT`` of the exposure's variance (the rule
+        of :func:`_fit`)."""
+        with np.errstate(divide="ignore", invalid="ignore"):
+            total = sum_t2 - sum_t**2 / count
+            ok = (total > 0) & (den / total >= MIN_LEFT)
+            return np.where(ok, num / den, np.nan)
+
+    def per_line_num(self, y: np.ndarray) -> np.ndarray:
+        return np.bincount(self.line_index, weights=self.centred * y, minlength=len(self.lines))
+
+    def slope(self, y: np.ndarray) -> float:
+        return float(
+            self._guard(
+                self.per_line_num(y).sum(), self.den.sum(), self.sum_t.sum(), self.sum_t2.sum(), self.count.sum()
+            )
+        )
+
+    def line_slopes(self, y: np.ndarray) -> np.ndarray:
+        return self._guard(self.per_line_num(y), self.den, self.sum_t, self.sum_t2, self.count)
+
+    def leave_one_out(self, y: np.ndarray) -> np.ndarray:
+        num = self.per_line_num(y)
+        return self._guard(
+            num.sum() - num,
+            self.den.sum() - self.den,
+            self.sum_t.sum() - self.sum_t,
+            self.sum_t2.sum() - self.sum_t2,
+            self.count.sum() - self.count,
+        )
+
+    def line_boot(self, y: np.ndarray, draws: np.ndarray) -> np.ndarray:
+        """Slopes over line resamples ``draws`` (resamples x lines of line indices)."""
+        num = self.per_line_num(y)
+        return self._guard(
+            num[draws].sum(axis=1),
+            self.den[draws].sum(axis=1),
+            self.sum_t[draws].sum(axis=1),
+            self.sum_t2[draws].sum(axis=1),
+            self.count[draws].sum(axis=1),
+        )
+
+
+def _interval(values: np.ndarray) -> tuple[float, float]:
+    v = np.asarray(values, dtype=float)
+    v = v[np.isfinite(v)]
+    return (float(np.quantile(v, 0.025)), float(np.quantile(v, 0.975))) if v.size >= 20 else (np.nan, np.nan)
+
+
+def timing_shield(units: list[dict], n_genes: int, n_lines: int, rng) -> dict[str, pl.DataFrame]:
+    """The housekeeping gap per 10 doublings under every design of :data:`TIMING_DESIGNS`, per dividing selection:
+    housekeeping and matched loss slopes, the gap, its interval over resampled housekeeping genes (blocks: all CpGs
+    of a gene go together; cultures held), over resampled lines (four or more), leave-one-line-out estimates and the
+    gap with chip intercepts. Also the balance of timing, start and PMD share after matching."""
+    genes_all = sorted({g for u in units for g in u["table"].filter(pl.col("hk"))["hk_gene"].to_list()})
+    genes = {g: i for i, g in enumerate(genes_all)}
+    parts = {name: [design_parts(u, d, genes) for u in units] for name, d in TIMING_DESIGNS.items()}
+    meta = pl.concat([u["meta"].with_columns(row_unit=pl.lit(i)) for i, u in enumerate(units)], how="vertical_relaxed")
+    ones = np.ones(len(genes_all))
+    n = len(genes_all)
+    gene_draws = [np.bincount(rng.choice(n, n), minlength=n) for _ in range(n_genes)]
+
+    def per_array(name, pool, counts):
+        hk, matched, used = [], [], []
+        for u, p in zip(units, parts[name], strict=True):
+            r = score_parts(p, pool, counts) if p is not None else None
+            if r is None:
+                nan = np.full(u["loss"].shape[0], np.nan)
+                hk.append(nan), matched.append(nan), used.append(0)
+                continue
+            hk.append(r[0]), matched.append(r[1]), used.append(r[2])
+        return np.concatenate(hk), np.concatenate(matched), used
+
+    rows, loo_rows, balance_rows = [], [], []
+    selections = {}
+    for label, select in DIVIDING.items():
+        mask = (meta.select((select(meta) & ~pl.col("arrested")).alias("m"))["m"]).to_numpy()
+        if mask.sum() >= 5:
+            selections[label] = (mask, SlopeFrame(meta.filter(pl.Series(mask))))
+    for name, (context, rule, timed) in TIMING_DESIGNS.items():
+        for pool in ("other", "promoter"):
+            hk, matched, used = per_array(name, pool, ones)
+            if not np.isfinite(hk).any():
+                continue
+            boots = [per_array(name, pool, c)[:2] for c in gene_draws]
+            for label, (mask, frame) in selections.items():
+                scored = mask & np.isfinite(hk) & np.isfinite(matched)
+                dropped = int(np.unique(meta["row_unit"].to_numpy()[mask & ~scored]).size)
+                if scored.sum() < 5:
+                    rows.append({"selection": label, "design": name, "pool": pool, "status": "no scored units"})
+                    continue
+                if dropped:
+                    mask, frame = scored, SlopeFrame(meta.filter(pl.Series(scored)))
+                g_hk, g_m = hk[mask], matched[mask]
+                sel_units = np.unique(meta["row_unit"].to_numpy()[mask])
+                hk_used = float(np.median([used[i] for i in sel_units]))
+                gap = g_hk - g_m
+                gb = np.array([frame.slope(b[0][mask] - b[1][mask]) for b in boots])
+                hb = np.array([frame.slope(b[0][mask]) for b in boots])
+                mb = np.array([frame.slope(b[1][mask]) for b in boots])
+                loo = frame.leave_one_out(gap)
+                per_line = frame.line_slopes(gap)
+                row = {
+                    "selection": label,
+                    "design": name,
+                    "context": context,
+                    "restriction": rule or "all",
+                    "timing_matched": timed,
+                    "pool": pool,
+                    "status": "ok",
+                    "units_unscored": dropped,
+                    "hk_cpgs": hk_used,
+                    "small": hk_used < MIN_SET,
+                    "arrays": int(mask.sum()),
+                    "lines": len(frame.lines),
+                    "hk_loss_per_10_pd": frame.slope(g_hk),
+                    "hk_low_genes": _interval(hb)[0],
+                    "hk_high_genes": _interval(hb)[1],
+                    "matched_loss_per_10_pd": frame.slope(g_m),
+                    "matched_low_genes": _interval(mb)[0],
+                    "matched_high_genes": _interval(mb)[1],
+                    "gap_per_10_pd": frame.slope(gap),
+                    "gap_low_genes": _interval(gb)[0],
+                    "gap_high_genes": _interval(gb)[1],
+                    "gene_draws_valid": int(np.isfinite(gb).sum()),
+                    "gap_chip_held": within_slope(
+                        gap,
+                        frame.meta["doublings_gained"].to_numpy() / 10.0,
+                        frame.meta["unit"].to_numpy(),
+                        frame.meta["chip"].to_numpy(),
+                    ),
+                    "lines_negative": int((per_line[np.isfinite(per_line)] < 0).sum()),
+                    "loo_min": float(np.nanmin(loo)) if len(frame.lines) >= 3 else np.nan,
+                    "loo_max": float(np.nanmax(loo)) if len(frame.lines) >= 3 else np.nan,
+                }
+                if len(frame.lines) >= 4:
+                    draws = rng.choice(len(frame.lines), size=(n_lines, len(frame.lines)))
+                    row["gap_low_lines"], row["gap_high_lines"] = _interval(frame.line_boot(gap, draws))
+                    row["hk_low_lines"], row["hk_high_lines"] = _interval(frame.line_boot(g_hk, draws))
+                    row["matched_low_lines"], row["matched_high_lines"] = _interval(frame.line_boot(g_m, draws))
+                rows.append(row)
+                if len(frame.lines) >= 3:
+                    loo_hk, loo_m = frame.leave_one_out(g_hk), frame.leave_one_out(g_m)
+                    for i, line in enumerate(frame.lines):
+                        loo_rows.append(
+                            {
+                                "selection": label,
+                                "design": name,
+                                "pool": pool,
+                                "left_out": line,
+                                "gap_per_10_pd": float(loo[i]),
+                                "hk_loss_per_10_pd": float(loo_hk[i]),
+                                "matched_loss_per_10_pd": float(loo_m[i]),
+                                "line_gap_per_10_pd": float(per_line[i]),
+                            }
+                        )
+                bal = [balance(parts[name][i], pool) for i in sel_units if parts[name][i] is not None]
+                bal = [b for b in bal if b is not None]
+                if bal:
+                    balance_rows.append(
+                        {"selection": label, "design": name, "pool": pool, "units": len(bal)}
+                        | {k: float(np.mean([b[k] for b in bal])) for k in bal[0]}
+                    )
+    return {
+        "timing_shield": pl.DataFrame(rows),
+        "timing_loo": pl.DataFrame(loo_rows),
+        "timing_balance": pl.DataFrame(balance_rows),
+    }
+
+
+START_EDGES = np.linspace(0.1, 0.9, 9)  # fixed starting-level bins for comparing contexts
+
+
+def context_loss(units: list[dict], n_lines: int, rng) -> pl.DataFrame:
+    """Is the loss per division particular to solo-WCGWs? Per dividing selection and context (WCGW with a CpG
+    neighbour, SCGS): loss per 10 doublings of the context's non-housekeeping CpGs re-weighted to the solo-WCGWs'
+    strata (island relation x fixed starting-level bin x timing quintile), beside the solo-WCGWs' own loss over the
+    strata both share; the difference (context minus solo-WCGW) below zero means the context loses less."""
+    per_unit = {c: ([], []) for c in CONTEXTS[1:]}
+    for u in units:
+        table = u["table"]
+        strata = np.char.add(
+            np.char.add(table["island"].to_numpy().astype(str), "|"),
+            np.char.add(
+                fixed_strata(u["reference"], START_EDGES).astype(str),
+                np.char.add("|", table["timing_stratum"].to_numpy().astype(str)),
+            ),
+        )
+        context = table["context"].to_numpy()
+        base = ~table["hk"].to_numpy()
+        solo = (base & (context == "solo_wcgw")).astype(float)
+        for c in CONTEXTS[1:]:
+            try:
+                s, m = matched_weights(solo, base & (context == c), strata)
+            except ValueError:  # no shared stratum: this unit gives no comparison
+                nan = np.full(u["loss"].shape[0], np.nan)
+                per_unit[c][0].append(nan), per_unit[c][1].append(nan)
+                continue
+            per_unit[c][0].append(u["loss"] @ s)
+            per_unit[c][1].append(u["loss"] @ m)
+    meta = pl.concat([u["meta"] for u in units], how="vertical_relaxed")
+    rows = []
+    for label, select in DIVIDING.items():
+        mask = meta.select((select(meta) & ~pl.col("arrested")).alias("m"))["m"].to_numpy()
+        if mask.sum() < 5:
+            continue
+        for c in CONTEXTS[1:]:
+            all_solo, all_ctx = np.concatenate(per_unit[c][0]), np.concatenate(per_unit[c][1])
+            scored = mask & np.isfinite(all_solo) & np.isfinite(all_ctx)
+            if scored.sum() < 5:
+                rows.append({"selection": label, "context": c, "status": "no scored units"})
+                continue
+            frame = SlopeFrame(meta.filter(pl.Series(scored)))
+            draws = rng.choice(len(frame.lines), size=(n_lines, len(frame.lines))) if len(frame.lines) >= 4 else None
+            solo_y, ctx_y = all_solo[scored], all_ctx[scored]
+            diff = ctx_y - solo_y
+            loo = frame.leave_one_out(diff)
+            row = {
+                "selection": label,
+                "context": c,
+                "status": "ok",
+                "arrays_unscored": int((mask & ~scored).sum()),
+                "lines": len(frame.lines),
+                "solo_wcgw_per_10_pd": frame.slope(solo_y),
+                "context_per_10_pd": frame.slope(ctx_y),
+                "difference_per_10_pd": frame.slope(diff),
+                "difference_chip_held": within_slope(
+                    diff,
+                    frame.meta["doublings_gained"].to_numpy() / 10.0,
+                    frame.meta["unit"].to_numpy(),
+                    frame.meta["chip"].to_numpy(),
+                ),
+                "loo_min": float(np.nanmin(loo)) if len(frame.lines) >= 3 else np.nan,
+                "loo_max": float(np.nanmax(loo)) if len(frame.lines) >= 3 else np.nan,
+            }
+            if draws is not None:
+                row["solo_low"], row["solo_high"] = _interval(frame.line_boot(solo_y, draws))
+                row["context_low"], row["context_high"] = _interval(frame.line_boot(ctx_y, draws))
+                row["difference_low"], row["difference_high"] = _interval(frame.line_boot(diff, draws))
+            rows.append(row)
+    return pl.DataFrame(rows)
+
+
 def run(ctx: Context) -> list[Path]:
     paths = ctx.paths
     out = ctx.out_dir("solo_wcgw_culture")
     n_boot = N_BOOT[str(ctx.scale.name)]
     table, hypo = cpg_sets(paths)
+    universe = cpg_universe(paths)
     samples = cultures(paths)
     write_table(
         samples.group_by("series", "unit", "arm", "arrested", maintain_order=True).agg(
@@ -736,7 +1285,11 @@ def run(ctx: Context) -> list[Path]:
         ),
         out / "design",
     )
-    units = prepare(paths, samples, table)
+    every = prepare(paths, samples, universe)
+    units = subset_units(every, "solo_wcgw")
+    solo = universe.filter(pl.col("context") == "solo_wcgw")
+    if solo["cpg"].to_list() != table["cpg"].to_list() or solo["hk"].to_list() != table["hk"].to_list():
+        raise ValueError("the solo-WCGW CpGs of the universe differ from cpg_sets")
     write_table(
         pl.DataFrame(
             {
@@ -773,5 +1326,12 @@ def run(ctx: Context) -> list[Path]:
     write_table(pl.concat(slope_tables), out / "unit_slopes")
     write_table(pl.concat(fits), out / "series_fits")
     write_table(gene_bootstrap(units, table, n_boot // 2, ctx.rng(310_002)), out / "shield")
+    for name, frame in timing_shield(every, n_boot // 2, n_boot, ctx.rng(310_003)).items():
+        write_table(frame, out / name)
+    write_table(context_loss(every, n_boot, ctx.rng(310_004)), out / "context_loss")
+    write_table(
+        universe.group_by(keys := ["context", "timing_class", "domain", "hk"]).len().sort(keys),
+        out / "timing_set_sizes",
+    )
     print(f"solo_wcgw_culture: {len(units)} cultures; HypoClock CpGs listed {len(hypo)}", file=sys.stderr)
     return []

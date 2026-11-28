@@ -149,8 +149,8 @@ a test with little power), **refuted**.
 - **We should not see:** the same loss in cortex.
 - **Observed:** blood 2.7x faster loss (p 0.0002); none in cortex; epiTOC1 diverges in blood only.
 - **Alternatives:** a shift of blood cell types with age that differ in late-replicating methylation.
-- **Separating test:** composition-adjusted; culture series with doublings (pending); sorted cells.
-- **Status:** open.
+- **Separating test:** composition-adjusted; sorted cells; culture series with doublings (`solo_wcgw_culture`, 2026-11-28): in six rebuilt series, loss at the 678 PMD solo-WCGWs rises per 10 doublings (Endicott +1.86, 1.64 to 2.48 over lines; Sturm +1.56, 1.05 to 2.06; higher = more loss) and stays level in 13 arrested arms (-0.06 per 10 days, -0.21 to +0.09). Over all solo-WCGWs it is +0.70 and +0.48 per 10 doublings, against -0.02 to +0.10 for WCGW-with-neighbour and SCGS CpGs matched on island relation, starting level and replication timing (difference -0.61, -0.68 to -0.48, and -0.47, -0.53 to -0.35): the division-linked loss is solo-WCGW-specific. Housekeeping promoter solo-WCGWs do not lose; with replication timing matched their gap is -0.35 (-0.50 to -0.27) and -0.22 (-0.33 to +0.01), and in early-replicating domains, where matched solo-WCGWs do not lose either, -0.16 (-0.29 to -0.11) and -0.03 (-0.10 to +0.12) (below zero = housekeeping CpGs lose less).
+- **Status:** supported for culture (dividing cells lose methylation at solo-WCGWs per doubling; arrested cells hold it over days); the housekeeping escape is mostly early replication. Blood composition and sorted cells still open.
 
 ## C8 — Clocks read unprotected noise; outcome clocks do not see the shield (H5)
 
