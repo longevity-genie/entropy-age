@@ -9,12 +9,15 @@ no measurement enters both the matching variables and the drift:
 * **Drift in Hannum** (GSE40279, whole blood, 656 people aged 19-101; the paper's blood estimate), against
   references from EPIC-Italy's youngest fifth (GSE51032, buffy coat, 34-47 y), from the CHARGE/Kabuki series'
   controls (GSE97362, whole blood, 124 children and adolescents aged 2-19) and from the young adults of GSE73103
-  (Voisin 2015, whole blood of healthy young Swedes: the 216 aged 18-30, all weight categories).
+  (Voisin 2015, whole blood of healthy young Swedes: the 216 aged 18-30, all weight categories), and from E-Risk
+  (GSE105018, whole blood of British twins all aged 18, deposited betas made with wateRmelon's pfilter and dasen:
+  another processing than GSE73103's NOOB + BMIQ). E-Risk gives one twin per family, drawn at random once (seeded),
+  so every reference row is an independent family; resamples then draw those twins.
 * **Drift in EPIC-Italy** (all arrays with intact signal, 34-72 y, covariates sex, later cancer diagnosis and chip),
-  against Hannum's youngest fifth (19-52 y), the GSE97362 controls and the GSE73103 young adults.
+  against Hannum's youngest fifth (19-52 y), the GSE97362 controls, the GSE73103 young adults and E-Risk.
 * ``same donors``: the drift cohort's own youngest fifth, as in the paper, on the same CpGs.
 
-Every estimate is 450k, deposited betas (Hannum has no raw arrays), on the CpGs measured in all four cohorts
+Every estimate is 450k, deposited betas (Hannum has no raw arrays), on the CpGs measured in all five cohorts
 (``tissue_contrast``'s promoter features; at most 5 % missing per cohort, the rest median-imputed). The gaps are
 ``level_match.gaps`` (pool ``rest``): island x decile (the paper's matching), the finer strata, and the nearest five
 on young level alone and on young level and young SD, in SD of the drift measure over all CpGs of the drift cohort
@@ -22,15 +25,27 @@ on young level alone and on young level and young SD, in SD of the drift measure
 donors of the drift cohort and of the reference cohort independently (``ENTROPY_AGE_BOOT`` resamples,
 ``ENTROPY_AGE_WORKERS`` spawned processes); the young fifth and every stratum and neighbour are recomputed in each.
 
+Equal-size references (``subsample``): every reference, the same-donor youngest fifth included, cut to
+``SUBSAMPLE_SIZE`` donors drawn with replacement from its reference rows (an m-out-of-n bootstrap, so the share of a
+cohort a draw uses does not set its spread), the drift cohort kept whole; as many draws as resamples. The spread over
+draws is the sampling variation of each reference's matching variables, and of the gaps matched on them, at one
+reference size; ``sd_diff`` is the set-minus-matched young SD, a summary of those SDs, and its spread over draws is
+that summary's precision at 100 donors.
+
 ``entropy-age figures level_match_reference`` as a Slurm job.
 """
 
 from __future__ import annotations
 
 import dataclasses
+import gzip
+import io
+import itertools
 import multiprocessing
 import os
+import shutil
 import sys
+import tempfile
 from concurrent.futures import ProcessPoolExecutor
 from pathlib import Path
 
@@ -54,7 +69,12 @@ from entropy_age.experiments.tissue_contrast import (
     _settings,
 )
 
-EPIC_ITALY, CHARGE, YOUNG_ADULTS = "GSE51032", "GSE97362", "GSE73103"
+EPIC_ITALY, CHARGE, YOUNG_ADULTS, ERISK = "GSE51032", "GSE97362", "GSE73103", "GSE105018"
+#: E-Risk's betas: a supplementary CSV (CpGs by the study's sample numbers), cached once as parquet parts
+ERISK_CSV = "GSE105018_NormalisedData.csv.gz"
+ERISK_AGE = 18.0  # every E-Risk participant was sampled at age 18
+ERISK_ROWS_PER_PART = 20_000
+SUBSAMPLE_SIZE = 100
 #: the age band of the young-adult reference (GSE73103 also holds 130 adolescents aged 14-16 and ten people aged 31-34)
 ADULT_AGES = (18.0, 30.0)
 POOLS = ("rest",)
@@ -67,12 +87,14 @@ PLAN = {
         "EPIC-Italy youngest fifth": ("epic_italy", True),
         "GSE97362 controls": ("charge", False),
         "GSE73103 young adults": ("young_adults", False),
+        "E-Risk one twin per family": ("erisk", False),
     },
     "epic_italy": {
         SAME: ("epic_italy", True),
         "Hannum youngest fifth": ("hannum", True),
         "GSE97362 controls": ("charge", False),
         "GSE73103 young adults": ("young_adults", False),
+        "E-Risk one twin per family": ("erisk", False),
     },
 }
 CSV_ROWS = 5_000
@@ -155,6 +177,100 @@ def _young_adults(paths, features) -> Prepared:
     return Prepared(label, x, people["age"].to_numpy(), sex, kept, people["sample"].to_numpy(), sex), raw
 
 
+def erisk_people(matrix: Path) -> pl.DataFrame:
+    """E-Risk's arrays: accession, the study's sample number (the betas CSV's column names, read from the titles
+    ``whole blood taken from sample N``), family, twin, sex and zygosity."""
+    titles: list[str] = []
+    with gzip.open(matrix, "rt") as handle:
+        for line in handle:
+            if line.startswith("!Sample_title"):
+                titles = [c.strip().strip('"') for c in line.rstrip("\n").split("\t")[1:]]
+                break
+    prefix = "whole blood taken from sample "
+    if not titles or not all(t.startswith(prefix) for t in titles):
+        raise ValueError(f"{matrix.name}: sample titles do not name the study's sample numbers")
+    chars = _characteristics(matrix)
+    if len(titles) != chars.height:
+        raise ValueError(f"{matrix.name}: {len(titles)} titles for {chars.height} samples")
+    return chars.select(
+        "sample",
+        pl.Series("column", [t.removeprefix(prefix) for t in titles]),
+        pl.col("familyid").alias("family"),
+        pl.col("twinid").alias("twin"),
+        pl.col("gender").alias("sex"),
+        pl.col("zygosity"),
+    )
+
+
+def one_per_family(people: pl.DataFrame, rng: np.random.Generator) -> pl.DataFrame:
+    """One row per ``family``, drawn uniformly at random among its rows (the order of ``people`` does not matter)."""
+    people = people.sort("family", "sample")
+    draw = pl.Series("draw", rng.random(people.height))
+    return (
+        people.with_columns(draw)
+        .filter(pl.col("draw") == pl.col("draw").min().over("family"))
+        .drop("draw")
+        .sort("sample")
+    )
+
+
+def erisk_parts(paths) -> Path:
+    """E-Risk's betas as parquet parts (``cpg`` plus one Float32 column per sample number), written once by streaming
+    the gzip CSV in blocks of ``ERISK_ROWS_PER_PART`` CpGs. Each writer fills its own temporary folder, renamed into
+    place only when complete and non-empty; a writer that loses the race to another drops its copy."""
+    source = paths.input / "geo" / ERISK / ERISK_CSV
+    done = paths.interim / "cohorts" / "erisk_betas"
+    if done.exists():
+        return done
+    done.parent.mkdir(parents=True, exist_ok=True)
+    partial = Path(tempfile.mkdtemp(prefix="erisk_betas.partial.", dir=done.parent))
+    with gzip.open(source, "rb") as handle:
+        header = handle.readline()
+        names = [c.strip().strip('"') for c in header.decode().rstrip("\r\n").split(",")]
+        schema = {names[0]: pl.String} | {n: pl.Float32 for n in names[1:]}
+        part = 0
+        while True:
+            block = list(itertools.islice(handle, ERISK_ROWS_PER_PART))
+            if not block:
+                break
+            frame = pl.read_csv(
+                io.BytesIO(header + b"".join(block)), schema=schema, null_values=["", "NA", "NaN"]
+            ).rename({names[0]: "cpg"})
+            frame.write_parquet(partial / f"part-{part:04d}.parquet")
+            part += 1
+    if part == 0:
+        shutil.rmtree(partial)
+        raise ValueError(f"{source.name}: no CpG rows")
+    try:
+        partial.rename(done)
+    except OSError:  # another writer finished first
+        shutil.rmtree(partial)
+        if not done.exists():
+            raise
+    return done
+
+
+def read_erisk_betas(parts: Path, features: list[str], columns: list[str]) -> np.ndarray:
+    """``columns`` (sample numbers) by ``features`` (NaN where E-Risk lacks a CpG), scanning only those CpGs."""
+    frame = pl.scan_parquet(parts / "*.parquet").filter(pl.col("cpg").is_in(features)).select("cpg", *columns).collect()
+    if frame["cpg"].n_unique() != frame.height:
+        raise ValueError("E-Risk betas: a CpG appears twice")
+    frame = pl.DataFrame({"cpg": features}).join(frame, on="cpg", how="left", maintain_order="left")
+    if frame["cpg"].to_list() != list(features):
+        raise ValueError("E-Risk betas: CpG order lost in the join")
+    return frame.select(columns).to_numpy().T.astype(np.float32)
+
+
+def _erisk(paths, features, rng: np.random.Generator) -> Prepared:
+    people = one_per_family(erisk_people(matrix_path(paths, ERISK)), rng)
+    x = read_erisk_betas(erisk_parts(paths), features, people["column"].to_list())
+    x, raw, kept = impute(x, features)
+    sex = dummies(people["sex"].to_numpy())
+    ages = np.full(people.height, ERISK_AGE)
+    label = "blood (E-Risk, one twin per family)"
+    return Prepared(label, x, ages, sex, kept, people["sample"].to_numpy(), sex), raw
+
+
 def restrict(p: Prepared, features: list[str], raw: np.ndarray | None = None):
     """``p`` on ``features`` (all of which it holds), in that order; with ``raw`` (``p``'s matrix with gaps kept)
     also that matrix on the same columns."""
@@ -217,15 +333,27 @@ def tables(
     return {name: t.filter(pl.Series(shared)) for name, t in out.items()}
 
 
-def sample_rows(key: str, cohorts: dict, probes, membership, draws: dict[str, np.ndarray]):
+def sample_rows(
+    key: str,
+    cohorts: dict,
+    probes,
+    membership,
+    draws: dict[str, np.ndarray],
+    size: int | None = None,
+    rng: np.random.Generator | None = None,
+):
     """Gaps of every reference for drift cohort ``key``; ``cohorts`` maps a key to (Prepared, matrix with gaps kept)
-    and ``draws`` gives each cohort's rows (a resample or all). Also the SD of each drift measure over the drift
-    cohort's CpGs (the divisor, used from the full sample only)."""
+    and ``draws`` gives each cohort's rows (a resample or all). With ``size`` every reference's rows are cut to that
+    many, drawn by ``rng`` with replacement. Also the SD of each drift measure over the drift cohort's CpGs (the
+    divisor, used from the full sample only)."""
     drift, drift_raw = cohorts[key]
     references = {}
     for name, (ref_key, youngest) in PLAN[key].items():
         ref, raw = cohorts[ref_key]
-        references[name] = (ref, raw, reference_rows(ref, draws[ref_key], youngest))
+        rows = reference_rows(ref, draws[ref_key], youngest)
+        if size is not None:
+            rows = np.sort(rng.choice(rows, size=size, replace=True))
+        references[name] = (ref, raw, rows)
     out, spread = [], []
     for name, t in tables(drift, draws[key], references, probes, drift_raw).items():
         long = _long(gaps(t, membership, POOLS, OWN))
@@ -265,14 +393,28 @@ def _boot(job: tuple[str, int]) -> list[dict]:
     return rows.with_columns(boot=pl.lit(seed)).to_dicts()
 
 
-def _parallel(jobs, workers: int, state: dict) -> list[dict]:
+def _subsample(job: tuple[str, int]) -> list[dict]:
+    """One equal-size draw: every cohort whole, every reference cut to ``SUBSAMPLE_SIZE`` of its reference rows."""
+    key, seed = job
+    cohorts = _STATE["cohorts"]
+    full = {k: np.arange(p.x.shape[0]) for k, (p, _) in cohorts.items()}
+    rng = np.random.default_rng(seed)
+    rows, _ = sample_rows(key, cohorts, _STATE["probes"], _STATE["membership"], full, SUBSAMPLE_SIZE, rng)
+    keep = (pl.col("scope") == "all CpGs") & pl.col("matching").is_in(SUBSAMPLE_MATCHINGS)
+    return rows.filter(keep).with_columns(draw=pl.lit(seed)).to_dicts()
+
+
+SUBSAMPLE_MATCHINGS = ("island x decile", "nearest 5 (level)", "nearest 5 (level, SD)")
+
+
+def _parallel(jobs, workers: int, state: dict, task=_boot) -> list[dict]:
     """Spawned workers (a forked polars pool deadlocks: ``tissue_contrast._run_parallel``)."""
     if workers <= 1:
         _init(state)
-        return [r for j in jobs for r in _boot(j)]
+        return [r for j in jobs for r in task(j)]
     ctx = multiprocessing.get_context("spawn")
     with ProcessPoolExecutor(max_workers=workers, mp_context=ctx, initializer=_init, initargs=(state,)) as pool:
-        return [r for rows in pool.map(_boot, jobs) for r in rows]
+        return [r for rows in pool.map(task, jobs) for r in rows]
 
 
 def _with_delta(frame: pl.DataFrame) -> pl.DataFrame:
@@ -322,7 +464,35 @@ PROCESSING = {
     "epic_italy": "deposited (depositors' processing)",
     "charge": "deposited (depositors' processing)",
     "young_adults": "deposited (NOOB + BMIQ; SNP, cross-reactive and sex-chromosome probes removed)",
+    "erisk": "deposited (methylumi import; wateRmelon pfilter and dasen); one twin per family, seeded",
 }
+
+
+def summarise_subsamples(draws: pl.DataFrame, spread: pl.DataFrame) -> pl.DataFrame:
+    """Per reference at ``SUBSAMPLE_SIZE`` donors: mean and 2.5-97.5 % range over the finite draws of the gap (SD
+    units) and of the set-minus-matched young SD (``sd_diff``, beta units), the SD of each over draws (its precision)
+    and the number of finite draws behind each; null where fewer than ``MIN_VALID_SHARE`` of the draws are finite."""
+    on = ["tissue", "metric"]
+    d = draws.join(spread, on=on, how="left").with_columns(gap_sd=pl.col("matched_diff") / pl.col("sd"))
+    aggs = {"n_draws": pl.len(), "reference_size": pl.lit(SUBSAMPLE_SIZE)}
+    for name, col in (("gap", "gap_sd"), ("sd_diff", "sd_diff")):
+        finite = pl.col(col).filter(pl.col(col).is_finite())
+        aggs |= {
+            f"{name}_valid": pl.col(col).is_finite().sum(),
+            f"{name}_mean": finite.mean(),
+            f"{name}_sd_over_draws": finite.std(),
+            f"{name}_lo": _finite_quantile(col, 0.025),
+            f"{name}_hi": _finite_quantile(col, 0.975),
+        }
+    out = d.group_by(KEYS).agg(**aggs)
+    gated = []
+    for name in ("gap", "sd_diff"):
+        thin = pl.col(f"{name}_valid") < MIN_VALID_SHARE * pl.col("n_draws")
+        gated += [
+            pl.when(thin).then(None).otherwise(pl.col(c)).alias(c)
+            for c in (f"{name}_mean", f"{name}_sd_over_draws", f"{name}_lo", f"{name}_hi")
+        ]
+    return out.with_columns(gated).sort(KEYS)
 
 
 def reference_rule(key: str) -> bool:
@@ -331,9 +501,11 @@ def reference_rule(key: str) -> bool:
     return rules[key]
 
 
-def cohort_summary(cohorts: dict, cpgs: int) -> list[dict]:
+def cohort_summary(cohorts: dict, cpgs: int, own: dict[str, set[str]] | None = None) -> list[dict]:
     """One row per cohort: arrays and ages, and the rows that give matching variables when it is another cohort's
-    reference (the same ``reference_rows`` call the matching uses)."""
+    reference (the same ``reference_rows`` call the matching uses). With ``own`` (each cohort's CpGs passing its own
+    missingness rule, before the intersection) also that count and how many CpGs the intersection of the other
+    cohorts would hold without this one (what this cohort costs the common set)."""
     out = []
     for k, (p, raw) in cohorts.items():
         youngest = reference_rule(k)
@@ -351,6 +523,8 @@ def cohort_summary(cohorts: dict, cpgs: int) -> list[dict]:
                 "reference_age_min": float(p.ages[ref].min()),
                 "reference_age_max": float(p.ages[ref].max()),
                 "cpgs": cpgs,
+                "own_cpgs": len(own[k]) if own else None,
+                "common_cpgs_without": len(set.intersection(*(v for j, v in own.items() if j != k))) if own else None,
                 "missing_share": float(np.isnan(raw).mean()),
             }
         )
@@ -369,12 +543,15 @@ def run(ctx: Context) -> list[Path]:
         "epic_italy": _epic_italy(ctx.paths, features),
         "charge": _charge_controls(ctx.paths, features),
         "young_adults": _young_adults(ctx.paths, features),
+        "erisk": _erisk(ctx.paths, features, ctx.rng(60_018)),
     }
-    common = sorted(set.intersection(*(set(p.features) for p, _ in cohorts.values())))
+    own = {k: set(p.features) for k, (p, _) in cohorts.items()}
+    common = sorted(set.intersection(*own.values()))
     cohorts = {k: restrict(p, common, raw) for k, (p, raw) in cohorts.items()}
     membership = membership.filter(pl.col("feature").is_in(common))
-    write_table(pl.DataFrame(cohort_summary(cohorts, len(common))), out / "cohorts")
-    print(f"level_match_reference: {cohort_summary(cohorts, len(common))}", file=sys.stderr, flush=True)
+    summary = cohort_summary(cohorts, len(common), own)
+    write_table(pl.DataFrame(summary), out / "cohorts")
+    print(f"level_match_reference: {summary}", file=sys.stderr, flush=True)
     point, spread = [], []
     full = {k: np.arange(p.x.shape[0]) for k, (p, _) in cohorts.items()}
     for key in PLAN:
@@ -393,4 +570,8 @@ def run(ctx: Context) -> list[Path]:
     write_table(table, out / "gaps", csv_max_rows=CSV_ROWS)
     if boot.height:
         write_table(boot, out / "boot")
+    sub_jobs = [(key, int(s)) for key in PLAN for s in ctx.rng(60_019).integers(0, 2**31 - 1, size=n_boot)]
+    if sub_jobs:
+        draws = pl.DataFrame(_parallel(sub_jobs, workers, state, _subsample))
+        write_table(summarise_subsamples(draws, spread), out / "subsample")
     return []

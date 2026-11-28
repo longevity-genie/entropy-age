@@ -208,9 +208,142 @@ def test_cohort_summary_reports_the_rows_each_reference_uses():
 
     features = ["c0", "c1"]
     cohorts = {k: (p := _prepared(50, 2, i, k, features), p.x) for i, k in enumerate(("hannum", "epic_italy"))}
-    cohorts |= {k: (p := _prepared(30, 2, 9, k, features), p.x) for k in ("charge", "young_adults")}
-    rows = {r["key"]: r for r in cohort_summary(cohorts, 2)}
+    cohorts |= {k: (p := _prepared(30, 2, 9, k, features), p.x) for k in ("charge", "young_adults", "erisk")}
+    own = {k: {"c0", "c1"} | ({"c9"} if k != "erisk" else set()) for k in cohorts}
+    rows = {r["key"]: r for r in cohort_summary(cohorts, 2, own)}
+    assert rows["erisk"]["own_cpgs"] == 2 and rows["erisk"]["common_cpgs_without"] == 3
+    assert rows["hannum"]["common_cpgs_without"] == 2 and "dasen" in rows["erisk"]["processing"]
+    assert rows["erisk"]["reference_rule"] == "all donors" and rows["erisk"]["reference_arrays"] == 30
     assert set(rows) == {ref for refs in PLAN.values() for ref, _ in refs.values()}
     assert rows["hannum"]["reference_rule"] == "youngest fifth" and rows["hannum"]["reference_arrays"] == 10
     assert rows["young_adults"]["reference_rule"] == "all donors" and rows["young_adults"]["reference_arrays"] == 30
     assert "BMIQ" in rows["young_adults"]["processing"]
+
+
+def _erisk_matrix(path, titles, families, twins):
+    import gzip
+
+    n = len(titles)
+    rows = [
+        "!Sample_title\t" + "\t".join(f'"whole blood taken from sample {t}"' for t in titles),
+        "!Sample_geo_accession\t" + "\t".join(f'"GSM{i}"' for i in range(n)),
+        "!Sample_characteristics_ch1\t" + "\t".join(f'"familyid: {f}"' for f in families),
+        "!Sample_characteristics_ch1\t" + "\t".join(f'"twinid: {t}"' for t in twins),
+        "!Sample_characteristics_ch1\t" + "\t".join('"gender: F"' for _ in range(n)),
+        "!Sample_characteristics_ch1\t" + "\t".join('"zygosity: MZ"' for _ in range(n)),
+    ]
+    with gzip.open(path, "wt") as handle:
+        handle.write("\n".join(rows) + "\n")
+
+
+def test_erisk_keeps_one_twin_per_family_drawn_by_the_seed(tmp_path):
+    from entropy_age.experiments.level_match_reference import erisk_people, one_per_family
+
+    matrix = tmp_path / "GSE105018_series_matrix.txt.gz"
+    _erisk_matrix(matrix, ["11", "12", "21", "22", "31"], ["1", "1", "2", "2", "3"], ["1", "2", "1", "2", "1"])
+    people = erisk_people(matrix)
+    assert people["column"].to_list() == ["11", "12", "21", "22", "31"]
+    chosen = [one_per_family(people, np.random.default_rng(s)) for s in range(40)]
+    assert all(c["family"].sort().to_list() == ["1", "2", "3"] for c in chosen)
+    picks = {tuple(c["sample"].to_list()) for c in chosen}
+    assert len(picks) > 1  # random among twins
+    assert one_per_family(people, np.random.default_rng(5)).equals(
+        one_per_family(people.reverse(), np.random.default_rng(5))
+    )
+
+
+def test_erisk_betas_stream_into_parts_and_bind_by_cpg_and_sample_number(tmp_path, monkeypatch):
+    import gzip
+
+    from entropy_age.experiments import level_match_reference as lmr
+    from entropy_age.paths import ProjectPaths
+
+    paths = ProjectPaths(tmp_path)
+    geo = paths.input / "geo" / "GSE105018"
+    geo.mkdir(parents=True)
+    _erisk_matrix(geo / "GSE105018_series_matrix.txt.gz", ["11", "12", "21"], ["1", "1", "2"], ["1", "2", "1"])
+    lines = ['"","12","21","11"'] + [f'"cg{i}",{i / 100 + 0.002},{i / 100 + 0.003},{i / 100 + 0.001}' for i in range(7)]
+    lines[3] = '"cg2",NA,0.023,0.021'
+    lines[4] = '"cg3",0.032,0.033,NA'  # a gap in a selected column stays NaN
+    with gzip.open(geo / lmr.ERISK_CSV, "wt") as handle:
+        handle.write("\n".join(lines) + "\n")
+    monkeypatch.setattr(lmr, "ERISK_ROWS_PER_PART", 3)  # several parts
+    parts = lmr.erisk_parts(paths)
+    assert len(list(parts.glob("*.parquet"))) == 3
+    assert not list(parts.parent.glob("erisk_betas.partial*"))  # the temporary folder became the cache
+    assert lmr.erisk_parts(paths) == parts  # a finished cache is reused
+    x = lmr.read_erisk_betas(parts, ["cg5", "cg99", "cg2", "cg3"], ["11", "21"])
+    assert np.allclose(x[:, 0], [0.051, 0.053]) and np.isnan(x[:, 1]).all()
+    assert np.allclose(x[:, 2], [0.021, 0.023]) and np.isnan(x[0, 3]) and x[1, 3] == pytest.approx(0.033)
+    monkeypatch.setattr(lmr, "matrix_path", lambda paths, gse: geo / f"{gse}_series_matrix.txt.gz")
+    rng = np.random.default_rng(0)
+    p, raw = lmr._erisk(paths, ["cg1", "cg2", "cg3"], rng)
+    assert p.x.shape[0] == 2 and set(p.ages) == {18.0}
+    first = "11" if "GSM0" in p.donors else "12"
+    assert raw[list(p.donors).index("GSM2"), 0] == pytest.approx(0.013)
+    assert raw[list(p.donors).index("GSM0" if first == "11" else "GSM1"), 0] == pytest.approx(
+        0.011 if first == "11" else 0.012
+    )
+
+
+def test_erisk_cache_refuses_a_header_only_csv(tmp_path):
+    import gzip
+
+    from entropy_age.experiments import level_match_reference as lmr
+    from entropy_age.paths import ProjectPaths
+
+    paths = ProjectPaths(tmp_path)
+    geo = paths.input / "geo" / "GSE105018"
+    geo.mkdir(parents=True)
+    with gzip.open(geo / lmr.ERISK_CSV, "wt") as handle:
+        handle.write('"","11"\n')
+    with pytest.raises(ValueError, match="no CpG rows"):
+        lmr.erisk_parts(paths)
+    assert not list((paths.interim / "cohorts").iterdir())
+
+
+def test_equal_size_references_draw_from_the_reference_rows(monkeypatch):
+    from entropy_age.experiments import level_match_reference as lmr
+
+    features = [f"c{i}" for i in range(60)]
+    cohorts = {k: _prepared(n, 60, s, k, features) for k, n, s in (("d", 150, 1), ("r", 40, 2))}
+    cohorts = {k: (p, p.x) for k, p in cohorts.items()}
+    seen = {}
+
+    def fake_tables(drift, rows, references, probes, drift_raw=None):
+        seen.update({name: rows for name, (_, _, rows) in references.items()})
+        return {}
+
+    monkeypatch.setattr(lmr, "PLAN", {"d": {SAME: ("d", True), "other": ("r", False)}})
+    monkeypatch.setattr(lmr, "tables", fake_tables)
+    monkeypatch.setattr(lmr.pl, "concat", lambda frames: pl.DataFrame())
+    full = {k: np.arange(p.x.shape[0]) for k, (p, _) in cohorts.items()}
+    lmr.sample_rows("d", cohorts, None, None, full, 60, np.random.default_rng(1))
+    assert seen["other"].size == 60 and np.unique(seen["other"]).size < 40  # with replacement, beyond the 40 rows
+    young = reference_rows(cohorts["d"][0], full["d"], True)
+    assert seen[SAME].size == 60 and set(seen[SAME]) <= set(young)
+
+
+def test_subsample_summary_reports_spread_over_draws():
+    from entropy_age.experiments.level_match_reference import summarise_subsamples
+
+    base = {"tissue": "t", "reference": "r", "pool": "rest", "scope": "all CpGs", "matching": "m", "group": "g"}
+    draws = pl.DataFrame(
+        [base | {"metric": "kl_slope", "matched_diff": float(v), "sd_diff": v / 1000, "draw": v} for v in range(11)]
+    )
+    spread = pl.DataFrame({"tissue": ["t"], "metric": ["kl_slope"], "sd": [2.0]})
+    r = summarise_subsamples(draws, spread).row(0, named=True)
+    assert r["n_draws"] == 11 and r["gap_mean"] == pytest.approx(2.5)
+    assert r["sd_diff_mean"] == pytest.approx(0.005) and r["sd_diff_sd_over_draws"] > 0
+    assert r["gap_lo"] == pytest.approx(0.0) and r["gap_hi"] == pytest.approx(5.0)  # the shared nearest-rank quantile
+    # undefined draws: statistics over the finite ones, counted, and null when fewer than half are finite
+    nan = draws.with_columns(
+        matched_diff=pl.when(pl.col("draw") < 3).then(float("nan")).otherwise(pl.col("matched_diff"))
+    )
+    r = summarise_subsamples(nan, spread).row(0, named=True)
+    assert r["gap_valid"] == 8 and r["gap_mean"] == pytest.approx(3.25) and r["sd_diff_valid"] == 11
+    mostly = draws.with_columns(
+        matched_diff=pl.when(pl.col("draw") < 7).then(float("nan")).otherwise(pl.col("matched_diff"))
+    )
+    r = summarise_subsamples(mostly, spread).row(0, named=True)
+    assert r["gap_mean"] is None and r["gap_lo"] is None and r["sd_diff_mean"] is not None

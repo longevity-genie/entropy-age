@@ -1,5 +1,6 @@
-cohort,key,processing,arrays,age_min,age_max,reference_rule,reference_arrays,reference_age_min,reference_age_max,cpgs,missing_share
-blood (Hannum),hannum,deposited (depositors' processing),656,19.0,101.0,youngest fifth,144,19.0,52.0,77018,0.0
-blood (EPIC-Italy),epic_italy,deposited (depositors' processing),718,34.686,72.047,youngest fifth,144,34.686,47.491,77018,0.004231366237795151
-blood (GSE97362 controls),charge,deposited (depositors' processing),124,2.0,19.0,all donors,124,2.0,19.0,77018,0.0006464764416194287
-blood (GSE73103 young adults),young_adults,"deposited (NOOB + BMIQ; SNP, cross-reactive and sex-chromosome probes removed)",216,18.0,30.0,all donors,216,18.0,30.0,77018,0.0
+cohort,key,processing,arrays,age_min,age_max,reference_rule,reference_arrays,reference_age_min,reference_age_max,cpgs,own_cpgs,common_cpgs_without,missing_share
+blood (Hannum),hannum,deposited (depositors' processing),656,19.0,101.0,youngest fifth,144,19.0,52.0,74886,108992,74913,0.0
+blood (EPIC-Italy),epic_italy,deposited (depositors' processing),718,34.686,72.047,youngest fifth,144,34.686,47.491,74886,88005,92822,0.004234161087341152
+blood (GSE97362 controls),charge,deposited (depositors' processing),124,2.0,19.0,all donors,124,2.0,19.0,74886,108912,74963,0.0006461434283336478
+blood (GSE73103 young adults),young_adults,"deposited (NOOB + BMIQ; SNP, cross-reactive and sex-chromosome probes removed)",216,18.0,30.0,all donors,216,18.0,30.0,74886,95603,80977,0.0
+"blood (E-Risk, one twin per family)",erisk,"deposited (methylumi import; wateRmelon pfilter and dasen); one twin per family, seeded",924,18.0,18.0,all donors,924,18.0,18.0,74886,101024,77018,0.0
