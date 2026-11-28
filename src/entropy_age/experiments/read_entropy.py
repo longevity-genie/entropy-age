@@ -35,16 +35,28 @@ sign-tail summary of them, twice ``(1 + draws on the minority side) / (1 + usabl
 Variants (``variant`` column):
 
 - **raw**: the counts as read;
-- **rarefied to D**: every scored sample-window cut to exactly D complete fragments by sampling without replacement
-  (one fixed draw), so plug-in entropy carries the same downward small-sample bias everywhere; D = 10 on all windows
-  and D = 20 on windows with balanced coverage (the share of samples reaching D differs by at most ``BALANCE_TOL``
-  between the younger and the older half of each group);
+- **rarefied to D**: every scored sample-window cut to exactly D complete fragments by sampling without replacement,
+  so plug-in entropy carries the same downward small-sample bias everywhere; D = 10 on all windows and D = 20 on
+  windows with balanced coverage (the share of samples reaching D differs by at most ``BALANCE_TOL`` between the
+  younger and the older half of each group). ``DRAWS`` independent rarefactions: the point estimate is their mean,
+  ``gap_sd_draw_sd`` the spread of the SD-unit gap over draws, and bootstrap resample b uses draw b mod ``DRAWS``, so
+  the interval carries rarefaction noise as well as sampling of donors. Rarefied rows report the eligibility check
+  only (log depth is then a fixed multiple of it);
 - **leukocyte-adjusted** (white blood cells): leukocyte fractions estimated from each donor's own reads (mean
   methylation at marker windows of six sorted blood cell types of the same atlas, ``blood_refs/``, by non-negative
   least squares), their leading principal components held in every slope;
-- **composition-only mixture** (white blood cells): each donor rebuilt as the mixture, at its estimated fractions,
-  of the pooled sorted-cell epiallele distributions (the same at every age), sampled at the donor's own depth per
-  window; any contrast it shows comes from composition and depth alone;
+- **mixtures** (white blood cells): each donor rebuilt from the pooled sorted-cell epiallele distributions (the same
+  at every age), drawn multinomially (``DRAWS`` draws, used as for rarefaction), in three forms: *own fractions, own
+  depth* (the donor's estimated fractions at its own depth per window: composition and depth together); *mean
+  fractions, own depth* (every donor at the donors' mean fractions: depth alone); *own fractions, median depth* (the
+  donor's fractions at the donors' median depth of each window: composition alone; no depth checks). Any contrast a
+  mixture shows comes from what it lets vary. Each mixture is scored on the windows and young-level strata of the raw
+  counts over the mixture-covered windows (``raw, mixture windows``, in ``wbc_mixture_share`` only), resample by
+  resample, with the same donor resamples; ``wbc_mixture_share`` gives its gap as a share of that raw gap in raw
+  units (bits per CpG per year, set minus matched slope), unresolved when the raw gap's interval reaches zero, and
+  beside it the ratio of SD-unit gaps, which divide by different slope spreads. The intervals of rarefied and mixture
+  rows hold the noise of one draw (conservative for the mean over draws) and are conditional on the estimated
+  fractions, the window panel and, for the mixtures, the mean fractions and median depths;
 - **putative-donor clusters** (sorted cells): GEO gives no donor id for the atlas; samples sharing age, sex, lab and
   organ are taken as one donor and resampled together. The main sorted-cell intervals resample samples within groups
   and are sample-level. Leave-one-group-out point estimates (``leave_one_group_out``) show each group's influence.
@@ -58,6 +70,7 @@ the pooled reference. Count caches are keyed by the ordered window starts and ea
 from __future__ import annotations
 
 import hashlib
+import multiprocessing
 import os
 import re
 import sys
@@ -83,6 +96,7 @@ MEASURES = ("mean", "entropy", "epipolymorphism", "mhl", "relative_entropy")
 DEPTH_MEASURES = ("log_depth", "eligible")
 SETS = ("housekeeping", "core_essential", "non_essential")
 RAREFY = ((10, False), (20, True))  # (fragments, balanced-coverage windows only)
+DRAWS = 20  # independent rarefactions and mixture draws at paper scale (3 otherwise)
 BALANCE_TOL = 0.1
 BLOOD_TYPES = ("Granulocytes", "Monocytes", "B", "NK", "T-CD4", "T-CD8")
 MARKERS_PER_SIDE = 25  # per blood cell type: the most hyper- and the most hypomethylated windows against the others
@@ -362,7 +376,9 @@ def estimate_fractions(sample_means: np.ndarray, type_means: np.ndarray, markers
 
 def fraction_components(fractions: np.ndarray, share: float = FRACTION_VARIANCE, most: int = 3) -> np.ndarray:
     """Leading principal-component scores of the centred fractions: as many as reach ``share`` of the variance,
-    at most ``most``."""
+    at most ``most``. A sample whose fractions could not be estimated sits at the centre (scores 0)."""
+    fractions = np.asarray(fractions, dtype=float)
+    fractions = np.where(np.isfinite(fractions).all(axis=1, keepdims=True), fractions, np.nanmean(fractions, axis=0))
     f = fractions - fractions.mean(axis=0)
     u, s, _ = np.linalg.svd(f, full_matrices=False)
     var = s**2 / max(float((s**2).sum()), 1e-300)
@@ -380,6 +396,39 @@ def mixture_counts(
     shares = shares / shares.sum(axis=-1, keepdims=True)
     n = np.where(np.isfinite(shares).all(axis=-1), reads, 0).astype(np.int64)
     return rng.multinomial(n, np.nan_to_num(shares, nan=1 / shares.shape[-1]))
+
+
+def mean_fractions(fractions: np.ndarray) -> np.ndarray:
+    """Every sample given the samples' mean fractions (rows that could not be estimated stay missing)."""
+    mean = np.nanmean(fractions, axis=0)
+    mean = mean / mean.sum()
+    return np.where(np.isfinite(fractions).all(axis=1, keepdims=True), mean[None, :], np.nan)
+
+
+def median_depth(reads: np.ndarray) -> np.ndarray:
+    """Every sample given the samples' median fragment count of each window (rounded)."""
+    return np.broadcast_to(np.rint(np.median(reads, axis=0)).astype(np.int64), np.shape(reads)).copy()
+
+
+def mixture_share(
+    raw_point: tuple[float, float], raw_boots: np.ndarray, mix_point: tuple[float, float], mix_boots: np.ndarray
+) -> dict[str, float]:
+    """A mixture's gap as a share of the raw gap, in raw units and as the ratio of SD-unit gaps. Points are (gap,
+    gap_sd); boots are (resamples, 4) of (set, matched, gap, gap_sd) from both variants on the same donor resamples,
+    so each resample gives one ratio; percentile 95 % intervals over the resamples where both are finite. A ratio
+    is left unresolved (NaN with its interval) when the raw gap's own 95 % interval reaches zero, or fewer than half
+    the resamples are usable: its percentile bounds would then mean nothing."""
+    raw_boots, mix_boots = np.asarray(raw_boots, dtype=float), np.asarray(mix_boots, dtype=float)
+    out: dict[str, float] = {}
+    for k, name in enumerate(("share", "share_sd_units")):
+        den, num = raw_boots[:, 2 + k], mix_boots[:, 2 + k]
+        both = np.isfinite(den) & np.isfinite(num)
+        d_lo, d_hi = np.quantile(den[both], [0.025, 0.975]) if both.any() else (np.nan, np.nan)
+        resolved = both.sum() >= den.size / 2 and (d_lo > 0 or d_hi < 0)
+        point = float(mix_point[k]) / float(raw_point[k]) if resolved and raw_point[k] != 0 else np.nan
+        lo, hi = np.quantile(num[both] / den[both], [0.025, 0.975]) if resolved else (np.nan, np.nan)
+        out |= {name: point, f"{name}_lo": float(lo), f"{name}_hi": float(hi), f"{name}_boots": int(both.sum())}
+    return out
 
 
 def putative_donors(samples: pl.DataFrame) -> np.ndarray:
@@ -441,7 +490,8 @@ def _load_counts(ctx: Context, samples: pl.DataFrame, starts: np.ndarray) -> np.
     missing = [j for j in jobs if not Path(j[2]).exists()]
     if missing:
         print(f"read_entropy: counting {len(missing)} PAT files", file=sys.stderr, flush=True)
-        with ProcessPoolExecutor(int(os.environ.get("SLURM_CPUS_PER_TASK", "2"))) as pool:
+        workers = int(os.environ.get("SLURM_CPUS_PER_TASK", "2"))
+        with ProcessPoolExecutor(workers, mp_context=multiprocessing.get_context("spawn")) as pool:  # never fork
             list(pool.map(_count_one, missing))
     return np.stack([np.load(j[2]).astype(np.int32) for j in jobs])
 
@@ -454,7 +504,7 @@ def _metrics(counts: np.ndarray, min_reads: int) -> dict[str, np.ndarray]:
 
 def _fit(counts, base, age, female, group, cols, ids, min_reads, cov=None):
     """Slopes (and SE, df) of every measure over windows ``cols``, the young-reference mean level and its depth."""
-    c = counts[:, cols]
+    c = counts[:, cols].astype(np.int32, copy=False)  # rarefied draws are uint8: pooled references would overflow
     ref = young_reference(c, age, group, ids)
     kl = epiallele_relative_entropy(c, ref, min_reads=min_reads)
     ref_reads = ref.sum(axis=-1).astype(float)
@@ -499,7 +549,7 @@ def _contrasts(slopes, baseline, island, members, keep) -> dict[tuple[str, str],
         strata = np.char.add(island[k].astype(str), baseline_strata(baseline[k], 10).astype(str))
         for name, member in members.items():
             inside, matched = matched_sides(s[k], member[k], strata)
-            out[(m, name)] = (inside, matched, inside - matched, (inside - matched) / sd)
+            out[(m, name)] = (inside, matched, inside - matched, (inside - matched) / sd if sd > 0 else np.nan)
     return out
 
 
@@ -508,7 +558,7 @@ def _variant(
     tag: str,
     label: str,
     resampling: str,
-    counts: np.ndarray,
+    counts: np.ndarray | list[np.ndarray],
     min_reads: int,
     age,
     female,
@@ -521,26 +571,68 @@ def _variant(
     cov: np.ndarray | None = None,
     window_mask: np.ndarray | None = None,
     point_only: bool = False,
+    skip: tuple[str, ...] = (),
+    frame: dict | None = None,
 ) -> dict:
-    """Point fit, contrasts and bootstrap of one variant: its gap rows and what the raw tables need."""
-    base = _metrics(counts, min_reads)
-    cols0 = np.arange(counts.shape[1]) if window_mask is None else np.flatnonzero(window_mask)
-    fits, baseline, ref_reads = _fit(counts, base, age, female, group, cols0, None, min_reads, cov)
-    keep0 = _keeps(fits, baseline)
+    """Point fit, contrasts and bootstrap of one variant: its gap rows and what the raw tables need. ``counts`` may be
+    a list of independent draws of the same variant (rarefactions, mixtures): the windows are those of the first draw
+    (the same in every draw: they depend on depth only), the point is the mean over draws, and resample b uses draw
+    b mod draws. Measures in ``skip`` get no row. ``frame`` (the ``frame`` of another variant's result, run on the
+    same donor resamples) fixes the windows and the young-level strata to that variant's, resample by resample, so
+    both measure the same contrast; windows where this variant has no slope are counted in ``windows_dropped``."""
+    draws = counts if isinstance(counts, list) else [counts]
+    base = _metrics(draws[0], min_reads)
+    cols0 = np.arange(draws[0].shape[1]) if window_mask is None else np.flatnonzero(window_mask)
+    if frame is not None:
+        cols0 = frame["cols0"]
+    fits, baseline, ref_reads = _fit(draws[0], base, age, female, group, cols0, None, min_reads, cov)
+    keep0 = _keeps(fits, baseline) if frame is None else frame["keep0"]
+    baseline = baseline if frame is None else frame["baseline"]
     union = np.any([keep0[m] for m in MEASURES], axis=0)
     cols = cols0[union]
     keep = {m: k[union] for m, k in keep0.items()}
     slopes = {m: f[0][union] for m, f in fits.items()}
+    dropped = {m: int((keep[m] & ~np.isfinite(slopes[m])).sum()) for m in keep}
     isl, mem = island[cols], {k: v[cols] for k, v in members.items()}
-    point = _contrasts(slopes, baseline[union], isl, mem, keep)
+    at_cols = np.arange(cols.size)
+
+    def fit_draw(c: np.ndarray, rows: np.ndarray | None):
+        sub = c[:, cols] if rows is None else c[np.ix_(rows, cols)]
+        idx = np.arange(age.size) if rows is None else rows
+        cv = None if cov is None else cov[idx]
+        f, bl, _ = _fit(sub, _metrics(sub, min_reads), age[idx], female[idx], group[idx], at_cols, rows, min_reads, cv)
+        return {m: v[0] for m, v in f.items()}, bl
+
+    def strata_level(own: np.ndarray, b: int | None) -> np.ndarray:
+        if frame is None:
+            return own
+        return frame["baseline"][frame["union"]] if b is None else frame["boot_baselines"][b]
+
+    per_draw = [_contrasts(slopes, baseline[union], isl, mem, keep)]
+    for c in draws[1:]:
+        s, bl = fit_draw(c, None)
+        per_draw.append(_contrasts(s, strata_level(bl, None), isl, mem, keep))
+    point = {
+        k: tuple(np.mean([d.get(k, (np.nan,) * 4) for d in per_draw], axis=0)) for k in per_draw[0]
+    }  # fmt: skip
+    draw_sd = {
+        k: float(np.std([d.get(k, (np.nan,) * 4)[3] for d in per_draw], ddof=1)) if len(draws) > 1 else np.nan
+        for k in per_draw[0]
+    }
     boots: dict[tuple[str, str], list] = {k: [] for k in point}
+    boot_baselines: list[np.ndarray] = []
     medians: dict[str, list] = {m: [] for m in MEASURES}
     for b in range(0 if point_only else n_boot):
         rows = np.sort(draw(rng))
-        sub = {m: base[m][rows] for m in (*MEASURES[:-1], "reads")}
-        c = None if cov is None else cov[rows]
-        f, bl, _ = _fit(counts[rows], sub, age[rows], female[rows], group[rows], cols, rows, min_reads, c)
-        s = {m: v[0] for m, v in f.items()}
+        if len(draws) == 1:
+            sub = {m: base[m][rows] for m in (*MEASURES[:-1], "reads")}
+            c = None if cov is None else cov[rows]
+            f, bl, _ = _fit(draws[0][rows], sub, age[rows], female[rows], group[rows], cols, rows, min_reads, c)
+            s = {m: v[0] for m, v in f.items()}
+        else:
+            s, bl = fit_draw(draws[b % len(draws)], rows)
+        bl = strata_level(bl, b)
+        boot_baselines.append(bl.astype(np.float32))
         got = _contrasts(s, bl, isl, mem, keep)
         for k in point:
             boots[k].append(got.get(k, (np.nan,) * 4))
@@ -548,12 +640,18 @@ def _variant(
             medians[m].append(np.nanmedian(s[m][keep[m]]) if np.isfinite(s[m][keep[m]]).any() else np.nan)
         if (b + 1) % 50 == 0:
             print(f"read_entropy: {tag}: {label}: bootstrap {b + 1}/{n_boot}", file=sys.stderr, flush=True)
+    boot_arrays = {k: np.array(v, dtype=float).reshape(-1, 4) for k, v in boots.items()}
     rows_out = []
     for (m, name), (inside, matched, gap, gap_sd) in point.items():
-        arr = np.array(boots[(m, name)], dtype=float).reshape(-1, 4)
-        usable = arr[np.isfinite(arr).all(axis=1)]
-        enough = not point_only and usable.shape[0] >= n_boot / 2
-        lo, hi = np.quantile(usable, [0.025, 0.975], axis=0) if enough else (np.full(4, np.nan), np.full(4, np.nan))
+        if m in skip:
+            continue
+        arr = boot_arrays[(m, name)]
+        lo, hi = np.full(4, np.nan), np.full(4, np.nan)
+        for j in range(4):  # each column over its own finite resamples: an undefined SD unit drops no raw-unit draw
+            col = arr[:, j][np.isfinite(arr[:, j])]
+            if not point_only and col.size >= n_boot / 2:
+                lo[j], hi[j] = np.quantile(col, [0.025, 0.975])
+        enough = np.isfinite(lo[3])
         p, n_ok = sign_tail(arr[:, 3])
         rows_out.append(
             {
@@ -580,10 +678,22 @@ def _variant(
                 "samples": int(age.size),
                 "boots": 0 if point_only else n_boot,
                 "boots_usable": n_ok,
+                "draws": len(draws),
+                "gap_sd_draw_sd": draw_sd[(m, name)],
+                "windows_dropped": dropped[m],
             }
         )
     return {
         "rows": rows_out,
+        "point": point,
+        "boots": boot_arrays,
+        "frame": {
+            "cols0": cols0,
+            "keep0": keep0,
+            "union": union,
+            "baseline": baseline,
+            "boot_baselines": boot_baselines,
+        },
         "fits": fits,
         "keep0": keep0,
         "cols0": cols0,
@@ -672,6 +782,7 @@ def _source(ctx: Context, tag: str, folder: Path, windows: pl.DataFrame, probes,
 
     sample_level = "samples within cell-type groups (sample-level)" if sorted_cells else "donors"
     seed = 186_458 + len(tag)
+    n_draws = DRAWS if ctx.scale.name == "paper" else 3
     common = {
         "tag": tag, "age": age, "female": female, "group": group, "island": island, "members": members,
         "n_boot": n_boot,
@@ -732,12 +843,14 @@ def _source(ctx: Context, tag: str, folder: Path, windows: pl.DataFrame, probes,
 
     # rarefied counts
     for depth, balanced in RAREFY:
-        rare = rarefy(counts, depth, ctx.rng(seed + 10 * depth)).astype(np.int32)
+        rare = [
+            rarefy(counts, depth, ctx.rng(seed + 10 * depth + 1000 * d)).astype(np.uint8) for d in range(n_draws)
+        ]  # fmt: skip
         mask = balanced_windows(counts.sum(axis=-1), age, group, depth) if balanced else None
         label = f"rarefied to {depth}" + (", balanced coverage" if balanced else "")
         v = _variant(
             **common, label=label, resampling=sample_level, counts=rare, min_reads=depth, draw=within_groups,
-            rng=ctx.rng(seed + 10 * depth + 1), window_mask=mask,
+            rng=ctx.rng(seed + 10 * depth + 1), window_mask=mask, skip=("log_depth",),
         )  # fmt: skip
         gap_rows += v["rows"]
         del rare, v
@@ -785,15 +898,44 @@ def _source(ctx: Context, tag: str, folder: Path, windows: pl.DataFrame, probes,
             gap_rows += v["rows"]
             shares = pooled / np.maximum(pooled.sum(axis=-1, keepdims=True), 1)
             covered = (pooled.sum(axis=-1) >= MIN_READS).all(axis=0)
-            synthetic = mixture_counts(
-                np.where(covered[None, :, None], shares, np.nan), fractions, counts.sum(axis=-1), ctx.rng(seed + 5)
-            ).astype(np.int32)
-            v = _variant(
-                **common, label="composition-only mixture", resampling=sample_level, counts=synthetic,
-                min_reads=MIN_READS, draw=within_groups, rng=ctx.rng(seed + 6), window_mask=covered,
+            type_shares = np.where(covered[None, :, None], shares, np.nan)
+            reads = counts.sum(axis=-1)
+            # every mixture and the raw reference below share one bootstrap stream (the same donor resamples) and
+            # the reference's windows and young-level strata, so each resample gives a ratio of one contrast
+            same_rows = seed + 6
+            ref = _variant(
+                **common, label="raw, mixture windows", resampling=sample_level, counts=counts, min_reads=MIN_READS,
+                draw=within_groups, rng=ctx.rng(same_rows), window_mask=covered,
             )  # fmt: skip
-            gap_rows += v["rows"]
-            del synthetic
+            share_rows = []
+            for label, frac, depth, stream, skip in (
+                ("mixture: own fractions, own depth", fractions, reads, 5, ()),
+                ("mixture: mean fractions, own depth (depth only)", mean_fractions(fractions), reads, 7, ()),
+                ("mixture: own fractions, median depth (composition only)", fractions, median_depth(reads), 8,
+                 DEPTH_MEASURES),
+            ):  # fmt: skip
+                synthetic = [
+                    mixture_counts(type_shares, frac, depth, ctx.rng(seed + stream + 1000 * d)).astype(np.int32)
+                    for d in range(n_draws)
+                ]
+                v = _variant(
+                    **common, label=label, resampling=sample_level, counts=synthetic, min_reads=MIN_READS,
+                    draw=within_groups, rng=ctx.rng(same_rows), window_mask=covered, skip=skip, frame=ref["frame"],
+                )  # fmt: skip
+                gap_rows += v["rows"]
+                dropped = {(r["measure"], r["group"]): r["windows_dropped"] for r in v["rows"]}
+                for (m, name), pt in v["point"].items():
+                    if m in skip or (m, name) not in ref["point"]:
+                        continue
+                    rp = ref["point"][(m, name)]
+                    share_rows.append(
+                        {"mixture": label, "measure": m, "group": name, "raw_gap": rp[2], "mixture_gap": pt[2],
+                         "raw_gap_sd": rp[3], "mixture_gap_sd": pt[3], "windows_dropped": dropped[(m, name)]}
+                        | mixture_share((rp[2], rp[3]), ref["boots"][(m, name)], (pt[2], pt[3]), v["boots"][(m, name)])
+                    )  # fmt: skip
+                del synthetic, v
+            extra["wbc_mixture_share"] = pl.DataFrame(share_rows)
+            del ref
     print(f"read_entropy: {tag}: done", file=sys.stderr, flush=True)
     return pl.DataFrame(gap_rows), pl.DataFrame(est_rows), pl.DataFrame(young_rows), extra
 

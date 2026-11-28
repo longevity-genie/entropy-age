@@ -242,3 +242,137 @@ def test_each_measure_keeps_its_own_windows():
     assert keep["entropy"].tolist() == [True, True, False]  # KL missing does not drop a Shannon window
     assert keep["relative_entropy"].tolist() == [False, True, False]
     assert keep["log_depth"].tolist() == keep["entropy"].tolist()
+
+
+def test_mean_fractions_and_median_depth_hold_one_factor_fixed():
+    from entropy_age.experiments.read_entropy import mean_fractions, median_depth
+
+    f = np.array([[0.6, 0.4], [0.2, 0.8], [np.nan, np.nan]])
+    m = mean_fractions(f)
+    assert np.allclose(m[:2], [[0.4, 0.6], [0.4, 0.6]]) and np.isnan(m[2]).all()
+    reads = np.array([[10, 40], [20, 0], [31, 100]])
+    assert median_depth(reads).tolist() == [[20, 40], [20, 40], [20, 40]]
+
+
+def test_mixture_share_pairs_resamples_in_raw_and_sd_units():
+    from entropy_age.experiments.read_entropy import mixture_share
+
+    rng = np.random.default_rng(1)
+    raw = np.column_stack([np.zeros(200), np.zeros(200), rng.normal(-2.0, 0.2, 200), rng.normal(-0.2, 0.02, 200)])
+    mix = raw * np.array([1, 1, 0.5, 0.6])  # half the raw gap, 60 % of the SD-unit gap, resample by resample
+    mix[0] = np.nan
+    out = mixture_share((-2.0, -0.2), raw, (-1.0, -0.12), mix)
+    assert out["share"] == pytest.approx(0.5) and out["share_sd_units"] == pytest.approx(0.6)
+    assert out["share_lo"] == pytest.approx(0.5) and out["share_hi"] == pytest.approx(0.5)
+    assert out["share_sd_units_lo"] == pytest.approx(0.6) and out["share_boots"] == 199
+
+
+def _toy_source(n=24, windows=240, seed=3):
+    rng = np.random.default_rng(seed)
+    age = np.linspace(20, 80, n)
+    counts = rng.multinomial(rng.integers(12, 60, (n, windows)), np.full(16, 1 / 16)).astype(np.int32)
+    island = np.arange(windows) % 2 == 0
+    members = {"housekeeping": np.arange(windows) % 5 == 0}
+    return age, counts, island, members
+
+
+def test_variant_over_draws_averages_the_draws_and_skips_measures():
+    from entropy_age.experiments.read_entropy import _variant, rarefy
+
+    age, counts, island, members = _toy_source()
+    n = age.size
+    common = {
+        "tag": "toy", "resampling": "donors", "min_reads": 10, "age": age, "female": np.zeros(n, bool),
+        "group": np.zeros(n, int), "island": island, "members": members, "n_boot": 6,
+        "draw": lambda r: r.choice(n, n, replace=True),
+    }  # fmt: skip
+    draws = [rarefy(counts, 10, np.random.default_rng(d)).astype(np.uint8) for d in range(3)]
+    many = _variant(**common, label="r", counts=draws, rng=np.random.default_rng(0), skip=("log_depth",))
+    singles = [
+        _variant(**common, label="r", counts=d, rng=np.random.default_rng(0), point_only=True) for d in draws
+    ]  # fmt: skip
+    rows = {(r["measure"], r["group"]): r for r in many["rows"]}
+    assert ("log_depth", "housekeeping") not in rows and ("eligible", "housekeeping") in rows
+    one = [{(r["measure"], r["group"]): r for r in s["rows"]} for s in singles]
+    key = ("entropy", "housekeeping")
+    assert rows[key]["draws"] == 3
+    assert rows[key]["gap"] == pytest.approx(np.mean([o[key]["gap"] for o in one]), rel=1e-9)
+    assert rows[key]["gap_sd_draw_sd"] == pytest.approx(np.std([o[key]["gap_sd"] for o in one], ddof=1), rel=1e-9)
+    assert many["boots"][key].shape == (6, 4) and np.isfinite(rows[key]["gap_sd_lo"])
+
+
+def test_variants_with_one_seed_resample_the_same_donors():
+    from entropy_age.experiments.read_entropy import _variant, mixture_share
+
+    age, counts, island, members = _toy_source()
+    n = age.size
+    common = {
+        "tag": "toy", "resampling": "donors", "min_reads": 10, "age": age, "female": np.zeros(n, bool),
+        "group": np.zeros(n, int), "island": island, "members": members, "n_boot": 8,
+        "draw": lambda r: r.choice(n, n, replace=True),
+    }  # fmt: skip
+    a = _variant(**common, label="a", counts=counts, rng=np.random.default_rng(9))
+    b = _variant(**common, label="b", counts=[counts, counts], rng=np.random.default_rng(9), frame=a["frame"])
+    key = ("entropy", "housekeeping")
+    assert np.allclose(a["boots"][key], b["boots"][key], equal_nan=True)
+    assert np.allclose(a["point"][key], b["point"][key])
+    out = mixture_share(a["point"][key][2:], a["boots"][key], b["point"][key][2:], b["boots"][key])
+    assert out["share_boots"] == 8  # every resample paired (the toy gap is noise, so the share itself is unresolved)
+
+
+def test_mixture_share_is_unresolved_when_the_raw_gap_reaches_zero():
+    from entropy_age.experiments.read_entropy import mixture_share
+
+    rng = np.random.default_rng(2)
+    raw = np.column_stack([np.zeros(200), np.zeros(200), rng.normal(-0.1, 1.0, 200), rng.normal(-0.2, 0.02, 200)])
+    out = mixture_share((-0.1, -0.2), raw, (-0.05, -0.1), raw * 0.5)
+    assert np.isnan(out["share"]) and np.isnan(out["share_lo"])  # raw gap's interval spans zero
+    assert out["share_sd_units"] == pytest.approx(0.5)  # SD-unit gap stays away from zero
+
+
+def test_fraction_components_survive_a_sample_without_fractions():
+    from entropy_age.experiments.read_entropy import fraction_components
+
+    rng = np.random.default_rng(4)
+    f = rng.dirichlet(np.ones(4), 12)
+    f[3] = np.nan
+    pcs = fraction_components(f)
+    assert np.isfinite(pcs).all() and np.allclose(pcs[3], 0.0)
+
+
+def test_bootstrap_cycles_through_the_draws():
+    from entropy_age.experiments.read_entropy import _variant, rarefy
+
+    age, counts, island, members = _toy_source()
+    n = age.size
+    common = {
+        "tag": "toy", "resampling": "donors", "min_reads": 10, "age": age, "female": np.zeros(n, bool),
+        "group": np.zeros(n, int), "island": island, "members": members, "n_boot": 4,
+        "draw": lambda r: r.choice(n, n, replace=True),
+    }  # fmt: skip
+    d0, d1 = (rarefy(counts, 10, np.random.default_rng(s)).astype(np.uint8) for s in (0, 1))
+    key = ("entropy", "housekeeping")
+    both = _variant(**common, label="x", counts=[d0, d1], rng=np.random.default_rng(5))["boots"][key]
+    only0 = _variant(**common, label="x", counts=[d0, d0], rng=np.random.default_rng(5))["boots"][key]
+    only1 = _variant(**common, label="x", counts=[d1, d1], rng=np.random.default_rng(5))["boots"][key]
+    assert np.allclose(both[0::2], only0[0::2]) and np.allclose(both[1::2], only1[1::2])
+    assert not np.allclose(both[1::2], only0[1::2])
+
+
+def test_frame_scores_a_variant_on_the_reference_windows_and_strata():
+    from entropy_age.experiments.read_entropy import _variant
+
+    age, counts, island, members = _toy_source()
+    n = age.size
+    common = {
+        "tag": "toy", "resampling": "donors", "min_reads": 10, "age": age, "female": np.zeros(n, bool),
+        "group": np.zeros(n, int), "island": island, "members": members, "n_boot": 4,
+        "draw": lambda r: r.choice(n, n, replace=True),
+    }  # fmt: skip
+    ref = _variant(**common, label="ref", counts=counts, rng=np.random.default_rng(1))
+    thin = counts.copy()
+    thin[:, :40] = 0  # the first 40 windows have no reads in this variant
+    v = _variant(**common, label="v", counts=thin, rng=np.random.default_rng(1), frame=ref["frame"])
+    rows = {(r["measure"], r["group"]): r for r in v["rows"]}
+    assert rows[("entropy", "housekeeping")]["windows_dropped"] == 40
+    assert len(ref["frame"]["boot_baselines"]) == 4

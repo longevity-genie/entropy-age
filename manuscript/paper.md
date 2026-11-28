@@ -653,10 +653,15 @@ promoter windows than in windows matched on island status and young level: −0.
 white blood cells, −0.16 (−0.21 to −0.06) in cell-free DNA and −0.17 (−0.20 to −0.08) in sorted cells, where age was
 fitted within each cell type. In blood and plasma, housekeeping entropy fell with age while matched windows' rose; in
 sorted cells both rose, housekeeping less. The gap was larger than the same windows' gap in mean methylation (−0.12,
-−0.11, −0.09), was the same when every window was rarefied to 10 or 20 fragments (−0.13 to −0.20), and in sorted cells
-held when samples were resampled in putative donor clusters (−0.23 to −0.07) and when any one cell type was left out
-(−0.18 to −0.12). In white blood cells, a change in leukocyte composition alone could produce about 60 % of the gap, so
-the sorted cells carry this result. Core-essential promoters showed the same pattern more weakly (−0.13, −0.12, −0.09),
+−0.11, −0.09), was the same when every window was rarefied to 10 or 20 fragments, averaged over 20 independent
+rarefactions (white blood cells −0.20 and −0.19, cell-free DNA −0.16 and −0.13, sorted cells −0.16 and −0.17; spread
+across rarefactions at most 0.009), and in sorted cells held when samples were resampled in putative donor clusters
+(−0.23 to −0.07) and when any one cell type was left out (−0.18 to −0.12). Leukocyte composition explains little of
+it: white-blood-cell samples rebuilt as mixtures of the sorted blood cell types in each donor's estimated proportions,
+with no change inside any cell type and scored on the same windows, gave −0.03 (−0.09 to +0.04), about 13 % of the
+observed gap in bits per CpG per year (−34 % to +32 %); changing proportions at a fixed depth gave −0.03 and changing
+depth at fixed proportions −0.005. Adjusting the white-blood-cell fit for estimated proportions left −0.16 (−0.20 to
+−0.08). Core-essential promoters showed the same pattern more weakly (−0.13, −0.12, −0.09),
 and non-essential promoters the reverse.
 
 *A transcriptional counterpart.* Housekeeping genes gained less between-individual expression spread with age than
